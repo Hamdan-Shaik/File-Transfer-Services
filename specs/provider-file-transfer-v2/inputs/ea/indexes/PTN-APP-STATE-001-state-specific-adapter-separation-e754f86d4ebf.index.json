@@ -1,0 +1,184 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Architecture Decision Record",
+  "document_description": "State-specific adapter implementations are physically separated from the core `MMES.MBR` domain project. The core project has **no compile-time reference** to any state-specific adapter project. State adapters are discovered and registered at runtime via config-driven `Type.GetType()` binding (enabled by ADR-APP-015). Ohio (Phase 1) adapters currently live in `states/oh/` within this repository; a",
+  "total_pages": 18,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 1,
+      "summary": "",
+      "nodes": []
+    },
+    {
+      "title": "Architecture Decision Record",
+      "node_id": "architecture-decision-record",
+      "start_index": 2,
+      "end_index": 18,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "ADR-APP-016: State-Specific Adapter Separation",
+          "node_id": "adr-app-016-state-specific-adapter-separation",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Decision Summary",
+          "node_id": "decision-summary",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Context",
+          "node_id": "context",
+          "start_index": 5,
+          "end_index": 5,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Decision",
+          "node_id": "decision",
+          "start_index": 6,
+          "end_index": 10,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "1. Project boundary — no ProjectReference from core to state",
+              "node_id": "1-project-boundary--no-projectreference-from-core-to-state",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "2. Config-driven adapter binding — adapters live in SSM YAML",
+              "node_id": "2-config-driven-adapter-binding--adapters-live-in-ssm-yaml",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "3. Current directory structure",
+              "node_id": "3-current-directory-structure",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4. Namespace convention",
+              "node_id": "4-namespace-convention",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Future State — Per-Repo Separation",
+          "node_id": "future-state--per-repo-separation",
+          "start_index": 11,
+          "end_index": 11,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Consequences",
+          "node_id": "consequences",
+          "start_index": 12,
+          "end_index": 15,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Positive",
+              "node_id": "positive",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Negative",
+              "node_id": "negative",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Neutral",
+              "node_id": "neutral",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "References",
+          "node_id": "references",
+          "start_index": 16,
+          "end_index": 16,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Review and Approval",
+          "node_id": "review-and-approval",
+          "start_index": 17,
+          "end_index": 17,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Change Log",
+          "node_id": "change-log",
+          "start_index": 18,
+          "end_index": 18,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "> **Promoted from:** `mmes-cms-mbr/docs/decisions/adr-app-016-state-adapter-separation.md`  \n> **Ref-arch artifact ID:** `PTN-APP-STATE-001-state-specific-adapter-separation`  \n> This document has been promoted to the Enterprise Architecture Platform reference architecture. Product repos should reference this artifact rather than maintaining their own copy.\n\n---",
+    "2": "[patterns/application/PTN-APP-STATE-001-state-specific-adapter-separation.md#architecture-decision-record]\n\n# Architecture Decision Record",
+    "3": "[patterns/application/PTN-APP-STATE-001-state-specific-adapter-separation.md#adr-app-016-state-specific-adapter-separation]\n\n## ADR-APP-016: State-Specific Adapter Separation\n\n---\n\n|               |                                                                                                       |\n| ------------- | ----------------------------------------------------------------------------------------------------- |\n| **Status**    | Accepted                                                                                              |\n| **Date**      | 2026-07-13                                                                                            |\n| **Issuer**    | [Enterprise Architecture Practice](mailto:EAP-Core@mygainwell.onmicrosoft.com?subject=ADR-APP-016)   |\n| **Consulted** | MMES Platform Team, MBR Development Team, Enterprise Architecture                                     |\n| **Informed**  | All MMES service teams, State implementation teams                                                    |\n\n---",
+    "4": "[patterns/application/PTN-APP-STATE-001-state-specific-adapter-separation.md#decision-summary]\n\n## Decision Summary\n\nState-specific adapter implementations are physically separated from the core `MMES.MBR` domain project. The core project has **no compile-time reference** to any state-specific adapter project. State adapters are discovered and registered at runtime via config-driven `Type.GetType()` binding (enabled by ADR-APP-015). Ohio (Phase 1) adapters currently live in `states/oh/` within this repository; a future decision will promote them to a dedicated repo when a second state onboards.\n\n---",
+    "5": "[patterns/application/PTN-APP-STATE-001-state-specific-adapter-separation.md#context]\n\n## Context\n\nThe `EnrollmentPipeline` requires state-specific adapter implementations for Phase 1 (Ohio) — plandata_parallel access via CEF APIs differs from the Phase 2 Aurora repository adapters. Without a clear separation boundary, state-specific code pollutes the core member domain with Ohio-specific CEF API and plandata knowledge, making the core untestable independently and tightly coupling it to a single state.\n\nAdditionally, the previous design placed state adapter registrations inside a hardcoded `switch` statement in `AddAdaptersByProfile()` within the core project. Every new state would require a change to core — violating the Open/Closed principle.\n\n---",
+    "6": "[patterns/application/PTN-APP-STATE-001-state-specific-adapter-separation.md#decision]\n\n## Decision",
+    "7": "[patterns/application/PTN-APP-STATE-001-state-specific-adapter-separation.md#1-project-boundary--no-projectreference-from-core-to-state]\n\n### 1. Project boundary — no ProjectReference from core to state\n\n`MMES.MBR.csproj` (core) **must never** contain a `<ProjectReference>` to `MMES.MBR.States.OH.csproj` or any other state project. This is enforced as an architecture test.\n\n```xml\n<!-- ILLEGAL — must never appear in MMES.MBR.csproj -->\n<ProjectReference Include=\"..\\states\\oh\\MMES.MBR.States.OH.csproj\" />\n```",
+    "8": "[patterns/application/PTN-APP-STATE-001-state-specific-adapter-separation.md#2-config-driven-adapter-binding--adapters-live-in-ssm-yaml]\n\n### 2. Config-driven adapter binding — adapters live in SSM YAML\n\nAdapter bindings are declared in the **pipeline YAML** (stored in AWS SSM per ADR-APP-017) as an `adapters:` block alongside the pipeline topology. `appsettings.json` contains nothing pipeline-related — only `Env` and `Tenant` (or these come from environment variables). Core resolves adapter bindings at startup by reading `PipelineConfiguration.Adapters` from the loaded SSM config and calling `Type.GetType()` (permitted by ADR-APP-015). Core never imports or knows the concrete adapter types — it only knows the interfaces.\n\n```yaml\n# SSM: /mmes/{tenant}/pipeline/member-eligibility-ingest\npipeline:\n  name: member-eligibility-ingest\n  version: \"1.0.0\"\n\n  adapters:\n    IValidationAdapter:              \"MMES.MBR.States.OH.Adapters.OhValidationAdapter, MMES.MBR.States.OH\"\n    IIdentityAdapter:                \"MMES.MBR.States.OH.Adapters.SakRecipIdentityAdapter, MMES.MBR.States.OH\"\n    IEligibilityEnrichmentAdapter:   \"MMES.MBR.States.OH.Adapters.PlandataEligibilityAdapter, MMES.MBR.States.OH\"\n    ISpenddownEnrichmentAdapter:     \"MMES.MBR.States.OH.Adapters.PlandataSpenddownAdapter, MMES.MBR.States.OH\"\n    ILockInEnrichmentAdapter:        \"MMES.MBR.States.OH.Adapters.PlandataLockInAdapter, MMES.MBR.States.OH\"\n    IManagedCareEnrichmentAdapter:   \"MMES.MBR.States.OH.Adapters.PlandataMCOAdapter, MMES.MBR.States.OH\"\n    IAggregateWriteAdapter:          \"MMES.MBR.States.OH.Adapters.CefApiAdapter, MMES.MBR.States.OH\"\n    IEventPublicationAdapter:        \"MMES.MBR.States.OH.Adapters.RedisEventStreamAdapter, MMES.MBR.States.OH\"\n\n  steps:\n    # ... pipeline topology\n```\n\nCore startup registration — reads `PipelineConfiguration.Adapters` from the SSM-loaded config:\n\n```csharp\nvar config = configProvider.Get(\"member-eligibility-ingest\")!;\n\nif (config.Adapters is not null)\n{\n    foreach (var (interfaceName, concreteName) in config.Adapters)\n    {\n        var interfaceType = Type.GetType(interfaceName)\n            ?? throw new InvalidOperationException($\"Adapter interface not found: {interfaceName}\");\n        var concreteType = Type.GetType(concreteName)\n            ?? throw new InvalidOperationException($\"Adapter implementation not found: {concreteName}\");\n\n        services.AddSingleton(interfaceType, concreteType);\n    }\n}\n```\n\nAdding a new state requires **only**:\n1. A new adapter assembly loaded into the deployment\n2. A new tenant SSM YAML at `/mmes/{tenant}/pipeline/member-eligibility-ingest` with state-specific `adapters:` block\n3. No changes to core code",
+    "9": "[patterns/application/PTN-APP-STATE-001-state-specific-adapter-separation.md#3-current-directory-structure]\n\n### 3. Current directory structure\n\n```\nmmes-cms-mbr/\n  src/\n    MMES.MBR/                          # Core — no state knowledge\n      adapters/                        # Phase 2 Aurora adapters\n      pipeline/\n        modules/                       # State-agnostic modules\n        interfaces/                    # IValidationAdapter, etc.\n\n  states/\n    oh/\n      MMES.MBR.States.OH/              # OH state project (Phase 1)\n        adapters/                      # plandata / CEF API adapters\n          OhValidationAdapter.cs\n          SakRecipIdentityAdapter.cs\n          PlandataEligibilityAdapter.cs\n          PlandataSpenddownAdapter.cs\n          PlandataLockInAdapter.cs\n          PlandataMCOAdapter.cs\n          CefApiAdapter.cs\n          RedisEventStreamAdapter.cs\n```\n\n`MMES.MBR.States.OH.csproj` references `MMES.MBR.csproj` (for interfaces) — the dependency is one-way. Core never references OH.",
+    "10": "[patterns/application/PTN-APP-STATE-001-state-specific-adapter-separation.md#4-namespace-convention]\n\n### 4. Namespace convention\n\n| Location | Namespace |\n|---|---|\n| Core adapters | `MMES.MBR.Adapters` |\n| Core interfaces | `MMES.MBR.Pipeline.Interfaces` |\n| OH state adapters | `MMES.MBR.States.OH.Adapters` |\n| Future KS adapters | `MMES.MBR.States.KS.Adapters` |\n\n---",
+    "11": "[patterns/application/PTN-APP-STATE-001-state-specific-adapter-separation.md#future-state--per-repo-separation]\n\n## Future State — Per-Repo Separation\n\nWhen a second state (KS, TX) begins implementation, the state adapter projects are promoted to dedicated repositories:\n\n```\nmmes-cms-mbr          → publishes MMES.MBR.Pipeline.Interfaces as NuGet\nmmes-cms-mbr-oh       → references NuGet; owns all OH adapters + appsettings.phase1-oh.json\nmmes-cms-mbr-ks       → references NuGet; owns all KS adapters + appsettings.phase1-ks.json\n```\n\nEach state repo produces a deployable artifact. Core is a shared dependency via NuGet. This ADR should be revisited and superseded at second-state onboarding.\n\n**Trigger for escalation:** Second state implementation begins.  \n**Owner:** Platform Engineering + Enterprise Architecture.\n\n---",
+    "12": "[patterns/application/PTN-APP-STATE-001-state-specific-adapter-separation.md#consequences]\n\n## Consequences",
+    "13": "[patterns/application/PTN-APP-STATE-001-state-specific-adapter-separation.md#positive]\n\n### Positive\n\n- Core member domain is clean — contains no Ohio-specific code or references\n- Adding a new state is a config + new assembly change — no core code changes\n- Core can be tested independently of all state implementations\n- Clear ownership boundary — state teams own their adapter projects",
+    "14": "[patterns/application/PTN-APP-STATE-001-state-specific-adapter-separation.md#negative]\n\n### Negative\n\n- All state adapter assemblies must be loaded into the deployment container (included in the Docker image build)\n- `Type.GetType()` requires assembly-qualified names for cross-assembly types: `\"MMES.MBR.States.OH.Adapters.OhValidationAdapter, MMES.MBR.States.OH\"` — these live in the SSM YAML, not in code\n- Startup validation must catch missing type names before the service accepts traffic",
+    "15": "[patterns/application/PTN-APP-STATE-001-state-specific-adapter-separation.md#neutral]\n\n### Neutral\n\n- No `AddAdaptersByProfile()` switch in core — adapter wiring is entirely in the SSM YAML\n- Switching Phase 1 → Phase 2 is a single SSM YAML update (change the `adapters:` block); no code deploy\n\n---",
+    "16": "[patterns/application/PTN-APP-STATE-001-state-specific-adapter-separation.md#references]\n\n## References\n\n| Reference | Relevance |\n|---|---|\n| [ADR-APP-015](adr-app-015-no-aot-consuming-service.md) | Standard JIT runtime — enables `Type.GetType()` for config-driven binding |\n| [ADR-APP-003](adr-app-003-mmes-cmn-pipeline.md) | Pipeline engine — modules are state-agnostic; adapters are state-specific |\n| [ADR-INFRA-002](adr-infra-002-kafka-event-streaming.md) | Adapter pattern — interfaces, not concretions |\n\n---",
+    "17": "[patterns/application/PTN-APP-STATE-001-state-specific-adapter-separation.md#review-and-approval]\n\n## Review and Approval\n\n| Role                         | Name   | Date       | Status  |\n| ---------------------------- | ------ | ---------- | ------- |\n| Chief Technology Officer     | [Name] | [Pending]  | Pending |\n| Chief Architect              | [Name] | [Pending]  | Pending |\n| Enterprise Architecture Lead | [Name] | [Pending]  | Pending |\n| Domain Enterprise Architect  | [Name] | [Pending]  | Pending |\n\n---",
+    "18": "[patterns/application/PTN-APP-STATE-001-state-specific-adapter-separation.md#change-log]\n\n## Change Log\n\n| Version | Date       | Author       | Description       |\n| ------- | ---------- | ------------ | ----------------- |\n| 1.0     | 2026-07-13 | Mike Goppert | Initial decision. |"
+  },
+  "coverage": {
+    "total_pages": 18,
+    "covered_pages": 18,
+    "sampled_pages": 18,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 18
+  }
+}

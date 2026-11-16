@@ -1,0 +1,647 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Horizontal Scaling Pattern",
+  "document_description": "pattern_name: 'Horizontal Scaling Pattern'",
+  "total_pages": 68,
+  "tree": [
+    {
+      "title": "Horizontal Scaling Pattern",
+      "node_id": "horizontal-scaling-pattern",
+      "start_index": 1,
+      "end_index": 68,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Executive Summary",
+          "node_id": "executive-summary",
+          "start_index": 3,
+          "end_index": 8,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Problem Statement",
+              "node_id": "problem-statement",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Solution Overview",
+              "node_id": "solution-overview",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "When to Use",
+              "node_id": "when-to-use",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Target Audience",
+              "node_id": "target-audience",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Benefits",
+              "node_id": "benefits",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Context and Problem",
+          "node_id": "context-and-problem",
+          "start_index": 9,
+          "end_index": 17,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Business Context",
+              "node_id": "business-context",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Technical Context",
+              "node_id": "technical-context",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Problem Details",
+              "node_id": "problem-details",
+              "start_index": 12,
+              "end_index": 16,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Problem 1: Infrastructure Waste from Over-Provisioning",
+                  "node_id": "problem-1-infrastructure-waste-from-over-provisioning",
+                  "start_index": 13,
+                  "end_index": 13,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Problem 2: Performance Degradation During Unpredictable Spikes",
+                  "node_id": "problem-2-performance-degradation-during-unpredictable-spikes",
+                  "start_index": 14,
+                  "end_index": 14,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Problem 3: Inefficient Scale-Up Response Time",
+                  "node_id": "problem-3-inefficient-scale-up-response-time",
+                  "start_index": 15,
+                  "end_index": 15,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Problem 4: Cost Unpredictability and Budget Overruns",
+                  "node_id": "problem-4-cost-unpredictability-and-budget-overruns",
+                  "start_index": 16,
+                  "end_index": 16,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Forces and Constraints",
+              "node_id": "forces-and-constraints",
+              "start_index": 17,
+              "end_index": 17,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Solution",
+          "node_id": "solution",
+          "start_index": 18,
+          "end_index": 34,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Pattern Description",
+              "node_id": "pattern-description",
+              "start_index": 19,
+              "end_index": 19,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Architecture Diagram",
+              "node_id": "architecture-diagram",
+              "start_index": 20,
+              "end_index": 22,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Horizontal Pod Autoscaler Architecture",
+                  "node_id": "horizontal-pod-autoscaler-architecture",
+                  "start_index": 21,
+                  "end_index": 21,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Scaling Decision Flow",
+                  "node_id": "scaling-decision-flow",
+                  "start_index": 22,
+                  "end_index": 22,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Components",
+              "node_id": "components",
+              "start_index": 23,
+              "end_index": 23,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Interactions",
+              "node_id": "interactions",
+              "start_index": 24,
+              "end_index": 28,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "1. CPU-Based Scale-Up Operation",
+                  "node_id": "1-cpu-based-scale-up-operation",
+                  "start_index": 25,
+                  "end_index": 25,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "2. KEDA Queue-Depth Scaling",
+                  "node_id": "2-keda-queue-depth-scaling",
+                  "start_index": 26,
+                  "end_index": 26,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "3. Scheduled Scaling for Predictable Patterns",
+                  "node_id": "3-scheduled-scaling-for-predictable-patterns",
+                  "start_index": 27,
+                  "end_index": 27,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "4. Scale-Down with Graceful Termination",
+                  "node_id": "4-scale-down-with-graceful-termination",
+                  "start_index": 28,
+                  "end_index": 28,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Variations",
+              "node_id": "variations",
+              "start_index": 29,
+              "end_index": 34,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Variation 1: Basic CPU-Based Autoscaling",
+                  "node_id": "variation-1-basic-cpu-based-autoscaling",
+                  "start_index": 30,
+                  "end_index": 30,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Variation 2: Custom Metrics Scaling (Requests Per Second)",
+                  "node_id": "variation-2-custom-metrics-scaling-requests-per-second",
+                  "start_index": 31,
+                  "end_index": 31,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Variation 3: KEDA Event-Driven Scaling",
+                  "node_id": "variation-3-keda-event-driven-scaling",
+                  "start_index": 32,
+                  "end_index": 32,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Variation 4: Scheduled + Reactive Hybrid Scaling",
+                  "node_id": "variation-4-scheduled--reactive-hybrid-scaling",
+                  "start_index": 33,
+                  "end_index": 33,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Variation 5: Multi-Metric Scaling",
+                  "node_id": "variation-5-multi-metric-scaling",
+                  "start_index": 34,
+                  "end_index": 34,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Implementation Guidelines",
+          "node_id": "implementation-guidelines",
+          "start_index": 35,
+          "end_index": 42,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Prerequisites",
+              "node_id": "prerequisites",
+              "start_index": 36,
+              "end_index": 36,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Step-by-Step Implementation",
+              "node_id": "step-by-step-implementation",
+              "start_index": 37,
+              "end_index": 40,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Phase 1: Enable Basic CPU-Based Autoscaling (Week 1)",
+                  "node_id": "phase-1-enable-basic-cpu-based-autoscaling-week-1",
+                  "start_index": 38,
+                  "end_index": 38,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Phase 2: Implement Custom Metrics Scaling (Week 2-3)",
+                  "node_id": "phase-2-implement-custom-metrics-scaling-week-2-3",
+                  "start_index": 39,
+                  "end_index": 39,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Phase 3: Advanced Scaling with KEDA (Week 3-4)",
+                  "node_id": "phase-3-advanced-scaling-with-keda-week-3-4",
+                  "start_index": 40,
+                  "end_index": 40,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Best Practices",
+              "node_id": "best-practices",
+              "start_index": 41,
+              "end_index": 41,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Common Pitfalls",
+              "node_id": "common-pitfalls",
+              "start_index": 42,
+              "end_index": 42,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Governance and Compliance",
+          "node_id": "governance-and-compliance",
+          "start_index": 43,
+          "end_index": 50,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Standards Alignment",
+              "node_id": "standards-alignment",
+              "start_index": 44,
+              "end_index": 44,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Compliance Requirements",
+              "node_id": "compliance-requirements",
+              "start_index": 45,
+              "end_index": 47,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "HIPAA Compliance",
+                  "node_id": "hipaa-compliance",
+                  "start_index": 46,
+                  "end_index": 46,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "State Contract SLA Compliance",
+                  "node_id": "state-contract-sla-compliance",
+                  "start_index": 47,
+                  "end_index": 47,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Monitoring and Metrics",
+              "node_id": "monitoring-and-metrics",
+              "start_index": 48,
+              "end_index": 48,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Change Management",
+              "node_id": "change-management",
+              "start_index": 49,
+              "end_index": 49,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Operational Procedures",
+              "node_id": "operational-procedures",
+              "start_index": 50,
+              "end_index": 50,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Examples and Use Cases",
+          "node_id": "examples-and-use-cases",
+          "start_index": 51,
+          "end_index": 59,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Real-World Implementation: California Member Portal API Autoscaling",
+              "node_id": "real-world-implementation-california-member-portal-api-autoscaling",
+              "start_index": 52,
+              "end_index": 52,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Real-World Implementation: Texas Claims Processing Workers (KEDA)",
+              "node_id": "real-world-implementation-texas-claims-processing-workers-keda",
+              "start_index": 53,
+              "end_index": 53,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Real-World Implementation: Florida Eligibility API (Multi-Metric Scaling)",
+              "node_id": "real-world-implementation-florida-eligibility-api-multi-metric-scaling",
+              "start_index": 54,
+              "end_index": 54,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Use Case Scenarios",
+              "node_id": "use-case-scenarios",
+              "start_index": 55,
+              "end_index": 59,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Scenario 1: Diurnal Traffic Patterns (Member Portals)",
+                  "node_id": "scenario-1-diurnal-traffic-patterns-member-portals",
+                  "start_index": 56,
+                  "end_index": 56,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Scenario 2: Monthly Cyclical Workloads (Claims Processing)",
+                  "node_id": "scenario-2-monthly-cyclical-workloads-claims-processing",
+                  "start_index": 57,
+                  "end_index": 57,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Scenario 3: Seasonal Enrollment Surges",
+                  "node_id": "scenario-3-seasonal-enrollment-surges",
+                  "start_index": 58,
+                  "end_index": 58,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Scenario 4: Unpredictable Event-Driven Spikes",
+                  "node_id": "scenario-4-unpredictable-event-driven-spikes",
+                  "start_index": 59,
+                  "end_index": 59,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Related Patterns and References",
+          "node_id": "related-patterns-and-references",
+          "start_index": 60,
+          "end_index": 65,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Related Patterns",
+              "node_id": "related-patterns",
+              "start_index": 61,
+              "end_index": 64,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Complementary Patterns (Use Together)",
+                  "node_id": "complementary-patterns-use-together",
+                  "start_index": 62,
+                  "end_index": 62,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Alternative Patterns (Choose Based on Context)",
+                  "node_id": "alternative-patterns-choose-based-on-context",
+                  "start_index": 63,
+                  "end_index": 63,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Prerequisite Patterns",
+                  "node_id": "prerequisite-patterns",
+                  "start_index": 64,
+                  "end_index": 64,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "External References",
+              "node_id": "external-references",
+              "start_index": 65,
+              "end_index": 65,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Change History",
+          "node_id": "change-history",
+          "start_index": 66,
+          "end_index": 66,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Review Log",
+          "node_id": "review-log",
+          "start_index": 67,
+          "end_index": 67,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "TL;DR (Too Long; Didn't Read)",
+          "node_id": "tldr-too-long-didnt-read",
+          "start_index": 68,
+          "end_index": 68,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#horizontal-scaling-pattern]\n\n# Horizontal Scaling Pattern\n\n**← Back to [EAP Home](../../../README.md) • [Patterns](../../README.md) • [Technology](../README.md) • [API & Microservices](./README.md)**\n\n---\n\n**Pattern Metadata**\n\n```yaml\npattern_id: 'PTN-TEC-API-007'\npattern_name: 'Horizontal Scaling Pattern'\npattern_type: 'performance-scalability'\ndomain: 'scalability'\nversion: '1.0.0'\nstatus: 'active'\ntags: ['performance', 'scalability', 'horizontal-scaling', 'kubernetes', 'hpa', 'autoscaling', 'elasticity', 'keda', 'cost-optimization', 'cloud-native', 'prometheus', 'azure-monitor']\n```\n\n---",
+    "2": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#table-of-contents]\n\n## Table of Contents\n\n- [Executive Summary](#executive-summary)\n- [Context and Problem](#context-and-problem)\n- [Solution](#solution)\n- [Implementation Guidelines](#implementation-guidelines)\n- [Governance and Compliance](#governance-and-compliance)\n- [Examples and Use Cases](#examples-and-use-cases)\n- [Related Patterns and References](#related-patterns-and-references)\n- [Change History](#change-history)\n- [Review Log](#review-log)\n- [TL;DR](#tldr)\n\n---",
+    "3": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#executive-summary]\n\n## Executive Summary",
+    "4": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#problem-statement]\n\n### Problem Statement\n\nHealthcare API workloads experience extreme variability in demand patterns that cannot be efficiently handled by fixed-capacity infrastructure. Without dynamic scaling capabilities, organizations face a costly dilemma: provision infrastructure for peak capacity (wasting resources during normal operations) or risk service degradation during high-traffic periods. Traditional vertical scaling (adding CPU/memory to existing servers) hits hardware limits, requires downtime, and doesn't address distributed system resilience needs.\n\nFor healthcare platforms serving Medicaid beneficiaries, demand patterns vary dramatically throughout the day, week, and month. Member portal traffic peaks during business hours (9 AM-5 PM) with 5-7× more requests than overnight periods. Provider claims submission spikes occur at month-end deadlines (3-4× normal volume in final 3 business days). Open enrollment periods create 10-15× traffic increases for eligibility and plan selection APIs. Pharmacy point-of-sale transactions surge during morning hours (7-10 AM) when beneficiaries fill prescriptions before work.\n\nStatic infrastructure sizing creates two critical problems: **Resource Waste** - Infrastructure provisioned for peak capacity (open enrollment: 15× normal load) sits largely underutilized during normal operations. **Performance Degradation** - Infrastructure sized for average load experiences severe degradation during predictable spikes (month-end claims processing), causing P95 latency to spike dramatically, timeout errors to increase, and state SLA violations requiring service credits.\n\nVertical scaling (upgrading instance sizes) provides limited relief: maximum instance sizes cap scalability (largest Azure VM: 416 vCPUs, insufficient for distributed workloads), scaling operations require 5-15 minute downtime windows, costs scale linearly without efficiency gains, and single large instances create single points of failure. Healthcare's regulatory requirements compound these challenges: HIPAA audit logs must track all scaling events, state contracts mandate 99.9% availability (43 minutes monthly downtime allowance prohibits frequent scaling downtime), and data residency requirements limit geographic distribution options.",
+    "5": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#solution-overview]\n\n### Solution Overview\n\nThe Horizontal Scaling Pattern implements automatic, dynamic scaling of application instances in response to actual workload demand, adding or removing identical service replicas based on CPU utilization, memory consumption, custom metrics (requests per second, queue depth), or scheduled patterns. Rather than making individual servers larger (vertical scaling), horizontal scaling increases the number of identical servers handling requests, distributing load across a pool of instances.\n\nThe solution leverages Kubernetes Horizontal Pod Autoscaler (HPA) as the primary scaling mechanism, automatically adjusting the replica count for deployments, replica sets, or stateful sets based on observed metrics. HPA queries metrics from Kubernetes Metrics Server (CPU/memory) or custom metrics adapters (Prometheus, Azure Monitor) every 15-30 seconds, calculates desired replica count using target utilization thresholds, and gradually scales up (adding pods) or scales down (removing pods) while respecting configured minimum and maximum boundaries.\n\nFor Gainwell's healthcare APIs, the pattern implements three-tier autoscaling: **(1) Reactive Scaling** - HPA scales based on real-time metrics (target: 70% CPU utilization), adding replicas when load increases and removing replicas when load decreases, with 2-5 minute response time from trigger to new pods ready. **(2) Predictive Scaling** - KEDA (Kubernetes Event-Driven Autoscaling) scales based on external metrics (Azure Service Bus queue depth, Redis cache hit rate, database connection pool utilization), enabling proactive scaling before user-facing degradation. **(3) Scheduled Scaling** - CronJob-based adjustments pre-scale infrastructure for known patterns (month-end claims processing, open enrollment periods, business hours vs. overnight).\n\nThe architecture ensures stateless service design enabling any replica to handle any request (session affinity handled via Redis), graceful pod termination with 30-second drain periods allowing in-flight requests to complete, health checks (readiness and liveness probes) ensuring only healthy pods receive traffic, and integration with service mesh (Istio) for intelligent request routing and circuit breaking during scale events.",
+    "6": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#when-to-use]\n\n### When to Use\n\nImplement the Horizontal Scaling Pattern for workloads and scenarios meeting these criteria:\n\n- **Variable Demand Patterns**: Workloads experiencing predictable or unpredictable traffic variations (>2× difference between peak and average load) where static provisioning wastes resources or risks performance degradation. Healthcare examples: member portals with business hours traffic patterns (7× variation), claims processing APIs with month-end spikes (4× variation), eligibility verification with seasonal enrollment surges (15× variation), pharmacy POS with morning peak patterns (5× variation).\n\n- **Stateless Services**: APIs and services designed without local state, where any replica can serve any request without session affinity requirements. Request context stored in Redis/database, authentication tokens validated from cache, business logic in code (not instance memory), file uploads/downloads via blob storage (not local filesystem). Stateful services require specialized patterns (StatefulSets with stable pod identities).\n\n- **Cloud-Native Deployments**: Applications deployed on Kubernetes (AKS, EKS, GKE) with access to Metrics Server and autoscaling controllers. On-premises deployments possible but require infrastructure supporting rapid instance provisioning (<5 minutes). Healthcare constraints: data residency in specific Azure regions, HIPAA-compliant infrastructure, network security groups allowing pod-to-pod communication.\n\n- **Cost Optimization Focus**: Scenarios where infrastructure costs represent significant portion of operational budget (>15% of total) and workload patterns allow meaningful cost reduction through dynamic scaling. Target: 30-50% cost reduction by rightsizing for average load while automatically handling peaks.\n\n- **SLA-Driven Performance**: Services with strict latency SLAs (P95 <2 seconds) or availability requirements (99.9%+) where scaling prevents degradation during load spikes. Horizontal scaling maintains consistent per-replica performance (each pod handles reasonable load) rather than overloading fewer instances. State contracts typically mandate <2s search response, <3s page load, 99.9% uptime.",
+    "7": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#target-audience]\n\n### Target Audience\n\nThis pattern is intended for:\n\n- **Platform Engineers** responsible for configuring Kubernetes autoscaling policies (HPA, KEDA, Cluster Autoscaler) and managing cloud infrastructure for healthcare API platforms\n- **DevOps Engineers** managing deployment pipelines, pod resource limits, and scaling configuration across multiple service environments\n- **Solutions Architects** evaluating horizontal vs. vertical scaling trade-offs for variable-demand healthcare workloads\n- **Site Reliability Engineers (SREs)** maintaining performance SLAs, monitoring scaling events, and right-sizing infrastructure to balance cost and reliability",
+    "8": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#benefits]\n\n### Benefits\n\n**Automatic Elasticity and Resource Optimization** (30-50% Infrastructure Cost Reduction): Horizontal scaling automatically adjusts capacity to match actual demand, eliminating the need to overprovision for peak load while ensuring adequate capacity during traffic spikes. Implementing HPA across a large microservices portfolio can yield significant annual cloud compute cost reduction by rightsizing for average load and scaling to peak only when needed. Overnight and weekend periods automatically scale down to minimum replicas, reducing costs during consistently low-traffic windows. Cost savings compound across environments (production, staging, development).\n\n**Consistent Performance Under Variable Load**: Horizontal scaling prevents performance degradation during traffic surges by distributing load across additional replicas rather than overloading existing instances. Before implementing HPA, member portal APIs often experience severe degradation during peak hours—P95 latency increases dramatically, error rates spike, and timeout failures affect a significant fraction of requests. After implementing HPA with appropriate CPU targets, peak period performance stabilizes, error rates stay low during peaks, and timeout failures are eliminated. Users experience consistent response times regardless of overall system load.\n\n**Improved Availability and Fault Tolerance**: Horizontal scaling inherently increases system resilience by distributing workload across multiple independent replicas. Single pod failures (container crashes, host failures, deployment issues) impact only a fraction of capacity (1/N where N is replica count) rather than causing complete outages. Kubernetes automatically replaces failed pods within 30-60 seconds, restoring full capacity. Distributed replicas support high uptime targets and reduce SLA penalty risk compared to single-instance deployments.\n\n**Rapid Response to Demand Changes** (2-4 Minute Scale-Up Time): Modern autoscaling responds quickly to workload changes, adding capacity before users experience degradation. Kubernetes HPA checks metrics every 15-30 seconds and can scale up by 100% of current replicas per minute. For a claims submission API experiencing a sudden month-end spike, HPA can detect increased CPU utilization within 30 seconds and reach target capacity within approximately 4 minutes—preventing the latency degradation that occurs without autoscaling.\n\n**Predictable Operating Costs with Usage-Based Billing**: Horizontal scaling shifts infrastructure costs from fixed (paying for peak capacity 24/7) to variable (paying for actual usage patterns). For healthcare organizations with seasonal enrollment periods, this alignment is particularly valuable: open enrollment periods drive substantially higher pod counts than normal operations. With autoscaling, costs scale proportionally with actual traffic rather than being permanently sized for peak, yielding significant annual savings while maintaining performance during enrollment periods.",
+    "9": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#context-and-problem]\n\n## Context and Problem",
+    "10": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#business-context]\n\n### Business Context\n\n**Healthcare Workload Variability**: Healthcare platforms experience highly variable demand patterns. Member portals see significant traffic increases during business hours (9 AM-5 PM) compared to overnight periods, with peak concurrent users during open enrollment many times higher than off-peak periods. Provider claims submission follows monthly cycles with volume spikes in final business days of each month as providers rush to submit claims before deadlines. Pharmacy point-of-sale transactions peak during morning hours when beneficiaries fill prescriptions before work, dropping significantly during overnight hours.\n\n**Seasonal Demand Surges**: Healthcare enrollment periods create extreme seasonal variability. Annual open enrollment (October-December) generates 10-15× normal traffic for eligibility verification, plan comparison, and enrollment submission APIs. Mid-year special enrollment periods (triggered by qualifying life events: job loss, marriage, childbirth) create unpredictable 2-3× spikes lasting 1-2 weeks. State-specific enrollment deadlines require infrastructure scaled for concurrent multi-state peaks.\n\n**Regulatory Performance Requirements**: State Medicaid contracts mandate strict performance SLAs: 99.9% system availability (max 43 minutes monthly downtime), <2 second P95 latency for search operations, <3 second P95 latency for page loads, <500ms P95 latency for eligibility verification API. SLA violations trigger financial penalties. These requirements make it impossible to simply \"let performance degrade\" during spikes—infrastructure must scale to maintain SLAs.\n\n**Cost Pressure and Efficiency Mandates**: Healthcare technology operates under intense cost pressure from state agencies seeking to maximize dollars available for beneficiary services. Infrastructure costs represent a significant share of contract values, making efficient resource utilization important for competitive positioning and operational margins. States increasingly scrutinize cloud costs and demand cost optimization reporting.",
+    "11": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#technical-context]\n\n### Technical Context\n\n**Kubernetes-Based Microservices Architecture**: Modern healthcare platforms deploy on managed Kubernetes (AKS, EKS, GKE) with many microservices distributed across state deployments. Services may be built in various languages (.NET, Node.js, Java), containerized using Docker, and orchestrated by Kubernetes. Each state deployment typically operates dedicated clusters for data residency and isolation requirements.\n\n**Current Static Provisioning Approach**: Services often deploy with fixed replica counts sized for expected peak load based on historical patterns. This static approach was common during initial cloud migrations as a \"safe\" strategy ensuring capacity during peaks, but creates significant waste: average CPU utilization across services is typically far below the peak for which infrastructure is provisioned.\n\n**Existing Metrics Infrastructure**: Cloud-native monitoring (Azure Monitor, Prometheus) deployed across clusters collects node and pod metrics with fine-grained granularity. Custom application metrics (requests per second, queue depth, database connection pool usage, cache hit rates) supplement built-in metrics. Kubernetes Metrics Server provides CPU/memory metrics for HPA decision-making. This monitoring foundation provides necessary data for autoscaling decisions.\n\n**Traffic Patterns and Load Characteristics**: Detailed traffic analysis across healthcare APIs reveals consistent patterns enabling predictable autoscaling: **(1) Diurnal Patterns** - Business hours generate the majority of daily traffic, overnight handles a small fraction. **(2) Weekly Patterns** - Weekdays represent most weekly traffic, with end-of-week showing higher volume due to claims submission deadline behavior. **(3) Monthly Patterns** - First and final business days handle disproportionate shares of monthly claims submissions. **(4) Seasonal Patterns** - Q4 (October-December) represents a significant share of annual enrollment API traffic due to open enrollment periods.",
+    "12": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#problem-details]\n\n### Problem Details",
+    "13": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#problem-1-infrastructure-waste-from-over-provisioning]\n\n#### Problem 1: Infrastructure Waste from Over-Provisioning\n\n**Static Sizing for Peak Capacity Wastes Resources**: Current static provisioning strategy sizes infrastructure for peak load (open enrollment, month-end processing) resulting in substantial underutilization during normal operations. A member portal API sized for open enrollment peak may run continuously at peak pod count despite normal traffic requiring far fewer replicas. Over-provisioning wastes significant cloud compute budget across a portfolio of microservices.\n\n**Illustrative Impact**: Deployment analysis often reveals that services are provisioned for 3-5× actual peak needs, with average CPU utilization well below peak capacity levels. Cost analysis typically shows that dynamically provisioned infrastructure would require substantially less spend during normal periods, with the majority of deployed capacity sitting idle.",
+    "14": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#problem-2-performance-degradation-during-unpredictable-spikes]\n\n#### Problem 2: Performance Degradation During Unpredictable Spikes\n\n**Traffic Surges Overwhelm Static Capacity Causing SLA Violations**: While infrastructure is sized for known peaks (open enrollment, month-end), unpredictable spikes cause severe degradation. Unexpected eligibility verification surges (e.g., during large-scale re-enrollment events) can generate many times normal traffic. Static infrastructure sized for typical peaks becomes overloaded: CPU utilization spikes, memory pressure triggers OOM kills, P95 latency increases dramatically, error rates rise, and a significant share of requests time out.\n\n**Emergency Response Costs and Delays**: Manual scaling detection and response introduces substantial lag. The operational process—detecting load, engineering assessment, change approval, deployment, verification—can easily require 25-45 minutes from initial load detection to full capacity. During this degradation window, large numbers of transactions fail or experience unacceptable latency, potentially triggering state SLA violations and associated financial penalties.",
+    "15": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#problem-3-inefficient-scale-up-response-time]\n\n#### Problem 3: Inefficient Scale-Up Response Time\n\n**Manual Scaling Process Too Slow for Modern Cloud Workloads**: Current manual scaling process requires detecting load increase (monitoring alerts, ticket creation), engineering assessment (determine required replica count, change approval if production), deployment execution (update Kubernetes manifests, apply changes, verify deployment), and capacity verification (confirm pods healthy and serving traffic). This process averages 25-45 minutes from initial load detection to full capacity availability. During this window, existing infrastructure struggles under load causing degradation.\n\n**Example Scenario**: Month-end claims processing consistently overwhelms claims submission APIs. Historical patterns show significant volume increases as provider offices submit accumulated claims before weekend deadlines. The manual response process—alert, assess, scale, verify—can take over 20 minutes, during which large numbers of submissions experience high latency or time out requiring retry.",
+    "16": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#problem-4-cost-unpredictability-and-budget-overruns]\n\n#### Problem 4: Cost Unpredictability and Budget Overruns\n\n**Static Provisioning Creates Fixed Costs Regardless of Usage**: Current infrastructure costs remain largely constant month-to-month despite dramatic usage variation. Infrastructure costs sized for peak capacity remain similar whether processing enrollments at normal or peak-enrollment rates. This cost structure doesn't align with business reality where state contract revenues vary based on beneficiary counts and transaction volumes.\n\n**Budget Planning Challenges**: Fixed infrastructure costs sized for peak capacity make annual budgeting difficult. Finance teams must assume peak-level costs for entire year even though peaks represent only a fraction of the year. This conservative budgeting artificially inflates projected costs, creating competitive pricing pressure in contract bidding scenarios.",
+    "17": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#forces-and-constraints]\n\n### Forces and Constraints\n\n**State Data Residency Requirements**: HIPAA and state contracts mandate beneficiary data remain in specific Azure regions. California requires US West 2 (Oregon datacenter), Texas requires US South Central (Texas datacenter), Florida requires US East (Virginia datacenter). This constraint prevents global load distribution and limits scaling options to single-region capacity. Multi-region failover possible but requires data replication strategies addressing PHI handling.\n\n**Stateful Service Constraints**: Not all services can horizontally scale freely. Services maintaining local state (in-memory session stores, local file caches, websocket connections) require careful design for horizontal scaling. Gainwell's legacy eligibility service maintains 15-minute session cache in pod memory (performance optimization avoiding database queries) complicating horizontal scaling—scaling up creates pods with cold caches, scaling down potentially kills pods with active sessions.\n\n**Database Connection Pool Limits**: Horizontal scaling increases database connection count proportionally with replica count (each pod maintains connection pool). Azure SQL Database has connection limits (Premium P2: 300 connections, Premium P4: 600 connections) requiring coordination between replica count and connection pool sizing. Scaling member portal API from 18 to 60 pods (3.3× increase) increases connection demand from 180 to 600 (assuming 10 connections per pod), potentially exhausting Premium P2 database capacity.\n\n**HIPAA Audit Logging Requirements**: All infrastructure changes (including pod scaling events) must be logged with: timestamp, user/system initiating change, resources affected, reason for change (alert trigger, scheduled scaling, manual intervention). Kubernetes native audit logs capture API calls but require augmentation with business context (\"scaled due to CPU >75%\" vs. generic \"deployment updated\"). Gainwell's compliance team requires 7-year retention of all HIPAA-relevant logs including scaling events.\n\n**Deployment Coordination with Traffic Patterns**: Scaling operations during high-traffic periods create additional risk. Adding pods during peak load increases temporary resource contention (pulling container images, starting databases connections, warming caches). Team policy avoids deployments during known peak windows (month-end Friday 8 AM-12 PM, open enrollment final week) but autoscaling events don't respect these windows. Need safeguards preventing scale-up from exacerbating problems during crisis.\n\n**Cost Budget Constraints**: While autoscaling promises cost reduction long-term, initial implementation requires investment: engineering time (pattern implementation, testing, production rollout), infrastructure additions (KEDA installation, enhanced monitoring), training (operations team on autoscaling troubleshooting). CFO mandate limits 2025 infrastructure spending to $8.2M (current: $7.9M including $1.8M compute waste), leaving $300K budget for optimization initiatives. Autoscaling implementation must show positive ROI within 6 months to justify investment.",
+    "18": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#solution]\n\n## Solution",
+    "19": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#pattern-description]\n\n### Pattern Description\n\nThe Horizontal Scaling Pattern implements automatic capacity adjustment by dynamically adding or removing identical service replicas in response to workload demand. Rather than vertically scaling individual servers (adding CPU/memory to existing instances), horizontal scaling distributes workload across an elastic pool of identical compute instances that can be provisioned and deprovisioned rapidly based on metrics.\n\nThe pattern consists of six primary components working together:\n\n**1. Kubernetes Horizontal Pod Autoscaler (HPA)**: Core autoscaling controller that adjusts replica count for Deployments, ReplicaSets, or StatefulSets based on observed metrics. HPA queries metrics every 15-30 seconds (configurable), calculates desired replica count using formula `desiredReplicas = ceil(currentReplicas × (currentMetricValue / targetMetricValue))`, and updates replica count when threshold breached. HPA respects minimum replicas (ensure high availability), maximum replicas (prevent runaway scaling), and scale-up/scale-down stabilization windows (prevent flapping).\n\n**2. Metrics Server**: Kubernetes component collecting resource metrics (CPU, memory) from kubelets on each node. Metrics Server aggregates data across cluster providing HPA with current resource utilization percentages. Deployed as cluster add-on, scrapes kubelet APIs every 60 seconds, stores recent metrics in memory (no persistent storage), and exposes metrics via Kubernetes Metrics API. Required for CPU-based and memory-based HPA.\n\n**3. Custom Metrics Adapters**: Extensions enabling HPA to scale based on custom application metrics beyond CPU/memory. Prometheus Adapter queries Prometheus for custom metrics (requests per second, queue depth, cache hit rate) and translates them into Kubernetes custom metrics API format. Azure Monitor Adapter integrates with Azure Monitor metrics. KEDA (Kubernetes Event-Driven Autoscaling) provides specialized scalers for external metrics (Azure Service Bus queue length, Azure SQL Database connections, Redis key counts).\n\n**4. Service Mesh (Istio)**: Provides intelligent traffic management during scaling events. As new pods join the service pool, Istio gradually shifts traffic to new instances using weighted routing, monitors health signals and removes unhealthy pods from load balancing pool, implements circuit breakers preventing cascading failures during scale events, and distributes load evenly across all healthy replicas using least-connection algorithm.\n\n**5. Pod Disruption Budgets (PDB)**: Kubernetes policy ensuring minimum number of replicas remain available during voluntary disruptions (node maintenance, scaling down). PDB defines either minimum available pods (e.g., \"at least 3 pods must remain running\") or maximum unavailable pods (e.g., \"no more than 25% of pods can be down simultaneously\"). Prevents HPA from scaling down too aggressively and violating availability requirements.\n\n**6. Cluster Autoscaler (CA)**: Infrastructure-layer autoscaling adjusting Kubernetes node count when pod resource requests exceed available node capacity or when nodes are underutilized. Works alongside HPA: HPA scales pod replicas, CA scales cluster nodes to accommodate pods. CA provisions new nodes when pods remain pending due to insufficient resources, deprovisions underutilized nodes when pods can fit on fewer nodes, and respects node taints, affinity rules, and PDB constraints.\n\nThe pattern implements multiple scaling strategies based on workload characteristics:\n\n**CPU-Based Scaling** (Most Common): Targets CPU utilization percentage (typical: 70% target) providing headroom for traffic bursts. Simple to configure, works out-of-box with Metrics Server, and appropriate for CPU-bound workloads (data transformation, encryption, computation). Formula: if average CPU >70%, scale up; if average CPU <50% for 5 minutes, scale down. Works well for Gainwell APIs performing JSON serialization, XML transformation, claim calculation logic.\n\n**Memory-Based Scaling**: Targets memory utilization percentage (typical: 80% target) for memory-intensive workloads. Requires careful tuning as memory doesn't decrease until pods restart (JVM heap, .NET garbage collection behavior). Appropriate for in-memory caching layers, large object processing, session state services. Gainwell eligibility cache service uses memory-based scaling (target: 75% memory utilization) with 10-minute scale-down window allowing garbage collection.\n\n**Request-Rate Scaling**: Targets requests per second per replica (typical: 100-500 RPS per pod) ensuring consistent throughput. Requires custom metrics from Prometheus. More accurate than CPU for I/O-bound workloads where CPU utilization doesn't correlate with capacity. Formula: `desiredReplicas = totalRPS / targetRPSPerPod`. Example: target 200 RPS per pod, current 8,500 RPS total, desired replicas = 8500/200 = 43 pods.\n\n**Queue-Depth Scaling** (Event-Driven): Scales based on message queue depth for asynchronous processing workloads. KEDA scaler monitors Azure Service Bus queue length and scales workers to maintain target messages per worker (typical: 10-50 messages per pod). Ensures queue draining during high-volume periods preventing backlog accumulation. Gainwell claims processing workers scale based on submission queue depth (target: 25 claims per worker).\n\n**Scheduled Scaling**: Pre-scales infrastructure before known traffic patterns using CronJob scaling rules. Increases min replicas before predictable spikes, decreases min replicas during known low-traffic windows. Examples: scale member portal to 40 pods at 8:45 AM (before 9 AM business hours surge), scale to 8 pods at 5:15 PM (after business hours), scale to 60 pods on last Friday of month at 7:00 AM (before month-end claims deadline).",
+    "20": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#architecture-diagram]\n\n### Architecture Diagram",
+    "21": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#horizontal-pod-autoscaler-architecture]\n\n#### Horizontal Pod Autoscaler Architecture\n\n```mermaid\ngraph TB\n    subgraph \"Metrics Collection Layer\"\n        MetricsServer[Metrics Server<br/>CPU & Memory Metrics<br/>60s collection interval]\n        Prometheus[Prometheus<br/>Custom Application Metrics<br/>RPS, Queue Depth, Latency]\n        AzureMonitor[Azure Monitor<br/>External Azure Metrics<br/>Service Bus, SQL, Redis]\n    end\n\n    subgraph \"Autoscaling Decision Layer\"\n        HPA[Horizontal Pod Autoscaler<br/>Decision Engine<br/>15-30s evaluation cycle]\n        KEDA[KEDA Scaler<br/>Event-Driven Autoscaling<br/>External Metrics]\n        ScheduledScaler[CronJob Scaler<br/>Time-Based Scaling<br/>Predictable Patterns]\n    end\n\n    subgraph \"AKS Cluster - California Deployment\"\n        subgraph \"Eligibility API Deployment\"\n            direction LR\n            Pod1[Pod 1<br/>Running<br/>CPU: 68%]\n            Pod2[Pod 2<br/>Running<br/>CPU: 72%]\n            Pod3[Pod 3<br/>Running<br/>CPU: 71%]\n            PodN[Pod N<br/>Running<br/>CPU: 70%]\n            PodNew[New Pod<br/>Starting<br/>Health: Initializing]\n        end\n\n        Service[Kubernetes Service<br/>Load Balancer<br/>Distributes Traffic]\n\n        PDB[Pod Disruption Budget<br/>Min Available: 3<br/>Prevents aggressive scale-down]\n    end\n\n    subgraph \"Infrastructure Layer\"\n        ClusterAutoscaler[Cluster Autoscaler<br/>Node Scaling<br/>Add/Remove Nodes]\n        NodePool[AKS Node Pool<br/>Standard_D4s_v5<br/>Current: 8 nodes<br/>Min: 3, Max: 20]\n    end\n\n    subgraph \"Traffic Source\"\n        Users[Member Portal Users<br/>Variable Load<br/>Peak: 12,500 concurrent]\n        Providers[Provider API Clients<br/>Claims Submission<br/>Spikes: Month-end]\n    end\n\n    MetricsServer -->|CPU/Memory<br/>Metrics| HPA\n    Prometheus -->|Custom<br/>Metrics| HPA\n    AzureMonitor -->|External<br/>Metrics| KEDA\n\n    HPA -->|Scale Decision<br/>Target: 70% CPU<br/>Current: 71% avg| Pod1\n    HPA -->|Increase Replicas<br/>12 → 15 pods| Pod2\n    KEDA -->|Queue Depth<br/>Scale Decision| Pod3\n    ScheduledScaler -->|Update Min Replicas<br/>8 AM: 40 pods| PodN\n\n    HPA -->|Create New Pod<br/>Scale-Up Event| PodNew\n\n    Pod1 -->|Collect Metrics<br/>Every 60s| MetricsServer\n    Pod2 -->|Collect Metrics| MetricsServer\n    Pod3 -->|Custom Metrics<br/>Every 15s| Prometheus\n\n    Service -->|Route Traffic<br/>Round-Robin| Pod1\n    Service -->|Route Traffic| Pod2\n    Service -->|Route Traffic| Pod3\n    Service -->|Route Traffic| PodN\n    Service -.->|Wait for Ready<br/>Health Check Pass| PodNew\n\n    PDB -->|Enforce Min Available<br/>Block scale-down if < 3| HPA\n\n    HPA -->|Request Node Capacity<br/>If pods pending| ClusterAutoscaler\n    ClusterAutoscaler -->|Provision New Node<br/>When needed| NodePool\n\n    Users -->|HTTP Requests<br/>Variable Load| Service\n    Providers -->|API Calls<br/>Bursty Traffic| Service\n\n    style HPA fill:#ff6b6b\n    style MetricsServer fill:#4ecdc4\n    style Service fill:#95e1d3\n    style PodNew fill:#ffe66d\n    style ClusterAutoscaler fill:#ffa07a\n```",
+    "22": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#scaling-decision-flow]\n\n#### Scaling Decision Flow\n\n```mermaid\nsequenceDiagram\n    participant Metrics as Metrics Server\n    participant HPA as HPA Controller\n    participant K8s as Kubernetes API\n    participant Deploy as Deployment\n    participant Pods as Pod Replicas\n    participant LB as Service Load Balancer\n\n    Note over Metrics,Pods: Normal Operation (12 pods, 68% avg CPU)\n\n    Metrics->>HPA: Poll metrics (every 30s)<br/>Current: 12 pods @ 71% avg CPU\n    HPA->>HPA: Calculate desired replicas<br/>71% > 70% target<br/>Desired: ceil(12 × 71/70) = 13\n\n    Note over HPA,Deploy: Scale-Up Decision (Add 1 pod)\n\n    HPA->>K8s: Update Deployment<br/>spec.replicas: 12 → 13\n    K8s->>Deploy: Apply replica count change\n    Deploy->>Pods: Create new pod (Pod-13)\n\n    Note over Pods: Pod-13 Starting (30-60s)\n\n    Pods-->>Pods: Container starting<br/>Image pull (if needed)<br/>App initialization\n    Pods->>K8s: Readiness probe failed<br/>(not ready for traffic)\n\n    Note over Pods: Pod-13 Ready\n\n    Pods->>K8s: Readiness probe passed<br/>Pod healthy and ready\n    K8s->>LB: Add Pod-13 to endpoints\n    LB-->>Pods: Begin routing traffic<br/>to Pod-13\n\n    Note over Metrics,Pods: Traffic distributed across 13 pods\n\n    Metrics->>HPA: Poll metrics (after 5 min)<br/>Current: 13 pods @ 65% avg CPU\n    HPA->>HPA: Calculate desired replicas<br/>65% < 70% target<br/>No scale-down yet (stabilization window)\n\n    Note over Metrics,Pods: 5 minutes later (scale-down eligible)\n\n    Metrics->>HPA: Poll metrics<br/>Current: 13 pods @ 62% avg CPU\n    HPA->>HPA: Calculate desired replicas<br/>62% < 70% target consistently<br/>Desired: ceil(13 × 62/70) = 12\n\n    Note over HPA,Deploy: Scale-Down Decision (Remove 1 pod)\n\n    HPA->>K8s: Update Deployment<br/>spec.replicas: 13 → 12\n    K8s->>Deploy: Apply replica count change\n    Deploy->>Pods: Terminate Pod-13<br/>SIGTERM signal (graceful shutdown)\n\n    Pods->>LB: Remove Pod-13 from endpoints\n    LB-->>Pods: Stop routing new traffic\n\n    Note over Pods: Pod-13 Draining (30s termination grace period)\n\n    Pods->>Pods: Complete in-flight requests<br/>Close connections gracefully\n    Pods->>K8s: Pod terminated successfully\n\n    Note over Metrics,Pods: Stabilized at 12 pods\n```",
+    "23": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#components]\n\n### Components\n\n| Component | Responsibility | Key Technologies | Dependencies |\n|-----------|---------------|------------------|-------------|\n| **Horizontal Pod Autoscaler** | Adjust replica count based on metrics to maintain target utilization | Kubernetes HPA v2 API, controller-manager | Metrics Server or custom metrics API |\n| **Metrics Server** | Collect and aggregate resource metrics (CPU, memory) from cluster nodes | Kubernetes Metrics Server 0.6+ | Kubelet APIs on each node |\n| **Prometheus** | Collect custom application metrics for advanced scaling decisions | Prometheus 2.45+, ServiceMonitor CRDs | Prometheus Operator, application instrumentation |\n| **Prometheus Adapter** | Translate Prometheus metrics to Kubernetes custom metrics API format | k8s-prometheus-adapter | Prometheus, Kubernetes custom metrics API |\n| **KEDA** | Event-driven autoscaling based on external metrics (queues, databases) | KEDA 2.12+, KEDA scalers for Azure services | Azure Monitor, Service Bus, SQL Database APIs |\n| **Pod Disruption Budget** | Enforce minimum availability during scaling operations | Kubernetes PDB API | Kubernetes API Server |\n| **Cluster Autoscaler** | Scale AKS node count to accommodate pod resource requirements | AKS Cluster Autoscaler | Azure VM Scale Sets, AKS API |\n| **Service Mesh (Istio)** | Intelligent traffic management and health checking during scaling | Istio 1.20+, Envoy sidecar proxies | Kubernetes, Istio control plane |\n| **Application Readiness Probes** | Signal when new pods ready to serve traffic | HTTP/TCP/Exec probes in pod spec | Application health endpoints |\n| **Application Liveness Probes** | Detect and restart unhealthy pods | HTTP/TCP/Exec probes in pod spec | Application health endpoints |\n| **Load Balancer Service** | Distribute traffic across scaled pod replicas | Kubernetes Service type LoadBalancer, Azure Load Balancer | Azure networking, AKS |",
+    "24": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#interactions]\n\n### Interactions",
+    "25": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#1-cpu-based-scale-up-operation]\n\n#### 1. CPU-Based Scale-Up Operation\n\n**Scenario: Traffic surge triggers automatic capacity increase**\n\n1. Member portal API experiences traffic increase at 9:00 AM (business hours start), requests per second increase from 850 RPS (overnight average) to 4,200 RPS (morning peak)\n2. Pod CPU utilization increases from 45% average to 76% average across 12 current replicas within 2-3 minutes\n3. Metrics Server collects CPU metrics from kubelets (60-second collection interval) and aggregates: 12 pods averaging 76% CPU\n4. HPA controller queries Metrics Server (30-second evaluation cycle): current 12 replicas @ 76% CPU vs. target 70% CPU\n5. HPA calculates desired replicas: `ceil(12 × (76 / 70)) = ceil(13.03) = 14 replicas` (need to add 2 pods)\n6. HPA updates Deployment spec: `replicas: 12 → 14` via Kubernetes API\n7. Deployment controller creates 2 new pods: Pod-13 and Pod-14 scheduled to available nodes with sufficient resources\n8. Kubelet on target nodes pulls container images (if not cached), starts containers, runs init containers\n9. Application containers start, initialize (database connection pools, cache warming, configuration loading)\n10. New pods begin running readiness probes (HTTP GET /health/ready every 5 seconds)\n11. Readiness probes fail initially (application still initializing) keeping pods out of service endpoints\n12. After 35-45 seconds, applications fully initialized, readiness probes return 200 OK\n13. Kubernetes adds Pod-13 and Pod-14 to Service endpoints list\n14. Load Balancer begins routing traffic to new pods (typically starts with lower weight, gradually increases)\n15. Traffic distributes across 14 pods, CPU utilization drops to 65% average per pod\n16. Total time from increased load to full capacity: 2-4 minutes\n\n**Performance impact during scale-up**: Brief period (2-4 minutes) where existing 12 pods handle full load at elevated CPU (76%), users experience slightly higher latency (P95: 850ms vs. normal 420ms), no request failures if infrastructure has headroom, gradual improvement as new pods join pool.",
+    "26": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#2-keda-queue-depth-scaling]\n\n#### 2. KEDA Queue-Depth Scaling\n\n**Scenario: Claims processing queue backlog triggers worker scaling**\n\n1. Provider claims submission API receives 18,500 claims during month-end spike (last Friday, 8-11 AM window)\n2. Claims published to Azure Service Bus queue for asynchronous processing (decouples submission from processing)\n3. Initial 15 claims worker pods process claims at 380 claims/hour per pod (5,700 claims/hour total capacity)\n4. Queue depth increases from 250 messages (normal) to 8,200 messages (backlog accumulating)\n5. KEDA scaler queries Azure Service Bus metrics (every 30 seconds): queue depth 8,200 messages\n6. KEDA calculates desired workers: `ceil(8200 / targetMessagesPerWorker)` where target = 500 messages per worker\n7. KEDA desired workers: `ceil(8200 / 500) = 17 workers` (need to add 2 workers)\n8. KEDA updates ScaledObject spec triggering HPA: `replicas: 15 → 17`\n9. Two new worker pods created, initialized, and begin processing claims from queue\n10. Processing capacity increases to 6,460 claims/hour (17 workers × 380 claims/hour)\n11. Queue depth begins decreasing as processing rate exceeds submission rate\n12. After 90 minutes, queue processed down to 420 messages (normal range)\n13. KEDA scales workers back down to 15 (minimum replicas for claims processing)\n\n**Benefits**: Queue never exceeds SLA threshold (10,000 messages = 1-hour backlog at normal processing rate), automatic response to workload without manual intervention, cost optimization (additional workers only provisioned during high-volume periods), predictable processing time for providers (claims processed within 2 hours vs. 6-hour backlog without scaling).",
+    "27": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#3-scheduled-scaling-for-predictable-patterns]\n\n#### 3. Scheduled Scaling for Predictable Patterns\n\n**Scenario: Pre-scale infrastructure before known traffic surge**\n\n1. CronJob-based scaler executes at 8:45 AM weekdays: `kubectl scale deployment member-portal-api --replicas=40`\n2. Increases minimum replicas from 12 (overnight level) to 40 (business hours level) before 9 AM surge\n3. Kubernetes provisions 28 additional pods (40 - 12 = 28 new pods) over 2-3 minutes\n4. All pods ready and serving traffic before 9 AM when user login surge occurs\n5. HPA remains active with 70% CPU target: if traffic exceeds 40-pod capacity, HPA scales beyond 40 pods automatically\n6. At 5:15 PM, evening CronJob executes: `kubectl scale deployment member-portal-api --replicas=15` (reduce to evening level)\n7. HPA gradually scales down from current replicas (may be 45-50 during afternoon peak) to 15 over 10-15 minute window\n8. At 11:00 PM, overnight CronJob executes: `kubectl scale deployment member-portal-api --replicas=8` (minimum overnight capacity)\n\n**Advantages**: Eliminates cold start delay (no 2-4 minute scale-up period during critical morning surge), prevents morning performance degradation (infrastructure pre-scaled before load arrives), reduces costs during known low-traffic periods (overnight, weekends), combines proactive scheduling with reactive HPA (handles unexpected variations).",
+    "28": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#4-scale-down-with-graceful-termination]\n\n#### 4. Scale-Down with Graceful Termination\n\n**Scenario: Traffic decrease triggers replica removal**\n\n1. Evening traffic decline at 5:30 PM: RPS decreases from 4,500 (afternoon) to 1,800 (evening)\n2. CPU utilization across 42 current pods drops to 38% average (well below 70% target)\n3. HPA calculates desired replicas after 5-minute stabilization window: `ceil(42 × (38 / 70)) = 23 replicas`\n4. HPA initiates scale-down: `replicas: 42 → 23` (remove 19 pods)\n5. Kubernetes selects pods for termination (typically newest pods first) and sends SIGTERM signal\n6. Selected pods removed from Service endpoints immediately (no new traffic routed)\n7. Pods enter 30-second termination grace period allowing in-flight requests to complete\n8. Application catches SIGTERM signal, stops accepting new connections, finishes processing current requests\n9. After grace period (or earlier if app exits cleanly), pods terminated and resources reclaimed\n10. Remaining 23 pods continue serving traffic at 68% average CPU (within target range)\n\n**Graceful termination prevents**: Request failures during scale-down (all in-flight requests complete), database connection leaks (connections closed properly), incomplete transactions (business operations complete before pod termination), state loss (stateful services flush state to storage).",
+    "29": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#variations]\n\n### Variations",
+    "30": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#variation-1-basic-cpu-based-autoscaling]\n\n#### Variation 1: Basic CPU-Based Autoscaling\n\n**Use Case**: Initial autoscaling implementation for stateless services with CPU-bound workloads (JSON transformation, encryption, business logic computation).\n\n**Implementation Pattern**: Deploy Metrics Server (comes with AKS), configure HPA targeting 70% CPU, set conservative min/max replicas (min: 3 for HA, max: 20 for cost control), use 5-minute scale-down stabilization window preventing flapping.\n\n**Trade-offs**: Simplest implementation requiring zero custom metrics, works out-of-box with AKS, but CPU may not correlate with capacity for I/O-bound workloads, and delayed response (Metrics Server 60s collection + HPA 30s evaluation = 90s minimum detection time).\n\n**When to Use**: First autoscaling adoption, CPU-intensive services (claims calculation, payment adjudication, risk scoring), teams without Prometheus expertise, services without custom metrics instrumentation.",
+    "31": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#variation-2-custom-metrics-scaling-requests-per-second]\n\n#### Variation 2: Custom Metrics Scaling (Requests Per Second)\n\n**Use Case**: Scaling based on actual request rate providing more accurate capacity correlation than CPU for I/O-bound APIs (database queries, external API calls, file operations).\n\n**Implementation Pattern**: Instrument application with Prometheus metrics (requests_per_second counter), deploy Prometheus Adapter translating metrics to Kubernetes custom metrics API, configure HPA targeting 200 RPS per pod, monitor actual vs. target RPS validating scaling decisions.\n\n**Trade-offs**: More accurate scaling decisions aligned with actual capacity needs, faster response time (Prometheus 15s scrape interval), but increases complexity (Prometheus + adapter required), requires application instrumentation, and needs tuning to determine optimal RPS target per pod.\n\n**When to Use**: I/O-bound services where CPU doesn't correlate with load, services with variable CPU per request (simple lookup: 5% CPU vs. complex query: 45% CPU), teams with Prometheus monitoring already deployed, APIs with well-defined capacity limits (RPS testing established optimal throughput).",
+    "32": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#variation-3-keda-event-driven-scaling]\n\n#### Variation 3: KEDA Event-Driven Scaling\n\n**Use Case**: Asynchronous processing workloads scaling based on queue depth or external data sources (Azure Service Bus, Redis lists, database table row counts).\n\n**Implementation Pattern**: Deploy KEDA (kubectl apply -f keda.yaml), configure ScaledObject with appropriate scaler (AzureServiceBus, Redis, Azure SQL), set targetMessagesPerWorker or threshold, allow KEDA to manage HPA automatically.\n\n**Trade-offs**: Perfect fit for queue-based architectures, can scale to zero when queue empty (cost optimization), supports many external metrics sources, but adds architectural dependency (KEDA operator), more complex troubleshooting (KEDA scaler + HPA + application), and requires external system monitoring (queue health critical for scaling).\n\n**When to Use**: Asynchronous job processing (claims processing, document generation, email sending), event-driven architectures, batch processing workloads, scenarios where scaling to zero during idle periods saves significant costs, integration with Azure services (Service Bus, Storage Queue, Cosmos DB).",
+    "33": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#variation-4-scheduled--reactive-hybrid-scaling]\n\n#### Variation 4: Scheduled + Reactive Hybrid Scaling\n\n**Use Case**: Workloads with predictable patterns requiring proactive scaling combined with reactive adjustment for variations.\n\n**Implementation Pattern**: Implement CronJob-based scheduled scaling adjusting min replicas (morning scale-up, evening scale-down, weekend reduction), keep HPA active for reactive adjustment above scheduled baseline, use separate scaling rules for different time windows (business hours, overnight, weekends, month-end).\n\n**Trade-offs**: Eliminates cold start during predictable surges (infrastructure ready before traffic arrives), cost optimizes during known low-traffic windows, handles unexpected variations via HPA, but increases operational complexity (scheduled jobs + HPA coordination), requires accurate traffic pattern analysis, and needs updates when patterns change (seasonal adjustments, new contract go-lives).\n\n**When to Use**: Services with strong diurnal patterns (member portals, provider APIs), monthly cyclical workloads (claims month-end, enrollment periods), cost-sensitive deployments (non-production environments scaled to zero overnight), mature autoscaling implementations optimizing beyond reactive-only approach.",
+    "34": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#variation-5-multi-metric-scaling]\n\n#### Variation 5: Multi-Metric Scaling\n\n**Use Case**: Complex services requiring scaling based on multiple metrics combined (CPU AND memory AND requests per second) ensuring adequate capacity across all dimensions.\n\n**Implementation Pattern**: Configure HPA with multiple metrics, Kubernetes scales based on metric producing highest desired replica count (ensures capacity adequate for all constraints), typical combination: 70% CPU OR 80% memory OR 200 RPS per pod.\n\n**Trade-offs**: Most accurate scaling preventing capacity exhaustion on any dimension, prevents memory leaks bypassing CPU-based scaling, but significantly increases complexity, more difficult to troubleshoot (which metric triggered scaling?), requires careful threshold tuning (avoid conflicting signals), and higher monitoring infrastructure costs (multiple metrics tracked).\n\n**When to Use**: Critical production services where capacity must be perfect, services with memory leak history (belt-and-suspenders approach), polyglot architectures with variable resource consumption patterns, services serving multiple workload types (sync API + async background jobs sharing pods).",
+    "35": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#implementation-guidelines]\n\n## Implementation Guidelines",
+    "36": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#prerequisites]\n\n### Prerequisites\n\n**Technology Stack Requirements:**\n- Azure Kubernetes Service (AKS) 1.27+ with Metrics Server enabled\n- kubectl CLI configured with cluster access\n- Helm 3.12+ for installing KEDA and Prometheus Adapter\n- Prometheus Operator (if using custom metrics)\n- .NET 8 SDK or Node.js 20+ for application instrumentation\n\n**Infrastructure Prerequisites:**\n- AKS cluster with adequate node capacity (Cluster Autoscaler enabled recommended)\n- Azure Monitor enabled for metrics collection\n- Container Registry (Azure ACR) for storing images\n- Application Insights for monitoring and alerting\n\n**Application Requirements:**\n- Stateless service design (session state in Redis, not pod memory)\n- Health check endpoints implemented (/health/live, /health/ready)\n- Graceful shutdown handling (SIGTERM signal processing)\n- Connection pool management (database connections properly sized)\n\n**Organizational Readiness:**\n- Load testing completed establishing capacity baselines (RPS per pod, CPU per request)\n- Runbooks for autoscaling troubleshooting\n- Alerting configured for scaling events and capacity issues\n- Team training on HPA concepts and troubleshooting",
+    "37": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#step-by-step-implementation]\n\n### Step-by-Step Implementation",
+    "38": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#phase-1-enable-basic-cpu-based-autoscaling-week-1]\n\n#### Phase 1: Enable Basic CPU-Based Autoscaling (Week 1)\n\n**Step 1.1: Verify Metrics Server Installation**\n\nMetrics Server must be running for CPU-based HPA:\n\n```bash\n# Check if Metrics Server is deployed\nkubectl get deployment metrics-server -n kube-system\n\n# If not found, install Metrics Server\nkubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml\n\n# Verify metrics available\nkubectl top nodes\nkubectl top pods -n gainwell-apis\n```\n\n**Step 1.2: Configure Application Health Probes**\n\nUpdate Deployment with readiness and liveness probes:\n\n```yaml\n# deployment.yaml\napiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: member-portal-api\n  namespace: gainwell-apis\n  labels:\n    app: member-portal-api\n    version: v1.2.5\nspec:\n  replicas: 3  # Initial replicas, HPA will adjust\n  selector:\n    matchLabels:\n      app: member-portal-api\n  template:\n    metadata:\n      labels:\n        app: member-portal-api\n        version: v1.2.5\n    spec:\n      containers:\n      - name: api\n        image: gainwellacr.azurecr.io/member-portal-api:v1.2.5\n        ports:\n        - containerPort: 8080\n          name: http\n          protocol: TCP\n\n        # Resource requests and limits (required for HPA)\n        resources:\n          requests:\n            cpu: 250m      # Min CPU guaranteed\n            memory: 512Mi  # Min memory guaranteed\n          limits:\n            cpu: 1000m     # Max CPU allowed\n            memory: 1Gi    # Max memory allowed\n\n        # Readiness probe - pod ready to serve traffic\n        readinessProbe:\n          httpGet:\n            path: /health/ready\n            port: 8080\n          initialDelaySeconds: 10\n          periodSeconds: 5\n          timeoutSeconds: 3\n          successThreshold: 1\n          failureThreshold: 3\n\n        # Liveness probe - pod is alive and healthy\n        livenessProbe:\n          httpGet:\n            path: /health/live\n            port: 8080\n          initialDelaySeconds: 30\n          periodSeconds: 10\n          timeoutSeconds: 5\n          successThreshold: 1\n          failureThreshold: 3\n\n        # Graceful shutdown configuration\n        lifecycle:\n          preStop:\n            exec:\n              command: [\"/bin/sh\", \"-c\", \"sleep 15\"]  # Allow load balancer to remove pod\n\n        env:\n        - name: ASPNETCORE_ENVIRONMENT\n          value: \"Production\"\n        - name: ConnectionStrings__Redis\n          valueFrom:\n            secretKeyRef:\n              name: redis-connection\n              key: connection-string\n\n      terminationGracePeriodSeconds: 30  # Time for graceful shutdown\n```\n\n**Step 1.3: Create Horizontal Pod Autoscaler**\n\nDefine HPA targeting 70% CPU utilization:\n\n```yaml\n# hpa-cpu.yaml\napiVersion: autoscaling/v2\nkind: HorizontalPodAutoscaler\nmetadata:\n  name: member-portal-api-hpa\n  namespace: gainwell-apis\nspec:\n  scaleTargetRef:\n    apiVersion: apps/v1\n    kind: Deployment\n    name: member-portal-api\n\n  minReplicas: 3   # Minimum for high availability\n  maxReplicas: 50  # Maximum to prevent runaway scaling\n\n  metrics:\n\n  - type: Resource\n    resource:\n      name: cpu\n      target:\n        type: Utilization\n        averageUtilization: 70  # Target 70% CPU utilization\n\n  behavior:\n    scaleUp:\n      stabilizationWindowSeconds: 0  # Scale up immediately when needed\n      policies:\n      - type: Percent\n        value: 100  # Can double replicas in single scale-up\n        periodSeconds: 15\n      - type: Pods\n        value: 4    # Can add max 4 pods per 15 seconds\n        periodSeconds: 15\n      selectPolicy: Max  # Use policy allowing most aggressive scale-up\n\n    scaleDown:\n      stabilizationWindowSeconds: 300  # Wait 5 minutes before scaling down\n      policies:\n      - type: Percent\n        value: 50  # Can remove up to 50% of replicas\n        periodSeconds: 60\n      - type: Pods\n        value: 2   # Can remove max 2 pods per minute\n        periodSeconds: 60\n      selectPolicy: Min  # Use policy allowing most conservative scale-down\n```\n\n**Step 1.4: Deploy and Verify HPA**\n\n```bash\n# Apply Deployment and HPA\nkubectl apply -f deployment.yaml\nkubectl apply -f hpa-cpu.yaml\n\n# Verify HPA created successfully\nkubectl get hpa member-portal-api-hpa -n gainwell-apis\n\n# Check HPA status (may take 1-2 minutes for metrics)\nkubectl describe hpa member-portal-api-hpa -n gainwell-apis\n\n# Monitor HPA decisions in real-time\nkubectl get hpa member-portal-api-hpa -n gainwell-apis --watch\n\n# Expected output:\n# NAME                     REFERENCE                       TARGETS   MINPODS   MAXPODS   REPLICAS   AGE\n# member-portal-api-hpa    Deployment/member-portal-api    45%/70%   3         50        3          2m\n```\n\n**Step 1.5: Load Test and Validate Scaling**\n\n```bash\n# Generate load using Apache Bench or k6\n# Install k6: choco install k6\n\n# Load test script (test-load.js)\nimport http from 'k6/http';\nimport { sleep } from 'k6';\n\nexport let options = {\n  stages: [\n    { duration: '2m', target: 100 },   // Ramp up to 100 users\n    { duration: '5m', target: 100 },   // Stay at 100 users\n    { duration: '2m', target: 500 },   // Ramp up to 500 users (trigger scaling)\n    { duration: '5m', target: 500 },   // Maintain load\n    { duration: '2m', target: 0 },     // Ramp down\n  ],\n};\n\nexport default function() {\n  http.get('https://member-portal-api.gainwell.com/api/eligibility/check');\n  sleep(1);\n}\n\n# Run load test\nk6 run test-load.js\n\n# In separate terminal, watch HPA scale\nkubectl get hpa member-portal-api-hpa -n gainwell-apis --watch\n\n# Observe scaling events\nkubectl get events -n gainwell-apis --sort-by='.lastTimestamp' | grep HorizontalPodAutoscaler\n```",
+    "39": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#phase-2-implement-custom-metrics-scaling-week-2-3]\n\n#### Phase 2: Implement Custom Metrics Scaling (Week 2-3)\n\n**Step 2.1: Install Prometheus and Prometheus Adapter**\n\n```bash\n# Add Prometheus Helm repo\nhelm repo add prometheus-community https://prometheus-community.github.io/helm-charts\nhelm repo update\n\n# Install Prometheus Operator\nhelm install prometheus prometheus-community/kube-prometheus-stack \\\n\n  --namespace monitoring \\\n  --create-namespace \\\n  --set prometheus.prometheusSpec.serviceMonitorSelectorNilUsesHelmValues=false\n\n# Install Prometheus Adapter for custom metrics\nhelm install prometheus-adapter prometheus-community/prometheus-adapter \\\n\n  --namespace monitoring \\\n  --set prometheus.url=http://prometheus-kube-prometheus-prometheus.monitoring.svc \\\n  --set prometheus.port=9090\n\n# Verify adapter working\nkubectl get apiservices | grep custom.metrics\n```\n\n**Step 2.2: Instrument Application with Prometheus Metrics**\n\n```csharp\n// Program.cs (.NET 8 API)\nusing Prometheus;\n\nvar builder = WebApplication.CreateBuilder(args);\n\n// Add Prometheus metrics\nbuilder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();\n\nvar app = builder.Build();\n\n// Expose Prometheus metrics endpoint\napp.UseMetricServer();  // Exposes /metrics endpoint\napp.UseHttpMetrics();   // Tracks HTTP request metrics\n\n// Custom business metrics\nvar requestCounter = Metrics.CreateCounter(\n    \"api_requests_total\",\n    \"Total API requests\",\n    new CounterConfiguration {\n        LabelNames = new[] { \"endpoint\", \"method\", \"status\" }\n    });\n\nvar requestDuration = Metrics.CreateHistogram(\n    \"api_request_duration_seconds\",\n    \"API request duration in seconds\",\n    new HistogramConfiguration {\n        LabelNames = new[] { \"endpoint\", \"method\" },\n        Buckets = Histogram.ExponentialBuckets(0.01, 2, 10)\n    });\n\nvar activeRequests = Metrics.CreateGauge(\n    \"api_active_requests\",\n    \"Number of requests currently being processed\");\n\n// Middleware to track metrics\napp.Use(async (context, next) =>\n{\n    var endpoint = context.Request.Path.Value;\n    var method = context.Request.Method;\n\n    activeRequests.Inc();\n\n    using (requestDuration.WithLabels(endpoint, method).NewTimer())\n    {\n        try\n        {\n            await next();\n            requestCounter.WithLabels(endpoint, method, context.Response.StatusCode.ToString()).Inc();\n        }\n        finally\n        {\n            activeRequests.Dec();\n        }\n    }\n});\n\napp.Run();\n```\n\n**Step 2.3: Create ServiceMonitor for Prometheus**\n\n```yaml\n# servicemonitor.yaml\napiVersion: monitoring.coreos.com/v1\nkind: ServiceMonitor\nmetadata:\n  name: member-portal-api-metrics\n  namespace: gainwell-apis\n  labels:\n    app: member-portal-api\nspec:\n  selector:\n    matchLabels:\n      app: member-portal-api\n  endpoints:\n\n  - port: metrics\n    path: /metrics\n    interval: 15s  # Scrape every 15 seconds\n```\n\n**Step 2.4: Configure Prometheus Adapter Rules**\n\n```yaml\n# prometheus-adapter-values.yaml\nrules:\n  default: false\n  custom:\n\n  - seriesQuery: 'api_requests_total{namespace=\"gainwell-apis\",pod!=\"\"}'\n    resources:\n      overrides:\n        namespace: {resource: \"namespace\"}\n        pod: {resource: \"pod\"}\n    name:\n      matches: \"^api_requests_total\"\n      as: \"api_requests_per_second\"\n    metricsQuery: 'sum(rate(api_requests_total{<<.LabelMatchers>>}[1m])) by (<<.GroupBy>>)'\n\n  - seriesQuery: 'api_active_requests{namespace=\"gainwell-apis\",pod!=\"\"}'\n    resources:\n      overrides:\n        namespace: {resource: \"namespace\"}\n        pod: {resource: \"pod\"}\n    name:\n      matches: \"^api_active_requests\"\n      as: \"api_active_requests\"\n    metricsQuery: 'avg(api_active_requests{<<.LabelMatchers>>}) by (<<.GroupBy>>)'\n\n# Update Prometheus Adapter\nhelm upgrade prometheus-adapter prometheus-community/prometheus-adapter \\\n\n  --namespace monitoring \\\n  --reuse-values \\\n  --values prometheus-adapter-values.yaml\n```\n\n**Step 2.5: Create HPA Using Custom Metrics**\n\n```yaml\n# hpa-custom-metrics.yaml\napiVersion: autoscaling/v2\nkind: HorizontalPodAutoscaler\nmetadata:\n  name: member-portal-api-hpa-custom\n  namespace: gainwell-apis\nspec:\n  scaleTargetRef:\n    apiVersion: apps/v1\n    kind: Deployment\n    name: member-portal-api\n\n  minReplicas: 3\n  maxReplicas: 50\n\n  metrics:\n  # CPU-based scaling (primary)\n  - type: Resource\n    resource:\n      name: cpu\n      target:\n        type: Utilization\n        averageUtilization: 70\n\n  # Requests per second (custom metric)\n  - type: Pods\n    pods:\n      metric:\n        name: api_requests_per_second\n      target:\n        type: AverageValue\n        averageValue: \"200\"  # Target 200 RPS per pod\n\n  # Active requests (custom metric)\n  - type: Pods\n    pods:\n      metric:\n        name: api_active_requests\n      target:\n        type: AverageValue\n        averageValue: \"50\"  # Target 50 active requests per pod\n\n  behavior:\n    scaleUp:\n      stabilizationWindowSeconds: 0\n      policies:\n      - type: Percent\n        value: 100\n        periodSeconds: 15\n      - type: Pods\n        value: 4\n        periodSeconds: 15\n      selectPolicy: Max\n    scaleDown:\n      stabilizationWindowSeconds: 300\n      policies:\n      - type: Pods\n        value: 2\n        periodSeconds: 60\n      selectPolicy: Min\n```",
+    "40": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#phase-3-advanced-scaling-with-keda-week-3-4]\n\n#### Phase 3: Advanced Scaling with KEDA (Week 3-4)\n\n**Step 3.1: Install KEDA**\n\n```bash\n# Add KEDA Helm repo\nhelm repo add kedacore https://kedacore.github.io/charts\nhelm repo update\n\n# Install KEDA\nhelm install keda kedacore/keda --namespace keda --create-namespace\n\n# Verify KEDA operator running\nkubectl get pods -n keda\n```\n\n**Step 3.2: Create KEDA ScaledObject for Azure Service Bus**\n\n```yaml\n# keda-servicebus-scaler.yaml\napiVersion: keda.sh/v1alpha1\nkind: TriggerAuthentication\nmetadata:\n  name: azure-servicebus-auth\n  namespace: gainwell-workers\nspec:\n  secretTargetRef:\n\n  - parameter: connection\n    name: servicebus-connection\n    key: connection-string\n\n---\napiVersion: keda.sh/v1alpha1\nkind: ScaledObject\nmetadata:\n  name: claims-processor-scaler\n  namespace: gainwell-workers\nspec:\n  scaleTargetRef:\n    name: claims-processor-worker  # Deployment to scale\n\n  minReplicaCount: 2   # Minimum workers\n  maxReplicaCount: 50  # Maximum workers\n\n  triggers:\n\n  - type: azure-servicebus\n    metadata:\n      queueName: claims-submission-queue\n      namespace: gainwell-servicebus\n      messageCount: \"500\"  # Target 500 messages per worker\n    authenticationRef:\n      name: azure-servicebus-auth\n\n  advanced:\n    horizontalPodAutoscalerConfig:\n      behavior:\n        scaleDown:\n          stabilizationWindowSeconds: 300\n          policies:\n          - type: Percent\n            value: 50\n            periodSeconds: 60\n```\n\n**Step 3.3: Implement Scheduled Scaling with CronJob**\n\n```yaml\n# scheduled-scaling.yaml\napiVersion: batch/v1\nkind: CronJob\nmetadata:\n  name: scale-up-business-hours\n  namespace: gainwell-apis\nspec:\n  schedule: \"45 8 * * 1-5\"  # 8:45 AM Mon-Fri\n  jobTemplate:\n    spec:\n      template:\n        spec:\n          serviceAccountName: scaler-sa\n          containers:\n          - name: kubectl\n            image: bitnami/kubectl:latest\n            command:\n            - /bin/sh\n            - -c\n            - |\n              kubectl patch hpa member-portal-api-hpa \\\n                -n gainwell-apis \\\n                --type='json' \\\n                -p='[{\"op\": \"replace\", \"path\": \"/spec/minReplicas\", \"value\": 40}]'\n          restartPolicy: OnFailure\n\n---\napiVersion: batch/v1\nkind: CronJob\nmetadata:\n  name: scale-down-evening\n  namespace: gainwell-apis\nspec:\n  schedule: \"15 17 * * 1-5\"  # 5:15 PM Mon-Fri\n  jobTemplate:\n    spec:\n      template:\n        spec:\n          serviceAccountName: scaler-sa\n          containers:\n          - name: kubectl\n            image: bitnami/kubectl:latest\n            command:\n            - /bin/sh\n            - -c\n            - |\n              kubectl patch hpa member-portal-api-hpa \\\n                -n gainwell-apis \\\n                --type='json' \\\n                -p='[{\"op\": \"replace\", \"path\": \"/spec/minReplicas\", \"value\": 15}]'\n          restartPolicy: OnFailure\n```",
+    "41": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#best-practices]\n\n### Best Practices\n\n1. **Set Conservative Resource Requests**: Define CPU/memory requests at 70-80% of typical usage (not peak) allowing HPA headroom. Requests too high waste resources, too low cause CPU throttling.\n\n2. **Use Appropriate Stabilization Windows**: Scale-up immediately (0 seconds) for responsive capacity, scale-down slowly (5-10 minutes) preventing flapping from transient load drops.\n\n3. **Implement Comprehensive Health Probes**: Readiness probes ensure only healthy pods receive traffic, liveness probes restart failed pods, startup probes handle slow initialization (legacy apps).\n\n4. **Enable Pod Disruption Budgets**: Prevent HPA from scaling below minimum availability threshold during deployments or node maintenance.\n\n5. **Monitor Actual vs. Target Metrics**: Alert when HPA consistently hits max replicas (need higher limits) or stays at min replicas with high utilization (need higher min).\n\n6. **Test Graceful Shutdown**: Verify applications handle SIGTERM properly, complete in-flight requests within termination grace period (30 seconds default), close database connections cleanly.\n\n7. **Right-Size Resource Limits**: Set CPU limits 2-4× requests allowing burst capacity, memory limits 1.5-2× requests with adequate headroom.\n\n8. **Use Multi-Metric Scaling Judiciously**: Start with CPU-only, add custom metrics when CPU doesn't correlate with capacity, avoid >3 metrics (complexity vs. value trade-off).\n\n9. **Coordinate with Cluster Autoscaler**: Ensure node capacity can accommodate scaled replicas, monitor pending pods indicating insufficient nodes.\n\n10. **Document Scaling Thresholds**: Maintain documentation explaining why specific thresholds chosen (load testing results, capacity planning calculations).",
+    "42": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#common-pitfalls]\n\n### Common Pitfalls\n\n1. **Insufficient Resource Requests**: Setting CPU requests too low (e.g., 50m) causes HPA to scale unnecessarily (pod shows 300% utilization but actually using 150m CPU). Set requests at realistic minimum needs.\n\n2. **Aggressive Scale-Down**: Using short stabilization windows (<2 minutes) causes scaling flapping where HPA scales down during brief load dips then immediately scales back up. Use 5-10 minute scale-down windows.\n\n3. **Missing Readiness Probes**: Pods without readiness probes receive traffic immediately causing failed requests during initialization. Always implement /health/ready endpoint.\n\n4. **Stateful Services**: Attempting to horizontally scale services storing session state in pod memory causes session loss during scaling. Move state to Redis or database.\n\n5. **Database Connection Exhaustion**: Scaling from 10 to 50 pods without considering database connection limits (each pod has 10-connection pool = 500 total connections) exhausts database capacity. Monitor connection counts and coordinate replica count with connection pool size.\n\n6. **Ignoring Startup Time**: Setting max scale-up rate too aggressive (e.g., 1000% per minute) for services with 2-minute startup time creates pending pods that don't help during crisis. Account for actual pod startup duration.\n\n7. **Scaling Based on Wrong Metric**: Scaling based on CPU for I/O-bound services (waiting on database, external APIs) adds replicas without improving throughput. Use custom metrics (queue depth, request rate) for non-CPU-bound workloads.\n\n8. **No Pod Disruption Budget**: Allowing HPA to scale down to 1 replica during deployments creates availability risk. Always set minReplicas ≥3 for production and use PDB.\n\n9. **Forgetting Cluster Capacity**: Scaling deployment to 100 replicas without sufficient cluster nodes leaves pods pending indefinitely. Enable Cluster Autoscaler or monitor node capacity.\n\n10. **Not Testing Scale Events**: Deploying HPA without load testing means first real scale event happens during production incident. Always load test autoscaling behavior in staging environment.",
+    "43": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#governance-and-compliance]\n\n## Governance and Compliance",
+    "44": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#standards-alignment]\n\n### Standards Alignment\n\nThis pattern aligns with and implements the following enterprise standards:\n\n- **[Enterprise API Strategy](../../enterprise-api-microservices-strategy.md)**: Implements scalability and performance principles requiring elastic capacity to handle variable healthcare workloads while optimizing infrastructure costs.\n\n- **[Kubernetes Service Discovery Pattern](../../03-integration-communication/kubernetes-service-discovery-pattern.md)**: Leverages Kubernetes Service discovery enabling load balancers to automatically discover scaled pod replicas and distribute traffic.\n\n- **[Monitoring Pattern](../../10-observability/monitoring-pattern.md)**: Integrates comprehensive metrics collection (Prometheus, Azure Monitor) providing data for autoscaling decisions and operational visibility.\n\n- **[Caching Pattern](./caching-pattern.md)**: Horizontal scaling complements caching by distributing load across replicas while caching reduces per-replica load through faster data access.",
+    "45": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#compliance-requirements]\n\n### Compliance Requirements",
+    "46": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#hipaa-compliance]\n\n#### HIPAA Compliance\n\n**Audit Logging of Scaling Events**: All autoscaling events (scale-up, scale-down, pod creation, pod termination) must be logged with: timestamp, trigger metric, old replica count, new replica count, initiating system (HPA controller), reason (CPU exceeded 70%, queue depth exceeded threshold). Kubernetes audit logs capture API calls but require enrichment with business context. Retention: 7 years per HIPAA requirements.\n\n**Implementation**:\n```yaml\n# Enable Kubernetes audit logging\napiVersion: audit.k8s.io/v1\nkind: Policy\nrules:\n\n- level: Metadata\n  resources:\n\n  - group: \"apps\"\n    resources: [\"deployments\", \"replicasets\"]\n\n  - group: \"autoscaling\"\n    resources: [\"horizontalpodautoscalers\"]\n```\n\n**PHI Data Handling During Scaling**: Pod termination during scale-down events must not cause PHI data loss or exposure. Requirements: complete in-flight requests before termination (30-second grace period), flush any cached PHI to secure storage, close database connections properly preventing connection leaks, avoid logging PHI in container termination logs.",
+    "47": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#state-contract-sla-compliance]\n\n#### State Contract SLA Compliance\n\n**Availability Requirements** (99.9% uptime = 43 minutes monthly downtime):\n- Maintain minimum 3 replicas ensuring service availability during single pod failures\n- Pod Disruption Budget prevents scaling down below minimum availability threshold\n- Graceful pod termination ensures zero-downtime scaling operations\n- Health probes prevent routing traffic to unhealthy pods\n\n**Performance Requirements** (<2s P95 latency):\n- HPA maintains consistent per-replica load preventing performance degradation\n- Proactive scaling (scheduled + KEDA) prevents latency spikes during known peaks\n- Monitoring alerts trigger on latency degradation even with autoscaling active\n- Load testing validates scaling maintains SLA compliance at all replica counts",
+    "48": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#monitoring-and-metrics]\n\n### Monitoring and Metrics\n\n**Required Autoscaling Metrics** (Prometheus/Azure Monitor):\n\n```yaml\n# Prometheus metrics\nmetrics:\n  hpa_current_replicas:\n    description: \"Current number of replicas managed by HPA\"\n    type: gauge\n    labels: [deployment, namespace]\n\n  hpa_desired_replicas:\n    description: \"Desired number of replicas calculated by HPA\"\n    type: gauge\n    labels: [deployment, namespace]\n\n  hpa_metric_value:\n    description: \"Current metric value used for scaling decisions\"\n    type: gauge\n    labels: [deployment, namespace, metric]\n\n  hpa_target_metric_value:\n    description: \"Target metric value for scaling\"\n    type: gauge\n    labels: [deployment, namespace, metric]\n\n  hpa_scale_events:\n    description: \"Count of HPA scaling events\"\n    type: counter\n    labels: [deployment, namespace, direction]  # direction: up/down\n\n  pod_startup_duration_seconds:\n    description: \"Time from pod creation to ready state\"\n    type: histogram\n    labels: [deployment, namespace]\n    buckets: [10, 30, 60, 120, 300]\n```\n\n**Prometheus Alert Rules**:\n\n```yaml\ngroups:\n\n  - name: autoscaling_alerts\n    interval: 30s\n    rules:\n      - alert: HPAMaxReplicasReached\n        expr: hpa_current_replicas == hpa_max_replicas\n        for: 10m\n        labels:\n          severity: warning\n        annotations:\n          summary: \"HPA {{ $labels.deployment }} at maximum replicas\"\n          description: \"HPA has been at max replicas for 10 minutes, may need higher limit\"\n\n      - alert: HPAScaleUpFailed\n        expr: increase(hpa_scale_events{direction=\"up\"}[5m]) > 0 and hpa_current_replicas < hpa_desired_replicas\n        for: 5m\n        labels:\n          severity: critical\n        annotations:\n          summary: \"HPA {{ $labels.deployment }} unable to scale up\"\n          description: \"Pods may be pending due to insufficient cluster capacity\"\n\n      - alert: HPAFlapping\n        expr: rate(hpa_scale_events[15m]) > 0.2  # More than 3 scale events in 15 min\n        for: 15m\n        labels:\n          severity: warning\n        annotations:\n          summary: \"HPA {{ $labels.deployment }} flapping\"\n          description: \"Frequent scaling events indicate unstable configuration\"\n\n      - alert: PodStartupSlow\n        expr: histogram_quantile(0.95, pod_startup_duration_seconds) > 120\n        for: 10m\n        labels:\n          severity: warning\n        annotations:\n          summary: \"Pods for {{ $labels.deployment }} starting slowly\"\n          description: \"P95 pod startup time exceeds 2 minutes, investigate image size or init time\"\n```",
+    "49": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#change-management]\n\n### Change Management\n\n**Pattern Changes Requiring ARB Approval:**\n- Changes to minimum replica count for production services (<3 replicas)\n- Introduction of new autoscaling strategies (KEDA, scheduled scaling)\n- Modifications to HPA scaling behavior affecting SLA compliance\n- Changes to resource limits impacting cost or capacity\n\n**Pattern Updates Requiring Team Lead Approval:**\n- Adjustments to scaling thresholds (CPU target, RPS per pod)\n- Changes to stabilization windows or scaling velocity\n- Updates to custom metrics or Prometheus queries\n- New services adopting autoscaling pattern",
+    "50": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#operational-procedures]\n\n### Operational Procedures\n\n**Autoscaling Failure Runbook**:\n\n1. **Detection**: Alert fires for HPAScaleUpFailed or pods stuck pending\n2. **Immediate Assessment** (within 5 minutes):\n   - Check HPA status: `kubectl describe hpa <name> -n <namespace>`\n   - Check pod status: `kubectl get pods -n <namespace>` (look for Pending pods)\n   - Check cluster capacity: `kubectl top nodes`\n3. **Diagnosis**:\n   - **Pending Pods**: Insufficient cluster capacity, trigger Cluster Autoscaler or manually add nodes\n   - **HPA Errors**: Metrics unavailable (check Metrics Server health)\n   - **Image Pull Failures**: Container registry issues, verify ACR connectivity\n4. **Resolution**:\n   - If capacity issue: Scale cluster manually while Cluster Autoscaler provisions nodes\n   - If metrics issue: Restart Metrics Server: `kubectl rollout restart deployment metrics-server -n kube-system`\n   - If persistent: Temporarily increase minReplicas manually bypassing HPA\n5. **Recovery Verification**: Confirm desired replicas achieved and traffic distributed evenly\n6. **Post-Incident**: Review capacity planning, adjust node pool sizing or HPA limits",
+    "51": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#examples-and-use-cases]\n\n## Examples and Use Cases",
+    "52": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#real-world-implementation-california-member-portal-api-autoscaling]\n\n### Real-World Implementation: California Member Portal API Autoscaling\n\n**Business Context**: California Medicaid member portal serves 9.2M beneficiaries with extreme traffic variability. Business hours (9 AM-5 PM) generate 7× more traffic than overnight. Open enrollment (October-December) creates 12× normal traffic. Static provisioning for peak capacity cost $504K annually with 78% average underutilization.\n\n**Implementation Approach**:\n\n```yaml\n# Hybrid scaling: Scheduled baseline + reactive HPA\napiVersion: autoscaling/v2\nkind: HorizontalPodAutoscaler\nmetadata:\n  name: ca-member-portal-hpa\n  namespace: california-prod\nspec:\n  scaleTargetRef:\n    kind: Deployment\n    name: member-portal-api\n  minReplicas: 8   # Overnight minimum (adjusted by scheduled scaling)\n  maxReplicas: 180 # Open enrollment peak capacity\n  metrics:\n\n  - type: Resource\n    resource:\n      name: cpu\n      target:\n        type: Utilization\n        averageUtilization: 70\n\n  - type: Pods\n    pods:\n      metric:\n        name: api_requests_per_second\n      target:\n        type: AverageValue\n        averageValue: \"200\"\n  behavior:\n    scaleUp:\n      stabilizationWindowSeconds: 0\n      policies:\n      - type: Percent\n        value: 100\n        periodSeconds: 15\n      selectPolicy: Max\n    scaleDown:\n      stabilizationWindowSeconds: 600  # 10-minute stabilization\n      policies:\n      - type: Pods\n        value: 2\n        periodSeconds: 60\n\n---\n# Scheduled scaling for business hours\napiVersion: batch/v1\nkind: CronJob\nmetadata:\n  name: scale-business-hours\nspec:\n  schedule: \"45 8 * * 1-5\"\n  jobTemplate:\n    spec:\n      template:\n        spec:\n          containers:\n          - name: scaler\n            image: bitnami/kubectl\n            command: [\"/bin/sh\", \"-c\"]\n            args:\n            - |\n              kubectl patch hpa ca-member-portal-hpa -n california-prod \\\n                --type='json' \\\n                -p='[{\"op\": \"replace\", \"path\": \"/spec/minReplicas\", \"value\": 40}]'\n```\n\n**Results Achieved** (12-month period: January-December 2024):\n\n| Metric | Before Autoscaling | After Autoscaling | Improvement |\n|--------|-------------------|-------------------|-------------|\n| Annual Infrastructure Cost | $504,000 | $234,000 | 54% reduction |\n| Average Resource Utilization | 22% | 68% | 3.1× improvement |\n| P95 Latency (Normal) | 420ms | 410ms | Maintained |\n| P95 Latency (Peak) | 8,500ms | 620ms | 93% improvement |\n| SLA Violations | 12 incidents | 0 incidents | 100% elimination |\n| Scale-Up Response Time | 25-45 min (manual) | 2-4 min (auto) | 90% faster |\n| Overnight Replica Count | 180 (fixed) | 8 (scaled down) | 96% reduction |\n| Peak Replica Count | 180 (fixed) | 175 (scaled up) | Similar capacity |\n\n**Cost Breakdown**:\n- **Q1-Q3 (Normal Periods)**: Average 25 replicas, $18K/month, 9 months = $162K\n- **Q4 (Open Enrollment)**: Average 85 replicas, $24K/month, 3 months = $72K\n- **Total Annual**: $234K (vs. $504K static provisioning)\n- **Savings**: $270K annually (54% reduction)",
+    "53": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#real-world-implementation-texas-claims-processing-workers-keda]\n\n### Real-World Implementation: Texas Claims Processing Workers (KEDA)\n\n**Business Context**: Texas Medicaid claims submission queue processes 2.8M claims monthly with severe month-end spikes (final 3 days: 35% of monthly volume). Static 20-worker deployment created 6-8 hour backlogs during spikes while sitting idle during normal periods.\n\n**Implementation Approach**:\n\n```yaml\napiVersion: keda.sh/v1alpha1\nkind: ScaledObject\nmetadata:\n  name: claims-processor-scaler\n  namespace: texas-prod\nspec:\n  scaleTargetRef:\n    name: claims-processor-worker\n  minReplicaCount: 5   # Minimum workers always running\n  maxReplicaCount: 60  # Maximum for month-end spikes\n  triggers:\n\n  - type: azure-servicebus\n    metadata:\n      queueName: claims-submission\n      namespace: gainwell-texas-sb\n      messageCount: \"500\"  # 500 claims per worker target\n```\n\n**Results Achieved** (February-April 2024):\n\n**Month-End Performance** (before autoscaling):\n- Queue depth peaked at 45,000 claims (Friday 8 AM)\n- Processing rate: 380 claims/hour/worker × 20 workers = 7,600 claims/hour\n- Backlog clearance time: 45,000 ÷ 7,600 = 5.9 hours\n- Provider complaints: 28 calls about delayed claim status\n\n**Month-End Performance** (after KEDA):\n- Same 45,000 claim spike\n- KEDA scaled to 58 workers within 4 minutes\n- Processing rate: 380 × 58 = 22,040 claims/hour\n- Backlog clearance time: 45,000 ÷ 22,040 = 2.1 hours (65% faster)\n- Provider complaints: 2 calls (93% reduction)\n\n**Cost Analysis**:\n- **Before**: 20 workers × $95/month × 730 hours = $1,900/month (fixed)\n- **After**: 5-60 workers (average 18), $1,710/month (10% reduction)\n- **Additional Benefit**: Queue processed 3.8 hours faster = earlier claim payment = improved provider satisfaction",
+    "54": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#real-world-implementation-florida-eligibility-api-multi-metric-scaling]\n\n### Real-World Implementation: Florida Eligibility API (Multi-Metric Scaling)\n\n**Business Context**: Florida eligibility verification API serves 4.5M beneficiaries with complex workload characteristics. Some queries are CPU-intensive (calculate eligibility date ranges, benefits), others are I/O-bound (database lookups, Redis cache checks). Single-metric CPU scaling proved ineffective.\n\n**Implementation**:\n\n```yaml\napiVersion: autoscaling/v2\nkind: HorizontalPodAutoscaler\nmetadata:\n  name: fl-eligibility-hpa\n  namespace: florida-prod\nspec:\n  scaleTargetRef:\n    name: eligibility-api\n  minReplicas: 6\n  maxReplicas: 45\n  metrics:\n\n  - type: Resource\n    resource:\n      name: cpu\n      target:\n        type: Utilization\n        averageUtilization: 70\n\n  - type: Resource\n    resource:\n      name: memory\n      target:\n        type: Utilization\n        averageUtilization: 80\n\n  - type: Pods\n    pods:\n      metric:\n        name: api_active_requests\n      target:\n        type: AverageValue\n        averageValue: \"40\"  # 40 concurrent requests per pod\n```\n\n**Scaling Decision Example** (March 2024 incident):\n- Sudden traffic spike: 2,850 RPS (vs. normal 850 RPS)\n- CPU utilization: 58% (below 70% threshold, wouldn't trigger scale)\n- Memory utilization: 64% (below 80% threshold)\n- Active requests per pod: 78 (above 40 target, triggers scale)\n- HPA decision: Scale based on active requests metric (highest desired replica count wins)\n- Scaled from 12 to 32 pods in 3 minutes\n- Active requests dropped to 35 per pod (within target)\n- **Outcome**: Without multi-metric scaling, API would have remained at 12 pods with 78 active requests per pod causing timeout failures. Multi-metric scaling detected capacity issue via active requests metric even though CPU seemed fine.",
+    "55": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#use-case-scenarios]\n\n### Use Case Scenarios",
+    "56": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#scenario-1-diurnal-traffic-patterns-member-portals]\n\n#### Scenario 1: Diurnal Traffic Patterns (Member Portals)\n\n**Pattern**: Business hours 7× more traffic than overnight.\n\n**Solution**: Scheduled scaling sets baseline (8 AM: 40 pods, 5 PM: 15 pods, 11 PM: 8 pods), HPA reactive scaling handles variations above baseline.\n\n**Benefits**: Eliminates cold start during morning surge (infrastructure pre-scaled), saves 65% overnight costs (scaled to minimum), maintains responsiveness (HPA handles unexpected variations).",
+    "57": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#scenario-2-monthly-cyclical-workloads-claims-processing]\n\n#### Scenario 2: Monthly Cyclical Workloads (Claims Processing)\n\n**Pattern**: Month-end final 3 days generate 4× normal volume.\n\n**Solution**: KEDA queue-depth scaling automatically adjusts workers based on backlog, combined with scheduled baseline increase (day 28: increase minReplicas).\n\n**Benefits**: Backlog processed 70% faster (more workers during spike), 45% cost savings vs. static provisioning for peak, zero operational intervention required.",
+    "58": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#scenario-3-seasonal-enrollment-surges]\n\n#### Scenario 3: Seasonal Enrollment Surges\n\n**Pattern**: Q4 open enrollment 12× normal traffic for 90 days.\n\n**Solution**: Scheduled increase of maxReplicas in October (180 vs. 50 normal), HPA scales within new range, revert maxReplicas in January.\n\n**Benefits**: Infrastructure ready for enrollment volume (no capacity issues), cost contained during normal periods (lower maxReplicas prevents runaway scaling), smooth scaling throughout enrollment period.",
+    "59": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#scenario-4-unpredictable-event-driven-spikes]\n\n#### Scenario 4: Unpredictable Event-Driven Spikes\n\n**Pattern**: COVID-19 unwinding, policy changes, natural disasters create unpredictable surges.\n\n**Solution**: Conservative minReplicas (higher baseline), aggressive HPA scale-up (100% increase allowed), careful scale-down (10-minute stabilization).\n\n**Benefits**: Rapid response to unexpected load (2-4 minute scale-up), prevents premature scale-down (long stabilization), maintains SLA during crisis events.",
+    "60": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#related-patterns-and-references]\n\n## Related Patterns and References",
+    "61": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#related-patterns]\n\n### Related Patterns",
+    "62": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#complementary-patterns-use-together]\n\n#### Complementary Patterns (Use Together)\n\n- **[Kubernetes Service Discovery Pattern](../../03-integration-communication/kubernetes-service-discovery-pattern.md)**: Essential for horizontal scaling—Service discovery automatically detects scaled pod replicas and adds them to load balancer endpoint pools. As HPA creates new pods, Service discovery ensures traffic routes to new capacity.\n\n- **[Caching Pattern](./caching-pattern.md)**: Horizontal scaling and caching work synergistically. Caching reduces load per replica (fewer database queries), enabling each pod to handle more requests. Scaling provides capacity during cache misses or cache warming periods.\n\n- **[Asynchronous Processing Pattern](./asynchronous-processing-pattern.md)**: Queue-based async processing is ideal for horizontal scaling. KEDA scales workers based on queue depth, processing capacity scales elastically with workload, and workers are inherently stateless enabling unrestricted scaling.\n\n- **[Health Check Pattern](../../08-security-resilience/health-check-pattern.md)**: Required for horizontal scaling. Readiness probes prevent routing traffic to unready scaled pods, liveness probes restart unhealthy pods maintaining capacity, startup probes handle slow initialization during scale-up.\n\n- **[Monitoring Pattern](../../10-observability/monitoring-pattern.md)**: Provides metrics data for autoscaling decisions (CPU, memory, custom metrics) and operational visibility into scaling behavior. Prometheus and Azure Monitor integration essential for advanced scaling strategies.",
+    "63": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#alternative-patterns-choose-based-on-context]\n\n#### Alternative Patterns (Choose Based on Context)\n\n- **[Vertical Scaling Pattern](./vertical-scaling-pattern.md)**: For workloads unsuitable for horizontal distribution (stateful databases, monolithic applications, services with hard concurrency limits). Vertical scaling adds resources to existing instances rather than adding instances.\n\n- **[Serverless Pattern](../../04-deployment-operations/serverless-pattern.md)**: For event-driven workloads with extreme variability (scale to zero when idle, scale to thousands during spikes). Azure Functions and AWS Lambda provide automatic scaling without managing Kubernetes.",
+    "64": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#prerequisite-patterns]\n\n#### Prerequisite Patterns\n\n- **[Stateless Service Design](../../02-api-design/stateless-service-pattern.md)**: Mandatory for horizontal scaling. Services must not store state in pod memory (sessions, cache, file uploads). State belongs in Redis, databases, or blob storage enabling any replica to serve any request.\n\n- **[Configuration Management Pattern](../../05-configuration-management/centralized-configuration-pattern.md)**: Scaled pods must retrieve configuration from centralized source (Azure App Configuration, Kubernetes ConfigMaps) ensuring consistent behavior across all replicas regardless of pod count.",
+    "65": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#external-references]\n\n### External References\n\n**Kubernetes Autoscaling Documentation:**\n- [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) - Official Kubernetes HPA documentation\n- [HPA Walkthrough](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/) - Step-by-step HPA tutorial\n- [Metrics Server](https://github.com/kubernetes-sigs/metrics-server) - Resource metrics collection\n\n**KEDA Documentation:**\n- [KEDA Concepts](https://keda.sh/docs/concepts/) - Event-driven autoscaling concepts\n- [KEDA Scalers](https://keda.sh/docs/scalers/) - Complete list of supported scalers (Azure Service Bus, Redis, SQL, Prometheus, etc.)\n- [KEDA Azure Service Bus Scaler](https://keda.sh/docs/scalers/azure-service-bus/) - Queue-depth based scaling\n\n**Azure Kubernetes Service:**\n- [AKS Autoscaling Best Practices](https://learn.microsoft.com/en-us/azure/aks/best-practices-performance-scale) - Azure-specific guidance\n- [AKS Cluster Autoscaler](https://learn.microsoft.com/en-us/azure/aks/cluster-autoscaler) - Node-level autoscaling\n\n**Prometheus and Custom Metrics:**\n- [Prometheus Adapter](https://github.com/kubernetes-sigs/prometheus-adapter) - Translates Prometheus metrics to Kubernetes custom metrics API\n- [Custom Metrics API](https://github.com/kubernetes/metrics) - Kubernetes custom metrics specification",
+    "66": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#change-history]\n\n## Change History\n\n| Date       | Version | Author              | Description              | Impact      |\n| ---------- | ------- | ------------------- | ------------------------ | ----------- |\n| 2024-01-15 | 1.0.0   | Enterprise Architecture Team | Initial pattern creation with comprehensive HPA strategies | New pattern |",
+    "67": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#review-log]\n\n## Review Log\n\n| Review Date | Review Type | Reviewer(s) | Status | Comments | Actions |\n| ----------- | ----------- | ----------- | ------ | -------- | ------- |\n| 2024-01-15  | Architecture Review | Architecture Review Board | Approved | Pattern approved for implementation across Gainwell products | None |\n| TBD         | 6-Month Review | TBD | Pending  | Review real-world implementation results and cost savings | TBD     |\n\n---",
+    "68": "[patterns/technology/api-microservices/PTN-TEC-API-007-horizontal-scaling-pattern.md#tldr-too-long-didnt-read]\n\n## TL;DR (Too Long; Didn't Read)\n\n**Problem**: Healthcare APIs experience extreme demand variability (7× diurnal, 12× seasonal) making static infrastructure costly (78% underutilization, $1.8M annual waste) or risky (performance degradation during spikes, SLA violations costing $185K penalties). Manual scaling too slow (25-45 minutes response time) missing critical traffic surges.\n\n**Solution**: Kubernetes Horizontal Pod Autoscaler (HPA) automatically adjusts replica count based on CPU utilization, memory consumption, or custom metrics (requests per second, queue depth). Combined with KEDA for event-driven scaling and scheduled scaling for predictable patterns. Scales up within 2-4 minutes responding to load increases, scales down gradually (5-10 minute stabilization) preventing flapping, maintains 3+ replicas ensuring high availability.\n\n**Key Benefits**:\n- **46% infrastructure cost reduction**: Annual costs drop from $1.8M to $980K through dynamic rightsizing\n- **93% latency improvement during peaks**: P95 latency maintained at 620ms vs. 8.5s without scaling\n- **100% SLA violation elimination**: Autoscaling prevented 12 incidents that would have triggered penalties\n- **90% faster scale response**: 2-4 minute automatic scaling vs. 25-45 minute manual process\n- **3.1× resource utilization**: Average utilization increases from 22% to 68%\n\n**When to Use**:\n- Variable demand patterns (>2× peak vs. average load): Business hours traffic, month-end spikes, seasonal enrollment\n- Stateless services: Any replica can handle any request, no local state in pods\n- Cloud-native deployments: Kubernetes (AKS, EKS, GKE) with Metrics Server\n- Cost optimization focus: Infrastructure costs >15% of budget with >2× load variation\n- SLA-driven performance: State contracts requiring 99.9% availability and <2s P95 latency\n\n**Implementation Complexity**: Medium (2-4 weeks)\n- Week 1: Basic CPU-based HPA with health probes and graceful shutdown\n- Week 2-3: Custom metrics scaling with Prometheus and Prometheus Adapter\n- Week 3-4: Advanced KEDA and scheduled scaling for complex patterns\n\n**Real-World Results**:\n- **California Member Portal**: 54% cost reduction ($504K → $234K annually), 93% peak latency improvement, zero SLA violations\n- **Texas Claims Workers**: 65% faster backlog processing (5.9h → 2.1h), 93% reduction in provider complaints, 10% cost savings\n- **Florida Eligibility API**: Multi-metric scaling prevented timeout failures during unexpected spike, maintained SLA during 3.3× load increase\n\n**Key Technologies**: Kubernetes HPA v2, Metrics Server, Prometheus + Prometheus Adapter, KEDA 2.12+, Azure Monitor, Istio Service Mesh\n\n**Critical Success Factors**:\n1. **Stateless service design**: Move all state to Redis/database enabling unrestricted replica scaling\n2. **Comprehensive health probes**: Readiness probes prevent traffic to unready pods, liveness probes maintain capacity\n3. **Appropriate stabilization windows**: Scale up immediately (0s), scale down slowly (5-10 minutes) preventing flapping\n4. **Load testing validation**: Test autoscaling behavior under various load patterns before production\n5. **Resource request tuning**: Set CPU/memory requests at 70-80% typical usage allowing HPA headroom\n6. **Graceful shutdown**: Handle SIGTERM properly completing in-flight requests within 30-second grace period\n7. **Pod Disruption Budgets**: Maintain minimum availability during scaling operations\n8. **Cluster capacity coordination**: Ensure Cluster Autoscaler can provision nodes for scaled replicas\n9. **Multi-environment testing**: Validate autoscaling in staging before production rollout\n10. **Continuous monitoring**: Alert on scaling failures, max replica hits, and flapping behavior\n\n---"
+  },
+  "coverage": {
+    "total_pages": 68,
+    "covered_pages": 68,
+    "sampled_pages": 68,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 68
+  }
+}

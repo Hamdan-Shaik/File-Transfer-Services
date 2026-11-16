@@ -1,0 +1,28 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "README",
+  "document_description": "This folder contains essential utility scripts for RAG Service API operations. These scripts have been audited and only the most valuable, non-redundant utilities are retained.",
+  "total_pages": 1,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 1,
+      "summary": "",
+      "nodes": []
+    }
+  ],
+  "page_texts": {
+    "1": "````markdown\n# RAG Service Helper Scripts\n\nThis folder contains essential utility scripts for RAG Service API operations. These scripts have been audited and only the most valuable, non-redundant utilities are retained.\n\n## Available Scripts\n\n### build_docker.py ⭐\n\n**Purpose:** Docker container building for the RAG Service API\n\n- Build production-ready Docker images with environment-specific configuration\n- Handle ECR authentication and image pushing\n- Configure container settings for dev/prod environments\n- Git-based tagging with environment prefixes\n\n**Usage:**\n\n```bash\npython build_docker.py --docker-env=dev\npython build_docker.py --docker-env=prod --push\n```\n\n**Status:** Standalone utility - provides comprehensive Docker build functionality\n\n### check_code_quality.py 🔗\n\n**Purpose:** Code quality pipeline execution\n\n- Black code formatting\n- Ruff linting with extensive rules\n- isort import sorting\n- Bandit security scanning\n\n**Usage:**\n\n```bash\npython check_code_quality.py --fix\npython check_code_quality.py --verbose\n```\n\n**Status:** Referenced by main verify.py script\n\n### check_tests.py 🔗\n\n**Purpose:** Test execution with coverage reporting\n\n- Pytest test runner\n- 90% minimum coverage requirement\n- HTML coverage reports\n- Test structure validation\n\n**Usage:**\n\n```bash\npython check_tests.py --verbose\npython check_tests.py --min-coverage=90\n```\n\n**Status:** Referenced by main verify.py script\n\n### start-activated-shell.py 🔗\n\n**Purpose:** Start a shell with the Poetry virtual environment activated\n\n- Cross-platform shell activation\n- Environment persistence\n- RAG Service-specific command guidance\n- Development workflow support\n\n**Usage:**\n\n```bash\npython start-activated-shell.py\n```\n\n**Status:** Referenced by main setup.py script for convenience\n\n### version_utils.py ⭐\n\n**Purpose:** Version management utilities for pyproject.toml\n\n- Read semantic versions from pyproject.toml\n- Convert to Docker tag format (four-part versioning)\n- Component version utilities\n\n**Usage:**\n\n```bash\npython version_utils.py  # Display current versions\n```\n\n**Status:** Utility library - provides version handling functionality\n\n## Script Categories\n\n### 🔗 Referenced Scripts\n\nThese scripts are called or created by the main helper scripts (`setup.py`, `verify.py`, `build.py`, `run.py`):\n\n- `start-activated-shell.py` - Referenced by setup.py\n- `version_utils.py` - Imported by build.py\n\n### ⭐ Standalone Utilities\n\nThese scripts provide unique functionality not available in the main helpers:\n\n- `build_docker.py` - Advanced Docker build with ECR integration (standalone alternative)\n- `check_code_quality.py` - Modular code quality pipeline (standalone alternative)\n- `check_tests.py` - Modular test execution (standalone alternative)\n\n### ⚠️ Status Notes\n\n- `check_code_quality.py` and `check_tests.py` are standalone versions that provide the same functionality as the integrated checks in `verify.py`\n- `build_docker.py` provides the same Docker build functionality as the integrated build in `build.py`\n- These scripts can be used independently if modular execution is preferred\n- The main helper scripts (`verify.py`, `build.py`) implement the functionality directly for streamlined workflows\n\n## Notes\n\n- All scripts work with Poetry virtual environments\n- Run scripts from the RAG Service component root directory\n- Main functionality is provided by the core helper scripts in `_helpers/`\n- These utility scripts supplement the main workflow with specialized operations\n\n## Integration\n\n- Referenced scripts are automatically called during verification and setup\n- Standalone utilities can be run independently as needed\n- All scripts support Poetry virtual environment detection\n- Consistent error handling and logging across all scripts\n- Docker build script integrates with ECR and provides comprehensive deployment support\n\n## AI Context\n\nThese scripts are designed for AI development workflows:\n\n- `build_docker.py` supports AI model deployment and containerization\n- `check_code_quality.py` ensures AI code meets security and quality standards\n- `check_tests.py` validates AI functionality with comprehensive testing\n- `version_utils.py` supports AI service versioning and deployment tracking\n\n````"
+  },
+  "coverage": {
+    "total_pages": 1,
+    "covered_pages": 1,
+    "sampled_pages": 1,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 1
+  }
+}

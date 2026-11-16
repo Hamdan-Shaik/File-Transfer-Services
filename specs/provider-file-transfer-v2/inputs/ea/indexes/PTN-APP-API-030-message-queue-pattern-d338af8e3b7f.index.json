@@ -1,0 +1,866 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Message Queue Pattern",
+  "document_description": "Healthcare systems require reliable asynchronous communication between microservices for processing mission-critical operations—claims adjudication, pharmacy transactions, eligibility verification, provider credentialing, and financial settlements. At Gainwell, synchronous service-to-service calls create tight coupling where a single slow or failing service can cascade failures across the entire s",
+  "total_pages": 92,
+  "tree": [
+    {
+      "title": "Message Queue Pattern",
+      "node_id": "message-queue-pattern",
+      "start_index": 1,
+      "end_index": 92,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Executive Summary",
+          "node_id": "executive-summary",
+          "start_index": 3,
+          "end_index": 7,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Problem Statement",
+              "node_id": "problem-statement",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Solution Overview",
+              "node_id": "solution-overview",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "When to Use",
+              "node_id": "when-to-use",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Benefits",
+              "node_id": "benefits",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Context and Problem",
+          "node_id": "context-and-problem",
+          "start_index": 8,
+          "end_index": 16,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Business Context",
+              "node_id": "business-context",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Technical Context",
+              "node_id": "technical-context",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Problem Details",
+              "node_id": "problem-details",
+              "start_index": 11,
+              "end_index": 15,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Problem 1: Synchronous Coupling Creates Cascading Failures",
+                  "node_id": "problem-1-synchronous-coupling-creates-cascading-failures",
+                  "start_index": 12,
+                  "end_index": 12,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Problem 2: No Automatic Retry for Transient Failures",
+                  "node_id": "problem-2-no-automatic-retry-for-transient-failures",
+                  "start_index": 13,
+                  "end_index": 13,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Problem 3: Load Spikes Overwhelm Services",
+                  "node_id": "problem-3-load-spikes-overwhelm-services",
+                  "start_index": 14,
+                  "end_index": 14,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Problem 4: Tight Coupling Prevents Independent Scaling",
+                  "node_id": "problem-4-tight-coupling-prevents-independent-scaling",
+                  "start_index": 15,
+                  "end_index": 15,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Forces and Constraints",
+              "node_id": "forces-and-constraints",
+              "start_index": 16,
+              "end_index": 16,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Solution",
+          "node_id": "solution",
+          "start_index": 17,
+          "end_index": 26,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Pattern Description",
+              "node_id": "pattern-description",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Architecture Diagram",
+              "node_id": "architecture-diagram",
+              "start_index": 19,
+              "end_index": 19,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Components",
+              "node_id": "components",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Interactions",
+              "node_id": "interactions",
+              "start_index": 21,
+              "end_index": 21,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Variations",
+              "node_id": "variations",
+              "start_index": 22,
+              "end_index": 26,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Variation 1: Work Queue (Load Distribution)",
+                  "node_id": "variation-1-work-queue-load-distribution",
+                  "start_index": 23,
+                  "end_index": 23,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Variation 2: Priority Queue",
+                  "node_id": "variation-2-priority-queue",
+                  "start_index": 24,
+                  "end_index": 24,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Variation 3: Request-Reply with Correlation",
+                  "node_id": "variation-3-request-reply-with-correlation",
+                  "start_index": 25,
+                  "end_index": 25,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Variation 4: Batch Processing with Aggregation",
+                  "node_id": "variation-4-batch-processing-with-aggregation",
+                  "start_index": 26,
+                  "end_index": 26,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Implementation Guidelines",
+          "node_id": "implementation-guidelines",
+          "start_index": 27,
+          "end_index": 35,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Prerequisites",
+              "node_id": "prerequisites",
+              "start_index": 28,
+              "end_index": 28,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Step-by-Step Implementation",
+              "node_id": "step-by-step-implementation",
+              "start_index": 29,
+              "end_index": 32,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Phase 1: Foundation (Weeks 1-4)",
+                  "node_id": "phase-1-foundation-weeks-1-4",
+                  "start_index": 30,
+                  "end_index": 30,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Phase 2: Scaling and Reliability (Weeks 5-12)",
+                  "node_id": "phase-2-scaling-and-reliability-weeks-5-12",
+                  "start_index": 31,
+                  "end_index": 31,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Phase 3: Production Hardening (Weeks 13-16)",
+                  "node_id": "phase-3-production-hardening-weeks-13-16",
+                  "start_index": 32,
+                  "end_index": 32,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Configuration Examples",
+              "node_id": "configuration-examples",
+              "start_index": 33,
+              "end_index": 33,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Best Practices",
+              "node_id": "best-practices",
+              "start_index": 34,
+              "end_index": 34,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Common Pitfalls",
+              "node_id": "common-pitfalls",
+              "start_index": 35,
+              "end_index": 35,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Governance and Compliance",
+          "node_id": "governance-and-compliance",
+          "start_index": 36,
+          "end_index": 42,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Standards Alignment",
+              "node_id": "standards-alignment",
+              "start_index": 37,
+              "end_index": 37,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Compliance Requirements",
+              "node_id": "compliance-requirements",
+              "start_index": 38,
+              "end_index": 38,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Queue Governance",
+              "node_id": "queue-governance",
+              "start_index": 39,
+              "end_index": 39,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Approval Process",
+              "node_id": "approval-process",
+              "start_index": 40,
+              "end_index": 40,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Monitoring and Metrics",
+              "node_id": "monitoring-and-metrics",
+              "start_index": 41,
+              "end_index": 41,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Compliance Reporting",
+              "node_id": "compliance-reporting",
+              "start_index": 42,
+              "end_index": 42,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Examples and Use Cases",
+          "node_id": "examples-and-use-cases",
+          "start_index": 43,
+          "end_index": 56,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Example 1: Claims Adjudication Pipeline",
+              "node_id": "example-1-claims-adjudication-pipeline",
+              "start_index": 44,
+              "end_index": 44,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Example 2: Pharmacy Point-of-Sale with Reliability",
+              "node_id": "example-2-pharmacy-point-of-sale-with-reliability",
+              "start_index": 45,
+              "end_index": 45,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Example 3: Open Enrollment Load Leveling",
+              "node_id": "example-3-open-enrollment-load-leveling",
+              "start_index": 46,
+              "end_index": 46,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Use Case Scenarios",
+              "node_id": "use-case-scenarios",
+              "start_index": 47,
+              "end_index": 53,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Scenario 1: Claims Adjudication Workflows",
+                  "node_id": "scenario-1-claims-adjudication-workflows",
+                  "start_index": 48,
+                  "end_index": 48,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Scenario 2: Provider Credentialing Verification",
+                  "node_id": "scenario-2-provider-credentialing-verification",
+                  "start_index": 49,
+                  "end_index": 49,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Scenario 3: Member Notifications",
+                  "node_id": "scenario-3-member-notifications",
+                  "start_index": 50,
+                  "end_index": 50,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Scenario 4: Analytics and Reporting",
+                  "node_id": "scenario-4-analytics-and-reporting",
+                  "start_index": 51,
+                  "end_index": 51,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Scenario 5: Batch File Processing",
+                  "node_id": "scenario-5-batch-file-processing",
+                  "start_index": 52,
+                  "end_index": 52,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Scenario 6: Emergency Priority Processing",
+                  "node_id": "scenario-6-emergency-priority-processing",
+                  "start_index": 53,
+                  "end_index": 53,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Before and After Comparison",
+              "node_id": "before-and-after-comparison",
+              "start_index": 54,
+              "end_index": 56,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Before: Synchronous Service Calls",
+                  "node_id": "before-synchronous-service-calls",
+                  "start_index": 55,
+                  "end_index": 55,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "After: Message Queue Pattern",
+                  "node_id": "after-message-queue-pattern",
+                  "start_index": 56,
+                  "end_index": 56,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Related Patterns and References",
+          "node_id": "related-patterns-and-references",
+          "start_index": 57,
+          "end_index": 89,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Internal Pattern Relationships",
+              "node_id": "internal-pattern-relationships",
+              "start_index": 58,
+              "end_index": 64,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Event-Driven Architecture Pattern",
+                  "node_id": "event-driven-architecture-pattern",
+                  "start_index": 59,
+                  "end_index": 59,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Event-Driven Integration Pattern",
+                  "node_id": "event-driven-integration-pattern",
+                  "start_index": 60,
+                  "end_index": 60,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Async Request-Reply Pattern",
+                  "node_id": "async-request-reply-pattern",
+                  "start_index": 61,
+                  "end_index": 61,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Saga Pattern",
+                  "node_id": "saga-pattern",
+                  "start_index": 62,
+                  "end_index": 62,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Circuit Breaker Pattern",
+                  "node_id": "circuit-breaker-pattern",
+                  "start_index": 63,
+                  "end_index": 63,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Retry Pattern",
+                  "node_id": "retry-pattern",
+                  "start_index": 64,
+                  "end_index": 64,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "External References",
+              "node_id": "external-references",
+              "start_index": 65,
+              "end_index": 71,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Enterprise Integration Patterns (Hohpe & Woolf)",
+                  "node_id": "enterprise-integration-patterns-hohpe--woolf",
+                  "start_index": 66,
+                  "end_index": 66,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Azure Service Bus Documentation",
+                  "node_id": "azure-service-bus-documentation",
+                  "start_index": 67,
+                  "end_index": 67,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "RabbitMQ Documentation",
+                  "node_id": "rabbitmq-documentation",
+                  "start_index": 68,
+                  "end_index": 68,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "AWS SQS and SNS Documentation",
+                  "node_id": "aws-sqs-and-sns-documentation",
+                  "start_index": 69,
+                  "end_index": 69,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Message Queue Anti-Patterns (Microsoft)",
+                  "node_id": "message-queue-anti-patterns-microsoft",
+                  "start_index": 70,
+                  "end_index": 70,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "CAP Theorem and Eventual Consistency",
+                  "node_id": "cap-theorem-and-eventual-consistency",
+                  "start_index": 71,
+                  "end_index": 71,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Healthcare Integration Standards",
+              "node_id": "healthcare-integration-standards",
+              "start_index": 72,
+              "end_index": 76,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "HL7 FHIR for Clinical Data Exchange",
+                  "node_id": "hl7-fhir-for-clinical-data-exchange",
+                  "start_index": 73,
+                  "end_index": 73,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "X12 EDI for Claims Transactions",
+                  "node_id": "x12-edi-for-claims-transactions",
+                  "start_index": 74,
+                  "end_index": 74,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "NCPDP SCRIPT for Pharmacy Messaging",
+                  "node_id": "ncpdp-script-for-pharmacy-messaging",
+                  "start_index": 75,
+                  "end_index": 75,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "IHE Profiles for Health Information Exchange",
+                  "node_id": "ihe-profiles-for-health-information-exchange",
+                  "start_index": 76,
+                  "end_index": 76,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Technology-Specific Resources",
+              "node_id": "technology-specific-resources",
+              "start_index": 77,
+              "end_index": 79,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Azure Service Bus Advanced Features",
+                  "node_id": "azure-service-bus-advanced-features",
+                  "start_index": 78,
+                  "end_index": 78,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "RabbitMQ Advanced Patterns",
+                  "node_id": "rabbitmq-advanced-patterns",
+                  "start_index": 79,
+                  "end_index": 79,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Monitoring and Observability",
+              "node_id": "monitoring-and-observability",
+              "start_index": 80,
+              "end_index": 83,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Distributed Tracing with OpenTelemetry",
+                  "node_id": "distributed-tracing-with-opentelemetry",
+                  "start_index": 81,
+                  "end_index": 81,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Queue Metrics and Alerting",
+                  "node_id": "queue-metrics-and-alerting",
+                  "start_index": 82,
+                  "end_index": 82,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Business Metrics",
+                  "node_id": "business-metrics",
+                  "start_index": 83,
+                  "end_index": 83,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Books and Further Reading",
+              "node_id": "books-and-further-reading",
+              "start_index": 84,
+              "end_index": 88,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "\"Enterprise Integration Patterns\" (Hohpe & Woolf, 2003)",
+                  "node_id": "enterprise-integration-patterns-hohpe--woolf-2003",
+                  "start_index": 85,
+                  "end_index": 85,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "\"Building Microservices\" (Newman, 2021)",
+                  "node_id": "building-microservices-newman-2021",
+                  "start_index": 86,
+                  "end_index": 86,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "\"Designing Data-Intensive Applications\" (Kleppmann, 2017)",
+                  "node_id": "designing-data-intensive-applications-kleppmann-2017",
+                  "start_index": 87,
+                  "end_index": 87,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "\"Release It!\" (Nygard, 2018)",
+                  "node_id": "release-it-nygard-2018",
+                  "start_index": 88,
+                  "end_index": 88,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Decision Records",
+              "node_id": "decision-records",
+              "start_index": 89,
+              "end_index": 89,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Change History",
+          "node_id": "change-history",
+          "start_index": 90,
+          "end_index": 90,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Review Log",
+          "node_id": "review-log",
+          "start_index": 91,
+          "end_index": 91,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "TL;DR",
+          "node_id": "tldr",
+          "start_index": 92,
+          "end_index": 92,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#message-queue-pattern]\n\n# Message Queue Pattern\n\n**← Back to [EAP Home](../../../README.md) • [Patterns](../../README.md) • [Application](../README.md) • [API & Microservices](./README.md)**\n\n---\n\n**Pattern Metadata**\n\n```yaml\npattern_id: 'PTN-APP-API-030'\npattern_name: 'Message Queue Pattern'\npattern_type: 'integration-messaging'\ndomain: 'integration'\nversion: '1.0.0'\nstatus: 'active'\ntags:\n\n  - 'message-queue'\n  - 'asynchronous'\n  - 'reliability'\n  - 'decoupling'\n  - 'azure-service-bus'\n  - 'rabbitmq'\n  - 'point-to-point'\n  - 'pub-sub'\n  - 'dead-letter-queue'\n  - 'claims-processing'\n  - 'prior-authorization'\n  - 'pharmacy-claims'\n  - 'healthcare-async'\n  - 'load-leveling'\n  - 'reliable-messaging'\n  - 'guaranteed-delivery'\n```\n\n---",
+    "2": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#table-of-contents]\n\n## Table of Contents\n\n- [Executive Summary](#executive-summary)\n- [Context and Problem](#context-and-problem)\n- [Solution](#solution)\n- [Implementation Guidelines](#implementation-guidelines)\n- [Governance and Compliance](#governance-and-compliance)\n- [Examples and Use Cases](#examples-and-use-cases)\n- [Related Patterns and References](#related-patterns-and-references)\n- [Change History](#change-history)\n- [Review Log](#review-log)\n- [TL;DR](#tldr)\n\n---",
+    "3": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#executive-summary]\n\n## Executive Summary",
+    "4": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#problem-statement]\n\n### Problem Statement\n\nHealthcare systems require reliable asynchronous communication between microservices for processing mission-critical operations—claims adjudication, pharmacy transactions, eligibility verification, provider credentialing, and financial settlements. At Gainwell, synchronous service-to-service calls create tight coupling where a single slow or failing service can cascade failures across the entire system. When the claims adjudication service synchronously calls the fraud detection service, payment processing waits, providers experience delays receiving remittances, and member claims status updates are delayed—impacting 72 million Medicaid beneficiaries across 50+ state programs. Transient failures (network timeouts, temporary service unavailability, resource exhaustion) cause lost requests without automatic retry, requiring manual investigation and reprocessing. Load spikes during peak hours (open enrollment periods, end-of-month provider submissions, pharmacy point-of-sale rushes processing 500K+ transactions/day) overwhelm services without buffering mechanisms, causing service degradation or outages. The 2023 incident where a pharmacy service outage caused 14,000 failed prescription adjudications (requiring manual reprocessing at $35 per transaction = $490K operational cost) highlighted the need for guaranteed message delivery and automatic retry. Services need asynchronous communication patterns that decouple sender and receiver lifecycles, guarantee message delivery even during failures, provide load leveling during traffic spikes, enable independent scaling, and maintain HIPAA-compliant audit trails for all healthcare transactions.",
+    "5": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#solution-overview]\n\n### Solution Overview\n\nMessage Queue Pattern establishes reliable asynchronous communication between services using message brokers that guarantee delivery, persistence, and ordering. Instead of synchronous calls (Service A → HTTP → Service B), services communicate by publishing messages to queues: Service A publishes message to queue, message broker persists message durably, Service B consumes message when ready, processes business logic, acknowledges successful processing. The pattern supports multiple queue topologies: **Point-to-Point** where single consumer processes each message (work queue pattern for task distribution), **Publish-Subscribe** where multiple consumers receive copies of each message (event broadcasting), **Request-Reply** using correlation IDs and reply queues for async request-response patterns, and **Priority Queues** for time-sensitive healthcare operations (STAT orders, emergency authorizations). Key components include Message Producers (services publishing messages), Message Broker (RabbitMQ, Azure Service Bus, AWS SQS providing durable storage and routing), Message Queues (named channels for specific message types), Message Consumers (services subscribing to process messages), and Dead Letter Queues (DLQ for messages that fail processing after retries). The pattern implements reliability features: persistent message storage surviving broker restarts, acknowledgment-based delivery ensuring consumers confirm processing before message deletion, automatic retry with exponential backoff for transient failures, poison message detection moving repeatedly failing messages to DLQ, and transaction support for atomic operations. This enables temporal decoupling (sender and receiver don't need simultaneous availability), load decoupling (queue buffers requests during spikes), and failure isolation (receiver failures don't propagate to senders).",
+    "6": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#when-to-use]\n\n### When to Use\n\n**Asynchronous Task Processing**:\n- Claims adjudication workflows where multiple services (eligibility check, pricing, fraud detection, payment) process sequentially without blocking provider responses\n- Provider credentialing processes with multiple verification steps (license validation, NPPES lookup, sanctions screening, board certifications) taking hours or days\n- Member enrollment processing requiring data validation, eligibility calculation, health plan assignment, and notification generation\n- Document processing pipelines (ID card generation, EOB printing, 1095-B tax forms) with rendering, batching, and mailing steps\n- Batch jobs for nightly financial reconciliation, eligibility file processing, pharmacy claims batches without synchronous dependencies\n\n**Reliable Message Delivery Requirements**:\n- Pharmacy point-of-sale transactions requiring guaranteed adjudication response even during temporary network issues (can't lose prescription claims)\n- Financial transactions (provider payments, member reimbursements, TPL recoveries) where message loss means incorrect balances and audit failures\n- Regulatory reporting messages (T-MSIS submissions, CMS reporting, state data exchanges) where every record must be delivered exactly once\n- Audit logging for HIPAA compliance where all PHI access events must be durably recorded without loss\n- Care management notifications (discharge alerts, appointment reminders, medication adherence) requiring delivery guarantees\n\n**Load Leveling and Peak Handling**:\n- Open enrollment periods processing 10x normal volume (millions of member selections) without overwhelming eligibility and enrollment services\n- End-of-month provider claim submissions causing daily spikes (300K claims submitted in final 48 hours)\n- Pharmacy point-of-sale rushes during morning hours (7-9 AM peak with 3x normal transaction volume)\n- Annual tax form generation (1095-B) for millions of members without impacting operational systems\n- State file processing (daily eligibility rosters with 50K+ member updates) without blocking real-time transactions\n\n**Service Decoupling**:\n- Anti-fraud system consuming claim messages without claims processing knowing or waiting for fraud detection completion\n- Analytics platforms (Gainwell Genius™) subscribing to operational events without impacting transactional system performance\n- Third-party integrations (HIE feeds, payer-to-payer exchange, clearinghouses) with variable processing times and availability\n- Notification services (email, SMS, mobile push) sending member/provider communications asynchronously after transactional operations complete\n- Audit and compliance systems recording all activities without adding latency to user-facing operations\n\n**Request-Reply with Long Processing**:\n- Prior authorization requests requiring clinical review (24-72 hour turnaround) using correlation IDs to match requests and decisions\n- Provider credentialing applications with multi-stage verification (5-10 business days) asynchronously notifying status updates\n- Claim reprocessing requests where adjudication takes minutes but API consumers need immediate request acceptance\n- Document retrieval requests where large medical records require assembly, redaction, and encryption before download\n- Data migration jobs where progress updates are sent via reply queue without polling",
+    "7": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#benefits]\n\n### Benefits\n\n**Guaranteed Message Delivery**: Messages persist durably in queue surviving service restarts, broker failures, network issues; acknowledgment-based consumption ensures messages aren't lost if consumer fails mid-processing; automatic retry for transient failures; exactly-once delivery semantics prevent duplicate processing; surviving the 2023 pharmacy outage would have eliminated $490K in manual reprocessing costs\n\n**Temporal Decoupling and Resilience**: Sender publishes message and continues without waiting for receiver; receiver can be offline, restarting, or slow without impacting sender; message waits in queue until receiver available; enables independent deployment and scaling of services; graceful degradation during partial system failures; eliminated cascading failures that caused 2023 14-hour claims processing outage affecting 25 state programs\n\n**Load Leveling and Scalability**: Queue buffers requests during traffic spikes preventing service overload; consumers process at optimal rate regardless of producer rate; enables horizontal scaling by adding consumer instances; prevents resource exhaustion during peak periods; handled 300% traffic spike during 2024 open enrollment without service degradation; reduced infrastructure costs 35% by right-sizing services for average load instead of peak\n\n**Service Independence**: Services evolve on independent schedules without coordination; producer doesn't know consumers (new consumers subscribe without producer changes); enables polyglot architectures (services in different languages); facilitates incremental modernization (legacy and modern services communicate via queues); supports A/B testing and canary deployments with traffic routing\n\n**Observability and Debugging**: Message queues provide central visibility into inter-service communication; queue depth metrics indicate backlog and processing lag; message traces track processing across services; dead letter queues isolate problematic messages for investigation; replay capability for testing and debugging; audit trail for compliance investigations; reduced mean time to resolution (MTTR) 60% with centralized message visibility\n\n**Transaction Support and Consistency**: Transactional message publishing ensures message sent only if database transaction commits; consumer acknowledgment after successful processing prevents data inconsistency; saga patterns coordinate distributed transactions across services; compensation logic handles partial failures; maintains data integrity for financial transactions and clinical records",
+    "8": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#context-and-problem]\n\n## Context and Problem",
+    "9": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#business-context]\n\n### Business Context\n\nGainwell Technologies operates healthcare platforms processing critical transactions for state Medicaid programs serving 72 million beneficiaries. Daily operational volume includes:\n\n**Claims Processing (Gainwell Enterprise™)**:\n- 1.2 billion encounters processed annually across 50+ state programs\n- 300K-500K daily claim submissions with end-of-month spikes reaching 800K/day\n- Multi-service workflows: eligibility verification → pricing → fraud detection → payment → notification\n- Average 12-step adjudication pipeline with 8-15 downstream service calls per claim\n- SLA: 95% of clean claims adjudicated within 30 seconds; payment within 14 days\n\n**Pharmacy Transactions (Gainwell Rx™)**:\n- 500K+ daily pharmacy point-of-sale adjudications via NCPDP network\n- Real-time drug utilization review (DUR), formulary checks, prior authorization validation\n- Morning peak (7-9 AM): 3x average volume as members fill prescriptions before work\n- SLA: <2 second response time for 99% of transactions; zero tolerance for lost transactions\n\n**Provider Operations (Gainwell Provider+™)**:\n- 500K+ active providers across state programs\n- Daily credentialing verifications: license checks, sanctions screening, NPPES validation\n- Provider enrollment applications: 5-10 business day processing with 15+ verification steps\n- Portal activity: 2M+ monthly logins for claim inquiry, remittance download, roster updates\n\n**Member Services (Gainwell Go™)**:\n- 15M+ app users accessing health records, finding providers, checking eligibility\n- Open enrollment periods: 10x normal traffic (millions of plan selections in 30-day window)\n- FHIR Patient Access APIs: CMS-mandated response times (<5 seconds) for clinical data requests\n- Care management alerts: discharge notifications, appointment reminders, medication adherence\n\nThese operations require hundreds of microservices communicating asynchronously: claims services publishing to fraud detection, eligibility systems notifying enrollment, pharmacy adjudication triggering utilization reviews, credentialing workflows coordinating multiple verification services.",
+    "10": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#technical-context]\n\n### Technical Context\n\nGainwell's microservices architecture currently uses mixed communication patterns:\n\n**Current Synchronous Patterns (60% of inter-service calls)**:\n- HTTP/REST APIs with JSON payloads\n- gRPC for performance-critical service-to-service calls\n- Direct database access from multiple services (legacy coupling)\n- Timeouts: typically 30 seconds with 3 retries\n- Circuit breakers: configured inconsistently across services\n\n**Existing Message Queue Usage (40% of communication)**:\n- RabbitMQ clusters deployed in some state environments\n- Azure Service Bus used in cloud-native implementations\n- AWS SQS for specific AWS workloads\n- Kafka for event streaming (not point-to-point messaging)\n- Inconsistent message patterns, retention policies, and error handling\n\n**Technology Stack**:\n- .NET Core microservices (primary)\n- Java Spring Boot (legacy systems)\n- Node.js for API gateways\n- Python for data analytics pipelines\n- Databases: SQL Server, PostgreSQL, MongoDB, Cosmos DB\n\n**Infrastructure**:\n- Hybrid cloud: Azure (primary), AWS (specific states), on-premises data centers\n- Kubernetes orchestration for container workloads\n- Service mesh (Istio) in some environments\n- APM tools: Azure Monitor, Datadog, ELK stack",
+    "11": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#problem-details]\n\n### Problem Details",
+    "12": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#problem-1-synchronous-coupling-creates-cascading-failures]\n\n#### Problem 1: Synchronous Coupling Creates Cascading Failures\n\nHealthcare systems have complex service dependencies where a single service failure impacts multiple upstream services.\n\n**Example Scenario**: Claims Adjudication Cascade Failure\n\n```csharp\n// Claims service synchronously calling multiple downstream services\npublic class ClaimsAdjudicationService\n{\n    private readonly IEligibilityService _eligibility;\n    private readonly IPricingService _pricing;\n    private readonly IFraudDetectionService _fraud;\n    private readonly IPaymentService _payment;\n\n    public async Task<AdjudicationResult> AdjudicateClaimAsync(Claim claim)\n    {\n        // Step 1: Check eligibility - BLOCKING\n        try\n        {\n            var eligibility = await _eligibility.CheckEligibilityAsync(\n                claim.MemberId, claim.ServiceDate);\n\n            if (!eligibility.IsEligible)\n                return AdjudicationResult.Denied(\"Member not eligible\");\n        }\n        catch (HttpRequestException ex)\n        {\n            // Eligibility service down - claim processing STOPS\n            _logger.LogError(\"Eligibility service unavailable: {Error}\", ex.Message);\n            throw; // Entire adjudication fails\n        }\n\n        // Step 2: Calculate pricing - BLOCKING\n        try\n        {\n            var pricing = await _pricing.CalculatePricingAsync(claim);\n            claim.ApprovedAmount = pricing.Amount;\n        }\n        catch (TimeoutException)\n        {\n            // Pricing service slow - claim waits indefinitely\n            throw;\n        }\n\n        // Step 3: Fraud detection - BLOCKING\n        try\n        {\n            var fraudResult = await _fraud.AnalyzeClaimAsync(claim);\n            if (fraudResult.IsSuspicious)\n            {\n                // Queue for manual review\n                await _fraud.QueueForReviewAsync(claim);\n            }\n        }\n        catch (Exception ex)\n        {\n            // Fraud service down - claim processing STOPS\n            // Option 1: Fail entire claim (bad for providers)\n            // Option 2: Skip fraud detection (compliance risk)\n            _logger.LogError(\"Fraud detection failed: {Error}\", ex.Message);\n            throw;\n        }\n\n        // Step 4: Process payment - BLOCKING\n        var payment = await _payment.ProcessPaymentAsync(claim);\n\n        return AdjudicationResult.Approved(claim, payment);\n    }\n}\n```\n\n**Impact of 2023 Fraud Service Outage**:\n- Fraud detection service unavailable for 14 hours due to database deadlock issue\n- Claims adjudication blocked for 47 state programs\n- 850,000 claims queued waiting for fraud service recovery\n- Options: (1) Skip fraud detection (compliance violation), (2) Hold claims (provider payment delays)\n- Resolution: Manual override to skip fraud detection; retrospective fraud analysis required\n- Cost: $1.2M in operational overhead, state penalty risk, provider complaints",
+    "13": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#problem-2-no-automatic-retry-for-transient-failures]\n\n#### Problem 2: No Automatic Retry for Transient Failures\n\nNetwork issues, temporary resource exhaustion, and service restarts cause transient failures. Without automatic retry, messages are lost.\n\n**Example Scenario**: Lost Pharmacy Transaction\n\n```csharp\n// Pharmacy adjudication without retry mechanism\npublic class PharmacyAdjudicationService\n{\n    public async Task<AdjudicationResponse> AdjudicateClaimAsync(PharmacyClaim claim)\n    {\n        // Call drug utilization review (DUR) service\n        try\n        {\n            var durResult = await _httpClient.PostAsync(\n                \"http://dur-service/api/review\",\n                JsonContent.Create(claim),\n                timeout: TimeSpan.FromSeconds(5)); // Short timeout for POS\n\n            if (!durResult.IsSuccessStatusCode)\n            {\n                // What happens to this transaction?\n                // No retry, no queue, transaction LOST\n                _logger.LogError(\"DUR service returned {StatusCode}\", durResult.StatusCode);\n\n                // Must return rejection to pharmacy\n                return AdjudicationResponse.Reject(\"System unavailable\");\n            }\n\n            // Continue processing...\n        }\n        catch (TaskCanceledException)\n        {\n            // Timeout - transaction LOST\n            return AdjudicationResponse.Reject(\"Timeout\");\n        }\n    }\n}\n```\n\n**2023 Pharmacy Service Incident**:\n- DUR service experienced 45-minute outage during morning peak (8:30-9:15 AM)\n- 14,000 prescription transactions rejected due to service unavailability\n- Members left pharmacies without medications; pharmacies called support lines\n- No automatic retry mechanism - each transaction permanently lost\n- Manual reprocessing required: pharmacy staff resubmitted claims after outage resolved\n- Operational cost: $35 per manual claim resubmission × 14,000 = $490,000\n- Member experience: Delayed medications, frustration, potential health risks",
+    "14": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#problem-3-load-spikes-overwhelm-services]\n\n#### Problem 3: Load Spikes Overwhelm Services\n\nPeak traffic periods without buffering cause service degradation or complete failures.\n\n**Example Scenario**: Open Enrollment Overload\n\n```csharp\n// Member enrollment service without load leveling\npublic class MemberEnrollmentService\n{\n    public async Task<EnrollmentResult> EnrollMemberAsync(EnrollmentRequest request)\n    {\n        // Validate eligibility\n        var eligibility = await _eligibilityService.ValidateAsync(request.MemberId);\n\n        // Calculate premium\n        var premium = await _premiumService.CalculatePremiumAsync(request);\n\n        // Assign health plan\n        var assignment = await _planAssignmentService.AssignPlanAsync(request);\n\n        // Generate ID card\n        var idCard = await _idCardService.GenerateCardAsync(request);\n\n        // Send notifications\n        await _notificationService.SendEnrollmentConfirmationAsync(request);\n\n        // All steps must complete synchronously\n        // During peak load, service becomes overloaded\n        return EnrollmentResult.Success(assignment, idCard);\n    }\n}\n```\n\n**2024 Open Enrollment Crisis**:\n- State marketplace open enrollment: 30-day window for 2M+ member plan selections\n- Final 72 hours: 600K enrollment submissions (10x normal daily volume)\n- Enrollment service overwhelmed: CPU 98%, memory exhausted, response times 2-5 minutes\n- Cascading failures: eligibility service, premium calculation, ID card generation all degraded\n- Impact: 45,000 enrollment failures; members unable to select health plans before deadline\n- Emergency response: Throttling at gateway (rejected 30% of requests), extended enrollment period\n- Cost: $2.1M in emergency infrastructure scaling, state contract penalties, customer service overflow",
+    "15": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#problem-4-tight-coupling-prevents-independent-scaling]\n\n#### Problem 4: Tight Coupling Prevents Independent Scaling\n\nServices with synchronous dependencies must scale together, increasing infrastructure costs.\n\n**Example Scenario**: Claims and Analytics Coupling\n\n```csharp\n// Claims service tightly coupled to analytics\npublic class ClaimsProcessingService\n{\n    public async Task ProcessClaimAsync(Claim claim)\n    {\n        // Adjudicate claim\n        var result = await AdjudicateClaimAsync(claim);\n\n        // Save to database\n        await _claimRepository.SaveAsync(claim);\n\n        // Synchronously update analytics - BLOCKING\n        try\n        {\n            await _analyticsService.RecordClaimEventAsync(new ClaimEvent\n            {\n                ClaimId = claim.Id,\n                Amount = claim.ApprovedAmount,\n                Timestamp = DateTime.UtcNow,\n                Metrics = CalculateMetrics(claim)\n            });\n        }\n        catch (Exception ex)\n        {\n            // If analytics service slow or down, claims processing WAITS\n            _logger.LogWarning(\"Analytics update failed: {Error}\", ex.Message);\n            // Do we fail the entire claim? Skip analytics? Retry?\n        }\n\n        // Synchronously trigger notifications - BLOCKING\n        await _notificationService.NotifyProviderAsync(claim);\n\n        // Must wait for all downstream services\n    }\n}\n```\n\n**Scaling Problem**:\n- Claims service requires 20 instances during peak hours to handle adjudication load\n- Analytics service only needs 5 instances (less compute-intensive)\n- Notification service needs 8 instances (third-party email API rate limits)\n- Current architecture: Must scale all services together due to synchronous calls\n- Cost: $15K/month in over-provisioned infrastructure for analytics and notification services\n- Performance: Claims processing slowed by weakest link (notification service response time)",
+    "16": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#forces-and-constraints]\n\n### Forces and Constraints\n\n**Technical Forces**:\n- **Reliability Requirements**: Healthcare transactions cannot be lost; 99.99% delivery guarantee needed\n- **Performance**: Claims adjudication SLA <30 seconds; pharmacy POS <2 seconds end-to-end\n- **Scalability**: Must handle 10x load spikes during open enrollment, month-end, daily peaks\n- **Message Ordering**: Some workflows require strict ordering (claim adjustments, eligibility updates)\n- **Exactly-Once Processing**: Financial transactions must not duplicate (duplicate payments, double charges)\n- **Message Size**: Claims can include large attachments (medical records, imaging); queue size limits apply\n- **Latency Sensitivity**: Real-time operations (pharmacy POS) need low-latency queues; batch processing tolerates higher latency\n\n**Operational Forces**:\n- **Multi-Tenancy**: 50+ state programs with isolated message queues (data residency, performance isolation)\n- **Monitoring**: Need visibility into queue depths, processing lag, consumer health, message flow\n- **Debugging**: Must trace messages across service boundaries; dead letter queue analysis for failures\n- **Disaster Recovery**: Message durability requirements; RPO <1 hour (lose max 1 hour of messages in disaster)\n\n**Regulatory and Compliance Forces**:\n- **HIPAA**: PHI in messages must be encrypted in transit and at rest; audit all message access\n- **State Contracts**: Some states mandate on-premises message brokers (no cloud); data residency requirements\n- **Audit Trail**: Complete record of message flow for compliance investigations (7-year retention)\n- **Data Retention**: Automatic message expiration for PII/PHI compliance (don't retain indefinitely)\n\n**Organizational Forces**:\n- **Technology Diversity**: Support .NET, Java, Python, Node.js message producers/consumers\n- **Team Autonomy**: 15+ product teams independently deploying services; minimize coordination\n- **Legacy Systems**: Some mainframe/COBOL systems require integration; message queue as translation layer\n- **Cost Sensitivity**: Infrastructure costs scrutinized; optimize for actual usage vs over-provisioning\n- **Skills Gap**: Development teams more familiar with synchronous APIs than message patterns",
+    "17": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#solution]\n\n## Solution",
+    "18": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#pattern-description]\n\n### Pattern Description\n\nMessage Queue Pattern decouples services by introducing a message broker as intermediary. Instead of Service A synchronously calling Service B, Service A publishes a message to a queue, the message broker durably stores the message, and Service B consumes the message when ready. This asynchronous pattern provides temporal decoupling (services don't need simultaneous availability), load decoupling (queue buffers requests), and failure isolation (receiver failures don't impact sender).\n\n**Core Components**:\n\n1. **Message Producer**: Service publishing messages to queue\n   - Serializes message payload (JSON, Protocol Buffers, Avro)\n   - Sets message properties (priority, TTL, correlation ID, headers)\n   - Publishes to specific queue or exchange\n   - Optionally waits for broker acknowledgment (publisher confirms)\n\n2. **Message Broker**: Middleware providing queue infrastructure\n   - Receives messages from producers\n   - Durably persists messages (disk, replicated storage)\n   - Routes messages to appropriate queues\n   - Delivers messages to consumers\n   - Manages acknowledgments and redelivery\n   - Provides management UI, monitoring, alerting\n\n3. **Message Queue**: Named channel for specific message type\n   - FIFO ordering (configurable)\n   - Persistence options (durable vs transient)\n   - Expiration policies (message TTL)\n   - Max length limits (memory/disk protection)\n   - Consumer subscriptions\n\n4. **Message Consumer**: Service consuming messages from queue\n   - Subscribes to one or more queues\n   - Receives messages (push or pull model)\n   - Processes business logic\n   - Acknowledges successful processing (ack)\n   - Rejects failed messages (nack) for redelivery or DLQ\n\n5. **Dead Letter Queue (DLQ)**: Queue for problematic messages\n   - Messages exceeding retry limit\n   - Messages causing exceptions during processing\n   - Poison messages (malformed, invalid schema)\n   - Manual investigation and replay\n\n**Message Delivery Guarantees**:\n\n- **At-Most-Once**: Message delivered zero or one time; fastest but may lose messages\n- **At-Least-Once**: Message delivered one or more times; guarantees delivery but may duplicate\n- **Exactly-Once**: Message delivered exactly one time; strongest guarantee but highest complexity\n\n**Queue Topologies**:\n\n- **Point-to-Point (Work Queue)**: Single consumer processes each message; load distribution across workers\n- **Publish-Subscribe**: Multiple consumers each receive copy of message; event broadcasting\n- **Request-Reply**: Async request-response using correlation IDs and reply queues\n- **Priority Queue**: High-priority messages processed before low-priority",
+    "19": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#architecture-diagram]\n\n### Architecture Diagram\n\n**Point-to-Point Message Queue**:\n\n```mermaid\nflowchart LR\n    subgraph \"Message Producers\"\n        ProducerA[Claims Service<br/>publishes claim events]\n        ProducerB[Enrollment Service<br/>publishes enrollment events]\n        ProducerC[Pharmacy Service<br/>publishes Rx events]\n    end\n\n    subgraph \"Message Broker\"\n        Exchange[Message Exchange<br/>Routes to queues]\n        Queue1[Claims Queue<br/>FIFO, Durable]\n        Queue2[Enrollment Queue<br/>Priority Queue]\n        Queue3[Pharmacy Queue<br/>Low Latency]\n        DLQ[Dead Letter Queue<br/>Failed Messages]\n    end\n\n    subgraph \"Message Consumers\"\n        ConsumerA[Fraud Detection<br/>consumes claim events]\n        ConsumerB[ID Card Generation<br/>consumes enrollment events]\n        ConsumerC[Drug Utilization Review<br/>consumes Rx events]\n    end\n\n    subgraph \"Monitoring\"\n        Monitor[Queue Monitor<br/>Depth, Lag, Throughput]\n    end\n\n    ProducerA -->|publish| Exchange\n    ProducerB -->|publish| Exchange\n    ProducerC -->|publish| Exchange\n\n    Exchange -->|route| Queue1\n    Exchange -->|route| Queue2\n    Exchange -->|route| Queue3\n\n    Queue1 -->|consume| ConsumerA\n    Queue2 -->|consume| ConsumerB\n    Queue3 -->|consume| ConsumerC\n\n    Queue1 -.->|failed messages| DLQ\n    Queue2 -.->|failed messages| DLQ\n    Queue3 -.->|failed messages| DLQ\n\n    Queue1 -->|metrics| Monitor\n    Queue2 -->|metrics| Monitor\n    Queue3 -->|metrics| Monitor\n\n    style ProducerA fill:#e1f5ff\n    style ProducerB fill:#e1f5ff\n    style ProducerC fill:#e1f5ff\n    style Queue1 fill:#fff4e1\n    style Queue2 fill:#fff4e1\n    style Queue3 fill:#fff4e1\n    style ConsumerA fill:#e8f5e9\n    style ConsumerB fill:#e8f5e9\n    style ConsumerC fill:#e8f5e9\n    style DLQ fill:#ffebee\n```\n\n**Message Flow Sequence**:\n\n```mermaid\nsequenceDiagram\n    participant Producer as Claims Service\n    participant Broker as Message Broker\n    participant Queue as Claims Queue\n    participant Consumer as Fraud Detection\n    participant DLQ as Dead Letter Queue\n\n    Producer->>Broker: Publish ClaimAdjudicated message\n    Note over Producer,Broker: Message: ClaimId, Amount, etc.\n\n    Broker->>Broker: Validate message\n    Broker->>Queue: Store message durably\n    Broker-->>Producer: Acknowledge receipt\n    Note over Producer: Producer continues immediately\n\n    Consumer->>Queue: Subscribe to queue\n    Queue->>Consumer: Deliver message\n    Note over Consumer: Process fraud detection\n\n    alt Success\n        Consumer->>Broker: Acknowledge (ACK)\n        Broker->>Queue: Delete message\n    else Transient Failure\n        Consumer->>Broker: Negative Ack (NACK) - Requeue\n        Note over Consumer: Network timeout, temp unavailable\n        Queue->>Queue: Requeue with backoff\n        Queue->>Consumer: Redeliver after delay\n    else Permanent Failure\n        Consumer->>Broker: NACK - Don't requeue\n        Note over Consumer: Invalid data, poison message\n        Broker->>DLQ: Move to Dead Letter Queue\n        Note over DLQ: Manual investigation required\n    end\n```",
+    "20": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#components]\n\n### Components\n\n| Component | Responsibility | Dependencies | Technology Options |\n|-----------|---------------|--------------|-------------------|\n| **Message Producer** | Publish messages to queues; serialize payloads; set message properties; handle publisher confirms | Message Broker client library | .NET MassTransit, Java Spring AMQP, Python Pika |\n| **Message Broker** | Receive and durably persist messages; route to queues; deliver to consumers; manage acknowledgments and redelivery | Storage (disk, replicated), Clustering | RabbitMQ, Azure Service Bus, AWS SQS, ActiveMQ |\n| **Message Queue** | Store messages in FIFO order; enforce size limits and TTL; track consumer subscriptions; maintain ordering guarantees | Message Broker | Named queues in broker |\n| **Message Consumer** | Subscribe to queues; receive and process messages; acknowledge success or reject failures; implement idempotency | Message Broker client library, Application logic | .NET BackgroundService, Java @RabbitListener, Python worker |\n| **Dead Letter Queue** | Store messages exceeding retry limits or causing exceptions; support manual inspection and replay | Message Broker | DLQ queue in broker |\n| **Message Schema** | Define message structure and validation rules; enable schema evolution; support multiple formats | Schema Registry (optional) | JSON Schema, Avro, Protocol Buffers |\n| **Monitoring System** | Track queue depth, consumer lag, message throughput, error rates; alert on anomalies | Message Broker metrics API | Azure Monitor, Datadog, Prometheus + Grafana |\n| **Management UI** | Browse queues, inspect messages, manually move/delete/replay messages; manage exchanges and bindings | Message Broker API | RabbitMQ Management, Azure Portal, AWS Console |",
+    "21": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#interactions]\n\n### Interactions\n\n**Publish-Consume Flow (At-Least-Once Delivery)**:\n\n1. **Message Publication**:\n   - Producer creates message object with payload and metadata\n   - Serializes to wire format (JSON, Protobuf, Avro)\n   - Publishes to broker targeting specific queue or exchange\n   - Broker validates message and stores durably\n   - Broker sends acknowledgment to producer (publisher confirms)\n   - Producer logs message ID and continues processing\n\n2. **Message Storage**:\n   - Broker writes message to durable storage (disk with replication)\n   - Message persists surviving broker restarts\n   - Message assigned sequence number for ordering\n   - TTL timer started if message expiration configured\n   - Queue depth metric incremented\n\n3. **Message Delivery**:\n   - Consumer establishes subscription to queue\n   - Broker delivers next message to available consumer\n   - Consumer receives message with metadata (ID, timestamp, retry count)\n   - Message marked as \"in-flight\" (not visible to other consumers)\n   - Delivery acknowledgment timer started\n\n4. **Message Processing**:\n   - Consumer deserializes message payload\n   - Validates message schema and business rules\n   - Executes business logic (database updates, API calls, calculations)\n   - Idempotency check prevents duplicate processing\n\n5. **Success Acknowledgment**:\n   - Consumer sends ACK to broker after successful processing\n   - Broker deletes message from queue\n   - Queue depth metric decremented\n   - Processing latency recorded\n\n6. **Failure Handling**:\n   - **Transient Failure**: Consumer sends NACK (requeue); message redelivered after exponential backoff\n   - **Timeout**: Delivery acknowledgment timer expires; message redelivered to another consumer\n   - **Max Retries Exceeded**: Message moved to Dead Letter Queue after N attempts\n   - **Poison Message**: Consumer detects invalid message; immediately moves to DLQ without retry\n\n**Request-Reply Pattern**:\n\n1. **Request**:\n   - Producer publishes request message to request queue\n   - Sets `replyTo` property pointing to reply queue\n   - Sets unique `correlationId` for matching reply\n   - Stores correlation in local cache or database\n\n2. **Processing**:\n   - Consumer receives request from request queue\n   - Processes business logic (may take seconds, minutes, or hours)\n   - Constructs reply message with same `correlationId`\n\n3. **Reply**:\n   - Consumer publishes reply to specified reply queue\n   - Original producer (or reply consumer) receives reply\n   - Matches reply to original request using `correlationId`\n   - Completes async request-response workflow",
+    "22": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#variations]\n\n### Variations",
+    "23": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#variation-1-work-queue-load-distribution]\n\n#### Variation 1: Work Queue (Load Distribution)\n\n**Scenario**: Distribute work across multiple consumer instances for parallel processing\n\n**Implementation**:\n\n```csharp\n// Producer: Publish tasks to work queue\npublic class ClaimProcessingProducer\n{\n    private readonly IBus _bus;\n\n    public async Task SubmitClaimForProcessingAsync(Claim claim)\n    {\n        await _bus.Publish(new ProcessClaimCommand\n        {\n            ClaimId = claim.Id,\n            MemberId = claim.MemberId,\n            ProviderId = claim.ProviderId,\n            ServiceDate = claim.ServiceDate,\n            LineItems = claim.LineItems\n        });\n\n        _logger.LogInformation(\"Claim {ClaimId} submitted for processing\", claim.Id);\n    }\n}\n\n// Multiple consumers compete for messages\npublic class ClaimProcessingConsumer : IConsumer<ProcessClaimCommand>\n{\n    public async Task Consume(ConsumeContext<ProcessClaimCommand> context)\n    {\n        var command = context.Message;\n\n        _logger.LogInformation(\"Consumer {Instance} processing claim {ClaimId}\",\n            Environment.MachineName, command.ClaimId);\n\n        try\n        {\n            // Perform claim adjudication\n            var result = await _adjudicationEngine.ProcessAsync(command);\n\n            // Save result\n            await _claimRepository.SaveAsync(result);\n\n            // Publish completion event\n            await context.Publish(new ClaimProcessedEvent\n            {\n                ClaimId = command.ClaimId,\n                Result = result\n            });\n\n            // ACK message - successfully processed\n        }\n        catch (TransientException ex)\n        {\n            // Temporary failure - requeue for retry\n            _logger.LogWarning(\"Transient failure processing claim {ClaimId}: {Error}\",\n                command.ClaimId, ex.Message);\n            throw; // Framework will requeue\n        }\n        catch (PermanentException ex)\n        {\n            // Invalid data - move to DLQ\n            _logger.LogError(\"Permanent failure processing claim {ClaimId}: {Error}\",\n                command.ClaimId, ex.Message);\n\n            await context.Send(new MoveToDeadLetterCommand\n            {\n                OriginalMessage = context.Message,\n                Reason = ex.Message\n            });\n        }\n    }\n}\n```\n\n**Configuration** (RabbitMQ):\n```json\n{\n  \"QueueName\": \"claims.processing\",\n  \"Durable\": true,\n  \"AutoDelete\": false,\n  \"PrefetchCount\": 10,\n  \"ConsumerInstances\": 5,\n  \"MaxRetries\": 3,\n  \"RetryDelay\": \"00:00:30\"\n}\n```\n\n**Benefits**: Horizontal scaling by adding consumers; automatic load distribution; isolated failures (one consumer crash doesn't impact others)",
+    "24": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#variation-2-priority-queue]\n\n#### Variation 2: Priority Queue\n\n**Scenario**: Process high-priority messages (STAT orders, emergency authorizations) before standard messages\n\n**Implementation**:\n\n```csharp\n// Producer sets message priority\npublic async Task SubmitPriorAuthRequestAsync(PriorAuthRequest request)\n{\n    var priority = request.IsUrgent ? 10 : 5; // 0-10 scale\n\n    await _bus.Publish(new ProcessPriorAuthCommand\n    {\n        RequestId = request.Id,\n        MemberId = request.MemberId,\n        ServiceCode = request.ServiceCode,\n        IsUrgent = request.IsUrgent\n    }, ctx =>\n    {\n        ctx.Priority = (byte)priority;\n        ctx.TimeToLive = request.IsUrgent\n            ? TimeSpan.FromHours(4)\n            : TimeSpan.FromDays(2);\n    });\n}\n\n// Consumer processes high-priority messages first\npublic class PriorAuthConsumer : IConsumer<ProcessPriorAuthCommand>\n{\n    public async Task Consume(ConsumeContext<ProcessPriorAuthCommand> context)\n    {\n        var command = context.Message;\n        var priority = context.Priority;\n\n        _logger.LogInformation(\"Processing prior auth {RequestId} with priority {Priority}\",\n            command.RequestId, priority);\n\n        if (command.IsUrgent)\n        {\n            // Expedited clinical review\n            await _reviewService.ExpediteReviewAsync(command);\n        }\n        else\n        {\n            // Standard review queue\n            await _reviewService.QueueForReviewAsync(command);\n        }\n    }\n}\n```\n\n**Configuration** (RabbitMQ):\n```json\n{\n  \"QueueName\": \"priorauth.requests\",\n  \"Durable\": true,\n  \"Arguments\": {\n    \"x-max-priority\": 10\n  }\n}\n```\n\n**Use Cases**: STAT medication orders, emergency procedures, high-value claims, VIP members",
+    "25": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#variation-3-request-reply-with-correlation]\n\n#### Variation 3: Request-Reply with Correlation\n\n**Scenario**: Async request-response for long-running operations (prior auth, credentialing)\n\n**Implementation**:\n\n```csharp\n// Request: Submit prior auth for review\npublic async Task<string> RequestPriorAuthorizationAsync(PriorAuthRequest request)\n{\n    var correlationId = Guid.NewGuid().ToString();\n\n    await _bus.Publish(new PriorAuthRequestCommand\n    {\n        RequestId = request.Id,\n        CorrelationId = correlationId,\n        MemberId = request.MemberId,\n        ServiceCode = request.ServiceCode,\n        ClinicalJustification = request.Justification\n    });\n\n    // Store correlation for matching reply\n    await _correlationStore.SaveAsync(new Correlation\n    {\n        CorrelationId = correlationId,\n        RequestId = request.Id,\n        RequestedAt = DateTime.UtcNow,\n        ExpiresAt = DateTime.UtcNow.AddDays(7)\n    });\n\n    return correlationId; // Return to caller for tracking\n}\n\n// Reply: Clinical reviewer approves/denies\npublic async Task PublishPriorAuthDecisionAsync(string correlationId, PriorAuthDecision decision)\n{\n    await _bus.Publish(new PriorAuthDecisionEvent\n    {\n        CorrelationId = correlationId,\n        IsApproved = decision.IsApproved,\n        DenialReason = decision.DenialReason,\n        ApprovedUnits = decision.ApprovedUnits,\n        ValidThrough = decision.ValidThrough,\n        ReviewedBy = decision.ReviewerId,\n        ReviewedAt = DateTime.UtcNow\n    });\n}\n\n// Consumer matches reply to original request\npublic class PriorAuthDecisionConsumer : IConsumer<PriorAuthDecisionEvent>\n{\n    public async Task Consume(ConsumeContext<PriorAuthDecisionEvent> context)\n    {\n        var decision = context.Message;\n\n        // Find original request using correlation ID\n        var correlation = await _correlationStore.GetByCorrelationIdAsync(decision.CorrelationId);\n\n        if (correlation == null)\n        {\n            _logger.LogWarning(\"Received orphaned decision for correlation {CorrelationId}\",\n                decision.CorrelationId);\n            return;\n        }\n\n        // Update prior auth record\n        await _priorAuthService.RecordDecisionAsync(correlation.RequestId, decision);\n\n        // Notify provider\n        await _notificationService.NotifyProviderAsync(correlation.RequestId, decision);\n\n        // Clean up correlation\n        await _correlationStore.DeleteAsync(decision.CorrelationId);\n    }\n}\n```\n\n**Benefits**: Non-blocking request-response; supports long-running processes (hours/days); handles timeouts gracefully",
+    "26": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#variation-4-batch-processing-with-aggregation]\n\n#### Variation 4: Batch Processing with Aggregation\n\n**Scenario**: Accumulate messages and process in batches for efficiency (nightly files, bulk notifications)\n\n**Implementation**:\n\n```csharp\n// Consumer aggregates messages into batches\npublic class EligibilityFileConsumer : IConsumer<EligibilityUpdateEvent>\n{\n    private readonly List<EligibilityUpdateEvent> _batch = new();\n    private readonly SemaphoreSlim _batchLock = new(1);\n    private readonly Timer _batchTimer;\n\n    public EligibilityFileConsumer()\n    {\n        // Process batch every 5 minutes or when reaching 10,000 records\n        _batchTimer = new Timer(ProcessBatchCallback, null, TimeSpan.FromMinutes(5), TimeSpan.FromMinutes(5));\n    }\n\n    public async Task Consume(ConsumeContext<EligibilityUpdateEvent> context)\n    {\n        await _batchLock.WaitAsync();\n        try\n        {\n            _batch.Add(context.Message);\n\n            if (_batch.Count >= 10000)\n            {\n                await ProcessBatchAsync();\n            }\n        }\n        finally\n        {\n            _batchLock.Release();\n        }\n    }\n\n    private async Task ProcessBatchAsync()\n    {\n        if (!_batch.Any()) return;\n\n        var batchCopy = new List<EligibilityUpdateEvent>(_batch);\n        _batch.Clear();\n\n        // Generate file\n        var fileName = $\"eligibility_{DateTime.UtcNow:yyyyMMddHHmmss}.dat\";\n        await _fileGenerator.GenerateEligibilityFileAsync(fileName, batchCopy);\n\n        // Upload to SFTP\n        await _sftpClient.UploadAsync(fileName, \"state-mmis\");\n\n        _logger.LogInformation(\"Processed batch of {Count} eligibility updates\", batchCopy.Count);\n    }\n}\n```\n\n**Use Cases**: State reporting files, bulk notifications, financial reconciliation, data warehouse loads",
+    "27": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#implementation-guidelines]\n\n## Implementation Guidelines",
+    "28": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#prerequisites]\n\n### Prerequisites\n\n**Infrastructure Requirements**:\n\n1. **Message Broker Deployment**:\n   - RabbitMQ cluster (3+ nodes for high availability) or Azure Service Bus namespace\n   - Durable storage with replication (NAS, Azure Blob, EBS volumes)\n   - Network connectivity between all services and broker (internal network, VPN, or private endpoints)\n   - TLS certificates for encrypted communication\n   - Monitoring infrastructure (Prometheus, Azure Monitor, Datadog)\n\n2. **Development Environment**:\n   - Message broker client libraries for target languages (.NET MassTransit, Java Spring AMQP, Python Pika)\n   - Local broker instance for development and testing (Docker containers)\n   - Message schema definitions (JSON Schema, Avro, Protocol Buffers)\n   - Serialization libraries\n   - Logging and tracing infrastructure (correlation ID propagation)\n\n3. **Organizational Readiness**:\n   - Architecture approval for message-driven architecture\n   - Security review for PHI/PII handling in messages\n   - Team training on async messaging patterns and best practices\n   - Runbook for queue monitoring and incident response\n   - Cost approval for message broker infrastructure",
+    "29": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#step-by-step-implementation]\n\n### Step-by-Step Implementation",
+    "30": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#phase-1-foundation-weeks-1-4]\n\n#### Phase 1: Foundation (Weeks 1-4)\n\n**Goal**: Deploy message broker and establish first producer-consumer pair\n\n**Step 1: Deploy Message Broker Infrastructure**\n\n```bash\n# Example: Deploy RabbitMQ cluster on Kubernetes\nkubectl create namespace rabbitmq\nkubectl apply -f rabbitmq-cluster.yaml\n\n# rabbitmq-cluster.yaml\napiVersion: rabbitmq.com/v1beta1\nkind: RabbitMQCluster\nmetadata:\n  name: gainwell-rmq-prod\n  namespace: rabbitmq\nspec:\n  replicas: 3\n  resources:\n    requests:\n      cpu: 2\n      memory: 4Gi\n    limits:\n      cpu: 4\n      memory: 8Gi\n  rabbitmq:\n    additionalConfig: |\n      vm_memory_high_watermark.relative = 0.7\n      disk_free_limit.absolute = 10GB\n      cluster_partition_handling = pause_minority\n  persistence:\n    storageClassName: premium-storage\n    storage: 100Gi\n  tls:\n    secretName: rabbitmq-tls\n  override:\n    statefulSet:\n      spec:\n        template:\n          spec:\n            affinity:\n              podAntiAffinity:\n                requiredDuringSchedulingIgnoredDuringExecution:\n                - labelSelector:\n                    matchLabels:\n                      app.kubernetes.io/name: gainwell-rmq-prod\n                  topologyKey: kubernetes.io/hostname\n```\n\n**Step 2: Configure First Queue and Exchange**\n\n```csharp\n// Define queue topology using MassTransit\npublic class ClaimProcessingQueueConfiguration : IConfigurationSection\n{\n    public void Configure(IRabbitMqBusFactoryConfigurator configurator)\n    {\n        // Define exchange\n        configurator.Message<ProcessClaimCommand>(x =>\n        {\n            x.SetEntityName(\"claims.processing.exchange\");\n        });\n\n        // Configure queue\n        configurator.ReceiveEndpoint(\"claims.processing.queue\", e =>\n        {\n            e.Durable = true;\n            e.AutoDelete = false;\n            e.PrefetchCount = 10;\n\n            // Dead letter configuration\n            e.Bind(\"claims.processing.exchange\", b =>\n            {\n                b.ExchangeType = ExchangeType.Direct;\n            });\n\n            e.Arguments.Add(\"x-dead-letter-exchange\", \"claims.dlq.exchange\");\n            e.Arguments.Add(\"x-dead-letter-routing-key\", \"claims.failed\");\n            e.Arguments.Add(\"x-message-ttl\", 86400000); // 24 hours\n\n            e.ConfigureConsumer<ClaimProcessingConsumer>(context);\n        });\n\n        // Configure Dead Letter Queue\n        configurator.ReceiveEndpoint(\"claims.dlq.queue\", e =>\n        {\n            e.Durable = true;\n            e.AutoDelete = false;\n\n            // Manual inspection only - no automatic consumption\n        });\n    }\n}\n```\n\n**Step 3: Implement First Producer**\n\n```csharp\npublic class ClaimSubmissionService\n{\n    private readonly IBus _bus;\n    private readonly ILogger<ClaimSubmissionService> _logger;\n\n    public async Task SubmitClaimAsync(Claim claim)\n    {\n        // Validate claim before publishing\n        var validationResult = await _validator.ValidateAsync(claim);\n        if (!validationResult.IsValid)\n        {\n            throw new ValidationException(validationResult.Errors);\n        }\n\n        // Publish message with metadata\n        await _bus.Publish(new ProcessClaimCommand\n        {\n            ClaimId = claim.Id,\n            MemberId = claim.MemberId,\n            ProviderId = claim.ProviderId,\n            ServiceDate = claim.ServiceDate,\n            TotalAmount = claim.TotalAmount,\n            LineItems = claim.LineItems.Select(li => new ClaimLineItem\n            {\n                ServiceCode = li.ServiceCode,\n                Quantity = li.Quantity,\n                UnitPrice = li.UnitPrice\n            }).ToList()\n        }, ctx =>\n        {\n            // Add correlation ID for tracing\n            ctx.CorrelationId = claim.CorrelationId ?? Guid.NewGuid();\n\n            // Set message properties\n            ctx.TimeToLive = TimeSpan.FromHours(24);\n            ctx.Headers.Set(\"SubmittedBy\", claim.SubmittedBy);\n            ctx.Headers.Set(\"StateProgram\", claim.StateProgramId);\n        });\n\n        _logger.LogInformation(\n            \"Claim {ClaimId} published for processing with correlation {CorrelationId}\",\n            claim.Id, ctx.CorrelationId);\n    }\n}\n```\n\n**Step 4: Implement First Consumer with Error Handling**\n\n```csharp\npublic class ClaimProcessingConsumer : IConsumer<ProcessClaimCommand>\n{\n    private readonly IClaimAdjudicationEngine _adjudicationEngine;\n    private readonly IClaimRepository _claimRepository;\n    private readonly ILogger<ClaimProcessingConsumer> _logger;\n\n    public async Task Consume(ConsumeContext<ProcessClaimCommand> context)\n    {\n        var command = context.Message;\n\n        using var scope = _logger.BeginScope(new Dictionary<string, object>\n        {\n            [\"ClaimId\"] = command.ClaimId,\n            [\"CorrelationId\"] = context.CorrelationId\n        });\n\n        _logger.LogInformation(\"Processing claim {ClaimId}\", command.ClaimId);\n\n        try\n        {\n            // Idempotency check\n            var existing = await _claimRepository.GetByIdAsync(command.ClaimId);\n            if (existing?.Status == ClaimStatus.Processed)\n            {\n                _logger.LogInformation(\"Claim {ClaimId} already processed - skipping\", command.ClaimId);\n                return; // ACK message without reprocessing\n            }\n\n            // Perform adjudication\n            var result = await _adjudicationEngine.AdjudicateAsync(command);\n\n            // Save result\n            await _claimRepository.SaveAdjudicationResultAsync(command.ClaimId, result);\n\n            // Publish completion event\n            await context.Publish(new ClaimAdjudicatedEvent\n            {\n                ClaimId = command.ClaimId,\n                ApprovedAmount = result.ApprovedAmount,\n                DenialReason = result.DenialReason,\n                AdjudicatedAt = DateTime.UtcNow\n            });\n\n            _logger.LogInformation(\"Claim {ClaimId} successfully adjudicated\", command.ClaimId);\n        }\n        catch (TransientException ex) when (IsRetryable(ex))\n        {\n            // Transient failure - requeue for automatic retry\n            _logger.LogWarning(ex, \"Transient failure processing claim {ClaimId} - will retry\", command.ClaimId);\n            throw; // Framework handles retry with exponential backoff\n        }\n        catch (ValidationException ex)\n        {\n            // Invalid data - move to DLQ\n            _logger.LogError(ex, \"Validation failure for claim {ClaimId}\", command.ClaimId);\n\n            await context.Publish(new ClaimValidationFailedEvent\n            {\n                ClaimId = command.ClaimId,\n                ValidationErrors = ex.Errors,\n                FailedAt = DateTime.UtcNow\n            });\n\n            // NACK without requeue - moves to DLQ\n            throw new MessageNotConsumedException(ex.Message);\n        }\n        catch (Exception ex)\n        {\n            _logger.LogError(ex, \"Unexpected error processing claim {ClaimId}\", command.ClaimId);\n            throw; // Will retry, then move to DLQ after max attempts\n        }\n    }\n\n    private bool IsRetryable(Exception ex)\n    {\n        return ex is TimeoutException\n            || ex is HttpRequestException\n            || ex is SqlException { Number: 1205 }; // SQL deadlock\n    }\n}\n```\n\n**Step 5: Configure Monitoring and Alerting**\n\n```yaml\n# Prometheus alerts for queue monitoring\ngroups:\n\n  - name: rabbitmq_alerts\n    rules:\n      - alert: QueueDepthHigh\n        expr: rabbitmq_queue_messages{queue=\"claims.processing.queue\"} > 10000\n        for: 15m\n        labels:\n          severity: warning\n        annotations:\n          summary: \"Claims processing queue depth high\"\n          description: \"Queue depth {{ $value }} exceeds threshold\"\n\n      - alert: ConsumerLag\n        expr: rate(rabbitmq_queue_messages_ready[5m]) > rate(rabbitmq_queue_messages_acked[5m])\n        for: 30m\n        labels:\n          severity: warning\n        annotations:\n          summary: \"Consumers falling behind\"\n          description: \"Message production exceeding consumption rate\"\n\n      - alert: DeadLetterQueueGrowing\n        expr: increase(rabbitmq_queue_messages{queue=\"claims.dlq.queue\"}[1h]) > 10\n        for: 5m\n        labels:\n          severity: critical\n        annotations:\n          summary: \"Dead letter queue growing\"\n          description: \"{{ $value }} messages moved to DLQ in last hour\"\n\n      - alert: ConsumerDown\n        expr: rabbitmq_queue_consumers{queue=\"claims.processing.queue\"} == 0\n        for: 5m\n        labels:\n          severity: critical\n        annotations:\n          summary: \"No active consumers\"\n          description: \"Claims processing queue has no consumers\"\n```\n\n**Deliverables**:\n- Message broker cluster operational with 99.9% availability\n- First producer-consumer pair processing real traffic\n- Monitoring dashboards showing queue metrics\n- Alert rules configured in monitoring system\n- Runbook for queue management and troubleshooting",
+    "31": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#phase-2-scaling-and-reliability-weeks-5-12]\n\n#### Phase 2: Scaling and Reliability (Weeks 5-12)\n\n**Goal**: Scale to multiple queues, implement retry logic, add more consumers\n\n**Step 1: Implement Retry with Exponential Backoff**\n\n```csharp\npublic class RetryConfiguration\n{\n    public static void ConfigureRetryPolicy(IRabbitMqBusFactoryConfigurator configurator)\n    {\n        configurator.UseMessageRetry(r =>\n        {\n            r.Exponential(\n                retryLimit: 5,\n                minInterval: TimeSpan.FromSeconds(5),\n                maxInterval: TimeSpan.FromMinutes(5),\n                intervalDelta: TimeSpan.FromSeconds(10));\n\n            // Only retry specific exceptions\n            r.Handle<TimeoutException>();\n            r.Handle<HttpRequestException>();\n            r.Handle<SqlException>(ex => ex.Number == 1205); // Deadlock\n\n            // Don't retry validation errors\n            r.Ignore<ValidationException>();\n            r.Ignore<ArgumentException>();\n        });\n    }\n}\n```\n\n**Step 2: Add Multiple Consumer Instances for Scaling**\n\n```yaml\n# Kubernetes deployment for consumer scaling\napiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: claim-processing-consumer\n  namespace: claims\nspec:\n  replicas: 5  # Scale horizontally\n  selector:\n    matchLabels:\n      app: claim-processing-consumer\n  template:\n    metadata:\n      labels:\n        app: claim-processing-consumer\n    spec:\n      containers:\n      - name: consumer\n        image: gainwell/claim-consumer:1.0\n        resources:\n          requests:\n            cpu: 500m\n            memory: 1Gi\n          limits:\n            cpu: 2\n            memory: 2Gi\n        env:\n        - name: RABBITMQ_HOST\n          valueFrom:\n            secretKeyRef:\n              name: rabbitmq-connection\n              key: host\n        - name: RABBITMQ_USERNAME\n          valueFrom:\n            secretKeyRef:\n              name: rabbitmq-connection\n              key: username\n        - name: RABBITMQ_PASSWORD\n          valueFrom:\n            secretKeyRef:\n              name: rabbitmq-connection\n              key: password\n        - name: PREFETCH_COUNT\n          value: \"10\"\n      # Pod anti-affinity for resilience\n      affinity:\n        podAntiAffinity:\n          preferredDuringSchedulingIgnoredDuringExecution:\n          - weight: 100\n            podAffinityTerm:\n              labelSelector:\n                matchLabels:\n                  app: claim-processing-consumer\n              topologyKey: kubernetes.io/hostname\n```\n\n**Step 3: Implement Dead Letter Queue Processing**\n\n```csharp\npublic class DeadLetterQueueMonitor : BackgroundService\n{\n    protected override async Task ExecuteAsync(CancellationToken stoppingToken)\n    {\n        while (!stoppingToken.IsCancellationRequested)\n        {\n            // Check DLQ periodically\n            var dlqMessages = await _queueInspector.GetDeadLetterMessagesAsync(\"claims.dlq.queue\");\n\n            foreach (var message in dlqMessages)\n            {\n                // Log for investigation\n                _logger.LogWarning(\n                    \"Message {MessageId} in DLQ: {Reason}\",\n                    message.MessageId, message.FailureReason);\n\n                // Classify failure type\n                var classification = ClassifyFailure(message);\n\n                switch (classification)\n                {\n                    case FailureType.PoisonMessage:\n                        // Move to poison message store for manual review\n                        await _poisonMessageStore.StoreAsync(message);\n                        await _queueInspector.DeleteMessageAsync(message.MessageId);\n                        break;\n\n                    case FailureType.ServiceDown:\n                        // Service recovered - attempt replay\n                        if (await IsServiceHealthyAsync(message.TargetService))\n                        {\n                            await _queueInspector.ReplayMessageAsync(message.MessageId);\n                        }\n                        break;\n\n                    case FailureType.DataIssue:\n                        // Create support ticket for data correction\n                        await _ticketingService.CreateTicketAsync(\n                            $\"DLQ Message {message.MessageId}\",\n                            message.FailureReason,\n                            message.Payload);\n                        break;\n                }\n            }\n\n            await Task.Delay(TimeSpan.FromMinutes(5), stoppingToken);\n        }\n    }\n}\n```",
+    "32": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#phase-3-production-hardening-weeks-13-16]\n\n#### Phase 3: Production Hardening (Weeks 13-16)\n\n**Goal**: Ensure production readiness with observability, security, and disaster recovery\n\n**Step 1: Implement Message Tracing**\n\n```csharp\npublic class MessageTracingMiddleware\n{\n    public async Task Handle(ConsumeContext context, Func<Task> next)\n    {\n        // Start trace span\n        using var activity = Activity.StartActivity(\"MessageConsume\");\n        activity?.SetTag(\"messaging.system\", \"rabbitmq\");\n        activity?.SetTag(\"messaging.destination\", context.DestinationAddress?.ToString());\n        activity?.SetTag(\"messaging.message_id\", context.MessageId?.ToString());\n        activity?.SetTag(\"messaging.correlation_id\", context.CorrelationId?.ToString());\n\n        // Add trace context to logs\n        using var scope = _logger.BeginScope(new Dictionary<string, object>\n        {\n            [\"TraceId\"] = activity?.TraceId.ToString(),\n            [\"SpanId\"] = activity?.SpanId.ToString(),\n            [\"CorrelationId\"] = context.CorrelationId\n        });\n\n        try\n        {\n            await next();\n            activity?.SetTag(\"message.status\", \"success\");\n        }\n        catch (Exception ex)\n        {\n            activity?.SetTag(\"message.status\", \"error\");\n            activity?.SetTag(\"error.type\", ex.GetType().Name);\n            activity?.SetTag(\"error.message\", ex.Message);\n            throw;\n        }\n    }\n}\n```\n\n**Step 2: Implement Message Encryption for PHI**\n\n```csharp\npublic class MessageEncryptionFilter : IFilter<PublishContext>\n{\n    private readonly IDataProtector _protector;\n\n    public async Task Send(PublishContext context, IPipe<PublishContext> next)\n    {\n        if (context.Message is IContainsPHI phiMessage)\n        {\n            // Encrypt sensitive fields\n            phiMessage.MemberId = _protector.Protect(phiMessage.MemberId);\n            phiMessage.MemberName = _protector.Protect(phiMessage.MemberName);\n            phiMessage.SSN = _protector.Protect(phiMessage.SSN);\n\n            // Add encryption marker\n            context.Headers.Set(\"X-Encrypted\", \"true\");\n            context.Headers.Set(\"X-Encryption-Algorithm\", \"AES256-GCM\");\n        }\n\n        await next.Send(context);\n    }\n}\n\npublic class MessageDecryptionFilter : IFilter<ConsumeContext>\n{\n    public async Task Send(ConsumeContext context, IPipe<ConsumeContext> next)\n    {\n        if (context.Headers.TryGetHeader(\"X-Encrypted\", out var encrypted) &&\n            encrypted.ToString() == \"true\")\n        {\n            if (context.Message is IContainsPHI phiMessage)\n            {\n                // Decrypt sensitive fields\n                phiMessage.MemberId = _protector.Unprotect(phiMessage.MemberId);\n                phiMessage.MemberName = _protector.Unprotect(phiMessage.MemberName);\n                phiMessage.SSN = _protector.Unprotect(phiMessage.SSN);\n            }\n        }\n\n        await next.Send(context);\n    }\n}\n```",
+    "33": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#configuration-examples]\n\n### Configuration Examples\n\n**RabbitMQ Connection Configuration**:\n\n```json\n{\n  \"RabbitMQ\": {\n    \"Host\": \"rabbitmq-cluster.gainwell.local\",\n    \"Port\": 5672,\n    \"VirtualHost\": \"/claims\",\n    \"Username\": \"claims-service\",\n    \"Password\": \"${RABBITMQ_PASSWORD}\",\n    \"UseSsl\": true,\n    \"SslServerName\": \"rabbitmq-cluster.gainwell.local\",\n    \"Heartbeat\": 30,\n    \"RequestedConnectionTimeout\": 30000,\n    \"PublisherConfirms\": true,\n    \"PrefetchCount\": 10,\n    \"RetryAttempts\": 3,\n    \"RetryDelay\": \"00:00:05\"\n  }\n}\n```\n\n**Azure Service Bus Configuration**:\n\n```json\n{\n  \"ServiceBus\": {\n    \"ConnectionString\": \"${SERVICEBUS_CONNECTION_STRING}\",\n    \"QueueName\": \"claims-processing\",\n    \"MaxConcurrentCalls\": 10,\n    \"MaxAutoRenewDuration\": \"00:05:00\",\n    \"PrefetchCount\": 100,\n    \"RequiresDuplicateDetection\": true,\n    \"DuplicateDetectionHistoryTimeWindow\": \"00:10:00\",\n    \"DeadLetteringOnMessageExpiration\": true,\n    \"MaxDeliveryCount\": 5\n  }\n}\n```",
+    "34": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#best-practices]\n\n### Best Practices\n\n1. **Idempotency**: Always implement idempotency in consumers; check if message already processed before executing business logic; use unique message IDs or database constraints\n\n2. **Message Size**: Keep messages small (<100KB); use claim check pattern for large payloads (store in blob storage, pass reference in message)\n\n3. **Error Handling**: Distinguish transient vs permanent failures; retry transient errors with exponential backoff; move poison messages to DLQ immediately\n\n4. **Monitoring**: Track queue depth, consumer lag, processing latency, error rates; alert on anomalies; dashboard for operations team\n\n5. **Security**: Encrypt PHI in messages; use TLS for broker connections; rotate credentials regularly; audit all message access\n\n6. **Testing**: Unit test consumers with mocked messages; integration test with real broker; chaos test with consumer failures; load test throughput limits",
+    "35": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#common-pitfalls]\n\n### Common Pitfalls\n\n1. **Not Implementing Idempotency**:\n   - ❌ Don't: Assume messages processed exactly once\n   - ✅ Do: Design consumers to handle duplicate messages safely\n\n2. **Unbounded Message Growth**:\n   - ❌ Don't: Allow queues to grow indefinitely consuming memory/disk\n   - ✅ Do: Set max queue length and message TTL; monitor queue depth\n\n3. **Synchronous Mindset**:\n   - ❌ Don't: Expect immediate results from async operations\n   - ✅ Do: Design for eventual consistency; use request-reply for responses\n\n4. **Ignoring Dead Letter Queue**:\n   - ❌ Don't: Let DLQ accumulate without investigation\n   - ✅ Do: Monitor DLQ depth; investigate failures; implement replay logic\n\n5. **Tight Message Coupling**:\n   - ❌ Don't: Include entire entity graphs in messages causing versioning issues\n   - ✅ Do: Include IDs and essential data; consumers fetch additional data as needed\n\n6. **Missing Correlation IDs**:\n   - ❌ Don't: Lose request tracing across async boundaries\n   - ✅ Do: Propagate correlation IDs through all messages for distributed tracing",
+    "36": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#governance-and-compliance]\n\n## Governance and Compliance",
+    "37": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#standards-alignment]\n\n### Standards Alignment\n\n**Enterprise Architecture Standards**:\n- **Microservices Communication Standard**: Message queues as approved async communication pattern for inter-service messaging\n- **Data Integration Standard**: Queue-based integration for reliable data exchange between systems\n- **API Design Standard**: Queue consumers expose APIs for sync operations; publish to queues for async workflows\n- **Security Standard**: Encryption, authentication, authorization requirements for message handling\n\n**Technology Standards**:\n- **Approved Message Brokers**: RabbitMQ (on-premises), Azure Service Bus (cloud), AWS SQS (AWS workloads)\n- **Message Formats**: JSON (default), Protocol Buffers (high performance), Avro (schema evolution)\n- **Client Libraries**: MassTransit (.NET), Spring AMQP (Java), Pika (Python), amqplib (Node.js)\n- **Monitoring**: Azure Monitor, Datadog, or Prometheus + Grafana for queue metrics",
+    "38": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#compliance-requirements]\n\n### Compliance Requirements\n\n**HIPAA Compliance**:\n\n1. **PHI Encryption**:\n   - Encrypt PHI in message payloads (field-level or full message)\n   - TLS 1.2+ for all broker connections\n   - Encryption at rest for message persistence (broker storage encrypted)\n   - Key management via Azure Key Vault or HSM\n\n2. **Access Controls**:\n   - Role-based access to queues (publish, consume, manage)\n   - Service accounts with least privilege\n   - Multi-factor authentication for administrative access\n   - Regular access reviews (quarterly)\n\n3. **Audit Logging**:\n   - Log all message publications and consumptions with PHI\n   - Include timestamp, user/service identity, message ID, queue name\n   - Tamper-proof audit log storage\n   - 7-year retention for HIPAA compliance\n   - Support audit queries for investigations\n\n4. **Data Retention**:\n   - Automatic message expiration (TTL) to limit PHI retention\n   - Purge DLQ messages after investigation (max 90 days)\n   - Document retention policies per message type\n   - Implement data deletion on member request (GDPR, CCPA)\n\n**State Contract Compliance**:\n- **Data Residency**: Some states require data remain in-state; deploy regional brokers or queue partitions\n- **Availability SLAs**: 99.9% uptime for mission-critical queues (claims, pharmacy, eligibility)\n- **Disaster Recovery**: RPO <1 hour (max 1 hour message loss); RTO <4 hours (restore service within 4 hours)\n- **Performance**: Meet state-defined latency requirements (e.g., pharmacy <2 seconds end-to-end)\n\n**CMS Requirements**:\n- **Interoperability**: Support CMS-mandated FHIR APIs with async processing queues\n- **Prior Authorization**: Meet response time requirements (24-72 hours) using async workflows\n- **Audit and Reporting**: Provide message flow reports for CMS compliance audits",
+    "39": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#queue-governance]\n\n### Queue Governance\n\n**Queue Naming Convention**:\n\n```text\n{domain}.{entity}.{operation}[.{priority}]\n\nExamples:\n\n- claims.processing.adjudicate\n- claims.processing.adjudicate.priority\n- eligibility.verification.check\n- enrollment.member.create\n- pharmacy.claims.adjudicate\n- notifications.email.send\n- analytics.events.record\n```\n\n**Queue Configuration Standards**:\n\n| Setting | Standard Value | Rationale |\n|---------|---------------|-----------|\n| **Durable** | `true` | Messages survive broker restarts |\n| **Auto-Delete** | `false` | Prevent accidental queue deletion |\n| **Max Length** | 100,000 messages | Prevent unbounded memory usage |\n| **Message TTL** | 24-72 hours | Automatic expiration for stale messages |\n| **Max Retries** | 3-5 attempts | Balance reliability vs DLQ accumulation |\n| **Retry Delay** | Exponential backoff (5s, 10s, 30s, 2m, 5m) | Avoid overwhelming failing services |\n| **Prefetch Count** | 10-50 | Optimize consumer throughput |\n| **Priority Levels** | 0-10 (0=lowest, 10=highest) | Support urgent healthcare operations |\n\n**Dead Letter Queue Policy**:\n- Every production queue must have associated DLQ\n- DLQ monitoring required (alert on depth > 10)\n- Weekly DLQ review and message classification\n- Documented replay or discard procedures\n- Maximum 90-day retention in DLQ",
+    "40": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#approval-process]\n\n### Approval Process\n\n**New Queue Creation**:\n\n1. **Design Review**:\n   - Submit queue design to Architecture Review Board\n   - Document message schema, expected volume, retention needs\n   - Justify async pattern (vs synchronous API)\n   - Estimate infrastructure capacity requirements\n\n2. **Security Review**:\n   - Identify PHI/PII in messages (encryption required)\n   - Define access controls (which services can publish/consume)\n   - Document audit logging approach\n   - Approve retention and expiration policies\n\n3. **Capacity Planning**:\n   - Estimate message rate (messages/sec, peak volume)\n   - Calculate storage requirements (message size × retention × rate)\n   - Assess broker capacity (current vs required)\n   - Budget approval for additional infrastructure if needed\n\n4. **Implementation Approval**:\n   - Code review for producer and consumer implementations\n   - Verify idempotency, error handling, monitoring\n   - Load testing results demonstrating throughput\n   - Runbook for operations team",
+    "41": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#monitoring-and-metrics]\n\n### Monitoring and Metrics\n\n**Queue Health Metrics**:\n\n| Metric | Target | Critical Threshold | Alert Recipient |\n|--------|--------|-------------------|-----------------|\n| Queue Depth | < 1,000 messages | > 10,000 messages for 30 min | Development team, on-call |\n| Consumer Lag | < 1 minute | > 15 minutes | Development team |\n| Message Throughput | Varies by queue | <50% of expected rate for 15 min | Operations team |\n| Processing Latency | < 5 seconds | > 60 seconds (95th percentile) | Development team |\n| Error Rate | < 1% | > 5% for 15 min | Development team, on-call |\n| Dead Letter Queue Depth | 0-10 messages | > 50 messages | Development team |\n| Consumer Count | ≥ 2 instances | 0 active consumers for 5 min | Operations team, critical alert |\n| Broker CPU | < 70% | > 90% for 15 min | Infrastructure team |\n| Broker Memory | < 80% | > 90% for 10 min | Infrastructure team |\n| Broker Disk | < 70% | > 85% for 15 min | Infrastructure team |\n\n**Dashboards**:\n\n1. **Executive Dashboard**:\n   - Total messages processed (last 24 hours, week, month)\n   - System health scorecard (green/yellow/red per queue)\n   - Top 5 queues by volume\n   - Monthly trends: throughput, errors, latency\n\n2. **Operations Dashboard**:\n   - Real-time queue depths across all queues\n   - Consumer health (active consumers, processing rate)\n   - Error rates and DLQ accumulation\n   - Broker resource utilization (CPU, memory, disk)\n\n3. **Queue-Specific Dashboard**:\n   - Message throughput (published vs consumed)\n   - Processing latency percentiles (50th, 95th, 99th)\n   - Error breakdown by exception type\n   - Consumer instance status and distribution\n\n**Alerting Rules**:\n\n1. **Critical Alerts** (PagerDuty, 24/7 on-call):\n   - No active consumers for critical queues (pharmacy, claims) for 5+ minutes\n   - Dead letter queue depth > 100 messages\n   - Queue depth exceeds max length (messages being dropped)\n   - Broker cluster unavailable or < 2 nodes healthy\n\n2. **Warning Alerts** (Email, business hours):\n   - Queue depth > 10,000 messages for 30+ minutes\n   - Consumer lag > 15 minutes (production outpacing consumption)\n   - Error rate > 5% for any queue over 15 minutes\n   - Broker resource utilization > 80% (CPU, memory, or disk)\n\n3. **Informational Alerts** (Slack channel):\n   - New queue created in production\n   - Dead letter queue messages requiring investigation\n   - Unusual traffic patterns (5x normal volume)\n   - Scheduled maintenance windows",
+    "42": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#compliance-reporting]\n\n### Compliance Reporting\n\n**Monthly Queue Report**:\n- Total messages processed by queue and message type\n- Average processing latency per queue\n- Error rates and DLQ statistics\n- Top consumers by message volume\n- Infrastructure capacity utilization\n- New queues added or queues retired\n\n**Quarterly Security Report**:\n- PHI encryption status verification\n- Access control audit results\n- Credential rotation compliance\n- Security incidents related to messaging\n- Audit log analysis summary\n\n**Annual HIPAA Audit Report**:\n- All messages with PHI logged and retained per policy\n- Encryption verification for message storage and transmission\n- Access control reviews completed\n- Risk assessment for message-based communication\n- Remediation of audit findings",
+    "43": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#examples-and-use-cases]\n\n## Examples and Use Cases",
+    "44": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#example-1-claims-adjudication-pipeline]\n\n### Example 1: Claims Adjudication Pipeline\n\n**Context**: Claims processing requires multiple sequential steps (eligibility, pricing, fraud detection, payment) without blocking provider response\n\n**Before (Synchronous)**:\n\n```csharp\npublic async Task<ClaimResponse> ProcessClaimAsync(Claim claim)\n{\n    // Synchronous chain - each step blocks next step\n    var eligibility = await _eligibilityService.CheckAsync(claim); // 500ms\n    if (!eligibility.IsEligible) return ClaimResponse.Denied();\n\n    var pricing = await _pricingService.CalculateAsync(claim); // 1.2s\n    var fraud = await _fraudService.AnalyzeAsync(claim); // 3.5s\n    if (fraud.IsSuspicious) return ClaimResponse.Flagged();\n\n    var payment = await _paymentService.ProcessAsync(claim); // 800ms\n\n    // Total time: 6 seconds+ before provider gets response\n    return ClaimResponse.Approved(payment);\n}\n```\n\n**Problems**:\n- Provider waits 6+ seconds for claim response\n- Fraud service outage blocks all claim processing\n- Can't scale fraud detection independently\n- Tightly coupled services\n\n**After (Message Queue)**:\n\n```csharp\n// Step 1: Accept claim and return immediately\npublic async Task<ClaimResponse> SubmitClaimAsync(Claim claim)\n{\n    // Quick validation only\n    if (!await _validator.ValidateBasicAsync(claim))\n        return ClaimResponse.Invalid();\n\n    // Publish to queue - returns immediately\n    await _bus.Publish(new ProcessClaimCommand { ClaimId = claim.Id });\n\n    // Provider gets immediate response: \"Processing\"\n    return ClaimResponse.Accepted(claim.Id);\n}\n\n// Step 2: Async adjudication pipeline\npublic class ClaimAdjudicationConsumer : IConsumer<ProcessClaimCommand>\n{\n    public async Task Consume(ConsumeContext<ProcessClaimCommand> context)\n    {\n        var claim = await _claimRepo.GetAsync(context.Message.ClaimId);\n\n        // Eligibility check\n        var eligibility = await _eligibilityService.CheckAsync(claim);\n        if (!eligibility.IsEligible)\n        {\n            await UpdateClaimStatusAsync(claim.Id, ClaimStatus.Denied);\n            return;\n        }\n\n        // Publish to pricing queue\n        await context.Publish(new PriceClaimCommand { ClaimId = claim.Id });\n    }\n}\n\npublic class ClaimPricingConsumer : IConsumer<PriceClaimCommand>\n{\n    public async Task Consume(ConsumeContext<PriceClaimCommand> context)\n    {\n        var pricing = await _pricingService.CalculateAsync(context.Message.ClaimId);\n        await _claimRepo.UpdatePricingAsync(context.Message.ClaimId, pricing);\n\n        // Publish to fraud detection queue\n        await context.Publish(new AnalyzeClaimFraudCommand { ClaimId = context.Message.ClaimId });\n    }\n}\n\n// Fraud detection runs in parallel - doesn't block payment\npublic class FraudDetectionConsumer : IConsumer<AnalyzeClaimFraudCommand>\n{\n    public async Task Consume(ConsumeContext<AnalyzeClaimFraudCommand> context)\n    {\n        var fraudResult = await _fraudService.AnalyzeAsync(context.Message.ClaimId);\n\n        if (fraudResult.IsSuspicious)\n        {\n            await _claimRepo.FlagForReviewAsync(context.Message.ClaimId);\n            await _notificationService.NotifyFraudTeamAsync(context.Message.ClaimId);\n        }\n    }\n}\n```\n\n**Results**:\n- **Provider response time**: 6+ seconds → <500ms (92% improvement)\n- **Fraud service independence**: Outage doesn't block claim acceptance\n- **Horizontal scaling**: Each stage scales independently based on load\n- **Resilience**: Transient failures automatically retry without losing claims\n\n**Quantified Outcomes**:\n- Processed 847,000 claims during 14-hour fraud service outage (previously: 0)\n- Eliminated $1.2M in operational costs from service cascade failures\n- Scaled fraud detection 5x without impacting claim submission throughput\n\n---",
+    "45": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#example-2-pharmacy-point-of-sale-with-reliability]\n\n### Example 2: Pharmacy Point-of-Sale with Reliability\n\n**Context**: Pharmacy transactions require guaranteed delivery even during network issues or service restarts\n\n**Before (Synchronous HTTP)**:\n\n```csharp\npublic async Task<AdjudicationResponse> AdjudicateRxClaimAsync(PharmacyClaim claim)\n{\n    try\n    {\n        // Direct HTTP call to DUR service\n        var durResult = await _httpClient.PostAsync(\n            \"http://dur-service/api/review\",\n            JsonContent.Create(claim),\n            timeout: TimeSpan.FromSeconds(2)); // Tight POS timeout\n\n        if (!durResult.IsSuccessStatusCode)\n        {\n            // Transaction LOST - no retry\n            return AdjudicationResponse.Reject(\"System unavailable\");\n        }\n\n        // Continue processing...\n    }\n    catch (TaskCanceledException)\n    {\n        // Timeout - transaction LOST\n        return AdjudicationResponse.Reject(\"Timeout\");\n    }\n}\n```\n\n**2023 Incident**: 14,000 lost transactions during 45-minute DUR service outage = $490K manual reprocessing cost\n\n**After (Message Queue)**:\n\n```csharp\npublic async Task<AdjudicationResponse> AdjudicateRxClaimAsync(PharmacyClaim claim)\n{\n    // Step 1: Quick eligibility and formulary checks (synchronous)\n    var eligibility = await _eligibilityCache.GetAsync(claim.MemberId);\n    if (!eligibility.IsActive)\n        return AdjudicationResponse.Reject(\"Member not eligible\");\n\n    var formulary = await _formul aryCache.CheckAsync(claim.DrugNdc);\n    if (!formulary.IsCovered)\n        return AdjudicationResponse.Reject(\"Drug not covered\");\n\n    // Step 2: Approve claim provisionally\n    var provisionalApproval = new AdjudicationResponse\n    {\n        Status = \"Approved\",\n        ApprovedAmount = formulary.CopayAmount,\n        ClaimId = claim.Id\n    };\n\n    // Step 3: Queue for async DUR review (doesn't block pharmacy)\n    await _bus.Publish(new ReviewPharmacyClaimCommand\n    {\n        ClaimId = claim.Id,\n        MemberId = claim.MemberId,\n        DrugNdc = claim.DrugNdc,\n        Quantity = claim.Quantity,\n        PrescriberNpi = claim.PrescriberNpi\n    });\n\n    // Return to pharmacy immediately (<1 second)\n    return provisionalApproval;\n}\n\n// Async DUR review consumer\npublic class DrugUtilizationReviewConsumer : IConsumer<ReviewPharmacyClaimCommand>\n{\n    public async Task Consume(ConsumeContext<ReviewPharmacyClaimCommand> context)\n    {\n        var cmd = context.Message;\n\n        try\n        {\n            // Comprehensive DUR analysis (may take 5-10 seconds)\n            var durResult = await _durService.PerformUtilizationReviewAsync(cmd);\n\n            if (durResult.HasConcerns)\n            {\n                // Retroactive reversal if serious drug interaction found\n                await _claimService.ReverseClaimAsync(cmd.ClaimId, durResult.Reason);\n                await _notificationService.AlertPharmacyAsync(cmd.ClaimId, durResult);\n                await _notificationService.AlertPrescriberAsync(cmd.PrescriberNpi, durResult);\n            }\n\n            // Log DUR completion\n            await _durRepository.SaveReviewAsync(cmd.ClaimId, durResult);\n        }\n        catch (Exception ex)\n        {\n            _logger.LogError(ex, \"DUR review failed for claim {ClaimId}\", cmd.ClaimId);\n            // Message will retry automatically; claim already approved at pharmacy\n        }\n    }\n}\n```\n\n**Benefits**:\n- **Zero lost transactions**: Messages persist in queue during service outages\n- **Fast POS response**: <1 second (vs 2+ seconds with synchronous DUR)\n- **Automatic retry**: Transient failures retry without manual intervention\n- **Service independence**: DUR service can be down temporarily without impacting pharmacy operations\n\n**Quantified Outcomes**:\n- Eliminated $490K annual manual reprocessing costs\n- Reduced pharmacy point-of-sale response time 60% (2.1s → 850ms)\n- 99.99% message delivery guarantee (previously 98.3% success rate)\n\n---",
+    "46": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#example-3-open-enrollment-load-leveling]\n\n### Example 3: Open Enrollment Load Leveling\n\n**Context**: Open enrollment creates 10x normal traffic; queue buffers requests preventing service overload\n\n**Before (Synchronous)**:\n\n```csharp\n// Enrollment service overwhelmed during peak\npublic async Task<EnrollmentResult> EnrollMemberAsync(EnrollmentRequest request)\n{\n    // All steps synchronous - service must handle peak load\n    var validation = await _validationService.ValidateAsync(request); // 500ms\n    var premium = await _premiumService.CalculateAsync(request); // 800ms\n    var assignment = await _planAssignmentService.AssignAsync(request); // 1.2s\n    var idCard = await _idCardService.GenerateAsync(request); // 3.5s\n    var notification = await _notificationService.SendAsync(request); // 400ms\n\n    // Total: 6.4 seconds per enrollment\n    // Peak load: 600K enrollments / 72 hours = 2.3 enrollments/sec sustained\n    // Must provision for 2.3/sec continuous processing\n    return EnrollmentResult.Success(assignment);\n}\n```\n\n**2024 Crisis**: 45,000 enrollment failures due to service overload during final 72-hour push\n\n**After (Message Queue)**:\n\n```csharp\n// Accept enrollment request immediately\npublic async Task<EnrollmentResult> SubmitEnrollmentAsync(EnrollmentRequest request)\n{\n    // Quick validation only\n    var basicValidation = await _validator.ValidateBasicAsync(request);\n    if (!basicValidation.IsValid)\n        return EnrollmentResult.Invalid(basicValidation.Errors);\n\n    // Publish to queue\n    await _bus.Publish(new ProcessEnrollmentCommand\n    {\n        EnrollmentId = Guid.NewGuid(),\n        MemberId = request.MemberId,\n        PlanSelection = request.SelectedPlanId,\n        EffectiveDate = request.EffectiveDate\n    });\n\n    // Immediate response to member\n    return EnrollmentResult.Accepted(\"Your enrollment is being processed\");\n}\n\n// Worker processes enrollments at optimal rate\npublic class EnrollmentProcessingConsumer : IConsumer<ProcessEnrollmentCommand>\n{\n    public async Task Consume(ConsumeContext<ProcessEnrollmentCommand> context)\n    {\n        var cmd = context.Message;\n\n        // Process at service's optimal throughput\n        var validation = await _validationService.ValidateAsync(cmd);\n        if (!validation.IsValid)\n        {\n            await _enrollmentRepo.MarkFailedAsync(cmd.EnrollmentId, validation.Errors);\n            return;\n        }\n\n        var premium = await _premiumService.CalculateAsync(cmd);\n        var assignment = await _planAssignmentService.AssignAsync(cmd, premium);\n\n        // Save enrollment\n        await _enrollmentRepo.SaveAsync(assignment);\n\n        // Queue downstream work (non-blocking)\n        await context.Publish(new EnrollmentCompletedEvent { EnrollmentId = cmd.EnrollmentId });\n    }\n}\n\n// ID card generation processed asynchronously in parallel\npublic class IdCardGenerationConsumer : IConsumer<EnrollmentCompletedEvent>\n{\n    public async Task Consume(ConsumeContext<EnrollmentCompletedEvent> context)\n    {\n        await _idCardService.GenerateAndMailAsync(context.Message.EnrollmentId);\n    }\n}\n```\n\n**Configuration** (Kubernetes HPA):\n\n```yaml\n# Auto-scale enrollment consumers based on queue depth\napiVersion: autoscaling/v2\nkind: HorizontalPodAutoscaler\nmetadata:\n  name: enrollment-consumer-hpa\nspec:\n  scaleTargetRef:\n    apiVersion: apps/v1\n    kind: Deployment\n    name: enrollment-consumer\n  minReplicas: 3\n  maxReplicas: 20\n  metrics:\n\n  - type: External\n    external:\n      metric:\n        name: rabbitmq_queue_messages_ready\n        selector:\n          matchLabels:\n            queue: \"enrollment.processing\"\n      target:\n        type: AverageValue\n        averageValue: \"1000\" # Scale up if queue depth > 1000 per pod\n```\n\n**Results**:\n- **Zero enrollment failures**: Queue buffered 600K requests; processed over 96 hours instead of 72\n- **Infrastructure cost reduction**: 35% savings by right-sizing for average load (3 pods) vs peak (20 pods auto-scale)\n- **Member experience**: Instant acceptance confirmation vs 2-5 minute processing time\n- **Service stability**: No service overload or cascading failures\n\n**Quantified Outcomes**:\n- Eliminated 45,000 enrollment failures (100% success rate)\n- Reduced infrastructure costs $420K annually (35% reduction from over-provisioning)\n- Processed 10x volume spike without service degradation\n\n---",
+    "47": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#use-case-scenarios]\n\n### Use Case Scenarios",
+    "48": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#scenario-1-claims-adjudication-workflows]\n\n#### Scenario 1: Claims Adjudication Workflows\n\n**When to Use**: Multi-step claim processing with eligibility, pricing, fraud detection, payment\n\n**Pattern**: Work queue with sequential stages; each stage publishes to next queue\n\n**Benefits**: Independent scaling of each stage; isolated failures; parallel fraud detection doesn't block payment\n\n**Example Queues**:\n- `claims.eligibility.check`\n- `claims.pricing.calculate`\n- `claims.fraud.analyze` (parallel)\n- `claims.payment.process`",
+    "49": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#scenario-2-provider-credentialing-verification]\n\n#### Scenario 2: Provider Credentialing Verification\n\n**When to Use**: Long-running multi-day workflows with multiple verification steps\n\n**Pattern**: Request-reply with correlation IDs; status updates via events\n\n**Benefits**: Non-blocking verification; manual review steps; status tracking\n\n**Example Flow**:\n1. Submit credentialing application → immediate acknowledgment\n2. Queue verification tasks (license, sanctions, education, references)\n3. Each verification completes asynchronously\n4. Final approval published when all verifications complete",
+    "50": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#scenario-3-member-notifications]\n\n#### Scenario 3: Member Notifications\n\n**When to Use**: Sending emails, SMS, mobile push notifications without blocking transactions\n\n**Pattern**: Publish-subscribe; transaction publishes event, notification service subscribes\n\n**Benefits**: Decoupled notification logic; retry failed deliveries; won't slow down transactions\n\n**Example Events**:\n- `member.enrolled` → welcome email\n- `claim.adjudicated` → EOB notification\n- `appointment.scheduled` → reminder SMS\n- `medication.due` → adherence push notification",
+    "51": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#scenario-4-analytics-and-reporting]\n\n#### Scenario 4: Analytics and Reporting\n\n**When to Use**: Operational events feeding analytics platforms without impacting performance\n\n**Pattern**: Publish-subscribe; transactional systems publish events, analytics subscribes\n\n**Benefits**: Zero impact on operational systems; analytics can lag without affecting users\n\n**Example Events**:\n- `claim.submitted`, `claim.approved`, `claim.denied`\n- `member.created`, `member.updated`, `member.terminated`\n- `provider.credentialed`, `provider.suspended`",
+    "52": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#scenario-5-batch-file-processing]\n\n#### Scenario 5: Batch File Processing\n\n**When to Use**: Processing large state eligibility files, pharmacy batches, financial reconciliation\n\n**Pattern**: Batch aggregation consumer; accumulate messages into files\n\n**Benefits**: Efficient bulk processing; handles large files without memory issues\n\n**Example**: Daily eligibility file generation from 50,000 individual eligibility update events",
+    "53": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#scenario-6-emergency-priority-processing]\n\n#### Scenario 6: Emergency Priority Processing\n\n**When to Use**: STAT medication orders, emergency authorizations requiring expedited handling\n\n**Pattern**: Priority queue with high-priority messages processed first\n\n**Benefits**: Critical healthcare operations jump queue; standard processing continues in background\n\n**Example**: STAT prescription order flagged priority 10; processed immediately ahead of standard refills (priority 5)\n\n---",
+    "54": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#before-and-after-comparison]\n\n### Before and After Comparison",
+    "55": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#before-synchronous-service-calls]\n\n#### Before: Synchronous Service Calls\n\n**Characteristics**:\n- Tight coupling between services\n- Cascading failures when dependencies unavailable\n- No automatic retry mechanism\n- Must scale all services together\n- Lost requests during failures\n- 6+ second response times for multi-step workflows\n\n**Incident Examples**:\n- 2023: 14,000 lost pharmacy transactions during DUR outage ($490K recovery cost)\n- 2023: 14-hour claim processing outage from fraud service failure (47 states impacted)\n- 2024: 45,000 enrollment failures during open enrollment peak",
+    "56": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#after-message-queue-pattern]\n\n#### After: Message Queue Pattern\n\n**Characteristics**:\n- Loose coupling via async messaging\n- Isolated failures with automatic retry\n- Guaranteed message delivery\n- Independent service scaling\n- Load leveling during traffic spikes\n- Sub-second response times with async processing\n\n**Improvements**:\n- **Zero lost transactions**: Messages persist in queue during outages\n- **Service resilience**: Fraud service outage → 0 impact (847K claims processed normally)\n- **Cost reduction**: 35% infrastructure savings from right-sizing ($420K annually)\n- **Performance**: 92% faster response times (6s → 500ms)\n- **Scalability**: Handled 10x open enrollment spike without degradation",
+    "57": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#related-patterns-and-references]\n\n## Related Patterns and References",
+    "58": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#internal-pattern-relationships]\n\n### Internal Pattern Relationships",
+    "59": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#event-driven-architecture-pattern]\n\n#### Event-Driven Architecture Pattern\n\n- **Relationship**: Message Queue Pattern is a specific implementation technique within Event-Driven Architecture\n- **Complementary Usage**: Use Message Queue for internal microservices communication; use Event-Driven Architecture for overall system design and external integration\n- **Key Difference**: Message Queue focuses on point-to-point and pub-sub reliable messaging; Event-Driven Architecture encompasses broader event flows including event sourcing and CQRS\n- **When to Use Together**: Event-Driven Architecture defines events; Message Queue Pattern provides reliable delivery mechanism",
+    "60": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#event-driven-integration-pattern]\n\n#### Event-Driven Integration Pattern\n\n- **Relationship**: Both patterns use events/messages for decoupling; differ in scope\n- **Complementary Usage**: Event-Driven Integration for external system integration (state MMIS, HIEs, payers); Message Queue Pattern for internal microservices (claims, eligibility, pharmacy services)\n- **Key Difference**: Event-Driven Integration handles heterogeneous external systems with loose coupling; Message Queue Pattern optimizes internal async processing with guaranteed delivery\n- **When to Use Together**: External events from state systems trigger internal message queue workflows (eligibility update event → queue member sync → queue analytics update → queue notification)",
+    "61": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#async-request-reply-pattern]\n\n#### Async Request-Reply Pattern\n\n- **Relationship**: Message Queue Pattern provides infrastructure for Async Request-Reply\n- **Complementary Usage**: Async Request-Reply adds correlation and reply semantics on top of message queues\n- **Key Difference**: Message Queue is fire-and-forget or pub-sub; Async Request-Reply expects response message correlated to request\n- **When to Use Together**: Prior authorization request via message queue; clinical review service processes asynchronously; reply message with approval/denial correlated by AuthRequestId",
+    "62": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#saga-pattern]\n\n#### Saga Pattern\n\n- **Relationship**: Saga Pattern uses message queues for orchestrating distributed transactions\n- **Complementary Usage**: Message Queue provides reliable messaging; Saga Pattern adds transaction coordination and compensation logic\n- **Key Difference**: Message Queue handles individual messages; Saga Pattern coordinates multi-step business transactions with rollback\n- **When to Use Together**: Enrollment workflow saga (create member → assign plan → generate ID → notify portal) uses message queues for each step with compensation handlers for rollback on failures",
+    "63": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#circuit-breaker-pattern]\n\n#### Circuit Breaker Pattern\n\n- **Relationship**: Circuit Breaker protects message consumers from cascading failures\n- **Complementary Usage**: Message Queue provides async processing; Circuit Breaker prevents consumer from overwhelming failing dependencies\n- **Key Difference**: Message Queue decouples services; Circuit Breaker adds resilience within consumers\n- **When to Use Together**: Fraud detection consumer uses circuit breaker when calling third-party fraud API; messages remain in queue during circuit open state; process when circuit closes",
+    "64": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#retry-pattern]\n\n#### Retry Pattern\n\n- **Relationship**: Message queues implement automatic retry with exponential backoff\n- **Complementary Usage**: Queue infrastructure handles retry logic; consumers focus on business processing\n- **Key Difference**: Queue-level retry is automatic and configurable; consumer-level retry requires explicit implementation\n- **When to Use Together**: Transient database errors during claim processing trigger automatic queue retry with exponential backoff; permanent errors move to dead letter queue after max retries\n\n---",
+    "65": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#external-references]\n\n### External References",
+    "66": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#enterprise-integration-patterns-hohpe--woolf]\n\n#### Enterprise Integration Patterns (Hohpe & Woolf)\n\n- **Relevance**: Foundational patterns for message-based integration\n- **Key Patterns**: Message Channel, Message Router, Message Translator, Message Endpoint\n- **Application**: Claims processing pipeline implements Pipes and Filters pattern; eligibility routing implements Content-Based Router\n- **Resource**: [Enterprise Integration Patterns](https://www.enterpriseintegrationpatterns.com/)",
+    "67": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#azure-service-bus-documentation]\n\n#### Azure Service Bus Documentation\n\n- **Relevance**: Primary queue platform for Gainwell Azure infrastructure\n- **Key Topics**: Topics and subscriptions, message sessions, dead letter queues, duplicate detection, scheduled messages\n- **Application**: Production implementation uses Azure Service Bus Standard tier for operational queues; Premium tier for high-volume pharmacy claims\n- **Resource**: [Azure Service Bus Documentation](https://learn.microsoft.com/en-us/azure/service-bus-messaging/)",
+    "68": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#rabbitmq-documentation]\n\n#### RabbitMQ Documentation\n\n- **Relevance**: Alternative open-source message broker for on-premise or multi-cloud\n- **Key Topics**: Exchanges and queues, message acknowledgments, publisher confirms, clustering, mirrored queues\n- **Application**: Development environments use RabbitMQ for local testing; production uses Azure Service Bus for managed service benefits\n- **Resource**: [RabbitMQ Tutorials](https://www.rabbitmq.com/getstarted.html)",
+    "69": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#aws-sqs-and-sns-documentation]\n\n#### AWS SQS and SNS Documentation\n\n- **Relevance**: Alternative cloud platform for message queuing\n- **Key Topics**: Standard vs FIFO queues, message attributes, visibility timeout, long polling, SNS fan-out\n- **Application**: Multi-cloud strategy may use AWS SQS for state-specific deployments; SNS for pub-sub requirements\n- **Resource**: [AWS SQS Documentation](https://docs.aws.amazon.com/sqs/)",
+    "70": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#message-queue-anti-patterns-microsoft]\n\n#### Message Queue Anti-Patterns (Microsoft)\n\n- **Relevance**: Common mistakes to avoid in message queue implementation\n- **Key Anti-Patterns**: Large message payloads, sequential processing, ignoring poison messages, tight coupling\n- **Application**: Avoid sending full 50KB claim payloads in messages; use claim references and fetch from database\n- **Resource**: [Azure Architecture Center - Messaging Patterns](https://learn.microsoft.com/en-us/azure/architecture/patterns/category/messaging)",
+    "71": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#cap-theorem-and-eventual-consistency]\n\n#### CAP Theorem and Eventual Consistency\n\n- **Relevance**: Understanding trade-offs in distributed message processing\n- **Key Concepts**: Consistency vs availability; eventual consistency; idempotency\n- **Application**: Claims system chooses availability (accept claims during network partitions) over consistency (immediate eligibility verification); eventual consistency with async queue processing\n- **Resource**: [Designing Data-Intensive Applications (Kleppmann)](https://dataintensive.net/)\n\n---",
+    "72": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#healthcare-integration-standards]\n\n### Healthcare Integration Standards",
+    "73": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#hl7-fhir-for-clinical-data-exchange]\n\n#### HL7 FHIR for Clinical Data Exchange\n\n- **Relevance**: Emerging standard for healthcare data interoperability\n- **Application**: Message payloads use FHIR resources (Patient, Coverage, Claim, ExplanationOfBenefit) for interoperability with provider systems and HIEs\n- **Integration**: Claims adjudication queue processes FHIR Claim resources; publishes FHIR ExplanationOfBenefit to member portal queue\n- **Resource**: [HL7 FHIR Specification](https://hl7.org/fhir/)",
+    "74": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#x12-edi-for-claims-transactions]\n\n#### X12 EDI for Claims Transactions\n\n- **Relevance**: Industry standard for electronic claims submission and remittance\n- **Application**: Inbound 837 claims translated to internal format and queued for processing; outbound 835 remittance advice generated from payment queue\n- **Integration**: EDI Gateway publishes parsed 837 claim to claims.submitted queue; payment queue consumer generates 835 EDI remittance\n- **Resource**: [X12 EDI Standards](https://x12.org/)",
+    "75": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#ncpdp-script-for-pharmacy-messaging]\n\n#### NCPDP SCRIPT for Pharmacy Messaging\n\n- **Relevance**: Standard for electronic prescribing and pharmacy claims\n- **Application**: Pharmacy point-of-sale adjudication uses NCPDP claim format in message queue; drug utilization review results published as NCPDP response\n- **Integration**: Pharmacy gateway publishes NCPDP claim to pharmacy.claims queue; DUR consumer publishes NCPDP-formatted response\n- **Resource**: [NCPDP SCRIPT Standard](https://www.ncpdp.org/)",
+    "76": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#ihe-profiles-for-health-information-exchange]\n\n#### IHE Profiles for Health Information Exchange\n\n- **Relevance**: Integration profiles for cross-organizational health data exchange\n- **Application**: Care coordination workflows use IHE XCA (Cross-Community Access) profile; queue-based processing for async document retrieval from HIEs\n- **Integration**: HIE document query published to hie.query queue; document retrieval consumer processes asynchronously; results published to care.coordination queue\n- **Resource**: [IHE Technical Frameworks](https://www.ihe.net/)\n\n---",
+    "77": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#technology-specific-resources]\n\n### Technology-Specific Resources",
+    "78": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#azure-service-bus-advanced-features]\n\n#### Azure Service Bus Advanced Features\n\n**Message Sessions**: Guaranteed FIFO ordering for related messages\n```csharp\n// Enable sessions for claim processing requiring strict order\nawait sender.SendMessageAsync(new ServiceBusMessage(claim)\n{\n    SessionId = claim.MemberId // All claims for member processed in order\n});\n```\n\n**Scheduled Messages**: Delayed processing for future-dated events\n```csharp\n// Schedule enrollment effective date processing\nawait sender.ScheduleMessageAsync(\n    message: new ServiceBusMessage(enrollment),\n    scheduledEnqueueTime: enrollment.EffectiveDate);\n```\n\n**Duplicate Detection**: Prevent duplicate processing with message deduplication\n```csharp\n// Configure queue with duplicate detection\nvar queueOptions = new CreateQueueOptions(\"claims-queue\")\n{\n    RequiresDuplicateDetection = true,\n    DuplicateDetectionHistoryTimeWindow = TimeSpan.FromMinutes(10)\n};\n```\n\n**Dead Letter Queue Management**: Custom DLQ handling logic\n```csharp\n// Process dead letter queue messages\nvar dlqReceiver = client.CreateReceiver(\"claims-queue\", new ServiceBusReceiverOptions\n{\n    SubQueue = SubQueue.DeadLetter\n});\n\nawait foreach (var message in dlqReceiver.ReceiveMessagesAsync())\n{\n    // Investigate failure reason\n    var failureReason = message.DeadLetterReason;\n    var failureDescription = message.DeadLetterErrorDescription;\n\n    // Log for manual review\n    await _logger.LogDLQMessageAsync(message, failureReason);\n}\n```",
+    "79": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#rabbitmq-advanced-patterns]\n\n#### RabbitMQ Advanced Patterns\n\n**Publisher Confirms**: Ensure message persistence before proceeding\n```csharp\nchannel.ConfirmSelect(); // Enable publisher confirms\nchannel.BasicPublish(exchange, routingKey, properties, body);\nchannel.WaitForConfirmsOrDie(TimeSpan.FromSeconds(5)); // Block until confirmed\n```\n\n**Message TTL and Dead Letter Exchange**: Automatic message expiration and routing\n```csharp\n// Queue with TTL and DLX\nvar args = new Dictionary<string, object>\n{\n    { \"x-message-ttl\", 60000 }, // 60 seconds\n    { \"x-dead-letter-exchange\", \"dlx\" },\n    { \"x-dead-letter-routing-key\", \"failed.claims\" }\n};\nchannel.QueueDeclare(\"claims-queue\", durable: true, arguments: args);\n```\n\n**Priority Queues**: Message prioritization for SLA-based processing\n```csharp\n// Declare priority queue (max priority 10)\nvar args = new Dictionary<string, object> { { \"x-max-priority\", 10 } };\nchannel.QueueDeclare(\"priorauth-queue\", durable: true, arguments: args);\n\n// Publish with priority\nvar properties = channel.CreateBasicProperties();\nproperties.Priority = 10; // Urgent STAT authorization\nchannel.BasicPublish(exchange, routingKey, properties, body);\n```\n\n---",
+    "80": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#monitoring-and-observability]\n\n### Monitoring and Observability",
+    "81": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#distributed-tracing-with-opentelemetry]\n\n#### Distributed Tracing with OpenTelemetry\n\n- **Application**: Trace claim processing across multiple queue stages (submission → eligibility → pricing → fraud → payment)\n- **Implementation**: Propagate correlation IDs and trace context in message headers; visualize full workflow in Application Insights or Jaeger\n- **Resource**: [OpenTelemetry for .NET](https://opentelemetry.io/docs/instrumentation/net/)",
+    "82": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#queue-metrics-and-alerting]\n\n#### Queue Metrics and Alerting\n\n- **Key Metrics**: Queue depth, message age, consumer lag, processing time, error rate, DLQ depth\n- **Alerting Thresholds**: Depth >5000 critical, age >30min warning, DLQ >10/hour investigate\n- **Dashboards**: Grafana dashboards for real-time queue monitoring; Azure Monitor for cloud-native metrics\n- **Resource**: [Azure Service Bus Metrics](https://learn.microsoft.com/en-us/azure/service-bus-messaging/monitor-service-bus)",
+    "83": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#business-metrics]\n\n#### Business Metrics\n\n- **Claims Processing SLA**: 95% within 24 hours (measured from claim.submitted to claim.adjudicated event)\n- **Eligibility Sync SLA**: 99% within 5 minutes (measured from eligibility.updated to sync.completed event)\n- **Prior Auth Assignment SLA**: 90% within 1 hour (measured from priorauth.submitted to priorauth.assigned event)\n- **Implementation**: Log processing timestamps in message handlers; calculate SLA compliance in analytics pipeline\n\n---",
+    "84": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#books-and-further-reading]\n\n### Books and Further Reading",
+    "85": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#enterprise-integration-patterns-hohpe--woolf-2003]\n\n#### \"Enterprise Integration Patterns\" (Hohpe & Woolf, 2003)\n\n- **Relevance**: Definitive guide to messaging patterns\n- **Key Chapters**: Message Channels (point-to-point vs pub-sub), Message Construction (message design), Message Routing (content-based routing), Message Transformation\n- **Application**: Claims routing implements Content-Based Router; enrollment implements Publish-Subscribe Channel",
+    "86": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#building-microservices-newman-2021]\n\n#### \"Building Microservices\" (Newman, 2021)\n\n- **Relevance**: Microservices communication patterns including async messaging\n- **Key Chapters**: Communication styles (sync vs async), service discovery, resilience\n- **Application**: Gainwell microservices architecture uses async messaging for high-volume workflows (claims, pharmacy); synchronous APIs for low-latency lookups (eligibility)",
+    "87": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#designing-data-intensive-applications-kleppmann-2017]\n\n#### \"Designing Data-Intensive Applications\" (Kleppmann, 2017)\n\n- **Relevance**: Distributed systems concepts including message brokers, replication, consistency\n- **Key Chapters**: Replication and consistency, batch and stream processing\n- **Application**: Understanding eventual consistency trade-offs in claims processing; choosing availability over consistency during network partitions",
+    "88": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#release-it-nygard-2018]\n\n#### \"Release It!\" (Nygard, 2018)\n\n- **Relevance**: Production resilience patterns including bulkheads, circuit breakers, timeouts\n- **Key Chapters**: Stability patterns, capacity planning\n- **Application**: Circuit breakers in fraud detection consumers; bulkheads isolating pharmacy processing from claims processing\n\n---",
+    "89": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#decision-records]\n\n### Decision Records\n\nRelated Architecture Decision Records (ADRs) that influenced this pattern:\n\n- **ADR-INT-001**: Async Messaging for High-Volume Workflows (decided Azure Service Bus over synchronous HTTP for claims processing)\n- **ADR-INT-002**: Queue vs Event Stream (decided queues for point-to-point reliable delivery; event streams for analytics and audit)\n- **ADR-INT-003**: Message Retention Policies (decided 7-year retention for financial transactions; 30 days for operational)\n- **ADR-RES-001**: Retry and Circuit Breaker Strategy (decided exponential backoff with max 3 retries; circuit breaker for third-party dependencies)",
+    "90": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#change-history]\n\n## Change History\n\n| Date       | Version | Author              | Description              | Impact      |\n| ---------- | ------- | ------------------- | ------------------------ | ----------- |\n| 2026-01-02 | 1.0.0   | Enterprise Architect | Initial pattern creation | New pattern |",
+    "91": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#review-log]\n\n## Review Log\n\n| Review Date | Review Type | Reviewer(s) | Status | Comments | Actions |\n| ----------- | ----------- | ----------- | ------ | -------- | ------- |\n| TBD         | TBD         | TBD         | Draft  | TBD      | TBD     |\n\n---",
+    "92": "[patterns/application/api-microservices/PTN-APP-API-030-message-queue-pattern.md#tldr]\n\n## TL;DR\n\n**Problem:** Synchronous service calls create tight coupling with 12-second latency chains (claims → eligibility → member), message loss during failures (247 prior auth reviews lost 2023 incident), poor scaling with 8-second response degradation at 15K claims/hour peaks, and difficult multi-consumer patterns requiring sequential notification of 8+ systems per enrollment event.\n\n**Solution:** Async message queue (Azure Service Bus/RabbitMQ) decouples services using producer-consumer model where producers send messages to durable queues without waiting, consumers process at own pace with automatic retry and dead letter handling, supporting multiple patterns: point-to-point (single consumer per message), pub-sub (broadcast to multiple consumers), priority queues (urgent messages first), and dead letter queues (poison message handling).\n\n**When to Use:** Async processing for claims adjudication (8-15 min workflows) and prior auth reviews (2-5 day workflows), workload distribution for parallel eligibility checks across consumer instances, reliable delivery for enrollment events (8+ downstream updates) and payment transactions (zero message loss), load leveling for 15K claims/hour peaks smoothing to steady processing rate, multi-consumer scenarios like enrollment events broadcasting to ID cards/portal/notifications/analytics.\n\n**Key Benefits:**\n- **Service Decoupling**: Producers and consumers deploy/scale/fail independently; eligibility service outage doesn't block claim submission (847K claims processed during 14-hour fraud service outage)\n- **Guaranteed Delivery**: Messages persist in queue during failures with automatic retry and exponential backoff; eliminated $490K annual reprocessing costs from lost pharmacy transactions\n- **Load Leveling**: Queue buffers traffic spikes preventing service overload; handled 10x open enrollment volume (600K enrollments over 96 hours) without degradation\n- **Horizontal Scalability**: Add consumer instances without producer changes; auto-scale enrollment consumers 3→20 pods based on queue depth\n- **Flexible Routing**: Point-to-point for task distribution, pub-sub for event broadcasting, priority queues for SLA-based processing\n\n**Implementation Complexity:** Medium—requires message broker infrastructure (Azure Service Bus namespace, queues/topics configuration), producer/consumer libraries with retry and DLQ handling, idempotent consumers for duplicate message handling, monitoring/alerting on queue depth/age/DLQ metrics, and schema governance for message evolution.\n\n**Prerequisites:** Message queue platform (Azure Service Bus Standard/Premium tier recommended for production; RabbitMQ for development), message schema registry with JSON Schema validation and semantic versioning, Application Insights or equivalent for distributed tracing with correlation IDs, queue metrics dashboards showing depth/age/consumer lag/processing time, alerting on queue depth >5000 and DLQ >10/hour thresholds.\n\n**Real-World Results:** 92% faster response times (6s → 500ms claim processing), zero enrollment failures during open enrollment (previously 45,000 failures), 99.99% message delivery guarantee (previously 98.3%), 35% infrastructure cost reduction ($420K annually) from right-sizing for average load vs over-provisioning for peaks, eliminated cascading failures (847,000 claims processed during fraud service outage).\n\n**Related Patterns:** Event-Driven Architecture (overall event-driven design), Event-Driven Integration Pattern (external system integration), Async Request-Reply Pattern (correlated request-response over queues), Saga Pattern (distributed transactions with compensation), Circuit Breaker Pattern (consumer resilience), Retry Pattern (exponential backoff for transient failures).\n\n---"
+  },
+  "coverage": {
+    "total_pages": 92,
+    "covered_pages": 92,
+    "sampled_pages": 92,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 92
+  }
+}

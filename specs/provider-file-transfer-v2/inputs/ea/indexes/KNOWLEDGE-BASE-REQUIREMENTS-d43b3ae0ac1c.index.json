@@ -1,0 +1,202 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Knowledge Base Integration Requirements",
+  "document_description": "The AI Gov Review Service Phase 2 needs to query a Gainwell enterprise knowledge base to provide context-aware governance reviews. This document defines the integration requirements.",
+  "total_pages": 20,
+  "tree": [
+    {
+      "title": "Knowledge Base Integration Requirements",
+      "node_id": "knowledge-base-integration-requirements",
+      "start_index": 1,
+      "end_index": 20,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Overview",
+          "node_id": "overview",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Required Knowledge Base Capabilities",
+          "node_id": "required-knowledge-base-capabilities",
+          "start_index": 3,
+          "end_index": 7,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "1. Vector Search / Semantic Search",
+              "node_id": "1-vector-search--semantic-search",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "2. Required Data Sources",
+              "node_id": "2-required-data-sources",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "3. Content Structure",
+              "node_id": "3-content-structure",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4. API / Client Library",
+              "node_id": "4-api--client-library",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Specific Content Requirements",
+          "node_id": "specific-content-requirements",
+          "start_index": 8,
+          "end_index": 12,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Product Portfolio",
+              "node_id": "product-portfolio",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "EA Reference Architecture",
+              "node_id": "ea-reference-architecture",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Infrastructure Environment",
+              "node_id": "infrastructure-environment",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Historical Reviews (Future - Phase 2.1)",
+              "node_id": "historical-reviews-future---phase-21",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Embedding Model Requirements",
+          "node_id": "embedding-model-requirements",
+          "start_index": 13,
+          "end_index": 13,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Performance Requirements",
+          "node_id": "performance-requirements",
+          "start_index": 14,
+          "end_index": 14,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Security Requirements",
+          "node_id": "security-requirements",
+          "start_index": 15,
+          "end_index": 15,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Testing Support",
+          "node_id": "testing-support",
+          "start_index": 16,
+          "end_index": 16,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Implementation Timeline Coordination",
+          "node_id": "implementation-timeline-coordination",
+          "start_index": 17,
+          "end_index": 17,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Questions for KB Team",
+          "node_id": "questions-for-kb-team",
+          "start_index": 18,
+          "end_index": 18,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Contact",
+          "node_id": "contact",
+          "start_index": 19,
+          "end_index": 19,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "References",
+          "node_id": "references",
+          "start_index": 20,
+          "end_index": 20,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[.tooling/components/apis/ai-gov-review-service/docs/KNOWLEDGE-BASE-REQUIREMENTS.md#knowledge-base-integration-requirements]\n\n# Knowledge Base Integration Requirements\n\n**For**: AI Governance Review Service - Phase 2\n**Purpose**: Define requirements for Gainwell Knowledge Base integration\n**Audience**: Knowledge Base team, EA team",
+    "2": "[.tooling/components/apis/ai-gov-review-service/docs/KNOWLEDGE-BASE-REQUIREMENTS.md#overview]\n\n## Overview\n\nThe AI Gov Review Service Phase 2 needs to query a Gainwell enterprise knowledge base to provide context-aware governance reviews. This document defines the integration requirements.",
+    "3": "[.tooling/components/apis/ai-gov-review-service/docs/KNOWLEDGE-BASE-REQUIREMENTS.md#required-knowledge-base-capabilities]\n\n## Required Knowledge Base Capabilities",
+    "4": "[.tooling/components/apis/ai-gov-review-service/docs/KNOWLEDGE-BASE-REQUIREMENTS.md#1-vector-search--semantic-search]\n\n### 1. Vector Search / Semantic Search\n\n**Requirement**: Support semantic search using embeddings\n\n```python\n# Expected API pattern\nresponse = await kb_client.search(\n    query_embedding=[0.234, 0.891, ...],  # 1536-dimensional vector\n    filters={\n        \"sources\": [\"product_portfolio\", \"ea_standards\", \"infrastructure\"],\n        \"active\": True\n    },\n    top_k=5\n)\n```\n\n**Returns**: List of relevant knowledge blocks with relevance scores",
+    "5": "[.tooling/components/apis/ai-gov-review-service/docs/KNOWLEDGE-BASE-REQUIREMENTS.md#2-required-data-sources]\n\n### 2. Required Data Sources\n\nThe knowledge base must include (or be able to query) these sources:\n\n| Source | Content | Update Frequency | Priority |\n|--------|---------|------------------|----------|\n| **Product Portfolio** | Applications, capabilities, tech stacks, owners | Weekly | High |\n| **EA Reference Architecture** | ADRs, standards, patterns, principles | Monthly | High |\n| **Infrastructure Environment** | Cloud platforms, regions, services, constraints | Daily (automated) | Medium |\n| **Historical Reviews** | Past governance decisions (approved/rejected) | Real-time | Low (Phase 2.1) |",
+    "6": "[.tooling/components/apis/ai-gov-review-service/docs/KNOWLEDGE-BASE-REQUIREMENTS.md#3-content-structure]\n\n### 3. Content Structure\n\nEach knowledge item should include:\n\n```json\n{\n  \"id\": \"unique-identifier\",\n  \"source\": \"product_portfolio\",\n  \"content\": \"Human-readable description\",\n  \"embedding\": [0.234, 0.891, ...],  // Pre-computed vector\n  \"metadata\": {\n    // Source-specific fields\n    \"product_name\": \"Claims Processing Suite\",\n    \"version\": \"4.2\",\n    \"tech_stack\": [\"Java\", \"Spring Boot\", \"Kafka\"],\n    \"owner_team\": \"Claims Product Team\",\n    \"deployment_environment\": \"Azure AKS East US\"\n  },\n  \"last_updated\": \"2026-02-10T14:30:00Z\",\n  \"active\": true\n}\n```",
+    "7": "[.tooling/components/apis/ai-gov-review-service/docs/KNOWLEDGE-BASE-REQUIREMENTS.md#4-api--client-library]\n\n### 4. API / Client Library\n\n**Preferred**: Python client library\n\n```python\nfrom gainwell_kb import KnowledgeBaseClient\n\nkb_client = KnowledgeBaseClient(\n    url=\"https://kb.gainwell.internal/api\",\n    api_key=os.getenv(\"KNOWLEDGE_BASE_API_KEY\")\n)\n\n# Semantic search\nresults = await kb_client.search(\n    query=\"claims processing automation\",\n    sources=[\"product_portfolio\", \"ea_standards\"],\n    top_k=5\n)\n\n# Returns\n[\n  {\n    \"id\": \"prod-claims-suite-v42\",\n    \"source\": \"product_portfolio\",\n    \"content\": \"Claims Processing Suite v4.2 - handles claims validation...\",\n    \"relevance_score\": 0.89,\n    \"metadata\": {...}\n  },\n  ...\n]\n```\n\n**Alternative**: REST API\n\n```bash\nPOST https://kb.gainwell.internal/api/v1/search\nAuthorization: Bearer <api_key>\nContent-Type: application/json\n\n{\n  \"query\": \"claims processing automation\",\n  \"query_embedding\": [0.234, 0.891, ...],  // Optional if query provided\n  \"filters\": {\n    \"sources\": [\"product_portfolio\", \"ea_standards\"],\n    \"active\": true\n  },\n  \"top_k\": 5\n}\n```",
+    "8": "[.tooling/components/apis/ai-gov-review-service/docs/KNOWLEDGE-BASE-REQUIREMENTS.md#specific-content-requirements]\n\n## Specific Content Requirements",
+    "9": "[.tooling/components/apis/ai-gov-review-service/docs/KNOWLEDGE-BASE-REQUIREMENTS.md#product-portfolio]\n\n### Product Portfolio\n\n**What we need**:\n\n- Application name and version\n- Capabilities (what it does)\n- Technology stack\n- Deployment environment (cloud, region, services)\n- Team ownership\n- Current status (active/deprecated/planned)\n\n**Example**:\n\n```\nApplication: Claims Processing Suite v4.2\nCapabilities:\n - Claims ingestion from multiple sources\n - Rules-based validation engine\n - Payment processing and reconciliation\n - Appeals workflow management\nTech Stack: Java 17, Spring Boot 3.2, Kafka 3.4, Oracle 19c\nDeployment: Azure AKS - East US region, 5 pods, auto-scaling\nOwner: Claims Product Team (claims-team@gainwell.com)\nStatus: Active - production since 2023-Q2\nRelated Products: Claims Data Lake, Provider Portal Integration\n```",
+    "10": "[.tooling/components/apis/ai-gov-review-service/docs/KNOWLEDGE-BASE-REQUIREMENTS.md#ea-reference-architecture]\n\n### EA Reference Architecture\n\n**What we need**:\n\n- Architecture Decision Records (ADRs)\n- Standards and patterns\n- Guiding principles\n- Technology choices/restrictions\n\n**Source**: This repository! (`/decisions/`, `/standards/`, `/patterns/`, `/guiding-principles/`)\n\n**Example**:\n\n```\nADR-042: Event-Driven Architecture for Integration\nDecision: All new components must use event-driven architecture for inter-service communication\nRationale: Enables loose coupling, scalability, and fault tolerance\nApproved: 2024-03-15\nApplies To: All new development (CRB, ARB submissions)\nTechnology: Azure Event Hub or Apache Kafka\nPattern Reference: /patterns/event-driven/async-messaging.md\nExceptions: Synchronous REST allowed only for user-facing APIs\n```",
+    "11": "[.tooling/components/apis/ai-gov-review-service/docs/KNOWLEDGE-BASE-REQUIREMENTS.md#infrastructure-environment]\n\n### Infrastructure Environment\n\n**What we need**:\n\n- Cloud platforms (Azure, AWS)\n- Available regions\n- Available services (compute, data, networking)\n- Security/compliance requirements\n- Deployment constraints\n\n**Source**: Azure Resource Graph, AWS Config, Terraform state\n\n**Example**:\n\n```\nCloud: Microsoft Azure\nPrimary Region: East US (production)\nSecondary Region: West US 2 (DR)\nAvailable Services:\n - Compute: AKS (Kubernetes), App Service, Container Apps\n - Data: Azure SQL, Cosmos DB, Azure Cache for Redis\n - Integration: Event Hub, Service Bus, API Management\n - Storage: Blob Storage, File Storage\nConstraints:\n - No South America regions (compliance)\n - All data must be encrypted at rest and in transit\n - HIPAA compliant services only\n - Multi-region deployment required for critical systems\nNetwork: Hub-spoke VNet topology, Azure Firewall, Private Endpoints\n```",
+    "12": "[.tooling/components/apis/ai-gov-review-service/docs/KNOWLEDGE-BASE-REQUIREMENTS.md#historical-reviews-future---phase-21]\n\n### Historical Reviews (Future - Phase 2.1)\n\n**What we need**:\n\n- Past governance submissions (CRB, ARB, etc.)\n- Approval/rejection decisions\n- Key concerns/findings\n- Lessons learned\n\n**Source**: This service's PostgreSQL database after 6-12 months of operation\n\n**Example**:\n\n```\nReview: ARB-2024-089\nTitle: Claims Automation Platform\nDecision: Rejected\nDate: 2024-09-15\nKey Concerns:\n - 80% overlap with existing Claims Processing Suite v4.2\n - No integration plan with current Claims ecosystem\n - Proposed REST architecture violates ADR-042 (event-driven mandate)\n - Insufficient cost-benefit analysis\nLessons:\n - Always check for duplicate capabilities in product portfolio\n - Integration plan is mandatory for Claims domain\n - Event-driven architecture is not optional\nSimilar Approved: ARB-2024-103 (Claims Analytics Extension - complementary, not duplicate)\n```",
+    "13": "[.tooling/components/apis/ai-gov-review-service/docs/KNOWLEDGE-BASE-REQUIREMENTS.md#embedding-model-requirements]\n\n## Embedding Model Requirements\n\n**Recommended**: AWS Titan Embeddings\n\n```python\nimport boto3\n\nbedrock = boto3.client('bedrock-runtime')\n\ndef create_embedding(text: str) -> list[float]:\n    response = bedrock.invoke_model(\n        modelId=\"amazon.titan-embed-text-v1\",\n        body=json.dumps({\"inputText\": text})\n    )\n    return json.loads(response['body'].read())['embedding']\n```\n\n**Dimension**: 1536 (compatible with Titan, OpenAI, many vector DBs)\n\n**Alternative**: Any embedding model that produces consistent vectors",
+    "14": "[.tooling/components/apis/ai-gov-review-service/docs/KNOWLEDGE-BASE-REQUIREMENTS.md#performance-requirements]\n\n## Performance Requirements\n\n| Metric | Target | Notes |\n|--------|--------|-------|\n| Search latency | <500ms | P95 |\n| Availability | 99.5% | During business hours |\n| Concurrent requests | 100+ | For production load |\n| Result freshness | <1 hour | For infrastructure data |",
+    "15": "[.tooling/components/apis/ai-gov-review-service/docs/KNOWLEDGE-BASE-REQUIREMENTS.md#security-requirements]\n\n## Security Requirements\n\n- **Authentication**: API key or OAuth 2.0\n- **Authorization**: Service account for AI Gov Review Service\n- **Encryption**: TLS 1.2+ for all API calls\n- **Data Classification**: Treat as Internal/Confidential\n- **Logging**: Audit all knowledge base queries",
+    "16": "[.tooling/components/apis/ai-gov-review-service/docs/KNOWLEDGE-BASE-REQUIREMENTS.md#testing-support]\n\n## Testing Support\n\nPlease provide:\n\n1. **Test/Sandbox environment** with sample data\n2. **Sample queries and expected results** for integration testing\n3. **Load testing guidance** (rate limits, throttling)",
+    "17": "[.tooling/components/apis/ai-gov-review-service/docs/KNOWLEDGE-BASE-REQUIREMENTS.md#implementation-timeline-coordination]\n\n## Implementation Timeline Coordination\n\n**AI Gov Review Service Phase 2**: 8-12 weeks\n\n| Week | AI Gov Service | KB Team Needs |\n|------|----------------|---------------|\n| 1-2 | Integration foundation | Test environment ready |\n| 3-4 | RAG implementation | API stable, sample data loaded |\n| 5-6 | Testing & refinement | Support for integration testing |\n| 7-8 | Production deployment | Production KB ready |",
+    "18": "[.tooling/components/apis/ai-gov-review-service/docs/KNOWLEDGE-BASE-REQUIREMENTS.md#questions-for-kb-team]\n\n## Questions for KB Team\n\nPlease provide information on:\n\n1. **Vector Database**: Which technology? (OpenSearch, Pinecone, Weaviate, Qdrant, etc.) - OpenSearch\n2. **API Format**: REST, gRPC, GraphQL? Python client library available? - REST API with Python client library\n3. **Authentication**: API keys, OAuth, mTLS? - API keys\n4. **Rate Limits**: Queries per second/minute? - 1000 requests per minute\n5. **Data Refresh**: How often is content updated? Real-time or batch? - Product portfolio weekly, EA monthly, infrastructure daily\n6. **Support**: Who do we contact for integration issues? - KB Team Lead (TBD)\n7. **Documentation**: Where is the API documentation? - Internal KB API docs (URL TBD)\n8. **SLA**: What's the uptime guarantee? - 99.5% during business hours",
+    "19": "[.tooling/components/apis/ai-gov-review-service/docs/KNOWLEDGE-BASE-REQUIREMENTS.md#contact]\n\n## Contact\n\n**AI Gov Review Service Team**:\n\n- Lead: [TBD]\n- EA Practice: <ea-practice@gainwell.com>\n\n**Knowledge Base Team**:\n\n- Lead: [TBD]\n- Contact: [TBD]",
+    "20": "[.tooling/components/apis/ai-gov-review-service/docs/KNOWLEDGE-BASE-REQUIREMENTS.md#references]\n\n## References\n\n- [Phase 2 RAG Approach](./PHASE2-RAG-APPROACH.md) - Complete Phase 2 documentation\n- [AI Review Process](./ai-review-process.md) - Service architecture & review flow\n- EA Reference Architecture Repository: `/decisions/`, `/standards/`, `/patterns/`"
+  },
+  "coverage": {
+    "total_pages": 20,
+    "covered_pages": 20,
+    "sampled_pages": 20,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 20
+  }
+}

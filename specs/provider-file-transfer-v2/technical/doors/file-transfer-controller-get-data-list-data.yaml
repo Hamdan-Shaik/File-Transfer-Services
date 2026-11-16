@@ -1,0 +1,70 @@
+door:
+  id: file-transfer-controller-get-data-list-data
+  kind: api
+  name: GetDataListData
+  class: HP.HSP.UA3.FileTransfer.UX.Services.Controller.FileTransferController
+  file: ux\HP.HSP.UA3.FileTransfer.UX.Services\Controller\FileTransferController.SearchFileTransfer.cs
+  line: 63
+  entry:
+  - HP.HSP.UA3.FileTransfer.UX.Services.Controller.FileTransferController.GetDataListData(string, string, string)
+procedures: []
+tables: []
+shared_uses: []
+external_uses:
+- package: hp.hsp.ua3.core.ux.interfaces
+  version: 30.0.0
+  method: HP.HSP.UA3.Core.UX.Interfaces.IReferenceDataProvider.GetReferenceData(string)
+  calls:
+  - at: ux\HP.HSP.UA3.FileTransfer.UX.Services\Controller\FileTransferController.SearchFileTransfer.cs:191
+    arguments:
+    - name: odataQuery
+      expression: objDataQuery
+- package: hp.hsp.ua3.core.ux.interfaces
+  version: 30.0.0
+  method: HP.HSP.UA3.Core.UX.Interfaces.ITenantConfigurationManager.Resolve<T>(string)
+  calls:
+  - at: ux\HP.HSP.UA3.FileTransfer.UX.Services\Controller\FileTransferController.SearchFileTransfer.cs:189
+    type_arguments:
+    - HP.HSP.UA3.Core.UX.Interfaces.IReferenceDataProvider
+    arguments:
+    - name: name
+      expression: FileTransferConstants.Ioc.ComponentNames.DataListReferenceDataProvider
+- package: microsoft.aspnet.webapi.core
+  version: 5.3.0
+  method: System.Net.Http.HttpRequestMessageExtensions.CreateResponse<T>(System.Net.Http.HttpRequestMessage, System.Net.HttpStatusCode, T)
+  calls:
+  - at: ux\HP.HSP.UA3.FileTransfer.UX.Services\Controller\FileTransferController.SearchFileTransfer.cs:80
+    type_arguments:
+    - System.Collections.Generic.List<HP.HSP.UA3.Core.UX.Data.Common.ListItemModel>
+    arguments:
+    - name: statusCode
+      value: '200'
+    - name: value
+      expression: listItems
+  - at: ux\HP.HSP.UA3.FileTransfer.UX.Services\Controller\FileTransferController.SearchFileTransfer.cs:84
+    type_arguments:
+    - HP.HSP.UA3.Core.UX.Data.Messaging.ResultModel
+    arguments:
+    - name: statusCode
+      value: '400'
+    - name: value
+      expression: processorResult
+polymorphic_hooks: []
+stops: []
+calls:
+- from: HP.HSP.UA3.FileTransfer.UX.Services.Controller.FileTransferController.GetDataListData(string, string, string)
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.UX.Services.Controller.FileTransferController.GetDataListData(string, string, string, out System.Collections.Generic.List<HP.HSP.UA3.Core.UX.Data.Common.ListItemModel>)
+- from: HP.HSP.UA3.FileTransfer.UX.Services.Controller.FileTransferController.GetDataListData(string, string, string, out System.Collections.Generic.List<HP.HSP.UA3.Core.UX.Data.Common.ListItemModel>)
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.UX.Services.Controller.FileTransferController.GetModules(out System.Collections.Generic.List<HP.HSP.UA3.Core.UX.Data.Common.ListItemModel>, bool)
+methods:
+- name: HP.HSP.UA3.FileTransfer.UX.Services.Controller.FileTransferController.GetDataListData(string, string, string)
+  file: ux\HP.HSP.UA3.FileTransfer.UX.Services\Controller\FileTransferController.SearchFileTransfer.cs
+  line: 63
+- name: HP.HSP.UA3.FileTransfer.UX.Services.Controller.FileTransferController.GetDataListData(string, string, string, out System.Collections.Generic.List<HP.HSP.UA3.Core.UX.Data.Common.ListItemModel>)
+  file: ux\HP.HSP.UA3.FileTransfer.UX.Services\Controller\FileTransferController.SearchFileTransfer.cs
+  line: 90
+- name: HP.HSP.UA3.FileTransfer.UX.Services.Controller.FileTransferController.GetModules(out System.Collections.Generic.List<HP.HSP.UA3.Core.UX.Data.Common.ListItemModel>, bool)
+  file: ux\HP.HSP.UA3.FileTransfer.UX.Services\Controller\FileTransferController.SearchFileTransfer.cs
+  line: 181

@@ -1,0 +1,832 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "STD-APP-KMGMT-006: CI/CD Pipeline Integration",
+  "document_description": "This standard defines requirements and guidelines for integrating Lenses.io capabilities into CI/CD pipelines to enable automated deployment, testing, and validation of Kafka-related configurations and applications.",
+  "total_pages": 88,
+  "tree": [
+    {
+      "title": "STD-APP-KMGMT-006: CI/CD Pipeline Integration",
+      "node_id": "std-app-kmgmt-006-cicd-pipeline-integration",
+      "start_index": 1,
+      "end_index": 88,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Executive Summary",
+          "node_id": "executive-summary",
+          "start_index": 2,
+          "end_index": 6,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Purpose Statement",
+              "node_id": "purpose-statement",
+              "start_index": 3,
+              "end_index": 3,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Key Requirements",
+              "node_id": "key-requirements",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Business Rationale",
+              "node_id": "business-rationale",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Compliance Level",
+              "node_id": "compliance-level",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 7,
+          "end_index": 7,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "1. Overview",
+          "node_id": "1-overview",
+          "start_index": 8,
+          "end_index": 11,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "1.1 Purpose",
+              "node_id": "11-purpose",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "1.2 Scope",
+              "node_id": "12-scope",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "1.3 Related Standards",
+              "node_id": "13-related-standards",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Standard Requirements",
+          "node_id": "standard-requirements",
+          "start_index": 12,
+          "end_index": 35,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Guidance Requirements",
+              "node_id": "guidance-requirements",
+              "start_index": 13,
+              "end_index": 23,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "REQ-CICD-001: Pipeline API Authentication",
+                  "node_id": "req-cicd-001-pipeline-api-authentication",
+                  "start_index": 14,
+                  "end_index": 14,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-CICD-002: Schema Deployment Automation",
+                  "node_id": "req-cicd-002-schema-deployment-automation",
+                  "start_index": 15,
+                  "end_index": 15,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-CICD-003: Connector Deployment Pipeline",
+                  "node_id": "req-cicd-003-connector-deployment-pipeline",
+                  "start_index": 16,
+                  "end_index": 16,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-CICD-004: Automated Testing Integration",
+                  "node_id": "req-cicd-004-automated-testing-integration",
+                  "start_index": 17,
+                  "end_index": 17,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-CICD-005: Deployment Verification",
+                  "node_id": "req-cicd-005-deployment-verification",
+                  "start_index": 18,
+                  "end_index": 18,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-CICD-006: Multi-Environment Promotion",
+                  "node_id": "req-cicd-006-multi-environment-promotion",
+                  "start_index": 19,
+                  "end_index": 19,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-CICD-007: Rollback Capability",
+                  "node_id": "req-cicd-007-rollback-capability",
+                  "start_index": 20,
+                  "end_index": 20,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-CICD-008: Secret Management Integration",
+                  "node_id": "req-cicd-008-secret-management-integration",
+                  "start_index": 21,
+                  "end_index": 21,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-CICD-009: Pipeline Monitoring and Alerting",
+                  "node_id": "req-cicd-009-pipeline-monitoring-and-alerting",
+                  "start_index": 22,
+                  "end_index": 22,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-CICD-010: Documentation Integration",
+                  "node_id": "req-cicd-010-documentation-integration",
+                  "start_index": 23,
+                  "end_index": 23,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Recommended Practices",
+              "node_id": "recommended-practices",
+              "start_index": 24,
+              "end_index": 24,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Prohibited Practices",
+              "node_id": "prohibited-practices",
+              "start_index": 25,
+              "end_index": 31,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Direct Production Deployments",
+                  "node_id": "direct-production-deployments",
+                  "start_index": 26,
+                  "end_index": 26,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Hardcoded Credentials",
+                  "node_id": "hardcoded-credentials",
+                  "start_index": 27,
+                  "end_index": 27,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Skipping Automated Tests",
+                  "node_id": "skipping-automated-tests",
+                  "start_index": 28,
+                  "end_index": 28,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Manual Configuration Changes",
+                  "node_id": "manual-configuration-changes",
+                  "start_index": 29,
+                  "end_index": 29,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Production Credentials in Non-Production",
+                  "node_id": "production-credentials-in-non-production",
+                  "start_index": 30,
+                  "end_index": 30,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Destructive Operations Without Safeguards",
+                  "node_id": "destructive-operations-without-safeguards",
+                  "start_index": 31,
+                  "end_index": 31,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Exceptions Process",
+              "node_id": "exceptions-process",
+              "start_index": 32,
+              "end_index": 35,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "When to Request an Exception",
+                  "node_id": "when-to-request-an-exception",
+                  "start_index": 33,
+                  "end_index": 33,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Exception Request Procedure",
+                  "node_id": "exception-request-procedure",
+                  "start_index": 34,
+                  "end_index": 34,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Exception Monitoring",
+                  "node_id": "exception-monitoring",
+                  "start_index": 35,
+                  "end_index": 35,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Technical Specifications",
+          "node_id": "technical-specifications",
+          "start_index": 36,
+          "end_index": 42,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Platform Requirements",
+              "node_id": "platform-requirements",
+              "start_index": 37,
+              "end_index": 37,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Architecture Constraints",
+              "node_id": "architecture-constraints",
+              "start_index": 38,
+              "end_index": 38,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Technology Standards",
+              "node_id": "technology-standards",
+              "start_index": 39,
+              "end_index": 39,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Configuration Specifications",
+              "node_id": "configuration-specifications",
+              "start_index": 40,
+              "end_index": 42,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Pipeline Configuration Template",
+                  "node_id": "pipeline-configuration-template",
+                  "start_index": 41,
+                  "end_index": 41,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Environment-Specific Configuration",
+                  "node_id": "environment-specific-configuration",
+                  "start_index": 42,
+                  "end_index": 42,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Implementation Guidelines",
+          "node_id": "implementation-guidelines",
+          "start_index": 43,
+          "end_index": 57,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Implementation Requirements",
+              "node_id": "implementation-requirements",
+              "start_index": 44,
+              "end_index": 48,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Phase 1: Foundation Setup (Weeks 1-2)",
+                  "node_id": "phase-1-foundation-setup-weeks-1-2",
+                  "start_index": 45,
+                  "end_index": 45,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Phase 2: Validation and Testing (Weeks 3-4)",
+                  "node_id": "phase-2-validation-and-testing-weeks-3-4",
+                  "start_index": 46,
+                  "end_index": 46,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Phase 3: Deployment Automation (Weeks 5-6)",
+                  "node_id": "phase-3-deployment-automation-weeks-5-6",
+                  "start_index": 47,
+                  "end_index": 47,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Phase 4: Monitoring and Optimization (Weeks 7-8)",
+                  "node_id": "phase-4-monitoring-and-optimization-weeks-7-8",
+                  "start_index": 48,
+                  "end_index": 48,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Validation Criteria",
+              "node_id": "validation-criteria",
+              "start_index": 49,
+              "end_index": 49,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Testing Requirements",
+              "node_id": "testing-requirements",
+              "start_index": 50,
+              "end_index": 55,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Unit Testing",
+                  "node_id": "unit-testing",
+                  "start_index": 51,
+                  "end_index": 51,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Integration Testing",
+                  "node_id": "integration-testing",
+                  "start_index": 52,
+                  "end_index": 52,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "End-to-End Testing",
+                  "node_id": "end-to-end-testing",
+                  "start_index": 53,
+                  "end_index": 53,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Performance Testing",
+                  "node_id": "performance-testing",
+                  "start_index": 54,
+                  "end_index": 54,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Security Testing",
+                  "node_id": "security-testing",
+                  "start_index": 55,
+                  "end_index": 55,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Documentation Requirements",
+              "node_id": "documentation-requirements",
+              "start_index": 56,
+              "end_index": 57,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Required Documentation",
+                  "node_id": "required-documentation",
+                  "start_index": 57,
+                  "end_index": 57,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Compliance and Governance",
+          "node_id": "compliance-and-governance",
+          "start_index": 58,
+          "end_index": 72,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Compliance Assessment",
+              "node_id": "compliance-assessment",
+              "start_index": 59,
+              "end_index": 61,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Assessment Criteria",
+                  "node_id": "assessment-criteria",
+                  "start_index": 60,
+                  "end_index": 60,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Assessment Process",
+                  "node_id": "assessment-process",
+                  "start_index": 61,
+                  "end_index": 61,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Monitoring Requirements",
+              "node_id": "monitoring-requirements",
+              "start_index": 62,
+              "end_index": 65,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Continuous Monitoring",
+                  "node_id": "continuous-monitoring",
+                  "start_index": 63,
+                  "end_index": 63,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Periodic Reviews",
+                  "node_id": "periodic-reviews",
+                  "start_index": 64,
+                  "end_index": 64,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Audit Logging",
+                  "node_id": "audit-logging",
+                  "start_index": 65,
+                  "end_index": 65,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Exception Handling",
+              "node_id": "exception-handling",
+              "start_index": 66,
+              "end_index": 68,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Exception Categories",
+                  "node_id": "exception-categories",
+                  "start_index": 67,
+                  "end_index": 67,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Exception Management Process",
+                  "node_id": "exception-management-process",
+                  "start_index": 68,
+                  "end_index": 68,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Governance Oversight",
+              "node_id": "governance-oversight",
+              "start_index": 69,
+              "end_index": 72,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Roles and Responsibilities",
+                  "node_id": "roles-and-responsibilities",
+                  "start_index": 70,
+                  "end_index": 70,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Governance Meetings",
+                  "node_id": "governance-meetings",
+                  "start_index": 71,
+                  "end_index": 71,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Continuous Improvement",
+                  "node_id": "continuous-improvement",
+                  "start_index": 72,
+                  "end_index": 72,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Examples and References",
+          "node_id": "examples-and-references",
+          "start_index": 73,
+          "end_index": 86,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Implementation Examples",
+              "node_id": "implementation-examples",
+              "start_index": 74,
+              "end_index": 77,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Example 1: Schema Deployment Pipeline",
+                  "node_id": "example-1-schema-deployment-pipeline",
+                  "start_index": 75,
+                  "end_index": 75,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Example 2: Connector Deployment with GitLab CI",
+                  "node_id": "example-2-connector-deployment-with-gitlab-ci",
+                  "start_index": 76,
+                  "end_index": 76,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Example 3: Multi-Component Deployment with GitHub Actions",
+                  "node_id": "example-3-multi-component-deployment-with-github-actions",
+                  "start_index": 77,
+                  "end_index": 77,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Reference Architectures",
+              "node_id": "reference-architectures",
+              "start_index": 78,
+              "end_index": 78,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Related Standards",
+              "node_id": "related-standards",
+              "start_index": 79,
+              "end_index": 79,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "External References",
+              "node_id": "external-references",
+              "start_index": 80,
+              "end_index": 86,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "CI/CD Platforms",
+                  "node_id": "cicd-platforms",
+                  "start_index": 81,
+                  "end_index": 81,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Lenses.io Integration",
+                  "node_id": "lensesio-integration",
+                  "start_index": 82,
+                  "end_index": 82,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Secret Management",
+                  "node_id": "secret-management",
+                  "start_index": 83,
+                  "end_index": 83,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Testing and Quality",
+                  "node_id": "testing-and-quality",
+                  "start_index": 84,
+                  "end_index": 84,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Monitoring and Observability",
+                  "node_id": "monitoring-and-observability",
+                  "start_index": 85,
+                  "end_index": 85,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Industry Standards and Best Practices",
+                  "node_id": "industry-standards-and-best-practices",
+                  "start_index": 86,
+                  "end_index": 86,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Change History",
+          "node_id": "change-history",
+          "start_index": 87,
+          "end_index": 87,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Review Log",
+          "node_id": "review-log",
+          "start_index": 88,
+          "end_index": 88,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#std-app-kmgmt-006-cicd-pipeline-integration]\n\n# STD-APP-KMGMT-006: CI/CD Pipeline Integration\n\n**[Home](../../../README.md)** > **[Standards](../../README.md)** > **[Application](../README.md)** > **[Kafka Management](README.md)** > **STD-APP-KMGMT-006**\n\n---\n\n---",
+    "2": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#executive-summary]\n\n## Executive Summary",
+    "3": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#purpose-statement]\n\n### Purpose Statement\n\nThis standard defines requirements and guidelines for integrating Lenses.io capabilities into CI/CD pipelines to enable automated deployment, testing, and validation of Kafka-related configurations and applications.",
+    "4": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#key-requirements]\n\n### Key Requirements\n\n- **Pipeline API Integration**: Configure Lenses.io REST API endpoints in CI/CD pipelines with service account authentication\n- **Schema Deployment Automation**: Automate schema validation, compatibility checking, and deployment\n- **Connector Deployment Pipeline**: Implement automated connector configuration and deployment\n- **Automated Testing**: Integrate consumer lag tests, schema compatibility tests, and performance validation\n- **Deployment Verification**: Implement post-deployment health checks\n- **Multi-Environment Promotion**: Automate configuration promotion across DEV → QA → PROD",
+    "5": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#business-rationale]\n\n### Business Rationale\n\n**Deployment Velocity**: CI/CD integration enables rapid Kafka deployments, reducing time-to-market from days to hours.\n\n**Quality Assurance**: Automated testing catches configuration errors before production, reducing incident rates.\n\n**Consistency**: Infrastructure-as-Code ensures identical configurations across environments.\n\n**Audit Trail**: Pipeline-based deployments provide complete audit trail supporting compliance requirements.",
+    "6": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#compliance-level]\n\n### Compliance Level\n\n**Guidance (Phase 3)**: Implementation planned for Months 7-9 after core platform and developer tools are established.\n\n---",
+    "7": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#table-of-contents]\n\n## Table of Contents\n\n- [1. Overview](#1-overview)\n- [2. Requirements](#2-requirements)\n- [3. Technical Specifications](#3-technical-specifications)\n- [4. Implementation Guidance](#4-implementation-guidance)\n- [5. Compliance and Governance](#5-compliance-and-governance)\n- [6. References](#6-references)\n- [7. Change History](#7-change-history)\n- [8. Review Log](#8-review-log)\n\n---",
+    "8": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#1-overview]\n\n## 1. Overview",
+    "9": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#11-purpose]\n\n### 1.1 Purpose\n\nThis standard defines requirements for integrating Lenses.io into CI/CD pipelines per [ADR-IFR-008](../../../decisions/infrastructure/ADR-IFR-008-kafka-management-platform-selection.md).",
+    "10": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#12-scope]\n\n### 1.2 Scope\n\n**In Scope**:\n- Pipeline automation, connector deployment, schema validation, automated testing\n\n**Out of Scope**:\n- CI/CD platform selection, source control standards, build tools",
+    "11": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#13-related-standards]\n\n### 1.3 Related Standards\n\n- [STD-APP-KMGMT-004: API Access](STD-APP-KMGMT-004-api-access.md)\n- [STD-APP-KMGMT-007: GitOps Workflows](STD-APP-KMGMT-007-gitops-workflows.md)\n\n---",
+    "12": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#standard-requirements]\n\n## Standard Requirements",
+    "13": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#guidance-requirements]\n\n### Guidance Requirements",
+    "14": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#req-cicd-001-pipeline-api-authentication]\n\n#### REQ-CICD-001: Pipeline API Authentication\n\n**Status**: Guidance (Phase 3)\n**Rationale**: Secure API access from CI/CD pipelines using service accounts\n\n**Requirements**:\n- Use Lenses.io service accounts (not individual user credentials)\n- Store API tokens in secure secret management systems (HashiCorp Vault, AWS Secrets Manager)\n- Implement token rotation every 90 days\n- Use separate service accounts per environment (DEV, QA, PROD)\n- Limit service account permissions to minimum required (principle of least privilege)\n\n**Implementation**:\n```yaml\n# Jenkins Pipeline Example\npipeline {\n    environment {\n        LENSES_TOKEN = credentials('lenses-api-token-prod')\n        LENSES_URL = 'https://lenses.company.com'\n    }\n    stages {\n        stage('Deploy Kafka Config') {\n            steps {\n                sh '''\n                    curl -X POST ${LENSES_URL}/api/v1/schemas \\\n                      -H \"Authorization: Bearer ${LENSES_TOKEN}\" \\\n                      -H \"Content-Type: application/json\" \\\n                      -d @schema.json\n                '''\n            }\n        }\n    }\n}\n```\n\n**Validation**:\n- No hardcoded tokens in pipeline code\n- Tokens retrieved from secure storage\n- API calls return 401 for expired tokens\n- Audit logs show service account activity\n\n---",
+    "15": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#req-cicd-002-schema-deployment-automation]\n\n#### REQ-CICD-002: Schema Deployment Automation\n\n**Status**: Guidance (Phase 3)\n**Rationale**: Automate schema lifecycle management to prevent manual errors\n\n**Requirements**:\n- Schema definitions stored in Git repository\n- Automated compatibility checking before deployment\n- Schema versioning follows semantic versioning\n- Automated rollback capability for schema changes\n- Schema deployment integrated with application deployment\n\n**Implementation**:\n```bash\n#!/bin/bash\n# Schema deployment script\n\nSCHEMA_FILE=$1\nENVIRONMENT=$2\n\n# Validate schema syntax\nlenses-cli schema validate --file ${SCHEMA_FILE}\n\n# Check compatibility\nlenses-cli schema compatibility \\\n  --file ${SCHEMA_FILE} \\\n  --subject ${SUBJECT_NAME} \\\n  --environment ${ENVIRONMENT}\n\n# Deploy if compatible\nif [ $? -eq 0 ]; then\n    lenses-cli schema deploy \\\n      --file ${SCHEMA_FILE} \\\n      --environment ${ENVIRONMENT}\nelse\n    echo \"Schema compatibility check failed\"\n    exit 1\nfi\n```\n\n**Validation**:\n- All schemas deployed via pipeline (no manual deployments)\n- Schema compatibility violations block deployment\n- Schema versions tracked in Git\n- Rollback tested and documented\n\n---",
+    "16": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#req-cicd-003-connector-deployment-pipeline]\n\n#### REQ-CICD-003: Connector Deployment Pipeline\n\n**Status**: Guidance (Phase 3)\n**Rationale**: Standardize connector deployment across environments\n\n**Requirements**:\n- Connector configurations stored as JSON/YAML in Git\n- Environment-specific configuration overlays\n- Pre-deployment validation (connector plugin availability, configuration validity)\n- Health checks after deployment\n- Automated rollback on deployment failure\n\n**Implementation**:\n```yaml\n# GitLab CI Example\ndeploy_connector:\n  stage: deploy\n  script:\n    - |\n      # Validate connector configuration\n      lenses-cli connector validate \\\n        --config connector.json\n\n      # Deploy connector\n      lenses-cli connector create \\\n        --config connector.json \\\n        --environment $CI_ENVIRONMENT_NAME\n\n      # Health check\n      sleep 10\n      STATUS=$(lenses-cli connector status \\\n        --name $CONNECTOR_NAME)\n\n      if [ \"$STATUS\" != \"RUNNING\" ]; then\n        echo \"Connector deployment failed\"\n        exit 1\n      fi\n  only:\n    - main\n\n```\n\n**Validation**:\n- Connector configurations version-controlled\n- Invalid configurations rejected before deployment\n- Failed deployments trigger rollback\n- Connector health verified post-deployment\n\n---",
+    "17": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#req-cicd-004-automated-testing-integration]\n\n#### REQ-CICD-004: Automated Testing Integration\n\n**Status**: Guidance (Phase 3)\n**Rationale**: Catch issues before production deployment\n\n**Requirements**:\n- Schema compatibility tests in pipeline\n- Consumer lag monitoring tests\n- Topic configuration validation tests\n- Connector health check tests\n- Performance baseline validation\n\n**Test Categories**:\n\n1. **Schema Tests**:\n   - Backward compatibility validation\n   - Forward compatibility validation\n   - Schema evolution rules compliance\n\n2. **Configuration Tests**:\n   - Topic configuration validation (partitions, retention, replication factor)\n   - ACL validation\n   - Connector configuration validation\n\n3. **Integration Tests**:\n   - Producer/consumer connectivity tests\n   - Message serialization/deserialization tests\n   - End-to-end message flow tests\n\n**Implementation**:\n```python\n# Python test example using pytest\nimport pytest\nfrom lenses_client import LensesClient\n\ndef test_schema_compatibility():\n    client = LensesClient(url=LENSES_URL, token=API_TOKEN)\n\n    # Test schema compatibility\n    result = client.schema_compatibility_check(\n        subject=\"test-value\",\n        schema=new_schema\n    )\n\n    assert result.is_compatible, \"Schema compatibility check failed\"\n\ndef test_consumer_lag_threshold():\n    client = LensesClient(url=LENSES_URL, token=API_TOKEN)\n\n    # Check consumer lag\n    lag = client.get_consumer_lag(\n        group_id=\"test-consumer-group\"\n    )\n\n    assert lag < 1000, f\"Consumer lag too high: {lag}\"\n```\n\n**Validation**:\n- All tests pass before deployment\n- Test failures block pipeline progression\n- Test results archived for audit\n- Tests run in all environments\n\n---",
+    "18": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#req-cicd-005-deployment-verification]\n\n#### REQ-CICD-005: Deployment Verification\n\n**Status**: Guidance (Phase 3)\n**Rationale**: Ensure deployments successful before marking complete\n\n**Requirements**:\n- Post-deployment health checks for all components\n- Smoke tests to verify basic functionality\n- Rollback triggers for failed verification\n- Notification on deployment success/failure\n- Deployment metrics collected and reported\n\n**Verification Steps**:\n\n1. **Schema Verification**:\n   - Schema registered in Schema Registry\n   - Schema version incremented correctly\n   - Schema accessible to consumers\n\n2. **Connector Verification**:\n   - Connector in RUNNING state\n   - Tasks assigned and running\n   - No error messages in logs\n   - Data flowing through connector\n\n3. **Topic Verification**:\n   - Topic exists with correct configuration\n   - Partitions match specification\n   - Retention policy correctly set\n   - ACLs properly configured\n\n**Implementation**:\n```bash\n#!/bin/bash\n# Post-deployment verification script\n\nverify_deployment() {\n    COMPONENT=$1\n\n    case $COMPONENT in\n        \"schema\")\n            # Verify schema registration\n            lenses-cli schema get --subject $SUBJECT_NAME\n            ;;\n        \"connector\")\n            # Verify connector status\n            STATUS=$(lenses-cli connector status --name $CONNECTOR_NAME)\n            if [ \"$STATUS\" != \"RUNNING\" ]; then\n                echo \"Connector verification failed\"\n                return 1\n            fi\n            ;;\n        \"topic\")\n            # Verify topic configuration\n            lenses-cli topic describe --name $TOPIC_NAME\n            ;;\n    esac\n\n    return 0\n}\n\n# Run verification\nverify_deployment $DEPLOYMENT_TYPE\nif [ $? -ne 0 ]; then\n    echo \"Deployment verification failed, initiating rollback\"\n    ./rollback.sh\n    exit 1\nfi\n```\n\n**Validation**:\n- All deployments include verification step\n- Failed verifications trigger rollback\n- Verification results logged\n- Manual override requires approval\n\n---",
+    "19": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#req-cicd-006-multi-environment-promotion]\n\n#### REQ-CICD-006: Multi-Environment Promotion\n\n**Status**: Guidance (Phase 3)\n**Rationale**: Ensure consistent deployments across environments\n\n**Requirements**:\n- Standardized promotion path: DEV → QA → PROD\n- Approval gates between environments\n- Environment-specific configuration management\n- Automated promotion after successful validation\n- Audit trail of all promotions\n\n**Promotion Workflow**:\n\n1. **DEV Deployment**: Automated on merge to develop branch\n2. **QA Deployment**: Automated after DEV validation, requires QA approval\n3. **PROD Deployment**: Manual trigger after QA approval, requires Change Management approval\n\n**Implementation**:\n```yaml\n# GitHub Actions Example\nname: Multi-Environment Deployment\n\non:\n  push:\n    branches: [develop, main]\n\njobs:\n  deploy-dev:\n    if: github.ref == 'refs/heads/develop'\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v2\n      - name: Deploy to DEV\n        run: ./deploy.sh dev\n      - name: Run DEV tests\n        run: ./test.sh dev\n\n  deploy-qa:\n    needs: deploy-dev\n    if: github.ref == 'refs/heads/develop'\n    environment: qa-approval\n    runs-on: ubuntu-latest\n    steps:\n      - name: Deploy to QA\n        run: ./deploy.sh qa\n      - name: Run QA tests\n        run: ./test.sh qa\n\n  deploy-prod:\n    if: github.ref == 'refs/heads/main'\n    environment: production\n    runs-on: ubuntu-latest\n    steps:\n      - name: Deploy to PROD\n        run: ./deploy.sh prod\n      - name: Verify PROD deployment\n        run: ./verify.sh prod\n```\n\n**Validation**:\n- Promotions follow defined path\n- Required approvals obtained\n- Configuration differences validated\n- Promotion audit trail maintained\n\n---",
+    "20": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#req-cicd-007-rollback-capability]\n\n#### REQ-CICD-007: Rollback Capability\n\n**Status**: Guidance (Phase 3)\n**Rationale**: Enable rapid recovery from failed deployments\n\n**Requirements**:\n- Rollback procedures documented for all deployment types\n- Automated rollback triggers for critical failures\n- Version tagging in Git for rollback points\n- Rollback tested regularly (at least quarterly)\n- Maximum rollback time: 15 minutes\n\n**Rollback Scenarios**:\n\n1. **Schema Rollback**: Restore previous schema version\n2. **Connector Rollback**: Revert to previous connector configuration\n3. **Topic Configuration Rollback**: Restore previous topic settings\n4. **Application Rollback**: Revert to previous application version\n\n**Implementation**:\n```bash\n#!/bin/bash\n# Rollback script\n\nCOMPONENT=$1\nPREVIOUS_VERSION=$2\n\nrollback_component() {\n    case $COMPONENT in\n        \"schema\")\n            # Rollback schema to previous version\n            lenses-cli schema rollback \\\n              --subject $SUBJECT_NAME \\\n              --version $PREVIOUS_VERSION\n            ;;\n        \"connector\")\n            # Delete failed connector and redeploy previous version\n            lenses-cli connector delete --name $CONNECTOR_NAME\n            git checkout $PREVIOUS_VERSION -- connector.json\n            lenses-cli connector create --config connector.json\n            ;;\n        \"topic\")\n            # Restore topic configuration\n            git checkout $PREVIOUS_VERSION -- topic-config.yaml\n            lenses-cli topic update --config topic-config.yaml\n            ;;\n    esac\n}\n\nrollback_component\nverify_rollback\n```\n\n**Validation**:\n- Rollback procedures tested successfully\n- Rollback completed within time limit\n- System functionality restored after rollback\n- Rollback events logged and audited\n\n---",
+    "21": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#req-cicd-008-secret-management-integration]\n\n#### REQ-CICD-008: Secret Management Integration\n\n**Status**: Guidance (Phase 3)\n**Rationale**: Secure handling of credentials and sensitive data\n\n**Requirements**:\n- No secrets in Git repositories\n- Secrets stored in approved secret management systems\n- Secret rotation automated where possible\n- Access to secrets logged and audited\n- Separate secrets per environment\n\n**Approved Secret Management Systems**:\n- HashiCorp Vault (Primary)\n- AWS Secrets Manager\n- Azure Key Vault\n- GitLab CI/CD Variables (encrypted)\n- Jenkins Credentials Plugin\n\n**Implementation**:\n```groovy\n// Jenkins Pipeline with Vault integration\npipeline {\n    agent any\n\n    environment {\n        VAULT_ADDR = 'https://vault.company.com'\n        VAULT_NAMESPACE = 'kafka'\n    }\n\n    stages {\n        stage('Retrieve Secrets') {\n            steps {\n                script {\n                    def secrets = [\n                        [\n                            path: 'secret/kafka/lenses-prod',\n                            secretValues: [\n                                [envVar: 'LENSES_TOKEN', vaultKey: 'api_token'],\n                                [envVar: 'KAFKA_PASSWORD', vaultKey: 'kafka_password']\n                            ]\n                        ]\n                    ]\n\n                    withVault([vaultSecrets: secrets]) {\n                        sh 'deploy.sh'\n                    }\n                }\n            }\n        }\n    }\n}\n```\n\n**Validation**:\n- No secrets in pipeline code or Git\n- Secrets retrieved from approved systems\n- Secret access logged\n- Expired secrets detected and flagged\n\n---",
+    "22": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#req-cicd-009-pipeline-monitoring-and-alerting]\n\n#### REQ-CICD-009: Pipeline Monitoring and Alerting\n\n**Status**: Guidance (Phase 3)\n**Rationale**: Visibility into pipeline execution and failures\n\n**Requirements**:\n- Pipeline execution metrics collected\n- Failed pipeline alerts sent to responsible teams\n- Pipeline performance dashboards\n- Audit logs for all pipeline executions\n- Integration with incident management systems\n\n**Monitoring Metrics**:\n- Pipeline success/failure rate\n- Average deployment duration\n- Time to rollback\n- Number of approval gate rejections\n- Failed test frequency\n\n**Implementation**:\n```yaml\n# Prometheus metrics integration\nmetrics:\n  - name: kafka_pipeline_duration_seconds\n    type: histogram\n    help: Duration of Kafka deployment pipelines\n\n  - name: kafka_pipeline_failures_total\n    type: counter\n    help: Total number of failed Kafka deployments\n\n  - name: kafka_rollback_total\n    type: counter\n    help: Total number of rollbacks executed\n\n# Alerting rules\nalerts:\n  - name: HighPipelineFailureRate\n    expr: rate(kafka_pipeline_failures_total[5m]) > 0.1\n    severity: warning\n    annotations:\n      summary: \"High Kafka pipeline failure rate\"\n\n  - name: SlowDeployment\n    expr: kafka_pipeline_duration_seconds > 600\n    severity: warning\n    annotations:\n      summary: \"Kafka deployment taking longer than expected\"\n```\n\n**Validation**:\n- Metrics collected for all pipeline runs\n- Alerts triggered for failures\n- Dashboards accessible to teams\n- Audit logs retained per policy\n\n---",
+    "23": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#req-cicd-010-documentation-integration]\n\n#### REQ-CICD-010: Documentation Integration\n\n**Status**: Guidance (Phase 3)\n**Rationale**: Maintain up-to-date documentation of deployed configurations\n\n**Requirements**:\n- Deployment documentation auto-generated from pipeline runs\n- Configuration changes documented in release notes\n- Runbooks updated automatically\n- Confluence/Wiki integration for documentation publishing\n- Change history maintained\n\n**Documentation Artifacts**:\n- Deployment manifests\n- Configuration files\n- Test results\n- Approval records\n- Rollback procedures\n\n**Implementation**:\n```python\n# Documentation generation script\nimport json\nfrom datetime import datetime\n\ndef generate_deployment_doc(deployment_data):\n    \"\"\"Generate deployment documentation\"\"\"\n\n    doc = f\"\"\"\n# Deployment Report\n**Date**: {datetime.now().isoformat()}\n**Environment**: {deployment_data['environment']}\n**Version**: {deployment_data['version']}\n**Status**: {deployment_data['status']}\n\n## Components Deployed\n{format_components(deployment_data['components'])}\n\n## Configuration Changes\n{format_config_changes(deployment_data['changes'])}\n\n## Test Results\n{format_test_results(deployment_data['tests'])}\n\n## Approvals\n{format_approvals(deployment_data['approvals'])}\n\"\"\"\n\n    return doc\n\n# Publish to Confluence\npublish_to_confluence(\n    space_key=\"KAFKA\",\n    page_title=f\"Deployment {deployment_id}\",\n    content=generate_deployment_doc(deployment_data)\n)\n```\n\n**Validation**:\n- Documentation generated for all deployments\n- Documentation accessible to stakeholders\n- Historical records maintained\n- Documentation searchable\n\n---",
+    "24": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#recommended-practices]\n\n### Recommended Practices\n\n1. **Use Declarative Configuration**: Store all Kafka configurations as code (topics, schemas, connectors, ACLs)\n2. **Implement Blue-Green Deployments**: Where possible, use blue-green deployment strategies for zero-downtime updates\n3. **Version Everything**: Tag all deployments with semantic versions for traceability\n4. **Test in Production-Like Environments**: Ensure QA environment mirrors production\n5. **Automate Everything**: Minimize manual steps to reduce human error\n6. **Monitor Pipeline Performance**: Track and optimize pipeline execution times\n7. **Use Pipeline Templates**: Standardize pipeline structure across projects\n8. **Implement Progressive Rollouts**: Deploy to subsets of consumers/partitions first\n9. **Maintain Deployment Runbooks**: Document manual intervention procedures\n10. **Review Pipeline Metrics**: Regular review of deployment success rates and performance\n\n---",
+    "25": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#prohibited-practices]\n\n### Prohibited Practices",
+    "26": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#direct-production-deployments]\n\n#### Direct Production Deployments\n\n**Prohibition**: Deploying directly to production without going through CI/CD pipeline\n**Rationale**: Bypasses automated testing, approval gates, and audit trails\n**Impact**: Increased risk of errors, compliance violations, inability to rollback\n**Exception Process**: Emergency changes only, with post-facto review and documentation",
+    "27": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#hardcoded-credentials]\n\n#### Hardcoded Credentials\n\n**Prohibition**: Storing API tokens, passwords, or other credentials in pipeline code or Git repositories\n**Rationale**: Security vulnerability, credential exposure in version control history\n**Impact**: Security breaches, unauthorized access, compliance violations\n**Exception Process**: No exceptions - use secret management systems",
+    "28": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#skipping-automated-tests]\n\n#### Skipping Automated Tests\n\n**Prohibition**: Deploying without running full automated test suite\n**Rationale**: Increases risk of deploying broken configurations or incompatible changes\n**Impact**: Production incidents, service degradation, customer impact\n**Exception Process**: Requires VP-level approval and documented risk assessment",
+    "29": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#manual-configuration-changes]\n\n#### Manual Configuration Changes\n\n**Prohibition**: Making configuration changes outside of CI/CD pipeline\n**Rationale**: Creates configuration drift, undocumented changes, audit trail gaps\n**Impact**: Inconsistent environments, difficult troubleshooting, compliance issues\n**Exception Process**: Emergency only, with immediate pipeline update to match manual change",
+    "30": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#production-credentials-in-non-production]\n\n#### Production Credentials in Non-Production\n\n**Prohibition**: Using production credentials or secrets in DEV/QA environments\n**Rationale**: Risk of accidental production impact, security exposure\n**Impact**: Data corruption, unauthorized production access, audit findings\n**Exception Process**: No exceptions allowed",
+    "31": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#destructive-operations-without-safeguards]\n\n#### Destructive Operations Without Safeguards\n\n**Prohibition**: Running delete operations (topics, schemas, connectors) without confirmation and rollback plan\n**Rationale**: Risk of data loss and service disruption\n**Impact**: Permanent data loss, extended outages, customer impact\n**Exception Process**: Requires documented approval and tested recovery procedure\n\n---",
+    "32": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#exceptions-process]\n\n### Exceptions Process",
+    "33": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#when-to-request-an-exception]\n\n#### When to Request an Exception\n\nExceptions may be granted for:\n- **Emergency Deployments**: Critical production fixes requiring expedited deployment\n- **Temporary Process Bypasses**: Short-term deviations during system migrations or upgrades\n- **Testing New Capabilities**: Experimental features not yet in standard pipeline\n- **Legacy System Limitations**: Technical constraints preventing standard pipeline use",
+    "34": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#exception-request-procedure]\n\n#### Exception Request Procedure\n\n1. **Submit ServiceNow Request**:\n   - Category: \"CI/CD Pipeline Exception\"\n   - Include: Business justification, duration, risk assessment, mitigation plan\n\n2. **Provide Documentation**:\n   - Explain why standard pipeline insufficient\n   - Document alternative deployment approach\n   - Specify scope and duration of exception\n   - Include rollback plan\n\n3. **Technical Review**:\n   - Platform Engineering reviews technical feasibility\n   - DevOps reviews pipeline impact\n   - Security reviews compliance implications\n\n4. **Approval Authority**:\n   - **Emergency (<24 hours)**: Platform Engineering Manager + On-Call Architect\n   - **Short-term (<30 days)**: Chief Architect + Director of Engineering\n   - **Extended (>30 days)**: Architecture Review Board + CTO (rare)",
+    "35": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#exception-monitoring]\n\n#### Exception Monitoring\n\n- All active exceptions tracked in governance dashboard\n- Monthly exception review by Platform Engineering\n- Exceptions automatically expire unless renewed\n- Repeat exceptions trigger process improvement initiatives\n- Compliance violations result in immediate revocation\n\n---",
+    "36": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#technical-specifications]\n\n## Technical Specifications",
+    "37": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#platform-requirements]\n\n### Platform Requirements\n\n**CI/CD Platform Support**:\n\n| Platform | Version | Integration Method | Support Level |\n|----------|---------|-------------------|---------------|\n| **Jenkins** | ≥ 2.300 | Lenses CLI + REST API | Fully Supported |\n| **GitLab CI** | ≥ 14.0 | Lenses CLI + REST API | Fully Supported |\n| **GitHub Actions** | Latest | Lenses CLI + REST API | Fully Supported |\n| **Azure DevOps** | Latest | Lenses CLI + REST API | Supported |\n| **CircleCI** | ≥ 2.1 | Lenses CLI + REST API | Supported |\n\n**Required Tooling**:\n\n| Tool | Version | Purpose | Installation |\n|------|---------|---------|--------------|\n| **Lenses CLI** | ≥ 5.0 | Command-line operations | Package manager or direct download |\n| **curl/httpie** | Latest | REST API calls | Pre-installed on most CI runners |\n| **jq** | ≥ 1.6 | JSON processing | Package manager |\n| **git** | ≥ 2.30 | Version control | Pre-installed on most CI runners |\n| **Docker** | ≥ 20.10 | Container-based deployments | CI platform dependent |\n\n**Service Account Requirements**:\n- Dedicated service account per CI/CD platform\n- API token with appropriate permissions scoped by environment\n- Token stored in approved secret management system\n- Minimum permissions: Topic read, Schema read/write, Connector deploy",
+    "38": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#architecture-constraints]\n\n### Architecture Constraints\n\n**Pipeline Architecture**:\n\n```\n┌─────────────────────────────────────────────────────────────┐\n│                     Git Repository                          │\n│  (Source of Truth for Kafka Configurations)                │\n└─────────────────────┬───────────────────────────────────────┘\n                      │\n                      ├─ schemas/\n                      ├─ connectors/\n                      ├─ topics/\n                      └─ acls/\n                      │\n                      ▼\n┌─────────────────────────────────────────────────────────────┐\n│                   CI/CD Pipeline                            │\n│  ┌───────────┐  ┌───────────┐  ┌───────────┐              │\n│  │ Validate  │─▶│   Test    │─▶│  Deploy   │              │\n│  └───────────┘  └───────────┘  └───────────┘              │\n│       │              │               │                       │\n│       ▼              ▼               ▼                       │\n│  Lint & Check   Unit Tests    Environment-Specific         │\n│  Syntax         Integration     Configuration               │\n│  Validate       Schema Test     Deployment                  │\n└─────────────────────┬───────────────────────────────────────┘\n                      │\n                      ▼\n┌─────────────────────────────────────────────────────────────┐\n│               Lenses.io Platform                            │\n│  ┌─────────────┐  ┌──────────────┐  ┌─────────────┐       │\n│  │  Schema     │  │  Connectors  │  │   Topics    │       │\n│  │  Registry   │  │              │  │             │       │\n│  └─────────────┘  └──────────────┘  └─────────────┘       │\n└─────────────────────┬───────────────────────────────────────┘\n                      │\n                      ▼\n┌─────────────────────────────────────────────────────────────┐\n│                  Kafka Cluster                              │\n└─────────────────────────────────────────────────────────────┘\n```\n\n**Security Constraints**:\n- All pipeline runs must be authenticated and authorized\n- No secrets in Git repositories or pipeline logs\n- Audit logging enabled for all API calls\n- Network access restricted to approved CI/CD IPs\n- TLS encryption required for all API communication\n\n**Performance Constraints**:\n- Maximum pipeline execution time: 30 minutes per deployment\n- API rate limits: 100 requests/minute per service account\n- Concurrent deployments limited to 3 per environment\n- Schema operations timeout: 60 seconds\n- Connector deployment timeout: 5 minutes\n\n**Availability Constraints**:\n- Pipeline failures must not impact running Kafka infrastructure\n- Failed deployments must rollback automatically\n- Critical deployments require manual approval gate\n- Off-hours deployment windows for production (configurable)",
+    "39": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#technology-standards]\n\n### Technology Standards\n\n**Approved Integration Patterns**:\n\n1. **CLI-Based Integration** (Recommended):\n   - Use Lenses CLI for all operations\n   - Supports all Lenses.io capabilities\n   - Consistent across CI/CD platforms\n   - Built-in error handling and retries\n\n2. **REST API Integration**:\n   - Direct API calls using curl/httpie\n   - Suitable for custom automation\n   - Requires manual error handling\n   - Use for capabilities not in CLI\n\n3. **SDK Integration** (Python/Java):\n   - For complex orchestration logic\n   - Better type safety and validation\n   - Suitable for custom testing frameworks\n   - Requires additional dependencies\n\n**Configuration File Formats**:\n\n| Format | Use Case | Validation Tool | Version Control |\n|--------|----------|-----------------|-----------------|\n| **JSON** | Schemas, Connectors | `jq`, `jsonlint` | Git |\n| **YAML** | Topics, ACLs, Pipeline Config | `yamllint` | Git |\n| **Avro** | Schema Definitions | Avro tools | Git |\n| **Properties** | Legacy Connector Configs | Custom scripts | Git (transitioning) |\n\n**Version Control Standards**:\n- All configuration files in Git\n- Semantic versioning for releases (MAJOR.MINOR.PATCH)\n- Branch protection on main/production branches\n- Mandatory pull request reviews before merge\n- Signed commits required for production deployments",
+    "40": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#configuration-specifications]\n\n### Configuration Specifications",
+    "41": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#pipeline-configuration-template]\n\n#### Pipeline Configuration Template\n\n**Jenkins Declarative Pipeline**:\n```groovy\npipeline {\n    agent {\n        docker {\n            image 'lensesio/lenses-cli:5.0'\n        }\n    }\n\n    parameters {\n        choice(name: 'ENVIRONMENT', choices: ['dev', 'qa', 'prod'], description: 'Target environment')\n        booleanParam(name: 'DRY_RUN', defaultValue: true, description: 'Perform dry run')\n    }\n\n    environment {\n        LENSES_TOKEN = credentials(\"lenses-token-${params.ENVIRONMENT}\")\n        LENSES_URL = \"${env.LENSES_URL_MAP[params.ENVIRONMENT]}\"\n    }\n\n    stages {\n        stage('Validate') {\n            steps {\n                script {\n                    sh 'lenses-cli schema validate --directory schemas/'\n                    sh 'lenses-cli connector validate --directory connectors/'\n                }\n            }\n        }\n\n        stage('Test') {\n            steps {\n                sh 'pytest tests/schema_tests.py'\n                sh 'pytest tests/integration_tests.py'\n            }\n        }\n\n        stage('Deploy') {\n            when {\n                expression { params.DRY_RUN == false }\n            }\n            steps {\n                script {\n                    sh \"\"\"\n                        lenses-cli schema deploy \\\n                          --directory schemas/ \\\n                          --environment ${params.ENVIRONMENT}\n                    \"\"\"\n\n                    sh \"\"\"\n                        lenses-cli connector deploy \\\n                          --directory connectors/ \\\n                          --environment ${params.ENVIRONMENT}\n                    \"\"\"\n                }\n            }\n        }\n\n        stage('Verify') {\n            steps {\n                sh './scripts/verify-deployment.sh ${params.ENVIRONMENT}'\n            }\n        }\n    }\n\n    post {\n        failure {\n            script {\n                sh './scripts/rollback.sh ${params.ENVIRONMENT}'\n                emailext(\n                    to: 'kafka-team@company.com',\n                    subject: \"Kafka Deployment Failed: ${env.JOB_NAME}\",\n                    body: \"Deployment to ${params.ENVIRONMENT} failed. Rollback executed.\"\n                )\n            }\n        }\n        success {\n            emailext(\n                to: 'kafka-team@company.com',\n                subject: \"Kafka Deployment Successful: ${env.JOB_NAME}\",\n                body: \"Deployment to ${params.ENVIRONMENT} completed successfully.\"\n            )\n        }\n    }\n}\n```\n\n**GitLab CI Configuration**:\n```yaml\nvariables:\n  LENSES_CLI_VERSION: \"5.0\"\n\nstages:\n  - validate\n  - test\n  - deploy-dev\n  - deploy-qa\n  - deploy-prod\n\n.lenses_template:\n  image: lensesio/lenses-cli:${LENSES_CLI_VERSION}\n  before_script:\n    - export LENSES_URL=${LENSES_URL}\n    - export LENSES_TOKEN=${LENSES_TOKEN}\n\nvalidate:\n  extends: .lenses_template\n  stage: validate\n  script:\n    - lenses-cli schema validate --directory schemas/\n    - lenses-cli connector validate --directory connectors/\n    - yamllint topics/*.yaml\n  only:\n    - merge_requests\n    - main\n\ntest:\n  extends: .lenses_template\n  stage: test\n  script:\n    - pip install pytest\n    - pytest tests/\n  only:\n    - merge_requests\n    - main\n\ndeploy-dev:\n  extends: .lenses_template\n  stage: deploy-dev\n  environment: development\n  variables:\n    LENSES_URL: $DEV_LENSES_URL\n    LENSES_TOKEN: $DEV_LENSES_TOKEN\n  script:\n    - ./scripts/deploy.sh dev\n    - ./scripts/verify.sh dev\n  only:\n    - develop\n\ndeploy-qa:\n  extends: .lenses_template\n  stage: deploy-qa\n  environment: qa\n  variables:\n    LENSES_URL: $QA_LENSES_URL\n    LENSES_TOKEN: $QA_LENSES_TOKEN\n  script:\n    - ./scripts/deploy.sh qa\n    - ./scripts/verify.sh qa\n  when: manual\n  only:\n    - main\n\ndeploy-prod:\n  extends: .lenses_template\n  stage: deploy-prod\n  environment: production\n  variables:\n    LENSES_URL: $PROD_LENSES_URL\n    LENSES_TOKEN: $PROD_LENSES_TOKEN\n  script:\n    - ./scripts/deploy.sh prod\n    - ./scripts/verify.sh prod\n  when: manual\n  only:\n    - main\n  rules:\n    - if: '$CI_COMMIT_TAG =~ /^v[0-9]+\\.[0-9]+\\.[0-9]+$/'\n```\n\n**GitHub Actions Workflow**:\n```yaml\nname: Kafka Infrastructure Deployment\n\non:\n  push:\n    branches: [develop, main]\n  pull_request:\n    branches: [develop, main]\n\njobs:\n  validate:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v3\n\n      - name: Setup Lenses CLI\n        run: |\n          curl -L https://downloads.lenses.io/lenses-cli/5.0/lenses-cli-linux-amd64.tar.gz | tar xz\n          sudo mv lenses-cli /usr/local/bin/\n\n      - name: Validate Schemas\n        run: lenses-cli schema validate --directory schemas/\n\n      - name: Validate Connectors\n        run: lenses-cli connector validate --directory connectors/\n\n      - name: Lint YAML\n        uses: ibiqlik/action-yamllint@v3\n        with:\n          file_or_dir: topics/\n\n  test:\n    needs: validate\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v3\n\n      - name: Set up Python\n        uses: actions/setup-python@v4\n        with:\n          python-version: '3.9'\n\n      - name: Install dependencies\n        run: |\n          pip install pytest lenses-python-client\n\n      - name: Run tests\n        run: pytest tests/\n\n  deploy-dev:\n    needs: test\n    if: github.ref == 'refs/heads/develop'\n    runs-on: ubuntu-latest\n    environment: development\n    steps:\n      - uses: actions/checkout@v3\n\n      - name: Deploy to DEV\n        env:\n          LENSES_URL: ${{ secrets.DEV_LENSES_URL }}\n          LENSES_TOKEN: ${{ secrets.DEV_LENSES_TOKEN }}\n        run: |\n          ./scripts/deploy.sh dev\n          ./scripts/verify.sh dev\n\n  deploy-prod:\n    needs: test\n    if: github.ref == 'refs/heads/main'\n    runs-on: ubuntu-latest\n    environment: production\n    steps:\n      - uses: actions/checkout@v3\n\n      - name: Deploy to PROD\n        env:\n          LENSES_URL: ${{ secrets.PROD_LENSES_URL }}\n          LENSES_TOKEN: ${{ secrets.PROD_LENSES_TOKEN }}\n        run: |\n          ./scripts/deploy.sh prod\n          ./scripts/verify.sh prod\n```",
+    "42": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#environment-specific-configuration]\n\n#### Environment-Specific Configuration\n\n**Configuration Overlay Pattern**:\n```\nconfig/\n├── base/                    # Base configuration\n│   ├── schema.json\n│   └── connector.json\n├── overlays/\n│   ├── dev/                # DEV-specific overrides\n│   │   ├── schema.json\n│   │   └── connector.json\n│   ├── qa/                 # QA-specific overrides\n│   │   ├── schema.json\n│   │   └── connector.json\n│   └── prod/               # PROD-specific overrides\n│       ├── schema.json\n│       └── connector.json\n└── scripts/\n    └── merge-config.sh     # Merge base + overlay\n```\n\n**Configuration Merging Script**:\n```bash\n#!/bin/bash\n# merge-config.sh - Merge base config with environment overlay\n\nENVIRONMENT=$1\nBASE_DIR=\"config/base\"\nOVERLAY_DIR=\"config/overlays/${ENVIRONMENT}\"\nOUTPUT_DIR=\"build/${ENVIRONMENT}\"\n\nmkdir -p ${OUTPUT_DIR}\n\n# Merge JSON configurations\nfor config in ${BASE_DIR}/*.json; do\n    filename=$(basename ${config})\n    overlay=\"${OVERLAY_DIR}/${filename}\"\n    output=\"${OUTPUT_DIR}/${filename}\"\n\n    if [ -f \"${overlay}\" ]; then\n        # Merge base + overlay using jq\n        jq -s '.[0] * .[1]' ${config} ${overlay} > ${output}\n    else\n        # No overlay, use base\n        cp ${config} ${output}\n    fi\ndone\n\necho \"Configuration for ${ENVIRONMENT} generated in ${OUTPUT_DIR}\"\n```\n\n---",
+    "43": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#implementation-guidelines]\n\n## Implementation Guidelines",
+    "44": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#implementation-requirements]\n\n### Implementation Requirements",
+    "45": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#phase-1-foundation-setup-weeks-1-2]\n\n#### Phase 1: Foundation Setup (Weeks 1-2)\n\n**Objective**: Establish basic CI/CD infrastructure for Kafka deployments\n\n**Tasks**:\n1. **Install Lenses CLI** on CI/CD runners\n   ```bash\n   # Jenkins agent setup\n   curl -L https://downloads.lenses.io/lenses-cli/5.0/lenses-cli-linux-amd64.tar.gz | tar xz\n   sudo mv lenses-cli /usr/local/bin/\n   lenses-cli --version\n   ```\n\n2. **Create Service Accounts**:\n   - Request service accounts via ServiceNow\n   - One account per environment (DEV, QA, PROD)\n   - Document permissions granted\n   - Store API tokens in secret management system\n\n3. **Configure Secret Management**:\n   - Set up HashiCorp Vault integration OR\n   - Configure cloud secret manager (AWS Secrets Manager, Azure Key Vault)\n   - Create secret paths for each environment\n   - Test secret retrieval from pipeline\n\n4. **Create Repository Structure**:\n   ```\n   kafka-infrastructure/\n   ├── .github/workflows/      # GitHub Actions (if applicable)\n   ├── .gitlab-ci.yml          # GitLab CI (if applicable)\n   ├── Jenkinsfile             # Jenkins (if applicable)\n   ├── schemas/\n   │   ├── dev/\n   │   ├── qa/\n   │   └── prod/\n   ├── connectors/\n   │   ├── dev/\n   │   ├── qa/\n   │   └── prod/\n   ├── topics/\n   │   ├── base/\n   │   └── overlays/\n   ├── scripts/\n   │   ├── deploy.sh\n   │   ├── verify.sh\n   │   ├── rollback.sh\n   │   └── test.sh\n   └── tests/\n       ├── schema_tests.py\n       ├── connector_tests.py\n       └── integration_tests.py\n   ```\n\n5. **Implement Basic Pipeline**:\n   - Create simple validation pipeline\n   - Test API connectivity\n   - Validate configuration file syntax\n   - Implement basic error handling\n\n**Success Criteria**:\n- [ ] Lenses CLI installed and operational\n- [ ] Service accounts created with appropriate permissions\n- [ ] Secrets retrievable from secret management system\n- [ ] Repository structure created and documented\n- [ ] Basic pipeline executes successfully\n- [ ] Team trained on repository structure\n\n---",
+    "46": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#phase-2-validation-and-testing-weeks-3-4]\n\n#### Phase 2: Validation and Testing (Weeks 3-4)\n\n**Objective**: Implement comprehensive validation and testing\n\n**Tasks**:\n1. **Implement Schema Validation**:\n   ```python\n   # tests/schema_tests.py\n   import pytest\n   from lenses_client import LensesClient\n   import json\n\n   def test_schema_syntax():\n       \"\"\"Validate schema JSON syntax\"\"\"\n       with open('schemas/dev/user-schema.json') as f:\n           schema = json.load(f)\n       assert 'type' in schema\n       assert 'name' in schema\n\n   def test_schema_compatibility():\n       \"\"\"Test schema compatibility\"\"\"\n       client = LensesClient(url=LENSES_URL, token=API_TOKEN)\n       with open('schemas/dev/user-schema.json') as f:\n           schema = json.load(f)\n\n       result = client.check_compatibility(\n           subject='user-value',\n           schema=schema\n       )\n       assert result.is_compatible\n   ```\n\n2. **Implement Connector Validation**:\n   ```python\n   # tests/connector_tests.py\n   import pytest\n   import json\n\n   def test_connector_configuration():\n       \"\"\"Validate connector configuration\"\"\"\n       with open('connectors/dev/postgres-source.json') as f:\n           config = json.load(f)\n\n       # Required fields\n       assert 'name' in config\n       assert 'config' in config\n       assert 'connector.class' in config['config']\n\n       # Connector-specific validations\n       if 'JdbcSourceConnector' in config['config']['connector.class']:\n           assert 'connection.url' in config['config']\n           assert 'mode' in config['config']\n   ```\n\n3. **Add Integration Tests**:\n   ```python\n   # tests/integration_tests.py\n   import pytest\n   from lenses_client import LensesClient\n\n   @pytest.fixture\n   def lenses_client():\n       return LensesClient(url=DEV_LENSES_URL, token=DEV_API_TOKEN)\n\n   def test_topic_creation(lenses_client):\n       \"\"\"Test topic creation through API\"\"\"\n       topic_config = {\n           'name': 'test-topic',\n           'partitions': 3,\n           'replication': 3,\n           'configs': {\n               'retention.ms': '604800000'\n           }\n       }\n\n       result = lenses_client.create_topic(topic_config)\n       assert result.success\n\n       # Verify topic exists\n       topic = lenses_client.get_topic('test-topic')\n       assert topic.partitions == 3\n   ```\n\n4. **Create Validation Scripts**:\n   ```bash\n   #!/bin/bash\n   # scripts/validate-all.sh\n\n   set -e\n\n   echo \"Validating schemas...\"\n   lenses-cli schema validate --directory schemas/\n\n   echo \"Validating connectors...\"\n   lenses-cli connector validate --directory connectors/\n\n   echo \"Linting YAML files...\"\n   yamllint topics/\n\n   echo \"Running unit tests...\"\n   pytest tests/ -v\n\n   echo \"All validations passed!\"\n   ```\n\n5. **Implement Pre-commit Hooks**:\n   ```yaml\n   # .pre-commit-config.yaml\n   repos:\n     - repo: https://github.com/pre-commit/pre-commit-hooks\n       rev: v4.4.0\n       hooks:\n         - id: check-json\n         - id: check-yaml\n         - id: end-of-file-fixer\n         - id: trailing-whitespace\n\n     - repo: local\n       hooks:\n         - id: validate-schemas\n           name: Validate Kafka Schemas\n           entry: lenses-cli schema validate --directory schemas/\n           language: system\n           pass_filenames: false\n   ```\n\n**Success Criteria**:\n- [ ] Schema validation tests passing\n- [ ] Connector validation tests passing\n- [ ] Integration tests implemented and passing\n- [ ] Pre-commit hooks preventing invalid commits\n- [ ] Test coverage > 80%\n- [ ] Validation failures caught before deployment\n\n---",
+    "47": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#phase-3-deployment-automation-weeks-5-6]\n\n#### Phase 3: Deployment Automation (Weeks 5-6)\n\n**Objective**: Automate deployments with proper safeguards\n\n**Tasks**:\n1. **Create Deployment Script**:\n   ```bash\n   #!/bin/bash\n   # scripts/deploy.sh\n\n   set -e\n\n   ENVIRONMENT=$1\n   DRY_RUN=${2:-false}\n\n   if [ -z \"$ENVIRONMENT\" ]; then\n       echo \"Usage: deploy.sh <environment> [dry_run]\"\n       exit 1\n   fi\n\n   # Set environment-specific variables\n   case $ENVIRONMENT in\n       dev)\n           LENSES_URL=$DEV_LENSES_URL\n           LENSES_TOKEN=$DEV_LENSES_TOKEN\n           ;;\n       qa)\n           LENSES_URL=$QA_LENSES_URL\n           LENSES_TOKEN=$QA_LENSES_TOKEN\n           ;;\n       prod)\n           LENSES_URL=$PROD_LENSES_URL\n           LENSES_TOKEN=$PROD_LENSES_TOKEN\n           ;;\n       *)\n           echo \"Unknown environment: $ENVIRONMENT\"\n           exit 1\n           ;;\n   esac\n\n   echo \"Deploying to $ENVIRONMENT (Dry Run: $DRY_RUN)\"\n\n   # Deploy schemas\n   if [ \"$DRY_RUN\" = \"false\" ]; then\n       lenses-cli schema deploy \\\n           --directory schemas/$ENVIRONMENT \\\n           --url $LENSES_URL \\\n           --token $LENSES_TOKEN\n   else\n       echo \"[DRY RUN] Would deploy schemas from schemas/$ENVIRONMENT\"\n   fi\n\n   # Deploy connectors\n   if [ \"$DRY_RUN\" = \"false\" ]; then\n       for connector in connectors/$ENVIRONMENT/*.json; do\n           lenses-cli connector create \\\n               --config $connector \\\n               --url $LENSES_URL \\\n               --token $LENSES_TOKEN\n       done\n   else\n       echo \"[DRY RUN] Would deploy connectors from connectors/$ENVIRONMENT\"\n   fi\n\n   echo \"Deployment to $ENVIRONMENT completed\"\n   ```\n\n2. **Create Verification Script**:\n   ```bash\n   #!/bin/bash\n   # scripts/verify.sh\n\n   ENVIRONMENT=$1\n\n   verify_schema() {\n       local subject=$1\n       echo \"Verifying schema: $subject\"\n\n       result=$(lenses-cli schema get --subject $subject)\n       if [ $? -eq 0 ]; then\n           echo \"✓ Schema $subject found\"\n           return 0\n       else\n           echo \"✗ Schema $subject not found\"\n           return 1\n       fi\n   }\n\n   verify_connector() {\n       local connector=$1\n       echo \"Verifying connector: $connector\"\n\n       status=$(lenses-cli connector status --name $connector)\n       if [ \"$status\" = \"RUNNING\" ]; then\n           echo \"✓ Connector $connector is RUNNING\"\n           return 0\n       else\n           echo \"✗ Connector $connector is not RUNNING (Status: $status)\"\n           return 1\n       fi\n   }\n\n   # Read expected components from manifest\n   MANIFEST=\"manifests/$ENVIRONMENT.yaml\"\n\n   # Verify schemas\n   schemas=$(yq e '.schemas[].subject' $MANIFEST)\n   for schema in $schemas; do\n       verify_schema $schema || exit 1\n   done\n\n   # Verify connectors\n   connectors=$(yq e '.connectors[].name' $MANIFEST)\n   for connector in $connectors; do\n       verify_connector $connector || exit 1\n   done\n\n   echo \"All verifications passed!\"\n   ```\n\n3. **Implement Rollback Mechanism**:\n   ```bash\n   #!/bin/bash\n   # scripts/rollback.sh\n\n   ENVIRONMENT=$1\n   PREVIOUS_VERSION=$2\n\n   echo \"Rolling back $ENVIRONMENT to version $PREVIOUS_VERSION\"\n\n   # Checkout previous version\n   git checkout $PREVIOUS_VERSION\n\n   # Redeploy previous configuration\n   ./scripts/deploy.sh $ENVIRONMENT false\n\n   # Verify rollback\n   ./scripts/verify.sh $ENVIRONMENT\n\n   if [ $? -eq 0 ]; then\n       echo \"Rollback to $PREVIOUS_VERSION successful\"\n\n       # Tag rollback\n       git tag -a \"rollback-$ENVIRONMENT-$(date +%Y%m%d-%H%M%S)\" \\\n           -m \"Rollback $ENVIRONMENT to $PREVIOUS_VERSION\"\n       git push --tags\n   else\n       echo \"Rollback verification failed!\"\n       exit 1\n   fi\n   ```\n\n4. **Add Approval Gates** (GitLab example):\n   ```yaml\n   deploy-prod:\n     stage: deploy-prod\n     environment:\n       name: production\n       deployment_tier: production\n     script:\n       - ./scripts/deploy.sh prod\n       - ./scripts/verify.sh prod\n     when: manual  # Requires manual approval\n     only:\n       - main\n     rules:\n       - if: '$CI_COMMIT_TAG =~ /^v[0-9]+\\.[0-9]+\\.[0-9]+$/'\n         when: manual\n         allow_failure: false\n   ```\n\n5. **Implement Notification System**:\n   ```python\n   # scripts/notify.py\n   import requests\n   import os\n\n   def send_slack_notification(webhook_url, message, status):\n       \"\"\"Send deployment notification to Slack\"\"\"\n       color = \"good\" if status == \"success\" else \"danger\"\n\n       payload = {\n           \"attachments\": [{\n               \"color\": color,\n               \"title\": f\"Kafka Deployment {status.upper()}\",\n               \"text\": message,\n               \"fields\": [\n                   {\n                       \"title\": \"Environment\",\n                       \"value\": os.getenv('ENVIRONMENT'),\n                       \"short\": True\n                   },\n                   {\n                       \"title\": \"Version\",\n                       \"value\": os.getenv('VERSION'),\n                       \"short\": True\n                   }\n               ]\n           }]\n       }\n\n       requests.post(webhook_url, json=payload)\n\n   if __name__ == \"__main__\":\n       import sys\n       webhook = os.getenv('SLACK_WEBHOOK_URL')\n       message = sys.argv[1]\n       status = sys.argv[2]\n       send_slack_notification(webhook, message, status)\n   ```\n\n**Success Criteria**:\n- [ ] Deployment scripts functional for all environments\n- [ ] Verification confirms successful deployments\n- [ ] Rollback tested and operational\n- [ ] Approval gates configured for production\n- [ ] Notifications working for all deployment events\n- [ ] Zero manual deployment steps required\n\n---",
+    "48": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#phase-4-monitoring-and-optimization-weeks-7-8]\n\n#### Phase 4: Monitoring and Optimization (Weeks 7-8)\n\n**Objective**: Add observability and optimize pipeline performance\n\n**Tasks**:\n1. **Implement Pipeline Metrics Collection**:\n   ```python\n   # scripts/collect_metrics.py\n   from prometheus_client import Counter, Histogram, Gauge, push_to_gateway\n   import time\n\n   # Define metrics\n   deployment_duration = Histogram(\n       'kafka_deployment_duration_seconds',\n       'Duration of Kafka deployments',\n       ['environment', 'component']\n   )\n\n   deployment_status = Counter(\n       'kafka_deployment_status_total',\n       'Count of deployment statuses',\n       ['environment', 'status']\n   )\n\n   active_deployments = Gauge(\n       'kafka_active_deployments',\n       'Number of active deployments',\n       ['environment']\n   )\n\n   def record_deployment(environment, component, duration, status):\n       \"\"\"Record deployment metrics\"\"\"\n       deployment_duration.labels(\n           environment=environment,\n           component=component\n       ).observe(duration)\n\n       deployment_status.labels(\n           environment=environment,\n           status=status\n       ).inc()\n\n       # Push to Prometheus Pushgateway\n       push_to_gateway(\n           'prometheus-pushgateway:9091',\n           job='kafka-deployment',\n           registry=registry\n       )\n   ```\n\n2. **Create Monitoring Dashboard** (Grafana):\n   ```json\n   {\n     \"dashboard\": {\n       \"title\": \"Kafka CI/CD Pipeline Metrics\",\n       \"panels\": [\n         {\n           \"title\": \"Deployment Success Rate\",\n           \"targets\": [{\n             \"expr\": \"rate(kafka_deployment_status_total{status='success'}[5m])\"\n           }]\n         },\n         {\n           \"title\": \"Average Deployment Duration\",\n           \"targets\": [{\n             \"expr\": \"avg(kafka_deployment_duration_seconds)\"\n           }]\n         },\n         {\n           \"title\": \"Failed Deployments\",\n           \"targets\": [{\n             \"expr\": \"kafka_deployment_status_total{status='failure'}\"\n           }]\n         }\n       ]\n     }\n   }\n   ```\n\n3. **Optimize Pipeline Performance**:\n   - Enable caching for dependencies\n   - Parallelize independent stages\n   - Use Docker layer caching\n   - Implement incremental builds\n\n4. **Add Pipeline Health Checks**:\n   ```bash\n   #!/bin/bash\n   # scripts/health-check.sh\n\n   # Check Lenses.io availability\n   response=$(curl -s -o /dev/null -w \"%{http_code}\" \\\n       -H \"Authorization: Bearer $LENSES_TOKEN\" \\\n       $LENSES_URL/api/v1/health)\n\n   if [ $response -ne 200 ]; then\n       echo \"Lenses.io health check failed (HTTP $response)\"\n       exit 1\n   fi\n\n   # Check service account permissions\n   lenses-cli topic list --limit 1\n   if [ $? -ne 0 ]; then\n       echo \"Service account permissions check failed\"\n       exit 1\n   fi\n\n   echo \"Health check passed\"\n   ```\n\n5. **Document Standard Operating Procedures**:\n   - Create runbook for common issues\n   - Document troubleshooting steps\n   - Create incident response procedures\n   - Add FAQ for pipeline errors\n\n**Success Criteria**:\n- [ ] Pipeline metrics collected and visualized\n- [ ] Dashboard accessible to team\n- [ ] Pipeline performance optimized (< 15 min execution)\n- [ ] Health checks preventing invalid deployments\n- [ ] Documentation complete and accessible\n- [ ] Team trained on monitoring and troubleshooting\n\n---",
+    "49": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#validation-criteria]\n\n### Validation Criteria\n\n| Validation Area | Criteria | Verification Method | Evidence Required |\n|-----------------|----------|---------------------|-------------------|\n| **Pipeline Setup** | All tools installed and configured | Execute test deployment | Successful pipeline run log |\n| **Authentication** | Service accounts working correctly | API call test | 200 OK responses from Lenses API |\n| **Secret Management** | No secrets in Git | Repository scan | Clean git-secrets scan result |\n| **Validation Tests** | All tests passing | CI/CD test stage | Green test results |\n| **Deployment** | Successful deployment to all environments | Deploy to DEV/QA/PROD | Deployment logs + verification |\n| **Rollback** | Rollback functional | Execute rollback test | Previous version restored |\n| **Monitoring** | Metrics collected and visible | Check dashboard | Populated Grafana dashboard |\n| **Documentation** | Complete and accessible | Team review | Signed off by team lead |",
+    "50": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#testing-requirements]\n\n### Testing Requirements",
+    "51": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#unit-testing]\n\n#### Unit Testing\n\n**Scope**: Test individual components in isolation\n- Configuration file validation\n- Script syntax verification\n- Template rendering accuracy\n- Helper function correctness\n\n**Tools**: pytest, unittest, bats (for bash scripts)\n\n**Coverage Target**: > 80%",
+    "52": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#integration-testing]\n\n#### Integration Testing\n\n**Scope**: Test interaction between components\n- Lenses API integration\n- Schema Registry operations\n- Connector deployment flow\n- Multi-component deployments\n\n**Environment**: DEV environment with test fixtures\n\n**Frequency**: Every commit to main branches",
+    "53": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#end-to-end-testing]\n\n#### End-to-End Testing\n\n**Scope**: Full deployment workflow testing\n- Complete DEV → QA → PROD promotion\n- Rollback scenarios\n- Failure recovery\n- Approval gate workflows\n\n**Environment**: Dedicated E2E test environment\n\n**Frequency**: Weekly automated runs",
+    "54": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#performance-testing]\n\n#### Performance Testing\n\n**Scope**: Pipeline execution performance\n- Deployment duration benchmarks\n- API response time validation\n- Resource utilization monitoring\n- Concurrent deployment handling\n\n**Metrics**:\n- Pipeline execution time < 30 minutes\n- API response time < 2 seconds\n- Memory usage < 2GB per pipeline run\n- Support 5 concurrent deployments",
+    "55": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#security-testing]\n\n#### Security Testing\n\n**Scope**: Security vulnerability detection\n- Secret scanning in Git\n- Dependency vulnerability scanning\n- API token validation\n- Permission boundary testing\n\n**Tools**: git-secrets, Snyk, Trivy\n\n**Frequency**: Every commit + weekly scans",
+    "56": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#documentation-requirements]\n\n### Documentation Requirements",
+    "57": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#required-documentation]\n\n#### Required Documentation\n\n1. **Pipeline Configuration Documentation**:\n   - Complete pipeline configuration with comments\n   - Environment-specific configuration details\n   - Secret management setup instructions\n   - Troubleshooting guide\n\n2. **Deployment Runbook**:\n   - Step-by-step deployment procedures\n   - Pre-deployment checklist\n   - Rollback procedures\n   - Emergency procedures\n\n3. **Testing Documentation**:\n   - Test coverage report\n   - Test execution instructions\n   - Test data management\n   - Mock/stub configuration\n\n4. **Architecture Documentation**:\n   - Pipeline architecture diagram\n   - Data flow diagrams\n   - Integration points\n   - Security boundaries\n\n5. **Operations Documentation**:\n   - Monitoring setup\n   - Alert response procedures\n   - Incident postmortem template\n   - Change management process\n\n---",
+    "58": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#compliance-and-governance]\n\n## Compliance and Governance",
+    "59": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#compliance-assessment]\n\n### Compliance Assessment",
+    "60": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#assessment-criteria]\n\n#### Assessment Criteria\n\n**Pipeline Configuration Compliance**:\n- **Criterion**: All Kafka deployments use approved CI/CD pipelines\n- **Measurement**: Audit deployments via Lenses.io audit logs; 100% should show service account API calls\n- **Verification**: Monthly audit report of deployment methods\n- **Target**: 100% compliance within 6 months of standard approval\n\n**Secret Management Compliance**:\n- **Criterion**: No secrets stored in Git repositories\n- **Measurement**: Automated git-secrets scanning on all commits\n- **Verification**: Zero findings in git-secrets reports\n- **Target**: 100% compliance (blocking criterion)\n\n**Testing Compliance**:\n- **Criterion**: All deployments include automated testing\n- **Measurement**: Pipeline logs show test execution\n- **Verification**: Test results archived for each deployment\n- **Target**: 100% of production deployments\n\n**Approval Gate Compliance**:\n- **Criterion**: Production deployments require documented approval\n- **Measurement**: Change Management tickets linked to pipeline runs\n- **Verification**: Audit trail in CI/CD platform\n- **Target**: 100% of production deployments\n\n**Rollback Capability Compliance**:\n- **Criterion**: All deployments have tested rollback procedures\n- **Measurement**: Rollback tests executed quarterly\n- **Verification**: Documented rollback test results\n- **Target**: Quarterly validation with < 15 minute rollback time",
+    "61": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#assessment-process]\n\n#### Assessment Process\n\n**Automated Assessment**:\n- Git-secrets scanning on every commit (blocking)\n- Pipeline compliance checks in CI/CD runs\n- API audit log analysis (daily)\n- Security vulnerability scanning (weekly)\n\n**Manual Assessment**:\n- Quarterly compliance review by Platform Engineering\n- Annual comprehensive audit by Architecture Review Board\n- Spot checks of 10% of deployments (monthly)\n- Exception review and validation\n\n**Assessment Schedule**:\n\n| Assessment Type | Frequency | Responsible Party | Deliverable |\n|----------------|-----------|-------------------|-------------|\n| Automated Scanning | Every Commit | CI/CD Pipeline | Pass/Fail Report |\n| Deployment Audit | Daily | Platform Engineering | Audit Log Review |\n| Compliance Review | Monthly | DevOps Lead | Compliance Dashboard |\n| Comprehensive Audit | Quarterly | Platform Engineering | Detailed Report |\n| ARB Review | Annually | Architecture Review Board | Compliance Certification |\n\n**Remediation Process**:\n1. Non-compliance identified via automated or manual assessment\n2. Issue logged in ServiceNow with severity assignment\n3. Responsible team notified within 24 hours\n4. Remediation plan required within 5 business days\n5. Compliance verification after remediation\n6. Escalation to Director level if not resolved within 30 days",
+    "62": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#monitoring-requirements]\n\n### Monitoring Requirements",
+    "63": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#continuous-monitoring]\n\n#### Continuous Monitoring\n\n**Pipeline Health Monitoring**:\n- Real-time monitoring of pipeline execution status\n- Automated alerts for pipeline failures\n- Trend analysis of failure rates\n- Performance metrics tracking\n\n**Metrics to Monitor**:\n\n| Metric | Collection Method | Alert Threshold | Review Frequency |\n|--------|------------------|-----------------|------------------|\n| **Pipeline Success Rate** | CI/CD platform metrics | < 95% | Daily |\n| **Deployment Duration** | Pipeline execution logs | > 30 minutes | Weekly |\n| **Rollback Frequency** | Deployment logs | > 5% of deployments | Monthly |\n| **Test Failure Rate** | Test execution results | > 10% | Daily |\n| **Secret Scanning Violations** | git-secrets output | > 0 | Immediate |\n| **API Error Rate** | Lenses API logs | > 5% | Hourly |\n| **Approval Gate Bypasses** | CI/CD audit logs | > 0 | Immediate |\n\n**Monitoring Tools**:\n- **CI/CD Platform**: Native monitoring (Jenkins, GitLab, GitHub Actions)\n- **Metrics Collection**: Prometheus + Grafana dashboards\n- **Log Aggregation**: ELK Stack or Splunk\n- **Alerting**: PagerDuty or Opsgenie integration\n- **Audit Trail**: Lenses.io audit logs + SIEM integration\n\n**Alert Configuration**:\n```yaml\n# Example Prometheus alerting rules\ngroups:\n  - name: kafka_cicd_alerts\n    interval: 30s\n    rules:\n      - alert: HighPipelineFailureRate\n        expr: rate(kafka_deployment_status_total{status=\"failure\"}[5m]) > 0.1\n        for: 10m\n        labels:\n          severity: warning\n          team: platform-engineering\n        annotations:\n          summary: \"High Kafka pipeline failure rate detected\"\n          description: \"Pipeline failure rate is {{ $value }}% over the last 5 minutes\"\n\n      - alert: DeploymentStuck\n        expr: kafka_active_deployments > 0 AND time() - kafka_deployment_start_time > 1800\n        labels:\n          severity: critical\n          team: platform-engineering\n        annotations:\n          summary: \"Kafka deployment stuck for > 30 minutes\"\n          description: \"Deployment to {{ $labels.environment }} has been running for over 30 minutes\"\n\n      - alert: SecretScanningViolation\n        expr: increase(git_secrets_violations_total[5m]) > 0\n        labels:\n          severity: critical\n          team: security\n        annotations:\n          summary: \"Secret detected in Git repository\"\n          description: \"git-secrets detected a secret in commit {{ $labels.commit_sha }}\"\n```",
+    "64": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#periodic-reviews]\n\n#### Periodic Reviews\n\n**Weekly Review** (DevOps Team):\n- Review pipeline failure trends\n- Identify recurring issues\n- Update documentation for new issues\n- Optimize slow-running pipelines\n\n**Monthly Review** (Platform Engineering):\n- Compliance dashboard review\n- Exception request analysis\n- Performance trend analysis\n- Capacity planning review\n\n**Quarterly Review** (Architecture Review Board):\n- Standards effectiveness assessment\n- Technology stack evaluation\n- Security posture review\n- ROI analysis of automation",
+    "65": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#audit-logging]\n\n#### Audit Logging\n\n**Required Audit Events**:\n- All pipeline executions (start, end, status)\n- All Lenses API calls (with service account ID)\n- All approval gate decisions\n- All rollback operations\n- All exception requests and approvals\n- All secret access events\n\n**Log Retention**:\n- Pipeline logs: 90 days\n- Audit logs: 1 year\n- Compliance reports: 7 years\n- Exception approvals: Permanent\n\n**Log Format** (JSON):\n```json\n{\n  \"timestamp\": \"2026-01-20T10:30:00Z\",\n  \"event_type\": \"deployment\",\n  \"environment\": \"production\",\n  \"pipeline_id\": \"12345\",\n  \"service_account\": \"kafka-cicd-prod\",\n  \"components\": [\"schema-deployment\", \"connector-deployment\"],\n  \"status\": \"success\",\n  \"duration_seconds\": 450,\n  \"approver\": \"john.doe@company.com\",\n  \"git_commit\": \"abc123def456\",\n  \"git_tag\": \"v1.2.3\"\n}\n```",
+    "66": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#exception-handling]\n\n### Exception Handling",
+    "67": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#exception-categories]\n\n#### Exception Categories\n\n**Category 1: Emergency Deployments**\n- **Description**: Critical production fixes requiring expedited deployment\n- **Duration**: < 24 hours\n- **Approval**: Platform Engineering Manager + On-Call Architect\n- **Conditions**: Production incident severity 1 or 2\n- **Restrictions**: Must follow up with standard deployment within 48 hours\n\n**Category 2: Technical Limitations**\n- **Description**: Known platform limitations preventing standard process\n- **Duration**: Until platform updated (max 90 days)\n- **Approval**: Chief Architect + Director of Engineering\n- **Conditions**: Documented technical constraint with mitigation plan\n- **Restrictions**: Quarterly review required\n\n**Category 3: Process Bypass**\n- **Description**: Temporary bypass of specific pipeline stages\n- **Duration**: Single deployment\n- **Approval**: DevOps Lead + Security Lead\n- **Conditions**: Stage failure with verified manual validation\n- **Restrictions**: Root cause analysis required\n\n**Category 4: Pilot Programs**\n- **Description**: Testing new deployment approaches\n- **Duration**: Pilot period (typically 30-60 days)\n- **Approval**: Architecture Review Board\n- **Conditions**: Approved pilot plan with success criteria\n- **Restrictions**: Limited to non-production or specific applications",
+    "68": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#exception-management-process]\n\n#### Exception Management Process\n\n**Request Submission**:\n```markdown\n# Exception Request Template\n\n## Request Information\n- **Request ID**: [Auto-generated]\n- **Requestor**: [Name and email]\n- **Date**: [Submission date]\n- **Requested Duration**: [Time period]\n\n## Exception Details\n- **Exception Category**: [Emergency/Technical/Process/Pilot]\n- **Standard Section**: [Which requirement needs exception]\n- **Justification**: [Detailed explanation]\n- **Business Impact**: [Impact if not granted]\n- **Risk Assessment**: [Security and operational risks]\n\n## Alternative Approach\n- **Proposed Approach**: [How will deployment proceed]\n- **Mitigation Measures**: [How risks will be mitigated]\n- **Validation Plan**: [How success will be verified]\n\n## Remediation Plan\n- **Return to Compliance**: [How/when standard process will resume]\n- **Root Cause Resolution**: [If technical issue, resolution plan]\n- **Timeline**: [Expected return to compliance date]\n```\n\n**Approval Workflow**:\n1. Exception request submitted via ServiceNow\n2. Automated routing to appropriate approvers based on category\n3. Technical review (Platform Engineering) - 24 hours\n4. Security review (if applicable) - 24 hours\n5. Final approval by designated authority\n6. Exception granted with conditions and monitoring requirements\n7. Exception logged in governance dashboard\n\n**Exception Monitoring**:\n- All active exceptions tracked in real-time dashboard\n- Weekly exception report to Platform Engineering\n- Monthly exception trend analysis\n- Automatic expiration and notification\n- Escalation for exceptions nearing expiration without renewal\n\n**Exception Metrics**:\n\n| Metric | Target | Escalation Threshold |\n|--------|--------|---------------------|\n| Active Exceptions | < 5 | > 10 |\n| Average Exception Duration | < 14 days | > 30 days |\n| Exception Repeat Rate | < 10% | > 20% |\n| Expired Exception Renewal Requests | < 25% | > 50% |",
+    "69": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#governance-oversight]\n\n### Governance Oversight",
+    "70": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#roles-and-responsibilities]\n\n#### Roles and Responsibilities\n\n**Standards Owner** (Platform Engineering Lead):\n- Overall accountability for standard maintenance\n- Approve minor updates and clarifications\n- Coordinate quarterly effectiveness reviews\n- Serve as escalation point for interpretation questions\n- Represent standard in Architecture Review Board\n\n**Compliance Manager** (DevOps Manager):\n- Monitor organizational compliance with standard\n- Review and approve Category 2-3 exceptions\n- Generate monthly compliance reports\n- Identify trends and improvement opportunities\n- Coordinate remediation for non-compliance\n\n**Governance Body** (Architecture Review Board):\n- Approve major standard updates (version changes)\n- Annual standards effectiveness review\n- Approve Category 4 exceptions and long-term waivers\n- Set strategic direction for CI/CD practices\n- Resolve escalated interpretation disputes\n\n**Subject Matter Experts** (Senior DevOps Engineers):\n- Provide technical guidance to implementers\n- Review and improve pipeline templates\n- Contribute to standard updates\n- Support troubleshooting and incident response\n- Mentor teams on best practices\n\n**Audit Function** (Internal Audit / Compliance Team):\n- Independent verification of compliance\n- Annual audit of pipeline security\n- Validation of exception management process\n- Assessment of governance effectiveness\n- Report findings to executive leadership",
+    "71": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#governance-meetings]\n\n#### Governance Meetings\n\n**Monthly Pipeline Review** (DevOps Team):\n- **Attendees**: DevOps engineers, Platform Engineering\n- **Agenda**: Pipeline performance, failures, improvements\n- **Duration**: 1 hour\n- **Deliverable**: Action items for improvements\n\n**Quarterly Standards Review** (Standards Owner + Stakeholders):\n- **Attendees**: Platform Engineering, Security, Development Teams\n- **Agenda**: Compliance metrics, exception analysis, standard updates\n- **Duration**: 2 hours\n- **Deliverable**: Quarterly compliance report, improvement backlog\n\n**Annual ARB Review** (Architecture Review Board):\n- **Attendees**: ARB members, Standards Owner, Compliance Manager\n- **Agenda**: Annual effectiveness, strategic alignment, major updates\n- **Duration**: 3 hours\n- **Deliverable**: Annual standards certification, strategic recommendations",
+    "72": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#continuous-improvement]\n\n#### Continuous Improvement\n\n**Feedback Mechanisms**:\n- Pipeline user satisfaction surveys (quarterly)\n- Incident retrospectives (after major incidents)\n- Exception request analysis (trends and patterns)\n- Suggestion box for improvements (ongoing)\n- Benchmarking against industry practices (annually)\n\n**Improvement Process**:\n1. Feedback collected from multiple sources\n2. Analysis by Standards Owner and SMEs\n3. Prioritization based on impact and effort\n4. Implementation roadmap developed\n5. Updates communicated to stakeholders\n6. Effectiveness measured post-implementation\n\n**Performance Metrics**:\n\n| Metric | Current Baseline | Target | Timeline |\n|--------|-----------------|--------|----------|\n| Deployment Frequency | TBD | Daily per team | 6 months |\n| Lead Time for Changes | TBD | < 1 hour | 6 months |\n| Mean Time to Recovery | TBD | < 15 minutes | 3 months |\n| Change Failure Rate | TBD | < 5% | 6 months |\n| Pipeline Efficiency | TBD | < 30 minutes | 3 months |\n\n**Standard Update Process**:\n1. Improvement opportunity identified\n2. Impact assessment conducted\n3. Proposal drafted by Standards Owner\n4. Stakeholder review (2 weeks)\n5. Approval by ARB (if major change)\n6. Communication plan executed\n7. Documentation updated\n8. Training provided (if needed)\n9. Compliance grace period (typically 60 days)\n10. Monitoring and validation\n\n---",
+    "73": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#examples-and-references]\n\n## Examples and References",
+    "74": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#implementation-examples]\n\n### Implementation Examples",
+    "75": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#example-1-schema-deployment-pipeline]\n\n#### Example 1: Schema Deployment Pipeline\n\n**Context**: Automated schema deployment for a multi-environment Kafka platform with backward compatibility validation\n\n**Implementation**:\n\n**Repository Structure**:\n```\nschemas/\n├── avro/\n│   ├── user-schema.avsc\n│   ├── order-schema.avsc\n│   └── payment-schema.avsc\n├── json/\n│   └── metadata-schema.json\n└── scripts/\n    ├── deploy-schemas.sh\n    └── validate-compatibility.sh\n```\n\n**Jenkins Pipeline**:\n```groovy\npipeline {\n    agent any\n\n    parameters {\n        choice(name: 'ENVIRONMENT', choices: ['dev', 'qa', 'prod'])\n        booleanParam(name: 'FORCE_DEPLOY', defaultValue: false,\n                    description: 'Skip compatibility check')\n    }\n\n    environment {\n        LENSES_TOKEN = credentials(\"lenses-${params.ENVIRONMENT}-token\")\n        LENSES_URL = \"https://lenses-${params.ENVIRONMENT}.company.com\"\n    }\n\n    stages {\n        stage('Validate Schema Syntax') {\n            steps {\n                script {\n                    def schemas = findFiles(glob: 'schemas/avro/*.avsc')\n                    schemas.each { schema ->\n                        sh \"avro-tools compile schema ${schema.path} /tmp\"\n                    }\n                }\n            }\n        }\n\n        stage('Check Compatibility') {\n            when {\n                expression { params.FORCE_DEPLOY == false }\n            }\n            steps {\n                script {\n                    sh './scripts/validate-compatibility.sh ${ENVIRONMENT}'\n                }\n            }\n        }\n\n        stage('Deploy Schemas') {\n            steps {\n                script {\n                    sh './scripts/deploy-schemas.sh ${ENVIRONMENT}'\n                }\n            }\n        }\n\n        stage('Verify Deployment') {\n            steps {\n                script {\n                    def schemas = ['user-value', 'order-value', 'payment-value']\n                    schemas.each { subject ->\n                        sh \"\"\"\n                            lenses-cli schema get \\\n                                --subject ${subject} \\\n                                --url ${LENSES_URL} \\\n                                --token ${LENSES_TOKEN}\n                        \"\"\"\n                    }\n                }\n            }\n        }\n    }\n\n    post {\n        success {\n            slackSend(\n                color: 'good',\n                message: \"Schema deployment to ${params.ENVIRONMENT} successful\"\n            )\n        }\n        failure {\n            slackSend(\n                color: 'danger',\n                message: \"Schema deployment to ${params.ENVIRONMENT} failed\"\n            )\n        }\n    }\n}\n```\n\n**Compliance Evidence**:\n- All schemas version-controlled in Git\n- Backward compatibility verified before production deployment\n- Automated validation prevents manual errors\n- Audit trail via Jenkins build logs\n\n**Lessons Learned**:\n- Always validate compatibility in non-production first\n- Use semantic versioning for schema versions\n- Document breaking changes in commit messages\n- Maintain schema evolution guidelines document\n\n---",
+    "76": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#example-2-connector-deployment-with-gitlab-ci]\n\n#### Example 2: Connector Deployment with GitLab CI\n\n**Context**: Automated Kafka Connect connector deployment with configuration validation and health monitoring\n\n**Implementation**:\n\n**Repository Structure**:\n```\nconnectors/\n├── postgres-source/\n│   ├── dev.json\n│   ├── qa.json\n│   └── prod.json\n├── s3-sink/\n│   ├── dev.json\n│   ├── qa.json\n│   └── prod.json\n└── .gitlab-ci.yml\n```\n\n**GitLab CI Configuration**:\n```yaml\nvariables:\n  CONNECTOR_DIR: \"connectors\"\n\nstages:\n  - validate\n  - deploy-dev\n  - deploy-qa\n  - deploy-prod\n  - verify\n\nvalidate-connectors:\n  stage: validate\n  image: lensesio/lenses-cli:5.0\n  script:\n    - |\n      for config in ${CONNECTOR_DIR}/*/*.json; do\n        echo \"Validating $config\"\n        lenses-cli connector validate --config $config\n      done\n  only:\n    - merge_requests\n    - main\n\ndeploy-to-dev:\n  stage: deploy-dev\n  image: lensesio/lenses-cli:5.0\n  environment: development\n  variables:\n    LENSES_URL: $DEV_LENSES_URL\n    LENSES_TOKEN: $DEV_LENSES_TOKEN\n  script:\n    - |\n      for connector in ${CONNECTOR_DIR}/*; do\n        connector_name=$(basename $connector)\n        config=\"${connector}/dev.json\"\n\n        # Check if connector exists\n        if lenses-cli connector status --name $connector_name 2>/dev/null; then\n          echo \"Updating connector $connector_name\"\n          lenses-cli connector update --config $config\n        else\n          echo \"Creating connector $connector_name\"\n          lenses-cli connector create --config $config\n        fi\n      done\n  only:\n    - develop\n\ndeploy-to-prod:\n  stage: deploy-prod\n  image: lensesio/lenses-cli:5.0\n  environment: production\n  variables:\n    LENSES_URL: $PROD_LENSES_URL\n    LENSES_TOKEN: $PROD_LENSES_TOKEN\n  script:\n    - |\n      for connector in ${CONNECTOR_DIR}/*; do\n        connector_name=$(basename $connector)\n        config=\"${connector}/prod.json\"\n\n        lenses-cli connector create --config $config || \\\n        lenses-cli connector update --config $config\n\n        sleep 10  # Allow connector to initialize\n\n        # Verify connector is running\n        status=$(lenses-cli connector status --name $connector_name --format json | jq -r '.status')\n        if [ \"$status\" != \"RUNNING\" ]; then\n          echo \"Connector $connector_name failed to start (Status: $status)\"\n          exit 1\n        fi\n      done\n  when: manual\n  only:\n    - main\n\nverify-health:\n  stage: verify\n  image: lensesio/lenses-cli:5.0\n  script:\n    - |\n      # Wait for connectors to stabilize\n      sleep 30\n\n      # Check all connectors are healthy\n      lenses-cli connector list --format json | jq -e '.[] | select(.status != \"RUNNING\")'\n      if [ $? -eq 0 ]; then\n        echo \"Some connectors are not in RUNNING state\"\n        exit 1\n      fi\n\n      echo \"All connectors are healthy\"\n  only:\n    - main\n```\n\n**Compliance Evidence**:\n- Connector configurations stored as code\n- Environment-specific configurations maintained separately\n- Automated health verification post-deployment\n- Manual approval gate for production\n\n**Lessons Learned**:\n- Allow sufficient time for connectors to initialize before health checks\n- Use idempotent operations (create OR update) to handle existing connectors\n- Monitor connector tasks, not just connector status\n- Implement retry logic for transient failures\n\n---",
+    "77": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#example-3-multi-component-deployment-with-github-actions]\n\n#### Example 3: Multi-Component Deployment with GitHub Actions\n\n**Context**: Coordinated deployment of schemas, topics, and connectors with dependency management\n\n**Implementation**:\n\n**GitHub Actions Workflow**:\n```yaml\nname: Kafka Infrastructure Deployment\n\non:\n  push:\n    branches: [main]\n    paths:\n      - 'schemas/**'\n      - 'topics/**'\n      - 'connectors/**'\n  workflow_dispatch:\n    inputs:\n      environment:\n        description: 'Target environment'\n        required: true\n        type: choice\n        options:\n          - dev\n          - qa\n          - prod\n\njobs:\n  detect-changes:\n    runs-on: ubuntu-latest\n    outputs:\n      schemas: ${{ steps.filter.outputs.schemas }}\n      topics: ${{ steps.filter.outputs.topics }}\n      connectors: ${{ steps.filter.outputs.connectors }}\n    steps:\n      - uses: actions/checkout@v3\n\n      - uses: dorny/paths-filter@v2\n        id: filter\n        with:\n          filters: |\n            schemas:\n              - 'schemas/**'\n            topics:\n              - 'topics/**'\n            connectors:\n              - 'connectors/**'\n\n  deploy-schemas:\n    needs: detect-changes\n    if: needs.detect-changes.outputs.schemas == 'true'\n    runs-on: ubuntu-latest\n    environment: ${{ github.event.inputs.environment || 'dev' }}\n    steps:\n      - uses: actions/checkout@v3\n\n      - name: Setup Lenses CLI\n        run: |\n          curl -L https://downloads.lenses.io/lenses-cli/5.0/lenses-cli-linux.tar.gz | tar xz\n          sudo mv lenses-cli /usr/local/bin/\n\n      - name: Deploy Schemas\n        env:\n          LENSES_URL: ${{ secrets.LENSES_URL }}\n          LENSES_TOKEN: ${{ secrets.LENSES_TOKEN }}\n        run: ./scripts/deploy-schemas.sh\n\n  deploy-topics:\n    needs: [detect-changes, deploy-schemas]\n    if: needs.detect-changes.outputs.topics == 'true'\n    runs-on: ubuntu-latest\n    environment: ${{ github.event.inputs.environment || 'dev' }}\n    steps:\n      - uses: actions/checkout@v3\n\n      - name: Deploy Topics\n        env:\n          LENSES_URL: ${{ secrets.LENSES_URL }}\n          LENSES_TOKEN: ${{ secrets.LENSES_TOKEN }}\n        run: ./scripts/deploy-topics.sh\n\n  deploy-connectors:\n    needs: [detect-changes, deploy-schemas, deploy-topics]\n    if: needs.detect-changes.outputs.connectors == 'true'\n    runs-on: ubuntu-latest\n    environment: ${{ github.event.inputs.environment || 'dev' }}\n    steps:\n      - uses: actions/checkout@v3\n\n      - name: Deploy Connectors\n        env:\n          LENSES_URL: ${{ secrets.LENSES_URL }}\n          LENSES_TOKEN: ${{ secrets.LENSES_TOKEN }}\n        run: ./scripts/deploy-connectors.sh\n\n  verify-deployment:\n    needs: [deploy-schemas, deploy-topics, deploy-connectors]\n    if: always()\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v3\n\n      - name: Run Verification Tests\n        env:\n          LENSES_URL: ${{ secrets.LENSES_URL }}\n          LENSES_TOKEN: ${{ secrets.LENSES_TOKEN }}\n        run: |\n          pytest tests/integration_tests.py\n\n      - name: Generate Deployment Report\n        run: |\n          python scripts/generate-report.py > deployment-report.md\n\n      - name: Upload Report\n        uses: actions/upload-artifact@v3\n        with:\n          name: deployment-report\n          path: deployment-report.md\n```\n\n**Compliance Evidence**:\n- Change detection ensures only modified components deployed\n- Dependency ordering (schemas → topics → connectors) enforced\n- Environment protection with approval gates\n- Comprehensive verification and reporting\n\n**Lessons Learned**:\n- Use path filters to optimize pipeline execution\n- Enforce deployment order for dependent components\n- Generate deployment reports for audit trail\n- Use workflow_dispatch for manual deployments with parameters\n\n---",
+    "78": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#reference-architectures]\n\n### Reference Architectures\n\n- [STD-APP-KMGMT-004: API Access](STD-APP-KMGMT-004-api-access.md) - Programmatic Lenses.io integration patterns\n- [STD-APP-KMGMT-007: GitOps Workflows](STD-APP-KMGMT-007-gitops-workflows.md) - Infrastructure-as-Code practices for Kafka\n- [STD-INFRA-KMGMT-001: Platform Installation](../../infrastructure/kafka-management/STD-INFRA-KMGMT-001-platform-installation.md) - Lenses.io platform setup\n- [PTN-INFRA-EVTMON-001: Infrastructure Event Monitoring Pattern](../../../patterns/infrastructure/event-driven/PTN-INFRA-EVT-003-infrastructure-event-monitoring-pattern.md) - Monitoring patterns",
+    "79": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#related-standards]\n\n### Related Standards\n\n- [STD-APP-KMGMT-004: API Access](STD-APP-KMGMT-004-api-access.md) - Service account and API token management\n- [STD-APP-KMGMT-007: GitOps Workflows](STD-APP-KMGMT-007-gitops-workflows.md) - Git-based configuration management\n- [STD-APP-KMGMT-005: Local Lenses CLI](STD-APP-KMGMT-005-local-lenses-cli.md) - CLI tool usage and configuration\n- [STD-SEC-AUTHN-001: Authentication Implementation](../../security/authentication/STD-SEC-AUTHN-001-authentication-implementation.md) - Service account authentication\n- [STD-APP-CFG-001: Configuration Management](../../application/cfg/../configuration/STD-APP-CFG-001-configuration-management.md) - Configuration storage and versioning",
+    "80": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#external-references]\n\n### External References",
+    "81": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#cicd-platforms]\n\n#### CI/CD Platforms\n\n- [Jenkins Documentation](https://www.jenkins.io/doc/) - Jenkins pipeline configuration and best practices\n- [GitLab CI/CD](https://docs.gitlab.com/ee/ci/) - GitLab CI/CD pipeline reference\n- [GitHub Actions](https://docs.github.com/en/actions) - GitHub Actions workflow syntax and examples\n- [Azure DevOps Pipelines](https://docs.microsoft.com/en-us/azure/devops/pipelines/) - Azure Pipelines documentation",
+    "82": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#lensesio-integration]\n\n#### Lenses.io Integration\n\n- [Lenses CLI Documentation](https://docs.lenses.io/5.0/cli/) - Command-line interface reference\n- [Lenses REST API](https://docs.lenses.io/5.0/api/) - API endpoints and authentication\n- [Lenses Python SDK](https://github.com/lensesio/lenses-python) - Python client library\n- [Lenses Java SDK](https://github.com/lensesio/lenses-java) - Java client library",
+    "83": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#secret-management]\n\n#### Secret Management\n\n- [HashiCorp Vault](https://www.vaultproject.io/docs) - Secret management and best practices\n- [AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/) - AWS secret storage\n- [Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/) - Azure secret management\n- [git-secrets](https://github.com/awslabs/git-secrets) - Prevent committing secrets",
+    "84": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#testing-and-quality]\n\n#### Testing and Quality\n\n- [pytest Documentation](https://docs.pytest.org/) - Python testing framework\n- [Test Containers](https://www.testcontainers.org/) - Docker containers for integration testing\n- [Avro Tools](https://avro.apache.org/docs/current/getting-started-java/) - Avro schema validation",
+    "85": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#monitoring-and-observability]\n\n#### Monitoring and Observability\n\n- [Prometheus](https://prometheus.io/docs/) - Metrics collection and alerting\n- [Grafana](https://grafana.com/docs/) - Metrics visualization and dashboards\n- [ELK Stack](https://www.elastic.co/what-is/elk-stack) - Log aggregation and analysis",
+    "86": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#industry-standards-and-best-practices]\n\n#### Industry Standards and Best Practices\n\n- [DORA Metrics](https://cloud.google.com/blog/products/devops-sre/using-the-four-keys-to-measure-your-devops-performance) - DevOps performance metrics\n- [GitOps Principles](https://opengitops.dev/) - GitOps working group standards\n- [The Twelve-Factor App](https://12factor.net/) - Modern application development principles\n- [CI/CD Security Best Practices](https://www.cisoplatform.com/profiles/blogs/ci-cd-security-best-practices) - Secure pipeline practices\n\n---",
+    "87": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#change-history]\n\n## Change History\n\n| Date       | Version | Author | Description               | Impact              |\n| ---------- | ------- | ------ | ------------------------- | ------------------- |\n| 2026-01-19 | 1.0.0   | EAP    | Initial standard creation | New standard        |\n| 2026-01-20 | 2.0.0   | EAP    | Comprehensive expansion - added 10 detailed requirements (REQ-CICD-001 through REQ-CICD-010), complete technical specifications with platform requirements and configuration templates, detailed 4-phase implementation guidance, full compliance and governance framework, and 3 implementation examples. Transformed from skeleton to production-ready standard. | Standard now production-ready with complete guidance for Phase 3 implementation |\n\n---",
+    "88": "[standards/application/kafka-management/STD-APP-KMGMT-006-cicd-integration.md#review-log]\n\n## Review Log\n\n| Review Date | Review Type        | Reviewer(s) | Status | Comments | Actions |\n| ----------- | ------------------ | ----------- | ------ | -------- | ------- |\n| 2026-01-20  | Compliance Review  | EAP         | Completed | Initial skeleton created with basic structure | Expanded to full standard |\n| 2026-01-20  | Quality Assurance Review | Standards Compliance | Completed | Comprehensive expansion completed. Added: 10 detailed requirements with implementation examples, complete technical specifications (platform requirements, architecture constraints, technology standards, configuration templates), detailed 4-phase implementation guidance (Foundation Setup, Validation/Testing, Deployment Automation, Monitoring/Optimization), full compliance and governance framework, 3 detailed implementation examples (Schema Deployment, Connector Deployment, Multi-Component Deployment), comprehensive references to related standards and external resources. Standard now matches quality level of other KMGMT standards. All template sections fully populated. Ready for stakeholder review. | Forward to Platform Engineering, DevOps, and Security teams for technical review |\n\n---\n\n*This standard is part of the Enterprise Architecture Practice (EAP) Reference Architecture.*\n*For questions or feedback, contact the [Platform Engineering Team](mailto:kafka-support@company.com).*"
+  },
+  "coverage": {
+    "total_pages": 88,
+    "covered_pages": 88,
+    "sampled_pages": 88,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 88
+  }
+}

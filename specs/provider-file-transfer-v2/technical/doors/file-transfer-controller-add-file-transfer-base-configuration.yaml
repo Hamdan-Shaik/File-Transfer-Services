@@ -1,0 +1,85 @@
+door:
+  id: file-transfer-controller-add-file-transfer-base-configuration
+  kind: api
+  name: AddFileTransferBaseConfiguration
+  class: HP.HSP.UA3.FileTransfer.UX.Services.Controller.FileTransferController
+  file: ux\HP.HSP.UA3.FileTransfer.UX.Services\Controller\FileTransferController.AddFileTransferBaseConfiguration.cs
+  line: 21
+  entry:
+  - HP.HSP.UA3.FileTransfer.UX.Services.Controller.FileTransferController.AddFileTransferBaseConfiguration(HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.FileTransferConfigurationModel)
+procedures: []
+tables:
+- name: orm:FTS_SUSPENSION
+  access:
+  - reads
+shared_uses: []
+external_uses:
+- package: ''
+  version: ''
+  method: string.Replace
+  calls:
+  - at: ux\HP.HSP.UA3.FileTransfer.UX.Services\Controller\FileTransferController.AddFileTransferBaseConfiguration.cs:32
+    arguments:
+    - name: null
+      value: '-'
+    - name: null
+      expression: string.Empty
+  unresolved: true
+- package: hp.hsp.ua3.core.ux.interfaces
+  version: 30.0.0
+  method: HP.HSP.UA3.Core.UX.Interfaces.ITenantConfigurationManager.Resolve<T>(string)
+  calls:
+  - at: ux\HP.HSP.UA3.FileTransfer.UX.Services\Controller\FileTransferController.AddFileTransferBaseConfiguration.cs:45
+    type_arguments:
+    - HP.HSP.UA3.FileTransfer.UX.Providers.FileTransfer.IFileTransferServiceDataProvider
+    arguments:
+    - name: name
+      expression: FileTransferConstants.Ioc.ComponentNames.FileTransferServiceDataProvider
+- package: hp.hsp.ua3.core.ux.interfaces
+  version: 30.0.0
+  method: HP.HSP.UA3.Core.UX.Interfaces.IUserConfigurationManager.GenerateRequestor()
+  calls:
+  - at: ux\HP.HSP.UA3.FileTransfer.UX.Services\Controller\FileTransferController.AddFileTransferBaseConfiguration.cs:49
+    arguments: []
+- package: hp.hsp.ua3.core.ux.services
+  version: 30.0.0
+  method: HP.HSP.UA3.Core.UX.Services.Controllers.Base.BaseApiController.FormatResultModel(System.Web.Http.ModelBinding.ModelStateDictionary)
+  calls:
+  - at: ux\HP.HSP.UA3.FileTransfer.UX.Services\Controller\FileTransferController.AddFileTransferBaseConfiguration.cs:67
+    arguments:
+    - name: modelState
+      expression: this.ModelState
+- package: microsoft.aspnet.webapi.core
+  version: 5.3.0
+  method: System.Net.Http.HttpRequestMessageExtensions.CreateResponse<T>(System.Net.Http.HttpRequestMessage, System.Net.HttpStatusCode, T)
+  calls:
+  - at: ux\HP.HSP.UA3.FileTransfer.UX.Services\Controller\FileTransferController.AddFileTransferBaseConfiguration.cs:67
+    type_arguments:
+    - HP.HSP.UA3.Core.UX.Data.Messaging.ResultModel
+    arguments:
+    - name: statusCode
+      value: '400'
+    - name: value
+      expression: this.FormatResultModel(this.ModelState)
+polymorphic_hooks: []
+stops: []
+calls:
+- from: HP.HSP.UA3.FileTransfer.UX.Services.Controller.FileTransferController.AddFileTransferBaseConfiguration(HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.FileTransferConfigurationModel)
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.UX.Services.Controller.FileTransferController.GenerateAddFileTransferBaseConfigurationResult(ref HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.FileTransferConfigurationModel)
+- from: HP.HSP.UA3.FileTransfer.UX.Services.Controller.FileTransferController.AddFileTransferBaseConfiguration(HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.FileTransferConfigurationModel)
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.UX.Services.Controller.FileTransferController.GenerateInvalidModelStateRepsonse()
+- from: HP.HSP.UA3.FileTransfer.UX.Services.Controller.FileTransferController.GenerateAddFileTransferBaseConfigurationResult(ref HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.FileTransferConfigurationModel)
+  via: READS_FROM
+  to: orm:FTS_SUSPENSION
+methods:
+- name: HP.HSP.UA3.FileTransfer.UX.Services.Controller.FileTransferController.AddFileTransferBaseConfiguration(HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.FileTransferConfigurationModel)
+  file: ux\HP.HSP.UA3.FileTransfer.UX.Services\Controller\FileTransferController.AddFileTransferBaseConfiguration.cs
+  line: 21
+- name: HP.HSP.UA3.FileTransfer.UX.Services.Controller.FileTransferController.GenerateAddFileTransferBaseConfigurationResult(ref HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.FileTransferConfigurationModel)
+  file: ux\HP.HSP.UA3.FileTransfer.UX.Services\Controller\FileTransferController.AddFileTransferBaseConfiguration.cs
+  line: 40
+- name: HP.HSP.UA3.FileTransfer.UX.Services.Controller.FileTransferController.GenerateInvalidModelStateRepsonse()
+  file: ux\HP.HSP.UA3.FileTransfer.UX.Services\Controller\FileTransferController.AddFileTransferBaseConfiguration.cs
+  line: 65

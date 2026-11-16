@@ -1,0 +1,341 @@
+door:
+  id: file-transfer-svc-service-controller-file-transfer-add
+  kind: api
+  name: FileTransferAdd
+  class: HPP.FileTransfer.BAS.FileTransferApi.Controllers.FileTransferSvcServiceController
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferApi\Controllers\FileTransferSvcServiceController.cs
+  line: 22
+  entry:
+  - HPP.FileTransfer.BAS.FileTransferApi.Controllers.FileTransferSvcServiceController.FileTransferAdd(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand)
+  endpoints:
+  - POST /FileTransferSvcService
+procedures: []
+tables:
+- name: orm:FTP_SERVER
+  access:
+  - reads
+  - writes
+- name: orm:FTS_DESTINATION
+  access:
+  - writes
+- name: orm:FTS_SUSPENSION
+  access:
+  - reads
+  - writes
+shared_uses: []
+external_uses:
+- package: ''
+  version: ''
+  method: '?.Add'
+  calls:
+  - at: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess\EventHandlers\FtsSourceLocationProjectionWriter.cs:193
+    arguments:
+    - name: null
+      expression: "new FtsDestinationLocations()\r\n            {\r\n                DestinationId = Guid.NewGuid(),\r\n                FtsSourceLocationId = this.ftsCommonSourceLocatio"
+  unresolved: true
+- package: ''
+  version: ''
+  method: IDbContextBase.GetNextSequenceValue
+  calls:
+  - at: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business\CommandHandlers\FtsSourceLocationAddCommandHandler.cs:167
+    arguments:
+    - name: null
+      expression: FileTransferExceptionConstants.Fields.FtsSourceLocationSeq
+  unresolved: true
+- package: ''
+  version: ''
+  method: IDbContextBase.SaveChanges
+  calls:
+  - at: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess\EventHandlers\FtsSourceLocationProjectionWriter.cs:86
+    arguments: []
+  unresolved: true
+- package: ''
+  version: ''
+  method: IDbContextBase.Set
+  calls:
+  - at: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess\EventHandlers\FtsSourceLocationProjectionWriter.cs:193
+    type_arguments:
+    - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.Entities.FtsDestinationLocations
+    arguments: []
+  unresolved: true
+- package: ''
+  version: ''
+  method: ProjectionWriterBase<HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.Entities.FtsSourceLocation>.Add
+  calls:
+  - at: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess\EventHandlers\FtsSourceLocationProjectionWriter.cs:39
+    arguments:
+    - name: null
+      expression: "new FtsSourceLocation()\r\n                {\r\n                    FtsSourceLocationId = this.ftsCommonSourceLocationId,\r\n                    Configid = @event.Con"
+  unresolved: true
+- package: hpp.core.bas.cqrs
+  version: 30.0.0
+  method: HPP.Core.BAS.CQRS.Base.CommandServiceBase.TryRoute(HPP.Core.BAS.CQRS.Base.Command)
+  calls:
+  - at: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferApi\Commands\FileTransferSvcService.cs:66
+    arguments:
+    - name: command
+      expression: command
+- package: hpp.core.bas.cqrs
+  version: 30.0.0
+  method: HPP.Core.BAS.CQRS.Base.ProjectionWriterBase<T>.Add(T)
+  calls:
+  - at: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvc.DataAccess\EventHandlers\FtsSourceLocationProjectionWriter.cs:39
+    arguments:
+    - name: newInstance
+      expression: "new FtsSourceLocation()\r\n            {\r\n                FtsSourceLocationId = this.ftsCommonSourceLocationId,\r\n                Configid = @event.ConfigId,\r\n    "
+- package: hpp.core.bas.cqrs
+  version: 30.0.0
+  method: HPP.Core.BAS.CQRS.Interfaces.IDbContextBase.GetNextSequenceValue(string)
+  calls:
+  - at: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvc.Business\CommandHandlers\FtsSourceLocationAddCommandHandler.cs:163
+    arguments:
+    - name: seqName
+      value: FTS_SOURCE_LOCATION_SEQ
+- package: hpp.core.bas.cqrs
+  version: 30.0.0
+  method: HPP.Core.BAS.CQRS.Interfaces.IDbContextBase.SaveChanges()
+  calls:
+  - at: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvc.DataAccess\EventHandlers\FtsSourceLocationProjectionWriter.cs:86
+    arguments: []
+- package: hpp.core.bas.cqrs
+  version: 30.0.0
+  method: HPP.Core.BAS.CQRS.Interfaces.IDbContextBase.Set<T>()
+  calls:
+  - at: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvc.DataAccess\EventHandlers\FtsSourceLocationProjectionWriter.cs:193
+    type_arguments:
+    - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.Entities.FtsDestinationLocations
+    arguments: []
+- package: microsoft.entityframeworkcore
+  version: 9.0.12
+  method: Microsoft.EntityFrameworkCore.DbSet<TEntity>.Add(TEntity)
+  calls:
+  - at: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvc.DataAccess\EventHandlers\FtsSourceLocationProjectionWriter.cs:193
+    arguments:
+    - name: entity
+      expression: "new FtsDestinationLocations()\r\n            {\r\n                DestinationId = Guid.NewGuid(),\r\n                FtsSourceLocationId = this.ftsCommonSourceLocatio"
+polymorphic_hooks: []
+stops:
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsCommand.AddValidation(string, string)
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts\Commands\FtsCommand.cs
+  line: 44
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsCommand.FtsCommandValidate()
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts\Commands\FtsCommand.cs
+  line: 28
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsCommand.HandleValidations()
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts\Commands\FtsCommand.cs
+  line: 33
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand.BuildMaskValidationMessage(string)
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts\Commands\FtsSourceLocationAddCommand.cs
+  line: 314
+calls:
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationAddCommandHandler.CreateConfigNumber()
+  via: READS_FROM
+  to: orm:FTS_SUSPENSION
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationAddCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand)
+  via: DISPATCHES_TO
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtsSourceLocationProjectionWriter.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtsSourceLocationAdded)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationAddCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand)
+  via: DISPATCHES_TO
+  to: HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtsSourceLocationProjectionWriter.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtsSourceLocationAdded)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationAddCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand)
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationAddCommandHandler.CreateConfigNumber()
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationAddCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand)
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand.Validate()
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationAddCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand)
+  via: READS_FROM
+  to: orm:FTP_SERVER
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationAddCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand)
+  via: READS_FROM
+  to: orm:FTS_SUSPENSION
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand.Validate()
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsCommand.FtsCommandValidate()
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand.Validate()
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsCommand.HandleValidations()
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand.Validate()
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand.ValidateDestinationAddress()
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand.Validate()
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand.ValidateFtpServerId()
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand.Validate()
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand.ValidateMaskExtension()
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand.Validate()
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand.ValidateRequiredField(string, string)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand.Validate()
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand.ValidateRunSchedule()
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand.Validate()
+  via: READS_FROM
+  to: orm:FTP_SERVER
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand.ValidateDestinationAddress()
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsCommand.AddValidation(string, string)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand.ValidateFtpServerId()
+  via: READS_FROM
+  to: orm:FTP_SERVER
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand.ValidateMaskExtension()
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsCommand.AddValidation(string, string)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand.ValidateMaskExtension()
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand.BuildMaskValidationMessage(string)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand.ValidateRequiredField(string, string)
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsCommand.AddValidation(string, string)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand.ValidateRunSchedule()
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsCommand.AddValidation(string, string)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtsSourceLocationProjectionWriter.AddDestination(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtsDestinationLocationAdded, string)
+  via: WRITES_TO
+  to: orm:FTP_SERVER
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtsSourceLocationProjectionWriter.AddDestination(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtsDestinationLocationAdded, string)
+  via: WRITES_TO
+  to: orm:FTS_DESTINATION
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtsSourceLocationProjectionWriter.AddDestination(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtsDestinationLocationAdded, string)
+  via: WRITES_TO
+  to: orm:FTS_SUSPENSION
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtsSourceLocationProjectionWriter.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtsSourceLocationAdded)
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtsSourceLocationProjectionWriter.AddDestination(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtsDestinationLocationAdded, string)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtsSourceLocationProjectionWriter.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtsSourceLocationAdded)
+  via: WRITES_TO
+  to: orm:FTP_SERVER
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtsSourceLocationProjectionWriter.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtsSourceLocationAdded)
+  via: WRITES_TO
+  to: orm:FTS_SUSPENSION
+- from: HPP.FileTransfer.BAS.FileTransferApi.Commands.FileTransferSvcService.FileTransferAdd(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand)
+  via: DISPATCHES_TO
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationAddCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand)
+- from: HPP.FileTransfer.BAS.FileTransferApi.Commands.FileTransferSvcService.FileTransferAdd(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand)
+  via: DISPATCHES_TO
+  to: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationAddCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand)
+- from: HPP.FileTransfer.BAS.FileTransferApi.Commands.FileTransferSvcService.FileTransferAdd(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand)
+  via: INVOKES
+  to: HPP.FileTransfer.BAS.FileTransferApi.Commands.FileTransferSvcService.TryRouteCommand(HPP.Core.BAS.CQRS.Base.Command)
+- from: HPP.FileTransfer.BAS.FileTransferApi.Commands.FileTransferSvcService.FileTransferAdd(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand)
+  via: READS_FROM
+  to: orm:FTS_SUSPENSION
+- from: HPP.FileTransfer.BAS.FileTransferApi.Controllers.FileTransferSvcServiceController.FileTransferAdd(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand)
+  via: INVOKES
+  to: HPP.FileTransfer.BAS.FileTransferApi.Interfaces.IFileTransferSvcService.FileTransferAdd(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand)
+- from: HPP.FileTransfer.BAS.FileTransferApi.Controllers.FileTransferSvcServiceController.FileTransferAdd(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand)
+  via: READS_FROM
+  to: orm:FTS_SUSPENSION
+- from: HPP.FileTransfer.BAS.FileTransferApi.Interfaces.IFileTransferSvcService.FileTransferAdd(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand)
+  via: DISPATCH
+  to: HPP.FileTransfer.BAS.FileTransferApi.Commands.FileTransferSvcService.FileTransferAdd(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand)
+- from: HPP.FileTransfer.BAS.FileTransferApi.Interfaces.IFileTransferSvcService.FileTransferAdd(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand)
+  via: READS_FROM
+  to: orm:FTS_SUSPENSION
+- from: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationAddCommandHandler.CreateConfigNumber()
+  via: READS_FROM
+  to: orm:FTS_SUSPENSION
+- from: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationAddCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand)
+  via: DISPATCHES_TO
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtsSourceLocationProjectionWriter.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtsSourceLocationAdded)
+- from: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationAddCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand)
+  via: DISPATCHES_TO
+  to: HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtsSourceLocationProjectionWriter.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtsSourceLocationAdded)
+- from: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationAddCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand)
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand.Validate()
+- from: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationAddCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand)
+  via: INVOKES
+  to: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationAddCommandHandler.CreateConfigNumber()
+- from: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationAddCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand)
+  via: READS_FROM
+  to: orm:FTP_SERVER
+- from: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationAddCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand)
+  via: READS_FROM
+  to: orm:FTS_SUSPENSION
+- from: HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtsSourceLocationProjectionWriter.AddDestination(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtsDestinationLocationAdded, string)
+  via: WRITES_TO
+  to: orm:FTP_SERVER
+- from: HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtsSourceLocationProjectionWriter.AddDestination(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtsDestinationLocationAdded, string)
+  via: WRITES_TO
+  to: orm:FTS_DESTINATION
+- from: HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtsSourceLocationProjectionWriter.AddDestination(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtsDestinationLocationAdded, string)
+  via: WRITES_TO
+  to: orm:FTS_SUSPENSION
+- from: HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtsSourceLocationProjectionWriter.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtsSourceLocationAdded)
+  via: INVOKES
+  to: HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtsSourceLocationProjectionWriter.AddDestination(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtsDestinationLocationAdded, string)
+- from: HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtsSourceLocationProjectionWriter.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtsSourceLocationAdded)
+  via: WRITES_TO
+  to: orm:FTP_SERVER
+- from: HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtsSourceLocationProjectionWriter.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtsSourceLocationAdded)
+  via: WRITES_TO
+  to: orm:FTS_SUSPENSION
+methods:
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationAddCommandHandler.CreateConfigNumber()
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business\CommandHandlers\FtsSourceLocationAddCommandHandler.cs
+  line: 165
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationAddCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand)
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business\CommandHandlers\FtsSourceLocationAddCommandHandler.cs
+  line: 48
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsCommand.AddValidation(string, string)
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts\Commands\FtsCommand.cs
+  line: 44
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsCommand.FtsCommandValidate()
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts\Commands\FtsCommand.cs
+  line: 28
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsCommand.HandleValidations()
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts\Commands\FtsCommand.cs
+  line: 33
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand.BuildMaskValidationMessage(string)
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts\Commands\FtsSourceLocationAddCommand.cs
+  line: 314
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand.Validate()
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts\Commands\FtsSourceLocationAddCommand.cs
+  line: 272
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand.ValidateDestinationAddress()
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts\Commands\FtsSourceLocationAddCommand.cs
+  line: 327
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand.ValidateFtpServerId()
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts\Commands\FtsSourceLocationAddCommand.cs
+  line: 293
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand.ValidateMaskExtension()
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts\Commands\FtsSourceLocationAddCommand.cs
+  line: 304
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand.ValidateRequiredField(string, string)
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts\Commands\FtsSourceLocationAddCommand.cs
+  line: 319
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand.ValidateRunSchedule()
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts\Commands\FtsSourceLocationAddCommand.cs
+  line: 335
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtsSourceLocationProjectionWriter.AddDestination(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtsDestinationLocationAdded, string)
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess\EventHandlers\FtsSourceLocationProjectionWriter.cs
+  line: 191
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtsSourceLocationProjectionWriter.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtsSourceLocationAdded)
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess\EventHandlers\FtsSourceLocationProjectionWriter.cs
+  line: 36
+- name: HPP.FileTransfer.BAS.FileTransferApi.Commands.FileTransferSvcService.FileTransferAdd(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferApi\Commands\FileTransferSvcService.cs
+  line: 26
+- name: HPP.FileTransfer.BAS.FileTransferApi.Commands.FileTransferSvcService.TryRouteCommand(HPP.Core.BAS.CQRS.Base.Command)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferApi\Commands\FileTransferSvcService.cs
+  line: 64
+- name: HPP.FileTransfer.BAS.FileTransferApi.Controllers.FileTransferSvcServiceController.FileTransferAdd(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferApi\Controllers\FileTransferSvcServiceController.cs
+  line: 22
+- name: HPP.FileTransfer.BAS.FileTransferApi.Interfaces.IFileTransferSvcService.FileTransferAdd(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferApi\Interfaces\IFileTransferSvcService.cs
+  line: 59
+- name: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationAddCommandHandler.CreateConfigNumber()
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvc.Business\CommandHandlers\FtsSourceLocationAddCommandHandler.cs
+  line: 161
+- name: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationAddCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvc.Business\CommandHandlers\FtsSourceLocationAddCommandHandler.cs
+  line: 44
+- name: HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtsSourceLocationProjectionWriter.AddDestination(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtsDestinationLocationAdded, string)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvc.DataAccess\EventHandlers\FtsSourceLocationProjectionWriter.cs
+  line: 191
+- name: HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtsSourceLocationProjectionWriter.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtsSourceLocationAdded)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvc.DataAccess\EventHandlers\FtsSourceLocationProjectionWriter.cs
+  line: 36

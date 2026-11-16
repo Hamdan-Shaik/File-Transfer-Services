@@ -1,0 +1,817 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "STD-APP-KMGMT-008: Consumer Lag Investigation Workflows",
+  "document_description": "This standard defines comprehensive workflows and procedures for investigating consumer lag issues using Lenses.io capabilities, enabling rapid identification and resolution of performance problems in Kafka consumer applications. It establishes structured investigation methodologies, correlation techniques, and remediation frameworks to minimize the business impact of consumer lag incidents.",
+  "total_pages": 87,
+  "tree": [
+    {
+      "title": "STD-APP-KMGMT-008: Consumer Lag Investigation Workflows",
+      "node_id": "std-app-kmgmt-008-consumer-lag-investigation-workflows",
+      "start_index": 1,
+      "end_index": 87,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Executive Summary",
+          "node_id": "executive-summary",
+          "start_index": 2,
+          "end_index": 6,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Purpose and Scope",
+              "node_id": "purpose-and-scope",
+              "start_index": 3,
+              "end_index": 3,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "1.2 Key Requirements",
+              "node_id": "12-key-requirements",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "1.3 Business Rationale",
+              "node_id": "13-business-rationale",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "1.4 Compliance Level",
+              "node_id": "14-compliance-level",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 7,
+          "end_index": 7,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "2. Overview",
+          "node_id": "2-overview",
+          "start_index": 8,
+          "end_index": 12,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "2.1 Purpose",
+              "node_id": "21-purpose",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "2.2 Scope",
+              "node_id": "22-scope",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "2.3 Related Standards",
+              "node_id": "23-related-standards",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "2.4 Related Decisions",
+              "node_id": "24-related-decisions",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "3. Prohibited Practices",
+          "node_id": "3-prohibited-practices",
+          "start_index": 13,
+          "end_index": 19,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "3.1 Investigating Without Documentation",
+              "node_id": "31-investigating-without-documentation",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "3.2 Skipping Root Cause Analysis",
+              "node_id": "32-skipping-root-cause-analysis",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "3.3 Making Production Changes Without Testing",
+              "node_id": "33-making-production-changes-without-testing",
+              "start_index": 16,
+              "end_index": 16,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "3.4 Ignoring Correlation Data",
+              "node_id": "34-ignoring-correlation-data",
+              "start_index": 17,
+              "end_index": 17,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "3.5 Single-Metric Analysis",
+              "node_id": "35-single-metric-analysis",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "3.6 Bypassing Escalation Procedures",
+              "node_id": "36-bypassing-escalation-procedures",
+              "start_index": 19,
+              "end_index": 19,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "4. Requirements",
+          "node_id": "4-requirements",
+          "start_index": 20,
+          "end_index": 30,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "4.1 REQ-LENS-008-001: Lag Visualization and Dashboards",
+              "node_id": "41-req-lens-008-001-lag-visualization-and-dashboards",
+              "start_index": 21,
+              "end_index": 21,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.2 REQ-LENS-008-002: Root Cause Analysis Workflow",
+              "node_id": "42-req-lens-008-002-root-cause-analysis-workflow",
+              "start_index": 22,
+              "end_index": 22,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.3 REQ-LENS-008-003: Consumer Group Health Assessment",
+              "node_id": "43-req-lens-008-003-consumer-group-health-assessment",
+              "start_index": 23,
+              "end_index": 23,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.4 REQ-LENS-008-004: Performance Correlation Analysis",
+              "node_id": "44-req-lens-008-004-performance-correlation-analysis",
+              "start_index": 24,
+              "end_index": 24,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.5 REQ-LENS-008-005: Message Processing Analysis",
+              "node_id": "45-req-lens-008-005-message-processing-analysis",
+              "start_index": 25,
+              "end_index": 25,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.6 REQ-LENS-008-006: Partition-Level Investigation",
+              "node_id": "46-req-lens-008-006-partition-level-investigation",
+              "start_index": 26,
+              "end_index": 26,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.7 REQ-LENS-008-007: Historical Lag Pattern Analysis",
+              "node_id": "47-req-lens-008-007-historical-lag-pattern-analysis",
+              "start_index": 27,
+              "end_index": 27,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.8 REQ-LENS-008-008: Automated Remediation Recommendations",
+              "node_id": "48-req-lens-008-008-automated-remediation-recommendations",
+              "start_index": 28,
+              "end_index": 28,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.9 REQ-LENS-008-009: Investigation Documentation",
+              "node_id": "49-req-lens-008-009-investigation-documentation",
+              "start_index": 29,
+              "end_index": 29,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.10 REQ-LENS-008-010: Escalation Procedures",
+              "node_id": "410-req-lens-008-010-escalation-procedures",
+              "start_index": 30,
+              "end_index": 30,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "5. Exceptions Process",
+          "node_id": "5-exceptions-process",
+          "start_index": 31,
+          "end_index": 35,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "5.1 When to Request an Exception",
+              "node_id": "51-when-to-request-an-exception",
+              "start_index": 32,
+              "end_index": 32,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "5.2 Exception Request Procedure",
+              "node_id": "52-exception-request-procedure",
+              "start_index": 33,
+              "end_index": 33,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "5.3 Approval Authority",
+              "node_id": "53-approval-authority",
+              "start_index": 34,
+              "end_index": 34,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "5.4 Exception Monitoring",
+              "node_id": "54-exception-monitoring",
+              "start_index": 35,
+              "end_index": 35,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "6. Technical Specifications",
+          "node_id": "6-technical-specifications",
+          "start_index": 36,
+          "end_index": 41,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "6.1 Platform Requirements",
+              "node_id": "61-platform-requirements",
+              "start_index": 37,
+              "end_index": 37,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "6.2 Architecture Constraints",
+              "node_id": "62-architecture-constraints",
+              "start_index": 38,
+              "end_index": 38,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "6.3 Configuration Specifications",
+              "node_id": "63-configuration-specifications",
+              "start_index": 39,
+              "end_index": 39,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "6.4 Security Specifications",
+              "node_id": "64-security-specifications",
+              "start_index": 40,
+              "end_index": 40,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "6.5 Performance Specifications",
+              "node_id": "65-performance-specifications",
+              "start_index": 41,
+              "end_index": 41,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "7. Technology Stack",
+          "node_id": "7-technology-stack",
+          "start_index": 42,
+          "end_index": 44,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "7.1 Core Technologies",
+              "node_id": "71-core-technologies",
+              "start_index": 43,
+              "end_index": 43,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "7.2 Supporting Tools",
+              "node_id": "72-supporting-tools",
+              "start_index": 44,
+              "end_index": 44,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "8. Implementation Guidance",
+          "node_id": "8-implementation-guidance",
+          "start_index": 45,
+          "end_index": 54,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "8.1 Prerequisites",
+              "node_id": "81-prerequisites",
+              "start_index": 46,
+              "end_index": 46,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "8.2 Implementation Steps",
+              "node_id": "82-implementation-steps",
+              "start_index": 47,
+              "end_index": 53,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Step 1: Configure Lag Dashboards",
+                  "node_id": "step-1-configure-lag-dashboards",
+                  "start_index": 48,
+                  "end_index": 48,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 2: Establish Investigation Workflow",
+                  "node_id": "step-2-establish-investigation-workflow",
+                  "start_index": 49,
+                  "end_index": 49,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 3: Integrate Correlation Data Sources",
+                  "node_id": "step-3-integrate-correlation-data-sources",
+                  "start_index": 50,
+                  "end_index": 50,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 4: Create Remediation Playbooks",
+                  "node_id": "step-4-create-remediation-playbooks",
+                  "start_index": 51,
+                  "end_index": 51,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 5: Implement Documentation System",
+                  "node_id": "step-5-implement-documentation-system",
+                  "start_index": 52,
+                  "end_index": 52,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 6: Configure Escalation Process",
+                  "node_id": "step-6-configure-escalation-process",
+                  "start_index": 53,
+                  "end_index": 53,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "8.3 Post-Implementation Tasks",
+              "node_id": "83-post-implementation-tasks",
+              "start_index": 54,
+              "end_index": 54,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "9. Validation Criteria",
+          "node_id": "9-validation-criteria",
+          "start_index": 55,
+          "end_index": 55,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "10. Testing Requirements",
+          "node_id": "10-testing-requirements",
+          "start_index": 56,
+          "end_index": 60,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "10.1 Functional Testing",
+              "node_id": "101-functional-testing",
+              "start_index": 57,
+              "end_index": 57,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "10.2 Security Testing",
+              "node_id": "102-security-testing",
+              "start_index": 58,
+              "end_index": 58,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "10.3 Performance Testing",
+              "node_id": "103-performance-testing",
+              "start_index": 59,
+              "end_index": 59,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "10.4 Integration Testing",
+              "node_id": "104-integration-testing",
+              "start_index": 60,
+              "end_index": 60,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "11. Documentation Requirements",
+          "node_id": "11-documentation-requirements",
+          "start_index": 61,
+          "end_index": 67,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "11.1 Architecture Documentation",
+              "node_id": "111-architecture-documentation",
+              "start_index": 62,
+              "end_index": 62,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "11.2 Operational Procedures",
+              "node_id": "112-operational-procedures",
+              "start_index": 63,
+              "end_index": 63,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "11.3 Developer Guides",
+              "node_id": "113-developer-guides",
+              "start_index": 64,
+              "end_index": 64,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "11.4 Security Documentation",
+              "node_id": "114-security-documentation",
+              "start_index": 65,
+              "end_index": 65,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "11.5 Compliance Documentation",
+              "node_id": "115-compliance-documentation",
+              "start_index": 66,
+              "end_index": 66,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "11.6 Training Materials",
+              "node_id": "116-training-materials",
+              "start_index": 67,
+              "end_index": 67,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "12. Troubleshooting",
+          "node_id": "12-troubleshooting",
+          "start_index": 68,
+          "end_index": 73,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "12.1 Issue 1: Unable to Identify Root Cause",
+              "node_id": "121-issue-1-unable-to-identify-root-cause",
+              "start_index": 69,
+              "end_index": 69,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "12.2 Issue 2: Lag Investigation Taking Too Long",
+              "node_id": "122-issue-2-lag-investigation-taking-too-long",
+              "start_index": 70,
+              "end_index": 70,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "12.3 Issue 3: Recurring Lag Issues",
+              "node_id": "123-issue-3-recurring-lag-issues",
+              "start_index": 71,
+              "end_index": 71,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "12.4 Issue 4: Lag Alerts but No Actual Problem",
+              "node_id": "124-issue-4-lag-alerts-but-no-actual-problem",
+              "start_index": 72,
+              "end_index": 72,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "12.5 Issue 5: Insufficient Data for Investigation",
+              "node_id": "125-issue-5-insufficient-data-for-investigation",
+              "start_index": 73,
+              "end_index": 73,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "13. Compliance Checklist",
+          "node_id": "13-compliance-checklist",
+          "start_index": 74,
+          "end_index": 74,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "14. Governance Oversight",
+          "node_id": "14-governance-oversight",
+          "start_index": 75,
+          "end_index": 80,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "14.1 Ownership and Accountability",
+              "node_id": "141-ownership-and-accountability",
+              "start_index": 76,
+              "end_index": 76,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "14.2 Review and Update Frequency",
+              "node_id": "142-review-and-update-frequency",
+              "start_index": 77,
+              "end_index": 77,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "14.3 Metrics and KPIs",
+              "node_id": "143-metrics-and-kpis",
+              "start_index": 78,
+              "end_index": 78,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "14.4 Key Contacts",
+              "node_id": "144-key-contacts",
+              "start_index": 79,
+              "end_index": 79,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "14.5 Related Governance",
+              "node_id": "145-related-governance",
+              "start_index": 80,
+              "end_index": 80,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "15. References",
+          "node_id": "15-references",
+          "start_index": 81,
+          "end_index": 84,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "15.1 Related Documentation",
+              "node_id": "151-related-documentation",
+              "start_index": 82,
+              "end_index": 82,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "15.2 External Resources",
+              "node_id": "152-external-resources",
+              "start_index": 83,
+              "end_index": 83,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "15.3 Industry Standards",
+              "node_id": "153-industry-standards",
+              "start_index": 84,
+              "end_index": 84,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "16. Change History",
+          "node_id": "16-change-history",
+          "start_index": 85,
+          "end_index": 85,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "17. Review Log",
+          "node_id": "17-review-log",
+          "start_index": 86,
+          "end_index": 86,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "18. Document Status",
+          "node_id": "18-document-status",
+          "start_index": 87,
+          "end_index": 87,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#std-app-kmgmt-008-consumer-lag-investigation-workflows]\n\n# STD-APP-KMGMT-008: Consumer Lag Investigation Workflows\n\n**[Home](../../../README.md)** > **[Standards](../../README.md)** > **[Application](../README.md)** > **[Kafka Management](README.md)** > **STD-APP-KMGMT-008**\n\n---\n\n---",
+    "2": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#executive-summary]\n\n## Executive Summary",
+    "3": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#purpose-and-scope]\n\n### Purpose and Scope\n\nThis standard defines comprehensive workflows and procedures for investigating consumer lag issues using Lenses.io capabilities, enabling rapid identification and resolution of performance problems in Kafka consumer applications. It establishes structured investigation methodologies, correlation techniques, and remediation frameworks to minimize the business impact of consumer lag incidents.",
+    "4": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#12-key-requirements]\n\n### 1.2 Key Requirements\n\n- **Lag Visualization**: Real-time dashboards displaying consumer lag across all consumer groups with historical trending\n- **Root Cause Analysis**: Structured investigation workflow to systematically identify lag causes\n- **Consumer Health Assessment**: Monitoring consumer group health metrics including rebalances, session timeouts, and commit patterns\n- **Performance Correlation**: Automated correlation of lag spikes with deployment events, infrastructure changes, and alerts\n- **Partition-Level Analysis**: Per-partition lag investigation to identify hot partitions and load distribution issues\n- **Historical Pattern Recognition**: Analysis of lag patterns over time to identify recurring issues and trends\n- **Automated Remediation**: AI-driven recommendation engine suggesting proven fixes based on lag scenarios\n- **Investigation Documentation**: Standardized templates and knowledge base integration for organizational learning",
+    "5": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#13-business-rationale]\n\n### 1.3 Business Rationale\n\nEffective consumer lag investigation provides organizations with:\n- **Reduced Incident Resolution Time**: Structured workflows minimize time from detection to resolution\n- **Improved Application Reliability**: Faster identification and fixing of lag issues reduces service impact\n- **Operational Knowledge**: Documented investigations build institutional knowledge for future incidents\n- **Proactive Problem Detection**: Historical analysis identifies trends before they become critical issues\n- **Cost Optimization**: Efficient resolution reduces operational costs and resource wastage\n- **Customer Satisfaction**: Minimized lag-related service degradation improves user experience\n- **Compliance**: Demonstrated capability to investigate and resolve performance issues supports SLA commitments",
+    "6": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#14-compliance-level]\n\n### 1.4 Compliance Level\n\n**Recommended** - This standard is strongly recommended for organizations operating Kafka-based event streaming platforms. While not mandatory, implementing structured consumer lag investigation workflows significantly improves operational maturity, incident response times, and system reliability. Organizations with consumer-facing applications should treat this as a critical operational capability.\n\n---",
+    "7": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#table-of-contents]\n\n## Table of Contents\n\n- [1. Overview](#1-overview)\n- [2. Requirements](#2-requirements)\n- [3. Technical Specifications](#3-technical-specifications)\n- [4. Implementation Guidance](#4-implementation-guidance)\n- [5. Compliance and Governance](#5-compliance-and-governance)\n- [6. References](#6-references)\n- [7. Change History](#7-change-history)\n- [8. Review Log](#8-review-log)\n\n---",
+    "8": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#2-overview]\n\n## 2. Overview",
+    "9": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#21-purpose]\n\n### 2.1 Purpose\n\nThis standard defines workflows and procedures for investigating consumer lag issues using Lenses.io capabilities, enabling rapid identification and resolution of performance problems.",
+    "10": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#22-scope]\n\n### 2.2 Scope\n\n- **In Scope**: Consumer lag detection, root cause analysis, performance debugging, remediation workflows, investigation documentation, escalation procedures, historical trend analysis\n- **Out of Scope**: Application code debugging (beyond identifying code-level issues), infrastructure capacity planning (separate standard), broker tuning (infrastructure concern), producer performance issues",
+    "11": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#23-related-standards]\n\n### 2.3 Related Standards\n\n- [STD-INFRA-KMGMT-006](../../infrastructure/kafka-management/STD-INFRA-KMGMT-006-event-monitoring.md) - Event Monitoring\n- [STD-INFRA-KMGMT-008](../../infrastructure/kafka-management/STD-INFRA-KMGMT-008-consumer-lag-alerting.md) - Consumer Lag Alerting\n- [STD-APP-KMGMT-001](STD-APP-KMGMT-001-topic-browser-access.md) - Topic Browser Access\n- [STD-APP-KMGMT-009](STD-APP-KMGMT-009-topic-data-inspection.md) - Topic Data Inspection",
+    "12": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#24-related-decisions]\n\n### 2.4 Related Decisions\n\n- [ADR-IFR-008](../../../decisions/infrastructure/ADR-IFR-008-kafka-management-platform-selection.md) - Kafka Management Platform Selection",
+    "13": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#3-prohibited-practices]\n\n## 3. Prohibited Practices\n\nThe following practices are explicitly prohibited when investigating consumer lag:",
+    "14": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#31-investigating-without-documentation]\n\n### 3.1 Investigating Without Documentation\n\n**Prohibition**: Conducting lag investigations without documenting findings, steps taken, and resolutions\n**Rationale**: Undocumented investigations waste organizational knowledge and force teams to re-learn the same lessons repeatedly\n**Impact**: Increased incident resolution time, knowledge loss during team transitions, repeated mistakes",
+    "15": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#32-skipping-root-cause-analysis]\n\n### 3.2 Skipping Root Cause Analysis\n\n**Prohibition**: Applying quick fixes without identifying and addressing underlying root causes\n**Rationale**: Symptom treatment without root cause resolution leads to recurring incidents and technical debt\n**Impact**: Recurring lag issues, degraded customer experience, operational inefficiency",
+    "16": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#33-making-production-changes-without-testing]\n\n### 3.3 Making Production Changes Without Testing\n\n**Prohibition**: Implementing remediation changes in production without validating in lower environments\n**Rationale**: Untested changes risk exacerbating the problem or introducing new issues\n**Impact**: Extended outages, cascade failures, additional incidents",
+    "17": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#34-ignoring-correlation-data]\n\n### 3.4 Ignoring Correlation Data\n\n**Prohibition**: Investigating lag in isolation without correlating with deployment events, infrastructure changes, and external factors\n**Rationale**: Correlation data often reveals root causes that pure Kafka metrics cannot identify\n**Impact**: Prolonged investigations, misidentified root causes, ineffective remediation",
+    "18": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#35-single-metric-analysis]\n\n### 3.5 Single-Metric Analysis\n\n**Prohibition**: Relying solely on lag metrics without considering consumer health, processing rates, error rates, and resource utilization\n**Rationale**: Lag is a symptom; comprehensive analysis of multiple metrics reveals actual causes\n**Impact**: Incorrect diagnosis, ineffective fixes, wasted investigation time",
+    "19": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#36-bypassing-escalation-procedures]\n\n### 3.6 Bypassing Escalation Procedures\n\n**Prohibition**: Continuing investigations beyond defined timeboxes without escalating to senior engineers or subject matter experts\n**Rationale**: Prolonged solo investigations waste time when expertise is available\n**Impact**: Extended incident duration, customer impact, SLA breaches",
+    "20": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#4-requirements]\n\n## 4. Requirements",
+    "21": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#41-req-lens-008-001-lag-visualization-and-dashboards]\n\n### 4.1 REQ-LENS-008-001: Lag Visualization and Dashboards\n\n**Status**: To Be Implemented\n**Priority**: High\n\n**Rationale**: Real-time visualization of consumer lag enables quick identification of performance degradation and trending issues\n\n**Configuration**:\n- Consumer lag dashboards per business unit/application\n- Real-time lag metrics displayed (refresh every 10 seconds)\n- Historical lag trending charts (30-day retention minimum)\n- Lag spike detection and highlighting (automated anomaly detection)\n\n**Implementation Details**:\n```sql\n-- Lenses SQL query for lag dashboard\nSELECT\n  consumer_group,\n  topic,\n  partition,\n  current_offset,\n  log_end_offset,\n  lag,\n  timestamp\nFROM\n  kafka_consumer_group_offsets\nWHERE\n  lag > 1000\nORDER BY\n  lag DESC\n```\n\n**Validation**:\n- Dashboard accessible to all support teams\n- Metrics update in real-time (<10 second latency)\n- Historical data available for 30+ days\n- Alerts integrated into dashboard view\n\n---",
+    "22": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#42-req-lens-008-002-root-cause-analysis-workflow]\n\n### 4.2 REQ-LENS-008-002: Root Cause Analysis Workflow\n\n**Status**: To Be Implemented\n**Priority**: High\n\n**Rationale**: Structured investigation workflow ensures consistent and thorough analysis of lag issues\n\n**Configuration**:\n- Step-by-step investigation checklist (minimum 8 steps)\n- Correlation with infrastructure metrics (CPU, memory, network, disk I/O)\n- Automated preliminary diagnosis (ML-based pattern matching)\n- Common issue pattern recognition library\n\n**Implementation Details**:\n```markdown\n# Lag Investigation Checklist\n1. Verify lag exists and quantify magnitude (current lag vs baseline)\n2. Check consumer group health (members, rebalances, session timeouts)\n3. Analyze partition assignment balance\n4. Review consumer error logs for exceptions\n5. Correlate with recent deployments or infrastructure changes\n6. Analyze message processing rates and trends\n7. Check resource utilization (CPU, memory, network)\n8. Review producer throughput for corresponding topic\n9. Identify if lag is growing, stable, or decreasing\n10. Document findings and recommended actions\n```\n\n**Validation**:\n- All investigations follow standard checklist\n- Root cause identified in >80% of investigations\n- Average investigation time <30 minutes for common issues\n\n---",
+    "23": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#43-req-lens-008-003-consumer-group-health-assessment]\n\n### 4.3 REQ-LENS-008-003: Consumer Group Health Assessment\n\n**Status**: To Be Implemented\n**Priority**: High\n\n**Rationale**: Comprehensive health assessment identifies consumer-specific issues affecting lag\n\n**Configuration**:\n- Consumer group member status monitoring (active, inactive, rebalancing)\n- Rebalance event detection and tracking (frequency, duration, impact)\n- Consumer offset commit patterns analysis (frequency, batch size)\n- Session timeout and heartbeat monitoring (missed heartbeats, timeouts)\n\n**Implementation Details**:\n```yaml\n# Consumer health metrics to collect\nhealth_metrics:\n  - member_count: Number of active consumers in group\n  - rebalance_rate: Rebalances per hour\n  - avg_rebalance_duration: Average time spent in rebalance state\n  - commit_frequency: Offset commits per minute\n  - session_timeout_rate: Session timeouts per hour\n  - heartbeat_failures: Missed heartbeats per minute\n  - consumer_state: STABLE | REBALANCING | DEAD\n```\n\n**Validation**:\n- Health metrics collected for all consumer groups\n- Rebalance events logged with duration and reason\n- Commit pattern anomalies detected automatically\n\n---",
+    "24": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#44-req-lens-008-004-performance-correlation-analysis]\n\n### 4.4 REQ-LENS-008-004: Performance Correlation Analysis\n\n**Status**: To Be Implemented\n**Priority**: Medium\n\n**Rationale**: Correlating lag with external events (deployments, infrastructure changes) speeds root cause identification\n\n**Configuration**:\n- Deployment event correlation (CI/CD pipeline integration)\n- Infrastructure change tracking (auto-scaling, upgrades, patches)\n- Alert correlation with lag spikes (other system alerts)\n- Dependency service health correlation (downstream APIs, databases)\n\n**Implementation Details**:\n```python\n# Correlation analysis pseudocode\ndef correlate_lag_spike(lag_spike_time, lag_magnitude):\n    # Check for deployments within 30 minutes before spike\n    deployments = get_deployments(lag_spike_time - 30min, lag_spike_time)\n\n    # Check for infrastructure changes\n    infra_changes = get_infrastructure_events(lag_spike_time - 1hour, lag_spike_time)\n\n    # Check for related alerts\n    related_alerts = get_alerts_around(lag_spike_time - 15min, lag_spike_time + 15min)\n\n    # Check dependency health\n    dependency_health = get_dependency_metrics(lag_spike_time)\n\n    return {\n        'likely_causes': rank_causes([deployments, infra_changes, related_alerts, dependency_health]),\n        'confidence': calculate_confidence_score(),\n        'recommendations': generate_recommendations()\n    }\n```\n\n**Validation**:\n- Correlation data available within investigation dashboard\n- Automated correlation suggestions provided\n- Correlation accuracy >70% based on historical data\n\n---",
+    "25": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#45-req-lens-008-005-message-processing-analysis]\n\n### 4.5 REQ-LENS-008-005: Message Processing Analysis\n\n**Status**: To Be Implemented\n**Priority**: Medium\n\n**Rationale**: Understanding message processing patterns helps identify consumer efficiency issues\n\n**Configuration**:\n- Message consumption rate tracking (messages per second)\n- Processing time per message analysis (average, p95, p99)\n- Batch processing effectiveness monitoring (batch size vs processing time)\n- Error rate correlation with lag (errors vs lag growth)\n\n**Implementation Details**:\n```yaml\n# Processing metrics to track\nprocessing_metrics:\n  consumption_rate:\n    unit: messages_per_second\n    aggregation: [avg, max, min]\n\n  processing_time:\n    unit: milliseconds\n    percentiles: [50, 95, 99]\n\n  batch_efficiency:\n    batch_size: number_of_messages\n    batch_duration: milliseconds\n    efficiency_ratio: messages_per_second\n\n  error_correlation:\n    error_rate: errors_per_minute\n    lag_growth_rate: messages_per_minute\n    correlation_coefficient: float\n```\n\n**Validation**:\n- Processing metrics available in real-time\n- Anomaly detection for processing time degradation\n- Error rate and lag correlation calculated automatically\n\n---",
+    "26": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#46-req-lens-008-006-partition-level-investigation]\n\n### 4.6 REQ-LENS-008-006: Partition-Level Investigation\n\n**Status**: To Be Implemented\n**Priority**: Medium\n\n**Rationale**: Partition-level analysis identifies uneven load distribution and specific partition issues\n\n**Configuration**:\n- Per-partition lag visualization (heatmap view)\n- Partition leader distribution analysis\n- Hot partition identification (>2x average lag threshold)\n- Consumer assignment balance review (partitions per consumer)\n\n**Implementation Details**:\n```sql\n-- Query to identify hot partitions\nSELECT\n  topic,\n  partition,\n  lag,\n  consumer_id,\n  AVG(lag) OVER (PARTITION BY topic) as avg_lag_for_topic,\n  lag / AVG(lag) OVER (PARTITION BY topic) as lag_ratio\nFROM\n  kafka_consumer_group_offsets\nWHERE\n  consumer_group = 'my-consumer-group'\nHAVING\n  lag_ratio > 2.0  -- Partitions with >2x average lag\nORDER BY\n  lag DESC\n```\n\n**Validation**:\n- Partition-level lag visible in dashboard\n- Hot partitions automatically identified and highlighted\n- Rebalancing recommendations generated when assignment imbalance detected\n\n---",
+    "27": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#47-req-lens-008-007-historical-lag-pattern-analysis]\n\n### 4.7 REQ-LENS-008-007: Historical Lag Pattern Analysis\n\n**Status**: To Be Implemented\n**Priority**: Medium\n\n**Rationale**: Historical pattern analysis identifies recurring issues and long-term trends\n\n**Configuration**:\n- 30-day lag history retention (minimum)\n- Pattern recognition algorithms (time-series analysis, ML-based)\n- Recurring issue identification (weekly patterns, daily cycles)\n- Trend analysis and forecasting (lag growth projections)\n\n**Implementation Details**:\n```python\n# Pattern analysis example\ndef analyze_lag_patterns(consumer_group, days=30):\n    lag_history = get_lag_history(consumer_group, days)\n\n    # Detect daily patterns\n    daily_pattern = detect_cyclical_pattern(lag_history, period='daily')\n\n    # Detect weekly patterns\n    weekly_pattern = detect_cyclical_pattern(lag_history, period='weekly')\n\n    # Identify recurring spike times\n    spike_times = identify_recurring_spikes(lag_history, threshold=2*std_dev)\n\n    # Forecast future lag\n    forecast = time_series_forecast(lag_history, horizon='7days')\n\n    return {\n        'daily_pattern': daily_pattern,\n        'weekly_pattern': weekly_pattern,\n        'recurring_spikes': spike_times,\n        'forecast': forecast,\n        'trend': calculate_trend(lag_history)\n    }\n```\n\n**Validation**:\n- Historical data queryable for 30+ days\n- Pattern detection algorithms running daily\n- Recurring issues surfaced in investigation dashboard\n\n---",
+    "28": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#48-req-lens-008-008-automated-remediation-recommendations]\n\n### 4.8 REQ-LENS-008-008: Automated Remediation Recommendations\n\n**Status**: To Be Implemented\n**Priority**: Medium\n\n**Rationale**: AI-driven recommendations accelerate resolution by suggesting proven fixes\n\n**Configuration**:\n- Common issue remediation playbook (minimum 15 scenarios)\n- Automated recommendation engine (ML-based matching)\n- Success rate tracking for recommendations (feedback loop)\n- Feedback loop for recommendation improvement (continuous learning)\n\n**Implementation Details**:\n```yaml\n# Remediation recommendation rules\nplaybook:\n  - scenario: \"High rebalance frequency\"\n    symptoms:\n      - rebalance_rate > 10/hour\n      - session_timeout_rate > 5/hour\n    recommendations:\n      - Increase session.timeout.ms to 30000\n      - Increase max.poll.interval.ms to 600000\n      - Review consumer processing time\n    priority: high\n\n  - scenario: \"Partition assignment imbalance\"\n    symptoms:\n      - max_partitions_per_consumer / avg_partitions_per_consumer > 1.5\n    recommendations:\n      - Trigger consumer group rebalance\n      - Review partition.assignment.strategy\n      - Consider increasing consumer instances\n    priority: medium\n\n  - scenario: \"Slow message processing\"\n    symptoms:\n      - p95_processing_time > 1000ms\n      - consumption_rate declining\n    recommendations:\n      - Profile consumer application for bottlenecks\n      - Review database query performance\n      - Consider batch processing optimization\n      - Increase consumer parallelism\n    priority: high\n```\n\n**Validation**:\n- Recommendations provided for >80% of lag scenarios\n- Recommendation acceptance rate >60%\n- Resolution success rate >75% when following recommendations\n\n---",
+    "29": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#49-req-lens-008-009-investigation-documentation]\n\n### 4.9 REQ-LENS-008-009: Investigation Documentation\n\n**Status**: To Be Implemented\n**Priority**: High\n\n**Rationale**: Documenting investigations builds organizational knowledge and improves future response\n\n**Configuration**:\n- Investigation report templates (standardized format)\n- Root cause documentation (5 Whys, fishbone diagrams)\n- Resolution steps recording (detailed action log)\n- Knowledge base integration (Confluence, SharePoint, internal wiki)\n\n**Implementation Details**:\n```markdown\n# Investigation Report Template\n\n## Incident Summary\n- **Incident ID**: INC-12345\n- **Detection Time**: 2026-01-19 14:32 UTC\n- **Resolution Time**: 2026-01-19 15:15 UTC\n- **Duration**: 43 minutes\n- **Severity**: Medium\n- **Consumer Group**: customer-order-processor\n- **Topic**: customer-orders\n\n## Symptoms\n- Lag spike from 500 to 15,000 messages\n- Processing rate dropped from 100 msg/s to 10 msg/s\n- Consumer rebalancing every 2 minutes\n\n## Investigation Steps\n1. Checked consumer lag dashboard - confirmed spike\n2. Reviewed consumer error logs - found session timeout errors\n3. Analyzed processing metrics - p95 processing time increased from 200ms to 3000ms\n4. Correlated with deployments - deployment 30 minutes before spike\n5. Identified database query regression in new code\n\n## Root Cause\nDatabase query N+1 problem introduced in v2.3.4 deployment causing processing time degradation, leading to session timeouts and rebalances.\n\n## Resolution\n1. Rolled back to v2.3.3\n2. Lag recovered within 10 minutes\n3. Opened ticket to fix query in v2.3.5\n\n## Prevention\n- Add database query performance tests to CI/CD\n- Implement processing time alerting\n- Review database query changes in code review\n\n## Lessons Learned\n- Need better pre-deployment performance testing\n- Database metrics should be part of lag investigation workflow\n```\n\n**Validation**:\n- Investigation reports completed for all major incidents\n- Reports stored in searchable knowledge base\n- Teams refer to historical reports during investigations\n\n---",
+    "30": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#410-req-lens-008-010-escalation-procedures]\n\n### 4.10 REQ-LENS-008-010: Escalation Procedures\n\n**Status**: To Be Implemented\n**Priority**: High\n\n**Rationale**: Clear escalation paths ensure critical lag issues are addressed by appropriate teams\n\n**Configuration**:\n- Escalation criteria defined (lag threshold, duration, business impact)\n- On-call team notification (PagerDuty, Opsgenie integration)\n- Severity classification guidelines (P1-P5 scale)\n- SLA tracking for resolution (time-to-acknowledge, time-to-resolve)\n\n**Implementation Details**:\n```yaml\n# Escalation criteria\nescalation_rules:\n  immediate_escalation:  # Page on-call immediately\n    - lag > 100000 messages\n    - lag_growth_rate > 10000 messages/minute\n    - consumer_group completely stopped\n    - business_critical_application affected\n\n  urgent_escalation:  # Escalate within 15 minutes\n    - lag > 50000 messages for 15+ minutes\n    - investigation_timeout (30 minutes without progress)\n    - repeated_failures of remediation attempts\n\n  standard_escalation:  # Escalate within 1 hour\n    - lag > 10000 messages for 1+ hour\n    - recurring_issue (3+ times in 24 hours)\n    - pattern_analysis_needed (complex scenario)\n\n# SLA targets\nsla:\n  P1_critical:\n    acknowledge: 5 minutes\n    resolve: 1 hour\n\n  P2_high:\n    acknowledge: 15 minutes\n    resolve: 4 hours\n\n  P3_medium:\n    acknowledge: 30 minutes\n    resolve: 8 hours\n```\n\n**Validation**:\n- Escalation triggers automatically based on criteria\n- On-call notifications delivered within 2 minutes\n- SLA compliance >95% for all severity levels",
+    "31": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#5-exceptions-process]\n\n## 5. Exceptions Process",
+    "32": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#51-when-to-request-an-exception]\n\n### 5.1 When to Request an Exception\n\nExceptions to this standard may be considered in the following scenarios:\n- **Non-Critical Consumer Groups**: Low-priority consumer groups where lag has minimal business impact\n- **Batch Processing Jobs**: Scheduled batch jobs where lag is expected and acceptable during off-hours\n- **Development Environments**: Non-production environments used solely for development and testing\n- **Legacy Systems**: End-of-life applications with planned sunset dates within 6 months",
+    "33": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#52-exception-request-procedure]\n\n### 5.2 Exception Request Procedure\n\n1. **Document Business Justification**: Clearly articulate why lag investigation workflows cannot be applied and the acceptable risk\n2. **Propose Compensating Controls**: Define alternative monitoring and alerting mechanisms\n3. **Define Scope and Duration**: Specify which consumer groups are excluded and for how long\n4. **Submit Exception Request**: Use standard exception request process through governance committee\n5. **Obtain Approval**: Requires approval from Platform Engineering Lead and owning application team lead\n6. **Implement Compensating Controls**: Put alternative controls in place before granting exception\n7. **Regular Review**: Exceptions reviewed quarterly with re-certification or remediation plan",
+    "34": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#53-approval-authority]\n\n### 5.3 Approval Authority\n\n- **Low-Impact Exceptions** (dev/test environments): Platform Engineering Lead\n- **Medium-Impact Exceptions** (non-critical applications): Platform Engineering Lead + Application Owner\n- **High-Impact Exceptions** (critical applications): Enterprise Architect + Platform Engineering Lead + Application Owner",
+    "35": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#54-exception-monitoring]\n\n### 5.4 Exception Monitoring\n\n- All exceptions logged in central exceptions register\n- Quarterly review of active exceptions with impact assessment\n- Automatic expiration after 6 months requiring re-approval\n- Remediation plans required for any extension beyond initial 6-month period",
+    "36": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#6-technical-specifications]\n\n## 6. Technical Specifications",
+    "37": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#61-platform-requirements]\n\n### 6.1 Platform Requirements\n\n- **Lenses.io**: Enterprise 5.0+ with consumer lag monitoring enabled\n- **Monitoring System**: Prometheus/Grafana or equivalent with Kafka JMX metrics\n- **Alerting Platform**: PagerDuty, Opsgenie, or equivalent incident management system\n- **Documentation System**: Confluence, SharePoint, or searchable knowledge base\n- **Log Aggregation**: ELK Stack, Splunk, or CloudWatch Logs for consumer application logs",
+    "38": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#62-architecture-constraints]\n\n### 6.2 Architecture Constraints\n\n- Consumer lag dashboards must be accessible to all support personnel (RBAC configured)\n- Historical lag data must be retained for minimum 30 days (storage capacity planned)\n- Investigation workflow must be completable within 30 minutes for common scenarios\n- Escalation notifications must be delivered within 2 minutes of trigger event\n- All correlation data sources must have <5 minute time synchronization tolerance",
+    "39": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#63-configuration-specifications]\n\n### 6.3 Configuration Specifications\n\n- **Dashboard Refresh Rate**: 10 seconds for real-time views, 1 minute for historical charts\n- **Lag Thresholds**: Configurable per consumer group based on business requirements\n- **Alert Evaluation**: Every 1 minute with 3-minute average to reduce noise\n- **Investigation Timeout**: 30 minutes before automatic escalation trigger\n- **Knowledge Base**: Full-text search enabled, reports tagged by root cause category",
+    "40": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#64-security-specifications]\n\n### 6.4 Security Specifications\n\n- Access to consumer lag dashboards controlled by AD/LDAP groups\n- Investigation reports sanitized to remove sensitive data before knowledge base storage\n- Audit logging of all dashboard access and investigation actions\n- API access for programmatic investigation requires service account authentication\n- Remediation actions requiring production changes follow standard change management",
+    "41": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#65-performance-specifications]\n\n### 6.5 Performance Specifications\n\n- Dashboard query response time <2 seconds for real-time data\n- Historical query response time <5 seconds for 30-day analysis\n- Correlation analysis completion <10 seconds\n- Pattern recognition algorithms complete within 1 minute\n- Knowledge base search results returned <3 seconds",
+    "42": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#7-technology-stack]\n\n## 7. Technology Stack",
+    "43": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#71-core-technologies]\n\n### 7.1 Core Technologies\n\n- **Lenses.io Version**: Enterprise 5.0+\n- **Monitoring**: Prometheus, Grafana, AWS CloudWatch, Azure Monitor\n- **Alerting**: PagerDuty, Opsgenie, Slack, Microsoft Teams\n- **Documentation**: Confluence, Jira Service Management, SharePoint",
+    "44": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#72-supporting-tools]\n\n### 7.2 Supporting Tools\n\n- **Distributed Tracing**: Jaeger, Zipkin, AWS X-Ray, Azure Application Insights\n- **Log Aggregation**: ELK Stack (Elasticsearch, Logstash, Kibana), Splunk, CloudWatch Logs\n- **APM**: Datadog, New Relic, AppDynamics, Dynatrace\n- **Incident Management**: PagerDuty, Opsgenie, VictorOps, ServiceNow",
+    "45": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#8-implementation-guidance]\n\n## 8. Implementation Guidance",
+    "46": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#81-prerequisites]\n\n### 8.1 Prerequisites\n\n1. Lenses.io monitoring configured per STD-INFRA-KMGMT-006\n2. Consumer lag alerting enabled per STD-INFRA-KMGMT-008\n3. Access to Lenses.io UI provisioned for investigation teams with appropriate RBAC\n4. Integration with monitoring systems (Prometheus, Grafana, CloudWatch)\n5. Integration with alerting systems (PagerDuty, Opsgenie)\n6. Documentation repository established (Confluence, SharePoint)\n7. Incident management system configured (Jira Service Management, ServiceNow)",
+    "47": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#82-implementation-steps]\n\n### 8.2 Implementation Steps",
+    "48": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#step-1-configure-lag-dashboards]\n\n#### Step 1: Configure Lag Dashboards\n\n1. Create consumer group lag overview dashboard in Lenses.io\n2. Add per-business-unit filtered views\n3. Configure historical trending charts (7-day, 30-day views)\n4. Set dashboard refresh intervals (10 seconds for real-time)\n5. Add alerting threshold visualization overlays\n6. Configure access permissions for support teams\n7. Share dashboard links in team documentation",
+    "49": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#step-2-establish-investigation-workflow]\n\n#### Step 2: Establish Investigation Workflow\n\n1. Document step-by-step investigation procedure with decision tree\n2. Create investigation checklist template (10-point checklist minimum)\n3. Define data collection requirements for each investigation step\n4. Establish timebox for each investigation phase (total 30 minutes max)\n5. Create investigation workflow diagram (flowchart format)\n6. Conduct hands-on training sessions for support teams\n7. Create quick-reference cards for common scenarios",
+    "50": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#step-3-integrate-correlation-data-sources]\n\n#### Step 3: Integrate Correlation Data Sources\n\n1. Configure deployment event feeds from CI/CD pipelines (webhooks)\n2. Integrate infrastructure monitoring (auto-scaling events, instance changes)\n3. Connect to APM systems for application performance correlation\n4. Link to logging platforms for error log correlation\n5. Implement time-based correlation logic (±30 minute window)\n6. Test correlation accuracy with historical incident data\n7. Document correlation data sources and access methods",
+    "51": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#step-4-create-remediation-playbooks]\n\n#### Step 4: Create Remediation Playbooks\n\n1. Document 15+ common lag scenarios with symptoms\n2. Define resolution steps for each scenario (step-by-step runbooks)\n3. Include validation procedures to confirm fix effectiveness\n4. Add escalation triggers for each scenario\n5. Create decision matrix for scenario identification\n6. Review playbooks with senior engineers\n7. Refine based on actual incident feedback",
+    "52": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#step-5-implement-documentation-system]\n\n#### Step 5: Implement Documentation System\n\n1. Create investigation report template in documentation system\n2. Configure knowledge base structure (categories, tags)\n3. Establish review and approval process for completed reports\n4. Train teams on documentation requirements and template usage\n5. Set up periodic review of documented cases (monthly)\n6. Implement full-text search across investigation reports\n7. Create dashboard of investigation metrics (MTTR, recurrence rate)",
+    "53": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#step-6-configure-escalation-process]\n\n#### Step 6: Configure Escalation Process\n\n1. Define escalation criteria and thresholds (lag-based, time-based, impact-based)\n2. Configure on-call rotation in PagerDuty/Opsgenie\n3. Set up notification channels (SMS, phone, Slack, email)\n4. Document escalation procedures in runbook\n5. Configure automatic escalation triggers in monitoring system\n6. Test escalation workflow end-to-end\n7. Conduct escalation drills quarterly",
+    "54": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#83-post-implementation-tasks]\n\n### 8.3 Post-Implementation Tasks\n\n1. Review investigation metrics monthly (time to resolution, recurrence rate, escalation frequency)\n2. Refine playbooks based on actual incidents and team feedback\n3. Update dashboards based on operational needs\n4. Conduct regular training on investigation techniques (quarterly)\n5. Maintain knowledge base with new scenarios and lessons learned\n6. Audit investigation documentation completeness\n7. Optimize correlation algorithms based on accuracy metrics\n8. Review and adjust escalation criteria based on false positive/negative rates",
+    "55": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#9-validation-criteria]\n\n## 9. Validation Criteria\n\n| Validation Area | Criteria | Priority | Validation Method |\n|----------------|----------|----------|-------------------|\n| **Dashboard Accessibility** | All support personnel can access lag dashboards with <2s load time | Critical | Access audit logs, performance monitoring |\n| **Investigation Speed** | Average investigation time <30 minutes for common scenarios | High | Incident report analysis, MTTR tracking |\n| **Root Cause Identification** | Root cause identified in >80% of investigations | High | Investigation report review, quality audit |\n| **Documentation Completeness** | 100% of major lag incidents documented in knowledge base | Critical | Documentation audit, compliance report |\n| **Escalation Accuracy** | <10% false positive escalations, 0% missed critical escalations | Critical | Escalation log review, incident analysis |\n| **Correlation Accuracy** | Automated correlation suggestions >70% accurate | Medium | Manual validation of correlation output |\n| **Pattern Detection** | Recurring issues identified automatically with >60% accuracy | Medium | Pattern detection validation against historical data |\n| **Remediation Success** | >75% resolution success rate when following playbook recommendations | High | Post-incident review, remediation tracking |\n| **Historical Data Retention** | 30+ days of lag history queryable with <5s response time | High | Query performance testing, retention policy audit |\n| **Knowledge Base Usage** | Support teams refer to knowledge base in >50% of investigations | Medium | Usage analytics, team surveys |\n| **Team Training** | 100% of support personnel trained on investigation workflow | Critical | Training completion records, competency assessments |\n| **SLA Compliance** | >95% of incidents resolved within SLA targets | Critical | SLA tracking dashboard, compliance reports |",
+    "56": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#10-testing-requirements]\n\n## 10. Testing Requirements",
+    "57": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#101-functional-testing]\n\n### 10.1 Functional Testing\n\n- **Dashboard Functionality**: Verify lag data displays correctly, refreshes in real-time, historical queries return accurate results\n- **Investigation Workflow**: Walk through complete investigation checklist using simulated lag scenario\n- **Correlation Engine**: Test correlation of lag spikes with deployment events, infrastructure changes, and alerts\n- **Remediation Recommendations**: Validate recommendation engine provides appropriate suggestions for various lag scenarios\n- **Knowledge Base Integration**: Test investigation report creation, storage, search, and retrieval",
+    "58": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#102-security-testing]\n\n### 10.2 Security Testing\n\n- **Access Control**: Verify RBAC correctly restricts dashboard access based on user roles\n- **Data Sanitization**: Confirm sensitive data removed from investigation reports before knowledge base storage\n- **Audit Logging**: Validate all investigation actions logged with user attribution\n- **API Authentication**: Test programmatic access requires valid service account credentials\n- **Change Management**: Verify remediation actions follow standard approval workflows",
+    "59": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#103-performance-testing]\n\n### 10.3 Performance Testing\n\n- **Dashboard Load Time**: Measure dashboard rendering time under various user load conditions\n- **Query Performance**: Test historical query response times for 7-day, 30-day, and custom date ranges\n- **Correlation Speed**: Measure time to complete correlation analysis across multiple data sources\n- **Pattern Recognition**: Validate pattern detection algorithms complete within 1 minute for 30-day dataset\n- **Concurrent Investigations**: Test system performance with multiple simultaneous investigations",
+    "60": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#104-integration-testing]\n\n### 10.4 Integration Testing\n\n- **Monitoring Integration**: Verify Lenses.io metrics correctly flow to Prometheus/Grafana\n- **Alerting Integration**: Test lag alerts trigger notifications in PagerDuty/Opsgenie\n- **CI/CD Integration**: Validate deployment events captured and correlated correctly\n- **APM Integration**: Test application performance metrics available during investigation\n- **Documentation Integration**: Verify investigation reports successfully created in Confluence/SharePoint",
+    "61": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#11-documentation-requirements]\n\n## 11. Documentation Requirements",
+    "62": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#111-architecture-documentation]\n\n### 11.1 Architecture Documentation\n\n- Consumer lag investigation architecture diagram showing all integrated systems\n- Data flow diagram from Kafka metrics to dashboards and alerting\n- Correlation engine architecture with data source integrations\n- Knowledge base structure and categorization schema",
+    "63": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#112-operational-procedures]\n\n### 11.2 Operational Procedures\n\n- Investigation workflow step-by-step runbook with decision trees\n- Escalation procedures with criteria and contact information\n- Remediation playbooks for 15+ common lag scenarios\n- Emergency procedures for critical lag incidents\n- Investigation report creation guide",
+    "64": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#113-developer-guides]\n\n### 11.3 Developer Guides\n\n- Dashboard customization guide for creating team-specific views\n- Correlation API documentation for programmatic investigations\n- Pattern recognition algorithm configuration guide\n- Integration guide for adding new data sources to correlation engine",
+    "65": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#114-security-documentation]\n\n### 11.4 Security Documentation\n\n- RBAC configuration guide for dashboard access control\n- Data sanitization procedures for investigation reports\n- Audit logging configuration and review procedures\n- Security considerations for remediation actions",
+    "66": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#115-compliance-documentation]\n\n### 11.5 Compliance Documentation\n\n- Exception request forms and approval workflows\n- SLA definitions and tracking procedures\n- Investigation quality audit procedures\n- Knowledge base compliance requirements",
+    "67": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#116-training-materials]\n\n### 11.6 Training Materials\n\n- Investigation workflow training presentations (slides and video)\n- Hands-on lab exercises for common lag scenarios\n- Playbook usage training with scenario-based practice\n- Troubleshooting guide for investigation tool issues\n- FAQ covering common investigation questions",
+    "68": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#12-troubleshooting]\n\n## 12. Troubleshooting",
+    "69": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#121-issue-1-unable-to-identify-root-cause]\n\n### 12.1 Issue 1: Unable to Identify Root Cause\n\n**Symptoms**:\n- Lag persists but no obvious cause identified after 30 minutes\n- Multiple potential causes with conflicting evidence\n- Intermittent lag spikes with no clear pattern\n\n**Root Causes**:\n- Insufficient monitoring data to correlate events\n- Complex multi-factor issues (multiple simultaneous problems)\n- Hidden dependencies not captured in correlation engine\n- Lack of application-level instrumentation\n\n**Resolution**:\n1. Enable additional monitoring metrics (JVM metrics, thread dumps, database connection pools)\n2. Extend investigation timeframe to capture intermittent behavior\n3. Review recent infrastructure changes not captured in automation (manual changes, network modifications)\n4. Check for external service degradation using service health dashboards\n5. Analyze consumer application logs for exceptions and warnings\n6. Enable distributed tracing to identify processing bottlenecks\n7. Engage application development team for code-level analysis\n8. Escalate to senior engineer if root cause not identified within 45 minutes\n\n---",
+    "70": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#122-issue-2-lag-investigation-taking-too-long]\n\n### 12.2 Issue 2: Lag Investigation Taking Too Long\n\n**Symptoms**:\n- Investigation exceeds 30-minute timebox regularly\n- Too many data sources requiring manual correlation\n- Analysis paralysis with excessive data\n\n**Root Causes**:\n- Unclear investigation workflow leading to meandering analysis\n- Too much manual data correlation without automation\n- Lack of automated preliminary diagnosis\n- Insufficient training on investigation tools and techniques\n\n**Resolution**:\n1. Strictly follow structured investigation checklist in defined order\n2. Use Lenses automated correlation features instead of manual analysis\n3. Focus on high-probability causes first based on historical patterns\n4. Set hard timeboxes for each investigation step (e.g., 5 minutes per step)\n5. Escalate to senior engineer if first timebox exceeded (don't continue solo)\n6. Improve investigation tool training for team members\n7. Review and optimize correlation algorithms for faster analysis\n8. Implement automated preliminary diagnosis to narrow focus area\n\n---",
+    "71": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#123-issue-3-recurring-lag-issues]\n\n### 12.3 Issue 3: Recurring Lag Issues\n\n**Symptoms**:\n- Same lag issues repeat regularly (weekly, daily patterns)\n- Temporary fixes don't prevent recurrence\n- Pattern of lag at specific times or after specific events\n\n**Root Causes**:\n- Underlying root cause not addressed, only symptoms treated\n- Scheduled processes or batch jobs causing predictable load spikes\n- Insufficient consumer capacity for peak load periods\n- Application inefficiencies in message processing logic\n\n**Resolution**:\n1. Review historical investigation reports for this consumer group\n2. Analyze timing patterns of lag occurrence (time of day, day of week correlation)\n3. Identify and fix root cause, not just symptoms\n   - If capacity issue: scale consumers during peak hours\n   - If processing inefficiency: optimize application code\n   - If batch job related: reschedule or stagger batch execution\n4. Consider consumer auto-scaling based on lag metrics\n5. Review application code for inefficiencies (N+1 queries, excessive I/O)\n6. Schedule resource-intensive processes during off-peak hours\n7. Implement preventive measures based on pattern analysis\n8. Update knowledge base with recurring issue resolution\n\n---",
+    "72": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#124-issue-4-lag-alerts-but-no-actual-problem]\n\n### 12.4 Issue 4: Lag Alerts but No Actual Problem\n\n**Symptoms**:\n- Alerts trigger but no customer impact observed\n- Lag clears before investigation can begin\n- High false positive alert rate causing alert fatigue\n\n**Root Causes**:\n- Alert thresholds too sensitive for normal operational variance\n- Temporary spikes during consumer group rebalances\n- Expected lag during scheduled batch processing windows\n- Alert not accounting for normal lag patterns (baselines)\n\n**Resolution**:\n1. Review and adjust alert thresholds based on historical baseline\n2. Add grace periods for temporary spikes (e.g., 5-minute sustained lag)\n3. Exclude expected lag periods (batch processing windows) from alerting\n4. Implement dynamic thresholds based on time-of-day patterns\n5. Differentiate between warning alerts (informational) and critical alerts (actionable)\n6. Document expected lag scenarios in knowledge base\n7. Configure alert dampening to reduce noise during known events (deployments, batch jobs)\n8. Review alert accuracy quarterly and adjust based on false positive rate\n\n---",
+    "73": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#125-issue-5-insufficient-data-for-investigation]\n\n### 12.5 Issue 5: Insufficient Data for Investigation\n\n**Symptoms**:\n- Historical data not available for time period of interest\n- Key metrics missing from dashboards\n- Unable to correlate lag events with external factors\n\n**Root Causes**:\n- Metrics retention period too short (data already purged)\n- Monitoring not capturing all required metrics\n- Integration gaps with external systems (CI/CD, APM, logs)\n- Data loss during monitoring system outages\n\n**Resolution**:\n1. Extend metrics retention period to 90 days for critical consumer groups\n2. Enable additional monitoring metrics identified as necessary\n   - JVM heap usage, garbage collection metrics\n   - Thread pool utilization\n   - Database connection pool metrics\n   - Network I/O metrics\n3. Complete integration with CI/CD systems for deployment correlation\n4. Complete integration with APM systems for application performance correlation\n5. Complete integration with log aggregation for error correlation\n6. Implement high-availability for monitoring infrastructure to prevent data gaps\n7. Document minimum required data for effective investigations\n8. Conduct regular audits of monitoring completeness (monthly)\n9. Implement backup metrics collection for critical consumer groups",
+    "74": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#13-compliance-checklist]\n\n## 13. Compliance Checklist\n\n- [ ] Consumer lag dashboards configured for all business units and critical consumer groups\n- [ ] Investigation workflow documented with 10-point checklist minimum\n- [ ] All support teams trained on investigation procedures with competency validation\n- [ ] Remediation playbooks created for 15+ common lag scenarios\n- [ ] Escalation procedures defined with criteria, thresholds, and contact information\n- [ ] Investigation report templates created and published\n- [ ] Knowledge base integrated with full-text search enabled\n- [ ] Correlation with deployment events configured and tested\n- [ ] Correlation with infrastructure changes configured and tested\n- [ ] Correlation with APM metrics configured and tested\n- [ ] Historical lag data retention meets 30-day minimum requirement\n- [ ] Automated remediation recommendations enabled with feedback loop\n- [ ] Investigation metrics tracked (MTTR, recurrence rate, root cause identification rate)\n- [ ] Regular review of investigation effectiveness conducted quarterly\n- [ ] On-call procedures established with rotation and escalation paths\n- [ ] SLA tracking implemented with >95% compliance target\n- [ ] Dashboard access controlled by RBAC with audit logging\n- [ ] Investigation actions logged for compliance and audit\n- [ ] Exception process documented with approval workflows\n- [ ] Pattern recognition algorithms deployed and validated\n- [ ] Correlation accuracy >70% validated against historical incidents\n- [ ] Team training completion 100% with annual refresher",
+    "75": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#14-governance-oversight]\n\n## 14. Governance Oversight",
+    "76": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#141-ownership-and-accountability]\n\n### 14.1 Ownership and Accountability\n\n- **Primary Owner**: Platform Engineering Team\n- **Technical SME**: Kafka Platform Lead / Site Reliability Engineer\n- **Approver**: Enterprise Architect\n- **Stakeholders**: Application Development Teams, Operations Team, Business Stakeholders",
+    "77": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#142-review-and-update-frequency]\n\n### 14.2 Review and Update Frequency\n\n- **Standard Review**: Quarterly\n- **Playbook Review**: Monthly (based on new incidents)\n- **Metrics Review**: Weekly (investigation effectiveness tracking)\n- **Training Review**: Annually with updates as needed",
+    "78": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#143-metrics-and-kpis]\n\n### 14.3 Metrics and KPIs\n\n- **Mean Time to Resolve (MTTR)**: Average time from lag alert to resolution\n- **Root Cause Identification Rate**: Percentage of investigations successfully identifying root cause\n- **Recurrence Rate**: Percentage of lag incidents that recur within 30 days\n- **Investigation Documentation Rate**: Percentage of incidents with completed investigation reports\n- **Escalation Accuracy**: Ratio of appropriate escalations to false positive escalations\n- **SLA Compliance**: Percentage of incidents resolved within SLA targets\n- **Playbook Usage Rate**: Percentage of investigations using remediation playbooks\n- **Knowledge Base Utilization**: Percentage of investigations referencing historical reports",
+    "79": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#144-key-contacts]\n\n### 14.4 Key Contacts\n\n- **Platform Engineering Lead**: [Name/Contact]\n- **Kafka Platform Lead**: [Name/Contact]\n- **SRE Lead**: [Name/Contact]\n- **Enterprise Architect**: [Name/Contact]\n- **Escalation Contact (24/7)**: [PagerDuty/Opsgenie rotation]",
+    "80": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#145-related-governance]\n\n### 14.5 Related Governance\n\n- Incident Management Committee for major lag incident reviews\n- Change Advisory Board (CAB) for remediation change approvals\n- Architecture Review Board (ARB) for correlation engine architecture\n- Operational Excellence Committee for investigation workflow optimization",
+    "81": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#15-references]\n\n## 15. References",
+    "82": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#151-related-documentation]\n\n### 15.1 Related Documentation\n\n- [Lenses.io Consumer Monitoring](https://docs.lenses.io/5.0/monitoring/consumers/)\n- [Consumer Lag Analysis Guide](https://docs.lenses.io/5.0/troubleshooting/lag/)\n- [Performance Troubleshooting](https://docs.lenses.io/5.0/troubleshooting/)\n- [Lenses.io SQL Reference](https://docs.lenses.io/5.0/sql/)",
+    "83": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#152-external-resources]\n\n### 15.2 External Resources\n\n- [Apache Kafka Consumer Lag Troubleshooting](https://kafka.apache.org/documentation/#consumer_lag)\n- [Consumer Performance Tuning Guide](https://docs.confluent.io/platform/current/installation/configuration/consumer-configs.html)\n- [Kafka Consumer Group Management](https://kafka.apache.org/documentation/#consumergroup)\n- [Performance Investigation Techniques](https://www.confluent.io/blog/kafka-performance-tuning/)",
+    "84": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#153-industry-standards]\n\n### 15.3 Industry Standards\n\n- [ITIL Incident Management Best Practices](https://www.axelos.com/best-practice-solutions/itil)\n- [SRE Handbook - Troubleshooting](https://sre.google/sre-book/effective-troubleshooting/)\n- [NIST SP 800-61 Incident Handling Guide](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)",
+    "85": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#16-change-history]\n\n## 16. Change History\n\n| Version | Date | Author | Description |\n|---------|------|--------|-------------|\n| 1.0.0 | January 19, 2026 | Platform Engineering | Initial draft with full compliance enhancements |",
+    "86": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#17-review-log]\n\n## 17. Review Log\n\n| Review Date | Reviewer | Status | Comments |\n|-------------|----------|--------|----------|\n| January 19, 2026 | AI Review | Completed | Full compliance review completed - added YAML metadata, Executive Summary, Prohibited Practices, Exceptions Process, Technical Specifications, Validation Criteria, Testing Requirements, Documentation Requirements, and Governance Oversight sections |\n| [TBD] | Platform Engineering Lead | Pending | Technical review pending |\n| [TBD] | Enterprise Architect | Pending | Architecture review pending |",
+    "87": "[standards/application/kafka-management/STD-APP-KMGMT-008-consumer-lag-investigation.md#18-document-status]\n\n## 18. Document Status\n\n**Current Phase**: Draft - Compliance enhanced, awaiting stakeholder review and approval\n\n**Next Review Date**: April 19, 2026 (90 days from enhancement)\n\n**Approved By**: [Pending Approval]"
+  },
+  "coverage": {
+    "total_pages": 87,
+    "covered_pages": 87,
+    "sampled_pages": 87,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 87
+  }
+}

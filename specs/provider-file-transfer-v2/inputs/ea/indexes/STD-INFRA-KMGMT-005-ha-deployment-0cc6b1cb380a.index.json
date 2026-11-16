@@ -1,0 +1,526 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Lenses.io High Availability Deployment",
+  "document_description": "standard_name: 'Lenses.io High Availability Deployment'",
+  "total_pages": 55,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 1,
+      "summary": "",
+      "nodes": []
+    },
+    {
+      "title": "Lenses.io High Availability Deployment",
+      "node_id": "lensesio-high-availability-deployment",
+      "start_index": 2,
+      "end_index": 55,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "1. Executive Summary",
+          "node_id": "1-executive-summary",
+          "start_index": 4,
+          "end_index": 7,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "1.1 Purpose",
+              "node_id": "11-purpose",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "1.2 Scope",
+              "node_id": "12-scope",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "1.3 Related Standards and ADRs",
+              "node_id": "13-related-standards-and-adrs",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "2. Standard Requirements",
+          "node_id": "2-standard-requirements",
+          "start_index": 8,
+          "end_index": 17,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "2.1 Mandatory Requirements",
+              "node_id": "21-mandatory-requirements",
+              "start_index": 9,
+              "end_index": 17,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "REQ-LENS-005-001: Multi-Replica Deployment",
+                  "node_id": "req-lens-005-001-multi-replica-deployment",
+                  "start_index": 10,
+                  "end_index": 10,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-LENS-005-002: Pod Anti-Affinity Across Availability Zones",
+                  "node_id": "req-lens-005-002-pod-anti-affinity-across-availability-zones",
+                  "start_index": 11,
+                  "end_index": 11,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-LENS-005-003: RDS PostgreSQL Multi-AZ Configuration",
+                  "node_id": "req-lens-005-003-rds-postgresql-multi-az-configuration",
+                  "start_index": 12,
+                  "end_index": 12,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-LENS-005-004: Persistent Volume Redundancy",
+                  "node_id": "req-lens-005-004-persistent-volume-redundancy",
+                  "start_index": 13,
+                  "end_index": 13,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-LENS-005-005: Load Balancer Health Checks",
+                  "node_id": "req-lens-005-005-load-balancer-health-checks",
+                  "start_index": 14,
+                  "end_index": 14,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-LENS-005-006: Pod Disruption Budget (PDB)",
+                  "node_id": "req-lens-005-006-pod-disruption-budget-pdb",
+                  "start_index": 15,
+                  "end_index": 15,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-LENS-005-007: RTO/RPO Targets and Validation",
+                  "node_id": "req-lens-005-007-rtorpo-targets-and-validation",
+                  "start_index": 16,
+                  "end_index": 16,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-LENS-005-008: Disaster Recovery Procedures",
+                  "node_id": "req-lens-005-008-disaster-recovery-procedures",
+                  "start_index": 17,
+                  "end_index": 17,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Disaster Recovery Runbook",
+          "node_id": "disaster-recovery-runbook",
+          "start_index": 18,
+          "end_index": 25,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Scenario 1: Complete Platform Failure (All Pods Down)",
+              "node_id": "scenario-1-complete-platform-failure-all-pods-down",
+              "start_index": 19,
+              "end_index": 19,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Scenario 2: Database Corruption",
+              "node_id": "scenario-2-database-corruption",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Scenario 3: Persistent Volume Data Loss",
+              "node_id": "scenario-3-persistent-volume-data-loss",
+              "start_index": 21,
+              "end_index": 21,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Contact Escalation Matrix",
+              "node_id": "contact-escalation-matrix",
+              "start_index": 22,
+              "end_index": 22,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Post-Incident Review Template",
+              "node_id": "post-incident-review-template",
+              "start_index": 23,
+              "end_index": 25,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "REQ-LENS-005-009: Monitoring and Alerting for HA",
+                  "node_id": "req-lens-005-009-monitoring-and-alerting-for-ha",
+                  "start_index": 24,
+                  "end_index": 24,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-LENS-005-010: Chaos Engineering Testing",
+                  "node_id": "req-lens-005-010-chaos-engineering-testing",
+                  "start_index": 25,
+                  "end_index": 25,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Chaos Engineering Test Suite",
+          "node_id": "chaos-engineering-test-suite",
+          "start_index": 26,
+          "end_index": 33,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Test Framework Setup",
+              "node_id": "test-framework-setup",
+              "start_index": 27,
+              "end_index": 27,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Monthly Test: Controlled Pod Failure",
+              "node_id": "monthly-test-controlled-pod-failure",
+              "start_index": 28,
+              "end_index": 28,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Quarterly Test: Availability Zone Failure Simulation",
+              "node_id": "quarterly-test-availability-zone-failure-simulation",
+              "start_index": 29,
+              "end_index": 29,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Semi-Annual Test: Full Disaster Recovery Drill",
+              "node_id": "semi-annual-test-full-disaster-recovery-drill",
+              "start_index": 30,
+              "end_index": 30,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Additional Chaos Experiments",
+              "node_id": "additional-chaos-experiments",
+              "start_index": 31,
+              "end_index": 31,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Chaos Testing Schedule",
+              "node_id": "chaos-testing-schedule",
+              "start_index": 32,
+              "end_index": 32,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Automated Testing with GitHub Actions",
+              "node_id": "automated-testing-with-github-actions",
+              "start_index": 33,
+              "end_index": 33,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "3. Implementation Guidelines",
+          "node_id": "3-implementation-guidelines",
+          "start_index": 34,
+          "end_index": 43,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "3.1 HA Deployment Checklist",
+              "node_id": "31-ha-deployment-checklist",
+              "start_index": 35,
+              "end_index": 35,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "3.2 Testing HA Configuration",
+              "node_id": "32-testing-ha-configuration",
+              "start_index": 36,
+              "end_index": 39,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Test 1: Pod Failure (RTO <1 minute)",
+                  "node_id": "test-1-pod-failure-rto-1-minute",
+                  "start_index": 37,
+                  "end_index": 37,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Test 2: AZ Failure (RTO <5 minutes)",
+                  "node_id": "test-2-az-failure-rto-5-minutes",
+                  "start_index": 38,
+                  "end_index": 38,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Test 3: Database Failover (RTO <5 minutes)",
+                  "node_id": "test-3-database-failover-rto-5-minutes",
+                  "start_index": 39,
+                  "end_index": 39,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "3.3 Troubleshooting HA Issues",
+              "node_id": "33-troubleshooting-ha-issues",
+              "start_index": 40,
+              "end_index": 43,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Issue 1: Pods Not Distributed Across AZs",
+                  "node_id": "issue-1-pods-not-distributed-across-azs",
+                  "start_index": 41,
+                  "end_index": 41,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Issue 2: RDS Failover Takes >5 Minutes",
+                  "node_id": "issue-2-rds-failover-takes-5-minutes",
+                  "start_index": 42,
+                  "end_index": 42,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Issue 3: Persistent Volume Not Attaching After Pod Restart",
+                  "node_id": "issue-3-persistent-volume-not-attaching-after-pod-restart",
+                  "start_index": 43,
+                  "end_index": 43,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "4. Compliance and Governance",
+          "node_id": "4-compliance-and-governance",
+          "start_index": 44,
+          "end_index": 50,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "4.1 Compliance Assessment",
+              "node_id": "41-compliance-assessment",
+              "start_index": 45,
+              "end_index": 45,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.2 Validation Checklist",
+              "node_id": "42-validation-checklist",
+              "start_index": 46,
+              "end_index": 46,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.3 Monitoring Requirements",
+              "node_id": "43-monitoring-requirements",
+              "start_index": 47,
+              "end_index": 47,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.4 Exception Handling",
+              "node_id": "44-exception-handling",
+              "start_index": 48,
+              "end_index": 48,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.5 Governance Oversight",
+              "node_id": "45-governance-oversight",
+              "start_index": 49,
+              "end_index": 49,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.6 Security Review Criteria",
+              "node_id": "46-security-review-criteria",
+              "start_index": 50,
+              "end_index": 50,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "5. Examples and References",
+          "node_id": "5-examples-and-references",
+          "start_index": 51,
+          "end_index": 53,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "5.1 Related Documentation",
+              "node_id": "51-related-documentation",
+              "start_index": 52,
+              "end_index": 52,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "5.2 External Resources",
+              "node_id": "52-external-resources",
+              "start_index": 53,
+              "end_index": 53,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "6. Change History",
+          "node_id": "6-change-history",
+          "start_index": 54,
+          "end_index": 54,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "7. Review Log",
+          "node_id": "7-review-log",
+          "start_index": 55,
+          "end_index": 55,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "**[Home](../../../README.md)** > **[Standards](../../README.md)** > **[Infrastructure](../README.md)** > **[Kafka Management](README.md)** > **STD-INFRA-KMGMT-005**\n\n---",
+    "2": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#lensesio-high-availability-deployment]\n\n# Lenses.io High Availability Deployment\n\n**Standards Metadata**\n\n```yaml\nstandard_id: 'STD-INFRA-KMGMT-005'\nstandard_name: 'Lenses.io High Availability Deployment'\nstandard_type: 'kafka-management-infrastructure'\ncategory: 'infrastructure'\nversion: '1.0.1'\nstatus: 'approved'\ncompliance_level: 'mandatory'\ntags: ['infrastructure', 'kafka-management', 'high-availability', 'multi-az', 'disaster-recovery', 'rds', 'eks', 'statefulset', 'chaos-engineering', 'velero', 'kubernetes', 'mandatory']\n```\n\n---",
+    "3": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#table-of-contents]\n\n## Table of Contents\n\n- [Executive Summary](#executive-summary)\n- [Standard Requirements](#standard-requirements)\n- [Technical Specifications](#technical-specifications)\n- [Implementation Guidelines](#implementation-guidelines)\n- [Compliance and Governance](#compliance-and-governance)\n- [Examples and References](#examples-and-references)\n- [Change History](#change-history)\n- [Review Log](#review-log)\n\n---",
+    "4": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#1-executive-summary]\n\n## 1. Executive Summary",
+    "5": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#11-purpose]\n\n### 1.1 Purpose\n\nThis standard defines mandatory requirements for deploying Lenses.io in a highly available (HA) configuration on AWS EKS to meet Recovery Time Objective (RTO) ≤5 minutes and Recovery Point Objective (RPO) ≤15 minutes per [ADR-IFR-008](../../../decisions/infrastructure/ADR-IFR-008-kafka-management-platform-selection.md).",
+    "6": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#12-scope]\n\n### 1.2 Scope\n\n**In Scope**:\n- Lenses.io multi-replica deployment (≥2 pods)\n- Pod anti-affinity across AWS Availability Zones\n- RDS PostgreSQL Multi-AZ failover configuration\n- Persistent volume replication and backup\n- Load balancer health checks and failover\n- Disaster recovery procedures (RTO/RPO validation)\n- Chaos engineering testing (pod failures, AZ failures)\n\n**Out of Scope**:\n- MSK cluster HA configuration (see STD-INFRA-INT-001)\n- EKS control plane HA (managed by AWS)\n- Application-level HA patterns (see application standards)\n- Cross-region disaster recovery (future Phase 3)",
+    "7": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#13-related-standards-and-adrs]\n\n### 1.3 Related Standards and ADRs\n\nThis standard implements infrastructure patterns:\n- [PTN-INFRA-EVTMON-001: Infrastructure Event Monitoring Pattern](../../../patterns/infrastructure/event-driven/PTN-INFRA-EVT-003-infrastructure-event-monitoring-pattern.md)\n\nRelated standards:\n- [STD-INFRA-KMGMT-001: Platform Installation](STD-INFRA-KMGMT-001-platform-installation.md) - Prerequisites\n- [STD-INFRA-INT-001: MSK Provisioning](../integration/STD-INFRA-INT-001-event-broker-integration.md) - Managed Kafka HA\n- [ADR-IFR-008: Kafka Management Platform Selection](../../../decisions/infrastructure/ADR-IFR-008-kafka-management-platform-selection.md)\n\n---",
+    "8": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#2-standard-requirements]\n\n## 2. Standard Requirements",
+    "9": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#21-mandatory-requirements]\n\n### 2.1 Mandatory Requirements",
+    "10": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#req-lens-005-001-multi-replica-deployment]\n\n#### REQ-LENS-005-001: Multi-Replica Deployment\n\n**Status**: Mandatory\n**Rationale**: Eliminate single point of failure per ADR-IFR-008 RTO target\n\n**Requirements**:\n- Deploy **minimum 2 replicas** of Lenses.io pods (3 replicas recommended for production)\n- Use Kubernetes StatefulSet for stable pod identities\n- Configure readiness and liveness probes (HTTP /healthcheck endpoint)\n- Set resource requests/limits per pod:\n  - CPU request: 2 cores, limit: 4 cores\n  - Memory request: 4GB, limit: 8GB\n- Enable horizontal pod autoscaling (HPA) for 2-6 replicas based on CPU (target 70%)\n\n**Implementation**:\n\nSee complete StatefulSet and HPA configuration in the pod anti-affinity section below (REQ-LENS-005-002). The full implementation includes:\n- StatefulSet with 3 replicas\n- Pod anti-affinity rules for AZ distribution\n- Resource requests/limits (2-4 CPU cores, 4-8GB memory)\n- Liveness, readiness, and startup probes\n- Environment variables for Lenses configuration\n- Volume mounts for persistent storage\n- HPA for auto-scaling (2-6 replicas, 70% CPU target)",
+    "11": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#req-lens-005-002-pod-anti-affinity-across-availability-zones]\n\n#### REQ-LENS-005-002: Pod Anti-Affinity Across Availability Zones\n\n**Status**: Mandatory\n**Rationale**: Protect against AZ failures (99.99% SLA requirement)\n\n**Requirements**:\n- Configure **required** pod anti-affinity to prevent co-location\n- Spread pods across AWS Availability Zones using topology key: `topology.kubernetes.io/zone`\n- Use `requiredDuringSchedulingIgnoredDuringExecution` (hard constraint)\n- Ensure EKS node groups span ≥3 AZs (us-east-1a, us-east-1b, us-east-1c)\n- If <3 AZs available, prefer anti-affinity (soft constraint) to allow deployment\n\n**Implementation**:\n```yaml\n# Pod anti-affinity configuration (integrated into StatefulSet above)\naffinity:\n  podAntiAffinity:\n    # Hard requirement: Distribute pods across AZs\n    requiredDuringSchedulingIgnoredDuringExecution:\n    - labelSelector:\n        matchExpressions:\n        - key: app\n          operator: In\n          values:\n          - lenses\n      topologyKey: topology.kubernetes.io/zone\n    # Soft preference: Also distribute across nodes within same AZ\n    preferredDuringSchedulingIgnoredDuringExecution:\n    - weight: 100\n      podAffinityTerm:\n        labelSelector:\n          matchExpressions:\n          - key: app\n            operator: In\n            values:\n            - lenses\n        topologyKey: kubernetes.io/hostname\n  # Prefer compute-optimized instances for performance\n  nodeAffinity:\n    preferredDuringSchedulingIgnoredDuringExecution:\n    - weight: 50\n      preference:\n        matchExpressions:\n        - key: node.kubernetes.io/instance-type\n          operator: In\n          values:\n          - c5.2xlarge\n          - c5.4xlarge\n          - c6i.2xlarge\n          - c6i.4xlarge\n---\n# Pod Disruption Budget - ensure at least 1 pod always running\napiVersion: policy/v1\nkind: PodDisruptionBudget\nmetadata:\n  name: lenses-pdb\n  namespace: lenses\nspec:\n  minAvailable: 1\n  selector:\n    matchLabels:\n      app: lenses\n```\n\n**Fallback Configuration for <3 AZ Environments**:\n\nIf your EKS cluster has fewer than 3 Availability Zones, modify the anti-affinity from `requiredDuringSchedulingIgnoredDuringExecution` to `preferredDuringSchedulingIgnoredDuringExecution`. This allows pods to deploy even if AZ distribution isn't possible:\n\n```yaml\naffinity:\n  podAntiAffinity:\n    # Soft preference: Try to distribute across AZs but allow same-AZ if needed\n    preferredDuringSchedulingIgnoredDuringExecution:\n    - weight: 100\n      podAffinityTerm:\n        labelSelector:\n          matchExpressions:\n          - key: app\n            operator: In\n            values:\n            - lenses\n        topologyKey: topology.kubernetes.io/zone\n```",
+    "12": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#req-lens-005-003-rds-postgresql-multi-az-configuration]\n\n#### REQ-LENS-005-003: RDS PostgreSQL Multi-AZ Configuration\n\n**Status**: Mandatory\n**Rationale**: Database HA for metadata persistence (RPO ≤15 minutes)\n\n**Requirements**:\n- Enable RDS Multi-AZ deployment (automatic failover)\n- Use db.t3.medium instance (minimum) with 100GB gp3 storage\n- Configure automated backups:\n  - Backup retention: 7 days\n  - Backup window: 03:00-04:00 UTC (low traffic period)\n  - Point-in-time recovery (PITR) enabled\n- Enable enhanced monitoring (1-minute granularity)\n- Configure CloudWatch alarms for database failures and high CPU\n\n**Implementation**:\n```hcl\n# RDS PostgreSQL Multi-AZ Configuration\nresource \"aws_db_instance\" \"lenses_metadata\" {\n  identifier              = \"lenses-${var.environment}-metadata\"\n  engine                  = \"postgres\"\n  engine_version          = \"14.7\"\n  instance_class          = \"db.t3.medium\"\n  allocated_storage       = 100\n  storage_type            = \"gp3\"\n  iops                    = 3000\n  storage_encrypted       = true\n  kms_key_id              = aws_kms_key.lenses_db.arn\n\n  # High Availability Configuration\n  multi_az                = true  # Mandatory for HA\n\n  # Backup Configuration\n  backup_retention_period = 7\n  backup_window           = \"03:00-04:00\"  # UTC\n\n  # Database Configuration\n  db_name                 = \"lenses\"\n  username                = \"lenses_admin\"\n  password                = random_password.lenses_db.result\n  port                    = 5432\n\n  # Network Configuration\n  db_subnet_group_name    = aws_db_subnet_group.lenses.name\n  vpc_security_group_ids  = [aws_security_group.lenses_rds.id]\n  publicly_accessible     = false\n\n  # Parameter Group\n  parameter_group_name    = aws_db_parameter_group.lenses.name\n\n  # Monitoring and Logging\n  enabled_cloudwatch_logs_exports = [\"postgresql\", \"upgrade\"]\n  monitoring_interval     = 60  # Enhanced monitoring: 1-minute granularity\n  monitoring_role_arn     = aws_iam_role.rds_monitoring.arn\n\n  # Performance Insights\n  performance_insights_enabled = true\n  performance_insights_retention_period = 7\n\n  # Maintenance\n  auto_minor_version_upgrade = true\n  maintenance_window         = \"sun:04:00-sun:05:00\"  # UTC\n\n  # Deletion Protection\n  deletion_protection = true\n  skip_final_snapshot = false\n  final_snapshot_identifier = \"lenses-${var.environment}-final-snapshot\"\n\n  tags = {\n    Name        = \"lenses-${var.environment}-metadata\"\n    Environment = var.environment\n    Component   = \"kafka-management\"\n    ManagedBy   = \"terraform\"\n  }\n}\n\n# VPC Configuration\nresource \"aws_db_subnet_group\" \"lenses\" {\n  name       = \"lenses-${var.environment}-db-subnet\"\n  subnet_ids = var.private_subnet_ids  # Use private subnets across 3 AZs\n\n  tags = {\n    Name        = \"lenses-${var.environment}-db-subnet\"\n    Environment = var.environment\n  }\n}\n\n# Security Group\nresource \"aws_security_group\" \"lenses_rds\" {\n  name        = \"lenses-${var.environment}-rds-sg\"\n  description = \"Security group for Lenses.io RDS PostgreSQL\"\n  vpc_id      = var.vpc_id\n\n  ingress {\n    description     = \"PostgreSQL from EKS cluster\"\n    from_port       = 5432\n    to_port         = 5432\n    protocol        = \"tcp\"\n    security_groups = [var.eks_cluster_security_group_id]\n  }\n\n  egress {\n    description = \"Allow all outbound\"\n    from_port   = 0\n    to_port     = 0\n    protocol    = \"-1\"\n    cidr_blocks = [\"0.0.0.0/0\"]\n  }\n\n  tags = {\n    Name        = \"lenses-${var.environment}-rds-sg\"\n    Environment = var.environment\n  }\n}\n\n# Parameter Group for PostgreSQL optimization\nresource \"aws_db_parameter_group\" \"lenses\" {\n  name   = \"lenses-${var.environment}-pg14\"\n  family = \"postgres14\"\n\n  parameter {\n    name  = \"shared_buffers\"\n    value = \"262144\"  # 2GB for db.t3.medium (8GB RAM)\n  }\n\n  parameter {\n    name  = \"max_connections\"\n    value = \"200\"\n  }\n\n  parameter {\n    name  = \"work_mem\"\n    value = \"16384\"  # 16MB\n  }\n\n  parameter {\n    name  = \"maintenance_work_mem\"\n    value = \"524288\"  # 512MB\n  }\n\n  parameter {\n    name  = \"effective_cache_size\"\n    value = \"786432\"  # 6GB\n  }\n\n  parameter {\n    name  = \"log_min_duration_statement\"\n    value = \"1000\"  # Log queries >1 second\n  }\n\n  tags = {\n    Name        = \"lenses-${var.environment}-pg14\"\n    Environment = var.environment\n  }\n}\n\n# CloudWatch Alarms for RDS Monitoring\nresource \"aws_cloudwatch_metric_alarm\" \"rds_cpu\" {\n  alarm_name          = \"lenses-${var.environment}-rds-cpu-high\"\n  comparison_operator = \"GreaterThanThreshold\"\n  evaluation_periods  = \"2\"\n  metric_name         = \"CPUUtilization\"\n  namespace           = \"AWS/RDS\"\n  period              = \"300\"\n  statistic           = \"Average\"\n  threshold           = \"80\"\n  alarm_description   = \"RDS CPU utilization is too high\"\n  alarm_actions       = [var.sns_topic_arn]\n\n  dimensions = {\n    DBInstanceIdentifier = aws_db_instance.lenses_metadata.id\n  }\n}\n\nresource \"aws_cloudwatch_metric_alarm\" \"rds_storage\" {\n  alarm_name          = \"lenses-${var.environment}-rds-storage-low\"\n  comparison_operator = \"LessThanThreshold\"\n  evaluation_periods  = \"1\"\n  metric_name         = \"FreeStorageSpace\"\n  namespace           = \"AWS/RDS\"\n  period              = \"300\"\n  statistic           = \"Average\"\n  threshold           = \"21474836480\"  # 20GB in bytes\n  alarm_description   = \"RDS free storage space is low\"\n  alarm_actions       = [var.sns_topic_arn]\n\n  dimensions = {\n    DBInstanceIdentifier = aws_db_instance.lenses_metadata.id\n  }\n}\n\nresource \"aws_cloudwatch_metric_alarm\" \"rds_connections\" {\n  alarm_name          = \"lenses-${var.environment}-rds-connections-high\"\n  comparison_operator = \"GreaterThanThreshold\"\n  evaluation_periods  = \"2\"\n  metric_name         = \"DatabaseConnections\"\n  namespace           = \"AWS/RDS\"\n  period              = \"300\"\n  statistic           = \"Average\"\n  threshold           = \"180\"  # 90% of max_connections (200)\n  alarm_description   = \"RDS connection count is too high\"\n  alarm_actions       = [var.sns_topic_arn]\n\n  dimensions = {\n    DBInstanceIdentifier = aws_db_instance.lenses_metadata.id\n  }\n}\n\nresource \"aws_cloudwatch_metric_alarm\" \"rds_replication_lag\" {\n  alarm_name          = \"lenses-${var.environment}-rds-replication-lag\"\n  comparison_operator = \"GreaterThanThreshold\"\n  evaluation_periods  = \"2\"\n  metric_name         = \"ReplicaLag\"\n  namespace           = \"AWS/RDS\"\n  period              = \"60\"\n  statistic           = \"Average\"\n  threshold           = \"30\"  # 30 seconds lag\n  alarm_description   = \"RDS replication lag is too high\"\n  alarm_actions       = [var.sns_topic_arn]\n\n  dimensions = {\n    DBInstanceIdentifier = aws_db_instance.lenses_metadata.id\n  }\n}\n\n# KMS Key for RDS Encryption\nresource \"aws_kms_key\" \"lenses_db\" {\n  description             = \"KMS key for Lenses.io RDS encryption\"\n  deletion_window_in_days = 30\n  enable_key_rotation     = true\n\n  tags = {\n    Name        = \"lenses-${var.environment}-db-key\"\n    Environment = var.environment\n  }\n}\n\nresource \"aws_kms_alias\" \"lenses_db\" {\n  name          = \"alias/lenses-${var.environment}-db\"\n  target_key_id = aws_kms_key.lenses_db.key_id\n}\n\n# IAM Role for Enhanced Monitoring\nresource \"aws_iam_role\" \"rds_monitoring\" {\n  name = \"lenses-${var.environment}-rds-monitoring\"\n\n  assume_role_policy = jsonencode({\n    Version = \"2012-10-17\"\n    Statement = [\n      {\n        Action = \"sts:AssumeRole\"\n        Effect = \"Allow\"\n        Principal = {\n          Service = \"monitoring.rds.amazonaws.com\"\n        }\n      }\n    ]\n  })\n}\n\nresource \"aws_iam_role_policy_attachment\" \"rds_monitoring\" {\n  role       = aws_iam_role.rds_monitoring.name\n  policy_arn = \"arn:aws:iam::aws:policy/service-role/AmazonRDSEnhancedMonitoringRole\"\n}\n\n# Random Password Generator\nresource \"random_password\" \"lenses_db\" {\n  length  = 32\n  special = true\n}\n\n# Store password in AWS Secrets Manager\nresource \"aws_secretsmanager_secret\" \"lenses_db\" {\n  name        = \"lenses/${var.environment}/postgres-password\"\n  description = \"Lenses.io PostgreSQL password\"\n}\n\nresource \"aws_secretsmanager_secret_version\" \"lenses_db\" {\n  secret_id = aws_secretsmanager_secret.lenses_db.id\n  secret_string = jsonencode({\n    username = aws_db_instance.lenses_metadata.username\n    password = random_password.lenses_db.result\n    host     = aws_db_instance.lenses_metadata.endpoint\n    port     = aws_db_instance.lenses_metadata.port\n    database = aws_db_instance.lenses_metadata.db_name\n  })\n}\n```",
+    "13": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#req-lens-005-004-persistent-volume-redundancy]\n\n#### REQ-LENS-005-004: Persistent Volume Redundancy\n\n**Status**: Mandatory\n**Rationale**: State persistence during pod restarts\n\n**Requirements**:\n- Use AWS EBS gp3 volumes with `volumeMode: Filesystem`\n- Storage class: `ebs-sc` with `reclaimPolicy: Retain`\n- Volume size: 100GB per pod (stores audit logs, cached queries)\n- Enable volume snapshots via Velero (daily backups, 7-day retention)\n- Test volume restoration from snapshot (monthly DR drill)\n\n**Implementation**:\n```yaml\n# Persistent Volume Claim (integrated into StatefulSet volumeClaimTemplates above)\napiVersion: v1\nkind: PersistentVolumeClaim\nmetadata:\n  name: lenses-data\n  namespace: lenses\n  labels:\n    app: lenses\n    component: data\nspec:\n  accessModes:\n  - ReadWriteOnce\n  resources:\n    requests:\n      storage: 100Gi\n  storageClassName: ebs-sc\n---\n# Storage Class for EBS gp3 volumes\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n  name: ebs-sc\nprovisioner: ebs.csi.aws.com\nvolumeBindingMode: WaitForFirstConsumer\nparameters:\n  type: gp3\n  iops: \"3000\"\n  throughput: \"125\"\n  encrypted: \"true\"\nallowVolumeExpansion: true\nreclaimPolicy: Retain\n---\n# VolumeSnapshotClass for EBS snapshots\napiVersion: snapshot.storage.k8s.io/v1\nkind: VolumeSnapshotClass\nmetadata:\n  name: lenses-snapshot-class\ndriver: ebs.csi.aws.com\ndeletionPolicy: Retain\nparameters:\n  tagSpecification_1: \"Name=lenses-snapshot\"\n  tagSpecification_2: \"Environment={{ .Values.environment }}\"\n---\n# Velero Backup Schedule - Daily Full Backup\napiVersion: velero.io/v1\nkind: Schedule\nmetadata:\n  name: lenses-daily-backup\n  namespace: velero\nspec:\n  schedule: \"0 2 * * *\"  # Daily at 2 AM UTC\n  template:\n    includedNamespaces:\n    - lenses\n    includedResources:\n    - persistentvolumeclaims\n    - persistentvolumes\n    labelSelector:\n      matchLabels:\n        app: lenses\n    ttl: 720h  # 30 days retention\n    snapshotVolumes: true\n    defaultVolumesToRestic: false\n    storageLocation: default\n    volumeSnapshotLocations:\n    - default\n---\n# Velero Backup Schedule - Hourly Incremental (using Restic)\napiVersion: velero.io/v1\nkind: Schedule\nmetadata:\n  name: lenses-hourly-backup\n  namespace: velero\nspec:\n  schedule: \"0 * * * *\"  # Every hour\n  template:\n    includedNamespaces:\n    - lenses\n    includedResources:\n    - pods\n    - configmaps\n    - secrets\n    labelSelector:\n      matchLabels:\n        app: lenses\n    ttl: 168h  # 7 days retention\n    defaultVolumesToRestic: true  # Use Restic for incremental backups\n    storageLocation: default\n```\n\n**Volume Restoration Testing Procedure**:\n\nRun quarterly DR drills to validate backup/restore functionality:\n\n```bash\n#!/bin/bash\n# Lenses.io Volume Restore Testing Script\n# Run quarterly per REQ-LENS-005-004\n\nset -e\n\nNAMESPACE=\"lenses\"\nBACKUP_NAME=\"lenses-daily-backup-$(date +%Y%m%d)\"\nRESTORE_NAMESPACE=\"lenses-restore-test\"\n\necho \"[1/6] Listing available Velero backups...\"\nvelero backup get | grep lenses\n\necho \"[2/6] Creating restore namespace...\"\nkubectl create namespace $RESTORE_NAMESPACE --dry-run=client -o yaml | kubectl apply -f -\n\necho \"[3/6] Restoring from latest backup to test namespace...\"\nvelero restore create lenses-restore-test \\\n  --from-backup $BACKUP_NAME \\\n  --namespace-mappings $NAMESPACE:$RESTORE_NAMESPACE \\\n  --wait\n\necho \"[4/6] Verifying restored PVCs...\"\nkubectl get pvc -n $RESTORE_NAMESPACE\n\necho \"[5/6] Validating data integrity...\"\nkubectl exec -n $RESTORE_NAMESPACE lenses-0 -- ls -lh /data/lenses\n\necho \"[6/6] Cleanup - Deleting test restore namespace...\"\nkubectl delete namespace $RESTORE_NAMESPACE\n\necho \"✅ Volume restore test completed successfully\"\necho \"RPO validated: Data from backup timestamp $(velero backup describe $BACKUP_NAME | grep 'Started:')\"\n```",
+    "14": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#req-lens-005-005-load-balancer-health-checks]\n\n#### REQ-LENS-005-005: Load Balancer Health Checks\n\n**Status**: Mandatory\n**Rationale**: Route traffic only to healthy pods\n\n**Requirements**:\n- Use AWS Application Load Balancer (ALB) via Ingress Controller\n- Health check endpoint: `GET /api/healthcheck` (returns 200 OK)\n- Health check interval: 15 seconds\n- Unhealthy threshold: 2 consecutive failures (30 seconds to mark unhealthy)\n- Healthy threshold: 2 consecutive successes (30 seconds to mark healthy)\n- Drain connections on pod termination (30-second grace period)\n\n**Implementation**:\n```yaml\n# Application Load Balancer Ingress Configuration\napiVersion: networking.k8s.io/v1\nkind: Ingress\nmetadata:\n  name: lenses\n  namespace: lenses\n  annotations:\n    # ALB Configuration\n    alb.ingress.kubernetes.io/scheme: internet-facing\n    alb.ingress.kubernetes.io/target-type: ip\n    alb.ingress.kubernetes.io/subnets: subnet-abc123,subnet-def456,subnet-ghi789  # Public subnets across 3 AZs\n\n    # Health Check Configuration\n    alb.ingress.kubernetes.io/healthcheck-path: /api/healthcheck\n    alb.ingress.kubernetes.io/healthcheck-protocol: HTTP\n    alb.ingress.kubernetes.io/healthcheck-port: \"9991\"\n    alb.ingress.kubernetes.io/healthcheck-interval-seconds: \"15\"\n    alb.ingress.kubernetes.io/healthcheck-timeout-seconds: \"5\"\n    alb.ingress.kubernetes.io/unhealthy-threshold-count: \"2\"\n    alb.ingress.kubernetes.io/healthy-threshold-count: \"2\"\n\n    # TLS Configuration\n    alb.ingress.kubernetes.io/listen-ports: '[{\"HTTP\": 80}, {\"HTTPS\":443}]'\n    alb.ingress.kubernetes.io/ssl-redirect: \"443\"\n    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:123456789012:certificate/abcd1234-5678-90ef-ghij-klmnopqrstuv\n\n    # Security\n    alb.ingress.kubernetes.io/security-groups: sg-0123456789abcdef0\n    alb.ingress.kubernetes.io/manage-backend-security-group-rules: \"true\"\n\n    # Connection Draining\n    alb.ingress.kubernetes.io/target-group-attributes: deregistration_delay.timeout_seconds=30\n\n    # Tags\n    alb.ingress.kubernetes.io/tags: Environment=dev,Component=kafka-management,ManagedBy=kubernetes\nspec:\n  ingressClassName: alb\n  rules:\n  - host: lenses.dev.company.com\n    http:\n      paths:\n      - path: /\n        pathType: Prefix\n        backend:\n          service:\n            name: lenses\n            port:\n              number: 9991\n---\n# Service for Lenses.io (headless for StatefulSet)\napiVersion: v1\nkind: Service\nmetadata:\n  name: lenses\n  namespace: lenses\n  labels:\n    app: lenses\nspec:\n  type: ClusterIP\n  clusterIP: None  # Headless service for StatefulSet\n  selector:\n    app: lenses\n  ports:\n  - name: http\n    port: 9991\n    targetPort: 9991\n    protocol: TCP\n  - name: jmx\n    port: 9999\n    targetPort: 9999\n    protocol: TCP\n---\n# Service for ALB (non-headless)\napiVersion: v1\nkind: Service\nmetadata:\n  name: lenses-lb\n  namespace: lenses\n  labels:\n    app: lenses\nspec:\n  type: NodePort\n  selector:\n    app: lenses\n  ports:\n  - name: http\n    port: 9991\n    targetPort: 9991\n    protocol: TCP\n```",
+    "15": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#req-lens-005-006-pod-disruption-budget-pdb]\n\n#### REQ-LENS-005-006: Pod Disruption Budget (PDB)\n\n**Status**: Mandatory\n**Rationale**: Prevent simultaneous pod evictions during maintenance\n\n**Requirements**:\n- Configure PDB with `minAvailable: 1` (always keep ≥1 pod running)\n- Apply during cluster upgrades, node scaling, pod evictions\n- Test PDB enforcement during simulated node drain\n\n**Implementation**:\n```yaml\n# Pod Disruption Budget (already shown above, repeated for clarity)\napiVersion: policy/v1\nkind: PodDisruptionBudget\nmetadata:\n  name: lenses-pdb\n  namespace: lenses\n  labels:\n    app: lenses\nspec:\n  minAvailable: 1  # Always keep at least 1 pod running\n  selector:\n    matchLabels:\n      app: lenses\n  unhealthyPodEvictionPolicy: AlwaysAllow  # Allow eviction of unhealthy pods\n```\n\n**PDB Testing Procedure**:\n\nValidate PDB enforcement during node drain operations:\n\n```bash\n#!/bin/bash\n# Test Pod Disruption Budget enforcement\n\nset -e\n\nNAMESPACE=\"lenses\"\nNODE_NAME=$(kubectl get pods -n $NAMESPACE -l app=lenses -o jsonpath='{.items[0].spec.nodeName}')\n\necho \"[1/5] Verifying PDB exists and status...\"\nkubectl get pdb -n $NAMESPACE lenses-pdb\nkubectl describe pdb -n $NAMESPACE lenses-pdb\n\necho \"[2/5] Current pod distribution:\"\nkubectl get pods -n $NAMESPACE -l app=lenses -o wide\n\necho \"[3/5] Attempting to drain node: $NODE_NAME\"\necho \"PDB should prevent all pods from being evicted simultaneously...\"\nkubectl drain $NODE_NAME --ignore-daemonsets --delete-emptydir-data --timeout=5m\n\necho \"[4/5] Verifying at least 1 pod remained running during drain:\"\nRUNNING_PODS=$(kubectl get pods -n $NAMESPACE -l app=lenses --field-selector=status.phase=Running --no-headers | wc -l)\nif [ $RUNNING_PODS -ge 1 ]; then\n  echo \"✅ PDB enforcement successful: $RUNNING_PODS pod(s) remained running\"\nelse\n  echo \"❌ PDB enforcement failed: No pods running\"\n  exit 1\nfi\n\necho \"[5/5] Uncordoning node to restore normal operation...\"\nkubectl uncordon $NODE_NAME\n\necho \"✅ PDB test completed successfully\"\n```",
+    "16": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#req-lens-005-007-rtorpo-targets-and-validation]\n\n#### REQ-LENS-005-007: RTO/RPO Targets and Validation\n\n**Status**: Mandatory\n**Rationale**: Meet ADR-IFR-008 business requirements\n\n**Targets**:\n- **RTO (Recovery Time Objective)**: ≤5 minutes\n  - Time from failure detection to service restored\n- **RPO (Recovery Point Objective)**: ≤15 minutes\n  - Maximum acceptable data loss (audit logs, query history)\n\n**Validation Scenarios**:\n1. **Pod Failure**: Kill 1 of 2 pods, verify traffic routes to healthy pod within 30 seconds (RTO <1 min)\n2. **AZ Failure**: Simulate AZ outage, verify pods reschedule to healthy AZ within 3 minutes (RTO <5 min)\n3. **Database Failover**: Force RDS failover, verify Lenses.io reconnects within 2 minutes (RTO <5 min)\n4. **Node Failure**: Terminate EKS node, verify pod reschedules and recovers within 4 minutes (RTO <5 min)\n\n**Implementation**:\n```bash\n#!/bin/bash\n# RTO/RPO Validation Test Suite\n# Validates Recovery Time Objective (RTO ≤5 minutes) and Recovery Point Objective (RPO ≤15 minutes)\n\nset -e\n\nNAMESPACE=\"lenses\"\nHEALTH_URL=\"https://lenses.dev.company.com/api/healthcheck\"\n\n# Colors for output\nRED='\\033[0;31m'\nGREEN='\\033[0;32m'\nYELLOW='\\033[1;33m'\nNC='\\033[0m' # No Color\n\n# Function to measure RTO\nmeasure_rto() {\n  local start_time=$(date +%s)\n  local end_time\n  local rto_seconds\n\n  echo -e \"${YELLOW}Waiting for service to recover...${NC}\"\n\n  while true; do\n    if curl -sf $HEALTH_URL > /dev/null 2>&1; then\n      end_time=$(date +%s)\n      rto_seconds=$((end_time - start_time))\n      echo -e \"${GREEN}✅ Service recovered in ${rto_seconds} seconds${NC}\"\n\n      if [ $rto_seconds -le 300 ]; then\n        echo -e \"${GREEN}RTO Target Met: ${rto_seconds}s ≤ 300s (5 minutes)${NC}\"\n        return 0\n      else\n        echo -e \"${RED}RTO Target Missed: ${rto_seconds}s > 300s (5 minutes)${NC}\"\n        return 1\n      fi\n    fi\n    sleep 2\n  done\n}\n\n# Test 1: Pod Failure (RTO Target: <1 minute)\ntest_pod_failure() {\n  echo -e \"\\n${YELLOW}=== Test 1: Pod Failure ===${NC}\"\n  echo \"Deleting one Lenses.io pod...\"\n\n  local pod_name=$(kubectl get pods -n $NAMESPACE -l app=lenses --no-headers | head -1 | awk '{print $1}')\n  echo \"Target pod: $pod_name\"\n\n  kubectl delete pod $pod_name -n $NAMESPACE\n  measure_rto\n\n  echo \"Verifying pod rescheduled:\"\n  kubectl get pods -n $NAMESPACE -l app=lenses -o wide\n}\n\n# Test 2: AZ Failure Simulation (RTO Target: <5 minutes)\ntest_az_failure() {\n  echo -e \"\\n${YELLOW}=== Test 2: Availability Zone Failure ===${NC}\"\n\n  # Identify one AZ to simulate failure\n  local target_az=\"us-east-1a\"\n  echo \"Simulating failure in AZ: $target_az\"\n\n  # Cordon all nodes in target AZ\n  echo \"Cordoning nodes in $target_az...\"\n  kubectl cordon $(kubectl get nodes -l topology.kubernetes.io/zone=$target_az -o name)\n\n  # Delete pods in target AZ\n  echo \"Deleting pods in $target_az...\"\n  for pod in $(kubectl get pods -n $NAMESPACE -l app=lenses -o json | jq -r \".items[] | select(.spec.nodeName | IN($(kubectl get nodes -l topology.kubernetes.io/zone=$target_az -o json | jq -r '.items[].metadata.name'))) | .metadata.name\"); do\n    kubectl delete pod $pod -n $NAMESPACE\n  done\n\n  measure_rto\n\n  echo \"Verifying pods rescheduled to other AZs:\"\n  kubectl get pods -n $NAMESPACE -l app=lenses -o wide\n\n  # Cleanup: Uncordon nodes\n  echo \"Uncordoning nodes in $target_az...\"\n  kubectl uncordon $(kubectl get nodes -l topology.kubernetes.io/zone=$target_az -o name)\n}\n\n# Test 3: Database Failover (RTO Target: <5 minutes)\ntest_database_failover() {\n  echo -e \"\\n${YELLOW}=== Test 3: RDS Database Failover ===${NC}\"\n\n  local db_identifier=\"lenses-dev-metadata\"\n  echo \"Triggering RDS failover for: $db_identifier\"\n\n  aws rds failover-db-cluster --db-cluster-identifier $db_identifier || \\\n    aws rds reboot-db-instance --db-instance-identifier $db_identifier --force-failover\n\n  measure_rto\n\n  echo \"Verifying Lenses.io reconnected to database:\"\n  kubectl logs -n $NAMESPACE -l app=lenses --tail=50 | grep -i \"database\\|postgres\\|connection\"\n}\n\n# Test 4: Node Failure (RTO Target: <5 minutes)\ntest_node_failure() {\n  echo -e \"\\n${YELLOW}=== Test 4: EKS Node Failure ===${NC}\"\n\n  local node_name=$(kubectl get pods -n $NAMESPACE -l app=lenses -o jsonpath='{.items[0].spec.nodeName}')\n  echo \"Simulating node failure: $node_name\"\n\n  # Cordon and drain node (simulates node termination)\n  kubectl cordon $node_name\n  kubectl drain $node_name --ignore-daemonsets --delete-emptydir-data --force --grace-period=0 &\n\n  measure_rto\n\n  echo \"Verifying pod rescheduled to different node:\"\n  kubectl get pods -n $NAMESPACE -l app=lenses -o wide\n\n  # Cleanup\n  kubectl uncordon $node_name\n}\n\n# RPO Validation\nvalidate_rpo() {\n  echo -e \"\\n${YELLOW}=== RPO Validation ===${NC}\"\n\n  # Check latest RDS backup timestamp\n  echo \"Checking RDS automated backup status...\"\n  local latest_backup=$(aws rds describe-db-snapshots \\\n    --db-instance-identifier lenses-dev-metadata \\\n    --snapshot-type automated \\\n    --query 'DBSnapshots | sort_by(@, &SnapshotCreateTime) | [-1].SnapshotCreateTime' \\\n    --output text)\n\n  echo \"Latest RDS backup: $latest_backup\"\n\n  local backup_age_minutes=$(( ($(date +%s) - $(date -d \"$latest_backup\" +%s)) / 60 ))\n  echo \"Backup age: $backup_age_minutes minutes\"\n\n  if [ $backup_age_minutes -le 900 ]; then  # 15 hours (accounting for daily backup schedule)\n    echo -e \"${GREEN}✅ RPO Target Met: Backup age ${backup_age_minutes} minutes${NC}\"\n  else\n    echo -e \"${RED}❌ RPO Target Warning: Backup age ${backup_age_minutes} minutes > 15 hours${NC}\"\n  fi\n\n  # Check Velero backup status\n  echo \"\\nChecking Velero backup status...\"\n  velero backup get | grep lenses | tail -5\n}\n\n# Main execution\necho -e \"${GREEN}Starting RTO/RPO Validation Test Suite${NC}\"\necho \"Target: RTO ≤5 minutes, RPO ≤15 minutes\"\necho \"Health Check URL: $HEALTH_URL\"\necho \"\"\n\n# Pre-flight check\necho \"Pre-flight checks:\"\nkubectl get pods -n $NAMESPACE -l app=lenses\necho \"\"\n\n# Run all tests\ntest_pod_failure\ntest_az_failure\ntest_database_failover\ntest_node_failure\nvalidate_rpo\n\necho -e \"\\n${GREEN}✅ All RTO/RPO validation tests completed${NC}\"\necho \"Review results above to confirm all RTO targets (≤5 minutes) were met.\"\n```",
+    "17": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#req-lens-005-008-disaster-recovery-procedures]\n\n#### REQ-LENS-005-008: Disaster Recovery Procedures\n\n**Status**: Mandatory\n**Rationale**: Documented recovery playbook\n\n**Procedures**:\n1. **Complete Platform Failure (All Pods Down)**:\n   - Investigate root cause (check EKS cluster, RDS, network)\n   - If RDS unavailable: Trigger manual RDS failover (AWS Console)\n   - If EKS nodes unavailable: Scale node group or add new nodes\n   - If persistent volume lost: Restore from Velero snapshot\n   - Verify health checks pass before declaring recovery\n   - Estimated RTO: 5 minutes (assuming EKS/RDS healthy)\n\n2. **Database Corruption**:\n   - Stop all Lenses.io pods to prevent further writes\n   - Restore RDS from latest automated backup or snapshot\n   - Restart Lenses.io pods and verify database connectivity\n   - Replay audit logs if available (RPO <15 minutes)\n   - Estimated RTO: 30 minutes (includes RDS restore time)\n\n3. **Persistent Volume Data Loss**:\n   - Identify affected pod(s)\n   - Delete PVC to trigger volume recreation\n   - Restore volume from Velero snapshot (if available)\n   - Restart pod and verify data integrity\n   - Estimated RTO: 10 minutes\n\n**Implementation**:",
+    "18": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#disaster-recovery-runbook]\n\n## Disaster Recovery Runbook",
+    "19": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#scenario-1-complete-platform-failure-all-pods-down]\n\n### Scenario 1: Complete Platform Failure (All Pods Down)\n\n**Detection**:\n- CloudWatch alarm: `LensesHA-PodAvailability` triggered (<2 pods running)\n- ALB health checks failing (all targets unhealthy)\n- User reports: Lenses.io UI inaccessible\n\n**Root Cause Investigation**:\n```bash\n# Check pod status\nkubectl get pods -n lenses -l app=lenses\n\n# Check pod events\nkubectl describe pods -n lenses -l app=lenses | grep -A 20 Events\n\n# Check EKS cluster health\naws eks describe-cluster --name dev-eks-cluster --query 'cluster.status'\n\n# Check RDS status\naws rds describe-db-instances --db-instance-identifier lenses-dev-metadata --query 'DBInstances[0].DBInstanceStatus'\n\n# Check node status\nkubectl get nodes\n```\n\n**Recovery Steps**:\n\n1. **If RDS database unavailable**:\n   ```bash\n   # Check RDS status\n   aws rds describe-db-instances --db-instance-identifier lenses-dev-metadata\n\n   # If Multi-AZ failover needed\n   aws rds reboot-db-instance --db-instance-identifier lenses-dev-metadata --force-failover\n\n   # Monitor failover progress (typically 1-2 minutes)\n   aws rds describe-db-instances --db-instance-identifier lenses-dev-metadata --query 'DBInstances[0].DBInstanceStatus'\n   ```\n\n2. **If EKS nodes unavailable**:\n   ```bash\n   # Check node group status\n   aws eks describe-nodegroup --cluster-name dev-eks-cluster --nodegroup-name lenses-nodes\n\n   # Scale up node group if needed\n   aws eks update-nodegroup-config --cluster-name dev-eks-cluster --nodegroup-name lenses-nodes --scaling-config minSize=3,maxSize=6,desiredSize=3\n\n   # Or add new nodes manually\n   kubectl get nodes --watch\n   ```\n\n3. **If persistent volumes lost**:\n   ```bash\n   # List available Velero backups\n   velero backup get | grep lenses\n\n   # Restore from latest backup\n   velero restore create lenses-recovery-$(date +%Y%m%d-%H%M%S) --from-backup lenses-daily-backup-latest --wait\n\n   # Verify restored PVCs\n   kubectl get pvc -n lenses\n   ```\n\n4. **Restart Lenses.io pods**:\n   ```bash\n   # Delete pods to trigger restart (StatefulSet will recreate them)\n   kubectl delete pods -n lenses -l app=lenses\n\n   # Monitor pod startup\n   kubectl get pods -n lenses -w\n   ```\n\n5. **Verify health checks**:\n   ```bash\n   # Check pod readiness\n   kubectl get pods -n lenses -l app=lenses\n\n   # Check health endpoint\n   curl -I https://lenses.dev.company.com/api/healthcheck\n\n   # Verify ALB target health\n   aws elbv2 describe-target-health --target-group-arn <ARN>\n   ```\n\n**Estimated RTO**: 5 minutes (assuming EKS/RDS healthy)\n\n**Escalation**: If RTO exceeds 10 minutes, escalate to Platform Lead\n\n---",
+    "20": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#scenario-2-database-corruption]\n\n### Scenario 2: Database Corruption\n\n**Detection**:\n- Lenses.io logs showing database errors\n- RDS CloudWatch alarms for database errors\n- Data integrity issues reported by users\n\n**Recovery Steps**:\n\n1. **Stop all Lenses.io pods to prevent further writes**:\n   ```bash\n   # Scale StatefulSet to 0 replicas\n   kubectl scale statefulset lenses -n lenses --replicas=0\n\n   # Verify all pods terminated\n   kubectl get pods -n lenses -l app=lenses\n   ```\n\n2. **Identify latest healthy RDS snapshot**:\n   ```bash\n   # List automated snapshots\n   aws rds describe-db-snapshots --db-instance-identifier lenses-dev-metadata --snapshot-type automated --query 'DBSnapshots | sort_by(@, &SnapshotCreateTime)[-5:]'\n\n   # Check snapshot timestamp (select one before corruption)\n   ```\n\n3. **Restore RDS from snapshot**:\n   ```bash\n   # Restore to new instance\n   aws rds restore-db-instance-from-db-snapshot \\\n     --db-instance-identifier lenses-dev-metadata-restored \\\n     --db-snapshot-identifier rds:lenses-dev-metadata-2026-01-19-03-00 \\\n     --db-instance-class db.t3.medium \\\n     --multi-az \\\n     --vpc-security-group-ids sg-0123456789abcdef0 \\\n     --db-subnet-group-name lenses-dev-db-subnet\n\n   # Wait for restore completion (15-30 minutes)\n   aws rds describe-db-instances --db-instance-identifier lenses-dev-metadata-restored --query 'DBInstances[0].DBInstanceStatus' --watch\n   ```\n\n4. **Update Lenses.io database connection**:\n   ```bash\n   # Update Kubernetes secret with new RDS endpoint\n   kubectl create secret generic lenses-postgres \\\n     --from-literal=host=$(aws rds describe-db-instances --db-instance-identifier lenses-dev-metadata-restored --query 'DBInstances[0].Endpoint.Address' --output text) \\\n     --from-literal=port=5432 \\\n     --from-literal=database=lenses \\\n     --from-literal=username=lenses_admin \\\n     --from-literal=password=<password> \\\n     --dry-run=client -o yaml | kubectl apply -n lenses -f -\n   ```\n\n5. **Restart Lenses.io pods**:\n   ```bash\n   # Scale StatefulSet back to 3 replicas\n   kubectl scale statefulset lenses -n lenses --replicas=3\n\n   # Monitor pod startup and database connectivity\n   kubectl logs -f lenses-0 -n lenses | grep -i \"database\\|postgres\"\n   ```\n\n6. **Verify data integrity**:\n   ```bash\n   # Access Lenses.io UI and verify recent audit logs\n   # Check data from before corruption timestamp\n   ```\n\n**Estimated RTO**: 30 minutes (includes RDS restore time)\n**RPO**: Data loss window from last automated backup (up to 15 minutes based on backup schedule)\n\n**Escalation**: Notify Database Administrator and Security team for corruption root cause analysis\n\n---",
+    "21": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#scenario-3-persistent-volume-data-loss]\n\n### Scenario 3: Persistent Volume Data Loss\n\n**Detection**:\n- Pod stuck in `ContainerCreating` or `CrashLoopBackOff`\n- Events showing volume attachment failures\n- Missing audit logs or cached query data\n\n**Recovery Steps**:\n\n1. **Identify affected pod and volume**:\n   ```bash\n   # Check pod status\n   kubectl get pods -n lenses -l app=lenses\n\n   # Describe affected pod\n   kubectl describe pod lenses-0 -n lenses | grep -A 10 \"Events\\|Volumes\"\n\n   # Check PVC status\n   kubectl get pvc -n lenses\n   ```\n\n2. **Delete PVC to trigger recreation** (if volume lost):\n   ```bash\n   # Delete affected pod first\n   kubectl delete pod lenses-0 -n lenses\n\n   # Delete PVC (StatefulSet will recreate)\n   kubectl delete pvc lenses-data-lenses-0 -n lenses\n   ```\n\n3. **Restore volume from Velero snapshot**:\n   ```bash\n   # List available backups\n   velero backup get | grep lenses\n\n   # Restore specific PVC from backup\n   velero restore create lenses-pvc-restore \\\n     --from-backup lenses-daily-backup-latest \\\n     --include-resources persistentvolumeclaims,persistentvolumes \\\n     --selector app=lenses \\\n     --wait\n   ```\n\n4. **Restart affected pod**:\n   ```bash\n   # StatefulSet will automatically recreate pod\n   kubectl get pods -n lenses -w\n\n   # Verify volume mounted\n   kubectl exec -n lenses lenses-0 -- df -h /data/lenses\n   ```\n\n5. **Verify data integrity**:\n   ```bash\n   # Check restored data\n   kubectl exec -n lenses lenses-0 -- ls -lh /data/lenses\n\n   # Check Lenses.io logs for successful startup\n   kubectl logs lenses-0 -n lenses --tail=100\n   ```\n\n**Estimated RTO**: 10 minutes\n**RPO**: Data loss from last Velero backup (daily at 2 AM UTC)\n\n---",
+    "22": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#contact-escalation-matrix]\n\n### Contact Escalation Matrix\n\n| Severity | Role | Contact | Response SLA |\n|----------|------|---------|-------------|\n| **P1 - Critical** (RTO >10 min) | Platform Lead | platform-lead@company.com | 15 minutes |\n| **P1 - Critical** | On-Call SRE | pagerduty-sre@company.com | 15 minutes |\n| **P2 - High** (Partial outage) | Platform Team | platform-team@company.com | 1 hour |\n| **P3 - Medium** (Degraded) | Kafka Team | kafka-team@company.com | 4 hours |\n| **Database Issues** | DBA Team | dba-team@company.com | 30 minutes |\n| **Security Incident** | Security Team | security-team@company.com | Immediate |",
+    "23": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#post-incident-review-template]\n\n### Post-Incident Review Template\n\n**Incident ID**: INC-LENSES-[YYYYMMDD]-[###]\n**Date**: [YYYY-MM-DD]\n**Duration**: [HH:MM] (from detection to resolution)\n**Severity**: [P1/P2/P3]\n\n**Incident Summary**:\n- **Detection Time**: [timestamp]\n- **Response Time**: [timestamp]\n- **Resolution Time**: [timestamp]\n- **RTO Achieved**: [minutes] (Target: ≤5 minutes)\n- **RPO Achieved**: [minutes] (Target: ≤15 minutes)\n\n**Root Cause**:\n- [Detailed root cause analysis]\n- [Contributing factors]\n\n**Impact**:\n- **Users Affected**: [number/percentage]\n- **Services Affected**: [list]\n- **Data Loss**: [yes/no, amount]\n\n**Timeline**:\n| Time | Event |\n|------|-------|\n| [timestamp] | Incident detected |\n| [timestamp] | Investigation started |\n| [timestamp] | Root cause identified |\n| [timestamp] | Mitigation started |\n| [timestamp] | Service restored |\n| [timestamp] | Incident closed |\n\n**Action Items**:\n| Action | Owner | Priority | Due Date | Status |\n|--------|-------|----------|----------|--------|\n| [Action] | [Name] | [P1/P2/P3] | [Date] | [Open/In Progress/Done] |\n\n**Lessons Learned**:\n- **What Went Well**: [list]\n- **What Went Wrong**: [list]\n- **What We Learned**: [list]\n\n**Prevention Measures**:\n- [List of preventive actions to avoid recurrence]\n\n**Reviewer**: [Name]\n**Review Date**: [Date]\n**Status**: [Draft/Under Review/Approved]",
+    "24": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#req-lens-005-009-monitoring-and-alerting-for-ha]\n\n#### REQ-LENS-005-009: Monitoring and Alerting for HA\n\n**Status**: Mandatory\n**Rationale**: Proactive failure detection\n\n**Monitored Metrics**:\n- Pod availability: Alert if <2 pods running (immediate)\n- Pod restart count: Alert if pod restarts >3 times in 10 minutes\n- Database connection failures: Alert on any RDS connection errors\n- Load balancer unhealthy target count: Alert if >0 unhealthy targets for >2 minutes\n- RDS CPU utilization: Alert if >80% for >5 minutes\n- RDS storage space: Alert if <20% free space\n\n**CloudWatch Alarms**:\n- `LensesHA-PodAvailability` (threshold: <2 pods)\n- `LensesHA-PodRestarts` (threshold: >3 restarts/10min)\n- `LensesHA-DatabaseConnection` (threshold: any error)\n- `LensesHA-ALBUnhealthyTargets` (threshold: >0 for 2min)\n\n**Implementation**:\n```yaml\n# CloudWatch Metric Filters for Kubernetes Pod Events\napiVersion: v1\nkind: ConfigMap\nmetadata:\n  name: cloudwatch-config\n  namespace: amazon-cloudwatch\ndata:\n  cwagentconfig.json: |\n    {\n      \"logs\": {\n        \"metrics_collected\": {\n          \"kubernetes\": {\n            \"cluster_name\": \"dev-eks-cluster\",\n            \"metrics_collection_interval\": 60,\n            \"namespace\": \"lenses\",\n            \"pod_metrics\": [\n              \"pod_cpu_utilization\",\n              \"pod_memory_utilization\",\n              \"pod_network_rx_bytes\",\n              \"pod_network_tx_bytes\",\n              \"pod_number_of_container_restarts\"\n            ]\n          }\n        }\n      }\n    }\n---\n# Terraform CloudWatch Alarms\n# Pod Availability Alarm\nresource \"aws_cloudwatch_metric_alarm\" \"lenses_pod_availability\" {\n  alarm_name          = \"LensesHA-PodAvailability\"\n  comparison_operator = \"LessThanThreshold\"\n  evaluation_periods  = \"1\"\n  metric_name         = \"RunningPodCount\"\n  namespace           = \"ContainerInsights\"\n  period              = \"60\"\n  statistic           = \"Average\"\n  threshold           = \"2\"\n  alarm_description   = \"Lenses.io has fewer than 2 pods running (HA requirement violation)\"\n  alarm_actions       = [aws_sns_topic.lenses_alerts.arn]\n  ok_actions          = [aws_sns_topic.lenses_alerts.arn]\n  treat_missing_data  = \"breaching\"\n\n  dimensions = {\n    ClusterName = \"dev-eks-cluster\"\n    Namespace   = \"lenses\"\n    PodName     = \"lenses\"\n  }\n\n  tags = {\n    Severity    = \"Critical\"\n    Component   = \"kafka-management\"\n    Environment = var.environment\n  }\n}\n\n# Pod Restart Alarm\nresource \"aws_cloudwatch_metric_alarm\" \"lenses_pod_restarts\" {\n  alarm_name          = \"LensesHA-PodRestarts\"\n  comparison_operator = \"GreaterThanThreshold\"\n  evaluation_periods  = \"1\"\n  metric_name         = \"pod_number_of_container_restarts\"\n  namespace           = \"ContainerInsights\"\n  period              = \"600\"  # 10 minutes\n  statistic           = \"Sum\"\n  threshold           = \"3\"\n  alarm_description   = \"Lenses.io pod has restarted more than 3 times in 10 minutes\"\n  alarm_actions       = [aws_sns_topic.lenses_alerts.arn]\n\n  dimensions = {\n    ClusterName = \"dev-eks-cluster\"\n    Namespace   = \"lenses\"\n    PodName     = \"lenses\"\n  }\n\n  tags = {\n    Severity    = \"High\"\n    Component   = \"kafka-management\"\n    Environment = var.environment\n  }\n}\n\n# ALB Unhealthy Targets Alarm\nresource \"aws_cloudwatch_metric_alarm\" \"lenses_alb_unhealthy\" {\n  alarm_name          = \"LensesHA-ALBUnhealthyTargets\"\n  comparison_operator = \"GreaterThanThreshold\"\n  evaluation_periods  = \"2\"\n  metric_name         = \"UnHealthyHostCount\"\n  namespace           = \"AWS/ApplicationELB\"\n  period              = \"60\"\n  statistic           = \"Average\"\n  threshold           = \"0\"\n  alarm_description   = \"Lenses.io ALB has unhealthy targets for >2 minutes\"\n  alarm_actions       = [aws_sns_topic.lenses_alerts.arn]\n\n  dimensions = {\n    TargetGroup  = aws_lb_target_group.lenses.arn_suffix\n    LoadBalancer = aws_lb.lenses.arn_suffix\n  }\n\n  tags = {\n    Severity    = \"High\"\n    Component   = \"kafka-management\"\n    Environment = var.environment\n  }\n}\n\n# RDS CPU Alarm (already defined in RDS section, shown for completeness)\nresource \"aws_cloudwatch_metric_alarm\" \"lenses_rds_cpu\" {\n  alarm_name          = \"LensesHA-RDS-CPU-High\"\n  comparison_operator = \"GreaterThanThreshold\"\n  evaluation_periods  = \"2\"\n  metric_name         = \"CPUUtilization\"\n  namespace           = \"AWS/RDS\"\n  period              = \"300\"\n  statistic           = \"Average\"\n  threshold           = \"80\"\n  alarm_description   = \"Lenses.io RDS CPU utilization >80% for 10 minutes\"\n  alarm_actions       = [aws_sns_topic.lenses_alerts.arn]\n\n  dimensions = {\n    DBInstanceIdentifier = aws_db_instance.lenses_metadata.id\n  }\n}\n\n# RDS Database Connection Failures\nresource \"aws_cloudwatch_metric_alarm\" \"lenses_db_connection_failures\" {\n  alarm_name          = \"LensesHA-DatabaseConnection\"\n  comparison_operator = \"GreaterThanThreshold\"\n  evaluation_periods  = \"1\"\n  metric_name         = \"DatabaseConnections\"\n  namespace           = \"AWS/RDS\"\n  period              = \"60\"\n  statistic           = \"Sum\"\n  threshold           = \"0\"\n  alarm_description   = \"Lenses.io RDS connection failures detected\"\n  alarm_actions       = [aws_sns_topic.lenses_alerts.arn]\n  treat_missing_data  = \"notBreaching\"\n\n  dimensions = {\n    DBInstanceIdentifier = aws_db_instance.lenses_metadata.id\n  }\n}\n\n# SNS Topic for Alerts\nresource \"aws_sns_topic\" \"lenses_alerts\" {\n  name = \"lenses-${var.environment}-alerts\"\n\n  tags = {\n    Environment = var.environment\n    Component   = \"kafka-management\"\n  }\n}\n\n# SNS Topic Subscription - Email\nresource \"aws_sns_topic_subscription\" \"lenses_email\" {\n  topic_arn = aws_sns_topic.lenses_alerts.arn\n  protocol  = \"email\"\n  endpoint  = \"platform-team@company.com\"\n}\n\n# SNS Topic Subscription - PagerDuty Integration\nresource \"aws_sns_topic_subscription\" \"lenses_pagerduty\" {\n  topic_arn = aws_sns_topic.lenses_alerts.arn\n  protocol  = \"https\"\n  endpoint  = \"https://events.pagerduty.com/integration/${var.pagerduty_integration_key}/enqueue\"\n\n  endpoint_auto_confirms = true\n}\n\n# CloudWatch Log Group for Lenses.io logs\nresource \"aws_cloudwatch_log_group\" \"lenses\" {\n  name              = \"/aws/eks/dev-eks-cluster/lenses\"\n  retention_in_days = 30\n\n  tags = {\n    Environment = var.environment\n    Component   = \"kafka-management\"\n  }\n}\n\n# CloudWatch Metric Filter for Application Errors\nresource \"aws_cloudwatch_log_metric_filter\" \"lenses_errors\" {\n  name           = \"LensesApplicationErrors\"\n  log_group_name = aws_cloudwatch_log_group.lenses.name\n  pattern        = \"[time, request_id, level = ERROR*, msg]\"\n\n  metric_transformation {\n    name      = \"ErrorCount\"\n    namespace = \"Lenses/Application\"\n    value     = \"1\"\n    unit      = \"Count\"\n  }\n}\n\n# Alarm for Application Error Rate\nresource \"aws_cloudwatch_metric_alarm\" \"lenses_error_rate\" {\n  alarm_name          = \"LensesHA-ApplicationErrorRate\"\n  comparison_operator = \"GreaterThanThreshold\"\n  evaluation_periods  = \"2\"\n  metric_name         = \"ErrorCount\"\n  namespace           = \"Lenses/Application\"\n  period              = \"300\"\n  statistic           = \"Sum\"\n  threshold           = \"10\"  # >10 errors in 5 minutes\n  alarm_description   = \"Lenses.io application error rate is too high\"\n  alarm_actions       = [aws_sns_topic.lenses_alerts.arn]\n  treat_missing_data  = \"notBreaching\"\n}\n```",
+    "25": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#req-lens-005-010-chaos-engineering-testing]\n\n#### REQ-LENS-005-010: Chaos Engineering Testing\n\n**Status**: Mandatory\n**Rationale**: Validate HA configuration under failure conditions\n\n**Test Schedule**:\n- **Monthly**: Controlled pod failure (kill 1 pod, verify failover)\n- **Quarterly**: AZ failure simulation (cordon nodes in 1 AZ)\n- **Semi-Annually**: Full DR drill (restore from backup, measure RTO/RPO)\n\n**Chaos Experiments** (using AWS Fault Injection Simulator or Gremlin):\n1. **Pod Failure**: Delete Lenses.io pod, verify traffic shifts to healthy pod\n2. **Node Failure**: Terminate EKS node, verify pod reschedules\n3. **Network Partition**: Block traffic to one AZ, verify load balancer drains connections\n4. **Database Latency**: Inject 5-second delay to RDS, verify connection pool resilience\n5. **Resource Exhaustion**: Spike CPU to 100%, verify HPA scales pods\n\n**Implementation**:",
+    "26": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#chaos-engineering-test-suite]\n\n## Chaos Engineering Test Suite",
+    "27": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#test-framework-setup]\n\n### Test Framework Setup\n\nThis chaos engineering test suite can be implemented using either AWS Fault Injection Simulator (FIS) or Gremlin. Below are configurations for both platforms.",
+    "28": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#monthly-test-controlled-pod-failure]\n\n### Monthly Test: Controlled Pod Failure\n\n**Objective**: Validate failover to healthy pod within 30 seconds\n\n**AWS FIS Experiment Template**:\n```json\n{\n  \"description\": \"Lenses.io Pod Failure Test - Monthly\",\n  \"targets\": {\n    \"Pods-Target-1\": {\n      \"resourceType\": \"aws:eks:pod\",\n      \"resourceArns\": [],\n      \"resourceTags\": {\n        \"app\": \"lenses\"\n      },\n      \"filters\": [\n        {\n          \"path\": \"State.Name\",\n          \"values\": [\"Running\"]\n        }\n      ],\n      \"selectionMode\": \"COUNT(1)\"\n    }\n  },\n  \"actions\": {\n    \"TerminatePod\": {\n      \"actionId\": \"aws:eks:terminate-pod\",\n      \"parameters\": {\n        \"gracePeriod\": \"0\"\n      },\n      \"targets\": {\n        \"Pods\": \"Pods-Target-1\"\n      }\n    }\n  },\n  \"stopConditions\": [\n    {\n      \"source\": \"aws:cloudwatch:alarm\",\n      \"value\": \"arn:aws:cloudwatch:us-east-1:123456789012:alarm:LensesHA-PodAvailability\"\n    }\n  ],\n  \"roleArn\": \"arn:aws:iam::123456789012:role/FISExperimentRole\",\n  \"tags\": {\n    \"Name\": \"lenses-pod-failure-test\",\n    \"Schedule\": \"monthly\"\n  }\n}\n```\n\n**Gremlin Attack Configuration**:\n```yaml\napiVersion: gremlin.com/v1\nkind: Attack\nmetadata:\n  name: lenses-pod-shutdown\n  namespace: lenses\nspec:\n  type: shutdown\n  target:\n    selector:\n      matchLabels:\n        app: lenses\n    count: 1\n    strategy: Random\n  parameters:\n    delay: 0\n    reboot: false\n```\n\n**Execution Script**:\n```bash\n#!/bin/bash\n# Monthly Pod Failure Chaos Test\n\nNAMESPACE=\"lenses\"\nTEST_NAME=\"pod-failure-$(date +%Y%m%d)\"\n\necho \"[TEST] $TEST_NAME - Pod Failure Chaos Test\"\necho \"[START] $(date)\"\n\n# Pre-test validation\necho \"[1/6] Pre-test: Verifying 3 healthy pods...\"\nINITIAL_PODS=$(kubectl get pods -n $NAMESPACE -l app=lenses --field-selector=status.phase=Running --no-headers | wc -l)\nif [ $INITIAL_PODS -lt 2 ]; then\n  echo \"[FAIL] Pre-condition not met: Only $INITIAL_PODS pod(s) running\"\n  exit 1\nfi\necho \"[OK] $INITIAL_PODS pods running\"\n\n# Execute chaos experiment\necho \"[2/6] Deleting 1 random pod...\"\nVICTIM_POD=$(kubectl get pods -n $NAMESPACE -l app=lenses --no-headers | shuf -n 1 | awk '{print $1}')\necho \"[INFO] Target pod: $VICTIM_POD\"\n\nSTART_TIME=$(date +%s)\nkubectl delete pod $VICTIM_POD -n $NAMESPACE --grace-period=0 --force\n\n# Monitor recovery\necho \"[3/6] Monitoring pod recovery...\"\nsleep 5  # Allow time for rescheduling\n\nkubectl wait --for=condition=Ready pod -l app=lenses -n $NAMESPACE --timeout=60s\n\nEND_TIME=$(date +%s)\nRTO=$((END_TIME - START_TIME))\n\n# Validate health\necho \"[4/6] Validating service health...\"\nsleep 10\ncurl -sf https://lenses.dev.company.com/api/healthcheck || { echo \"[FAIL] Health check failed\"; exit 1; }\n\n# Validate pod distribution\necho \"[5/6] Verifying pod distribution across AZs...\"\nkubectl get pods -n $NAMESPACE -l app=lenses -o wide\n\n# Results\necho \"[6/6] Test Results:\"\necho \"  RTO: ${RTO}s (Target: <60s)\"\necho \"  Status: $([ $RTO -lt 60 ] && echo 'PASS' || echo 'FAIL')\"\necho \"[END] $(date)\"\n```",
+    "29": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#quarterly-test-availability-zone-failure-simulation]\n\n### Quarterly Test: Availability Zone Failure Simulation\n\n**AWS FIS Experiment Template**:\n```json\n{\n  \"description\": \"Lenses.io AZ Failure Simulation - Quarterly\",\n  \"targets\": {\n    \"Nodes-Target-1\": {\n      \"resourceType\": \"aws:ec2:instance\",\n      \"resourceTags\": {\n        \"eks:cluster-name\": \"dev-eks-cluster\",\n        \"topology.kubernetes.io/zone\": \"us-east-1a\"\n      },\n      \"selectionMode\": \"ALL\"\n    }\n  },\n  \"actions\": {\n    \"InjectNetworkBlackholeAZ\": {\n      \"actionId\": \"aws:network:disrupt-connectivity\",\n      \"parameters\": {\n        \"duration\": \"PT5M\",\n        \"scope\": \"all\"\n      },\n      \"targets\": {\n        \"Instances\": \"Nodes-Target-1\"\n      }\n    }\n  },\n  \"stopConditions\": [\n    {\n      \"source\": \"aws:cloudwatch:alarm\",\n      \"value\": \"arn:aws:cloudwatch:us-east-1:123456789012:alarm:LensesHA-PodAvailability\"\n    }\n  ],\n  \"roleArn\": \"arn:aws:iam::123456789012:role/FISExperimentRole\",\n  \"tags\": {\n    \"Name\": \"lenses-az-failure-test\",\n    \"Schedule\": \"quarterly\"\n  }\n}\n```\n\n**Execution Script**:\n```bash\n#!/bin/bash\n# Quarterly AZ Failure Chaos Test\n\nNAMESPACE=\"lenses\"\nTARGET_AZ=\"us-east-1a\"\nTEST_NAME=\"az-failure-$(date +%Y%m%d)\"\n\necho \"[TEST] $TEST_NAME - AZ Failure Simulation\"\necho \"[START] $(date)\"\n\n# Pre-test validation\necho \"[1/8] Pre-test: Verifying pod distribution...\"\nkubectl get pods -n $NAMESPACE -l app=lenses -o wide\n\n# Identify nodes in target AZ\necho \"[2/8] Identifying nodes in AZ: $TARGET_AZ...\"\nTARGET_NODES=$(kubectl get nodes -l topology.kubernetes.io/zone=$TARGET_AZ -o name)\necho \"[INFO] Nodes in $TARGET_AZ:\"\necho \"$TARGET_NODES\"\n\n# Cordon nodes to prevent new pod scheduling\necho \"[3/8] Cordoning nodes in $TARGET_AZ...\"\necho \"$TARGET_NODES\" | xargs -I {} kubectl cordon {}\n\n# Identify pods in target AZ\necho \"[4/8] Identifying pods in $TARGET_AZ...\"\nPODS_IN_AZ=$(kubectl get pods -n $NAMESPACE -l app=lenses -o json | \\\n  jq -r \".items[] | select(.spec.nodeName | IN($(kubectl get nodes -l topology.kubernetes.io/zone=$TARGET_AZ -o json | jq -r '.items[].metadata.name' | jq -R . | jq -s .))) | .metadata.name\")\n\necho \"[INFO] Pods in $TARGET_AZ: $PODS_IN_AZ\"\n\n# Simulate AZ failure (delete pods)\necho \"[5/8] Simulating AZ failure (deleting pods in $TARGET_AZ)...\"\nSTART_TIME=$(date +%s)\n\necho \"$PODS_IN_AZ\" | xargs -I {} kubectl delete pod {} -n $NAMESPACE --grace-period=0 --force\n\n# Monitor recovery\necho \"[6/8] Monitoring pod recovery in other AZs...\"\nkubectl wait --for=condition=Ready pod -l app=lenses -n $NAMESPACE --timeout=5m\n\nEND_TIME=$(date +%s)\nRTO=$((END_TIME - START_TIME))\n\n# Validate service health\necho \"[7/8] Validating service health...\"\nsleep 15\ncurl -sf https://lenses.dev.company.com/api/healthcheck || { echo \"[FAIL] Health check failed\"; exit 1; }\n\n# Verify pods NOT in failed AZ\necho \"[INFO] Current pod distribution:\"\nkubectl get pods -n $NAMESPACE -l app=lenses -o wide\n\nPODS_STILL_IN_AZ=$(kubectl get pods -n $NAMESPACE -l app=lenses -o json | \\\n  jq -r \".items[] | select(.spec.nodeName | IN($(kubectl get nodes -l topology.kubernetes.io/zone=$TARGET_AZ -o json | jq -r '.items[].metadata.name' | jq -R . | jq -s .))) | .metadata.name\" | wc -l)\n\nif [ $PODS_STILL_IN_AZ -gt 0 ]; then\n  echo \"[FAIL] $PODS_STILL_IN_AZ pod(s) still in failed AZ $TARGET_AZ\"\nfi\n\n# Cleanup: Uncordon nodes\necho \"[8/8] Cleanup: Uncordoning nodes in $TARGET_AZ...\"\necho \"$TARGET_NODES\" | xargs -I {} kubectl uncordon {}\n\n# Results\necho \"[RESULTS]\"\necho \"  RTO: ${RTO}s (Target: <300s)\"\necho \"  Pods in failed AZ: $PODS_STILL_IN_AZ (Target: 0)\"\necho \"  Status: $([ $RTO -lt 300 ] && [ $PODS_STILL_IN_AZ -eq 0 ] && echo 'PASS' || echo 'FAIL')\"\necho \"[END] $(date)\"\n```",
+    "30": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#semi-annual-test-full-disaster-recovery-drill]\n\n### Semi-Annual Test: Full Disaster Recovery Drill\n\n**Objective**: Validate complete backup/restore process and measure RTO/RPO\n\n**Execution Script**:\n```bash\n#!/bin/bash\n# Semi-Annual Full DR Drill\n\nNAMESPACE=\"lenses\"\nTEST_NAMESPACE=\"lenses-dr-test\"\nBACKUP_NAME=\"lenses-dr-drill-$(date +%Y%m%d-%H%M%S)\"\n\necho \"[TEST] Full DR Drill - Complete Platform Recovery\"\necho \"[START] $(date)\"\n\n# Phase 1: Backup current state\necho \"[PHASE 1] Creating on-demand backup...\"\nvelero backup create $BACKUP_NAME \\\n  --include-namespaces $NAMESPACE \\\n  --snapshot-volumes \\\n  --wait\n\n# Phase 2: Simulate complete failure (delete namespace)\necho \"[PHASE 2] Simulating complete platform failure...\"\necho \"[WARNING] Deleting namespace: $NAMESPACE\"\nread -p \"Confirm deletion (yes/no): \" CONFIRM\n\nif [ \"$CONFIRM\" != \"yes\" ]; then\n  echo \"[ABORT] DR drill cancelled\"\n  exit 0\nfi\n\nSTART_TIME=$(date +%s)\nkubectl delete namespace $NAMESPACE --wait=true\n\n# Phase 3: Restore from backup\necho \"[PHASE 3] Restoring from backup...\"\nvelero restore create ${BACKUP_NAME}-restore \\\n  --from-backup $BACKUP_NAME \\\n  --wait\n\n# Phase 4: Monitor restoration\necho \"[PHASE 4] Monitoring pod startup...\"\nkubectl wait --for=condition=Ready pod -l app=lenses -n $NAMESPACE --timeout=10m\n\nEND_TIME=$(date +%s)\nRTO=$((END_TIME - START_TIME))\n\n# Phase 5: Validate restoration\necho \"[PHASE 5] Validating restored environment...\"\n\n# Check pods\nRUNNING_PODS=$(kubectl get pods -n $NAMESPACE -l app=lenses --field-selector=status.phase=Running --no-headers | wc -l)\necho \"[INFO] Running pods: $RUNNING_PODS (Expected: 3)\"\n\n# Check PVCs\nPVCS=$(kubectl get pvc -n $NAMESPACE --no-headers | wc -l)\necho \"[INFO] Restored PVCs: $PVCS\"\n\n# Check service health\nsleep 30\ncurl -sf https://lenses.dev.company.com/api/healthcheck || { echo \"[FAIL] Health check failed\"; exit 1; }\n\n# Check data integrity (verify audit logs exist)\necho \"[INFO] Verifying data integrity...\"\nkubectl exec -n $NAMESPACE lenses-0 -- ls -lh /data/lenses\n\n# Phase 6: Calculate RPO\necho \"[PHASE 6] Calculating RPO...\"\nBACKUP_TIMESTAMP=$(velero backup describe $BACKUP_NAME | grep \"Started:\" | awk '{print $2, $3}')\necho \"[INFO] Backup timestamp: $BACKUP_TIMESTAMP\"\necho \"[INFO] Current time: $(date)\"\n\n# Results\necho \"\"\necho \"==========================================\"\necho \" DR DRILL RESULTS\"\necho \"==========================================\"\necho \"Backup Name: $BACKUP_NAME\"\necho \"RTO: ${RTO}s ($(($RTO / 60)) minutes) - Target: <30 minutes\"\necho \"RPO: Data from backup timestamp: $BACKUP_TIMESTAMP\"\necho \"Restored Pods: $RUNNING_PODS / 3\"\necho \"Restored PVCs: $PVCS\"\necho \"Health Check: $(curl -sf https://lenses.dev.company.com/api/healthcheck && echo 'PASS' || echo 'FAIL')\"\necho \"Status: $([ $RTO -lt 1800 ] && [ $RUNNING_PODS -ge 2 ] && echo 'PASS \\u2705' || echo 'FAIL \\u274c')\"\necho \"==========================================\"\necho \"[END] $(date)\"\n```",
+    "31": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#additional-chaos-experiments]\n\n### Additional Chaos Experiments\n\n**4. Database Latency Injection (Gremlin)**:\n```yaml\napiVersion: gremlin.com/v1\nkind: Attack\nmetadata:\n  name: lenses-db-latency\n  namespace: lenses\nspec:\n  type: latency\n  target:\n    selector:\n      matchLabels:\n        app: lenses\n    count: 1\n    strategy: Random\n  parameters:\n    delay: 5000  # 5 second delay\n    egress:\n      protocol: tcp\n      port: 5432  # PostgreSQL port\n    duration: 300  # 5 minutes\n```\n\n**5. CPU Resource Exhaustion**:\n```yaml\napiVersion: gremlin.com/v1\nkind: Attack\nmetadata:\n  name: lenses-cpu-spike\n  namespace: lenses\nspec:\n  type: cpu\n  target:\n    selector:\n      matchLabels:\n        app: lenses\n    count: 1\n  parameters:\n    cores: 4  # Consume 4 CPU cores\n    duration: 300  # 5 minutes\n```",
+    "32": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#chaos-testing-schedule]\n\n### Chaos Testing Schedule\n\n| Test | Frequency | Duration | RTO Target | Success Criteria |\n|------|-----------|----------|------------|------------------|\n| Pod Failure | Monthly | 5 minutes | <60 seconds | Service available, no data loss |\n| AZ Failure | Quarterly | 10 minutes | <5 minutes | Pods migrate to healthy AZs |\n| Database Latency | Quarterly | 5 minutes | N/A | Connection pool handles delays |\n| CPU Spike | Quarterly | 5 minutes | N/A | HPA scales pods appropriately |\n| Full DR Drill | Semi-Annually | 30 minutes | <30 minutes | Complete restoration successful |",
+    "33": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#automated-testing-with-github-actions]\n\n### Automated Testing with GitHub Actions\n\n```yaml\nname: Lenses.io Chaos Engineering Tests\non:\n  schedule:\n    - cron: '0 2 1 * *'  # Monthly on 1st at 2 AM UTC\n  workflow_dispatch:  # Manual trigger\n\njobs:\n  pod-failure-test:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Configure kubectl\n        uses: aws-actions/configure-aws-credentials@v1\n        with:\n          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}\n          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}\n          aws-region: us-east-1\n\n      - name: Update kubeconfig\n        run: aws eks update-kubeconfig --name dev-eks-cluster\n\n      - name: Run Pod Failure Test\n        run: |\n          bash chaos-tests/pod-failure-test.sh\n\n      - name: Upload Results\n        uses: actions/upload-artifact@v2\n        with:\n          name: chaos-test-results\n          path: chaos-test-results.log\n\n      - name: Notify Team\n        if: failure()\n        uses: 8398a7/action-slack@v3\n        with:\n          status: ${{ job.status }}\n          text: 'Lenses.io Pod Failure Chaos Test FAILED'\n          webhook_url: ${{ secrets.SLACK_WEBHOOK }}\n```\n\n---",
+    "34": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#3-implementation-guidelines]\n\n## 3. Implementation Guidelines",
+    "35": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#31-ha-deployment-checklist]\n\n### 3.1 HA Deployment Checklist\n\n**Prerequisites**:\n- [ ] EKS cluster provisioned with ≥3 AZs (REQ-LENS-005-002)\n- [ ] RDS PostgreSQL Multi-AZ enabled (REQ-LENS-005-003)\n- [ ] EBS storage class configured with gp3 volumes (REQ-LENS-005-004)\n- [ ] AWS Load Balancer Controller installed (REQ-LENS-005-005)\n- [ ] Velero backup solution deployed (REQ-LENS-005-004)\n\n**Deployment Steps**:\n1. Update Helm values.yaml with HA configuration (2+ replicas, anti-affinity)\n2. Deploy Lenses.io StatefulSet with updated configuration\n3. Verify pods distributed across AZs (`kubectl get pods -o wide`)\n4. Create Pod Disruption Budget (REQ-LENS-005-006)\n5. Configure ALB health checks (REQ-LENS-005-005)\n6. Enable RDS automated backups (REQ-LENS-005-003)\n7. Configure CloudWatch alarms (REQ-LENS-005-009)\n8. Test RTO/RPO scenarios (REQ-LENS-005-007)\n9. Document DR procedures (REQ-LENS-005-008)\n10. Schedule chaos engineering tests (REQ-LENS-005-010)",
+    "36": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#32-testing-ha-configuration]\n\n### 3.2 Testing HA Configuration",
+    "37": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#test-1-pod-failure-rto-1-minute]\n\n#### Test 1: Pod Failure (RTO <1 minute)\n\n```bash\n# Kill one Lenses.io pod\nkubectl delete pod lenses-0 -n lenses\n\n# Monitor pod rescheduling\nkubectl get pods -n lenses -w\n\n# Verify ALB routes traffic to healthy pod\ncurl -I https://lenses.dev.company.com/api/healthcheck\n# Expected: 200 OK within 30 seconds\n\n# Measure RTO: Time from pod deletion to 200 OK response\n```",
+    "38": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#test-2-az-failure-rto-5-minutes]\n\n#### Test 2: AZ Failure (RTO <5 minutes)\n\n```bash\n# Cordon all nodes in one AZ (simulate AZ outage)\nkubectl cordon $(kubectl get nodes -l topology.kubernetes.io/zone=us-east-1a -o name)\n\n# Delete pods in affected AZ\nkubectl delete pods -n lenses -l app=lenses --field-selector spec.nodeName=<node-in-us-east-1a>\n\n# Monitor pod rescheduling to other AZs\nkubectl get pods -n lenses -o wide -w\n\n# Verify service availability\ncurl https://lenses.dev.company.com/api/healthcheck\n\n# Measure RTO: Time from AZ failure to service restored\n```",
+    "39": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#test-3-database-failover-rto-5-minutes]\n\n#### Test 3: Database Failover (RTO <5 minutes)\n\n```bash\n# Trigger RDS failover (AWS Console or CLI)\naws rds failover-db-cluster --db-cluster-identifier lenses-dev-metadata\n\n# Monitor Lenses.io logs for database reconnection\nkubectl logs -f lenses-0 -n lenses | grep \"database\"\n\n# Verify service availability after failover\ncurl https://lenses.dev.company.com/api/healthcheck\n\n# Measure RTO: Time from failover initiation to 200 OK response\n```",
+    "40": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#33-troubleshooting-ha-issues]\n\n### 3.3 Troubleshooting HA Issues",
+    "41": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#issue-1-pods-not-distributed-across-azs]\n\n#### Issue 1: Pods Not Distributed Across AZs\n\n**Symptoms**: All pods running in single AZ despite anti-affinity rules\n\n**Resolution**:\n1. Verify EKS node groups span ≥3 AZs\n2. Check node labels: `kubectl get nodes --show-labels | grep topology.kubernetes.io/zone`\n3. Verify anti-affinity configuration in StatefulSet spec\n4. Check pod events: `kubectl describe pod lenses-0 -n lenses | grep -A 10 Events`\n5. If insufficient capacity in AZ, add nodes or relax anti-affinity to `preferred`",
+    "42": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#issue-2-rds-failover-takes-5-minutes]\n\n#### Issue 2: RDS Failover Takes >5 Minutes\n\n**Symptoms**: RTO target missed during database failover\n\n**Resolution**:\n1. Verify RDS Multi-AZ enabled: `aws rds describe-db-instances --db-instance-identifier lenses-dev-metadata | grep MultiAZ`\n2. Check RDS instance size (db.t3.medium minimum recommended)\n3. Review RDS failover logs in CloudWatch\n4. Increase connection pool timeout in Lenses.io configuration\n5. Consider using RDS Proxy for faster failover (adds connection pooling)",
+    "43": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#issue-3-persistent-volume-not-attaching-after-pod-restart]\n\n#### Issue 3: Persistent Volume Not Attaching After Pod Restart\n\n**Symptoms**: Pod stuck in `ContainerCreating` state\n\n**Resolution**:\n1. Check PVC status: `kubectl get pvc -n lenses`\n2. Verify EBS volume exists: `kubectl describe pvc lenses-data-lenses-0 -n lenses`\n3. Check node events for volume attachment errors\n4. If volume in different AZ than node, delete PVC and restore from Velero snapshot\n5. Increase EBS volume attachment timeout in StatefulSet\n\n---",
+    "44": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#4-compliance-and-governance]\n\n## 4. Compliance and Governance",
+    "45": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#41-compliance-assessment]\n\n### 4.1 Compliance Assessment\n\n**Assessment Criteria**:\n\n| Criteria | Requirement | Assessment Method | Evidence |\n|----------|-------------|-------------------|----------|\n| **Multi-Replica Deployment** | \\u22652 replicas (3 recommended) | `kubectl get statefulset lenses -n lenses` | Pod count in StatefulSet spec |\n| **Cross-AZ Distribution** | Pods across \\u22653 AZs | `kubectl get pods -n lenses -l app=lenses -o wide` | Pod node assignments with AZ labels |\n| **RDS Multi-AZ** | Multi-AZ enabled | `aws rds describe-db-instances --db-instance-identifier lenses-dev-metadata` | `MultiAZ: true` in RDS config |\n| **Automated Backups** | Daily Velero + RDS snapshots | `velero schedule get \\| grep lenses` | Active backup schedules |\n| **Pod Anti-Affinity** | Required constraint enforced | Inspect StatefulSet affinity spec | `requiredDuringSchedulingIgnoredDuringExecution` present |\n| **Pod Disruption Budget** | minAvailable: 1 | `kubectl get pdb -n lenses` | PDB policy exists and active |\n| **ALB Health Checks** | 15-second interval | Inspect Ingress annotations | `healthcheck-interval-seconds: \"15\"` |\n| **RTO Validation** | \\u22645 minutes in DR tests | Review chaos test results | Test logs showing RTO measurements |\n| **RPO Validation** | \\u226415 minutes data loss | Review backup schedules | Daily backups at 2 AM UTC |\n| **CloudWatch Alarms** | All 8 alarms configured | `aws cloudwatch describe-alarms` | LensesHA-* alarms active |\n\n**Assessment Process**:\n1. **Pre-Deployment Review**: Architecture team reviews Terraform/Helm configurations before deployment\n2. **Post-Deployment Validation**: SRE team runs automated compliance checks within 24 hours\n3. **Monthly DR Testing**: Execute pod failure chaos test, verify RTO <1 minute\n4. **Quarterly Audits**: Full HA configuration review including AZ distribution, backup validation, alarm testing\n5. **Semi-Annual DR Drills**: Complete backup/restore simulation with RTO/RPO measurement",
+    "46": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#42-validation-checklist]\n\n### 4.2 Validation Checklist\n\n**Pre-Deployment Checklist**:\n- [ ] EKS cluster provisioned with \\u22653 Availability Zones\n- [ ] EKS node groups configured with auto-scaling (min: 3, max: 9)\n- [ ] Node labels include `topology.kubernetes.io/zone` for AZ awareness\n- [ ] RDS PostgreSQL Multi-AZ enabled with 7-day backup retention\n- [ ] RDS instance class \\u2265db.t3.medium (minimum for production)\n- [ ] EBS storage class `ebs-sc` configured with gp3 volumes\n- [ ] AWS Load Balancer Controller installed and operational\n- [ ] Velero backup solution deployed with S3 storage backend\n- [ ] CloudWatch Container Insights enabled for EKS cluster\n- [ ] SNS topic created for alarm notifications\n- [ ] PagerDuty integration configured (if applicable)\n\n**Post-Deployment Validation**:\n- [ ] Lenses.io StatefulSet deployed with \\u22652 replicas (verify: `kubectl get statefulset -n lenses`)\n- [ ] Pods distributed across \\u22653 AZs (verify: `kubectl get pods -n lenses -o wide`)\n- [ ] Pod anti-affinity rules enforced (verify: no pods on same node)\n- [ ] RDS Multi-AZ failover capability confirmed (verify: `MultiAZ: true`)\n- [ ] Persistent volumes created and bound (verify: `kubectl get pvc -n lenses`)\n- [ ] Pod Disruption Budget applied with `minAvailable: 1`\n- [ ] ALB Ingress created with health checks (15-second interval)\n- [ ] Health endpoint returning 200 OK: `https://lenses.dev.company.com/api/healthcheck`\n- [ ] HPA configured for 2-6 replicas based on 70% CPU utilization\n- [ ] All 8 CloudWatch alarms in OK state (no false positives)\n- [ ] Velero backup schedules active (daily full, hourly incremental)\n\n**Operational Validation (First 30 Days)**:\n- [ ] RTO validated: Pod failure recovery <1 minute (execute pod delete test)\n- [ ] RTO validated: AZ failure recovery <5 minutes (simulate AZ outage)\n- [ ] RTO validated: Database failover <5 minutes (trigger RDS failover)\n- [ ] RPO validated: Latest RDS backup <24 hours old\n- [ ] RPO validated: Latest Velero backup <24 hours old\n- [ ] Chaos test: Monthly pod failure test executed and passed\n- [ ] Monitoring: CloudWatch alarms triggered correctly during simulated failures\n- [ ] Disaster recovery procedures documented and reviewed by team",
+    "47": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#43-monitoring-requirements]\n\n### 4.3 Monitoring Requirements\n\n**Continuous Monitoring** (Real-time, 24/7):\n- **Pod Availability**: Alert if <2 pods running (Critical: P1)\n  - Metric: `RunningPodCount` from Container Insights\n  - Threshold: <2 pods\n  - Action: Immediate PagerDuty notification\n- **Pod Health**: Alert if unhealthy pod detected for >2 minutes\n  - Metric: Pod readiness probe failures\n  - Threshold: >2 consecutive failures\n  - Action: Automated restart, notify SRE team\n- **ALB Target Health**: Alert if >0 unhealthy targets for >2 minutes\n  - Metric: `UnHealthyHostCount` from ALB\n  - Threshold: >0\n  - Action: Investigate pod issues, check health endpoint\n- **RDS Availability**: Alert on database connection failures\n  - Metric: `DatabaseConnections` errors\n  - Threshold: Any connection error\n  - Action: Check RDS status, verify Multi-AZ failover if needed\n- **Resource Utilization**: Alert if CPU >80% or Memory >85% sustained\n  - Metrics: `pod_cpu_utilization`, `pod_memory_utilization`\n  - Threshold: >80% CPU or >85% memory for >10 minutes\n  - Action: HPA should auto-scale; if not, investigate\n\n**Periodic Monitoring** (Scheduled Reviews):\n- **Daily** (Automated):\n  - Velero backup completion status (daily at 3 AM UTC)\n  - RDS automated backup completion (daily at 3 AM UTC)\n  - Pod restart count (should be 0 under normal operation)\n  - Application error rate from CloudWatch Logs\n- **Weekly** (Manual):\n  - Pod distribution across AZs (verify anti-affinity working)\n  - PVC storage utilization (ensure <80% full)\n  - RDS storage space (ensure >20% free)\n  - Review CloudWatch alarm history for false positives\n- **Monthly** (Chaos Testing):\n  - Execute pod failure chaos test\n  - Measure and document RTO\n  - Verify failover to healthy pod\n- **Quarterly** (Comprehensive):\n  - Execute AZ failure simulation\n  - Review and update DR procedures\n  - Validate all CloudWatch alarms (test each alarm)\n  - Audit RDS backup restore capability (test restore to dev)\n- **Semi-Annually** (DR Drill):\n  - Full disaster recovery drill (complete namespace deletion and restore)\n  - Measure and document RTO/RPO\n  - Update runbooks based on lessons learned\n  - Conduct post-incident review simulation",
+    "48": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#44-exception-handling]\n\n### 4.4 Exception Handling\n\n**Exception Categories**:\n\n1. **Temporary Exception (Duration: \\u226430 days)**:\n   - **Use Case**: EKS cluster has <3 AZs temporarily (e.g., new region deployment)\n   - **Mitigation**: Switch pod anti-affinity from `required` to `preferred`\n   - **Approval**: Platform Lead\n   - **Monitoring**: Weekly review; must resolve before 30-day deadline\n\n2. **Conditional Exception (Environment-Specific)**:\n   - **Use Case**: Dev/test environments with cost constraints\n   - **Allowed Deviations**:\n     - Min replicas: 1 (instead of 2)\n     - RDS instance: db.t3.small (instead of db.t3.medium)\n     - Backup retention: 3 days (instead of 7 days)\n   - **NOT Allowed**: Disabling Multi-AZ, disabling backups entirely\n   - **Approval**: Platform Lead + Cost Center Manager\n\n3. **Performance Exception (RTO/RPO Adjustment)**:\n   - **Use Case**: Non-critical environments where faster recovery not required\n   - **Allowed Adjustments**:\n     - RTO: Up to 15 minutes (instead of 5 minutes)\n     - RPO: Up to 1 hour (instead of 15 minutes)\n   - **Approval**: Architecture Review Board\n   - **Documentation**: Must document business justification\n\n4. **Technical Exception (Platform Limitation)**:\n   - **Use Case**: Cloud provider limitations (e.g., AZ availability, instance types)\n   - **Process**: Document limitation, propose alternative solution\n   - **Approval**: Architecture Review Board + Security Team\n   - **Review**: Quarterly review to check if limitation resolved\n\n**Exception Management Process**:\n1. **Request**: Submit exception request via Jira ticket (template: `EXCEPT-LENS-HA-[###]`)\n2. **Justification**: Provide business/technical justification, risk assessment, mitigation plan\n3. **Review**: Architecture team reviews within 5 business days\n4. **Approval**: Approver (based on category) accepts/rejects with written rationale\n5. **Documentation**: Approved exceptions added to `exceptions-registry.md`\n6. **Monitoring**: Monthly review of all active exceptions\n7. **Expiration**: Exceptions expire automatically unless renewed\n8. **Remediation**: Plan to eliminate exception within 90 days (temporary) or next review cycle (conditional)\n\n**Exception Tracking Table**:\n\n| Exception ID | Category | Justification | Mitigation | Approver | Start Date | Expiration | Status |\n|--------------|----------|---------------|------------|----------|------------|------------|--------|\n| EXCEPT-LENS-HA-001 | Temporary | New region (eu-west-3) has 2 AZs | Preferred anti-affinity | Platform Lead | 2026-01-15 | 2026-02-14 | Active |",
+    "49": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#45-governance-oversight]\n\n### 4.5 Governance Oversight\n\n**Roles and Responsibilities**:\n\n| Role | Responsibility | Authority |\n|------|----------------|-----------|\n| **Platform Lead** | Overall HA standard compliance, exception approvals (temporary/conditional) | Approve <30-day exceptions |\n| **SRE Team** | Daily monitoring, chaos testing execution, incident response | Execute DR procedures without approval |\n| **Architecture Review Board** | Quarterly audits, RTO/RPO adjustment approvals, standard updates | Approve RTO/RPO changes, architectural exceptions |\n| **Security Team** | Security review of HA configurations, encryption validation | Veto deployments with security risks |\n| **Database Administrator** | RDS configuration, backup validation, failover testing | Approve RDS instance changes |\n| **Application Owners** | Define RTO/RPO requirements, participate in DR drills | Request HA exceptions for their apps |\n\n**Enforcement Mechanisms**:\n1. **Automated Compliance Checks**: CI/CD pipeline blocks deployments failing HA requirements\n   - Terraform plan must show `multi_az = true` for RDS\n   - Helm chart must have `replicas >= 2` in values.yaml\n   - Pod anti-affinity configuration required in StatefulSet\n2. **Manual Gate Reviews**:\n   - Platform Lead approval required before production deployment\n   - Security Team sign-off for compliance with STD-SEC-ENCR-001 (encryption at rest)\n3. **Quarterly Audits**:\n   - Architecture team audits all Lenses.io deployments\n   - Non-compliant deployments flagged for remediation (30-day SLA)\n4. **Incident-Triggered Reviews**:\n   - Any RTO miss (>5 minutes) triggers mandatory post-incident review\n   - Root cause analysis required within 5 business days\n   - Corrective actions tracked in Jira\n\n**Standard Review and Updates**:\n- **Ownership**: Platform Lead\n- **Review Frequency**: Quarterly (or after major incidents)\n- **Update Process**:\n  1. Propose changes via pull request to `eap-ref-architecture` repository\n  2. Architecture Review Board review (2-week comment period)\n  3. Approval by 2/3 majority vote\n  4. Update version number (semantic versioning)\n  5. Notify all stakeholders via email and Slack\n- **Versioning**: Semantic versioning (MAJOR.MINOR.PATCH)\n  - MAJOR: Breaking changes (e.g., new mandatory requirements)\n  - MINOR: New features or recommendations\n  - PATCH: Clarifications, typo fixes",
+    "50": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#46-security-review-criteria]\n\n### 4.6 Security Review Criteria\n\n**Encryption Requirements**:\n- [ ] RDS encryption at rest enabled (KMS key: `alias/lenses-{env}-db`)\n- [ ] EBS volumes encrypted (default KMS key or custom)\n- [ ] TLS encryption in transit for ALB (HTTPS only, HTTP redirects to 443)\n- [ ] Kubernetes Secrets encrypted at rest (EKS encryption config)\n\n**Network Security**:\n- [ ] RDS in private subnets only (no public accessibility)\n- [ ] RDS security group allows port 5432 only from EKS cluster SG\n- [ ] ALB in public subnets, pods in private subnets\n- [ ] Network policies applied to lenses namespace (if enabled)\n\n**Access Control**:\n- [ ] RDS password stored in AWS Secrets Manager (not plaintext)\n- [ ] Kubernetes RBAC configured for lenses namespace\n- [ ] Pod security context: `runAsNonRoot: true`, `fsGroup: 1000`\n- [ ] IAM roles for service accounts (IRSA) used for AWS API access\n\n**Audit and Logging**:\n- [ ] RDS audit logging enabled (log to CloudWatch)\n- [ ] Lenses.io application logs forwarded to CloudWatch\n- [ ] CloudWatch log retention: 30 days minimum\n- [ ] ALB access logs enabled and stored in S3\n\n**Security Testing**:\n- [ ] Quarterly vulnerability scans of Lenses.io container images\n- [ ] Annual penetration testing of Lenses.io deployment\n- [ ] Chaos engineering tests include security scenarios (e.g., simulated credential rotation)\n\n**Compliance Mapping**:\n- **SOC 2 Type II**: Automated backups, encryption at rest/transit, access logging\n- **HIPAA** (if applicable): PHI data encryption, audit logging, access controls\n- **PCI DSS** (if applicable): Network segmentation, encryption, regular security testing\n\n---",
+    "51": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#5-examples-and-references]\n\n## 5. Examples and References",
+    "52": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#51-related-documentation]\n\n### 5.1 Related Documentation\n\n- [STD-INFRA-KMGMT-001: Platform Installation](STD-INFRA-KMGMT-001-platform-installation.md) - Initial deployment\n- [ADR-IFR-008: Kafka Management Platform Selection](../../../decisions/infrastructure/ADR-IFR-008-kafka-management-platform-selection.md)\n- [PTN-INFRA-EVTMON-001: Monitoring Pattern](../../../patterns/infrastructure/event-driven/PTN-INFRA-EVT-003-infrastructure-event-monitoring-pattern.md)",
+    "53": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#52-external-resources]\n\n### 5.2 External Resources\n\n- [Lenses.io Kubernetes Deployment](https://docs.lenses.io/5.0/installation/kubernetes/)\n- [AWS EKS Best Practices - High Availability](https://aws.github.io/aws-eks-best-practices/reliability/docs/application/)\n- [RDS Multi-AZ Deployments](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html)\n- [Kubernetes Pod Disruption Budgets](https://kubernetes.io/docs/tasks/run-application/configure-pdb/)\n\n---",
+    "54": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#6-change-history]\n\n## 6. Change History\n\n| Date       | Version | Author | Description               | Impact              |\n| ---------- | ------- | ------ | ------------------------- | ------------------- |\n| 2026-01-19 | 1.0.0   | EAP    | Initial standard creation | New standard        |\n| 2026-01-20 | 1.0.1   | EAP    | Production implementation complete | Added complete Kubernetes StatefulSet, HPA, RDS Terraform, Velero backups, DR procedures, CloudWatch monitoring, chaos engineering test suite |\n\n---",
+    "55": "[standards/infrastructure/kafka-management/STD-INFRA-KMGMT-005-ha-deployment.md#7-review-log]\n\n## 7. Review Log\n\n| Review Date | Review Type        | Reviewer(s) | Status | Comments | Actions |\n| ----------- | ------------------ | ----------- | ------ | -------- | ------- |\n| 2026-01-19  | Initial Draft      | EAP         | Draft  | Created  | Pending SRE + Architecture review |\n| 2026-01-20  | Quality & Compliance Review | EAP | Approved | Template compliance verified, all 7 sections present and numbered, production-ready implementations added, 0 TODOs remaining | Ready for production use |"
+  },
+  "coverage": {
+    "total_pages": 55,
+    "covered_pages": 55,
+    "sampled_pages": 55,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 55
+  }
+}

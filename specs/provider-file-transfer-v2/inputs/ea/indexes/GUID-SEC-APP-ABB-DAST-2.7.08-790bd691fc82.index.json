@@ -1,0 +1,140 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Dynamic Application Security Testing (DAST)",
+  "document_description": "guidance_id: 'GUID-SEC-APP-ABB-DAST-2.7.08'",
+  "total_pages": 13,
+  "tree": [
+    {
+      "title": "Dynamic Application Security Testing (DAST)",
+      "node_id": "dynamic-application-security-testing-dast",
+      "start_index": 1,
+      "end_index": 13,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Architecture Guidance Metadata",
+          "node_id": "architecture-guidance-metadata",
+          "start_index": 2,
+          "end_index": 4,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "ABB Context",
+              "node_id": "abb-context",
+              "start_index": 3,
+              "end_index": 3,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "ABB Scope",
+              "node_id": "abb-scope",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Detailed Guidance",
+          "node_id": "detailed-guidance",
+          "start_index": 5,
+          "end_index": 13,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Core Principles",
+              "node_id": "core-principles",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Key Capabilities",
+              "node_id": "key-capabilities",
+              "start_index": 7,
+              "end_index": 9,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Active Scanning",
+                  "node_id": "active-scanning",
+                  "start_index": 8,
+                  "end_index": 8,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Pipeline Integration",
+                  "node_id": "pipeline-integration",
+                  "start_index": 9,
+                  "end_index": 9,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Integration Interfaces",
+              "node_id": "integration-interfaces",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Zero Trust Alignment (NIST SP 800-207)",
+              "node_id": "zero-trust-alignment-nist-sp-800-207",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "NIST SP 800-53 Intent Alignment",
+              "node_id": "nist-sp-800-53-intent-alignment",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Constraints and Dependencies",
+              "node_id": "constraints-and-dependencies",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-DAST-2.7.08.md#dynamic-application-security-testing-dast]\n\n# Dynamic Application Security Testing (DAST)\n\n**← Back to [EAP Home](../../../../../README.md) • [Strategy](../../../../README.md) • [Guidance](../../../README.md) • [Security](../../README.md) • [Application](../README.md)**\n\n---",
+    "2": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-DAST-2.7.08.md#architecture-guidance-metadata]\n\n## Architecture Guidance Metadata\n\n```yaml\nguidance_id: 'GUID-SEC-APP-ABB-DAST-2.7.08'\nguidance_name: 'Dynamic Application Security Testing (DAST)'\nguidance_type: 'architecture-building-block'\nabb_type: 'component'\nadm_phase: 'Phase B-D'\nparent_abb: 'GUID-SEC-APP-ABB-CAT-2.7.06'\nparent_vision: 'GUID-SEC-APP-REF-1.7.01'\nrealized_by_sbbs: []\npaired_rad: 'GUID-SEC-APP-RA-APPSEC-TESTING-2.7.28'\ncategory: 'security'\nversion: '0.1.0'\nstatus: 'draft'\napplicability: 'enterprise'\ntags: ['security', 'application', 'architecture-building-block', 'dast', 'appsec-testing']\nsource_story: 'AB#802670'\n```\n\n---\n\n> **TOGAF ADM Note**: This is a **Component ABB** (Phase B–D) within the Application Security domain. Per [GUID-SEC-APP-REF-1.7.01](../GUID-SEC-APP-REF-1.7.01.md): **SHALL** = mandatory; **SHOULD** = strongly recommended; **MAY** = optional.",
+    "3": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-DAST-2.7.08.md#abb-context]\n\n### ABB Context\n\n- **Parent L2 Capability**: Application Security Testing — [GUID-SEC-APP-CAP-DESC-1.7.02](../GUID-SEC-APP-CAP-DESC-1.7.02.md)\n- **ABB Catalog**: [GUID-SEC-APP-ABB-CAT-2.7.06](../GUID-SEC-APP-ABB-CAT-2.7.06.md)\n- **Capability Statement**: The enterprise SHALL have an architectural capability to probe running application instances for exploitable security weaknesses by simulating external attacker behavior against live endpoints.",
+    "4": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-DAST-2.7.08.md#abb-scope]\n\n### ABB Scope\n\n**In Scope**:\n- Architectural capability to send crafted requests to a running application and analyze responses for indicators of vulnerability\n- Integration into pre-production pipeline stages where a deployed application instance is available\n- Finding correlation and reporting to development and security teams\n\n**Out of Scope**:\n- Source code analysis without execution (see GUID-SEC-APP-ABB-SAST-2.7.07)\n- In-process instrumentation of running applications (see GUID-SEC-APP-ABB-IAST-2.7.09)\n- Manual penetration testing (an operational security activity outside pipeline scope)\n- Security controls, tool selection, or configuration baselines (`standards/security/`)\n\n---",
+    "5": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-DAST-2.7.08.md#detailed-guidance]\n\n## Detailed Guidance",
+    "6": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-DAST-2.7.08.md#core-principles]\n\n### Core Principles\n\n- DAST capability SHALL target a deployed application instance in a non-production environment that is representative of the production configuration.\n- DAST SHALL be integrated into the pipeline at a stage after successful deployment to a test environment.\n- Findings SHALL be triaged and tracked with the same severity taxonomy used for SAST findings to enable unified reporting.\n- DAST SHOULD be scoped to authenticated application paths as well as unauthenticated endpoints.",
+    "7": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-DAST-2.7.08.md#key-capabilities]\n\n### Key Capabilities",
+    "8": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-DAST-2.7.08.md#active-scanning]\n\n#### Active Scanning\n\n**Architectural intent**: Identify runtime-exploitable vulnerabilities by probing application endpoints with attack-class inputs.\n\n**Design guidance**:\n- Scanning SHALL cover at minimum web application attack classes relevant to the application's technology profile.\n- Scan scope SHALL be defined to avoid unintended impact on shared test environments or data.\n- Authentication credentials for authenticated scan paths SHALL be managed through the Secrets Vault ABB (GUID-SEC-APP-ABB-VAULT-2.7.21).",
+    "9": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-DAST-2.7.08.md#pipeline-integration]\n\n#### Pipeline Integration\n\n**Architectural intent**: Ensure dynamic testing occurs at a consistent, automated point before promotion to production.\n\n**Design guidance**:\n- DAST SHALL be triggered automatically after a successful deployment to a designated test environment.\n- Findings above a defined severity threshold SHOULD block promotion unless an approved exception exists.\n- Scan results SHALL be retained and associated with the pipeline run for traceability.",
+    "10": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-DAST-2.7.08.md#integration-interfaces]\n\n### Integration Interfaces\n\n| Interface | Direction | Consuming ABB | Description |\n|---|---|---|---|\n| Pipeline Trigger | Inbound | CI/CD Pipeline | Receives deployment completion event to initiate scan |\n| Target Application | Outbound | Running Application Instance | HTTP/HTTPS traffic sent to application endpoints |\n| Findings Output | Outbound | GUID-SEC-APP-ABB-CAT-2.7.06 | Structured findings for gate logic and tracking |",
+    "11": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-DAST-2.7.08.md#zero-trust-alignment-nist-sp-800-207]\n\n### Zero Trust Alignment (NIST SP 800-207)\n\nDAST advances the Applications and Workloads pillar by validating that deployed application instances cannot be externally exploited, reinforcing the assumption that network position alone does not confer trust.",
+    "12": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-DAST-2.7.08.md#nist-sp-800-53-intent-alignment]\n\n### NIST SP 800-53 Intent Alignment\n\nThis ABB enables the architectural intent of the CA (Assessment, Authorization, and Monitoring) family — specifically the intent that security assessments are performed on operational systems — and the SI family, which addresses flaw identification and remediation.",
+    "13": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-DAST-2.7.08.md#constraints-and-dependencies]\n\n### Constraints and Dependencies\n\n- DAST requires a running, accessible application instance; it cannot be applied to code that has not been deployed.\n- Scan duration must be considered in pipeline design; long-running scans may require asynchronous execution patterns.\n- DAST and SAST are complementary; DAST alone does not provide coverage of code paths not reachable from external interfaces.\n\n---\n\n*[Enterprise Architecture Practice](../../../../../README.md) — Gainwell Technologies*"
+  },
+  "coverage": {
+    "total_pages": 13,
+    "covered_pages": 13,
+    "sampled_pages": 13,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 13
+  }
+}

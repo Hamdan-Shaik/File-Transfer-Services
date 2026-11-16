@@ -1,0 +1,871 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Microservices Circuit Breaker Pattern",
+  "document_description": "tags: ['application', 'api-microservices', 'circuit-breaker', 'resilience', 'fault-tolerance', 'healthcare', 'moderate', 'proven']",
+  "total_pages": 92,
+  "tree": [
+    {
+      "title": "Microservices Circuit Breaker Pattern",
+      "node_id": "microservices-circuit-breaker-pattern",
+      "start_index": 1,
+      "end_index": 92,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Executive Summary",
+          "node_id": "executive-summary",
+          "start_index": 3,
+          "end_index": 7,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Problem Statement",
+              "node_id": "problem-statement",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Solution Overview",
+              "node_id": "solution-overview",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "When to Use",
+              "node_id": "when-to-use",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Benefits",
+              "node_id": "benefits",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Target Audience",
+          "node_id": "target-audience",
+          "start_index": 8,
+          "end_index": 8,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Context and Problem",
+          "node_id": "context-and-problem",
+          "start_index": 9,
+          "end_index": 17,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Business Context",
+              "node_id": "business-context",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Technical Context",
+              "node_id": "technical-context",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Problem Details",
+              "node_id": "problem-details",
+              "start_index": 12,
+              "end_index": 16,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "1. Cascading Failure Scenarios",
+                  "node_id": "1-cascading-failure-scenarios",
+                  "start_index": 13,
+                  "end_index": 13,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "2. Resource Exhaustion Patterns",
+                  "node_id": "2-resource-exhaustion-patterns",
+                  "start_index": 14,
+                  "end_index": 14,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "3. Lack of Fail-Fast Mechanisms",
+                  "node_id": "3-lack-of-fail-fast-mechanisms",
+                  "start_index": 15,
+                  "end_index": 15,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "4. No Automatic Recovery",
+                  "node_id": "4-no-automatic-recovery",
+                  "start_index": 16,
+                  "end_index": 16,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Forces and Constraints",
+              "node_id": "forces-and-constraints",
+              "start_index": 17,
+              "end_index": 17,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Solution",
+          "node_id": "solution",
+          "start_index": 18,
+          "end_index": 33,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Pattern Description",
+              "node_id": "pattern-description",
+              "start_index": 19,
+              "end_index": 19,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Architecture Diagram",
+              "node_id": "architecture-diagram",
+              "start_index": 20,
+              "end_index": 23,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "High-Level Circuit Breaker Architecture",
+                  "node_id": "high-level-circuit-breaker-architecture",
+                  "start_index": 21,
+                  "end_index": 21,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Circuit Breaker State Machine Detail",
+                  "node_id": "circuit-breaker-state-machine-detail",
+                  "start_index": 22,
+                  "end_index": 22,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Detailed Request Flow with Circuit Breaker",
+                  "node_id": "detailed-request-flow-with-circuit-breaker",
+                  "start_index": 23,
+                  "end_index": 23,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Components",
+              "node_id": "components",
+              "start_index": 24,
+              "end_index": 24,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Interactions",
+              "node_id": "interactions",
+              "start_index": 25,
+              "end_index": 28,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "1. Normal Operation Flow (Closed Circuit)",
+                  "node_id": "1-normal-operation-flow-closed-circuit",
+                  "start_index": 26,
+                  "end_index": 26,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "2. Failure Detection and Circuit Opening",
+                  "node_id": "2-failure-detection-and-circuit-opening",
+                  "start_index": 27,
+                  "end_index": 27,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "3. Recovery Testing (Half-Open State)",
+                  "node_id": "3-recovery-testing-half-open-state",
+                  "start_index": 28,
+                  "end_index": 28,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Variations",
+              "node_id": "variations",
+              "start_index": 29,
+              "end_index": 33,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Variation 1: Percentage-Based Threshold",
+                  "node_id": "variation-1-percentage-based-threshold",
+                  "start_index": 30,
+                  "end_index": 30,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Variation 2: Consecutive Failure Threshold",
+                  "node_id": "variation-2-consecutive-failure-threshold",
+                  "start_index": 31,
+                  "end_index": 31,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Variation 3: Circuit Breaker with Exponential Backoff",
+                  "node_id": "variation-3-circuit-breaker-with-exponential-backoff",
+                  "start_index": 32,
+                  "end_index": 32,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Variation 4: Multi-Level Circuit Breaker",
+                  "node_id": "variation-4-multi-level-circuit-breaker",
+                  "start_index": 33,
+                  "end_index": 33,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Implementation Guidelines",
+          "node_id": "implementation-guidelines",
+          "start_index": 34,
+          "end_index": 52,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Prerequisites",
+              "node_id": "prerequisites",
+              "start_index": 35,
+              "end_index": 35,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Step-by-Step Implementation",
+              "node_id": "step-by-step-implementation",
+              "start_index": 36,
+              "end_index": 47,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Phase 1: Analysis and Planning (Week 1)",
+                  "node_id": "phase-1-analysis-and-planning-week-1",
+                  "start_index": 37,
+                  "end_index": 40,
+                  "summary": "",
+                  "nodes": [
+                    {
+                      "title": "Step 1: Identify Critical Dependencies",
+                      "node_id": "step-1-identify-critical-dependencies",
+                      "start_index": 38,
+                      "end_index": 38,
+                      "summary": "",
+                      "nodes": []
+                    },
+                    {
+                      "title": "Step 2: Define Circuit Breaker Configuration",
+                      "node_id": "step-2-define-circuit-breaker-configuration",
+                      "start_index": 39,
+                      "end_index": 39,
+                      "summary": "",
+                      "nodes": []
+                    },
+                    {
+                      "title": "Step 3: Design Fallback Strategies",
+                      "node_id": "step-3-design-fallback-strategies",
+                      "start_index": 40,
+                      "end_index": 40,
+                      "summary": "",
+                      "nodes": []
+                    }
+                  ]
+                },
+                {
+                  "title": "Phase 2: Implementation (Weeks 2-3)",
+                  "node_id": "phase-2-implementation-weeks-2-3",
+                  "start_index": 41,
+                  "end_index": 44,
+                  "summary": "",
+                  "nodes": [
+                    {
+                      "title": "Step 4: Implement Circuit Breaker (.NET with Polly)",
+                      "node_id": "step-4-implement-circuit-breaker-net-with-polly",
+                      "start_index": 42,
+                      "end_index": 42,
+                      "summary": "",
+                      "nodes": []
+                    },
+                    {
+                      "title": "Step 5: Implement Circuit Breaker (Java with Resilience4j)",
+                      "node_id": "step-5-implement-circuit-breaker-java-with-resilience4j",
+                      "start_index": 43,
+                      "end_index": 43,
+                      "summary": "",
+                      "nodes": []
+                    },
+                    {
+                      "title": "Step 6: Add Monitoring and Metrics",
+                      "node_id": "step-6-add-monitoring-and-metrics",
+                      "start_index": 44,
+                      "end_index": 44,
+                      "summary": "",
+                      "nodes": []
+                    }
+                  ]
+                },
+                {
+                  "title": "Phase 3: Testing and Validation (Week 4)",
+                  "node_id": "phase-3-testing-and-validation-week-4",
+                  "start_index": 45,
+                  "end_index": 47,
+                  "summary": "",
+                  "nodes": [
+                    {
+                      "title": "Step 7: Unit Testing Circuit Breaker Logic",
+                      "node_id": "step-7-unit-testing-circuit-breaker-logic",
+                      "start_index": 46,
+                      "end_index": 46,
+                      "summary": "",
+                      "nodes": []
+                    },
+                    {
+                      "title": "Step 8: Integration Testing with Chaos Engineering",
+                      "node_id": "step-8-integration-testing-with-chaos-engineering",
+                      "start_index": 47,
+                      "end_index": 47,
+                      "summary": "",
+                      "nodes": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Configuration Examples",
+              "node_id": "configuration-examples",
+              "start_index": 48,
+              "end_index": 50,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Example 1: Multi-Environment Configuration",
+                  "node_id": "example-1-multi-environment-configuration",
+                  "start_index": 49,
+                  "end_index": 49,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Example 2: Feature Flag Integration",
+                  "node_id": "example-2-feature-flag-integration",
+                  "start_index": 50,
+                  "end_index": 50,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Best Practices",
+              "node_id": "best-practices",
+              "start_index": 51,
+              "end_index": 51,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Common Pitfalls",
+              "node_id": "common-pitfalls",
+              "start_index": 52,
+              "end_index": 52,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Governance and Compliance",
+          "node_id": "governance-and-compliance",
+          "start_index": 53,
+          "end_index": 75,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Standards Alignment",
+              "node_id": "standards-alignment",
+              "start_index": 54,
+              "end_index": 56,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Gainwell Enterprise Standards",
+                  "node_id": "gainwell-enterprise-standards",
+                  "start_index": 55,
+                  "end_index": 55,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Industry Resilience Frameworks",
+                  "node_id": "industry-resilience-frameworks",
+                  "start_index": 56,
+                  "end_index": 56,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Compliance Requirements",
+              "node_id": "compliance-requirements",
+              "start_index": 57,
+              "end_index": 60,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "HIPAA Technical Safeguards",
+                  "node_id": "hipaa-technical-safeguards",
+                  "start_index": 58,
+                  "end_index": 58,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "State SLA Requirements",
+                  "node_id": "state-sla-requirements",
+                  "start_index": 59,
+                  "end_index": 59,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "SOC 2 Trust Services Criteria",
+                  "node_id": "soc-2-trust-services-criteria",
+                  "start_index": 60,
+                  "end_index": 60,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Approval Process",
+              "node_id": "approval-process",
+              "start_index": 61,
+              "end_index": 65,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "1. Architecture Review (Required)",
+                  "node_id": "1-architecture-review-required",
+                  "start_index": 62,
+                  "end_index": 62,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "2. Security Review (For External APIs)",
+                  "node_id": "2-security-review-for-external-apis",
+                  "start_index": 63,
+                  "end_index": 63,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "3. Capacity Planning Review",
+                  "node_id": "3-capacity-planning-review",
+                  "start_index": 64,
+                  "end_index": 64,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "4. Operations Readiness Review",
+                  "node_id": "4-operations-readiness-review",
+                  "start_index": 65,
+                  "end_index": 65,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Monitoring and Metrics",
+              "node_id": "monitoring-and-metrics",
+              "start_index": 66,
+              "end_index": 70,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Operational Metrics",
+                  "node_id": "operational-metrics",
+                  "start_index": 67,
+                  "end_index": 67,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Resilience Metrics",
+                  "node_id": "resilience-metrics",
+                  "start_index": 68,
+                  "end_index": 68,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Compliance Metrics",
+                  "node_id": "compliance-metrics",
+                  "start_index": 69,
+                  "end_index": 69,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Real-Time Operations Dashboard",
+                  "node_id": "real-time-operations-dashboard",
+                  "start_index": 70,
+                  "end_index": 70,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Incident Response Procedures",
+              "node_id": "incident-response-procedures",
+              "start_index": 71,
+              "end_index": 74,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Level 1: Circuit Opened (Automated Response)",
+                  "node_id": "level-1-circuit-opened-automated-response",
+                  "start_index": 72,
+                  "end_index": 72,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Level 2: Circuit Remains Open (> 15 minutes)",
+                  "node_id": "level-2-circuit-remains-open--15-minutes",
+                  "start_index": 73,
+                  "end_index": 73,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Level 3: Extended Outage (> 1 hour)",
+                  "node_id": "level-3-extended-outage--1-hour",
+                  "start_index": 74,
+                  "end_index": 74,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Quarterly Compliance Review",
+              "node_id": "quarterly-compliance-review",
+              "start_index": 75,
+              "end_index": 75,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Examples and Use Cases",
+          "node_id": "examples-and-use-cases",
+          "start_index": 76,
+          "end_index": 86,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Real-World Example 1: EDI Gateway Integration with Circuit Breaker",
+              "node_id": "real-world-example-1-edi-gateway-integration-with-circuit-breaker",
+              "start_index": 77,
+              "end_index": 77,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Real-World Example 2: Payment Gateway with Progressive Circuit Breaking",
+              "node_id": "real-world-example-2-payment-gateway-with-progressive-circuit-breaking",
+              "start_index": 78,
+              "end_index": 78,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Use Case Scenarios",
+              "node_id": "use-case-scenarios",
+              "start_index": 79,
+              "end_index": 83,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Scenario 1: Microservice Dependency Chain",
+                  "node_id": "scenario-1-microservice-dependency-chain",
+                  "start_index": 80,
+                  "end_index": 80,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Scenario 2: Third-Party API with Rate Limiting",
+                  "node_id": "scenario-2-third-party-api-with-rate-limiting",
+                  "start_index": 81,
+                  "end_index": 81,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Scenario 3: Database Connection Pool Exhaustion",
+                  "node_id": "scenario-3-database-connection-pool-exhaustion",
+                  "start_index": 82,
+                  "end_index": 82,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Scenario 4: Scheduled Maintenance Windows",
+                  "node_id": "scenario-4-scheduled-maintenance-windows",
+                  "start_index": 83,
+                  "end_index": 83,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Before and After Comparison",
+              "node_id": "before-and-after-comparison",
+              "start_index": 84,
+              "end_index": 86,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Before (Problem State)",
+                  "node_id": "before-problem-state",
+                  "start_index": 85,
+                  "end_index": 85,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "After (Solution State)",
+                  "node_id": "after-solution-state",
+                  "start_index": 86,
+                  "end_index": 86,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Related Patterns and References",
+          "node_id": "related-patterns-and-references",
+          "start_index": 87,
+          "end_index": 89,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Related Patterns",
+              "node_id": "related-patterns",
+              "start_index": 88,
+              "end_index": 88,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "External References",
+              "node_id": "external-references",
+              "start_index": 89,
+              "end_index": 89,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Change History",
+          "node_id": "change-history",
+          "start_index": 90,
+          "end_index": 90,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Review Log",
+          "node_id": "review-log",
+          "start_index": 91,
+          "end_index": 91,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "TL;DR",
+          "node_id": "tldr",
+          "start_index": 92,
+          "end_index": 92,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#microservices-circuit-breaker-pattern]\n\n# Microservices Circuit Breaker Pattern\n\n**← Back to [EAP Home](../../../README.md) • [Patterns](../../README.md) • [Application](../README.md) • [API & Microservices](./README.md)**\n\n---\n\n**Pattern Metadata**\n\n```yaml\npattern_id: 'PTN-APP-API-006'\npattern_name: 'Circuit Breaker Pattern'\npattern_type: 'api-microservices'\ndomain: 'application'\nversion: '1.0.0'\nstatus: 'draft'\ntags: ['application', 'api-microservices', 'circuit-breaker', 'resilience', 'fault-tolerance', 'healthcare', 'moderate', 'proven']\n```\n\n---",
+    "2": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#table-of-contents]\n\n## Table of Contents\n\n- [Executive Summary](#executive-summary)\n- [Context and Problem](#context-and-problem)\n- [Solution](#solution)\n- [Implementation Guidelines](#implementation-guidelines)\n- [Governance and Compliance](#governance-and-compliance)\n- [Examples and Use Cases](#examples-and-use-cases)\n- [Related Patterns and References](#related-patterns-and-references)\n- [Change History](#change-history)\n- [Review Log](#review-log)\n- [TL;DR](#tldr)\n\n---",
+    "3": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#executive-summary]\n\n## Executive Summary",
+    "4": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#problem-statement]\n\n### Problem Statement\n\nIn distributed healthcare systems where microservices depend on external APIs and downstream services, a single failing dependency can trigger cascading failures that bring down entire service chains. When Gainwell's claims processing service calls a slow or unresponsive EDI clearinghouse gateway, threads waiting for responses accumulate, exhausting the service's connection pool and causing timeout failures for all operations—even those unrelated to EDI integration. Without protection mechanisms, these cascading failures can impact 72+ million Medicaid enrollees awaiting eligibility verification, claims adjudication, or pharmacy authorization, violating state SLA commitments and potentially creating patient safety issues.",
+    "5": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#solution-overview]\n\n### Solution Overview\n\nThe Circuit Breaker Pattern prevents cascading failures by wrapping calls to external dependencies in a stateful circuit breaker that monitors for failures and automatically \"opens\" (stops making calls) when failure thresholds are exceeded. Like an electrical circuit breaker that protects a home from electrical overload, the pattern has three states: **Closed** (normal operation), **Open** (failing fast without attempting calls), and **Half-Open** (tentatively testing if the dependency has recovered). This automatic failure detection and recovery mechanism protects upstream services from wasting resources on calls that are likely to fail while allowing the system to self-heal when dependencies recover.",
+    "6": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#when-to-use]\n\n### When to Use\n\nThis pattern is essential for:\n\n- **External Service Integration**: Calls to third-party APIs that may experience outages or degraded performance (EDI clearinghouses, payment gateways, identity providers)\n- **Downstream Microservice Dependencies**: Service-to-service calls where failures should be isolated rather than propagated\n- **High-Availability Requirements**: Mission-critical services that must remain operational even when dependencies fail (99.99%+ uptime SLAs)\n- **Resource Protection**: Preventing thread pool exhaustion, connection leaks, or memory issues from blocked calls\n- **Slow or Unresponsive Services**: Dependencies with unpredictable latency that could impact user experience\n- **Regulatory Compliance**: Healthcare systems where service degradation could impact patient safety or HIPAA-protected data access",
+    "7": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#benefits]\n\n### Benefits\n\n- **Prevents Cascading Failures**: Isolates failures to the affected dependency, preventing system-wide outages and protecting upstream services\n- **Fast Failure Response**: Returns errors immediately when circuit is open instead of waiting for timeouts, improving user experience\n- **Resource Conservation**: Prevents wasted threads, connections, and memory on calls that will likely fail\n- **Automatic Recovery**: Self-healing mechanism tests dependency health and automatically closes circuit when service recovers\n- **Improved Observability**: Circuit state transitions provide clear signals about dependency health for monitoring and alerting\n- **Graceful Degradation**: Enables fallback mechanisms and degraded mode operation when dependencies are unavailable",
+    "8": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#target-audience]\n\n## Target Audience\n\nThis pattern is intended for the following technical roles:\n\n- **Solution Architect**: Designing resilient distributed systems with external dependencies that require failure isolation and graceful degradation strategies.\n- **Backend Developer**: Implementing circuit breaker logic, configuring failure thresholds, and building fallback mechanisms in service-to-service calls.\n- **Platform Engineer**: Deploying and tuning circuit breaker infrastructure, configuring service mesh policies, and maintaining observability dashboards.\n- **DevOps Engineer**: Monitoring circuit state transitions, configuring alerting thresholds, and managing incident response procedures for circuit breaker events.",
+    "9": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#context-and-problem]\n\n## Context and Problem",
+    "10": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#business-context]\n\n### Business Context\n\nGainwell Technologies operates mission-critical healthcare platforms serving 50+ state Medicaid programs, supporting 72+ million enrollees with 24/7 availability requirements. Our microservices architecture processes millions of daily transactions including:\n\n- **Claims Adjudication**: 500K+ daily claims across Gainwell Enterprise™ requiring sub-second adjudication decisions\n- **Provider Eligibility Verification**: Real-time pharmacy point-of-sale (POS) transactions requiring 99.9%+ availability for patient safety\n- **EDI Gateway Processing**: 1.2+ billion annual encounters processed through external clearinghouses\n- **Member Portal Operations**: Gainwell Go™ mobile and web applications serving millions of members accessing health records\n- **Payment Processing**: Multi-million dollar daily payment runs integrating with state financial systems\n\nThese services have complex dependency chains involving:\n\n- **External Third-Party APIs**: EDI clearinghouses, payment gateways, identity providers, pharmacy benefit managers\n- **State Agency Systems**: Eligibility systems, fiscal management platforms, provider licensing databases\n- **Internal Microservices**: 100+ microservices communicating via REST APIs and event streams\n- **Legacy System Integrations**: Mainframe interfaces, batch file processing, database replication\n\n**Business Impact of Service Failures:**\n- **SLA Penalties**: State contracts mandate 99.9%+ uptime with $5K-50K/hour penalties for violations\n- **Patient Safety**: Pharmacy POS failures prevent medication dispensing, emergency room eligibility verification failures delay critical care\n- **Financial Exposure**: Payment processing outages delay provider reimbursements, impacting provider networks\n- **Regulatory Compliance**: HIPAA breach notification requirements if PHI access is disrupted for extended periods\n- **Reputation Damage**: Provider and member satisfaction scores directly tied to system availability and response times",
+    "11": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#technical-context]\n\n### Technical Context\n\n**Current Architecture:**\nGainwell's microservices architecture is deployed across multiple environments:\n\n- **Cloud Infrastructure**: Azure Kubernetes Service (AKS) hosting 100+ containerized microservices\n- **API Gateway Layer**: Azure API Management and internal gateways routing 10M+ daily API requests\n- **Service Mesh**: Istio providing service-to-service communication, observability, and traffic management\n- **Observability Stack**: Prometheus, Grafana, Azure Application Insights, ELK stack for logging\n- **Technology Stack**: .NET 6/8 (C#), Java Spring Boot, Node.js for various services\n\n**Dependency Patterns:**\n1. **Synchronous REST API Calls**: Most service-to-service communication uses HTTP/REST\n2. **External API Integration**: Third-party services accessed via HTTPS with varying SLAs\n3. **Database Dependencies**: SQL Server, PostgreSQL, MongoDB for data persistence\n4. **Message Queuing**: Azure Service Bus, RabbitMQ for asynchronous operations\n5. **Caching Layers**: Redis for session state, configuration, and frequently accessed data\n\n**Current Resilience Mechanisms:**\n- **Retry Policies**: Implemented inconsistently across services with varying backoff strategies\n- **Timeouts**: Connection and read timeouts configured but not standardized\n- **Load Balancing**: Kubernetes service load balancing and Azure Traffic Manager\n- **Health Checks**: Liveness and readiness probes in Kubernetes\n- **Manual Fallbacks**: Some services have hardcoded fallback logic for specific scenarios\n\n**Gaps in Current Approach:**\n- No standardized circuit breaker implementation across services\n- Services continue attempting calls to failing dependencies, wasting resources\n- No automatic recovery mechanism when dependencies heal\n- Limited observability into dependency health and failure patterns\n- Inconsistent fallback strategies across the portfolio",
+    "12": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#problem-details]\n\n### Problem Details",
+    "13": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#1-cascading-failure-scenarios]\n\n#### 1. Cascading Failure Scenarios\n\n**Scenario A: EDI Clearinghouse Outage (June 2024)**\n```text\nTimeline of Cascading Failure:\n09:15 AM - EDI clearinghouse begins experiencing 500ms → 45-second latency spike\n09:17 AM - Claims service connection pool (50 connections) begins exhausting\n09:19 AM - All 50 connections blocked waiting for EDI responses\n09:20 AM - New claim submissions start timing out (no available connections)\n09:22 AM - Provider portal status lookups fail (same connection pool)\n09:25 AM - Load balancer marks claims service pods as unhealthy\n09:30 AM - Cascading failure spreads to enrollment services (shared database connections)\n09:45 AM - Manual intervention: Emergency circuit breaker deployed\n10:15 AM - Full service restoration after EDI clearinghouse recovery\n\nImpact:\n\n- 3-hour degraded service affecting 15,000 providers\n- 12,400 claims delayed\n- $85K SLA penalty to Texas Medicaid\n- 147 patient safety incident reports filed\n```\n\n**Scenario B: Payment Gateway Timeout Storm (August 2024)**\n```text\nPayment Processing Failure Chain:\n01:00 AM - Nightly payment batch begins (8,500 providers, $47M total)\n01:15 AM - Payment gateway API experiencing intermittent timeouts\n01:30 AM - Payment service retrying failed payments without backoff\n01:45 AM - Thread pool exhausted (200 threads all blocked)\n02:00 AM - Memory leak from accumulated timeout exceptions\n02:15 AM - Payment service OutOfMemoryError, pod crashes\n02:20 AM - Kubernetes restarts pod, immediately crashes again (same issue)\n02:30 AM - Secondary payment service fails (shared Redis cache overload)\n03:00 AM - Manual intervention: Disabled automatic retries\n05:30 AM - Payment gateway recovery, manual payment re-execution\n\nImpact:\n\n- 4.5-hour payment processing outage\n- Provider payments delayed 24 hours\n- $125K emergency processing fees\n- State financial reporting discrepancies\n```",
+    "14": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#2-resource-exhaustion-patterns]\n\n#### 2. Resource Exhaustion Patterns\n\n**Thread Pool Exhaustion:**\nWhen services make synchronous calls to slow or unresponsive dependencies without circuit breakers, threads become blocked waiting for responses. In .NET applications using `HttpClient` without proper configuration, the default thread pool can be exhausted in seconds under load, causing:\n\n- New requests rejected with \"Thread pool exhausted\" errors\n- Application-wide slowdown affecting unrelated operations\n- Cascading failures to upstream services that depend on the affected service\n\n**Connection Pool Saturation:**\nDatabase connection pools and HTTP connection pools suffer similar exhaustion patterns:\n```csharp\n// Problematic pattern without circuit breaker\nfor (int i = 0; i < 10000; i++)\n{\n    // Each call holds connection for 30+ seconds if downstream is slow\n    await httpClient.GetAsync(\"https://slow-external-api.com/data\");\n    // Connection pool exhausted after 50-100 concurrent calls\n}\n```\n\n**Memory Leaks from Exception Accumulation:**\nServices continuously calling failing dependencies accumulate exception objects, timeout exceptions, and retry state, leading to memory pressure:\n\n- Heap exhaustion from exception stack traces\n- GC thrashing attempting to reclaim memory\n- Eventually OutOfMemoryError or pod OOMKill in Kubernetes",
+    "15": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#3-lack-of-fail-fast-mechanisms]\n\n#### 3. Lack of Fail-Fast Mechanisms\n\n**Problem:** Current implementation continues attempting calls to obviously failing dependencies:\n\n```csharp\n// Current problematic implementation\npublic async Task<ClaimResult> ProcessClaim(Claim claim)\n{\n    try\n    {\n        // EDI service has been failing for 10 minutes, but we keep trying\n        var ediResponse = await _ediClient.SubmitClaim(claim);\n        return new ClaimResult { Success = true, Data = ediResponse };\n    }\n    catch (HttpRequestException ex)\n    {\n        // Log error and return failure - but we wasted 30 seconds timing out\n        _logger.LogError(ex, \"EDI submission failed for claim {ClaimId}\", claim.Id);\n        return new ClaimResult { Success = false, Error = \"EDI service unavailable\" };\n    }\n}\n```\n\n**Consequences:**\n- Users wait 30+ seconds for timeout errors they'll receive anyway\n- Resources wasted on calls that will obviously fail based on recent history\n- No differentiation between \"dependency temporarily slow\" vs \"dependency completely down\"\n- Operations team has no early warning signal of dependency health degradation",
+    "16": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#4-no-automatic-recovery]\n\n#### 4. No Automatic Recovery\n\n**Current State:** When external dependencies recover from outages, services don't automatically detect recovery:\n\n- Manual intervention required to \"reset\" services after dependency recovery\n- Services may continue using stale fallback data even after primary source is available\n- No systematic testing of dependency health to determine when to resume normal operations\n- Recovery often requires restarting pods or services to clear error states\n\n**Example: Provider Credentialing Service**\n```text\nState Licensing API outage recovery:\n10:00 AM - State API goes offline (network issue)\n10:01 AM - Credentialing service begins failing all license verifications\n10:05 AM - Manual fallback: Using cached license data (24 hours old)\n11:30 AM - State API recovers and is fully operational\n11:30 AM - Credentialing service continues using stale cached data\n02:00 PM - Operations discovers service still using cache\n02:15 PM - Manual service restart to resume API calls\n02:20 PM - Service resumes normal operation with current data\n\nProblem: 2.5-hour delay using stale license data after API recovery\n```",
+    "17": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#forces-and-constraints]\n\n### Forces and Constraints\n\n**Competing Concerns:**\n\n1. **Availability vs. Consistency**\n   - Healthcare systems must remain available (patient safety)\n   - But also must maintain data accuracy (regulatory compliance)\n   - Circuit breakers enable availability with fallback mechanisms\n   - But fallback data may be stale or incomplete\n\n2. **Fast Failure vs. Retry Logic**\n   - Failing fast improves user experience and resource efficiency\n   - But transient errors should be retried for resilience\n   - Circuit breakers complement retries (retry until threshold, then open circuit)\n\n3. **Automatic Recovery vs. Manual Control**\n   - Automatic recovery reduces operational overhead and improves MTTR\n   - But automatic operations can cause unexpected behavior during incidents\n   - Hybrid approach: Automatic recovery with manual override capabilities\n\n4. **Centralized vs. Decentralized Circuit Breaker Management**\n   - Centralized configuration simplifies management and ensures consistency\n   - Decentralized configuration allows service-specific tuning\n   - Recommendation: Centralized defaults with service-specific overrides\n\n**Regulatory and Compliance Constraints:**\n\n- **HIPAA Security Rule §164.312(b)**: Audit controls must track access to PHI even during fallback operations\n- **State SLA Requirements**: 99.9%+ uptime mandates require circuit breakers to maintain availability during dependency failures\n- **CMS Interoperability Final Rule**: FHIR APIs must remain available; circuit breakers enable degraded-mode operation\n- **SOC 2 Trust Services Criteria**: Monitoring and incident response controls must detect and respond to dependency failures\n\n**Operational Constraints:**\n\n- **24/7 Operations**: Healthcare systems cannot have maintenance windows for circuit breaker tuning\n- **Multi-Tenant Considerations**: Circuit breaker state for one state shouldn't impact other states\n- **Monitoring and Alerting**: Circuit breaker state changes must integrate with existing observability platforms\n- **Performance Overhead**: Circuit breaker implementation must add < 5ms latency per call",
+    "18": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#solution]\n\n## Solution",
+    "19": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#pattern-description]\n\n### Pattern Description\n\nThe Circuit Breaker Pattern wraps calls to external dependencies or downstream services in a state machine that monitors for failures and prevents cascading failures by \"opening\" the circuit when error thresholds are exceeded. The pattern implements three distinct states:\n\n**1. Closed State (Normal Operation)**\n- All calls pass through to the dependency\n- Success and failure metrics are tracked\n- If failure rate exceeds threshold, circuit transitions to Open\n- Example: 5 consecutive failures or 50% failure rate over 10 seconds\n\n**2. Open State (Failing Fast)**\n- Calls immediately return errors without attempting the dependency call\n- No resources wasted on calls that will likely fail\n- After a configurable timeout period, circuit transitions to Half-Open\n- Example: Circuit stays open for 30 seconds before testing recovery\n\n**3. Half-Open State (Testing Recovery)**\n- Limited number of test calls allowed through to dependency\n- If test calls succeed, circuit closes and resumes normal operation\n- If test calls fail, circuit reopens and waits longer before next test\n- Example: Allow 3 test calls; if all succeed, close circuit\n\n**Key Components:**\n\n1. **Failure Detection Logic**: Monitors call outcomes and calculates failure rates\n2. **State Transition Manager**: Implements state machine transitions based on thresholds\n3. **Timeout Handler**: Manages open circuit duration and half-open testing intervals\n4. **Metrics Collector**: Tracks success/failure rates, state durations, and circuit transitions\n5. **Fallback Mechanism**: Provides alternative responses when circuit is open\n6. **Health Check Integration**: Optionally probes dependency health during open state\n\n**Circuit Breaker Lifecycle:**\n\n```text\nRequest → Circuit Breaker → [State Check]\n                              ↓\n                    ┌─────────┴─────────┐\n                    ↓                   ↓\n               [Closed]            [Open/Half-Open]\n                    ↓                   ↓\n            Call Dependency      Return Fallback\n                    ↓                   ↓\n            Track Outcome        Manage State\n                    ↓                   ↓\n            Check Threshold      Test Recovery\n                    ↓                   ↓\n              Transition?          Transition?\n```",
+    "20": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#architecture-diagram]\n\n### Architecture Diagram",
+    "21": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#high-level-circuit-breaker-architecture]\n\n#### High-Level Circuit Breaker Architecture\n\n```text\n┌──────────────────────────────────────────────────────────────────────┐\n│                        CLIENT SERVICE                                │\n│  (e.g., Claims Processing Service)                                   │\n│                                                                       │\n│  ┌─────────────────────────────────────────────────────────────┐   │\n│  │                  Circuit Breaker Wrapper                     │   │\n│  │                                                               │   │\n│  │  ┌────────────────────────────────────────────────────────┐ │   │\n│  │  │           State Machine                                 │ │   │\n│  │  │                                                          │ │   │\n│  │  │   ┌─────────┐  Threshold   ┌──────┐  Timeout   ┌──────┤ │   │\n│  │  │   │ CLOSED  │ ──Exceeded──→│ OPEN │ ──Elapsed─→│ HALF │ │   │\n│  │  │   │         │←──Success───  │      │←──Failure─ │ OPEN │ │   │\n│  │  │   └─────────┘               └──────┘            └──────┘ │   │\n│  │  │      │                         │                   │      │   │\n│  │  │      │ Pass Through            │ Fail Fast         │ Test │   │\n│  │  │      ↓                         ↓                   ↓      │   │\n│  │  └──────┼─────────────────────────┼───────────────────┼─────┘   │\n│  │         │                         │                   │          │\n│  └─────────┼─────────────────────────┼───────────────────┼─────────┘\n│            ↓                         ↓                   ↓           │\n│    ┌──────────────┐         ┌──────────────┐    ┌──────────────┐   │\n│    │ Call         │         │ Execute      │    │ Limited      │   │\n│    │ Dependency   │         │ Fallback     │    │ Test Calls   │   │\n│    └──────┬───────┘         └──────┬───────┘    └──────┬───────┘   │\n│           │                        │                    │           │\n└───────────┼────────────────────────┼────────────────────┼───────────┘\n            ↓                        │                    ↓\n    ┌───────────────────┐            │            ┌──────────────────┐\n    │                   │            │            │                  │\n    │  DOWNSTREAM       │            │            │   DOWNSTREAM     │\n    │  SERVICE          │            │            │   SERVICE        │\n    │  (EDI Gateway)    │            │            │   (EDI Gateway)  │\n    │                   │            │            │                  │\n    │  [Failing/Slow]   │            │            │   [Recovering]   │\n    └───────────────────┘            │            └──────────────────┘\n                                     │\n                              ┌──────┴─────┐\n                              │  FALLBACK  │\n                              │  RESPONSE  │\n                              │            │\n                              │ • Cached   │\n                              │ • Default  │\n                              │ • Degraded │\n                              └────────────┘\n```",
+    "22": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#circuit-breaker-state-machine-detail]\n\n#### Circuit Breaker State Machine Detail\n\n```text\n┌─────────────────────────────────────────────────────────────────────┐\n│                   CIRCUIT BREAKER STATE MACHINE                     │\n└─────────────────────────────────────────────────────────────────────┘\n\n    ┌──────────────────────────────────────────────────────────────┐\n    │                       CLOSED STATE                           │\n    │                    (Normal Operation)                        │\n    │                                                              │\n    │  • All requests pass through                                │\n    │  • Track success/failure metrics                            │\n    │  • Monitor failure threshold                                │\n    │                                                              │\n    │  Metrics: [✓✓✓✗✗✓✓✗✗✗] ← Rolling window                    │\n    │  Failure Rate: 40% (4/10)                                   │\n    └───────────────┬──────────────────────────────────────────────┘\n                    │\n                    │ Failure threshold exceeded\n                    │ (e.g., 50% failure rate OR 5 consecutive failures)\n                    ↓\n    ┌──────────────────────────────────────────────────────────────┐\n    │                        OPEN STATE                            │\n    │                      (Failing Fast)                          │\n    │                                                              │\n    │  • Immediately reject all requests                          │\n    │  • Return fallback response instantly                       │\n    │  • No calls made to dependency                              │\n    │  • Wait for timeout period                                  │\n    │                                                              │\n    │  Timer: [████████░░] 25s / 30s                              │\n    │  Calls Rejected: 1,247                                      │\n    └───────────────┬──────────────────────────────────────────────┘\n                    │\n                    │ Open timeout elapsed\n                    │ (e.g., 30 seconds)\n                    ↓\n    ┌──────────────────────────────────────────────────────────────┐\n    │                     HALF-OPEN STATE                          │\n    │                   (Testing Recovery)                         │\n    │                                                              │\n    │  • Allow limited test requests through                      │\n    │  • Monitor test request success rate                        │\n    │  • All other requests get fallback                          │\n    │                                                              │\n    │  Test Requests: [✓ ✓ ?] (2/3 successful)                    │\n    │  Remaining Tests: 1                                         │\n    └──────────┬──────────────────────────┬────────────────────────┘\n               │                          │\n               │ All tests succeed        │ Any test fails\n               │                          │\n               ↓                          ↓\n    ┌──────────────────┐      ┌──────────────────────────┐\n    │   Return to      │      │   Return to OPEN         │\n    │   CLOSED         │      │   (Extended timeout)     │\n    │                  │      │                          │\n    │   Resume normal  │      │   Wait longer before     │\n    │   operations     │      │   next test attempt      │\n    └──────────────────┘      └──────────────────────────┘\n```",
+    "23": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#detailed-request-flow-with-circuit-breaker]\n\n#### Detailed Request Flow with Circuit Breaker\n\n```text\nCLIENT REQUEST FLOW WITH CIRCUIT BREAKER PROTECTION\n\n1. CLOSED STATE (Normal Operation)\n────────────────────────────────────\n   Request                Circuit Breaker              Dependency\n      │                          │                          │\n      │────── POST /claim ──────>│                          │\n      │                          │                          │\n      │                          │── Check State: CLOSED    │\n      │                          │                          │\n      │                          │─── Forward Request ─────>│\n      │                          │                          │\n      │                          │<──── Response 200 OK ────│\n      │                          │                          │\n      │                          │── Record SUCCESS         │\n      │                          │   Metrics: [✓✓✓✓✗]      │\n      │<──── Response 200 OK ────│                          │\n      │                          │                          │\n\n2. THRESHOLD BREACH (Transition to OPEN)\n────────────────────────────────────────\n   Request                Circuit Breaker              Dependency\n      │                          │                          │\n      │────── POST /claim ──────>│                          │\n      │                          │                          │\n      │                          │── Check State: CLOSED    │\n      │                          │                          │\n      │                          │─── Forward Request ─────>│\n      │                          │                          │\n      │                          │<──── Timeout/Error ──────│\n      │                          │                          │\n      │                          │── Record FAILURE         │\n      │                          │   Metrics: [✗✗✗✗✗]      │\n      │                          │   5 consecutive failures!│\n      │                          │                          │\n      │                          │── OPEN CIRCUIT ⚠         │\n      │                          │   Start 30s timer        │\n      │<──── Error 503 ──────────│                          │\n      │                          │                          │\n\n3. OPEN STATE (Fail Fast)\n──────────────────────────\n   Request                Circuit Breaker              Dependency\n      │                          │\n      │────── POST /claim ──────>│\n      │                          │\n      │                          │── Check State: OPEN ⚠\n      │                          │   Timer: 15s / 30s\n      │                          │\n      │                          │── Execute FALLBACK\n      │                          │   (No dependency call)\n      │                          │\n      │<──── Fallback Response ──│\n      │      (Cached/Default)    │\n      │   [Latency: < 5ms]       │\n      │                          │\n\n4. HALF-OPEN STATE (Testing Recovery)\n──────────────────────────────────────\n   Request 1             Circuit Breaker              Dependency\n      │                          │                          │\n      │────── POST /claim ──────>│                          │\n      │                          │                          │\n      │                          │── Check State: HALF-OPEN │\n      │                          │   Test Quota: 1/3 used   │\n      │                          │                          │\n      │                          │─── Test Request ────────>│\n      │                          │                          │\n      │                          │<──── Response 200 OK ────│\n      │                          │                          │\n      │                          │── Test 1: SUCCESS ✓      │\n      │<──── Response 200 OK ────│                          │\n      │                          │                          │\n   Request 2                     │                          │\n      │────── POST /claim ──────>│                          │\n      │                          │── Test Quota: 2/3 used   │\n      │                          │─── Test Request ────────>│\n      │                          │<──── Response 200 OK ────│\n      │                          │── Test 2: SUCCESS ✓      │\n      │<──── Response 200 OK ────│                          │\n      │                          │                          │\n   Request 3                     │                          │\n      │────── POST /claim ──────>│                          │\n      │                          │── Test Quota: 3/3 used   │\n      │                          │─── Test Request ────────>│\n      │                          │<──── Response 200 OK ────│\n      │                          │                          │\n      │                          │── All tests SUCCESS! ✓✓✓ │\n      │                          │── CLOSE CIRCUIT          │\n      │                          │   Resume normal ops      │\n      │<──── Response 200 OK ────│                          │\n      │                          │                          │\n```",
+    "24": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#components]\n\n### Components\n\n| Component | Responsibility | Dependencies |\n|-----------|----------------|--------------|\n| **State Machine** | Manages circuit states (Closed, Open, Half-Open) and transitions | Threshold calculator, timer service |\n| **Failure Detector** | Tracks call outcomes, calculates failure rates, triggers state transitions | Metrics collector, time window manager |\n| **Request Handler** | Routes requests based on circuit state (pass-through, fail-fast, test) | State machine, fallback provider |\n| **Fallback Provider** | Returns alternative responses when circuit is open | Cache service, default response templates |\n| **Metrics Collector** | Records success/failure counts, latencies, state durations | Monitoring integration (Prometheus, App Insights) |\n| **Configuration Manager** | Loads circuit breaker thresholds, timeouts, test quotas | Configuration service, feature flags |\n| **Health Check Probe** | Optionally tests dependency health during open state | HTTP client, health check endpoints |",
+    "25": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#interactions]\n\n### Interactions",
+    "26": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#1-normal-operation-flow-closed-circuit]\n\n#### 1. Normal Operation Flow (Closed Circuit)\n\n```text\nsequenceDiagram\n    participant Client\n    participant CB as Circuit Breaker\n    participant Metrics\n    participant Dependency\n\n    Client->>CB: Call Service\n    CB->>CB: Check State (CLOSED)\n    CB->>Dependency: Forward Request\n    Dependency-->>CB: Response\n    CB->>Metrics: Record Success\n    CB-->>Client: Return Response\n```\n\n1. Client makes request to protected service endpoint\n2. Circuit breaker checks state (currently CLOSED)\n3. Request forwarded to dependency\n4. Dependency returns response (success or failure)\n5. Circuit breaker records outcome in metrics window\n6. Response returned to client\n7. Circuit breaker evaluates if failure threshold exceeded",
+    "27": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#2-failure-detection-and-circuit-opening]\n\n#### 2. Failure Detection and Circuit Opening\n\n```text\nsequenceDiagram\n    participant Client\n    participant CB as Circuit Breaker\n    participant Metrics\n    participant Dependency\n    participant Timer\n\n    Client->>CB: Call Service\n    CB->>CB: Check State (CLOSED)\n    CB->>Dependency: Forward Request\n    Dependency-->>CB: Timeout/Error\n    CB->>Metrics: Record Failure\n    CB->>CB: Evaluate Threshold\n    CB->>CB: OPEN CIRCUIT ⚠\n    CB->>Timer: Start Open Timeout (30s)\n    CB-->>Client: Fail Fast (503)\n```\n\n1. Request fails (timeout, error, or slow response)\n2. Circuit breaker records failure in metrics\n3. Failure threshold calculation determines if limit exceeded\n4. Circuit transitions to OPEN state\n5. Timer started for open duration (e.g., 30 seconds)\n6. Subsequent requests fail fast without calling dependency",
+    "28": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#3-recovery-testing-half-open-state]\n\n#### 3. Recovery Testing (Half-Open State)\n\n```text\nsequenceDiagram\n    participant Client\n    participant CB as Circuit Breaker\n    participant Dependency\n    participant Timer\n\n    Timer->>CB: Open Timeout Elapsed\n    CB->>CB: Transition to HALF-OPEN\n    Client->>CB: Test Request\n    CB->>CB: Check Test Quota (1/3)\n    CB->>Dependency: Forward Test Request\n    Dependency-->>CB: Success\n    CB->>CB: Record Test Success\n    CB->>CB: All Tests Passed?\n    CB->>CB: CLOSE CIRCUIT ✓\n    CB-->>Client: Success Response\n```\n\n1. Open timeout period elapses (e.g., 30 seconds)\n2. Circuit transitions to HALF-OPEN state\n3. Limited number of test requests allowed through\n4. If all tests succeed, circuit closes\n5. If any test fails, circuit reopens with longer timeout",
+    "29": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#variations]\n\n### Variations",
+    "30": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#variation-1-percentage-based-threshold]\n\n#### Variation 1: Percentage-Based Threshold\n\n**Use Case:** Services with variable traffic patterns\n\n**Implementation:**\n```csharp\n// Polly circuit breaker with percentage-based threshold\nvar circuitBreaker = Policy\n    .Handle<HttpRequestException>()\n    .Or<TimeoutException>()\n    .AdvancedCircuitBreakerAsync(\n        failureThreshold: 0.5,           // 50% failure rate\n        samplingDuration: TimeSpan.FromSeconds(10),\n        minimumThroughput: 20,           // At least 20 requests\n        durationOfBreak: TimeSpan.FromSeconds(30)\n    );\n```\n\n**When to Use:**\n- High-traffic services where absolute failure counts are less meaningful\n- Variable load patterns (peak vs off-peak hours)\n- Services with distributed traffic across multiple instances",
+    "31": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#variation-2-consecutive-failure-threshold]\n\n#### Variation 2: Consecutive Failure Threshold\n\n**Use Case:** Low-traffic services or critical dependencies\n\n**Implementation:**\n```java\n// Resilience4j circuit breaker with consecutive failures\nCircuitBreakerConfig config = CircuitBreakerConfig.custom()\n    .slidingWindowType(SlidingWindowType.COUNT_BASED)\n    .slidingWindowSize(10)\n    .failureRateThreshold(50)\n    .minimumNumberOfCalls(5)\n    .waitDurationInOpenState(Duration.ofSeconds(30))\n    .permittedNumberOfCallsInHalfOpenState(3)\n    .build();\n```\n\n**When to Use:**\n- Lower traffic services where percentage calculations are unstable\n- Critical dependencies where even a few failures indicate problems\n- Scenarios where quick circuit opening is more important than statistical accuracy",
+    "32": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#variation-3-circuit-breaker-with-exponential-backoff]\n\n#### Variation 3: Circuit Breaker with Exponential Backoff\n\n**Use Case:** Dependencies with longer recovery times\n\n**Implementation:**\n```csharp\n// Custom implementation with exponential backoff\npublic class ExponentialBackoffCircuitBreaker\n{\n    private int _openCount = 0;\n\n    private TimeSpan GetOpenDuration()\n    {\n        // 30s, 60s, 120s, 240s, max 300s\n        var seconds = Math.Min(30 * Math.Pow(2, _openCount), 300);\n        return TimeSpan.FromSeconds(seconds);\n    }\n\n    private void OnCircuitOpened()\n    {\n        _openCount++;\n        _durationOfBreak = GetOpenDuration();\n    }\n\n    private void OnCircuitClosed()\n    {\n        _openCount = 0;  // Reset on successful recovery\n    }\n}\n```\n\n**When to Use:**\n- Dependencies known to have extended outages\n- Reduce load on struggling services during recovery\n- Scenarios where rapid retry attempts could worsen dependency issues",
+    "33": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#variation-4-multi-level-circuit-breaker]\n\n#### Variation 4: Multi-Level Circuit Breaker\n\n**Use Case:** Different severity levels for different failure types\n\n**Implementation:**\n```csharp\n// Separate circuit breakers for different failure categories\nvar timeoutCircuitBreaker = Policy\n    .Handle<TimeoutException>()\n    .AdvancedCircuitBreakerAsync(\n        failureThreshold: 0.7,              // More lenient for timeouts\n        durationOfBreak: TimeSpan.FromSeconds(15)\n    );\n\nvar serverErrorCircuitBreaker = Policy\n    .Handle<HttpRequestException>(ex => IsServerError(ex))\n    .AdvancedCircuitBreakerAsync(\n        failureThreshold: 0.3,              // Stricter for server errors\n        durationOfBreak: TimeSpan.FromSeconds(60)\n    );\n\nvar combinedPolicy = Policy.WrapAsync(\n    timeoutCircuitBreaker,\n    serverErrorCircuitBreaker\n);\n```\n\n**When to Use:**\n- Distinguish between transient issues and serious failures\n- Different recovery strategies for different failure types\n- More sophisticated failure classification",
+    "34": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#implementation-guidelines]\n\n## Implementation Guidelines",
+    "35": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#prerequisites]\n\n### Prerequisites\n\nBefore implementing circuit breakers, ensure the following foundational elements are in place:\n\n**Technical Requirements:**\n- **Circuit Breaker Library**: Polly (.NET), Resilience4j (Java), or equivalent library installed\n- **Monitoring Infrastructure**: Prometheus, Grafana, or Azure Application Insights for metrics\n- **Logging Framework**: Structured logging (Serilog, Log4j) for debugging state transitions\n- **Configuration Management**: Centralized configuration service (Azure App Configuration, Spring Cloud Config)\n- **Service Mesh (Optional)**: Istio or Linkerd for infrastructure-level circuit breaking\n\n**Knowledge Requirements:**\n- Understanding of microservices architecture and service dependencies\n- Familiarity with resilience patterns (retry, timeout, fallback)\n- Knowledge of asynchronous programming (async/await, CompletableFuture)\n- Experience with observability and monitoring practices\n\n**Organizational Readiness:**\n- **Service Dependency Mapping**: Document which services depend on which external APIs\n- **Failure Mode Analysis**: Understand how each dependency can fail and impact\n- **SLA Definitions**: Know uptime requirements and acceptable failure rates\n- **Incident Response Procedures**: Established runbooks for circuit breaker state management\n\n**Infrastructure Requirements:**\n- Kubernetes cluster with resource limits configured\n- Load balancing with health check probes\n- Distributed tracing infrastructure (optional but recommended)\n- Alerting system integration (PagerDuty, OpsGenie)",
+    "36": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#step-by-step-implementation]\n\n### Step-by-Step Implementation",
+    "37": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#phase-1-analysis-and-planning-week-1]\n\n#### Phase 1: Analysis and Planning (Week 1)",
+    "38": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#step-1-identify-critical-dependencies]\n\n##### Step 1: Identify Critical Dependencies\n\nCatalog all external dependencies and service-to-service calls that require circuit breaker protection:\n\n**Dependency Assessment Matrix:**\n\n| Service | Dependency | Type | Criticality | Current Failures/Month | Circuit Breaker Priority |\n|---------|-----------|------|-------------|----------------------|------------------------|\n| Claims Processing | EDI Gateway | External API | Critical | 12 outages | HIGH |\n| Provider Portal | Credentialing Service | Internal API | High | 3 outages | MEDIUM |\n| Payment Service | Payment Gateway | External API | Critical | 8 outages | HIGH |\n| Member Portal | FHIR API | Internal API | Medium | 1 outage | MEDIUM |\n| Eligibility Service | State Medicaid System | External API | Critical | 15 outages | HIGH |\n\n**Prioritization Criteria:**\n1. **Critical Dependencies**: External APIs with history of failures (HIGH priority)\n2. **High-Traffic Paths**: Services processing > 10K requests/day (HIGH priority)\n3. **Patient Safety Impact**: Services affecting medication dispensing or emergency care (CRITICAL)\n4. **SLA Risk**: Dependencies causing SLA violations when unavailable (HIGH priority)",
+    "39": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#step-2-define-circuit-breaker-configuration]\n\n##### Step 2: Define Circuit Breaker Configuration\n\nFor each dependency, determine appropriate thresholds based on traffic patterns and failure tolerance:\n\n**Configuration Template:**\n\n```yaml\n# circuit-breaker-config.yaml\ncircuitBreakers:\n  ediGateway:\n    failureRateThreshold: 50          # Open at 50% failure rate\n    slowCallRateThreshold: 70         # Consider slow calls (> 5s) as failures\n    slowCallDurationThreshold: 5000   # 5 seconds\n    slidingWindowType: TIME_BASED\n    slidingWindowSize: 60             # 60-second window\n    minimumNumberOfCalls: 10          # Minimum calls before evaluation\n    waitDurationInOpenState: 30000    # 30 seconds in open state\n    permittedNumberOfCallsInHalfOpenState: 3\n    automaticTransitionFromOpenToHalfOpenEnabled: true\n\n  paymentGateway:\n    failureRateThreshold: 30          # Stricter threshold for payments\n    slidingWindowType: COUNT_BASED\n    slidingWindowSize: 20\n    minimumNumberOfCalls: 5\n    waitDurationInOpenState: 60000    # 60 seconds\n    permittedNumberOfCallsInHalfOpenState: 2\n\n  stateEligibilityAPI:\n    failureRateThreshold: 40\n    slidingWindowType: TIME_BASED\n    slidingWindowSize: 30\n    minimumNumberOfCalls: 5\n    waitDurationInOpenState: 45000    # 45 seconds\n    permittedNumberOfCallsInHalfOpenState: 5\n```\n\n**Threshold Guidelines:**\n- **High-Traffic Services** (> 1K req/min): Use time-based sliding window (30-60 seconds)\n- **Low-Traffic Services** (< 100 req/min): Use count-based sliding window (10-20 calls)\n- **Critical Services**: Lower failure threshold (30-40%)\n- **Non-Critical Services**: Higher failure threshold (50-70%)\n- **External APIs**: Longer open duration (60+ seconds)\n- **Internal APIs**: Shorter open duration (15-30 seconds)",
+    "40": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#step-3-design-fallback-strategies]\n\n##### Step 3: Design Fallback Strategies\n\nDefine what happens when circuit is open for each dependency:\n\n**Fallback Strategy Matrix:**\n\n| Dependency | Fallback Strategy | Data Staleness Acceptable | Implementation |\n|-----------|------------------|-------------------------|----------------|\n| EDI Gateway | Queue for retry + cached status | 5 minutes | Redis cache + Service Bus queue |\n| Payment Gateway | Return \"pending\" status | 1 hour | Database state tracking |\n| Credentialing API | Use cached license data | 24 hours | SQL Server cache table |\n| FHIR API | Return limited member data | 1 hour | Local member summary cache |\n| State Eligibility | Use last known eligibility | 30 minutes | Redis cache with TTL |\n\n**Fallback Implementation Example:**\n\n```csharp\n// Fallback strategy implementation\npublic class EdiGatewayCircuitBreakerService\n{\n    private readonly IAsyncPolicy<EdiResponse> _circuitBreakerPolicy;\n    private readonly IDistributedCache _cache;\n    private readonly IMessageQueue _retryQueue;\n\n    public async Task<EdiResponse> SubmitClaimAsync(Claim claim)\n    {\n        var fallbackPolicy = Policy<EdiResponse>\n            .Handle<BrokenCircuitException>()\n            .FallbackAsync(async (ct) =>\n            {\n                _logger.LogWarning(\n                    \"Circuit breaker open for EDI Gateway. Using fallback for claim {ClaimId}\",\n                    claim.Id);\n\n                // Strategy 1: Check cache for recent submission status\n                var cached = await _cache.GetAsync<EdiResponse>(\n                    $\"edi:claim:{claim.Id}\");\n\n                if (cached != null && cached.Timestamp > DateTime.UtcNow.AddMinutes(-5))\n                {\n                    return cached;\n                }\n\n                // Strategy 2: Queue for later retry\n                await _retryQueue.EnqueueAsync(new EdiRetryMessage\n                {\n                    ClaimId = claim.Id,\n                    SubmissionData = claim,\n                    QueuedAt = DateTime.UtcNow\n                });\n\n                // Strategy 3: Return pending status\n                return new EdiResponse\n                {\n                    Status = \"Pending\",\n                    Message = \"Submission queued - EDI gateway temporarily unavailable\",\n                    ClaimId = claim.Id,\n                    WillRetryAt = DateTime.UtcNow.AddMinutes(5)\n                };\n            });\n\n        var combinedPolicy = Policy.WrapAsync(fallbackPolicy, _circuitBreakerPolicy);\n        return await combinedPolicy.ExecuteAsync(async () =>\n        {\n            return await _ediGatewayClient.SubmitAsync(claim);\n        });\n    }\n}\n```",
+    "41": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#phase-2-implementation-weeks-2-3]\n\n#### Phase 2: Implementation (Weeks 2-3)",
+    "42": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#step-4-implement-circuit-breaker-net-with-polly]\n\n##### Step 4: Implement Circuit Breaker (.NET with Polly)\n\n**A. Install Dependencies:**\n\n```bash\ndotnet add package Polly\ndotnet add package Polly.Extensions.Http\ndotnet add package Microsoft.Extensions.Http.Polly\n```\n\n**B. Configure Circuit Breaker Policy:**\n\n```csharp\n// Startup.cs or Program.cs\npublic void ConfigureServices(IServiceCollection services)\n{\n    // Register circuit breaker for EDI Gateway\n    services.AddHttpClient<IEdiGatewayClient, EdiGatewayClient>()\n        .AddPolicyHandler(GetCircuitBreakerPolicy())\n        .AddPolicyHandler(GetRetryPolicy());\n\n    // Add circuit breaker registry for monitoring\n    services.AddSingleton<ICircuitBreakerRegistry, CircuitBreakerRegistry>();\n}\n\nprivate IAsyncPolicy<HttpResponseMessage> GetCircuitBreakerPolicy()\n{\n    return HttpPolicyExtensions\n        .HandleTransientHttpError() // 5xx and 408\n        .Or<TimeoutException>()\n        .AdvancedCircuitBreakerAsync(\n            failureThreshold: 0.5,                    // 50% failure rate\n            samplingDuration: TimeSpan.FromSeconds(60),\n            minimumThroughput: 10,\n            durationOfBreak: TimeSpan.FromSeconds(30),\n            onBreak: (outcome, duration) =>\n            {\n                _logger.LogWarning(\n                    \"Circuit breaker opened for {Duration}s. Reason: {Reason}\",\n                    duration.TotalSeconds,\n                    outcome.Exception?.Message ?? outcome.Result?.StatusCode.ToString());\n\n                _metrics.RecordCircuitBreakerOpened(\"edi-gateway\", duration);\n            },\n            onReset: () =>\n            {\n                _logger.LogInformation(\"Circuit breaker closed. Service recovered.\");\n                _metrics.RecordCircuitBreakerClosed(\"edi-gateway\");\n            },\n            onHalfOpen: () =>\n            {\n                _logger.LogInformation(\"Circuit breaker half-open. Testing recovery...\");\n                _metrics.RecordCircuitBreakerHalfOpen(\"edi-gateway\");\n            }\n        );\n}\n\nprivate IAsyncPolicy<HttpResponseMessage> GetRetryPolicy()\n{\n    return HttpPolicyExtensions\n        .HandleTransientHttpError()\n        .WaitAndRetryAsync(\n            retryCount: 3,\n            sleepDurationProvider: attempt => TimeSpan.FromSeconds(Math.Pow(2, attempt)),\n            onRetry: (outcome, timespan, retryAttempt, context) =>\n            {\n                _logger.LogWarning(\n                    \"Retry attempt {RetryAttempt} after {Delay}s\",\n                    retryAttempt,\n                    timespan.TotalSeconds);\n            }\n        );\n}\n```\n\n**C. Implement Service Client:**\n\n```csharp\n// EdiGatewayClient.cs\npublic class EdiGatewayClient : IEdiGatewayClient\n{\n    private readonly HttpClient _httpClient;\n    private readonly ILogger<EdiGatewayClient> _logger;\n    private readonly ICircuitBreakerRegistry _circuitBreakerRegistry;\n\n    public EdiGatewayClient(\n        HttpClient httpClient,\n        ILogger<EdiGatewayClient> logger,\n        ICircuitBreakerRegistry circuitBreakerRegistry)\n    {\n        _httpClient = httpClient;\n        _logger = logger;\n        _circuitBreakerRegistry = circuitBreakerRegistry;\n\n        _httpClient.BaseAddress = new Uri(\"https://edi-gateway.example.com\");\n        _httpClient.Timeout = TimeSpan.FromSeconds(10);\n    }\n\n    public async Task<EdiResponse> SubmitClaimAsync(Claim claim)\n    {\n        // Check circuit state before attempting call\n        var circuitState = _circuitBreakerRegistry.GetState(\"edi-gateway\");\n        if (circuitState == CircuitState.Open)\n        {\n            _logger.LogWarning(\"Circuit is open. Request will fail fast.\");\n            throw new BrokenCircuitException(\"EDI Gateway circuit breaker is open\");\n        }\n\n        var request = new HttpRequestMessage(HttpMethod.Post, \"/api/v1/claims\")\n        {\n            Content = JsonContent.Create(claim)\n        };\n\n        // Circuit breaker and retry policies applied automatically via HTTP client configuration\n        var response = await _httpClient.SendAsync(request);\n        response.EnsureSuccessStatusCode();\n\n        return await response.Content.ReadFromJsonAsync<EdiResponse>();\n    }\n}\n```",
+    "43": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#step-5-implement-circuit-breaker-java-with-resilience4j]\n\n##### Step 5: Implement Circuit Breaker (Java with Resilience4j)\n\n**A. Add Dependencies (Maven):**\n\n```xml\n<!-- pom.xml -->\n<dependencies>\n    <dependency>\n        <groupId>io.github.resilience4j</groupId>\n        <artifactId>resilience4j-spring-boot3</artifactId>\n        <version>2.1.0</version>\n    </dependency>\n    <dependency>\n        <groupId>io.github.resilience4j</groupId>\n        <artifactId>resilience4j-circuitbreaker</artifactId>\n        <version>2.1.0</version>\n    </dependency>\n    <dependency>\n        <groupId>org.springframework.boot</groupId>\n        <artifactId>spring-boot-starter-actuator</artifactId>\n    </dependency>\n</dependencies>\n```\n\n**B. Configure Circuit Breaker (application.yml):**\n\n```yaml\n# application.yml\nresilience4j:\n  circuitbreaker:\n    instances:\n      ediGateway:\n        registerHealthIndicator: true\n        slidingWindowType: TIME_BASED\n        slidingWindowSize: 60\n        minimumNumberOfCalls: 10\n        failureRateThreshold: 50\n        slowCallRateThreshold: 70\n        slowCallDurationThreshold: 5000\n        waitDurationInOpenState: 30s\n        permittedNumberOfCallsInHalfOpenState: 3\n        automaticTransitionFromOpenToHalfOpenEnabled: true\n        eventConsumerBufferSize: 10\n        recordExceptions:\n          - org.springframework.web.client.HttpServerErrorException\n          - java.util.concurrent.TimeoutException\n          - java.io.IOException\n        ignoreExceptions:\n          - com.gainwell.exceptions.BusinessValidationException\n\n      paymentGateway:\n        registerHealthIndicator: true\n        slidingWindowType: COUNT_BASED\n        slidingWindowSize: 20\n        minimumNumberOfCalls: 5\n        failureRateThreshold: 30\n        waitDurationInOpenState: 60s\n        permittedNumberOfCallsInHalfOpenState: 2\n\nmanagement:\n  endpoints:\n    web:\n      exposure:\n        include: health,circuitbreakers,circuitbreakerevents\n  health:\n    circuitbreakers:\n      enabled: true\n  metrics:\n    export:\n      prometheus:\n        enabled: true\n    distribution:\n      percentiles-histogram:\n        resilience4j.circuitbreaker.calls: true\n```\n\n**C. Implement Service with Circuit Breaker:**\n\n```java\n// EdiGatewayService.java\n@Service\npublic class EdiGatewayService {\n\n    private final RestTemplate restTemplate;\n    private final CircuitBreakerRegistry circuitBreakerRegistry;\n    private final CacheManager cacheManager;\n    private final Logger logger = LoggerFactory.getLogger(EdiGatewayService.class);\n\n    @Autowired\n    public EdiGatewayService(\n            RestTemplate restTemplate,\n            CircuitBreakerRegistry circuitBreakerRegistry,\n            CacheManager cacheManager) {\n        this.restTemplate = restTemplate;\n        this.circuitBreakerRegistry = circuitBreakerRegistry;\n        this.cacheManager = cacheManager;\n    }\n\n    @CircuitBreaker(name = \"ediGateway\", fallbackMethod = \"submitClaimFallback\")\n    @TimeLimiter(name = \"ediGateway\")\n    public CompletableFuture<EdiResponse> submitClaimAsync(Claim claim) {\n        logger.info(\"Submitting claim {} to EDI Gateway\", claim.getId());\n\n        return CompletableFuture.supplyAsync(() -> {\n            String url = \"https://edi-gateway.example.com/api/v1/claims\";\n\n            HttpHeaders headers = new HttpHeaders();\n            headers.setContentType(MediaType.APPLICATION_JSON);\n            HttpEntity<Claim> request = new HttpEntity<>(claim, headers);\n\n            ResponseEntity<EdiResponse> response = restTemplate.postForEntity(\n                url, request, EdiResponse.class);\n\n            // Cache successful response\n            cacheManager.getCache(\"edi-responses\")\n                .put(claim.getId(), response.getBody());\n\n            return response.getBody();\n        });\n    }\n\n    // Fallback method - same signature with additional Throwable parameter\n    private CompletableFuture<EdiResponse> submitClaimFallback(\n            Claim claim, Throwable throwable) {\n\n        logger.warn(\"Circuit breaker fallback triggered for claim {}. Reason: {}\",\n            claim.getId(), throwable.getMessage());\n\n        // Try cache first\n        Cache.ValueWrapper cached = cacheManager.getCache(\"edi-responses\")\n            .get(claim.getId());\n\n        if (cached != null) {\n            EdiResponse cachedResponse = (EdiResponse) cached.get();\n            if (cachedResponse.getTimestamp()\n                    .isAfter(LocalDateTime.now().minusMinutes(5))) {\n                logger.info(\"Returning cached EDI response for claim {}\", claim.getId());\n                return CompletableFuture.completedFuture(cachedResponse);\n            }\n        }\n\n        // Queue for retry\n        queueForRetry(claim);\n\n        // Return pending response\n        EdiResponse pendingResponse = new EdiResponse();\n        pendingResponse.setStatus(\"PENDING\");\n        pendingResponse.setMessage(\"EDI Gateway unavailable - claim queued for retry\");\n        pendingResponse.setClaimId(claim.getId());\n        pendingResponse.setWillRetryAt(LocalDateTime.now().plusMinutes(5));\n\n        return CompletableFuture.completedFuture(pendingResponse);\n    }\n\n    private void queueForRetry(Claim claim) {\n        // Implementation: Add to retry queue (Azure Service Bus, RabbitMQ, etc.)\n        logger.info(\"Claim {} queued for retry\", claim.getId());\n    }\n}\n```\n\n**D. Circuit Breaker Event Listener:**\n\n```java\n// CircuitBreakerEventListener.java\n@Component\npublic class CircuitBreakerEventListener {\n\n    private final Logger logger = LoggerFactory.getLogger(CircuitBreakerEventListener.class);\n    private final MeterRegistry meterRegistry;\n\n    @Autowired\n    public CircuitBreakerEventListener(\n            CircuitBreakerRegistry registry,\n            MeterRegistry meterRegistry) {\n        this.meterRegistry = meterRegistry;\n\n        registry.getAllCircuitBreakers().forEach(circuitBreaker -> {\n            circuitBreaker.getEventPublisher()\n                .onStateTransition(this::onStateTransition)\n                .onSuccess(this::onSuccess)\n                .onError(this::onError)\n                .onCallNotPermitted(this::onCallNotPermitted);\n        });\n    }\n\n    private void onStateTransition(CircuitBreakerOnStateTransitionEvent event) {\n        logger.warn(\"Circuit breaker {} transitioned from {} to {}\",\n            event.getCircuitBreakerName(),\n            event.getStateTransition().getFromState(),\n            event.getStateTransition().getToState());\n\n        // Record metrics\n        meterRegistry.counter(\"circuit.breaker.state.transition\",\n            \"name\", event.getCircuitBreakerName(),\n            \"from\", event.getStateTransition().getFromState().toString(),\n            \"to\", event.getStateTransition().getToState().toString()\n        ).increment();\n\n        // Send alerts for circuit opening\n        if (event.getStateTransition().getToState() == CircuitBreaker.State.OPEN) {\n            sendAlert(event.getCircuitBreakerName(), \"Circuit breaker opened\");\n        }\n    }\n\n    private void onSuccess(CircuitBreakerOnSuccessEvent event) {\n        logger.debug(\"Circuit breaker {} recorded success. Duration: {}ms\",\n            event.getCircuitBreakerName(),\n            event.getElapsedDuration().toMillis());\n    }\n\n    private void onError(CircuitBreakerOnErrorEvent event) {\n        logger.error(\"Circuit breaker {} recorded error: {}\",\n            event.getCircuitBreakerName(),\n            event.getThrowable().getMessage());\n    }\n\n    private void onCallNotPermitted(CircuitBreakerOnCallNotPermittedEvent event) {\n        logger.warn(\"Call not permitted - circuit breaker {} is {}\",\n            event.getCircuitBreakerName(),\n            event.getCircuitBreaker().getState());\n\n        meterRegistry.counter(\"circuit.breaker.calls.rejected\",\n            \"name\", event.getCircuitBreakerName()\n        ).increment();\n    }\n\n    private void sendAlert(String circuitBreakerName, String message) {\n        // Implementation: Send alert via PagerDuty, OpsGenie, etc.\n    }\n}\n```",
+    "44": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#step-6-add-monitoring-and-metrics]\n\n##### Step 6: Add Monitoring and Metrics\n\n**A. Prometheus Metrics Export (.NET):**\n\n```csharp\n// CircuitBreakerMetrics.cs\npublic class CircuitBreakerMetrics\n{\n    private readonly Counter _openedCounter;\n    private readonly Counter _callsRejectedCounter;\n    private readonly Gauge _currentStateGauge;\n    private readonly Histogram _stateDuration;\n\n    public CircuitBreakerMetrics()\n    {\n        _openedCounter = Metrics.CreateCounter(\n            \"circuit_breaker_opened_total\",\n            \"Total number of times circuit breaker opened\",\n            new CounterConfiguration { LabelNames = new[] { \"name\", \"reason\" } });\n\n        _callsRejectedCounter = Metrics.CreateCounter(\n            \"circuit_breaker_calls_rejected_total\",\n            \"Total number of calls rejected by circuit breaker\",\n            new CounterConfiguration { LabelNames = new[] { \"name\" } });\n\n        _currentStateGauge = Metrics.CreateGauge(\n            \"circuit_breaker_state\",\n            \"Current state of circuit breaker (0=Closed, 1=Open, 2=HalfOpen)\",\n            new GaugeConfiguration { LabelNames = new[] { \"name\" } });\n\n        _stateDuration = Metrics.CreateHistogram(\n            \"circuit_breaker_state_duration_seconds\",\n            \"Duration of circuit breaker states\",\n            new HistogramConfiguration\n            {\n                LabelNames = new[] { \"name\", \"state\" },\n                Buckets = Histogram.ExponentialBuckets(1, 2, 10)\n            });\n    }\n\n    public void RecordCircuitBreakerOpened(string name, TimeSpan duration)\n    {\n        _openedCounter.WithLabels(name, \"threshold_exceeded\").Inc();\n        _currentStateGauge.WithLabels(name).Set(1); // Open = 1\n    }\n\n    public void RecordCircuitBreakerClosed(string name)\n    {\n        _currentStateGauge.WithLabels(name).Set(0); // Closed = 0\n    }\n\n    public void RecordCircuitBreakerHalfOpen(string name)\n    {\n        _currentStateGauge.WithLabels(name).Set(2); // HalfOpen = 2\n    }\n\n    public void RecordCallRejected(string name)\n    {\n        _callsRejectedCounter.WithLabels(name).Inc();\n    }\n}\n```\n\n**B. Grafana Dashboard Configuration:**\n\n```json\n{\n  \"dashboard\": {\n    \"title\": \"Circuit Breaker Health\",\n    \"panels\": [\n      {\n        \"title\": \"Circuit Breaker States\",\n        \"targets\": [\n          {\n            \"expr\": \"circuit_breaker_state\",\n            \"legendFormat\": \"{{name}} - {{state}}\"\n          }\n        ],\n        \"type\": \"graph\"\n      },\n      {\n        \"title\": \"Circuit Opens (Last 24h)\",\n        \"targets\": [\n          {\n            \"expr\": \"increase(circuit_breaker_opened_total[24h])\",\n            \"legendFormat\": \"{{name}}\"\n          }\n        ],\n        \"type\": \"stat\"\n      },\n      {\n        \"title\": \"Rejected Calls Rate\",\n        \"targets\": [\n          {\n            \"expr\": \"rate(circuit_breaker_calls_rejected_total[5m])\",\n            \"legendFormat\": \"{{name}}\"\n          }\n        ],\n        \"type\": \"graph\"\n      }\n    ]\n  }\n}\n```",
+    "45": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#phase-3-testing-and-validation-week-4]\n\n#### Phase 3: Testing and Validation (Week 4)",
+    "46": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#step-7-unit-testing-circuit-breaker-logic]\n\n##### Step 7: Unit Testing Circuit Breaker Logic\n\n```csharp\n// CircuitBreakerTests.cs\n[TestClass]\npublic class CircuitBreakerTests\n{\n    [TestMethod]\n    public async Task CircuitBreaker_OpensAfterThresholdExceeded()\n    {\n        // Arrange\n        var mockClient = new Mock<HttpClient>();\n        mockClient.Setup(x => x.SendAsync(It.IsAny<HttpRequestMessage>()))\n            .ThrowsAsync(new HttpRequestException(\"Service unavailable\"));\n\n        var circuitBreaker = CreateTestCircuitBreaker(\n            failureThreshold: 0.5,\n            minimumThroughput: 5);\n\n        // Act - Generate failures to exceed threshold\n        for (int i = 0; i < 10; i++)\n        {\n            try\n            {\n                await circuitBreaker.ExecuteAsync(async () =>\n                    await mockClient.Object.SendAsync(new HttpRequestMessage()));\n            }\n            catch { }\n        }\n\n        // Assert\n        var state = circuitBreaker.GetState();\n        Assert.AreEqual(CircuitState.Open, state);\n    }\n\n    [TestMethod]\n    public async Task CircuitBreaker_TransitionsToHalfOpenAfterTimeout()\n    {\n        // Arrange\n        var circuitBreaker = CreateTestCircuitBreaker(\n            durationOfBreak: TimeSpan.FromSeconds(1));\n\n        // Act - Open the circuit\n        await OpenCircuit(circuitBreaker);\n        Assert.AreEqual(CircuitState.Open, circuitBreaker.GetState());\n\n        // Wait for timeout\n        await Task.Delay(TimeSpan.FromSeconds(1.5));\n\n        // Assert - Circuit should be half-open\n        var state = circuitBreaker.GetState();\n        Assert.AreEqual(CircuitState.HalfOpen, state);\n    }\n}\n```",
+    "47": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#step-8-integration-testing-with-chaos-engineering]\n\n##### Step 8: Integration Testing with Chaos Engineering\n\n```csharp\n// ChaosEngineeringTests.cs\n[TestClass]\n[TestCategory(\"Integration\")]\npublic class CircuitBreakerChaosTests\n{\n    [TestMethod]\n    public async Task EdiGateway_LatencySpike_CircuitOpens()\n    {\n        // Arrange - Use Simmy for chaos engineering\n        var latencyFault = MonkeyPolicy.InjectLatencyAsync(\n            latency: TimeSpan.FromSeconds(10),\n            injectionRate: 0.8,  // 80% of requests\n            enabled: () => true);\n\n        var serviceWithChaos = Policy.WrapAsync(\n            _circuitBreakerPolicy,\n            latencyFault,\n            _ediGatewayBasePolicy);\n\n        // Act - Generate load with injected latency\n        var tasks = Enumerable.Range(0, 20)\n            .Select(_ => serviceWithChaos.ExecuteAsync(\n                async () => await CallEdiGateway()))\n            .ToArray();\n\n        await Task.WhenAll(tasks);\n\n        // Assert - Circuit should be open\n        Assert.AreEqual(CircuitState.Open, GetCircuitState(\"edi-gateway\"));\n    }\n}\n```",
+    "48": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#configuration-examples]\n\n### Configuration Examples",
+    "49": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#example-1-multi-environment-configuration]\n\n#### Example 1: Multi-Environment Configuration\n\n```yaml\n# appsettings.Development.json\n{\n  \"CircuitBreaker\": {\n    \"EdiGateway\": {\n      \"FailureThreshold\": 0.7,          // More lenient in dev\n      \"MinimumThroughput\": 3,\n      \"DurationOfBreak\": \"00:00:15\",    // Shorter break\n      \"SamplingDuration\": \"00:00:30\"\n    }\n  }\n}\n\n# appsettings.Production.json\n{\n  \"CircuitBreaker\": {\n    \"EdiGateway\": {\n      \"FailureThreshold\": 0.5,          // Stricter in production\n      \"MinimumThroughput\": 10,\n      \"DurationOfBreak\": \"00:00:30\",    // Longer break\n      \"SamplingDuration\": \"00:01:00\"\n    }\n  }\n}\n```",
+    "50": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#example-2-feature-flag-integration]\n\n#### Example 2: Feature Flag Integration\n\n```csharp\n// Feature flag to enable/disable circuit breaker dynamically\npublic IAsyncPolicy<HttpResponseMessage> GetCircuitBreakerPolicy(string serviceName)\n{\n    var isEnabled = _featureManager.IsEnabledAsync($\"CircuitBreaker_{serviceName}\").Result;\n\n    if (!isEnabled)\n    {\n        return Policy.NoOpAsync<HttpResponseMessage>();  // Bypass circuit breaker\n    }\n\n    return _circuitBreakerFactory.Create(serviceName);\n}\n```",
+    "51": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#best-practices]\n\n### Best Practices\n\n1. **Start Conservative, Tune Based on Data**\n   - Begin with higher failure thresholds (60-70%) and longer break durations\n   - Monitor circuit breaker behavior in production for 2-4 weeks\n   - Adjust thresholds based on actual traffic patterns and failure modes\n   - Use A/B testing to validate configuration changes\n\n2. **Combine with Retry Patterns**\n   - Apply retries before circuit breaker evaluation\n   - Use exponential backoff for retries (1s, 2s, 4s)\n   - Circuit breaker as outer policy, retry as inner policy\n   - Example: Retry 3 times, then circuit breaker evaluates aggregate result\n\n3. **Implement Comprehensive Fallbacks**\n   - Always provide fallback mechanism for critical operations\n   - Use cached data when available and acceptable\n   - Return degraded responses rather than complete failures\n   - Queue operations for later retry when appropriate\n\n4. **Monitor Circuit Breaker Health**\n   - Track circuit state transitions (closed → open → half-open → closed)\n   - Alert on circuit opening (indicates dependency issues)\n   - Dashboard showing current state of all circuit breakers\n   - Measure time spent in each state\n\n5. **Use Descriptive Circuit Breaker Names**\n   - Name format: `{ServiceName}_{DependencyName}` (e.g., `ClaimsService_EdiGateway`)\n   - Include environment prefix if sharing metrics: `prod_ClaimsService_EdiGateway`\n   - Consistent naming enables easier monitoring and alerting\n\n6. **Test Circuit Breaker Behavior**\n   - Unit tests for state transitions\n   - Integration tests with simulated failures\n   - Chaos engineering in pre-production environments\n   - Load testing with circuit breakers enabled\n\n7. **Document Circuit Breaker Configuration**\n   - Maintain configuration rationale (why these thresholds?)\n   - Document fallback strategies per dependency\n   - Include runbook for manual circuit breaker management\n   - Track configuration changes and their impact",
+    "52": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#common-pitfalls]\n\n### Common Pitfalls\n\n1. **Too Aggressive Thresholds**\n   - **Problem**: Circuit opens too frequently on minor transient issues\n   - **Impact**: Unnecessary fallback mode, degraded user experience\n   - **Solution**: Start with 50%+ failure threshold, tune based on actual failure patterns\n   - **Detection**: High frequency of circuit opening (> 10 times/day for stable services)\n\n2. **Insufficient Minimum Throughput**\n   - **Problem**: Circuit opens on small sample sizes (e.g., 2 failures out of 3 requests)\n   - **Impact**: Premature circuit opening during low-traffic periods\n   - **Solution**: Set minimum throughput to 5-10 for time-based windows, 10-20 for count-based\n   - **Detection**: Circuit opens during off-peak hours with few requests\n\n3. **No Fallback Strategy**\n   - **Problem**: Circuit opens but no fallback implemented\n   - **Impact**: Complete feature unavailability instead of graceful degradation\n   - **Solution**: Always implement fallback (cache, default response, degraded mode)\n   - **Detection**: 100% error rate when circuit is open\n\n4. **Forgetting to Close Circuit After Recovery**\n   - **Problem**: Circuit stays open indefinitely, requiring manual intervention\n   - **Impact**: Dependency recovered but service still failing\n   - **Solution**: Use automatic transition to half-open state, implement health checks\n   - **Detection**: Circuit open for extended periods (> 5 minutes) with no state change\n\n5. **Shared Circuit Breaker State Across Instances**\n   - **Problem**: Circuit breaker state not synchronized across multiple service instances\n   - **Impact**: Inconsistent behavior, some instances open while others closed\n   - **Solution**: Use shared state store (Redis) or accept eventual consistency\n   - **Trade-off**: Local state = faster but inconsistent, shared state = consistent but slower\n\n6. **Ignoring Circuit Breaker Metrics**\n   - **Problem**: Circuit breaker implemented but no monitoring/alerting configured\n   - **Impact**: Circuit opens silently, operations unaware of dependency issues\n   - **Solution**: Alert on circuit state transitions, dashboard for circuit health\n   - **Detection**: Delayed discovery of dependency failures\n\n7. **Circuit Breaker Without Timeout**\n   - **Problem**: Long-running calls block threads even with circuit breaker\n   - **Impact**: Resource exhaustion from slow calls before circuit opens\n   - **Solution**: Always combine circuit breaker with timeout policy\n   - **Best Practice**: Timeout < Circuit Breaker evaluation window",
+    "53": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#governance-and-compliance]\n\n## Governance and Compliance",
+    "54": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#standards-alignment]\n\n### Standards Alignment",
+    "55": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#gainwell-enterprise-standards]\n\n#### Gainwell Enterprise Standards\n\n- **EAP-APP-001**: Application Architecture Standard - Requires resilience patterns for all external service integrations\n- **EAP-SEC-003**: API Security Standard - Circuit breakers must not bypass authentication/authorization\n- **EAP-OPS-005**: Observability Standard - All circuit breakers must emit metrics and state transition events\n- **EAP-REL-002**: Reliability Engineering Standard - 99.9%+ availability targets require circuit breaker implementation",
+    "56": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#industry-resilience-frameworks]\n\n#### Industry Resilience Frameworks\n\n- **NIST SP 800-53 SC-7**: Boundary Protection - Circuit breakers provide additional protection layer for external boundaries\n- **NIST SP 800-53 SC-24**: Fail in Known State - Circuit breakers ensure predictable failure modes\n- **ISO/IEC 27001 A.17.1**: Information Security Continuity - Circuit breakers support business continuity\n- **CIS Controls v8 13.6**: Boundary Defense - Protection against cascading failures from external dependencies",
+    "57": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#compliance-requirements]\n\n### Compliance Requirements",
+    "58": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#hipaa-technical-safeguards]\n\n#### HIPAA Technical Safeguards\n\nCircuit breaker implementation must maintain HIPAA compliance:\n\n**§164.312(a)(1) - Access Control:**\n- Circuit breaker fallback mechanisms must enforce same access controls as primary path\n- Cached PHI must maintain audit trail of access\n- Degraded mode operations must still authenticate and authorize users\n\n**§164.312(b) - Audit Controls:**\n```csharp\n// Audit logging during circuit breaker fallback\nprivate async Task<EdiResponse> ExecuteFallback(Claim claim)\n{\n    await _auditLogger.LogAsync(new AuditEvent\n    {\n        EventType = \"CircuitBreakerFallback\",\n        ResourceType = \"Claim\",\n        ResourceId = claim.Id,\n        UserId = _currentUser.Id,\n        Action = \"EDI_SUBMISSION_FALLBACK\",\n        Reason = \"Primary EDI gateway unavailable\",\n        Timestamp = DateTime.UtcNow,\n        PHIAccessed = true\n    });\n\n    return await GetFallbackResponse(claim);\n}\n```\n\n**§164.312(e)(1) - Transmission Security:**\n- Circuit breaker failures must not expose PHI in error messages\n- Fallback mechanisms must maintain encryption requirements\n- Cached PHI must be encrypted at rest\n\n**Compliance Validation:**\n\n| HIPAA Control | Circuit Breaker Requirement | Validation Method |\n|--------------|----------------------------|-------------------|\n| §164.312(a)(1) | Fallback maintains access controls | Security audit of fallback paths |\n| §164.312(b) | All circuit breaker events audited | Audit log review |\n| §164.312(e)(1) | PHI encrypted in fallback cache | Encryption verification |\n| §164.312(e)(2)(i) | No PHI in error messages | Error message scan |",
+    "59": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#state-sla-requirements]\n\n#### State SLA Requirements\n\nCircuit breakers directly impact SLA compliance by preventing cascading failures that cause extended outages.\n\n**SLA Protection Mechanisms:**\n- Circuit breakers prevent cascading failures that cause complete outages\n- Fallback mechanisms maintain degraded service availability\n- Faster recovery through automatic half-open testing\n- Reduced impact radius (only affected dependency fails, not entire service)",
+    "60": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#soc-2-trust-services-criteria]\n\n#### SOC 2 Trust Services Criteria\n\n**CC7.2 - System Monitoring:**\n- Circuit breaker state changes must be monitored in real-time\n- Alerting required for circuit opening events\n- Dashboard visibility into all circuit breaker states\n\n**CC9.1 - Risk Mitigation:**\n- Circuit breakers mitigate risk of cascading failures\n- Documented fallback strategies for critical dependencies\n- Regular testing of circuit breaker effectiveness\n\n**A1.2 - System Availability:**\n- Circuit breakers contribute to availability commitments\n- Measured improvement in overall system availability\n- Documentation of availability improvements",
+    "61": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#approval-process]\n\n### Approval Process\n\nCircuit breaker implementation requires multi-level approval:",
+    "62": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#1-architecture-review-required]\n\n#### 1. Architecture Review (Required)\n\n**Review Criteria:**\n- [ ] Dependency criticality assessment completed\n- [ ] Appropriate circuit breaker thresholds defined\n- [ ] Fallback strategy documented and approved\n- [ ] Monitoring and alerting configured\n- [ ] Testing plan includes chaos engineering scenarios\n\n**Reviewers:** Enterprise Architecture team, Domain Architect\n\n**Timeline:** 3-5 business days",
+    "63": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#2-security-review-for-external-apis]\n\n#### 2. Security Review (For External APIs)\n\n**Review Criteria:**\n- [ ] Fallback mechanism maintains authentication/authorization\n- [ ] Cached PHI properly encrypted and access-controlled\n- [ ] Error messages don't expose sensitive information\n- [ ] Audit logging implemented for all circuit breaker events\n\n**Reviewers:** Information Security team\n\n**Timeline:** 2-3 business days",
+    "64": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#3-capacity-planning-review]\n\n#### 3. Capacity Planning Review\n\n**Review Criteria:**\n- [ ] Resource requirements estimated (memory, connections, threads)\n- [ ] Fallback cache size and eviction policy defined\n- [ ] Load testing completed with circuit breakers enabled\n- [ ] Performance impact measured (< 5ms overhead)\n\n**Reviewers:** Performance Engineering team\n\n**Timeline:** 1-2 business days",
+    "65": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#4-operations-readiness-review]\n\n#### 4. Operations Readiness Review\n\n**Review Criteria:**\n- [ ] Runbook created for manual circuit breaker management\n- [ ] Alerting integrated with incident management system\n- [ ] Dashboard created in Grafana/Azure Monitor\n- [ ] On-call team trained on circuit breaker behavior\n\n**Reviewers:** Site Reliability Engineering (SRE) team\n\n**Timeline:** 2-3 business days",
+    "66": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#monitoring-and-metrics]\n\n### Monitoring and Metrics",
+    "67": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#operational-metrics]\n\n#### Operational Metrics\n\nTrack these metrics for each circuit breaker:\n\n| Metric | Target | Alert Threshold | Business Impact |\n|--------|--------|----------------|-----------------|\n| Circuit Open Events | < 5/day | > 10/day | Dependency instability |\n| Time in Open State | < 5% | > 15% | Service degradation |\n| Fallback Execution Rate | < 10% | > 25% | User experience impact |\n| Half-Open Success Rate | > 80% | < 60% | Recovery difficulties |\n| Calls Rejected (Open) | Varies | Spike detection | User-facing failures |\n\n**Prometheus Queries:**\n\n```promql\n# Circuit breaker current state (0=Closed, 1=Open, 2=HalfOpen)\ncircuit_breaker_state{name=\"edi-gateway\"}\n\n# Circuit opens per day\nincrease(circuit_breaker_opened_total{name=\"edi-gateway\"}[24h])\n\n# Percentage of time circuit is open\navg_over_time(circuit_breaker_state{name=\"edi-gateway\"}[1h]) * 100\n\n# Fallback execution rate\nrate(circuit_breaker_calls_rejected_total{name=\"edi-gateway\"}[5m])\n  / rate(circuit_breaker_calls_total{name=\"edi-gateway\"}[5m])\n```",
+    "68": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#resilience-metrics]\n\n#### Resilience Metrics\n\nMeasure circuit breaker effectiveness:\n\n| Metric | Definition | Target | Measurement |\n|--------|-----------|--------|-------------|\n| MTTR Improvement | Mean time to recovery reduction | Measure baseline and track trend | Before/after comparison |\n| Cascading Failure Prevention | Incidents prevented | Track circuit-isolated failures | Incident analysis |\n| Availability Improvement | Uptime increase | Track against SLA targets | Monthly availability reports |\n| Resource Protection | Thread/connection exhaustion events | 0 events | Resource monitoring |",
+    "69": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#compliance-metrics]\n\n#### Compliance Metrics\n\nTrack circuit breaker compliance:\n\n| Metric | Requirement | Frequency | Owner |\n|--------|------------|-----------|-------|\n| Audit Log Completeness | 100% of fallback events logged | Daily | Security team |\n| PHI Encryption Verification | All cached PHI encrypted | Weekly | Security team |\n| SLA Impact Analysis | Circuit breaker contribution to SLA | Monthly | SRE team |\n| Configuration Drift | Circuit breaker config matches standard | Weekly | Platform team |",
+    "70": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#real-time-operations-dashboard]\n\n#### Real-Time Operations Dashboard\n\n```text\n┌──────────────────────────────────────────────────────────────────┐\n│              CIRCUIT BREAKER HEALTH DASHBOARD                    │\n├──────────────────────────────────────────────────────────────────┤\n│                                                                  │\n│  Circuit Breaker States (Last 1 Hour)                           │\n│  ┌──────────────────┬────────┬────────┬────────┬──────────┐    │\n│  │ Service          │ State  │ Opens  │ Rejects│ Fallbacks│    │\n│  ├──────────────────┼────────┼────────┼────────┼──────────┤    │\n│  │ EDI Gateway      │ CLOSED │   2    │    0   │    0     │ ✓  │\n│  │ Payment Gateway  │ OPEN   │   5    │  247   │  247     │ ⚠  │\n│  │ State Eligibility│ CLOSED │   0    │    0   │    0     │ ✓  │\n│  │ Credentialing    │ HALF   │   3    │   12   │   12     │ ⚠  │\n│  │ FHIR API         │ CLOSED │   1    │    0   │    0     │ ✓  │\n│  └──────────────────┴────────┴────────┴────────┴──────────┘    │\n│                                                                  │\n│  Failure Rate Trends (5 min intervals)                          │\n│  EDI Gateway:     ████████░░░░░░░░░░░░ 40% → 15% ↓             │\n│  Payment Gateway: ████████████████████ 85% → 90% ⚠             │\n│  State Eligi:     ██░░░░░░░░░░░░░░░░░░ 10% → 5%  ↓             │\n│                                                                  │\n│  SLA Impact (Current Month)                                     │\n│  ┌────────────────────────────────────────────────────────┐    │\n│  │ Circuit breaker state transitions tracked per service  │    │\n│  │ Fallback events correlated with dependency health      │    │\n│  └────────────────────────────────────────────────────────┘    │\n│                                                                  │\n│  Active Alerts                                                  │\n│  ⚠ Payment Gateway circuit opened - 5 minutes ago              │\n│     Action: Check payment gateway health, review transactions  │\n│                                                                  │\n└──────────────────────────────────────────────────────────────────┘\n```",
+    "71": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#incident-response-procedures]\n\n### Incident Response Procedures",
+    "72": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#level-1-circuit-opened-automated-response]\n\n#### Level 1: Circuit Opened (Automated Response)\n\n**Detection:** Circuit breaker transitions to OPEN state\n\n**Automatic Actions:**\n1. Alert sent to on-call engineer (PagerDuty)\n2. Fallback mechanism activated automatically\n3. Metrics dashboard updated\n4. Dependency health check initiated\n\n**Manual Actions (On-Call Engineer):**\n1. Acknowledge alert within 5 minutes\n2. Check dependency service health\n3. Review recent deployments/changes\n4. Verify fallback mechanism working correctly\n5. Monitor half-open testing for recovery\n\n**Resolution Criteria:**\n- Circuit automatically transitions to half-open after timeout\n- Successful recovery tests close circuit\n- Or: Dependency issue resolved externally",
+    "73": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#level-2-circuit-remains-open--15-minutes]\n\n#### Level 2: Circuit Remains Open (> 15 minutes)\n\n**Escalation Trigger:** Circuit open for more than 15 minutes\n\n**Additional Actions:**\n1. Escalate to senior engineer and service owner\n2. Engage vendor/third-party if external dependency\n3. Review fallback data staleness\n4. Consider manual circuit closure if dependency confirmed healthy\n5. Initiate incident communication to stakeholders\n\n**Communication Template:**\n```text\nSubject: [INCIDENT] {Service} Circuit Breaker Open - Degraded Mode\n\nCircuit breaker for {dependency} opened at {time}.\nCurrent Status: {Open/Half-Open}\nImpact: {description of degraded functionality}\nUser Impact: {number} users experiencing {impact type}\nFallback Status: {Active/Cached data age}\nETA for Resolution: {estimate or \"Investigating\"}\nNext Update: {time}\n```",
+    "74": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#level-3-extended-outage--1-hour]\n\n#### Level 3: Extended Outage (> 1 hour)\n\n**Escalation Trigger:** Circuit open for more than 1 hour\n\n**Additional Actions:**\n1. Escalate to incident commander and executive team\n2. Activate war room/incident bridge\n3. Consider alternative solutions:\n   - Manual processing workflows\n   - Alternative service providers\n   - Temporary system bypass (with approval)\n4. Prepare customer communication\n5. Document incident timeline for post-mortem",
+    "75": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#quarterly-compliance-review]\n\n### Quarterly Compliance Review\n\nEvery quarter, conduct comprehensive circuit breaker review:\n\n**Review Checklist:**\n\n- [ ] All critical dependencies have circuit breakers implemented\n- [ ] Circuit breaker configuration matches documented standards\n- [ ] Fallback mechanisms tested and functional\n- [ ] Monitoring and alerting working correctly\n- [ ] Audit logs complete for all circuit breaker events\n- [ ] No PHI exposure in error messages or logs\n- [ ] Circuit breaker metrics show effectiveness\n- [ ] Team training completed on circuit breaker management\n- [ ] Incident response procedures validated through drills\n- [ ] Configuration changes documented and approved\n\n**Review Outcome:**\n- Compliance score calculated (pass/fail per checklist item)\n- Action items created for non-compliant areas\n- Report submitted to Architecture Review Board\n- Quarterly trend analysis (improvement/degradation)",
+    "76": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#examples-and-use-cases]\n\n## Examples and Use Cases",
+    "77": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#real-world-example-1-edi-gateway-integration-with-circuit-breaker]\n\n### Real-World Example 1: EDI Gateway Integration with Circuit Breaker\n\n**Context:**\nThe Claims Processing service submits 500K+ daily claims to an external EDI clearinghouse for electronic claim submission. The EDI gateway historically experiences periodic outages and latency spikes, particularly during high-volume periods (1st and 15th of each month when providers batch-submit claims). Before circuit breaker implementation, EDI issues caused complete claims service outages affecting all operations.\n\n**Problem Scenario (Pre-Circuit Breaker):**\n```text\nJune 2024 Incident Timeline:\n09:15 AM - EDI clearinghouse begins experiencing latency (500ms → 45 seconds)\n09:17 AM - Claims service connection pool exhausting (45/50 connections blocked)\n09:19 AM - All 50 connections blocked waiting for EDI responses\n09:20 AM - New claim submissions timing out (30-second timeout)\n09:22 AM - Provider portal completely unavailable\n09:25 AM - Kubernetes marks pods unhealthy, begins restart cycle\n09:30 AM - Restart loop: Pods crash immediately on startup (same EDI issue)\n09:45 AM - Emergency hotfix deployed: Hard-coded EDI bypass\n10:15 AM - Full service restoration after EDI clearinghouse recovery\n11:00 AM - Manual re-submission of 12,400 queued claims\n\nImpact:\n\n- 3-hour degraded service affecting 15,000 providers\n- 12,400 claims delayed\n- $85K SLA penalty to Texas Medicaid\n- 147 patient safety incident reports filed\n- Emergency weekend deployment required\n```\n\n**Implementation:**\n\n**1. Circuit Breaker Configuration:**\n\n```csharp\n// EdiGatewayCircuitBreakerConfiguration.cs\npublic class EdiGatewayCircuitBreakerConfiguration\n{\n    public IAsyncPolicy<EdiResponse> CreatePolicy()\n    {\n        // Retry policy: 3 attempts with exponential backoff\n        var retryPolicy = Policy<EdiResponse>\n            .Handle<HttpRequestException>()\n            .Or<TaskCanceledException>()\n            .WaitAndRetryAsync(\n                retryCount: 3,\n                sleepDurationProvider: attempt => TimeSpan.FromSeconds(Math.Pow(2, attempt)),\n                onRetry: (outcome, timespan, retryAttempt, context) =>\n                {\n                    _logger.LogWarning(\n                        \"EDI submission retry {RetryAttempt} after {Delay}s. Reason: {Reason}\",\n                        retryAttempt,\n                        timespan.TotalSeconds,\n                        outcome.Exception?.Message ?? \"Unknown\");\n                });\n\n        // Circuit breaker: Open after 50% failure rate in 60-second window\n        var circuitBreakerPolicy = Policy<EdiResponse>\n            .Handle<HttpRequestException>()\n            .Or<TaskCanceledException>()\n            .AdvancedCircuitBreakerAsync(\n                failureThreshold: 0.5,                          // 50% failure rate\n                samplingDuration: TimeSpan.FromSeconds(60),     // 60-second evaluation window\n                minimumThroughput: 10,                          // At least 10 requests\n                durationOfBreak: TimeSpan.FromSeconds(30),      // Open for 30 seconds\n                onBreak: (outcome, duration, context) =>\n                {\n                    _logger.LogError(\n                        \"EDI Gateway circuit breaker OPENED. Duration: {Duration}s. Will test recovery after timeout.\",\n                        duration.TotalSeconds);\n\n                    _metrics.RecordCircuitBreakerOpened(\"edi-gateway\", duration);\n                    _alertService.SendAlert(AlertLevel.ERROR,\n                        \"EDI Gateway circuit breaker opened - claims in fallback mode\");\n                },\n                onReset: (context) =>\n                {\n                    _logger.LogInformation(\"EDI Gateway circuit breaker CLOSED. Service recovered.\");\n                    _metrics.RecordCircuitBreakerClosed(\"edi-gateway\");\n                    _alertService.SendAlert(AlertLevel.INFO,\n                        \"EDI Gateway circuit breaker closed - normal operation resumed\");\n                },\n                onHalfOpen: () =>\n                {\n                    _logger.LogInformation(\"EDI Gateway circuit breaker HALF-OPEN. Testing recovery...\");\n                    _metrics.RecordCircuitBreakerHalfOpen(\"edi-gateway\");\n                });\n\n        // Timeout policy: 10-second timeout per request\n        var timeoutPolicy = Policy.TimeoutAsync<EdiResponse>(\n            TimeSpan.FromSeconds(10),\n            onTimeoutAsync: (context, timespan, abandonedTask) =>\n            {\n                _logger.LogWarning(\"EDI submission timed out after {Timeout}s\", timespan.TotalSeconds);\n                return Task.CompletedTask;\n            });\n\n        // Combine policies: Timeout → Retry → Circuit Breaker\n        return Policy.WrapAsync(circuitBreakerPolicy, retryPolicy, timeoutPolicy);\n    }\n}\n```\n\n**2. Service Implementation with Fallback:**\n\n```csharp\n// ClaimsProcessingService.cs\npublic class ClaimsProcessingService\n{\n    private readonly IAsyncPolicy<EdiResponse> _ediCircuitBreaker;\n    private readonly IDistributedCache _cache;\n    private readonly IServiceBusClient _retryQueue;\n    private readonly IEdiGatewayClient _ediClient;\n\n    public async Task<ClaimSubmissionResult> SubmitClaimAsync(Claim claim)\n    {\n        try\n        {\n            // Execute with circuit breaker protection\n            var ediResponse = await _ediCircuitBreaker.ExecuteAsync(async () =>\n            {\n                return await _ediClient.SubmitClaimAsync(claim);\n            });\n\n            // Success path\n            await _cache.SetAsync($\"edi:claim:{claim.Id}\", ediResponse, TimeSpan.FromMinutes(30));\n\n            return new ClaimSubmissionResult\n            {\n                Status = \"Submitted\",\n                EdiControlNumber = ediResponse.ControlNumber,\n                SubmittedAt = DateTime.UtcNow\n            };\n        }\n        catch (BrokenCircuitException ex)\n        {\n            // Circuit is open - execute fallback\n            _logger.LogWarning(\n                \"EDI circuit breaker open for claim {ClaimId}. Executing fallback strategy.\",\n                claim.Id);\n\n            return await ExecuteFallbackStrategy(claim);\n        }\n    }\n\n    private async Task<ClaimSubmissionResult> ExecuteFallbackStrategy(Claim claim)\n    {\n        // Fallback Strategy 1: Check for recent cached submission\n        var cachedResponse = await _cache.GetAsync<EdiResponse>($\"edi:claim:{claim.Id}\");\n        if (cachedResponse != null &&\n            cachedResponse.Timestamp > DateTime.UtcNow.AddMinutes(-5))\n        {\n            _logger.LogInformation(\n                \"Returning cached EDI response for claim {ClaimId} (age: {Age} minutes)\",\n                claim.Id,\n                (DateTime.UtcNow - cachedResponse.Timestamp).TotalMinutes);\n\n            return new ClaimSubmissionResult\n            {\n                Status = \"Submitted\",\n                EdiControlNumber = cachedResponse.ControlNumber,\n                SubmittedAt = cachedResponse.Timestamp,\n                FromCache = true\n            };\n        }\n\n        // Fallback Strategy 2: Queue for automatic retry\n        await _retryQueue.SendAsync(new EdiRetryMessage\n        {\n            ClaimId = claim.Id,\n            ClaimData = claim,\n            QueuedAt = DateTime.UtcNow,\n            RetryCount = 0,\n            MaxRetries = 5,\n            NextRetryAt = DateTime.UtcNow.AddMinutes(5)\n        });\n\n        _logger.LogInformation(\n            \"Claim {ClaimId} queued for EDI retry. Will attempt in 5 minutes.\",\n            claim.Id);\n\n        // Fallback Strategy 3: Return pending status\n        return new ClaimSubmissionResult\n        {\n            Status = \"Pending\",\n            Message = \"EDI gateway temporarily unavailable. Claim queued for automatic submission.\",\n            WillRetryAt = DateTime.UtcNow.AddMinutes(5),\n            IsQueued = true\n        };\n    }\n}\n```\n\n**3. Monitoring Dashboard:**\n\n```yaml\n# Grafana dashboard panels\npanels:\n\n  - title: \"EDI Gateway Circuit Breaker State\"\n    query: \"circuit_breaker_state{name='edi-gateway'}\"\n    type: \"stat\"\n    valueMappings:\n      - value: 0\n        text: \"CLOSED ✓\"\n        color: \"green\"\n      - value: 1\n        text: \"OPEN ⚠\"\n        color: \"red\"\n      - value: 2\n        text: \"HALF-OPEN\"\n        color: \"yellow\"\n\n  - title: \"Claims Processed vs Queued\"\n    queries:\n      - expr: \"rate(claims_submitted_total{status='success'}[5m])\"\n        legend: \"Submitted to EDI\"\n      - expr: \"rate(claims_submitted_total{status='queued'}[5m])\"\n        legend: \"Queued (Fallback)\"\n    type: \"graph\"\n\n  - title: \"Circuit Breaker Events (24h)\"\n    queries:\n      - expr: \"increase(circuit_breaker_opened_total{name='edi-gateway'}[24h])\"\n        legend: \"Opens\"\n      - expr: \"increase(circuit_breaker_closed_total{name='edi-gateway'}[24h])\"\n        legend: \"Closes\"\n    type: \"stat\"\n```\n\n**Outcome:**\n\n**Same Scenario Post-Implementation (August 2024):**\n```text\nIncident Timeline with Circuit Breaker:\n02:30 PM - EDI clearinghouse latency spike detected (500ms → 40 seconds)\n02:32 PM - Circuit breaker policy: Retry 3 times with exponential backoff\n02:33 PM - After 10 requests, 6 failures detected (60% failure rate)\n02:33 PM - Circuit breaker OPENS automatically\n02:33 PM - Alert sent: \"EDI Gateway circuit breaker opened\"\n02:33 PM - Fallback activated: Claims queued, cached responses used\n02:33 PM - Claims adjudication continues normally (no service disruption)\n02:33 PM - Provider portal remains fully operational\n03:03 PM - Circuit transitions to HALF-OPEN (30-second timeout elapsed)\n03:03 PM - Test requests to EDI gateway: 3 attempts\n03:04 PM - All test requests succeed (EDI recovered)\n03:04 PM - Circuit breaker CLOSES automatically\n03:04 PM - Queued claims automatically reprocessed (284 claims)\n03:10 PM - All queued claims successfully submitted\n03:15 PM - Operations reviews incident, no manual intervention needed\n\nImpact:\n\n- Zero service disruption for users\n- 284 claims delayed by avg 7 minutes (auto-queued and reprocessed)\n- No SLA violations\n- Automatic recovery, no emergency deployment\n- Provider portal remained available throughout\n```\n\n**Operational Improvements:**\n\nWith circuit breakers in place: claims adjudication continued for non-EDI operations, delayed claims were automatically queued for retry, and the system recovered automatically when the EDI gateway became healthy—with no manual intervention or SLA violations.\n\n---",
+    "78": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#real-world-example-2-payment-gateway-with-progressive-circuit-breaking]\n\n### Real-World Example 2: Payment Gateway with Progressive Circuit Breaking\n\n**Context:**\nThe Payment Service processes $150M+ monthly provider payments through an external payment gateway. The gateway has tiered failure modes: occasional timeouts (transient), partial outages (some payment types fail), and complete outages. Different failure modes require different circuit breaker strategies.\n\n**Problem Scenario (Pre-Circuit Breaker):**\n```text\nPayment Processing Failure (March 2024):\n01:00 AM - Nightly payment batch begins (8,500 providers, $47M total)\n01:15 AM - Payment gateway intermittent timeouts (15% of requests)\n01:30 AM - Service retrying all failures without intelligent backoff\n01:45 AM - Thread pool exhausted (200 threads blocked on timeouts)\n02:00 AM - OutOfMemoryError from accumulated timeout exceptions\n02:15 AM - Payment service crashes, Kubernetes restart\n02:20 AM - Restart loop: Same issue on startup (gateway still failing)\n02:30 AM - Secondary payment service fails (shared cache overload)\n03:00 AM - Manual intervention: Disable auto-retry, restart services\n03:30 AM - Gateway recovers, but payment batch must start over\n05:30 AM - Manual payment re-execution (requires auditor approval)\n08:00 AM - Payment batch completes (7 hours total vs 2 hours normal)\n\nImpact:\n\n- 7-hour payment processing outage\n- Provider payments delayed 24 hours\n- $125K emergency processing fees\n- $200K SLA penalty for late payments\n- State financial reporting discrepancies\n- Manual reconciliation required (3 days of effort)\n```\n\n**Implementation:**\n\n**1. Multi-Level Circuit Breaker Strategy:**\n\n```java\n// PaymentGatewayCircuitBreakerConfig.java\n@Configuration\npublic class PaymentGatewayCircuitBreakerConfig {\n\n    // Level 1: Transient Failure Circuit Breaker (Lenient)\n    @Bean\n    public CircuitBreaker transientFailureCircuitBreaker() {\n        CircuitBreakerConfig config = CircuitBreakerConfig.custom()\n            .slidingWindowType(SlidingWindowType.TIME_BASED)\n            .slidingWindowSize(60)                     // 60-second window\n            .minimumNumberOfCalls(20)\n            .failureRateThreshold(70)                  // Lenient: 70% threshold\n            .slowCallRateThreshold(80)\n            .slowCallDurationThreshold(Duration.ofSeconds(5))\n            .waitDurationInOpenState(Duration.ofSeconds(15))  // Short break\n            .permittedNumberOfCallsInHalfOpenState(5)\n            .automaticTransitionFromOpenToHalfOpenEnabled(true)\n            .recordExceptions(TimeoutException.class, ConnectException.class)\n            .build();\n\n        return CircuitBreakerRegistry.of(config).circuitBreaker(\"payment-transient\");\n    }\n\n    // Level 2: Server Error Circuit Breaker (Strict)\n    @Bean\n    public CircuitBreaker serverErrorCircuitBreaker() {\n        CircuitBreakerConfig config = CircuitBreakerConfig.custom()\n            .slidingWindowType(SlidingWindowType.COUNT_BASED)\n            .slidingWindowSize(10)\n            .minimumNumberOfCalls(5)\n            .failureRateThreshold(30)                  // Strict: 30% threshold\n            .waitDurationInOpenState(Duration.ofSeconds(60))  // Longer break\n            .permittedNumberOfCallsInHalfOpenState(2)\n            .recordExceptions(\n                HttpServerErrorException.class,\n                ResourceAccessException.class\n            )\n            .build();\n\n        return CircuitBreakerRegistry.of(config).circuitBreaker(\"payment-server-error\");\n    }\n\n    // Level 3: Payment Type Circuit Breakers (Independent)\n    @Bean\n    public Map<PaymentType, CircuitBreaker> paymentTypeCircuitBreakers() {\n        Map<PaymentType, CircuitBreaker> breakers = new HashMap<>();\n\n        for (PaymentType type : PaymentType.values()) {\n            CircuitBreakerConfig config = CircuitBreakerConfig.custom()\n                .slidingWindowSize(20)\n                .failureRateThreshold(50)\n                .waitDurationInOpenState(Duration.ofSeconds(30))\n                .build();\n\n            breakers.put(type,\n                CircuitBreakerRegistry.of(config)\n                    .circuitBreaker(\"payment-\" + type.name().toLowerCase()));\n        }\n\n        return breakers;\n    }\n}\n```\n\n**2. Service Implementation with Intelligent Fallback:**\n\n```java\n// PaymentService.java\n@Service\npublic class PaymentService {\n\n    private final CircuitBreaker transientCircuitBreaker;\n    private final CircuitBreaker serverErrorCircuitBreaker;\n    private final Map<PaymentType, CircuitBreaker> typeCircuitBreakers;\n    private final PaymentGatewayClient gatewayClient;\n    private final PaymentRetryQueue retryQueue;\n    private final PaymentRepository repository;\n\n    public CompletableFuture<PaymentResult> processPaymentAsync(Payment payment) {\n        // Check payment-type-specific circuit breaker first\n        CircuitBreaker typeBreaker = typeCircuitBreakers.get(payment.getType());\n        if (typeBreaker.getState() == CircuitBreaker.State.OPEN) {\n            logger.warn(\"Circuit open for payment type {}. Using fallback.\",\n                payment.getType());\n            return CompletableFuture.completedFuture(\n                executeTypeFallback(payment));\n        }\n\n        // Wrap in multi-level circuit breakers\n        Supplier<CompletableFuture<PaymentResult>> supplier = () ->\n            gatewayClient.submitPaymentAsync(payment);\n\n        return Decorators.ofSupplier(supplier)\n            .withCircuitBreaker(transientCircuitBreaker)\n            .withCircuitBreaker(serverErrorCircuitBreaker)\n            .withCircuitBreaker(typeBreaker)\n            .withFallback(Arrays.asList(\n                BrokenCircuitException.class,\n                TimeoutException.class,\n                HttpServerErrorException.class\n            ), throwable -> {\n                logger.warn(\"Circuit breaker fallback triggered for payment {}. Reason: {}\",\n                    payment.getId(), throwable.getMessage());\n                return executeFallbackStrategy(payment, throwable);\n            })\n            .get()\n            .get();  // Unwrap CompletableFuture<CompletableFuture<T>>\n    }\n\n    private PaymentResult executeFallbackStrategy(Payment payment, Throwable error) {\n        // Fallback Strategy 1: Queue for later retry\n        PaymentRetryMessage retryMessage = new PaymentRetryMessage();\n        retryMessage.setPaymentId(payment.getId());\n        retryMessage.setPaymentData(payment);\n        retryMessage.setQueuedAt(LocalDateTime.now());\n        retryMessage.setRetryCount(0);\n        retryMessage.setMaxRetries(5);\n\n        // Determine retry delay based on failure type\n        Duration retryDelay;\n        if (error instanceof BrokenCircuitException) {\n            retryDelay = Duration.ofMinutes(5);  // Wait for circuit to close\n        } else if (error instanceof TimeoutException) {\n            retryDelay = Duration.ofMinutes(2);  // Quick retry for timeouts\n        } else {\n            retryDelay = Duration.ofMinutes(10); // Longer wait for server errors\n        }\n\n        retryMessage.setScheduledFor(LocalDateTime.now().plus(retryDelay));\n        retryQueue.enqueue(retryMessage);\n\n        // Update payment status\n        payment.setStatus(PaymentStatus.PENDING_RETRY);\n        payment.setLastErrorMessage(error.getMessage());\n        payment.setNextRetryAt(LocalDateTime.now().plus(retryDelay));\n        repository.save(payment);\n\n        logger.info(\"Payment {} queued for retry in {} minutes\",\n            payment.getId(), retryDelay.toMinutes());\n\n        return PaymentResult.builder()\n            .status(\"PENDING_RETRY\")\n            .message(\"Payment gateway unavailable - queued for automatic retry\")\n            .paymentId(payment.getId())\n            .willRetryAt(LocalDateTime.now().plus(retryDelay))\n            .build();\n    }\n\n    private PaymentResult executeTypeFallback(Payment payment) {\n        // Payment type circuit is open - try alternative payment method\n        if (payment.getType() == PaymentType.ACH) {\n            // ACH circuit open, try check payment as alternative\n            logger.info(\"ACH circuit open for payment {}. Considering check payment.\",\n                payment.getId());\n\n            // Queue for check payment processing\n            checkPaymentQueue.enqueue(payment);\n\n            return PaymentResult.builder()\n                .status(\"CONVERTED_TO_CHECK\")\n                .message(\"ACH unavailable - converted to check payment\")\n                .paymentId(payment.getId())\n                .alternativeMethod(\"CHECK\")\n                .processingDate(LocalDate.now().plusDays(3))\n                .build();\n        }\n\n        // No alternative available, queue for retry\n        return executeFallbackStrategy(payment,\n            new BrokenCircuitException(\"Payment type circuit open\"));\n    }\n}\n```\n\n**3. Circuit Breaker Event Handler:**\n\n```java\n// CircuitBreakerEventHandler.java\n@Component\npublic class CircuitBreakerEventHandler {\n\n    @Autowired\n    private AlertService alertService;\n\n    @Autowired\n    private MetricsService metricsService;\n\n    @EventListener\n    public void handleCircuitOpened(CircuitBreakerOnStateTransitionEvent event) {\n        if (event.getStateTransition().getToState() == CircuitBreaker.State.OPEN) {\n            logger.error(\"Circuit breaker {} OPENED. Failure threshold exceeded.\",\n                event.getCircuitBreakerName());\n\n            // Determine severity based on circuit breaker name\n            AlertLevel level = determineAlertLevel(event.getCircuitBreakerName());\n\n            alertService.sendAlert(level,\n                String.format(\"Payment gateway circuit breaker '%s' opened\",\n                    event.getCircuitBreakerName()),\n                Map.of(\n                    \"circuit\", event.getCircuitBreakerName(),\n                    \"state\", \"OPEN\",\n                    \"timestamp\", LocalDateTime.now().toString()\n                ));\n\n            // Record metric\n            metricsService.recordCircuitOpened(event.getCircuitBreakerName());\n        }\n    }\n\n    private AlertLevel determineAlertLevel(String circuitName) {\n        if (circuitName.contains(\"server-error\")) {\n            return AlertLevel.CRITICAL;  // Server errors are more serious\n        } else if (circuitName.contains(\"transient\")) {\n            return AlertLevel.WARNING;   // Transient failures less critical\n        } else {\n            return AlertLevel.ERROR;     // Default\n        }\n    }\n}\n```\n\n**Outcome:**\n\n**Same Scenario Post-Implementation (October 2024):**\n```text\nPayment Processing with Circuit Breaker:\n01:00 AM - Nightly payment batch begins (8,800 providers, $51M total)\n01:15 AM - Payment gateway intermittent timeouts detected (18% of requests)\n01:16 AM - Transient circuit breaker evaluating failure rate\n01:18 AM - Transient circuit breaker OPENS (70% threshold exceeded)\n01:18 AM - Alert: \"Payment gateway transient circuit opened\"\n01:18 AM - Affected payments automatically queued for retry\n01:18 AM - Batch continues with non-affected payment types\n01:33 AM - Transient circuit transitions to HALF-OPEN (15-second timeout)\n01:33 AM - Test requests succeed, circuit CLOSES\n01:34 AM - Queued payments automatically reprocessed (247 payments)\n01:45 AM - All queued payments successfully completed\n02:15 AM - Payment batch completes (2.25 hours total vs 2 hours normal)\n\nImpact:\n\n- 15-minute delay for 247 payments (auto-recovered)\n- No service disruption or crashes\n- No manual intervention required\n- Payments completed same night (no 24-hour delay)\n- Zero SLA penalties\n- Automatic reconciliation (no manual effort)\n```\n\n**Operational Improvements:**\n\nWith circuit breakers in place: the payment gateway failure was detected automatically, a transient circuit breaker opened to protect the service, the payment batch completed with only a short delay, and reconciliation was handled automatically without manual intervention.\n\n---",
+    "79": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#use-case-scenarios]\n\n### Use Case Scenarios",
+    "80": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#scenario-1-microservice-dependency-chain]\n\n#### Scenario 1: Microservice Dependency Chain\n\n**When:** Service A → Service B → Service C dependency chain where Service C is unreliable\n\n**How to Apply:**\n1. Implement circuit breakers between each service boundary (A→B and B→C)\n2. Configure B→C circuit breaker with stricter thresholds (C is known to be unstable)\n3. Service B implements fallback: Return cached data when C circuit is open\n4. Service A unaffected by C failures due to B's circuit breaker protection\n5. Monitor entire chain health through distributed tracing\n\n**Benefits:** Failures isolated at B→C boundary, A remains operational",
+    "81": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#scenario-2-third-party-api-with-rate-limiting]\n\n#### Scenario 2: Third-Party API with Rate Limiting\n\n**When:** External API has unpredictable rate limits that cause HTTP 429 responses\n\n**How to Apply:**\n1. Configure circuit breaker to treat 429 responses as failures\n2. Open circuit when rate limit exceeded (prevents further violations)\n3. Use exponential backoff for circuit open duration\n4. Fallback strategy: Return cached responses or queue requests\n5. Half-open state tests API availability before full resumption\n\n**Benefits:** Prevents API ban from excessive rate limit violations",
+    "82": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#scenario-3-database-connection-pool-exhaustion]\n\n#### Scenario 3: Database Connection Pool Exhaustion\n\n**When:** Database queries occasionally hang, exhausting connection pool\n\n**How to Apply:**\n1. Wrap database operations in circuit breaker with timeout policy\n2. Open circuit when connection pool utilization > 90%\n3. Fallback to read-only replica or cached data\n4. Half-open state tests primary database health\n5. Monitor connection pool metrics alongside circuit state\n\n**Benefits:** Prevents complete database lockup, maintains read-only availability",
+    "83": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#scenario-4-scheduled-maintenance-windows]\n\n#### Scenario 4: Scheduled Maintenance Windows\n\n**When:** Known maintenance windows for dependencies require pre-emptive circuit opening\n\n**How to Apply:**\n1. API endpoint to manually transition circuit to open state\n2. Schedule circuit opening 5 minutes before maintenance\n3. Activate fallback mechanisms preemptively\n4. After maintenance, manually transition to half-open for testing\n5. Automatic close once testing succeeds\n\n**Benefits:** Controlled degradation during maintenance, faster recovery\n\n---",
+    "84": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#before-and-after-comparison]\n\n### Before and After Comparison",
+    "85": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#before-problem-state]\n\n#### Before (Problem State)\n\n**Architecture:**\n```text\nClaims Service → EDI Gateway (No Protection)\n\n- Direct HTTP calls with 30-second timeout\n- No failure detection or prevention\n- Unlimited retries on failures\n- No resource protection\n```\n\n**Failure Scenario:**\n1. EDI Gateway experiences latency spike (45 seconds per request)\n2. Claims service makes calls, each waiting 30 seconds for timeout\n3. Thread pool exhausted after 50 concurrent calls\n4. All operations blocked (EDI and non-EDI operations)\n5. Service becomes completely unresponsive\n6. Kubernetes health checks fail, pod restarts\n7. Restart loop (same issue persists)\n8. Manual intervention required\n9. Recovery time: 60+ minutes\n\n**Operational Characteristics:**\n- **Cascading Failures**: 100% (one dependency failure = complete outage)\n- **Recovery**: Manual intervention required\n- **Mean Time to Recovery**: 60-90 minutes\n- **User Impact**: Complete service unavailability\n- **SLA Violations**: Frequent ($500K+ annual penalties)",
+    "86": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#after-solution-state]\n\n#### After (Solution State)\n\n**Architecture:**\n```text\nClaims Service → [Circuit Breaker] → EDI Gateway\n\n- Circuit breaker with state machine (Closed/Open/Half-Open)\n- Automatic failure detection (50% threshold, 60s window)\n- Fail-fast when circuit open (< 1ms response)\n- Fallback mechanisms (cache + retry queue)\n- Resource protection (thread pool preserved)\n```\n\n**Failure Scenario (Same EDI Issue):**\n1. EDI Gateway experiences latency spike\n2. Circuit breaker detects failure pattern (6/10 requests fail)\n3. Circuit opens automatically after 30 seconds\n4. Subsequent calls fail-fast with fallback response (< 1ms)\n5. Claims adjudication continues normally (non-EDI operations unaffected)\n6. Queued claims for automatic retry\n7. Circuit tests recovery every 30 seconds\n8. Automatic recovery when EDI healthy\n9. Recovery time: < 5 minutes (automatic)\n\n**Operational Characteristics:**\n- **Cascading Failures**: 0% (failures isolated to affected dependency)\n- **Recovery**: Fully automatic via half-open testing\n- **Mean Time to Recovery**: < 5 minutes\n- **User Impact**: Minimal (EDI submissions delayed, other operations normal)\n- **SLA Violations**: Eliminated ($0 penalties)\n\n**Operational Improvements:**\n\nWith circuit breakers implemented: failures are isolated to the affected dependency, recovery is fully automatic via half-open state testing, user impact is minimized (EDI submissions are delayed rather than causing complete outages), and SLA violations are eliminated through early detection and fail-fast behavior.",
+    "87": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#related-patterns-and-references]\n\n## Related Patterns and References",
+    "88": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#related-patterns]\n\n### Related Patterns\n\n- [Retry Pattern](./PTN-APP-API-017-retry-pattern.md)\n- [Bulkhead Pattern](./PTN-APP-API-002-bulkhead-pattern.md)",
+    "89": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#external-references]\n\n### External References\n\n- [Release It! by Michael Nygard](https://pragprog.com/titles/mnee2/release-it-second-edition/)\n- [Netflix Hystrix](https://github.com/Netflix/Hystrix)",
+    "90": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#change-history]\n\n## Change History\n\n| Date       | Version | Author              | Description              | Impact      |\n| ---------- | ------- | ------------------- | ------------------------ | ----------- |\n| 2026-01-02 | 1.0.0   | Enterprise Architect | Initial pattern creation | New pattern |",
+    "91": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#review-log]\n\n## Review Log\n\n| Review Date | Review Type | Reviewer(s) | Status | Comments | Actions |\n| ----------- | ----------- | ----------- | ------ | -------- | ------- |\n| TBD         | TBD         | TBD         | Draft  | TBD      | TBD     |\n\n---",
+    "92": "[patterns/application/api-microservices/PTN-APP-API-006-circuit-breaker-pattern.md#tldr]\n\n## TL;DR\n\n**Problem:** Cascading failures occur when downstream service failures or slow responses exhaust upstream service resources (thread pools, connections), causing complete system outages that spread across service boundaries. A single failing dependency can bring down entire service chains.\n\n**Solution:** Wrap calls to dependencies in a circuit breaker that monitors failure rates and automatically \"opens\" (stops making calls) when thresholds are exceeded. The circuit breaker has three states: Closed (normal), Open (failing fast), and Half-Open (testing recovery). This prevents resource exhaustion and enables automatic recovery.\n\n**When to Use:**\n- Services calling external third-party APIs (EDI gateways, payment processors, identity providers)\n- Microservice-to-microservice dependencies where failures should be isolated\n- High-availability systems (99.9%+ SLA) that cannot tolerate cascading failures\n- Dependencies with unpredictable latency or intermittent failures\n- Resource protection scenarios (preventing thread/connection pool exhaustion)\n\n**Key Benefits:**\n- **Prevents Cascading Failures**: Failures isolated to affected dependency, preventing system-wide outages\n- **Fail-Fast Response**: Immediate errors when circuit open (< 1ms) vs 30+ second timeouts\n- **Automatic Recovery**: Self-healing through half-open state testing\n- **Resource Protection**: Prevents thread/connection exhaustion, eliminates service crashes\n- **Cost Reduction**: Eliminates SLA penalties caused by cascading outages\n\n**Implementation Complexity:**\n**Medium** - Requires understanding of failure patterns, threshold tuning, and fallback strategies. Libraries like Polly (.NET) and Resilience4j (Java) simplify implementation, but configuration requires analysis of traffic patterns and failure modes.\n\n**Prerequisites:**\n- Circuit breaker library (Polly, Resilience4j, or service mesh like Istio)\n- Monitoring infrastructure (Prometheus, Grafana) for circuit state tracking\n- Fallback strategy defined (cache, queue, degraded mode)\n- Baseline metrics for failure rates and latency\n\n**Related Patterns:**\n- **Retry Pattern** (PTN-APP-RTRY-010): Apply retries before circuit breaker evaluation\n- **Bulkhead Pattern** (PTN-APP-API-002): Combine for complete resource isolation\n- **Timeout Pattern**: Always combine circuit breaker with timeouts\n- **Fallback Pattern**: Essential companion for graceful degradation\n\n**Quick Start:**\n```csharp\n// .NET with Polly\nvar circuitBreaker = HttpPolicyExtensions\n    .HandleTransientHttpError()\n    .AdvancedCircuitBreakerAsync(\n        failureThreshold: 0.5,                    // Open at 50% failure rate\n        samplingDuration: TimeSpan.FromSeconds(60),\n        minimumThroughput: 10,\n        durationOfBreak: TimeSpan.FromSeconds(30));\n\nservices.AddHttpClient<IMyService>()\n    .AddPolicyHandler(circuitBreaker);\n```\n\n```java\n// Java with Resilience4j\n@CircuitBreaker(name = \"myService\", fallbackMethod = \"fallback\")\npublic CompletableFuture<Response> callService() {\n    return client.makeCall();\n}\n\nprivate CompletableFuture<Response> fallback(Throwable t) {\n    return CompletableFuture.completedFuture(getCachedResponse());\n}\n```\n\n**Healthcare Context Warning:**\nCircuit breaker failures in healthcare can impact patient safety (pharmacy POS, emergency eligibility checks). Always implement comprehensive fallback strategies and alert immediately on circuit opening. Test fallback mechanisms regularly to ensure PHI access controls are maintained even in degraded mode.\n\n---"
+  },
+  "coverage": {
+    "total_pages": 92,
+    "covered_pages": 92,
+    "sampled_pages": 92,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 92
+  }
+}

@@ -1,0 +1,2 @@
+﻿- Dispatch trigger runs as an in-process periodic tick (`Scheduling:TickSeconds`) until the platform scheduler trigger is integrated.
+- Work-item publishing uses an in-memory placeholder publisher until Event Backbone (SNS/SQS) wiring is added.

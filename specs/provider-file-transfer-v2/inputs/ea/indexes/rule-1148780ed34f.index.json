@@ -1,0 +1,47 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Scope",
+  "document_description": "Create or update a file-pattern-scoped Instruction — a Claude Code Rule (`.claude/rules/<name>.md`) paired with a GitHub Copilot file-pattern Instruction (`.github/instructions/<name>.instructions.md`). Idempotent: authors a new Rule if none matches $ARGUMENTS, or revises the existing one if $ARGUMENTS names/references one that already exists.",
+  "total_pages": 3,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 3,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Scope",
+          "node_id": "scope",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Workflow",
+          "node_id": "workflow",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "Create or update a file-pattern-scoped Instruction — a Claude Code Rule (`.claude/rules/<name>.md`) paired with a GitHub Copilot file-pattern Instruction (`.github/instructions/<name>.instructions.md`). Idempotent: authors a new Rule if none matches $ARGUMENTS, or revises the existing one if $ARGUMENTS names/references one that already exists.",
+    "2": "[.claude/commands/rule.md#scope]\n\n## Scope\n\n- Determine the concern and target glob pattern(s) from $ARGUMENTS. Test the pattern's specificity — it must match only the intended files.\n- Search `.claude/rules/<name>.md` for an existing Rule matching the concern.\n  - Found → Workflow step 3 (modify path).\n  - Not found → Workflow step 2 (create path).",
+    "3": "[.claude/commands/rule.md#workflow]\n\n## Workflow\n\n1. Apply `standards/technology/ai-development/STD-TEC-AI-005-file-pattern-instruction.md` throughout: single-concern principle, expressible as \"Rules for working with ___\" (MR-3); specific, non-catch-all glob patterns — `**/*` alone is prohibited (MR-4); frontmatter uses the vendor's activation field (`paths:` list for Claude, comma-separated `applyTo:` string for Copilot) plus `description` (≤ 200 chars); body under ~2,000 tokens, additive only — MUST NOT duplicate guidance already in the root instruction file (MR-5); no secrets, no security-bypass instructions (MR-6); Claude Rule and Copilot Instruction are semantically equivalent (MR-7); MUST NOT be used as a substitute for a Skill (multi-step judgment) or a Workflow (operational procedure).\n2. **Create path**: Write `.claude/rules/<name>.md` with `paths:` + `description` frontmatter and imperative behavioral directives, applying `.claude/skills/ai-architect/SKILL.md` step 9's File-Pattern Instruction judgment (specific glob, additive body, no smuggled multi-step judgment or tool orchestration). Create the paired `.github/instructions/<name>.instructions.md` with `applyTo:` + `description` frontmatter conveying the same behavioral intent. Go to step 4.\n3. **Modify path**: Open both files. Apply the requested changes with the same judgment and step 10's scope/impact discipline. Re-verify cross-vendor parity (MR-7.5) and re-test the glob pattern's specificity if it changed. Go to step 4.\n4. If the root-level instruction file(s) do not yet reference this Rule, note it as a recommended (not mandatory) follow-up per STD-TEC-AI-005 MR-8.4, and offer to invoke `/instruction` rather than editing it here.\n5. Read `.claude/skills/ai-convergence/SKILL.md` and run a convergence pass on the drafted/revised Rule pair before reporting completion."
+  },
+  "coverage": {
+    "total_pages": 3,
+    "covered_pages": 3,
+    "sampled_pages": 3,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 3
+  }
+}

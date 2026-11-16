@@ -1,0 +1,168 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "LeanIX Technology Stack Data",
+  "document_description": "This directory contains the automated exports from LeanIX for the enterprise technology stack.",
+  "total_pages": 16,
+  "tree": [
+    {
+      "title": "LeanIX Technology Stack Data",
+      "node_id": "leanix-technology-stack-data",
+      "start_index": 1,
+      "end_index": 16,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Files",
+          "node_id": "files",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Data Source",
+          "node_id": "data-source",
+          "start_index": 3,
+          "end_index": 4,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Key Relationships Extracted",
+              "node_id": "key-relationships-extracted",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Usage",
+          "node_id": "usage",
+          "start_index": 5,
+          "end_index": 6,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Query Examples",
+              "node_id": "query-examples",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Schema",
+          "node_id": "schema",
+          "start_index": 7,
+          "end_index": 14,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Core Fields",
+              "node_id": "core-fields",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Relationship Collections",
+              "node_id": "relationship-collections",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Contact Information",
+              "node_id": "contact-information",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Licensing Information",
+              "node_id": "licensing-information",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Lifecycle Dates",
+              "node_id": "lifecycle-dates",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Relationship Collections",
+              "node_id": "relationship-collections",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Root-Level Collections",
+              "node_id": "root-level-collections",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Updates",
+          "node_id": "updates",
+          "start_index": 15,
+          "end_index": 16,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Extraction Details",
+              "node_id": "extraction-details",
+              "start_index": 16,
+              "end_index": 16,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[resources/data/leanix/tech-stack/README.md#leanix-technology-stack-data]\n\n# LeanIX Technology Stack Data\n\nThis directory contains the automated exports from LeanIX for the enterprise technology stack.",
+    "2": "[resources/data/leanix/tech-stack/README.md#files]\n\n## Files\n\n- **tech-stack.json** - Complete technology inventory exported from LeanIX (1257 technologies)\n    - Includes hierarchical tech categories via TechnicalStack relationships\n    - Contains platforms, applications, and licensing information\n    - Provides aggregated collections for analysis\n- **schema.json** - JSON Schema for validating technology inventory data\n    - Enforces GUID patterns, email formats, and required fields\n    - Validates hierarchical tech_category arrays\n- **api-response-raw.json** - Raw LeanIX GraphQL API response (debugging only)",
+    "3": "[resources/data/leanix/tech-stack/README.md#data-source]\n\n## Data Source\n\nData is synchronized on-demand from LeanIX via the **GraphQL API** using the workflow:\n`.github/workflows/sync-leanix-tech-stack.yml`",
+    "4": "[resources/data/leanix/tech-stack/README.md#key-relationships-extracted]\n\n### Key Relationships Extracted\n\n- **ITComponent** → **relITComponentToTechnologyStack** → **TechnicalStack** (hierarchical tech categories)\n- **ITComponent** → **relITComponentToPlatform** → **Platform** (platform associations)\n- **ITComponent** → **relITComponentToApplication** → **Application** (application usage)\n- **ITComponent** → **relITComponentToProvider** → **Provider** (vendor information)\n\nThe TechnicalStack hierarchy provides rich categorization like:\n\n- `Platform → Platform / Data → Platform / Data / Database`\n- `Infrastructure → Infrastructure / Storage → Infrastructure / Storage / Backup & Archive`\n- `Workplace → Workplace / Communication & Collaboration → Workplace / Communication & Collaboration / Productivity`\n\nThe workflow supports both dev and prod LeanIX environments and can be triggered manually via workflow_dispatch.",
+    "5": "[resources/data/leanix/tech-stack/README.md#usage]\n\n## Usage\n\nThis data is consumed by:\n\n- **Aria AI/RAG Service** - For intelligent search, recommendations, and context-aware technology guidance\n    - Rich hierarchical categorization enables semantic technology discovery\n    - Platform and application relationships improve recommendation accuracy\n- **Standards Documentation** - Referenced in `/standards/technology/technology-stack/`\n    - Technology approval status and lifecycle information\n    - Preferred technology recommendations by subtype\n- **Architecture Decision Records** - Technology selection justifications\n    - Historical technology choices and rationale\n    - Vendor and licensing information for compliance\n- **Governance Dashboards** - Technology lifecycle and compliance tracking\n    - Aggregated statistics across categories, platforms, and tech categories\n    - License management and contact tracking",
+    "6": "[resources/data/leanix/tech-stack/README.md#query-examples]\n\n### Query Examples\n\n**Find all database technologies:**\n\n```javascript\ntechnologies.filter((t) => t.tech_categories.some((cat) => cat.includes('Database')));\n```\n\n**Group by tech category:**\n\n```javascript\ntech_categories['Platform / Data / Database']; // Returns count\n```\n\n**Find AWS technologies:**\n\n```javascript\ntechnologies.filter((t) => t.provider === 'Amazon.com / AWS');\n```",
+    "7": "[resources/data/leanix/tech-stack/README.md#schema]\n\n## Schema\n\nThe technology inventory follows a structured schema with required fields:",
+    "8": "[resources/data/leanix/tech-stack/README.md#core-fields]\n\n### Core Fields\n\n- `id` (GUID) - Unique identifier from LeanIX fact sheet\n- `name` - Technology display name\n- `description` - Technology description and purpose\n- `type` - LeanIX fact sheet type (e.g., ITComponent)\n- `subtype` - Technology subtype (Hardware, IaaS, PaaS, SaaS, Service, Software)\n- `tech_categories` - **Hierarchical technology categorization** from LeanIX TechnicalStack\n    - Array of full category paths: `[\"Platform / Data / Database\"]`\n    - Can have multiple categories if technology belongs to multiple hierarchies\n- `status` - Approval status (Contained, Evaluating, Not_Chosen, Procuring, Retired, Standard)\n- `preferred` - Boolean indicating enterprise-preferred technology\n- `provider` - Vendor or provider name\n- `release` - Version or release information",
+    "9": "[resources/data/leanix/tech-stack/README.md#relationship-collections]\n\n### Relationship Collections\n\n- `platforms` - Array of platform names this technology is associated with\n- `applications` - Array of applications using this technology",
+    "10": "[resources/data/leanix/tech-stack/README.md#contact-information]\n\n### Contact Information\n\n- `contacts` - Contact information object\n    - `owner_contact` - Technology owner or business contact\n    - `owner_contact_email` - Owner contact email address\n    - `tech_contact` - Technical contact person\n    - `tech_contact_email` - Technical contact email address\n    - `license_contact` - Team or individual responsible for licensing\n    - `license_contact_email` - License contact email address",
+    "11": "[resources/data/leanix/tech-stack/README.md#licensing-information]\n\n### Licensing Information\n\n- `licensing` - Licensing information object\n    - `required` - Boolean indicating if licensing is required\n    - `expiry_date` - License expiry date\n    - `renewal_cost` - Pricing model (Capex, Free, Opex, Per_instance, Per_user)",
+    "12": "[resources/data/leanix/tech-stack/README.md#lifecycle-dates]\n\n### Lifecycle Dates\n\n- `plan_date` - Date when technology planning phase started\n- `phase_in_date` - Date when technology phase-in started\n- `active_date` - Date when technology became active/approved for use\n- `phase_out_date` - Date when technology phase-out begins\n- `end_of_life_date` - Planned end-of-life/retirement date\n- `last_updated` - ISO 8601 timestamp of last update in LeanIX\n- `created_date` - ISO 8601 timestamp of when record was created",
+    "13": "[resources/data/leanix/tech-stack/README.md#relationship-collections]\n\n### Relationship Collections\n\n- `platforms` - Array of platform names this technology is associated with\n- `applications` - Array of applications using this technology",
+    "14": "[resources/data/leanix/tech-stack/README.md#root-level-collections]\n\n### Root-Level Collections\n\nThe export includes aggregated collections for analysis:\n\n- `categories` - Unique LeanIX categories with counts (7 total)\n- `tech_categories` - Unique hierarchical tech categories with counts (113 total)\n- `platforms` - Unique platforms with counts (8 total)\n- `applications` - Unique applications with counts (1087 total)\n\nSee [schema.json](./schema.json) for complete field definitions and validation rules.",
+    "15": "[resources/data/leanix/tech-stack/README.md#updates]\n\n## Updates\n\n- **Frequency**: On-demand (manual workflow trigger via GitHub Actions)\n- **Method**: Automated extraction via OAuth2-authenticated GraphQL queries\n- **Environments**: Supports both dev and prod LeanIX instances\n- **Validation**: All data validated against JSON Schema before commit\n- **Artifacts**: Raw API responses and processed data saved as workflow artifacts (30-day retention)\n- **Authentication**: Uses environment-specific secrets (LEANIX_API_TOKEN) and variables (LEANIX_API_URL)",
+    "16": "[resources/data/leanix/tech-stack/README.md#extraction-details]\n\n### Extraction Details\n\n- **Technologies**: 1257 total ITComponent fact sheets\n- **Categories**: 7 LeanIX categories (iaas, paas, saas, software, hardware)\n- **Tech Categories**: 113 hierarchical technology categories\n- **Platforms**: 8 unique platforms\n- **Applications**: 1087 unique applications\n- **Coverage**: 874 technologies (70%) have hierarchical tech_category data"
+  },
+  "coverage": {
+    "total_pages": 16,
+    "covered_pages": 16,
+    "sampled_pages": 16,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 16
+  }
+}

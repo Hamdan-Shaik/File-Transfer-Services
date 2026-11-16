@@ -1,0 +1,47 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Scope",
+  "document_description": "Create or update an AI coding assistant Skill in `.claude/skills/<name>/SKILL.md`, with its GitHub Copilot pointer at `.github/skills/<name>/SKILL.md`. Idempotent: authors a new Skill if none matches $ARGUMENTS, or revises the existing one if $ARGUMENTS names/references a Skill that already exists.",
+  "total_pages": 3,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 3,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Scope",
+          "node_id": "scope",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Workflow",
+          "node_id": "workflow",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "Create or update an AI coding assistant Skill in `.claude/skills/<name>/SKILL.md`, with its GitHub Copilot pointer at `.github/skills/<name>/SKILL.md`. Idempotent: authors a new Skill if none matches $ARGUMENTS, or revises the existing one if $ARGUMENTS names/references a Skill that already exists.",
+    "2": "[.claude/commands/skill.md#scope]\n\n## Scope\n\n- Determine the Skill name from $ARGUMENTS — kebab-case, a noun or role-noun per STD-TEC-AI-001's naming conventions (e.g., `terraform-security`, not `TerraformSecurityChecker`).\n- Search `.claude/skills/<name>/SKILL.md` for an existing Skill matching the name or purpose implied by $ARGUMENTS.\n  - Found → Workflow step 3 (modify path).\n  - Not found → Workflow step 2 (create path).",
+    "3": "[.claude/commands/skill.md#workflow]\n\n## Workflow\n\n1. Apply `standards/technology/ai-development/STD-TEC-AI-001-skill-authoring.md` throughout: single responsibility expressible in one sentence; kebab-case directory naming; frontmatter contains only `name` and `description` (≤ 300 chars, actionable \"Use when… to accomplish X\" phrasing); required structure in order (Frontmatter, Operating Instruction, Scope, Workflow, Guidelines); Workflow steps describe cognitive/reasoning process, never imperative tool invocations; Guidelines include at least three behavioral constraints, an ownership declaration, and a delegation directive; no vendor-specific frontmatter fields; no secrets.\n2. **Create path**: Create the directory `.claude/skills/<name>/`. Write `SKILL.md` with the frontmatter, a single-sentence operating instruction, a Scope section with `$ARGUMENTS` routing and boundaries (plus a Skill Collaboration subsection if scope overlaps another Skill), a Workflow section with numbered cognitive steps, and a Guidelines section — applying `.claude/skills/ai-architect/SKILL.md` step 9's Skill judgment (scope expressible in one sentence; Workflow steps are reasoning, not tool calls; ownership and delegation both present). Create the GitHub Copilot pointer at `.github/skills/<name>/SKILL.md` per `patterns/technology/ai-development/PTN-TEC-AI-003-cross-tool-construct-synchronization-pattern.md` — it references the canonical `.claude/skills/<name>/SKILL.md` file and does not duplicate its content. Go to step 4.\n3. **Modify path**: Open the existing `SKILL.md` (and its pointer). Apply the requested changes, applying the same step 9 Skill judgment and its maintenance rule — a revision that adds tool-invocation steps has drifted into Workflow territory; redirect that content to a Workflow instead of accepting it here. Apply step 10's scope and impact discipline: trace every change to the specific request or named finding, do not touch unflagged sections, and search the repo for Agents/Workflows that reference this Skill by canonical path before narrowing its scope. Update both the canonical file and the pointer together — a change to only one half of the pair is a compliance failure (STD-TEC-AI-001 MR-1). Go to step 4.\n4. Read `.claude/skills/ai-convergence/SKILL.md` and run a convergence pass on the drafted/revised Skill and its pointer before reporting completion. Report whether the Skill should be added to any Agent's Skill composition or an Instruction file's Skill Registry, without making that edit yourself — that belongs to `/agent` or `/instruction` respectively.\n\nSee `strategy/guidance/technology/implementation/GUID-TECH-IMPL-009-skill-authoring-guidance.md` for worked examples and anti-patterns, and `strategy/guidance/technology/implementation/GUID-TECH-IMPL-011-ai-construct-authoring-quick-start.md` for the quick-start decision tree."
+  },
+  "coverage": {
+    "total_pages": 3,
+    "covered_pages": 3,
+    "sampled_pages": 3,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 3
+  }
+}

@@ -1,0 +1,76 @@
+door:
+  id: file-transfer-svc-service-invalidate-ftp-server-3
+  kind: wcf
+  name: InvalidateFtpServer
+  class: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvcCore\FileTransferSvcService.cs
+  line: 61
+  entry:
+  - HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.InvalidateFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.InvalidateFtpServerCommand)
+procedures: []
+tables:
+- name: orm:FTP_SERVER
+  access:
+  - reads
+shared_uses: []
+external_uses:
+- package: hpp.core.bas.cqrs
+  version: 30.0.0
+  method: HPP.Core.BAS.CQRS.Base.CommandServiceBase.TryRoute(HPP.Core.BAS.CQRS.Base.Command)
+  calls:
+  - at: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvcCore\FileTransferSvcService.cs:71
+    arguments:
+    - name: command
+      expression: command
+polymorphic_hooks: []
+stops: []
+calls:
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.BuildEvent(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.InvalidateFtpServerCommand)
+  via: READS_FROM
+  to: orm:FTP_SERVER
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.InvalidateFtpServerCommand)
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.BuildEvent(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.InvalidateFtpServerCommand)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.InvalidateFtpServerCommand)
+  via: READS_FROM
+  to: orm:FTP_SERVER
+- from: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.BuildEvent(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.InvalidateFtpServerCommand)
+  via: READS_FROM
+  to: orm:FTP_SERVER
+- from: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.InvalidateFtpServerCommand)
+  via: INVOKES
+  to: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.BuildEvent(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.InvalidateFtpServerCommand)
+- from: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.InvalidateFtpServerCommand)
+  via: READS_FROM
+  to: orm:FTP_SERVER
+- from: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.InvalidateFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.InvalidateFtpServerCommand)
+  via: DISPATCHES_TO
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.InvalidateFtpServerCommand)
+- from: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.InvalidateFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.InvalidateFtpServerCommand)
+  via: DISPATCHES_TO
+  to: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.InvalidateFtpServerCommand)
+- from: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.InvalidateFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.InvalidateFtpServerCommand)
+  via: INVOKES
+  to: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.TryRouteCommand(HPP.Core.BAS.CQRS.Base.Command)
+- from: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.InvalidateFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.InvalidateFtpServerCommand)
+  via: READS_FROM
+  to: orm:FTP_SERVER
+methods:
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.BuildEvent(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.InvalidateFtpServerCommand)
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business\CommandHandlers\FtpServerCommandHandler.cs
+  line: 83
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.InvalidateFtpServerCommand)
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business\CommandHandlers\FtpServerCommandHandler.cs
+  line: 56
+- name: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.BuildEvent(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.InvalidateFtpServerCommand)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvc.Business\CommandHandlers\FtpServerCommandHandler.cs
+  line: 85
+- name: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.InvalidateFtpServerCommand)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvc.Business\CommandHandlers\FtpServerCommandHandler.cs
+  line: 58
+- name: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.InvalidateFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.InvalidateFtpServerCommand)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvcCore\FileTransferSvcService.cs
+  line: 61
+- name: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.TryRouteCommand(HPP.Core.BAS.CQRS.Base.Command)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvcCore\FileTransferSvcService.cs
+  line: 69

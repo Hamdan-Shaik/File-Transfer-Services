@@ -1,0 +1,177 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Zero Trust Authentication Reference Architecture",
+  "document_description": "guidance_id: 'GUID-SEC-IAM-ZTA-AUTH-RAD-2.3.02'",
+  "total_pages": 17,
+  "tree": [
+    {
+      "title": "Zero Trust Authentication Reference Architecture",
+      "node_id": "zero-trust-authentication-reference-architecture",
+      "start_index": 1,
+      "end_index": 17,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Architecture Guidance Metadata",
+          "node_id": "architecture-guidance-metadata",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Purpose and Scope",
+          "node_id": "purpose-and-scope",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Platform Engineering Scope",
+          "node_id": "platform-engineering-scope",
+          "start_index": 4,
+          "end_index": 6,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Capability Domain Boundary",
+              "node_id": "capability-domain-boundary",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Control Responsibility Matrix",
+              "node_id": "control-responsibility-matrix",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Logical Architecture",
+          "node_id": "logical-architecture",
+          "start_index": 7,
+          "end_index": 11,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Architecture Diagram",
+              "node_id": "architecture-diagram",
+              "start_index": 8,
+              "end_index": 10,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Flow 1: Internal Workforce Identity — SSO with Risk-Adaptive Step-Up",
+                  "node_id": "flow-1-internal-workforce-identity--sso-with-risk-adaptive-step-up",
+                  "start_index": 9,
+                  "end_index": 9,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Flow 2: External / Partner User Identity — Cross-Domain Federation with Enterprise Step-Up",
+                  "node_id": "flow-2-external--partner-user-identity--cross-domain-federation-with-enterprise-step-up",
+                  "start_index": 10,
+                  "end_index": 10,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Logical Components",
+              "node_id": "logical-components",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Architecture Patterns",
+          "node_id": "architecture-patterns",
+          "start_index": 12,
+          "end_index": 15,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Pattern 1: Risk-Adaptive Step-Up Authentication",
+              "node_id": "pattern-1-risk-adaptive-step-up-authentication",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Pattern 2: External Partner Cross-Domain Federation",
+              "node_id": "pattern-2-external-partner-cross-domain-federation",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Pattern 3: Single Logout Propagation",
+              "node_id": "pattern-3-single-logout-propagation",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Deployment Context Considerations",
+          "node_id": "deployment-context-considerations",
+          "start_index": 16,
+          "end_index": 16,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Constraints and Exceptions",
+          "node_id": "constraints-and-exceptions",
+          "start_index": 17,
+          "end_index": 17,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[strategy/guidance/security/Identity/ref-arch/GUID-SEC-IAM-ZTA-AUTH-RAD-2.3.02.md#zero-trust-authentication-reference-architecture]\n\n# Zero Trust Authentication Reference Architecture\n\n**← Back to [EAP Home](../../../../../README.md) • [Strategy](../../../../README.md) • [Guidance](../../../README.md) • [Identity](../README.md)**\n\n---",
+    "2": "[strategy/guidance/security/Identity/ref-arch/GUID-SEC-IAM-ZTA-AUTH-RAD-2.3.02.md#architecture-guidance-metadata]\n\n## Architecture Guidance Metadata\n\n```yaml\nguidance_id: 'GUID-SEC-IAM-ZTA-AUTH-RAD-2.3.02'\nguidance_name: 'Zero Trust Authentication Reference Architecture'\nguidance_type: 'reference-architecture-document'\nrad_type: 'component-cluster'\npaired_abb: 'GUID-SEC-IAM-IDENTITY-BROKER-2.2.02'\nparent_abb: 'GUID-SEC-IAM-REF-2.2.01'\nparent_vision: 'GUID-SEC-IAM-VISION-2.1.01'\nadm_phase: 'Phase C-D'\ncategory: 'security'\nversion: '0.1.0'\nstatus: 'draft'\napplicability: 'enterprise'\ntags: ['security', 'identity', 'authentication', 'zero-trust', 'federation', 'sso', 'mfa', 'reference-architecture', 'phase-c', 'phase-d']\nauthor: 'Jesse Adams'\n```\n\n---\n\n> **Informative Content Notice**: All technology references are **illustrative only**. The control patterns reflect normative requirements from the paired ABBs and represent required design outcomes.\n\n---",
+    "3": "[strategy/guidance/security/Identity/ref-arch/GUID-SEC-IAM-ZTA-AUTH-RAD-2.3.02.md#purpose-and-scope]\n\n## Purpose and Scope\n\nThis RAD provides illustrative patterns for the authentication and federation capability cluster — showing how the Identity Broker, SSO, and MFA Component ABBs compose to deliver Zero Trust continuous verification.\n\n**Paired ABBs**:\n- [GUID-SEC-IAM-IDENTITY-BROKER-2.2.02](../GUID-SEC-IAM-IDENTITY-BROKER-2.2.02.md) — Identity Broker and Federation\n- [GUID-SEC-IAM-SSO-2.2.03](../GUID-SEC-IAM-SSO-2.2.03.md) — Single Sign-On\n- [GUID-SEC-IAM-MFA-2.2.04](../GUID-SEC-IAM-MFA-2.2.04.md) — Multifactor Authentication\n\n**In Scope**: Federation topology, session lifecycle, step-up authentication, phishing-resistant authenticator integration, cross-domain federation, session revocation\n\n**Out of Scope**: Identity proofing (see GUID-SEC-IAM-PROOFING-RAD-2.3.04), PAM workflows (see GUID-SEC-IAM-PAM-RAD-2.3.03)\n\n---",
+    "4": "[strategy/guidance/security/Identity/ref-arch/GUID-SEC-IAM-ZTA-AUTH-RAD-2.3.02.md#platform-engineering-scope]\n\n## Platform Engineering Scope",
+    "5": "[strategy/guidance/security/Identity/ref-arch/GUID-SEC-IAM-ZTA-AUTH-RAD-2.3.02.md#capability-domain-boundary]\n\n### Capability Domain Boundary\n\nThis cluster's scope begins at the user's initial authentication request and ends at the enterprise session token issued to the consuming application. The application is responsible for validating the token and enforcing application-level authorization; this RAD does not govern post-issuance authorization.",
+    "6": "[strategy/guidance/security/Identity/ref-arch/GUID-SEC-IAM-ZTA-AUTH-RAD-2.3.02.md#control-responsibility-matrix]\n\n### Control Responsibility Matrix\n\n| Control Area | Identity Platform | Application Teams | Security Operations | Security Architecture |\n|---|---|---|---|---|\n| SSO session policy | **Owns** | Configures (per policy) | Monitors | Governs |\n| MFA enrollment and factors | **Owns** | Informs | Reviews | Governs |\n| Federation trust configuration | **Owns** | Requests | Reviews | **Co-governs** |\n| Step-up authentication triggers | **Co-owns** | Configures (app-side) | Monitors | Governs |\n| Session revocation | **Owns** | Receives revocation signal | **Co-owns** | — |\n\n---",
+    "7": "[strategy/guidance/security/Identity/ref-arch/GUID-SEC-IAM-ZTA-AUTH-RAD-2.3.02.md#logical-architecture]\n\n## Logical Architecture",
+    "8": "[strategy/guidance/security/Identity/ref-arch/GUID-SEC-IAM-ZTA-AUTH-RAD-2.3.02.md#architecture-diagram]\n\n### Architecture Diagram",
+    "9": "[strategy/guidance/security/Identity/ref-arch/GUID-SEC-IAM-ZTA-AUTH-RAD-2.3.02.md#flow-1-internal-workforce-identity--sso-with-risk-adaptive-step-up]\n\n#### Flow 1: Internal Workforce Identity — SSO with Risk-Adaptive Step-Up\n\n```mermaid\nsequenceDiagram\n    autonumber\n    actor User as Workforce User\n    participant App as Application\n    participant IdP as Enterprise IdP\n    participant MFA as MFA Service\n\n    User->>App: Request access\n    App-->>IdP: Redirect — authentication request (OIDC/SAML)\n    Note over IdP: Evaluate session, AAL, risk context\n    alt No valid session or step-up required\n        IdP->>MFA: Challenge user (AAL-required factor)\n        MFA-->>IdP: Authenticator verified (AAL met)\n    end\n    Note over IdP: Issue session token scoped to application\n    IdP-->>App: Redirect with access token / assertion\n    App-->>User: Access granted\n```",
+    "10": "[strategy/guidance/security/Identity/ref-arch/GUID-SEC-IAM-ZTA-AUTH-RAD-2.3.02.md#flow-2-external--partner-user-identity--cross-domain-federation-with-enterprise-step-up]\n\n#### Flow 2: External / Partner User Identity — Cross-Domain Federation with Enterprise Step-Up\n\n```mermaid\nsequenceDiagram\n    autonumber\n    actor ExtUser as \"External / Partner User\"\n    participant App as Application\n    participant Broker as Identity Broker\n    participant ExtIdP as \"External IdP (Home)\"\n    participant IdP as Enterprise IdP\n    participant MFA as MFA Service\n\n    ExtUser->>App: Request access\n    App-->>Broker: Redirect — authentication request (OIDC/SAML)\n    Note over Broker: Select home IdP and initiate outbound federation\n    Broker-->>ExtUser: Redirect to External IdP\n    ExtUser->>ExtIdP: Authenticate at home IdP\n    ExtIdP-->>Broker: Return signed assertion (ACS)\n    Note over Broker: Validate signature, audience, and federation agreement then normalize attributes\n    Broker-->>IdP: Forward normalized identity assertion\n    Note over IdP: Evaluate assertion AAL against enterprise policy and apply risk context\n    alt Enterprise step-up required\n        IdP->>MFA: Challenge for enterprise-controlled factor\n        MFA-->>IdP: Authenticator verified (AAL met)\n    end\n    IdP-->>App: Enterprise session token (scoped to partner entitlements)\n    App-->>ExtUser: Access granted\n```",
+    "11": "[strategy/guidance/security/Identity/ref-arch/GUID-SEC-IAM-ZTA-AUTH-RAD-2.3.02.md#logical-components]\n\n### Logical Components\n\n| Component | ABB Reference | Architectural Role |\n|---|---|---|\n| Enterprise IdP | GUID-SEC-IAM-REF-2.2.01 | Central session authority; evaluates AAL requirements and issues scoped assertions |\n| Identity Broker | GUID-SEC-IAM-IDENTITY-BROKER-2.2.02 | Inbound/outbound federation protocol mediation; attribute normalization |\n| MFA Service | GUID-SEC-IAM-MFA-2.2.04 | AAL-aligned authenticator challenge and verification; step-up orchestration |\n| SSO Session Store | GUID-SEC-IAM-SSO-2.2.03 | Stateful session lifecycle; single logout coordination; session revocation |\n\n---",
+    "12": "[strategy/guidance/security/Identity/ref-arch/GUID-SEC-IAM-ZTA-AUTH-RAD-2.3.02.md#architecture-patterns]\n\n## Architecture Patterns",
+    "13": "[strategy/guidance/security/Identity/ref-arch/GUID-SEC-IAM-ZTA-AUTH-RAD-2.3.02.md#pattern-1-risk-adaptive-step-up-authentication]\n\n### Pattern 1: Risk-Adaptive Step-Up Authentication\n\n**When to use**: User holds an active SSO session at AAL1 and requests access to a resource requiring AAL2 or above\n\n**Logical flow**:\n1. Application signals its AAL requirement in the authentication request\n2. IdP evaluates current session AAL against the requirement\n3. If the session AAL is insufficient, IdP invokes the MFA service for a step-up challenge at the required level\n4. On successful challenge, session AAL is elevated for the duration of the access\n5. Session AAL reverts to baseline at configurable timeout or logout\n\n**Illustrative technology class**: Identity provider with continuous access evaluation (CAE) and risk-signal integration\n\n---",
+    "14": "[strategy/guidance/security/Identity/ref-arch/GUID-SEC-IAM-ZTA-AUTH-RAD-2.3.02.md#pattern-2-external-partner-cross-domain-federation]\n\n### Pattern 2: External Partner Cross-Domain Federation\n\n**When to use**: Government agency partners, subcontractors, or healthcare organizations with their own IdP that require access to enterprise services\n\n**Logical flow**:\n1. Partner user authenticates against their home IdP (SAML 2.0 or OIDC)\n2. Home IdP issues an assertion to the enterprise Identity Broker\n3. Broker validates signature, audience, and federation agreement; normalizes attribute claims\n4. Broker forwards a translated, attribute-normalized assertion to the enterprise IdP\n5. Enterprise IdP applies local authorization policy, issues a session scoped to the partner's entitlements\n\n**Illustrative technology class**: Identity broker with bilateral SAML 2.0 / OIDC federation and attribute mapping engine\n\n---",
+    "15": "[strategy/guidance/security/Identity/ref-arch/GUID-SEC-IAM-ZTA-AUTH-RAD-2.3.02.md#pattern-3-single-logout-propagation]\n\n### Pattern 3: Single Logout Propagation\n\n**When to use**: User-initiated logout, security-initiated session revocation, or administrative session termination\n\n**Logical flow**:\n1. Logout event is triggered (user-initiated, timeout, or administrative revocation)\n2. IdP invalidates the enterprise session\n3. IdP propagates logout signal to all applications with active sessions via SLO endpoint (SAML Single Logout or OIDC back-channel logout)\n4. Applications receiving the SLO signal invalidate their local session state\n5. Audit event recorded for logout completeness and timing\n\n---",
+    "16": "[strategy/guidance/security/Identity/ref-arch/GUID-SEC-IAM-ZTA-AUTH-RAD-2.3.02.md#deployment-context-considerations]\n\n## Deployment Context Considerations\n\n| Context | Architectural Consideration |\n|---|---|\n| Cloud-hosted applications | Applications SHOULD use OIDC for session integration; SAML 2.0 is supported for legacy applications that cannot adopt OIDC |\n| On-premises applications | Legacy authentication protocols (Kerberos, LDAP bind) must be mediated through the identity broker; direct application-to-directory authentication is prohibited for new integrations |\n| Mobile and native applications | PKCE-protected OIDC authorization code flow SHALL be used; implicit flow is prohibited |\n| Phishing-resistant authenticators | Passkeys (FIDO2/WebAuthn) and hardware security keys are the illustrative technology class for AAL3-equivalent patterns; SMS-based OTP is not considered phishing-resistant |\n\n---",
+    "17": "[strategy/guidance/security/Identity/ref-arch/GUID-SEC-IAM-ZTA-AUTH-RAD-2.3.02.md#constraints-and-exceptions]\n\n## Constraints and Exceptions\n\n- Session AAL elevation does not retroactively upgrade the trust level of prior actions taken in the lower-AAL session\n- Federation trust agreements with external partners require governance approval before technical configuration; technical federation configuration without a current agreement is prohibited\n- Applications that cannot support single logout must document this gap and implement compensating controls (short session lifetimes, forced re-authentication)\n\n---"
+  },
+  "coverage": {
+    "total_pages": 17,
+    "covered_pages": 17,
+    "sampled_pages": 17,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 17
+  }
+}

@@ -1,0 +1,1681 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "fxfer-service",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/v1/file-transfers/search": {
+      "post": {
+        "tags": [
+          "FileTransfersQueries"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FxferService.Api.Queries.Models.FileTransferSearch"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FxferService.Api.Queries.Models.FileTransferSearch"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FxferService.Api.Queries.Models.FileTransferSearch"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FxferService.Api.Queries.Models.PagedResult`1[[FxferService.Api.Queries.Models.TrackedFile, FxferService.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FxferService.Api.Queries.Models.PagedResult`1[[FxferService.Api.Queries.Models.TrackedFile, FxferService.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FxferService.Api.Queries.Models.PagedResult`1[[FxferService.Api.Queries.Models.TrackedFile, FxferService.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/ftp-servers": {
+      "post": {
+        "tags": [
+          "FtpServersCommands"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FxferService.Api.Commands.Models.FtpServerUpsert"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FxferService.Api.Commands.Models.FtpServerUpsert"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FxferService.Api.Commands.Models.FtpServerUpsert"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FxferService.Api.Commands.Models.FtpServerIdResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FxferService.Api.Commands.Models.FtpServerIdResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FxferService.Api.Commands.Models.FtpServerIdResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "FtpServersQueries"
+        ],
+        "parameters": [
+          {
+            "name": "isActive",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "description",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortDir",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "includePassword",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FxferService.Api.Queries.Models.PagedResult`1[[FxferService.Api.Commands.Models.FtpServer, FxferService.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FxferService.Api.Queries.Models.PagedResult`1[[FxferService.Api.Commands.Models.FtpServer, FxferService.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FxferService.Api.Queries.Models.PagedResult`1[[FxferService.Api.Commands.Models.FtpServer, FxferService.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/ftp-servers/{ftpServerId}": {
+      "put": {
+        "tags": [
+          "FtpServersCommands"
+        ],
+        "parameters": [
+          {
+            "name": "ftpServerId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FxferService.Api.Commands.Models.FtpServerUpsert"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FxferService.Api.Commands.Models.FtpServerUpsert"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FxferService.Api.Commands.Models.FtpServerUpsert"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FxferService.Api.Commands.Models.FtpServerStateResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FxferService.Api.Commands.Models.FtpServerStateResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FxferService.Api.Commands.Models.FtpServerStateResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "FtpServersCommands"
+        ],
+        "parameters": [
+          {
+            "name": "ftpServerId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FxferService.Api.Commands.Models.FtpServerStateResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FxferService.Api.Commands.Models.FtpServerStateResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FxferService.Api.Commands.Models.FtpServerStateResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/inbound-targets/search": {
+      "get": {
+        "tags": [
+          "InboundTargetsQueries"
+        ],
+        "parameters": [
+          {
+            "name": "contractName",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "externalFileDefinitionId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FxferService.Api.Queries.Models.InboundTarget"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FxferService.Api.Queries.Models.InboundTarget"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FxferService.Api.Queries.Models.InboundTarget"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/integration-files/{integrationFileId}": {
+      "put": {
+        "tags": [
+          "IntegrationFilesCommands"
+        ],
+        "parameters": [
+          {
+            "name": "integrationFileId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FxferService.Api.Commands.Models.IntegrationFileUpdate"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FxferService.Api.Commands.Models.IntegrationFileUpdate"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FxferService.Api.Commands.Models.IntegrationFileUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FxferService.Api.Commands.Models.IntegrationFileIdResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FxferService.Api.Commands.Models.IntegrationFileIdResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FxferService.Api.Commands.Models.IntegrationFileIdResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/integration-files": {
+      "get": {
+        "tags": [
+          "IntegrationFilesQueries"
+        ],
+        "parameters": [
+          {
+            "name": "integrationFileId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "fileNameContains",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FxferService.Api.Queries.Models.PagedResult`1[[FxferService.Api.Commands.Models.IntegrationFile, FxferService.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FxferService.Api.Queries.Models.PagedResult`1[[FxferService.Api.Commands.Models.IntegrationFile, FxferService.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FxferService.Api.Queries.Models.PagedResult`1[[FxferService.Api.Commands.Models.IntegrationFile, FxferService.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/transfer-configurations": {
+      "post": {
+        "tags": [
+          "TransferConfigurationsCommands"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FxferService.Api.Commands.Models.TransferConfigurationUpsert"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FxferService.Api.Commands.Models.TransferConfigurationUpsert"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FxferService.Api.Commands.Models.TransferConfigurationUpsert"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FxferService.Api.Commands.Models.TransferConfigurationIdResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FxferService.Api.Commands.Models.TransferConfigurationIdResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FxferService.Api.Commands.Models.TransferConfigurationIdResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "TransferConfigurationsQueries"
+        ],
+        "parameters": [
+          {
+            "name": "isActive",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "configNumber",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "nameContains",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ownerNameContains",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "protocolCode",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortDir",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FxferService.Api.Queries.Models.PagedResult`1[[FxferService.Api.Commands.Models.TransferConfigurationSummary, FxferService.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FxferService.Api.Queries.Models.PagedResult`1[[FxferService.Api.Commands.Models.TransferConfigurationSummary, FxferService.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FxferService.Api.Queries.Models.PagedResult`1[[FxferService.Api.Commands.Models.TransferConfigurationSummary, FxferService.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/transfer-configurations/{transferConfigurationId}": {
+      "delete": {
+        "tags": [
+          "TransferConfigurationsCommands"
+        ],
+        "parameters": [
+          {
+            "name": "transferConfigurationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FxferService.Api.Commands.Models.TransferConfigurationStateResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FxferService.Api.Commands.Models.TransferConfigurationStateResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FxferService.Api.Commands.Models.TransferConfigurationStateResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "TransferConfigurationsQueries"
+        ],
+        "parameters": [
+          {
+            "name": "transferConfigurationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FxferService.Api.Commands.Models.TransferConfiguration"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FxferService.Api.Commands.Models.TransferConfiguration"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FxferService.Api.Commands.Models.TransferConfiguration"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "FxferService.Api.Commands.Models.Destination": {
+        "type": "object",
+        "properties": {
+          "destinationId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
+          },
+          "protocolCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "overwriteAtDestination": {
+            "type": "boolean"
+          },
+          "compressAtDestination": {
+            "type": "boolean"
+          },
+          "renameAtDestination": {
+            "type": "boolean"
+          },
+          "destinationIsArchive": {
+            "type": "boolean"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "ftpServerId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "renamePattern": {
+            "type": "string",
+            "nullable": true
+          },
+          "contact": {
+            "$ref": "#/components/schemas/FxferService.Api.Commands.Models.DestinationContact"
+          },
+          "encryption": {
+            "$ref": "#/components/schemas/FxferService.Api.Commands.Models.DestinationEncryption"
+          },
+          "externalFileDefinitionId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "destinationType": {
+            "type": "string",
+            "nullable": true
+          },
+          "contractName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FxferService.Api.Commands.Models.DestinationContact": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FxferService.Api.Commands.Models.DestinationEncryption": {
+        "type": "object",
+        "properties": {
+          "cdeEncryption": {
+            "type": "string",
+            "nullable": true
+          },
+          "publicKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "privateKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "privateKeyPassword": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FxferService.Api.Commands.Models.DestinationUpsert": {
+        "type": "object",
+        "properties": {
+          "destinationId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
+          },
+          "protocolCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "overwriteAtDestination": {
+            "type": "boolean"
+          },
+          "compressAtDestination": {
+            "type": "boolean"
+          },
+          "renameAtDestination": {
+            "type": "boolean"
+          },
+          "destinationIsArchive": {
+            "type": "boolean"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "ftpServerId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "renamePattern": {
+            "type": "string",
+            "nullable": true
+          },
+          "contact": {
+            "$ref": "#/components/schemas/FxferService.Api.Commands.Models.DestinationContact"
+          },
+          "encryption": {
+            "$ref": "#/components/schemas/FxferService.Api.Commands.Models.DestinationEncryption"
+          },
+          "externalFileDefinitionId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "destinationType": {
+            "type": "string",
+            "nullable": true
+          },
+          "contractName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FxferService.Api.Commands.Models.FtpServer": {
+        "type": "object",
+        "properties": {
+          "ftpServerId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "ipAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "transferMode": {
+            "type": "string",
+            "nullable": true
+          },
+          "user": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "port": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "proxyAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "proxyPort": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "sshAuthentication": {
+            "type": "boolean"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastModifiedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FxferService.Api.Commands.Models.FtpServerIdResponse": {
+        "type": "object",
+        "properties": {
+          "ftpServerId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FxferService.Api.Commands.Models.FtpServerStateResponse": {
+        "type": "object",
+        "properties": {
+          "ftpServerId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "isActive": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FxferService.Api.Commands.Models.FtpServerUpsert": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "ipAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "transferMode": {
+            "type": "string",
+            "nullable": true
+          },
+          "user": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "port": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "proxyAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "proxyPort": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "sshAuthentication": {
+            "type": "boolean"
+          },
+          "isActive": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FxferService.Api.Commands.Models.IntegrationFile": {
+        "type": "object",
+        "properties": {
+          "integrationFileId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "groupId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "configNumber": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "fileName": {
+            "type": "string",
+            "nullable": true
+          },
+          "outboundMetadataDefinitionId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "isProcessed": {
+            "type": "boolean"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastModifiedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FxferService.Api.Commands.Models.IntegrationFileIdResponse": {
+        "type": "object",
+        "properties": {
+          "integrationFileId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FxferService.Api.Commands.Models.IntegrationFileUpdate": {
+        "type": "object",
+        "properties": {
+          "configNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isActive": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FxferService.Api.Commands.Models.OwnerInfo": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "moduleId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FxferService.Api.Commands.Models.ScheduleInfo": {
+        "type": "object",
+        "properties": {
+          "runOnMonday": {
+            "type": "boolean"
+          },
+          "runOnTuesday": {
+            "type": "boolean"
+          },
+          "runOnWednesday": {
+            "type": "boolean"
+          },
+          "runOnThursday": {
+            "type": "boolean"
+          },
+          "runOnFriday": {
+            "type": "boolean"
+          },
+          "runOnSaturday": {
+            "type": "boolean"
+          },
+          "runOnSunday": {
+            "type": "boolean"
+          },
+          "runOnFirstDayOfMonth": {
+            "type": "boolean"
+          },
+          "runOnLastDayOfMonth": {
+            "type": "boolean"
+          },
+          "runOnThisDayOfMonth": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "startTime24hhmm": {
+            "type": "string",
+            "nullable": true
+          },
+          "endTime24hhmm": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FxferService.Api.Commands.Models.TransferConfiguration": {
+        "type": "object",
+        "properties": {
+          "transferConfigurationId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "configNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "protocolCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
+          },
+          "fileMask": {
+            "type": "string",
+            "nullable": true
+          },
+          "ftpServerId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "sendNotifications": {
+            "type": "boolean"
+          },
+          "owner": {
+            "$ref": "#/components/schemas/FxferService.Api.Commands.Models.OwnerInfo"
+          },
+          "schedule": {
+            "$ref": "#/components/schemas/FxferService.Api.Commands.Models.ScheduleInfo"
+          },
+          "fileDirection": {
+            "type": "string",
+            "nullable": true
+          },
+          "tradingPartner": {
+            "type": "string",
+            "nullable": true
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "isSuspended": {
+            "type": "boolean"
+          },
+          "suspendedChangedAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "destinations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FxferService.Api.Commands.Models.Destination"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FxferService.Api.Commands.Models.TransferConfigurationIdResponse": {
+        "type": "object",
+        "properties": {
+          "transferConfigurationId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FxferService.Api.Commands.Models.TransferConfigurationStateResponse": {
+        "type": "object",
+        "properties": {
+          "transferConfigurationId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "isActive": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FxferService.Api.Commands.Models.TransferConfigurationSummary": {
+        "type": "object",
+        "properties": {
+          "transferConfigurationId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "configNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "protocolCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
+          },
+          "fileMask": {
+            "type": "string",
+            "nullable": true
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "isSuspended": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FxferService.Api.Commands.Models.TransferConfigurationUpsert": {
+        "type": "object",
+        "properties": {
+          "transferConfigurationId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "configNumber": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "protocolCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
+          },
+          "fileMask": {
+            "type": "string",
+            "nullable": true
+          },
+          "ftpServerId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "sendNotifications": {
+            "type": "boolean"
+          },
+          "owner": {
+            "$ref": "#/components/schemas/FxferService.Api.Commands.Models.OwnerInfo"
+          },
+          "schedule": {
+            "$ref": "#/components/schemas/FxferService.Api.Commands.Models.ScheduleInfo"
+          },
+          "fileDirection": {
+            "type": "string",
+            "nullable": true
+          },
+          "tradingPartner": {
+            "type": "string",
+            "nullable": true
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "isSuspended": {
+            "type": "boolean"
+          },
+          "suspendedChangedAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "destinations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FxferService.Api.Commands.Models.DestinationUpsert"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FxferService.Api.Queries.Models.FileTransferSearch": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "orderBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "orderDir": {
+            "type": "string",
+            "nullable": true
+          },
+          "filters": {
+            "$ref": "#/components/schemas/FxferService.Api.Queries.Models.FileTransferSearchFilters"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FxferService.Api.Queries.Models.FileTransferSearchFilters": {
+        "type": "object",
+        "properties": {
+          "fileId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "fileNameContains": {
+            "type": "string",
+            "nullable": true
+          },
+          "fileStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "fileDirection": {
+            "type": "string",
+            "nullable": true
+          },
+          "transferMethod": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdFrom": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "createdTo": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "fileSizeMin": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "fileSizeMax": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "tradingPartner": {
+            "type": "string",
+            "nullable": true
+          },
+          "sourceLocationId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FxferService.Api.Queries.Models.InboundTarget": {
+        "type": "object",
+        "properties": {
+          "inboundTargetId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "externalFileDefinitionId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "importJobName": {
+            "type": "string",
+            "nullable": true
+          },
+          "contractName": {
+            "type": "string",
+            "nullable": true
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastModifiedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FxferService.Api.Queries.Models.PagedResult`1[[FxferService.Api.Commands.Models.FtpServer, FxferService.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FxferService.Api.Commands.Models.FtpServer"
+            },
+            "nullable": true
+          },
+          "rowCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "currentPage": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FxferService.Api.Queries.Models.PagedResult`1[[FxferService.Api.Commands.Models.IntegrationFile, FxferService.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FxferService.Api.Commands.Models.IntegrationFile"
+            },
+            "nullable": true
+          },
+          "rowCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "currentPage": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FxferService.Api.Queries.Models.PagedResult`1[[FxferService.Api.Commands.Models.TransferConfigurationSummary, FxferService.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FxferService.Api.Commands.Models.TransferConfigurationSummary"
+            },
+            "nullable": true
+          },
+          "rowCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "currentPage": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FxferService.Api.Queries.Models.PagedResult`1[[FxferService.Api.Queries.Models.TrackedFile, FxferService.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FxferService.Api.Queries.Models.TrackedFile"
+            },
+            "nullable": true
+          },
+          "rowCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "currentPage": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FxferService.Api.Queries.Models.TrackedFile": {
+        "type": "object",
+        "properties": {
+          "fileId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "fileName": {
+            "type": "string",
+            "nullable": true
+          },
+          "fileStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "fileDirection": {
+            "type": "string",
+            "nullable": true
+          },
+          "fileTransportType": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fileSize": {
+            "type": "number",
+            "format": "double"
+          },
+          "tradingPartner": {
+            "type": "string",
+            "nullable": true
+          },
+          "sourceLocationId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "sourceLocationConfigName": {
+            "type": "string",
+            "nullable": true
+          },
+          "sourceLocationAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "originatingServerName": {
+            "type": "string",
+            "nullable": true
+          },
+          "events": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FxferService.Api.Queries.Models.TrackedFileEvent"
+            },
+            "nullable": true
+          },
+          "exceptions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FxferService.Api.Queries.Models.TrackedFileException"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FxferService.Api.Queries.Models.TrackedFileEvent": {
+        "type": "object",
+        "properties": {
+          "eventId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "eventCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FxferService.Api.Queries.Models.TrackedFileException": {
+        "type": "object",
+        "properties": {
+          "exceptionId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "exceptionType": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "stackTrace": {
+            "type": "string",
+            "nullable": true
+          },
+          "methodName": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "description": "JWT Bearer token",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
+}

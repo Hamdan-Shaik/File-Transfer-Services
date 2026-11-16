@@ -1,0 +1,155 @@
+component: backend-business-command-handlers
+tier: backend
+depends_on:
+- backend-business-command-handlers-2
+- backend-data-access-event-handlers
+- backend-data-access-event-handlers-2
+- shared-contracts-commands
+classes:
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler
+  kind: Class
+  tier: backend
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business\CommandHandlers\FtpServerCommandHandler.cs
+  line: 20
+  line_end: 126
+  project: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business
+  methods:
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.BuildEvent(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+    line: 64
+    line_end: 72
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.BuildEvent(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.InvalidateFtpServerCommand)
+    line: 83
+    line_end: 91
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.BuildEvent(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.UpdateFtpServerCommand)
+    line: 74
+    line_end: 81
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.BuildFtpServerQuery(string)
+    line: 114
+    line_end: 124
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.GetFtpServers(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+    line: 109
+    line_end: 112
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+    line: 42
+    line_end: 47
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.InvalidateFtpServerCommand)
+    line: 56
+    line_end: 59
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.UpdateFtpServerCommand)
+    line: 49
+    line_end: 54
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.IsFtpServerNameDuplicated(string, System.Guid)
+    line: 104
+    line_end: 107
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.ValidateFtpServerCommand(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+    line: 93
+    line_end: 102
+  uses:
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FileTransferCommand (shared-contracts-commands)
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtpServerProjectionWriter (backend-data-access-event-handlers)
+  - HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler (backend-business-command-handlers-2)
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtpServerProjectionWriter (backend-data-access-event-handlers-2)
+  tables:
+    orm:FTP_SERVER:
+    - reads
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsInboundTargetCommandHandler
+  kind: Class
+  tier: backend
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business\CommandHandlers\FtsInboundTargetCommandHandler.cs
+  line: 22
+  line_end: 97
+  project: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business
+  methods:
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsInboundTargetCommandHandler.BuildAddFtsInboundTargetEvent(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtsInboundTargetCommand)
+    line: 64
+    line_end: 74
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsInboundTargetCommandHandler.BuildInboundTargetQuery(System.Guid, RequestorModel)
+    line: 85
+    line_end: 95
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsInboundTargetCommandHandler.BuildInvalidateFtsInboundTargetEvent(System.Collections.Generic.List<HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Domain.FtsInboundTargetModel>)
+    line: 76
+    line_end: 83
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsInboundTargetCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtsInboundTargetCommand)
+    line: 44
+    line_end: 51
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsInboundTargetCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.InvalidateFtsInboundTargetCommand)
+    line: 53
+    line_end: 60
+  uses:
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationRepositoryHandler
+  tables:
+    orm:FTS_INBOUND_TARGET:
+    - reads
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsIntegrationFileCommandHandler
+  kind: Class
+  tier: backend
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business\CommandHandlers\FtsIntegrationFileCommandHandler.cs
+  line: 22
+  line_end: 92
+  project: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business
+  methods:
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsIntegrationFileCommandHandler.BuildAddIntegrationFileEvent(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddIntegrationFileCommand)
+    line: 67
+    line_end: 78
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsIntegrationFileCommandHandler.BuildUpdateIntegrationFileEvent(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.UpdateIntegrationFileCommand)
+    line: 80
+    line_end: 90
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsIntegrationFileCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddIntegrationFileCommand)
+    line: 44
+    line_end: 52
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsIntegrationFileCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.UpdateIntegrationFileCommand)
+    line: 54
+    line_end: 58
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsIntegrationFileCommandHandler.ValidateGroupInfo(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddIntegrationFileCommand)
+    line: 62
+    line_end: 65
+  uses:
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationRepositoryHandler
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.UpdateIntegrationFileCommand (shared-contracts-commands)
+  tables:
+    orm:FTS_INTEGRATION_FILE:
+    - reads
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationAddCommandHandler
+  kind: Class
+  tier: backend
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business\CommandHandlers\FtsSourceLocationAddCommandHandler.cs
+  line: 25
+  line_end: 169
+  project: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business
+  methods:
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationAddCommandHandler.CreateConfigNumber()
+    line: 165
+    line_end: 168
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationAddCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand)
+    line: 48
+    line_end: 87
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationAddCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationInvalidateCommand)
+    line: 130
+    line_end: 141
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationAddCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationUpdateCommand)
+    line: 89
+    line_end: 128
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationAddCommandHandler.IsSourceLocationExists(int)
+    line: 143
+    line_end: 163
+  uses:
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationRepositoryHandler
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand (shared-contracts-commands)
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationInvalidateCommand (shared-contracts-commands)
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationUpdateCommand (shared-contracts-commands)
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtsSourceLocationProjectionWriter (backend-data-access-event-handlers)
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtsSourceLocationProjectionWriter (backend-data-access-event-handlers-2)
+  tables:
+    orm:FTP_SERVER:
+    - reads
+    orm:FTS_SUSPENSION:
+    - reads
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationRepositoryHandler
+  kind: Class
+  tier: backend
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business\CommandHandlers\FtsSourceLocationRepositoryHandler.cs
+  line: 13
+  line_end: 27
+  project: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business
+  methods: []
+  uses: []

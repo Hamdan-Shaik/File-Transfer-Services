@@ -1,0 +1,148 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Includes Directory",
+  "document_description": "This directory contains reusable content snippets that are included in multiple documents throughout the Enterprise Architecture Practice repository using MkDocs include functionality.",
+  "total_pages": 14,
+  "tree": [
+    {
+      "title": "Includes Directory",
+      "node_id": "includes-directory",
+      "start_index": 1,
+      "end_index": 14,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Purpose",
+          "node_id": "purpose",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Usage",
+          "node_id": "usage",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Available Includes",
+          "node_id": "available-includes",
+          "start_index": 4,
+          "end_index": 5,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "`common-footer.md`",
+              "node_id": "common-footermd",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Guidelines for Include Files",
+          "node_id": "guidelines-for-include-files",
+          "start_index": 6,
+          "end_index": 9,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "File Naming",
+              "node_id": "file-naming",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Content Structure",
+              "node_id": "content-structure",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Maintenance",
+              "node_id": "maintenance",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Adding New Includes",
+          "node_id": "adding-new-includes",
+          "start_index": 10,
+          "end_index": 10,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "How Include Processing Works",
+          "node_id": "how-include-processing-works",
+          "start_index": 11,
+          "end_index": 11,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Technical Details",
+          "node_id": "technical-details",
+          "start_index": 12,
+          "end_index": 12,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Common Use Cases",
+          "node_id": "common-use-cases",
+          "start_index": 13,
+          "end_index": 13,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "📋 Maintenance Log",
+          "node_id": "-maintenance-log",
+          "start_index": 14,
+          "end_index": 14,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[includes/README.md#includes-directory]\n\n# Includes Directory\n\nThis directory contains reusable content snippets that are included in multiple documents throughout the Enterprise Architecture Practice repository using MkDocs include functionality.",
+    "2": "[includes/README.md#purpose]\n\n## Purpose\n\nThe includes directory enables:\n\n- **Content Consistency**: Shared content blocks ensure consistent messaging across documents\n- **Maintenance Efficiency**: Updates to shared content automatically propagate to all documents that include it\n- **Reduced Duplication**: Common content is written once and reused multiple times",
+    "3": "[includes/README.md#usage]\n\n## Usage\n\nContent from this directory is included in markdown files using the include syntax:\n\n```markdown\n{!includes/example-include.md!}\n```\n\n**Note**: In documentation, use backticks or code blocks to prevent processing.",
+    "4": "[includes/README.md#available-includes]\n\n## Available Includes",
+    "5": "[includes/README.md#common-footermd]\n\n### `common-footer.md`\n\nStandard footer content included at the bottom of most documentation pages.\n\n**Contains:**\n\n- Support and contact information\n- Enterprise Architecture Practice email\n- GitHub Issues link\n- Community of Practice link\n- Repository reference\n\n**Used in:**\n\n- Foundation documents\n- Templates\n- Main README\n- Various standards and guidelines",
+    "6": "[includes/README.md#guidelines-for-include-files]\n\n## Guidelines for Include Files",
+    "7": "[includes/README.md#file-naming]\n\n### File Naming\n\n- Use descriptive, kebab-case filenames\n- Include `.md` extension\n- Prefix with purpose when appropriate (e.g., `common-`, `template-`)",
+    "8": "[includes/README.md#content-structure]\n\n### Content Structure\n\n- Keep include files focused on a single purpose\n- Use appropriate markdown formatting\n- Include comments when necessary to explain context\n- Maintain consistent styling with the rest of the repository",
+    "9": "[includes/README.md#maintenance]\n\n### Maintenance\n\n- Test include files after changes to ensure they work correctly in all contexts\n- Consider the impact on all documents that use an include before making changes\n- Keep include content generic enough to work across different document types",
+    "10": "[includes/README.md#adding-new-includes]\n\n## Adding New Includes\n\n1. **Create the include file** in this directory\n2. **Test the content** standalone to ensure proper formatting\n3. **Include in target documents** using the `{!includes/example-include.md!}` syntax\n4. **Verify rendering** in the built documentation\n5. **Update this README** to document the new include file",
+    "11": "[includes/README.md#how-include-processing-works]\n\n## How Include Processing Works\n\nInclude directives are processed during the build phase through custom Python logic in the build script. The process replaces include syntax with actual file content before MkDocs processes the files.\n\n**Syntax**: Include directives use curly braces with exclamation marks around file paths.\n\n**Processing**: During build, a regex pattern finds these directives and replaces them with the referenced file's content.\n\n**Location**: Include processing happens after content copying but before MkDocs builds the final site.\n\n**Error Handling**: Missing include files result in comment placeholders instead of errors.",
+    "12": "[includes/README.md#technical-details]\n\n## Technical Details\n\n- Include files are processed by the MkDocs `include-markdown` plugin\n- Include processing happens during the build phase\n- Nested includes are supported (includes within includes)\n- Include paths are relative to the repository root",
+    "13": "[includes/README.md#common-use-cases]\n\n## Common Use Cases\n\n- **Footers**: Contact information, disclaimers, repository links\n- **Headers**: Standard introductions, navigation breadcrumbs\n- **Snippets**: Code examples, configuration blocks\n- **Disclaimers**: Legal text, confidentiality notices\n- **Templates**: Standard document sections\n\n---",
+    "14": "[includes/README.md#-maintenance-log]\n\n## 📋 Maintenance Log\n\n| Date       | Change                   | Author       |\n| ---------- | ------------------------ | ------------ |\n| 2025-09-01 | Recreated README content | AI Assistant |\n\n---"
+  },
+  "coverage": {
+    "total_pages": 14,
+    "covered_pages": 14,
+    "sampled_pages": 14,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 14
+  }
+}

@@ -1,0 +1,86 @@
+door:
+  id: file-transfer-svc-service-update-integration-file
+  kind: wcf
+  name: UpdateIntegrationFile
+  class: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc\FileTransferSvcService.svc.cs
+  line: 55
+  entry:
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.UpdateIntegrationFile(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.UpdateIntegrationFileCommand)
+procedures: []
+tables:
+- name: orm:FTS_INTEGRATION_FILE
+  access:
+  - reads
+shared_uses: []
+external_uses:
+- package: ''
+  version: ''
+  method: CommandServiceBase.TryRoute
+  calls:
+  - at: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc\FileTransferSvcService.svc.cs:71
+    arguments:
+    - name: null
+      expression: command
+  unresolved: true
+polymorphic_hooks: []
+stops:
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.UpdateIntegrationFileCommand.ValidateConfigId()
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts\Commands\UpdateIntegrationFileCommand.cs
+  line: 61
+calls:
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsIntegrationFileCommandHandler.BuildUpdateIntegrationFileEvent(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.UpdateIntegrationFileCommand)
+  via: READS_FROM
+  to: orm:FTS_INTEGRATION_FILE
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsIntegrationFileCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.UpdateIntegrationFileCommand)
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsIntegrationFileCommandHandler.BuildUpdateIntegrationFileEvent(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.UpdateIntegrationFileCommand)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsIntegrationFileCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.UpdateIntegrationFileCommand)
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.UpdateIntegrationFileCommand.Validate()
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.UpdateIntegrationFileCommand.Validate()
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.UpdateIntegrationFileCommand.ValidateConfigId()
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.UpdateIntegrationFile(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.UpdateIntegrationFileCommand)
+  via: DISPATCHES_TO
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsIntegrationFileCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.UpdateIntegrationFileCommand)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.UpdateIntegrationFile(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.UpdateIntegrationFileCommand)
+  via: DISPATCHES_TO
+  to: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsIntegrationFileCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.UpdateIntegrationFileCommand)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.UpdateIntegrationFile(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.UpdateIntegrationFileCommand)
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.TryRouteCommand(Command)
+- from: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsIntegrationFileCommandHandler.BuildUpdateIntegrationFileEvent(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.UpdateIntegrationFileCommand)
+  via: READS_FROM
+  to: orm:FTS_INTEGRATION_FILE
+- from: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsIntegrationFileCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.UpdateIntegrationFileCommand)
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.UpdateIntegrationFileCommand.Validate()
+- from: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsIntegrationFileCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.UpdateIntegrationFileCommand)
+  via: INVOKES
+  to: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsIntegrationFileCommandHandler.BuildUpdateIntegrationFileEvent(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.UpdateIntegrationFileCommand)
+methods:
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsIntegrationFileCommandHandler.BuildUpdateIntegrationFileEvent(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.UpdateIntegrationFileCommand)
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business\CommandHandlers\FtsIntegrationFileCommandHandler.cs
+  line: 80
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsIntegrationFileCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.UpdateIntegrationFileCommand)
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business\CommandHandlers\FtsIntegrationFileCommandHandler.cs
+  line: 54
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.UpdateIntegrationFileCommand.Validate()
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts\Commands\UpdateIntegrationFileCommand.cs
+  line: 56
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.UpdateIntegrationFileCommand.ValidateConfigId()
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts\Commands\UpdateIntegrationFileCommand.cs
+  line: 61
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.TryRouteCommand(Command)
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc\FileTransferSvcService.svc.cs
+  line: 69
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.UpdateIntegrationFile(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.UpdateIntegrationFileCommand)
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc\FileTransferSvcService.svc.cs
+  line: 55
+- name: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsIntegrationFileCommandHandler.BuildUpdateIntegrationFileEvent(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.UpdateIntegrationFileCommand)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvc.Business\CommandHandlers\FtsIntegrationFileCommandHandler.cs
+  line: 85
+- name: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsIntegrationFileCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.UpdateIntegrationFileCommand)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvc.Business\CommandHandlers\FtsIntegrationFileCommandHandler.cs
+  line: 59

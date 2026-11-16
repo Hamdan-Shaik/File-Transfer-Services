@@ -1,0 +1,202 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "CLAUDE.md",
+  "document_description": "See [README.md](../README.md) for the full overview.",
+  "total_pages": 20,
+  "tree": [
+    {
+      "title": "CLAUDE.md",
+      "node_id": "claudemd",
+      "start_index": 1,
+      "end_index": 20,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Project Overview",
+          "node_id": "project-overview",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Setup",
+          "node_id": "setup",
+          "start_index": 3,
+          "end_index": 4,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Python Setup (for .utils/)",
+              "node_id": "python-setup-for-utils",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Structure",
+          "node_id": "structure",
+          "start_index": 5,
+          "end_index": 5,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Document Conversion Tools",
+          "node_id": "document-conversion-tools",
+          "start_index": 6,
+          "end_index": 6,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Conventions",
+          "node_id": "conventions",
+          "start_index": 7,
+          "end_index": 7,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Skill Invocation Transparency",
+          "node_id": "skill-invocation-transparency",
+          "start_index": 8,
+          "end_index": 12,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "How to announce",
+              "node_id": "how-to-announce",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "When to announce",
+              "node_id": "when-to-announce",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "The 13 core skills and their job duties",
+              "node_id": "the-13-core-skills-and-their-job-duties",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Collaboration rules",
+              "node_id": "collaboration-rules",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Glossary Structure",
+          "node_id": "glossary-structure",
+          "start_index": 13,
+          "end_index": 13,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Do NOT",
+          "node_id": "do-not",
+          "start_index": 14,
+          "end_index": 14,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Adding a New Component",
+          "node_id": "adding-a-new-component",
+          "start_index": 15,
+          "end_index": 15,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Adding a New Python Conversion Tool",
+          "node_id": "adding-a-new-python-conversion-tool",
+          "start_index": 16,
+          "end_index": 16,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Infrastructure",
+          "node_id": "infrastructure",
+          "start_index": 17,
+          "end_index": 17,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Enterprise Reference Architecture",
+          "node_id": "enterprise-reference-architecture",
+          "start_index": 18,
+          "end_index": 18,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Workflow Commands",
+          "node_id": "workflow-commands",
+          "start_index": 19,
+          "end_index": 19,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "External Dependencies",
+          "node_id": "external-dependencies",
+          "start_index": 20,
+          "end_index": 20,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[.claude/CLAUDE.md#claudemd]\n\n# CLAUDE.md",
+    "2": "[.claude/CLAUDE.md#project-overview]\n\n## Project Overview\n\n**Polyglot** Enterprise Architecture project for Gainwell Technologies. Supports Python, C#, Java, Rust, React/Next.js, and Terraform. Provides document conversion tools, automated developer onboarding, shared branding/styling, IaC scaffolding, and AI-assisted workflows.\n\nSee [README.md](../README.md) for the full overview.",
+    "3": "[.claude/CLAUDE.md#setup]\n\n## Setup\n\nUse [Task](https://taskfile.dev) for all build, test, and deployment operations:\n\n```bash\ntask setup          # Bootstrap all environments (Python, and components as created)\ntask health         # Check that all required tools are installed\ntask lint           # Run all linters (Python, Markdown, Terraform, components)\ntask test           # Run all tests across all languages\ntask ci             # Run full CI pipeline locally\n```",
+    "4": "[.claude/CLAUDE.md#python-setup-for-utils]\n\n### Python Setup (for .utils/)\n\n**pip + venv** — NOT Poetry.\n\n- Shared virtual environment: `.utils/.venv/`\n- Dependencies: `.utils/requirements.txt`\n- All conversion tools share the same environment\n- Managed via `task utils:setup` (or `task setup` at root)\n\n```bash\ntask utils:setup              # Bootstrap Python environment\ntask utils:setup:force        # Re-create from scratch\n```",
+    "5": "[.claude/CLAUDE.md#structure]\n\n## Structure\n\n```text\n.assets/              Logos, stylesheets (Gainwell branding)\n.claude/              Claude Code config, commands, skills\n.github/              GitHub config, Copilot instructions, CI/CD workflows\n.utils/               Python environment + document conversion tools\n  Taskfile.yml        Python-specific tasks (setup, lint, test, format)\n  formatters/         7 converters (md2pdf, md2docx, docx2md, pdf2md, pptx2md, pptx2pdf, xlsx2md)\n.vscode/              Shared VS Code workspace settings\ndocs/                 Documentation (conceptual, logical, physical, requirements)\nonboarding/           Platform setup scripts (macOS + Windows)\n.tooling/              Legacy publication-tooling subsystem (components + IaC) — pending removal from this repo, self-governed (see .tooling/README.md); not part of the EA-documentation Skill catalog\n.tmp/                 Scratch / temporary files (gitignored)\nTaskfile.yml          Root orchestrator for all languages and tools\n.project.yml          Project config (coverage thresholds per language, project type)\n```",
+    "6": "[.claude/CLAUDE.md#document-conversion-tools]\n\n## Document Conversion Tools\n\nAll in `.utils/formatters/`, managed via Task commands:\n\n```bash\ntask convert:md2pdf -- file.md           # Markdown → PDF\ntask convert:md2docx -- file.md          # Markdown → Word\ntask convert:docx2md -- file.docx        # Word → Markdown\ntask convert:pdf2md -- file.pdf          # PDF → Markdown\ntask convert:pptx2md -- file.pptx        # PowerPoint → Markdown\ntask convert:pptx2pdf -- file.pptx       # PowerPoint → PDF\ntask convert:xlsx2md -- file.xlsx        # Excel → Markdown\n```\n\nOr directly via Python:\n\n```bash\npython .utils/formatters/md2pdf/md2pdf.py file.md -o output.pdf -v\n```",
+    "7": "[.claude/CLAUDE.md#conventions]\n\n## Conventions\n\n- **Task runner**: Use `task` for all build/test/lint operations (never run language-specific commands directly in CI)\n- **Python 3.13+** required for `.utils/` tools\n- **Run from repo root** — never cd into tool directories\n- **Relative paths only** — no hardcoded absolute paths\n- **All documentation in Markdown**\n- **Keep setup scripts in sync**: `onboarding/setup-mac.sh` and `onboarding/setup-windows.ps1`\n- **Branding via** `.assets/stylesheets/`\n- **`.tmp/` for scratch work** — never commit content there\n- **Python formatting**: black (line-length 100), ruff, mypy — configs in `.utils/pyproject.toml`",
+    "8": "[.claude/CLAUDE.md#skill-invocation-transparency]\n\n## Skill Invocation Transparency\n\nWhen fulfilling a user request, **always announce which skills will be involved** before starting work. This makes the workflow visible so the user can track what's happening.",
+    "9": "[.claude/CLAUDE.md#how-to-announce]\n\n### How to announce\n\nAt the start of any non-trivial request, output a brief skill plan:\n\n```text\n**Skills involved:**\n- `/business-analyst` — identify requirements scope\n- `/architect` — design the bounded context\n- `/documenter` — write the artifact content\n- `/ea-reviewer` — verify EA compliance\n```",
+    "10": "[.claude/CLAUDE.md#when-to-announce]\n\n### When to announce\n\n- **Always** for any project-related request — this is the default. Every response to a project task must start with the skills list before any other output.\n- **Always** when more than one skill will be invoked\n- **Always** when the request spans requirements, design, implementation, or testing\n- **Skip** only for general questions not related to the project (e.g., \"what is pipefail\", \"explain this concept\")",
+    "11": "[.claude/CLAUDE.md#the-13-core-skills-and-their-job-duties]\n\n### The 13 core skills and their job duties\n\n| Skill | Job Duty | Owns |\n| --- | --- | --- |\n| **business-analyst** | Elicits and defines requirements, guides domain language | `docs/requirements/`, traceability matrix |\n| **architect** | Designs solutions, sets patterns, governs standards — uses `/modeler` for diagrams | `docs/decisions/`, enterprise compliance |\n| **enterprise-architect** | Decides which EA artifact type (ADR, Pattern, Standard, Guidance, Reference Architecture, White Paper) an outcome needs, and judges authoring/maintenance quality — used by `ea-author` | Artifact-type recommendation, authoring judgment |\n| **ai-architect** | Decides which AI construct type (Skill, Agent, Workflow, Instruction, Rule) a repository need requires, and judges authoring/maintenance quality — used by `ai-author` | Construct-type recommendation, authoring judgment |\n| **ea-reviewer** | Reviews EA artifact changes (standards, patterns, guidance, ADRs, white papers) in PRs/diffs — gates merges | Approve/Request Changes verdict |\n| **ai-reviewer** | Reviews AI construct changes (Skills, Agents, Workflows/Commands/Prompts, Instructions, file-pattern Instructions) in PRs/diffs — gates merges | Approve/Request Changes verdict |\n| **ai-convergence** | Simulates a peer AI reviewer's cold read before commit — closes consistency gaps | Pre-commit convergence report |\n| **diagrammer** | Routes diagram requests to `/modeler` or `/presenter` based on intent | Diagram routing |\n| **modeler** | Architecture + data model diagrams — Mermaid (default), Draw.io (complex) | Technical diagrams, ER models |\n| **presenter** | Deck-ready presentation visuals — Draw.io, 16:9, full style guide | `assets/` deck diagrams, SVG exports |\n| **documenter** | Writes and maintains all documentation and glossaries | `docs/` content, glossary files |\n| **project-manager** | Tracks progress, milestones, risks, decisions | `docs/project-plan.md` |\n| **tech-evaluator** | Runs structured COTS/SaaS/OSS technology evaluations using the PES framework | `strategy/tech-evals/`, scored comparisons |",
+    "12": "[.claude/CLAUDE.md#collaboration-rules]\n\n### Collaboration rules\n\n- **BA and architect guide, documenter writes** — glossary and documentation\n- **`ea-reviewer` vs `ai-reviewer`** — `ea-reviewer` gates EA artifact changes (standards, patterns, guidance, ADRs, white papers). For AI construct changes (Skills, Agents, Workflows/Commands/Prompts, Instructions, file-pattern Instructions), use `.claude/skills/ai-reviewer/SKILL.md` via the `@ai-author`/`@ai-review` Agents instead — not this skill.\n- **Diagrammer owns all visuals** — documenter and architect delegate diagram creation to `/diagrammer`\n- **Documenter cascades to diagrammer** — after modifying a markdown file, `/documenter` invokes `/diagrammer --cascade <path>` to detect and update any `.drawio` files whose `sourceMarkdown` attribute matches the changed file\n- **ai-convergence runs before commit when another AI reviews** — after any documenter or architect pass that will be reviewed by a peer AI (Copilot, second Claude) and is not a trivial single-line fix with no logical parallel elsewhere (see the Skill's trivial-fix exclusion), invoke `/ai-convergence` before `/eap-git` or `/eap-push` to close parallel-statement and prose-to-structure gaps\n- **All skills read the glossary** — only documenter writes to it",
+    "13": "[.claude/CLAUDE.md#glossary-structure]\n\n## Glossary Structure\n\nThe project uses a two-tier glossary for ubiquitous language:\n\n| Tier | Location | Content |\n| --- | --- | --- |\n| **Project-wide** | `docs/glossary.md` | Cross-cutting terms (Medicaid, healthcare industry, platform architecture) |\n| **Domain-specific** | `docs/design/conceptual/domains/<domain>/glossary.md` | Terms owned by a single bounded context |\n\n- Domain-specific terms go in the domain glossary\n- Cross-cutting terms go in the project-wide glossary\n- The **documenter** skill is the primary glossary maintainer, guided by **business-analyst** and **architect**",
+    "14": "[.claude/CLAUDE.md#do-not]\n\n## Do NOT\n\n- **Add Poetry** — we use pip+venv for Python\n- **Create separate venvs per tool** — use the shared `.utils/.venv`\n- **Put Python files in repo root** — keep in `.utils/`\n- **Hard-code absolute paths**\n- **Commit to `.tmp/`**\n- **Override `.vscode/settings.json`** for personal preferences",
+    "15": "[.claude/CLAUDE.md#adding-a-new-component]\n\n## Adding a New Component\n\n1. Create `components/<component-name>/` with:\n   - `src/` — source code\n   - `tests/` — tests\n   - `Taskfile.yml` — component-specific tasks (build, test, lint, clean)\n   - `README.md` — purpose, language/framework, setup, usage\n   - Language-specific project files (e.g., `*.csproj`, `Cargo.toml`, `package.json`, `pyproject.toml`)\n2. Update root `Taskfile.yml` to include the new component:\n\n   ```yaml\n   includes:\n     mycomponent:\n       taskfile: components/mycomponent/Taskfile.yml\n       dir: components/mycomponent\n   ```\n\n3. Add component-specific tasks to root orchestrator (test, lint, clean, etc.)\n4. Update `.project.yml` coverage thresholds if needed\n5. Test with `task <component>:test` and `task ci`",
+    "16": "[.claude/CLAUDE.md#adding-a-new-python-conversion-tool]\n\n## Adding a New Python Conversion Tool\n\n1. Create `.utils/formatters/<newtool>/` with Python script + `README.md`\n2. Follow CLI pattern: argparse with input, `-o/--output`, `-v/--verbose`\n3. Add deps to `.utils/requirements.txt`\n4. Add task to `.utils/Taskfile.yml` under `convert:<tool>`\n5. Add task to root `Taskfile.yml` to delegate to `.utils/Taskfile.yml`\n6. Update README.md\n7. Test with shared venv: `task utils:setup` and `task convert:<tool> -- <file>`",
+    "17": "[.claude/CLAUDE.md#infrastructure]\n\n## Infrastructure\n\n- Terraform modules: `iac/terraform/formations/aws/`\n- Terragrunt deployments: `iac/terraform/deployments/aws/<environment>/`\n- AWS-focused",
+    "18": "[.claude/CLAUDE.md#enterprise-reference-architecture]\n\n## Enterprise Reference Architecture\n\nThe `eap-ref-architecture` repo is the single source of truth for enterprise architecture guidance. Always consult it before creating new patterns, standards, or architecture artifacts.\n\nKey locations:\n\n- `standards/` — mandatory technical standards by domain (API, security, Python, Next.js, EKS, Kafka, etc.)\n- `patterns/` — reusable architectural patterns by domain\n- `decisions/` — enterprise-level ADRs by domain\n- `guiding-principles/` — core and domain-specific principles\n- `strategy/` — best practices, guidance, reference architectures, white papers\n- `governance/` — processes, committees, metrics\n- `resources/work-templates/assets/artifacts/` — templates for ADRs, patterns, standards, RCAs, white papers, and more\n\n**Content Taxonomy:**\n\n| Type          | Purpose                                                                               |\n| ------------- | ------------------------------------------------------------------------------------- |\n| **Patterns**  | Define **HOW** to solve common problems — reusable architectural solutions            |\n| **Standards** | Define **WHAT** must be done — mandatory requirements teams must meet                 |\n| **Guidance**  | Define **WHY** and **HOW TO IMPLEMENT** — step-by-step implementation approaches      |\n\n**Security Routing Exception:**\nSecurity content defaults to `strategy/guidance/security/`, but this default is not absolute: technical implementation patterns (e.g., OAuth2 flows, Kubernetes security controls) belong in `patterns/security/`, and compliance-baseline standards with independently auditable scope belong in `standards/security/`. Only when the content is genuinely ambiguous or spans the boundary between these types does it default to `strategy/guidance/security/`. See `.claude/commands/guidance.md`, `.claude/commands/pattern.md`, and `.claude/commands/standard.md` for the full classification rule.\n\nContent is organized across 8 domains: Application, Business, Governance, Information, Infrastructure, ITSM-Operations, Security, Technology.\n\n**Do not duplicate enterprise content into this repo — link to it instead.**",
+    "19": "[.claude/CLAUDE.md#workflow-commands]\n\n## Workflow Commands\n\nReusable workflow instructions are in `.claude/commands/`. Read the relevant command file before performing these operations:\n\n- **Activity brief** (`.claude/commands/activity-brief.md`) — Synthesize an audience-scoped outcomes brief from one person's Azure Boards and GitHub activity over a date range. Outputs an evidence/inference trail and a leadership-ready outcomes brief (no individual attribution). Invoke with `assignee=<ado-email> author=<github-login> range=<start:end>`. Add `--slide` to also produce a 1-slide deck via `/presenter`.",
+    "20": "[.claude/CLAUDE.md#external-dependencies]\n\n## External Dependencies\n\n- **Pandoc** — required for docx2md\n- **LibreOffice** — optional, for pptx2pdf\n- **Playwright Chromium** — required for md2pdf, md2docx"
+  },
+  "coverage": {
+    "total_pages": 20,
+    "covered_pages": 20,
+    "sampled_pages": 20,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 20
+  }
+}

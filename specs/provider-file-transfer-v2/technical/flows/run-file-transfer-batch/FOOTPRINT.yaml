@@ -1,0 +1,160 @@
+flow: run-file-transfer-batch
+name: Run file transfer batch processing
+status: grouped
+doors:
+- id: main-batch-process
+  kind: batch
+  name: BatchProcess
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Batch.Main\BatchProcess.cs
+  line: 17
+  entry:
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Batch.Main.BatchProcess.Main(string[])
+- id: main-batch-process-2
+  kind: batch
+  name: BatchProcess
+  file: batch\FileTransferManagement\HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Main\BatchProcessProgram.cs
+  line: 21
+  entry:
+  - HPE.HSP.UA3.FileTransfer.Batch.FileTransferMgmt.Main.BatchProcess.Main(string[])
+procedures: []
+tables: []
+shared_uses: []
+external_uses:
+- package: ''
+  version: ''
+  method: '?.LogError'
+  calls:
+  - at: batch\FileTransferManagement\HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Main\BatchProcessProgram.cs:151
+    arguments:
+    - name: null
+      expression: string.Format(AppSettingsConstants.AppsettingErrorMessageTemplate, key)
+  unresolved: true
+- package: ''
+  version: ''
+  method: '?.LogFatal'
+  calls:
+  - at: batch\FileTransferManagement\HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Main\BatchProcessProgram.cs:66
+    arguments:
+    - name: null
+      value: 'Exception occurred: '
+    - name: null
+      expression: ex
+  unresolved: true
+- package: ''
+  version: ''
+  method: '?.LogInformational'
+  calls:
+  - at: batch\FileTransferManagement\HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Main\BatchProcessProgram.cs:31
+    arguments:
+    - name: null
+      value: Starting FileTransfer Batch Process
+  - at: batch\FileTransferManagement\HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Main\BatchProcessProgram.cs:33
+    arguments:
+    - name: null
+      value: Validating batch arguments.
+  - at: batch\FileTransferManagement\HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Main\BatchProcessProgram.cs:41
+    arguments:
+    - name: null
+      value: Retrieving app settings for tenant
+  - at: batch\FileTransferManagement\HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Main\BatchProcessProgram.cs:48
+    arguments:
+    - name: null
+      value: Validating app settings.
+  - at: batch\FileTransferManagement\HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Main\BatchProcessProgram.cs:52
+    arguments:
+    - name: null
+      value: Initialize Unit Container.
+  - at: batch\FileTransferManagement\HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Main\BatchProcessProgram.cs:56
+    arguments:
+    - name: null
+      value: Resolve the batch executor.
+  - at: batch\FileTransferManagement\HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Main\BatchProcessProgram.cs:60
+    arguments:
+    - name: null
+      value: Begin the process.
+  - at: batch\FileTransferManagement\HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Main\BatchProcessProgram.cs:72
+    arguments:
+    - name: null
+      value: Ending FileTransfer Batch Process
+  - at: batch\FileTransferManagement\HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Main\BatchProcessProgram.cs:164
+    arguments:
+    - name: null
+      expression: msg.ToString()
+  unresolved: true
+- package: ''
+  version: ''
+  method: '?.Resolve'
+  calls:
+  - at: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Batch.Main\BatchProcess.cs:25
+    type_arguments:
+    - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Batch.Business.IBatchExecutor<int>
+    arguments:
+    - name: null
+      expression: IocConstants.FileTransferExecutor
+  - at: batch\FileTransferManagement\HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Main\BatchProcessProgram.cs:58
+    type_arguments:
+    - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Business.IBatchExecutor<int>
+    arguments:
+    - name: null
+      expression: IocConstants.FileTransferExecutor
+  unresolved: true
+- package: ''
+  version: ''
+  method: ApplicationConfigurationManager.LoadApplicationConfiguration
+  calls:
+  - at: batch\FileTransferManagement\HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Main\BatchProcessProgram.cs:45
+    arguments:
+    - name: null
+      expression: batchProcess.tenantId
+    - name: null
+      expression: new CacheManager()
+  unresolved: true
+- package: ''
+  version: ''
+  method: BASUnityContainer.Initialize
+  calls:
+  - at: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Batch.Main\BatchProcess.cs:23
+    arguments: []
+  - at: batch\FileTransferManagement\HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Main\BatchProcessProgram.cs:54
+    arguments: []
+  unresolved: true
+polymorphic_hooks: []
+stops: []
+calls:
+- from: HPE.HSP.UA3.FileTransfer.Batch.FileTransferMgmt.Main.BatchProcess.Main(string[])
+  via: INVOKES
+  to: HPE.HSP.UA3.FileTransfer.Batch.FileTransferMgmt.Main.BatchProcess.Validate(string[])
+- from: HPE.HSP.UA3.FileTransfer.Batch.FileTransferMgmt.Main.BatchProcess.Main(string[])
+  via: INVOKES
+  to: HPE.HSP.UA3.FileTransfer.Batch.FileTransferMgmt.Main.BatchProcess.ValidateAppConfig()
+- from: HPE.HSP.UA3.FileTransfer.Batch.FileTransferMgmt.Main.BatchProcess.Validate(string[])
+  via: INVOKES
+  to: HPE.HSP.UA3.FileTransfer.Batch.FileTransferMgmt.Main.BatchProcess.ValidateInputArguments(string[])
+- from: HPE.HSP.UA3.FileTransfer.Batch.FileTransferMgmt.Main.BatchProcess.ValidateAppConfig()
+  via: INVOKES
+  to: HPE.HSP.UA3.FileTransfer.Batch.FileTransferMgmt.Main.BatchProcess.CheckAndThrowConfigurationException(string)
+- from: HPE.HSP.UA3.FileTransfer.Batch.FileTransferMgmt.Main.BatchProcess.ValidateInputArguments(string[])
+  via: INVOKES
+  to: HPE.HSP.UA3.FileTransfer.Batch.FileTransferMgmt.Main.BatchProcess.PrintUsage()
+methods:
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Batch.Main.BatchProcess.Main(string[])
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Batch.Main\BatchProcess.cs
+  line: 19
+- name: HPE.HSP.UA3.FileTransfer.Batch.FileTransferMgmt.Main.BatchProcess.CheckAndThrowConfigurationException(string)
+  file: batch\FileTransferManagement\HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Main\BatchProcessProgram.cs
+  line: 147
+- name: HPE.HSP.UA3.FileTransfer.Batch.FileTransferMgmt.Main.BatchProcess.Main(string[])
+  file: batch\FileTransferManagement\HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Main\BatchProcessProgram.cs
+  line: 26
+- name: HPE.HSP.UA3.FileTransfer.Batch.FileTransferMgmt.Main.BatchProcess.PrintUsage()
+  file: batch\FileTransferManagement\HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Main\BatchProcessProgram.cs
+  line: 156
+- name: HPE.HSP.UA3.FileTransfer.Batch.FileTransferMgmt.Main.BatchProcess.Validate(string[])
+  file: batch\FileTransferManagement\HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Main\BatchProcessProgram.cs
+  line: 76
+- name: HPE.HSP.UA3.FileTransfer.Batch.FileTransferMgmt.Main.BatchProcess.ValidateAppConfig()
+  file: batch\FileTransferManagement\HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Main\BatchProcessProgram.cs
+  line: 132
+- name: HPE.HSP.UA3.FileTransfer.Batch.FileTransferMgmt.Main.BatchProcess.ValidateInputArguments(string[])
+  file: batch\FileTransferManagement\HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Main\BatchProcessProgram.cs
+  line: 86

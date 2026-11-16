@@ -1,0 +1,749 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Asynchronous Request-Reply Pattern",
+  "document_description": "pattern_name: 'Asynchronous Request-Reply Pattern'",
+  "total_pages": 79,
+  "tree": [
+    {
+      "title": "Asynchronous Request-Reply Pattern",
+      "node_id": "asynchronous-request-reply-pattern",
+      "start_index": 1,
+      "end_index": 79,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Executive Summary",
+          "node_id": "executive-summary",
+          "start_index": 3,
+          "end_index": 7,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Problem Statement",
+              "node_id": "problem-statement",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Solution Overview",
+              "node_id": "solution-overview",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "When to Use",
+              "node_id": "when-to-use",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Benefits",
+              "node_id": "benefits",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Target Audience",
+          "node_id": "target-audience",
+          "start_index": 8,
+          "end_index": 8,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Context and Problem",
+          "node_id": "context-and-problem",
+          "start_index": 9,
+          "end_index": 17,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Business Context",
+              "node_id": "business-context",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Technical Context",
+              "node_id": "technical-context",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Problem Details",
+              "node_id": "problem-details",
+              "start_index": 12,
+              "end_index": 16,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Problem 1: HTTP Timeout Failures for Long-Running Operations",
+                  "node_id": "problem-1-http-timeout-failures-for-long-running-operations",
+                  "start_index": 13,
+                  "end_index": 13,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Problem 2: Resource Exhaustion from Long-Polling",
+                  "node_id": "problem-2-resource-exhaustion-from-long-polling",
+                  "start_index": 14,
+                  "end_index": 14,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Problem 3: Poor Mobile User Experience",
+                  "node_id": "problem-3-poor-mobile-user-experience",
+                  "start_index": 15,
+                  "end_index": 15,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Problem 4: Batch Processing Without Status Tracking",
+                  "node_id": "problem-4-batch-processing-without-status-tracking",
+                  "start_index": 16,
+                  "end_index": 16,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Forces and Constraints",
+              "node_id": "forces-and-constraints",
+              "start_index": 17,
+              "end_index": 17,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Solution",
+          "node_id": "solution",
+          "start_index": 18,
+          "end_index": 33,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Pattern Description",
+              "node_id": "pattern-description",
+              "start_index": 19,
+              "end_index": 19,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Architecture Diagram",
+              "node_id": "architecture-diagram",
+              "start_index": 20,
+              "end_index": 22,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Sequence Diagram: Polling Approach",
+                  "node_id": "sequence-diagram-polling-approach",
+                  "start_index": 21,
+                  "end_index": 21,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Sequence Diagram: Callback Approach",
+                  "node_id": "sequence-diagram-callback-approach",
+                  "start_index": 22,
+                  "end_index": 22,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Components",
+              "node_id": "components",
+              "start_index": 23,
+              "end_index": 23,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Interactions",
+              "node_id": "interactions",
+              "start_index": 24,
+              "end_index": 28,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Request Submission Flow",
+                  "node_id": "request-submission-flow",
+                  "start_index": 25,
+                  "end_index": 25,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Background Processing Flow",
+                  "node_id": "background-processing-flow",
+                  "start_index": 26,
+                  "end_index": 26,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Status Polling Flow",
+                  "node_id": "status-polling-flow",
+                  "start_index": 27,
+                  "end_index": 27,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Result Retrieval Flow",
+                  "node_id": "result-retrieval-flow",
+                  "start_index": 28,
+                  "end_index": 28,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Variations",
+              "node_id": "variations",
+              "start_index": 29,
+              "end_index": 33,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Variation 1: Polling with Long-Polling Optimization",
+                  "node_id": "variation-1-polling-with-long-polling-optimization",
+                  "start_index": 30,
+                  "end_index": 30,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Variation 2: SignalR/WebSocket Push Notifications",
+                  "node_id": "variation-2-signalrwebsocket-push-notifications",
+                  "start_index": 31,
+                  "end_index": 31,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Variation 3: Webhook with Retry and Circuit Breaker",
+                  "node_id": "variation-3-webhook-with-retry-and-circuit-breaker",
+                  "start_index": 32,
+                  "end_index": 32,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Variation 4: Inline Result for Fast Operations (Optimistic Pattern)",
+                  "node_id": "variation-4-inline-result-for-fast-operations-optimistic-pattern",
+                  "start_index": 33,
+                  "end_index": 33,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Implementation Guidelines",
+          "node_id": "implementation-guidelines",
+          "start_index": 34,
+          "end_index": 41,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Prerequisites",
+              "node_id": "prerequisites",
+              "start_index": 35,
+              "end_index": 35,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Step-by-Step Implementation",
+              "node_id": "step-by-step-implementation",
+              "start_index": 36,
+              "end_index": 39,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Phase 1: Design and Planning (Week 1-2)",
+                  "node_id": "phase-1-design-and-planning-week-1-2",
+                  "start_index": 37,
+                  "end_index": 37,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Phase 2: Implementation (Week 3-6)",
+                  "node_id": "phase-2-implementation-week-3-6",
+                  "start_index": 38,
+                  "end_index": 38,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Phase 3: Testing and Validation (Week 7-8)",
+                  "node_id": "phase-3-testing-and-validation-week-7-8",
+                  "start_index": 39,
+                  "end_index": 39,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Best Practices",
+              "node_id": "best-practices",
+              "start_index": 40,
+              "end_index": 40,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Common Pitfalls",
+              "node_id": "common-pitfalls",
+              "start_index": 41,
+              "end_index": 41,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Governance and Compliance",
+          "node_id": "governance-and-compliance",
+          "start_index": 42,
+          "end_index": 54,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Standards Alignment",
+              "node_id": "standards-alignment",
+              "start_index": 43,
+              "end_index": 43,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Compliance Requirements",
+              "node_id": "compliance-requirements",
+              "start_index": 44,
+              "end_index": 46,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "HIPAA Compliance",
+                  "node_id": "hipaa-compliance",
+                  "start_index": 45,
+                  "end_index": 45,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "SOC 2 Compliance",
+                  "node_id": "soc-2-compliance",
+                  "start_index": 46,
+                  "end_index": 46,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Approval Process",
+              "node_id": "approval-process",
+              "start_index": 47,
+              "end_index": 50,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "1. Async Operation Design Review",
+                  "node_id": "1-async-operation-design-review",
+                  "start_index": 48,
+                  "end_index": 48,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "2. Message Queue Infrastructure Review",
+                  "node_id": "2-message-queue-infrastructure-review",
+                  "start_index": 49,
+                  "end_index": 49,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "3. Webhook Security Review",
+                  "node_id": "3-webhook-security-review",
+                  "start_index": 50,
+                  "end_index": 50,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Monitoring and Metrics",
+              "node_id": "monitoring-and-metrics",
+              "start_index": 51,
+              "end_index": 54,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Operational Metrics",
+                  "node_id": "operational-metrics",
+                  "start_index": 52,
+                  "end_index": 52,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Performance Metrics",
+                  "node_id": "performance-metrics",
+                  "start_index": 53,
+                  "end_index": 53,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Business Metrics",
+                  "node_id": "business-metrics",
+                  "start_index": 54,
+                  "end_index": 54,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Examples and Use Cases",
+          "node_id": "examples-and-use-cases",
+          "start_index": 55,
+          "end_index": 65,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Real-World Example 1: Provider Credentialing Background Checks",
+              "node_id": "real-world-example-1-provider-credentialing-background-checks",
+              "start_index": 56,
+              "end_index": 56,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Real-World Example 2: Member Health Summary Report Generation",
+              "node_id": "real-world-example-2-member-health-summary-report-generation",
+              "start_index": 57,
+              "end_index": 57,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Real-World Example 3: State Enrollment Batch Processing",
+              "node_id": "real-world-example-3-state-enrollment-batch-processing",
+              "start_index": 58,
+              "end_index": 58,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Use Case Scenarios",
+              "node_id": "use-case-scenarios",
+              "start_index": 59,
+              "end_index": 62,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Scenario 1: Prior Authorization with Clinical Review",
+                  "node_id": "scenario-1-prior-authorization-with-clinical-review",
+                  "start_index": 60,
+                  "end_index": 60,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Scenario 2: Data Analytics Report Generation",
+                  "node_id": "scenario-2-data-analytics-report-generation",
+                  "start_index": 61,
+                  "end_index": 61,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Scenario 3: Third-Party Integration with Rate Limits",
+                  "node_id": "scenario-3-third-party-integration-with-rate-limits",
+                  "start_index": 62,
+                  "end_index": 62,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Before and After Comparison",
+              "node_id": "before-and-after-comparison",
+              "start_index": 63,
+              "end_index": 65,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Before (Synchronous Long-Running Operations)",
+                  "node_id": "before-synchronous-long-running-operations",
+                  "start_index": 64,
+                  "end_index": 64,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "After (Async Request-Reply Pattern)",
+                  "node_id": "after-async-request-reply-pattern",
+                  "start_index": 65,
+                  "end_index": 65,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Related Patterns and References",
+          "node_id": "related-patterns-and-references",
+          "start_index": 66,
+          "end_index": 76,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Related Patterns",
+              "node_id": "related-patterns",
+              "start_index": 67,
+              "end_index": 67,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Dependencies",
+              "node_id": "dependencies",
+              "start_index": 68,
+              "end_index": 68,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "External References",
+              "node_id": "external-references",
+              "start_index": 69,
+              "end_index": 76,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Pattern Documentation",
+                  "node_id": "pattern-documentation",
+                  "start_index": 70,
+                  "end_index": 70,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "HTTP Standards",
+                  "node_id": "http-standards",
+                  "start_index": 71,
+                  "end_index": 71,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Message Queue and Background Processing",
+                  "node_id": "message-queue-and-background-processing",
+                  "start_index": 72,
+                  "end_index": 72,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Webhook Standards",
+                  "node_id": "webhook-standards",
+                  "start_index": 73,
+                  "end_index": 73,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Polling and Long-Polling",
+                  "node_id": "polling-and-long-polling",
+                  "start_index": 74,
+                  "end_index": 74,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Distributed Systems and Reliability",
+                  "node_id": "distributed-systems-and-reliability",
+                  "start_index": 75,
+                  "end_index": 75,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Case Studies",
+                  "node_id": "case-studies",
+                  "start_index": 76,
+                  "end_index": 76,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Change History",
+          "node_id": "change-history",
+          "start_index": 77,
+          "end_index": 77,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Review Log",
+          "node_id": "review-log",
+          "start_index": 78,
+          "end_index": 78,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "TL;DR",
+          "node_id": "tldr",
+          "start_index": 79,
+          "end_index": 79,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#asynchronous-request-reply-pattern]\n\n# Asynchronous Request-Reply Pattern\n\n**← Back to [EAP Home](../../../README.md) • [Patterns](../../README.md) • [Application](../README.md) • [API & Microservices](./README.md)**\n\n---\n\n**Pattern Metadata**\n\n```yaml\npattern_id: 'PTN-APP-API-021'\npattern_name: 'Asynchronous Request-Reply Pattern'\npattern_type: 'integration-messaging'\ndomain: 'integration'\nversion: '1.0.0'\nstatus: 'draft'\ntags: ['integration', 'integration-messaging', 'async', 'request-reply', 'long-running', 'polling', 'webhook', 'callback', 'background-job', 'complex', 'proven', 'scalability']\n```\n\n---",
+    "2": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#table-of-contents]\n\n## Table of Contents\n\n- [Executive Summary](#executive-summary)\n- [Context and Problem](#context-and-problem)\n- [Solution](#solution)\n- [Implementation Guidelines](#implementation-guidelines)\n- [Governance and Compliance](#governance-and-compliance)\n- [Examples and Use Cases](#examples-and-use-cases)\n- [Related Patterns and References](#related-patterns-and-references)\n- [Change History](#change-history)\n- [Review Log](#review-log)\n- [TL;DR](#tldr)\n\n---",
+    "3": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#executive-summary]\n\n## Executive Summary",
+    "4": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#problem-statement]\n\n### Problem Statement\n\nIn healthcare systems, many operations are inherently long-running: claim adjudication involving complex rule evaluation and third-party verifications (15-45 seconds), provider credentialing background checks spanning multiple data sources (2-5 minutes), eligibility batch processing for monthly enrollment files (10-30 minutes), prior authorization workflows requiring clinical review (hours to days), and data analytics report generation aggregating millions of records (5-60 minutes). Traditional synchronous request-response APIs force clients to maintain open HTTP connections throughout operation execution, leading to timeout errors, resource exhaustion, poor user experience with frozen interfaces, and inability to scale to handle concurrent long-running requests. API gateways and load balancers typically enforce 30-60 second timeouts, causing operations to fail before completion even when backend processing succeeds.",
+    "5": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#solution-overview]\n\n### Solution Overview\n\nThe Asynchronous Request-Reply Pattern decouples long-running operation execution from the initial API request by immediately returning an acknowledgment with a unique operation identifier, executing the operation asynchronously in the background, and providing mechanisms for clients to retrieve results through polling (client repeatedly checks status endpoint) or callbacks (server pushes notification when complete). The pattern introduces three key components: an API endpoint that accepts requests and returns operation IDs immediately (< 200ms), a durable message queue or job orchestrator that manages background execution, and a status/result endpoint or webhook mechanism for retrieving outcomes. This architectural approach transforms blocking operations into non-blocking workflows, enabling clients to remain responsive while operations complete asynchronously.",
+    "6": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#when-to-use]\n\n### When to Use\n\n**Long-Running Operations**:\n- Operations exceeding typical HTTP timeout thresholds (> 30 seconds)\n- Complex multi-step workflows requiring coordination across multiple services\n- Batch processing of large datasets (enrollment files, claim submissions, reports)\n- Operations with unpredictable execution times based on external factors\n\n**Resource-Intensive Processing**:\n- Analytics and reporting requiring aggregation of millions of records\n- Document generation (EOBs, member notices, compliance reports)\n- Data validation and enrichment from multiple external sources\n- Machine learning model inference or training jobs\n\n**External System Dependencies**:\n- Third-party integrations with unpredictable latency (credit checks, drug databases)\n- Manual approval workflows requiring human intervention\n- State agency system integrations with batch processing windows\n- HIE queries spanning multiple healthcare organizations\n\n**High-Volume Scenarios**:\n- Systems needing to handle thousands of concurrent long-running requests\n- Rate-limited external APIs requiring request queuing and throttling\n- Scenarios where immediate response not required for user experience",
+    "7": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#benefits]\n\n### Benefits\n\n**Client Responsiveness**: Clients receive immediate acknowledgment (< 200ms) instead of blocking for minutes, preventing timeout errors and enabling responsive user interfaces that don't freeze during processing\n\n**Scalability**: Background workers can scale independently from API layer, handling thousands of concurrent long-running operations without exhausting API connection pools or thread resources\n\n**Reliability**: Operations survive transient failures through retry mechanisms; if API gateway crashes, queued operations continue processing; results preserved even if client disconnects\n\n**Resource Efficiency**: HTTP connections released immediately after request submission rather than held open for entire operation duration, reducing infrastructure overhead for long-running workloads\n\n**Operational Flexibility**: Failed operations can be retried without client re-submission; operations can be prioritized, throttled, or scheduled based on system load; partial results can be returned incrementally\n\n**Improved User Experience**: Progress indicators show operation status; users can navigate away and return later; mobile apps conserve battery by avoiding long-polling\n\n**Better Observability**: Centralized tracking of all async operations with status, duration, and error details; easier to monitor SLAs and identify bottlenecks",
+    "8": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#target-audience]\n\n## Target Audience\n\nThis pattern is intended for:\n\n- **Solution Architects** designing asynchronous integration architectures for long-running healthcare workflows\n- **API Developers** implementing non-blocking request-reply patterns and status-tracking endpoints\n- **Backend Developers** building job orchestration, message queuing, and async processing services\n- **Platform Engineers** responsible for message broker infrastructure and async worker scaling",
+    "9": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#context-and-problem]\n\n## Context and Problem",
+    "10": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#business-context]\n\n### Business Context\n\nGainwell's healthcare platforms process millions of transactions daily spanning diverse operational timescales. While some operations must complete in real-time (eligibility verification at pharmacy point-of-sale requiring < 3 second response), many workflows are inherently asynchronous: monthly enrollment batch processing affecting large member populations per state, claim adjudication requiring complex rule evaluation and coordination of benefits checks spanning multiple payers, provider credentialing involving background checks with state licensing boards and the National Practitioner Data Bank, and analytics report generation aggregating claims data across multiple years.\n\nState Medicaid agencies and health plans expect modern, responsive user interfaces despite underlying complexity. A case manager should be able to request a comprehensive member care coordination report and continue working while the system aggregates clinical data from multiple HIEs, claims history from the enterprise system, and social determinants screening results—a process potentially taking 2-3 minutes. Traditional synchronous APIs would freeze the interface or timeout, frustrating users and forcing them to retry.\n\nRegulatory requirements add complexity: CMS interoperability rules mandate patient access APIs respond within specific timeframes, but comprehensive clinical summaries may require federated queries across multiple systems. HIPAA audit requirements necessitate complete tracking of all data access attempts, including failed or timed-out requests. State contracts often specify SLAs measured in hours or days for batch operations (eligibility file processing within 4 hours, provider credentialing within 14 days), making asynchronous patterns essential.",
+    "11": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#technical-context]\n\n### Technical Context\n\nGainwell's microservices architecture comprises hundreds of services deployed across Azure Kubernetes Service (AKS) with Azure API Management as the gateway layer. HTTP request timeouts are configured at multiple levels: Azure Application Gateway (120 seconds), API Management (60 seconds), and individual service implementations (30-90 seconds). These timeout constraints conflict with long-running operation requirements.\n\nThe existing technology stack includes:\n\n- **Azure Service Bus**: Enterprise message broker with guaranteed delivery and dead-letter queues\n- **Azure Durable Functions**: Serverless orchestration for stateful workflows\n- **Azure Storage Queues**: Lightweight queue service for simpler async patterns\n- **Azure Event Grid**: Event routing for webhook-style callbacks\n- **Azure Cosmos DB**: Status tracking and result storage with global replication\n- **SignalR Service**: Real-time push notifications to web and mobile clients\n\nMany legacy systems still use synchronous patterns with timeout workarounds (clients retrying every 30 seconds), causing unnecessary load and poor user experience. Modern services increasingly adopt async patterns, but implementation approaches vary: some use polling, others use webhooks, and status tracking schemas are inconsistent.",
+    "12": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#problem-details]\n\n### Problem Details",
+    "13": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#problem-1-http-timeout-failures-for-long-running-operations]\n\n#### Problem 1: HTTP Timeout Failures for Long-Running Operations\n\n**Scenario**: Provider credentialing API performs background checks taking 90-180 seconds:\n\n```csharp\n// Problematic synchronous implementation\n[HttpPost(\"providers/credentialing\")]\npublic async Task<IActionResult> SubmitCredentialingApplication(\n    CredentialingApplication application)\n{\n    try\n    {\n        // Validate application (2-3 seconds)\n        var validationResult = await _validator.ValidateAsync(application);\n        if (!validationResult.IsValid)\n            return BadRequest(validationResult.Errors);\n\n        // Check state medical board license (30-45 seconds)\n        var licenseCheck = await _stateLicensingService.VerifyLicenseAsync(\n            application.LicenseNumber, application.State);\n\n        // Query National Practitioner Data Bank (45-60 seconds)\n        var npdbCheck = await _npdbService.QueryProviderAsync(\n            application.Npi, application.TaxId);\n\n        // Verify DEA registration if prescriber (20-30 seconds)\n        var deaCheck = application.IsPrescriber\n            ? await _deaService.VerifyRegistrationAsync(application.DeaNumber)\n            : null;\n\n        // Check professional liability insurance (15-20 seconds)\n        var insuranceCheck = await _insuranceVerificationService.VerifyAsync(\n            application.InsurancePolicyNumber);\n\n        // Save credentialing results\n        var credentialingId = await _repository.SaveAsync(new CredentialingRecord\n        {\n            ApplicationId = application.Id,\n            LicenseStatus = licenseCheck.Status,\n            NpdbStatus = npdbCheck.Status,\n            DeaStatus = deaCheck?.Status,\n            InsuranceStatus = insuranceCheck.Status\n        });\n\n        return Ok(new { CredentialingId = credentialingId });\n    }\n    catch (TaskCanceledException)\n    {\n        // Request timed out - but which check failed?\n        // Backend processing may still be running!\n        return StatusCode(408, \"Request timeout\");\n    }\n}\n```\n\n**Problems**:\n- Total execution time substantially exceeds API Management timeout thresholds\n- API Management timeout causes failure before backend processing completes\n- Client receives timeout error even when backend processing completes successfully\n- No way to retrieve results of timed-out requests\n- Backend resources wasted on processing that clients can't access\n- Retries duplicate expensive background checks\n\n**Impact**:\n- Provider onboarding SLA violations when applications timeout requiring manual intervention\n- User frustration: providers must resubmit applications multiple times\n- Increased background check costs due to duplicate processing from retries\n- Compliance risk: incomplete audit trails when requests timeout mid-processing",
+    "14": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#problem-2-resource-exhaustion-from-long-polling]\n\n#### Problem 2: Resource Exhaustion from Long-Polling\n\n**Scenario**: Prior authorization API waits for clinical review approval (2-48 hours):\n\n```csharp\n// Problematic long-polling approach\n[HttpGet(\"prior-authorizations/{id}/status\")]\npublic async Task<IActionResult> WaitForApproval(string id,\n    [FromQuery] int timeoutSeconds = 300)\n{\n    var startTime = DateTime.UtcNow;\n    var deadline = startTime.AddSeconds(timeoutSeconds);\n\n    while (DateTime.UtcNow < deadline)\n    {\n        var authorization = await _repository.GetAsync(id);\n\n        if (authorization.Status != \"Pending\")\n        {\n            return Ok(authorization);\n        }\n\n        // Poll every 5 seconds\n        await Task.Delay(5000);\n    }\n\n    return StatusCode(408, \"Approval still pending\");\n}\n```\n\n**Problems**:\n- Each client holds HTTP connection for up to 5 minutes (timeoutSeconds parameter)\n- 1,000 concurrent clients waiting for approvals = 1,000 open connections\n- API server thread pool exhaustion under load (limited to 200 concurrent connections)\n- Database hammered with status checks every 5 seconds\n- 5-minute timeout inadequate for operations taking hours (client forced to re-poll)\n- Connection infrastructure costs scale linearly with number of pending operations\n\n**Impact**:\n- Thread pool exhaustion under moderate concurrent load due to held connections\n- Database CPU pressure from constant status polling at scale\n- Infrastructure costs scale linearly with pending operations rather than with actual workload",
+    "15": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#problem-3-poor-mobile-user-experience]\n\n#### Problem 3: Poor Mobile User Experience\n\n**Scenario**: Member app requests comprehensive health summary requiring federated query:\n\n```javascript\n// Mobile app code - React Native\nconst loadHealthSummary = async (memberId) => {\n  setLoading(true);\n  setLoadingMessage(\"Loading your health information...\");\n\n  try {\n    // This call takes 45-90 seconds (HIE queries + claims aggregation)\n    const response = await fetch(\n      `${API_BASE}/members/${memberId}/health-summary`,\n      {\n        method: 'GET',\n        timeout: 120000 // 2 minute timeout\n      }\n    );\n\n    if (!response.ok) {\n      throw new Error('Failed to load health summary');\n    }\n\n    const summary = await response.json();\n    setHealthSummary(summary);\n  } catch (error) {\n    if (error.name === 'AbortError') {\n      showError(\"Request timed out. Please try again.\");\n    } else {\n      showError(\"Unable to load health summary\");\n    }\n  } finally {\n    setLoading(false);\n  }\n};\n```\n\n**Problems**:\n- Mobile app frozen with loading spinner for 45-90 seconds\n- User cannot navigate to other screens during loading\n- Mobile network interruptions cause failure and require complete restart\n- Battery drain from keeping HTTP connection active\n- High user abandonment when loading exceeds acceptable thresholds\n- No progress indication beyond generic \"loading\" message\n- Screen locks on mobile devices disconnect connection, requiring restart\n\n**User Experience Impact**:\n- Poor app store ratings with frequent complaints about \"slow\" and \"freezing\"\n- High session abandonment rate for health summary feature\n- Elevated support tickets related to \"app not responding\" during report generation",
+    "16": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#problem-4-batch-processing-without-status-tracking]\n\n#### Problem 4: Batch Processing Without Status Tracking\n\n**Scenario**: State agency uploads monthly enrollment file requiring processing:\n\n```csharp\n// Problematic synchronous batch processing\n[HttpPost(\"eligibility/batch-upload\")]\npublic async Task<IActionResult> ProcessEnrollmentFile(IFormFile file)\n{\n    // Validate file (1-2 seconds)\n    if (file.Length > 100 * 1024 * 1024) // 100 MB\n        return BadRequest(\"File too large\");\n\n    try\n    {\n        // Parse CSV file (30-60 seconds for large files)\n        var enrollments = await _parser.ParseEnrollmentFileAsync(file);\n\n        // Validate each enrollment (2-3 minutes)\n        var validationResults = await _validator.ValidateBatchAsync(enrollments);\n\n        // Process valid enrollments (5-10 minutes)\n        var results = new List<EnrollmentResult>();\n        foreach (var enrollment in validationResults.Valid)\n        {\n            var result = await _enrollmentService.ProcessAsync(enrollment);\n            results.Add(result);\n        }\n\n        // Generate summary report (30-60 seconds)\n        var summary = await _reportGenerator.GenerateBatchSummaryAsync(\n            results, validationResults.Invalid);\n\n        return Ok(summary);\n    }\n    catch (Exception ex)\n    {\n        // If processing fails at step 3, all work lost!\n        return StatusCode(500, \"Batch processing failed\");\n    }\n}\n```\n\n**Problems**:\n- Total processing time: 8-15 minutes for large enrollment files\n- Exceeds all reasonable HTTP timeout thresholds\n- Single failure loses all processing progress (no checkpointing)\n- State agency user sees browser \"loading\" for 15 minutes with no progress indication\n- No ability to retrieve partial results if processing interrupted\n- Cannot prioritize urgent enrollments within batch\n- Memory issues loading entire large record batch into memory\n\n**Business Impact**:\n- State contract SLA violations: \"Enrollment file processing within 4 hours\" missed due to repeated failures\n- Manual intervention required: Operations team must run console apps outside API\n- Poor state agency satisfaction scores related to file upload reliability",
+    "17": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#forces-and-constraints]\n\n### Forces and Constraints\n\n**Technical Constraints**:\n- HTTP protocol designed for request-response, not long-running operations\n- API gateways and load balancers enforce timeout policies for infrastructure protection\n- Mobile networks and cellular connections inherently unreliable for long-duration connections\n- Browser timeout limitations and user expectations for responsive interfaces\n\n**Operational Constraints**:\n- Background jobs require infrastructure (queues, workers, orchestrators)\n- Result storage and cleanup must be managed\n- Status tracking adds complexity and state management\n- Retry logic and failure handling more sophisticated for async operations\n\n**User Experience Requirements**:\n- Users expect immediate feedback that request received\n- Progress indication necessary for operations taking > 10 seconds\n- Must support mobile scenarios with intermittent connectivity\n- Results should be retrievable even if original client session lost\n\n**Compliance Requirements**:\n- HIPAA audit logs must track complete operation lifecycle (submit, process, complete)\n- Results containing PHI must be secured and expire appropriately\n- State contracts specify maximum processing times requiring SLA monitoring\n- Data retention policies require cleanup of completed operation results",
+    "18": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#solution]\n\n## Solution",
+    "19": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#pattern-description]\n\n### Pattern Description\n\nThe Asynchronous Request-Reply Pattern decouples request submission from result retrieval by introducing an intermediary status tracking mechanism and background execution model. When a client submits a long-running operation request, the API endpoint immediately returns an accepted response (HTTP 202) with a unique operation identifier and a status URL for tracking progress. The actual operation executes asynchronously through a message queue or job orchestrator, with results stored in durable storage upon completion. Clients retrieve results through one of two mechanisms:\n\n**Polling Approach**: Client periodically queries a status endpoint using the operation ID until completion detected, then retrieves final results. Status responses include progress indicators, estimated completion time, and eventual result location.\n\n**Callback Approach (Webhooks)**: Client provides a callback URL when submitting request; server posts notification to callback URL when operation completes, including result location or inline result data.\n\n**Hybrid Approach**: Server supports both patterns, allowing clients to choose based on their capabilities (mobile apps may prefer polling, server-to-server integrations prefer callbacks).\n\nThe pattern ensures idempotency: submitting the same request multiple times returns the same operation ID, preventing duplicate processing. Results are cached for a TTL period (typically 24-72 hours) allowing clients to retrieve outcomes even after temporary disconnections.",
+    "20": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#architecture-diagram]\n\n### Architecture Diagram",
+    "21": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#sequence-diagram-polling-approach]\n\n#### Sequence Diagram: Polling Approach\n\n```mermaid\nsequenceDiagram\n    participant Client\n    participant API Gateway\n    participant Request Handler\n    participant Message Queue\n    participant Background Worker\n    participant Status Store\n    participant Result Store\n\n    Client->>API Gateway: POST /operations (request payload)\n    API Gateway->>Request Handler: Forward request\n    Request Handler->>Status Store: Create operation record (status: Accepted)\n    Request Handler->>Message Queue: Enqueue operation message\n    Request Handler->>API Gateway: 202 Accepted + operation ID\n    API Gateway->>Client: 202 Accepted<br/>{operationId: \"abc123\",<br/>statusUrl: \"/operations/abc123\"}\n\n    Note over Client: Client can continue<br/>other work\n\n    Message Queue->>Background Worker: Dequeue message\n    Background Worker->>Status Store: Update status: Running\n    Background Worker->>Background Worker: Execute long-running operation<br/>(30-300 seconds)\n    Background Worker->>Result Store: Store result data\n    Background Worker->>Status Store: Update status: Completed\n    Background Worker->>Message Queue: Acknowledge message\n\n    Note over Client: Client polls periodically\n\n    loop Poll every 5-10 seconds\n        Client->>API Gateway: GET /operations/abc123\n        API Gateway->>Status Store: Query operation status\n        Status Store->>API Gateway: status: Running, progress: 60%\n        API Gateway->>Client: 200 OK<br/>{status: \"Running\", progress: \"60%\"}\n    end\n\n    Client->>API Gateway: GET /operations/abc123\n    API Gateway->>Status Store: Query operation status\n    Status Store->>API Gateway: status: Completed, resultUrl: /results/abc123\n    API Gateway->>Client: 200 OK<br/>{status: \"Completed\",<br/>resultUrl: \"/operations/abc123/result\"}\n\n    Client->>API Gateway: GET /operations/abc123/result\n    API Gateway->>Result Store: Retrieve result\n    Result Store->>API Gateway: Result data\n    API Gateway->>Client: 200 OK + result payload\n```",
+    "22": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#sequence-diagram-callback-approach]\n\n#### Sequence Diagram: Callback Approach\n\n```mermaid\nsequenceDiagram\n    participant Client\n    participant API Gateway\n    participant Request Handler\n    participant Message Queue\n    participant Background Worker\n    participant Status Store\n    participant Result Store\n    participant Webhook Service\n\n    Client->>API Gateway: POST /operations<br/>(request payload + callbackUrl)\n    API Gateway->>Request Handler: Forward request\n    Request Handler->>Status Store: Create operation record<br/>(status: Accepted, callbackUrl)\n    Request Handler->>Message Queue: Enqueue operation message\n    Request Handler->>API Gateway: 202 Accepted + operation ID\n    API Gateway->>Client: 202 Accepted<br/>{operationId: \"abc123\",<br/>statusUrl: \"/operations/abc123\"}\n\n    Note over Client: Client continues<br/>other work\n\n    Message Queue->>Background Worker: Dequeue message\n    Background Worker->>Status Store: Update status: Running\n    Background Worker->>Background Worker: Execute long-running operation\n    Background Worker->>Result Store: Store result data\n    Background Worker->>Status Store: Update status: Completed\n    Background Worker->>Webhook Service: Trigger callback<br/>(operationId, callbackUrl)\n    Background Worker->>Message Queue: Acknowledge message\n\n    Webhook Service->>Webhook Service: Prepare callback payload<br/>(operationId, status, resultUrl)\n    Webhook Service->>Client: POST {callbackUrl}<br/>{operationId: \"abc123\",<br/>status: \"Completed\",<br/>resultUrl: \"/operations/abc123/result\"}\n    Client->>Webhook Service: 200 OK (acknowledge callback)\n\n    Note over Client: Client retrieves result<br/>when convenient\n\n    Client->>API Gateway: GET /operations/abc123/result\n    API Gateway->>Result Store: Retrieve result\n    Result Store->>API Gateway: Result data\n    API Gateway->>Client: 200 OK + result payload\n```",
+    "23": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#components]\n\n### Components\n\n| Component | Responsibility | Dependencies |\n|-----------|---------------|-------------|\n| **Request Handler API** | Accepts operation requests, validates input, generates unique operation ID, creates initial status record, enqueues operation message, returns 202 Accepted with operation ID and status URL | API Gateway, Status Store, Message Queue |\n| **Message Queue / Service Bus** | Durably stores operation messages, ensures guaranteed delivery, supports message retry and dead-lettering, provides FIFO ordering if required, enables scaling of background workers | Azure Service Bus, RabbitMQ, or AWS SQS |\n| **Background Worker / Job Processor** | Dequeues operation messages, executes long-running logic, updates operation status and progress, stores results in durable storage, triggers callbacks if configured, handles errors and retries | Message Queue, Status Store, Result Store, Business Services |\n| **Status Store** | Persists operation metadata (ID, status, progress, timestamps, error details), supports fast lookups by operation ID, tracks operation lifecycle (Accepted → Running → Completed/Failed), enforces TTL for automatic cleanup | Azure Cosmos DB, Redis, or SQL Database |\n| **Result Store** | Durably stores operation results (potentially large payloads), supports TTL-based expiration, handles both small (< 1 MB) and large (> 10 MB) results, may use blob storage for large files | Azure Blob Storage, S3, or Cosmos DB |\n| **Status API Endpoint** | Exposes GET /operations/{id} for polling, returns current status, progress percentage, estimated completion, and result URL when complete, supports conditional requests (If-None-Match) to reduce traffic | API Gateway, Status Store |\n| **Result API Endpoint** | Exposes GET /operations/{id}/result for retrieving final results, enforces authorization (only requestor can access results), supports large payload streaming or presigned URLs, implements rate limiting | API Gateway, Result Store, Authorization Service |\n| **Webhook Service (Optional)** | Delivers completion notifications to client-provided callback URLs, implements retry with exponential backoff for failed deliveries, tracks delivery status and attempts, supports webhook signature verification | Status Store, HTTP Client, Queue for retry |\n| **Monitoring & Observability** | Tracks operation SLAs (time from submit to complete), monitors queue depth and processing rates, alerts on failed operations or SLA violations, provides dashboards for operation status distribution | Azure Monitor, Application Insights, or Prometheus |",
+    "24": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#interactions]\n\n### Interactions",
+    "25": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#request-submission-flow]\n\n#### Request Submission Flow\n\n1. **Client submits request** via POST to `/operations` endpoint with operation payload and optional callback URL\n2. **Request Handler validates** input schema and authentication/authorization\n3. **Operation ID generated** using GUID or correlation ID from request\n4. **Idempotency check**: Query Status Store for existing operation with same idempotency key (if provided)\n   - If exists and not expired: Return existing operation ID (prevent duplicate processing)\n   - If new: Continue to step 5\n5. **Status record created** in Status Store with initial state:\n   ```json\n   {\n     \"operationId\": \"abc123-def456-789\",\n     \"status\": \"Accepted\",\n     \"createdAt\": \"2026-01-12T10:30:00Z\",\n     \"callbackUrl\": \"https://client.example.com/callbacks/operations\",\n     \"requestor\": \"user@example.com\",\n     \"expiresAt\": \"2026-01-14T10:30:00Z\"\n   }\n   ```\n6. **Message enqueued** to message queue/service bus with operation details and operation ID\n7. **202 Accepted returned** to client immediately (< 200ms) with response:\n   ```json\n   {\n     \"operationId\": \"abc123-def456-789\",\n     \"status\": \"Accepted\",\n     \"statusUrl\": \"/api/operations/abc123-def456-789\",\n     \"_links\": {\n       \"self\": {\n         \"href\": \"/api/operations/abc123-def456-789\"\n       }\n     }\n   }\n   ```",
+    "26": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#background-processing-flow]\n\n#### Background Processing Flow\n\n1. **Worker dequeues message** from queue (message includes operation ID and input payload)\n2. **Status updated to Running**:\n   ```json\n   {\n     \"operationId\": \"abc123-def456-789\",\n     \"status\": \"Running\",\n     \"startedAt\": \"2026-01-12T10:30:15Z\",\n     \"progress\": 0\n   }\n   ```\n3. **Long-running operation executes** with periodic progress updates:\n   ```csharp\n   // Pseudocode for background worker\n   var operation = DequeueMessage();\n   await UpdateStatus(operation.Id, \"Running\", progress: 0);\n\n   try {\n       var result = await ExecuteOperation(operation.Payload,\n           progressCallback: async (pct) => {\n               await UpdateStatus(operation.Id, \"Running\", progress: pct);\n           });\n\n       await StoreResult(operation.Id, result);\n       await UpdateStatus(operation.Id, \"Completed\", progress: 100);\n\n       if (operation.CallbackUrl != null) {\n           await TriggerCallback(operation.Id, operation.CallbackUrl);\n       }\n\n       AcknowledgeMessage(operation);\n   } catch (Exception ex) {\n       await UpdateStatus(operation.Id, \"Failed\", error: ex.Message);\n\n       if (IsTransientError(ex) && operation.RetryCount < 3) {\n           // Retry with exponential backoff\n           RequeueMessage(operation, delaySeconds: Math.Pow(2, operation.RetryCount) * 30);\n       } else {\n           DeadLetterMessage(operation, ex);\n       }\n   }\n   ```\n4. **Result stored** in Result Store upon successful completion\n5. **Status updated to Completed** with result URL\n6. **Callback triggered** if callback URL provided (webhook pattern)",
+    "27": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#status-polling-flow]\n\n#### Status Polling Flow\n\n1. **Client polls GET `/operations/{id}`** at regular intervals (5-10 seconds recommended)\n2. **Status Store queried** for current operation state\n3. **Status response returned**:\n   - **While Running**:\n     ```json\n     {\n       \"operationId\": \"abc123-def456-789\",\n       \"status\": \"Running\",\n       \"progress\": 60,\n       \"startedAt\": \"2026-01-12T10:30:15Z\",\n       \"estimatedCompletionAt\": \"2026-01-12T10:32:00Z\"\n     }\n     ```\n   - **When Completed**:\n     ```json\n     {\n       \"operationId\": \"abc123-def456-789\",\n       \"status\": \"Completed\",\n       \"progress\": 100,\n       \"completedAt\": \"2026-01-12T10:31:45Z\",\n       \"resultUrl\": \"/api/operations/abc123-def456-789/result\",\n       \"_links\": {\n         \"result\": {\n           \"href\": \"/api/operations/abc123-def456-789/result\"\n         }\n       }\n     }\n     ```\n   - **If Failed**:\n     ```json\n     {\n       \"operationId\": \"abc123-def456-789\",\n       \"status\": \"Failed\",\n       \"failedAt\": \"2026-01-12T10:31:20Z\",\n       \"error\": {\n         \"code\": \"ValidationError\",\n         \"message\": \"Invalid provider license number\",\n         \"details\": \"License number ABC123 not found in state registry\"\n       }\n     }\n     ```",
+    "28": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#result-retrieval-flow]\n\n#### Result Retrieval Flow\n\n1. **Client requests GET `/operations/{id}/result`** after detecting Completed status\n2. **Authorization verified**: Ensure requestor is same user/client that submitted operation\n3. **Result retrieved** from Result Store\n4. **Result returned** with appropriate caching headers:\n   ```http\n   HTTP/1.1 200 OK\n   Content-Type: application/json\n   Cache-Control: private, max-age=3600\n   ETag: \"abc123-result-hash\"\n\n   {\n     \"credentialingId\": \"cred-789\",\n     \"provider\": {\n       \"npi\": \"1234567890\",\n       \"name\": \"Dr. Jane Smith\"\n     },\n     \"checks\": {\n       \"license\": { \"status\": \"Verified\", \"expirationDate\": \"2027-12-31\" },\n       \"npdb\": { \"status\": \"Clear\" },\n       \"dea\": { \"status\": \"Active\", \"number\": \"BS1234563\" }\n     }\n   }\n   ```",
+    "29": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#variations]\n\n### Variations",
+    "30": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#variation-1-polling-with-long-polling-optimization]\n\n#### Variation 1: Polling with Long-Polling Optimization\n\n**Description**: Standard polling can be inefficient if client polls too frequently or operations complete quickly. Long-polling holds the HTTP connection open until status changes or timeout, reducing unnecessary requests.\n\n**Implementation**:\n```csharp\n[HttpGet(\"operations/{id}\")]\npublic async Task<IActionResult> GetOperationStatus(string id,\n    [FromQuery] int waitSeconds = 0)\n{\n    var operation = await _statusStore.GetAsync(id);\n\n    if (operation == null)\n        return NotFound();\n\n    // If operation already completed, return immediately\n    if (operation.Status == \"Completed\" || operation.Status == \"Failed\")\n        return Ok(operation);\n\n    // Long-polling: wait for status change or timeout\n    if (waitSeconds > 0)\n    {\n        var deadline = DateTime.UtcNow.AddSeconds(Math.Min(waitSeconds, 30));\n\n        while (DateTime.UtcNow < deadline)\n        {\n            operation = await _statusStore.GetAsync(id);\n\n            if (operation.Status != \"Running\" && operation.Status != \"Accepted\")\n                return Ok(operation);\n\n            await Task.Delay(1000); // Check every second\n        }\n    }\n\n    return Ok(operation);\n}\n```\n\n**When to Use**: Internal APIs where client and server in same datacenter, reducing polling traffic overhead\n\n**Trade-offs**: Holds connections longer (back to original problem at smaller scale); max wait time should be limited to 30-60 seconds",
+    "31": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#variation-2-signalrwebsocket-push-notifications]\n\n#### Variation 2: SignalR/WebSocket Push Notifications\n\n**Description**: Instead of polling or callbacks, use WebSocket connection to push real-time status updates to connected clients.\n\n**Implementation**:\n```csharp\n// SignalR Hub\npublic class OperationHub : Hub\n{\n    public async Task SubscribeToOperation(string operationId)\n    {\n        await Groups.AddToGroupAsync(Context.ConnectionId, operationId);\n    }\n}\n\n// Background worker pushes updates\npublic async Task UpdateOperationStatus(string operationId, string status, int progress)\n{\n    await _statusStore.UpdateAsync(operationId, status, progress);\n\n    // Push real-time update to subscribed clients\n    await _hubContext.Clients.Group(operationId).SendAsync(\"OperationStatusChanged\",\n        new { operationId, status, progress });\n}\n```\n\n**Client Code** (JavaScript):\n```javascript\nconst connection = new signalR.HubConnectionBuilder()\n    .withUrl(\"/hubs/operations\")\n    .build();\n\nconnection.on(\"OperationStatusChanged\", (update) => {\n    console.log(`Operation ${update.operationId}: ${update.status} (${update.progress}%)`);\n    if (update.status === \"Completed\") {\n        fetchResult(update.operationId);\n    }\n});\n\nconnection.start().then(() => {\n    connection.invoke(\"SubscribeToOperation\", operationId);\n});\n```\n\n**When to Use**: Real-time dashboards, administrative interfaces requiring live progress updates, scenarios where polling overhead unacceptable\n\n**Trade-offs**: WebSocket infrastructure required; connection management complexity; may not work through all firewalls/proxies",
+    "32": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#variation-3-webhook-with-retry-and-circuit-breaker]\n\n#### Variation 3: Webhook with Retry and Circuit Breaker\n\n**Description**: Enhanced webhook implementation with robust failure handling for unreliable client callback endpoints.\n\n**Implementation**:\n```csharp\npublic class WebhookDeliveryService\n{\n    private readonly IHttpClientFactory _httpClientFactory;\n    private readonly ILogger<WebhookDeliveryService> _logger;\n\n    public async Task DeliverWebhookAsync(string callbackUrl, WebhookPayload payload)\n    {\n        var policy = Policy\n            .Handle<HttpRequestException>()\n            .WaitAndRetryAsync(\n                retryCount: 3,\n                sleepDurationProvider: attempt => TimeSpan.FromSeconds(Math.Pow(2, attempt)),\n                onRetry: (exception, timespan, attempt, context) =>\n                {\n                    _logger.LogWarning($\"Webhook delivery attempt {attempt} failed: {exception.Message}\");\n                });\n\n        try\n        {\n            await policy.ExecuteAsync(async () =>\n            {\n                var client = _httpClientFactory.CreateClient();\n                client.Timeout = TimeSpan.FromSeconds(10);\n\n                var content = new StringContent(\n                    JsonSerializer.Serialize(payload),\n                    Encoding.UTF8,\n                    \"application/json\");\n\n                // Add signature for webhook verification\n                var signature = ComputeHmacSignature(payload);\n                content.Headers.Add(\"X-Webhook-Signature\", signature);\n\n                var response = await client.PostAsync(callbackUrl, content);\n                response.EnsureSuccessStatusCode();\n\n                _logger.LogInformation($\"Webhook delivered successfully to {callbackUrl}\");\n            });\n        }\n        catch (Exception ex)\n        {\n            _logger.LogError($\"Webhook delivery failed after retries: {ex.Message}\");\n            // Store failed delivery for manual retry or dead-letter queue\n            await _deadLetterQueue.EnqueueAsync(new FailedWebhook\n            {\n                CallbackUrl = callbackUrl,\n                Payload = payload,\n                Error = ex.Message\n            });\n        }\n    }\n}\n```\n\n**When to Use**: Server-to-server integrations where eventual notification delivery acceptable; partner APIs with known reliability issues\n\n**Trade-offs**: Complex retry logic; requires dead-letter queue for permanently failed deliveries; webhook verification overhead",
+    "33": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#variation-4-inline-result-for-fast-operations-optimistic-pattern]\n\n#### Variation 4: Inline Result for Fast Operations (Optimistic Pattern)\n\n**Description**: Hybrid approach that returns result inline if operation completes quickly (< 2 seconds), otherwise falls back to async pattern.\n\n**Implementation**:\n```csharp\n[HttpPost(\"operations\")]\npublic async Task<IActionResult> SubmitOperation(OperationRequest request)\n{\n    var operationId = Guid.NewGuid().ToString();\n\n    // Try fast path with timeout\n    using (var cts = new CancellationTokenSource(TimeSpan.FromSeconds(2)))\n    {\n        try\n        {\n            var result = await _operationService.ExecuteAsync(request, cts.Token);\n\n            // Fast path: operation completed within 2 seconds\n            return Ok(result);\n        }\n        catch (OperationCanceledException)\n        {\n            // Timeout: fall back to async pattern\n        }\n    }\n\n    // Slow path: use async pattern\n    await _statusStore.CreateAsync(operationId, \"Accepted\");\n    await _queue.EnqueueAsync(operationId, request);\n\n    return Accepted(new\n    {\n        OperationId = operationId,\n        StatusUrl = $\"/api/operations/{operationId}\"\n    });\n}\n```\n\n**When to Use**: Operations with variable execution time (some fast, some slow); mixed workload where most operations complete quickly\n\n**Trade-offs**: Unpredictable client response times; client must handle both synchronous (200 OK with result) and asynchronous (202 Accepted with operation ID) responses",
+    "34": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#implementation-guidelines]\n\n## Implementation Guidelines",
+    "35": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#prerequisites]\n\n### Prerequisites\n\n**Technical Infrastructure**:\n- **Message Queue**: Azure Service Bus, RabbitMQ, AWS SQS, or Azure Storage Queues for durable message handling\n- **Status Store**: Fast key-value store (Azure Cosmos DB, Redis, DynamoDB) or relational database with indexing on operation ID\n- **Result Store**: Blob storage (Azure Blob, S3) for large results or database for smaller payloads\n- **API Gateway**: Azure API Management, Kong, or AWS API Gateway for routing and policy enforcement\n- **Worker Infrastructure**: Azure Functions, Kubernetes Jobs, or VM-based worker pools for background processing\n- **Monitoring**: Application Insights, Prometheus, or CloudWatch for operation tracking and SLA monitoring\n\n**Development Skills**:\n- **Asynchronous Programming**: Deep understanding of async/await patterns, Task-based programming, and non-blocking I/O\n- **Message Queue Expertise**: Experience with queue semantics (at-least-once vs exactly-once delivery), dead-letter queues, message visibility timeouts\n- **Distributed Systems**: Understanding of eventual consistency, idempotency, distributed tracing, and failure modes\n- **HTTP Standards**: Knowledge of HTTP status codes (202 Accepted, 303 See Other), REST principles, and caching headers\n- **State Management**: Experience with distributed state, TTL-based expiration, and consistency patterns\n\n**Architectural Prerequisites**:\n- **Microservices Architecture**: Services decomposed with clear boundaries; operations execute within single service or use saga pattern for cross-service workflows\n- **Idempotency Support**: Operations designed to be safely retried without side effects (database constraints, idempotency keys)\n- **Authentication & Authorization**: Service-to-service auth for background workers; client identity propagation to track operation ownership\n- **Observability Infrastructure**: Distributed tracing (OpenTelemetry), structured logging, and correlation ID propagation\n\n**Organizational Readiness**:\n- **Client Development Teams**: Understand async patterns; prepared to implement polling or webhook clients\n- **Operations Team**: Familiar with queue monitoring, dead-letter queue handling, and async operation troubleshooting\n- **Product Management**: Accept that some operations won't return immediate results; UX designed for async feedback",
+    "36": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#step-by-step-implementation]\n\n### Step-by-Step Implementation",
+    "37": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#phase-1-design-and-planning-week-1-2]\n\n#### Phase 1: Design and Planning (Week 1-2)\n\n**Step 1: Identify Long-Running Operations**\n\nQuery application logs and APM data to identify operations exceeding timeout thresholds:\n\n```sql\n-- Azure Application Insights query to find slow operations\nrequests\n| where timestamp > ago(30d)\n| where duration > 30000  -- 30 seconds\n| summarize\n    Count = count(),\n    P50 = percentile(duration, 50),\n    P95 = percentile(duration, 95),\n    P99 = percentile(duration, 99)\n    by operation_Name\n| where Count > 100  -- Significant volume\n| order by P95 desc\n| project operation_Name, Count, P50_Seconds = P50/1000, P95_Seconds = P95/1000, P99_Seconds = P99/1000\n```\n\n**Example Output**:\n```text\noperation_Name                         Count   P50_Seconds  P95_Seconds  P99_Seconds\nPOST /providers/credentialing          1,240      85          142          180\nPOST /reports/member-summary           3,450      35           68           95\nPOST /eligibility/batch-upload           156     450          720          900\nPOST /prior-authorizations               890      15          120          240\n```\n\n**Step 2: Design Status Schema**\n\nDefine comprehensive status tracking model:\n\n```csharp\npublic class OperationStatus\n{\n    [JsonPropertyName(\"operationId\")]\n    public string OperationId { get; set; }\n\n    [JsonPropertyName(\"status\")]\n    public OperationState Status { get; set; }  // Accepted, Running, Completed, Failed, Cancelled\n\n    [JsonPropertyName(\"progress\")]\n    public int? Progress { get; set; }  // 0-100 percentage\n\n    [JsonPropertyName(\"createdAt\")]\n    public DateTime CreatedAt { get; set; }\n\n    [JsonPropertyName(\"startedAt\")]\n    public DateTime? StartedAt { get; set; }\n\n    [JsonPropertyName(\"completedAt\")]\n    public DateTime? CompletedAt { get; set; }\n\n    [JsonPropertyName(\"estimatedCompletionAt\")]\n    public DateTime? EstimatedCompletionAt { get; set; }\n\n    [JsonPropertyName(\"resultUrl\")]\n    public string? ResultUrl { get; set; }\n\n    [JsonPropertyName(\"callbackUrl\")]\n    public string? CallbackUrl { get; set; }\n\n    [JsonPropertyName(\"requestor\")]\n    public string Requestor { get; set; }  // User ID or client ID\n\n    [JsonPropertyName(\"error\")]\n    public OperationError? Error { get; set; }\n\n    [JsonPropertyName(\"metadata\")]\n    public Dictionary<string, string>? Metadata { get; set; }\n\n    [JsonPropertyName(\"expiresAt\")]\n    public DateTime ExpiresAt { get; set; }  // TTL for cleanup\n}\n\npublic enum OperationState\n{\n    Accepted,   // Request received, not yet started\n    Running,    // Currently executing\n    Completed,  // Successfully finished\n    Failed,     // Permanent failure\n    Cancelled   // Client-initiated cancellation\n}\n\npublic class OperationError\n{\n    [JsonPropertyName(\"code\")]\n    public string Code { get; set; }  // Machine-readable error code\n\n    [JsonPropertyName(\"message\")]\n    public string Message { get; set; }  // Human-readable description\n\n    [JsonPropertyName(\"details\")]\n    public string? Details { get; set; }  // Additional context\n}\n```\n\n**Step 3: Define API Contract**\n\nCreate OpenAPI specification for async operations:\n\n```yaml\n# openapi.yaml excerpt\npaths:\n  /providers/credentialing:\n    post:\n      summary: Submit provider credentialing application (async)\n      operationId: submitCredentialing\n      requestBody:\n        required: true\n        content:\n          application/json:\n            schema:\n              $ref: '#/components/schemas/CredentialingApplication'\n      responses:\n        '202':\n          description: Application accepted for processing\n          headers:\n            Location:\n              schema:\n                type: string\n              description: URL to check operation status\n          content:\n            application/json:\n              schema:\n                type: object\n                properties:\n                  operationId:\n                    type: string\n                    format: uuid\n                  status:\n                    type: string\n                    enum: [Accepted]\n                  statusUrl:\n                    type: string\n                    format: uri\n                  _links:\n                    type: object\n                    properties:\n                      self:\n                        type: object\n                        properties:\n                          href:\n                            type: string\n        '400':\n          description: Invalid request\n        '401':\n          description: Unauthorized\n\n  /operations/{operationId}:\n    get:\n      summary: Get operation status\n      operationId: getOperationStatus\n      parameters:\n        - name: operationId\n          in: path\n          required: true\n          schema:\n            type: string\n            format: uuid\n      responses:\n        '200':\n          description: Operation status\n          content:\n            application/json:\n              schema:\n                $ref: '#/components/schemas/OperationStatus'\n        '404':\n          description: Operation not found\n\n  /operations/{operationId}/result:\n    get:\n      summary: Get operation result\n      operationId: getOperationResult\n      parameters:\n        - name: operationId\n          in: path\n          required: true\n          schema:\n            type: string\n            format: uuid\n      responses:\n        '200':\n          description: Operation result\n          content:\n            application/json:\n              schema:\n                $ref: '#/components/schemas/CredentialingResult'\n        '404':\n          description: Operation not found or result expired\n        '409':\n          description: Operation not yet completed\n```",
+    "38": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#phase-2-implementation-week-3-6]\n\n#### Phase 2: Implementation (Week 3-6)\n\n**Step 1: Implement Request Handler**\n\nCreate API endpoint accepting async requests:\n\n```csharp\n[ApiController]\n[Route(\"api/providers\")]\npublic class ProviderCredentialingController : ControllerBase\n{\n    private readonly IOperationStore _operationStore;\n    private readonly IServiceBusClient _serviceBus;\n    private readonly ILogger<ProviderCredentialingController> _logger;\n\n    [HttpPost(\"credentialing\")]\n    [ProducesResponseType(typeof(OperationAcceptedResponse), StatusCodes.Status202Accepted)]\n    [ProducesResponseType(StatusCodes.Status400BadRequest)]\n    public async Task<IActionResult> SubmitCredentialingApplication(\n        [FromBody] CredentialingApplication application,\n        [FromHeader(Name = \"X-Idempotency-Key\")] string? idempotencyKey = null,\n        [FromHeader(Name = \"X-Callback-Url\")] string? callbackUrl = null)\n    {\n        // Validate input\n        var validationResult = await _validator.ValidateAsync(application);\n        if (!validationResult.IsValid)\n            return BadRequest(validationResult.Errors);\n\n        // Generate or retrieve operation ID (idempotency)\n        var operationId = idempotencyKey ?? Guid.NewGuid().ToString();\n\n        // Check for existing operation (idempotency)\n        var existingOperation = await _operationStore.GetAsync(operationId);\n        if (existingOperation != null)\n        {\n            _logger.LogInformation($\\\"Returning existing operation {operationId} (idempotency)\\\");\n            return AcceptedAtAction(\n                nameof(OperationsController.GetOperationStatus),\n                \\\"Operations\\\",\n                new { operationId },\n                new OperationAcceptedResponse\n                {\n                    OperationId = operationId,\n                    Status = existingOperation.Status.ToString(),\n                    StatusUrl = $\\\"/api/operations/{operationId}\\\"\n                });\n        }\n\n        // Create operation status record\n        var operation = new OperationStatus\n        {\n            OperationId = operationId,\n            Status = OperationState.Accepted,\n            CreatedAt = DateTime.UtcNow,\n            Requestor = User.Identity.Name ?? \\\"anonymous\\\",\n            CallbackUrl = callbackUrl,\n            ExpiresAt = DateTime.UtcNow.AddDays(3),\n            Metadata = new Dictionary<string, string>\n            {\n                [\\\"OperationType\\\"] = \\\"ProviderCredentialing\\\",\n                [\\\"ApplicationId\\\"] = application.Id.ToString()\n            }\n        };\n\n        await _operationStore.CreateAsync(operation);\n\n        // Enqueue message for background processing\n        var message = new ServiceBusMessage(JsonSerializer.Serialize(new\n        {\n            OperationId = operationId,\n            OperationType = \\\"ProviderCredentialing\\\",\n            Payload = application\n        }))\n        {\n            MessageId = operationId,\n            ContentType = \\\"application/json\\\",\n            Subject = \\\"ProviderCredentialing\\\"\n        };\n\n        await _serviceBus.SendMessageAsync(\\\"credentialing-queue\\\", message);\n\n        _logger.LogInformation($\\\"Created async operation {operationId} for credentialing application {application.Id}\\\");\n\n        // Return 202 Accepted with operation details\n        Response.Headers.Add(\\\"Location\\\", $\\\"/api/operations/{operationId}\\\");\n\n        return AcceptedAtAction(\n            nameof(OperationsController.GetOperationStatus),\n            \\\"Operations\\\",\n            new { operationId },\n            new OperationAcceptedResponse\n            {\n                OperationId = operationId,\n                Status = \\\"Accepted\\\",\n                StatusUrl = $\\\"/api/operations/{operationId}\\\",\n                Links = new Dictionary<string, LinkObject>\n                {\n                    [\\\"self\\\"] = new LinkObject { Href = $\\\"/api/operations/{operationId}\\\" }\n                }\n            });\n    }\n}\n```\n\n**Step 2: Implement Status Endpoint**\n\n```csharp\n[ApiController]\n[Route(\\\"api/operations\\\")]\npublic class OperationsController : ControllerBase\n{\n    private readonly IOperationStore _operationStore;\n\n    [HttpGet(\\\"{operationId}\\\")]\n    [ProducesResponseType(typeof(OperationStatus), StatusCodes.Status200OK)]\n    [ProducesResponseType(StatusCodes.Status404NotFound)]\n    public async Task<IActionResult> GetOperationStatus(string operationId)\n    {\n        var operation = await _operationStore.GetAsync(operationId);\n\n        if (operation == null)\n            return NotFound(new { Error = \\\"Operation not found\\\" });\n\n        // Verify requestor (only creator can check status)\n        if (operation.Requestor != User.Identity.Name && !User.IsInRole(\\\"Admin\\\"))\n            return Forbid();\n\n        // Add result URL if completed\n        if (operation.Status == OperationState.Completed)\n        {\n            operation.ResultUrl = $\\\"/api/operations/{operationId}/result\\\";\n        }\n\n        // Set appropriate cache headers\n        if (operation.Status == OperationState.Completed || operation.Status == OperationState.Failed)\n        {\n            Response.Headers.Add(\\\"Cache-Control\\\", \\\"private, max-age=3600\\\");\n        }\n        else\n        {\n            Response.Headers.Add(\\\"Cache-Control\\\", \\\"no-cache\\\");\n        }\n\n        return Ok(operation);\n    }\n\n    [HttpGet(\\\"{operationId}/result\\\")]\n    [ProducesResponseType(StatusCodes.Status200OK)]\n    [ProducesResponseType(StatusCodes.Status404NotFound)]\n    [ProducesResponseType(StatusCodes.Status409Conflict)]\n    public async Task<IActionResult> GetOperationResult(string operationId)\n    {\n        var operation = await _operationStore.GetAsync(operationId);\n\n        if (operation == null)\n            return NotFound(new { Error = \\\"Operation not found\\\" });\n\n        // Verify requestor\n        if (operation.Requestor != User.Identity.Name && !User.IsInRole(\\\"Admin\\\"))\n            return Forbid();\n\n        // Check if operation completed\n        if (operation.Status != OperationState.Completed)\n        {\n            return Conflict(new\n            {\n                Error = \\\"Operation not yet completed\\\",\n                Status = operation.Status.ToString(),\n                StatusUrl = $\\\"/api/operations/{operationId}\\\"\n            });\n        }\n\n        // Retrieve result from result store\n        var result = await _resultStore.GetAsync(operationId);\n\n        if (result == null)\n            return NotFound(new { Error = \\\"Result not found or expired\\\" });\n\n        // Set cache headers for completed results\n        Response.Headers.Add(\\\"Cache-Control\\\", \\\"private, max-age=86400\\\");\n        Response.Headers.Add(\\\"ETag\\\", $\\\"\\\\\\\"{operationId}-result\\\\\\\"\\\");\n\n        return Ok(result);\n    }\n\n    [HttpDelete(\\\"{operationId}\\\")]\n    [ProducesResponseType(StatusCodes.Status204NoContent)]\n    public async Task<IActionResult> CancelOperation(string operationId)\n    {\n        var operation = await _operationStore.GetAsync(operationId);\n\n        if (operation == null)\n            return NotFound();\n\n        // Verify requestor\n        if (operation.Requestor != User.Identity.Name && !User.IsInRole(\\\"Admin\\\"))\n            return Forbid();\n\n        // Can only cancel operations that haven't completed\n        if (operation.Status == OperationState.Completed || operation.Status == OperationState.Failed)\n            return Conflict(new { Error = \\\"Cannot cancel completed operation\\\" });\n\n        // Update status to cancelled\n        operation.Status = OperationState.Cancelled;\n        operation.CompletedAt = DateTime.UtcNow;\n        await _operationStore.UpdateAsync(operation);\n\n        return NoContent();\n    }\n}\n```\n\n**Step 3: Implement Background Worker**\n\n```csharp\npublic class CredentialingWorker : BackgroundService\n{\n    private readonly ServiceBusProcessor _processor;\n    private readonly IOperationStore _operationStore;\n    private readonly IResultStore _resultStore;\n    private readonly ICredentialingService _credentialingService;\n    private readonly IWebhookService _webhookService;\n    private readonly ILogger<CredentialingWorker> _logger;\n\n    protected override async Task ExecuteAsync(CancellationToken stoppingToken)\n    {\n        _processor.ProcessMessageAsync += ProcessMessageHandler;\n        _processor.ProcessErrorAsync += ErrorHandler;\n\n        await _processor.StartProcessingAsync(stoppingToken);\n    }\n\n    private async Task ProcessMessageHandler(ProcessMessageEventArgs args)\n    {\n        var message = JsonSerializer.Deserialize<CredentialingMessage>(args.Message.Body.ToString());\n        var operationId = message.OperationId;\n\n        try\n        {\n            _logger.LogInformation($\\\"Processing credentialing operation {operationId}\\\");\n\n            // Update status to Running\n            await _operationStore.UpdateAsync(operationId, OperationState.Running, progress: 0);\n\n            // Execute long-running credentialing checks\n            var result = await _credentialingService.ProcessCredentialingAsync(\n                message.Payload,\n                progressCallback: async (progress) =>\n                {\n                    await _operationStore.UpdateProgressAsync(operationId, progress);\n                },\n                cancellationToken: CancellationToken.None);\n\n            // Store result\n            await _resultStore.SaveAsync(operationId, result);\n\n            // Update status to Completed\n            await _operationStore.UpdateAsync(operationId, OperationState.Completed, progress: 100);\n\n            // Trigger webhook if configured\n            var operation = await _operationStore.GetAsync(operationId);\n            if (!string.IsNullOrEmpty(operation.CallbackUrl))\n            {\n                await _webhookService.DeliverAsync(operation.CallbackUrl, new WebhookPayload\n                {\n                    OperationId = operationId,\n                    Status = \\\"Completed\\\",\n                    ResultUrl = $\\\"/api/operations/{operationId}/result\\\",\n                    CompletedAt = operation.CompletedAt.Value\n                });\n            }\n\n            // Complete the message (remove from queue)\n            await args.CompleteMessageAsync(args.Message);\n\n            _logger.LogInformation($\\\"Completed credentialing operation {operationId}\\\");\n        }\n        catch (Exception ex)\n        {\n            _logger.LogError(ex, $\\\"Error processing credentialing operation {operationId}\\\");\n\n            // Update status to Failed\n            await _operationStore.UpdateAsync(operationId, OperationState.Failed, error: new OperationError\n            {\n                Code = \\\"ProcessingError\\\",\n                Message = ex.Message,\n                Details = ex.StackTrace\n            });\n\n            // Dead-letter the message after max retries\n            if (args.Message.DeliveryCount >= 3)\n            {\n                await args.DeadLetterMessageAsync(args.Message, \\\"MaxRetriesExceeded\\\", ex.Message);\n            }\n            else\n            {\n                // Abandon message for retry\n                await args.AbandonMessageAsync(args.Message);\n            }\n        }\n    }\n}\n```\n\n**Step 4: Implement Client SDKs**\n\nProvide client libraries abstracting polling complexity:\n\n```csharp\n// C# Client SDK\npublic class AsyncOperationClient\n{\n    private readonly HttpClient _httpClient;\n    private readonly TimeSpan _pollingInterval;\n\n    public AsyncOperationClient(HttpClient httpClient, TimeSpan? pollingInterval = null)\n    {\n        _httpClient = httpClient;\n        _pollingInterval = pollingInterval ?? TimeSpan.FromSeconds(5);\n    }\n\n    public async Task<TResult> SubmitAndWaitAsync<TResult>(\n        string endpoint,\n        object payload,\n        TimeSpan? timeout = null,\n        IProgress<int>? progress = null,\n        CancellationToken cancellationToken = default)\n    {\n        // Submit operation\n        var response = await _httpClient.PostAsJsonAsync(endpoint, payload, cancellationToken);\n        response.EnsureSuccessStatusCode();\n\n        var acceptedResponse = await response.Content.ReadFromJsonAsync<OperationAcceptedResponse>();\n        var operationId = acceptedResponse.OperationId;\n\n        // Poll for completion\n        var deadline = timeout.HasValue ? DateTime.UtcNow.Add(timeout.Value) : DateTime.MaxValue;\n\n        while (DateTime.UtcNow < deadline)\n        {\n            cancellationToken.ThrowIfCancellationRequested();\n\n            var statusResponse = await _httpClient.GetFromJsonAsync<OperationStatus>(\n                acceptedResponse.StatusUrl, cancellationToken);\n\n            // Report progress\n            if (statusResponse.Progress.HasValue && progress != null)\n            {\n                progress.Report(statusResponse.Progress.Value);\n            }\n\n            // Check completion\n            if (statusResponse.Status == \\\"Completed\\\")\n            {\n                var resultResponse = await _httpClient.GetFromJsonAsync<TResult>(\n                    statusResponse.ResultUrl, cancellationToken);\n                return resultResponse;\n            }\n            else if (statusResponse.Status == \\\"Failed\\\")\n            {\n                throw new OperationFailedException(statusResponse.Error);\n            }\n\n            // Wait before next poll\n            await Task.Delay(_pollingInterval, cancellationToken);\n        }\n\n        throw new TimeoutException($\\\"Operation {operationId} did not complete within timeout\\\");\n    }\n}\n\n// Usage\nvar client = new AsyncOperationClient(httpClient);\nvar result = await client.SubmitAndWaitAsync<CredentialingResult>(\n    \\\"/api/providers/credentialing\\\",\n    application,\n    timeout: TimeSpan.FromMinutes(5),\n    progress: new Progress<int>(pct => Console.WriteLine($\\\"Progress: {pct}%\\\")));\n```",
+    "39": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#phase-3-testing-and-validation-week-7-8]\n\n#### Phase 3: Testing and Validation (Week 7-8)\n\n**Step 1: Unit Testing**\n\n```csharp\npublic class CredentialingControllerTests\n{\n    [Fact]\n    public async Task SubmitCredentialingApplication_Returns202Accepted_WithOperationId()\n    {\n        // Arrange\n        var mockOperationStore = new Mock<IOperationStore>();\n        var mockServiceBus = new Mock<IServiceBusClient>();\n\n        var controller = new ProviderCredentialingController(\n            mockOperationStore.Object,\n            mockServiceBus.Object,\n            Mock.Of<ILogger<ProviderCredentialingController>>());\n\n        var application = new CredentialingApplication { /* ... */ };\n\n        // Act\n        var result = await controller.SubmitCredentialingApplication(application);\n\n        // Assert\n        var acceptedResult = Assert.IsType<AcceptedAtActionResult>(result);\n        Assert.Equal(202, acceptedResult.StatusCode);\n\n        var response = Assert.IsType<OperationAcceptedResponse>(acceptedResult.Value);\n        Assert.NotNull(response.OperationId);\n        Assert.Equal(\\\"Accepted\\\", response.Status);\n        Assert.NotNull(response.StatusUrl);\n\n        // Verify operation stored\n        mockOperationStore.Verify(x => x.CreateAsync(It.IsAny<OperationStatus>()), Times.Once);\n\n        // Verify message enqueued\n        mockServiceBus.Verify(x => x.SendMessageAsync(\n            \\\"credentialing-queue\\\",\n            It.IsAny<ServiceBusMessage>()), Times.Once);\n    }\n\n    [Fact]\n    public async Task SubmitCredentialingApplication_WithIdempotencyKey_ReturnsExistingOperation()\n    {\n        // Arrange\n        var idempotencyKey = \\\"test-key-123\\\";\n        var existingOperation = new OperationStatus\n        {\n            OperationId = idempotencyKey,\n            Status = OperationState.Running,\n            Progress = 50\n        };\n\n        var mockOperationStore = new Mock<IOperationStore>();\n        mockOperationStore.Setup(x => x.GetAsync(idempotencyKey))\n            .ReturnsAsync(existingOperation);\n\n        var controller = new ProviderCredentialingController(\n            mockOperationStore.Object,\n            Mock.Of<IServiceBusClient>(),\n            Mock.Of<ILogger<ProviderCredentialingController>>());\n\n        // Act\n        var result = await controller.SubmitCredentialingApplication(\n            new CredentialingApplication(),\n            idempotencyKey: idempotencyKey);\n\n        // Assert\n        var acceptedResult = Assert.IsType<AcceptedAtActionResult>(result);\n        var response = Assert.IsType<OperationAcceptedResponse>(acceptedResult.Value);\n        Assert.Equal(idempotencyKey, response.OperationId);\n        Assert.Equal(\\\"Running\\\", response.Status);\n\n        // Verify no new operation created\n        mockOperationStore.Verify(x => x.CreateAsync(It.IsAny<OperationStatus>()), Times.Never);\n    }\n}\n```\n\n**Step 2: Integration Testing**\n\n```csharp\npublic class AsyncOperationIntegrationTests : IClassFixture<WebApplicationFactory<Program>>\n{\n    private readonly HttpClient _client;\n\n    [Fact]\n    public async Task EndToEnd_SubmitOperation_PollStatus_RetrieveResult()\n    {\n        // Submit operation\n        var application = new CredentialingApplication\n        {\n            Npi = \\\"1234567890\\\",\n            LicenseNumber = \\\"MD12345\\\",\n            State = \\\"CA\\\"\n        };\n\n        var submitResponse = await _client.PostAsJsonAsync(\n            \\\"/api/providers/credentialing\\\", application);\n        Assert.Equal(HttpStatusCode.Accepted, submitResponse.StatusCode);\n\n        var acceptedResponse = await submitResponse.Content\n            .ReadFromJsonAsync<OperationAcceptedResponse>();\n        Assert.NotNull(acceptedResponse.OperationId);\n\n        // Poll for completion\n        OperationStatus status;\n        var maxAttempts = 60;  // 5 minutes with 5-second intervals\n        var attempt = 0;\n\n        do\n        {\n            await Task.Delay(TimeSpan.FromSeconds(5));\n\n            var statusResponse = await _client.GetAsync(acceptedResponse.StatusUrl);\n            statusResponse.EnsureSuccessStatusCode();\n\n            status = await statusResponse.Content.ReadFromJsonAsync<OperationStatus>();\n            attempt++;\n        } while (status.Status == \\\"Running\\\" && attempt < maxAttempts);\n\n        Assert.Equal(\\\"Completed\\\", status.Status);\n        Assert.NotNull(status.ResultUrl);\n\n        // Retrieve result\n        var resultResponse = await _client.GetAsync(status.ResultUrl);\n        resultResponse.EnsureSuccessStatusCode();\n\n        var result = await resultResponse.Content.ReadFromJsonAsync<CredentialingResult>();\n        Assert.NotNull(result);\n    }\n}\n```\n\n**Step 3: Load Testing**\n\n```javascript\n// k6 load test script\nimport http from 'k6/http';\nimport { check, sleep } from 'k6';\n\nexport const options = {\n    stages: [\n        { duration: '2m', target: 100 },  // Ramp to 100 concurrent operations\n        { duration: '5m', target: 100 },  // Hold at 100\n        { duration: '2m', target: 0 },    // Ramp down\n    ],\n    thresholds: {\n        'http_req_duration{name:submit}': ['p(95)<500'],  // Submit should be fast\n        'http_req_duration{name:poll}': ['p(95)<200'],    // Polling should be fast\n        'operation_duration': ['p(95)<120000'],            // Operations complete in 2min\n    },\n};\n\nexport default function() {\n    const payload = JSON.stringify({\n        npi: '1234567890',\n        licenseNumber: 'MD12345',\n        state: 'CA'\n    });\n\n    // Submit operation\n    const submitRes = http.post('${BASE_URL}/api/providers/credentialing',\n        payload,\n        {\n            headers: { 'Content-Type': 'application/json' },\n            tags: { name: 'submit' }\n        }\n    );\n\n    check(submitRes, {\n        'submit returns 202': (r) => r.status === 202,\n        'submit returns operationId': (r) => JSON.parse(r.body).operationId !== undefined,\n    });\n\n    if (submitRes.status !== 202) return;\n\n    const acceptedResponse = JSON.parse(submitRes.body);\n    const statusUrl = `${BASE_URL}${acceptedResponse.statusUrl}`;\n\n    // Poll for completion\n    const startTime = Date.now();\n    let completed = false;\n    let attempts = 0;\n    const maxAttempts = 60;\n\n    while (!completed && attempts < maxAttempts) {\n        sleep(5);  // Poll every 5 seconds\n\n        const statusRes = http.get(statusUrl, { tags: { name: 'poll' } });\n        check(statusRes, {\n            'poll returns 200': (r) => r.status === 200,\n        });\n\n        const status = JSON.parse(statusRes.body);\n        if (status.status === 'Completed' || status.status === 'Failed') {\n            completed = true;\n            const duration = Date.now() - startTime;\n            http.addMetric('operation_duration', duration);\n        }\n\n        attempts++;\n    }\n\n    check(completed, {\n        'operation completed within max attempts': completed === true,\n    });\n}\n```",
+    "40": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#best-practices]\n\n### Best Practices\n\n**1. Implement Comprehensive Idempotency**\n\nUse idempotency keys to prevent duplicate processing when clients retry:\n\n```csharp\n// Client includes idempotency key\nvar request = new HttpRequestMessage(HttpMethod.Post, \\\"/api/operations\\\")\n{\n    Content = JsonContent.Create(payload),\n    Headers = { { \\\"X-Idempotency-Key\\\", Guid.NewGuid().ToString() } }\n};\n```\n\nServer checks for existing operation before creating new one.\n\n**2. Set Appropriate TTLs for Operation Data**\n\nConfigure expiration policies to automatically clean up old operations:\n\n- **Status records**: 7 days (allow clients to check historical operations)\n- **Result data**: 3 days (balance client retrieval needs with storage costs)\n- **Failed operations**: 30 days (operational debugging)\n\n**3. Provide Progress Indicators**\n\nUpdate progress field during long operations for better UX:\n\n```csharp\n// Background worker reports progress\nfor (int i = 0; i < steps.Length; i++)\n{\n    await ExecuteStep(steps[i]);\n    var progress = (int)((i + 1.0) / steps.Length * 100);\n    await _operationStore.UpdateProgressAsync(operationId, progress);\n}\n```\n\n**4. Use Circuit Breakers for Webhook Delivery**\n\nProtect against failing callback endpoints:\n\n```csharp\nvar circuitBreakerPolicy = Policy\n    .Handle<HttpRequestException>()\n    .CircuitBreakerAsync(\n        exceptionsAllowedBeforeBreaking: 5,\n        durationOfBreak: TimeSpan.FromMinutes(1),\n        onBreak: (exception, duration) =>\n        {\n            _logger.LogWarning($\\\"Webhook circuit breaker opened for {duration}\\\");\n        });\n```\n\n**5. Implement Graceful Shutdown**\n\nEnsure in-flight operations complete during deployments:\n\n```csharp\npublic override async Task StopAsync(CancellationToken stoppingToken)\n{\n    _logger.LogInformation(\\\"Worker stopping, waiting for in-flight operations...\\\");\n\n    // Stop accepting new messages\n    await _processor.StopProcessingAsync();\n\n    // Wait for current messages to complete (with timeout)\n    await Task.Delay(TimeSpan.FromSeconds(30), stoppingToken);\n\n    await base.StopAsync(stoppingToken);\n}\n```\n\n**6. Enable Operation Cancellation**\n\nAllow clients to cancel long-running operations:\n\n```csharp\n// Background worker checks cancellation\nwhile (!cancellationToken.IsCancellationRequested && !completed)\n{\n    await ProcessNextStep();\n\n    // Check if operation cancelled by client\n    var operation = await _operationStore.GetAsync(operationId);\n    if (operation.Status == OperationState.Cancelled)\n    {\n        _logger.LogInformation($\\\"Operation {operationId} cancelled by client\\\");\n        break;\n    }\n}\n```\n\n**7. Use Distributed Tracing**\n\nPropagate correlation IDs across async boundaries:\n\n```csharp\n// Enqueue message with trace context\nvar message = new ServiceBusMessage(payload)\n{\n    ApplicationProperties =\n    {\n        [\\\"TraceId\\\"] = Activity.Current?.TraceId.ToString(),\n        [\\\"SpanId\\\"] = Activity.Current?.SpanId.ToString()\n    }\n};\n\n// Worker restores trace context\nvar traceId = message.ApplicationProperties[\\\"TraceId\\\"].ToString();\nusing var activity = ActivitySource.StartActivity(\n    \\\"ProcessCredentialing\\\",\n    ActivityKind.Consumer,\n    traceId);\n```",
+    "41": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#common-pitfalls]\n\n### Common Pitfalls\n\n**Pitfall 1: Not Handling Idempotency**\n\n**Problem**: Client retries create duplicate operations, causing double processing.\n\n**Solution**: Accept idempotency keys in request headers; store operation status keyed by idempotency key; return existing operation ID for duplicate requests. Use database unique constraints to enforce idempotency at data layer.\n\n**Pitfall 2: Polling Too Frequently**\n\n**Problem**: Clients poll every second, overwhelming status endpoint and database.\n\n**Solution**: Document recommended polling interval (5-10 seconds); implement rate limiting on status endpoint; return `Retry-After` header suggesting next poll time; consider long-polling or WebSocket for real-time updates.\n\n**Pitfall 3: Result Data Never Expires**\n\n**Problem**: Result storage grows unbounded, increasing costs and degrading performance.\n\n**Solution**: Set TTL on result records (3-7 days); implement background cleanup job for expired results; document result availability window in API contract; return 410 Gone for expired results.\n\n**Pitfall 4: No Authorization on Result Retrieval**\n\n**Problem**: Any client with operation ID can retrieve results, potentially exposing PHI.\n\n**Solution**: Store requestor identity when creating operation; verify current user matches requestor before returning status/results; use short-lived, signed URLs for result access; implement audit logging for result access.\n\n**Pitfall 5: Webhook Failures Block Processing**\n\n**Problem**: Webhook delivery failure causes operation to fail or get stuck.\n\n**Solution**: Decouple webhook delivery from operation processing; use separate queue for webhook delivery with retry; mark operation as completed even if webhook fails; implement webhook delivery status tracking for debugging.\n\n**Pitfall 6: Lost Messages Due to Transient Failures**\n\n**Problem**: Background worker crashes mid-processing; message lost and operation stuck in \\\"Running\\\" state forever.\n\n**Solution**: Use message queue visibility timeout; worker must complete/abandon message within timeout; implement dead-letter queue for poisoned messages; health check monitors stuck operations and alerts.\n\n**Pitfall 7: No Estimated Completion Time**\n\n**Problem**: Users don't know if operation will take 1 minute or 1 hour.\n\n**Solution**: Track historical operation durations by type; calculate ETA based on p50/p95 historical durations; include `estimatedCompletionAt` field in status response; update estimate as operation progresses.",
+    "42": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#governance-and-compliance]\n\n## Governance and Compliance",
+    "43": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#standards-alignment]\n\n### Standards Alignment\n\n**Enterprise Architecture Standards**:\n- [API Design Standards](../../../standards/api/) - Async operations follow REST principles; 202 Accepted status code per HTTP RFC 7231\n- [Integration Standards](../../../standards/integration/) - Message queue patterns and service communication standards\n- [Microservices Standards](../../../standards/application/microservices/) - Background job processing and asynchronous workflows\n- [Security Standards](../../../standards/security/) - Authentication, authorization, and audit logging requirements\n\n**Industry Standards**:\n- **HTTP RFC 7231**: Defines 202 Accepted status code for asynchronous processing\n- **OpenAPI 3.0**: Standardized API documentation including async operation patterns\n- **CloudEvents**: Event format for webhook payloads providing interoperability\n- **Webhook Standards**: Secure webhook delivery patterns including signature verification",
+    "44": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#compliance-requirements]\n\n### Compliance Requirements",
+    "45": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#hipaa-compliance]\n\n#### HIPAA Compliance\n\n**Access Control (§164.312(a))**:\n- Operation status and results accessible only to requestor or authorized users\n- Service-to-service authentication for background workers accessing PHI\n- Authorization checks enforced on status and result endpoints\n- Automatic account lockout after failed authentication attempts\n\n**Audit Controls (§164.312(b))**:\n```csharp\n// HIPAA-compliant audit logging for async operations\npublic async Task<IActionResult> SubmitOperation(OperationRequest request)\n{\n    var operationId = Guid.NewGuid().ToString();\n\n    // Log operation submission\n    await _auditLogger.LogAsync(new AuditEvent\n    {\n        EventType = \"AsyncOperationSubmitted\",\n        UserId = User.Identity.Name,\n        OperationId = operationId,\n        Timestamp = DateTime.UtcNow,\n        IpAddress = HttpContext.Connection.RemoteIpAddress.ToString(),\n        RequestData = SanitizeForAudit(request),\n        DataElementsAccessed = DetermineDataElements(request)\n    });\n\n    // Operation processing...\n}\n\n// Log result retrieval\npublic async Task<IActionResult> GetOperationResult(string operationId)\n{\n    var result = await _resultStore.GetAsync(operationId);\n\n    await _auditLogger.LogAsync(new AuditEvent\n    {\n        EventType = \"AsyncOperationResultAccessed\",\n        UserId = User.Identity.Name,\n        OperationId = operationId,\n        Timestamp = DateTime.UtcNow,\n        IpAddress = HttpContext.Connection.RemoteIpAddress.ToString(),\n        AccessPurpose = \"TreatmentPaymentOperations\"\n    });\n\n    return Ok(result);\n}\n```\n\n**Integrity Controls (§164.312(c))**:\n- Operation status transitions validated (Accepted → Running → Completed/Failed)\n- Result data checksums to detect tampering or corruption\n- Message queue guarantees prevent message loss or duplication\n\n**Transmission Security (§164.312(e))**:\n- TLS 1.2+ enforced for all API endpoints (status, result retrieval)\n- PHI encrypted at rest in status store and result store\n- Message queue encryption in transit and at rest (Azure Service Bus encryption)\n- Webhook delivery over HTTPS only; reject HTTP callback URLs",
+    "46": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#soc-2-compliance]\n\n#### SOC 2 Compliance\n\n**CC6.1 - Logical and Physical Access Controls**:\n- Background workers authenticate using managed identities or service principals\n- Result data access restricted to authorized services and requestor\n- Webhook signatures prevent unauthorized callback invocation\n\n**CC7.2 - System Monitoring**:\n- Comprehensive monitoring of operation SLAs (submission to completion time)\n- Alerting on stuck operations (Running status > expected duration)\n- Queue depth monitoring and worker health checks\n- Failed webhook delivery tracking\n\n**CC8.1 - Change Management**:\n- Backward-compatible changes to operation status schema\n- Versioned message formats to support rolling deployments\n- Blue-green deployment strategy for background workers",
+    "47": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#approval-process]\n\n### Approval Process",
+    "48": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#1-async-operation-design-review]\n\n#### 1. Async Operation Design Review\n\n**When Required**: Before implementing new async operation pattern for existing synchronous API\n\n**Reviewers**: API Architecture Team, Backend Service Owners\n\n**Review Criteria**:\n- Business justification (operation duration, timeout failures, volume)\n- Client impact assessment (polling vs webhook preference)\n- SLA requirements (expected completion time)\n- Result data size and storage strategy\n- TTL policies for status and result cleanup",
+    "49": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#2-message-queue-infrastructure-review]\n\n#### 2. Message Queue Infrastructure Review\n\n**Required**: When introducing new message queue or topic\n\n**Process**:\n- Verify queue naming conventions followed\n- Review dead-letter queue configuration\n- Validate message retention policies\n- Assess queue throughput and scaling requirements\n- Confirm monitoring and alerting configured",
+    "50": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#3-webhook-security-review]\n\n#### 3. Webhook Security Review\n\n**Required**: When implementing webhook callback mechanism\n\n**Criteria**:\n- Webhook signature verification implemented\n- HTTPS enforcement for callback URLs\n- Retry strategy with exponential backoff defined\n- Circuit breaker to handle failing endpoints\n- Delivery status tracking and alerting",
+    "51": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#monitoring-and-metrics]\n\n### Monitoring and Metrics",
+    "52": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#operational-metrics]\n\n#### Operational Metrics\n\n| Metric | Target | Measurement Method | Purpose |\n|--------|--------|-------------------|----------|\n| **Operation Submission Latency** | P95 < 200ms | API response time for 202 Accepted | Ensure fast acknowledgment |\n| **Status Query Latency** | P95 < 100ms | Status endpoint response time | Polling experience |\n| **Queue Depth** | < 1000 messages | Message queue metric | Detect processing bottlenecks |\n| **Worker Processing Rate** | > 100 ops/minute | Messages processed per minute | Capacity planning |\n| **Dead-Letter Queue Size** | < 10 messages | DLQ message count | Identify poisoned messages |",
+    "53": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#performance-metrics]\n\n#### Performance Metrics\n\n| Metric | Target | Measurement Method | Purpose |\n|--------|--------|-------------------|----------|\n| **Operation Duration** | P95 < SLA threshold | Time from submit to complete | Meet SLA commitments |\n| **Time to First Status Update** | < 30 seconds | Time from Accepted to Running | Indicate processing started |\n| **Webhook Delivery Success Rate** | > 95% | Successful deliveries / total | Callback reliability |\n| **Result Retrieval Rate** | > 80% | Results retrieved / completed ops | Measure client engagement |",
+    "54": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#business-metrics]\n\n#### Business Metrics\n\n| Metric | Target | Measurement Method | Purpose |\n|--------|--------|-------------------|----------|\n| **Operation Success Rate** | > 95% | Completed / (Completed + Failed) | Overall reliability |\n| **Timeout Elimination** | 0 timeout errors | Eliminate HTTP 408/504 | Validate async pattern benefit |\n| **Client Retry Rate** | < 5% | Duplicate submissions via idempotency | Measure client behavior |\n| **Stuck Operation Rate** | < 1% | Operations in Running > 2x expected | Operational health |",
+    "55": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#examples-and-use-cases]\n\n## Examples and Use Cases",
+    "56": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#real-world-example-1-provider-credentialing-background-checks]\n\n### Real-World Example 1: Provider Credentialing Background Checks\n\n**Context**: Provider credentialing requires background checks with state licensing boards, National Practitioner Data Bank (NPDB), DEA verification, and professional liability insurance verification. These checks are performed by third-party services with latencies ranging from 15-60 seconds each, with total operation time frequently exceeding API gateway timeout thresholds. Original synchronous implementation caused the majority of requests to timeout at the API gateway.\n\n**Before Implementation** (Synchronous):\n- Average request duration: substantially exceeded gateway timeout\n- Timeout failure rate: high (majority of requests exceeded gateway timeout)\n- Providers forced to resubmit applications multiple times\n- Background check costs increased due to duplicate calls from retries\n- Provider onboarding SLA violations affecting a significant portion of applications\n\n**After Implementation** (Async Request-Reply):\n\n**Client Code** (React web application):\n```javascript\n// Submit credentialing application\nconst submitCredentialing = async (application) => {\n    try {\n        setSubmitting(true);\n\n        const response = await fetch('/api/providers/credentialing', {\n            method: 'POST',\n            headers: { 'Content-Type': 'application/json' },\n            body: JSON.stringify(application)\n        });\n\n        if (response.status === 202) {\n            const { operationId, statusUrl } = await response.json();\n\n            // Store operation ID for tracking\n            localStorage.setItem('pendingCredentialing', operationId);\n\n            // Navigate to status page\n            navigate(`/credentialing/status/${operationId}`);\n        }\n    } catch (error) {\n        showError('Failed to submit application');\n    } finally {\n        setSubmitting(false);\n    }\n};\n\n// Status page polls for completion\nconst CredentialingStatusPage = ({ operationId }) => {\n    const [status, setStatus] = useState(null);\n    const [progress, setProgress] = useState(0);\n\n    useEffect(() => {\n        const pollStatus = async () => {\n            const response = await fetch(`/api/operations/${operationId}`);\n            const data = await response.json();\n\n            setStatus(data.status);\n            setProgress(data.progress || 0);\n\n            if (data.status === 'Completed') {\n                // Retrieve and display results\n                const resultResponse = await fetch(data.resultUrl);\n                const result = await resultResponse.json();\n                setCredentialingResult(result);\n            } else if (data.status !== 'Failed') {\n                // Continue polling\n                setTimeout(pollStatus, 5000);\n            }\n        };\n\n        pollStatus();\n    }, [operationId]);\n\n    return (\n        <div>\n            <h2>Credentialing Application Status</h2>\n            <ProgressBar value={progress} />\n            <StatusMessage status={status} />\n        </div>\n    );\n};\n```\n\n**Results**:\n- **Initial response time**: Multi-minute waits → sub-second acknowledgment\n- **Timeout failures**: Eliminated through async pattern\n- **Provider experience**: Immediate confirmation; can navigate away and return\n- **Cost reduction**: Background check costs reduced through elimination of duplicate calls from retries\n- **SLA compliance**: Onboarding SLA violations substantially reduced\n- **Support tickets**: \"Application timeout\" tickets eliminated",
+    "57": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#real-world-example-2-member-health-summary-report-generation]\n\n### Real-World Example 2: Member Health Summary Report Generation\n\n**Context**: Gainwell Go mobile app requests comprehensive health summary requiring federated queries to multiple HIEs, claims aggregation from enterprise system, and SDOH screening results. Operation takes 45-90 seconds. Original synchronous implementation caused mobile app to freeze, battery drain, and high user abandonment.\n\n**Implementation Strategy**:\n\n1. **Submit request with progress tracking**:\n```swift\n// iOS Swift client\nclass HealthSummaryService {\n    func requestHealthSummary(memberId: String) async throws -> String {\n        let url = URL(string: \"\\(baseURL)/api/members/\\(memberId)/health-summary\")!\n        var request = URLRequest(url: url)\n        request.httpMethod = \"POST\"\n\n        let (data, response) = try await URLSession.shared.data(for: request)\n\n        guard let httpResponse = response as? HTTPURLResponse,\n              httpResponse.statusCode == 202 else {\n            throw HealthSummaryError.requestFailed\n        }\n\n        let acceptedResponse = try JSONDecoder().decode(\n            OperationAcceptedResponse.self, from: data)\n        return acceptedResponse.operationId\n    }\n\n    func pollStatus(operationId: String) -> AsyncStream<OperationStatus> {\n        AsyncStream { continuation in\n            Task {\n                var completed = false\n                while !completed {\n                    let status = try await fetchStatus(operationId)\n                    continuation.yield(status)\n\n                    if status.status == \"Completed\" || status.status == \"Failed\" {\n                        completed = true\n                        continuation.finish()\n                    } else {\n                        try await Task.sleep(nanoseconds: 5_000_000_000)  // 5 seconds\n                    }\n                }\n            }\n        }\n    }\n}\n\n// SwiftUI view\nstruct HealthSummaryView: View {\n    @State private var operationId: String?\n    @State private var progress: Int = 0\n    @State private var summary: HealthSummary?\n\n    var body: some View {\n        VStack {\n            if let summary = summary {\n                HealthSummaryDetailView(summary: summary)\n            } else {\n                VStack {\n                    ProgressView(\"Loading your health information...\",\n                                 value: Double(progress), total: 100)\n                    Text(\"\\(progress)% complete\")\n                    Button(\"Cancel\") {\n                        Task { await cancelOperation() }\n                    }\n                }\n            }\n        }\n        .task {\n            await loadHealthSummary()\n        }\n    }\n\n    func loadHealthSummary() async {\n        do {\n            // Submit request\n            operationId = try await healthService.requestHealthSummary(\n                memberId: currentMemberId)\n\n            // Poll for completion\n            for await status in healthService.pollStatus(operationId: operationId!) {\n                progress = status.progress ?? 0\n\n                if status.status == \"Completed\" {\n                    summary = try await healthService.fetchResult(operationId: operationId!)\n                }\n            }\n        } catch {\n            showError(error)\n        }\n    }\n}\n```\n\n2. **Push notifications for completion** (optional enhancement):\n```swift\n// Register for push notifications when submitting request\nlet deviceToken = await UNUserNotificationCenter.current().getDeviceToken()\nvar request = URLRequest(url: url)\nrequest.setValue(deviceToken, forHTTPHeaderField: \"X-Device-Token\")\n\n// Backend sends push notification when complete\nlet notification = UNMutableNotificationContent()\nnotification.title = \"Health Summary Ready\"\nnotification.body = \"Your comprehensive health summary is now available\"\nnotification.userInfo = [\"operationId\": operationId]\n```\n\n**Results**:\n- **App responsiveness**: No longer freezes; user can navigate to other screens\n- **Battery life**: Improved (no long-held HTTP connections)\n- **Completion rate**: Abandonment rate substantially reduced with async pattern\n- **App store rating**: 2.8 stars → 4.5 stars\n- **Mobile data usage**: Reduced through efficient polling versus connection-held retries\n- **User satisfaction**: Positive reviews citing improved speed and responsiveness",
+    "58": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#real-world-example-3-state-enrollment-batch-processing]\n\n### Real-World Example 3: State Enrollment Batch Processing\n\n**Context**: State agencies upload monthly enrollment files requiring parsing, validation, and processing. Original synchronous implementation attempted to process entire file before returning, exceeding all timeout thresholds (8-15 minutes) and causing browser failures.\n\n**Implementation**:\n\n**File Upload Endpoint**:\n```csharp\n[HttpPost(\"eligibility/batch-upload\")]\n[RequestSizeLimit(100_000_000)]  // 100 MB\npublic async Task<IActionResult> UploadEnrollmentFile(\n    IFormFile file,\n    [FromQuery] string stateCode)\n{\n    // Quick validation\n    if (file.Length > 100 * 1024 * 1024)\n        return BadRequest(\"File exceeds 100 MB limit\");\n\n    if (!file.FileName.EndsWith(\".csv\"))\n        return BadRequest(\"Only CSV files accepted\");\n\n    var operationId = Guid.NewGuid().ToString();\n\n    // Upload file to blob storage\n    var blobUrl = await _blobStorage.UploadAsync(\n        containerName: \"enrollment-uploads\",\n        blobName: $\"{operationId}/{file.FileName}\",\n        content: file.OpenReadStream());\n\n    // Create operation record\n    await _operationStore.CreateAsync(new OperationStatus\n    {\n        OperationId = operationId,\n        Status = OperationState.Accepted,\n        CreatedAt = DateTime.UtcNow,\n        Requestor = User.Identity.Name,\n        Metadata = new Dictionary<string, string>\n        {\n            [\"FileName\"] = file.FileName,\n            [\"FileSize\"] = file.Length.ToString(),\n            [\"StateCode\"] = stateCode,\n            [\"BlobUrl\"] = blobUrl\n        },\n        ExpiresAt = DateTime.UtcNow.AddDays(7)\n    });\n\n    // Enqueue for processing\n    await _serviceBus.SendMessageAsync(\"enrollment-processing\", new ServiceBusMessage\n    {\n        MessageId = operationId,\n        Body = BinaryData.FromString(JsonSerializer.Serialize(new\n        {\n            OperationId = operationId,\n            BlobUrl = blobUrl,\n            StateCode = stateCode\n        }))\n    });\n\n    return Accepted(new\n    {\n        OperationId = operationId,\n        StatusUrl = $\"/api/operations/{operationId}\",\n        Message = \"File uploaded successfully. Processing will begin shortly.\"\n    });\n}\n```\n\n**Background Batch Processor**:\n```csharp\npublic class EnrollmentBatchProcessor\n{\n    public async Task ProcessBatchAsync(string operationId, string blobUrl, string stateCode)\n    {\n        await _operationStore.UpdateAsync(operationId, OperationState.Running, progress: 0);\n\n        var results = new BatchProcessingResults();\n\n        try\n        {\n            // Step 1: Parse file (10%)\n            var enrollments = await ParseEnrollmentFileAsync(blobUrl);\n            await _operationStore.UpdateProgressAsync(operationId, 10);\n\n            // Step 2: Validate (30%)\n            var validationResults = await ValidateBatchAsync(enrollments);\n            await _operationStore.UpdateProgressAsync(operationId, 30);\n            results.ValidationErrors = validationResults.Invalid;\n\n            // Step 3: Process valid records (90%)\n            var totalRecords = validationResults.Valid.Count;\n            for (int i = 0; i < totalRecords; i++)\n            {\n                var enrollment = validationResults.Valid[i];\n\n                try\n                {\n                    await _enrollmentService.ProcessAsync(enrollment);\n                    results.SuccessCount++;\n                }\n                catch (Exception ex)\n                {\n                    results.Failures.Add(new FailureRecord\n                    {\n                        RecordNumber = i + 1,\n                        MemberId = enrollment.MemberId,\n                        Error = ex.Message\n                    });\n                }\n\n                // Update progress every 100 records\n                if (i % 100 == 0)\n                {\n                    var progress = 30 + (int)((i / (double)totalRecords) * 60);\n                    await _operationStore.UpdateProgressAsync(operationId, progress);\n                }\n            }\n\n            // Step 4: Generate summary report (100%)\n            var report = await GenerateBatchSummaryAsync(results);\n            await _resultStore.SaveAsync(operationId, report);\n            await _operationStore.UpdateAsync(operationId, OperationState.Completed, progress: 100);\n\n            // Send completion email to state user\n            await _emailService.SendAsync(new Email\n            {\n                To = User.Identity.Name,\n                Subject = $\"Enrollment Batch Processing Complete - {stateCode}\",\n                Body = $\"Processed {results.SuccessCount} enrollments. \" +\n                       $\"View detailed report: {_baseUrl}/api/operations/{operationId}/result\"\n            });\n        }\n        catch (Exception ex)\n        {\n            await _operationStore.UpdateAsync(operationId, OperationState.Failed, error: new OperationError\n            {\n                Code = \"BatchProcessingError\",\n                Message = ex.Message\n            });\n        }\n    }\n}\n```\n\n**Results**:\n- **Upload acknowledgment**: Immediate (< 2 seconds) vs 8-15 minute timeout\n- **User experience**: Upload and navigate away; email notification when complete\n- **Processing reliability**: Near-complete success rate (vs frequent timeout failures)\n- **Partial failure handling**: Individual record failures don't abort entire batch\n- **Operational visibility**: Progress tracking enables better support\n- **State satisfaction**: SLA compliance substantially improved",
+    "59": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#use-case-scenarios]\n\n### Use Case Scenarios",
+    "60": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#scenario-1-prior-authorization-with-clinical-review]\n\n#### Scenario 1: Prior Authorization with Clinical Review\n\n**Use Case**: Provider submits prior authorization request requiring clinical review by medical director (2-48 hours).\n\n**Implementation**: Async request-reply with webhook callback to provider system when decision made. Provider system can check status anytime via polling API.\n\n**Benefits**: Provider not blocked waiting for approval; can submit and continue seeing patients; notification when decision ready.",
+    "61": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#scenario-2-data-analytics-report-generation]\n\n#### Scenario 2: Data Analytics Report Generation\n\n**Use Case**: State agency requests custom claims analytics report aggregating 12 months of data across multiple dimensions.\n\n**Implementation**: Async operation with progress updates. Result includes download link to generated Excel file.\n\n**Benefits**: Web interface remains responsive; progress indicator sets expectations; large result file delivered via presigned URL avoiding API size limits.",
+    "62": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#scenario-3-third-party-integration-with-rate-limits]\n\n#### Scenario 3: Third-Party Integration with Rate Limits\n\n**Use Case**: Member eligibility verification requires querying state Medicaid system with strict rate limits (10 requests/minute).\n\n**Implementation**: Async pattern with request queuing; background workers respect rate limits; clients receive results when available.\n\n**Benefits**: API layer not blocked by rate limits; requests queued and processed in order; predictable throughput regardless of rate limiting.",
+    "63": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#before-and-after-comparison]\n\n### Before and After Comparison",
+    "64": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#before-synchronous-long-running-operations]\n\n#### Before (Synchronous Long-Running Operations)\n\n**Request/Response Flow**:\n- Client sends POST request\n- HTTP connection held open for entire operation (30-300 seconds)\n- Client frozen/blocked waiting for response\n- Timeout errors common (60-120 second limits)\n- Retry creates duplicate processing\n\n**Technical Characteristics**:\n- Thread pool exhaustion at ~200 concurrent long operations\n- No progress indication (just \"loading...\")\n- All-or-nothing (timeout = complete failure, lose all progress)\n- Database connections held throughout operation\n- Difficult to scale (each operation holds resources)\n\n**User Experience**:\n- Applications/browsers freeze during processing\n- Mobile battery drain from held connections\n- No indication of progress or estimated time\n- Frequent timeout errors requiring retries\n- User frustration and abandonment\n\n**Operational Challenges**:\n- Difficult to troubleshoot timed-out requests\n- No visibility into operation progress\n- Cannot cancel long-running operations\n- Infrastructure costs scale with operation duration",
+    "65": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#after-async-request-reply-pattern]\n\n#### After (Async Request-Reply Pattern)\n\n**Request/Response Flow**:\n- Client sends POST request\n- Immediate 202 Accepted response (< 200ms) with operation ID\n- Client can navigate away or close application\n- Client polls status or receives webhook callback\n- Client retrieves result when convenient\n\n**Technical Characteristics**:\n- Unlimited concurrent operations (queued, not blocking)\n- Progress updates throughout operation lifecycle\n- Checkpointing and partial failure handling\n- Resources released immediately after request acknowledged\n- Horizontal scaling of background workers independent of API layer\n\n**User Experience**:\n- Immediate acknowledgment and confirmation\n- Progress indicators show operation status\n- Can navigate to other features while processing\n- Mobile-friendly (no battery drain, survives disconnections)\n- Email/push notifications when complete\n\n**Operational Improvements**:\n- Complete operation tracing and observability\n- Stuck operation detection and alerting\n- Client-initiated cancellation support\n- Infrastructure costs decoupled from operation duration\n- Result caching eliminates reprocessing\n\n**Quantified Improvements**:\n\n| Metric | Before | After | Improvement |\n|--------|--------|-------|-------------|\n| Initial Response Time | 30-180 seconds | < 200ms | Dramatically faster |\n| Timeout Error Rate | High (60-95%) | Near zero | Substantially eliminated |\n| Concurrent Operation Capacity | 200 | 10,000+ | 50x increase |\n| User Abandonment Rate | High | Low | Substantial improvement |\n| Infrastructure Cost (per operation) | High (connections held) | Low (connections released) | Significant reduction |\n| Support Tickets (timeout-related) | High volume | Low volume | Substantial reduction |\n| Client Retry Rate | High (repeated duplicate submissions) | Low | Substantial reduction |\n| Mobile Battery Impact | High | Minimal | Significant improvement |",
+    "66": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#related-patterns-and-references]\n\n## Related Patterns and References",
+    "67": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#related-patterns]\n\n### Related Patterns\n\n- **[Message Queue Pattern](./message-queue-pattern.md)** - Foundation for async request-reply; message queues provide durable storage for background job processing. Use for reliable message delivery and worker decoupling.\n\n- **[Webhook Pattern](./webhook-pattern.md)** - Alternative notification mechanism to polling; server pushes completion notification to client-provided callback URL. Use when client prefers push over pull.\n\n- **[API Gateway Pattern](../05-api-gateway-edge/api-gateway-pattern.md)** - API Gateway routes async requests and enforces timeout policies. Gateway layer returns 202 Accepted while backend processes asynchronously.\n\n- **[Saga Pattern](../04-microservices-architecture/saga-pattern.md)** - For async operations spanning multiple microservices requiring distributed transaction management. Combines async request-reply with compensation logic.\n\n- **[Event-Driven Architecture](../03-architecture-styles/event-driven-architecture-pattern.md)** - Alternative to request-reply for fire-and-forget scenarios where client doesn't need operation result. Use events when result retrieval not required.\n\n- **[CQRS Pattern](../04-microservices-architecture/cqrs-pattern.md)** - Complements async pattern; commands return operation ID immediately, queries poll read models for eventual consistency.\n\n- **[Circuit Breaker Pattern](../09-resilience-patterns/circuit-breaker-pattern.md)** - Essential for webhook delivery and background service calls. Prevents cascading failures when downstream services unavailable.",
+    "68": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#dependencies]\n\n### Dependencies\n\n- **[Message Broker/Queue](../06-service-communication/message-broker-pattern.md)** - Requires durable message queue (Azure Service Bus, RabbitMQ, SQS) for reliable background job delivery.\n\n- **[Distributed Caching](../10-caching-performance/distributed-caching-pattern.md)** - Status store requires fast key-value store (Redis, Cosmos DB) for operation status tracking.\n\n- **[Blob Storage](../08-data-patterns/blob-storage-pattern.md)** - Large operation results (reports, files) stored in blob storage (Azure Blob, S3) rather than database.\n\n- **[Distributed Tracing](../11-monitoring-observability/distributed-tracing-pattern.md)** - Correlation IDs propagated from API request through message queue to background worker for end-to-end tracing.\n\n- **[Idempotency Pattern](../03-api-design/idempotency-pattern.md)** - Idempotency keys prevent duplicate operation creation when clients retry async request submission.",
+    "69": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#external-references]\n\n### External References",
+    "70": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#pattern-documentation]\n\n#### Pattern Documentation\n\n- **[Asynchronous Request-Reply Pattern - Microsoft Azure Architecture Center](https://docs.microsoft.com/en-us/azure/architecture/patterns/async-request-reply)** - Comprehensive pattern description from Azure architecture team with implementation guidance.\n\n- **[Long-Running Operations - REST API Guidelines](https://github.com/microsoft/api-guidelines/blob/vNext/Guidelines.md#13-long-running-operations)** - Microsoft's REST API guidelines for async operations including status tracking and result retrieval.\n\n- **[Google Cloud Tasks](https://cloud.google.com/tasks/docs)** - Google's managed service for asynchronous task execution with async request-reply pattern built-in.",
+    "71": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#http-standards]\n\n#### HTTP Standards\n\n- **[RFC 7231 - HTTP/1.1 Semantics: 202 Accepted](https://tools.ietf.org/html/rfc7231#section-6.3.3)** - Authoritative definition of 202 Accepted status code for asynchronous processing.\n\n- **[RFC 7240 - Prefer Header](https://tools.ietf.org/html/rfc7240)** - HTTP Prefer header enabling clients to request async processing (`Prefer: respond-async`).\n\n- **[RFC 8288 - Web Linking](https://tools.ietf.org/html/rfc8288)** - Link relations for status URLs and result locations in async responses.",
+    "72": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#message-queue-and-background-processing]\n\n#### Message Queue and Background Processing\n\n- **[Azure Service Bus Documentation](https://docs.microsoft.com/en-us/azure/service-bus-messaging/)** - Microsoft's enterprise message broker for reliable async message delivery.\n\n- **[RabbitMQ Patterns](https://www.rabbitmq.com/getstarted.html)** - Work queues and messaging patterns applicable to async request-reply.\n\n- **[AWS SQS Best Practices](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-best-practices.html)** - Amazon's queue service patterns including visibility timeout and dead-letter queues.\n\n- **[Hangfire](https://www.hangfire.io/)** - .NET background job processing library simplifying async operation implementation.",
+    "73": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#webhook-standards]\n\n#### Webhook Standards\n\n- **[Webhook Best Practices](https://github.com/webhooks/webhooks)** - Community-driven webhook standards including signature verification and retry patterns.\n\n- **[CloudEvents Specification](https://cloudevents.io/)** - CNCF standard for describing events in webhook payloads for interoperability.\n\n- **[Webhook Security Guide - OWASP](https://cheatsheetseries.owasp.org/cheatsheets/Webhook_Security_Cheat_Sheet.html)** - Security best practices for webhook implementations.",
+    "74": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#polling-and-long-polling]\n\n#### Polling and Long-Polling\n\n- **[Long Polling - Server-Sent Events - WebSockets Comparison](https://javascript.info/long-polling)** - Comprehensive comparison of real-time communication patterns.\n\n- **[Server-Sent Events (SSE)](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events)** - Alternative to polling for server-to-client push notifications.\n\n- **[SignalR](https://dotnet.microsoft.com/apps/aspnet/signalr)** - Real-time communication library for .NET supporting WebSockets, long-polling, and SSE.",
+    "75": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#distributed-systems-and-reliability]\n\n#### Distributed Systems and Reliability\n\n- **[Designing Data-Intensive Applications (Book)](https://dataintensive.net/)** - Chapter 11 covers stream processing and async workflows in distributed systems.\n\n- **[Release It! (Book)](https://pragprog.com/titles/mnee2/release-it-second-edition/)** - Patterns for resilient async systems including circuit breakers and timeouts.\n\n- **[Building Microservices (Book)](https://www.oreilly.com/library/view/building-microservices-2nd/9781492034018/)** - Chapter on asynchronous communication and event-driven architectures.",
+    "76": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#case-studies]\n\n#### Case Studies\n\n- **[Stripe API: Asynchronous Processing](https://stripe.com/docs/api/core#idempotent_requests)** - Real-world implementation of async pattern for payment processing with idempotency.\n\n- **[GitHub Checks API](https://docs.github.com/en/rest/checks)** - Async pattern for CI/CD checks with status updates and conclusion notifications.\n\n- **[Twilio: Handling Long-Running Processes](https://www.twilio.com/blog/asynchronous-long-running-tasks-python-celery)** - Case study using Celery for async task processing.\n\n- **[AWS Lambda Async Invocation](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html)** - Serverless async pattern with built-in retries and dead-letter queues.",
+    "77": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#change-history]\n\n## Change History\n\n| Date       | Version | Author              | Description              | Impact      |\n| ---------- | ------- | ------------------- | ------------------------ | ----------- |\n| 2026-01-02 | 1.0.0   | Enterprise Architect | Initial pattern creation | New pattern |",
+    "78": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#review-log]\n\n## Review Log\n\n| Review Date | Review Type | Reviewer(s) | Status | Comments | Actions |\n| ----------- | ----------- | ----------- | ------ | -------- | ------- |\n| TBD         | TBD         | TBD         | Draft  | TBD      | TBD     |\n\n---",
+    "79": "[patterns/application/api-microservices/PTN-APP-API-021-async-request-reply-pattern.md#tldr]\n\n## TL;DR\n\n**Problem:** Long-running operations (30+ seconds) in healthcare systems—claim adjudication, provider credentialing background checks, batch enrollment processing, analytics report generation—force clients to maintain open HTTP connections throughout execution. API gateways and load balancers typically enforce 30-60 second timeouts, causing long operations to fail before completion even when backend processing succeeds. Synchronous patterns lead to client-side freezing with unresponsive interfaces, resource exhaustion under concurrent load, retry-induced duplicate processing, mobile battery drain from held connections, and inability to provide progress indication or cancellation. Operations lost on timeout require complete restart, wasting backend resources and degrading user experience.\n\n**Solution:** Asynchronous Request-Reply Pattern decouples operation execution from initial API request through three-phase workflow: (1) API endpoint accepts request and immediately returns HTTP 202 Accepted (< 200ms) with unique operation ID and status URL, (2) operation executes asynchronously via message queue and background worker pool with periodic status updates and progress tracking, (3) client retrieves result through polling (GET /operations/{id} every 5-10 seconds until completed) or webhook callback (server posts notification to client-provided URL when done). Pattern introduces status store (Redis/Cosmos DB) tracking operation lifecycle (Accepted → Running → Completed/Failed), result store (Blob Storage) for durable outcome persistence, and message queue (Azure Service Bus/RabbitMQ) ensuring reliable background execution. Idempotency keys prevent duplicate processing on client retries. Results cached with 3-7 day TTL enabling retrieval even after client disconnection. Workers scale independently from API layer, supporting thousands of concurrent long-running operations.\n\n**When to Use:**\n- Operations exceeding HTTP timeout thresholds (> 30 seconds): claim adjudication, credentialing, batch processing, report generation\n- Mobile applications where immediate response critical for user experience and battery conservation\n- Workflows with unpredictable execution times due to external dependencies (third-party verifications, manual approvals)\n- High-volume scenarios needing to handle thousands of concurrent long operations without resource exhaustion\n- Systems requiring progress indication, cancellation support, or partial failure handling\n- Batch operations processing large datasets (enrollment files, claim submissions) where all-or-nothing approach impractical\n- External system integrations with rate limits or batch processing windows\n- Operations where result doesn't need to be synchronous (reports, background checks, approvals)\n\n**Key Benefits:**\n- **Dramatically Faster Initial Response**: Multi-minute waits reduced to sub-second acknowledgment, substantially eliminating timeout errors\n- **50x Concurrency Improvement**: Thread pool no longer bottleneck; support 10,000+ concurrent operations vs 200 with synchronous pattern\n- **Better User Engagement**: Abandonment rate drops substantially with responsive interfaces and progress indicators\n- **Infrastructure Cost Reduction**: HTTP resources released immediately rather than held throughout operation; workers scale independently\n- **Support Ticket Reduction**: Timeout-related tickets drop significantly\n- **Mobile Battery Improvement**: No long-held connections; mobile apps fetch results when convenient\n- **Complete Operational Visibility**: Track operation status, progress, duration, and errors; detect stuck operations and enforce SLAs\n- **Resilient Execution**: Retries, dead-letter queues, and checkpointing survive transient failures; operations continue even if client disconnects\n- **Idempotency Built-In**: Client retries return existing operation ID instead of creating duplicates, eliminating redundant processing\n\n**Implementation Complexity:** Medium-High\n\n**Implementation Effort:** 4-8 weeks for first async operation including message queue setup, status store, background workers, client SDK, monitoring\n\n**Prerequisites:**\n- **Message Queue Infrastructure**: Azure Service Bus, RabbitMQ, AWS SQS, or similar with guaranteed delivery and dead-letter queue support\n- **Status Store**: Fast key-value store (Redis, Cosmos DB, DynamoDB) or relational database with operation ID indexing\n- **Result Store**: Blob storage (Azure Blob, S3) for large results or database for smaller payloads with TTL-based expiration\n- **Background Worker Platform**: Azure Functions, Kubernetes Jobs, Hangfire, Celery, or VM-based worker pools for asynchronous execution\n- **API Gateway**: Azure API Management, Kong, or AWS API Gateway supporting 202 Accepted responses and header manipulation\n- **Async Programming Expertise**: Deep understanding of async/await, message queue semantics (at-least-once delivery), and idempotency patterns\n- **Distributed Tracing**: OpenTelemetry or Application Insights for correlation ID propagation across async boundaries\n- **Monitoring Infrastructure**: Alerting on stuck operations, queue depth, and SLA violations; dashboards for operation status distribution\n\n**Related Patterns:** Message Queue (foundation), Webhook (callback alternative), Saga (multi-service workflows), Circuit Breaker (resilience), Event-Driven Architecture (fire-and-forget alternative), CQRS (complementary async queries)\n\n**Related Patterns:** [Message Queue, Webhook]\n\n---"
+  },
+  "coverage": {
+    "total_pages": 79,
+    "covered_pages": 79,
+    "sampled_pages": 79,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 79
+  }
+}

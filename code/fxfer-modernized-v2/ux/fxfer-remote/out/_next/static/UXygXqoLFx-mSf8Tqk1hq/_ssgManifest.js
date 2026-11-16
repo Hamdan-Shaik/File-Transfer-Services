@@ -1,0 +1,1 @@
+self.__SSG_MANIFEST=new Set(["\u002Ffxfer\u002Ftransfer-configurations\u002F[transferConfigurationId]"]);self.__SSG_MANIFEST_CB&&self.__SSG_MANIFEST_CB()

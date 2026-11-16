@@ -1,0 +1,4 @@
+﻿- Wired `run-file-transfer-batch.feature` scenarios (F03-001/F03-002/F03-013/F03-021/F03-028) into `workers/fxfer-execution-worker/tests/Fxfer.ExecutionWorker.UnitTests`.
+- Implemented `FTPConnection` operations in `workers/fxfer-execution-worker/src/Infrastructure/Protocols/FTPConnection.cs` to match the worker’s protocol interface.
+- Added `FTPSExplicit` to `workers/fxfer-execution-worker/src/Infrastructure/Protocols/FileTransferProtocol.cs` and removed an invalid `using` block around `SecureFTPConnection`.
+- Implemented standard scheduled run validation and required-settings checks in `workers/fxfer-execution-worker/src/Application/Batch/Business/FileTransferBatchExecutor.cs`.

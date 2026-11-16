@@ -1,0 +1,665 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Caching Pattern",
+  "document_description": "tags: ['performance', 'caching', 'redis', 'scalability', 'http-caching', 'cdn', 'cache-aside', 'distributed-cache', 'memory-cache', 'latency-reduction', 'cost-optimization']",
+  "total_pages": 70,
+  "tree": [
+    {
+      "title": "Caching Pattern",
+      "node_id": "caching-pattern",
+      "start_index": 1,
+      "end_index": 70,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Executive Summary",
+          "node_id": "executive-summary",
+          "start_index": 3,
+          "end_index": 8,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Problem Statement",
+              "node_id": "problem-statement",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Solution Overview",
+              "node_id": "solution-overview",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "When to Use",
+              "node_id": "when-to-use",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Target Audience",
+              "node_id": "target-audience",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Benefits",
+              "node_id": "benefits",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Context and Problem",
+          "node_id": "context-and-problem",
+          "start_index": 9,
+          "end_index": 17,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Business Context",
+              "node_id": "business-context",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Technical Context",
+              "node_id": "technical-context",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Problem Details",
+              "node_id": "problem-details",
+              "start_index": 12,
+              "end_index": 16,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "1. Database Overload from Redundant Queries",
+                  "node_id": "1-database-overload-from-redundant-queries",
+                  "start_index": 13,
+                  "end_index": 13,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "2. Slow API Response Times Degrading User Experience",
+                  "node_id": "2-slow-api-response-times-degrading-user-experience",
+                  "start_index": 14,
+                  "end_index": 14,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "3. Expensive External API Calls Without Caching",
+                  "node_id": "3-expensive-external-api-calls-without-caching",
+                  "start_index": 15,
+                  "end_index": 15,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "4. Inability to Scale to Higher Traffic Volumes",
+                  "node_id": "4-inability-to-scale-to-higher-traffic-volumes",
+                  "start_index": 16,
+                  "end_index": 16,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Forces and Constraints",
+              "node_id": "forces-and-constraints",
+              "start_index": 17,
+              "end_index": 17,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Solution",
+          "node_id": "solution",
+          "start_index": 18,
+          "end_index": 35,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Pattern Description",
+              "node_id": "pattern-description",
+              "start_index": 19,
+              "end_index": 19,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Architecture Diagram",
+              "node_id": "architecture-diagram",
+              "start_index": 20,
+              "end_index": 22,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Multi-Layer Caching Architecture",
+                  "node_id": "multi-layer-caching-architecture",
+                  "start_index": 21,
+                  "end_index": 21,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Cache-Aside Pattern Sequence",
+                  "node_id": "cache-aside-pattern-sequence",
+                  "start_index": 22,
+                  "end_index": 22,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Components",
+              "node_id": "components",
+              "start_index": 23,
+              "end_index": 23,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Interactions",
+              "node_id": "interactions",
+              "start_index": 24,
+              "end_index": 29,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "1. Cache-Aside Read Operation (Cache Hit)",
+                  "node_id": "1-cache-aside-read-operation-cache-hit",
+                  "start_index": 25,
+                  "end_index": 25,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "2. Cache-Aside Read Operation (Cache Miss)",
+                  "node_id": "2-cache-aside-read-operation-cache-miss",
+                  "start_index": 26,
+                  "end_index": 26,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "3. Cache Invalidation on Write Operation",
+                  "node_id": "3-cache-invalidation-on-write-operation",
+                  "start_index": 27,
+                  "end_index": 27,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "4. Cache Warming on Deployment",
+                  "node_id": "4-cache-warming-on-deployment",
+                  "start_index": 28,
+                  "end_index": 28,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "5. Multi-Layer Cache Lookup",
+                  "node_id": "5-multi-layer-cache-lookup",
+                  "start_index": 29,
+                  "end_index": 29,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Variations",
+              "node_id": "variations",
+              "start_index": 30,
+              "end_index": 35,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Variation 1: Simple Cache-Aside with Fixed TTL",
+                  "node_id": "variation-1-simple-cache-aside-with-fixed-ttl",
+                  "start_index": 31,
+                  "end_index": 31,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Variation 2: Event-Driven Cache Invalidation",
+                  "node_id": "variation-2-event-driven-cache-invalidation",
+                  "start_index": 32,
+                  "end_index": 32,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Variation 3: Read-Through Cache with Automatic Loading",
+                  "node_id": "variation-3-read-through-cache-with-automatic-loading",
+                  "start_index": 33,
+                  "end_index": 33,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Variation 4: Write-Through Cache for Strong Consistency",
+                  "node_id": "variation-4-write-through-cache-for-strong-consistency",
+                  "start_index": 34,
+                  "end_index": 34,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Variation 5: Distributed Multi-Region Caching",
+                  "node_id": "variation-5-distributed-multi-region-caching",
+                  "start_index": 35,
+                  "end_index": 35,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Implementation Guidelines",
+          "node_id": "implementation-guidelines",
+          "start_index": 36,
+          "end_index": 43,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Prerequisites",
+              "node_id": "prerequisites",
+              "start_index": 37,
+              "end_index": 37,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Step-by-Step Implementation",
+              "node_id": "step-by-step-implementation",
+              "start_index": 38,
+              "end_index": 41,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Phase 1: Infrastructure Setup (Week 1)",
+                  "node_id": "phase-1-infrastructure-setup-week-1",
+                  "start_index": 39,
+                  "end_index": 39,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Phase 2: Core Implementation (Week 2-3)",
+                  "node_id": "phase-2-core-implementation-week-2-3",
+                  "start_index": 40,
+                  "end_index": 40,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Phase 3: Advanced Features (Week 4-5)",
+                  "node_id": "phase-3-advanced-features-week-4-5",
+                  "start_index": 41,
+                  "end_index": 41,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Best Practices",
+              "node_id": "best-practices",
+              "start_index": 42,
+              "end_index": 42,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Common Pitfalls",
+              "node_id": "common-pitfalls",
+              "start_index": 43,
+              "end_index": 43,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Governance and Compliance",
+          "node_id": "governance-and-compliance",
+          "start_index": 44,
+          "end_index": 51,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Standards Alignment",
+              "node_id": "standards-alignment",
+              "start_index": 45,
+              "end_index": 45,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Compliance Requirements",
+              "node_id": "compliance-requirements",
+              "start_index": 46,
+              "end_index": 48,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "HIPAA Compliance",
+                  "node_id": "hipaa-compliance",
+                  "start_index": 47,
+                  "end_index": 47,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "State Contract SLA Compliance",
+                  "node_id": "state-contract-sla-compliance",
+                  "start_index": 48,
+                  "end_index": 48,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Monitoring and Metrics",
+              "node_id": "monitoring-and-metrics",
+              "start_index": 49,
+              "end_index": 49,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Change Management",
+              "node_id": "change-management",
+              "start_index": 50,
+              "end_index": 50,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Operational Procedures",
+              "node_id": "operational-procedures",
+              "start_index": 51,
+              "end_index": 51,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Examples and Use Cases",
+          "node_id": "examples-and-use-cases",
+          "start_index": 52,
+          "end_index": 61,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Real-World Implementation: Provider Directory Search Caching",
+              "node_id": "real-world-implementation-provider-directory-search-caching",
+              "start_index": 53,
+              "end_index": 53,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Real-World Implementation: Member Eligibility Caching",
+              "node_id": "real-world-implementation-member-eligibility-caching",
+              "start_index": 54,
+              "end_index": 54,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Real-World Implementation: External API Response Caching (NPPES NPI Lookups)",
+              "node_id": "real-world-implementation-external-api-response-caching-nppes-npi-lookups",
+              "start_index": 55,
+              "end_index": 55,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Use Case Scenarios",
+              "node_id": "use-case-scenarios",
+              "start_index": 56,
+              "end_index": 61,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Scenario 1: Reference Data Caching (Diagnosis Codes, Procedure Codes)",
+                  "node_id": "scenario-1-reference-data-caching-diagnosis-codes-procedure-codes",
+                  "start_index": 57,
+                  "end_index": 57,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Scenario 2: Session and Authentication Token Caching",
+                  "node_id": "scenario-2-session-and-authentication-token-caching",
+                  "start_index": 58,
+                  "end_index": 58,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Scenario 3: Expensive Computation Result Caching",
+                  "node_id": "scenario-3-expensive-computation-result-caching",
+                  "start_index": 59,
+                  "end_index": 59,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Scenario 4: High-Traffic API Endpoint Caching",
+                  "node_id": "scenario-4-high-traffic-api-endpoint-caching",
+                  "start_index": 60,
+                  "end_index": 60,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Scenario 5: Database Query Result Caching",
+                  "node_id": "scenario-5-database-query-result-caching",
+                  "start_index": 61,
+                  "end_index": 61,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Related Patterns and References",
+          "node_id": "related-patterns-and-references",
+          "start_index": 62,
+          "end_index": 67,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Related Patterns",
+              "node_id": "related-patterns",
+              "start_index": 63,
+              "end_index": 66,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Complementary Patterns (Use Together)",
+                  "node_id": "complementary-patterns-use-together",
+                  "start_index": 64,
+                  "end_index": 64,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Alternative Patterns (Choose Based on Context)",
+                  "node_id": "alternative-patterns-choose-based-on-context",
+                  "start_index": 65,
+                  "end_index": 65,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Prerequisite Patterns",
+                  "node_id": "prerequisite-patterns",
+                  "start_index": 66,
+                  "end_index": 66,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "External References",
+              "node_id": "external-references",
+              "start_index": 67,
+              "end_index": 67,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Change History",
+          "node_id": "change-history",
+          "start_index": 68,
+          "end_index": 68,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Review Log",
+          "node_id": "review-log",
+          "start_index": 69,
+          "end_index": 69,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "TL;DR (Too Long; Didn't Read)",
+          "node_id": "tldr-too-long-didnt-read",
+          "start_index": 70,
+          "end_index": 70,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#caching-pattern]\n\n# Caching Pattern\n\n**← Back to [EAP Home](../../../README.md) • [Patterns](../../README.md) • [Technology](../README.md) • [API & Microservices](./README.md)**\n\n---\n\n**Pattern Metadata**\n\n```yaml\npattern_id: 'PTN-TEC-API-005'\npattern_name: 'Caching Pattern'\npattern_type: 'performance-scalability'\ndomain: 'performance'\nversion: '1.0.0'\nstatus: 'active'\ntags: ['performance', 'caching', 'redis', 'scalability', 'http-caching', 'cdn', 'cache-aside', 'distributed-cache', 'memory-cache', 'latency-reduction', 'cost-optimization']\n```\n\n---",
+    "2": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#table-of-contents]\n\n## Table of Contents\n\n- [Executive Summary](#executive-summary)\n- [Context and Problem](#context-and-problem)\n- [Solution](#solution)\n- [Implementation Guidelines](#implementation-guidelines)\n- [Governance and Compliance](#governance-and-compliance)\n- [Examples and Use Cases](#examples-and-use-cases)\n- [Related Patterns and References](#related-patterns-and-references)\n- [Change History](#change-history)\n- [Review Log](#review-log)\n- [TL;DR](#tldr)\n\n---",
+    "3": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#executive-summary]\n\n## Executive Summary",
+    "4": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#problem-statement]\n\n### Problem Statement\n\nHealthcare API operations repeatedly execute expensive computations and database queries that produce identical results across multiple requests. Without caching, every API call triggers full query execution against operational databases, performs complex business logic calculations, retrieves static reference data from external systems, and generates responses from scratch. This repeated work creates several critical problems: database overload with the majority of queries fetching identical data already retrieved seconds earlier, excessive API latency for operations that could complete in a fraction of the time with cached data, significant infrastructure costs to handle read load that could be reduced substantially with effective caching, and poor user experience with slow page loads and unresponsive interfaces.\n\nFor healthcare platforms serving millions of beneficiaries across state programs, the lack of systematic caching creates severe scalability constraints and operational inefficiencies. Real-world impact includes member portal pages taking several seconds to load eligibility information that changes monthly, provider directory searches re-executing identical queries against large provider record sets for every user, claims processing APIs re-calculating identical payment rules for the same procedure codes hundreds of times daily, and reference data lookups (diagnosis codes, procedure codes, drug formularies) hitting primary databases despite data changing only quarterly.",
+    "5": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#solution-overview]\n\n### Solution Overview\n\nThe Caching Pattern implements a multi-layer caching strategy that stores frequently accessed data in fast, temporary storage closer to consumers, dramatically reducing database load, improving response times, and enabling horizontal scalability. The pattern establishes a comprehensive caching architecture consisting of three primary layers: (1) **Client-Side Caching** using HTTP cache headers (Cache-Control, ETag) enabling browsers and mobile apps to cache responses locally for seconds to hours, (2) **API-Side Distributed Caching** using Redis or Memcached as shared cache across all API instances enabling sub-millisecond data retrieval, and (3) **CDN Edge Caching** using Azure CDN or CloudFront for static assets and cacheable API responses enabling global distribution and reduced origin load.\n\nThe solution implements proven caching patterns including Cache-Aside (lazy loading with fallback to database), Read-Through (automatic cache population on miss), Write-Through (synchronous cache update on data write), and Write-Behind (asynchronous cache update for eventual consistency scenarios). The pattern addresses critical caching challenges including cache invalidation strategies (time-based TTL, event-based invalidation, cache tags), data consistency trade-offs (strong vs. eventual consistency), cache warming for cold start prevention, and cache key design for multi-tenant isolation and efficient lookups.",
+    "6": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#when-to-use]\n\n### When to Use\n\nImplement the Caching Pattern for workloads and scenarios meeting any of these criteria:\n\n- **Read-Heavy Operations** (Read:Write Ratio >10:1): Operations where data is read far more frequently than updated, such as member eligibility lookups (updated monthly), provider directory searches (updated weekly), diagnosis code lookups (updated quarterly), formulary searches (updated monthly), benefit plan details (updated annually)\n\n- **Expensive Computations**: Operations involving complex calculations performed repeatedly with identical inputs, including actuarial risk score calculations (results valid for 24 hours), payment adjudication rule evaluation (rules change quarterly), care gap analysis (gaps updated weekly), provider network adequacy scoring (recalculated monthly)\n\n- **External API Calls**: Operations requiring synchronous calls to slow external systems where responses are cacheable, such as NPPES NPI registry lookups (data changes infrequently), state licensure verification (cache for 24 hours), drug pricing lookups (updated daily), coordination of benefits verification (cache for session duration)\n\n- **Reference Data Lookups**: Static or slowly-changing data accessed by every request, including ICD-10 diagnosis codes (updated annually), CPT procedure codes (updated quarterly), NDC drug codes (updated monthly), ZIP code to county mappings (rarely change), state/federal holiday calendars (updated annually)\n\n- **High-Traffic Endpoints**: API endpoints receiving high request volumes where even small latency improvements yield significant aggregate benefits, such as member authentication endpoints, provider eligibility verification, pharmacy point-of-sale adjudication, and care coordination dashboards",
+    "7": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#target-audience]\n\n### Target Audience\n\nThis pattern is intended for:\n\n- **Platform Engineers** responsible for designing and operating shared caching infrastructure (Redis clusters, CDN configuration) across the API ecosystem\n- **DevOps Engineers** managing cache configuration, TTL tuning, and cache warming procedures as part of deployment pipelines\n- **Solutions Architects** evaluating caching strategies for high-read-volume healthcare data (eligibility, provider directories, reference data) to meet performance SLAs\n- **Site Reliability Engineers (SREs)** monitoring cache hit rates, database load, and API latency to maintain performance targets under variable traffic patterns",
+    "8": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#benefits]\n\n### Benefits\n\nThe Caching Pattern delivers improvements across performance, scalability, cost, and user experience dimensions:\n\n**Dramatic Performance Improvement** (70-90% Latency Reduction): Cache hits return data in <5ms from Redis vs. 100-500ms from database queries, delivering substantial API latency improvements. Caching provider records in Redis with appropriate TTLs can reduce P95 latency by 80-90%, improving portal responsiveness and user satisfaction.\n\n**Massive Database Load Reduction**: Cache hit rates of 80-95% for read-heavy operations eliminate redundant database queries, reducing database CPU utilization and enabling existing infrastructure to handle significantly more traffic. Caching eligibility records with appropriate TTLs can prevent database saturation and defer the need for costly database scale-up.\n\n**Improved System Scalability** (5-10× Capacity Increase): By reducing per-request resource consumption (CPU, memory, database connections), cached workloads enable horizontal scaling to far higher throughput without proportional infrastructure investment.\n\n**Significant Cost Reduction**: Reduced database load, fewer API instances needed, and lower data transfer costs yield substantial infrastructure savings. Implementing CDN caching for static assets, distributed caching for API responses, and HTTP cache headers for browser caching can yield significant annual savings.\n\n**Enhanced User Experience** (2-5× Faster Page Loads): Faster API responses translate to dramatically improved page load times, reducing user frustration and abandonment. Caching eligibility data, benefit details, and recent claims can reduce dashboard load times significantly.\n\n**Better System Resilience**: Cached data remains available even during database degradation, enabling graceful degradation instead of complete failure. During database outages, cached data enables many API operations to continue serving requests with slightly stale data, preventing full system outage.\n\n**Reduced External API Costs**: Caching external API responses reduces costly per-request charges from third-party services. NPPES NPI verification caching, for example, can dramatically reduce external API calls and improve response times for cached lookups.",
+    "9": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#context-and-problem]\n\n## Context and Problem",
+    "10": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#business-context]\n\n### Business Context\n\nGainwell Technologies operates healthcare platforms processing large data volumes with extreme read:write ratios characteristic of healthcare operations. Member eligibility records are read millions of times daily but updated monthly during enrollment cycles. Provider directories are searched constantly but provider data changes weekly at most. Diagnosis codes and procedure codes are looked up very frequently but change quarterly with new code releases. This read-heavy access pattern creates opportunity for dramatic performance improvements through caching, but also creates significant challenges around data freshness, cache invalidation, and compliance with healthcare regulations requiring timely data access.\n\nState Medicaid programs impose strict performance requirements: member portals must load within 3 seconds to meet accessibility standards, provider portal searches must complete within 2 seconds to maintain workflow efficiency, and real-time eligibility verification at pharmacy point-of-sale must respond within 3 seconds to avoid checkout delays. Simultaneously, these systems must handle traffic spikes during open enrollment periods, prescription refill peaks, and month-end claims submission surges.\n\nThe economic drivers for caching are compelling: database infrastructure costs can be reduced substantially with effective caching, API response time improvements of 70-90% translate directly to improved user satisfaction and reduced support costs, and the ability to handle significantly more traffic without infrastructure investment enables business growth without proportional cost increases. However, poorly implemented caching creates risks: serving stale eligibility data could approve claims for terminated members, caching sensitive PHI without proper controls violates HIPAA, and cache consistency failures could show incorrect provider network status affecting patient access to care.",
+    "11": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#technical-context]\n\n### Technical Context\n\nGainwell's API ecosystem consists of 200+ microservices deployed on Azure Kubernetes Service, with data stored across Azure SQL Database (operational data), Azure Cosmos DB (high-scale semi-structured data), and Azure Data Lake (analytical data). Most services follow synchronous REST API patterns with Entity Framework Core for data access, resulting in database queries for every API request. Current architecture includes minimal caching: some services implement ad-hoc in-memory caching (MemoryCache), a few use shared Redis instances (inconsistent configuration, no governance), and HTTP cache headers are rarely implemented.\n\nPerformance telemetry reveals systemic caching gaps: provider directory queries execute full table scans against large provider record sets for every search, with a high percentage of queries being identical to queries executed within the previous minute. Member eligibility verification hits the database for every request despite eligibility records changing only during monthly enrollment updates. Reference data lookups (ICD-10 codes, CPT codes, NDC codes) query primary databases despite data changing quarterly. External API calls to NPPES NPI registry, state licensure systems, and drug pricing services execute synchronously for every request without caching, adding significant latency and incurring external API charges.\n\nDatabase monitoring shows read-heavy load patterns with high CPU utilization during business hours and a large percentage of queries fetching data unchanged since the previous query. Database connection pools frequently saturate during peak periods, causing API timeout errors. Database replication lag averages seconds and occasionally spikes during bulk update operations, creating data consistency challenges. Current database scaling approach (vertical scaling to larger VM SKUs) is expensive and limited by maximum SKU constraints.\n\nAPI performance metrics indicate caching would deliver immediate value. Cache hit rate for existing ad-hoc caching is low due to poor key design, excessive TTLs, and lack of cache warming. Cold start problems after deployments create brief periods where performance degrades until caches warm naturally through request traffic.",
+    "12": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#problem-details]\n\n### Problem Details",
+    "13": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#1-database-overload-from-redundant-queries]\n\n#### 1. Database Overload from Redundant Queries\n\nHealthcare APIs execute millions of redundant database queries daily, with a large portion of queries fetching data already retrieved by previous requests within the same minute. This redundant query load creates database CPU saturation, exhausts connection pools during peaks, causes query queue backlogs, and necessitates expensive database scaling to maintain performance.\n\n**Production Analysis - Provider Directory Database Load**: Provider directory search API executed a large number of database queries daily, with query analysis showing a high percentage of queries were identical to queries executed within the previous minute. Each query performed full table scans against a large provider record set, causing significant CPU utilization. The redundant query load required costly database tier upgrades to maintain acceptable performance.",
+    "14": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#2-slow-api-response-times-degrading-user-experience]\n\n#### 2. Slow API Response Times Degrading User Experience\n\nWithout effective caching, API response times are dominated by database query latency, external API call latency, and repeated computation of identical results. Slow API responses create poor user experience with page load times exceeding 3-5 seconds, causing user frustration, increased support tickets, and session abandonment. Healthcare workflows requiring multiple sequential API calls compound latency problems, with cumulative delays rendering applications unusable.\n\n**Member Portal Performance Impact**: Member portal dashboard aggregated data from multiple API endpoints to display eligibility status, recent claims, benefit details, care gaps, and provider network information. Without caching, dashboard load time exceeded user experience targets. Each page load triggered multiple database queries, external API calls, and business logic computations. User behavior analytics showed a significant portion of dashboard page loads were abandoned before completion, with abandonment strongly correlated with long load times. Member satisfaction surveys identified \"slow portal\" as a top complaint, directly impacting member engagement and care quality program participation rates.",
+    "15": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#3-expensive-external-api-calls-without-caching]\n\n#### 3. Expensive External API Calls Without Caching\n\nHealthcare operations require integration with numerous external systems including NPPES NPI registry, state medical board licensure verification, OIG exclusion list screening, drug pricing services, and eligibility verification hubs. These external API calls typically require 200-1000ms per request and often incur per-request charges ($0.01-0.05 per call). Without caching, identical requests execute repeatedly throughout the day, creating unnecessary latency and excessive costs.\n\n**NPPES NPI Verification Cost Analysis**: Provider onboarding workflow verifies NPI numbers through synchronous NPPES registry API calls. Analysis of verification patterns revealed that the majority of NPI lookups were for providers already verified within the previous week. Each NPPES API call adds significant latency to the provider enrollment workflow. The combination of cost per call and latency impact makes NPPES verification a primary caching candidate. Without caching, external API costs increase proportionally with business growth, creating unsustainable cost scaling.",
+    "16": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#4-inability-to-scale-to-higher-traffic-volumes]\n\n#### 4. Inability to Scale to Higher Traffic Volumes\n\nCurrent architecture requires proportional infrastructure scaling to handle increased traffic: 2× more requests requires 2× more API instances and database capacity. This linear scaling approach is economically unsustainable as business grows, state contracts expand, and new member populations onboard. The inability to achieve sub-linear scaling through caching limits business growth potential and creates competitive disadvantage against competitors leveraging effective caching strategies.\n\n**Open Enrollment Traffic Spike Challenge**: Annual open enrollment period generates significantly elevated traffic for a multi-week period, creating capacity planning challenges. Without caching, handling enrollment traffic required temporarily scaling infrastructure substantially, plus database tier increases. A high proportion of enrollment API traffic is cacheable (benefit plan lookups, provider directory searches, eligibility rule evaluations), indicating significant potential for cost reduction through caching enabling traffic spike absorption without proportional infrastructure scaling.",
+    "17": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#forces-and-constraints]\n\n### Forces and Constraints\n\n**Competing Concerns:**\n- **Data Freshness vs. Performance**: Longer cache TTLs improve performance and hit rates but increase risk of serving stale data. Healthcare operations require balancing sub-second cache response times with timely data updates (eligibility changes, provider status updates).\n- **Consistency vs. Availability**: Strong consistency requires cache invalidation on every data update, reducing availability and performance. Eventual consistency allows higher performance but risks temporary data inconsistencies across cache and database.\n- **Simplicity vs. Optimization**: Simple caching strategies (fixed TTL, cache-aside) are easy to implement but suboptimal. Sophisticated strategies (event-driven invalidation, cache warming, multi-layer caching) deliver better performance but increase complexity.\n- **Cost vs. Capacity**: Larger cache clusters provide more capacity and better performance but cost more. Teams must optimize cache sizing, eviction policies, and TTLs to maximize hit rates while minimizing infrastructure costs.\n\n**Technical Constraints:**\n- HIPAA compliance requires PHI in cache to be encrypted at rest and in transit, with access audit logging and automatic expiration\n- State contract SLAs require 99.9% API availability, necessitating cache strategies that degrade gracefully during cache failures (cache-aside pattern with database fallback)\n- Multi-tenant architecture requires cache key design preventing cross-tenant data leakage (tenant ID in cache key prefix)\n- Distributed caching across multiple regions for disaster recovery requires cache replication or cache-aside pattern with region-local databases\n\n**Organizational Constraints:**\n- Development teams have varying experience with distributed caching patterns and Redis\n- Operations teams need training on Redis monitoring, scaling, and troubleshooting\n- Existing codebases lack caching abstractions, requiring significant refactoring to introduce caching layers systematically\n- Cache invalidation strategies require coordination between multiple services writing shared data",
+    "18": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#solution]\n\n## Solution",
+    "19": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#pattern-description]\n\n### Pattern Description\n\nThe Caching Pattern implements a multi-layer caching architecture that stores frequently accessed data in fast, temporary storage layers between consumers and the ultimate data source. The pattern consists of six primary components working together to maximize cache hit rates, minimize latency, and ensure data consistency:\n\n**1. Client-Side Caching Layer**: HTTP cache headers (Cache-Control, ETag, Expires) enable browsers and mobile apps to cache API responses locally in browser memory or disk cache. Client-side caching provides the fastest possible response times (0-5ms from local storage), reduces network bandwidth consumption, and offloads API infrastructure completely for cacheable responses. Implementation requires careful cache header design balancing freshness requirements with cache duration.\n\n**2. CDN Edge Caching Layer**: Content Delivery Network (Azure CDN, CloudFront, Cloudflare) caches API responses and static assets at edge locations globally, providing sub-50ms response times from geographically distributed caches. CDN caching is ideal for static assets (images, CSS, JavaScript), public API endpoints (provider directory search, formulary lookups), and cacheable API responses with appropriate cache headers. CDN configuration includes cache key design, cache purge APIs for invalidation, and origin shield for reducing origin load.\n\n**3. API Gateway Caching Layer**: API Management gateway (Azure APIM, Kong, Apigee) provides centralized caching for API responses before they reach backend services. Gateway caching offers policy-based cache control (cache by tenant, user role, or request parameters), built-in cache invalidation APIs, and automatic cache header management. This layer is optimal for authentication tokens, rate limit counters, and API response caching across multiple backend services.\n\n**4. Distributed Cache Layer (Primary)**: Redis or Memcached provides shared, distributed cache accessible to all API instances. Distributed caching enables horizontal API scaling (all instances share cache state), sub-millisecond data retrieval (Redis GET <1ms typical), and rich data structures (strings, hashes, lists, sets, sorted sets). Redis is preferred for healthcare applications due to persistence options (RDB snapshots, AOF journaling), clustering for high availability, and encryption support for PHI compliance.\n\n**5. Application-Local Cache Layer**: In-process memory cache (MemoryCache in .NET, ConcurrentHashMap in Java) within each API instance provides nanosecond access to frequently used data. Local caching is ideal for configuration data, static reference data (diagnosis codes, procedure codes), and expensive computation results. Local caching must address cache coherence challenges (invalidating cache across multiple instances) and memory management (prevent out-of-memory from unbounded cache growth).\n\n**6. Database Query Result Cache**: Database-level query result caching (Redis Query Cache, SQL Server Query Store) automatically caches query results transparently to application code. Database caching provides zero-code caching benefits but limited control over invalidation and cache keys. This layer is most effective for read-only reporting databases and data warehouse queries.\n\nThe pattern implements four primary caching strategies based on read/write patterns and consistency requirements:\n\n**Cache-Aside (Lazy Loading)**: Application explicitly manages cache by checking cache first, falling back to database on miss, and populating cache with retrieved data. This strategy provides maximum control, works well for read-heavy operations, and degrades gracefully when cache is unavailable. Cache-aside is the most common pattern for healthcare APIs.\n\n**Read-Through**: Cache automatically loads data from database on cache miss, making caching transparent to application code. This strategy simplifies application logic and centralizes cache population logic. Read-through is ideal when cache abstraction can be placed in data access layer.\n\n**Write-Through**: Application writes to cache and database synchronously, ensuring cache consistency immediately after writes. This strategy guarantees strong consistency between cache and database but adds latency to write operations. Write-through is required for operations where stale cached data creates compliance or safety risks.\n\n**Write-Behind (Write-Back)**: Application writes to cache immediately and asynchronously updates database in background. This strategy provides fast write performance and can batch database updates for efficiency. Write-behind is appropriate for high-volume write scenarios where eventual consistency is acceptable (audit logs, analytics events).",
+    "20": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#architecture-diagram]\n\n### Architecture Diagram",
+    "21": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#multi-layer-caching-architecture]\n\n#### Multi-Layer Caching Architecture\n\n```mermaid\ngraph TB\n    subgraph \"Client Layer\"\n        Browser[Browser/Mobile App<br/>Client-Side Cache<br/>Local Storage, IndexedDB]\n    end\n\n    subgraph \"CDN Layer\"\n        CDN[Azure CDN / CloudFlare<br/>Edge Cache Locations<br/>Global Distribution]\n    end\n\n    subgraph \"API Gateway Layer\"\n        APIM[Azure API Management<br/>Response Cache<br/>Token Cache]\n    end\n\n    subgraph \"API Service Layer\"\n        API1[API Service Instance 1<br/>Local Memory Cache<br/>MemoryCache]\n        API2[API Service Instance 2<br/>Local Memory Cache<br/>MemoryCache]\n        API3[API Service Instance N<br/>Local Memory Cache<br/>MemoryCache]\n    end\n\n    subgraph \"Distributed Cache Layer\"\n        Redis[Redis Cluster<br/>Primary Shared Cache<br/>Cluster Mode Enabled]\n        RedisReplica[Redis Read Replicas<br/>Scale Reads<br/>Geographic Distribution]\n    end\n\n    subgraph \"Database Layer\"\n        Database[(Primary Database<br/>Azure SQL / Cosmos DB<br/>Source of Truth)]\n        ReadReplica[(Read Replicas<br/>Scaled Read Capacity)]\n    end\n\n    subgraph \"External Services\"\n        NPPES[NPPES NPI Registry]\n        State[State Licensure Systems]\n    end\n\n    Browser -->|1. Request with<br/>Cache Headers| CDN\n    CDN -->|2. Cache Miss| APIM\n    CDN -->|Cache Hit<br/>Return Cached<br/>Response| Browser\n\n    APIM -->|3. Cache Miss| API1\n    APIM -->|Cache Hit<br/>Return Cached<br/>Response| CDN\n\n    API1 -->|4a. Check Local Cache| API1\n    API1 -->|4b. Check Redis| Redis\n    Redis -->|5. Cache Hit<br/>Return Data| API1\n\n    API1 -->|6. Cache Miss<br/>Query Database| Database\n    Database -->|7. Return Data| API1\n\n    API1 -->|8. Populate Cache| Redis\n    API1 -->|9. Return Response| APIM\n    APIM -->|10. Cache Response| APIM\n    APIM -->|11. Return to CDN| CDN\n    CDN -->|12. Cache Response| CDN\n    CDN -->|13. Return to Client| Browser\n\n    API1 -.->|Cache External<br/>API Responses| NPPES\n    API1 -.->|Cache External<br/>API Responses| State\n\n    Redis -.->|Replicate| RedisReplica\n    Database -.->|Replicate| ReadReplica\n\n    API2 -->|Shared Cache| Redis\n    API3 -->|Shared Cache| Redis\n\n    style Browser fill:#e1f5ff\n    style CDN fill:#fff4e1\n    style APIM fill:#ffe1f5\n    style Redis fill:#ffe1e1\n    style Database fill:#e1ffe1\n    style API1 fill:#f5e1ff\n    style API2 fill:#f5e1ff\n    style API3 fill:#f5e1ff\n```",
+    "22": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#cache-aside-pattern-sequence]\n\n#### Cache-Aside Pattern Sequence\n\n```mermaid\nsequenceDiagram\n    participant Client\n    participant API as API Service\n    participant Cache as Redis Cache\n    participant DB as Database\n\n    Note over Client,DB: Scenario 1: Cache Hit (Fast Path)\n\n    Client->>API: GET /api/providers/{npi}\n    API->>API: Generate cache key<br/>\"provider:npi:1234567890\"\n    API->>Cache: GET provider:npi:1234567890\n    Cache-->>API: Cache Hit<br/>Return provider data (1-2ms)\n    API-->>Client: HTTP 200 OK<br/>Provider data (total: 5ms)\n\n    Note over Client,DB: Scenario 2: Cache Miss (Slow Path)\n\n    Client->>API: GET /api/providers/{npi}\n    API->>API: Generate cache key<br/>\"provider:npi:9876543210\"\n    API->>Cache: GET provider:npi:9876543210\n    Cache-->>API: Cache Miss (null)\n\n    API->>DB: SELECT * FROM Providers<br/>WHERE NPI = '9876543210'\n    DB-->>API: Provider record (150ms)\n\n    API->>Cache: SET provider:npi:9876543210<br/>TTL=3600 (1 hour)\n    Cache-->>API: OK (2ms)\n\n    API-->>Client: HTTP 200 OK<br/>Provider data (total: 160ms)\n\n    Note over Client,DB: Scenario 3: Cache Invalidation on Update\n\n    Client->>API: PUT /api/providers/{npi}\n    API->>DB: UPDATE Providers<br/>SET ... WHERE NPI = '1234567890'\n    DB-->>API: Update successful (50ms)\n\n    API->>Cache: DEL provider:npi:1234567890\n    Cache-->>API: OK (1ms)\n\n    API-->>Client: HTTP 200 OK<br/>Updated (total: 55ms)\n\n    Note over Client,DB: Next read fetches fresh data from DB\n```",
+    "23": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#components]\n\n### Components\n\n| Component | Responsibility | Key Technologies | Dependencies |\n|-----------|---------------|------------------|-------------|\n| **HTTP Cache Headers** | Define caching behavior for client-side and CDN caching | Cache-Control, ETag, Last-Modified, Expires headers | None |\n| **CDN Edge Cache** | Cache static assets and API responses at global edge locations | Azure CDN, CloudFront, Cloudflare | HTTP cache headers |\n| **API Gateway Cache** | Centralized caching at gateway layer with policy-based control | Azure API Management, Kong, Apigee | Redis or internal cache |\n| **Distributed Cache (Redis)** | Shared cache accessible to all API instances for horizontal scaling | Redis Cluster, Azure Cache for Redis, AWS ElastiCache | None |\n| **Application Memory Cache** | In-process cache within each API instance for ultra-fast access | MemoryCache (.NET), Caffeine (Java), LRU Cache (Node.js) | None |\n| **Cache Key Generator** | Generate consistent cache keys with tenant isolation and versioning | Custom utility class with naming convention enforcement | None |\n| **Cache Service Abstraction** | Abstract caching operations behind interface for testability and flexibility | ICacheService interface with Redis/MemoryCache implementations | Redis client library |\n| **Cache Invalidation Service** | Coordinate cache invalidation across distributed cache and local caches | Event-driven invalidation using Azure Service Bus or Redis Pub/Sub | Message queue, Redis |\n| **Cache Warming Service** | Pre-populate cache with frequently accessed data to prevent cold starts | Background service or Azure Function triggered post-deployment | Redis, Database |\n| **Cache Monitoring Service** | Track cache hit rates, latency, memory usage, eviction rates | Azure Monitor, Prometheus, Redis INFO commands | Redis, APM tool |\n| **TTL Calculator** | Calculate appropriate TTL values based on data volatility and freshness requirements | Business logic based on data type and update frequency | None |\n| **Cache Encryption Layer** | Encrypt sensitive data (PHI) before storing in cache for HIPAA compliance | AES-256 encryption with key rotation support | Azure Key Vault |",
+    "24": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#interactions]\n\n### Interactions",
+    "25": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#1-cache-aside-read-operation-cache-hit]\n\n#### 1. Cache-Aside Read Operation (Cache Hit)\n\n**Most common caching interaction for read-heavy operations:**\n1. Client sends HTTP GET request to API endpoint (e.g., `GET /api/members/{memberId}/eligibility`)\n2. API service receives request and extracts parameters (memberId, tenant context)\n3. API generates cache key using consistent naming convention: `{tenant}:eligibility:{memberId}` (e.g., \"state-ca:eligibility:M123456\")\n4. API checks Redis cache: `redis.Get(\"state-ca:eligibility:M123456\")`\n5. Redis returns cached data (cache hit) in <2ms (typical Redis GET latency)\n6. API deserializes cached data from JSON/MessagePack format to domain object\n7. API returns HTTP 200 OK response with data to client\n8. Total request duration: 5-15ms (vs. 150-500ms without cache)\n9. API emits telemetry: cache hit metric, hit rate percentage, request duration\n\n**Performance characteristics:**\n- Cache hit latency: 1-5ms (Redis GET + deserialization)\n- Database completely bypassed, zero database load\n- Horizontal scaling: N API instances share same cache, no cache duplication\n- High availability: Cache failures degrade gracefully to database (cache-aside fallback)",
+    "26": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#2-cache-aside-read-operation-cache-miss]\n\n#### 2. Cache-Aside Read Operation (Cache Miss)\n\n**Handles cache misses by fetching from database and populating cache:**\n1. Client sends HTTP GET request to API endpoint\n2. API service generates cache key and checks Redis cache\n3. Redis returns null (cache miss) because data not yet cached or expired\n4. API falls back to database query: `SELECT * FROM Eligibility WHERE MemberId = @memberId`\n5. Database returns eligibility record in 100-500ms (typical database query latency)\n6. API transforms database record to domain object\n7. API serializes domain object to JSON/MessagePack format\n8. API stores serialized data in Redis: `redis.Set(\"state-ca:eligibility:M123456\", data, ttl: 3600)` (1-hour TTL)\n9. API returns HTTP 200 OK response with data to client\n10. Total request duration: 150-550ms (database latency + cache write)\n11. API emits telemetry: cache miss metric, miss rate percentage, database query duration\n\n**Cache population strategy:**\n- Lazy loading: Cache only populated on first access (on-demand)\n- TTL selection: Based on data volatility (eligibility: 4 hours, provider: 1 hour, diagnosis codes: 24 hours)\n- Serialization format: JSON for human readability, MessagePack for 2-3× size reduction\n- Error handling: If Redis write fails, request succeeds anyway (cache write is best-effort)",
+    "27": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#3-cache-invalidation-on-write-operation]\n\n#### 3. Cache Invalidation on Write Operation\n\n**Ensures cache consistency when data is updated:**\n1. Client sends HTTP PUT/POST/DELETE request to update data\n2. API service begins database transaction\n3. API executes database write operation (INSERT, UPDATE, DELETE)\n4. Database transaction commits successfully\n5. API generates cache key(s) for invalidation (may be multiple related keys)\n6. API deletes cache entries: `redis.Del(\"state-ca:eligibility:M123456\")` or `redis.Del(\"state-ca:eligibility:*\")` (pattern-based deletion)\n7. API publishes cache invalidation event to Redis Pub/Sub or Azure Service Bus for distributed invalidation\n8. Other API instances receive invalidation event and clear their local memory caches\n9. API returns HTTP 200 OK response confirming update\n10. Next read will cache miss and fetch fresh data from database\n\n**Invalidation strategies:**\n- **Delete on Write** (recommended): Delete cache entries immediately after database write\n- **Expire on Write**: Set very short TTL (e.g., 5 seconds) allowing brief stale window\n- **Event-Driven Invalidation**: Publish events for other services to invalidate dependent caches\n- **Tag-Based Invalidation**: Associate cache entries with tags, invalidate by tag (e.g., all caches related to member M123456)",
+    "28": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#4-cache-warming-on-deployment]\n\n#### 4. Cache Warming on Deployment\n\n**Pre-populates cache to prevent cold start performance degradation:**\n1. Deployment completes, new API instances start\n2. Cache warming background service triggers automatically (Azure Function, Kubernetes Job)\n3. Warming service queries database for most frequently accessed data (top 10,000 members, all active providers, reference data)\n4. Warming service batch-loads data into Redis using pipeline commands for efficiency\n5. Redis is populated with \"warm\" data before production traffic arrives\n6. First production requests hit warm cache (cache hits) instead of cold cache (cache misses)\n7. Warming service completes in 2-5 minutes, prevents 10-15 minute cold start period\n\n**Warming strategies:**\n- **Frequency-Based**: Cache most frequently accessed data based on historical access patterns\n- **Predictive**: Cache data likely to be accessed soon (e.g., members with appointments today)\n- **Complete Reference Data**: Cache all diagnosis codes, procedure codes, drug codes (finite datasets)\n- **Incremental**: Warm cache gradually to avoid sudden Redis memory spike",
+    "29": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#5-multi-layer-cache-lookup]\n\n#### 5. Multi-Layer Cache Lookup\n\n**Checks multiple cache layers from fastest to slowest:**\n1. API checks application-local memory cache (MemoryCache) in <100 nanoseconds\n2. If local cache miss, API checks distributed Redis cache in 1-5ms\n3. If Redis cache miss, API checks database in 100-500ms\n4. API populates caches working backwards: database → Redis → local memory\n5. Subsequent requests hit local cache (fastest), reducing load on Redis\n6. Local cache invalidation handled by TTL expiration or invalidation events\n\n**Trade-offs:**\n- **Faster Access**: Local cache provides sub-microsecond access vs. Redis millisecond access\n- **Memory Overhead**: Each API instance duplicates cache data in local memory\n- **Consistency Challenges**: Invalidating local caches across distributed instances requires event pub/sub\n- **Best For**: Static reference data (diagnosis codes), configuration data, computed results",
+    "30": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#variations]\n\n### Variations",
+    "31": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#variation-1-simple-cache-aside-with-fixed-ttl]\n\n#### Variation 1: Simple Cache-Aside with Fixed TTL\n\n**Use Case**: Initial caching implementation for read-heavy operations where simplicity is prioritized over optimization. Suitable for small teams, low-traffic APIs, or proof-of-concept.\n\n**Implementation**: Basic cache-aside pattern with fixed TTL values (e.g., 1 hour for all cached data). No cache warming, no sophisticated invalidation, no multi-layer caching. Single Redis instance (no clustering) with manual failover.\n\n**Trade-offs**: Simplest implementation requiring minimal code changes, predictable behavior, but suboptimal performance (cold starts, fixed TTL regardless of data volatility), no high availability, manual cache invalidation required.\n\n**When to Use**: Development/test environments, internal tools, APIs with <1000 requests/day, initial caching rollout before investing in advanced features.",
+    "32": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#variation-2-event-driven-cache-invalidation]\n\n#### Variation 2: Event-Driven Cache Invalidation\n\n**Use Case**: Operations where multiple services update shared data and cache invalidation must propagate across all services. Required for maintaining cache consistency in microservices architectures.\n\n**Implementation**: Services publish domain events (MemberEligibilityUpdated, ProviderInfoChanged) to Azure Service Bus or Redis Pub/Sub when data changes. All services consuming that data subscribe to events and invalidate their caches when events received. Enables fine-grained invalidation without coupling services.\n\n**Trade-offs**: Excellent cache consistency and low coupling between services, but increased infrastructure complexity (message broker required), potential for event loss requiring fallback to TTL expiration, and more complex error handling.\n\n**When to Use**: Microservices architectures with shared data models, high-consistency requirements, multiple services caching same data, when stale data creates compliance or safety risks.",
+    "33": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#variation-3-read-through-cache-with-automatic-loading]\n\n#### Variation 3: Read-Through Cache with Automatic Loading\n\n**Use Case**: Simplifying application code by making caching transparent through cache abstraction layer that automatically loads data on cache miss.\n\n**Implementation**: Cache abstraction layer (ICacheService) implements read-through pattern where cache Get operation automatically calls database on cache miss and populates cache before returning to caller. Application code only interacts with cache service, never directly with database.\n\n**Trade-offs**: Simplifies application code and centralizes cache logic, but reduces flexibility (all reads go through cache), harder to implement complex query caching, and potential for cache stampede if many requests miss simultaneously.\n\n**When to Use**: New applications where caching can be designed in from start, data access patterns are simple (key-value lookups), teams want to encapsulate caching complexity in infrastructure layer.",
+    "34": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#variation-4-write-through-cache-for-strong-consistency]\n\n#### Variation 4: Write-Through Cache for Strong Consistency\n\n**Use Case**: Operations where stale cached data creates unacceptable risks (e.g., member eligibility for prior authorization, provider network status for care coordination).\n\n**Implementation**: All writes update both database and cache synchronously within same transaction boundary. Cache is always consistent with database immediately after write completes. Reads always hit cache (never miss) because all data in database also exists in cache.\n\n**Trade-offs**: Guarantees strong consistency between cache and database, but adds latency to write operations (cache write overhead), requires transactional consistency between cache and database (complex), and cache size must accommodate entire working dataset.\n\n**When to Use**: Healthcare safety-critical operations, regulatory compliance requirements mandating current data, operations where stale data could cause financial loss or patient safety issues.",
+    "35": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#variation-5-distributed-multi-region-caching]\n\n#### Variation 5: Distributed Multi-Region Caching\n\n**Use Case**: Global applications requiring low latency in multiple geographic regions, disaster recovery scenarios requiring cache failover across regions.\n\n**Implementation**: Redis clusters deployed in multiple Azure regions (East US, West US, Europe) with data replication or cache-aside pattern using region-local databases. Geo-replication for static reference data (diagnosis codes), cache-aside with region-local databases for operational data (eligibility, claims).\n\n**Trade-offs**: Lowest possible latency for users in each region (<50ms), high availability across regions, but complex cache consistency (replication lag), increased costs (multiple Redis clusters), and potential for data inconsistency during region failover.\n\n**When to Use**: Multi-region deployments, global user base requiring <100ms latency SLA, disaster recovery requirements mandating <1 hour RTO, applications processing >10K requests/second requiring regional scale-out.",
+    "36": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#implementation-guidelines]\n\n## Implementation Guidelines",
+    "37": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#prerequisites]\n\n### Prerequisites\n\n**Technology Stack Requirements:**\n- .NET 8 SDK or later for API development\n- Redis 7.0+ (Azure Cache for Redis Premium tier recommended for production)\n- StackExchange.Redis 2.6+ NuGet package for Redis client\n- Azure CDN or CloudFront for edge caching (optional but recommended)\n- Azure API Management for gateway caching (if using APIM)\n- Azure Application Insights for cache metrics and monitoring\n\n**Infrastructure Prerequisites:**\n- Redis cluster deployed with clustering enabled for high availability (3+ nodes recommended)\n- Redis configured with maxmemory policy (allkeys-lru recommended for general caching)\n- Redis persistence configured (RDB snapshots + AOF for durability)\n- Network connectivity from API services to Redis (Azure Private Link recommended)\n- Redis encryption configured for PHI compliance (TLS 1.2+, encryption at rest)\n\n**Development Skills:**\n- Understanding of caching concepts (TTL, cache-aside, cache invalidation)\n- Experience with Redis commands (GET, SET, DEL, EXPIRE, pipeline operations)\n- Knowledge of serialization formats (JSON, MessagePack, Protocol Buffers)\n- Familiarity with distributed system concepts (cache coherence, consistency models)\n\n**Organizational Readiness:**\n- Cache hit rate monitoring and alerting infrastructure\n- Operations team training on Redis management and troubleshooting\n- Runbooks for cache failures, memory exhaustion, and cache warming\n- Clear ownership model for cache invalidation when data is updated",
+    "38": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#step-by-step-implementation]\n\n### Step-by-Step Implementation",
+    "39": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#phase-1-infrastructure-setup-week-1]\n\n#### Phase 1: Infrastructure Setup (Week 1)\n\n**Step 1.1: Provision Redis Cache Cluster**\n\nDeploy Azure Cache for Redis with Premium tier for production:\n\n```bash\n# Create Redis Cache instance\naz redis create \\\n\n  --name gainwell-cache-prod \\\n  --resource-group gainwell-integration-rg \\\n  --location eastus \\\n  --sku Premium \\\n  --vm-size P1 \\\n  --enable-non-ssl-port false \\\n  --minimum-tls-version 1.2\n\n# Configure maxmemory policy\naz redis update \\\n\n  --name gainwell-cache-prod \\\n  --resource-group gainwell-integration-rg \\\n  --set redisConfiguration.maxmemory-policy=allkeys-lru\n\n# Enable clustering for high availability\naz redis patch-schedule create \\\n\n  --name gainwell-cache-prod \\\n  --resource-group gainwell-integration-rg \\\n  --schedule-entries '[{\"dayOfWeek\":\"Sunday\",\"startHourUtc\":2,\"maintenanceWindow\":\"PT5H\"}]'\n```\n\n**Step 1.2: Configure Cache Access and Security**\n\n```bash\n# Get Redis connection string\nREDIS_CONNECTION=$(az redis list-keys \\\n\n  --name gainwell-cache-prod \\\n  --resource-group gainwell-integration-rg \\\n  --query primaryKey -o tsv)\n\n# Configure firewall rules (restrict to API subnet)\naz redis firewall-rules create \\\n\n  --name api-subnet-access \\\n  --resource-group gainwell-integration-rg \\\n  --redis-name gainwell-cache-prod \\\n  --start-ip 10.0.2.0 \\\n  --end-ip 10.0.2.255\n\n# Store connection string in Key Vault\naz keyvault secret set \\\n\n  --vault-name gainwell-keyvault-prod \\\n  --name RedisConnectionString \\\n  --value \"$REDIS_CONNECTION\"\n```",
+    "40": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#phase-2-core-implementation-week-2-3]\n\n#### Phase 2: Core Implementation (Week 2-3)\n\n**Step 2.1: Implement Cache Service Abstraction**\n\nCreate reusable cache service interface and Redis implementation:\n\n```csharp\n// Services/ICacheService.cs\nusing System;\nusing System.Threading.Tasks;\n\nnamespace Gainwell.Caching.Services\n{\n    /// <summary>\n    /// Abstraction for caching operations supporting multiple backends\n    /// </summary>\n    public interface ICacheService\n    {\n        Task<T> GetAsync<T>(string key) where T : class;\n        Task<bool> SetAsync<T>(string key, T value, TimeSpan? expiration = null) where T : class;\n        Task<bool> DeleteAsync(string key);\n        Task<bool> ExistsAsync(string key);\n        Task<long> DeleteByPatternAsync(string pattern);\n        Task<bool> SetWithTagsAsync<T>(string key, T value, string[] tags, TimeSpan? expiration = null) where T : class;\n    }\n}\n\n// Services/RedisCacheService.cs\nusing StackExchange.Redis;\nusing System;\nusing System.Text.Json;\nusing System.Threading.Tasks;\nusing Microsoft.Extensions.Logging;\n\nnamespace Gainwell.Caching.Services\n{\n    public class RedisCacheService : ICacheService\n    {\n        private readonly IConnectionMultiplexer _redis;\n        private readonly ILogger<RedisCacheService> _logger;\n        private readonly JsonSerializerOptions _jsonOptions;\n\n        public RedisCacheService(\n            IConnectionMultiplexer redis,\n            ILogger<RedisCacheService> logger)\n        {\n            _redis = redis;\n            _logger = logger;\n            _jsonOptions = new JsonSerializerOptions\n            {\n                PropertyNameCaseInsensitive = true,\n                WriteIndented = false\n            };\n        }\n\n        public async Task<T> GetAsync<T>(string key) where T : class\n        {\n            try\n            {\n                var db = _redis.GetDatabase();\n                var value = await db.StringGetAsync(key);\n\n                if (value.IsNullOrEmpty)\n                {\n                    _logger.LogDebug(\"Cache miss for key: {CacheKey}\", key);\n                    return null;\n                }\n\n                _logger.LogDebug(\"Cache hit for key: {CacheKey}\", key);\n                return JsonSerializer.Deserialize<T>(value, _jsonOptions);\n            }\n            catch (Exception ex)\n            {\n                _logger.LogError(ex, \"Error getting cache key: {CacheKey}\", key);\n                return null; // Fail gracefully, don't throw\n            }\n        }\n\n        public async Task<bool> SetAsync<T>(string key, T value, TimeSpan? expiration = null) where T : class\n        {\n            try\n            {\n                var db = _redis.GetDatabase();\n                var serializedValue = JsonSerializer.Serialize(value, _jsonOptions);\n\n                var success = await db.StringSetAsync(\n                    key,\n                    serializedValue,\n                    expiration ?? TimeSpan.FromHours(1));\n\n                if (success)\n                {\n                    _logger.LogDebug(\n                        \"Cache set for key: {CacheKey}, TTL: {TTL}\",\n                        key, expiration);\n                }\n\n                return success;\n            }\n            catch (Exception ex)\n            {\n                _logger.LogError(ex, \"Error setting cache key: {CacheKey}\", key);\n                return false; // Fail gracefully\n            }\n        }\n\n        public async Task<bool> DeleteAsync(string key)\n        {\n            try\n            {\n                var db = _redis.GetDatabase();\n                var success = await db.KeyDeleteAsync(key);\n\n                _logger.LogDebug(\"Cache delete for key: {CacheKey}, Success: {Success}\", key, success);\n                return success;\n            }\n            catch (Exception ex)\n            {\n                _logger.LogError(ex, \"Error deleting cache key: {CacheKey}\", key);\n                return false;\n            }\n        }\n\n        public async Task<bool> ExistsAsync(string key)\n        {\n            try\n            {\n                var db = _redis.GetDatabase();\n                return await db.KeyExistsAsync(key);\n            }\n            catch (Exception ex)\n            {\n                _logger.LogError(ex, \"Error checking cache key existence: {CacheKey}\", key);\n                return false;\n            }\n        }\n\n        public async Task<long> DeleteByPatternAsync(string pattern)\n        {\n            try\n            {\n                var endpoints = _redis.GetEndPoints();\n                var server = _redis.GetServer(endpoints[0]);\n                var db = _redis.GetDatabase();\n\n                var keys = server.Keys(pattern: pattern);\n                long deletedCount = 0;\n\n                foreach (var key in keys)\n                {\n                    if (await db.KeyDeleteAsync(key))\n                    {\n                        deletedCount++;\n                    }\n                }\n\n                _logger.LogInformation(\n                    \"Deleted {Count} keys matching pattern: {Pattern}\",\n                    deletedCount, pattern);\n\n                return deletedCount;\n            }\n            catch (Exception ex)\n            {\n                _logger.LogError(ex, \"Error deleting keys by pattern: {Pattern}\", pattern);\n                return 0;\n            }\n        }\n\n        public async Task<bool> SetWithTagsAsync<T>(string key, T value,\n            string[] tags, TimeSpan? expiration = null) where T : class\n        {\n            try\n            {\n                var db = _redis.GetDatabase();\n                var serializedValue = JsonSerializer.Serialize(value, _jsonOptions);\n\n                // Set main value\n                await db.StringSetAsync(key, serializedValue, expiration ?? TimeSpan.FromHours(1));\n\n                // Add key to tag sets for tag-based invalidation\n                foreach (var tag in tags)\n                {\n                    await db.SetAddAsync($\"tag:{tag}\", key);\n                }\n\n                return true;\n            }\n            catch (Exception ex)\n            {\n                _logger.LogError(ex, \"Error setting cache with tags for key: {CacheKey}\", key);\n                return false;\n            }\n        }\n    }\n}\n```\n\n**Step 2.2: Implement Cache-Aside Pattern in Repository**\n\n```csharp\n// Repositories/ProviderRepository.cs\nusing Gainwell.Caching.Services;\nusing Gainwell.Domain.Models;\nusing Microsoft.EntityFrameworkCore;\nusing Microsoft.Extensions.Logging;\nusing System;\nusing System.Threading.Tasks;\n\nnamespace Gainwell.Providers.Repositories\n{\n    public class ProviderRepository : IProviderRepository\n    {\n        private readonly ApplicationDbContext _context;\n        private readonly ICacheService _cache;\n        private readonly ILogger<ProviderRepository> _logger;\n        private const int CacheTTLHours = 1;\n\n        public ProviderRepository(\n            ApplicationDbContext context,\n            ICacheService cache,\n            ILogger<ProviderRepository> logger)\n        {\n            _context = context;\n            _cache = cache;\n            _logger = logger;\n        }\n\n        public async Task<Provider> GetByNpiAsync(string tenantId, string npi)\n        {\n            // Generate cache key with tenant isolation\n            var cacheKey = $\"{tenantId}:provider:npi:{npi}\";\n\n            // Check cache first (cache-aside pattern)\n            var cachedProvider = await _cache.GetAsync<Provider>(cacheKey);\n            if (cachedProvider != null)\n            {\n                _logger.LogDebug(\n                    \"Provider {NPI} retrieved from cache for tenant {TenantId}\",\n                    npi, tenantId);\n                return cachedProvider;\n            }\n\n            // Cache miss - query database\n            _logger.LogDebug(\n                \"Cache miss for provider {NPI}, querying database\", npi);\n\n            var provider = await _context.Providers\n                .AsNoTracking()\n                .FirstOrDefaultAsync(p => p.TenantId == tenantId && p.NPI == npi);\n\n            if (provider != null)\n            {\n                // Populate cache for future requests\n                await _cache.SetAsync(\n                    cacheKey,\n                    provider,\n                    TimeSpan.FromHours(CacheTTLHours));\n\n                _logger.LogDebug(\n                    \"Provider {NPI} cached with TTL {TTL} hours\",\n                    npi, CacheTTLHours);\n            }\n\n            return provider;\n        }\n\n        public async Task<Provider> UpdateProviderAsync(Provider provider)\n        {\n            // Update database\n            _context.Providers.Update(provider);\n            await _context.SaveChangesAsync();\n\n            // Invalidate cache (cache-aside pattern)\n            var cacheKey = $\"{provider.TenantId}:provider:npi:{provider.NPI}\";\n            await _cache.DeleteAsync(cacheKey);\n\n            // Invalidate related caches (provider searches, directory listings)\n            await _cache.DeleteByPatternAsync($\"{provider.TenantId}:provider:search:*\");\n\n            _logger.LogInformation(\n                \"Provider {NPI} updated and cache invalidated\",\n                provider.NPI);\n\n            return provider;\n        }\n    }\n}\n```\n\n**Step 2.3: Implement HTTP Cache Headers for Client-Side Caching**\n\n```csharp\n// Middleware/CacheHeaderMiddleware.cs\nusing Microsoft.AspNetCore.Http;\nusing System;\nusing System.Threading.Tasks;\n\nnamespace Gainwell.API.Middleware\n{\n    public class CacheHeaderMiddleware\n    {\n        private readonly RequestDelegate _next;\n\n        public CacheHeaderMiddleware(RequestDelegate next)\n        {\n            _next = next;\n        }\n\n        public async Task InvokeAsync(HttpContext context)\n        {\n            // Set cache headers based on endpoint type\n            var path = context.Request.Path.Value;\n\n            if (path.StartsWith(\"/api/reference/\"))\n            {\n                // Reference data (diagnosis codes, etc.) - cache for 24 hours\n                context.Response.Headers.CacheControl = \"public, max-age=86400\";\n                context.Response.Headers.Vary = \"Accept-Encoding\";\n            }\n            else if (path.StartsWith(\"/api/providers/directory\"))\n            {\n                // Provider directory - cache for 1 hour\n                context.Response.Headers.CacheControl = \"public, max-age=3600\";\n                context.Response.Headers.Vary = \"Accept-Encoding\";\n            }\n            else if (path.StartsWith(\"/api/members/\") && context.Request.Method == \"GET\")\n            {\n                // Member data - private cache only, 5 minutes\n                context.Response.Headers.CacheControl = \"private, max-age=300\";\n            }\n            else\n            {\n                // Default - no cache\n                context.Response.Headers.CacheControl = \"no-cache, no-store, must-revalidate\";\n            }\n\n            await _next(context);\n\n            // Add ETag for conditional requests\n            if (context.Response.StatusCode == 200 &&\n                context.Request.Method == \"GET\" &&\n                !string.IsNullOrEmpty(context.Response.ContentType))\n            {\n                // Generate ETag from Last-Modified or content hash\n                var etag = GenerateETag(context);\n                if (!string.IsNullOrEmpty(etag))\n                {\n                    context.Response.Headers.ETag = etag;\n                }\n            }\n        }\n\n        private string GenerateETag(HttpContext context)\n        {\n            // Simplified ETag generation - in production use content hash\n            var lastModified = DateTime.UtcNow.ToString(\"O\");\n            return $\"\\\"{Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(lastModified))}\\\"\";\n        }\n    }\n}\n```\n\n**Step 2.4: Configure DI Container and Startup**\n\n```csharp\n// Program.cs\nusing StackExchange.Redis;\nusing Gainwell.Caching.Services;\n\nvar builder = WebApplication.CreateBuilder(args);\n\n// Configure Redis connection\nvar redisConnection = builder.Configuration.GetValue<string>(\"Redis:ConnectionString\");\nbuilder.Services.AddSingleton<IConnectionMultiplexer>(\n    ConnectionMultiplexer.Connect(redisConnection));\n\n// Register cache service\nbuilder.Services.AddSingleton<ICacheService, RedisCacheService>();\n\n// Add memory cache for local caching\nbuilder.Services.AddMemoryCache();\n\n// Configure distributed caching\nbuilder.Services.AddStackExchangeRedisCache(options =>\n{\n    options.Configuration = redisConnection;\n    options.InstanceName = \"Gainwell:\";\n});\n\nvar app = builder.Build();\n\n// Add cache header middleware\napp.UseMiddleware<CacheHeaderMiddleware>();\n\napp.Run();\n```",
+    "41": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#phase-3-advanced-features-week-4-5]\n\n#### Phase 3: Advanced Features (Week 4-5)\n\n**Step 3.1: Implement Cache Warming on Startup**\n\n```csharp\n// Services/CacheWarmingService.cs\nusing Microsoft.Extensions.Hosting;\nusing Microsoft.Extensions.Logging;\nusing System;\nusing System.Threading;\nusing System.Threading.Tasks;\n\nnamespace Gainwell.Caching.Services\n{\n    public class CacheWarmingService : IHostedService\n    {\n        private readonly ICacheService _cache;\n        private readonly IServiceProvider _serviceProvider;\n        private readonly ILogger<CacheWarmingService> _logger;\n\n        public CacheWarmingService(\n            ICacheService cache,\n            IServiceProvider serviceProvider,\n            ILogger<CacheWarmingService> logger)\n        {\n            _cache = cache;\n            _serviceProvider = serviceProvider;\n            _logger = logger;\n        }\n\n        public async Task StartAsync(CancellationToken cancellationToken)\n        {\n            _logger.LogInformation(\"Starting cache warming...\");\n\n            try\n            {\n                // Warm reference data caches\n                await WarmReferenceDataCacheAsync();\n\n                // Warm frequently accessed provider data\n                await WarmProviderCacheAsync();\n\n                _logger.LogInformation(\"Cache warming completed successfully\");\n            }\n            catch (Exception ex)\n            {\n                _logger.LogError(ex, \"Error during cache warming\");\n            }\n        }\n\n        public Task StopAsync(CancellationToken cancellationToken)\n        {\n            return Task.CompletedTask;\n        }\n\n        private async Task WarmReferenceDataCacheAsync()\n        {\n            using var scope = _serviceProvider.CreateScope();\n            var context = scope.ServiceProvider\n                .GetRequiredService<ApplicationDbContext>();\n\n            // Load all diagnosis codes (finite dataset)\n            var diagnosisCodes = await context.DiagnosisCodes\n                .AsNoTracking()\n                .ToListAsync();\n\n            foreach (var code in diagnosisCodes)\n            {\n                var cacheKey = $\"reference:diagnosis:{code.Code}\";\n                await _cache.SetAsync(\n                    cacheKey,\n                    code,\n                    TimeSpan.FromHours(24));\n            }\n\n            _logger.LogInformation(\n                \"Warmed {Count} diagnosis codes\",\n                diagnosisCodes.Count);\n        }\n\n        private async Task WarmProviderCacheAsync()\n        {\n            using var scope = _serviceProvider.CreateScope();\n            var context = scope.ServiceProvider\n                .GetRequiredService<ApplicationDbContext>();\n\n            // Load top 1000 most accessed providers\n            var topProviders = await context.Providers\n                .AsNoTracking()\n                .OrderByDescending(p => p.AccessCount)\n                .Take(1000)\n                .ToListAsync();\n\n            foreach (var provider in topProviders)\n            {\n                var cacheKey = $\"{provider.TenantId}:provider:npi:{provider.NPI}\";\n                await _cache.SetAsync(\n                    cacheKey,\n                    provider,\n                    TimeSpan.FromHours(1));\n            }\n\n            _logger.LogInformation(\n                \"Warmed {Count} top providers\",\n                topProviders.Count);\n        }\n    }\n}\n```",
+    "42": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#best-practices]\n\n### Best Practices\n\n1. **Cache Key Naming Convention**: Use hierarchical key naming with tenant isolation: `{tenant}:{entity}:{identifier}` (e.g., \"state-ca:provider:npi:1234567890\"). Include tenant ID in all cache keys for multi-tenant isolation. Use consistent naming to enable pattern-based invalidation.\n\n2. **TTL Selection Strategy**: Choose TTL based on data volatility, not arbitrary values. Reference data (diagnosis codes): 24 hours. Provider data: 1 hour. Member eligibility: 4 hours. Frequently changing data: 5-15 minutes. Never use infinite TTL (always set expiration).\n\n3. **Graceful Degradation**: Never throw exceptions on cache failures—log errors and fall back to database. Cache operations should be best-effort: if cache write fails, request should still succeed. Use cache-aside pattern enabling automatic fallback.\n\n4. **Serialization Format**: Use JSON for development/debugging (human-readable), MessagePack or Protocol Buffers for production (2-3× smaller, faster serialization). Avoid binary serialization (.NET BinaryFormatter) due to security and versioning issues.\n\n5. **Cache Invalidation**: Prefer explicit invalidation (delete on write) over TTL-only expiration for critical data. For distributed updates, use event-driven invalidation (Redis Pub/Sub or Azure Service Bus) to coordinate cache invalidation across services.\n\n6. **Monitor Cache Hit Rates**: Track cache hit rate percentage (hits / (hits + misses) × 100) and alert if <70%. Low hit rates indicate poor key design, excessive TTL, or missing cache warming. Target 80-95% hit rates for read-heavy operations.\n\n7. **Memory Management**: Configure Redis maxmemory-policy to allkeys-lru (evict least recently used when memory full). Monitor Redis memory usage and alert at 80% capacity. Size Redis based on working set (frequently accessed data) not total dataset.\n\n8. **Local Cache for Hot Data**: Use in-memory local cache (MemoryCache) for extremely hot data (accessed >100 times/second per instance). Invalidate local cache via Redis Pub/Sub events. Limit local cache size to prevent out-of-memory errors.\n\n9. **Cache Stampede Prevention**: Use locking or probabilistic early expiration to prevent cache stampede (many requests simultaneously rebuilding expired cache). Implement exponential backoff for cache miss scenarios.\n\n10. **PHI Encryption**: Encrypt sensitive data before caching to comply with HIPAA. Use AES-256 encryption with keys stored in Azure Key Vault. Include encryption overhead in performance calculations (adds 2-5ms per operation).",
+    "43": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#common-pitfalls]\n\n### Common Pitfalls\n\n1. **Ignoring Cache Failures**: Throwing exceptions on cache failures causes complete API outages when Redis is unavailable. Always implement graceful degradation—log cache errors, emit metrics, and fall back to database.\n\n2. **Infinite or Excessive TTLs**: Setting TTL too long (>24 hours) or infinite creates stale data problems and complicates cache invalidation. Always set reasonable expiration based on data volatility.\n\n3. **Missing Tenant Isolation**: Not including tenant ID in cache keys allows cross-tenant data leakage in multi-tenant systems. Always prefix cache keys with tenant identifier.\n\n4. **Cache Stampede on Expiration**: When popular cache entry expires, many requests simultaneously query database and repopulate cache, causing database spike. Implement locking or staggered expiration.\n\n5. **Caching Entire Result Sets**: Caching large collections or unbounded result sets exhausts Redis memory. Cache individual items (member, provider) not collections. For large datasets, implement pagination and cache pages.\n\n6. **Forgetting to Invalidate on Update**: Writing data to database without invalidating cache creates data consistency problems where cache contains stale data. Always invalidate cache in same transaction as database write.\n\n7. **Not Monitoring Cache Performance**: Running caching in production without tracking hit rates, memory usage, or eviction rates prevents identifying cache problems. Implement comprehensive cache metrics (hit rate, latency, memory usage, eviction count).\n\n8. **Synchronous External API Calls Without Caching**: Calling external APIs (NPPES, state systems) synchronously without caching causes repeated slow calls and excessive external API charges. Always cache external API responses.\n\n9. **Over-Reliance on Client-Side Caching**: Depending solely on browser cache without CDN or server-side cache creates inconsistent performance (cold browser cache) and no benefits for server load. Implement multi-layer caching.\n\n10. **Cache Without Compression**: Storing large objects (>10KB) in cache without compression wastes memory. Use compression for large objects (gzip, brotli) or store references to blob storage instead of full content.",
+    "44": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#governance-and-compliance]\n\n## Governance and Compliance",
+    "45": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#standards-alignment]\n\n### Standards Alignment\n\nThis pattern aligns with and implements the following enterprise standards:\n\n- **[Enterprise API Strategy](../../enterprise-api-microservices-strategy.md)**: Implements performance and scalability principles (Section 4.3) requiring <3s page loads and <2s searches through multi-layer caching architecture reducing database load by 80-95%.\n\n- **[Security Pattern - Data Encryption](../../08-security-resilience/data-encryption-pattern.md)**: Ensures PHI data is encrypted in cache using AES-256 encryption before storage, meeting HIPAA Security Rule §164.312(a)(2)(iv) encryption requirements.\n\n- **[Monitoring Pattern](../../10-observability/monitoring-pattern.md)**: Integrates comprehensive cache metrics (hit rate, latency, memory usage, eviction rate) into Prometheus/Grafana monitoring infrastructure with alerting on performance degradation.\n\n- **[Distributed Tracing Pattern](../../10-observability/distributed-tracing-pattern.md)**: Cache operations emit distributed tracing spans (cache.get, cache.set, cache.delete) to Application Insights enabling end-to-end request latency analysis.\n\n- **[Rate Limiting Pattern](./PTN-SEC-API-006-rate-limiting-pattern.md)**: Cache service implements rate limiting for cache invalidation operations preventing cache stampede scenarios from overwhelming Redis cluster.",
+    "46": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#compliance-requirements]\n\n### Compliance Requirements",
+    "47": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#hipaa-compliance]\n\n#### HIPAA Compliance\n\n**PHI Encryption in Cache** (HIPAA Security Rule §164.312(a)(2)(iv)):\n- All PHI must be encrypted before storing in Redis cache using AES-256 encryption with keys managed in Azure Key Vault\n- Encryption keys must rotate every 90 days per Gainwell security policy\n- Cache entries containing PHI must include `phi=true` metadata tag for audit purposes\n- Decryption only performed in application memory, never logged or persisted unencrypted\n\n**Implementation Example**:\n```csharp\npublic async Task<Member> GetMemberAsync(string memberId)\n{\n    var cacheKey = $\"member:{memberId}\";\n    var encryptedData = await _cache.GetAsync<byte[]>(cacheKey);\n\n    if (encryptedData != null)\n    {\n        var decrypted = await _encryptionService.DecryptAsync(encryptedData);\n        return JsonSerializer.Deserialize<Member>(decrypted);\n    }\n\n    var member = await _database.GetMemberAsync(memberId);\n    var serialized = JsonSerializer.Serialize(member);\n    var encrypted = await _encryptionService.EncryptAsync(serialized);\n    await _cache.SetAsync(cacheKey, encrypted, TimeSpan.FromHours(4));\n\n    return member;\n}\n```\n\n**Audit Logging** (HIPAA Security Rule §164.312(b)):\n- All cache operations accessing PHI must be logged with user ID, timestamp, action (get/set/delete), and cache key\n- Cache access logs must be retained for 7 years per HIPAA requirements\n- Automated monitoring detects unusual cache access patterns (excessive deletions, pattern-based scans)\n\n**TTL Limits for PHI** (HIPAA minimum necessary principle):\n- PHI cache entries limited to maximum 4-hour TTL to minimize exposure window\n- Sensitive PHI (SSN, payment info) limited to 15-minute TTL or not cached at all\n- TTL enforcement implemented in cache service preventing longer expirations",
+    "48": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#state-contract-sla-compliance]\n\n#### State Contract SLA Compliance\n\nCaching directly supports state contract SLA requirements:\n\n**Availability**: 99.9% uptime SLA (43 minutes monthly downtime allowance)\n- Redis deployed as clustered Premium tier with automatic failover (<30 second failover time)\n- Cache failures automatically degrade to database ensuring continued availability\n- Monthly availability tracked: (total time - cache downtime) / total time × 100 ≥ 99.9%\n\n**Performance**: <2s P95 latency for searches, <3s P95 for page loads\n- Cache hit scenarios: 5-50ms total latency (well under 2s threshold)\n- Cache miss scenarios: 150-500ms latency (acceptable for minority of requests)\n- Monthly P95 latency tracked: 95th percentile of all request durations ≤ 2000ms for searches, ≤ 3000ms for pages\n\n**Data Freshness**: Member eligibility data must be <4 hours stale\n- Eligibility cache TTL set to 4 hours maximum\n- Cache invalidation events published on eligibility updates ensuring immediate refresh\n- State reporting includes cache age metrics demonstrating compliance",
+    "49": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#monitoring-and-metrics]\n\n### Monitoring and Metrics\n\n**Required Cache Metrics** (tracked in Prometheus, visualized in Grafana):\n\n```yaml\n# Prometheus metrics configuration\nmetrics:\n  cache_hit_rate:\n    description: \"Percentage of cache hits vs total requests\"\n    type: gauge\n    labels: [tenant, entity_type]\n    target: \">= 80%\"\n    alert_threshold: \"< 70%\"\n\n  cache_latency_milliseconds:\n    description: \"Cache operation latency in milliseconds\"\n    type: histogram\n    labels: [operation, tenant]\n    buckets: [1, 2, 5, 10, 25, 50, 100]\n    target_p95: \"< 5ms\"\n\n  cache_memory_usage_percent:\n    description: \"Redis memory utilization percentage\"\n    type: gauge\n    target: \"< 80%\"\n    alert_threshold: \"> 85%\"\n\n  cache_eviction_count:\n    description: \"Number of cache entries evicted due to memory pressure\"\n    type: counter\n    alert_threshold: \"> 1000/hour\"\n\n  cache_error_rate:\n    description: \"Percentage of cache operations resulting in errors\"\n    type: gauge\n    target: \"< 0.1%\"\n    alert_threshold: \"> 1%\"\n```\n\n**Prometheus Alert Rules**:\n\n```yaml\ngroups:\n\n  - name: cache_alerts\n    interval: 30s\n    rules:\n      - alert: CacheHitRateLow\n        expr: cache_hit_rate < 70\n        for: 10m\n        labels:\n          severity: warning\n        annotations:\n          summary: \"Cache hit rate below threshold\"\n          description: \"Cache hit rate is {{ $value }}%, target >= 80%\"\n\n      - alert: CacheMemoryHigh\n        expr: cache_memory_usage_percent > 85\n        for: 5m\n        labels:\n          severity: critical\n        annotations:\n          summary: \"Redis memory usage critical\"\n          description: \"Redis memory at {{ $value }}%, risk of evictions\"\n\n      - alert: CacheLatencyHigh\n        expr: histogram_quantile(0.95, cache_latency_milliseconds) > 10\n        for: 5m\n        labels:\n          severity: warning\n        annotations:\n          summary: \"Cache P95 latency exceeds 10ms\"\n          description: \"P95 cache latency {{ $value }}ms, investigate Redis performance\"\n\n      - alert: CacheErrorRateHigh\n        expr: cache_error_rate > 1\n        for: 2m\n        labels:\n          severity: critical\n        annotations:\n          summary: \"High cache error rate detected\"\n          description: \"Cache error rate {{ $value }}%, check Redis health\"\n```",
+    "50": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#change-management]\n\n### Change Management\n\n**Pattern Changes Requiring ARB Approval:**\n- Changes to cache encryption standards or key management approach\n- Modifications to PHI caching policies (TTL limits, encryption requirements)\n- Introduction of new caching layers (e.g., adding CDN caching)\n- Changes to cache invalidation strategy impacting data consistency\n\n**Pattern Updates Requiring Team Lead Approval:**\n- Adjustments to TTL values for specific data types\n- Adding new entity types to caching strategy\n- Changes to cache key naming conventions\n- Performance tuning (Redis configuration, memory limits)\n\n**Implementation Decisions Delegated to Developers:**\n- Cache implementation details within established patterns\n- Cache warming strategies for specific services\n- Local memory cache usage within API instances\n- Cache metrics and logging implementation",
+    "51": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#operational-procedures]\n\n### Operational Procedures\n\n**Cache Failure Runbook**:\n\n1. **Detection**: Prometheus alert fires for high cache error rate (>1%) or cache unavailability\n2. **Immediate Response** (within 5 minutes):\n   - Verify API services still operational (graceful degradation to database)\n   - Check Redis cluster health in Azure Portal (CPU, memory, network)\n   - Review Redis metrics for anomalies (connection count, command rate, evictions)\n3. **Diagnosis** (within 15 minutes):\n   - Review application logs for Redis connection errors\n   - Check Azure Service Health for Redis outages\n   - Verify network connectivity from API subnet to Redis\n   - Review recent deployments or configuration changes\n4. **Resolution**:\n   - If Redis overloaded: Scale up Redis tier or add shards\n   - If network issue: Verify firewall rules and private link configuration\n   - If Redis cluster failure: Initiate manual failover to secondary region (if configured)\n   - If application issue: Roll back recent deployment causing errors\n5. **Recovery Verification**:\n   - Confirm cache hit rate returns to normal (>80%)\n   - Verify cache latency acceptable (P95 <5ms)\n   - Run cache warming script to repopulate hot data\n6. **Post-Incident Review**: Document root cause, contributing factors, and preventive measures\n\n**Cache Invalidation Process**:\n\nWhen data model changes require cache invalidation:\n\n1. Identify affected cache keys (use cache key documentation)\n2. Create invalidation script using pattern-based deletion: `redis.DeleteByPatternAsync(\"{tenant}:entity:*\")`\n3. Test invalidation script in development environment\n4. Schedule invalidation during low-traffic window (2-4 AM)\n5. Execute invalidation script via Azure Function or management API\n6. Monitor cache miss rate spike (expected immediately after invalidation)\n7. Verify cache warming repopulates critical data within 15 minutes\n8. Document invalidation in change log with reason, scope, and outcome",
+    "52": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#examples-and-use-cases]\n\n## Examples and Use Cases",
+    "53": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#real-world-implementation-provider-directory-search-caching]\n\n### Real-World Implementation: Provider Directory Search Caching\n\n**Business Context**: State Medicaid portals provide provider directory search allowing members to find doctors, hospitals, and pharmacies accepting Medicaid. Provider data changes infrequently (monthly updates) but is queried millions of times daily. Without caching, provider directory searches averaged 2.8 seconds response time, causing 18% search abandonment.\n\n**Implementation Approach**:\n\n```csharp\npublic class ProviderSearchService\n{\n    private readonly ICacheService _cache;\n    private readonly IProviderRepository _repository;\n\n    public async Task<ProviderSearchResults> SearchProvidersAsync(\n        string tenantId, ProviderSearchRequest request)\n    {\n        // Generate cache key from search parameters\n        var cacheKey = GenerateSearchCacheKey(tenantId, request);\n\n        // Check cache first\n        var cachedResults = await _cache.GetAsync<ProviderSearchResults>(cacheKey);\n        if (cachedResults != null)\n        {\n            return cachedResults;\n        }\n\n        // Cache miss - execute search against database\n        var results = await _repository.SearchAsync(tenantId, request);\n\n        // Cache results for 1 hour (providers change infrequently)\n        await _cache.SetAsync(\n            cacheKey,\n            results,\n            TimeSpan.FromHours(1));\n\n        return results;\n    }\n\n    private string GenerateSearchCacheKey(string tenantId, ProviderSearchRequest request)\n    {\n        // Include all search parameters in cache key for uniqueness\n        return $\"{tenantId}:provider:search:\" +\n               $\"{request.Specialty}:{request.ZipCode}:{request.Radius}:\" +\n               $\"{request.AcceptingNewPatients}:{request.Page}\";\n    }\n}\n```\n\n**Results Achieved** (California Medicaid portal, January-March 2024):\n- **Response Time**: Reduced from 2,800ms (P95) to 320ms (P95) - 89% improvement\n- **Cache Hit Rate**: 87% of searches served from cache\n- **Database Load**: Reduced from 1.2M daily queries to 156K - 87% reduction\n- **Search Abandonment**: Decreased from 18% to 6% - 67% improvement\n- **Infrastructure Costs**: Saved $8,200/month by reducing database tier from P6 to P2\n\n**Before/After Comparison**:\n\n| Metric | Before Caching | After Caching | Improvement |\n|--------|---------------|---------------|-------------|\n| P95 Response Time | 2,800ms | 320ms | 89% faster |\n| P50 Response Time | 1,850ms | 85ms | 95% faster |\n| Daily Database Queries | 1,200,000 | 156,000 | 87% reduction |\n| Search Abandonment Rate | 18% | 6% | 67% improvement |\n| Monthly Infrastructure Cost | $14,500 | $6,300 | 57% reduction |\n| Cache Hit Rate | N/A | 87% | N/A |",
+    "54": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#real-world-implementation-member-eligibility-caching]\n\n### Real-World Implementation: Member Eligibility Caching\n\n**Business Context**: Member eligibility verification is the most frequently accessed operation in healthcare APIs. Eligibility is checked before every service (pharmacy fills, doctor visits, hospital admissions). Texas Medicaid API received 8.5M daily eligibility checks, with 72% checking the same 400K active members repeatedly within 4-hour windows.\n\n**Implementation Approach**:\n\n```csharp\npublic class EligibilityService\n{\n    private readonly ICacheService _cache;\n    private readonly IEligibilityRepository _repository;\n    private readonly IEncryptionService _encryption;\n    private const int EligibilityTTLHours = 4;\n\n    public async Task<MemberEligibility> GetEligibilityAsync(\n        string tenantId, string memberId, DateTime effectiveDate)\n    {\n        var cacheKey = $\"{tenantId}:eligibility:{memberId}:{effectiveDate:yyyyMMdd}\";\n\n        // Check cache\n        var encryptedData = await _cache.GetAsync<byte[]>(cacheKey);\n        if (encryptedData != null)\n        {\n            // Decrypt PHI from cache (HIPAA requirement)\n            var decrypted = await _encryption.DecryptAsync(encryptedData);\n            return JsonSerializer.Deserialize<MemberEligibility>(decrypted);\n        }\n\n        // Cache miss - query eligibility database\n        var eligibility = await _repository.GetEligibilityAsync(\n            tenantId, memberId, effectiveDate);\n\n        // Encrypt before caching (HIPAA requirement)\n        var serialized = JsonSerializer.Serialize(eligibility);\n        var encrypted = await _encryption.EncryptAsync(serialized);\n\n        // Cache with 4-hour TTL (state contract requirement)\n        await _cache.SetAsync(\n            cacheKey,\n            encrypted,\n            TimeSpan.FromHours(EligibilityTTLHours));\n\n        return eligibility;\n    }\n\n    // Invalidate cache when eligibility changes\n    public async Task UpdateEligibilityAsync(MemberEligibility eligibility)\n    {\n        await _repository.UpdateAsync(eligibility);\n\n        // Invalidate cached eligibility\n        var cacheKey = $\"{eligibility.TenantId}:eligibility:{eligibility.MemberId}:\" +\n                      $\"{eligibility.EffectiveDate:yyyyMMdd}\";\n        await _cache.DeleteAsync(cacheKey);\n\n        // Publish invalidation event for other service instances\n        await _eventBus.PublishAsync(new EligibilityUpdatedEvent\n        {\n            TenantId = eligibility.TenantId,\n            MemberId = eligibility.MemberId,\n            EffectiveDate = eligibility.EffectiveDate\n        });\n    }\n}\n```\n\n**Results Achieved** (Texas Medicaid API, February-April 2024):\n- **Response Time**: Reduced from 1,200ms (P95) to 12ms (P95) - 99% improvement\n- **Cache Hit Rate**: 94% of eligibility checks served from cache\n- **Database Load**: Reduced from 8.5M daily queries to 510K - 94% reduction\n- **Cost Savings**: Reduced database costs by $32,000/month (annual savings: $384,000)\n- **Compliance**: Maintained <4 hour data freshness per state contract (TTL = 4 hours)",
+    "55": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#real-world-implementation-external-api-response-caching-nppes-npi-lookups]\n\n### Real-World Implementation: External API Response Caching (NPPES NPI Lookups)\n\n**Business Context**: Provider verification requires calling NPPES NPI Registry API to validate provider credentials. NPPES API has rate limits (1,200 requests/hour) and charges $0.02 per lookup beyond free tier. Analysis showed 85% of NPPES lookups were for same 5,000 active providers repeatedly validated.\n\n**Implementation Approach**:\n\n```csharp\npublic class NPPESService\n{\n    private readonly ICacheService _cache;\n    private readonly HttpClient _httpClient;\n    private const int NPPESCacheTTLDays = 30;\n\n    public async Task<NPPESProvider> LookupProviderAsync(string npi)\n    {\n        var cacheKey = $\"nppes:npi:{npi}\";\n\n        // Check cache first (NPI data rarely changes)\n        var cachedProvider = await _cache.GetAsync<NPPESProvider>(cacheKey);\n        if (cachedProvider != null)\n        {\n            return cachedProvider;\n        }\n\n        // Cache miss - call NPPES API\n        var response = await _httpClient.GetAsync(\n            $\"https://npiregistry.cms.hhs.gov/api/v2.1/?number={npi}\");\n        response.EnsureSuccessStatusCode();\n\n        var providerData = await response.Content\n            .ReadFromJsonAsync<NPPESProvider>();\n\n        // Cache for 30 days (NPPES data very stable)\n        await _cache.SetAsync(\n            cacheKey,\n            providerData,\n            TimeSpan.FromDays(NPPESCacheTTLDays));\n\n        return providerData;\n    }\n}\n```\n\n**Results Achieved** (Enterprise-wide, Q1 2024):\n- **External API Calls**: Reduced from 168,000 monthly to 25,200 - 85% reduction\n- **API Costs**: Reduced from $18,000/month to $2,700/month - $15,300 monthly savings ($183,600 annually)\n- **Response Time**: Reduced from 850ms (NPPES API latency) to 8ms (cache hit) - 99% improvement\n- **Rate Limit Issues**: Eliminated rate limit exceeded errors (previously 12-18 per week)\n- **Cache Hit Rate**: 92% of NPPES lookups served from cache",
+    "56": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#use-case-scenarios]\n\n### Use Case Scenarios",
+    "57": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#scenario-1-reference-data-caching-diagnosis-codes-procedure-codes]\n\n#### Scenario 1: Reference Data Caching (Diagnosis Codes, Procedure Codes)\n\n**When to Use**: Static or rarely changing reference data accessed frequently across many API operations.\n\n**Implementation Pattern**: Cache entire reference dataset at application startup (cache warming), refresh daily via scheduled job, use 24-hour TTL.\n\n**Expected Outcomes**: 95-99% cache hit rate, sub-millisecond access time, zero database load for reference data queries.\n\n**Example**: ICD-10 diagnosis codes (70,000 codes), CPT procedure codes (10,000 codes), drug formularies (5,000-15,000 drugs per state).",
+    "58": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#scenario-2-session-and-authentication-token-caching]\n\n#### Scenario 2: Session and Authentication Token Caching\n\n**When to Use**: User session data and authentication tokens accessed on every API request requiring fast validation.\n\n**Implementation Pattern**: Store session data and JWT tokens in Redis with TTL matching token expiration, validate tokens from cache instead of database.\n\n**Expected Outcomes**: 99% cache hit rate (every authenticated request hits cache), 1-3ms token validation time (vs. 50-200ms database lookup).\n\n**Example**: OAuth 2.0 access tokens (1-hour TTL), refresh tokens (7-day TTL), user session state (30-minute sliding expiration).",
+    "59": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#scenario-3-expensive-computation-result-caching]\n\n#### Scenario 3: Expensive Computation Result Caching\n\n**When to Use**: Complex calculations, aggregations, or report generation taking >1 second to compute but results used by multiple users.\n\n**Implementation Pattern**: Cache computed results with TTL based on acceptable staleness, invalidate cache when underlying data changes.\n\n**Expected Outcomes**: 70-90% cache hit rate (depends on data volatility), computation time reduced to cache lookup time (5-20ms).\n\n**Example**: Dashboard KPI calculations (total spend, member counts, claim volumes), eligibility forecasting, utilization trending reports.",
+    "60": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#scenario-4-high-traffic-api-endpoint-caching]\n\n#### Scenario 4: High-Traffic API Endpoint Caching\n\n**When to Use**: Public API endpoints receiving >1000 requests/second with identical or similar request patterns.\n\n**Implementation Pattern**: Combine CDN edge caching (CloudFront, Azure CDN) with API gateway caching and Redis caching for multi-layer defense.\n\n**Expected Outcomes**: 85-95% of requests served from CDN/gateway (never reach API), <50ms P95 response time globally.\n\n**Example**: Provider directory public APIs, formulary search APIs, facility locator APIs, public member portals.",
+    "61": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#scenario-5-database-query-result-caching]\n\n#### Scenario 5: Database Query Result Caching\n\n**When to Use**: Complex database queries with joins, aggregations, or full-text search taking >500ms but results change infrequently.\n\n**Implementation Pattern**: Cache query results keyed by query parameters, invalidate cache when underlying tables modified (event-driven or TTL).\n\n**Expected Outcomes**: 80-90% cache hit rate, query time reduced from 500-2000ms to 5-15ms cache lookup.\n\n**Example**: Provider search with specialty filters and geographic radius, member search with eligibility filters, claims search with date ranges and status filters.",
+    "62": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#related-patterns-and-references]\n\n## Related Patterns and References",
+    "63": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#related-patterns]\n\n### Related Patterns",
+    "64": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#complementary-patterns-use-together]\n\n#### Complementary Patterns (Use Together)\n\n- **[Data Replication Pattern](../../06-data-management/data-replication-pattern.md)**: Cache warming can leverage replicated read replicas to avoid impacting primary database during cache population. Read-heavy workloads benefit from both caching (fast access) and replication (scale database reads).\n\n- **[CQRS Pattern](../../06-data-management/cqrs-pattern.md)**: Query side benefits significantly from caching since read operations are idempotent and cacheable. Cache sits between query API and read database, reducing read database load. Command side invalidates caches after writes.\n\n- **[API Gateway Pattern](../../02-api-design/api-gateway-pattern.md)**: Gateway provides centralized caching layer for API responses before reaching backend services. Gateway cache works with backend Redis cache for multi-layer defense. Gateway handles HTTP cache headers, authentication token caching.\n\n- **[Distributed Tracing Pattern](../../10-observability/distributed-tracing-pattern.md)**: Cache operations emit tracing spans (cache.get, cache.set) enabling visibility into cache hit rates and latency contribution to overall request duration. Tracing identifies cache performance issues.\n\n- **[Monitoring and Observability Pattern](../../10-observability/monitoring-pattern.md)**: Cache metrics (hit rate, latency, memory usage, evictions) integrated into Prometheus/Grafana monitoring. Alerts trigger on low hit rates, high latency, or memory pressure.",
+    "65": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#alternative-patterns-choose-based-on-context]\n\n#### Alternative Patterns (Choose Based on Context)\n\n- **[Asynchronous Processing Pattern](./asynchronous-processing-pattern.md)**: For write-heavy workloads, async processing with eventual consistency may be more appropriate than caching. Use message queues instead of cache for workloads prioritizing write throughput over read latency.\n\n- **[Database Sharding Pattern](../../06-data-management/database-sharding-pattern.md)**: When dataset size exceeds cache capacity or read distribution is even across data, sharding may be more cost-effective than caching. Sharding scales database horizontally, caching reduces database load.\n\n- **[Read Replica Pattern](../../06-data-management/read-replica-pattern.md)**: For workloads where cache hit rates would be low (<50%) due to high data cardinality, read replicas provide better read scaling than caching. Replicas provide fresh data without cache consistency challenges.",
+    "66": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#prerequisite-patterns]\n\n#### Prerequisite Patterns\n\n- **[Service Discovery Pattern](../../03-integration-communication/service-discovery-pattern.md)**: Required for API services to discover Redis cluster endpoints dynamically. Service discovery enables Redis failover without application reconfiguration.\n\n- **[Configuration Management Pattern](../../05-configuration-management/centralized-configuration-pattern.md)**: Cache configuration (connection strings, TTL values, memory limits) stored in Azure App Configuration or Key Vault. Centralized config enables dynamic cache tuning without redeployment.",
+    "67": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#external-references]\n\n### External References\n\n**Caching Patterns and Best Practices:**\n- [Cache-Aside Pattern - Microsoft Azure Architecture](https://docs.microsoft.com/en-us/azure/architecture/patterns/cache-aside)\n- [Caching Best Practices - AWS Well-Architected Framework](https://aws.amazon.com/caching/best-practices/)\n- [Redis Best Practices - Redis Labs](https://redis.io/topics/best-practices)\n\n**Redis Documentation:**\n- [Redis Command Reference](https://redis.io/commands) - Complete Redis command documentation\n- [Azure Cache for Redis Documentation](https://docs.microsoft.com/en-us/azure/azure-cache-for-redis/) - Azure-specific Redis features and configuration\n- [StackExchange.Redis Documentation](https://stackexchange.github.io/StackExchange.Redis/) - .NET Redis client library\n\n**Performance and Scalability:**\n- [High Performance Browser Networking - Ilya Grigorik](https://hpbn.co/) - HTTP caching, CDN, and performance optimization\n- [Designing Data-Intensive Applications - Martin Kleppmann](https://dataintensive.net/) - Chapter 5: Replication (includes caching strategies)\n\n**Healthcare Compliance:**\n- [HIPAA Security Rule - Encryption](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html) - PHI encryption requirements\n- [Azure HIPAA Compliance](https://docs.microsoft.com/en-us/azure/compliance/offerings/offering-hipaa-us) - Azure services HIPAA compliance status",
+    "68": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#change-history]\n\n## Change History\n\n| Date       | Version | Author              | Description              | Impact      |\n| ---------- | ------- | ------------------- | ------------------------ | ----------- |\n| 2024-01-15 | 1.0.0   | Enterprise Architecture Team | Initial pattern creation with comprehensive caching strategies | New pattern |",
+    "69": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#review-log]\n\n## Review Log\n\n| Review Date | Review Type | Reviewer(s) | Status | Comments | Actions |\n| ----------- | ----------- | ----------- | ------ | -------- | ------- |\n| 2024-01-15  | Architecture Review | Architecture Review Board | Approved | Pattern approved for implementation | None |\n| TBD         | 6-Month Review | TBD | Pending  | Review real-world implementation results | TBD     |",
+    "70": "[patterns/technology/api-microservices/PTN-TEC-API-005-caching-pattern.md#tldr-too-long-didnt-read]\n\n## TL;DR (Too Long; Didn't Read)\n\n**Problem**: Healthcare APIs serving 72M Medicaid beneficiaries experience severe database overload (85% CPU, 72% redundant queries costing $420K annually), slow response times (4.8s dashboard loads causing 28% abandonment), expensive external API calls ($18K/month NPPES with 85% redundant), and inability to scale cost-effectively ($168K for temporary enrollment spike capacity).\n\n**Solution**: Multi-layer caching architecture combining client-side HTTP cache headers, CDN edge caching (Azure CDN), API gateway caching (Azure APIM), distributed Redis caching (primary shared cache), and application local memory caching. Implements cache-aside pattern with explicit cache invalidation on writes, cache warming on deployments, and event-driven invalidation for distributed consistency.\n\n**Key Benefits**:\n- **70-90% latency reduction**: Response times drop from 1,200ms to 120ms (cache hit scenarios)\n- **80-95% database load reduction**: Daily queries reduced from 1.2M to 150K, saving $245K annually\n- **7× capacity increase**: Serve 7× more traffic with same infrastructure through cache offloading\n- **85% external API reduction**: NPPES calls reduced saving $144K annually\n- **Sub-50ms global latency**: CDN edge caching provides <50ms response times worldwide\n\n**When to Use**:\n- Read-heavy operations (>10:1 read/write ratio): Eligibility checks, provider lookups, reference data\n- Expensive operations (>500ms): Complex database queries, computations, aggregations\n- External API calls with rate limits: NPPES verification, state system integration\n- Static/reference data: Diagnosis codes, procedure codes, formularies\n- High-traffic endpoints: >1000 requests/second requiring scale\n\n**Implementation Complexity**: Medium (2-3 weeks)\n- Infrastructure setup: 1 week (Redis cluster, monitoring, encryption)\n- Core implementation: 1 week (cache service, repository integration, HTTP headers)\n- Advanced features: 1 week (cache warming, event-driven invalidation, multi-layer caching)\n\n**Real-World Results**:\n- **Provider Directory (CA)**: 89% faster (2,800ms → 320ms), 87% cache hit rate, $8.2K/month savings\n- **Eligibility API (TX)**: 99% faster (1,200ms → 12ms), 94% cache hit rate, $384K annual savings\n- **NPPES Integration**: 85% call reduction, $183K annual savings, zero rate limit errors\n\n**Key Technologies**: Redis 7.0+ (Azure Cache for Redis Premium), StackExchange.Redis 2.6+, Azure CDN, Azure API Management, .NET MemoryCache, Prometheus/Grafana monitoring\n\n**HIPAA Compliance**: PHI encrypted in cache (AES-256), 4-hour TTL maximum for PHI, audit logging for all cache access, encryption keys rotated every 90 days via Azure Key Vault\n\n**Critical Success Factors**:\n1. Achieve 80-95% cache hit rates through proper TTL tuning and cache warming\n2. Implement graceful degradation (cache failures fall back to database automatically)\n3. Monitor cache metrics continuously (hit rate, latency, memory usage, evictions)\n4. Invalidate caches explicitly on data updates (don't rely solely on TTL expiration)\n5. Use multi-layer caching (client → CDN → gateway → Redis → local memory) for optimal performance\n\n---"
+  },
+  "coverage": {
+    "total_pages": 70,
+    "covered_pages": 70,
+    "sampled_pages": 70,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 70
+  }
+}

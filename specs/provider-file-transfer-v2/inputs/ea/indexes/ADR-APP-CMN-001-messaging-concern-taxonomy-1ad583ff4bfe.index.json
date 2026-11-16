@@ -1,0 +1,156 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Architecture Decision Record",
+  "document_description": "The framework separates messaging into three distinct concerns based on delivery semantics, rather than combining all asynchronous communication under a single abstraction. Each concern has AWS, Azure, and local (Redis) adapters.",
+  "total_pages": 15,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 1,
+      "summary": "",
+      "nodes": []
+    },
+    {
+      "title": "Architecture Decision Record",
+      "node_id": "architecture-decision-record",
+      "start_index": 2,
+      "end_index": 15,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "ADR-APP-003: Messaging Concern Taxonomy",
+          "node_id": "adr-app-003-messaging-concern-taxonomy",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Decision Summary",
+          "node_id": "decision-summary",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Context",
+          "node_id": "context",
+          "start_index": 5,
+          "end_index": 5,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "The Pattern",
+          "node_id": "the-pattern",
+          "start_index": 6,
+          "end_index": 6,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Rules",
+          "node_id": "rules",
+          "start_index": 7,
+          "end_index": 7,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Adapter Selection Per Environment",
+          "node_id": "adapter-selection-per-environment",
+          "start_index": 8,
+          "end_index": 8,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Interaction with Workers Concern",
+          "node_id": "interaction-with-workers-concern",
+          "start_index": 9,
+          "end_index": 9,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Considered Options",
+          "node_id": "considered-options",
+          "start_index": 10,
+          "end_index": 13,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Single Messaging Interface (Status Quo)",
+              "node_id": "single-messaging-interface-status-quo",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Two Concerns (Pub/Sub + Queue)",
+              "node_id": "two-concerns-pubsub--queue",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Transport-Level Abstraction (Generic MessageBroker)",
+              "node_id": "transport-level-abstraction-generic-messagebroker",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Enterprise References",
+          "node_id": "enterprise-references",
+          "start_index": 14,
+          "end_index": 14,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Change Log",
+          "node_id": "change-log",
+          "start_index": 15,
+          "end_index": 15,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "> **Promoted from:** `mmes-cmn-core/docs/decisions/application/adr-app-003-messaging-taxonomy.md`  \n> **Ref-arch artifact ID:** `ADR-APP-CMN-001-messaging-concern-taxonomy`  \n> This document has been promoted to the Enterprise Architecture Platform reference architecture. Product repos should reference this artifact rather than maintaining their own copy.\n\n---",
+    "2": "[decisions/application/ADR-APP-CMN-001-messaging-concern-taxonomy.md#architecture-decision-record]\n\n# Architecture Decision Record",
+    "3": "[decisions/application/ADR-APP-CMN-001-messaging-concern-taxonomy.md#adr-app-003-messaging-concern-taxonomy]\n\n## ADR-APP-003: Messaging Concern Taxonomy\n\n---\n\n|               |                                                                 |\n| ------------- | --------------------------------------------------------------- |\n| **Status**    | Accepted                                                        |\n| **Date**      | 2026-05-21                                                      |\n| **Issuer**    | MMES Platform Team                                              |\n| **Consulted** | Enterprise Architecture Practice, Domain Service Leads          |\n| **Informed**  | All MMES development teams                                      |\n\n---",
+    "4": "[decisions/application/ADR-APP-CMN-001-messaging-concern-taxonomy.md#decision-summary]\n\n## Decision Summary\n\nThe framework separates messaging into three distinct concerns based on delivery semantics, rather than combining all asynchronous communication under a single abstraction. Each concern has AWS, Azure, and local (Redis) adapters.\n\n| Concern | Semantics | AWS | Azure | Local |\n|---------|-----------|-----|-------|-------|\n| **Events** | Ordered streaming/log | Kafka (MSK) | Event Hubs | Redis Streams |\n| **Queue** | Point-to-point, ack-based | SQS | Service Bus Queue | Redis Lists |\n| **Notifications** | Fan-out push, fire-and-forget | SNS | Event Grid | Redis Pub/Sub |\n\n---",
+    "5": "[decisions/application/ADR-APP-CMN-001-messaging-concern-taxonomy.md#context]\n\n## Context\n\nEnterprise Medicaid systems use asynchronous messaging for fundamentally different purposes:\n\n1. **Domain event streaming** — ordered, partitioned, replayable logs of state changes (e.g., claim adjudicated, member enrolled). Consumers may replay from offset. Ordering within a partition is guaranteed.\n\n2. **Task queuing** — point-to-point message delivery with acknowledgment, visibility timeout, and dead-letter routing. Exactly one consumer processes each message. Failed messages route to DLQ after max attempts.\n\n3. **Notifications** — fan-out broadcast to N subscribers with fire-and-forget semantics. Publisher does not know subscriber count or care about delivery confirmation.\n\nThese three patterns have incompatible guarantees:\n\n| Property | Streaming | Queue | Notification |\n|----------|-----------|-------|-------------|\n| Ordering | Partition-ordered | FIFO optional | None |\n| Delivery | At-least-once + replay | At-least-once + ack | Best-effort |\n| Consumers | Multiple (consumer groups) | Single (competing) | Multiple (fan-out) |\n| Acknowledgment | Offset commit | Per-message ack/reject | None |\n| Dead-letter | N/A (replay instead) | Yes | N/A |\n| Retention | Configurable (hours to days) | Until consumed or expired | None |\n\nCombining these under one interface forces callers to understand which subset of behaviors applies to their chosen adapter, violating the Liskov Substitution Principle.\n\n---",
+    "6": "[decisions/application/ADR-APP-CMN-001-messaging-concern-taxonomy.md#the-pattern]\n\n## The Pattern\n\n```mermaid\ngraph TD\n    subgraph concerns[Three Messaging Concerns]\n        subgraph events[Events — Streaming]\n            IEventBus[IEventBus]\n            Kafka[KafkaEventBus]\n            EventHubs[EventHubsEventBus]\n            RedisStreams[RedisStreamsEventBus]\n            InMemEvents[InMemoryEventBus]\n        end\n\n        subgraph queue[Queue — Point-to-Point]\n            IQueueSender[IQueueSender]\n            IQueueReceiver[IQueueReceiver]\n            SQS[SqsQueue]\n            ServiceBus[ServiceBusQueue]\n            RedisQueue[RedisQueue]\n            InMemQueue[InMemoryQueue]\n        end\n\n        subgraph notif[Notifications — Fan-Out]\n            INotifPub[INotificationPublisher]\n            SNS[SnsNotificationBus]\n            EventGrid[EventGridNotificationBus]\n            RedisPubSub[RedisPubSubNotificationBus]\n            InMemNotif[InMemoryNotificationBus]\n        end\n    end\n\n    Kafka -.->|implements| IEventBus\n    EventHubs -.->|implements| IEventBus\n    RedisStreams -.->|implements| IEventBus\n    InMemEvents -.->|implements| IEventBus\n\n    SQS -.->|implements| IQueueSender\n    SQS -.->|implements| IQueueReceiver\n    ServiceBus -.->|implements| IQueueSender\n    ServiceBus -.->|implements| IQueueReceiver\n    RedisQueue -.->|implements| IQueueSender\n    RedisQueue -.->|implements| IQueueReceiver\n    InMemQueue -.->|implements| IQueueSender\n    InMemQueue -.->|implements| IQueueReceiver\n\n    SNS -.->|implements| INotifPub\n    EventGrid -.->|implements| INotifPub\n    RedisPubSub -.->|implements| INotifPub\n    InMemNotif -.->|implements| INotifPub\n```\n\n---",
+    "7": "[decisions/application/ADR-APP-CMN-001-messaging-concern-taxonomy.md#rules]\n\n## Rules\n\n1. **Events concern is for ordered streams only** — append-only log semantics with partition key and replay capability\n2. **Queue concern is for guaranteed delivery to a single consumer** — acknowledgment required, DLQ on failure\n3. **Notifications concern is for fan-out broadcast** — publisher does not wait for or track subscriber outcomes\n4. **Each concern selects its adapter via dedicated environment variable** — `MMES_EVENTS_PROVIDER`, `MMES_QUEUE_PROVIDER`, `MMES_NOTIFICATIONS_PROVIDER`\n5. **All adapters propagate correlation context** — correlation_id, causation_id, conversation_id, tenant_id travel with every message regardless of concern\n6. **Redis serves as the local/development adapter for all three** — Streams, Lists, Pub/Sub cover all patterns with a single dependency\n\n---",
+    "8": "[decisions/application/ADR-APP-CMN-001-messaging-concern-taxonomy.md#adapter-selection-per-environment]\n\n## Adapter Selection Per Environment\n\n| Environment | Events | Queue | Notifications |\n|-------------|--------|-------|---------------|\n| AWS Production | Kafka (MSK) | SQS | SNS |\n| Azure / GCC High | Event Hubs | Service Bus Queue | Event Grid |\n| Local / Development | Redis Streams | Redis Lists | Redis Pub/Sub |\n| Unit Tests | InMemory | InMemory | InMemory |\n\n---",
+    "9": "[decisions/application/ADR-APP-CMN-001-messaging-concern-taxonomy.md#interaction-with-workers-concern]\n\n## Interaction with Workers Concern\n\nThe Workers concern provides the **execution framework** for background message processing. It consumes from the Queue concern:\n\n- `QueueWorker` accepts a `QueueReceiver` (from Queue concern) and a handler function\n- On successful handler execution: calls `QueueReceiver.acknowledge()`\n- On handler exception: calls `QueueReceiver.reject()` (enables DLQ routing)\n- Workers do not manage DLQ behavior directly — that is Queue's responsibility\n\n---",
+    "10": "[decisions/application/ADR-APP-CMN-001-messaging-concern-taxonomy.md#considered-options]\n\n## Considered Options",
+    "11": "[decisions/application/ADR-APP-CMN-001-messaging-concern-taxonomy.md#single-messaging-interface-status-quo]\n\n### Single Messaging Interface (Status Quo)\n\n**Cons**: Violates LSP — SNS cannot support acknowledgment, SQS cannot support replay, Kafka cannot support competing consumers without consumer groups. Callers must know which adapter they have to use the interface correctly.",
+    "12": "[decisions/application/ADR-APP-CMN-001-messaging-concern-taxonomy.md#two-concerns-pubsub--queue]\n\n### Two Concerns (Pub/Sub + Queue)\n\n**Cons**: Conflates streaming (ordered, replayable) with notification (unordered, fire-and-forget). Kafka and SNS have fundamentally different subscriber semantics.",
+    "13": "[decisions/application/ADR-APP-CMN-001-messaging-concern-taxonomy.md#transport-level-abstraction-generic-messagebroker]\n\n### Transport-Level Abstraction (Generic MessageBroker)\n\n**Cons**: Lowest-common-denominator interface loses the semantic guarantees that make each transport valuable. Teams end up bypassing the abstraction to access transport-specific features.\n\n---",
+    "14": "[decisions/application/ADR-APP-CMN-001-messaging-concern-taxonomy.md#enterprise-references]\n\n## Enterprise References\n\n| Reference | Title | Relevance |\n| --- | --- | --- |\n| [ADR-APP-001](adr-app-001-inversion-of-control.md) | Inversion of Control and DI | Adapter-based composition for each messaging concern |\n| [STD-APP-KAFKA](https://github.com/MyGainwell/eap-ref-architecture/blob/main/standards/application/messaging/) | Kafka Standards | Event streaming configuration and partitioning |\n| [PAT-APP-ASYNC](https://github.com/MyGainwell/eap-ref-architecture/blob/main/patterns/application/) | Async Messaging Patterns | Queue, pub/sub, and streaming patterns |\n\n---",
+    "15": "[decisions/application/ADR-APP-CMN-001-messaging-concern-taxonomy.md#change-log]\n\n## Change Log\n\n| Version | Date       | Author             | Description                |\n| ------- | ---------- | ------------------ | -------------------------- |\n| 1.0     | 2026-05-21 | MMES Platform Team | Initial decision document. |"
+  },
+  "coverage": {
+    "total_pages": 15,
+    "covered_pages": 15,
+    "sampled_pages": 15,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 15
+  }
+}

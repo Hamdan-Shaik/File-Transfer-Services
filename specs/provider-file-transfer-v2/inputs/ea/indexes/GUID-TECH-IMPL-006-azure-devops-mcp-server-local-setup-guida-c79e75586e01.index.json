@@ -1,0 +1,589 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Technology Implementation — Azure DevOps MCP Server Local Setup Guidance",
+  "document_description": "guidance_name: 'Azure DevOps MCP Server Local Setup Guidance'",
+  "total_pages": 61,
+  "tree": [
+    {
+      "title": "Technology Implementation — Azure DevOps MCP Server Local Setup Guidance",
+      "node_id": "technology-implementation--azure-devops-mcp-server-local-setup-guidance",
+      "start_index": 1,
+      "end_index": 61,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Executive Summary",
+          "node_id": "executive-summary",
+          "start_index": 3,
+          "end_index": 9,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Purpose Statement",
+              "node_id": "purpose-statement",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Business Value",
+              "node_id": "business-value",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Target Audience",
+              "node_id": "target-audience",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Scope and Applicability",
+              "node_id": "scope-and-applicability",
+              "start_index": 7,
+              "end_index": 9,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Applicable Scenarios",
+                  "node_id": "applicable-scenarios",
+                  "start_index": 8,
+                  "end_index": 8,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Scope Boundaries",
+                  "node_id": "scope-boundaries",
+                  "start_index": 9,
+                  "end_index": 9,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Guidance Context and Background",
+          "node_id": "guidance-context-and-background",
+          "start_index": 10,
+          "end_index": 19,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Business Context",
+              "node_id": "business-context",
+              "start_index": 11,
+              "end_index": 13,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Business Drivers",
+                  "node_id": "business-drivers",
+                  "start_index": 12,
+                  "end_index": 12,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Strategic Alignment",
+                  "node_id": "strategic-alignment",
+                  "start_index": 13,
+                  "end_index": 13,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Technical Context",
+              "node_id": "technical-context",
+              "start_index": 14,
+              "end_index": 16,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Current State Assessment",
+                  "node_id": "current-state-assessment",
+                  "start_index": 15,
+                  "end_index": 15,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Future State Vision",
+                  "node_id": "future-state-vision",
+                  "start_index": 16,
+                  "end_index": 16,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Problem Statement",
+              "node_id": "problem-statement",
+              "start_index": 17,
+              "end_index": 19,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Problem Description",
+                  "node_id": "problem-description",
+                  "start_index": 18,
+                  "end_index": 18,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Impact Assessment",
+                  "node_id": "impact-assessment",
+                  "start_index": 19,
+                  "end_index": 19,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Detailed Guidance",
+          "node_id": "detailed-guidance",
+          "start_index": 20,
+          "end_index": 30,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Core Principles",
+              "node_id": "core-principles",
+              "start_index": 21,
+              "end_index": 24,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Principle 1: Secrets at the User Scope, Never in Code",
+                  "node_id": "principle-1-secrets-at-the-user-scope-never-in-code",
+                  "start_index": 22,
+                  "end_index": 22,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Principle 2: Minimum Required Scopes",
+                  "node_id": "principle-2-minimum-required-scopes",
+                  "start_index": 23,
+                  "end_index": 23,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Principle 3: User-Scoped Variables Are Portable and Safe",
+                  "node_id": "principle-3-user-scoped-variables-are-portable-and-safe",
+                  "start_index": 24,
+                  "end_index": 24,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Common Pitfalls",
+              "node_id": "common-pitfalls",
+              "start_index": 25,
+              "end_index": 30,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Pitfall 1: Setting Variables at Machine Scope",
+                  "node_id": "pitfall-1-setting-variables-at-machine-scope",
+                  "start_index": 26,
+                  "end_index": 26,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Pitfall 2: Setting Variables in the Current PowerShell Session Only",
+                  "node_id": "pitfall-2-setting-variables-in-the-current-powershell-session-only",
+                  "start_index": 27,
+                  "end_index": 27,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Pitfall 3: Forgetting to Restart VS Code After Setting Variables",
+                  "node_id": "pitfall-3-forgetting-to-restart-vs-code-after-setting-variables",
+                  "start_index": 28,
+                  "end_index": 28,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Pitfall 4: Storing the Raw PAT Instead of Base64-Encoded Value",
+                  "node_id": "pitfall-4-storing-the-raw-pat-instead-of-base64-encoded-value",
+                  "start_index": 29,
+                  "end_index": 29,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Pitfall 5: PAT Expires Without Notice",
+                  "node_id": "pitfall-5-pat-expires-without-notice",
+                  "start_index": 30,
+                  "end_index": 30,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Implementation Framework",
+          "node_id": "implementation-framework",
+          "start_index": 31,
+          "end_index": 38,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Prerequisites",
+              "node_id": "prerequisites",
+              "start_index": 32,
+              "end_index": 34,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Technical Prerequisites",
+                  "node_id": "technical-prerequisites",
+                  "start_index": 33,
+                  "end_index": 33,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Organizational Prerequisites",
+                  "node_id": "organizational-prerequisites",
+                  "start_index": 34,
+                  "end_index": 34,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Implementation Phases",
+              "node_id": "implementation-phases",
+              "start_index": 35,
+              "end_index": 38,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Phase 1: Create the PAT",
+                  "node_id": "phase-1-create-the-pat",
+                  "start_index": 36,
+                  "end_index": 36,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Phase 2: Configure Environment Variables",
+                  "node_id": "phase-2-configure-environment-variables",
+                  "start_index": 37,
+                  "end_index": 37,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Phase 3: Validate MCP Connection",
+                  "node_id": "phase-3-validate-mcp-connection",
+                  "start_index": 38,
+                  "end_index": 38,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Practical Application",
+          "node_id": "practical-application",
+          "start_index": 39,
+          "end_index": 47,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Implementation Steps",
+              "node_id": "implementation-steps",
+              "start_index": 40,
+              "end_index": 45,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Step 1: Create a Personal Access Token in Azure DevOps",
+                  "node_id": "step-1-create-a-personal-access-token-in-azure-devops",
+                  "start_index": 41,
+                  "end_index": 41,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 2: Set User-Scoped Environment Variables in PowerShell",
+                  "node_id": "step-2-set-user-scoped-environment-variables-in-powershell",
+                  "start_index": 42,
+                  "end_index": 42,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 3: Validate the MCP Connection",
+                  "node_id": "step-3-validate-the-mcp-connection",
+                  "start_index": 43,
+                  "end_index": 43,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Troubleshooting",
+                  "node_id": "troubleshooting",
+                  "start_index": 44,
+                  "end_index": 44,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Rotating a PAT",
+                  "node_id": "rotating-a-pat",
+                  "start_index": 45,
+                  "end_index": 45,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Tools and Techniques",
+              "node_id": "tools-and-techniques",
+              "start_index": 46,
+              "end_index": 47,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Recommended Tools",
+                  "node_id": "recommended-tools",
+                  "start_index": 47,
+                  "end_index": 47,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Governance and Compliance",
+          "node_id": "governance-and-compliance",
+          "start_index": 48,
+          "end_index": 52,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Compliance Requirements",
+              "node_id": "compliance-requirements",
+              "start_index": 49,
+              "end_index": 50,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Organizational Compliance",
+                  "node_id": "organizational-compliance",
+                  "start_index": 50,
+                  "end_index": 50,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Risk Management",
+              "node_id": "risk-management",
+              "start_index": 51,
+              "end_index": 52,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Risk Assessment",
+                  "node_id": "risk-assessment",
+                  "start_index": 52,
+                  "end_index": 52,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Integration with Enterprise Architecture",
+          "node_id": "integration-with-enterprise-architecture",
+          "start_index": 53,
+          "end_index": 56,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Standards Alignment",
+              "node_id": "standards-alignment",
+              "start_index": 54,
+              "end_index": 54,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Pattern Relationships",
+              "node_id": "pattern-relationships",
+              "start_index": 55,
+              "end_index": 55,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Decision Dependencies",
+              "node_id": "decision-dependencies",
+              "start_index": 56,
+              "end_index": 56,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Related Guidance and References",
+          "node_id": "related-guidance-and-references",
+          "start_index": 57,
+          "end_index": 59,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Related Guidance",
+              "node_id": "related-guidance",
+              "start_index": 58,
+              "end_index": 58,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Industry References",
+              "node_id": "industry-references",
+              "start_index": 59,
+              "end_index": 59,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Change History",
+          "node_id": "change-history",
+          "start_index": 60,
+          "end_index": 60,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Review Log",
+          "node_id": "review-log",
+          "start_index": 61,
+          "end_index": 61,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#technology-implementation--azure-devops-mcp-server-local-setup-guidance]\n\n# Technology Implementation — Azure DevOps MCP Server Local Setup Guidance\n\n<!-- BREADCRUMB: strategy/guidance/technology/implementation -->\n\n---\n\n**Architecture Guidance Metadata**\n\n```yaml\nguidance_id: 'GUID-TECH-IMPL-006'\nguidance_name: 'Azure DevOps MCP Server Local Setup Guidance'\nguidance_type: 'local-environment-setup'\ncategory: 'technology'\nversion: '1.0.0'\nstatus: 'approved'\napplicability: 'enterprise'\ntags: ['azure-devops', 'mcp', 'claude-code', 'local-setup', 'enterprise-architect']\n```\n\n---",
+    "2": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#table-of-contents]\n\n## Table of Contents\n\n- [Executive Summary](#executive-summary)\n- [Guidance Context and Background](#guidance-context-and-background)\n- [Detailed Guidance](#detailed-guidance)\n- [Implementation Framework](#implementation-framework)\n- [Practical Application](#practical-application)\n- [Governance and Compliance](#governance-and-compliance)\n- [Integration with Enterprise Architecture](#integration-with-enterprise-architecture)\n- [Related Guidance and References](#related-guidance-and-references)\n- [Change History](#change-history)\n- [Review Log](#review-log)\n\n---",
+    "3": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#executive-summary]\n\n## Executive Summary",
+    "4": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#purpose-statement]\n\n### Purpose Statement\n\nThis guidance provides Enterprise Architects (EAs) with a step-by-step process for configuring their local machine to connect Claude Code to Azure DevOps via the Model Context Protocol (MCP) server. Once configured, EAs can query work items, create User Stories, and interact with Azure Boards directly from within Claude Code without leaving their editor.",
+    "5": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#business-value]\n\n### Business Value\n\n- **Reduced context switching** — work items are accessible from within the Claude Code workflow, eliminating browser round-trips to Azure DevOps\n- **Accelerated story authoring** — Claude Code can draft, refine, and create User Stories in Azure Boards using conversational prompts\n- **Consistent EA toolchain** — shared `.mcp.json` in the repository means every EA gets the same MCP tools without per-person configuration of the server itself",
+    "6": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#target-audience]\n\n### Target Audience\n\n- **Primary Audience**: Enterprise Architects using Claude Code on their local machine within the `eap-ref-architecture` repository\n- **Secondary Audience**: Platform engineers onboarding EAs to the Claude Code toolchain\n- **Stakeholders**: EA Practice lead, Architecture Governance Board",
+    "7": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#scope-and-applicability]\n\n### Scope and Applicability",
+    "8": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#applicable-scenarios]\n\n#### Applicable Scenarios\n\n- Initial setup of a new EA workstation\n- Resetting a PAT after expiry or revocation\n- Troubleshooting a non-connecting Azure DevOps MCP server in Claude Code",
+    "9": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#scope-boundaries]\n\n#### Scope Boundaries\n\n- **In Scope**: PAT creation, user-level environment variable configuration on Windows, and validation of the MCP connection\n- **Out of Scope**: Claude Code installation, Azure DevOps organization administration, PAT scope management beyond this use case, LeanIX MCP setup\n- **Related Guidance**: [GUID-TECH-IMPL-004 — GitHub Actions MCP Workflow Authoring Guidance](./GUID-TECH-IMPL-004-gh-aw-mcp-workflow-authoring-guidance.md)\n\n---",
+    "10": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#guidance-context-and-background]\n\n## Guidance Context and Background",
+    "11": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#business-context]\n\n### Business Context",
+    "12": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#business-drivers]\n\n#### Business Drivers\n\n- **AI-assisted SDLC**: The EA practice is adopting Claude Code as the primary authoring assistant; direct ADO integration removes a manual handoff step from the AI workflow\n- **Shared team configuration**: The MCP server definition is version-controlled in `.mcp.json` so configuration is consistent across the team; only secrets (the PAT and project name) are machine-local\n- **Security posture**: User-scoped environment variables keep the PAT out of code, chat history, and committed files",
+    "13": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#strategic-alignment]\n\n#### Strategic Alignment\n\nThis guidance supports the EA Platform Engineering stream goal of building a fully agentic SDLC pipeline where architecture artifacts, requirements, and work items are produced and managed within a single AI-assisted context.",
+    "14": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#technical-context]\n\n### Technical Context",
+    "15": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#current-state-assessment]\n\n#### Current State Assessment\n\n- The `eap-ref-architecture` repository contains a shared `.mcp.json` that references the `@azure-devops/mcp` package\n- The MCP server authenticates using a Personal Access Token (PAT) supplied at runtime via environment variables\n- Each EA must provision their own PAT and register it on their machine; the PAT is never committed to source control",
+    "16": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#future-state-vision]\n\n#### Future State Vision\n\n- PATs replaced by Entra ID (Azure AD) token flow once interactive auth is supported by the MCP server package\n- Onboarding script (`onboarding/setup-windows.ps1`) extended to include the environment variable setup step",
+    "17": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#problem-statement]\n\n### Problem Statement",
+    "18": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#problem-description]\n\n#### Problem Description\n\nWithout the environment variables `AZURE_DEVOPS_PAT` and `AZURE_DEVOPS_PROJECT` set at the Windows User scope, the MCP server process starts but immediately exits with an authentication error. Claude Code reports the server as \"failed\" and no Azure DevOps tools are available.",
+    "19": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#impact-assessment]\n\n#### Impact Assessment\n\n- EAs cannot use Claude Code to query or create work items\n- Story authoring requires manual browser-based ADO interaction, breaking the agentic workflow\n- Misconfigured EAs may incorrectly report the MCP feature as broken for everyone\n\n---",
+    "20": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#detailed-guidance]\n\n## Detailed Guidance",
+    "21": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#core-principles]\n\n### Core Principles",
+    "22": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#principle-1-secrets-at-the-user-scope-never-in-code]\n\n#### Principle 1: Secrets at the User Scope, Never in Code\n\n**Description:** The PAT is a credential. It must never appear in `.mcp.json`, any Markdown file, a chat prompt, or a committed file.\n**Rationale:** PATs grant write access to Azure Boards. Exposure in source control would allow anyone with repo read access to create or modify work items under the EA's identity.\n**Application:** Store the PAT exclusively as a Windows User-scoped environment variable. The `.mcp.json` references it via `${AZURE_DEVOPS_PAT}` interpolation, which Claude Code resolves at server startup from the process environment.",
+    "23": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#principle-2-minimum-required-scopes]\n\n#### Principle 2: Minimum Required Scopes\n\n**Description:** Request only the Azure DevOps permission scopes the MCP server actually needs.\n**Rationale:** A PAT with broad scopes (e.g., Full Access) creates unnecessary blast radius if the token is compromised.\n**Application:** When creating the PAT, grant only the scopes listed in the [PAT Creation](#step-1-create-a-personal-access-token-in-azure-devops) step — no more.",
+    "24": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#principle-3-user-scoped-variables-are-portable-and-safe]\n\n#### Principle 3: User-Scoped Variables Are Portable and Safe\n\n**Description:** Setting variables at `User` scope in Windows (not `Machine`) does not require administrator elevation and limits the variable to the current Windows user account.\n**Rationale:** EA laptops on the corporate domain often restrict Machine-scope variable changes to admins. User scope is sufficient because the MCP server process runs as the current user.\n**Application:** Always use `\"User\"` as the third argument to `[System.Environment]::SetEnvironmentVariable`.",
+    "25": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#common-pitfalls]\n\n### Common Pitfalls",
+    "26": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#pitfall-1-setting-variables-at-machine-scope]\n\n#### Pitfall 1: Setting Variables at Machine Scope\n\n**Description:** Attempting to set `AZURE_DEVOPS_PAT` at `Machine` scope without administrator rights.\n**Impact:** PowerShell throws an access-denied error; the variable is never set; the MCP server fails silently.\n**Prevention:** Always use `\"User\"` scope as documented below.\n**Mitigation:** If you accidentally ran the command at `Machine` scope with elevated rights, clean it up with `[System.Environment]::SetEnvironmentVariable(\"AZURE_DEVOPS_PAT\", $null, \"Machine\")` and re-run at `User` scope.",
+    "27": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#pitfall-2-setting-variables-in-the-current-powershell-session-only]\n\n#### Pitfall 2: Setting Variables in the Current PowerShell Session Only\n\n**Description:** Using `$env:AZURE_DEVOPS_PAT = \"...\"` instead of `[System.Environment]::SetEnvironmentVariable(...)`.\n**Impact:** The variable exists only for the lifetime of that PowerShell window. Restarting VS Code or the terminal means the MCP server cannot find the variable.\n**Prevention:** Always use `[System.Environment]::SetEnvironmentVariable` with `\"User\"` scope so the value is persisted to the Windows registry.\n**Mitigation:** Re-run the correct command and restart VS Code.",
+    "28": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#pitfall-3-forgetting-to-restart-vs-code-after-setting-variables]\n\n#### Pitfall 3: Forgetting to Restart VS Code After Setting Variables\n\n**Description:** Claude Code reads environment variables when it starts. Variables set after VS Code launched are invisible to it.\n**Impact:** MCP server fails to authenticate even though the variables are correctly set.\n**Prevention:** Always fully close and reopen VS Code (or the Claude Code terminal session) after running the setup commands.\n**Mitigation:** Restart VS Code; no other action needed.",
+    "29": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#pitfall-4-storing-the-raw-pat-instead-of-base64-encoded-value]\n\n#### Pitfall 4: Storing the Raw PAT Instead of Base64-Encoded Value\n\n**Description:** Setting `AZURE_DEVOPS_PAT` to the raw PAT string instead of the base64 encoding of `<email>:<pat>`.\n**Impact:** The MCP server silently falls back to browser-based interactive authentication instead of using the PAT. The server appears to work but ignores the stored credential.\n**Prevention:** Always use the base64 encoding commands in [Step 2](#step-2-set-user-scoped-environment-variables-in-powershell). The email can be any non-empty value (e.g., your Gainwell email address).\n**Mitigation:** Re-run Step 2 with the encoding commands and restart VS Code.",
+    "30": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#pitfall-5-pat-expires-without-notice]\n\n#### Pitfall 5: PAT Expires Without Notice\n\n**Description:** Azure DevOps PATs have configurable expiry dates. After expiry, the token is silently rejected.\n**Impact:** MCP server stops connecting; Claude Code reports the azure-devops server as failed.\n**Prevention:** When creating the PAT, set a calendar reminder for the expiry date. A 90-day PAT with a 2-week reminder is a reasonable default.\n**Mitigation:** Create a new PAT and update the environment variable (see [Rotating a PAT](#rotating-a-pat)).\n\n---",
+    "31": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#implementation-framework]\n\n## Implementation Framework",
+    "32": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#prerequisites]\n\n### Prerequisites",
+    "33": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#technical-prerequisites]\n\n#### Technical Prerequisites\n\n- [Node.js 20 or later](https://nodejs.org/en/download) — required by the `npx` command that launches the MCP server\n- Windows 10 or Windows 11 workstation (PowerShell 5.1+ or PowerShell 7+)\n- Claude Code installed and the `eap-ref-architecture` repository cloned locally\n- Access to the `MyGainwell` Azure DevOps organization at `https://dev.azure.com/MyGainwell`\n- VS Code (or another IDE with the Claude Code extension) installed",
+    "34": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#organizational-prerequisites]\n\n#### Organizational Prerequisites\n\n- Active Gainwell Azure DevOps account (Entra ID / AAD-backed)\n- Member of at least one Azure DevOps project (to create a PAT scoped to that project)",
+    "35": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#implementation-phases]\n\n### Implementation Phases",
+    "36": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#phase-1-create-the-pat]\n\n#### Phase 1: Create the PAT\n\n**Objectives:** Provision a least-privilege PAT scoped to the tools the MCP server uses.\n**Prerequisites:** Azure DevOps account active and accessible.\n**Key Activities:** See [Step 1](#step-1-create-a-personal-access-token-in-azure-devops) in Practical Application.\n**Deliverables:** A PAT string copied to clipboard, ready for environment variable setup.\n**Success Criteria:** PAT is visible in the Azure DevOps token list with status \"Active\".",
+    "37": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#phase-2-configure-environment-variables]\n\n#### Phase 2: Configure Environment Variables\n\n**Objectives:** Persist the PAT and project name as User-scoped Windows environment variables so every Claude Code session can access them.\n**Prerequisites:** PAT from Phase 1.\n**Key Activities:** See [Step 2](#step-2-set-user-scoped-environment-variables-in-powershell) in Practical Application.\n**Deliverables:** `AZURE_DEVOPS_PAT` and `AZURE_DEVOPS_PROJECT` set at User scope.\n**Success Criteria:** PowerShell confirms both variables with the correct values via the verification command.",
+    "38": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#phase-3-validate-mcp-connection]\n\n#### Phase 3: Validate MCP Connection\n\n**Objectives:** Confirm Claude Code successfully connects to the Azure DevOps MCP server.\n**Prerequisites:** Environment variables set; VS Code restarted.\n**Key Activities:** See [Step 3](#step-3-validate-the-mcp-connection) in Practical Application.\n**Deliverables:** Azure DevOps tools visible and functional in Claude Code.\n**Success Criteria:** Asking \"list my open work items\" in Claude Code returns results from Azure Boards.\n\n---",
+    "39": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#practical-application]\n\n## Practical Application",
+    "40": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#implementation-steps]\n\n### Implementation Steps",
+    "41": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#step-1-create-a-personal-access-token-in-azure-devops]\n\n#### Step 1: Create a Personal Access Token in Azure DevOps\n\n1. Open a browser and navigate to `https://dev.azure.com/MyGainwell`\n\n2. Click your **profile avatar** in the top-right corner and select **Personal Access Tokens**\n\n   > Alternatively, go directly to: `https://dev.azure.com/MyGainwell/_usersSettings/tokens`\n\n3. Click **+ New Token**\n\n4. Fill in the token details:\n\n   | Field | Value |\n   | --- | --- |\n   | **Name** | `Claude Code MCP — <your name>` |\n   | **Organization** | MyGainwell |\n   | **Expiration** | 90 days (recommended) — set a calendar reminder |\n   | **Scopes** | Custom defined |\n\n5. Under **Scopes**, expand each section and grant only the following:\n\n   | Scope | Permission |\n   | --- | --- |\n   | **Work Items** | Read & Write |\n   | **Project and Team** | Read |\n   | **Identity** | Read |\n\n   > Do not enable Code, Build, Release, or any other scope. These are not required by the MCP server.\n\n6. Click **Create**\n\n7. **Copy the token immediately** — Azure DevOps will not show it again. Keep it in your clipboard and proceed directly to Step 2.\n\n---",
+    "42": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#step-2-set-user-scoped-environment-variables-in-powershell]\n\n#### Step 2: Set User-Scoped Environment Variables in PowerShell\n\nOpen **PowerShell** (no administrator elevation required).\n\nReplace `<your-pat>` with the token you copied in Step 1, `<your-email>` with any non-empty email address (e.g., your Gainwell email), and `<your-project-name>` with the short name of the Azure DevOps project you work in most often (e.g., `Enterprise Architecture`).\n\n> **Important:** The `@azure-devops/mcp` server with `-a pat` authentication expects `PERSONAL_ACCESS_TOKEN` to contain the **base64 encoding** of `<email>:<pat>`, not the raw PAT string. If you store the raw PAT, the server will silently fall back to browser authentication.\n\n```powershell\n# Base64-encode the PAT in the required format: <email>:<pat>\n$pat = \"<your-pat>\"\n$email = \"<your-email>\"\n$encoded = [Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes(\"${email}:${pat}\"))\n\n# Set the encoded PAT (never share or commit this value)\n[System.Environment]::SetEnvironmentVariable(\n    \"AZURE_DEVOPS_PAT\",\n    $encoded,\n    \"User\"\n)\n\n# Set the default project name used by the MCP server\n[System.Environment]::SetEnvironmentVariable(\n    \"AZURE_DEVOPS_PROJECT\",\n    \"<your-project-name>\",\n    \"User\"\n)\n```\n\n**Verify the variables were persisted correctly:**\n\n```powershell\n# Should print a base64 string (NOT the raw PAT)\n[System.Environment]::GetEnvironmentVariable(\"AZURE_DEVOPS_PAT\", \"User\")\n\n# Should print your project name\n[System.Environment]::GetEnvironmentVariable(\"AZURE_DEVOPS_PROJECT\", \"User\")\n```\n\n> **Security note:** After verification, close the PowerShell window that has the PAT in its history. Do not leave the PAT visible in your terminal scrollback.\n\n---",
+    "43": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#step-3-validate-the-mcp-connection]\n\n#### Step 3: Validate the MCP Connection\n\n1. **Fully close and reopen VS Code** (File → Exit, then relaunch — do not just reload the window)\n\n2. Open the `eap-ref-architecture` repository in VS Code\n\n3. Open Claude Code (via the extension sidebar or `Ctrl+Shift+P` → \"Claude Code: Open\")\n\n4. In the Claude Code chat, type:\n\n   ```text\n   List my open work items in Azure DevOps\n   ```\n\n5. Claude Code should call the `azure-devops` MCP tools and return a list of work items assigned to you in Azure Boards\n\n**Expected result:** Work items are listed with their IDs, titles, and states.\n\n**If the server fails to connect:** See [Troubleshooting](#troubleshooting) below.\n\n---",
+    "44": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#troubleshooting]\n\n#### Troubleshooting\n\n**Server shows as \"failed\" in Claude Code:**\n\nRun the following in a new PowerShell window (opened after setting the variables) to confirm they are available to child processes:\n\n```powershell\n# This simulates what Claude Code sees when it launches the MCP server\n$env:AZURE_DEVOPS_PAT = [System.Environment]::GetEnvironmentVariable(\"AZURE_DEVOPS_PAT\", \"User\")\nWrite-Host \"PAT length: $($env:AZURE_DEVOPS_PAT.Length) chars\"\n```\n\nIf the length is 0, the variable was not set correctly — repeat Step 2.\n\n**Server falls back to browser authentication despite PAT being set:**\n\nThe most common cause is that `AZURE_DEVOPS_PAT` contains the raw PAT string instead of the required base64-encoded `<email>:<pat>` format. Re-run [Step 2](#step-2-set-user-scoped-environment-variables-in-powershell) with the encoding commands.\n\n**Authentication error in MCP server logs:**\n\nIn VS Code, open **Output** (View → Output) and select **Claude Code Extension** from the dropdown. Look for lines referencing `azure-devops`. A 401 or \"unauthorized\" error means the PAT is incorrect, not properly base64-encoded, or has expired — create a new PAT and update the variable.\n\n---",
+    "45": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#rotating-a-pat]\n\n#### Rotating a PAT\n\nWhen your PAT expires or is revoked, create a new one following [Step 1](#step-1-create-a-personal-access-token-in-azure-devops) and update the environment variable:\n\n```powershell\n$pat = \"<new-pat>\"\n$email = \"<your-email>\"\n$encoded = [Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes(\"${email}:${pat}\"))\n\n[System.Environment]::SetEnvironmentVariable(\n    \"AZURE_DEVOPS_PAT\",\n    $encoded,\n    \"User\"\n)\n```\n\nRestart VS Code. The MCP server will pick up the new token on next launch.\n\n---",
+    "46": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#tools-and-techniques]\n\n### Tools and Techniques",
+    "47": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#recommended-tools]\n\n#### Recommended Tools\n\n| Tool Category | Tool Name | Purpose | Usage Guidelines |\n| --- | --- | --- | --- |\n| Terminal | PowerShell 5.1+ | Set and verify environment variables | Available on all Windows machines without installation |\n| IDE | VS Code + Claude Code extension | Host the MCP server and surface tools | Requires a full restart (not just window reload) after env var changes |\n| Browser | Azure DevOps portal | Create and manage PATs | `https://dev.azure.com/MyGainwell/_usersSettings/tokens` |\n\n---",
+    "48": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#governance-and-compliance]\n\n## Governance and Compliance",
+    "49": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#compliance-requirements]\n\n### Compliance Requirements",
+    "50": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#organizational-compliance]\n\n#### Organizational Compliance\n\n- PATs must follow the Gainwell credential lifecycle policy — rotate on or before expiry, revoke immediately if suspected compromise\n- PATs must never be committed to any repository, pasted into chat interfaces, or shared via email or messaging platforms\n- The MCP server's `.mcp.json` uses `${VAR}` interpolation so that the secret itself never appears in version-controlled files",
+    "51": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#risk-management]\n\n### Risk Management",
+    "52": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#risk-assessment]\n\n#### Risk Assessment\n\n| Risk Category | Risk Description | Probability | Impact | Mitigation Strategy |\n| --- | --- | --- | --- | --- |\n| Credential exposure | PAT pasted into a committed file or chat | Low | High | Use environment variables exclusively; run `git diff` before committing |\n| PAT expiry | MCP server loses connectivity silently | Medium | Low | Set a calendar reminder when creating the PAT |\n| Over-scoped PAT | PAT granted Full Access instead of minimum scopes | Low | Medium | Follow the exact scope table in Step 1; do not use the \"Full Access\" preset |\n\n---",
+    "53": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#integration-with-enterprise-architecture]\n\n## Integration with Enterprise Architecture",
+    "54": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#standards-alignment]\n\n### Standards Alignment\n\n- PATs must be stored as environment variables, not in source control or configuration files (per enterprise credential management policy)",
+    "55": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#pattern-relationships]\n\n### Pattern Relationships\n\n- MCP server configuration pattern documented in [`.mcp.json`](../../../../.mcp.json) — the shared server definition that this guidance activates",
+    "56": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#decision-dependencies]\n\n### Decision Dependencies\n\n- ADR-GOV-011 (Federated AI Governance Model, pending PR #258) — the MCP server is classified as a local agentic tool and subject to the same traceability requirements\n\n---",
+    "57": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#related-guidance-and-references]\n\n## Related Guidance and References",
+    "58": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#related-guidance]\n\n### Related Guidance\n\n- [GUID-TECH-IMPL-004 — GitHub Actions MCP Workflow Authoring Guidance](./GUID-TECH-IMPL-004-gh-aw-mcp-workflow-authoring-guidance.md) — authoring workflows that leverage MCP in CI/CD pipelines\n- [GUID-GOV-PROC-007 — ADO User Story Authoring Guidance](../../governance/processes/GUID-GOV-PROC-007-ado-user-story-authoring-guidance.md) — how to use the connected MCP tools to author User Stories",
+    "59": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#industry-references]\n\n### Industry References\n\n- [Azure DevOps Personal Access Tokens documentation](https://learn.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate) — Microsoft's official PAT management guide\n- [Model Context Protocol specification](https://modelcontextprotocol.io) — MCP open standard\n\n---",
+    "60": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#change-history]\n\n## Change History\n\n| Date | Version | Author | Description | Impact |\n| --- | --- | --- | --- | --- |\n| 2026-08-05 | 1.0.0 | James Macurak | Initial guidance — PAT creation, PowerShell env var setup, validation | New guidance; no migration required |\n\n---",
+    "61": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#review-log]\n\n## Review Log\n\n| Review Date | Review Type | Reviewer(s) | Status | Comments | Actions |\n| --- | --- | --- | --- | --- | --- |\n| 2026-08-05 | Author Review | James Macurak | Approved | Initial draft | None |"
+  },
+  "coverage": {
+    "total_pages": 61,
+    "covered_pages": 61,
+    "sampled_pages": 61,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 61
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Workflow",
+  "document_description": "Resume a previously saved chat session by loading context from `.tmp/session-context.md`.",
+  "total_pages": 3,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 3,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Workflow",
+          "node_id": "workflow",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Guidelines",
+          "node_id": "guidelines",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "Resume a previously saved chat session by loading context from `.tmp/session-context.md`.",
+    "2": "[.claude/commands/eap-chat-resume.md#workflow]\n\n## Workflow\n\n1. **Check for saved context** — read `.tmp/session-context.md`. If it does not exist:\n\n   ```text\n   No saved session found. Use /chat-save in your current session before closing it.\n   ```\n\n2. **Check for staleness** — parse the `Saved:` timestamp. If more than 24 hours old, warn the user.\n\n3. **Detect drift** — compare saved state against the current repo:\n\n   ```bash\n   git status\n   git log --oneline -5\n   git branch --show-current\n   ```\n\n   If anything changed, call it out (e.g., \"2 commits added after save\", \"branch changed from X to Y\").\n\n4. **Present the resume briefing**\n\n   ```markdown\n   ## Resuming Previous Session\n\n   **Saved:** <timestamp>\n   **Branch:** <branch> (same / changed)\n   **Repo:** <clean / changed since save>\n\n   ### TODO Items (from last session)\n   - [ ] <task 1>\n   - [ ] <task 2>\n   - [x] <completed task>\n\n   ### Project Context\n   <what we were working on and why>\n\n   ### Key Decisions (still in effect)\n   - <decision>\n\n   ### What Was Already Completed\n   - <accomplishment>\n\n   ### Active Files\n   - <files>\n   ```\n\n5. **Read active files** — open each file listed in Active Files so you have full context on the code that was being worked on\n\n6. **Check memory** — read any relevant memory entries that provide additional context about the project or user preferences\n\n7. **Ask the user** how they want to proceed:\n\n   ```text\n   Ready to continue. Here are the open TODO items — which would you like to pick up first?\n   ```",
+    "3": "[.claude/commands/eap-chat-resume.md#guidelines]\n\n## Guidelines\n\n- The TODO list is the centerpiece — present it prominently\n- Do not start working on anything automatically — present context and let the user direct\n- If there are uncommitted changes from the previous session, highlight that prominently\n- After resuming, continue maintaining the state file live per the Session State Tracking instructions\n- The goal is to make the user feel like the conversation never stopped\n\n$ARGUMENTS"
+  },
+  "coverage": {
+    "total_pages": 3,
+    "covered_pages": 3,
+    "sampled_pages": 3,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 3
+  }
+}

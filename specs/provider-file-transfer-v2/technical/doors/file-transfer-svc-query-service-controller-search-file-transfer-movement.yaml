@@ -1,0 +1,50 @@
+door:
+  id: file-transfer-svc-query-service-controller-search-file-transfer-movement
+  kind: api
+  name: SearchFileTransferMovement
+  class: HPP.FileTransfer.BAS.FileTransferApi.Controllers.FileTransferSvcQueryServiceController
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferApi\Controllers\FileTransferSvcQueryServiceController.cs
+  line: 27
+  entry:
+  - HPP.FileTransfer.BAS.FileTransferApi.Controllers.FileTransferSvcQueryServiceController.SearchFileTransferMovement(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FileTransferTrackingQuery)
+  endpoints:
+  - POST /FileTransferSvcQueryService
+procedures: []
+tables: []
+shared_uses: []
+external_uses:
+- package: hpp.core.bas.cqrs
+  version: 30.0.0
+  method: HPP.Core.BAS.CQRS.Base.QueryServiceBase.TryRoute<TQuery>(TQuery)
+  calls:
+  - at: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferApi\Queries\FileTransferSvcQueryService.cs:43
+    type_arguments:
+    - HPP.Core.BAS.CQRS.Base.Query
+    arguments:
+    - name: query
+      expression: query
+polymorphic_hooks: []
+stops: []
+calls:
+- from: HPP.FileTransfer.BAS.FileTransferApi.Controllers.FileTransferSvcQueryServiceController.SearchFileTransferMovement(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FileTransferTrackingQuery)
+  via: INVOKES
+  to: HPP.FileTransfer.BAS.FileTransferApi.Interfaces.IFileTransferSvcQueryService.SearchFileTransferMovement(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FileTransferTrackingQuery)
+- from: HPP.FileTransfer.BAS.FileTransferApi.Interfaces.IFileTransferSvcQueryService.SearchFileTransferMovement(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FileTransferTrackingQuery)
+  via: DISPATCH
+  to: HPP.FileTransfer.BAS.FileTransferApi.Queries.FileTransferSvcQueryService.SearchFileTransferMovement(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FileTransferTrackingQuery)
+- from: HPP.FileTransfer.BAS.FileTransferApi.Queries.FileTransferSvcQueryService.SearchFileTransferMovement(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FileTransferTrackingQuery)
+  via: INVOKES
+  to: HPP.FileTransfer.BAS.FileTransferApi.Queries.FileTransferSvcQueryService.TryRouteQuery(HPP.Core.BAS.CQRS.Base.Query)
+methods:
+- name: HPP.FileTransfer.BAS.FileTransferApi.Controllers.FileTransferSvcQueryServiceController.SearchFileTransferMovement(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FileTransferTrackingQuery)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferApi\Controllers\FileTransferSvcQueryServiceController.cs
+  line: 27
+- name: HPP.FileTransfer.BAS.FileTransferApi.Interfaces.IFileTransferSvcQueryService.SearchFileTransferMovement(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FileTransferTrackingQuery)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferApi\Interfaces\IFileTransferSvcQueryService.cs
+  line: 59
+- name: HPP.FileTransfer.BAS.FileTransferApi.Queries.FileTransferSvcQueryService.SearchFileTransferMovement(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FileTransferTrackingQuery)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferApi\Queries\FileTransferSvcQueryService.cs
+  line: 21
+- name: HPP.FileTransfer.BAS.FileTransferApi.Queries.FileTransferSvcQueryService.TryRouteQuery(HPP.Core.BAS.CQRS.Base.Query)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferApi\Queries\FileTransferSvcQueryService.cs
+  line: 41

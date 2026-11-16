@@ -1,0 +1,120 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "ADO Feature Template",
+  "document_description": "Use this template when creating or updating Features in Azure DevOps via MCP. Features decompose an Epic into deliverable capabilities — each Feature should be completable within a single Program Increment (PI) or release cycle.",
+  "total_pages": 11,
+  "tree": [
+    {
+      "title": "ADO Feature Template",
+      "node_id": "ado-feature-template",
+      "start_index": 1,
+      "end_index": 11,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Fields",
+          "node_id": "fields",
+          "start_index": 2,
+          "end_index": 10,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Title",
+              "node_id": "title",
+              "start_index": 3,
+              "end_index": 3,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Description",
+              "node_id": "description",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Priority",
+              "node_id": "priority",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Story Points (Feature-level)",
+              "node_id": "story-points-feature-level",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Area Path",
+              "node_id": "area-path",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Iteration Path",
+              "node_id": "iteration-path",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Tags",
+              "node_id": "tags",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Links",
+              "node_id": "links",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Guidelines",
+          "node_id": "guidelines",
+          "start_index": 11,
+          "end_index": 11,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[.claude/templates/ado/feature.md#ado-feature-template]\n\n# ADO Feature Template\n\nUse this template when creating or updating Features in Azure DevOps via MCP. Features decompose an Epic into deliverable capabilities — each Feature should be completable within a single Program Increment (PI) or release cycle.",
+    "2": "[.claude/templates/ado/feature.md#fields]\n\n## Fields",
+    "3": "[.claude/templates/ado/feature.md#title]\n\n### Title\n\nShort, specific title describing the capability. Do not prefix with \"Feature:\" — ADO already knows the work item type.\n\n**Format:** `<Verb> <Specific Capability>`\n\n**Examples:**\n\n- Real-time Eligibility Verification via 270/271\n- Pharmacy Claim DUR Edit Processing\n- Provider NPI Validation and NPPES Sync\n- MCO Capitation Rate Cell Configuration",
+    "4": "[.claude/templates/ado/feature.md#description]\n\n### Description\n\nStructure the description using this format:\n\n```markdown\n## Purpose\n\nWhat this Feature delivers and why it matters to the business.\nReference the parent Epic's goals to show alignment.\n\n## Functional Overview\n\nWhat the system will do — described from the business perspective, not technical implementation.\n\nKey behaviors:\n- <Behavior 1>\n- <Behavior 2>\n- <Behavior 3>\n\n## Acceptance Criteria\n\nHigh-level criteria for the Feature as a whole. Detailed Given/When/Then criteria belong on individual User Stories.\n\n- [ ] <Outcome that proves this Feature works>\n- [ ] <Outcome that proves this Feature works>\n\n## Business Rules\n\nDomain logic or constraints that apply across all User Stories in this Feature.\nReference `docs/requirements/business-rules/` if documented there.\n\n## Non-Functional Requirements\n\nQuality attributes specific to this Feature:\n- **Performance:** <e.g., 270/271 response within 2 seconds>\n- **Availability:** <e.g., 99.9% uptime during enrollment periods>\n- **Security:** <e.g., PHI encryption at rest and in transit>\n- **Compliance:** <e.g., HIPAA, CMS MECT checklist item>\n\n## Dependencies\n\n- Other Features or Epics this depends on\n- External systems or integrations required\n- Architecture decisions (ADRs) that must be finalized first\n```",
+    "5": "[.claude/templates/ado/feature.md#priority]\n\n### Priority\n\nMap to ADO priority values:\n\n| ADO Priority | Meaning | Maps to BA Priority |\n| --- | --- | --- |\n| 1 - Critical | Regulatory or contractual obligation | P0 |\n| 2 - High | Core functionality or major business need | P1 |\n| 3 - Medium | Important but not blocking | P2 |\n| 4 - Low | Nice to have | P3 |",
+    "6": "[.claude/templates/ado/feature.md#story-points-feature-level]\n\n### Story Points (Feature-level)\n\nOptional rollup estimate. If used, this is the sum of child User Story points — do not estimate independently.",
+    "7": "[.claude/templates/ado/feature.md#area-path]\n\n### Area Path\n\nSet to the team or domain area (e.g., `MMES\\Claims`, `MMES\\Eligibility`). Must match the parent Epic's area or be a child of it.",
+    "8": "[.claude/templates/ado/feature.md#iteration-path]\n\n### Iteration Path\n\nSet to the target PI or release iteration. Features should be completable within a single PI.",
+    "9": "[.claude/templates/ado/feature.md#tags]\n\n### Tags\n\nInherit parent Epic tags and add Feature-specific tags:\n\n- Integration type (e.g., `x12`, `fhir`, `edi`, `rest-api`)\n- Domain concern (e.g., `dur`, `prior-auth`, `enrollment`)\n- `breaking-change` if this Feature changes existing behavior",
+    "10": "[.claude/templates/ado/feature.md#links]\n\n### Links\n\n- **Parent Epic** — ADO parent link (required)\n- **Child User Stories** — ADO parent/child links\n- **Related Requirements** — link to `docs/requirements/functional/` and `docs/requirements/non-functional/` files\n- **Architecture Decisions** — link to governing ADRs in `docs/decisions/`\n- **Related Features** — ADO related link for cross-Feature dependencies",
+    "11": "[.claude/templates/ado/feature.md#guidelines]\n\n## Guidelines\n\n- One Feature per deliverable capability — if it takes more than one PI, break it down further\n- Features must have a parent Epic — orphan Features indicate a scope gap\n- Write acceptance criteria at the business outcome level — technical validation belongs on User Stories\n- Include NFRs on the Feature, not buried in individual stories — they apply to the whole capability\n- Reference domain terms from `docs/glossary.md` or domain glossaries in `docs/design/conceptual/domains/<domain>/glossary.md`\n- When creating a Feature, also create or update the corresponding task entry in `docs/project-plan.md` with the `AB#<id>` reference\n- Map to existing requirements in `docs/requirements/` — if no requirement exists, ask the user to invoke `/business-analyst` to create one first"
+  },
+  "coverage": {
+    "total_pages": 11,
+    "covered_pages": 11,
+    "sampled_pages": 11,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 11
+  }
+}

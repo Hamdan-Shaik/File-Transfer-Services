@@ -1,0 +1,149 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Token Validation",
+  "document_description": "guidance_id: 'GUID-SEC-APP-ABB-TOKVAL-2.7.27'",
+  "total_pages": 14,
+  "tree": [
+    {
+      "title": "Token Validation",
+      "node_id": "token-validation",
+      "start_index": 1,
+      "end_index": 14,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Architecture Guidance Metadata",
+          "node_id": "architecture-guidance-metadata",
+          "start_index": 2,
+          "end_index": 4,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "ABB Context",
+              "node_id": "abb-context",
+              "start_index": 3,
+              "end_index": 3,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "ABB Scope",
+              "node_id": "abb-scope",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Detailed Guidance",
+          "node_id": "detailed-guidance",
+          "start_index": 5,
+          "end_index": 14,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Core Principles",
+              "node_id": "core-principles",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Key Capabilities",
+              "node_id": "key-capabilities",
+              "start_index": 7,
+              "end_index": 10,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Cryptographic Verification",
+                  "node_id": "cryptographic-verification",
+                  "start_index": 8,
+                  "end_index": 8,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Claims Validation",
+                  "node_id": "claims-validation",
+                  "start_index": 9,
+                  "end_index": 9,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Shared Validation Service",
+                  "node_id": "shared-validation-service",
+                  "start_index": 10,
+                  "end_index": 10,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Integration Interfaces",
+              "node_id": "integration-interfaces",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Zero Trust Alignment (NIST SP 800-207)",
+              "node_id": "zero-trust-alignment-nist-sp-800-207",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "NIST SP 800-53 Intent Alignment",
+              "node_id": "nist-sp-800-53-intent-alignment",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Constraints and Dependencies",
+              "node_id": "constraints-and-dependencies",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-TOKVAL-2.7.27.md#token-validation]\n\n# Token Validation\n\n**← Back to [EAP Home](../../../../../README.md) • [Strategy](../../../../README.md) • [Guidance](../../../README.md) • [Security](../../README.md) • [Application](../README.md)**\n\n---",
+    "2": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-TOKVAL-2.7.27.md#architecture-guidance-metadata]\n\n## Architecture Guidance Metadata\n\n```yaml\nguidance_id: 'GUID-SEC-APP-ABB-TOKVAL-2.7.27'\nguidance_name: 'Token Validation'\nguidance_type: 'architecture-building-block'\nabb_type: 'component'\nadm_phase: 'Phase B-D'\nparent_abb: 'GUID-SEC-APP-ABB-CAT-2.7.06'\nparent_vision: 'GUID-SEC-APP-REF-1.7.01'\nrealized_by_sbbs: []\npaired_rad: 'GUID-SEC-APP-RA-APP-IDENTITY-2.7.32'\ncategory: 'security'\nversion: '0.2.0'\nstatus: 'draft'\napplicability: 'enterprise'\ntags: ['security', 'application', 'architecture-building-block', 'identity', 'token', 'authorization']\nsource_story: 'AB#802670'\n```\n\n---\n\n> **TOGAF ADM Note**: This is a **Component ABB** (Phase B–D) within the Application Security domain. Per [GUID-SEC-APP-REF-1.7.01](../GUID-SEC-APP-REF-1.7.01.md): **SHALL** = mandatory; **SHOULD** = strongly recommended; **MAY** = optional.",
+    "3": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-TOKVAL-2.7.27.md#abb-context]\n\n### ABB Context\n\n- **Parent L2 Capability**: Application Authentication & Authorization — [GUID-SEC-APP-CAP-DESC-1.7.02](../GUID-SEC-APP-CAP-DESC-1.7.02.md)\n- **ABB Catalog**: [GUID-SEC-APP-ABB-CAT-2.7.06](../GUID-SEC-APP-ABB-CAT-2.7.06.md)\n- **Capability Statement**: The enterprise SHALL have an architectural capability to validate the cryptographic integrity, expiry, audience, and claims of identity and authorization tokens on every request that presents them, ensuring tokens are not accepted after they have expired, been tampered with, or been issued for a different audience.",
+    "4": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-TOKVAL-2.7.27.md#abb-scope]\n\n### ABB Scope\n\n**In Scope**:\n- Architectural capability to verify the cryptographic signature of bearer tokens\n- Validation of token expiry, issuer, audience, and required claims on each request\n- Rejection of tokens that fail any validation check with an appropriate, non-revealing error response\n- Token validation as a shared capability usable by multiple application components\n\n**Out of Scope**:\n- Token issuance and session establishment (see GUID-SEC-APP-ABB-IDBRKR-2.7.26)\n- Authorization policy evaluation beyond token claim validation (see GUID-SEC-APP-ABB-APIAZ-2.7.12)\n- User-facing authentication flows (see GUID-SEC-APP-ABB-IDBRKR-2.7.26)\n- Security controls, configuration baselines (`standards/security/`)\n\n---",
+    "5": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-TOKVAL-2.7.27.md#detailed-guidance]\n\n## Detailed Guidance",
+    "6": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-TOKVAL-2.7.27.md#core-principles]\n\n### Core Principles\n\n- Token validation SHALL be performed on every request that presents a bearer token; prior validation within a session SHALL NOT exempt a request from re-validation.\n- Expired tokens SHALL be rejected; clock skew tolerance SHALL be minimal and explicitly defined.\n- Token validation SHALL be implemented as a shared capability — individual application components SHALL NOT implement their own validation logic independently.\n- Validation failures SHALL return an appropriate error response that does not reveal validation internals or token content.",
+    "7": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-TOKVAL-2.7.27.md#key-capabilities]\n\n### Key Capabilities",
+    "8": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-TOKVAL-2.7.27.md#cryptographic-verification]\n\n#### Cryptographic Verification\n\n**Architectural intent**: Confirm that a token was issued by a trusted authority and has not been modified since issuance.\n\n**Design guidance**:\n- Signature verification SHALL use the public key published by the issuing authority.\n- Public key material SHALL be retrieved from the issuer's published key endpoint and cached with a defined refresh interval.\n- The capability SHALL continue to validate tokens using cached key material for a defined grace period in the event the key endpoint becomes unavailable; the grace period SHALL be explicitly configured and SHOULD NOT exceed the maximum expected token lifetime in use.\n- Behavior upon grace period expiry SHALL be explicitly defined in the implementing architecture. Failing open (accepting tokens with potentially stale keys) and failing closed (rejecting all tokens) are both valid choices — each carries distinct security and availability tradeoffs that must be documented and approved by Security Architecture before production deployment.\n- Algorithm restrictions SHALL be enforced; algorithm downgrade attacks (e.g., accepting unsigned tokens) SHALL NOT be permitted.",
+    "9": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-TOKVAL-2.7.27.md#claims-validation]\n\n#### Claims Validation\n\n**Architectural intent**: Confirm that a token is valid for the current request context — the right audience, not yet expired, and carrying required claims.\n\n**Design guidance**:\n- Audience claim SHALL be validated; tokens intended for a different service SHALL be rejected.\n- Expiry and not-before claims SHALL be validated against the current time.\n- Required claims for the calling context SHALL be defined and enforced; tokens missing required claims SHALL be rejected.",
+    "10": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-TOKVAL-2.7.27.md#shared-validation-service]\n\n#### Shared Validation Service\n\n**Architectural intent**: Provide token validation as a centrally maintained capability to avoid inconsistent implementations across application components.\n\n**Design guidance**:\n- Applications SHOULD consume token validation through a shared library or middleware rather than implementing validation independently.\n- Validation logic updates (e.g., new required claims, algorithm restriction changes) SHOULD be deployable without requiring changes in each consuming application.",
+    "11": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-TOKVAL-2.7.27.md#integration-interfaces]\n\n### Integration Interfaces\n\n| Interface | Direction | Consuming ABB | Description |\n|---|---|---|---|\n| Token Input | Inbound | GUID-SEC-APP-ABB-APIGW-2.7.11 / Application Components | Bearer token presented with a request |\n| Public Key Material | Inbound | GUID-SEC-APP-ABB-IDBRKR-2.7.26 / Enterprise IdP | Public keys used for signature verification |\n| Validation Result | Outbound | Application Logic / GUID-SEC-APP-ABB-APIAZ-2.7.12 | Validated claims passed to authorization evaluation |",
+    "12": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-TOKVAL-2.7.27.md#zero-trust-alignment-nist-sp-800-207]\n\n### Zero Trust Alignment (NIST SP 800-207)\n\nToken Validation is a foundational implementation of Zero Trust's per-request verification principle within the Identity and Applications pillars — no request is trusted based on a previous authentication event; every token is verified on every request.",
+    "13": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-TOKVAL-2.7.27.md#nist-sp-800-53-intent-alignment]\n\n### NIST SP 800-53 Intent Alignment\n\nThis ABB enables the architectural intent of the IA (Identification and Authentication) family — specifically authenticator verification — and the SC (System and Communications Protection) family's intent for cryptographic validation of transmitted assertions.",
+    "14": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-TOKVAL-2.7.27.md#constraints-and-dependencies]\n\n### Constraints and Dependencies\n\n- Public key cache management must account for key rotation at the issuing authority; stale key caches can cause valid tokens to be rejected or revoked keys to remain trusted.\n- This ABB is tightly coupled with GUID-SEC-APP-ABB-IDBRKR-2.7.26 (which issues tokens) and GUID-SEC-APP-ABB-APIAZ-2.7.12 (which evaluates authorization based on validated claims).\n- The shared validation service pattern requires a governance model for validation rule updates to avoid breaking consuming applications.\n\n---\n\n*[Enterprise Architecture Practice](../../../../../README.md) — Gainwell Technologies*"
+  },
+  "coverage": {
+    "total_pages": 14,
+    "covered_pages": 14,
+    "sampled_pages": 14,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 14
+  }
+}

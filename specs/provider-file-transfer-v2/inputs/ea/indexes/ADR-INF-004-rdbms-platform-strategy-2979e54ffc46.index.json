@@ -1,0 +1,544 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Architecture Decision Record",
+  "document_description": "Adopt PostgreSQL as the preferred relational database management system (RDBMS) for all new applications and modernization initiatives, deployed using managed cloud services (AWS Aurora Serverless v2 preferred, RDS PostgreSQL secondary) to enable cloud-native architectures, remove Windows dependencies, maintain cloud-agnostic positioning, and support digital transformation while providing enterpri",
+  "total_pages": 57,
+  "tree": [
+    {
+      "title": "Architecture Decision Record",
+      "node_id": "architecture-decision-record",
+      "start_index": 1,
+      "end_index": 57,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "ADR-INF-004: RDBMS Platform Strategy",
+          "node_id": "adr-inf-004-rdbms-platform-strategy",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Decision Summary",
+          "node_id": "decision-summary",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Context and Problem Statement",
+          "node_id": "context-and-problem-statement",
+          "start_index": 4,
+          "end_index": 8,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Business Context",
+              "node_id": "business-context",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Technical Context",
+              "node_id": "technical-context",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Problem Statement",
+              "node_id": "problem-statement",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Decision Drivers",
+              "node_id": "decision-drivers",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Considered Options",
+          "node_id": "considered-options",
+          "start_index": 9,
+          "end_index": 16,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Option 1: PostgreSQL with Managed Cloud Services (Recommended)",
+              "node_id": "option-1-postgresql-with-managed-cloud-services-recommended",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Option 2: Continue SQL Server (Status Quo)",
+              "node_id": "option-2-continue-sql-server-status-quo",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Option 3: Azure SQL Database (PaaS)",
+              "node_id": "option-3-azure-sql-database-paas",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Option 4: SQL Server on AWS RDS",
+              "node_id": "option-4-sql-server-on-aws-rds",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Option 5: MySQL/MariaDB",
+              "node_id": "option-5-mysqlmariadb",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Option 6: Oracle Database",
+              "node_id": "option-6-oracle-database",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Option 7: Cloud-Native Proprietary Databases (DynamoDB, CosmosDB)",
+              "node_id": "option-7-cloud-native-proprietary-databases-dynamodb-cosmosdb",
+              "start_index": 16,
+              "end_index": 16,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Decision Outcome",
+          "node_id": "decision-outcome",
+          "start_index": 17,
+          "end_index": 24,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Rationale",
+              "node_id": "rationale",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Implementation Strategy",
+              "node_id": "implementation-strategy",
+              "start_index": 19,
+              "end_index": 22,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Phase 1: Foundation",
+                  "node_id": "phase-1-foundation",
+                  "start_index": 20,
+                  "end_index": 20,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Phase 2: Greenfield Adoption",
+                  "node_id": "phase-2-greenfield-adoption",
+                  "start_index": 21,
+                  "end_index": 21,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Phase 3: Brownfield Migration",
+                  "node_id": "phase-3-brownfield-migration",
+                  "start_index": 22,
+                  "end_index": 22,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Deployment Decision Matrix",
+              "node_id": "deployment-decision-matrix",
+              "start_index": 23,
+              "end_index": 23,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Scope and Applicability",
+              "node_id": "scope-and-applicability",
+              "start_index": 24,
+              "end_index": 24,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Consequences",
+          "node_id": "consequences",
+          "start_index": 25,
+          "end_index": 25,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Compliance and Security Notes",
+          "node_id": "compliance-and-security-notes",
+          "start_index": 26,
+          "end_index": 29,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "HIPAA Compliance",
+              "node_id": "hipaa-compliance",
+              "start_index": 27,
+              "end_index": 27,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Security Features",
+              "node_id": "security-features",
+              "start_index": 28,
+              "end_index": 28,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Compliance Standards",
+              "node_id": "compliance-standards",
+              "start_index": 29,
+              "end_index": 29,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Related Decisions",
+          "node_id": "related-decisions",
+          "start_index": 30,
+          "end_index": 32,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Referenced By This ADR",
+              "node_id": "referenced-by-this-adr",
+              "start_index": 31,
+              "end_index": 31,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "References This ADR",
+              "node_id": "references-this-adr",
+              "start_index": 32,
+              "end_index": 32,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Implementation Guidance",
+          "node_id": "implementation-guidance",
+          "start_index": 33,
+          "end_index": 41,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "PostgreSQL Version Standard",
+              "node_id": "postgresql-version-standard",
+              "start_index": 34,
+              "end_index": 34,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Required Extensions",
+              "node_id": "required-extensions",
+              "start_index": 35,
+              "end_index": 35,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Recommended Extensions",
+              "node_id": "recommended-extensions",
+              "start_index": 36,
+              "end_index": 36,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Connection Pooling",
+              "node_id": "connection-pooling",
+              "start_index": 37,
+              "end_index": 37,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Backup and Recovery",
+              "node_id": "backup-and-recovery",
+              "start_index": 38,
+              "end_index": 38,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Monitoring and Observability",
+              "node_id": "monitoring-and-observability",
+              "start_index": 39,
+              "end_index": 39,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "High Availability",
+              "node_id": "high-availability",
+              "start_index": 40,
+              "end_index": 40,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Development Standards",
+              "node_id": "development-standards",
+              "start_index": 41,
+              "end_index": 41,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Migration Strategy",
+          "node_id": "migration-strategy",
+          "start_index": 42,
+          "end_index": 46,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Assessment Phase",
+              "node_id": "assessment-phase",
+              "start_index": 43,
+              "end_index": 43,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Migration Toolkit",
+              "node_id": "migration-toolkit",
+              "start_index": 44,
+              "end_index": 44,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Migration Patterns",
+              "node_id": "migration-patterns",
+              "start_index": 45,
+              "end_index": 45,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Success Criteria",
+              "node_id": "success-criteria",
+              "start_index": 46,
+              "end_index": 46,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Training and Enablement",
+          "node_id": "training-and-enablement",
+          "start_index": 47,
+          "end_index": 50,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Required Training",
+              "node_id": "required-training",
+              "start_index": 48,
+              "end_index": 48,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Training Resources",
+              "node_id": "training-resources",
+              "start_index": 49,
+              "end_index": 49,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Knowledge Sharing",
+              "node_id": "knowledge-sharing",
+              "start_index": 50,
+              "end_index": 50,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Review and Approval",
+          "node_id": "review-and-approval",
+          "start_index": 51,
+          "end_index": 52,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Stakeholder Sign-Off",
+              "node_id": "stakeholder-sign-off",
+              "start_index": 52,
+              "end_index": 52,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "References",
+          "node_id": "references",
+          "start_index": 53,
+          "end_index": 55,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Internal References",
+              "node_id": "internal-references",
+              "start_index": 54,
+              "end_index": 54,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "External References",
+              "node_id": "external-references",
+              "start_index": 55,
+              "end_index": 55,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Change Log",
+          "node_id": "change-log",
+          "start_index": 56,
+          "end_index": 56,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "🔍 Last Reviewed",
+          "node_id": "-last-reviewed",
+          "start_index": 57,
+          "end_index": 57,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#architecture-decision-record]\n\n# Architecture Decision Record",
+    "2": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#adr-inf-004-rdbms-platform-strategy]\n\n## ADR-INF-004: RDBMS Platform Strategy\n\n**← Back to [EAP Home](../../README.md) • [Architecture Decisions](../README.md) • [Information](./README.md)**\n\n---\n\n|               |                                                                                                                                       |\n| ------------- | ------------------------------------------------------------------------------------------------------------------------------------- |\n| **Status**    | 📝 Proposed                                                                                                                           |\n| **Date**      | 2025-12-12                                                                                                                            |\n| **Issuer**    | [Enterprise Architecture Practice](mailto:EAP-Core@mygainwell.onmicrosoft.com?subject=ADR-INF-004%20RDBMS%20Platform%20Strategy).     |\n| **Consulted** | Data Architecture Team, Infrastructure Team, Security Team, Product Leadership                                                        |\n| **Informed**  | All Development Teams, Operations Teams, DBA Teams                                                                                    |\n\n---",
+    "3": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#decision-summary]\n\n## Decision Summary\n\nAdopt PostgreSQL as the preferred relational database management system (RDBMS) for all new applications and modernization initiatives, deployed using managed cloud services (AWS Aurora Serverless v2 preferred, RDS PostgreSQL secondary) to enable cloud-native architectures, remove Windows dependencies, maintain cloud-agnostic positioning, and support digital transformation while providing enterprise-grade capabilities equivalent to SQL Server with significant cost reduction.\n\n---",
+    "4": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#context-and-problem-statement]\n\n## Context and Problem Statement",
+    "5": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#business-context]\n\n### Business Context\n\nGainwell maintains numerous SQL Server databases supporting Medicaid systems and healthcare applications. The organization's digital transformation and modernization strategy requires cloud-native architectures, containerization, and platform flexibility to deliver innovative solutions more rapidly. However, the current SQL Server footprint creates architectural constraints through Windows Server dependencies and Active Directory coupling identified in [RCA-TEC-001](../../rcas/technology/RCA-TEC-001-sql-server-windows-auth-dependency.md), preventing adoption of modern deployment patterns essential for competitive differentiation. Additionally, SQL Server licensing represents significant ongoing costs (potentially millions annually) that could be redirected to innovation investments.",
+    "6": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#technical-context]\n\n### Technical Context\n\nThe organization's traditional reliance on SQL Server with Windows Authentication creates a \"keystone constraint\" that limits modernization:\n\n- **Prevents Cloud-Native Patterns**: Cannot fully leverage containerization, Kubernetes, or serverless deployment models\n- **Windows Infrastructure Dependency**: Requires Windows Server infrastructure, preventing Linux-based optimization\n- **Active Directory Coupling**: Creates operational complexity through AD dependencies for authentication\n- **Vendor Lock-In**: Tight coupling to Microsoft ecosystem limits cloud-agnostic flexibility\n- **Operational Complexity**: Higher DBA overhead for Windows-based database management\n- **Cost Burden**: High licensing costs for both SQL Server and Windows Server (secondary concern)",
+    "7": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#problem-statement]\n\n### Problem Statement\n\nWhat RDBMS platform should be the enterprise standard for new development and modernization initiatives to enable cloud-native architectures, provide enterprise-grade capabilities, maintain vendor flexibility, and support digital transformation while ensuring HIPAA compliance and reducing total cost of ownership?",
+    "8": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#decision-drivers]\n\n### Decision Drivers\n\n- 🚀 **Modernization Alignment**: Remove keystone constraints identified in [RCA-TEC-001](../../rcas/technology/RCA-TEC-001-sql-server-windows-auth-dependency.md)\n- ☁️ **Cloud-Native Enablement**: Support containerization, serverless, and modern deployment patterns\n- 🔓 **Vendor Flexibility**: Maintain cloud-agnostic positioning per [ADR-IFR-001](../infrastructure/ADR-IFR-001-cloud-agnostic-strategy.md)\n- 🌐 **Cross-Platform Support**: Enable deployment on Linux, Windows, and containers\n- 📊 **Enterprise Capabilities**: Full ACID compliance, advanced features, proven performance equivalent to SQL Server\n- 🛡️ **HIPAA Compliance**: Ensure data security and regulatory compliance\n- 🔧 **Operational Efficiency**: Reduce DBA overhead through managed services\n- 🤝 **Open Source Benefits**: Active community, transparent roadmap, no vendor lock-in\n- 🏢 **Enterprise Support**: Commercial support options available (EDB) per [ADR-TEC-009](../technology/ADR-TEC-009-open-source-software-policy.md)\n- 💰 **Cost Optimization**: Eliminate SQL Server and Windows Server licensing costs as additional benefit\n\n---",
+    "9": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#considered-options]\n\n## Considered Options",
+    "10": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#option-1-postgresql-with-managed-cloud-services-recommended]\n\n### Option 1: PostgreSQL with Managed Cloud Services (Recommended)\n\n**Description**: Adopt PostgreSQL as the preferred RDBMS, deployed using managed cloud services with tiered deployment patterns.\n\n**Deployment Hierarchy**:\n\n1. **AWS Aurora Serverless v2** (Preferred for variable workloads)\n    - Auto-scaling compute (0.5 to 128 ACUs)\n    - Pay-per-use pricing model\n    - Instant scaling without downtime\n    - PostgreSQL 17+ compatibility\n    - Ideal for: Development/test, variable workloads, new applications\n\n2. **AWS RDS PostgreSQL** (Predictable workloads)\n    - Fixed instance sizing for cost optimization\n    - Steady-state production workloads\n    - Specific PostgreSQL extensions\n    - Automated management and high availability\n\n3. **Self-Hosted PostgreSQL** (Exception cases only)\n    - Specific compliance requirements\n    - Legacy migration temporary state\n    - Custom configurations not supported in managed services\n    - Requires documented architectural exception\n\n**Pros**:\n\n- ✅ Full cloud-native support (containers, Kubernetes, serverless)\n- ✅ Cloud-agnostic: runs on AWS, Azure, GCP, on-premises\n- ✅ No Active Directory or Windows Authentication dependencies\n- ✅ Advanced features: JSONB, arrays, full-text search, geospatial (PostGIS)\n- ✅ Excellent performance for OLTP and analytical workloads\n- ✅ Open source with no vendor lock-in\n- ✅ HIPAA-compliant when properly configured\n- ✅ Enterprise support available through EDB\n- ✅ Strong .NET Core, Java, Python, Node.js ecosystem support\n- ✅ Automated backups, patching, high availability (managed services)\n- ✅ Reduced operational overhead and DBA burden\n- ✅ Eliminates SQL Server licensing costs (potential millions in annual savings)\n- ✅ Removes Windows Server licensing requirements\n\n**Cons**:\n\n- ⚠️ Requires migration effort for existing SQL Server databases\n- ⚠️ Team training and skill development needed\n- ⚠️ T-SQL to PL/pgSQL conversion for stored procedures\n- ⚠️ Some SQL Server-specific features require alternatives\n- ⚠️ Multi-year transition for legacy systems",
+    "11": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#option-2-continue-sql-server-status-quo]\n\n### Option 2: Continue SQL Server (Status Quo)\n\n**Description**: Maintain SQL Server as the standard RDBMS platform.\n\n**Pros**:\n\n- ✅ No migration effort required\n- ✅ Existing team expertise\n- ✅ Established tooling and processes\n\n**Cons**:\n\n- ❌ Windows Authentication dependency constrains modernization\n- ❌ Limited cloud-native architecture support (cannot containerize easily)\n- ❌ Does not address keystone constraint in [RCA-TEC-001](../../rcas/technology/RCA-TEC-001-sql-server-windows-auth-dependency.md)\n- ❌ Vendor lock-in to Microsoft ecosystem\n- ❌ Requires Windows infrastructure (cannot leverage Linux optimization)\n- ❌ Higher operational complexity for self-managed deployments\n- ❌ High ongoing licensing costs (SQL Server + Windows Server)",
+    "12": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#option-3-azure-sql-database-paas]\n\n### Option 3: Azure SQL Database (PaaS)\n\n**Description**: Migrate to Azure SQL Database (Platform-as-a-Service) while maintaining SQL Server compatibility.\n\n**Pros**:\n\n- ✅ Minimal application changes required (SQL Server compatibility)\n- ✅ Existing SQL Server expertise applicable\n- ✅ Fully managed PaaS service (automated backups, patching, HA, scaling)\n- ✅ Serverless tier available for variable workloads\n- ✅ Built-in high availability and disaster recovery\n- ✅ Some containerization possible (Azure Container Instances with Azure SQL connector)\n\n**Cons**:\n\n- ⚠️ Strong vendor lock-in to Microsoft Azure (limits cloud-agnostic strategy per [ADR-IFR-001](../infrastructure/ADR-IFR-001-cloud-agnostic-strategy.md))\n- ⚠️ SQL Server licensing costs built into service pricing (significantly higher than PostgreSQL)\n- ⚠️ Does not fully address keystone constraint (Windows Authentication can still create dependencies)\n- ⚠️ Cannot deploy on AWS, GCP, or on-premises without re-platforming\n- ⚠️ Limited containerization options (not Kubernetes-native)\n- ⚠️ Pricing complexity (DTU vs vCore models, multiple tiers)\n- ⚠️ Some T-SQL features differ from on-premises SQL Server\n\n**Verdict**: ⚠️ **Partially Addresses Issue** - Good managed service benefits but creates Azure vendor lock-in and maintains higher cost structure",
+    "13": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#option-4-sql-server-on-aws-rds]\n\n### Option 4: SQL Server on AWS RDS\n\n**Description**: Migrate to SQL Server on AWS RDS (managed service) while maintaining SQL Server as the platform.\n\n**Pros**:\n\n- ✅ Minimal application changes required\n- ✅ Existing SQL Server expertise applicable\n- ✅ Automated backups, patching, and high availability (managed service)\n- ✅ Reduces operational overhead compared to self-managed\n- ✅ Multi-AZ deployment support\n\n**Cons**:\n\n- ⚠️ Still requires Windows-based infrastructure (cannot containerize)\n- ⚠️ Does not address keystone constraint in [RCA-TEC-001](../../rcas/technology/RCA-TEC-001-sql-server-windows-auth-dependency.md)\n- ⚠️ Vendor lock-in to Microsoft ecosystem remains\n- ⚠️ SQL Server licensing costs remain ($8K-$12K/month per production instance)\n- ⚠️ Significantly more expensive than PostgreSQL RDS (~25-40x cost difference)\n- ⚠️ Limited cloud-native pattern support (no Kubernetes, limited serverless)\n- ⚠️ Cannot leverage Linux infrastructure efficiency\n- ⚠️ Windows Authentication still creates AD dependency constraints\n\n**Verdict**: ⚠️ **Partially Addresses Issue** - Reduces operational burden but does not solve strategic modernization constraints or cost concerns",
+    "14": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#option-5-mysqlmariadb]\n\n### Option 5: MySQL/MariaDB\n\n**Description**: Adopt MySQL or MariaDB as the standard RDBMS.\n\n**Pros**:\n\n- ✅ Wide industry adoption\n- ✅ Cloud-native support\n- ✅ Managed service options available\n- ✅ Open source with no licensing costs\n\n**Cons**:\n\n- ⚠️ Less feature-rich than PostgreSQL for enterprise use\n- ⚠️ Limited advanced data types (no native JSONB equivalent)\n- ⚠️ Weaker geospatial support\n- ⚠️ More fragmentation in ecosystem (MySQL vs MariaDB)\n- ⚠️ Oracle ownership of MySQL creates potential vendor concerns",
+    "15": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#option-6-oracle-database]\n\n### Option 6: Oracle Database\n\n**Description**: Adopt Oracle Database as the standard RDBMS.\n\n**Pros**:\n\n- ✅ Most feature-rich commercial RDBMS\n- ✅ Excellent performance for complex workloads\n\n**Cons**:\n\n- ❌ Maximum vendor lock-in\n- ❌ Limited cloud-native architecture support\n- ❌ Complex licensing and pricing models\n- ❌ Does not address modernization objectives\n- ❌ Highest licensing costs (significantly more expensive than SQL Server)",
+    "16": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#option-7-cloud-native-proprietary-databases-dynamodb-cosmosdb]\n\n### Option 7: Cloud-Native Proprietary Databases (DynamoDB, CosmosDB)\n\n**Description**: Adopt cloud-native proprietary database services (NoSQL or cloud-specific solutions).\n\n**Pros**:\n\n- ✅ Fully managed services\n- ✅ Excellent performance and scalability\n- ✅ Serverless and auto-scaling capabilities\n- ✅ Deep integration with cloud provider services\n\n**Cons**:\n\n- ❌ Violates cloud-agnostic principle in [ADR-IFR-001](../infrastructure/ADR-IFR-001-cloud-agnostic-strategy.md)\n- ❌ Maximum vendor lock-in to specific cloud provider\n- ❌ Cannot migrate between clouds without complete re-architecture\n- ❌ Different data models (NoSQL) require application redesign\n- ❌ Does not address RDBMS requirements (relational data, SQL, ACID transactions)\n- ❌ Limited portability for existing SQL Server workloads\n\n**Note**: MongoDB Atlas (cloud-agnostic) and self-hosted MongoDB are acceptable alternatives for document database use cases, but do not address relational database requirements\n\n---",
+    "17": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#decision-outcome]\n\n## Decision Outcome\n\n**Chosen Option**: **Option 1 - PostgreSQL with Managed Cloud Services**",
+    "18": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#rationale]\n\n### Rationale\n\nPostgreSQL with managed cloud services provides enterprise-grade RDBMS capabilities equivalent to SQL Server while enabling strategic modernization objectives:\n\n1. **Enterprise Capabilities**: Full ACID compliance, advanced features (JSONB, arrays, geospatial), proven performance and reliability matching or exceeding SQL Server\n2. **Modernization Enablement**: Removes keystone constraint identified in [RCA-TEC-001](../../rcas/technology/RCA-TEC-001-sql-server-windows-auth-dependency.md), enables containers, serverless, and cloud-native patterns\n3. **Cloud-Agnostic Portability**: PostgreSQL runs everywhere (AWS, Azure, GCP, on-premises, containers) preventing vendor lock-in\n4. **HIPAA Compliance**: Meets all security and regulatory requirements for healthcare data\n5. **Operational Excellence**: Managed services (Aurora/RDS) provide automated backups, patching, HA, and reduced operational burden\n6. **Strategic Alignment**: Supports open source policy ([ADR-TEC-009](../technology/ADR-TEC-009-open-source-software-policy.md)) and cloud-native strategy ([ADR-IFR-002](../infrastructure/ADR-IFR-002-cloud-native-strategy.md))\n7. **Cost Efficiency**: Eliminates SQL Server and Windows Server licensing costs ($450K-$2.35M+ annually) as additional benefit",
+    "19": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#implementation-strategy]\n\n### Implementation Strategy",
+    "20": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#phase-1-foundation]\n\n#### Phase 1: Foundation\n\n- Establish PostgreSQL development standards and best practices\n- Configure AWS Aurora Serverless v2 and RDS PostgreSQL reference environments\n- Develop migration toolkit and automation\n- Create training program for development and DBA teams\n- Document PostgreSQL design patterns and coding standards",
+    "21": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#phase-2-greenfield-adoption]\n\n#### Phase 2: Greenfield Adoption\n\n- **All new applications** must use PostgreSQL\n- Deploy using Aurora Serverless v2 for variable workloads\n- Deploy using RDS PostgreSQL for predictable steady-state workloads\n- Build reference implementations and templates\n- Establish operational runbooks",
+    "22": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#phase-3-brownfield-migration]\n\n#### Phase 3: Brownfield Migration\n\n- Prioritize migrations based on:\n    - License renewal dates\n    - Modernization roadmap alignment\n    - Business value and ROI\n    - Technical complexity\n- Migrate on case-by-case basis with business justification\n- Document lessons learned and refine migration toolkit",
+    "23": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#deployment-decision-matrix]\n\n### Deployment Decision Matrix\n\n| Workload Type | Preferred Deployment | Rationale |\n|---------------|---------------------|-----------|\n| New applications with variable traffic | Aurora Serverless v2 | Auto-scaling, cost-effective, instant scaling |\n| Development/Test environments | Aurora Serverless v2 | Pay-per-use, automatic scaling, cost savings |\n| Production steady-state workloads | RDS PostgreSQL | Cost-optimized for predictable usage |\n| Analytics/Reporting databases | Aurora PostgreSQL | Enhanced for analytical queries |\n| Legacy migration temporary | Self-hosted PostgreSQL | Temporary exception during migration |\n| Special compliance requirements | Self-hosted (exception) | Documented architectural exception required |",
+    "24": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#scope-and-applicability]\n\n### Scope and Applicability\n\n**Applies To**:\n\n- All new application development (greenfield projects)\n- Application modernization initiatives\n- Cloud migration projects\n- System replacements and upgrades\n\n**Does NOT Apply To**:\n\n- Existing SQL Server databases (migrate on case-by-case basis with business justification)\n- Commercial off-the-shelf (COTS) applications requiring specific databases\n- Vendor applications with database dependencies\n- Legacy systems in maintenance-only mode\n- Systems with documented architectural exceptions\n\n**Exceptions Process**:\n\n- Exception requests must document:\n    - Business justification\n    - Technical constraints preventing PostgreSQL adoption\n    - Cost-benefit analysis\n    - Migration path and timeline (if applicable)\n- Exceptions require approval from Enterprise Architecture Practice\n- Exceptions reviewed annually\n\n---",
+    "25": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#consequences]\n\n## Consequences\n\n| Impact | Outcome | Description |\n|--------|---------|-------------|\n| ✅ **Positive** | Modernization Acceleration | Remove keystone constraint, enable cloud-native patterns |\n| ✅ **Positive** | Cloud-Agnostic Flexibility | PostgreSQL runs on all major cloud platforms (AWS, Azure, GCP, on-premises) |\n| ✅ **Positive** | Container & Serverless Support | Full Docker, Kubernetes, serverless compatibility |\n| ✅ **Positive** | Advanced Capabilities | JSONB, arrays, full-text search, geospatial (PostGIS), equivalent or superior to SQL Server |\n| ✅ **Positive** | Enhanced Security | Row-level security, advanced encryption, Zero Trust support, HIPAA compliant |\n| ✅ **Positive** | No Vendor Lock-In | Open source with commercial support options (EDB) |\n| ✅ **Positive** | DevOps Enablement | Infrastructure as Code, GitOps-friendly, CI/CD integration |\n| ✅ **Positive** | Reduced Operations | Managed services automate backups, patching, HA, monitoring |\n| ✅ **Positive** | Active Ecosystem | Rapid innovation, transparent roadmap, extensive community and tooling |\n| ✅ **Positive** | Cross-Platform | No Windows Server dependency, deploy on Linux or Windows |\n| ✅ **Positive** | Significant Cost Reduction | Eliminate SQL Server Enterprise licensing ($500K-$2M+ annually) |\n| ✅ **Positive** | Infrastructure Savings | Reduce Windows Server footprint and associated licensing/operational costs |\n| ⚠️ **Negative** | Training Required | Development and DBA teams need PostgreSQL training |\n| ⚠️ **Negative** | Migration Effort | Existing SQL Server databases require migration (multi-year effort) |\n| ⚠️ **Negative** | Tooling Changes | SQL Server Management Studio → pgAdmin, DBeaver, DataGrip |\n| ⚠️ **Negative** | Code Conversion | T-SQL stored procedures require conversion to PL/pgSQL |\n| ⚠️ **Negative** | Architecture Changes | Some SQL Server-specific features require redesign |\n| ⚠️ **Negative** | Short-Term Dual Support | Temporary period supporting both SQL Server and PostgreSQL |\n| ℹ️ **Neutral** | Hybrid State | SQL Server and PostgreSQL coexistence during multi-year transition |\n| ℹ️ **Neutral** | Incremental Adoption | Gradual migration based on business priorities |\n| ℹ️ **Neutral** | Learning Curve | Team skill development in PostgreSQL ecosystem |\n\n---",
+    "26": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#compliance-and-security-notes]\n\n## Compliance and Security Notes",
+    "27": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#hipaa-compliance]\n\n### HIPAA Compliance\n\nPostgreSQL meets HIPAA requirements when properly configured:\n\n- **Encryption at Rest**: AWS KMS, Azure Key Vault, or LUKS encryption\n- **Encryption in Transit**: TLS 1.2+ for all database connections\n- **Access Controls**: Row-level security, role-based access control (RBAC)\n- **Audit Logging**: pgAudit extension for comprehensive audit trails\n- **Data Masking**: Dynamic data masking capabilities\n- **PHI Protection**: Encryption, access controls, audit logging",
+    "28": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#security-features]\n\n### Security Features\n\n- **Authentication**: SCRAM-SHA-256, LDAP, Certificate-based, integration with secrets management ([ADR-SEC-002](../security/ADR-SEC-002-centralized-secrets-strategy.md))\n- **Authorization**: Row-level security (RLS), fine-grained permissions\n- **Encryption**: Transparent data encryption (TDE), column-level encryption\n- **Network Security**: SSL/TLS, IP whitelisting, VPC isolation\n- **Audit**: pgAudit extension, connection logging, query logging\n- **Vulnerability Management**: Regular security updates, CVE monitoring",
+    "29": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#compliance-standards]\n\n### Compliance Standards\n\n- ✅ HIPAA (Health Insurance Portability and Accountability Act)\n- ✅ HITECH (Health Information Technology for Economic and Clinical Health)\n- ✅ SOC 2 Type II (with managed services)\n- ✅ PCI DSS (for payment processing systems)\n- ✅ FISMA (Federal Information Security Management Act)\n\n---",
+    "30": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#related-decisions]\n\n## Related Decisions",
+    "31": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#referenced-by-this-adr]\n\n### Referenced By This ADR\n\n- [ADR-IFR-001: Cloud Agnostic Strategy](../infrastructure/ADR-IFR-001-cloud-agnostic-strategy.md) - PostgreSQL supports cloud-agnostic positioning\n- [ADR-IFR-002: Cloud Native Strategy](../infrastructure/ADR-IFR-002-cloud-native-strategy.md) - PostgreSQL enables cloud-native architectures\n- [ADR-IFR-003: Enterprise Cloud Strategy](../infrastructure/ADR-IFR-003-enterprise-cloud-strategy.md) - AWS Aurora/RDS deployment strategy\n- [ADR-IFR-006: Data Management Strategy](../infrastructure/ADR-IFR-006-data-management-strategy.md) - Data platform alignment\n- [ADR-TEC-009: Open Source Software Policy](../technology/ADR-TEC-009-open-source-software-policy.md) - PostgreSQL approved with EDB support\n- [ADR-TEC-010: SQL Server Authentication Strategy](../technology/ADR-TEC-010-sql-server-authentication-strategy.md) - SQL Server transition plan\n- [ADR-SEC-002: Centralized Secrets Strategy](../security/ADR-SEC-002-centralized-secrets-strategy.md) - Database credential management\n- [RCA-TEC-001: SQL Server Windows Authentication Dependency](../../rcas/technology/RCA-TEC-001-sql-server-windows-auth-dependency.md) - Root cause for change",
+    "32": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#references-this-adr]\n\n### References This ADR\n\n- Future ADRs for specific database design patterns\n- Future ADRs for data access layer standards\n- Future ADRs for database migration strategies\n\n---",
+    "33": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#implementation-guidance]\n\n## Implementation Guidance",
+    "34": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#postgresql-version-standard]\n\n### PostgreSQL Version Standard\n\n- **Minimum Version**: PostgreSQL 16\n- **Recommended Version**: PostgreSQL 17+ (latest stable)\n- **Aurora Compatibility**: PostgreSQL 13, 14, 15, 16, 17\n- **Aurora Serverless v2 (v17)**: AWS Aurora PostgreSQL 17 and Aurora Serverless v2 with PostgreSQL 17 compatibility are generally available. Teams targeting Aurora Serverless v2 should confirm the specific minor version available in their AWS region and subscribe to AWS release notifications for updates.\n- **Update Policy**: Stay within N-1 of latest major version (continues to apply; with PostgreSQL 17 as the latest AWS-supported version, PostgreSQL 16 is the minimum acceptable N-1 version)",
+    "35": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#required-extensions]\n\n### Required Extensions\n\n> **PostgreSQL 17 Compatibility Note**: pgAudit, pg_stat_statements, uuid-ossp, and pgcrypto are all confirmed compatible with PostgreSQL 17. No breaking changes or updated installation steps are required for these extensions when upgrading from earlier versions. Review extension-specific release notes when upgrading to confirm version pins in deployment manifests.\n\n- **pgAudit**: Audit logging for HIPAA compliance\n- **pg_stat_statements**: Query performance monitoring\n- **uuid-ossp**: UUID generation\n- **pgcrypto**: Encryption functions",
+    "36": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#recommended-extensions]\n\n### Recommended Extensions\n\n- **PostGIS**: Geospatial data support\n- **pg_trgm**: Trigram-based fuzzy text search\n- **hstore**: Key-value store data type\n- **timescaledb**: Time-series data optimization (when applicable)",
+    "37": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#connection-pooling]\n\n### Connection Pooling\n\n- **Required**: All applications must use connection pooling\n- **Recommended Tools**: PgBouncer, pgpool-II, application-level pooling\n- **Aurora Serverless v2**: Built-in connection pooling and scaling",
+    "38": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#backup-and-recovery]\n\n### Backup and Recovery\n\n- **Managed Services**: Automated continuous backups with point-in-time recovery\n- **Retention**: Minimum 7 days (production), align with RTO/RPO requirements\n- **Testing**: Quarterly restore testing required\n- **DR Strategy**: Multi-AZ deployment, cross-region replicas for critical systems",
+    "39": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#monitoring-and-observability]\n\n### Monitoring and Observability\n\n- **CloudWatch Metrics**: CPU, memory, connections, IOPS, query performance\n- **Enhanced Monitoring**: OS-level metrics\n- **Performance Insights**: Query-level performance analysis\n- **Alerting**: Proactive alerts for anomalies and thresholds\n- **Logging**: Slow query logs, connection logs, error logs",
+    "40": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#high-availability]\n\n### High Availability\n\n**Multi-AZ Deployment Strategy**:\n\n- **3-AZ Deployment (Preferred)**:\n    - **Production Critical Systems**: Member management, claims processing, payment systems\n    - **Regulatory Systems**: Audit databases, compliance reporting\n    - **24/7 Operations**: Systems requiring maximum uptime\n    - **Benefits**: Superior resilience, tolerates full AZ failure, meets highest SLAs\n    - **Aurora**: 3 copies across 3 AZs automatically\n    - **RDS PostgreSQL**: Multi-AZ with additional read replica in third AZ\n\n- **2-AZ Deployment (Acceptable)**:\n    - **Non-Critical Production**: Reporting, analytics, batch processing\n    - **Lower SLA Requirements**: Systems with acceptable 60-second failover\n    - **Cost Optimization**: Budget-constrained workloads\n    - **Development/Test**: Non-production environments\n    - **Aurora**: 2 copies across 2 AZs (reduced configuration)\n    - **RDS PostgreSQL**: Standard Multi-AZ deployment\n\n- **Single-AZ (Exception Only)**:\n    - **Development Only**: Local development, proof-of-concept\n    - **Not Permitted**: Production or staging environments\n    - **Aurora Serverless v2**: Not recommended, lacks HA benefits\n\n**High Availability Features**:\n\n- **Aurora Serverless v2**: Multi-AZ by default (minimum 2 AZs)\n- **RDS PostgreSQL**: Multi-AZ deployment required for production\n- **Automated Failover**: Typically < 60 seconds for Multi-AZ\n- **Read Replicas**: For read scaling, reporting workloads, and additional geographic redundancy\n- **Backup and Recovery**: Automated continuous backups with point-in-time recovery\n- **Storage Auto-Scaling**: Prevents outages from storage exhaustion\n\n**Availability Targets**:\n\n| Environment Type | AZ Strategy | Target Availability | RTO | RPO |\n|------------------|-------------|--------------------:|-----|-----|\n| Production Critical | 3-AZ | 99.99% | < 30 sec | < 5 min |\n| Production Standard | 2-AZ or 3-AZ | 99.95% | < 60 sec | < 15 min |\n| Staging | 2-AZ | 99.9% | < 2 min | < 30 min |\n| Development | 1-AZ or 2-AZ | Best effort | N/A | N/A |",
+    "41": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#development-standards]\n\n### Development Standards\n\n- **ORM Support**: Entity Framework Core, Hibernate, SQLAlchemy, Sequelize\n- **Migration Tools**: Flyway, Liquibase, EF Core Migrations\n- **Code Standards**: SQL style guide, naming conventions\n- **Version Control**: All schema changes in version control\n- **CI/CD Integration**: Automated schema deployment pipelines\n\n---",
+    "42": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#migration-strategy]\n\n## Migration Strategy",
+    "43": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#assessment-phase]\n\n### Assessment Phase\n\n1. **Inventory**: Catalog all SQL Server databases\n2. **Complexity Analysis**: Assess migration complexity (schema, stored procedures, dependencies)\n3. **Prioritization**: Score based on business value, license costs, modernization alignment\n4. **Roadmap**: Develop phased migration timeline",
+    "44": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#migration-toolkit]\n\n### Migration Toolkit\n\n- **Schema Conversion**: AWS Schema Conversion Tool (SCT), pgLoader, ora2pg\n- **Data Migration**: AWS Database Migration Service (DMS), pg_dump/pg_restore\n- **Code Conversion**: T-SQL to PL/pgSQL conversion tools and manual review\n- **Testing**: Automated schema validation, data validation, performance testing\n- **Rollback**: Always maintain rollback capability",
+    "45": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#migration-patterns]\n\n### Migration Patterns\n\n1. **Lift and Shift**: Minimal changes, migrate schema and data\n2. **Refactor**: Optimize for PostgreSQL features and performance\n3. **Rearchitect**: Modernize application architecture during migration\n4. **Hybrid**: Gradual migration with interim integration layer",
+    "46": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#success-criteria]\n\n### Success Criteria\n\n- ✅ Functional parity with SQL Server implementation\n- ✅ Performance meets or exceeds SQL Server baseline\n- ✅ All security and compliance requirements met\n- ✅ Monitoring and alerting operational\n- ✅ Team trained and documentation complete\n- ✅ Rollback plan tested and validated\n\n---",
+    "47": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#training-and-enablement]\n\n## Training and Enablement",
+    "48": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#required-training]\n\n### Required Training\n\n- **Developers**: PostgreSQL fundamentals, PL/pgSQL, ORM integration\n- **DBAs**: PostgreSQL administration, performance tuning, backup/recovery\n- **Architects**: PostgreSQL architecture patterns, cloud deployment models\n- **Operations**: Monitoring, troubleshooting, disaster recovery",
+    "49": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#training-resources]\n\n### Training Resources\n\n- **Official Documentation**: [https://www.postgresql.org/docs/](https://www.postgresql.org/docs/)\n- **AWS Training**: Aurora and RDS PostgreSQL courses\n- **EDB Academy**: PostgreSQL certification programs\n- **Internal Wiki**: Best practices, patterns, troubleshooting guides",
+    "50": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#knowledge-sharing]\n\n### Knowledge Sharing\n\n- **Guild/Community of Practice**: PostgreSQL user group\n- **Brown Bags**: Regular knowledge sharing sessions\n- **Office Hours**: Expert office hours for Q&A\n- **Mentorship**: Pair experienced PostgreSQL users with teams\n\n---",
+    "51": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#review-and-approval]\n\n## Review and Approval",
+    "52": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#stakeholder-sign-off]\n\n### Stakeholder Sign-Off\n\n| Role | Name | Approval Date | Status |\n|------|------|---------------|--------|\n| Chief Architect | [Name] | YYYY-MM-DD | 🔄 Pending |\n| VP Engineering | [Name] | YYYY-MM-DD | 🔄 Pending |\n| VP Infrastructure | [Name] | YYYY-MM-DD | 🔄 Pending |\n| CISO | [Name] | YYYY-MM-DD | 🔄 Pending |\n| VP Data & Analytics | [Name] | YYYY-MM-DD | 🔄 Pending |\n\n---",
+    "53": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#references]\n\n## References",
+    "54": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#internal-references]\n\n### Internal References\n\n- [RCA-TEC-001: SQL Server Windows Authentication Dependency](../../rcas/technology/RCA-TEC-001-sql-server-windows-auth-dependency.md)\n- [ADR-IFR-001: Cloud Agnostic Strategy](../infrastructure/ADR-IFR-001-cloud-agnostic-strategy.md)\n- [ADR-IFR-002: Cloud Native Strategy](../infrastructure/ADR-IFR-002-cloud-native-strategy.md)\n- [ADR-TEC-009: Open Source Software Policy](../technology/ADR-TEC-009-open-source-software-policy.md)\n- [ADR-SEC-002: Centralized Secrets Strategy](../security/ADR-SEC-002-centralized-secrets-strategy.md)",
+    "55": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#external-references]\n\n### External References\n\n- [PostgreSQL Official Documentation](https://www.postgresql.org/docs/)\n- [AWS Aurora PostgreSQL](https://aws.amazon.com/rds/aurora/postgresql-features/)\n- [AWS RDS PostgreSQL](https://aws.amazon.com/rds/postgresql/)\n- [EDB Enterprise Support](https://www.enterprisedb.com/)\n- [PostgreSQL HIPAA Compliance Guide](https://www.postgresql.org/about/enterprise/)\n- [Migrating from SQL Server to PostgreSQL](https://aws.amazon.com/blogs/database/best-practices-for-migrating-an-sql-server-database-to-postgresql/)\n\n---",
+    "56": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#change-log]\n\n## Change Log\n\n| Version | Date       | Author                                 | Description                     |\n| ------- | ---------- | -------------------------------------- | ------------------------------- |\n| 1.0     | 2025-12-12 | Josh Oh                                | Initial RDBMS platform strategy |\n| 1.1     | 2026-02-23 | Enterprise Architecture Practice, GWIT | Minor revision - Remove ROI and cost details |\n| 1.2     | 2026-04-03 | Enterprise Architecture Practice, GWIT | Updated PostgreSQL recommended version to 17 (latest AWS-supported); minimum version raised to 16 (N-1); extended Aurora Compatibility list to v17; confirmed Aurora Serverless v2 and extension compatibility; clarified N-1 policy |\n\n---",
+    "57": "[decisions/information/ADR-INF-004-rdbms-platform-strategy.md#-last-reviewed]\n\n## 🔍 Last Reviewed\n\n| Review Date | Reviewer     | Review Type      | Status  |\n| ----------- | ------------ | ---------------- | ------- |\n| 2025-12-12  | Mike Goppert | Initial Creation | Superseded |\n| 2026-04-03  | Enterprise Architecture Practice | Version Maintenance — PostgreSQL v17 update | Current |\n\n---"
+  },
+  "coverage": {
+    "total_pages": 57,
+    "covered_pages": 57,
+    "sampled_pages": 57,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 57
+  }
+}

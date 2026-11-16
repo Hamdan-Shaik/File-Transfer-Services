@@ -1,0 +1,47 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Workflow",
+  "document_description": "Perform general git operations on this repository.",
+  "total_pages": 3,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 3,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Workflow",
+          "node_id": "workflow",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Guidelines",
+          "node_id": "guidelines",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "Perform general git operations on this repository.",
+    "2": "[.claude/commands/eap-git.md#workflow]\n\n## Workflow\n\n1. Run `git status` to assess the current working tree state\n2. Run `git log --oneline -10` to show recent history\n3. If the requested operation is a commit or a stage-only operation (`git add`), read `.claude/skills/ai-convergence/SKILL.md` and run its Phases 1–4 convergence check unless the change is a trivial single-line fix per that Skill's own exclusion. If there is an active PR review cycle with open, unresolved review comments on the current branch, run `/pr-appr-resolve` first. If it resolves the threads directly, continue. If it instead redirects you to invoke `@pr-manager` (repos with a `pr-manager` Agent), stop and hand control back to the user — a Workflow cannot invoke an Agent for them — and do not stage or commit until the user confirms the threads are resolved. Do not stage or commit until Phase 4 returns pass.\n4. Based on the user's request, perform the appropriate git operation\n5. Show the result and confirm success",
+    "3": "[.claude/commands/eap-git.md#guidelines]\n\n## Guidelines\n\n- Never force-push or reset --hard without explicit user confirmation\n- Prefer creating new commits over amending existing ones\n- Stage specific files rather than using `git add -A` or `git add .`\n- Do not commit `.env`, credentials, or files in `.tmp/`\n- Follow the commit message conventions visible in `git log`\n\n$ARGUMENTS"
+  },
+  "coverage": {
+    "total_pages": 3,
+    "covered_pages": 3,
+    "sampled_pages": 3,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 3
+  }
+}

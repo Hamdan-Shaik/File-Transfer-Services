@@ -1,0 +1,158 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "IAM Composite Reference Architecture",
+  "document_description": "guidance_name: 'IAM Composite Reference Architecture'",
+  "total_pages": 15,
+  "tree": [
+    {
+      "title": "IAM Composite Reference Architecture",
+      "node_id": "iam-composite-reference-architecture",
+      "start_index": 1,
+      "end_index": 15,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Architecture Guidance Metadata",
+          "node_id": "architecture-guidance-metadata",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Purpose and Scope",
+          "node_id": "purpose-and-scope",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Platform Engineering Scope",
+          "node_id": "platform-engineering-scope",
+          "start_index": 4,
+          "end_index": 6,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Capability Domain Boundary",
+              "node_id": "capability-domain-boundary",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Control Responsibility Matrix",
+              "node_id": "control-responsibility-matrix",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Logical Architecture",
+          "node_id": "logical-architecture",
+          "start_index": 7,
+          "end_index": 9,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Architecture Diagram",
+              "node_id": "architecture-diagram",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Logical Components",
+              "node_id": "logical-components",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Architecture Patterns",
+          "node_id": "architecture-patterns",
+          "start_index": 10,
+          "end_index": 13,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Pattern 1: Hub-and-Spoke SSO Federation",
+              "node_id": "pattern-1-hub-and-spoke-sso-federation",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Pattern 2: Federated External Partner Access",
+              "node_id": "pattern-2-federated-external-partner-access",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Pattern 3: Just-in-Time Privileged Access",
+              "node_id": "pattern-3-just-in-time-privileged-access",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Deployment Context Considerations",
+          "node_id": "deployment-context-considerations",
+          "start_index": 14,
+          "end_index": 14,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Constraints and Exceptions",
+          "node_id": "constraints-and-exceptions",
+          "start_index": 15,
+          "end_index": 15,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[strategy/guidance/security/Identity/ref-arch/GUID-SEC-IAM-RAD-2.3.01.md#iam-composite-reference-architecture]\n\n# IAM Composite Reference Architecture\n\n**← Back to [EAP Home](../../../../../README.md) • [Strategy](../../../../README.md) • [Guidance](../../../README.md) • [Identity](../README.md)**\n\n---",
+    "2": "[strategy/guidance/security/Identity/ref-arch/GUID-SEC-IAM-RAD-2.3.01.md#architecture-guidance-metadata]\n\n## Architecture Guidance Metadata\n\n```yaml\nguidance_id: 'GUID-SEC-IAM-RAD-2.3.01'\nguidance_name: 'IAM Composite Reference Architecture'\nguidance_type: 'reference-architecture-document'\nrad_type: 'composite'\npaired_abb: 'GUID-SEC-IAM-REF-2.2.01'\nparent_abb: 'GUID-SEC-IAM-REF-2.2.01'\nparent_vision: 'GUID-SEC-IAM-VISION-2.1.01'\nadm_phase: 'Phase C-D'\ncategory: 'security'\nversion: '0.1.0'\nstatus: 'draft'\napplicability: 'enterprise'\ntags: ['security', 'identity', 'reference-architecture', 'composite', 'zero-trust', 'phase-c', 'phase-d']\nauthor: 'Jesse Adams'\n```\n\n---\n\n> **Informative Content Notice**: Technology choices, tooling names, and vendor references in this document are **illustrative only** — they represent one class of solution, not a mandated selection. Organizations SHOULD evaluate tooling based on integration fit, licensing, and operational context.\n>\n> **The architectural control patterns in this document reflect normative requirements from the paired ABB** ([GUID-SEC-IAM-REF-2.2.01](../GUID-SEC-IAM-REF-2.2.01.md)) and represent required design outcomes. Implementation teams SHALL deliver the described control capabilities; the specific tooling used to realize them is a local implementation decision.\n\n---",
+    "3": "[strategy/guidance/security/Identity/ref-arch/GUID-SEC-IAM-RAD-2.3.01.md#purpose-and-scope]\n\n## Purpose and Scope\n\nThis Reference Architecture Document (RAD) provides illustrative patterns, logical component descriptions, and composition guidance for realizing the enterprise IAM architecture. It shows how the IAM Component ABBs assemble into a coherent platform topology, how identity populations are served across the platform, and how the IAM capability integrates with adjacent security domains.\n\n**Paired ABB**: [GUID-SEC-IAM-REF-2.2.01 — Identity and Access Management Composite ABB](../GUID-SEC-IAM-REF-2.2.01.md)\n\n**In Scope**:\n- Logical IAM platform topology and component relationships\n- Identity population segmentation and service patterns\n- Trust domain model and cross-domain identity flows\n- Integration with Zero Trust enforcement points\n- Control responsibility across platform, application, and security operations teams\n\n**Out of Scope**:\n- Vendor product selection and configuration\n- ABB re-definition (ABBs are consumed, not redefined, here)\n- Security standards and compliance baselines\n\n---",
+    "4": "[strategy/guidance/security/Identity/ref-arch/GUID-SEC-IAM-RAD-2.3.01.md#platform-engineering-scope]\n\n## Platform Engineering Scope",
+    "5": "[strategy/guidance/security/Identity/ref-arch/GUID-SEC-IAM-RAD-2.3.01.md#capability-domain-boundary]\n\n### Capability Domain Boundary\n\nThe IAM platform serves as the identity control plane for all enterprise access decisions. Its scope ends at the enforcement point — the application, API gateway, or network policy engine that consumes the IAM-issued token or session. Adjacent capabilities that consume IAM outputs include: application authorization engines, network access control systems, endpoint management platforms, and the Security Operations Center's SIEM.",
+    "6": "[strategy/guidance/security/Identity/ref-arch/GUID-SEC-IAM-RAD-2.3.01.md#control-responsibility-matrix]\n\n### Control Responsibility Matrix\n\n| Capability Area | Identity Platform Team | Application Teams | Security Operations | Security Architecture |\n|---|---|---|---|---|\n| Identity Provider / SSO Platform | **Owns** | Integrates | Monitors | Governs |\n| MFA Policy Enforcement | **Owns** | Configures per policy | Reviews | Governs |\n| PAM Platform | **Owns** | Requests JIT access | **Co-owns** (monitoring) | Governs |\n| Application RBAC Model | Supports | **Owns** | Reviews | Governs |\n| Non-Human Credential Vaulting | **Co-owns** | Integrates | Monitors | Governs |\n| Identity Event Logging | **Owns** (collection) | Supports | **Owns** (detection) | Governs |\n\n---",
+    "7": "[strategy/guidance/security/Identity/ref-arch/GUID-SEC-IAM-RAD-2.3.01.md#logical-architecture]\n\n## Logical Architecture",
+    "8": "[strategy/guidance/security/Identity/ref-arch/GUID-SEC-IAM-RAD-2.3.01.md#architecture-diagram]\n\n### Architecture Diagram\n\n```mermaid\ngraph TD\n    subgraph Consumers\n        APP[Applications]\n        API[API Gateways]\n        INFRA[Infrastructure / Privileged Access]\n    end\n\n    subgraph IAM Platform\n        IDP[Enterprise Identity Provider]\n        BROKER[Identity Broker / Federation Layer]\n        MFA[MFA / Authenticator Service]\n        PAM[PAM Platform]\n        VAULT[Credential Vault]\n        IGA[IGA Platform]\n    end\n\n    subgraph Identity Sources\n        CORP[Corporate Directory]\n        EXT[External CSPs / Partners]\n        NHI[Non-Human Identity Registry]\n    end\n\n subgraph External Assurance\n    CSP[External CSP - Proofing / Authentication Provider]\nend\n\nCORP --> IDP\nEXT --> BROKER\nNHI --> VAULT\nCSP --> BROKER\nBROKER --> IDP\nIDP --> MFA\nIDP --> APP\nIDP --> API\nPAM --> INFRA\nVAULT --> PAM\nIGA --> IDP\n```\n\n*All components represent logical capabilities. No vendor product names are encoded in this diagram. Identity proofing policy determination, external CSP assertion validation, and enterprise IAL state management are performed within the broker and enterprise identity service boundary; trusted external CSPs provide proofing and authentication assertions but are not modeled as internal peer control points.*",
+    "9": "[strategy/guidance/security/Identity/ref-arch/GUID-SEC-IAM-RAD-2.3.01.md#logical-components]\n\n### Logical Components\n\n| Component | Type | Architectural Role |\n|---|---|---|\n| Enterprise Identity Provider | ABB Realization (GUID-SEC-IAM-REF-2.2.01) | Central authority for identity assertion issuance; enforces authentication policy and issues enterprise tokens or session assertions |\n| Identity Broker / Federation Layer | ABB Realization (GUID-SEC-IAM-IDENTITY-BROKER-2.2.02) | Protocol mediation, external CSP trust management, proofing orchestration, assertion validation, and attribute normalization |\n| MFA / Authenticator Service | ABB Realization (GUID-SEC-IAM-MFA-2.2.04) | AAL-aligned authenticator registration, verification, and step-up logic |\n| PAM Platform | ABB Realization (GUID-SEC-IAM-PAM-2.2.06) | Just-in-time access, credential vaulting, session recording |\n| Credential Vault | ABB Realization (GUID-SEC-IAM-NON-HUMAN-AND-AI-STRATEGY-2.2.12) | Service account and workload secret storage with rotation |\n| IGA Platform | ABB Reference (GUID-SEC-IAM-IGA-2.2.13 — planned) | Access certification, role lifecycle, entitlement management |\n| External CSP Integration | ABB Realization (GUID-SEC-IAM-ID.ME-STRATEGY-2.2.10) | Trusted external identity proofing and authentication integration that returns signed assurance assertions for broker validation and enterprise policy enforcement |\n\n---",
+    "10": "[strategy/guidance/security/Identity/ref-arch/GUID-SEC-IAM-RAD-2.3.01.md#architecture-patterns]\n\n## Architecture Patterns",
+    "11": "[strategy/guidance/security/Identity/ref-arch/GUID-SEC-IAM-RAD-2.3.01.md#pattern-1-hub-and-spoke-sso-federation]\n\n### Pattern 1: Hub-and-Spoke SSO Federation\n\n**When to use**: Applications onboarding to enterprise SSO, regardless of cloud or on-premises hosting; standard workforce and partner access patterns\n\n**Logical flow**:\n1. User requests access to an application\n2. Application redirects to the enterprise Identity Provider\n3. IdP evaluates authentication context and AAL requirement for the application\n4. If MFA or step-up is required, IdP invokes the MFA service\n5. IdP issues an access token or session assertion scoped to the application\n6. Application validates the assertion and enforces application-level authorization\n\n**Illustrative technology class**: Centralized identity provider with OIDC/SAML federation capabilities\n\n---",
+    "12": "[strategy/guidance/security/Identity/ref-arch/GUID-SEC-IAM-RAD-2.3.01.md#pattern-2-federated-external-partner-access]\n\n### Pattern 2: Federated External Partner Access\n\n**When to use**: Partner organizations with their own identity infrastructure; Medicaid agency cross-domain access; external contractor access\n\n**Logical flow**:\n1. External user presents a credential issued by their home IdP\n2. Identity Broker validates the inbound assertion, checks federation agreement, and normalizes attributes\n3. Broker forwards a translated assertion to the enterprise IdP\n4. Enterprise IdP applies local authorization policy and issues a scoped enterprise session\n\n**Illustrative technology class**: Identity broker with SAML 2.0 and OIDC inbound/outbound protocol mediation\n\n---",
+    "13": "[strategy/guidance/security/Identity/ref-arch/GUID-SEC-IAM-RAD-2.3.01.md#pattern-3-just-in-time-privileged-access]\n\n### Pattern 3: Just-in-Time Privileged Access\n\n**When to use**: Administrative access to production infrastructure, cloud management planes, database servers, and any resource in Tier 0 or Tier 1 of the tiered administration model\n\n**Logical flow**:\n1. Administrator submits a JIT access request through the PAM workflow\n2. PAM evaluates the request against predefined role, scope, and duration constraints\n3. Upon approval, PAM checks out the credential from the vault and establishes a proxied session\n4. All session activity is recorded\n5. At expiry, credentials are rotated and the session is closed\n\n**Illustrative technology class**: PAM platform with credential vaulting, session proxy, and JIT workflow engine\n\n---",
+    "14": "[strategy/guidance/security/Identity/ref-arch/GUID-SEC-IAM-RAD-2.3.01.md#deployment-context-considerations]\n\n## Deployment Context Considerations\n\n| Context | Architectural Consideration |\n|---|---|\n| Cloud-hosted | Leverage platform managed identities for cloud workloads; integrate cloud-native OIDC federation with enterprise IdP; avoid duplicating identity stores per cloud account |\n| On-premises | Ensure directory synchronization maintains authoritative source parity; PAM tiered model must cover on-premises administrative access as a first-class use case |\n| Hybrid | Identity flows must traverse cloud/on-premises boundaries through the broker layer; no direct application-to-directory integrations that bypass the IdP |\n\n---",
+    "15": "[strategy/guidance/security/Identity/ref-arch/GUID-SEC-IAM-RAD-2.3.01.md#constraints-and-exceptions]\n\n## Constraints and Exceptions\n\n- All Component ABBs in this hierarchy are solution-agnostic; this RAD does not endorse or mandate any specific vendor platform\n- IGA Component ABB (GUID-SEC-IAM-IGA-2.2.13) is authored in draft and paired with GUID-SEC-IAM-IGA-RAD-2.3.08; Authorization (GUID-SEC-IAM-AUTHZ-2.2.08) is authored in draft and paired with GUID-SEC-IAM-AUTHZ-RAD-2.3.06\n- Diagram complexity scales with environment size; implementations with large numbers of external federation partners should consider a dedicated broker topology document\n\n---"
+  },
+  "coverage": {
+    "total_pages": 15,
+    "covered_pages": 15,
+    "sampled_pages": 15,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 15
+  }
+}

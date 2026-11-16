@@ -1,0 +1,56 @@
+door:
+  id: file-transfer-controller-get-ftemetadatas
+  kind: api
+  name: GetFTEMetadatas
+  class: HP.HSP.UA3.FileTransfer.UX.Services.Controller.FileTransferController
+  file: ux\HP.HSP.UA3.FileTransfer.UX.Services\Controller\FileTransferController.SearchFileTransfer.cs
+  line: 160
+  entry:
+  - HP.HSP.UA3.FileTransfer.UX.Services.Controller.FileTransferController.GetFTEMetadatas(string)
+procedures: []
+tables: []
+shared_uses: []
+external_uses:
+- package: hp.hsp.ua3.core.ux.interfaces
+  version: 30.0.0
+  method: HP.HSP.UA3.Core.UX.Interfaces.ITenantConfigurationManager.Resolve<T>(string)
+  calls:
+  - at: ux\HP.HSP.UA3.FileTransfer.UX.Services\Controller\FileTransferController.SearchFileTransfer.cs:165
+    type_arguments:
+    - HP.HSP.UA3.FileTransfer.UX.Providers.FileTransfer.IFileTransferQueryServiceDataProvider
+    arguments:
+    - name: name
+      expression: FileTransferConstants.Ioc.ComponentNames.FileTransferQueryServiceDataProvider
+- package: hp.hsp.ua3.core.ux.interfaces
+  version: 30.0.0
+  method: HP.HSP.UA3.Core.UX.Interfaces.IUserConfigurationManager.GenerateRequestor()
+  calls:
+  - at: ux\HP.HSP.UA3.FileTransfer.UX.Services\Controller\FileTransferController.SearchFileTransfer.cs:170
+    arguments: []
+- package: microsoft.aspnet.webapi.core
+  version: 5.3.0
+  method: System.Net.Http.HttpRequestMessageExtensions.CreateResponse<T>(System.Net.Http.HttpRequestMessage, System.Net.HttpStatusCode, T)
+  calls:
+  - at: ux\HP.HSP.UA3.FileTransfer.UX.Services\Controller\FileTransferController.SearchFileTransfer.cs:177
+    type_arguments:
+    - System.Collections.Generic.List<HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.InboundTargetModel>
+    arguments:
+    - name: statusCode
+      value: '200'
+    - name: value
+      expression: metadatas.Data
+  - at: ux\HP.HSP.UA3.FileTransfer.UX.Services\Controller\FileTransferController.SearchFileTransfer.cs:178
+    type_arguments:
+    - System.Collections.Generic.List<HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.InboundTargetModel>
+    arguments:
+    - name: statusCode
+      value: '404'
+    - name: value
+      expression: new List<InboundTargetModel>()
+polymorphic_hooks: []
+stops: []
+calls: []
+methods:
+- name: HP.HSP.UA3.FileTransfer.UX.Services.Controller.FileTransferController.GetFTEMetadatas(string)
+  file: ux\HP.HSP.UA3.FileTransfer.UX.Services\Controller\FileTransferController.SearchFileTransfer.cs
+  line: 160

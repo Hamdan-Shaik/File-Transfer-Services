@@ -1,0 +1,835 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "GUID-APP-IMPL-011: AWS API Management Platform Guidance",
+  "document_description": "guidance_name: 'AWS API Management Platform Guidance'",
+  "total_pages": 88,
+  "tree": [
+    {
+      "title": "GUID-APP-IMPL-011: AWS API Management Platform Guidance",
+      "node_id": "guid-app-impl-011-aws-api-management-platform-guidance",
+      "start_index": 1,
+      "end_index": 88,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Executive Summary",
+          "node_id": "executive-summary",
+          "start_index": 3,
+          "end_index": 9,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Purpose Statement",
+              "node_id": "purpose-statement",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Business Value",
+              "node_id": "business-value",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Target Audience",
+              "node_id": "target-audience",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Scope and Applicability",
+              "node_id": "scope-and-applicability",
+              "start_index": 7,
+              "end_index": 9,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Applicable Scenarios",
+                  "node_id": "applicable-scenarios",
+                  "start_index": 8,
+                  "end_index": 8,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Scope: North-South and East-West",
+                  "node_id": "scope-north-south-and-east-west",
+                  "start_index": 9,
+                  "end_index": 9,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Guidance Context and Background",
+          "node_id": "guidance-context-and-background",
+          "start_index": 10,
+          "end_index": 15,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Business Context",
+              "node_id": "business-context",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Technical Context",
+              "node_id": "technical-context",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Problem Statement",
+              "node_id": "problem-statement",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Success Criteria",
+              "node_id": "success-criteria",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Trade-offs and Costs",
+              "node_id": "trade-offs-and-costs",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Detailed Guidance",
+          "node_id": "detailed-guidance",
+          "start_index": 16,
+          "end_index": 35,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Platform Composition",
+              "node_id": "platform-composition",
+              "start_index": 17,
+              "end_index": 17,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Architecture Diagram",
+              "node_id": "architecture-diagram",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Components",
+              "node_id": "components",
+              "start_index": 19,
+              "end_index": 19,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Interactions",
+              "node_id": "interactions",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Variations",
+              "node_id": "variations",
+              "start_index": 21,
+              "end_index": 21,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Key Approaches",
+              "node_id": "key-approaches",
+              "start_index": 22,
+              "end_index": 33,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Identity Integration and Pre-Backend Authorization",
+                  "node_id": "identity-integration-and-pre-backend-authorization",
+                  "start_index": 23,
+                  "end_index": 25,
+                  "summary": "",
+                  "nodes": [
+                    {
+                      "title": "Identity Provider Integration",
+                      "node_id": "identity-provider-integration",
+                      "start_index": 24,
+                      "end_index": 24,
+                      "summary": "",
+                      "nodes": []
+                    },
+                    {
+                      "title": "Pre-Backend Request Validation (Lambda Authorizers)",
+                      "node_id": "pre-backend-request-validation-lambda-authorizers",
+                      "start_index": 25,
+                      "end_index": 25,
+                      "summary": "",
+                      "nodes": []
+                    }
+                  ]
+                },
+                {
+                  "title": "Endpoint Visibility: Private vs. Public",
+                  "node_id": "endpoint-visibility-private-vs-public",
+                  "start_index": 26,
+                  "end_index": 26,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Request/Response Transformation and Protocol Mediation",
+                  "node_id": "requestresponse-transformation-and-protocol-mediation",
+                  "start_index": 27,
+                  "end_index": 29,
+                  "summary": "",
+                  "nodes": [
+                    {
+                      "title": "Transformation",
+                      "node_id": "transformation",
+                      "start_index": 28,
+                      "end_index": 28,
+                      "summary": "",
+                      "nodes": []
+                    },
+                    {
+                      "title": "Protocol Mediation",
+                      "node_id": "protocol-mediation",
+                      "start_index": 29,
+                      "end_index": 29,
+                      "summary": "",
+                      "nodes": []
+                    }
+                  ]
+                },
+                {
+                  "title": "API Key Management and Multi-Tenancy",
+                  "node_id": "api-key-management-and-multi-tenancy",
+                  "start_index": 30,
+                  "end_index": 30,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Network Security Controls",
+                  "node_id": "network-security-controls",
+                  "start_index": 31,
+                  "end_index": 33,
+                  "summary": "",
+                  "nodes": [
+                    {
+                      "title": "VPC and Network Boundary Controls",
+                      "node_id": "vpc-and-network-boundary-controls",
+                      "start_index": 32,
+                      "end_index": 32,
+                      "summary": "",
+                      "nodes": []
+                    },
+                    {
+                      "title": "IP Allowlisting and WAF Controls",
+                      "node_id": "ip-allowlisting-and-waf-controls",
+                      "start_index": 33,
+                      "end_index": 33,
+                      "summary": "",
+                      "nodes": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Best Practices",
+              "node_id": "best-practices",
+              "start_index": 34,
+              "end_index": 34,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Common Pitfalls",
+              "node_id": "common-pitfalls",
+              "start_index": 35,
+              "end_index": 35,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Implementation Framework",
+          "node_id": "implementation-framework",
+          "start_index": 36,
+          "end_index": 41,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Prerequisites",
+              "node_id": "prerequisites",
+              "start_index": 37,
+              "end_index": 37,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Implementation Phases",
+              "node_id": "implementation-phases",
+              "start_index": 38,
+              "end_index": 40,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Phase 1: Foundation",
+                  "node_id": "phase-1-foundation",
+                  "start_index": 39,
+                  "end_index": 39,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Phase 2: Domain Onboarding",
+                  "node_id": "phase-2-domain-onboarding",
+                  "start_index": 40,
+                  "end_index": 40,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Success Factors",
+              "node_id": "success-factors",
+              "start_index": 41,
+              "end_index": 41,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Practical Application",
+          "node_id": "practical-application",
+          "start_index": 42,
+          "end_index": 55,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Implementation Steps",
+              "node_id": "implementation-steps",
+              "start_index": 43,
+              "end_index": 46,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Preparation Steps",
+                  "node_id": "preparation-steps",
+                  "start_index": 44,
+                  "end_index": 44,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Execution Steps",
+                  "node_id": "execution-steps",
+                  "start_index": 45,
+                  "end_index": 45,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Validation Steps",
+                  "node_id": "validation-steps",
+                  "start_index": 46,
+                  "end_index": 46,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Decision Framework",
+              "node_id": "decision-framework",
+              "start_index": 47,
+              "end_index": 49,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Decision Point 1: Gateway Tenancy Model",
+                  "node_id": "decision-point-1-gateway-tenancy-model",
+                  "start_index": 48,
+                  "end_index": 48,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Decision Point 2: Endpoint Visibility Selection",
+                  "node_id": "decision-point-2-endpoint-visibility-selection",
+                  "start_index": 49,
+                  "end_index": 49,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Tools and Techniques",
+              "node_id": "tools-and-techniques",
+              "start_index": 50,
+              "end_index": 51,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Techniques and Methods",
+                  "node_id": "techniques-and-methods",
+                  "start_index": 51,
+                  "end_index": 51,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Templates and Artifacts",
+              "node_id": "templates-and-artifacts",
+              "start_index": 52,
+              "end_index": 55,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Configuration Examples",
+                  "node_id": "configuration-examples",
+                  "start_index": 53,
+                  "end_index": 55,
+                  "summary": "",
+                  "nodes": [
+                    {
+                      "title": "Example 1: Baseline Capability Profile",
+                      "node_id": "example-1-baseline-capability-profile",
+                      "start_index": 54,
+                      "end_index": 54,
+                      "summary": "",
+                      "nodes": []
+                    },
+                    {
+                      "title": "Example 2: Onboarding Checklist Snippet",
+                      "node_id": "example-2-onboarding-checklist-snippet",
+                      "start_index": 55,
+                      "end_index": 55,
+                      "summary": "",
+                      "nodes": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Examples and Use Cases",
+          "node_id": "examples-and-use-cases",
+          "start_index": 56,
+          "end_index": 64,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Illustrative Scenario 1",
+              "node_id": "illustrative-scenario-1",
+              "start_index": 57,
+              "end_index": 57,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Illustrative Scenario 2",
+              "node_id": "illustrative-scenario-2",
+              "start_index": 58,
+              "end_index": 58,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Use Case Scenarios",
+              "node_id": "use-case-scenarios",
+              "start_index": 59,
+              "end_index": 61,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Scenario 1: New Domain API Program",
+                  "node_id": "scenario-1-new-domain-api-program",
+                  "start_index": 60,
+                  "end_index": 60,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Scenario 2: Existing API Portfolio Rationalization",
+                  "node_id": "scenario-2-existing-api-portfolio-rationalization",
+                  "start_index": 61,
+                  "end_index": 61,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Before and After Comparison",
+              "node_id": "before-and-after-comparison",
+              "start_index": 62,
+              "end_index": 64,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Before (Problem State)",
+                  "node_id": "before-problem-state",
+                  "start_index": 63,
+                  "end_index": 63,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "After (Solution State)",
+                  "node_id": "after-solution-state",
+                  "start_index": 64,
+                  "end_index": 64,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Governance and Compliance",
+          "node_id": "governance-and-compliance",
+          "start_index": 65,
+          "end_index": 72,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Governance Framework",
+              "node_id": "governance-framework",
+              "start_index": 66,
+              "end_index": 66,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Standards Alignment",
+              "node_id": "standards-alignment",
+              "start_index": 67,
+              "end_index": 67,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Compliance Requirements",
+              "node_id": "compliance-requirements",
+              "start_index": 68,
+              "end_index": 68,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Approval Process",
+              "node_id": "approval-process",
+              "start_index": 69,
+              "end_index": 69,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Quality Assurance",
+              "node_id": "quality-assurance",
+              "start_index": 70,
+              "end_index": 70,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Risk Management",
+              "node_id": "risk-management",
+              "start_index": 71,
+              "end_index": 71,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Monitoring and Metrics",
+              "node_id": "monitoring-and-metrics",
+              "start_index": 72,
+              "end_index": 72,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Integration with Enterprise Architecture",
+          "node_id": "integration-with-enterprise-architecture",
+          "start_index": 73,
+          "end_index": 77,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Standards Alignment",
+              "node_id": "standards-alignment",
+              "start_index": 74,
+              "end_index": 74,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Pattern Relationships",
+              "node_id": "pattern-relationships",
+              "start_index": 75,
+              "end_index": 75,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Reference Architecture",
+              "node_id": "reference-architecture",
+              "start_index": 76,
+              "end_index": 76,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Decision Dependencies",
+              "node_id": "decision-dependencies",
+              "start_index": 77,
+              "end_index": 77,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Measurement and Assessment",
+          "node_id": "measurement-and-assessment",
+          "start_index": 78,
+          "end_index": 82,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Success Metrics",
+              "node_id": "success-metrics",
+              "start_index": 79,
+              "end_index": 79,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Assessment Framework",
+              "node_id": "assessment-framework",
+              "start_index": 80,
+              "end_index": 80,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Maturity Model",
+              "node_id": "maturity-model",
+              "start_index": 81,
+              "end_index": 81,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Continuous Improvement",
+              "node_id": "continuous-improvement",
+              "start_index": 82,
+              "end_index": 82,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Related Guidance and References",
+          "node_id": "related-guidance-and-references",
+          "start_index": 83,
+          "end_index": 86,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Related Guidance",
+              "node_id": "related-guidance",
+              "start_index": 84,
+              "end_index": 84,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Dependencies",
+              "node_id": "dependencies",
+              "start_index": 85,
+              "end_index": 85,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "External References",
+              "node_id": "external-references",
+              "start_index": 86,
+              "end_index": 86,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Change History",
+          "node_id": "change-history",
+          "start_index": 87,
+          "end_index": 87,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Review Log",
+          "node_id": "review-log",
+          "start_index": 88,
+          "end_index": 88,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#guid-app-impl-011-aws-api-management-platform-guidance]\n\n# GUID-APP-IMPL-011: AWS API Management Platform Guidance\n\n**← Back to [EAP Home](../../../../README.md) • [Strategy](../../../README.md) • [Guidance](../../README.md) • [Application](../README.md)**\n\n---\n\n**Architecture Guidance Metadata**\n\n```yaml\nguidance_id: 'GUID-APP-IMPL-011'\nguidance_name: 'AWS API Management Platform Guidance'\nguidance_type: 'implementation'\ncategory: 'application'\nversion: '1.0.11'\nstatus: 'draft'\napplicability: 'enterprise'\ntags: ['application', 'implementation', 'enterprise', 'api-management', 'aws', 'gateway', 'developer-portal', 'identity', 'observability']\n```\n\n---\n\n> **AWS API Management Platform Guidance** — Composition guidance for building a governed AWS API Management platform: managed gateway ingress combined with centralized identity, policy enforcement, observability, and API lifecycle workflows. Implements the strategy defined in the [Enterprise API and Microservices Strategy](../../../../strategy/white-papers/engineering/enterprise-api-microservices-strategy.md) and composes with [REF-APP-API-001](../../../reference/application/REF-APP-API-001-aws-api-management-reference-architecture.md) and [GUID-APP-IMPL-009](./GUID-APP-IMPL-009-aws-api-management-implementation-guidance.md).\n\n---",
+    "2": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#table-of-contents]\n\n## Table of Contents\n\n- [Executive Summary](#executive-summary)\n- [Guidance Context and Background](#guidance-context-and-background)\n- [Detailed Guidance](#detailed-guidance)\n- [Implementation Framework](#implementation-framework)\n- [Practical Application](#practical-application)\n- [Examples and Use Cases](#examples-and-use-cases)\n- [Governance and Compliance](#governance-and-compliance)\n- [Integration with Enterprise Architecture](#integration-with-enterprise-architecture)\n- [Measurement and Assessment](#measurement-and-assessment)\n- [Related Guidance and References](#related-guidance-and-references)\n- [Change History](#change-history)\n- [Review Log](#review-log)\n\n---",
+    "3": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#executive-summary]\n\n## Executive Summary",
+    "4": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#purpose-statement]\n\n### Purpose Statement\n\nTeams implementing APIs on AWS often converge on gateway runtime concerns but diverge on lifecycle governance, consumer onboarding, and shared controls, which creates inconsistent implementation quality. This guidance describes an AWS API Management platform composition that combines managed gateway ingress with centralized identity, policy enforcement, observability, and API lifecycle workflows, so that domain teams onboard APIs against a consistent, governed baseline instead of building these capabilities independently.",
+    "5": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#business-value]\n\n### Business Value\n\n- Consistent platform controls across API domains.\n- Faster onboarding through reusable implementation components.\n- Improved traceability to existing standards and security guidance.",
+    "6": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#target-audience]\n\n### Target Audience\n\n- **Primary Audience**: Platform engineering teams building and operating the shared AWS API Management platform; application engineering teams onboarding domain APIs onto it.\n- **Secondary Audience**: Security architects and solution architects reviewing platform and onboarding designs.\n- **Stakeholders**: EA practice, Domain EA leads, and governance reviewers.",
+    "7": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#scope-and-applicability]\n\n### Scope and Applicability",
+    "8": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#applicable-scenarios]\n\n#### Applicable Scenarios\n\n- Domain teams need a governed API onboarding model on AWS.\n- APIs are consumed internally and/or externally with policy and audit expectations.\n- Teams need repeatable platform controls while retaining domain autonomy for business logic.",
+    "9": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#scope-north-south-and-east-west]\n\n#### Scope: North-South and East-West\n\nThis guidance primarily addresses **North-South (external-facing) API management** — the ingress layer where consumers outside the service cluster or VPC call domain APIs through the managed gateway.\n\nFor **East-West (internal service-to-service) communication**, the active AWS security control baseline — [GUID-SEC-NETWORK-API-GW-AWS-2.2.04.SSB](../../security/Network/GUID-SEC-NETWORK-API-GW-AWS-2.2.04.SSB.md) (REQ-APIGW-01, REQ-APIGW-03, REQ-APIGW-04; Pattern B: Internal East-West) — mandates a **Private API Gateway** (endpoint type `PRIVATE`, reachable only via VPC Endpoint) as the control-plane baseline; API Gateway interception is not optional for internal traffic. Apply the following decision framework, gated by that control:\n\n1. **Private API Gateway (mandatory baseline, REST APIs)** — default for all East-West traffic implemented as a REST API; satisfies REQ-APIGW-01/03/04. HTTP and WebSocket APIs do not support the `PRIVATE` endpoint type and support only Regional (internet-routable) endpoints. Per [STD-APP-API-007](../../../../standards/application/api/STD-APP-API-007-aws-api-management-standard-profile.md) Requirement 5 (the authoritative source for this framing), the SBB's control — API Gateway interception plus private, non-internet-routable endpoints — applies to REST, HTTP, and WebSocket APIs alike, with no exception by API type; because no technical mechanism lets an HTTP or WebSocket API satisfy that control, East-West traffic implemented as an HTTP or WebSocket API is a genuine, unresolved SBB/technical-capability gap, not a design choice this guidance can resolve on its own authority. No internal Application Load Balancer, other private frontend, or VPC Link/NLB integration is authorized as a sanctioned substitute — a VPC Link/NLB integration in particular privatizes only the API Gateway-to-backend integration, not the API's own client-facing endpoint. Re-platform the boundary as a REST API using the `PRIVATE` endpoint type wherever the API's actual requirements permit it; any East-West HTTP or WebSocket API that cannot be re-platformed as REST is an open compliance gap that must be tracked and remediated through Security Architecture's SBB exception process (or an SBB amendment) rather than resolved through a self-approved workaround.\n2. **Service mesh (complementary, not substitutive)** — layer [PTN-APP-API-031: Service Mesh Integration Pattern](../../../../patterns/application/api-microservices/PTN-APP-API-031-service-mesh-integration-pattern.md) on top of the Private API Gateway baseline where a domain also needs mTLS, fine-grained service identity, or L7 traffic management (retries, circuit breaking) between services. The mesh augments the identity/transport layer; it does not replace the gateway's interception, authorization, and audit-logging responsibilities.\n3. **Hybrid (typical)** — most domain services combine both: Private API Gateway at the East-West REST API boundary, service mesh sidecar for intra-cluster mTLS and traffic shaping.\n\nUse [STD-APP-API-006](../../../../standards/application/api/STD-APP-API-006-api-mesh-vs-gateway-guidance.md) to select among these options for a given API boundary. A domain service may apply this guidance to both boundaries simultaneously: this guidance governs the North-South ingress gateway and the East-West Private API Gateway control point, while the service mesh (where used) governs mTLS and traffic policy for internal calls made by the same service to its upstream dependencies.\n\nUse [GUID-APP-IMPL-010: Enterprise API Engineering Playbook](./GUID-APP-IMPL-010-api-engineering-guidance.md) to determine whether a given API boundary requires this guidance, the service mesh pattern, or both.\n\n---",
+    "10": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#guidance-context-and-background]\n\n## Guidance Context and Background",
+    "11": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#business-context]\n\n### Business Context\n\nEnterprise API programs require a repeatable platform model that supports secure exposure, governance, and operations without requiring each team to build those capabilities independently.",
+    "12": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#technical-context]\n\n### Technical Context\n\nExisting API patterns cover routing, aggregation, and developer portal concepts, but AWS implementation often needs a unifying composition that combines these capabilities in one platform model. The [Enterprise API and Microservices Strategy](../../../../strategy/white-papers/engineering/enterprise-api-microservices-strategy.md) identifies a centralized API management platform as a core component of the enterprise API framework; this guidance is the AWS-specific realization of that requirement.",
+    "13": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#problem-statement]\n\n### Problem Statement\n\nWithout a platform composition following this guidance:\n\n- Gateway configurations drift by team and workload.\n- API lifecycle controls are inconsistently applied.\n- Runtime telemetry and policy evidence are uneven.\n\n**Forces and constraints** that shape the guidance below:\n\n- Need for domain delivery speed.\n- Need for platform-level governance consistency.\n- Need for security and observability controls aligned with existing guidance.",
+    "14": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#success-criteria]\n\n### Success Criteria\n\nSee [Monitoring and Metrics](#monitoring-and-metrics) under Governance and Compliance for the measurable indicators used to assess successful adoption of this guidance (standards mapping coverage, policy validation coverage, and observability readiness).",
+    "15": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#trade-offs-and-costs]\n\n### Trade-offs and Costs\n\nAdopting this guidance is not free — teams should weigh the following before applying it:\n\n- **Added gateway hops and latency**: Routing traffic through a managed gateway adds a network hop and policy-evaluation overhead compared to a direct service-to-service call; latency-sensitive APIs must budget for this in their performance objectives.\n- **Centralized-platform dependency**: Domain teams depend on the platform team's gateway, identity, and OTel Collector infrastructure being available and correctly configured; an outage or misconfiguration in shared platform components affects every onboarded domain API, not just one team's service.\n- **Cost**: Managed gateway, WAF, and Lambda authorizer invocations incur per-request AWS charges that scale with traffic volume; teams with very high request volumes should model this cost before onboarding.\n- **Operational complexity**: This guidance introduces additional components to operate and troubleshoot (gateway stages, Lambda authorizers, VPC Links, WAF rules, OTel Collector routing) compared with a simpler direct-call architecture; teams with a small number of low-risk internal APIs may find this overhead disproportionate to the governance benefit.\n\nThese trade-offs inform onboarding sequencing, budget planning, and platform capacity decisions — they do not exempt any API from the mandatory Private API Gateway baseline (East-West) or gateway/WAF baseline (North-South) described in Scope.\n\n---",
+    "16": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#detailed-guidance]\n\n## Detailed Guidance",
+    "17": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#platform-composition]\n\n### Platform Composition\n\nThe composition uses a shared AWS API Management platform baseline with domain onboarding waves:\n\n1. Shared platform services provide gateway ingress, identity integration, and baseline controls.\n2. Domain APIs onboard using contract and policy validation gates.\n3. Runtime telemetry, audit evidence, and lifecycle governance are embedded in release workflows.",
+    "18": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#architecture-diagram]\n\n### Architecture Diagram\n\n```mermaid\nflowchart LR\n    Consumer[API Consumer] --> WAF[AWS WAF and Protection Controls]\n    WAF --> Gateway[Amazon API Gateway]\n    Gateway --> Authorizer[Identity and Authorization Layer]\n    Authorizer -->|Deny| Reject[401/403 Response]\n    Authorizer -->|Allow policy returned to gateway| GatewayIntegration[API Gateway Integration - performs backend invocation]\n    GatewayIntegration --> BackendEKS[Domain Backend - Kubernetes/EKS]\n    GatewayIntegration --> BackendServerless[Domain Backend - Lambda/ECS]\n    BackendEKS --> OTel[OTel Collector]\n    OTel --> Dynatrace[Dynatrace - Enterprise APM]\n    BackendServerless --> CWXRay[CloudWatch and X-Ray]\n    Gateway --> GWLogs[Gateway Access Logs / Audit]\n    GWLogs --> SIEM[Enterprise SIEM]\n    Contracts[API Contracts and Policies] --> Pipeline[CI/CD Validation Pipeline]\n    Pipeline --> Gateway\n```\n\n> **Authorizer scope note:** The Lambda authorizer never invokes the backend directly — it returns an allow/deny IAM policy to API Gateway. On Allow, API Gateway itself (depicted above as the Gateway Integration step) performs the backend invocation; on Deny, API Gateway returns the 401/403 response without ever reaching a backend.\n\n> **Observability Note:** Application services deployed on Kubernetes/EKS should be instrumented with the OpenTelemetry SDK and route telemetry through the OTel Collector per [STD-APP-MON-002](../../../../standards/application/monitoring/STD-APP-MON-002-opentelemetry-observability.md) — proposed, pending that standard's Domain EA and Security Architecture ratification (currently `status: draft`) — which routes to Dynatrace as the primary enterprise APM. Backend services deployed on Lambda or ECS (outside Kubernetes/EKS scope) use CloudWatch and X-Ray as the AWS-native observability backends instead; these are not required to route through OTel. Gateway-level access logs and audit trails are forwarded to enterprise SIEM separate from application telemetry.",
+    "19": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#components]\n\n### Components\n\n| Component | Responsibility | Dependencies |\n| --- | --- | --- |\n| Gateway Runtime | API ingress, routing, throttling, enforcement | API Gateway, backend services |\n| Identity and Policy Layer | Authentication and authorization integration | Entra ID (Gainwell GPD) / IAM / federated IdP |\n| Protection Layer | Threat and abuse controls | AWS WAF and related security services |\n| Lifecycle Control Plane | Contract and policy validation in release flow | Source control and CI/CD |\n| Observability Layer | OTel SDK in Kubernetes/EKS-deployed application services → OTel Collector → Dynatrace (primary APM); CloudWatch/X-Ray for Lambda/ECS backends; gateway access logs → SIEM | Per [STD-APP-MON-002](../../../../standards/application/monitoring/STD-APP-MON-002-opentelemetry-observability.md) for Kubernetes/EKS-deployed services — proposed, pending that standard's ratification (currently `status: draft`) |",
+    "20": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#interactions]\n\n### Interactions\n\n- Consumers call managed gateway endpoints.\n- Gateway enforces identity/policy decisions before backend invocation.\n- Release pipelines validate contracts and policies before deployment.\n- Runtime and management telemetry feed operations and governance evidence.",
+    "21": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#variations]\n\n### Variations\n\n- Shared enterprise gateway tenancy model\n- Domain-segmented gateway tenancy with shared control templates\n- Hybrid public/private API exposure model",
+    "22": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#key-approaches]\n\n### Key Approaches",
+    "23": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#identity-integration-and-pre-backend-authorization]\n\n#### Identity Integration and Pre-Backend Authorization",
+    "24": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#identity-provider-integration]\n\n##### Identity Provider Integration\n\nThe enterprise identity provider at Gainwell is **Microsoft Entra ID (Gainwell People Directory / GPD)**, which supports OAuth 2.0 / OIDC natively. Amazon API Gateway integrates with Entra ID via a **Lambda authorizer** that validates Entra ID-issued JWT tokens directly against the GPD JWKS endpoint — no intermediate identity broker (e.g., Amazon Cognito) is required.\n\n- For **workforce and internal API consumers**, the Lambda authorizer validates Entra ID JWT tokens using the GPD JWKS endpoint. Platform Engineering maintains the authorizer and trust configuration.\n- For **IAM-based downstream authorization** (where AWS service calls require scoped AWS credentials), IAM roles with appropriate trust policies are used.\n- For **external partner or B2B APIs**, coordinate with Identity Architecture to determine whether federation through GPD or a separate external IdP configuration applies.\n\n> ⚠️ **Citizen-Facing and PHI-Adjacent APIs:** For APIs that serve citizen/member populations or process PHI (e.g., Medicaid portals, member health data), the **enterprise Identity Broker ([GUID-SEC-IAM-IDENTITY-BROKER-2.2.02](../../security/Identity/GUID-SEC-IAM-IDENTITY-BROKER-2.2.02.md))** is the mandated identity mediation layer per the enterprise IAM strategy. **Coordinate with Identity Architecture before selecting an authorization model for these scenarios.**\n\nPlatform teams must coordinate with Identity Architecture to select the appropriate integration model during platform foundation. Application teams receive the token issuance endpoint and audience claim values; they do not configure the IdP integration directly.",
+    "25": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#pre-backend-request-validation-lambda-authorizers]\n\n##### Pre-Backend Request Validation (Lambda Authorizers)\n\nBefore forwarding a request to a backend service, the gateway should enforce authorization and optionally perform custom pre-flight validation. Amazon API Gateway supports two Lambda authorizer types:\n\n| Authorizer Type | Use Case |\n| --- | --- |\n| **Token authorizer** | Validates a bearer token (JWT or opaque) passed in the `Authorization` header; returns an IAM policy allow/deny |\n| **Request authorizer** | Validates request parameters, headers, query strings, or combinations; suitable for API key + context validation or multi-claim policy decisions |\n\nUse Lambda authorizers when:\n\n- Token validation requires custom logic beyond a JWT authorizer (e.g., claims enrichment, OPA policy evaluation).\n- Authorization decisions depend on request metadata available to an authorizer — headers, query string parameters, path parameters, or stage variables — not the request body, which Lambda authorizers never receive.\n- A third-party IdP token format is not directly supported by the native JWT authorizer.\n\n> **Scope of Lambda authorizers:** API Gateway passes a Lambda authorizer only the method ARN, headers, query string parameters, path parameters, and stage variables — it does not pass the request body. Authorizers therefore cannot perform payload input validation, body normalization, or body-based transformation. Route those concerns to API Gateway request validators (JSON Schema validation on the method request), VTL mapping templates (see [Request/Response Transformation](#requestresponse-transformation-and-protocol-mediation)), or a dedicated integration Lambda placed after the authorizer in the request pipeline.\n\n**TTL and fail-closed requirements:**\n\n- Lambda authorizer response caching **must be configured with `AuthorizerResultTtlInSeconds` no greater than 300 seconds for every production API**, per the active AWS security SBB's CON-05 control ([GUID-SEC-NETWORK-API-GW-AWS-2.2.04.SSB](../../security/Network/GUID-SEC-NETWORK-API-GW-AWS-2.2.04.SSB.md) §12.4.6) — this 300-second ceiling applies regardless of the token's own lifetime. For PHI-adjacent or privileged APIs, use the **lower of 300 seconds and the enterprise access token lifetime** (coordinate with Identity Architecture for the applicable bound) — an overly long TTL allows a revoked token or disabled account to continue accessing the API for the full TTL duration.\n- **Handled authorizer errors** (the Lambda function completes but token validation or policy evaluation fails) **must return an explicit deny IAM policy (fail closed)** per [GUID-SEC-NETWORK-API-GW-AWS-2.2.04.SSB](../../security/Network/GUID-SEC-NETWORK-API-GW-AWS-2.2.04.SSB.md) §12.4.12.\n- **Timeout or invocation-failure errors** (the Lambda function times out, throttles, or throws an unhandled exception before returning a policy document) cannot produce a deny policy — the authorizer never completes, so no IAM policy is ever generated. API Gateway itself returns an error response (`500`/`503`) directly to the caller without invoking the backend; this is the fail-closed outcome for this failure class, achieved through the gateway's own default behavior rather than an authorizer-issued deny policy. Failing open (proceeding to backend invocation) on either failure class is prohibited.\n- A longer TTL reduces Lambda invocation cost but increases the revocation exposure window — select the lowest TTL that satisfies performance requirements for the API's risk classification.",
+    "26": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#endpoint-visibility-private-vs-public]\n\n#### Endpoint Visibility: Private vs. Public\n\n> **Scope: API Gateway REST APIs only.** The three-endpoint-type model below (Regional, Private, Edge-optimized) applies to Amazon API Gateway **REST APIs**. HTTP APIs and WebSocket APIs do not offer this same endpoint-type set — HTTP APIs and WebSocket APIs support only **Regional** endpoints; neither offers a Private (PrivateLink/VPC endpoint) endpoint type or an Edge-optimized (CloudFront) endpoint type. Do not apply the Private-endpoint decision rule below to an HTTP or WebSocket API implementation. For East-West traffic implemented as an HTTP or WebSocket API where the mandatory Private API Gateway baseline (see [Scope: North-South and East-West](#scope-north-south-and-east-west)) cannot be met by a Regional-only endpoint type, a VPC Link/NLB integration is **not** a substitute for a private client-facing endpoint — VPC Link only privatizes the API Gateway-to-backend integration, it does not make the API's own client-facing endpoint non-internet-routable. Per [STD-APP-API-007](../../../../standards/application/api/STD-APP-API-007-aws-api-management-standard-profile.md) Requirement 5 (the authoritative source for this framing), this is a genuine, unresolved SBB/technical-capability gap, not a design choice this guidance can resolve on its own authority: the only currently sanctioned path is to implement that boundary as a REST API using the **Private** (`PRIVATE`) endpoint type; no internal Application Load Balancer, other private frontend, or VPC Link/NLB integration is authorized as a sanctioned substitute. Any East-West HTTP or WebSocket API that cannot be re-platformed as REST is an open compliance gap that must be tracked and remediated through Security Architecture's SBB exception process (or an SBB amendment) rather than resolved through a self-approved workaround.\n\nAmazon API Gateway REST APIs support three endpoint types. Selecting the wrong type has security and cost implications.\n\n| Endpoint Type | Accessibility | When to Use |\n| --- | --- | --- |\n| **Regional** (default) | Public internet, optionally fronted by CloudFront | External-facing APIs that require global distribution or direct consumer access; WAF association required |\n| **Private** | VPC only via VPC endpoint (PrivateLink) | Internal APIs that must never be reachable from the internet; application team–to–platform team communication, internal B2B, or intra-enterprise integration |\n| **Edge-optimized** | CloudFront edge network | Geographically distributed external consumers where latency reduction at the edge is the primary driver; less common in enterprise contexts |\n\n**Decision rule (REST APIs):** Default to **Private** endpoints for all REST APIs consumed entirely within the enterprise network. Use **Regional** only when external consumers require direct HTTPS ingress. Private endpoints require a VPC endpoint, but the VPC endpoint's own default policy does not deny access by default — per [GUID-SEC-NETWORK-API-GW-AWS-2.2.04.SSB](../../security/Network/GUID-SEC-NETWORK-API-GW-AWS-2.2.04.SSB.md) §153-156, deny-by-default must be implemented explicitly in the API Gateway resource policy; do not rely on the VPC endpoint policy alone for this control.",
+    "27": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#requestresponse-transformation-and-protocol-mediation]\n\n#### Request/Response Transformation and Protocol Mediation",
+    "28": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#transformation]\n\n##### Transformation\n\nAmazon API Gateway supports mapping templates (using Velocity Template Language, VTL) and integration response mappings for lightweight request and response transformation at the gateway tier:\n\n- Use mapping templates to reshape payloads when a backend service contract differs from the published API contract (e.g., field renaming, envelope extraction, injecting context claims into the backend request body).\n- Avoid complex transformation logic in VTL; prefer a dedicated adapter or Lambda proxy integration when transformation logic exceeds simple field mapping or when testability is required.\n- Document any transformation applied in the OpenAPI spec as an extension (`x-gateway-transform`) to preserve contract traceability.\n\n> ⚠️ **VTL Security:** VTL templates have access to the full request context, including headers, query strings, and authorization claims. Do not embed user-supplied input directly into mapping templates without sanitization — improperly constructed templates can leak authorization context or inject malformed claims into backend requests. Refer to [GUID-SEC-APP-API-SECURITY-2.7.01](../../security/Application/GUID-SEC-APP-API-SECURITY-2.7.01.md) §Pattern 3 for the input validation posture required at the gateway tier.",
+    "29": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#protocol-mediation]\n\n##### Protocol Mediation\n\nAPI Gateway REST APIs support HTTP and Lambda proxy integration types. \"HTTP integration\" here is the AWS API Gateway integration-type name, distinct from the transport protocol — the backend endpoint itself SHALL use HTTPS per Network Security Controls below. Protocol mediation use cases include:\n\n| Scenario | Recommended Approach |\n| --- | --- |\n| REST to REST (HTTPS backend) | HTTP integration with optional VTL mapping templates; backend endpoint SHALL use HTTPS per Network Security Controls below |\n| REST to Lambda | Lambda proxy integration; Lambda performs any internal mediation |\n| REST to legacy SOAP/XML backend | Lambda integration as mediator; Lambda translates JSON ↔ XML |\n| REST to event backbone (async) | Lambda or SQS integration; gateway returns `202 Accepted` |\n\nProtocol mediation should remain in the gateway or a thin adapter layer and not be embedded in business service logic.",
+    "30": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#api-key-management-and-multi-tenancy]\n\n#### API Key Management and Multi-Tenancy\n\nAmazon API Gateway API keys combined with usage plans provide a mechanism for consumer identification, rate limiting, and quota enforcement:\n\n- **API Keys** identify calling applications (not users). They are not a replacement for authentication but supplement it for metering and throttling.\n- **Usage Plans** associate API keys with throttle and quota policies, enabling per-consumer or per-tier rate limiting.\n- **Multi-tenancy models:**\n\n| Model | Description | Appropriate When |\n| --- | --- | --- |\n| Single gateway, per-tenant usage plan | All tenants share one gateway; usage plans isolate throttle/quota | Recommended for most enterprise multi-tenant APIs |\n| Per-tenant API Key + authorizer-derived tenant routing | The API key identifies the calling application for metering/throttling only; the Lambda/JWT authorizer resolves and validates the tenant claim from the token, injecting a validated tenant context into the request that controlled integration logic (Lambda proxy or a thin routing layer) uses to select the tenant-specific backend. Stage variables are fixed values bound to a deployed stage and cannot be dynamically selected per request by an API key | Tenant-specific backend isolation is required without provisioning a dedicated stage per tenant |\n| Per-tenant gateway stage | A dedicated stage — and its own stage variables — provisioned separately for each tenant | Tenant isolation requirements exceed what authorizer-context-based routing can provide |\n\nAPI keys must be rotated on a defined schedule, stored in an enterprise-approved secrets vault confirmed with Security Architecture (see NHI Note below), and distributed through a secure consumer onboarding workflow (not embedded in client application code or documentation). Where feasible, prefer cryptographically bound, short-lived credentials (mTLS client certificates or OAuth 2.0 workload-identity tokens) over static long-lived API keys, consistent with the active NHI strategy referenced below.\n\n> **NHI Note:** For API keys and credentials consumed programmatically by enterprise services, evaluate requirements against [GUID-SEC-IAM-NON-HUMAN-AND-AI-STRATEGY-2.2.12](../../security/Identity/GUID-SEC-IAM-NON-HUMAN-AND-AI-STRATEGY-2.2.12.md) and its companion [GUID-SEC-IAM-NHI-RAD-2.3.05](../../security/Identity/ref-arch/GUID-SEC-IAM-NHI-RAD-2.3.05.md). Confirm with Security Architecture whether AWS Secrets Manager alone satisfies workload identity credential controls, or whether CyberArk/Conjur is required as the authoritative vault for programmatic credential access.",
+    "31": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#network-security-controls]\n\n#### Network Security Controls",
+    "32": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#vpc-and-network-boundary-controls]\n\n##### VPC and Network Boundary Controls\n\n- All backend services invoked by the gateway must be reachable via VPC-internal networking (private subnets) and must not have public endpoints unless specifically approved through the security architecture exception process.\n- Use **VPC Link** for HTTP/HTTPS integrations to route gateway traffic to backend services in a VPC without traversing the public internet.\n- Backend service integrations from the API Gateway **SHALL use HTTPS**. HTTP (cleartext) backend integrations are prohibited regardless of whether VPC Link is in use — VPC Link provides network isolation but does not substitute for transport-layer encryption. This requirement aligns with [GUID-SEC-NETWORK-API-GW-AWS-2.2.04.SSB](../../security/Network/GUID-SEC-NETWORK-API-GW-AWS-2.2.04.SSB.md) AD-02 (End-to-End TLS).\n- Private API Gateway endpoints require a **VPC endpoint** (Interface endpoint for `execute-api`) with a resource-based policy restricting access to the enterprise VPC(s).",
+    "33": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#ip-allowlisting-and-waf-controls]\n\n##### IP Allowlisting and WAF Controls\n\n- For Regional endpoints, associate an **AWS WAF Web ACL** to restrict inbound access by IP address, geographic region, or rate-based rules.\n- Use **resource policies** on the API itself (resource policies attach at the API level, not to an individual stage) to enforce explicit IP allowlisting (CIDR-based) where consumer IP ranges are known and bounded.\n- Do not rely on IP allowlisting as the sole access control mechanism; it must supplement authentication and authorization controls, not replace them.\n- WAF rules, IP sets, and rate-based rules are platform-owned controls. Application teams specify consumer IP ranges and access patterns during onboarding; the platform team applies the WAF configuration.",
+    "34": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#best-practices]\n\n### Best Practices\n\n- Keep shared controls in platform-owned templates.\n- Validate contracts and policies together.\n- Require operational readiness evidence before production promotion.\n- Default to Private endpoints; require explicit justification for Regional (public) endpoints.\n- Use Lambda authorizers for non-standard token validation or pre-backend policy enforcement.\n- Route all VPC-internal backend traffic through VPC Link; never expose backends to the public internet.",
+    "35": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#common-pitfalls]\n\n### Common Pitfalls\n\n- Implementing gateway routing without lifecycle governance.\n- Treating security controls as post-deployment concerns.\n- Onboarding domains without telemetry and runbook readiness.\n- Using API keys as the sole access control mechanism instead of supplementing authentication.\n- Selecting Regional endpoints for internal-only APIs that should use Private endpoints.\n- Embedding complex transformation logic in VTL mapping templates instead of a Lambda integration.\n\n---",
+    "36": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#implementation-framework]\n\n## Implementation Framework",
+    "37": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#prerequisites]\n\n### Prerequisites\n\n- Baseline AWS networking and account model\n- Identity provider integration pattern\n- CI/CD workflow with standards/policy validation",
+    "38": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#implementation-phases]\n\n### Implementation Phases",
+    "39": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#phase-1-foundation]\n\n#### Phase 1: Foundation\n\n1. Deploy gateway runtime and identity integrations.\n2. Configure baseline security and observability controls.\n3. Publish reusable platform templates.",
+    "40": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#phase-2-domain-onboarding]\n\n#### Phase 2: Domain Onboarding\n\n1. Onboard domain APIs by prioritized wave.\n2. Validate API contracts and policy mappings.\n3. Promote through governed release gates.",
+    "41": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#success-factors]\n\n### Success Factors\n\nSuccessful adoption depends on: platform-owned shared controls being available before domain onboarding begins; domain teams following staged onboarding and validation gates rather than bypassing them; and operational readiness evidence (telemetry, runbooks) being a release gate rather than a post-launch afterthought. See [Common Pitfalls](#common-pitfalls) for the failure modes this guidance is designed to prevent.\n\n---",
+    "42": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#practical-application]\n\n## Practical Application",
+    "43": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#implementation-steps]\n\n### Implementation Steps",
+    "44": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#preparation-steps]\n\n#### Preparation Steps\n\n1. **Step 1**: Confirm platform foundation readiness before onboarding any domain API.\n\n    - Required inputs and prerequisites: platform ownership model; baseline AWS networking and account model (see [Prerequisites](#prerequisites))\n    - Key activities and tasks: validate that the shared gateway runtime, identity integration, and security/observability controls described in [Components](#components) are deployed and review-ready\n    - Expected outputs and outcomes: platform baseline confirmed ready for domain consumption (Implementation Framework Phase 1 complete)",
+    "45": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#execution-steps]\n\n#### Execution Steps\n\n1. **Step 1**: Onboard the domain API against the platform baseline.\n\n    - Required inputs and prerequisites: validated API contract; endpoint-type decision (see [Endpoint Visibility: Private vs. Public](#endpoint-visibility-private-vs-public)); identity/authorizer model selected (see [Identity Integration and Pre-Backend Authorization](#identity-integration-and-pre-backend-authorization))\n    - Key activities and tasks: work through the [Onboarding Checklist Snippet](#example-2-onboarding-checklist-snippet) — register the contract, configure the authorizer and TTL, configure VPC Link and/or WAF as applicable, confirm telemetry routing\n    - Expected outputs and outcomes: onboarded API with a complete release evidence package",
+    "46": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#validation-steps]\n\n#### Validation Steps\n\n1. **Step 1**: Confirm release readiness before production promotion.\n\n    - Required inputs and prerequisites: completed onboarding checklist\n    - Key activities and tasks: verify contract/policy validation evidence, security control evidence, and telemetry/runbook readiness are all present\n    - Expected outputs and outcomes: release-ready domain API onboarding, consistent with [Success Factors](#success-factors)",
+    "47": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#decision-framework]\n\n### Decision Framework",
+    "48": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#decision-point-1-gateway-tenancy-model]\n\n#### Decision Point 1: Gateway Tenancy Model\n\n**Context:** Selecting how gateway ownership and configuration are segmented across domains.\n**Options:** Shared enterprise gateway tenancy; domain-segmented gateway tenancy with shared control templates; hybrid public/private exposure model (see [Variations](#variations)).\n**Criteria:** Governance consistency, domain delivery autonomy, and operational complexity (see [Trade-offs and Costs](#trade-offs-and-costs)).\n**Recommendation:** Default to shared enterprise gateway tenancy; adopt domain segmentation only where a domain has genuinely distinct isolation or compliance requirements that the shared model cannot satisfy.",
+    "49": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#decision-point-2-endpoint-visibility-selection]\n\n#### Decision Point 2: Endpoint Visibility Selection\n\n**Context:** Selecting the Amazon API Gateway REST API endpoint type for a given API boundary.\n**Options:** Private, Regional, or Edge-optimized (see [Endpoint Visibility: Private vs. Public](#endpoint-visibility-private-vs-public)).\n**Criteria:** Whether the API is consumed entirely within the enterprise network or requires direct external HTTPS ingress.\n**Recommendation:** Default to Private for all REST APIs consumed entirely within the enterprise network; use Regional only when external consumers require direct HTTPS ingress, per the Endpoint Visibility decision rule.",
+    "50": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#tools-and-techniques]\n\n### Tools and Techniques\n\n| Tool Category | Tool Name | Purpose | Usage Guidelines |\n| --- | --- | --- | --- |\n| Gateway Runtime | Amazon API Gateway | API ingress, routing, throttling, and policy enforcement | Deploy via controlled IaC and release gates; default to the Private endpoint type per [Endpoint Visibility](#endpoint-visibility-private-vs-public) |\n| Identity and Authorization | Lambda authorizer + Microsoft Entra ID (Gainwell GPD) | Token validation and pre-backend authorization | Configure `AuthorizerResultTtlInSeconds` ≤ 300 seconds per the active SBB's CON-05 control; see [Identity Integration and Pre-Backend Authorization](#identity-integration-and-pre-backend-authorization) |\n| Protection | AWS WAF and resource policies | Threat protection and IP allowlisting | Associate with Regional endpoints; combine with resource-policy-based allowlisting where consumer IP ranges are known |\n| Observability | OpenTelemetry SDK + Collector; CloudWatch/X-Ray | Application-level and AWS-native telemetry | OTel for Kubernetes/EKS-deployed services (proposed, pending STD-APP-MON-002 ratification); CloudWatch/X-Ray for Lambda/ECS backends |",
+    "51": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#techniques-and-methods]\n\n#### Techniques and Methods\n\n- Contract and policy co-validation in CI/CD before promotion.\n- Staged domain onboarding waves with conformance checkpoints.\n- Shared, platform-owned control templates with documented domain-level overlays.",
+    "52": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#templates-and-artifacts]\n\n### Templates and Artifacts",
+    "53": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#configuration-examples]\n\n#### Configuration Examples",
+    "54": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#example-1-baseline-capability-profile]\n\n##### Example 1: Baseline Capability Profile\n\n```yaml\naws_api_management_platform:\n  gateway_runtime: enabled\n  identity_integration: enabled\n  security_protection: enabled\n  lifecycle_validation: enabled\n  observability: enabled\n```",
+    "55": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#example-2-onboarding-checklist-snippet]\n\n##### Example 2: Onboarding Checklist Snippet\n\n```text\n- Contract validated against API standards\n- Policy checks passed in CI/CD\n- Endpoint type selected (public/private) and justified\n- Authorizer type configured and Lambda authorizer TTL set\n- VPC Link configured for VPC-internal backends\n- WAF Web ACL associated (Regional endpoints)\n- API keys and usage plan configured (if consumer metering required)\n- Runtime telemetry confirmed\n- Release evidence package generated\n```\n\n---",
+    "56": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#examples-and-use-cases]\n\n## Examples and Use Cases\n\n> **Note:** The scenarios below are illustrative — they describe expected outcomes from applying this guidance, not outcomes observed at a specific cited implementation. Unlike a Pattern, this Guidance does not require proven, real-world adoption evidence; the scenarios are presented as expected-outcome illustrations to aid onboarding, not as case-study evidence.",
+    "57": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#illustrative-scenario-1]\n\n### Illustrative Scenario 1\n\n**Context:** Partner-facing domain APIs are onboarded to shared AWS API management platform.\n**Implementation:** Shared controls plus domain-specific routing and lifecycle workflows.\n**Expected Outcome:** Consistent controls with domain-specific API delivery.",
+    "58": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#illustrative-scenario-2]\n\n### Illustrative Scenario 2\n\n**Context:** Internal APIs migrate from unmanaged ingress to governed AWS API platform.\n**Implementation:** Wave-based migration with conformance checkpoints.\n**Expected Outcome:** Improved consistency of access controls and telemetry.",
+    "59": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#use-case-scenarios]\n\n### Use Case Scenarios",
+    "60": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#scenario-1-new-domain-api-program]\n\n#### Scenario 1: New Domain API Program\n\nApply the full platform baseline and onboarding workflow for newly launched domain APIs.",
+    "61": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#scenario-2-existing-api-portfolio-rationalization]\n\n#### Scenario 2: Existing API Portfolio Rationalization\n\nMigrate selected APIs into the platform model using phased onboarding and compatibility validation.",
+    "62": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#before-and-after-comparison]\n\n### Before and After Comparison",
+    "63": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#before-problem-state]\n\n#### Before (Problem State)\n\nDomain teams independently implement gateway and control capabilities with inconsistent outcomes.",
+    "64": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#after-solution-state]\n\n#### After (Solution State)\n\nDomain teams consume shared AWS API management controls with consistent lifecycle and operational governance.\n\n---",
+    "65": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#governance-and-compliance]\n\n## Governance and Compliance",
+    "66": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#governance-framework]\n\n### Governance Framework\n\nThis guidance operationalizes existing API and security governance through established architecture and security review processes; it does not introduce a new governance body or approval track. Architecture and security review are required through established governance processes before production promotion (see Approval Process below for the specific review gates).",
+    "67": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#standards-alignment]\n\n### Standards Alignment\n\n- [STD-APP-API-001](../../../../standards/application/api/STD-APP-API-001-api-design.md)\n- [STD-APP-API-005](../../../../standards/application/api/STD-APP-API-005-api-gateway-management.md)\n- [STD-APP-API-006](../../../../standards/application/api/STD-APP-API-006-api-mesh-vs-gateway-guidance.md)\n- [STD-APP-API-007](../../../../standards/application/api/STD-APP-API-007-aws-api-management-standard-profile.md)\n- [STD-APP-MON-002: OpenTelemetry Observability Standard](../../../../standards/application/monitoring/STD-APP-MON-002-opentelemetry-observability.md) — OTel instrumentation standard for application services deployed on Kubernetes/EKS under this guidance; proposed under this guidance pending its own ratification (currently `status: draft`); Lambda- and ECS-deployed backend services follow the CloudWatch/X-Ray AWS-native observability baseline instead\n- [GUID-SEC-NETWORK-API-GW-AWS-2.2.04.SSB](../../security/Network/GUID-SEC-NETWORK-API-GW-AWS-2.2.04.SSB.md) — Active AWS security control baseline; mandates Private API Gateway for East-West REST API traffic (REQ-APIGW-01/03/04)",
+    "68": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#compliance-requirements]\n\n### Compliance Requirements\n\nThis guidance operationalizes existing API and security controls and does not introduce net-new normative requirements.",
+    "69": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#approval-process]\n\n### Approval Process\n\nArchitecture and security review are required through established governance processes.",
+    "70": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#quality-assurance]\n\n### Quality Assurance\n\n- Architecture conformance checks confirming standards mapping completeness at design and release gates.\n- Security control validation and review evidence (identity/authorizer configuration, endpoint-type justification, WAF association) captured before production promotion.\n- Operational readiness verification — telemetry and runbooks confirmed present — before production cutover.",
+    "71": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#risk-management]\n\n### Risk Management\n\n| Risk Category | Description | Mitigation Approach |\n| --- | --- | --- |\n| Architecture Drift | Domains diverge from platform-owned templates over time | Enforce shared control templates and periodic conformance checks |\n| Security Inconsistency | Identity, authorization, or endpoint-visibility controls implemented unevenly across domains | Centralized identity/policy templates; mandatory architecture and security review gates |\n| Operational Gaps | Missing telemetry or runbooks discovered at or after release | Make readiness evidence a mandatory release gate rather than a post-launch afterthought |\n| Centralized-Platform Dependency | An outage or misconfiguration in shared gateway, identity, or OTel Collector infrastructure affects every onboarded domain API | Multi-AZ deployment for shared components; documented platform ownership and recovery responsibilities (see Deployment and Operations of the companion [REF-APP-API-001](../../../reference/application/REF-APP-API-001-aws-api-management-reference-architecture.md)) |",
+    "72": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#monitoring-and-metrics]\n\n### Monitoring and Metrics\n\n| Metric | Target | Measurement Method |\n| --- | --- | --- |\n| Standards Mapping Coverage | Complete mapping | Architecture review checklist |\n| Policy Validation Coverage | All onboarded APIs | CI/CD validation reports |\n| Observability Readiness | Release-ready telemetry for onboarded APIs | Operations readiness review |\n\n---",
+    "73": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#integration-with-enterprise-architecture]\n\n## Integration with Enterprise Architecture",
+    "74": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#standards-alignment]\n\n### Standards Alignment\n\nSee [Standards Alignment](#standards-alignment) under Governance and Compliance.",
+    "75": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#pattern-relationships]\n\n### Pattern Relationships\n\n- [PTN-APP-API-028: API Gateway Routing Pattern](../../../../patterns/application/api-microservices/PTN-APP-API-028-gateway-routing-pattern.md) — Provides the runtime routing and traffic management layer that sits within the platform; this guidance composes that capability with lifecycle governance and control-plane concerns\n- [PTN-APP-API-027: Gateway Aggregation Pattern](../../../../patterns/application/api-microservices/PTN-APP-API-027-gateway-aggregation-pattern.md) — Provides request aggregation at the gateway layer that this guidance governs\n- [PTN-APP-API-023: Self-Service Developer Portal Pattern](../../../../patterns/application/api-microservices/PTN-APP-API-023-self-service-developer-portal-pattern.md) — Covers developer onboarding and API catalog capabilities in depth; this guidance references the portal as a shared component rather than re-specifying it\n- [PTN-APP-API-031: Service Mesh Integration Pattern](../../../../patterns/application/api-microservices/PTN-APP-API-031-service-mesh-integration-pattern.md) — Layers mTLS and fine-grained traffic policy on top of this guidance's East-West Private API Gateway control point (see Scope); complementary to, not a substitute for, that mandatory gateway baseline\n- [PTN-INFRA-API-001: API Management Platform Pattern](../../../../patterns/infrastructure/api-microservices/PTN-INFRA-API-001-api-management-pattern.md) — The platform-neutral API management pattern; this guidance is the AWS-specific implementation of that broader infrastructure model using enterprise-approved services and controls",
+    "76": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#reference-architecture]\n\n### Reference Architecture\n\n- [REF-APP-API-001: AWS API Management Reference Architecture](../../../reference/application/REF-APP-API-001-aws-api-management-reference-architecture.md)",
+    "77": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#decision-dependencies]\n\n### Decision Dependencies\n\nImplementation decisions depend on established API and security artifact baselines and applicable domain governance approvals; no ADR currently governs this guidance beyond the referenced standards and security guidance.\n\n---",
+    "78": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#measurement-and-assessment]\n\n## Measurement and Assessment",
+    "79": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#success-metrics]\n\n### Success Metrics\n\nSee [Monitoring and Metrics](#monitoring-and-metrics) under Governance and Compliance for Standards Mapping Coverage, Policy Validation Coverage, and Observability Readiness targets and measurement methods.",
+    "80": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#assessment-framework]\n\n### Assessment Framework\n\nAssess at architecture review, release readiness, and post-onboarding checkpoints; capture findings, actions, and ownership in governance records.",
+    "81": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#maturity-model]\n\n### Maturity Model\n\n- **Level 1**: Shared platform baseline (gateway, identity, protection, observability) established and review-ready\n- **Level 2**: Domain APIs onboarded with contract and policy conformance evidence\n- **Level 3**: Consistent operations across onboarded domains with continuous improvement of shared templates",
+    "82": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#continuous-improvement]\n\n### Continuous Improvement\n\nUse domain onboarding review feedback and operational findings to improve platform templates, onboarding sequencing, and evidence quality.\n\n---",
+    "83": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#related-guidance-and-references]\n\n## Related Guidance and References",
+    "84": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#related-guidance]\n\n### Related Guidance\n\n- [GUID-APP-IMPL-009: AWS API Management Implementation Guidance](./GUID-APP-IMPL-009-aws-api-management-implementation-guidance.md) — Step-by-step implementation playbook that operationalizes this platform guidance\n- [GUID-APP-IMPL-010: Enterprise API Engineering Playbook](./GUID-APP-IMPL-010-api-engineering-guidance.md) — Enterprise-wide playbook answering foundational API engineering questions; use before applying this AWS-specific guidance to determine whether a given API boundary requires this guidance, the service mesh pattern, or both",
+    "85": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#dependencies]\n\n### Dependencies\n\n- [Enterprise API and Microservices Strategy](../../../../strategy/white-papers/engineering/enterprise-api-microservices-strategy.md) — The overarching enterprise strategy for API and microservices governance that this guidance implements in an AWS context; Section 5.2 (Core Components) and Section 5.3 (Solution Architecture) directly inform the platform model described here\n- [AWS API Management Strategy for Enterprise Adoption](../../../../strategy/white-papers/engineering/aws-api-management-strategy.md) — The AWS-specific strategic adoption paper providing operating model, control alignment, and phased onboarding context for this guidance\n- [REF-APP-API-001: AWS API Management Reference Architecture](../../../reference/application/REF-APP-API-001-aws-api-management-reference-architecture.md)\n- [GUID-APP-IMPL-009: AWS API Management Implementation Guidance](./GUID-APP-IMPL-009-aws-api-management-implementation-guidance.md)",
+    "86": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#external-references]\n\n### External References\n\n- [AWS API Gateway documentation](https://docs.aws.amazon.com/apigateway/)\n- [AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html)\n\n---",
+    "87": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#change-history]\n\n## Change History\n\n| Date | Version | Author | Description | Impact |\n| --- | --- | --- | --- | --- |\n| 2026-09-14 | 1.0.11 | GitHub Copilot | Addressed round-17 cross-document propagation finding: corrected the \"Scope: North-South and East-West\" decision framework item 1 and the \"Endpoint Visibility: Private vs. Public\" note, both of which still presented \"obtain a separately Security Architecture-approved private frontend/control design (e.g., an internal Application Load Balancer)\" as a compliant option — the cited active SBB's control applies to REST, HTTP, and WebSocket APIs alike with no exception, and no ALB/other-frontend alternative is authorized; reframed both as an unresolved SBB/technical-capability gap requiring Security Architecture's SBB exception process, citing [STD-APP-API-007](../../../../standards/application/api/STD-APP-API-007-aws-api-management-standard-profile.md) Requirement 5 as the authoritative corrected source; the round-15 (v1.0.9) Change History entry describing the original (now-superseded) VPC Link/private-frontend framing is left unchanged as an accurate historical record | PR #249 review remediation, round 17 (cascade) |\n| 2026-09-14 | 1.0.10 | GitHub Copilot | ea-reviewer follow-up: fixed 8 broken cross-references introduced by the round-15 directory move that used the old `../../../security/...` path depth (3 levels up, correct from the former `patterns/application/api-microservices/` location) instead of the correct `../../security/...` (2 levels up from `strategy/guidance/application/implementation/`) — affected Scope, Identity Provider Integration, NHI Note (2 links), TTL/fail-closed requirements (2 links), Endpoint Visibility decision rule, VTL Security note, and Standards Alignment; added the missing Implementation Steps, Decision Framework, and Tools and Techniques subsections to Practical Application, and the missing Maturity Model subsection to Measurement and Assessment, to match the Guidance template and sibling GUID-APP-IMPL-009/010 structure; added Governance Framework, Quality Assurance, and Risk Management subsections to Governance and Compliance (kept Standards Alignment, Compliance Requirements, Approval Process, and Monitoring and Metrics intact since they are cross-referenced by anchor elsewhere in this document); renamed the leftover `aws_api_management_pattern` YAML example key to `aws_api_management_platform` | PR #249 review remediation, round 15 (ea-reviewer follow-up) |\n| 2026-09-14 | 1.0.9 | GitHub Copilot | **Reclassified from Pattern to Guidance** (renamed from `PTN-APP-API-042` / \"AWS API Management Platform Pattern\" to `GUID-APP-IMPL-011` / \"AWS API Management Platform Guidance\"; moved from `patterns/application/api-microservices/` to `strategy/guidance/application/implementation/`). Rationale: the Pattern taxonomy (`foundation/CONTRIBUTING.md` §4.1; [Pattern Quality Checklist](../../../../patterns/pattern-quality-checklist.md)) requires a Pattern to be a reusable, **proven** solution with real-world application evidence; no such evidence exists anywhere in this artifact suite, and a round-8 disclosure-only note flagging this as an open governance decision was rejected on review as insufficient — evidence does not exist (ruling out citing it), and omitting the artifact from the suite was judged too disruptive to this PR's stated scope, leaving reclassification as the correct resolution. This content is an implementation playbook/composition write-up, similar in character to GUID-APP-IMPL-009/010, and does not require the Pattern taxonomy's proven-solution bar. All technical content and every prior round's fixes are preserved unchanged through this move, restructured under the Guidance document template's required section headings (Executive Summary, Guidance Context and Background, Detailed Guidance, Implementation Framework, Practical Application, Examples and Use Cases, Governance and Compliance, Integration with Enterprise Architecture, Measurement and Assessment, Related Guidance and References); the taxonomy-conflict disclosure note is removed (no longer applicable — Guidance does not require proven/real-world evidence). Also fixed, as part of this same round: removed the unsupported \"VPC Link/NLB-based private ingress\" claim as an equivalent for making an HTTP/WebSocket API's client-facing endpoint private (VPC Link only privatizes the gateway-to-backend integration, not the client-facing endpoint); replaced with REST-API re-platform or a separately Security Architecture-approved private frontend/control design as the only compliant options, in both the Executive Summary Scope subsection and Endpoint Visibility subsection | PR #249 review remediation, round 15 |\n| 2026-09-14 | 1.0.8 | GitHub Copilot | Scoped the Endpoint Visibility (Private/Regional/Edge-optimized) discussion explicitly to Amazon API Gateway REST APIs, since HTTP and WebSocket APIs do not offer the same endpoint-type set; replaced the Examples and Use Cases draft-status note with an explicit taxonomy-conflict disclosure — no traceable real-world implementation or adoption evidence currently exists for this Pattern or its companion REF-APP-API-001/GUID-APP-IMPL-009 artifacts, flagging reclassification to Guidance/Reference Architecture as an open governance decision pending a first production implementation | PR #249 review remediation, round 8 |\n| 2026-09-14 | 1.0.7 | GitHub Copilot | Fixed the Architecture Diagram to route the authorizer's Allow decision back through a Gateway Integration node rather than directly to backends (an authorizer only returns an allow/deny policy to API Gateway; it never invokes the backend itself); corrected the \"Use Lambda authorizers when\" list and added a Scope of Lambda authorizers note clarifying that authorizers never receive the request body and cannot perform payload validation/normalization — routed that concern to request validators, mapping templates, or an integration Lambda; capped the authorizer cache TTL at 300 seconds (`AuthorizerResultTtlInSeconds ≤ 300`) per the active SBB's CON-05 control, using the lower of 300 seconds and the token lifetime rather than the token lifetime alone; qualified the Observability Note, Components table, and Standards Alignment bullet's STD-APP-MON-002/OTel references as proposed, pending that standard's ratification (currently `status: draft`), matching the canonical wording in STD-APP-API-007 Requirement 3; strengthened the newly-authored/pending-validation disclaimer to cite the Pattern Creation Guidelines' Draft → Peer Review → ARB Approval → Publication lifecycle, clarifying that draft status is a sanctioned lifecycle stage, not an admission of failing the proven-solution bar | PR #249 review remediation, round 7 |\n| 2026-09-11 | 1.0.6 | GitHub Copilot | Fixed the request-flow diagram to route Kubernetes/EKS backends through OTel/Dynatrace and Lambda/ECS backends through CloudWatch/X-Ray separately, with gateway logs to SIEM — matching the Observability Note and Components table instead of contradicting them; split the fail-closed authorizer requirement into a handled-exception/policy path (explicit IAM deny policy) and a timeout/invocation-failure path (API Gateway returns an error response directly; no backend invocation, no IAM policy is ever produced); replaced the API-key/stage-variable per-tenant routing claim with an authorizer-derived, validated tenant context plus controlled integration logic (stage variables are fixed per deployed stage, not dynamically selectable by an API key); added an explicit note that this Pattern is newly authored and pending validation through initial domain adoption, consistent with the Pattern taxonomy's proven-solution requirement | PR #249 review remediation, round 6 |\n| 2026-09-11 | 1.0.5 | GitHub Copilot | Updated GUID-APP-API-001/002 cross-references to their renamed IDs GUID-APP-IMPL-009/010; corrected the endpoint-visibility decision rule to not imply the VPC endpoint's own default policy denies access by default (deny-by-default must be explicit in the API Gateway resource policy per the cited SBB); made the protocol mediation table's HTTP-backend row HTTPS to match the pattern's own HTTPS-only backend requirement; relabeled the unsubstantiated \"Real-World Examples\" as illustrative/hypothetical scenarios describing expected, not observed, outcomes | PR #249 review remediation, round 5 |\n| 2026-09-11 | 1.0.4 | GitHub Copilot | Renamed from `PTN-APP-API-040` to `PTN-APP-API-042` (file, `pattern_id`, and all cross-references) to resolve a `pattern_id` collision with the pre-existing, unrelated `PTN-APP-API-040-design-first-seam-contract-pattern.md` (v1.0.0); `PTN-APP-API-041` was already taken, so `042` is the next free ID; no content changes beyond the ID | PR #249 review remediation, round 3 (Critical finding) |\n| 2026-09-11 | 1.0.3 | GitHub Copilot | Added a Trade-offs and Costs section; scoped the OTel mandate to Kubernetes/EKS and corrected the Dynatrace/CloudWatch hierarchy in the observability note, components table, and standards alignment; removed the prescriptive AWS Secrets Manager mandate in favor of Security Architecture confirmation and NHI-aligned short-lived credentials; recast the PTN-APP-API-031 relationship as a complementary mesh layer on the pattern's own East-West gateway control point | PR #249 review remediation, round 2 |\n| 2026-09-10 | 1.0.2 | GitHub Copilot | Resolved East-West traffic conflict with the active AWS security SBB (Private API Gateway mandatory baseline; service mesh complementary); corrected request-flow diagram to place WAF upstream of the gateway and gate backend invocation on the authorizer decision | PR #249 review remediation |\n| 2026-07-24 | 1.0.1 | GitHub Copilot | Added security and implementation detail clarifications from review feedback | Documentation maintenance |\n| 2026-07-14 | 1.0.0 | GitHub Copilot | Initial pattern creation (as `PTN-APP-API-042`, later reclassified to this Guidance document — see 1.0.9 above) | New pattern |\n\n---",
+    "88": "[strategy/guidance/application/implementation/GUID-APP-IMPL-011-aws-api-management-platform-guidance.md#review-log]\n\n## Review Log\n\n| Review Date | Review Type | Reviewer(s) | Status | Comments | Actions |\n| --- | --- | --- | --- | --- | --- |\n| 2026-09-14 | Author Self-Review | GitHub Copilot | Completed | Addressed round-17 cross-document propagation finding: corrected the \"Scope: North-South and East-West\" decision framework item 1 and the \"Endpoint Visibility\" note, which still presented an unauthorized ALB/private-frontend alternative as compliant; reframed as an unresolved SBB/technical-capability gap per STD-APP-API-007 Requirement 5's corrected framing | Submit for domain and security review |\n| 2026-09-14 | Author Self-Review | GitHub Copilot | Completed | Addressed ea-reviewer follow-up findings post-reclassification: fixed 8 broken cross-references (wrong path depth to `strategy/guidance/security/...` left over from the pre-move directory structure); added missing Implementation Steps, Decision Framework, and Tools and Techniques (Practical Application), Maturity Model (Measurement and Assessment), and Governance Framework/Quality Assurance/Risk Management (Governance and Compliance) subsections to reach full parity with the Guidance template and sibling GUID-APP-IMPL-009/010; renamed a leftover Pattern-era YAML key | Submit for domain and security review |\n| 2026-09-14 | Author Self-Review | GitHub Copilot | Completed | Addressed round-15 review findings: reclassified from Pattern (`PTN-APP-API-042`) to Guidance (`GUID-APP-IMPL-011`) per Enterprise Architecture governance decision, since a round-8 disclosure-only note was rejected as insufficient and no real-world implementation evidence exists to satisfy the Pattern taxonomy's proven-solution bar; cascaded the rename to every cross-reference in the repository; corrected the VPC Link/NLB private-ingress overclaim | Submit for domain and security review |\n| 2026-09-14 | Author Self-Review | GitHub Copilot | Completed | Addressed round-8 review findings (Endpoint Visibility discussion scoped to REST APIs; Examples and Use Cases note reframed as an explicit taxonomy-conflict disclosure with no available real-world evidence, flagged for governance decision rather than silently reclassified) | Submit for domain and security review |\n| 2026-09-14 | Author Self-Review | GitHub Copilot | Completed | Addressed round-7 review findings (authorizer-invokes-backend diagram error; authorizer payload-validation misstatement; TTL cap at 300 seconds; STD-APP-MON-002 mandatory-vs-draft qualification; strengthened draft-status disclaimer) | Submit for domain and security review |\n| 2026-09-11 | Author Self-Review | GitHub Copilot | Completed | Addressed round-6 review findings (diagram backend/telemetry routing correction; fail-closed authorizer error split; API-key/tenant-routing correction; pending-validation disclaimer) | Submit for domain and security review |\n| 2026-09-11 | Author Self-Review | GitHub Copilot | Completed | Addressed round-5 review findings (GUID ID rename propagation, endpoint deny-by-default wording, HTTP→HTTPS backend row, illustrative-scenario relabeling) | Submit for domain and security review |\n| 2026-09-11 | Author Self-Review | GitHub Copilot | Completed | Resolved the `PTN-APP-API-040` ID collision with the pre-existing seam-contract pattern by renaming this pattern to `PTN-APP-API-042` and propagating the change to every cross-reference | Submit for domain and security review |\n| 2026-09-11 | Author Self-Review | GitHub Copilot | Completed | Addressed round-2 review findings (trade-offs, OTel scope, Secrets Manager, mesh relationship) | Submit for domain and security review |\n| 2026-07-14 | Author Self-Review | GitHub Copilot | Completed | Draft aligned to template and cross-references | Submit for domain and security review |\n\n---"
+  },
+  "coverage": {
+    "total_pages": 88,
+    "covered_pages": 88,
+    "sampled_pages": 88,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 88
+  }
+}

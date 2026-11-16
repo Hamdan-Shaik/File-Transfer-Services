@@ -1,0 +1,83 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Manage Registry (CM) - Process Flow Diagram",
+  "document_description": "subgraph TRIGGERS_ENV[\"⚡ Environment-Based Triggers\"]",
+  "total_pages": 7,
+  "tree": [
+    {
+      "title": "Manage Registry (CM) - Process Flow Diagram",
+      "node_id": "manage-registry-cm---process-flow-diagram",
+      "start_index": 1,
+      "end_index": 7,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Process Overview",
+          "node_id": "process-overview",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Registry Definition",
+          "node_id": "registry-definition",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Registry Types",
+          "node_id": "registry-types",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Results",
+          "node_id": "results",
+          "start_index": 5,
+          "end_index": 5,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Performance Measures",
+          "node_id": "performance-measures",
+          "start_index": 6,
+          "end_index": 6,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Constraints & Failures",
+          "node_id": "constraints--failures",
+          "start_index": 7,
+          "end_index": 7,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[standards/business/MITA-3.0/bpt-workflows/care_management/CM_Manage_Registry_BPT_v3.0.mermaid.md#manage-registry-cm---process-flow-diagram]\n\n# Manage Registry (CM) - Process Flow Diagram\n\n> Business Area: Care Management | Sub-Category: Case Management | Process Code: CM | MITA Version 3.0",
+    "2": "[standards/business/MITA-3.0/bpt-workflows/care_management/CM_Manage_Registry_BPT_v3.0.mermaid.md#process-overview]\n\n## Process Overview\n\n```mermaid\nflowchart TB\n    subgraph TRIGGERS_ENV[\"⚡ Environment-Based Triggers\"]\n        T1[\"Receive inquiry for<br/>health outcome information\"]\n    end\n\n    subgraph TRIGGERS_INT[\"🔗 Interaction-Based Triggers\"]\n        T2[\"Receive health outcomes<br/>to send to registry\"]\n    end\n\n    subgraph PREDECESSORS[\"📥 Predecessor Processes\"]\n        P1[Receive Inbound Transaction]\n        P2[Manage Case Information]\n        P3[Manage Health Plan Information]\n    end\n\n    subgraph PATH1[\"🔄 Path 1: Submit Health Outcomes to Registry\"]\n        START1([1. START: Receive member's<br/>health outcome information])\n        STEP1_2[2. Validate info completeness<br/>& syntax compliance]\n        STEP1_3[3. Validate information<br/>authenticity]\n        STEP1_4[4. Prepare submittal for<br/>health outcome to registry]\n        ENDS1([5. END: Send health outcome<br/>information to registry])\n    end\n\n    subgraph PATH2[\"🔄 Path 2: Respond to Health Outcome Inquiry\"]\n        START2([1. START: Receive request for<br/>health outcome information])\n        STEP2_2[2. Validate requestor has<br/>authorization to receive info]\n        STEP2_3[3. Prepare submittal for<br/>health outcome to requestor]\n        ENDS2([4. END: Send health outcome<br/>information to requestor])\n    end\n\n    subgraph REGISTRIES[\"📋 Registry Types\"]\n        REG1[Immunizations Registry]\n        REG2[Cancer Registry]\n        REG3[Disease Registry]\n        REG4[Heart Registry]\n        REG5[Diabetes Registry]\n    end\n\n    subgraph SUCCESSORS[\"📤 Successor Processes\"]\n        S1[Send Outbound Transaction]\n        S2[Manage Provider Communication]\n        S3[Manage Contractor Communication]\n    end\n\n    subgraph DATA[\"💾 Shared Data\"]\n        D1[(Health Registry Store)]\n        D2[(Validation Data Sources)]\n        D3[(EMPI)]\n    end\n\n    %% Trigger connections\n    T1 --> START2\n    T2 --> START1\n\n    %% Predecessor connections\n    P1 -.-> START1\n    P1 -.-> START2\n    P2 -.-> START1\n    P3 -.-> START1\n\n    %% Path 1 flow\n    START1 --> STEP1_2\n    STEP1_2 --> STEP1_3\n    STEP1_3 --> STEP1_4\n    STEP1_4 --> ENDS1\n\n    %% Path 2 flow\n    START2 --> STEP2_2\n    STEP2_2 --> STEP2_3\n    STEP2_3 --> ENDS2\n\n    %% Registry connections\n    ENDS1 -->|Update| REG1\n    ENDS1 -->|Update| REG2\n    ENDS1 -->|Update| REG3\n    ENDS1 -->|Update| REG4\n    ENDS1 -->|Update| REG5\n\n    %% Successor connections\n    ENDS1 -.-> S1\n    ENDS2 -.-> S1\n    ENDS2 -.-> S2\n    ENDS2 -.-> S3\n\n    %% Data connections\n    STEP1_4 <-->|Write| D1\n    STEP2_3 <-->|Read| D1\n\n    %% Styling\n    classDef trigger fill:#e1f5fe,stroke:#0288d1,stroke-width:2px\n    classDef triggerInt fill:#e8eaf6,stroke:#3f51b5,stroke-width:2px\n    classDef predecessor fill:#fff3e0,stroke:#ff9800,stroke-width:2px\n    classDef successor fill:#e8f5e9,stroke:#4caf50,stroke-width:2px\n    classDef process fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px\n    classDef startend fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    classDef datastore fill:#fff8e1,stroke:#ffc107,stroke-width:2px\n    classDef registry fill:#e0f2f1,stroke:#00897b,stroke-width:1px\n\n    class T1 trigger\n    class T2 triggerInt\n    class P1,P2,P3 predecessor\n    class S1,S2,S3 successor\n    class STEP1_2,STEP1_3,STEP1_4,STEP2_2,STEP2_3 process\n    class START1,ENDS1,START2,ENDS2 startend\n    class D1,D2,D3 datastore\n    class REG1,REG2,REG3,REG4,REG5 registry\n```",
+    "3": "[standards/business/MITA-3.0/bpt-workflows/care_management/CM_Manage_Registry_BPT_v3.0.mermaid.md#registry-definition]\n\n## Registry Definition\n\nA medical registry consolidates related records from multiple sources (intrastate, interstate, or federal agencies) into one comprehensive data store. This data store may or may not reside within the Medicaid information system.",
+    "4": "[standards/business/MITA-3.0/bpt-workflows/care_management/CM_Manage_Registry_BPT_v3.0.mermaid.md#registry-types]\n\n## Registry Types\n\n| Registry | Purpose |\n|----------|---------|\n| Immunizations | Vaccine tracking |\n| Cancer | Cancer diagnosis/treatment |\n| Disease | General disease tracking |\n| Heart | Cardiovascular conditions |\n| Diabetes | Diabetes management |",
+    "5": "[standards/business/MITA-3.0/bpt-workflows/care_management/CM_Manage_Registry_BPT_v3.0.mermaid.md#results]\n\n## Results\n\n| Outcome | Description |\n|---------|-------------|\n| 📤 Response to Inquiry | Prepared and sent health outcome response |\n| 🔄 Registry Update | Updated health outcome sent to registry |\n| 📈 Tracking | Performance and BAM data |",
+    "6": "[standards/business/MITA-3.0/bpt-workflows/care_management/CM_Manage_Registry_BPT_v3.0.mermaid.md#performance-measures]\n\n## Performance Measures\n\n| Metric | Target |\n|--------|--------|\n| Registry update time | __ days |\n| Successful delivery rate | __% |",
+    "7": "[standards/business/MITA-3.0/bpt-workflows/care_management/CM_Manage_Registry_BPT_v3.0.mermaid.md#constraints--failures]\n\n## Constraints & Failures\n\n- **Constraints**: State and federal regulations regarding entities authorized to access registry information\n- **Potential Failures**:\n    - Unable to find registry information to update\n    - Requestor does not have authorized access to Registry\n\n---\n\n*Generated from: CM_Manage_Registry_BPT_v3.0.json*"
+  },
+  "coverage": {
+    "total_pages": 7,
+    "covered_pages": 7,
+    "sampled_pages": 7,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 7
+  }
+}

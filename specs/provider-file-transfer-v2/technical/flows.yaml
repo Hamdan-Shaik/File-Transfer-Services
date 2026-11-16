@@ -1,0 +1,109 @@
+flows:
+  - id: run-file-transfer-batch
+    name: Run file transfer batch processing
+    doors:
+      - main-batch-process
+      - main-batch-process-2
+
+  - id: configure-source-locations-and-destinations
+    name: Configure file transfer source locations and destinations
+    doors:
+      - file-transfer-controller-file-transfer-configuration-view
+      - file-transfer-controller-file-transfer-configuration-edit
+      - file-transfer-controller-add-file-base-configuration
+      - file-transfer-controller-add-file-transfer-base-configuration
+      - file-transfer-controller-destination-configuration-edit
+      - file-transfer-controller-destination-configuration-edit-panel
+      - file-transfer-svc-service-file-transfer-add
+      - file-transfer-svc-service-file-transfer-add-2
+      - file-transfer-svc-service-file-transfer-add-3
+      - file-transfer-svc-service-controller-file-transfer-add
+      - file-transfer-svc-service-update-file-transfer-source-location
+      - file-transfer-svc-service-update-file-transfer-source-location-2
+      - file-transfer-svc-service-update-file-transfer-source-location-3
+      - file-transfer-svc-service-controller-update-file-transfer-source-location
+      - file-transfer-svc-service-invalidate-file-transfer-source-location
+      - file-transfer-svc-service-invalidate-file-transfer-source-location-2
+      - file-transfer-svc-service-invalidate-file-transfer-source-location-3
+      - file-transfer-svc-service-controller-invalidate-file-transfer-source-location
+      - file-transfer-svc-query-service-get-source-locations
+      - file-transfer-svc-query-service-get-source-locations-2
+      - file-transfer-svc-query-service-get-source-locations-3
+      - file-transfer-svc-query-service-controller-get-source-locations
+      - file-transfer-controller-get-source-locations
+      - file-transfer-svc-query-service-search-source-locations
+      - file-transfer-svc-query-service-search-source-locations-2
+      - file-transfer-svc-query-service-search-source-locations-3
+      - file-transfer-svc-query-service-controller-search-source-locations
+
+  - id: manage-ftp-servers-and-credentials
+    name: Manage FTP servers and credentials
+    doors:
+      - file-transfer-svc-query-service-get-ftp-servers
+      - file-transfer-svc-query-service-get-ftp-servers-2
+      - file-transfer-svc-query-service-get-ftp-servers-3
+      - file-transfer-svc-query-service-controller-get-ftp-servers
+      - file-transfer-svc-service-add-ftp-server
+      - file-transfer-svc-service-add-ftp-server-2
+      - file-transfer-svc-service-add-ftp-server-3
+      - file-transfer-svc-service-controller-add-ftp-server
+      - file-transfer-svc-service-update-ftp-server
+      - file-transfer-svc-service-update-ftp-server-2
+      - file-transfer-svc-service-update-ftp-server-3
+      - file-transfer-svc-service-controller-update-ftp-server
+      - file-transfer-svc-service-invalidate-ftp-server
+      - file-transfer-svc-service-invalidate-ftp-server-2
+      - file-transfer-svc-service-invalidate-ftp-server-3
+      - file-transfer-svc-service-controller-invalidate-ftp-server
+      - file-transfer-controller-get-ftp-server-details
+      - file-transfer-controller-get-ftpserver-credentials
+      - file-transfer-controller-add-ftpserver-credentials
+      - file-transfer-controller-create-ftpserver-credentials
+      - file-transfer-controller-update-ftpserver-credentials
+
+  - id: manage-integration-files
+    name: Manage integration file definitions
+    doors:
+      - file-transfer-svc-query-service-get-integration-file
+      - file-transfer-svc-query-service-get-integration-file-2
+      - file-transfer-svc-service-update-integration-file
+      - file-transfer-svc-service-update-integration-file-2
+
+  - id: search-and-track-file-transfers
+    name: Search and track file transfers
+    doors:
+      - file-transfer-controller-search-file-transfer-tracking
+      - file-transfer-controller-search-file-transfer-tracking-2
+      - file-transfer-controller-search-file-transfer
+      - file-transfer-svc-query-service-search-file-transfer-movement
+      - file-transfer-svc-query-service-search-file-transfer-movement-2
+      - file-transfer-svc-query-service-search-file-transfer-movement-3
+      - file-transfer-svc-query-service-controller-search-file-transfer-movement
+      - file-transfer-svc-query-service-search-inbound-target
+      - file-transfer-svc-query-service-search-inbound-target-2
+      - file-transfer-svc-query-service-search-inbound-target-3
+      - file-transfer-svc-query-service-controller-search-inbound-target
+      - file-transfer-controller-get-ftemetadatas
+      - file-transfer-controller-get-data-list-data
+      - file-transfer-controller-get-data-list-data-2
+
+not_flows:
+  - door: file-transfer-api-program
+    reason: Service host startup entry point, not business behaviour.
+  - door: file-transfer-svc-program
+    reason: Service host startup entry point, not business behaviour.
+  - door: main-program
+    reason: Service host startup entry point, not business behaviour.
+
+  - door: file-transfer-svc-query-service-try-route-query
+    reason: Generic CQRS query router endpoint used for diagnostics/plumbing.
+  - door: file-transfer-svc-query-service-try-route-query-2
+    reason: Generic CQRS query router endpoint used for diagnostics/plumbing.
+  - door: file-transfer-svc-query-service-try-route-query-3
+    reason: Generic CQRS query router endpoint used for diagnostics/plumbing.
+  - door: file-transfer-svc-service-try-route-command
+    reason: Generic CQRS command router endpoint used for diagnostics/plumbing.
+  - door: file-transfer-svc-service-try-route-command-2
+    reason: Generic CQRS command router endpoint used for diagnostics/plumbing.
+  - door: file-transfer-svc-service-try-route-command-3
+    reason: Generic CQRS command router endpoint used for diagnostics/plumbing.

@@ -1,0 +1,67 @@
+door:
+  id: file-transfer-controller-file-transfer-configuration-edit
+  kind: api
+  name: FileTransferConfigurationEdit
+  class: HP.HSP.UA3.FileTransfer.UX.Presentation.Controllers.FileTransferController
+  file: ux\HP.HSP.UA3.FileTransfer.UX.Presentation\Controllers\FileTransferController.cs
+  line: 113
+  entry:
+  - HP.HSP.UA3.FileTransfer.UX.Presentation.Controllers.FileTransferController.FileTransferConfigurationEdit(HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.FileTransferConfigurationModel)
+  endpoints:
+  - POST /FileTransfer
+procedures: []
+tables:
+- name: orm:FTS_SUSPENSION
+  access:
+  - reads
+shared_uses: []
+external_uses:
+- package: hp.hsp.ua3.core.ux.interfaces
+  version: 30.0.0
+  method: HP.HSP.UA3.Core.UX.Interfaces.ITenantConfigurationManager.Resolve<T>(string)
+  calls:
+  - at: ux\HP.HSP.UA3.FileTransfer.UX.Presentation\Controllers\FileTransferController.cs:151
+    type_arguments:
+    - HP.HSP.UA3.FileTransfer.UX.Providers.FileTransfer.IFileTransferQueryServiceDataProvider
+    arguments:
+    - name: name
+      expression: FileTransferConstants.Ioc.ComponentNames.FileTransferQueryServiceDataProvider
+- package: hp.hsp.ua3.core.ux.interfaces
+  version: 30.0.0
+  method: HP.HSP.UA3.Core.UX.Interfaces.IUserConfigurationManager.GenerateRequestor()
+  calls:
+  - at: ux\HP.HSP.UA3.FileTransfer.UX.Presentation\Controllers\FileTransferController.cs:146
+    arguments: []
+- package: hp.hsp.ua3.core.ux.presentation
+  version: 30.0.0
+  method: HP.HSP.UA3.Core.UX.Presentation.Controllers.Base.BaseViewController.View(object)
+  calls:
+  - at: ux\HP.HSP.UA3.FileTransfer.UX.Presentation\Controllers\FileTransferController.cs:127
+    arguments:
+    - name: model
+      expression: fileTransferConfigModel
+- package: microsoft.aspnet.mvc
+  version: 5.3.0
+  method: System.Web.Mvc.Controller.View()
+  calls:
+  - at: ux\HP.HSP.UA3.FileTransfer.UX.Presentation\Controllers\FileTransferController.cs:116
+    arguments: []
+polymorphic_hooks: []
+stops: []
+calls:
+- from: HP.HSP.UA3.FileTransfer.UX.Presentation.Controllers.FileTransferController.FileTransferConfigurationEdit(HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.FileTransferConfigurationModel)
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.UX.Presentation.Controllers.FileTransferController.GetFileTransferConfiguration(HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.FileTransferConfigurationModel)
+- from: HP.HSP.UA3.FileTransfer.UX.Presentation.Controllers.FileTransferController.FileTransferConfigurationEdit(HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.FileTransferConfigurationModel)
+  via: READS_FROM
+  to: orm:FTS_SUSPENSION
+- from: HP.HSP.UA3.FileTransfer.UX.Presentation.Controllers.FileTransferController.GetFileTransferConfiguration(HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.FileTransferConfigurationModel)
+  via: READS_FROM
+  to: orm:FTS_SUSPENSION
+methods:
+- name: HP.HSP.UA3.FileTransfer.UX.Presentation.Controllers.FileTransferController.FileTransferConfigurationEdit(HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.FileTransferConfigurationModel)
+  file: ux\HP.HSP.UA3.FileTransfer.UX.Presentation\Controllers\FileTransferController.cs
+  line: 113
+- name: HP.HSP.UA3.FileTransfer.UX.Presentation.Controllers.FileTransferController.GetFileTransferConfiguration(HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.FileTransferConfigurationModel)
+  file: ux\HP.HSP.UA3.FileTransfer.UX.Presentation\Controllers\FileTransferController.cs
+  line: 142

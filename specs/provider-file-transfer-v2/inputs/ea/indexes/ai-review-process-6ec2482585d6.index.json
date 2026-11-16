@@ -1,0 +1,407 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "AI Review Process - Technical Implementation",
+  "document_description": "This document details the **technical implementation** of AI-powered document reviews via AWS Bedrock and the complete review process flow.",
+  "total_pages": 42,
+  "tree": [
+    {
+      "title": "AI Review Process - Technical Implementation",
+      "node_id": "ai-review-process---technical-implementation",
+      "start_index": 1,
+      "end_index": 42,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Overview",
+          "node_id": "overview",
+          "start_index": 2,
+          "end_index": 5,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Purpose",
+              "node_id": "purpose",
+              "start_index": 3,
+              "end_index": 3,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Business Value",
+              "node_id": "business-value",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Review Types",
+              "node_id": "review-types",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Process Flow",
+          "node_id": "process-flow",
+          "start_index": 6,
+          "end_index": 11,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Phase Overview",
+              "node_id": "phase-overview",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Detailed Step Breakdown",
+              "node_id": "detailed-step-breakdown",
+              "start_index": 8,
+              "end_index": 10,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "**Phase 1: Pre-Review Processing** (Steps 1-4)",
+                  "node_id": "phase-1-pre-review-processing-steps-1-4",
+                  "start_index": 9,
+                  "end_index": 9,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "**Phase 2: Review & Output Generation** (Steps 5-10)",
+                  "node_id": "phase-2-review--output-generation-steps-5-10",
+                  "start_index": 10,
+                  "end_index": 10,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Review Phase Characteristics",
+              "node_id": "review-phase-characteristics",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "1. Review Type Specifics",
+          "node_id": "1-review-type-specifics",
+          "start_index": 12,
+          "end_index": 12,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "2. User Prompt Structure",
+          "node_id": "2-user-prompt-structure",
+          "start_index": 13,
+          "end_index": 15,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Prompt Structure",
+              "node_id": "prompt-structure",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Template: `_build_evaluation_prompt()`",
+              "node_id": "template-buildevaluationprompt",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "3. Document Content",
+          "node_id": "3-document-content",
+          "start_index": 16,
+          "end_index": 16,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "3a. Template Files",
+          "node_id": "3a-template-files",
+          "start_index": 17,
+          "end_index": 17,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "4. Required JSON Output Format",
+          "node_id": "4-required-json-output-format",
+          "start_index": 18,
+          "end_index": 19,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Output Field Descriptions",
+              "node_id": "output-field-descriptions",
+              "start_index": 19,
+              "end_index": 19,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "5. Complete Example Prompt",
+          "node_id": "5-complete-example-prompt",
+          "start_index": 20,
+          "end_index": 20,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "6. Model Configuration",
+          "node_id": "6-model-configuration",
+          "start_index": 21,
+          "end_index": 21,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "7. Response Processing",
+          "node_id": "7-response-processing",
+          "start_index": 22,
+          "end_index": 25,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "7.1 Parse Response",
+              "node_id": "71-parse-response",
+              "start_index": 23,
+              "end_index": 23,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "7.2 Cache Result",
+              "node_id": "72-cache-result",
+              "start_index": 24,
+              "end_index": 24,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "7.3 Return Structure",
+              "node_id": "73-return-structure",
+              "start_index": 25,
+              "end_index": 25,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "8. Cost & Performance",
+          "node_id": "8-cost--performance",
+          "start_index": 26,
+          "end_index": 31,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "8.1 Typical Request Size",
+              "node_id": "81-typical-request-size",
+              "start_index": 27,
+              "end_index": 27,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "8.2 Typical Response Size",
+              "node_id": "82-typical-response-size",
+              "start_index": 28,
+              "end_index": 28,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "8.3 Cost per Review",
+              "node_id": "83-cost-per-review",
+              "start_index": 29,
+              "end_index": 29,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "8.4 Response Time",
+              "node_id": "84-response-time",
+              "start_index": 30,
+              "end_index": 30,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "8.5 Cache Performance",
+              "node_id": "85-cache-performance",
+              "start_index": 31,
+              "end_index": 31,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "9. Error Handling",
+          "node_id": "9-error-handling",
+          "start_index": 32,
+          "end_index": 36,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "9.1 JSON Parsing Failures",
+              "node_id": "91-json-parsing-failures",
+              "start_index": 33,
+              "end_index": 33,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "9.2 Missing Dimensions",
+              "node_id": "92-missing-dimensions",
+              "start_index": 34,
+              "end_index": 34,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "9.3 Invalid Scores",
+              "node_id": "93-invalid-scores",
+              "start_index": 35,
+              "end_index": 35,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "9.4 Bedrock API Errors",
+              "node_id": "94-bedrock-api-errors",
+              "start_index": 36,
+              "end_index": 36,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "10. Special Handling: \"MISSING\" Markers",
+          "node_id": "10-special-handling-missing-markers",
+          "start_index": 37,
+          "end_index": 40,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "10.1 Detection",
+              "node_id": "101-detection",
+              "start_index": 38,
+              "end_index": 38,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "10.2 Impact on Scoring",
+              "node_id": "102-impact-on-scoring",
+              "start_index": 39,
+              "end_index": 39,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "10.3 Example Finding for MISSING Content",
+              "node_id": "103-example-finding-for-missing-content",
+              "start_index": 40,
+              "end_index": 40,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "11. Mock Mode (Local Development)",
+          "node_id": "11-mock-mode-local-development",
+          "start_index": 41,
+          "end_index": 41,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Summary",
+          "node_id": "summary",
+          "start_index": 42,
+          "end_index": 42,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#ai-review-process---technical-implementation]\n\n# AI Review Process - Technical Implementation",
+    "2": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#overview]\n\n## Overview\n\nThis document details the **technical implementation** of AI-powered document reviews via AWS Bedrock and the complete review process flow.",
+    "3": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#purpose]\n\n### Purpose\n\nThe AI Governance Review Service introduces **automated, AI-driven evaluation** as a critical component of enterprise governance gate processes. Traditional governance reviews—whether for conceptual designs (CRB), logical architectures (ARB), or other decision points—rely heavily on manual review by governance committees, architects, and subject matter experts. This manual process, while thorough, creates bottlenecks, inconsistencies, and delays that can significantly impact project timelines and delivery.\n\nThis service **augments the governance process** by providing:\n\n1. **Preliminary automated evaluation** - Documents are evaluated against established criteria before human review\n2. **Consistent scoring framework** - Every document is assessed using the same objective criteria and standards\n3. **Rapid feedback cycles** - Authors receive detailed feedback in seconds rather than days or weeks\n4. **Quality gate enforcement** - Documents failing to meet minimum standards are identified immediately\n5. **Human reviewer augmentation** - Reviewers receive pre-scored documents with identified issues, allowing them to focus on strategic concerns rather than basic completeness\n\nThe system does **not replace human governance**—it streamlines the process by handling routine evaluation, flagging issues, and providing structured feedback, allowing governance teams to focus their expertise where it matters most.",
+    "4": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#business-value]\n\n### Business Value\n\nImplementing AI-powered governance reviews delivers measurable benefits across multiple dimensions:\n\n**⏱️ Time-to-Value Acceleration**\n\n- **80-90% faster preliminary reviews**: Documents evaluated in ~30 seconds vs. 2-5 days for manual review\n- **Reduced governance bottlenecks**: Parallel processing of multiple submissions without committee scheduling\n- **Faster iteration cycles**: Authors receive immediate feedback and can resubmit corrected documents the same day\n\n**💰 Cost Reduction**\n\n- **Lower governance overhead**: Reduced burden on high-cost architects and SMEs for routine reviews\n- **Fewer review meetings**: Only qualified documents advance to governance committees\n- **Decreased rework costs**: Early detection of issues prevents expensive downstream changes\n\n**📈 Quality Improvement**\n\n- **Consistent evaluation standards**: Every document assessed against identical criteria, eliminating reviewer bias\n- **Comprehensive coverage**: AI evaluates all dimensions every time—no overlooked sections or criteria\n- **Knowledge capture**: Evaluation criteria codified and version-controlled, ensuring organizational learning\n\n**🎯 Governance Efficiency**\n\n- **Higher signal-to-noise ratio**: Governance committees review only documents meeting minimum standards\n- **Pre-identified issues**: Reviewers arrive prepared with specific concerns highlighted by AI\n- **Audit trail**: Complete evaluation history with timestamps, scores, and rationale for compliance\n\n**📊 Data-Driven Insights**\n\n- **Trend analysis**: Track common issues, improvement areas, and submission quality over time\n- **Process optimization**: Identify recurring patterns to improve templates and guidance\n- **Metrics and reporting**: Quantifiable governance performance indicators for leadership\n\n**🔄 Scalability**\n\n- **No capacity constraints**: Process unlimited submissions without adding governance staff\n- **Organizational growth support**: Scale governance capabilities as portfolio expands\n- **Consistent global standards**: Same evaluation criteria across distributed teams and geographies\n\n---",
+    "5": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#review-types]\n\n### Review Types\n\n**For detailed evaluation requirements**, see:\n\n- **[CRB Requirements](./review-types/crb-requirements.md)** - Conceptual Architecture Review (Business value & conceptual design)\n- **[ARB Requirements](./review-types/arb-requirements.md)** - Logical Architecture Review (Logical design & technical completeness)\n\n---",
+    "6": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#process-flow]\n\n## Process Flow\n\nThe AI review process follows a 10-step workflow divided into two distinct phases:",
+    "7": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#phase-overview]\n\n### Phase Overview\n\n```mermaid\ngraph TB\n    subgraph \"PHASE 1: Pre-Review Processing\"\n        A[1. Submit Document] --> B[2. Extract Content]\n        B --> C[3. Check Cache]\n        C --> D{Cache Hit?}\n        D -->|Yes| H[7. Return Cached Result]\n        D -->|No| E[4. Build AI Prompt]\n    end\n\n    subgraph \"PHASE 2: Review & Output Generation\"\n        E --> F[5. Invoke AI Model]\n        F --> G[6. Parse & Validate]\n        G --> I{All Dimensions<br/>Pass Threshold?}\n        I -->|Yes + Overall Pass| J[Status: PASS]\n        I -->|No| K[Status: FAIL]\n        J --> L[7. Cache Result]\n        K --> L\n        L --> M[8. Generate Outputs]\n        M --> N[9. Save to Database]\n        N --> O[10. Return to User]\n        H --> O\n    end\n\n    style A fill:#e1f5ff\n    style F fill:#fff4e1\n    style G fill:#fff4e1\n    style J fill:#e1ffe1\n    style K fill:#ffe1e1\n    style O fill:#e1f5ff\n```",
+    "8": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#detailed-step-breakdown]\n\n### Detailed Step Breakdown",
+    "9": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#phase-1-pre-review-processing-steps-1-4]\n\n#### **Phase 1: Pre-Review Processing** (Steps 1-4)\n\nThis phase prepares the document for AI evaluation. No actual review occurs yet.\n\n**Step 1: Submit Document**\n\n- User submits document via API endpoint (`POST /api/ai-gov-review/v1/reviews`)\n- Accepts: DOCX, Markdown, or ZIP files\n- Requires: Review type (ARB/CRB), user ID, organization ID\n- Document can be base64-encoded or multipart upload\n\n**Step 2: Extract Content**\n\n- **DOCX files**: Extract text using python-docx, preserve formatting metadata\n- **Embedded image extraction**: Detects `<w:drawing>` elements in paragraphs, resolves image bytes via `r:embed` relationship IDs to `word/media/` parts\n    - **Supported formats**: PNG, JPEG, GIF, WEBP (EMF/WMF vector formats excluded)\n    - **Size limit**: Individual images capped at 3.75 MB (Bedrock base64 limit)\n    - **Section tracking**: Each image records the current document section heading it appears under (e.g., \"Conceptual Approach\", \"Infrastructure Architecture\")\n    - Text markers `[EMBEDDED IMAGE: description]` inserted at image positions for text-based context\n- **Markdown files**: Use raw text as-is (no image extraction)\n- **ZIP archives**: Extract all files, identify main document, process recursively\n- **Template version extraction**: Parse `Template Version` field from the Project Information table\n- **Special handling**: Detect \"MISSING\" placeholder markers (see Section 10)\n- Output: Plain text content + embedded images with section context + template version\n\n**Step 2a: Validate Template Version**\n\n- **Load current template version** from `resources/templates/{review-type}-input-template.docx`\n- **Extract submitted document version** from Project Information table `Template Version` field (parsed in Step 2)\n- **Compare versions**: Match submitted version against current template version\n- **Version mismatch handling**:\n    - ❌ **REJECT**: If submitted document uses older template version\n    - **Error message**: \"This document uses template version {old_version}. Current template version is {new_version}. Please download the latest template and resubmit.\"\n    - **Status code**: 400 (Bad Request)\n    - **No AI evaluation performed** - immediate rejection to save costs\n    - **User action required**: Download latest template, migrate content, resubmit\n- ✅ **PROCEED**: If versions match, continue to Step 3\n- **Rationale**: Ensures all submissions evaluated against current standards and criteria\n\n**Step 3: Check Cache**\n\n- Generate cache key: `SHA256(document_content + template_id)`\n- Query Redis cache (24-hour TTL)\n- **Cache hit**: Skip to Step 7, return previously evaluated results (saves ~30 seconds and ~$0.25-0.35)\n- **Cache miss**: Continue to Step 4\n- Prevents duplicate AI evaluations for identical documents\n\n**Step 4: Build AI Prompt**\n\n- Load review template from database (ARB or CRB)\n- Load original input template markdown file from resources/templates/\n- Load processing rules snapshot (CRB/ARB) for diagram evaluation context\n- Extract template version from Project Information table\n- **Enrich embedded images with diagram context**:\n    - Match each image's section heading to `required_diagrams[].expected_in_section` from processing rules\n    - Attach expected diagram type name, type description, and evaluation criteria to each image\n    - Example: An image from \"Conceptual Approach\" section is labeled with \"C4 Level 1 — Context\" expected type, its description, and criteria like \"Shows system boundary clearly\", \"Identifies all external actors\"\n- Construct complete prompt with:\n    - **Template adherence check**: Original template for comparison\n    - **System prompt**: Review-type specific instructions (includes multi-modal vision instructions)\n    - **Evaluation criteria**: What aspects are being evaluated\n    - **Scoring dimensions**: All dimensions with weights and detailed criteria\n    - **Diagram evaluation rules**: Required diagrams, expected sections, evaluation criteria from processing rules\n    - **Pass threshold**: Minimum score required (75% for both ARB and CRB)\n    - **Template content**: Original input template text\n    - **Document content**: User's submitted document text\n    - **Output format**: Required JSON structure\n- Prompt size: Typically 10,000-15,000 tokens (text) + image data\n- See Section 2 for complete prompt structure\n\n---",
+    "10": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#phase-2-review--output-generation-steps-5-10]\n\n#### **Phase 2: Review & Output Generation** (Steps 5-10)\n\nThis phase performs the actual AI evaluation and delivers results to the user.\n\n**Step 5: Invoke AI Model (AWS Bedrock)**\n\n- Send **multi-modal** prompt to configured AI model (default: Claude Sonnet 4.5)\n- **Content blocks** sent in a single user message:\n    1. **Text block**: System prompt + user prompt (evaluation criteria, rules, document text)\n    2. **Per-image pairs** (for each extracted diagram):\n       - Text block: `[Diagram: {enriched description with section, expected type, criteria}]`\n       - Image block: Base64-encoded image data with media type\n    3. **JSON instruction**: \"Respond with valid JSON only.\"\n- **Model configuration**:\n    - Temperature: 0.3 (balanced consistency with nuanced scoring)\n    - Max tokens: 50,000 (allows detailed findings and recommendations including diagram assessments)\n    - Region: us-east-1 (or configured region)\n- **Response time**: 30-60 seconds (varies by document complexity and number of images)\n- **Cost**: ~$0.25-0.60 per review (includes template comparison + image tokens, see Section 8)\n- See Section 6 for model configuration details\n\n**Step 6: Parse & Validate Response**\n\n- Extract JSON from AI response (handles markdown code blocks)\n- Parse and validate:\n    - **Template adherence**: Unchanged placeholders, missing sections, instruction text\n    - **Dimension scores**: Each dimension 0-100\n    - **Overall score**: Weighted average of all dimensions\n    - **Findings**: Severity, category, location, recommendations\n    - **Summary**: Executive summary of evaluation\n    - **Recommendations**: Actionable improvements\n    - **Confidence score**: AI's confidence in evaluation (0-100)\n- **Pass/Fail determination**:\n    - ✅ **PASS**: ALL dimensions ≥ threshold AND overall ≥ threshold\n    - ❌ **FAIL**: ANY dimension < threshold OR overall < threshold\n- **Critical rule**: A single failing dimension fails the entire review\n- **Template adherence**: Major issues (unchanged placeholders, minimal effort) flagged as critical findings\n- See Section 5 for response processing details\n\n**Step 7: Cache Result**\n\n- Store complete evaluation in Redis\n- Cache key: Same as Step 3 (document hash + template ID)\n- TTL: 24 hours\n- Cached data: Full evaluation JSON, scores, findings, recommendations\n- Subsequent identical submissions return instantly from cache\n\n**Step 8: Generate Outputs**\n\n- Create comprehensive review package:\n    - **JSON file**: Complete evaluation data (`{review_id}-evaluation.json`)\n    - **Markdown report**: Human-readable formatted report (`{review_id}-output.md`)\n    - **DOCX report**: Styled Word document with findings table (`{review_id}-output.docx`)\n    - **ZIP bundle**: All outputs + original submitted document (`{review_id}-bundle.zip`)\n- Output location: `outputs/{review_type}/{review_id}-*`\n- Files available for download via API\n\n**Step 9: Save to Database**\n\n- Store review record in PostgreSQL:\n    - Review ID, type, status (PASS/FAIL)\n    - Overall score and all dimension scores\n    - Findings, recommendations, summary\n    - User ID, organization ID\n    - File paths for all outputs\n    - Timestamps (created, updated)\n    - Metadata (document format, file size, etc.)\n- Enables review history, analytics, audit trail\n\n**Step 10: Return to User**\n\n- API returns comprehensive response:\n    - **Review ID**: Unique identifier for this review\n    - **Overall score**: Weighted average (0-100)\n    - **Pass/Fail status**: Final determination\n    - **Dimension scores**: Individual scores for each dimension\n    - **Findings**: Categorized issues with severity\n    - **Recommendations**: Actionable improvements\n    - **Download links**: URLs for JSON, MD, DOCX, and ZIP outputs\n- Total round-trip time: ~30-45 seconds (uncached), <1 second (cached)\n\n---",
+    "11": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#review-phase-characteristics]\n\n### Review Phase Characteristics\n\n| Aspect | Phase 1: Pre-Review | Phase 2: Review & Output |\n|--------|---------------------|--------------------------|\n| **Primary Purpose** | Document preparation | AI evaluation & delivery |\n| **Key Activities** | Extract, cache check, prompt building | AI analysis, scoring, output generation |\n| **Time Cost** | ~2-5 seconds | ~30-40 seconds |\n| **Financial Cost** | $0 (local processing) | ~$0.20-0.40 (AWS Bedrock) |\n| **Cacheability** | Cache lookup only | Full result cached |\n| **User Impact** | Transparent preprocessing | Core value delivery |\n| **Error Types** | Format errors, extraction failures | AI errors, validation issues |\n| **Optimization** | Fast extraction, efficient caching | Prompt engineering, model tuning |\n\n---",
+    "12": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#1-review-type-specifics]\n\n## 1. Review Type Specifics\n\nEach review type has its own:\n\n- **System Prompt** - Tailored instructions for the AI model\n- **Evaluation Criteria** - What aspects are evaluated\n- **Scoring Dimensions** - Weighted scoring breakdown\n- **Pass Threshold** - Minimum score required\n\n**All dimensions must individually pass** - failure of any dimension rejects the document.\n\n**See the individual requirement documents for complete details:**\n\n- **[CRB Requirements](./review-types/crb-requirements.md)** - Business value evaluation\n- **[ARB Requirements](./review-types/arb-requirements.md)** - Logical design evaluation\n\n---",
+    "13": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#2-user-prompt-structure]\n\n## 2. User Prompt Structure\n\nThe user prompt is dynamically built using the template and combines:\n\n- **Template adherence check** (NEW): Original input template for comparison\n- Evaluation criteria summary\n- Scoring dimensions with weights and detailed criteria\n- Pass threshold\n- Original template content (with instructions and examples)\n- The user's submitted document content\n- Required JSON output format",
+    "14": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#prompt-structure]\n\n### Prompt Structure\n\nThe prompt follows a two-phase evaluation approach:\n\n**Phase 1: Template Adherence**\n\n- Original template provided for reference\n- AI identifies unchanged placeholders, missing sections, boilerplate\n- Flags minimal effort submissions\n\n**Phase 2: Content Quality Evaluation**\n\n- Current evaluation criteria and scoring dimensions\n- Comprehensive quality assessment",
+    "15": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#template-buildevaluationprompt]\n\n### Template: `_build_evaluation_prompt()`\n\n**Location:** `src/core/evaluation_engine.py:126-230`\n\n---",
+    "16": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#3-document-content]\n\n## 3. Document Content\n\nThe full text content of the submitted document is included after the criteria:\n\n```\n**Document to Review:**\n---\n{document_content}\n---\n```\n\n**Document Formats Supported:**\n\n- Microsoft Word (.docx) - extracted text\n- Markdown (.md) - raw text\n- ZIP archives (.zip) - extracted and processed\n\n**Preprocessing:**\n\n- DOCX: Text extracted using python-docx; embedded images extracted via `<w:drawing>` → `r:embed` → `word/media/` chain with section heading tracking\n- Markdown: Used as-is (no image extraction)\n- ZIP: Extracted, main document identified, processed\n\n---",
+    "17": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#3a-template-files]\n\n## 3a. Template Files\n\nThe system uses **input template files** to improve evaluation accuracy by providing AI with the original template for comparison.\n\n**Template Storage:**\n\n- **Location**: `resources/templates/`\n- **Format**: Markdown files (.md) - text-based for easy parsing and AI comparison\n- **Files**:\n    - `arb-input-template.md` - ARB submission template\n    - `crb-input-template.md` - CRB submission template\n\n**Template Syncing:**\n\nTemplates are synced from the repository root during build:\n\n- **Source**: `<repo-root>/resources/work-templates/assets/governance/`\n- **Destination**: `<service>/resources/templates/`\n- **Build script**: `_helpers/build.py` copies latest markdown templates\n- **Versioning**: Template version extracted from `Template Version` field in the Project Information table\n\n**Template Version Validation:**\n\nThe system enforces that all submissions use the **latest template version**:\n\n1. **Version Extraction**:\n   - Submitted document: Version parsed from `Template Version` field in the Project Information table\n   - Current template: Version read from `Template Version` field in latest template file in `resources/templates/`\n\n2. **Version Enforcement** (Step 2a):\n   - **Match**: Submission proceeds to AI evaluation\n   - **Mismatch**: Submission immediately rejected with HTTP 400\n   - **Error message**: \"This document uses template version {old}. Current template version is {new}. Please download the latest template and resubmit.\"\n\n3. **Rationale**:\n   - Ensures all submissions evaluated against current standards\n   - Prevents evaluation of documents with outdated sections or criteria\n   - Avoids user rework after AI evaluation discovers missing required sections\n   - Saves AI costs by rejecting outdated submissions before evaluation\n\n4. **User Workflow**:\n   - Download latest template from governance portal\n   - Migrate content from old version to new version\n   - Resubmit with current template\n   - Immediate feedback prevents wasted effort on outdated templates\n\n**Benefits of Template Inclusion:**\n\n1. **Completeness Detection**: Identifies sections left blank or unchanged from template\n2. **Placeholder Detection**: Catches placeholder text not replaced (e.g., \"[INSERT PROJECT NAME]\")\n3. **Boilerplate Detection**: Flags example text copied without customization\n4. **Minimal Effort Detection**: Identifies lazy submissions with minimal actual content\n5. **Context Understanding**: AI understands which text was instructional vs. actual submission\n\n**Cost Impact:**\n\n- Additional ~2,000-3,000 tokens per review\n- Cost increase: ~$0.05-0.10 per review (30-40% increase)\n- ROI: Prevents incomplete documents from reaching human reviewers\n\n**Implementation:**\n\nSee `src/core/evaluation_engine.py:_load_template_content()` for markdown template loading logic.\n\n---",
+    "18": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#4-required-json-output-format]\n\n## 4. Required JSON Output Format\n\nThe AI model is instructed to return JSON in this exact structure:\n\n```json\n{\n    \"dimension_scores\": [\n        {\n            \"name\": \"dimension_name\",\n            \"score\": 0-100,\n            \"weight\": dimension_weight,\n            \"rationale\": \"detailed explanation of score\"\n        }\n    ],\n    \"summary\": \"executive summary of evaluation\",\n    \"recommendations\": [\"recommendation 1\", \"recommendation 2\"],\n    \"findings\": [\n        {\n            \"severity\": \"critical|high|medium|low|info\",\n            \"category\": \"technical|business|compliance|security|quality|documentation\",\n            \"title\": \"short finding title\",\n            \"description\": \"detailed finding description\",\n            \"location\": {\n                \"section\": \"section name\",\n                \"page\": page_number\n            },\n            \"recommendation\": \"specific recommendation to address this finding\",\n            \"is_blocker\": true_or_false\n        }\n    ],\n    \"confidence_score\": 0-100\n}\n```",
+    "19": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#output-field-descriptions]\n\n### Output Field Descriptions\n\n**dimension_scores**: Array of scores for each dimension\n\n- `name`: Exact dimension name from template\n- `score`: 0-100 score for this dimension\n- `weight`: Weight from template (for validation)\n- `rationale`: Detailed explanation of why this score was given\n\n**summary**: Executive summary of the entire evaluation (string)\n\n**recommendations**: Array of actionable recommendations to improve the document\n\n**findings**: Array of specific issues found in the document\n\n- `severity`: Criticality level (critical, high, medium, low, info)\n- `category`: Issue type (technical, business, compliance, security, quality, documentation)\n- `title`: Short, descriptive title\n- `description`: Detailed explanation of the issue\n- `location`: Where in the document this issue was found\n    - `section`: Section name (optional)\n    - `page`: Page number (optional)\n- `recommendation`: Specific action to resolve this finding\n- `is_blocker`: Whether this must be fixed before approval\n\n**confidence_score**: 0-100 indicating the AI model's confidence in the evaluation\n\n---",
+    "20": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#5-complete-example-prompt]\n\n## 5. Complete Example Prompt\n\nHere's what a complete prompt looks like for an ARB review:\n\n```\nYou are an expert document reviewer for arb governance reviews.\n\n**Evaluation Criteria:**\n- Project Information Completeness\n- Executive Summary Quality and Context\n- Architecture Design Completeness (System, Data, Infrastructure, Security, Integration)\n- Technical Standards Compliance\n- Risk Assessment and Quality Attributes\n- Operational Readiness\n- Timeline and Resource Planning\n- Security and Regulatory Compliance\n\n**Scoring Dimensions:**\n\nProject Information & Completeness (Weight: 0.1):\n- Completeness and accuracy of project metadata, team information, and key dates\n- Criteria:\n  * Project name and organization clearly identified\n  * Solution Architect, Technical Lead, and Business Sponsor names and contacts provided\n  * Submission date and target implementation date specified\n  * CRB approval date and reference number included (if applicable)\n  * All required project metadata fields populated\n\nExecutive Summary & Context (Weight: 0.1):\n- Quality and clarity of project overview and solution architecture summary\n- Criteria:\n  * Clear project overview describing purpose, scope, and expected business outcomes\n  * Reference to approved CRB concept with explanation of any changes\n  * High-level summary of final solution architecture\n  * Key architectural decisions and technologies clearly articulated\n  * Sufficient detail to understand project context (minimum 300 words)\n\nArchitecture Design (Weight: 0.3):\n- Completeness and quality of architecture design across all domains\n- Criteria:\n  * System architecture clearly documented with component diagrams\n  * Data architecture includes data flow and storage design\n  * Infrastructure architecture specifies deployment and scaling approach\n  * Security architecture addresses authentication, authorization, and data protection\n  * Integration architecture defines APIs and external system connections\n\nRisk & Quality Assessment (Weight: 0.2):\n- Identification and mitigation of technical and business risks\n- Criteria:\n  * Key technical risks identified with severity ratings\n  * Mitigation strategies defined for critical risks\n  * Quality attributes addressed (performance, reliability, scalability)\n  * Non-functional requirements clearly specified\n\nOperational Readiness (Weight: 0.15):\n- Preparation for production deployment and operations\n- Criteria:\n  * Deployment strategy documented\n  * Monitoring and alerting approach defined\n  * Backup and disaster recovery plans included\n  * Operational runbooks or procedures outlined\n\nTimeline & Resources (Weight: 0.08):\n- Project timeline and resource allocation\n- Criteria:\n  * Implementation timeline with key milestones\n  * Resource requirements identified\n  * Dependencies and critical path documented\n\nCompliance & Standards (Weight: 0.07):\n- Adherence to security, regulatory, and technical standards\n- Criteria:\n  * Security compliance requirements addressed (HIPAA, SOC2, etc.)\n  * Regulatory requirements documented\n  * Technical standards compliance verified\n\n**Pass Threshold:** 75%\n\n**Task:**\nEvaluate the following document against the criteria above. Provide a comprehensive assessment in JSON format.\n\n**Document to Review:**\n---\n[Full document text appears here]\n---\n\n**Required JSON Output Format:**\n{\n    \"dimension_scores\": [\n        {\n            \"name\": \"dimension_name\",\n            \"score\": 0-100,\n            \"weight\": dimension_weight,\n            \"rationale\": \"detailed explanation of score\"\n        }\n    ],\n    \"summary\": \"executive summary of evaluation\",\n    \"recommendations\": [\"recommendation 1\", \"recommendation 2\"],\n    \"findings\": [\n        {\n            \"severity\": \"critical|high|medium|low|info\",\n            \"category\": \"technical|business|compliance|security|quality|documentation\",\n            \"title\": \"short finding title\",\n            \"description\": \"detailed finding description\",\n            \"location\": {\n                \"section\": \"section name\",\n                \"page\": page_number\n            },\n            \"recommendation\": \"specific recommendation to address this finding\",\n            \"is_blocker\": true_or_false\n        }\n    ],\n    \"confidence_score\": 0-100\n}\n\nProvide a thorough, objective evaluation with specific examples from the document.\n```\n\n---",
+    "21": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#6-model-configuration]\n\n## 6. Model Configuration\n\n**Current Model:** `anthropic.claude-3-5-sonnet-20240620-v1:0` (configurable via `AI_MODEL_ID`)\n\n**Parameters:**\n\n- `temperature`: 0.3 (low for consistency)\n- `max_tokens`: 16,000 (configurable via `AI_MODEL_MAX_TOKENS`)\n- `anthropic_version`: \"bedrock-2023-05-31\" (may vary by model)\n\n**Request Structure (Multi-Modal):**\n\n```json\n{\n    \"anthropic_version\": \"bedrock-2023-05-31\",\n    \"max_tokens\": 50000,\n    \"temperature\": 0.3,\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\"type\": \"text\", \"text\": \"{system_prompt}\\n\\n{user_prompt}\"},\n                {\"type\": \"text\", \"text\": \"[Diagram: Business Process Workflow — From section: 'Conceptual Approach'; Expected: Business Process Workflow Diagram]\"},\n                {\"type\": \"image\", \"source\": {\"type\": \"base64\", \"media_type\": \"image/png\", \"data\": \"...\"}},\n                {\"type\": \"text\", \"text\": \"[Diagram: C4 Context — From section: 'Conceptual Approach'; Expected: C4 Level 1 — Context]\"},\n                {\"type\": \"image\", \"source\": {\"type\": \"base64\", \"media_type\": \"image/png\", \"data\": \"...\"}},\n                {\"type\": \"text\", \"text\": \"\\n\\nRespond with valid JSON only.\"}\n            ]\n        }\n    ]\n}\n```\n\nWhen no images are present, the content field contains a single text block (backward compatible).\n\n---",
+    "22": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#7-response-processing]\n\n## 7. Response Processing",
+    "23": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#71-parse-response]\n\n### 7.1 Parse Response\n\nLocation: `src/core/evaluation_engine.py:200-299`\n\n1. **Parse JSON** from AI model's response\n   - Direct JSON parsing\n   - Fallback: Extract from markdown code blocks (```json...```)\n\n2. **Validate Dimension Scores**\n   - Match dimension names to template\n   - Apply weights from template\n   - Clamp scores to 0-100 range\n\n3. **Calculate Overall Score and Pass/Fail**\n   - `total_weighted_score = sum(dimension.score * dimension.weight)`\n   - `overall_score = total_weighted_score / sum(weights)`\n   - Clamp to 0-100\n   - **Check if ALL dimensions pass their individual thresholds**:\n     - ARB: Each dimension must score ≥80\n     - CRB: Each dimension must score ≥70\n   - **Check if overall weighted score meets threshold**\n   - **Document PASSES only if**:\n     - ALL individual dimensions meet threshold AND\n     - Overall weighted score meets threshold\n   - **Document FAILS if**:\n     - ANY dimension is below threshold OR\n     - Overall weighted score is below threshold\n\n4. **Parse Findings**\n   - Map severity strings to enums (CRITICAL, HIGH, MEDIUM, LOW, INFO)\n   - Map category strings to enums (TECHNICAL, BUSINESS, COMPLIANCE, SECURITY, QUALITY, DOCUMENTATION)\n   - Extract location information\n   - Flag blockers\n\n5. **Extract Metadata**\n   - Summary text\n   - Recommendations array\n   - Confidence score (0-100)",
+    "24": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#72-cache-result]\n\n### 7.2 Cache Result\n\nLocation: `src/core/evaluation_engine.py:99-125`\n\n- **Cache Key:** `hash(document_content) + template_id`\n- **Storage:** Redis with TTL\n- **Purpose:** Avoid redundant Bedrock API calls for same document",
+    "25": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#73-return-structure]\n\n### 7.3 Return Structure\n\n```python\n{\n    \"dimension_scores\": [ScoreDimension, ...],  # 7 for ARB, 6 for CRB\n    \"overall_score\": int,                       # 0-100\n    \"passed\": bool,                             # True if >= threshold\n    \"summary\": str,                             # Executive summary\n    \"recommendations\": [str, ...],              # Improvement suggestions\n    \"findings\": [Finding, ...],                 # Specific issues\n    \"confidence_score\": float,                  # 0-100\n    \"cached\": bool                              # Whether from cache\n}\n```\n\n---",
+    "26": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#8-cost--performance]\n\n## 8. Cost & Performance",
+    "27": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#81-typical-request-size]\n\n### 8.1 Typical Request Size\n\n- **Prompt tokens:** 2,500-3,500 (template + criteria + instructions)\n- **Document tokens:** 500-5,000 (varies by document length)\n- **Image tokens:** ~1,000-5,000 per image (varies by resolution; typically 3-7 images per submission)\n- **Total input:** 3,000-40,000 tokens (text + images)",
+    "28": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#82-typical-response-size]\n\n### 8.2 Typical Response Size\n\n- **Output tokens:** 1,500-3,000 (JSON evaluation)",
+    "29": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#83-cost-per-review]\n\n### 8.3 Cost per Review\n\nBased on current model pricing (may vary by model):\n\n- **Input:** $0.003 per 1K tokens (example)\n- **Output:** $0.015 per 1K tokens (example)\n- **Image input:** Counted as tokens based on resolution (~1,000-5,000 tokens per image)\n- **Typical cost:** $0.25-0.60 per review (includes template comparison + diagram images, varies by model and image count)",
+    "30": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#84-response-time]\n\n### 8.4 Response Time\n\n- **Bedrock API:** 25-35 seconds\n- **Document processing:** 1-2 seconds\n- **Database operations:** <1 second\n- **Total:** 30-45 seconds per review",
+    "31": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#85-cache-performance]\n\n### 8.5 Cache Performance\n\n- **Cache hit rate:** 80%+ for templates and prompts\n- **Cache hit savings:** 100% of Bedrock cost\n- **Cache storage:** Redis with 24-hour TTL\n\n---",
+    "32": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#9-error-handling]\n\n## 9. Error Handling",
+    "33": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#91-json-parsing-failures]\n\n### 9.1 JSON Parsing Failures\n\nIf the AI model returns invalid JSON:\n\n1. Attempt to extract JSON from markdown code blocks\n2. Retry with more explicit JSON-only instruction\n3. Maximum 3 retries\n4. Fallback: Return error to user",
+    "34": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#92-missing-dimensions]\n\n### 9.2 Missing Dimensions\n\nIf the AI model omits dimensions:\n\n- Use template default scores (0)\n- Log warning\n- Continue processing",
+    "35": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#93-invalid-scores]\n\n### 9.3 Invalid Scores\n\nIf scores outside 0-100 range:\n\n- Clamp to valid range\n- Log warning\n- Continue processing",
+    "36": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#94-bedrock-api-errors]\n\n### 9.4 Bedrock API Errors\n\n- **Timeout:** 120 seconds (configurable)\n- **Retries:** Up to 3 attempts with exponential backoff\n- **Throttling:** Handled by boto3 with backoff\n- **Auth failures:** Propagate to user\n\n---",
+    "37": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#10-special-handling-missing-markers]\n\n## 10. Special Handling: \"MISSING\" Markers\n\nThe service detects when documents lack required information and marks sections as \"MISSING\":",
+    "38": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#101-detection]\n\n### 10.1 Detection\n\nLocation: `src/core/document_processor.py`\n\nChecks for placeholder text patterns:\n\n- \"MISSING\" (case-insensitive)\n- \"[Project name not provided]\"\n- \"[To be determined]\"\n- Empty values in key fields",
+    "39": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#102-impact-on-scoring]\n\n### 10.2 Impact on Scoring\n\nThe AI model is instructed to:\n\n- Score missing sections lower\n- Flag MISSING items in findings\n- Note in rationale when information is absent\n- Provide specific recommendation to populate",
+    "40": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#103-example-finding-for-missing-content]\n\n### 10.3 Example Finding for MISSING Content\n\n```json\n{\n    \"severity\": \"high\",\n    \"category\": \"documentation\",\n    \"title\": \"Missing Project Information\",\n    \"description\": \"Project name field contains placeholder text 'MISSING'\",\n    \"location\": {\n        \"section\": \"Project Information\"\n    },\n    \"recommendation\": \"Provide actual project name before submission\",\n    \"is_blocker\": true\n}\n```\n\n---",
+    "41": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#11-mock-mode-local-development]\n\n## 11. Mock Mode (Local Development)\n\nFor local testing without Bedrock access:\n\n**Flag:** `USE_MOCK_AI=true`\n\n**Mock Response:** Fixed evaluation with:\n\n- Overall score: 75\n- 4 dimensions with varied scores\n- Sample findings (medium and low severity)\n- Generic recommendations\n- All responses prefixed with `[MOCK]`\n\n**Purpose:** Test service logic without AWS credentials\n\n---",
+    "42": "[.tooling/components/apis/ai-gov-review-service/docs/ai-review-process.md#summary]\n\n## Summary\n\nThe AI review process follows a 10-step workflow (see **Process Flow** section above):\n\n1. **Document Submission** → User submits via API\n2. **Content Extraction** → Text + embedded images extracted from DOCX/MD/ZIP with section context\n3. **Cache Check** → Avoid redundant AI calls\n4. **Prompt Construction** → Build review-type specific prompt; enrich images with processing rule diagram context\n5. **AI Invocation** → Send multi-modal request (text + images) to AWS Bedrock (Claude Sonnet 4.5)\n6. **Response Validation** → Parse JSON, validate all dimensions\n7. **Cache Storage** → Save for future requests\n8. **Output Generation** → Create JSON, Markdown, DOCX, ZIP\n9. **Database Storage** → Persist review record\n10. **User Response** → Return scores, findings, recommendations\n\n**Critical Rule**: ALL scoring dimensions must individually meet threshold. Failure of any dimension = document rejection."
+  },
+  "coverage": {
+    "total_pages": 42,
+    "covered_pages": 42,
+    "sampled_pages": 42,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 42
+  }
+}

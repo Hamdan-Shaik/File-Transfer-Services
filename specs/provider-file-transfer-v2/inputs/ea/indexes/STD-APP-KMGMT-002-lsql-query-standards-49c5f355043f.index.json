@@ -1,0 +1,554 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "STD-APP-KMGMT-002: LSQL Query Standards (SQL-like Kafka Queries)",
+  "document_description": "This standard defines **recommended** practices for using Lenses.io SQL Engine (LSQL) to query Kafka topics using SQL-like syntax. LSQL enables developers to perform ad-hoc queries, data analysis, and troubleshooting on Kafka topics without writing custom consumer code.",
+  "total_pages": 58,
+  "tree": [
+    {
+      "title": "STD-APP-KMGMT-002: LSQL Query Standards (SQL-like Kafka Queries)",
+      "node_id": "std-app-kmgmt-002-lsql-query-standards-sql-like-kafka-queries",
+      "start_index": 1,
+      "end_index": 58,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Executive Summary",
+          "node_id": "executive-summary",
+          "start_index": 2,
+          "end_index": 5,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Key Requirements",
+              "node_id": "key-requirements",
+              "start_index": 3,
+              "end_index": 3,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Business Rationale",
+              "node_id": "business-rationale",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Compliance Level",
+              "node_id": "compliance-level",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 6,
+          "end_index": 6,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "1. Overview",
+          "node_id": "1-overview",
+          "start_index": 7,
+          "end_index": 10,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "1.1 Purpose",
+              "node_id": "11-purpose",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "1.2 Scope",
+              "node_id": "12-scope",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "1.3 Related Standards and ADRs",
+              "node_id": "13-related-standards-and-adrs",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "2. Requirements",
+          "node_id": "2-requirements",
+          "start_index": 11,
+          "end_index": 27,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "2.1 Recommended Requirements",
+              "node_id": "21-recommended-requirements",
+              "start_index": 12,
+              "end_index": 22,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "REQ-LENS-002-001: LSQL Query Access Controls",
+                  "node_id": "req-lens-002-001-lsql-query-access-controls",
+                  "start_index": 13,
+                  "end_index": 13,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-LENS-002-002: Authorized LSQL Use Cases",
+                  "node_id": "req-lens-002-002-authorized-lsql-use-cases",
+                  "start_index": 14,
+                  "end_index": 14,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-LENS-002-003: LSQL Query Syntax Guidelines",
+                  "node_id": "req-lens-002-003-lsql-query-syntax-guidelines",
+                  "start_index": 15,
+                  "end_index": 15,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-LENS-002-004: Query Performance Optimization",
+                  "node_id": "req-lens-002-004-query-performance-optimization",
+                  "start_index": 16,
+                  "end_index": 16,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-LENS-002-005: Query Audit Logging",
+                  "node_id": "req-lens-002-005-query-audit-logging",
+                  "start_index": 17,
+                  "end_index": 17,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-LENS-002-006: Query Templates Library",
+                  "node_id": "req-lens-002-006-query-templates-library",
+                  "start_index": 18,
+                  "end_index": 18,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-LENS-002-007: Query Rate Limiting",
+                  "node_id": "req-lens-002-007-query-rate-limiting",
+                  "start_index": 19,
+                  "end_index": 19,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-LENS-002-008: Query Result Export",
+                  "node_id": "req-lens-002-008-query-result-export",
+                  "start_index": 20,
+                  "end_index": 20,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-LENS-002-009: Query Error Handling",
+                  "node_id": "req-lens-002-009-query-error-handling",
+                  "start_index": 21,
+                  "end_index": 21,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-LENS-002-010: Developer Training and Documentation",
+                  "node_id": "req-lens-002-010-developer-training-and-documentation",
+                  "start_index": 22,
+                  "end_index": 22,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "2.2 Prohibited Practices",
+              "node_id": "22-prohibited-practices",
+              "start_index": 23,
+              "end_index": 23,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "2.3 Exceptions Process",
+              "node_id": "23-exceptions-process",
+              "start_index": 24,
+              "end_index": 27,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "When to Request an Exception",
+                  "node_id": "when-to-request-an-exception",
+                  "start_index": 25,
+                  "end_index": 25,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Exception Request Procedure",
+                  "node_id": "exception-request-procedure",
+                  "start_index": 26,
+                  "end_index": 26,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Monitoring and Review",
+                  "node_id": "monitoring-and-review",
+                  "start_index": 27,
+                  "end_index": 27,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "3. Technical Specifications",
+          "node_id": "3-technical-specifications",
+          "start_index": 28,
+          "end_index": 32,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "3.1 Platform Requirements",
+              "node_id": "31-platform-requirements",
+              "start_index": 29,
+              "end_index": 29,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "3.2 Architecture Constraints",
+              "node_id": "32-architecture-constraints",
+              "start_index": 30,
+              "end_index": 30,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "3.3 Technology Standards",
+              "node_id": "33-technology-standards",
+              "start_index": 31,
+              "end_index": 31,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "3.4 Configuration Specifications",
+              "node_id": "34-configuration-specifications",
+              "start_index": 32,
+              "end_index": 32,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "4. Implementation Guidance",
+          "node_id": "4-implementation-guidance",
+          "start_index": 33,
+          "end_index": 49,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "4.1 Getting Started with LSQL",
+              "node_id": "41-getting-started-with-lsql",
+              "start_index": 34,
+              "end_index": 38,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Step 1: Request LSQL Access",
+                  "node_id": "step-1-request-lsql-access",
+                  "start_index": 35,
+                  "end_index": 35,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 2: First LSQL Query",
+                  "node_id": "step-2-first-lsql-query",
+                  "start_index": 36,
+                  "end_index": 36,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 3: Explore Query Templates",
+                  "node_id": "step-3-explore-query-templates",
+                  "start_index": 37,
+                  "end_index": 37,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 4: Export Results",
+                  "node_id": "step-4-export-results",
+                  "start_index": 38,
+                  "end_index": 38,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "4.2 Troubleshooting LSQL Queries",
+              "node_id": "42-troubleshooting-lsql-queries",
+              "start_index": 39,
+              "end_index": 42,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Issue 1: Query Timeout",
+                  "node_id": "issue-1-query-timeout",
+                  "start_index": 40,
+                  "end_index": 40,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Issue 2: No Results Returned",
+                  "node_id": "issue-2-no-results-returned",
+                  "start_index": 41,
+                  "end_index": 41,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Issue 3: Access Denied",
+                  "node_id": "issue-3-access-denied",
+                  "start_index": 42,
+                  "end_index": 42,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "4.3 Validation Criteria",
+              "node_id": "43-validation-criteria",
+              "start_index": 43,
+              "end_index": 43,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.4 Testing Requirements",
+              "node_id": "44-testing-requirements",
+              "start_index": 44,
+              "end_index": 48,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Functional Testing",
+                  "node_id": "functional-testing",
+                  "start_index": 45,
+                  "end_index": 45,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Security Testing",
+                  "node_id": "security-testing",
+                  "start_index": 46,
+                  "end_index": 46,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Performance Testing",
+                  "node_id": "performance-testing",
+                  "start_index": 47,
+                  "end_index": 47,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "SQL Processor Testing (ARB-approved only)",
+                  "node_id": "sql-processor-testing-arb-approved-only",
+                  "start_index": 48,
+                  "end_index": 48,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "4.5 Documentation Requirements",
+              "node_id": "45-documentation-requirements",
+              "start_index": 49,
+              "end_index": 49,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "5. Compliance and Governance",
+          "node_id": "5-compliance-and-governance",
+          "start_index": 50,
+          "end_index": 53,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "5.1 Validation Checklist",
+              "node_id": "51-validation-checklist",
+              "start_index": 51,
+              "end_index": 51,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "5.2 Architecture Review",
+              "node_id": "52-architecture-review",
+              "start_index": 52,
+              "end_index": 52,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "5.3 Governance Oversight",
+              "node_id": "53-governance-oversight",
+              "start_index": 53,
+              "end_index": 53,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "6. References",
+          "node_id": "6-references",
+          "start_index": 54,
+          "end_index": 56,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "6.1 Related Documentation",
+              "node_id": "61-related-documentation",
+              "start_index": 55,
+              "end_index": 55,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "6.2 External Resources",
+              "node_id": "62-external-resources",
+              "start_index": 56,
+              "end_index": 56,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "7. Change History",
+          "node_id": "7-change-history",
+          "start_index": 57,
+          "end_index": 57,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "8. Review Log",
+          "node_id": "8-review-log",
+          "start_index": 58,
+          "end_index": 58,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#std-app-kmgmt-002-lsql-query-standards-sql-like-kafka-queries]\n\n# STD-APP-KMGMT-002: LSQL Query Standards (SQL-like Kafka Queries)\n\n**[Home](../../../README.md)** > **[Standards](../../README.md)** > **[Application](../README.md)** > **[Kafka Management](README.md)** > **STD-APP-KMGMT-002**\n\n---\n\n---",
+    "2": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#executive-summary]\n\n## Executive Summary\n\nThis standard defines **recommended** practices for using Lenses.io SQL Engine (LSQL) to query Kafka topics using SQL-like syntax. LSQL enables developers to perform ad-hoc queries, data analysis, and troubleshooting on Kafka topics without writing custom consumer code.",
+    "3": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#key-requirements]\n\n### Key Requirements\n\n- **Query Access Controls**: RBAC-based access with row limits and timeouts\n- **Authorized Use Cases**: Debugging, data analysis, ad-hoc reporting, troubleshooting\n- **Query Optimization**: Partition filtering, time windowing, result limits\n- **Performance Guidelines**: Query best practices to prevent cluster impact\n- **Audit Logging**: All queries logged with user ID and execution metrics\n- **Data Masking Integration**: Automatic PHI/PII masking in query results",
+    "4": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#business-rationale]\n\n### Business Rationale\n\nLSQL queries provide significant value for:\n- Rapid debugging without writing custom consumer applications\n- Ad-hoc data analysis for business intelligence and reporting\n- Reduced development time for one-time data investigations\n- Self-service analytics for technical teams\n- Troubleshooting production issues with SQL-familiar syntax",
+    "5": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#compliance-level]\n\n### Compliance Level\n\n**Recommended (Phase 2)** - Implementation scheduled for Month 4-5 per ADR-IFR-008. Teams with advanced Kafka debugging needs should prioritize adoption.\n\n---",
+    "6": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#table-of-contents]\n\n## Table of Contents\n\n- [1. Overview](#1-overview)\n- [2. Requirements](#2-requirements)\n- [3. Technical Specifications](#3-technical-specifications)\n- [4. Implementation Guidance](#4-implementation-guidance)\n- [5. Compliance and Governance](#5-compliance-and-governance)\n- [6. References](#6-references)\n- [7. Change History](#7-change-history)\n- [8. Review Log](#8-review-log)\n\n---",
+    "7": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#1-overview]\n\n## 1. Overview",
+    "8": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#11-purpose]\n\n### 1.1 Purpose\n\nThis standard defines recommended requirements for using Lenses.io SQL Engine (LSQL) to query Kafka topics with SQL-like syntax per [ADR-IFR-008](../../../decisions/infrastructure/ADR-IFR-008-kafka-management-platform-selection.md).",
+    "9": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#12-scope]\n\n### 1.2 Scope\n\n**In Scope**:\n- LSQL query syntax guidelines (SELECT, WHERE, JOIN, aggregations)\n- Performance optimization (query limits, windowing)\n- Authorized use cases (debugging, data analysis, troubleshooting)\n- Query access controls (read-only, no data mutation)\n- Query audit logging\n- Query templates and examples\n\n**Out of Scope**:\n- Data transformation jobs (use Kafka Streams or Flink)\n- Production data pipelines (queries are for debugging only)\n- Administrative queries (handled by Platform Engineering)",
+    "10": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#13-related-standards-and-adrs]\n\n### 1.3 Related Standards and ADRs\n\nThis standard implements infrastructure patterns:\n- [PTN-INFRA-EVTMON-001: Infrastructure Event Monitoring Pattern](../../../patterns/infrastructure/event-driven/PTN-INFRA-EVT-003-infrastructure-event-monitoring-pattern.md)\n\nRelated standards:\n- [STD-APP-KMGMT-001: Topic Browser Access](STD-APP-KMGMT-001-topic-browser-access.md) - Message browsing\n- [ADR-IFR-008: Kafka Management Platform Selection](../../../decisions/infrastructure/ADR-IFR-008-kafka-management-platform-selection.md)\n\n---",
+    "11": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#2-requirements]\n\n## 2. Requirements",
+    "12": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#21-recommended-requirements]\n\n### 2.1 Recommended Requirements",
+    "13": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#req-lens-002-001-lsql-query-access-controls]\n\n#### REQ-LENS-002-001: LSQL Query Access Controls\n\n**Status**: Recommended (Phase 2)\n**Rationale**: Prevent unauthorized data access\n\n**Access Controls**:\n- **Developer Role**: Can query non-production topics only\n- **Production Developer Role**: Can query production topics (read-only)\n- **Platform Admin Role**: Can query all topics + create processors\n- Query result limit: Max 10,000 rows per query\n- Query timeout: Max 60 seconds\n\n**Implementation**:\n```yaml\n# Placeholder: LSQL access controls\nlenses.security.sql:\n  enabled: true\n  roles:\n    Developer:\n      allowed.topics: \"dev-*, staging-*\"\n      max.rows: 10000\n      timeout.seconds: 60\n      processors.enabled: false\n    ProductionDeveloper:\n      allowed.topics: \"*\"\n      max.rows: 10000\n      timeout.seconds: 60\n      processors.enabled: false\n    PlatformAdmin:\n      allowed.topics: \"*\"\n      max.rows: 50000\n      timeout.seconds: 300\n      processors.enabled: true\n# TODO: Add RBAC configuration\n```",
+    "14": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#req-lens-002-002-authorized-lsql-use-cases]\n\n#### REQ-LENS-002-002: Authorized LSQL Use Cases\n\n**Status**: Recommended (Phase 2)\n**Rationale**: Define appropriate query scenarios\n\n**Authorized Use Cases**:\n1. **Debugging**: Query messages to troubleshoot data quality issues\n2. **Data Analysis**: Analyze message patterns during incidents\n3. **Exploratory Analysis**: Understand data structure before building consumers\n4. **Troubleshooting**: Investigate consumer lag or missing messages\n5. **Schema Validation**: Verify schema evolution changes\n\n**Unauthorized Use Cases**:\n- Production data pipelines (use Kafka Streams/Flink instead)\n- Data exports to external systems (use dedicated ETL jobs)\n- Real-time alerting (use Lenses.io alerting instead)\n- Data mutation (LSQL is read-only)\n\n**Implementation**:\n```markdown\n# TODO: Add use case documentation in Confluence\n```",
+    "15": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#req-lens-002-003-lsql-query-syntax-guidelines]\n\n#### REQ-LENS-002-003: LSQL Query Syntax Guidelines\n\n**Status**: Recommended (Phase 2)\n**Rationale**: Standardize query patterns\n\n**Query Syntax**:\n```sql\n-- ✅ GOOD: Simple SELECT with WHERE clause\nSELECT claimId, memberId, claimAmount\nFROM medicaid.claims.submitted.v1\nWHERE claimAmount > 1000\nLIMIT 100;\n\n-- ✅ GOOD: Windowing (last 1 hour)\nSELECT COUNT(*) as message_count\nFROM medicaid.claims.submitted.v1\nWHERE _timestamp > NOW() - INTERVAL 1 HOUR;\n\n-- ✅ GOOD: JOIN two topics\nSELECT c.claimId, m.memberName\nFROM medicaid.claims.submitted.v1 c\nJOIN medicaid.members.v1 m\n  ON c.memberId = m.memberId\nLIMIT 100;\n\n-- ❌ BAD: No LIMIT (can return millions of rows)\nSELECT * FROM medicaid.claims.submitted.v1;\n\n-- ❌ BAD: No WHERE clause on large topic\nSELECT * FROM medicaid.claims.submitted.v1 LIMIT 100;  -- Scans entire topic\n\n-- ❌ BAD: Complex aggregations without windowing\nSELECT claimType, SUM(claimAmount) FROM medicaid.claims.submitted.v1 GROUP BY claimType;\n```\n\n**Implementation**:\n```sql\n-- Placeholder: LSQL query templates\n-- TODO: Add query template library in Lenses.io\n```",
+    "16": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#req-lens-002-004-query-performance-optimization]\n\n#### REQ-LENS-002-004: Query Performance Optimization\n\n**Status**: Recommended (Phase 2)\n**Rationale**: Prevent query timeouts and resource exhaustion\n\n**Optimization Guidelines**:\n1. **Always use LIMIT**: Default LIMIT 100, max LIMIT 10000\n2. **Use time-based filters**: `WHERE _timestamp > NOW() - INTERVAL 1 HOUR`\n3. **Use partition filters**: `WHERE _partition IN (0, 1, 2)`\n4. **Avoid SELECT ***: Specify columns explicitly\n5. **Use AVRO/Protobuf topics**: Faster deserialization than JSON\n\n**Performance Metrics**:\n- Query latency: <10 seconds (p95)\n- Query success rate: >95%\n- Query timeout rate: <5%\n\n**Implementation**:\n```python\n# Placeholder: Query performance monitoring\ndef monitor_lsql_query_performance():\n    \"\"\"Monitor LSQL query performance metrics\"\"\"\n    queries = get_recent_lsql_queries(hours=1)\n\n    latencies = [q['duration_ms'] for q in queries]\n    p95_latency = np.percentile(latencies, 95)\n\n    success_rate = len([q for q in queries if q['status'] == 'SUCCESS']) / len(queries)\n    timeout_rate = len([q for q in queries if q['status'] == 'TIMEOUT']) / len(queries)\n\n    if p95_latency > 10000:\n        send_alert(f\"⚠️ LSQL p95 latency high: {p95_latency}ms\")\n\n    if success_rate < 0.95:\n        send_alert(f\"⚠️ LSQL success rate low: {success_rate*100:.1f}%\")\n\n    return {\n        'p95_latency_ms': p95_latency,\n        'success_rate': success_rate,\n        'timeout_rate': timeout_rate\n    }\n# TODO: Add query performance monitoring\n```",
+    "17": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#req-lens-002-005-query-audit-logging]\n\n#### REQ-LENS-002-005: Query Audit Logging\n\n**Status**: Recommended (Phase 2)\n**Rationale**: Track who ran what queries (especially PHI access)\n\n**Logged Information**:\n- User executing query (email, IP address)\n- Query text (SQL statement)\n- Target topics (which topics queried)\n- Execution timestamp\n- Query duration\n- Rows returned\n- PHI accessed (if querying topics with PHI)\n\n**Audit Log Retention**: 90 days in Lenses.io, 7 years in S3 (see STD-INFRA-KMGMT-012)\n\n**Implementation**:\n```json\n// Placeholder: LSQL query audit log\n{\n  \"timestamp\": \"2026-01-19T14:30:00.123Z\",\n  \"event_type\": \"LSQL_QUERY\",\n  \"user\": {\n    \"id\": \"developer@company.com\",\n    \"ip_address\": \"10.0.1.50\"\n  },\n  \"query\": \"SELECT * FROM medicaid.claims.submitted.v1 WHERE claimAmount > 1000 LIMIT 100\",\n  \"topics\": [\"medicaid.claims.submitted.v1\"],\n  \"duration_ms\": 2350,\n  \"rows_returned\": 100,\n  \"phi_accessed\": true,\n  \"status\": \"SUCCESS\"\n}\n// TODO: Add audit logging\n```",
+    "18": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#req-lens-002-006-query-templates-library]\n\n#### REQ-LENS-002-006: Query Templates Library\n\n**Status**: Recommended (Phase 2)\n**Rationale**: Accelerate common query patterns\n\n**Template Categories**:\n1. **Debugging Templates**: Find messages by ID, find recent errors\n2. **Data Quality Templates**: Check for null fields, validate schema\n3. **Performance Templates**: Analyze message volume, check partition distribution\n4. **Troubleshooting Templates**: Investigate consumer lag, find duplicate messages\n\n**Example Templates**:\n```sql\n-- Template: Find messages by key\nSELECT *\nFROM {topic_name}\nWHERE _key = '{message_key}'\nLIMIT 10;\n\n-- Template: Find recent errors\nSELECT *\nFROM {topic_name}\nWHERE errorCode IS NOT NULL\n  AND _timestamp > NOW() - INTERVAL 1 HOUR\nLIMIT 100;\n\n-- Template: Check message volume by hour\nSELECT DATE_FORMAT(_timestamp, 'yyyy-MM-dd HH:00') as hour,\n       COUNT(*) as message_count\nFROM {topic_name}\nWHERE _timestamp > NOW() - INTERVAL 24 HOUR\nGROUP BY DATE_FORMAT(_timestamp, 'yyyy-MM-dd HH:00')\nORDER BY hour DESC;\n```\n\n**Implementation**:\n```yaml\n# Placeholder: Query template library\n# TODO: Add templates to Lenses.io UI\n```",
+    "19": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#req-lens-002-007-query-rate-limiting]\n\n#### REQ-LENS-002-007: Query Rate Limiting\n\n**Status**: Recommended (Phase 2)\n**Rationale**: Prevent resource exhaustion from runaway queries\n\n**Rate Limits**:\n- Max 10 concurrent queries per user\n- Max 100 queries per user per hour\n- Max 1000 queries per user per day\n- Query queue depth: 50 (queries beyond this rejected)\n\n**Throttling Behavior**:\n- If limit exceeded → Return 429 Too Many Requests\n- User notified via Lenses.io UI toast message\n- Platform Engineering alerted if sustained high query volume\n\n**Implementation**:\n```yaml\n# Placeholder: LSQL rate limiting\nlenses.sql.rate.limiting:\n  enabled: true\n  per.user:\n    max.concurrent.queries: 10\n    max.queries.per.hour: 100\n    max.queries.per.day: 1000\n  global:\n    max.queue.depth: 50\n# TODO: Add rate limiting configuration\n```",
+    "20": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#req-lens-002-008-query-result-export]\n\n#### REQ-LENS-002-008: Query Result Export\n\n**Status**: Recommended (Phase 2)\n**Rationale**: Enable data sharing for analysis\n\n**Export Formats**:\n- CSV (recommended for Excel)\n- JSON (recommended for programmatic access)\n- Avro (recommended for schema-aware tools)\n\n**Export Limitations**:\n- Max 10,000 rows per export\n- Max 3 exports per user per day\n- Exported data automatically masked (PHI/PII per STD-INFRA-KMGMT-010)\n\n**Implementation**:\n```python\n# Placeholder: Query result export\ndef export_query_results(query, export_format='csv'):\n    \"\"\"Export LSQL query results to CSV/JSON/Avro\"\"\"\n    # 1. Execute query\n    results = execute_lsql_query(query, limit=10000)\n\n    # 2. Apply data masking\n    masked_results = apply_data_masking(results, mask_phi=True)\n\n    # 3. Export to format\n    if export_format == 'csv':\n        export_to_csv(masked_results, filename='query_results.csv')\n    elif export_format == 'json':\n        export_to_json(masked_results, filename='query_results.json')\n    elif export_format == 'avro':\n        export_to_avro(masked_results, filename='query_results.avro')\n\n    # 4. Log export event\n    log_audit_event('LSQL_EXPORT', user=current_user, query=query, rows=len(masked_results))\n# TODO: Add export functionality\n```",
+    "21": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#req-lens-002-009-query-error-handling]\n\n#### REQ-LENS-002-009: Query Error Handling\n\n**Status**: Recommended (Phase 2)\n**Rationale**: Provide helpful error messages\n\n**Common Errors**:\n1. **Syntax Error**: Invalid SQL syntax → Show SQL parser error with line number\n2. **Timeout**: Query exceeded 60 seconds → Suggest adding time filters\n3. **Access Denied**: User lacks permissions → Show required role\n4. **Topic Not Found**: Invalid topic name → Show list of available topics\n5. **Schema Error**: Deserialization failed → Show schema mismatch details\n\n**Implementation**:\n```python\n# Placeholder: Query error handling\ndef execute_lsql_query_with_error_handling(query):\n    \"\"\"Execute LSQL query with user-friendly error handling\"\"\"\n    try:\n        results = lenses_client.execute_sql(query)\n        return results\n    except SqlSyntaxError as e:\n        raise UserFacingError(f\"SQL syntax error at line {e.line}: {e.message}\")\n    except QueryTimeoutError:\n        raise UserFacingError(\"Query timed out after 60 seconds. Try adding a WHERE clause with time filter.\")\n    except AccessDeniedError as e:\n        raise UserFacingError(f\"Access denied to topic {e.topic}. Required role: Production Developer\")\n    except TopicNotFoundError as e:\n        available_topics = get_available_topics(current_user)\n        raise UserFacingError(f\"Topic {e.topic} not found. Available topics: {', '.join(available_topics[:10])}\")\n    except SchemaDeserializationError as e:\n        raise UserFacingError(f\"Schema error: {e.message}. Check schema version compatibility.\")\n# TODO: Add error handling\n```",
+    "22": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#req-lens-002-010-developer-training-and-documentation]\n\n#### REQ-LENS-002-010: Developer Training and Documentation\n\n**Status**: Recommended (Phase 2)\n**Rationale**: Ensure effective query usage\n\n**Training Materials**:\n- LSQL syntax guide (Confluence)\n- Query template library (Lenses.io UI)\n- Video tutorial: \"Querying Kafka with LSQL\" (15 minutes)\n- Office hours: Weekly LSQL Q&A session (Fridays 2 PM ET)\n\n**Documentation**:\n- LSQL reference documentation (Confluence)\n- Query performance tuning guide\n- Common query patterns cookbook\n- Troubleshooting guide\n\n**Implementation**:\n```markdown\n# TODO: Create training materials in Confluence\n# TODO: Schedule weekly LSQL office hours\n```",
+    "23": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#22-prohibited-practices]\n\n### 2.2 Prohibited Practices\n\nThe following practices are **explicitly prohibited** when using LSQL queries:\n\n1. **Using LSQL for Production Data Pipelines**\n   - LSQL is for ad-hoc analysis and debugging only, not production data processing\n   - Production pipelines must use Kafka Streams, Flink, or approved ETL tools\n   - LSQL queries are not designed for continuous processing or guaranteed delivery\n   - Use STD-APP-EVT-001 (Kafka Consumers) for production event processing\n\n2. **Executing Queries Without Row Limits**\n   - All queries must include `LIMIT` clause or use default row limits\n   - Unbounded queries can overload Kafka brokers and Lenses.io platform\n   - Maximum allowed: 10,000 rows for developers, 50,000 for admins\n   - For large datasets, use proper data export tools or batch processing\n\n3. **Creating SQL Processors Without Architecture Review**\n   - SQL Processors create persistent Kafka topics and consume cluster resources\n   - All processors require Architecture Review Board approval\n   - Processors must have monitoring, alerting, and operational runbooks\n   - Development testing must occur in non-production clusters\n\n4. **Querying PHI/PII Topics Without Data Masking**\n   - All PHI/PII queries must use data masking (enforced by Lenses.io)\n   - Attempting to bypass masking violates HIPAA compliance\n   - Request unmasked access only through formal exception process\n   - Export of unmasked PHI/PII data prohibited without security approval\n\n5. **Sharing Query Results Containing Sensitive Data**\n   - Query result screenshots must NOT contain PHI/PII\n   - Sanitize data before sharing in Slack, Teams, email, or documentation\n   - Use test data for training materials and examples\n   - Audit logs track all query executions and result access\n\n6. **Using LSQL for Real-Time Monitoring**\n   - LSQL is not designed for continuous monitoring or alerting\n   - Real-time monitoring requires proper observability tools (Datadog, CloudWatch)\n   - Polling queries create unnecessary load on Kafka clusters\n   - Use STD-IFR-MON-001 for production monitoring requirements",
+    "24": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#23-exceptions-process]\n\n### 2.3 Exceptions Process",
+    "25": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#when-to-request-an-exception]\n\n#### When to Request an Exception\n\nExceptions may be granted for:\n- **SQL Processor Creation**: Approved use cases requiring persistent stream processing\n- **Increased Row Limits**: Data analysis requiring >10,000 rows (temporary)\n- **Unmasked PHI/PII Access**: Production debugging requiring unmasked data (temporary)\n- **Cross-Environment Queries**: Valid business need to query multiple Kafka clusters",
+    "26": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#exception-request-procedure]\n\n#### Exception Request Procedure\n\n1. **Submit ServiceNow Request**:\n   - Category: \"LSQL Query Exception Request\"\n   - Include: Business justification, duration, performance impact assessment, alternative approaches considered\n\n2. **Provide Technical Justification**:\n   - Explain why standard LSQL capabilities insufficient\n   - Document expected query frequency and resource consumption\n   - Provide query execution plan and performance estimates\n   - Specify exact topics, time ranges, and data volumes\n\n3. **Architecture Review** (for SQL Processors):\n   - Platform Engineering reviews processor design and resource requirements\n   - Architecture team validates alignment with integration patterns\n   - Performance team assesses cluster impact and capacity planning\n   - Security reviews data access and compliance implications\n\n4. **Approval Authority**:\n   - **Temporary Exceptions (<30 days)**: Platform Engineering Manager\n   - **Increased Row Limits**: Platform Engineering Manager + Application Architect\n   - **SQL Processors**: Architecture Review Board + Platform Engineering Director\n   - **Unmasked PHI/PII Access**: CISO + Data Privacy Officer + Legal (requires ADR)",
+    "27": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#monitoring-and-review]\n\n#### Monitoring and Review\n\n- All active exceptions tracked in LSQL governance dashboard\n- Monthly exception review by Platform Engineering team\n- SQL Processor performance monitored with alerting thresholds\n- Exceptions automatically expire unless renewed with justification\n- Compliance violations result in immediate query access revocation\n\n---",
+    "28": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#3-technical-specifications]\n\n## 3. Technical Specifications",
+    "29": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#31-platform-requirements]\n\n### 3.1 Platform Requirements\n\n**Lenses.io SQL Engine Configuration**:\n\n| Component | Requirement | Version | Configuration |\n|-----------|-------------|---------|---------------|\n| **Lenses.io Platform** | Enterprise Edition with SQL Engine | ≥ 5.0 | SQL execution engine enabled |\n| **SQL Parser** | ANSI SQL compatible | Built-in | Supports SELECT, JOIN, WHERE, GROUP BY, aggregations |\n| **Kafka Cluster** | AWS MSK or Confluent | 3.x | Compatible with Kafka 2.8+ |\n| **Schema Registry** | AWS Glue Schema Registry | Latest | Required for Avro deserialization |\n| **Query Engine** | Distributed query executor | Built-in | Supports parallel partition scanning |",
+    "30": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#32-architecture-constraints]\n\n### 3.2 Architecture Constraints\n\n**LSQL Query Architecture**:\n- All queries execute within Lenses.io platform (no direct Kafka access)\n- Query engine creates temporary Kafka consumers for data retrieval\n- Results streamed to UI or API client (no persistent storage)\n- Data masking applied at query execution time before result rendering\n- Query execution isolated per user session (no shared state)\n\n**Performance Constraints**:\n- Maximum 50 concurrent LSQL queries per cluster\n- Query timeout: 60 seconds (developers), 300 seconds (admins)\n- Row limits: 10,000 (developers), 50,000 (admins)\n- SQL Processors limited to 10 per cluster (prevents resource exhaustion)\n- Partition scanning: Parallel queries limited to 100 partitions\n\n**Security Constraints**:\n- All queries subject to RBAC topic access controls\n- PHI/PII topics automatically masked in query results\n- Query execution logged with user ID, SQL text, execution time\n- SQL injection prevention via parameterized queries\n- No DDL operations (CREATE, ALTER, DROP) allowed for developers",
+    "31": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#33-technology-standards]\n\n### 3.3 Technology Standards\n\n**LSQL Syntax Support**:\n\n```yaml\nlenses:\n  sql:\n    enabled: true\n\n    # Query execution limits\n    execution:\n      max-concurrent-queries: 50\n      default-timeout: \"60s\"\n      max-timeout: \"300s\"\n      default-row-limit: 10000\n      max-row-limit: 50000\n\n    # Supported SQL operations\n    operations:\n      select: true\n      where: true\n      join: true\n      group-by: true\n      order-by: true\n      aggregations: [\"COUNT\", \"SUM\", \"AVG\", \"MIN\", \"MAX\"]\n      windowing: true\n\n      # Prohibited operations\n      insert: false\n      update: false\n      delete: false\n      create: false  # Processors require ARB approval\n\n    # Access controls\n    rbac:\n      enabled: true\n      roles:\n        Developer:\n          topics: \"scope:{business_unit}.*\"\n          row-limit: 10000\n          timeout: \"60s\"\n          processors: false\n\n        ProductionDeveloper:\n          topics: \"prod:{business_unit}.*\"\n          row-limit: 10000\n          timeout: \"60s\"\n          processors: false\n\n        PlatformAdmin:\n          topics: \"*\"\n          row-limit: 50000\n          timeout: \"300s\"\n          processors: true\n\n    # Data masking integration\n    data-masking:\n      enabled: true\n      apply-to-queries: true\n      policies:\n        - name: \"pii-phi-masking\"\n          topics: [\"medicaid.*\", \"claims.*\", \"patient.*\"]\n          fields: [\"ssn\", \"patient_name\", \"dob\", \"phone\", \"email\"]\n\n    # Audit logging\n    audit:\n      enabled: true\n      log-all-queries: true\n      include-sql-text: true\n      include-result-count: true\n      retention-days: 90\n```",
+    "32": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#34-configuration-specifications]\n\n### 3.4 Configuration Specifications\n\n**Query Optimization Settings**:\n\n```sql\n-- Connection configuration\nSET 'auto.offset.reset' = 'latest';  -- Start from latest messages\nSET 'max.poll.records' = '1000';     -- Batch size per poll\n\n-- Query execution hints\nSET 'query.timeout' = '60s';         -- Per-query timeout\nSET 'query.row.limit' = '10000';     -- Result row limit\nSET 'query.partition.parallelism' = '10';  -- Parallel partition scans\n```\n\n**SQL Processor Configuration** (requires ARB approval):\n\n```sql\n-- Create streaming processor (persistent query)\nCREATE STREAM enriched_claims AS\n  SELECT\n    c.claim_id,\n    c.amount,\n    p.patient_name,\n    pr.provider_name,\n    SYSTEM_TIME() as processed_at\n  FROM claims c\n  LEFT JOIN patients p ON c.patient_id = p.patient_id\n  LEFT JOIN providers pr ON c.provider_id = pr.provider_id\n  WHERE c.status = 'SUBMITTED'\n  EMIT CHANGES;\n\n-- Processor configuration\n{\n  \"name\": \"enriched_claims_processor\",\n  \"parallelism\": 4,\n  \"state-store\": \"rocksdb\",\n  \"changelog-enabled\": true,\n  \"exactly-once\": true,\n  \"resources\": {\n    \"cpu\": \"2 cores\",\n    \"memory\": \"4 GB\"\n  }\n}\n```\n\n---",
+    "33": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#4-implementation-guidance]\n\n## 4. Implementation Guidance",
+    "34": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#41-getting-started-with-lsql]\n\n### 4.1 Getting Started with LSQL",
+    "35": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#step-1-request-lsql-access]\n\n#### Step 1: Request LSQL Access\n\n1. Submit access request: ServiceNow ticket\n2. Specify role: Developer or Production Developer\n3. Approval: Manager + Platform Engineering\n4. Access provisioned within 1 business day",
+    "36": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#step-2-first-lsql-query]\n\n#### Step 2: First LSQL Query\n\n1. Log in to Lenses.io: https://lenses.prod.company.com\n2. Navigate to SQL tab\n3. Select topic from dropdown\n4. Run sample query:\n   ```sql\n   SELECT * FROM dev.test.topic.v1 LIMIT 10;\n   ```\n5. View results in table format",
+    "37": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#step-3-explore-query-templates]\n\n#### Step 3: Explore Query Templates\n\n1. Click \"Templates\" button in SQL editor\n2. Browse templates by category (Debugging, Data Quality, Performance)\n3. Select template → Populate parameters\n4. Run query",
+    "38": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#step-4-export-results]\n\n#### Step 4: Export Results\n\n1. Execute query\n2. Click \"Export\" button\n3. Select format (CSV, JSON, Avro)\n4. Download file",
+    "39": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#42-troubleshooting-lsql-queries]\n\n### 4.2 Troubleshooting LSQL Queries",
+    "40": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#issue-1-query-timeout]\n\n#### Issue 1: Query Timeout\n\n**Symptoms**: Query runs for 60 seconds and times out\n\n**Resolution**:\n1. Add time-based filter: `WHERE _timestamp > NOW() - INTERVAL 1 HOUR`\n2. Add partition filter: `WHERE _partition = 0`\n3. Reduce LIMIT: `LIMIT 100` instead of `LIMIT 10000`\n4. Verify topic has indexes (Lenses.io automatically indexes by `_timestamp`)",
+    "41": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#issue-2-no-results-returned]\n\n#### Issue 2: No Results Returned\n\n**Symptoms**: Query succeeds but returns 0 rows\n\n**Resolution**:\n1. Check WHERE clause (might be too restrictive)\n2. Verify topic has messages: `SELECT COUNT(*) FROM topic`\n3. Check time filter (might be outside message retention window)\n4. Verify field names (case-sensitive)",
+    "42": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#issue-3-access-denied]\n\n#### Issue 3: Access Denied\n\n**Symptoms**: \"Access denied to topic xyz\"\n\n**Resolution**:\n1. Verify you have required role (Developer or Production Developer)\n2. Check topic naming pattern (Developer role can only access `dev-*` and `staging-*`)\n3. Request Production Developer role if accessing production topics\n4. Contact Platform Engineering if role assignment unclear",
+    "43": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#43-validation-criteria]\n\n### 4.3 Validation Criteria\n\nAll LSQL query implementations must be validated against the following criteria:\n\n| Validation Area | Criteria | Verification Method | Evidence Required |\n|----------------|----------|---------------------|-------------------|\n| **Access Control** | • RBAC roles configured correctly<br>• Topic access scoped by business unit<br>• Row limits enforced (10K/50K)<br>• Query timeout enforced (60s/300s) | • Role assignment verification<br>• Access control testing<br>• Limit enforcement testing<br>• Timeout testing | • RBAC configuration<br>• Access test results<br>• Limit test logs<br>• Timeout test results |\n| **Query Performance** | • Queries complete within timeout<br>• Partition filtering used appropriately<br>• Result limits specified<br>• No full table scans on large topics | • Performance benchmarking<br>• Query execution plan review<br>• Load testing<br>• Query optimization audit | • Performance metrics<br>• Execution plans<br>• Load test results<br>• Query audit logs |\n| **Data Masking** | • PHI/PII fields masked in results<br>• Masking policy applied correctly<br>• No masking bypass mechanisms<br>• Masked fields clearly indicated | • Query PHI/PII topics<br>• Verify masking patterns<br>• Attempt bypass (should fail)<br>• UI masking indicators | • Masked query results<br>• Masking policy config<br>• Bypass test results<br>• UI screenshots |\n| **Audit Logging** | • All queries logged with user ID<br>• SQL text captured<br>• Execution time recorded<br>• Result row count logged | • Audit log review<br>• Log completeness check<br>• Log retention verification<br>• Query correlation | • Sample audit logs<br>• Log schema documentation<br>• Retention policy<br>• Query audit trail |\n| **SQL Processor Governance** | • Processors require ARB approval<br>• Resource limits configured<br>• Monitoring and alerting enabled<br>• Operational runbook exists | • ARB approval verification<br>• Resource configuration review<br>• Monitoring validation<br>• Runbook review | • ARB approval records<br>• Processor configuration<br>• Monitoring dashboards<br>• Runbook documentation |\n| **Query Syntax** | • Valid ANSI SQL syntax<br>• Supported operations only (SELECT, WHERE, JOIN)<br>• No prohibited DDL operations<br>• Proper error handling | • Syntax validation testing<br>• Operation restriction tests<br>• DDL attempt (should fail)<br>• Error message validation | • Syntax test results<br>• Operation test logs<br>• DDL rejection logs<br>• Error message samples |\n| **Training & Documentation** | • LSQL guide published<br>• Query template library available<br>• Video tutorials accessible<br>• Office hours scheduled | • Documentation review<br>• Template library validation<br>• Tutorial accessibility check<br>• Office hours calendar | • Published documentation<br>• Template library link<br>• Tutorial recordings<br>• Office hours schedule |",
+    "44": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#44-testing-requirements]\n\n### 4.4 Testing Requirements",
+    "45": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#functional-testing]\n\n#### Functional Testing\n\n- [ ] **Authentication Test**: Verify SSO login and role assignment\n- [ ] **Query Execution Test**: Execute sample queries on test topics\n- [ ] **Access Control Test**: Verify business unit topic scoping\n- [ ] **Row Limit Test**: Validate 10,000 row limit enforcement\n- [ ] **Timeout Test**: Confirm 60-second query timeout\n- [ ] **Data Masking Test**: Verify PHI/PII field masking\n- [ ] **JOIN Test**: Execute JOIN queries across multiple topics\n- [ ] **Aggregation Test**: Test COUNT, SUM, AVG, MIN, MAX functions\n- [ ] **Window Function Test**: Validate TUMBLING and HOPPING windows",
+    "46": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#security-testing]\n\n#### Security Testing\n\n- [ ] **Authorization Test**: Attempt unauthorized topic access (should fail)\n- [ ] **SQL Injection Test**: Test SQL injection prevention\n- [ ] **DDL Prevention Test**: Attempt CREATE/DROP operations (should fail)\n- [ ] **Masking Bypass Test**: Attempt to bypass data masking (should fail)\n- [ ] **Audit Logging Test**: Verify all queries logged with user context",
+    "47": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#performance-testing]\n\n#### Performance Testing\n\n- [ ] **Query Latency Test**: Benchmark query response times\n- [ ] **Large Result Set Test**: Query with 10,000+ rows\n- [ ] **Concurrent Query Test**: Execute 50 concurrent queries\n- [ ] **Partition Scan Test**: Query topics with 100+ partitions\n- [ ] **Timeout Enforcement Test**: Execute long-running query (>60s)",
+    "48": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#sql-processor-testing-arb-approved-only]\n\n#### SQL Processor Testing (ARB-approved only)\n\n- [ ] **Processor Creation Test**: Deploy test SQL processor\n- [ ] **State Management Test**: Verify stateful operations (JOINs, aggregations)\n- [ ] **Failure Recovery Test**: Test processor recovery after failure\n- [ ] **Performance Impact Test**: Measure cluster resource consumption\n- [ ] **Monitoring Test**: Validate processor metrics and alerting",
+    "49": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#45-documentation-requirements]\n\n### 4.5 Documentation Requirements\n\nThe following documentation must be maintained for LSQL compliance:\n\n**1. LSQL Access Control Documentation**\n- RBAC role definitions (Developer, ProductionDeveloper, PlatformAdmin)\n- Topic access scoping rules per business unit\n- Query row limits and timeout configurations\n- Exception approval records\n\n**2. Query Template Library**\n- Common query patterns (aggregations, JOINs, time windows)\n- Performance-optimized query examples\n- Anti-patterns to avoid\n- Use case cookbook (debugging, analysis, reporting)\n\n**3. SQL Processor Documentation** (ARB-approved processors only)\n- Processor purpose and business justification\n- Resource allocation (CPU, memory, partitions)\n- State store configuration (RocksDB settings)\n- Monitoring and alerting thresholds\n- Operational runbook (start, stop, recovery procedures)\n- Performance benchmarks and capacity planning\n\n**4. Performance Tuning Guide**\n- Partition filtering best practices\n- Query optimization techniques\n- Result limit recommendations\n- Time windowing strategies\n- Index usage (if available)\n\n**5. Developer Training Materials**\n- LSQL syntax quick reference guide\n- Video tutorials (<15 minutes each)\n- Office hours Q&A archive\n- FAQ document\n- Troubleshooting guide\n\n**6. Audit and Compliance Documentation**\n- Audit log format and schema\n- Query execution reports\n- Exception tracking dashboard\n- Compliance metrics (query counts, errors, violations)\n- PHI/PII access audit trail\n\nAll documentation must be:\n- Stored in Confluence (Enterprise Architecture / Kafka Management / LSQL)\n- Version controlled (track major query pattern updates)\n- Reviewed quarterly by Platform Engineering and Application Architecture\n- Updated within 10 business days of configuration or policy changes\n\n---",
+    "50": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#5-compliance-and-governance]\n\n## 5. Compliance and Governance",
+    "51": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#51-validation-checklist]\n\n### 5.1 Validation Checklist\n\n- [ ] LSQL query access controls configured (Developer, Production Developer, Platform Admin roles)\n- [ ] Authorized use cases documented (debugging, data analysis, troubleshooting)\n- [ ] LSQL query syntax guidelines published (query templates, optimization tips)\n- [ ] Query performance optimization enabled (LIMIT, time filters, partition filters)\n- [ ] Query audit logging configured (90-day retention, 7-year archive)\n- [ ] Query templates library created (≥10 templates across debugging, data quality, performance)\n- [ ] Query rate limiting configured (10 concurrent, 100/hour, 1000/day per user)\n- [ ] Query result export enabled (CSV, JSON, Avro formats, max 10K rows)\n- [ ] Query error handling implemented (user-friendly error messages)\n- [ ] Developer training materials published (syntax guide, video tutorial, office hours)",
+    "52": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#52-architecture-review]\n\n### 5.2 Architecture Review\n\nSubmit to Architecture Review if:\n- Expanding LSQL use beyond debugging (e.g., production data pipelines)\n- Increasing query result limits (>10K rows)\n- Creating LSQL processors (stream processing jobs)",
+    "53": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#53-governance-oversight]\n\n### 5.3 Governance Oversight\n\n**Standards Owner**: Platform Engineering Team\n- Responsible for maintaining and evolving this LSQL query standard\n- Reviews and approves query template library updates\n- Conducts quarterly standard effectiveness reviews\n- Provides technical guidance and clarifications on LSQL usage\n- Manages LSQL platform configuration and performance tuning\n\n**Compliance Manager**: Application Architecture Team\n- Monitors organizational compliance with LSQL query standards\n- Tracks compliance metrics (query patterns, performance, violations)\n- Conducts monthly audits of LSQL query usage patterns and audit logs\n- Escalates misuse patterns or performance issues to Platform Engineering\n- Reviews exception requests for increased limits or SQL processors\n\n**Governance Body**: Architecture Review Board (ARB)\n- Provides oversight and policy direction for LSQL usage and governance\n- Approves SQL Processor creation requests (persistent stream processing)\n- Reviews standard compliance metrics quarterly\n- Approves major standard revisions and new LSQL use cases\n- Evaluates LSQL platform capacity and resource allocation\n\n**Subject Matter Experts**: Data Platform & Developer Experience Teams\n- Provides technical guidance on LSQL query optimization and best practices\n- Supports developers with complex query design and troubleshooting\n- Develops and maintains query template library and training materials\n- Participates in standard reviews and usability improvements\n- Conducts LSQL office hours and training sessions\n\n**Review Frequency**: This standard shall be reviewed:\n- Monthly: Usage metrics, query performance, and exception tracking by Compliance Manager\n- Quarterly: Technical accuracy, query patterns, and template library by SMEs and Standards Owner\n- Annually: Comprehensive effectiveness review by ARB including developer feedback and ROI analysis\n\n**Contact Information**:\n- Platform Engineering (LSQL Support): kafka-support@company.com\n- Application Architecture (Compliance): application-architecture@company.com\n- ARB Exception Requests (SQL Processors): arb-requests@company.com\n- Data Platform Team (Query Optimization): data-platform@company.com\n\n---",
+    "54": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#6-references]\n\n## 6. References",
+    "55": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#61-related-documentation]\n\n### 6.1 Related Documentation\n\n- [STD-APP-KMGMT-001: Topic Browser Access](STD-APP-KMGMT-001-topic-browser-access.md) - Message browsing\n- [STD-INFRA-KMGMT-012: Audit Logging](../../infrastructure/kafka-management/STD-INFRA-KMGMT-012-audit-logging.md) - Audit log retention\n- [ADR-IFR-008: Kafka Management Platform Selection](../../../decisions/infrastructure/ADR-IFR-008-kafka-management-platform-selection.md)",
+    "56": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#62-external-resources]\n\n### 6.2 External Resources\n\n- [Lenses.io SQL Engine Documentation](https://docs.lenses.io/5.0/sql/)\n- [LSQL Syntax Reference](https://docs.lenses.io/5.0/sql/syntax/)\n\n---",
+    "57": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#7-change-history]\n\n## 7. Change History\n\n| Date       | Version | Author | Description               | Impact              |\n| ---------- | ------- | ------ | ------------------------- | ------------------- |\n| 2026-01-19 | 1.0.0   | EAP    | Initial standard creation | New standard        |\n\n---",
+    "58": "[standards/application/kafka-management/STD-APP-KMGMT-002-lsql-query-standards.md#8-review-log]\n\n## 8. Review Log\n\n| Review Date | Review Type        | Reviewer(s) | Status | Comments | Actions |\n| ----------- | ------------------ | ----------- | ------ | -------- | ------- |\n| 2026-01-19  | Initial Draft      | EAP         | Draft  | Created  | Pending Platform Engineering review |\n| 2026-01-20  | Quality Assurance Review | Standards Compliance | Completed | Comprehensive compliance review: added Executive Summary, metadata YAML, Prohibited Practices, Exceptions Process, Technical Specifications, Validation Criteria, Testing Requirements, Documentation Requirements, and Governance Oversight sections. All template sections now present. Ready for stakeholder review. | Forward to Platform Engineering and Application Architecture teams for technical review |\n\n---\n\n*This standard is part of the Enterprise Architecture Practice (EAP) Reference Architecture.*\n*For questions or feedback, contact the [Platform Engineering Team](mailto:kafka-support@company.com).*"
+  },
+  "coverage": {
+    "total_pages": 58,
+    "covered_pages": 58,
+    "sampled_pages": 58,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 58
+  }
+}

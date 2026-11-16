@@ -1,0 +1,156 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Adding a New Review Type",
+  "document_description": "Step-by-step guide for adding a new review type to the AI Reviewer service.",
+  "total_pages": 15,
+  "tree": [
+    {
+      "title": "Adding a New Review Type",
+      "node_id": "adding-a-new-review-type",
+      "start_index": 1,
+      "end_index": 15,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Files to Modify",
+          "node_id": "files-to-modify",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Step 1: Add the ReviewType Enum",
+          "node_id": "step-1-add-the-reviewtype-enum",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Step 2: Create Processing Rules",
+          "node_id": "step-2-create-processing-rules",
+          "start_index": 4,
+          "end_index": 8,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Required Sections",
+              "node_id": "required-sections",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Section Mapping",
+              "node_id": "section-mapping",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Diagram Evaluation",
+              "node_id": "diagram-evaluation",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Optional: Cross-Section Consistency Checks",
+              "node_id": "optional-cross-section-consistency-checks",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Step 3: Add Frontend Review Type",
+          "node_id": "step-3-add-frontend-review-type",
+          "start_index": 9,
+          "end_index": 9,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Step 4: Update Cache Invalidation",
+          "node_id": "step-4-update-cache-invalidation",
+          "start_index": 10,
+          "end_index": 10,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Step 5: Create Requirements Doc",
+          "node_id": "step-5-create-requirements-doc",
+          "start_index": 11,
+          "end_index": 11,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Step 6: Update the Review Types README",
+          "node_id": "step-6-update-the-review-types-readme",
+          "start_index": 12,
+          "end_index": 12,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "How Rules Are Loaded at Runtime",
+          "node_id": "how-rules-are-loaded-at-runtime",
+          "start_index": 13,
+          "end_index": 13,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Testing a New Review Type",
+          "node_id": "testing-a-new-review-type",
+          "start_index": 14,
+          "end_index": 14,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Checklist",
+          "node_id": "checklist",
+          "start_index": 15,
+          "end_index": 15,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[.tooling/components/apis/ai-gov-review-service/docs/review-types/adding-a-new-review-type.md#adding-a-new-review-type]\n\n# Adding a New Review Type\n\nStep-by-step guide for adding a new review type to the AI Reviewer service.\n\n---",
+    "2": "[.tooling/components/apis/ai-gov-review-service/docs/review-types/adding-a-new-review-type.md#files-to-modify]\n\n## Files to Modify\n\n| # | File | Change |\n| --- | --- | --- |\n| 1 | `src/models/review.py` | Add enum value to `ReviewType` |\n| 2 | `resources/processing-rules/{type}-rules.json` | Create processing rules (evaluation + output) |\n| 3 | `reviewer.js` (mkdocs frontend) | Add entry to `REVIEW_TYPES` object |\n| 4 | `reviewer.js` (mkdocs frontend) | Add option to filter dropdown |\n| 5 | `src/services/rules_service.py` | Add type to cache invalidation list |\n| 6 | `docs/review-types/{type}-requirements.md` | Create human-readable reference doc |\n| 7 | `docs/review-types/README.md` | Add row to review types table |\n\n---",
+    "3": "[.tooling/components/apis/ai-gov-review-service/docs/review-types/adding-a-new-review-type.md#step-1-add-the-reviewtype-enum]\n\n## Step 1: Add the ReviewType Enum\n\n**File:** `src/models/review.py`\n\n```python\nclass ReviewType(str, Enum):\n    ARB = \"ARB\"\n    CRB = \"CRB\"\n    SCR = \"SCR\"\n    NEW = \"NEW\"  # Add your new type here\n```\n\nThe enum value is used for API validation, database storage, and S3 key paths. Use a short uppercase abbreviation (3-4 characters).\n\n---",
+    "4": "[.tooling/components/apis/ai-gov-review-service/docs/review-types/adding-a-new-review-type.md#step-2-create-processing-rules]\n\n## Step 2: Create Processing Rules\n\n**File:** `resources/processing-rules/{type}-rules.json`\n\nThis is the most important file — it defines how the AI evaluates submissions and populates output documents. Copy an existing rules file as a starting point.",
+    "5": "[.tooling/components/apis/ai-gov-review-service/docs/review-types/adding-a-new-review-type.md#required-sections]\n\n### Required Sections\n\n```json\n{\n    \"version\": \"1.0.0\",\n    \"template_type\": \"new\",\n    \"description\": \"Processing rules for ...\",\n\n    \"evaluation_rules\": {\n        \"general_instructions\": [...],\n        \"section_mapping\": [...],\n        \"diagram_evaluation\": {\n            \"enabled\": true,\n            \"instructions\": [...],\n            \"required_diagrams\": [...]\n        }\n    },\n\n    \"output_population_rules\": {\n        \"general_instructions\": [...],\n        \"overall_decision\": { \"instructions\": [...] },\n        \"scored_sections\": { \"instructions\": [...] },\n        \"conditions_and_requirements\": { \"instructions\": [...] },\n        \"cleanup\": { \"instructions\": [...] }\n    }\n}\n```",
+    "6": "[.tooling/components/apis/ai-gov-review-service/docs/review-types/adding-a-new-review-type.md#section-mapping]\n\n### Section Mapping\n\nEach entry maps an input document section to a scoring dimension and output location:\n\n```json\n{\n    \"input_section\": \"Human-readable name\",\n    \"input_heading\": \"3. Exact Heading From Template\",\n    \"scoring_dimension\": \"Dimension Name (appears in scores)\",\n    \"output_section\": \"3. Output Template Heading\",\n    \"output_subsections\": [\"Sub-Review 1\", \"Sub-Review 2\"]\n}\n```",
+    "7": "[.tooling/components/apis/ai-gov-review-service/docs/review-types/adding-a-new-review-type.md#diagram-evaluation]\n\n### Diagram Evaluation\n\nDefine required diagrams with evaluation criteria:\n\n```json\n{\n    \"name\": \"Diagram Name\",\n    \"expected_in_section\": \"Section where it should appear\",\n    \"type_description\": \"What this diagram should show (helps AI identify wrong diagram types)\",\n    \"evaluation_criteria\": [\n        \"Specific thing to check 1\",\n        \"Specific thing to check 2\"\n    ]\n}\n```",
+    "8": "[.tooling/components/apis/ai-gov-review-service/docs/review-types/adding-a-new-review-type.md#optional-cross-section-consistency-checks]\n\n### Optional: Cross-Section Consistency Checks\n\nFor reviews where sections must be internally consistent (like SCR), add:\n\n```json\n\"cross_section_consistency_checks\": [\n    {\n        \"check\": \"short_key\",\n        \"description\": \"Human-readable description\",\n        \"rules\": [\"Rule 1\", \"Rule 2\"]\n    }\n]\n```\n\n---",
+    "9": "[.tooling/components/apis/ai-gov-review-service/docs/review-types/adding-a-new-review-type.md#step-3-add-frontend-review-type]\n\n## Step 3: Add Frontend Review Type\n\n**File:** `.tooling/components/apps/mkdocs-platform/mkdocs/docs/ai-reviewer/reviewer.js`\n\nAdd an entry to the `REVIEW_TYPES` object:\n\n```javascript\nNEW: {\n    label: 'NEW — Full Name Here',\n    shortLabel: 'NEW',\n    description: 'One-sentence description of what this review evaluates.',\n    document: {\n        label: 'Input Document Name',\n        accept: '.docx,.md',\n        hint: 'Word (.docx) or Markdown (.md)',\n    },\n    requiredDiagrams: [\n        { type: 'diagram-key', label: 'Human-Readable Diagram Name' },\n    ],\n    optionalDiagrams: [\n        { type: 'optional-key', label: 'Optional Diagram Name' },\n    ],\n},\n```\n\nAlso add the filter option for the history view:\n\n```javascript\ntypeSelect.appendChild(\n    el('option', { value: 'NEW', selected: filterType === 'NEW' ? '' : undefined }, 'NEW'),\n);\n```\n\n---",
+    "10": "[.tooling/components/apis/ai-gov-review-service/docs/review-types/adding-a-new-review-type.md#step-4-update-cache-invalidation]\n\n## Step 4: Update Cache Invalidation\n\n**File:** `src/services/rules_service.py`\n\nAdd the new type to the `invalidate_cache` method:\n\n```python\nfor t in (\"arb\", \"crb\", \"scr\", \"new\"):\n    cache_key = f\"{RULES_CACHE_PREFIX}:{t}\"\n    await self.cache.delete(cache_key)\n```\n\n---",
+    "11": "[.tooling/components/apis/ai-gov-review-service/docs/review-types/adding-a-new-review-type.md#step-5-create-requirements-doc]\n\n## Step 5: Create Requirements Doc\n\n**File:** `docs/review-types/{type}-requirements.md`\n\nFollow the pattern of existing docs (see `crb-requirements.md`). Include:\n\n- Quick reference table (gate, dimensions, threshold)\n- Purpose statement\n- What it reviews / does NOT review\n- Expected content style and red flags\n- Scoring dimensions with weights\n- Required/optional diagrams\n- Pass/fail rules\n\n---",
+    "12": "[.tooling/components/apis/ai-gov-review-service/docs/review-types/adding-a-new-review-type.md#step-6-update-the-review-types-readme]\n\n## Step 6: Update the Review Types README\n\n**File:** `docs/review-types/README.md`\n\nAdd a row to the table:\n\n```markdown\n| [NEW](./new-requirements.md) | Gate X | Focus Area | N | 75% overall score |\n```\n\n---",
+    "13": "[.tooling/components/apis/ai-gov-review-service/docs/review-types/adding-a-new-review-type.md#how-rules-are-loaded-at-runtime]\n\n## How Rules Are Loaded at Runtime\n\nThe `RulesService` uses a cascading fallback to load rules:\n\n1. **Redis cache** (fastest, 1-hour TTL)\n2. **S3** (`processing-rules/{type}/latest/{type}-rules.json`) — primary source, synced by CI\n3. **Database** (`template.processing_rules` field) — seeded templates\n4. **Bundled JSON** (`resources/processing-rules/{type}-rules.json`) — fallback in container\n\nFor local development, the bundled JSON is used automatically. For deployed environments, the CI workflow syncs rules to S3.\n\n---",
+    "14": "[.tooling/components/apis/ai-gov-review-service/docs/review-types/adding-a-new-review-type.md#testing-a-new-review-type]\n\n## Testing a New Review Type\n\n1. **Unit test**: Verify the rules JSON is valid and parseable\n2. **Local test**: Submit a completed template document through the local dev environment\n3. **Verify scoring**: Check that all dimensions produce scores and findings are mapped correctly\n4. **Verify output**: Confirm the output document is properly populated\n5. **Verify diagrams**: Test with and without required diagrams to confirm evaluation works\n\n---",
+    "15": "[.tooling/components/apis/ai-gov-review-service/docs/review-types/adding-a-new-review-type.md#checklist]\n\n## Checklist\n\n- [ ] `ReviewType` enum updated\n- [ ] Processing rules JSON created and valid\n- [ ] Frontend `REVIEW_TYPES` entry added\n- [ ] Frontend filter dropdown updated\n- [ ] Cache invalidation updated\n- [ ] Requirements doc created\n- [ ] README table updated\n- [ ] Input template exists (in `resources/work-templates/`)\n- [ ] Output template exists (if applicable)\n- [ ] Tested locally with a sample submission"
+  },
+  "coverage": {
+    "total_pages": 15,
+    "covered_pages": 15,
+    "sampled_pages": 15,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 15
+  }
+}

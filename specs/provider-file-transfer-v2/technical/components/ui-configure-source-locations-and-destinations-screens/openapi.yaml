@@ -1,0 +1,451 @@
+﻿openapi: 3.0.3
+info:
+  title: FXFER UI BFF contract (configure source locations, destinations, FTP credentials, tracking)
+  version: 1.0.0
+  description: |
+    Browser-facing contract consumed by the `fxfer-mfe` screens in component `ui-configure-source-locations-and-destinations-screens`.
+
+    Errors are returned as RFC 7807 Problem Details (`application/problem+json`).
+
+x-no-auth-doc: true
+x-legacy-endpoints:
+  - GET /FileTransfer
+  - POST /FileTransfer
+  - POST /FileTransferSvcQueryService
+  - POST /FileTransferSvcService
+
+servers:
+  - url: /api/file-transfer/v1
+
+paths:
+  /source-locations/search:
+    post:
+      operationId: searchSourceLocations
+      summary: Search source locations (configuration search)
+      tags: [SourceLocations]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SourceLocationSearchRequest'
+      responses:
+        '200':
+          description: Search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SourceLocationSearchResponse'
+        default:
+          $ref: '#/components/responses/Problem'
+
+  /source-locations/{ftsSourceLocationId}:
+    get:
+      operationId: getSourceLocationConfiguration
+      summary: Get configuration details by source location id
+      tags: [SourceLocations]
+      parameters:
+        - in: path
+          name: ftsSourceLocationId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Configuration details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SourceLocationConfiguration'
+        default:
+          $ref: '#/components/responses/Problem'
+
+    put:
+      operationId: updateSourceLocation
+      summary: Update a source location configuration
+      tags: [SourceLocations]
+      parameters:
+        - in: path
+          name: ftsSourceLocationId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpsertSourceLocationRequest'
+      responses:
+        '200':
+          description: Update result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        default:
+          $ref: '#/components/responses/Problem'
+
+  /source-locations:
+    post:
+      operationId: addSourceLocation
+      summary: Add a new source location configuration
+      tags: [SourceLocations]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpsertSourceLocationRequest'
+      responses:
+        '200':
+          description: Add result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        default:
+          $ref: '#/components/responses/Problem'
+
+  /source-locations/{ftsSourceLocationId}:invalidate:
+    post:
+      operationId: invalidateSourceLocation
+      summary: Invalidate a source location configuration
+      tags: [SourceLocations]
+      parameters:
+        - in: path
+          name: ftsSourceLocationId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Invalidate result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        default:
+          $ref: '#/components/responses/Problem'
+
+  /ftp-servers/search:
+    post:
+      operationId: getFtpServers
+      summary: Search/list FTP servers
+      tags: [FtpServers]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FtpServerSearchRequest'
+      responses:
+        '200':
+          description: Search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FtpServerSearchResponse'
+        default:
+          $ref: '#/components/responses/Problem'
+
+  /ftp-servers:
+    post:
+      operationId: addFtpServer
+      summary: Add FTP server
+      tags: [FtpServers]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpsertFtpServerRequest'
+      responses:
+        '200':
+          description: Add result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        default:
+          $ref: '#/components/responses/Problem'
+
+  /ftp-servers/{ftpServerId}:
+    put:
+      operationId: updateFtpServer
+      summary: Update FTP server
+      tags: [FtpServers]
+      parameters:
+        - in: path
+          name: ftpServerId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpsertFtpServerRequest'
+      responses:
+        '200':
+          description: Update result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        default:
+          $ref: '#/components/responses/Problem'
+
+  /ftp-servers/{ftpServerId}:invalidate:
+    post:
+      operationId: invalidateFtpServer
+      summary: Invalidate FTP server
+      tags: [FtpServers]
+      parameters:
+        - in: path
+          name: ftpServerId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Invalidate result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        default:
+          $ref: '#/components/responses/Problem'
+
+  /tracking/movement/search:
+    post:
+      operationId: searchFileTransferMovement
+      summary: Search file transfer movement
+      tags: [Tracking]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FileTransferMovementSearchRequest'
+      responses:
+        '200':
+          description: Search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileTransferMovementSearchResponse'
+        default:
+          $ref: '#/components/responses/Problem'
+
+  /inbound-targets/search:
+    post:
+      operationId: searchInboundTargets
+      summary: Search inbound targets
+      tags: [InboundTargets]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InboundTargetSearchRequest'
+      responses:
+        '200':
+          description: Search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InboundTargetSearchResponse'
+        default:
+          $ref: '#/components/responses/Problem'
+
+components:
+  responses:
+    Problem:
+      description: Problem Details
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetails'
+
+  schemas:
+    ProblemDetails:
+      type: object
+      additionalProperties: true
+      properties:
+        type: { type: string }
+        title: { type: string }
+        status: { type: integer, format: int32 }
+        detail: { type: string }
+        instance: { type: string }
+        correlation_id: { type: string }
+
+    CommandResult:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Legacy-style status bucket (e.g., OK/Error) mapped into the BFF.
+        message:
+          type: string
+        data:
+          nullable: true
+          description: Command-specific payload.
+
+    SourceLocationSearchRequest:
+      type: object
+      properties:
+        configId: { type: string, nullable: true }
+        configName: { type: string, nullable: true }
+        ownerName: { type: string, nullable: true }
+        protocol: { type: string, nullable: true }
+        ownerSubsystem: { type: string, nullable: true }
+        isActive:
+          type: boolean
+          nullable: true
+          description: Matches legacy filter behavior.
+
+    SourceLocationSearchResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SourceLocationSummary'
+
+    SourceLocationSummary:
+      type: object
+      properties:
+        ftsSourceLocationId: { type: string }
+        configId: { type: integer, format: int32, nullable: true }
+        configName: { type: string, nullable: true }
+        ownerName: { type: string, nullable: true }
+        protocol: { type: string, nullable: true }
+        isActive: { type: boolean, nullable: true }
+
+    SourceLocationConfiguration:
+      type: object
+      properties:
+        ftsSourceLocationId: { type: string, nullable: true }
+        configName: { type: string, nullable: true }
+        description: { type: string, nullable: true }
+        protocolTypeId: { type: string, nullable: true }
+        ftpServerId: { type: string, nullable: true }
+        ftpServerName: { type: string, nullable: true }
+        sourceAddress: { type: string, nullable: true }
+        sourceFileMask: { type: string, nullable: true }
+        fileDirectionId: { type: string, nullable: true }
+        timeWindowStartId: { type: string, nullable: true }
+        timeWindowEndId: { type: string, nullable: true }
+        ownerSubsystemId: { type: string, nullable: true }
+        isActive: { type: boolean, nullable: true }
+        status: { type: string, nullable: true }
+        destinationDetails:
+          type: array
+          items:
+            $ref: '#/components/schemas/DestinationConfiguration'
+
+    DestinationConfiguration:
+      type: object
+      properties:
+        destinationLineNumber: { type: integer, format: int32, nullable: true }
+        destinationId: { type: string, nullable: true }
+        destinationAddress: { type: string, nullable: true }
+        destinationProtocolId: { type: string, nullable: true }
+        destinationTypeId: { type: string, nullable: true }
+        contractNameId: { type: string, nullable: true }
+        fteMetadataId: { type: string, nullable: true }
+        active: { type: boolean, nullable: true }
+        status: { type: string, nullable: true }
+        isAddedUpdated: { type: boolean, nullable: true }
+
+    UpsertSourceLocationRequest:
+      type: object
+      description: Flattened edit-modal payload.
+      properties:
+        configName: { type: string, nullable: true }
+        description: { type: string, nullable: true }
+        protocolTypeId: { type: string, nullable: true }
+        ftpServerId: { type: string, nullable: true }
+        sourceAddress: { type: string, nullable: true }
+        sourceFileMask: { type: string, nullable: true }
+        fileDirectionId: { type: string, nullable: true }
+        timeWindowStartId: { type: string, nullable: true }
+        timeWindowEndId: { type: string, nullable: true }
+        isActive: { type: boolean, nullable: true }
+        suspended: { type: boolean, nullable: true }
+        sendNotification: { type: boolean, nullable: true }
+        ownerSubsystemId: { type: string, nullable: true }
+        runScheduleId: { type: string, nullable: true }
+        runOnThisDayId: { type: string, nullable: true }
+        runOnFirstDay: { type: boolean, nullable: true }
+        runOnLastDay: { type: boolean, nullable: true }
+        runOnSunday: { type: boolean, nullable: true }
+        runOnMonday: { type: boolean, nullable: true }
+        runOnTuesday: { type: boolean, nullable: true }
+        runOnWednesday: { type: boolean, nullable: true }
+        runOnThursday: { type: boolean, nullable: true }
+        runOnFriday: { type: boolean, nullable: true }
+        runOnSaturday: { type: boolean, nullable: true }
+        destinationDetails:
+          type: array
+          items:
+            $ref: '#/components/schemas/DestinationConfiguration'
+
+    FtpServerSearchRequest:
+      type: object
+      properties:
+        isValid:
+          description: Legacy behavior uses either `true` or empty-string.
+          oneOf:
+            - type: boolean
+            - type: string
+          nullable: true
+        ftpServerNameContains: { type: string, nullable: true }
+
+    FtpServerSearchResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/FtpServerSummary'
+
+    FtpServerSummary:
+      type: object
+      properties:
+        ftpServerId: { type: string }
+        ftpServerName: { type: string, nullable: true }
+        ftpServerIp: { type: string, nullable: true }
+        isValid: { type: boolean, nullable: true }
+
+    UpsertFtpServerRequest:
+      type: object
+      properties:
+        ftpServerName: { type: string, nullable: true }
+        ftpDescription: { type: string, nullable: true }
+        ftpTransferMode: { type: string, nullable: true }
+        ftpServerIp: { type: string, nullable: true }
+        ftpPort: { type: string, nullable: true }
+        ftpProxyAddress: { type: string, nullable: true }
+        ftpProxyPort: { type: string, nullable: true }
+        ftpUser: { type: string, nullable: true }
+        ftpPassword: { type: string, nullable: true }
+        ftpPasswordConfirmation: { type: string, nullable: true }
+
+    FileTransferMovementSearchRequest:
+      type: object
+      additionalProperties: true
+
+    FileTransferMovementSearchResponse:
+      type: object
+      additionalProperties: true
+
+    InboundTargetSearchRequest:
+      type: object
+      additionalProperties: true
+
+    InboundTargetSearchResponse:
+      type: object
+      additionalProperties: true

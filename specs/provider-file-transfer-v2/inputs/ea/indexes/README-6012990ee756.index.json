@@ -1,0 +1,122 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Rating Service Kubernetes Manifests",
+  "document_description": "This directory contains Kubernetes manifests for deploying the Rating Service to EKS.",
+  "total_pages": 11,
+  "tree": [
+    {
+      "title": "Rating Service Kubernetes Manifests",
+      "node_id": "rating-service-kubernetes-manifests",
+      "start_index": 1,
+      "end_index": 11,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Files",
+          "node_id": "files",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Quick Start",
+          "node_id": "quick-start",
+          "start_index": 3,
+          "end_index": 6,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Prerequisites",
+              "node_id": "prerequisites",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Deploy (in order)",
+              "node_id": "deploy-in-order",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Update Shared Ingress",
+              "node_id": "update-shared-ingress",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Detailed Setup",
+          "node_id": "detailed-setup",
+          "start_index": 7,
+          "end_index": 8,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Verify Deployment",
+              "node_id": "verify-deployment",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Database Setup",
+          "node_id": "database-setup",
+          "start_index": 9,
+          "end_index": 10,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Create Database Using CloudNativePG",
+              "node_id": "create-database-using-cloudnativepg",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Security Notes",
+          "node_id": "security-notes",
+          "start_index": 11,
+          "end_index": 11,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[.tooling/components/apis/rating-service/k8s/README.md#rating-service-kubernetes-manifests]\n\n# Rating Service Kubernetes Manifests\n\nThis directory contains Kubernetes manifests for deploying the Rating Service to EKS.",
+    "2": "[.tooling/components/apis/rating-service/k8s/README.md#files]\n\n## Files\n\n- `postgres-cluster.yaml` - CloudNativePG PostgreSQL cluster (3 replicas with HA)\n- `configmap.yaml` - Environment configuration\n- `secret.yaml` - Database credentials (sensitive data)\n- `deployment.yaml` - Service deployment with 2 replicas\n- `service.yaml` - ClusterIP service exposing HTTPS on port 8443\n- `INFRASTRUCTURE.md` - Detailed infrastructure setup guide",
+    "3": "[.tooling/components/apis/rating-service/k8s/README.md#quick-start]\n\n## Quick Start",
+    "4": "[.tooling/components/apis/rating-service/k8s/README.md#prerequisites]\n\n### Prerequisites\n\n1. CloudNativePG operator installed in cluster\n2. Namespace created: `kubectl create namespace eapref-app`\n3. S3 bucket for PostgreSQL backups",
+    "5": "[.tooling/components/apis/rating-service/k8s/README.md#deploy-in-order]\n\n### Deploy (in order)\n\n```bash\n# Set environment variables\nexport NAMESPACE=eapref-app\nexport IMAGE_URI=<your-ecr-uri>/rating-service:latest\nexport BUCKET_NAME=your-backup-bucket\n\n# 1. Deploy PostgreSQL cluster first\nenvsubst < postgres-cluster.yaml | kubectl apply -f -\n\n# Wait for database to be ready (2-3 minutes)\nkubectl wait --for=condition=Ready cluster/rating-postgres -n ${NAMESPACE} --timeout=5m\n\n# 2. Deploy application\nkubectl apply -f configmap.yaml\nkubectl apply -f secret.yaml\nkubectl apply -f deployment.yaml\nkubectl apply -f service.yaml\n```",
+    "6": "[.tooling/components/apis/rating-service/k8s/README.md#update-shared-ingress]\n\n### Update Shared Ingress\n\nThe rating service path has been added to the shared ingress in the RAG service:\n\n```bash\nexport EKS_INGRESS_HOST=ea-reference.shared.dev.pgwcloud.net\nexport NAMESPACE=eapref-app\n\ncd ../../rag-service\nenvsubst < k8s/ingress.yaml | kubectl apply -f -\n```",
+    "7": "[.tooling/components/apis/rating-service/k8s/README.md#detailed-setup]\n\n## Detailed Setup\n\nSee [INFRASTRUCTURE.md](INFRASTRUCTURE.md) for complete deployment instructions, including:\n\n- PostgreSQL cluster configuration\n- Connection pooler setup\n- Database schema management\n- Security best practices\n- Resource requirements\n- Troubleshooting guide",
+    "8": "[.tooling/components/apis/rating-service/k8s/README.md#verify-deployment]\n\n### Verify Deployment\n\n```bash\n# Check pod status\nkubectl get pods -n ${NAMESPACE} -l app=rating-service\n\n# Check service\nkubectl get svc -n ${NAMESPACE} rating-service\n\n# Check logs\nkubectl logs -n ${NAMESPACE} -l app=rating-service -f\n\n# Test health endpoint\nkubectl exec -n ${NAMESPACE} -it deployment/rating-service -- \\\n  curl -k https://localhost:8443/api/rating/v1/health\n```",
+    "9": "[.tooling/components/apis/rating-service/k8s/README.md#database-setup]\n\n## Database Setup\n\nThe rating service expects a PostgreSQL database with the following configuration:\n\n- Database name: `ratings`\n- User: `application_user`\n- Tables: Created automatically via SQLAlchemy on startup",
+    "10": "[.tooling/components/apis/rating-service/k8s/README.md#create-database-using-cloudnativepg]\n\n### Create Database Using CloudNativePG\n\n```bash\n# The database tables are created automatically via init_db() in src/db/session.py\n# For production, consider using Alembic migrations\n```",
+    "11": "[.tooling/components/apis/rating-service/k8s/README.md#security-notes]\n\n## Security Notes\n\n- Secret values are base64-encoded, not encrypted\n- Use sealed-secrets or external-secrets for production\n- Database password should be rotated regularly\n- HTTPS-only communication with self-signed certificates"
+  },
+  "coverage": {
+    "total_pages": 11,
+    "covered_pages": 11,
+    "sampled_pages": 11,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 11
+  }
+}

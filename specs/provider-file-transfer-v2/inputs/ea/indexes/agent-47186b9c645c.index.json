@@ -1,0 +1,47 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Scope",
+  "document_description": "Create or update an AI coding assistant Agent in `.github/agents/<name>.agent.md`, and — for a dispatchable Claude sub-agent — `.claude/agents/<name>.md`. Idempotent: authors a new Agent if none matches $ARGUMENTS, or revises the existing one if $ARGUMENTS names/references an Agent that already exists.",
+  "total_pages": 3,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 3,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Scope",
+          "node_id": "scope",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Workflow",
+          "node_id": "workflow",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "Create or update an AI coding assistant Agent in `.github/agents/<name>.agent.md`, and — for a dispatchable Claude sub-agent — `.claude/agents/<name>.md`. Idempotent: authors a new Agent if none matches $ARGUMENTS, or revises the existing one if $ARGUMENTS names/references an Agent that already exists.",
+    "2": "[.claude/commands/agent.md#scope]\n\n## Scope\n\n- Determine from $ARGUMENTS whether the Agent is chat-driven only, autonomous only, or dual-mode (per STD-TEC-AI-006 MR-5 for dual-mode — a single persona backing both a `@agent-name` chat invocation and a `gh-aw` autonomous trigger via `imports:`).\n- Search `.github/agents/` for an existing Agent matching the name or purpose implied by $ARGUMENTS.\n  - Found → Workflow step 3 (modify path).\n  - Not found → Workflow step 2 (create path).",
+    "3": "[.claude/commands/agent.md#workflow]\n\n## Workflow\n\n1. Apply `standards/technology/ai-development/STD-TEC-AI-002-agent-definition.md` (all Agents) and, when the Agent is chat-driven or dual-mode, `standards/technology/ai-development/STD-TEC-AI-006-chat-driven-agent-standard.md` throughout: kebab-case naming with only the characters GitHub's custom agent loader accepts; required sections present (Description, Instructions, Tools Declaration); `tools:` uses real platform tool/tool-set/MCP-tool names, least privilege, never omitted; persona declaration opens the instructions (mandatory for chat-driven per STD-TEC-AI-006 MR-4.1); scope boundary does not fully overlap another Agent; task input contract declared; `target:` declared intentionally; `agents:`/`handoffs:` used correctly when subagent composition exists (MR-10 — `agent` tool MUST accompany a populated `agents:` list); for chat-driven — Intent Classification and a Routing Table are present, and every entry resolves to an existing (or co-planned) file.\n2. **Create path**: Verify no existing Agent already fully covers this scope (STD-TEC-AI-002 MR-3.1) — if one does, redirect to the modify path on that Agent instead. Create `.github/agents/<name>.agent.md` with the required frontmatter and sections, applying `.claude/skills/ai-architect/SKILL.md` step 9's Agent judgment. If this Agent is meant to be invoked as another Agent's subagent, also create `.claude/agents/<name>.md` using the Claude sub-agent frontmatter schema (`name`, `description`, `tools` as a comma-separated string, optional `disallowedTools`) per STD-TEC-AI-002 MR-1.3, and add the parent Agent's `agents:` field entry plus the `agent` tool to the parent's `tools:` declaration. For dual-mode Agents, add the Invocation Modes block (STD-TEC-AI-006) and wire the autonomous `gh-aw` workflow's `imports:` field to this Agent file, with the workflow body explicitly overriding any chat-only step (e.g., the confirmation step). Go to step 4.\n3. **Modify path**: Open the existing Agent file(s). Apply the requested changes, applying the same step 9 judgment and step 10's scope/impact discipline. If tool grants or scope are being broadened, re-justify least privilege explicitly in the change rather than silently expanding \"while at it.\" If an `agents:`/`handoffs:` field is being added, verify the `agent` tool is present in `tools:` (MR-10.2). Search the repo for other Agents' or Instruction files' references to this Agent before renaming it or narrowing its scope. Go to step 4.\n4. If this repository does not yet have a root-level `AGENTS.md`, do not silently create one as a side effect — flag this as a compliance gap (STD-TEC-AI-002 MR-8, STD-TEC-AI-003 MR-7) and recommend the user invoke `/instruction` to author it deliberately.\n5. When multiple Agents exist in the repository, verify the separation-of-duties matrix (in `AGENTS.md` or the relevant dispatch Agent) reflects this Agent's ownership and forbidden boundaries (STD-TEC-AI-002 MR-3.5).\n6. Read `.claude/skills/ai-convergence/SKILL.md` and run a convergence pass on the drafted/revised Agent file(s) before reporting completion.\n\nSee `strategy/guidance/technology/implementation/GUID-TECH-IMPL-010-agent-authoring-guidance.md` for worked examples and the Decision Tree for whether a task needs an Agent at all."
+  },
+  "coverage": {
+    "total_pages": 3,
+    "covered_pages": 3,
+    "sampled_pages": 3,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 3
+  }
+}

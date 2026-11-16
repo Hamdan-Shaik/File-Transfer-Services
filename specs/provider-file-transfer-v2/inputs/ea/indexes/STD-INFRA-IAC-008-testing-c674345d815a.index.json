@@ -1,0 +1,415 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Terraform Formation Testing Standard",
+  "document_description": "standard_name: 'Terraform Formation Testing Standard'",
+  "total_pages": 43,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 1,
+      "summary": "",
+      "nodes": []
+    },
+    {
+      "title": "Terraform Formation Testing Standard",
+      "node_id": "terraform-formation-testing-standard",
+      "start_index": 2,
+      "end_index": 43,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Executive Summary",
+          "node_id": "executive-summary",
+          "start_index": 4,
+          "end_index": 8,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Purpose Statement",
+              "node_id": "purpose-statement",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Scope",
+              "node_id": "scope",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Compliance Level",
+              "node_id": "compliance-level",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Business Rationale",
+              "node_id": "business-rationale",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Standard Requirements",
+          "node_id": "standard-requirements",
+          "start_index": 9,
+          "end_index": 20,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Mandatory Requirements",
+              "node_id": "mandatory-requirements",
+              "start_index": 10,
+              "end_index": 17,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "REQ-IAC-008-01: Every Formation Must Have `tests/unit.tftest.hcl` Using `mock_provider \"aws\" {}`",
+                  "node_id": "req-iac-008-01-every-formation-must-have-testsunittftesthcl-using-mockprovider-aws-",
+                  "start_index": 11,
+                  "end_index": 11,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-IAC-008-02: Minimum 4 Test `run` Blocks Required",
+                  "node_id": "req-iac-008-02-minimum-4-test-run-blocks-required",
+                  "start_index": 12,
+                  "end_index": 12,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-IAC-008-03: Terraform >= 1.7 Required; CI Must Use `terraform_version: \"~> 1.9\"` or Later",
+                  "node_id": "req-iac-008-03-terraform--17-required-ci-must-use-terraformversion--19-or-later",
+                  "start_index": 13,
+                  "end_index": 13,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-IAC-008-04: `mock_provider` Blocks Must Be Used for All Providers — No Real AWS Calls in Unit Tests",
+                  "node_id": "req-iac-008-04-mockprovider-blocks-must-be-used-for-all-providers--no-real-aws-calls-in-unit-tests",
+                  "start_index": 14,
+                  "end_index": 14,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-IAC-008-05: Test Variables Must Use Realistic Sample Values",
+                  "node_id": "req-iac-008-05-test-variables-must-use-realistic-sample-values",
+                  "start_index": 15,
+                  "end_index": 15,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-IAC-008-06: `terraform init -backend=false` Must Succeed Before `terraform test` — Graceful Skip if Init Fails",
+                  "node_id": "req-iac-008-06-terraform-init--backendfalse-must-succeed-before-terraform-test--graceful-skip-if-init-fails",
+                  "start_index": 16,
+                  "end_index": 16,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-IAC-008-07: Formation `tests/` Directory Is Excluded from `terraform fmt` and `terraform validate`",
+                  "node_id": "req-iac-008-07-formation-tests-directory-is-excluded-from-terraform-fmt-and-terraform-validate",
+                  "start_index": 17,
+                  "end_index": 17,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Recommended Practices",
+              "node_id": "recommended-practices",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Prohibited Practices",
+              "node_id": "prohibited-practices",
+              "start_index": 19,
+              "end_index": 19,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Exceptions Process",
+              "node_id": "exceptions-process",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Technical Specifications",
+          "node_id": "technical-specifications",
+          "start_index": 21,
+          "end_index": 26,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Required Test File Structure",
+              "node_id": "required-test-file-structure",
+              "start_index": 22,
+              "end_index": 22,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Required `versions.tf` Constraint",
+              "node_id": "required-versionstf-constraint",
+              "start_index": 23,
+              "end_index": 23,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Required `outputs.tf` Fields for Test Assertions",
+              "node_id": "required-outputstf-fields-for-test-assertions",
+              "start_index": 24,
+              "end_index": 24,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "`verify.sh` Test Stage with Graceful Skip",
+              "node_id": "verifysh-test-stage-with-graceful-skip",
+              "start_index": 25,
+              "end_index": 25,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "CI `terraform test` Step Configuration",
+              "node_id": "ci-terraform-test-step-configuration",
+              "start_index": 26,
+              "end_index": 26,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Implementation Guidelines",
+          "node_id": "implementation-guidelines",
+          "start_index": 27,
+          "end_index": 30,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Implementation Requirements",
+              "node_id": "implementation-requirements",
+              "start_index": 28,
+              "end_index": 28,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Validation Criteria",
+              "node_id": "validation-criteria",
+              "start_index": 29,
+              "end_index": 29,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Testing Requirements",
+              "node_id": "testing-requirements",
+              "start_index": 30,
+              "end_index": 30,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Compliance and Governance",
+          "node_id": "compliance-and-governance",
+          "start_index": 31,
+          "end_index": 35,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Compliance Assessment",
+              "node_id": "compliance-assessment",
+              "start_index": 32,
+              "end_index": 32,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Monitoring Requirements",
+              "node_id": "monitoring-requirements",
+              "start_index": 33,
+              "end_index": 33,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Exception Handling",
+              "node_id": "exception-handling",
+              "start_index": 34,
+              "end_index": 34,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Governance Oversight",
+              "node_id": "governance-oversight",
+              "start_index": 35,
+              "end_index": 35,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Examples and References",
+          "node_id": "examples-and-references",
+          "start_index": 36,
+          "end_index": 41,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Implementation Examples",
+              "node_id": "implementation-examples",
+              "start_index": 37,
+              "end_index": 39,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Example 1: Formation with `mock_provider \"aws\" {}` Override for a Data Source",
+                  "node_id": "example-1-formation-with-mockprovider-aws--override-for-a-data-source",
+                  "start_index": 38,
+                  "end_index": 38,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Example 2: `verify.sh` `terraform fmt` Excluding `tests/`",
+                  "node_id": "example-2-verifysh-terraform-fmt-excluding-tests",
+                  "start_index": 39,
+                  "end_index": 39,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Related Standards",
+              "node_id": "related-standards",
+              "start_index": 40,
+              "end_index": 40,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "External References",
+              "node_id": "external-references",
+              "start_index": 41,
+              "end_index": 41,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Change History",
+          "node_id": "change-history",
+          "start_index": 42,
+          "end_index": 42,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Review Log",
+          "node_id": "review-log",
+          "start_index": 43,
+          "end_index": 43,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "**[Home](../../../README.md)** > **[Standards](../../README.md)** > **[Infrastructure](../README.md)** > **IaC**\n\n---",
+    "2": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#terraform-formation-testing-standard]\n\n# Terraform Formation Testing Standard\n\n---\n\n**Standards Metadata**\n\n```yaml\nstandard_id: 'STD-INFRA-IAC-008'\nstandard_name: 'Terraform Formation Testing Standard'\nstandard_type: 'iac'\ncategory: 'infrastructure'\nversion: '1.0.0'\nstatus: 'draft'\ncompliance_level: 'mandatory'\neffective_date: '2026-07-24'\ntags: ['infrastructure', 'iac', 'terraform', 'testing', 'terraform-test', 'mock-provider', 'mandatory', 'aws', 'healthcare', 'quality', 'ci']\n```\n\n---",
+    "3": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#table-of-contents]\n\n## Table of Contents\n\n- [Executive Summary](#executive-summary)\n- [Standard Requirements](#standard-requirements)\n- [Technical Specifications](#technical-specifications)\n- [Implementation Guidelines](#implementation-guidelines)\n- [Compliance and Governance](#compliance-and-governance)\n- [Examples and References](#examples-and-references)\n- [Change History](#change-history)\n- [Review Log](#review-log)\n\n---",
+    "4": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#executive-summary]\n\n## Executive Summary",
+    "5": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#purpose-statement]\n\n### Purpose Statement\n\nThis standard defines the mandatory testing requirements for Terraform formations in all Gainwell product repositories. It establishes the `terraform test` framework with `mock_provider \"aws\" {}` as the required unit testing mechanism, specifies the minimum four test `run` blocks every formation must implement, requires Terraform >= 1.7 for CI execution, mandates realistic test variable values, defines the graceful skip behavior when `terraform init` cannot connect to git-SSH module sources in CI, and explicitly excludes the `tests/` directory from `terraform fmt` and `terraform validate`.",
+    "6": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#scope]\n\n### Scope\n\n**In scope**: All Terraform formation directories in product repositories (`iac/terraform/formations/aws/`). The `terraform test` framework, `mock_provider` configuration, test file structure, minimum required `run` blocks, `versions.tf` minimum version constraint, and the `terraform init -backend=false` prerequisite step.\n\n**Out of scope**: Integration tests that deploy real infrastructure against live AWS environments (permitted but not mandated). Terragrunt deployment validation. Application-layer testing. Testing inside `pfe-iac-modules` (governed by Platform Engineering). End-to-end infrastructure testing with real provider calls.",
+    "7": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#compliance-level]\n\n### Compliance Level\n\n**Mandatory.** Every formation **must** have a `tests/unit.tftest.hcl` file containing at minimum four named `run` blocks. Formations without `tests/unit.tftest.hcl` fail `verify.sh` stage 4, which blocks CI. The minimum Terraform version is >= 1.7. There is no exception to this version requirement.",
+    "8": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#business-rationale]\n\n### Business Rationale\n\nTerraform formations that are never tested before deployment regularly surface plan-time failures: required variables without adequate defaults fail with cryptic messages, naming convention violations cause resource creation errors, and modules called with incorrect input combinations produce apply-time errors that only manifest against real infrastructure. The four mandatory test runs validate the formation's basic contract — it initializes, plans successfully with valid inputs, names resources correctly, and handles absent optional configuration — before any deployment attempt. Using `mock_provider` ensures these tests run without AWS credentials, without real API calls, and without risk of accidentally creating or modifying production infrastructure.\n\n---",
+    "9": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#standard-requirements]\n\n## Standard Requirements",
+    "10": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#mandatory-requirements]\n\n### Mandatory Requirements",
+    "11": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#req-iac-008-01-every-formation-must-have-testsunittftesthcl-using-mockprovider-aws-]\n\n#### REQ-IAC-008-01: Every Formation Must Have `tests/unit.tftest.hcl` Using `mock_provider \"aws\" {}`\n\nEvery formation **must** have a test file at `tests/unit.tftest.hcl` that uses `mock_provider \"aws\" {}` for all provider interactions.\n\n- **REQ-IAC-008-01a**: The `mock_provider \"aws\" {}` block **must** be declared at the top of `tests/unit.tftest.hcl`, before any `run {}` blocks. This declaration applies to all `run {}` blocks in the file and prevents real AWS API calls during test execution.\n- **REQ-IAC-008-01b**: Tests **must not** require real AWS credentials to execute. The CI runner executing `terraform test` must succeed without `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, or any equivalent credential variable. Tests that require credentials are non-compliant with this standard.\n- **REQ-IAC-008-01c**: When a formation uses multiple providers (e.g., `aws` and `random`), all providers **must** have corresponding `mock_provider` declarations. A `random` provider used in the formation must be mocked with `mock_provider \"random\" {}`.\n- **REQ-IAC-008-01d**: The `tests/unit.tftest.hcl` file **must** be committed to version control in the same PR as the formation's initial `.tf` files. PRs that add a new formation without a test file will be rejected.\n\n**Rationale**: `mock_provider \"aws\" {}` enables the formation's module composition logic to be verified without requiring AWS credentials, without incurring AWS API rate limits, and without the risk of accidentally creating real infrastructure. This property makes the tests safe to run in any CI environment, on any developer workstation, and in PR checks without environment-specific credential configuration. The no-credentials requirement is the enforcement mechanism for this property.",
+    "12": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#req-iac-008-02-minimum-4-test-run-blocks-required]\n\n#### REQ-IAC-008-02: Minimum 4 Test `run` Blocks Required\n\nEvery `tests/unit.tftest.hcl` file **must** contain at minimum the following four named `run {}` blocks.\n\n- **REQ-IAC-008-02a**: `run \"plan_succeeds\"` — asserts that `terraform plan` completes without error when all required variables are provided with valid, realistic values. This is the baseline smoke test confirming the formation can be planned.\n- **REQ-IAC-008-02b**: `run \"<primary_resource>_created\"` — asserts that the primary resource or module defined by the formation is included in the plan. The run name **must** use the actual primary resource or module name (e.g., `run \"ecs_service_created\"`, not `run \"resource_created\"`). The run **must** include at least one `assert {}` block verifying the resource count or existence via an output.\n- **REQ-IAC-008-02c**: `run \"naming_convention\"` — asserts that the primary resource name generated by the formation follows the enterprise naming convention. The run **must** include `assert {}` blocks verifying that the name output contains the `product_abr` and `environment` input values as substrings.\n- **REQ-IAC-008-02d**: `run \"empty_inputs_produce_no_modules\"` — asserts that when all optional module-enabling inputs are left at their defaults (null or false), the formation plan includes zero module calls or the minimum expected set. This verifies that the formation does not create unexpected resources when optional capabilities are disabled.\n\n**Rationale**: These four test cases represent the formation's behavioral contract: it plans, it names resources correctly, it creates what it is supposed to create, and it does not create unexpected resources when optional inputs are absent. A formation that fails any one of these tests will fail in at least one real deployment scenario — likely in production during the worst possible window. Requiring all four ensures the contract is always verified before a formation reaches the deployment pipeline.",
+    "13": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#req-iac-008-03-terraform--17-required-ci-must-use-terraformversion--19-or-later]\n\n#### REQ-IAC-008-03: Terraform >= 1.7 Required; CI Must Use `terraform_version: \"~> 1.9\"` or Later\n\n`terraform test` with `mock_provider` support requires Terraform >= 1.7.0. CI pipelines **must** use `terraform_version: \"~> 1.9\"` or later. Local environments with older Terraform versions **must** skip gracefully rather than erroring.\n\n- **REQ-IAC-008-03a**: Every formation's `versions.tf` **must** include `required_version = \">= 1.7.0\"`. Formations with a `required_version` lower than `1.7.0` are non-compliant with this standard. The minimum version may be raised to a higher value but must not be lower than `1.7.0`.\n- **REQ-IAC-008-03b**: The CI runner Terraform version **must** be `~> 1.9` or a later minor series. Using a version in the `1.7` or `1.8` series is permitted but not recommended; `1.9` provides important `mock_provider` improvements including better `override_resource` support.\n- **REQ-IAC-008-03c**: Local development environments are not required to have Terraform >= 1.7 installed, but `terraform test` will be unavailable on older versions. The `verify.sh` script **must** detect the local Terraform version and skip the `terraform test` stage with a warning (not an error) when the local version is < 1.7. The warning **must** include the message \"terraform test skipped: requires >= 1.7.0; current version is <version>. CI will run tests.\"\n- **REQ-IAC-008-03d**: CI pipelines **must** use a specific, pinned Terraform version (not `latest`). The CI Terraform version **must** satisfy the formation's `required_version` constraint. Using a Terraform version in CI that does not satisfy `required_version` is a CI misconfiguration.\n\n**Rationale**: `mock_provider` was introduced in Terraform 1.7.0. Attempting to use `.tftest.hcl` files with `mock_provider` on Terraform < 1.7 produces a parse error that is confusing and misleading. The graceful skip on older local environments prevents developer friction while ensuring CI always runs tests at the required version. The `~> 1.9` minimum for CI provides a stable, well-tested version series with the most complete `mock_provider` implementation.",
+    "14": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#req-iac-008-04-mockprovider-blocks-must-be-used-for-all-providers--no-real-aws-calls-in-unit-tests]\n\n#### REQ-IAC-008-04: `mock_provider` Blocks Must Be Used for All Providers — No Real AWS Calls in Unit Tests\n\n`mock_provider` blocks **must** be declared for all providers configured in the formation. Real provider calls are **prohibited** in unit tests.\n\n- **REQ-IAC-008-04a**: If the formation configures the `aws` provider, `mock_provider \"aws\" {}` is required. If it also configures `random`, `mock_provider \"random\" {}` is required. Every provider name in `required_providers {}` that is configured in the formation must have a corresponding `mock_provider` block.\n- **REQ-IAC-008-04b**: `override_data` and `override_resource` **may** be used within `mock_provider` blocks to provide specific mock return values for `data` sources or resources that the test needs to assert against. These overrides are part of the mock configuration and do not constitute real AWS calls.\n- **REQ-IAC-008-04c**: A `run {}` block that invokes `terraform apply` (not `terraform plan`) is permitted in unit tests but **must** use `mock_provider` exclusively. `run {}` blocks with `command = apply` that rely on real providers are **prohibited** in `unit.tftest.hcl`. Apply-command runs with real providers belong in optional `integration.tftest.hcl` files.\n- **REQ-IAC-008-04d**: The unit test execution time **must** remain under 60 seconds for the complete `unit.tftest.hcl` file. Tests exceeding 60 seconds are a strong indicator that real provider calls are occurring and must be investigated.\n\n**Rationale**: Unit tests that make real AWS API calls are not unit tests — they are slow integration tests with AWS cost implications and credential requirements. The mock provider boundary enforces that `unit.tftest.hcl` tests the formation's logic (variable processing, naming, conditional module invocation) independently of any AWS environment state. This boundary makes the tests fast, deterministic, and runnable in any context without environment configuration.",
+    "15": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#req-iac-008-05-test-variables-must-use-realistic-sample-values]\n\n#### REQ-IAC-008-05: Test Variables Must Use Realistic Sample Values\n\nVariables provided in test `run {}` blocks **must** use realistic, AWS-format-valid sample values, not trivial placeholders.\n\n- **REQ-IAC-008-05a**: VPC ID test variables **must** use a value matching the AWS VPC ID format: `vpc-XXXXXXXXXXXXXXXXX` (17 lowercase hex characters). Example: `vpc-00000000000000001`. Using `\"test-vpc\"`, `\"\"`, or `\"vpc-1\"` is **prohibited**.\n- **REQ-IAC-008-05b**: Subnet ID list test variables **must** use values matching the `subnet-XXXXXXXXXXXXXXXXX` format (17 lowercase hex characters), with at minimum two IDs to simulate multi-AZ deployment. Example: `[\"subnet-00000000000000001\", \"subnet-00000000000000002\"]`.\n- **REQ-IAC-008-05c**: `product_abr` test values **must** use the actual product abbreviation, not generic placeholders. For the `mmes-cms` product, use `\"mmes-cms\"` — not `\"test\"`, `\"foo\"`, or `\"prod\"`. Using the actual product abbreviation ensures naming convention assertions reflect real naming patterns.\n- **REQ-IAC-008-05d**: `environment` test values **must** use a valid environment short name from the approved set: `dev`, `test`, `prf`, `cfg`, `sit`, `uat`, `prd`. Using `\"local\"`, `\"unit\"`, `\"e2e\"`, or any non-standard string is **prohibited** because naming convention assertions will produce false passes with non-production patterns.\n\n**Rationale**: Test variables with trivial placeholder values cause naming convention and tag compliance assertions to validate against non-production patterns, producing false passes. A test that passes with `vpc_id = \"fake-vpc\"` but would fail with a realistic AWS VPC ID does not validate the formation's real behavior. Realistic sample values ensure that test assertions are meaningful representations of production input conditions, not just syntactic exercises.",
+    "16": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#req-iac-008-06-terraform-init--backendfalse-must-succeed-before-terraform-test--graceful-skip-if-init-fails]\n\n#### REQ-IAC-008-06: `terraform init -backend=false` Must Succeed Before `terraform test` — Graceful Skip if Init Fails\n\n`terraform init -backend=false` **must** be executed and succeed before `terraform test`. If `terraform init` fails because git-SSH to GitHub is unavailable in CI, tests **must** skip gracefully with a warning rather than failing with an error.\n\n- **REQ-IAC-008-06a**: `terraform init -backend=false` is required before `terraform test` to initialize the local provider plugin cache. The `-backend=false` flag prevents `terraform init` from attempting to connect to the S3 state backend, which may be unavailable in unit test contexts.\n- **REQ-IAC-008-06b**: In CI environments where git-SSH access to `github.com` is unavailable (e.g., restricted network environments without the `mygainwell` organization SSH key configured), `terraform init` may fail when attempting to resolve `pfe-iac-modules` git-SSH module sources. This is an infrastructure constraint of the CI environment, not a formation defect.\n- **REQ-IAC-008-06c**: When `terraform init` fails due to git-SSH unavailability in CI, `verify.sh` **must** skip the `terraform test` stage with an informational warning message: \"terraform test skipped: terraform init failed (git-SSH unavailable). Module resolution requires SSH key access to github.com/mygainwell. Tests will be re-run when git-SSH access is available.\" The `verify.sh` script **must** exit with code 0 in this scenario — a skip is not an error.\n- **REQ-IAC-008-06d**: The graceful skip behavior in REQ-IAC-008-06c is a CI environment accommodation. Product engineering teams are responsible for ensuring `terraform test` passes in a git-SSH–accessible environment (e.g., the standard CI runner with the `mygainwell` SSH key configured) before promoting a formation to production.\n\n**Rationale**: `pfe-iac-modules` is sourced via git-SSH, which requires SSH key authentication to GitHub. Some CI runner configurations (e.g., ephemeral runners that do not have the organizational SSH key injected, or local developer machines without the key configured) cannot initialize the provider cache because the module resolution fails. Failing the entire verification pipeline with an error in this case would block developers who are otherwise ready to push changes. The graceful skip allows the non-SSH-dependent stages (fmt, tflint, validate, checkov) to still provide their gates while clearly signaling that the test stage was not run.",
+    "17": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#req-iac-008-07-formation-tests-directory-is-excluded-from-terraform-fmt-and-terraform-validate]\n\n#### REQ-IAC-008-07: Formation `tests/` Directory Is Excluded from `terraform fmt` and `terraform validate`\n\nThe `tests/` subdirectory within each formation **must** be excluded from `terraform fmt` and `terraform validate` execution. `.tftest.hcl` files use a different format specification from `.tf` files.\n\n- **REQ-IAC-008-07a**: `terraform fmt` operates on `.tf` files only and does not process `.tftest.hcl` files. However, if `terraform fmt -recursive` is run with a path that includes a `tests/` directory, it may produce undefined behavior on `.tftest.hcl` files. The `verify.sh` stage 1 **must** target formation directories rather than the `tests/` subdirectory to avoid this.\n- **REQ-IAC-008-07b**: `terraform validate` operates on the root module (the formation directory) and does not process files in subdirectories named `tests/`. Running `terraform validate` from the formation root is correct; running it from within `tests/` is incorrect and will produce errors because `.tftest.hcl` is not a valid Terraform configuration file.\n- **REQ-IAC-008-07c**: `.tftest.hcl` files are formatted using the `terraform fmt` formatter if explicitly passed as arguments, but the format specification for test files permits certain constructs (e.g., `mock_provider {}` blocks) that are not valid in `.tf` files. Formation developers **must not** run `terraform fmt` against `.tftest.hcl` files.\n- **REQ-IAC-008-07d**: When CI `tflint` runs against the formation directory, it **must** use `--chdir` or be invoked from within the formation root, not from within `tests/`. tflint does not process `.tftest.hcl` files and will produce errors if invoked from a directory containing only test files.\n\n**Rationale**: `.tftest.hcl` files have their own format and syntax that partially overlaps with, but is not identical to, `.tf` file syntax. Applying `terraform fmt` or `terraform validate` to `.tftest.hcl` files produces unexpected output, breaks test file formatting, or generates errors that falsely indicate a formation problem. Explicitly excluding `tests/` from these tool invocations prevents category errors where a CI tool is applied to the wrong file type.\n\n---",
+    "18": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#recommended-practices]\n\n### Recommended Practices\n\n- **Add a `run \"sensitive_inputs\"` test as a fifth run**: Add a test run that provides empty strings or invalid format values for sensitive inputs (e.g., `vpc_id = \"not-a-vpc-id\"`) and asserts that the formation's `validation {}` blocks produce descriptive error messages. This verifies that variable validation rules (from STD-INFRA-IAC-005) function correctly.\n- **Use `-verbose` for CI test output**: Run `terraform test -verbose` in CI to produce per-assertion output in the step log. This makes individual assertion failures immediately diagnosable without inspecting the test file.\n- **Test `mock_provider` override patterns for data sources**: When the formation uses `data` sources, add `override_data` blocks in the `mock_provider` declaration to provide realistic mock return values. This prevents plan failures caused by `data` source lookups that return null in mock contexts.\n- **Test the complete `outputs.tf` set**: Add `assert {}` blocks in the `naming_convention` run that verify every output value follows the expected format. Output format tests prevent downstream formations from receiving malformed values.\n\n---",
+    "19": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#prohibited-practices]\n\n### Prohibited Practices\n\n| Prohibited Practice | Reason |\n|---------------------|--------|\n| Real AWS provider in `unit.tftest.hcl` (no `mock_provider`) | Requires credentials; creates risk of real resource changes; slow |\n| `run {}` blocks without `assert {}` for naming or existence runs | Tests confirm only that plan does not error, not that it produces expected configuration |\n| `product_abr = \"test\"` or other trivial placeholder values | Assertions against non-production patterns produce false passes |\n| `environment = \"local\"` or non-standard environment names | Naming convention assertions will pass when they should fail |\n| Terraform < 1.7.0 in `required_version` | `mock_provider` unavailable; `terraform test` framework unavailable |\n| `tests/unit.tftest.hcl` absent from formation | `verify.sh` stage 4 fails; formation has no validated behavioral contract |\n| Shell scripts, `.tf` files, or `.hcl` files in `tests/` | `tests/` must contain only `.tftest.hcl` files; other file types cause `terraform test` discovery errors |\n| Running `terraform fmt` on `.tftest.hcl` files | Different format spec; `terraform fmt` produces incorrect output on test files |\n| Running `terraform validate` from within `tests/` | `.tftest.hcl` is not a valid root module; validate produces spurious errors |\n\n---",
+    "20": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#exceptions-process]\n\n### Exceptions Process\n\n1. Exceptions to the four-run minimum require an Architecture Exception with documented justification for each omitted run. Simple stub formations (single-module, no conditional logic) may qualify for a two-run minimum (plan_succeeds and naming_convention), pending ARB review.\n2. Exceptions to the `mock_provider` requirement for `unit.tftest.hcl` are not available. Real-provider tests belong in an optional `integration.tftest.hcl` file, which is not governed by this standard.\n3. The Terraform >= 1.7.0 `required_version` requirement has no exception. Formations pinned to earlier versions must upgrade.\n\n---",
+    "21": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#technical-specifications]\n\n## Technical Specifications",
+    "22": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#required-test-file-structure]\n\n### Required Test File Structure\n\n```hcl\n# iac/terraform/formations/aws/<formation-name>/tests/unit.tftest.hcl\n\n# REQ-IAC-008-01: mock providers for all providers — no real AWS calls\nmock_provider \"aws\" {}\nmock_provider \"random\" {}   # Include if formation uses random provider\n\n# ─────────────────────────────────────────────────────────────────────────────\n# REQ-IAC-008-02a: plan_succeeds — baseline smoke test\n# ─────────────────────────────────────────────────────────────────────────────\nrun \"plan_succeeds\" {\n  command = plan\n\n  variables {\n    product_abr        = \"mmes-cms\"                   # REQ-IAC-008-05c: actual product abbreviation\n    environment        = \"dev\"                        # REQ-IAC-008-05d: valid env short name\n    vpc_id             = \"vpc-00000000000000001\"      # REQ-IAC-008-05a: AWS VPC ID format\n    private_subnet_ids = [                            # REQ-IAC-008-05b: at least two subnets\n      \"subnet-00000000000000001\",\n      \"subnet-00000000000000002\",\n    ]\n    eks_cluster_name   = \"mmes-cms-dev-cluster\"\n    # ... all required variables with realistic values\n  }\n\n  # Implicit assertion: terraform plan exits 0\n}\n\n# ─────────────────────────────────────────────────────────────────────────────\n# REQ-IAC-008-02b: <primary_resource>_created — resource existence\n# ─────────────────────────────────────────────────────────────────────────────\nrun \"ecs_service_created\" {   # Use the actual primary resource name\n  command = plan\n\n  variables {\n    product_abr        = \"mmes-cms\"\n    environment        = \"dev\"\n    vpc_id             = \"vpc-00000000000000001\"\n    private_subnet_ids = [\"subnet-00000000000000001\", \"subnet-00000000000000002\"]\n    eks_cluster_name   = \"mmes-cms-dev-cluster\"\n  }\n\n  assert {\n    condition     = output.primary_resource_name != null && output.primary_resource_name != \"\"\n    error_message = \"Expected primary_resource_name output to be non-null and non-empty. Formation may not be creating the primary resource.\"\n  }\n}\n\n# ─────────────────────────────────────────────────────────────────────────────\n# REQ-IAC-008-02c: naming_convention — resource name validation\n# ─────────────────────────────────────────────────────────────────────────────\nrun \"naming_convention\" {\n  command = plan\n\n  variables {\n    product_abr        = \"mmes-cms\"\n    environment        = \"dev\"\n    vpc_id             = \"vpc-00000000000000001\"\n    private_subnet_ids = [\"subnet-00000000000000001\", \"subnet-00000000000000002\"]\n    eks_cluster_name   = \"mmes-cms-dev-cluster\"\n  }\n\n  assert {\n    condition     = can(regex(\"mmes-cms\", output.primary_resource_name))\n    error_message = \"Expected primary_resource_name to contain 'mmes-cms' (product_abr). Got: ${output.primary_resource_name}\"\n  }\n\n  assert {\n    condition     = can(regex(\"dev\", output.primary_resource_name))\n    error_message = \"Expected primary_resource_name to contain 'dev' (environment). Got: ${output.primary_resource_name}\"\n  }\n}\n\n# ─────────────────────────────────────────────────────────────────────────────\n# REQ-IAC-008-02d: empty_inputs_produce_no_modules — optional input handling\n# ─────────────────────────────────────────────────────────────────────────────\nrun \"empty_inputs_produce_no_modules\" {\n  command = plan\n\n  variables {\n    product_abr        = \"mmes-cms\"\n    environment        = \"dev\"\n    vpc_id             = \"vpc-00000000000000001\"\n    private_subnet_ids = [\"subnet-00000000000000001\", \"subnet-00000000000000002\"]\n    eks_cluster_name   = \"mmes-cms-dev-cluster\"\n    # All optional module-enabling inputs omitted — defaults (null/false) apply\n    # enable_cloudwatch_alarms = null   (omitted — default null disables optional module)\n    # enable_autoscaling = null         (omitted — default null disables optional module)\n  }\n\n  # Implicit assertion: plan with minimal optional inputs exits 0 without unexpected resources\n}\n```",
+    "23": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#required-versionstf-constraint]\n\n### Required `versions.tf` Constraint\n\n```hcl\n# iac/terraform/formations/aws/<formation-name>/versions.tf\n\nterraform {\n  required_version = \">= 1.7.0\"    # REQ-IAC-008-03a: mock_provider requires >= 1.7.0\n\n  required_providers {\n    aws = {\n      source  = \"hashicorp/aws\"\n      version = \"~> 5.0\"\n    }\n    random = {\n      source  = \"hashicorp/random\"\n      version = \"~> 3.6\"\n    }\n  }\n}\n```",
+    "24": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#required-outputstf-fields-for-test-assertions]\n\n### Required `outputs.tf` Fields for Test Assertions\n\nEvery formation **must** export outputs that the naming convention and existence tests can assert against:\n\n```hcl\n# iac/terraform/formations/aws/<formation-name>/outputs.tf\n\noutput \"primary_resource_name\" {\n  description = \"Name of the primary resource provisioned by this formation. Required for REQ-IAC-008-02b and REQ-IAC-008-02c naming convention tests.\"\n  value       = module.<primary_module>.name   # Adjust to the actual module output attribute\n}\n\noutput \"tags\" {\n  description = \"Tag map applied to all resources in this formation. Required for tag compliance verification.\"\n  value       = local.common_tags\n}\n```",
+    "25": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#verifysh-test-stage-with-graceful-skip]\n\n### `verify.sh` Test Stage with Graceful Skip\n\n```bash\n#!/usr/bin/env bash\n# iac/terraform/.utils/verify.sh — stage 4\n\necho \"=== Stage 4: terraform test ===\"\n\nTERRAFORM_VERSION=$(terraform version -json | jq -r '.terraform_version')\nTERRAFORM_MAJOR_MINOR=$(echo \"${TERRAFORM_VERSION}\" | cut -d. -f1-2)\n\n# REQ-IAC-008-03c: graceful skip if local Terraform < 1.7\nif [[ \"$(echo \"${TERRAFORM_MAJOR_MINOR} < 1.7\" | bc)\" == \"1\" ]]; then\n  echo \"WARNING: terraform test skipped: requires >= 1.7.0; current version is ${TERRAFORM_VERSION}. CI will run tests.\"\nelse\n  # REQ-IAC-008-06a: init with -backend=false before test\n  terraform init -backend=false\n\n  if [[ $? -ne 0 ]]; then\n    # REQ-IAC-008-06c: graceful skip if init fails due to git-SSH unavailability\n    echo \"WARNING: terraform test skipped: terraform init failed (git-SSH unavailable).\"\n    echo \"Module resolution requires SSH key access to github.com/mygainwell.\"\n    echo \"Tests will be re-run when git-SSH access is available.\"\n    # Exit 0 — skip is not an error\n  else\n    terraform test -verbose\n  fi\nfi\n```",
+    "26": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#ci-terraform-test-step-configuration]\n\n### CI `terraform test` Step Configuration\n\n```yaml\n- name: Terraform Test\n  # REQ-IAC-008-03b: CI uses Terraform ~> 1.9\n  # REQ-IAC-008-06: init -backend=false first; graceful skip if git-SSH unavailable\n  env:\n    TF_VERSION: \"~> 1.9\"\n  run: |\n    cd iac/terraform/formations/aws/${{ env.FORMATION_NAME }}\n    terraform init -backend=false || {\n      echo \"::warning::terraform test skipped: terraform init failed (git-SSH unavailable)\"\n      exit 0\n    }\n    terraform test -verbose\n```\n\n---",
+    "27": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#implementation-guidelines]\n\n## Implementation Guidelines",
+    "28": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#implementation-requirements]\n\n### Implementation Requirements\n\n1. **Create `tests/unit.tftest.hcl` for every formation**: Use the template in the Technical Specifications section as the starting point. Replace `mmes-cms` with the actual `product_abr` and replace the generic primary resource run name with the actual primary resource type (e.g., `run \"ecs_service_created\"` for an ECS formation).\n2. **Add `outputs.tf` exports**: Confirm `primary_resource_name` and `tags` outputs are defined in `outputs.tf`. If the formation has multiple primary resources, export the name of the most significant one and add additional naming assertions to the `naming_convention` run for secondary resources.\n3. **Set `required_version = \">= 1.7.0\"` in `versions.tf`**: Confirm the `required_version` constraint is present and at least `1.7.0`. Formations with lower constraints must upgrade.\n4. **Add `mock_provider` for all configured providers**: Scan the formation's `versions.tf` `required_providers` block and add a `mock_provider` declaration in `tests/unit.tftest.hcl` for every provider listed.\n5. **Use realistic test variable values**: Review all `variables {}` blocks in the test file and confirm VPC IDs use the `vpc-XXXXXXXXXXXXXXXXX` format, subnet IDs use the `subnet-XXXXXXXXXXXXXXXXX` format, and `product_abr` uses the actual product abbreviation.\n6. **Exclude `tests/` from `terraform fmt` and `terraform validate`**: Confirm the `verify.sh` stage 1 (`terraform fmt -check -recursive`) and stage 3 (`terraform validate`) invocations target the formation root directory, not the `tests/` subdirectory.\n7. **Run `terraform test -verbose` locally before pushing**: From the formation root directory, run `terraform init -backend=false && terraform test -verbose`. All four runs must pass and assertions must produce descriptive messages on failure.",
+    "29": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#validation-criteria]\n\n### Validation Criteria\n\n| Requirement | Verification Method | Evidence Required |\n|-------------|--------------------|--------------------|\n| REQ-IAC-008-01 | `mock_provider \"aws\" {}` at top of test file; no real credentials required | PR diff review of `tests/unit.tftest.hcl` |\n| REQ-IAC-008-02 | Four named `run {}` blocks present with correct names | PR diff review |\n| REQ-IAC-008-03 | `required_version = \">= 1.7.0\"` in `versions.tf`; CI uses `~> 1.9` | PR diff review; CI workflow review |\n| REQ-IAC-008-04 | `mock_provider` for every provider in `required_providers` | PR diff review |\n| REQ-IAC-008-05 | VPC and subnet IDs in 17-hex format; `product_abr` matches actual product | PR diff review |\n| REQ-IAC-008-06 | `terraform init -backend=false` before `test` in `verify.sh`; graceful skip on init failure | PR diff review of `verify.sh` |\n| REQ-IAC-008-07 | `terraform fmt` and `terraform validate` do not target `tests/` directory | PR diff review of `verify.sh` |",
+    "30": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#testing-requirements]\n\n### Testing Requirements\n\n- Run `terraform test -verbose` locally from the formation root and confirm all four runs pass with descriptive output.\n- Deliberately break the `product_abr` variable value in a test run and confirm the `naming_convention` assertion fails with the expected error message identifying the mismatch.\n- Remove `mock_provider \"random\" {}` from a formation that uses `random` and confirm `terraform test` fails with a clear provider configuration error, not a silent pass.\n- Verify the graceful skip behavior by temporarily removing git-SSH access and confirming `verify.sh` exits 0 with the expected warning message.\n\n---",
+    "31": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#compliance-and-governance]\n\n## Compliance and Governance",
+    "32": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#compliance-assessment]\n\n### Compliance Assessment\n\n| Area | Criterion | Assessment Frequency |\n|------|-----------|---------------------|\n| Test file exists | `tests/unit.tftest.hcl` present in formation | Per PR — `find` check in CI |\n| Four test runs present | All four named runs exist in the file | Per PR — PR diff review |\n| Tests pass in CI | All runs exit 0 | Per PR — CI stage 4 (`verify.sh`) |\n| `required_version >= 1.7.0` | Constraint present in `versions.tf` | Per PR — PR diff review |\n| Realistic test values | No trivial placeholder values | Per PR — PR diff review |\n| `tests/` excluded from fmt/validate | `verify.sh` targets formation root only | Per PR — PR diff review of `verify.sh` |",
+    "33": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#monitoring-requirements]\n\n### Monitoring Requirements\n\nPlatform Engineering reviews formation test coverage quarterly, tracking the number of formations with passing tests versus formations without `tests/unit.tftest.hcl`. Formations that have existed in the repository for more than one sprint without a test file are flagged as technical debt in the quarterly architecture health report. Formations where `terraform test` has been failing in CI for more than 5 business days without a tracked remediation plan are escalated to the product engineering lead.",
+    "34": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#exception-handling]\n\n### Exception Handling\n\nExceptions to the four-run minimum are granted only for formations of provably trivial complexity (a single module call with no conditional logic and no optional features). Trivial formation exceptions must document which of the four runs are omitted and why, and expire immediately when the formation gains conditional logic. Exceptions to the `mock_provider` requirement for `unit.tftest.hcl` are not available; real-provider tests must be placed in `integration.tftest.hcl`. The Terraform >= 1.7.0 requirement has no exception.",
+    "35": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#governance-oversight]\n\n### Governance Oversight\n\n- **Standards Owner**: Platform Engineering — responsible for `verify.sh` maintenance and CI Terraform version management.\n- **Test Quality**: Infrastructure EA Practice — reviews test assertions for adequacy during PR review; recommends additional test patterns for complex formations.\n- **Governance Body**: Architecture Review Board — approves exceptions to the four-run minimum; reviews standard at each Terraform major version release.\n\n---",
+    "36": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#examples-and-references]\n\n## Examples and References",
+    "37": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#implementation-examples]\n\n### Implementation Examples",
+    "38": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#example-1-formation-with-mockprovider-aws--override-for-a-data-source]\n\n#### Example 1: Formation with `mock_provider \"aws\" {}` Override for a Data Source\n\n```hcl\n# tests/unit.tftest.hcl — using override_data for an EKS data source\n\nmock_provider \"aws\" {\n  # Override the EKS cluster data source to return a mock cluster\n  override_data {\n    target = data.aws_eks_cluster.cluster\n    values = {\n      id       = \"mmes-cms-dev-cluster\"\n      endpoint = \"https://mock.eks.endpoint\"\n      name     = \"mmes-cms-dev-cluster\"\n    }\n  }\n}\n\nrun \"plan_succeeds\" {\n  command = plan\n  variables {\n    product_abr      = \"mmes-cms\"\n    environment      = \"dev\"\n    eks_cluster_name = \"mmes-cms-dev-cluster\"\n    vpc_id           = \"vpc-00000000000000001\"\n    private_subnet_ids = [\"subnet-00000000000000001\", \"subnet-00000000000000002\"]\n  }\n}\n```",
+    "39": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#example-2-verifysh-terraform-fmt-excluding-tests]\n\n#### Example 2: `verify.sh` `terraform fmt` Excluding `tests/`\n\n```bash\n# verify.sh stage 1 — correct: targets formation root, not tests/\nterraform fmt -check -recursive \"${FORMATION_PATH}\"\n# \"${FORMATION_PATH}\" = iac/terraform/formations/aws/mmes-cms-ecs\n# terraform fmt processes: main.tf, variables.tf, outputs.tf, versions.tf\n# terraform fmt does NOT process: tests/unit.tftest.hcl  (correct — REQ-IAC-008-07)\n```",
+    "40": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#related-standards]\n\n### Related Standards\n\n- [STD-INFRA-IAC-001 — IaC Repository Structure](./STD-INFRA-IAC-001-repository-scaffold.md) — Defines `tests/unit.tftest.hcl` as a required scaffold file and `verify.sh` stage 4 as the test execution step.\n- [STD-INFRA-IAC-005 — State Management](./STD-INFRA-IAC-005-state-management.md) — Defines variable validation rules (preconditions) that the `empty_inputs_produce_no_modules` run verifies indirectly.\n- [STD-INFRA-IAC-006 — IaC Linting](./STD-INFRA-IAC-006-linting.md) — Defines linting stages that run before testing in `verify.sh`; the `tests/` directory exclusion from `terraform fmt` is documented in both standards.\n- [STD-INFRA-IAC-007 — IaC Security Scanning](./STD-INFRA-IAC-007-security-scanning.md) — Defines the Checkov scan that runs as stage 5 after `terraform test` in `verify.sh`.",
+    "41": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#external-references]\n\n### External References\n\n- [Terraform Test Framework Documentation](https://developer.hashicorp.com/terraform/language/tests) — Official documentation for `terraform test`, `.tftest.hcl` file syntax, and the `run {}` block reference.\n- [Terraform `mock_provider` Reference](https://developer.hashicorp.com/terraform/language/tests#mock-providers) — Reference for `mock_provider` configuration, `override_data`, and `override_resource` patterns.\n- [Terraform Test `assert` Block](https://developer.hashicorp.com/terraform/language/tests#run-block) — Reference for `assert {}` block syntax, `condition`, and `error_message` attributes within `run {}` blocks.\n- [Terraform 1.7 Release Notes](https://github.com/hashicorp/terraform/releases/tag/v1.7.0) — Release notes for the version that introduced `mock_provider` support in `terraform test`.\n\n---",
+    "42": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#change-history]\n\n## Change History\n\n| Date | Version | Author | Description | Impact |\n|------|---------|--------|-------------|--------|\n| 2026-07-24 | 1.0.0 | Enterprise Architecture Practice | Initial standard creation. Mandates `terraform test` with `mock_provider \"aws\" {}`, minimum four named `run` blocks (plan_succeeds, `<primary_resource>_created`, naming_convention, empty_inputs_produce_no_modules), Terraform >= 1.7.0 requirement with CI targeting `~> 1.9`, realistic AWS-format test variable values, graceful skip when `terraform init` fails due to git-SSH unavailability, and explicit exclusion of `tests/` from `terraform fmt` and `terraform validate`. | New mandatory standard — all formations must add `tests/unit.tftest.hcl` with four test runs; `versions.tf` must set `required_version >= 1.7.0`; all test variables must use realistic AWS-format values; `verify.sh` must be updated with graceful init-failure skip logic. |\n\n---",
+    "43": "[standards/infrastructure/iac/STD-INFRA-IAC-008-testing.md#review-log]\n\n## Review Log\n\n| Date | Reviewer | Role | Finding Summary | Resolution |\n|------|----------|------|-----------------|------------|\n| — | — | — | Pending initial ARB review | — |"
+  },
+  "coverage": {
+    "total_pages": 43,
+    "covered_pages": 43,
+    "sampled_pages": 43,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 43
+  }
+}

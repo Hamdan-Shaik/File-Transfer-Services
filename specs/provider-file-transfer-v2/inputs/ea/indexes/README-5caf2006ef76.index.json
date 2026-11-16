@@ -1,0 +1,128 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Infrastructure as Code (IaC) Standards",
+  "document_description": "This directory contains enterprise standards governing all Infrastructure as Code at Gainwell Technologies. These standards cover the complete IaC lifecycle: repository structure, module sourcing, deployment patterns, platform onboarding prerequisites, state management, linting, security scanning, testing, and continuous delivery pipelines.",
+  "total_pages": 12,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 1,
+      "summary": "",
+      "nodes": []
+    },
+    {
+      "title": "Infrastructure as Code (IaC) Standards",
+      "node_id": "infrastructure-as-code-iac-standards",
+      "start_index": 2,
+      "end_index": 12,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Overview",
+          "node_id": "overview",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Technology Context",
+          "node_id": "technology-context",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Platform Engineering (pfe-pg) Dependency",
+          "node_id": "platform-engineering-pfe-pg-dependency",
+          "start_index": 5,
+          "end_index": 5,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "IaC Standards Index",
+          "node_id": "iac-standards-index",
+          "start_index": 6,
+          "end_index": 6,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Compliance Summary",
+          "node_id": "compliance-summary",
+          "start_index": 7,
+          "end_index": 7,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Getting Started",
+          "node_id": "getting-started",
+          "start_index": 8,
+          "end_index": 8,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Related Standards",
+          "node_id": "related-standards",
+          "start_index": 9,
+          "end_index": 9,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Related Guidance",
+          "node_id": "related-guidance",
+          "start_index": 10,
+          "end_index": 10,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Change History",
+          "node_id": "change-history",
+          "start_index": 11,
+          "end_index": 11,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Review Log",
+          "node_id": "review-log",
+          "start_index": 12,
+          "end_index": 12,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "**[Home](../../../README.md)** > **[Standards](../../README.md)** > **[Infrastructure](../README.md)** > **IaC**\n\n---",
+    "2": "[standards/infrastructure/iac/README.md#infrastructure-as-code-iac-standards]\n\n# Infrastructure as Code (IaC) Standards\n\n**← Back to [EAP Home](../../../README.md) • [Enterprise Standards](../../README.md) • [Infrastructure Standards](../README.md)**\n\n---",
+    "3": "[standards/infrastructure/iac/README.md#overview]\n\n## Overview\n\nThis directory contains enterprise standards governing all Infrastructure as Code at Gainwell Technologies. These standards cover the complete IaC lifecycle: repository structure, module sourcing, deployment patterns, platform onboarding prerequisites, state management, linting, security scanning, testing, and continuous delivery pipelines.\n\nAll product repositories that provision AWS infrastructure using Terraform and Terragrunt **must** comply with the standards in this directory. The standards are designed as an ordered dependency chain — earlier standards define the scaffold and contracts that later standards build on.",
+    "4": "[standards/infrastructure/iac/README.md#technology-context]\n\n## Technology Context\n\n| Component | Tool | Role |\n|-----------|------|------|\n| Provisioning language | Terraform | Authors formation modules (`iac/terraform/formations/aws/`) |\n| Deployment orchestration | Terragrunt | Manages per-environment deployment configurations (`iac/terraform/deployments/aws/`) |\n| Shared module library | `git@github.com:mygainwell/pfe-iac-modules.git` | Sole approved source for all AWS resource modules |\n| State backend | AWS S3 + DynamoDB | Remote state and locking; provisioned and managed by Platform Engineering |\n| Linting | `terraform fmt` + `tflint` | Code style and rule enforcement |\n| Security scanning | Checkov | IaC misconfiguration detection |\n| Testing | `terraform test` | Formation unit tests using `mock_provider` |\n| CI/CD | GitHub Actions (`cd-deploy.yml`) | Plan-then-apply pipeline with human approval gates for production |",
+    "5": "[standards/infrastructure/iac/README.md#platform-engineering-pfe-pg-dependency]\n\n## Platform Engineering (pfe-pg) Dependency\n\nProduct teams do not provision their own VPCs, subnets, EKS clusters, or state backends. Platform Engineering (pfe-pg) owns all foundational infrastructure. Product IaC consumes platform outputs via `terraform_remote_state`. The prerequisite sequence is:\n\n1. Conceptual and logical architecture approved (ARB)\n2. pfe-pg onboarding ticket opened and confirmed\n3. Deployment zone active in target environment\n4. Product IaC authoring begins\n\n---",
+    "6": "[standards/infrastructure/iac/README.md#iac-standards-index]\n\n## IaC Standards Index\n\n| Standard ID | Title | Status | Compliance Level | Description |\n|-------------|-------|--------|-----------------|-------------|\n| [STD-INFRA-IAC-001](./STD-INFRA-IAC-001-repository-scaffold.md) | IaC Repository Structure Standard | Draft | Mandatory | Defines the required directory layout (`iac/terraform/formations/aws/`, `iac/terraform/deployments/aws/`), `.project.yml` `iac:` block schema, environment short name registry, and `verify.sh` verification utility. |\n| [STD-INFRA-IAC-002](./STD-INFRA-IAC-002-module-sourcing.md) | pfe-iac-modules Mandatory Sourcing Standard | Draft | Mandatory | Establishes `git@github.com:mygainwell/pfe-iac-modules.git` as the sole approved module source, prohibits raw `resource \"aws_*\"` blocks in product formations, mandates semver tag pinning, and defines the PE escalation path for missing modules. |\n| [STD-INFRA-IAC-003](./STD-INFRA-IAC-003-deployment-pattern.md) | Single-File Deployment Pattern Standard | Draft | Mandatory | Defines the four-file Terragrunt deployment pattern (`terragrunt.hcl`, `common-includes.hcl`, `security-groups.hcl`, `security-group-rules.hcl`), prohibits primary/secondary subdirectory splits, and mandates `TG_REGION_CONTEXT` for region selection. |\n| [STD-INFRA-IAC-004](./STD-INFRA-IAC-004-platform-onboarding.md) | Platform Deployment Zone Prerequisites Standard | Draft | Mandatory | Defines the pfe-pg deployment zone confirmation gate, `product_abr` registration requirements, CIDR allocation through Platform Engineering, EKS cluster registration prerequisites, and the advance onboarding ticket process. |\n| [STD-INFRA-IAC-005](./STD-INFRA-IAC-005-state-management.md) | Terraform State Management Standard | Draft | Mandatory | Mandates S3 + DynamoDB remote state via pfe-pg platform state bucket, requires `acquire-tfstate` as the first CD pipeline step, prohibits hardcoded VPC/subnet values, and governs `terraform_remote_state` data source patterns. |\n| [STD-INFRA-IAC-006](./STD-INFRA-IAC-006-linting.md) | IaC Linting Standard | Draft | Mandatory | Mandates `terraform fmt` as the canonical formatter, requires per-formation `.tflint.hcl` configuration, defines required and suppressible tflint rule sets, and addresses `call_module_type=none` for git-SSH module sources. |\n| [STD-INFRA-IAC-007](./STD-INFRA-IAC-007-security-scanning.md) | IaC Security Scanning Standard | Draft | Mandatory | Establishes Checkov as the mandatory IaC security scanner, defines blocking versus non-blocking finding categories, grants a specific exception for `CKV_TF_1` when using semver-pinned pfe-iac-modules sources, and requires review of all non-blocking findings. |\n| [STD-INFRA-IAC-008](./STD-INFRA-IAC-008-testing.md) | IaC Testing Standard | Draft | Mandatory | Establishes `terraform test` as the mandatory testing mechanism, specifies minimum test cases every formation must implement using `mock_provider`, defines required test file location and naming (`tests/unit.tftest.hcl`), and sets the minimum Terraform version for test support. |\n| [STD-INFRA-IAC-009](./STD-INFRA-IAC-009-ci-verification.md) | IaC CI Verification Pipeline Standard | Draft | Mandatory | Defines `verify.sh` as the single verification source of truth, mandates the six-step CI job sequence (fmt → tflint → validate → test → terragrunt validate → checkov), specifies blocking vs. advisory behavior per step, and governs tool version pinning. |\n| [STD-INFRA-IAC-010](./STD-INFRA-IAC-010-cd-pipeline.md) | CD Pipeline Requirements Standard | Draft | Mandatory | Defines the required GitHub Actions CD pipeline structure (`cd-deploy.yml`), mandates plan-before-apply for all deployments, requires human approval gates between plan and apply for production environments, specifies the `DEPLOYMENT_PATH` contract, and governs Helm-only software rollback. |\n| [STD-INFRA-IAC-011](./STD-INFRA-IAC-011-environment-scaffolding.md) | Environment Scaffolding Standard | Draft | Mandatory | Defines the architecture approval gate before scaffolding, required files per environment, short name convention (dev/test/prf/cfg/sit/uat/prd), environment registry in `.project.yml`, and the acquire-tfstate-first deployment sequence. |\n| [STD-INFRA-IAC-012](./STD-INFRA-IAC-012-resource-tagging.md) | IaC Resource Tagging and Cost Allocation Standard | Draft | Mandatory | Mandates all tags flow through `common.tags` in pfe-iac-modules, defines 7 required tag keys, enforces `ManagedBy: terraform:<deployment_name>` format, and prohibits Checkov tag suppression on HIPAA resources. |\n| [STD-INFRA-IAC-013](./STD-INFRA-IAC-013-secrets-handling.md) | IaC Secrets Handling and Credential Management Standard | Draft | Mandatory | Prohibits secrets in IaC files, mandates auto-generated DB credentials via `random_password` + `secrets-manager` module, enforces IRSA for pod Secrets Manager access, defines `{product_name}/{concern}` naming, and requires Gitleaks in CI. |\n\n---",
+    "7": "[standards/infrastructure/iac/README.md#compliance-summary]\n\n## Compliance Summary\n\nAll IaC standards in this directory carry a compliance level of **Mandatory**. Non-compliance with any standard constitutes a blocking defect for ARB review and prevents deployment through the governed CD pipeline.\n\n| Status | Count | Standards |\n|--------|-------|-----------|\n| Draft — Pending ARB Review | 13 | 001–013 |\n\n---",
+    "8": "[standards/infrastructure/iac/README.md#getting-started]\n\n## Getting Started\n\n**Starting a new product repository with IaC?**\n\n1. Read [STD-INFRA-IAC-004](./STD-INFRA-IAC-004-platform-onboarding.md) first — confirm your deployment zone prerequisites before writing a single line of HCL.\n2. Scaffold the repository per [STD-INFRA-IAC-001](./STD-INFRA-IAC-001-repository-scaffold.md).\n3. Author formations sourcing from pfe-iac-modules per [STD-INFRA-IAC-002](./STD-INFRA-IAC-002-module-sourcing.md).\n4. Create deployment directories per [STD-INFRA-IAC-003](./STD-INFRA-IAC-003-deployment-pattern.md).\n5. Configure state per [STD-INFRA-IAC-005](./STD-INFRA-IAC-005-state-management.md).\n6. Pass all local quality gates ([STD-INFRA-IAC-006](./STD-INFRA-IAC-006-linting.md), [STD-INFRA-IAC-007](./STD-INFRA-IAC-007-security-scanning.md), [STD-INFRA-IAC-008](./STD-INFRA-IAC-008-testing.md)) before raising a PR.\n7. Ensure the CI/CD pipeline conforms to [STD-INFRA-IAC-010](./STD-INFRA-IAC-010-cd-pipeline.md).\n\n**Have an existing IaC structure that predates these standards?**\n\nOpen a CRB Architecture Exception referencing the specific requirement IDs that conflict with your current structure. All scaffold exceptions carry a maximum 90-day remediation window. Contact the Platform Engineering team to plan the migration.\n\n---",
+    "9": "[standards/infrastructure/iac/README.md#related-standards]\n\n## Related Standards\n\n- [STD-INFRA-EKS-001 — EKS Auto Mode Container Compute](../eks/STD-INFRA-EKS-001-eks-auto-mode-container-compute.md) — Governs workload deployment to the pfe-pg shared EKS clusters provisioned per STD-INFRA-IAC-004.\n- [STD-INFRA-INT-001 — Event Broker Integration](../integration/STD-INFRA-INT-001-event-broker-integration.md) — Governs infrastructure-level integration services provisioned through pfe-iac-modules.",
+    "10": "[standards/infrastructure/iac/README.md#related-guidance]\n\n## Related Guidance\n\n- [GUID-INFRA-K8S-001 — Argo CD for GitOps Delivery](../../../strategy/guidance/infrastructure/) — GitOps delivery model that complements the Terraform/Terragrunt IaC pipeline.\n- [GUID-SEC-CLOUD-CONTAINER-RAD-3.6.02 — Container Security RAD](../../../strategy/guidance/security/) — Security controls applicable to containerized workloads deployed through product IaC.\n\n---",
+    "11": "[standards/infrastructure/iac/README.md#change-history]\n\n## Change History\n\n| Date | Version | Author | Description | Impact |\n|------|---------|--------|-------------|--------|\n| 2026-07-24 | 1.0.0 | Enterprise Architecture Practice | Initial README creation. Documents the IaC standards suite (STD-INFRA-IAC-001 through STD-INFRA-IAC-011), covering the complete IaC lifecycle from repository scaffold to CD pipeline governance. | New index — no compliance impact; standards individually govern compliance. |",
+    "12": "[standards/infrastructure/iac/README.md#review-log]\n\n## Review Log\n\n| Date | Reviewer | Role | Finding Summary | Resolution |\n|------|----------|------|-----------------|------------|\n| — | — | — | Pending initial ARB review | — |"
+  },
+  "coverage": {
+    "total_pages": 12,
+    "covered_pages": 12,
+    "sampled_pages": 12,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 12
+  }
+}

@@ -1,0 +1,175 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Architecture Decision Record",
+  "document_description": "All packages follow strict semantic versioning (`MAJOR.MINOR.REVISION`) in lockstep across all languages. Releases use a structured notes template. Deprecated APIs remain for at least two MINOR cycles before removal.",
+  "total_pages": 17,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 1,
+      "summary": "",
+      "nodes": []
+    },
+    {
+      "title": "Architecture Decision Record",
+      "node_id": "architecture-decision-record",
+      "start_index": 2,
+      "end_index": 17,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "ADR-TEC-002: Versioning, Release, and Deprecation Lifecycle",
+          "node_id": "adr-tec-002-versioning-release-and-deprecation-lifecycle",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Decision Summary",
+          "node_id": "decision-summary",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Context and Problem Statement",
+          "node_id": "context-and-problem-statement",
+          "start_index": 5,
+          "end_index": 5,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "1. Semantic Versioning",
+          "node_id": "1-semantic-versioning",
+          "start_index": 6,
+          "end_index": 11,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Version Lockstep",
+              "node_id": "version-lockstep",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Pre-release Tags",
+              "node_id": "pre-release-tags",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Pre-release Version Format by Ecosystem",
+              "node_id": "pre-release-version-format-by-ecosystem",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Feature Parity Mandate",
+              "node_id": "feature-parity-mandate",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "What Constitutes a Breaking Change (MAJOR)",
+              "node_id": "what-constitutes-a-breaking-change-major",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "2. Release Notes Template",
+          "node_id": "2-release-notes-template",
+          "start_index": 12,
+          "end_index": 13,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Template Rules",
+              "node_id": "template-rules",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "3. Deprecation Policy",
+          "node_id": "3-deprecation-policy",
+          "start_index": 14,
+          "end_index": 14,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Implementation",
+          "node_id": "implementation",
+          "start_index": 15,
+          "end_index": 15,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Enterprise References",
+          "node_id": "enterprise-references",
+          "start_index": 16,
+          "end_index": 16,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Change Log",
+          "node_id": "change-log",
+          "start_index": 17,
+          "end_index": 17,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "> **Promoted from:** `mmes-cmn-core/docs/decisions/technology/adr-tec-002-versioning-release-lifecycle.md`  \n> **Ref-arch artifact ID:** `STD-APP-LIB-001-polyglot-library-versioning-and-lifecycle`  \n> This document has been promoted to the Enterprise Architecture Platform reference architecture. Product repos should reference this artifact rather than maintaining their own copy.\n\n---",
+    "2": "[standards/application/STD-APP-LIB-001-polyglot-library-versioning-and-lifecycle.md#architecture-decision-record]\n\n# Architecture Decision Record",
+    "3": "[standards/application/STD-APP-LIB-001-polyglot-library-versioning-and-lifecycle.md#adr-tec-002-versioning-release-and-deprecation-lifecycle]\n\n## ADR-TEC-002: Versioning, Release, and Deprecation Lifecycle\n\n---\n\n|               |                                                                 |\n| ------------- | --------------------------------------------------------------- |\n| **Status**    | Accepted                                                        |\n| **Date**      | 2026-05-07                                                      |\n| **Issuer**    | MMES Platform Team                                              |\n| **Consulted** | Enterprise Architecture Practice, Domain Service Leads          |\n| **Informed**  | All MMES development teams                                      |\n\n---",
+    "4": "[standards/application/STD-APP-LIB-001-polyglot-library-versioning-and-lifecycle.md#decision-summary]\n\n## Decision Summary\n\nAll packages follow strict semantic versioning (`MAJOR.MINOR.REVISION`) in lockstep across all languages. Releases use a structured notes template. Deprecated APIs remain for at least two MINOR cycles before removal.\n\n---",
+    "5": "[standards/application/STD-APP-LIB-001-polyglot-library-versioning-and-lifecycle.md#context-and-problem-statement]\n\n## Context and Problem Statement\n\n- **Business Context**: Multiple teams depend on this framework. They need to know whether upgrading is safe, what changed, and when deprecated APIs will be removed.\n- **Technical Context**: All supported languages release in lockstep. Versioning, communication, and deprecation must be consistent.\n- **Problem Statement**: What does each version level mean, how are releases communicated, and how long do deprecated APIs live?\n\n---",
+    "6": "[standards/application/STD-APP-LIB-001-polyglot-library-versioning-and-lifecycle.md#1-semantic-versioning]\n\n## 1. Semantic Versioning\n\n| Level | Meaning | Consumer Impact |\n| --- | --- | --- |\n| **MAJOR** (`X.0.0`) | Breaking change — interfaces removed, renamed, or changed incompatibly | Consumers MUST update their code |\n| **MINOR** (`0.X.0`) | New capability — new interfaces, adapters, or features added | Existing code works unchanged |\n| **REVISION** (`0.0.X`) | Fix — bug fixes, performance improvements, doc corrections | No code changes required |",
+    "7": "[standards/application/STD-APP-LIB-001-polyglot-library-versioning-and-lifecycle.md#version-lockstep]\n\n### Version Lockstep\n\nAll language packages share the same version number at all times. A fix in one language triggers a release for all. This eliminates \"which version of which language\" confusion.",
+    "8": "[standards/application/STD-APP-LIB-001-polyglot-library-versioning-and-lifecycle.md#pre-release-tags]\n\n### Pre-release Tags\n\n| Tag | Meaning |\n| --- | --- |\n| `X.Y.Z-alpha.N` | Experimental — interfaces may change |\n| `X.Y.Z-beta.N` | Feature-complete — interfaces frozen, bugs expected |\n| `X.Y.Z-rc.N` | Release candidate — production-ready pending validation |",
+    "9": "[standards/application/STD-APP-LIB-001-polyglot-library-versioning-and-lifecycle.md#pre-release-version-format-by-ecosystem]\n\n### Pre-release Version Format by Ecosystem\n\nEach package ecosystem has its own version format rules. The semantic meaning is identical across all languages — only the string representation differs due to registry constraints.\n\n| Language | Format | Example | Reason |\n| --- | --- | --- | --- |\n| C# (NuGet) | `X.Y.Z-rc.N` | `1.0.0-rc1` | SemVer 2.0 |\n| Java (Maven) | `X.Y.Z-rc.N` | `1.0.0-rc1` | Maven versioning |\n| Python (PyPI) | `X.Y.ZrcN` | `1.0.0rc1` | PEP 440 (hyphens not permitted) |\n| Rust (Cargo) | `X.Y.Z-rc.N` | `1.0.0-rc1` | SemVer 2.0 |\n\nThis is an inherent ecosystem constraint, not a configuration choice. PyPI normalizes `1.0.0-rc1` to `1.0.0rc1` automatically during upload. All polyglot frameworks (AWS SDK, gRPC, etc.) exhibit this same behavior.",
+    "10": "[standards/application/STD-APP-LIB-001-polyglot-library-versioning-and-lifecycle.md#feature-parity-mandate]\n\n### Feature Parity Mandate\n\nAll supported languages must maintain **feature parity at all times**. A feature, fix, or enhancement must be implemented in every language before a release is tagged. No language may ship capabilities that others lack.\n\n| Rule | Detail |\n| --- | --- |\n| **All languages release together** | A fix in one language triggers a release for all — no partial releases |\n| **Feature parity required** | Every interface, method, adapter, and behavior exists in every language |\n| **BDD contracts enforce parity** | No language passes quality gate unless all shared `.feature` scenarios pass |\n| **Language-specific exception** | A change may touch only one language **only** when it addresses a language-specific defect or performance optimization that does not affect the public interface or behavioral contract |\n\nLanguage-specific exceptions must be documented in the Per-Language Notes section of the release notes and must not alter the interface surface or observable behavior.",
+    "11": "[standards/application/STD-APP-LIB-001-polyglot-library-versioning-and-lifecycle.md#what-constitutes-a-breaking-change-major]\n\n### What Constitutes a Breaking Change (MAJOR)\n\n- Removing or renaming a public interface/method\n- Changing method signature or documented behavior contract\n- Removing or renaming a package\n- Forcing consumers to update their dependency tree\n\n---",
+    "12": "[standards/application/STD-APP-LIB-001-polyglot-library-versioning-and-lifecycle.md#2-release-notes-template]\n\n## 2. Release Notes Template\n\nEvery release uses this mandatory structure. Sections with no content display \"None.\" — never omitted.\n\n```markdown\n# Release vX.Y.Z\n\n**Date:** YYYY-MM-DD\n**Type:** MAJOR | MINOR | REVISION\n**Previous Version:** vX.Y.Z\n\n---\n\n## Summary\n[1-3 sentences — purpose and impact]\n\n## Breaking Changes\n| Change | Affected Interface | Migration Required |\n| --- | --- | --- |\n\n## New Capabilities\n- [Capability — brief description]\n\n## Fixes\n- [Fix — what was wrong and what was corrected]\n\n## Deprecations\n| Deprecated | Replacement | Removal Target |\n| --- | --- | --- |\n\n## Per-Language Notes\n### [Language Name]\n- [Language-specific changes or \"No language-specific changes.\"]\n\n## Upgrade Instructions\n1. Update dependency version to X.Y.Z\n2. [Additional steps if needed]\n\n## Migration Guide\n[MAJOR only — before/after code examples]\n\n## Dependencies\n| Dependency | Action | Old Version | New Version | Reason |\n| --- | --- | --- | --- | --- |\n\n## Known Issues\n- [Issue — description and workaround]\n\n## Contributors\n- [Name/team — contribution]\n```",
+    "13": "[standards/application/STD-APP-LIB-001-polyglot-library-versioning-and-lifecycle.md#template-rules]\n\n### Template Rules\n\n- All sections mandatory — use \"None.\" when empty\n- Breaking Changes always first after Summary\n- Per-Language Notes always present for each supported language\n- Migration Guide uses before/after code examples\n- CI validates section presence before release publish\n\n---",
+    "14": "[standards/application/STD-APP-LIB-001-polyglot-library-versioning-and-lifecycle.md#3-deprecation-policy]\n\n## 3. Deprecation Policy\n\n```mermaid\nstateDiagram-v2\n    [*] --> Active: API introduced\n    Active --> Deprecated: Marked deprecated in vX.Y.0\n    Deprecated --> Deprecated: Remains in vX.Y+1.0 and vX.Y+2.0\n    Deprecated --> Removed: Removed in vX+1.0.0 (next MAJOR)\n    Removed --> [*]\n```\n\n| Rule | Detail |\n| --- | --- |\n| **Minimum window** | Two MINOR releases must ship after deprecation before removal |\n| **Compiler warnings** | Deprecated items emit warnings in all supported languages |\n| **Replacement required** | No API deprecated without a documented replacement |\n| **Removal only in MAJOR** | Deprecated items removed only in MAJOR bumps |\n| **Migration guide** | MAJOR release notes include before/after examples |\n\n---",
+    "15": "[standards/application/STD-APP-LIB-001-polyglot-library-versioning-and-lifecycle.md#implementation]\n\n## Implementation\n\n- Version declared in `.project.yml` — single source of truth\n- CI reads version and applies to all language packages during build\n- Git tags use `vMAJOR.MINOR.REVISION`\n- Release notes stored in `docs/releases/vX.Y.Z.md` and on GitHub Release page\n\n---",
+    "16": "[standards/application/STD-APP-LIB-001-polyglot-library-versioning-and-lifecycle.md#enterprise-references]\n\n## Enterprise References\n\n| Reference | Title | Relevance |\n| --- | --- | --- |\n| [ADR-TEC-016](https://github.com/MyGainwell/eap-ref-architecture/blob/main/decisions/technology/ADR-TEC-016-package-registry-strategy.md) | Package Registry Strategy | Versioning requirements for JFrog packages |\n| [ADR-OPS-005](https://github.com/MyGainwell/eap-ref-architecture/blob/main/decisions/itsm-operations/ADR-OPS-005-release-management-strategy.md) | Release Management Strategy | Release cadence and communication |\n| [ADR-OPS-004](https://github.com/MyGainwell/eap-ref-architecture/blob/main/decisions/itsm-operations/ADR-OPS-004-change-control.md) | Change Control | Structured change management |\n| [ADR-TEC-014](https://github.com/MyGainwell/eap-ref-architecture/blob/main/decisions/technology/ADR-TEC-014-source-control-branching-strategy.md) | Source Control Branching Strategy | Release tagging approach |\n\n---",
+    "17": "[standards/application/STD-APP-LIB-001-polyglot-library-versioning-and-lifecycle.md#change-log]\n\n## Change Log\n\n| Version | Date       | Author             | Description                |\n| ------- | ---------- | ------------------ | -------------------------- |\n| 1.0     | 2026-05-07 | MMES Platform Team | Initial decision document. |"
+  },
+  "coverage": {
+    "total_pages": 17,
+    "covered_pages": 17,
+    "sampled_pages": 17,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 17
+  }
+}

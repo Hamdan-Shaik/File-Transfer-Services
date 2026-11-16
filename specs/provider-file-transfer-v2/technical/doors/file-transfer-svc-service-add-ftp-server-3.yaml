@@ -1,0 +1,473 @@
+door:
+  id: file-transfer-svc-service-add-ftp-server-3
+  kind: wcf
+  name: AddFtpServer
+  class: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvcCore\FileTransferSvcService.cs
+  line: 43
+  entry:
+  - HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.AddFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+procedures: []
+tables:
+- name: orm:FTP_SERVER
+  access:
+  - reads
+  - writes
+shared_uses: []
+external_uses:
+- package: ''
+  version: ''
+  method: '?.Find'
+  calls:
+  - at: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts\Utilities\BusinessErrorUtility.cs:33
+    arguments:
+    - name: null
+      expression: f => f.LocaleID.ToLower() == requestor.LocaleCode.ToLower()
+  unresolved: true
+- package: ''
+  version: ''
+  method: '?.ToLower'
+  calls:
+  - at: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts\Utilities\BusinessErrorUtility.cs:33
+    arguments: []
+  unresolved: true
+- package: ''
+  version: ''
+  method: Guid.Equals
+  calls:
+  - at: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business\CommandHandlers\FtpServerCommandHandler.cs:106
+    arguments:
+    - name: null
+      expression: ftpServerId
+  unresolved: true
+- package: ''
+  version: ''
+  method: IMessageCodesReadOnly.GetMessage
+  calls:
+  - at: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts\Utilities\BusinessErrorUtility.cs:44
+    arguments:
+    - name: null
+      expression: Guid.Parse(requestor.TenantId)
+    - name: null
+      expression: contentId
+  unresolved: true
+- package: ''
+  version: ''
+  method: Mapper.DynamicMap
+  calls:
+  - at: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business\CommandHandlers\FtpServerCommandHandler.cs:67
+    arguments:
+    - name: null
+      expression: command
+    - name: null
+      expression: ftpServerAdded
+  - at: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess\EventHandlers\FtpServerProjectionWriter.cs:77
+    arguments:
+    - name: null
+      expression: '@event'
+    - name: null
+      expression: newFtpServer
+  unresolved: true
+- package: ''
+  version: ''
+  method: ProjectionWriterBase<HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.Entities.FtpServer>.Add
+  calls:
+  - at: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess\EventHandlers\FtpServerProjectionWriter.cs:81
+    arguments:
+    - name: null
+      expression: newFtpServer
+  unresolved: true
+- package: automapper
+  version: 12.0.1
+  method: AutoMapper.IMapperBase.Map<TSource, TDestination>(TSource, TDestination)
+  calls:
+  - at: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvc.Business\CommandHandlers\FtpServerCommandHandler.cs:69
+    type_arguments:
+    - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand
+    - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtpServerAdded
+    arguments:
+    - name: source
+      expression: command
+    - name: destination
+      expression: ftpServerAdded
+  - at: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvc.DataAccess\EventHandlers\FtpServerProjectionWriter.cs:77
+    type_arguments:
+    - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtpServerAdded
+    - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.Entities.FtpServer
+    arguments:
+    - name: source
+      expression: '@event'
+    - name: destination
+      expression: newFtpServer
+- package: hpp.core.bas.cqrs
+  version: 30.0.0
+  method: HPP.Core.BAS.CQRS.Base.CommandServiceBase.TryRoute(HPP.Core.BAS.CQRS.Base.Command)
+  calls:
+  - at: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvcCore\FileTransferSvcService.cs:71
+    arguments:
+    - name: command
+      expression: command
+- package: hpp.core.bas.cqrs
+  version: 30.0.0
+  method: HPP.Core.BAS.CQRS.Base.ProjectionWriterBase<T>.Add(T)
+  calls:
+  - at: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvc.DataAccess\EventHandlers\FtpServerProjectionWriter.cs:81
+    arguments:
+    - name: newInstance
+      expression: newFtpServer
+- package: hpp.core.bas.cqrs
+  version: 30.0.0
+  method: HPP.Core.BAS.CQRS.Config.IMessageCodesReadOnly.GetMessage(System.Guid, string)
+  calls:
+  - at: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvc.Contracts\Utilities\BusinessErrorUtility.cs:44
+    arguments:
+    - name: tenantID
+      expression: Guid.Parse(requestor.TenantId)
+    - name: messageCode
+      expression: contentId
+polymorphic_hooks: []
+stops:
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FileTransferCommand.HandleValidations()
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts\Commands\FileTransferCommand.cs
+  line: 72
+calls:
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.BuildEvent(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+  via: DISPATCHES_TO
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.BuildEvent(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+  via: DISPATCHES_TO
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtpServerProjectionWriter.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtpServerAdded)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.BuildEvent(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+  via: DISPATCHES_TO
+  to: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.BuildEvent(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+  via: DISPATCHES_TO
+  to: HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtpServerProjectionWriter.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtpServerAdded)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.BuildEvent(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+  via: READS_FROM
+  to: orm:FTP_SERVER
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.BuildFtpServerQuery(string)
+  via: READS_FROM
+  to: orm:FTP_SERVER
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.GetFtpServers(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.Repository.IFileTransferReadOnlyRepository.GetFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.GetFtpServers(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+  via: READS_FROM
+  to: orm:FTP_SERVER
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.BuildEvent(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.ValidateFtpServerCommand(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+  via: READS_FROM
+  to: orm:FTP_SERVER
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.IsFtpServerNameDuplicated(string, System.Guid)
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.BuildFtpServerQuery(string)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.IsFtpServerNameDuplicated(string, System.Guid)
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.GetFtpServers(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.IsFtpServerNameDuplicated(string, System.Guid)
+  via: READS_FROM
+  to: orm:FTP_SERVER
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.ValidateFtpServerCommand(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.IsFtpServerNameDuplicated(string, System.Guid)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.ValidateFtpServerCommand(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FileTransferCommand.AddValidation(string, string, string, bool)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.ValidateFtpServerCommand(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FileTransferCommand.HandleValidations()
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.ValidateFtpServerCommand(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FileTransferCommand.Validate()
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.ValidateFtpServerCommand(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+  via: READS_FROM
+  to: orm:FTP_SERVER
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand.SetCommandValidations()
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand.ValidateFtpServerId()
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand.SetCommandValidations()
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand.ValidateFtpServerIp()
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand.SetCommandValidations()
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand.ValidateProxyPort()
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand.SetCommandValidations()
+  via: READS_FROM
+  to: orm:FTP_SERVER
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand.ValidateFtpServerId()
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FileTransferCommand.AddValidation(string, string, bool)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand.ValidateFtpServerId()
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FileTransferCommand.AddValidation(string, string, string, bool)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand.ValidateFtpServerId()
+  via: READS_FROM
+  to: orm:FTP_SERVER
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand.ValidateFtpServerIp()
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand.ValidateFtpServerIpPattern()
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand.ValidateFtpServerIp()
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FileTransferCommand.AddValidation(string, string, bool)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand.ValidateFtpServerIp()
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FileTransferCommand.AddValidation(string, string, string, bool)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand.ValidateFtpServerIp()
+  via: READS_FROM
+  to: orm:FTP_SERVER
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand.ValidateFtpServerIpPattern()
+  via: READS_FROM
+  to: orm:FTP_SERVER
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand.ValidateProxyPort()
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FileTransferCommand.AddValidation(string, string, bool)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand.ValidateProxyPort()
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FileTransferCommand.AddValidation(string, string, string, bool)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FileTransferCommand.AddValidation(string, string, bool)
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Utilities.BusinessErrorUtility.GetMessage(HPP.Core.BAS.CQRS.UserMeta.RequestorModel, string)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FileTransferCommand.AddValidation(string, string, string, bool)
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Utilities.BusinessErrorUtility.GetMessage(RequestorModel, string)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FileTransferCommand.SetCommandValidations()
+  via: DISPATCH
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand.SetCommandValidations()
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FileTransferCommand.Validate()
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FileTransferCommand.HandleValidations()
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FileTransferCommand.Validate()
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FileTransferCommand.SetCommandValidations()
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FileTransferCommand.Validate()
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FileTransferCommand.ValidateRequiredFields()
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FileTransferCommand.ValidateRequiredFields()
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FileTransferCommand.AddValidation(string, string, bool)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FileTransferCommand.ValidateRequiredFields()
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FileTransferCommand.AddValidation(string, string, string, bool)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Utilities.BusinessErrorUtility.GetMessage(HPP.Core.BAS.CQRS.UserMeta.RequestorModel, string)
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Utilities.BusinessErrorUtility.LoadConfigurationMessage(HPP.Core.BAS.CQRS.UserMeta.RequestorModel, string)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Utilities.BusinessErrorUtility.GetMessage(RequestorModel, string)
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Utilities.BusinessErrorUtility.LoadConfigurationMessage(RequestorModel, string)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtpServerProjectionWriter.AddFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtpServerAdded)
+  via: DISPATCHES_TO
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtpServerProjectionWriter.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtpServerAdded)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtpServerProjectionWriter.AddFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtpServerAdded)
+  via: DISPATCHES_TO
+  to: HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtpServerProjectionWriter.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtpServerAdded)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtpServerProjectionWriter.AddFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtpServerAdded)
+  via: WRITES_TO
+  to: orm:FTP_SERVER
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtpServerProjectionWriter.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtpServerAdded)
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtpServerProjectionWriter.AddFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtpServerAdded)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtpServerProjectionWriter.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtpServerAdded)
+  via: READS_FROM
+  to: orm:FTP_SERVER
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.Repository.FileTransferReadOnlyRepository.GetFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+  via: READS_FROM
+  to: orm:FTP_SERVER
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.Repository.IFileTransferReadOnlyRepository.GetFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+  via: DISPATCH
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.Repository.FileTransferReadOnlyRepository.GetFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+- from: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.Repository.IFileTransferReadOnlyRepository.GetFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+  via: READS_FROM
+  to: orm:FTP_SERVER
+- from: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.BuildEvent(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+  via: READS_FROM
+  to: orm:FTP_SERVER
+- from: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.BuildFtpServerQuery(string)
+  via: READS_FROM
+  to: orm:FTP_SERVER
+- from: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.GetFtpServers(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+  via: INVOKES
+  to: HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.Repository.IFileTransferReadOnlyRepository.GetFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+- from: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.GetFtpServers(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+  via: READS_FROM
+  to: orm:FTP_SERVER
+- from: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+  via: INVOKES
+  to: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.BuildEvent(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+- from: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+  via: INVOKES
+  to: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.ValidateFtpServerCommand(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+- from: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+  via: READS_FROM
+  to: orm:FTP_SERVER
+- from: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.IsFtpServerNameDuplicated(string, System.Guid)
+  via: INVOKES
+  to: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.BuildFtpServerQuery(string)
+- from: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.IsFtpServerNameDuplicated(string, System.Guid)
+  via: INVOKES
+  to: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.GetFtpServers(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+- from: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.IsFtpServerNameDuplicated(string, System.Guid)
+  via: READS_FROM
+  to: orm:FTP_SERVER
+- from: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.ValidateFtpServerCommand(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FileTransferCommand.AddValidation(string, string, bool)
+- from: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.ValidateFtpServerCommand(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FileTransferCommand.HandleValidations()
+- from: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.ValidateFtpServerCommand(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+  via: INVOKES
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FileTransferCommand.Validate()
+- from: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.ValidateFtpServerCommand(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+  via: INVOKES
+  to: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.IsFtpServerNameDuplicated(string, System.Guid)
+- from: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.ValidateFtpServerCommand(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+  via: READS_FROM
+  to: orm:FTP_SERVER
+- from: HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtpServerProjectionWriter.AddFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtpServerAdded)
+  via: WRITES_TO
+  to: orm:FTP_SERVER
+- from: HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtpServerProjectionWriter.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtpServerAdded)
+  via: INVOKES
+  to: HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtpServerProjectionWriter.AddFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtpServerAdded)
+- from: HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtpServerProjectionWriter.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtpServerAdded)
+  via: READS_FROM
+  to: orm:FTP_SERVER
+- from: HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.Repository.FileTransferReadOnlyRepository.GetFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+  via: READS_FROM
+  to: orm:FTP_SERVER
+- from: HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.Repository.IFileTransferReadOnlyRepository.GetFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+  via: DISPATCH
+  to: HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.Repository.FileTransferReadOnlyRepository.GetFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+- from: HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.Repository.IFileTransferReadOnlyRepository.GetFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+  via: READS_FROM
+  to: orm:FTP_SERVER
+- from: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.AddFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+  via: DISPATCHES_TO
+  to: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+- from: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.AddFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+  via: DISPATCHES_TO
+  to: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+- from: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.AddFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+  via: INVOKES
+  to: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.TryRouteCommand(HPP.Core.BAS.CQRS.Base.Command)
+- from: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.AddFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+  via: READS_FROM
+  to: orm:FTP_SERVER
+methods:
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.BuildEvent(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business\CommandHandlers\FtpServerCommandHandler.cs
+  line: 64
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.BuildFtpServerQuery(string)
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business\CommandHandlers\FtpServerCommandHandler.cs
+  line: 114
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.GetFtpServers(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business\CommandHandlers\FtpServerCommandHandler.cs
+  line: 109
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business\CommandHandlers\FtpServerCommandHandler.cs
+  line: 42
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.IsFtpServerNameDuplicated(string, System.Guid)
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business\CommandHandlers\FtpServerCommandHandler.cs
+  line: 104
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.ValidateFtpServerCommand(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business\CommandHandlers\FtpServerCommandHandler.cs
+  line: 93
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand.SetCommandValidations()
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts\Commands\AddFtpServerCommand.cs
+  line: 211
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand.ValidateFtpServerId()
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts\Commands\AddFtpServerCommand.cs
+  line: 220
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand.ValidateFtpServerIp()
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts\Commands\AddFtpServerCommand.cs
+  line: 231
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand.ValidateFtpServerIpPattern()
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts\Commands\AddFtpServerCommand.cs
+  line: 242
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand.ValidateProxyPort()
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts\Commands\AddFtpServerCommand.cs
+  line: 247
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FileTransferCommand.AddValidation(string, string, bool)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvc.Contracts\Commands\FileTransferCommand.cs
+  line: 84
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FileTransferCommand.AddValidation(string, string, string, bool)
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts\Commands\FileTransferCommand.cs
+  line: 84
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FileTransferCommand.HandleValidations()
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts\Commands\FileTransferCommand.cs
+  line: 72
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FileTransferCommand.SetCommandValidations()
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts\Commands\FileTransferCommand.cs
+  line: 69
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FileTransferCommand.Validate()
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts\Commands\FileTransferCommand.cs
+  line: 59
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FileTransferCommand.ValidateRequiredFields()
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts\Commands\FileTransferCommand.cs
+  line: 92
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Utilities.BusinessErrorUtility.GetMessage(HPP.Core.BAS.CQRS.UserMeta.RequestorModel, string)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvc.Contracts\Utilities\BusinessErrorUtility.cs
+  line: 27
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Utilities.BusinessErrorUtility.GetMessage(RequestorModel, string)
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts\Utilities\BusinessErrorUtility.cs
+  line: 27
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Utilities.BusinessErrorUtility.LoadConfigurationMessage(HPP.Core.BAS.CQRS.UserMeta.RequestorModel, string)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvc.Contracts\Utilities\BusinessErrorUtility.cs
+  line: 42
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Utilities.BusinessErrorUtility.LoadConfigurationMessage(RequestorModel, string)
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts\Utilities\BusinessErrorUtility.cs
+  line: 42
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtpServerProjectionWriter.AddFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtpServerAdded)
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess\EventHandlers\FtpServerProjectionWriter.cs
+  line: 74
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtpServerProjectionWriter.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtpServerAdded)
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess\EventHandlers\FtpServerProjectionWriter.cs
+  line: 33
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.Repository.FileTransferReadOnlyRepository.GetFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess\Repository\FileTransferReadOnlyRepository.cs
+  line: 38
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.Repository.IFileTransferReadOnlyRepository.GetFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess\Repository\IFileTransferReadOnlyRepository.cs
+  line: 14
+- name: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.BuildEvent(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvc.Business\CommandHandlers\FtpServerCommandHandler.cs
+  line: 66
+- name: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.BuildFtpServerQuery(string)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvc.Business\CommandHandlers\FtpServerCommandHandler.cs
+  line: 116
+- name: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.GetFtpServers(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvc.Business\CommandHandlers\FtpServerCommandHandler.cs
+  line: 111
+- name: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvc.Business\CommandHandlers\FtpServerCommandHandler.cs
+  line: 44
+- name: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.IsFtpServerNameDuplicated(string, System.Guid)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvc.Business\CommandHandlers\FtpServerCommandHandler.cs
+  line: 106
+- name: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler.ValidateFtpServerCommand(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvc.Business\CommandHandlers\FtpServerCommandHandler.cs
+  line: 95
+- name: HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtpServerProjectionWriter.AddFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtpServerAdded)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvc.DataAccess\EventHandlers\FtpServerProjectionWriter.cs
+  line: 74
+- name: HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtpServerProjectionWriter.Handle(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtpServerAdded)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvc.DataAccess\EventHandlers\FtpServerProjectionWriter.cs
+  line: 33
+- name: HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.Repository.FileTransferReadOnlyRepository.GetFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvc.DataAccess\Repository\FileTransferReadOnlyRepository.cs
+  line: 38
+- name: HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.Repository.IFileTransferReadOnlyRepository.GetFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvc.DataAccess\Repository\IFileTransferReadOnlyRepository.cs
+  line: 14
+- name: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.AddFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvcCore\FileTransferSvcService.cs
+  line: 43
+- name: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.TryRouteCommand(HPP.Core.BAS.CQRS.Base.Command)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvcCore\FileTransferSvcService.cs
+  line: 69

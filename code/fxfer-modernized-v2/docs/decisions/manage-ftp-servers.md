@@ -1,0 +1,3 @@
+- Wired `manage-ftp-servers.feature` scenarios into `fxfer-remote` vitest specs runner (selected rule scenarios).
+- Traced rules F01-003/014/038/040/041/049/050/051 in `ux/fxfer-remote/src/flows/manage-ftp-servers/api/fileTransferApi.ts`.
+- Traced rule F01-031 in `services/fxfer-service/FxferService.Host/src/Domain/Commands/AddFtpServerCommand.cs` and covered by an xUnit test.

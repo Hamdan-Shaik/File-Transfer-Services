@@ -1,0 +1,3 @@
+- xfer-bff: implement the BFF contract at /api/v1 (URI versioning), enforce tenant scoping via the JWT 	enant_id claim only (no caller-supplied tenant inputs), and treat missing downstream base URL as "not wired yet" for readiness in skeleton mode (upgrade to mandatory downstream checks once platform config is in place).
+- xfer-bff gap for T-002 (Section 4.6 API Communication; Section 3.5 End-to-End Request Flow): the task references /technical/components/ui-file-transfer-api-controllers/SPEC.md, but the file is not present in the provided spec pack; implementation follows inputs/target-state.md as the authoritative source.
+

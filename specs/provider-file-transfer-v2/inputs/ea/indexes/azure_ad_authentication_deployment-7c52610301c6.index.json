@@ -1,0 +1,812 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Azure AD Authentication Deployment Guide",
+  "document_description": "This guide provides step-by-step instructions for deploying Azure AD (Microsoft Entra ID) authentication for the EAP MkDocs platform using OAuth2 Proxy with Redis session storage.",
+  "total_pages": 86,
+  "tree": [
+    {
+      "title": "Azure AD Authentication Deployment Guide",
+      "node_id": "azure-ad-authentication-deployment-guide",
+      "start_index": 1,
+      "end_index": 86,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Overview",
+          "node_id": "overview",
+          "start_index": 2,
+          "end_index": 5,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Architecture",
+              "node_id": "architecture",
+              "start_index": 3,
+              "end_index": 3,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "What's Been Implemented",
+              "node_id": "whats-been-implemented",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "What Needs Configuration",
+              "node_id": "what-needs-configuration",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Prerequisites",
+          "node_id": "prerequisites",
+          "start_index": 6,
+          "end_index": 7,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Component Versions",
+              "node_id": "component-versions",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Phase 0: Request SSO Configuration (Gainwell Process)",
+          "node_id": "phase-0-request-sso-configuration-gainwell-process",
+          "start_index": 8,
+          "end_index": 16,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Submit ServiceNow Request",
+              "node_id": "submit-servicenow-request",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Information Needed for Request",
+              "node_id": "information-needed-for-request",
+              "start_index": 10,
+              "end_index": 15,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "ServiceNow SSO Request - Dev Environment",
+                  "node_id": "servicenow-sso-request---dev-environment",
+                  "start_index": 11,
+                  "end_index": 11,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "ServiceNow SSO Request - Prod Environment",
+                  "node_id": "servicenow-sso-request---prod-environment",
+                  "start_index": 12,
+                  "end_index": 12,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Common Business Justification",
+                  "node_id": "common-business-justification",
+                  "start_index": 13,
+                  "end_index": 13,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Why Authorization Code Flow (AUTHCODE)?",
+                  "node_id": "why-authorization-code-flow-authcode",
+                  "start_index": 14,
+                  "end_index": 14,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Important Notes",
+                  "node_id": "important-notes",
+                  "start_index": 15,
+                  "end_index": 15,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Expected Timeline",
+              "node_id": "expected-timeline",
+              "start_index": 16,
+              "end_index": 16,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Phase 0.5: Received Azure AD Configuration",
+          "node_id": "phase-05-received-azure-ad-configuration",
+          "start_index": 17,
+          "end_index": 20,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Dev Environment Configuration",
+              "node_id": "dev-environment-configuration",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Prod Environment Configuration",
+              "node_id": "prod-environment-configuration",
+              "start_index": 19,
+              "end_index": 19,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "GitHub Environment Secrets Configuration",
+              "node_id": "github-environment-secrets-configuration",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Phase 1: Azure AD App Registration",
+          "node_id": "phase-1-azure-ad-app-registration",
+          "start_index": 21,
+          "end_index": 25,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Step 1: Create App Registration",
+              "node_id": "step-1-create-app-registration",
+              "start_index": 22,
+              "end_index": 22,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Step 2: Create Client Secret",
+              "node_id": "step-2-create-client-secret",
+              "start_index": 23,
+              "end_index": 23,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Step 3: Configure API Permissions",
+              "node_id": "step-3-configure-api-permissions",
+              "start_index": 24,
+              "end_index": 24,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Step 4: Configure Token Claims",
+              "node_id": "step-4-configure-token-claims",
+              "start_index": 25,
+              "end_index": 25,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Phase 2: Redis Session Storage Architecture",
+          "node_id": "phase-2-redis-session-storage-architecture",
+          "start_index": 26,
+          "end_index": 29,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Why Redis is Required",
+              "node_id": "why-redis-is-required",
+              "start_index": 27,
+              "end_index": 27,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Redis Configuration",
+              "node_id": "redis-configuration",
+              "start_index": 28,
+              "end_index": 28,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "OAuth2 Proxy Configuration",
+              "node_id": "oauth2-proxy-configuration",
+              "start_index": 29,
+              "end_index": 29,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Phase 3: NGINX Ingress Configuration",
+          "node_id": "phase-3-nginx-ingress-configuration",
+          "start_index": 30,
+          "end_index": 33,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Proxy Buffer Size Settings",
+              "node_id": "proxy-buffer-size-settings",
+              "start_index": 31,
+              "end_index": 31,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Authentication Flow",
+              "node_id": "authentication-flow",
+              "start_index": 32,
+              "end_index": 32,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Deployment via GitHub Actions",
+              "node_id": "deployment-via-github-actions",
+              "start_index": 33,
+              "end_index": 33,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Phase 4: Verification & Testing",
+          "node_id": "phase-4-verification--testing",
+          "start_index": 34,
+          "end_index": 38,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Verify Deployment",
+              "node_id": "verify-deployment",
+              "start_index": 35,
+              "end_index": 35,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Test Authentication Flow",
+              "node_id": "test-authentication-flow",
+              "start_index": 36,
+              "end_index": 36,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Check OAuth2 Proxy Logs",
+              "node_id": "check-oauth2-proxy-logs",
+              "start_index": 37,
+              "end_index": 37,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Verify Redis Session Storage",
+              "node_id": "verify-redis-session-storage",
+              "start_index": 38,
+              "end_index": 38,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Phase 5: Service Deployments (Optional)",
+          "node_id": "phase-5-service-deployments-optional",
+          "start_index": 39,
+          "end_index": 41,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "RAG Service",
+              "node_id": "rag-service",
+              "start_index": 40,
+              "end_index": 40,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "AI Governance Review Service",
+              "node_id": "ai-governance-review-service",
+              "start_index": 41,
+              "end_index": 41,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Phase 6: Frontend Integration",
+          "node_id": "phase-6-frontend-integration",
+          "start_index": 42,
+          "end_index": 46,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Step 1: Include SessionManager Script",
+              "node_id": "step-1-include-sessionmanager-script",
+              "start_index": 43,
+              "end_index": 43,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Step 2: Add User Badge Container",
+              "node_id": "step-2-add-user-badge-container",
+              "start_index": 44,
+              "end_index": 44,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Step 3: Configure RAG Service URL",
+              "node_id": "step-3-configure-rag-service-url",
+              "start_index": 45,
+              "end_index": 45,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Step 4: Deploy MkDocs Platform",
+              "node_id": "step-4-deploy-mkdocs-platform",
+              "start_index": 46,
+              "end_index": 46,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Troubleshooting",
+          "node_id": "troubleshooting",
+          "start_index": 47,
+          "end_index": 55,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Issue: 502 Bad Gateway After Authentication",
+              "node_id": "issue-502-bad-gateway-after-authentication",
+              "start_index": 48,
+              "end_index": 48,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Issue: Cookie Size Overflow / Multiple Cookies Required",
+              "node_id": "issue-cookie-size-overflow--multiple-cookies-required",
+              "start_index": 49,
+              "end_index": 49,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Issue: Redirect Loop After Login",
+              "node_id": "issue-redirect-loop-after-login",
+              "start_index": 50,
+              "end_index": 50,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Issue: OAuth2 Proxy Still Fetching Groups Despite SKIP_GROUPS_CLAIM=true",
+              "node_id": "issue-oauth2-proxy-still-fetching-groups-despite-skipgroupsclaimtrue",
+              "start_index": 51,
+              "end_index": 51,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Issue: Session Endpoint Returns 401",
+              "node_id": "issue-session-endpoint-returns-401",
+              "start_index": 52,
+              "end_index": 52,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Issue: Redis Connection Refused",
+              "node_id": "issue-redis-connection-refused",
+              "start_index": 53,
+              "end_index": 53,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Issue: User Badge Not Appearing",
+              "node_id": "issue-user-badge-not-appearing",
+              "start_index": 54,
+              "end_index": 54,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Issue: Gainwell ID Shows \"unknown\"",
+              "node_id": "issue-gainwell-id-shows-unknown",
+              "start_index": 55,
+              "end_index": 55,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Implementation Notes & Lessons Learned",
+          "node_id": "implementation-notes--lessons-learned",
+          "start_index": 56,
+          "end_index": 60,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Initial Implementation Issues",
+              "node_id": "initial-implementation-issues",
+              "start_index": 57,
+              "end_index": 57,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Architecture Decision: OAuth2 Proxy vs AWS ALB OIDC",
+              "node_id": "architecture-decision-oauth2-proxy-vs-aws-alb-oidc",
+              "start_index": 58,
+              "end_index": 58,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Performance Observations",
+              "node_id": "performance-observations",
+              "start_index": 59,
+              "end_index": 59,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Security Improvements",
+              "node_id": "security-improvements",
+              "start_index": 60,
+              "end_index": 60,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Gainwell ID Mapping Options",
+          "node_id": "gainwell-id-mapping-options",
+          "start_index": 61,
+          "end_index": 64,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Option 1: Azure AD Custom Claim (Recommended)",
+              "node_id": "option-1-azure-ad-custom-claim-recommended",
+              "start_index": 62,
+              "end_index": 62,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Option 2: Database Lookup",
+              "node_id": "option-2-database-lookup",
+              "start_index": 63,
+              "end_index": 63,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Option 3: HR API Integration",
+              "node_id": "option-3-hr-api-integration",
+              "start_index": 64,
+              "end_index": 64,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Security Considerations",
+          "node_id": "security-considerations",
+          "start_index": 65,
+          "end_index": 68,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Secret Rotation",
+              "node_id": "secret-rotation",
+              "start_index": 66,
+              "end_index": 66,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Session Security",
+              "node_id": "session-security",
+              "start_index": 67,
+              "end_index": 67,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "IP Address Logging",
+              "node_id": "ip-address-logging",
+              "start_index": 68,
+              "end_index": 68,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Monitoring & Observability",
+          "node_id": "monitoring--observability",
+          "start_index": 69,
+          "end_index": 73,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Metrics to Track",
+              "node_id": "metrics-to-track",
+              "start_index": 70,
+              "end_index": 70,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "CloudWatch Logs Insights",
+              "node_id": "cloudwatch-logs-insights",
+              "start_index": 71,
+              "end_index": 71,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Alerting Recommendations",
+              "node_id": "alerting-recommendations",
+              "start_index": 72,
+              "end_index": 72,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Dashboards",
+              "node_id": "dashboards",
+              "start_index": 73,
+              "end_index": 73,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Security Considerations",
+          "node_id": "security-considerations",
+          "start_index": 74,
+          "end_index": 78,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Secret Rotation",
+              "node_id": "secret-rotation",
+              "start_index": 75,
+              "end_index": 75,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Session Security",
+              "node_id": "session-security",
+              "start_index": 76,
+              "end_index": 76,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "IP Address Logging",
+              "node_id": "ip-address-logging",
+              "start_index": 77,
+              "end_index": 77,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Network Security",
+              "node_id": "network-security",
+              "start_index": 78,
+              "end_index": 78,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Next Steps",
+          "node_id": "next-steps",
+          "start_index": 79,
+          "end_index": 79,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Support & Contacts",
+          "node_id": "support--contacts",
+          "start_index": 80,
+          "end_index": 80,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Appendix: Deployment Architecture",
+          "node_id": "appendix-deployment-architecture",
+          "start_index": 81,
+          "end_index": 86,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "GitHub Workflow Implementation",
+              "node_id": "github-workflow-implementation",
+              "start_index": 82,
+              "end_index": 82,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Key Configuration Changes",
+              "node_id": "key-configuration-changes",
+              "start_index": 83,
+              "end_index": 83,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Kubernetes Resources",
+              "node_id": "kubernetes-resources",
+              "start_index": 84,
+              "end_index": 84,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Related Files",
+              "node_id": "related-files",
+              "start_index": 85,
+              "end_index": 85,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Deployment Commands",
+              "node_id": "deployment-commands",
+              "start_index": 86,
+              "end_index": 86,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#azure-ad-authentication-deployment-guide]\n\n# Azure AD Authentication Deployment Guide\n\n**Enterprise Architecture Practice - MkDocs Platform**\n**Version:** 2.0.0\n**Date:** February 26, 2026\n**Status:** Production Ready\n\n---",
+    "2": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#overview]\n\n## Overview\n\nThis guide provides step-by-step instructions for deploying Azure AD (Microsoft Entra ID) authentication for the EAP MkDocs platform using OAuth2 Proxy with Redis session storage.",
+    "3": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#architecture]\n\n### Architecture\n\n**Authentication Flow:**\n\n```text\nUser → NGINX Ingress → OAuth2 Proxy → Azure AD\n                ↓\n           Redis (Session Storage)\n                ↓\n          MkDocs Platform\n```\n\n**Why OAuth2 Proxy with Redis?**\n\n- ✅ **Server-side session storage** - Eliminates 4KB browser cookie size limit\n- ✅ **Handles large Azure AD group memberships** - Users with 70+ groups won't cause authentication failures\n- ✅ **NGINX proxy buffer optimization** - 32k buffers handle OAuth2 response headers\n- ✅ **Standards-based** - OAuth2/OIDC compliant authentication\n- ✅ **Scalable** - Redis provides high-performance session caching",
+    "4": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#whats-been-implemented]\n\n### What's Been Implemented\n\n✅ **OAuth2 Proxy v7.6.0** - Azure AD authentication with Redis backend\n✅ **Redis 7 Alpine** - Session storage with 256MB memory and LRU eviction\n✅ **NGINX Ingress Configuration** - 32k proxy buffers for large OAuth2 headers\n✅ **Azure AD Application Registration (Dev)** - Client ID `efed4b35-f243-4560-a0dd-ad7aca65fdaa`\n✅ **Azure AD Application Registration (Prod)** - Client ID `97ff4494-c579-4181-87b7-641866f004c0`\n✅ **Automated GitHub Workflow** - Deploys all components via `.github/workflows/deploy-mkdocs-platform.yml`\n✅ **Session Management** - API endpoints in RAG and AI Gov services",
+    "5": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#what-needs-configuration]\n\n### What Needs Configuration\n\n⏸️ **Gainwell ID Mapping** - Configure employee ID attribute mapping\n⏸️ **Monitoring & Alerts** - CloudWatch metrics for authentication failures\n\n---",
+    "6": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#prerequisites]\n\n## Prerequisites\n\n- **Azure AD Admin Access** - To create app registrations (or coordinate with IT team)\n- **ServiceNow Access** - To submit SSO configuration requests\n- **Kubernetes Cluster Access** - With kubectl configured for EKS cluster\n- **GitHub Repository Access** - For workflow deployment\n- **MkDocs Platform DNS** - Configured and pointing to NGINX ingress\n- **Gainwell Azure AD Tenant ID**: `c663f89c-ef9b-418f-bd3d-41e46c0ce068`",
+    "7": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#component-versions]\n\n### Component Versions\n\n- **OAuth2 Proxy**: v7.6.0\n- **Redis**: 7-alpine\n- **NGINX Ingress Controller**: (as deployed in EKS cluster)\n- **Kubernetes**: 1.27+\n\n---",
+    "8": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#phase-0-request-sso-configuration-gainwell-process]\n\n## Phase 0: Request SSO Configuration (Gainwell Process)",
+    "9": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#submit-servicenow-request]\n\n### Submit ServiceNow Request\n\nBefore creating Azure AD app registrations, submit an SSO request through Gainwell's ServiceNow portal:\n\n**ServiceNow SSO Request Portal:**\n[https://gainwellnow.service-now.com/esc?id=sc_cat_item&sys_id=3dd6702733e922906de3a7273e5c7b08&table=sc_cat_item&searchTerm=sso](https://gainwellnow.service-now.com/esc?id=sc_cat_item&sys_id=3dd6702733e922906de3a7273e5c7b08&table=sc_cat_item&searchTerm=sso)",
+    "10": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#information-needed-for-request]\n\n### Information Needed for Request\n\nWhen submitting the SSO request, provide the following details. **Submit separate requests for Dev and Prod environments.**",
+    "11": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#servicenow-sso-request---dev-environment]\n\n#### ServiceNow SSO Request - Dev Environment\n\n| Field | Value |\n|-------|-------|\n| **Application Name** | `EAP MkDocs Platform - Dev` |\n| **Environment** | Development |\n| **AuthFlow Type** | `AUTHCODE` (Authorization Code Flow) |\n| **Client Type** | Confidential (web application with backend) |\n| **Authentication Type** | OIDC/OAuth 2.0 |\n| **Application (client) ID** | `efed4b35-f243-4560-a0dd-ad7aca65fdaa` |\n| **Tenant ID** | `c663f89c-ef9b-418f-bd3d-41e46c0ce068` |\n| **Redirect URI** | `https://ea-reference.shared.dev.pgwcloud.net/oauth2/callback` |\n| **Logout URL** | `https://ea-reference.shared.dev.pgwcloud.net/` |\n| **Post Logout Redirect URI** | `https://ea-reference.shared.dev.pgwcloud.net/` |\n| **Required Scopes** | `openid, profile, email, User.Read` |\n| **Additional Scopes** | `User.Read` (Microsoft Graph API - for full user profile) |\n| **Token Endpoint Authentication** | Client Secret (POST) |\n| **Roles Required** | None - Authentication-only model (all authenticated users have read access) |\n| **Purpose** | Enterprise Architecture documentation platform for internal Gainwell employees |",
+    "12": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#servicenow-sso-request---prod-environment]\n\n#### ServiceNow SSO Request - Prod Environment\n\n| Field | Value |\n|-------|-------|\n| **Application Name** | `EAP MkDocs Platform - Prod` |\n| **Environment** | Production |\n| **AuthFlow Type** | `AUTHCODE` (Authorization Code Flow) |\n| **Client Type** | Confidential (web application with backend) |\n| **Application (client) ID** | `97ff4494-c579-4181-87b7-641866f004c0` |\n| **Authentication Type** | OIDC/OAuth 2.0 |\n| **Tenant ID** | `c663f89c-ef9b-418f-bd3d-41e46c0ce068` |\n| **Redirect URI** | `https://ea-reference.tools.mgt.pgwcloud.net/oauth2/callback` |\n| **Logout URL** | `https://ea-reference.tools.mgt.pgwcloud.net/` |\n| **Post Logout Redirect URI** | `https://ea-reference.tools.mgt.pgwcloud.net/` |\n| **Required Scopes** | `openid, profile, email, User.Read` |\n| **Additional Scopes** | `User.Read` (Microsoft Graph API - for full user profile) |\n| **Token Endpoint Authentication** | Client Secret (POST) |\n| **Roles Required** | None - Authentication-only model (all authenticated users have read access) |\n| **Purpose** | Enterprise Architecture documentation platform for internal Gainwell employees |",
+    "13": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#common-business-justification]\n\n#### Common Business Justification\n\nUse this text for the business justification field:\n\n```\nEnterprise Architecture documentation platform requiring secure access control for\ninternal Gainwell employees. Integrates with OAuth2 Proxy for Azure AD authentication\nwith server-side session storage (Redis) to support enterprise users with extensive\ngroup memberships (70+ groups). User identity tracking required for audit compliance\nand usage analytics. Read-only access to architecture documentation, standards, and\nbest practices.\n```",
+    "14": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#why-authorization-code-flow-authcode]\n\n#### Why Authorization Code Flow (AUTHCODE)?\n\nOAuth2 Proxy uses the Authorization Code Flow because:\n\n- ✅ **Most secure** for web applications with a backend\n- ✅ **Confidential client** - OAuth2 Proxy securely stores client secret in Kubernetes\n- ✅ **Server-side token exchange** - Tokens never exposed in browser\n- ✅ **Industry standard** - Recommended by OAuth 2.0 best practices\n- ❌ **Not PKCE** - Not needed since OAuth2 Proxy is a confidential client\n- ❌ **Not Implicit** - Deprecated flow, less secure for modern applications\n- ❌ **Not Client Credentials** - Used for service-to-service, not user authentication",
+    "15": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#important-notes]\n\n#### Important Notes\n\n**Redirect URI:**\n\n- The path `/oauth2/callback` is the **default OAuth2 Proxy callback endpoint**\n- Azure AD will redirect users here after authentication\n- Must use HTTPS and match the ingress hostname exactly\n- **Changed from `/oauth2/idpresponse`** (AWS ALB default) to `/oauth2/callback` (OAuth2 Proxy standard)\n\n**Scopes Explanation:**\n\n- `openid` - OIDC standard (enables authentication)\n- `profile` - OIDC standard (basic user profile: name, username)\n- `email` - OIDC standard (user's email address)\n- `User.Read` - Microsoft Graph API (full user profile including Gainwell employee ID if configured)\n\n**Roles:**\n\n- Currently authentication-only: all authenticated Gainwell employees get read access\n- Future RBAC can be added later via Azure AD group claims if needed",
+    "16": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#expected-timeline]\n\n### Expected Timeline\n\n- **Initial Review**: 2-3 business days\n- **Azure AD Setup**: 5-7 business days\n- **Approval & Configuration**: 1-2 weeks total\n\n**Note:** Coordinate with your IT Security and Identity Management teams during this process. They may need additional information about the AWS infrastructure and security controls.\n\n---",
+    "17": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#phase-05-received-azure-ad-configuration]\n\n## Phase 0.5: Received Azure AD Configuration",
+    "18": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#dev-environment-configuration]\n\n### Dev Environment Configuration\n\n**Received from ServiceNow/Azure AD Team on:** February 25, 2026\n\n| Configuration Item | Value |\n|-------------------|-------|\n| **Application Name** | EAP MkDocs Platform - Dev |\n| **Application (client) ID** | `efed4b35-f243-4560-a0dd-ad7aca65fdaa` |\n| **Directory (tenant) ID** | `c663f89c-ef9b-418f-bd3d-41e46c0ce068` |\n| **Client Secret** | Stored in GitHub Environment Secret: `MKDOCS_AZURE_AD_APP_SECRET` (dev) |\n| **Secret Expiration** | February 25, 2028 |\n| **Environment** | Development |\n| **Redirect URI** | `https://ea-reference.shared.dev.pgwcloud.net/oauth2/callback` |\n\n**Security Notes:**\n\n- ✅ Client secret stored in GitHub Environment Secrets (encrypted at rest)\n- ✅ Secret expires in 24 months - **mark calendar for renewal: February 2028**\n- ✅ Kubernetes secrets are automatically created during deployment workflow\n- ⚠️ Never commit client secret to source control\n- ⚠️ GitHub secret is environment-specific (separate for dev/prod)",
+    "19": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#prod-environment-configuration]\n\n### Prod Environment Configuration",
+    "20": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#github-environment-secrets-configuration]\n\n### GitHub Environment Secrets Configuration\n\n**Repository:** `mygainwell/eap-ref-architecture`\n\n**Environment Secrets:**\n\n1. **Dev Environment:**\n   - Secret Name: `MKDOCS_AZURE_AD_APP_SECRET`\n   - Environment: `dev`\n   - Used by: `.github/workflows/deploy-mkdocs-platform.yml`\n   - Injected into: Kubernetes secret `azure-oidc-secret` in namespace `eapref-app`\n\n2. **Prod Environment:**\n   - Secret Name: `MKDOCS_AZURE_AD_APP_SECRET`\n   - Environment: `prod`\n   - Used by: `.github/workflows/deploy-mkdocs-platform.yml`\n   - Injected into: Kubernetes secret `azure-oidc-secret` in namespace `eapref-app`\n\n**Workflow Integration:**\n\nThe deployment workflow (`.github/workflows/deploy-mkdocs-platform.yml`) automatically:\n\n1. Deploys **Redis 7 Alpine** for session storage (256MB memory, LRU eviction policy)\n2. Deploys **OAuth2 Proxy v7.6.0** with Azure AD configuration\n3. Configures OAuth2 Proxy environment variables:\n   - `OAUTH2_PROXY_SESSION_STORE_TYPE=redis`\n   - `OAUTH2_PROXY_REDIS_CONNECTION_URL=redis://redis:6379`\n   - `OAUTH2_PROXY_SKIP_GROUPS_CLAIM=true`\n4. Deploys **NGINX Ingress** with authentication annotations:\n   - `nginx.ingress.kubernetes.io/auth-url` - Points to OAuth2 Proxy `/oauth2/auth`\n   - `nginx.ingress.kubernetes.io/proxy-buffer-size: \"32k\"` - Handles large OAuth2 headers\n   - `nginx.ingress.kubernetes.io/proxy-buffers: \"8 32k\"` - 8 buffers of 32k each\n5. Deploys **MkDocs platform** pods\n\n**No manual kubectl commands required** - the workflow handles the complete deployment!\n\n---",
+    "21": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#phase-1-azure-ad-app-registration]\n\n## Phase 1: Azure AD App Registration",
+    "22": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#step-1-create-app-registration]\n\n### Step 1: Create App Registration\n\n1. **Navigate to Azure Portal**\n   - Go to [portal.azure.com](https://portal.azure.com)\n   - Select **Azure Active Directory** → **App registrations** → **New registration**\n\n2. **Register Application**\n\n   ```\n   Name: EAP MkDocs Platform\n   Supported account types: Single tenant (Gainwell only)\n   Redirect URI:\n     - Type: Web\n     - URL: https://${MKDOCS_SITE_HOST}/oauth2/callback\n   ```\n\n   **Note:** Replace `${MKDOCS_SITE_HOST}` with your actual hostname\n   - Dev: `ea-reference.shared.dev.pgwcloud.net`\n   - Prod: `ea-reference.tools.mgt.pgwcloud.net`\n\n3. **Note Application IDs**\n   - **Application (client) ID**: Copy this value (format: `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`)\n   - **Directory (tenant) ID**: Should be `c663f89c-ef9b-418f-bd3d-41e46c0ce068`",
+    "23": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#step-2-create-client-secret]\n\n### Step 2: Create Client Secret\n\n1. Navigate to **Certificates & secrets** → **New client secret**\n\n   ```\n   Description: EAP MkDocs OIDC Secret\n   Expires: 24 months (or per your security policy)\n   ```\n\n2. **Copy the secret value immediately** - you cannot retrieve it later!\n\n3. **Store securely** in your password manager or secrets vault",
+    "24": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#step-3-configure-api-permissions]\n\n### Step 3: Configure API Permissions\n\n1. Navigate to **API permissions** → **Add a permission**\n\n2. **Microsoft Graph** → **Delegated permissions**:\n   - ✅ `openid` - Sign users in\n   - ✅ `profile` - View users' basic profile\n   - ✅ `email` - View users' email address\n   - ✅ `User.Read` - Sign in and read user profile\n\n3. **Grant admin consent** for Gainwell organization",
+    "25": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#step-4-configure-token-claims]\n\n### Step 4: Configure Token Claims\n\n1. Navigate to **Token configuration** → **Add optional claim**\n\n2. **ID Token** claims:\n   - ✅ `email`\n   - ✅ `family_name`\n   - ✅ `given_name`\n   - ✅ `upn` (user principal name)\n\n3. **(Optional) Add custom claim for Gainwell ID:**\n   - If your Azure AD has `employeeId` attribute synced from AD\n   - Add `extension_employeeId` claim\n   - This requires Azure AD schema extension - coordinate with IT\n\n---",
+    "26": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#phase-2-redis-session-storage-architecture]\n\n## Phase 2: Redis Session Storage Architecture",
+    "27": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#why-redis-is-required]\n\n### Why Redis is Required\n\n**Problem:** Azure AD includes all group memberships in the ID token. Users with 70+ Azure AD groups cause:\n\n- **Cookie overflow**: Session data exceeds 4KB browser cookie limit\n- **CSRF token mismatch**: OAuth2 Proxy splits session into multiple cookies, causing validation failures\n- **502 Bad Gateway**: NGINX default 4k buffers cannot handle large OAuth2 response headers\n\n**Solution:** Server-side session storage with Redis",
+    "28": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#redis-configuration]\n\n### Redis Configuration\n\n**Deployment Details:**\n\n```yaml\napiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: redis\n  namespace: eapref-app\nspec:\n  replicas: 1\n  template:\n    spec:\n      containers:\n      - name: redis\n        image: redis:7-alpine\n        command:\n          - redis-server\n          - --maxmemory\n          - \"256mb\"\n          - --maxmemory-policy\n          - allkeys-lru\n        resources:\n          requests:\n            cpu: 50m\n            memory: 128Mi\n          limits:\n            cpu: 100m\n            memory: 256Mi\n        ports:\n        - containerPort: 6379\n```\n\n**Key Settings:**\n\n- **Image**: `redis:7-alpine` - Lightweight, production-ready\n- **Max Memory**: 256MB with LRU eviction policy\n- **Persistence**: None (sessions are ephemeral)\n- **Resources**: 50m-100m CPU, 128Mi-256Mi memory",
+    "29": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#oauth2-proxy-configuration]\n\n### OAuth2 Proxy Configuration\n\n**Environment Variables:**\n\n```yaml\nenv:\n- name: OAUTH2_PROXY_SESSION_STORE_TYPE\n  value: \"redis\"\n- name: OAUTH2_PROXY_REDIS_CONNECTION_URL\n  value: \"redis://redis:6379\"\n- name: OAUTH2_PROXY_SKIP_GROUPS_CLAIM\n  value: \"true\"\n- name: OAUTH2_PROXY_PROVIDER\n  value: \"azure\"\n- name: OAUTH2_PROXY_AZURE_TENANT\n  value: \"c663f89c-ef9b-418f-bd3d-41e46c0ce068\"\n- name: OAUTH2_PROXY_CLIENT_ID\n  valueFrom:\n    secretKeyRef:\n      name: azure-oauth2-secret\n      key: client-id\n- name: OAUTH2_PROXY_CLIENT_SECRET\n  valueFrom:\n    secretKeyRef:\n      name: azure-oauth2-secret\n      key: client-secret\n- name: OAUTH2_PROXY_COOKIE_SECRET\n  valueFrom:\n    secretKeyRef:\n      name: azure-oauth2-secret\n      key: cookie-secret\n- name: OAUTH2_PROXY_REDIRECT_URL\n  value: \"https://ea-reference.shared.dev.pgwcloud.net/oauth2/callback\"\n- name: OAUTH2_PROXY_OIDC_ISSUER_URL\n  value: \"https://login.microsoftonline.com/c663f89c-ef9b-418f-bd3d-41e46c0ce068/v2.0\"\n```\n\n**Important:**\n\n- `SESSION_STORE_TYPE=redis` - Enables server-side session storage\n- `SKIP_GROUPS_CLAIM=true` - Prevents OAuth2 Proxy from fetching additional groups (Azure AD already includes them in ID token)\n- `REDIRECT_URL` - Must match Azure AD app registration exactly\n\n---",
+    "30": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#phase-3-nginx-ingress-configuration]\n\n## Phase 3: NGINX Ingress Configuration",
+    "31": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#proxy-buffer-size-settings]\n\n### Proxy Buffer Size Settings\n\n**Why 32k buffers?** OAuth2 response headers from Azure AD (with 70+ groups) exceed the default 4k NGINX buffer size.\n\n**Required Annotations:**\n\n```yaml\nannotations:\n  nginx.ingress.kubernetes.io/auth-url: \"http://oauth2-proxy.eapref-app.svc.cluster.local:4180/oauth2/auth\"\n  nginx.ingress.kubernetes.io/auth-signin: \"https://ea-reference.shared.dev.pgwcloud.net/oauth2/start?rd=$escaped_request_uri\"\n  nginx.ingress.kubernetes.io/auth-response-headers: \"x-auth-request-user, x-auth-request-email, x-auth-request-access-token, authorization\"\n  nginx.ingress.kubernetes.io/proxy-buffer-size: \"32k\"\n  nginx.ingress.kubernetes.io/proxy-buffers: \"8 32k\"\n```",
+    "32": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#authentication-flow]\n\n### Authentication Flow\n\n1. **User requests page** → NGINX Ingress receives request\n2. **NGINX checks auth** → Calls `http://oauth2-proxy:4180/oauth2/auth`\n3. **OAuth2 Proxy checks session** → Queries Redis for session ID cookie\n4. **If not authenticated** → Redirects to `/oauth2/start?rd=<original_url>`\n5. **OAuth2 Proxy redirects** → Azure AD login (`login.microsoftonline.com`)\n6. **User authenticates** → Azure AD redirects to `/oauth2/callback` with authorization code\n7. **OAuth2 Proxy exchanges code** → Gets ID token + access token from Azure AD\n8. **Session stored in Redis** → Session ID cookie sent to browser (small, ~100 bytes)\n9. **User redirected** → Original requested page with auth headers\n10. **NGINX proxies request** → MkDocs platform with `x-auth-request-*` headers",
+    "33": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#deployment-via-github-actions]\n\n### Deployment via GitHub Actions\n\nThe workflow automatically deploys all components:\n\n```bash\n# Trigger workflow\ngit push origin mkdocs-security\n\n# Or manually trigger via GitHub Actions UI\n```\n\n**What the workflow deploys:**\n\n1. Redis deployment + service\n2. OAuth2 Proxy deployment + service\n3. NGINX ingress with auth annotations\n4. MkDocs platform deployment\n5. All required ConfigMaps and Secrets\n\n---",
+    "34": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#phase-4-verification--testing]\n\n## Phase 4: Verification & Testing",
+    "35": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#verify-deployment]\n\n### Verify Deployment\n\n```bash\n# Check Redis pod\nkubectl get pods -n eapref-app -l app=redis\nkubectl logs -n eapref-app -l app=redis --tail=20\n\n# Check OAuth2 Proxy pods\nkubectl get pods -n eapref-app -l app=oauth2-proxy\nkubectl logs -n eapref-app -l app=oauth2-proxy --tail=50\n\n# Check MkDocs pods\nkubectl get pods -n eapref-app -l app=eap-mkdocs\nkubectl logs -n eapref-app -l app=eap-mkdocs --tail=50\n\n# Check ingress\nkubectl get ingress -n eapref-app\nkubectl describe ingress eapref-app-mkdocs-ingress -n eapref-app\n```",
+    "36": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#test-authentication-flow]\n\n### Test Authentication Flow\n\n1. **Open incognito browser window**\n\n   ```\n   https://ea-reference.shared.dev.pgwcloud.net\n   ```\n\n2. **Expected flow:**\n   - Redirects to `login.microsoftonline.com`\n   - Login with Gainwell credentials\n   - Redirects to `/oauth2/callback`\n   - OAuth2 Proxy exchanges authorization code for tokens\n   - Session stored in Redis\n   - Small session ID cookie sent to browser\n   - Redirected to original page\n   - MkDocs site loads with authentication\n\n3. **Verify session cookie:**\n\n   ```javascript\n   // Open browser console\n   document.cookie.split(';').filter(c => c.includes('_oauth2_proxy'))\n   // Should show small cookie (~100 bytes) instead of 4KB+ cookie\n   ```",
+    "37": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#check-oauth2-proxy-logs]\n\n### Check OAuth2 Proxy Logs\n\n```bash\n# Real-time log monitoring\nkubectl logs -n eapref-app -l app=oauth2-proxy -f --tail=50\n\n# Look for successful authentication\n# Expected log entry:\n# [AuthSuccess] Authenticated via OAuth2: user@gainwell.com\n```",
+    "38": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#verify-redis-session-storage]\n\n### Verify Redis Session Storage\n\n```bash\n# Connect to Redis pod\nkubectl exec -it -n eapref-app $(kubectl get pods -n eapref-app -l app=redis -o name | head -1) -- redis-cli\n\n# Check session keys\nKEYS *\n\n# Check session data (example)\nGET session:<session-id>\n\n# Check memory usage\nINFO memory\n\n# Exit Redis CLI\nexit\n```\n\n---",
+    "39": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#phase-5-service-deployments-optional]\n\n## Phase 5: Service Deployments (Optional)\n\nThese services are optional and provide additional session management APIs:",
+    "40": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#rag-service]\n\n### RAG Service\n\n```bash\ncd .tooling/components/apis/rag-service\n\n# Build and push Docker image\ndocker build -t your-registry/rag-service:latest .\ndocker push your-registry/rag-service:latest\n\n# Update image in deployment\nkubectl set image deployment/rag-service rag-service=your-registry/rag-service:latest -n rag-service\n\n# Verify session endpoint\nkubectl port-forward -n rag-service svc/rag-service 8080:80\ncurl http://localhost:8080/api/v1/session\n```",
+    "41": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#ai-governance-review-service]\n\n### AI Governance Review Service\n\n```bash\ncd .tooling/components/apis/ai-gov-review-service\n\n# Build and push Docker image\ndocker build -t your-registry/ai-gov-review-service:latest .\ndocker push your-registry/ai-gov-review-service:latest\n\n# Update image in deployment\nkubectl set image deployment/ai-gov-review-service ai-gov-review-service=your-registry/ai-gov-review-service:latest -n ai-gov-review\n\n# Verify session endpoint\nkubectl port-forward -n ai-gov-review svc/ai-gov-review-service 8001:80\ncurl http://localhost:8001/api/v1/session\n```\n\n---",
+    "42": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#phase-6-frontend-integration]\n\n## Phase 6: Frontend Integration",
+    "43": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#step-1-include-sessionmanager-script]\n\n### Step 1: Include SessionManager Script\n\nAdd to MkDocs `mkdocs.yml`:\n\n```yaml\nextra_javascript:\n  - javascripts/session-manager.js\n\nextra_css:\n  - stylesheets/session.css\n```",
+    "44": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#step-2-add-user-badge-container]\n\n### Step 2: Add User Badge Container\n\nAdd to your MkDocs theme template (e.g., `overrides/main.html`):\n\n```html\n{% extends \"base.html\" %}\n\n{% block header %}\n  {{ super() }}\n  <div id=\"user-badge-container\"></div>\n{% endblock %}\n```",
+    "45": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#step-3-configure-rag-service-url]\n\n### Step 3: Configure RAG Service URL\n\nOption A - Via script tag:\n\n```html\n<script src=\"javascripts/session-manager.js\" data-rag-service-url=\"https://rag-api.gainwell.com\"></script>\n```\n\nOption B - Via global config:\n\n```html\n<script>\n  window.EAP_CONFIG = {\n    ragServiceUrl: 'https://rag-api.gainwell.com'\n  };\n</script>\n```",
+    "46": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#step-4-deploy-mkdocs-platform]\n\n### Step 4: Deploy MkDocs Platform\n\n```bash\ncd .tooling/components/apps/mkdocs-platform\n\n# Build Docker image with new assets\ndocker build -t your-registry/mkdocs-platform:latest .\ndocker push your-registry/mkdocs-platform:latest\n\n# Update deployment\nkubectl set image deployment/eap-mkdocs-platform eap-mkdocs-platform=your-registry/mkdocs-platform:latest -n eap-platform-${ENVIRONMENT}\n```\n\n---",
+    "47": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#troubleshooting]\n\n## Troubleshooting",
+    "48": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#issue-502-bad-gateway-after-authentication]\n\n### Issue: 502 Bad Gateway After Authentication\n\n**Symptoms:**\n\n- User successfully authenticates with Azure AD\n- Redirect to `/oauth2/callback` returns 502 Bad Gateway error\n- NGINX ingress controller logs show: `upstream sent too big header while reading response header from upstream`\n\n**Root Cause:** OAuth2 Proxy response headers exceed NGINX default proxy buffer size (4k). This occurs when Azure AD includes 70+ group memberships in the ID token.\n\n**Solution:**\n\n1. **Increase NGINX proxy buffer size** to 32k:\n\n   ```yaml\n   annotations:\n     nginx.ingress.kubernetes.io/proxy-buffer-size: \"32k\"\n     nginx.ingress.kubernetes.io/proxy-buffers: \"8 32k\"\n   ```\n\n2. **Verify annotation applied:**\n\n   ```bash\n   kubectl get ingress eapref-app-mkdocs-ingress -n eapref-app -o yaml | grep proxy-buffer\n   ```\n\n3. **Check NGINX controller logs:**\n\n   ```bash\n   kubectl logs -n ingress-nginx -l app.kubernetes.io/component=controller --tail=100\n   ```\n\n**Prevention:** The workflow now includes these annotations by default.\n\n---",
+    "49": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#issue-cookie-size-overflow--multiple-cookies-required]\n\n### Issue: Cookie Size Overflow / Multiple Cookies Required\n\n**Symptoms:**\n\n- OAuth2 Proxy logs show: `Multiple cookies are required for this session as it exceeds the 4kb cookie limit`\n- CSRF token mismatch errors\n- Authentication loop (user redirected back to login repeatedly)\n\n**Root Cause:** Users with 70+ Azure AD group memberships cause session data to exceed 4KB browser cookie limit. OAuth2 Proxy attempts to split session into multiple cookies, causing validation failures.\n\n**Solution:**\n\n**✅ Use Redis session storage** (already implemented in workflow):\n\n```yaml\nenv:\n- name: OAUTH2_PROXY_SESSION_STORE_TYPE\n  value: \"redis\"\n- name: OAUTH2_PROXY_REDIS_CONNECTION_URL\n  value: \"redis://redis:6379\"\n```\n\n**Verify Redis is working:**\n\n```bash\n# Check OAuth2 Proxy logs for Redis connection\nkubectl logs -n eapref-app -l app=oauth2-proxy --tail=50 | grep -i redis\n\n# Connect to Redis and check sessions\nkubectl exec -it -n eapref-app $(kubectl get pods -n eapref-app -l app=redis -o name) -- redis-cli\nKEYS *\n```\n\n**Prevention:** Redis session storage is now standard deployment. Session data stored server-side, browser receives only small session ID cookie (~100 bytes).\n\n---",
+    "50": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#issue-redirect-loop-after-login]\n\n### Issue: Redirect Loop After Login\n\n**Symptoms:** Browser redirects between mkdocs and login.microsoftonline.com infinitely\n\n**Solutions:**\n\n1. **Check redirect URI** in Azure AD matches OAuth2 Proxy configuration exactly:\n\n   ```bash\n   # Get OAuth2 Proxy redirect URL\n   kubectl get deployment oauth2-proxy -n eapref-app -o yaml | grep REDIRECT_URL\n\n   # Should be: https://ea-reference.shared.dev.pgwcloud.net/oauth2/callback\n   ```\n\n2. **Verify client secret** is correct and not expired:\n\n   ```bash\n   # Check secret exists\n   kubectl get secret azure-oauth2-secret -n eapref-app\n\n   # Verify expiration in Azure AD portal\n   # Azure Portal → App Registrations → EAP MkDocs Platform → Certificates & secrets\n   ```\n\n3. **Check OAuth2 Proxy logs** for authentication errors:\n\n   ```bash\n   kubectl logs -n eapref-app -l app=oauth2-proxy --tail=100 | grep -i error\n   ```\n\n4. **Verify cookie domain settings:**\n\n   ```bash\n   # Check OAuth2 Proxy deployment\n   kubectl get deployment oauth2-proxy -n eapref-app -o yaml | grep COOKIE\n   ```\n\n---",
+    "51": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#issue-oauth2-proxy-still-fetching-groups-despite-skipgroupsclaimtrue]\n\n### Issue: OAuth2 Proxy Still Fetching Groups Despite SKIP_GROUPS_CLAIM=true\n\n**Symptoms:**\n\n- OAuth2 Proxy logs show: `Fetching groups for user@gainwell.com`\n- Slow authentication times\n- Microsoft Graph API calls in logs\n\n**Explanation:** `SKIP_GROUPS_CLAIM=true` only prevents OAuth2 Proxy from making *additional* Microsoft Graph API calls to fetch groups. Azure AD still includes groups in the ID token by default (this is controlled by Azure AD, not OAuth2 Proxy).\n\n**Solutions:**\n\n1. **Keep SKIP_GROUPS_CLAIM=true** - Prevents additional API calls\n2. **Use Redis session storage** - Handles large ID tokens with groups\n3. **(Optional) Configure Azure AD to exclude groups:**\n   - Azure Portal → App Registrations → Token configuration\n   - Remove group claims (if your application doesn't need groups)\n   - **Note:** This may not be possible in enterprise Azure AD with group-based policies\n\n---",
+    "52": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#issue-session-endpoint-returns-401]\n\n### Issue: Session Endpoint Returns 401\n\n**Symptoms:** `/api/v1/session` returns `401 Unauthorized`\n\n**Solutions:**\n\n1. **Verify NGINX auth headers** are being passed:\n\n   ```bash\n   kubectl get ingress -n eapref-app -o yaml | grep auth-response-headers\n   ```\n\n2. **Check OAuth2 Proxy is responding:**\n\n   ```bash\n   kubectl port-forward -n eapref-app svc/oauth2-proxy 4180:4180\n   curl http://localhost:4180/oauth2/auth -H \"Cookie: _oauth2_proxy=...\"\n   ```\n\n3. **Test with explicit headers** (dev only):\n\n   ```bash\n   curl http://localhost:8080/api/v1/session \\\n     -H \"x-auth-request-user: test@gainwell.com\" \\\n     -H \"x-auth-request-email: test@gainwell.com\"\n   ```\n\n---",
+    "53": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#issue-redis-connection-refused]\n\n### Issue: Redis Connection Refused\n\n**Symptoms:**\n\n- OAuth2 Proxy logs: `Failed to connect to Redis: connection refused`\n- Authentication fails\n- 500 Internal Server Error\n\n**Solutions:**\n\n1. **Verify Redis pod is running:**\n\n   ```bash\n   kubectl get pods -n eapref-app -l app=redis\n   kubectl logs -n eapref-app -l app=redis --tail=20\n   ```\n\n2. **Check Redis service:**\n\n   ```bash\n   kubectl get svc redis -n eapref-app\n\n   # Test connectivity from OAuth2 Proxy pod\n   kubectl exec -it -n eapref-app $(kubectl get pods -n eapref-app -l app=oauth2-proxy -o name | head -1) -- sh -c \"nc -zv redis 6379\"\n   ```\n\n3. **Verify Redis connection URL:**\n\n   ```bash\n   kubectl get deployment oauth2-proxy -n eapref-app -o yaml | grep REDIS_CONNECTION_URL\n   # Should be: redis://redis:6379\n   ```\n\n4. **Restart OAuth2 Proxy:**\n\n   ```bash\n   kubectl rollout restart deployment/oauth2-proxy -n eapref-app\n   ```\n\n---",
+    "54": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#issue-user-badge-not-appearing]\n\n### Issue: User Badge Not Appearing\n\n**Symptoms:** No user badge shown in header\n\n**Solutions:**\n\n1. **Check browser console** for JavaScript errors\n2. **Verify SessionManager loaded**:\n\n   ```javascript\n   console.log(window.EAPSessionManager);\n   ```\n\n3. **Check container exists** in DOM:\n\n   ```javascript\n   console.log(document.getElementById('user-badge-container'));\n   ```\n\n4. **Verify RAG service URL configuration**:\n\n   ```javascript\n   console.log(window.EAPSessionManager.ragServiceUrl);\n   ```",
+    "55": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#issue-gainwell-id-shows-unknown]\n\n### Issue: Gainwell ID Shows \"unknown\"\n\n**Symptoms:** User badge shows `gainwell_id: \"unknown\"` instead of E-number\n\n**Solutions:**\n\n1. **Check Azure AD attribute mapping**:\n   - Navigate to Azure Portal → App Registration → Token configuration\n   - Verify `employeeId` or `extension_employeeId` claim is configured\n2. **Check Active Directory sync**:\n   - Contact IT to verify `employeeId` attribute is synced to Azure AD\n   - Attribute name in AD: `employeeID` or `employeeNumber`\n3. **Alternative: Use database lookup**:\n   - If AD attribute is not available, implement database lookup by email\n   - Add employee ID mapping table to PostgreSQL\n\n---",
+    "56": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#implementation-notes--lessons-learned]\n\n## Implementation Notes & Lessons Learned",
+    "57": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#initial-implementation-issues]\n\n### Initial Implementation Issues\n\n**Problem 1: 502 Bad Gateway After Authentication**\n\n- **Date Encountered**: February 25, 2026\n- **Symptom**: Users successfully authenticated with Azure AD but received 502 error on redirect\n- **Root Cause**: NGINX default 4k proxy buffers couldn't handle OAuth2 response headers from Azure AD (user with 70+ group memberships)\n- **Error Message**: `upstream sent too big header while reading response header from upstream`\n- **Solution**: Increased NGINX proxy buffer size to 32k via ingress annotations\n- **Lesson**: Always size NGINX buffers to accommodate OAuth2 headers for enterprise users with many group memberships\n\n**Problem 2: Cookie Size Overflow**\n\n- **Date Encountered**: February 25, 2026\n- **Symptom**: OAuth2 Proxy warning about multiple cookies required, CSRF token mismatch, authentication loops\n- **Root Cause**: Session data with 70+ Azure AD groups exceeded 4KB browser cookie limit\n- **Initial Fix Attempted**: Set `OAUTH2_PROXY_SKIP_GROUPS_CLAIM=true` - Didn't help because Azure AD includes groups in ID token regardless\n- **Final Solution**: Implemented Redis server-side session storage\n- **Lesson**: For enterprise Azure AD with many groups, server-side session storage (Redis/Memcached) is required, not optional\n\n**Problem 3: OAuth2 Proxy Still Fetching Groups**\n\n- **Date Encountered**: February 25, 2026\n- **Symptom**: Despite `SKIP_GROUPS_CLAIM=true`, OAuth2 Proxy logs showed 70+ groups being processed\n- **Root Cause**: Misunderstanding of what `SKIP_GROUPS_CLAIM` does - it prevents *additional* Microsoft Graph API calls, but doesn't control what Azure AD includes in the ID token\n- **Solution**: Leave `SKIP_GROUPS_CLAIM=true` to prevent additional API calls, use Redis to handle large ID tokens\n- **Lesson**: Azure AD group inclusion is controlled by Azure AD app configuration, not OAuth2 Proxy settings",
+    "58": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#architecture-decision-oauth2-proxy-vs-aws-alb-oidc]\n\n### Architecture Decision: OAuth2 Proxy vs AWS ALB OIDC\n\n**Initial Plan**: Use AWS ALB OIDC authentication (redirect URI `/oauth2/idpresponse`)\n\n**Why We Switched to OAuth2 Proxy**:\n\n1. **More flexibility** - OAuth2 Proxy provides better logging and troubleshooting capabilities\n2. **Session storage options** - Native Redis session storage support\n3. **Better error handling** - More granular control over authentication errors\n4. **Metrics exposure** - Prometheus metrics endpoint for monitoring\n5. **Cookie management** - Better control over cookie settings and session lifecycle\n\n**Trade-offs**:\n\n- ✅ **Pro**: More control and visibility into authentication flow\n- ✅ **Pro**: Can handle large Azure AD group memberships\n- ⚠️ **Con**: Additional pod(s) to manage (OAuth2 Proxy + Redis)\n- ⚠️ **Con**: Slightly more complex deployment vs. ALB native OIDC\n\n**Recommendation**: For production enterprise use with Azure AD, OAuth2 Proxy + Redis is the better choice despite added complexity.",
+    "59": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#performance-observations]\n\n### Performance Observations\n\n**Authentication Flow Timing** (measured February 26, 2026):\n\n- Azure AD login redirect: <100ms\n- Azure AD authentication: 500ms-2s (user-dependent)\n- Token exchange at `/oauth2/callback`: 200-300ms\n- Redis session write: <10ms\n- Total auth flow: ~1-3 seconds (acceptable)\n\n**Redis Memory Usage** (production observations):\n\n- Session size: ~2-5 KB per user (with groups)\n- 256MB Redis can store: ~50,000-120,000 concurrent sessions\n- Current deployment: Well within limits for expected user base\n- Eviction policy (LRU): Handles memory limits gracefully\n\n**NGINX Performance**:\n\n- 32k buffer overhead: Minimal impact on performance\n- Authentication check latency: <5ms (local OAuth2 Proxy call)\n- No measurable impact on page load times",
+    "60": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#security-improvements]\n\n### Security Improvements\n\n**Compared to Cookie-based Sessions**:\n\n1. **Session ID only** - Browser receives small session token instead of full session data\n2. **Server-side control** - Can invalidate sessions server-side (delete from Redis)\n3. **Reduced attack surface** - Sensitive data (access tokens, groups) never sent to browser\n4. **Audit trail** - Redis logs all session access (if logging enabled)\n\n**Azure AD Integration**:\n\n1. **Token refresh** - OAuth2 Proxy handles token refresh automatically\n2. **Secret rotation** - Client secret stored in Kubernetes Secrets (encrypted at rest if enabled)\n3. **HTTPS enforcement** - All authentication endpoints use HTTPS only\n4. **CSRF protection** - SameSite=lax cookie setting prevents CSRF attacks\n\n---",
+    "61": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#gainwell-id-mapping-options]\n\n## Gainwell ID Mapping Options",
+    "62": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#option-1-azure-ad-custom-claim-recommended]\n\n### Option 1: Azure AD Custom Claim (Recommended)\n\n**Prerequisites:**\n\n- AD Connect syncing `employeeID` attribute\n- Azure AD premium P1 or P2 license\n- Global admin access\n\n**Steps:**\n\n1. **Verify AD attribute sync**:\n\n   ```powershell\n   Get-AzureADUser -ObjectId user@gainwell.com | Select employeeId\n   ```\n\n2. **Create directory extension** (if needed):\n\n   ```powershell\n   New-AzureADApplicationExtensionProperty -ObjectId APP_OBJECT_ID \\\n     -Name \"GainwellEmployeeId\" -DataType \"String\" -TargetObjects \"User\"\n   ```\n\n3. **Add claim to token** (Azure Portal):\n   - App Registration → Token configuration\n   - Add optional claim: `extension_GainwellEmployeeId`\n   - Map to: `User.extensionAttribute1` (or wherever employeeID is stored)",
+    "63": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#option-2-database-lookup]\n\n### Option 2: Database Lookup\n\nIf Azure AD attribute is not feasible, use database lookup:\n\n1. **Create mapping table**:\n\n   ```sql\n   CREATE TABLE user_employee_mapping (\n     email VARCHAR(255) PRIMARY KEY,\n     gainwell_id VARCHAR(20) NOT NULL,\n     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,\n     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP\n   );\n   ```\n\n2. **Update session.py** to query database:\n\n   ```python\n   # In get_user_session function\n   if not x_gainwell_id and username:\n       # Query database for Gainwell ID\n       gainwell_id = await lookup_gainwell_id(username)\n       x_gainwell_id = gainwell_id\n   ```",
+    "64": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#option-3-hr-api-integration]\n\n### Option 3: HR API Integration\n\nIntegrate with HR system API:\n\n1. **Configure HR API credentials** in secrets\n2. **Update session.py** to call HR API:\n\n   ```python\n   async def lookup_gainwell_id_from_hr(email: str) -> str:\n       async with httpx.AsyncClient() as client:\n           response = await client.get(\n               f\"{HR_API_URL}/employee/by-email/{email}\",\n               headers={\"Authorization\": f\"Bearer {HR_API_TOKEN}\"}\n           )\n           if response.status_code == 200:\n               return response.json().get(\"employee_id\", \"unknown\")\n       return \"unknown\"\n   ```\n\n---",
+    "65": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#security-considerations]\n\n## Security Considerations",
+    "66": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#secret-rotation]\n\n### Secret Rotation\n\n**Client Secret Expiration:**\n\n- Azure AD client secrets expire (default: 24 months)\n- **Set calendar reminder** 30 days before expiration\n- **Rotation process**:\n  1. Create new client secret in Azure AD\n  2. Update Kubernetes secret with new value\n  3. Restart ingress controller to pick up new secret\n  4. Verify authentication still works\n  5. Delete old client secret from Azure AD",
+    "67": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#session-security]\n\n### Session Security\n\n**Session Cookie Settings:**\n\n- Cookie name: `EAPMkDocsAuthSession`\n- Secure flag: Automatically set by ALB for HTTPS\n- HttpOnly: Enabled by default\n- SameSite: `Strict` (prevents CSRF)\n- Max age: 8 hours (28800 seconds)\n\n**Session Storage:**\n\n- SessionManager stores user data in `sessionStorage` (browser-only)\n- Data cleared when tab/window closes\n- Not shared across tabs/windows\n- Not accessible to other domains",
+    "68": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#ip-address-logging]\n\n### IP Address Logging\n\n**Privacy Considerations:**\n\n- IP addresses logged for security/audit purposes\n- Stored in `ip_address` field for ratings and review submissions\n- Consider GDPR/privacy regulations in your jurisdiction\n- **Recommendation**: Document data retention policy\n\n---",
+    "69": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#monitoring--observability]\n\n## Monitoring & Observability",
+    "70": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#metrics-to-track]\n\n### Metrics to Track\n\n**OAuth2 Proxy Metrics:**\n\n```bash\n# OAuth2 Proxy exposes Prometheus metrics on :44180/metrics\nkubectl port-forward -n eapref-app svc/oauth2-proxy 44180:44180\n\n# Access metrics\ncurl http://localhost:44180/metrics\n\n# Key metrics:\n# - oauth2_proxy_requests_total - Total authentication requests\n# - oauth2_proxy_authentication_errors_total - Failed authentications\n# - oauth2_proxy_session_store_errors_total - Redis connection errors\n```\n\n**NGINX Ingress Metrics:**\n\n```promql\n# Authentication success rate\nrate(nginx_ingress_controller_requests{status=\"200\",path=~\"/oauth2/.*\"}[5m])\n\n# Authentication failures (502 errors)\nrate(nginx_ingress_controller_requests{status=\"502\"}[5m])\n\n# Proxy buffer overflows\nrate(nginx_ingress_controller_upstream_bytes_received{status=\"502\"}[5m])\n```\n\n**Redis Metrics:**\n\n```bash\n# Connect to Redis and check stats\nkubectl exec -it -n eapref-app $(kubectl get pods -n eapref-app -l app=redis -o name) -- redis-cli INFO\n\n# Key metrics:\n# - used_memory: Current memory usage\n# - evicted_keys: Number of evicted sessions (should be 0 or low)\n# - connected_clients: Number of OAuth2 Proxy connections\n# - total_connections_received: Cumulative connections\n```",
+    "71": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#cloudwatch-logs-insights]\n\n### CloudWatch Logs Insights\n\n**Find Failed Authentications:**\n\n```sql\nfields @timestamp, @message\n| filter @logStream like /oauth2-proxy/\n| filter @message like /error/i\n| sort @timestamp desc\n| limit 100\n```\n\n**Track Session Creation:**\n\n```sql\nfields @timestamp, @message\n| filter @logStream like /oauth2-proxy/\n| filter @message like /AuthSuccess/\n| parse @message /Authenticated via OAuth2: (?<user>[^ ]+)/\n| stats count() by user\n| sort count desc\n```\n\n**Monitor Redis Performance:**\n\n```sql\nfields @timestamp, @message\n| filter @logStream like /redis/\n| filter @message like /warning|error/i\n| sort @timestamp desc\n| limit 50\n```",
+    "72": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#alerting-recommendations]\n\n### Alerting Recommendations\n\n**Critical Alerts:**\n\n1. **OAuth2 Proxy Pod Down** - No running OAuth2 Proxy pods in namespace\n2. **Redis Pod Down** - Redis pod not ready/running\n3. **High Authentication Failure Rate** - >5% of auth requests failed in 5 minutes\n4. **Redis Memory Near Limit** - Used memory >90% of 256MB limit\n\n**Warning Alerts:**\n\n1. **Redis Evictions Detected** - Sessions being evicted due to memory pressure\n2. **Slow Authentication** - OAuth2 auth requests taking >2 seconds\n3. **Certificate Expiring Soon** - Azure AD client secret expires in <30 days",
+    "73": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#dashboards]\n\n### Dashboards\n\n**Authentication Dashboard (Grafana):**\n\n```yaml\npanels:\n  - title: \"Authentication Requests (5m rate)\"\n    query: rate(oauth2_proxy_requests_total[5m])\n\n  - title: \"Authentication Success Rate\"\n    query: |\n      rate(oauth2_proxy_requests_total{status=\"200\"}[5m]) /\n      rate(oauth2_proxy_requests_total[5m]) * 100\n\n  - title: \"Active Sessions (Redis)\"\n    query: redis_db_keys{db=\"0\"}\n\n  - title: \"Redis Memory Usage\"\n    query: redis_memory_used_bytes\n\n  - title: \"NGINX 502 Errors\"\n    query: rate(nginx_ingress_controller_requests{status=\"502\"}[5m])\n```\n\n---",
+    "74": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#security-considerations]\n\n## Security Considerations",
+    "75": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#secret-rotation]\n\n### Secret Rotation\n\n**Client Secret Expiration:**\n\n- **Current Expiration**: February 25, 2028\n- **Rotation Process** (30 days before expiration):\n  1. Create new client secret in Azure AD App Registration\n  2. Update GitHub Environment Secret `MKDOCS_AZURE_AD_APP_SECRET`\n  3. Trigger workflow deployment (or manually update Kubernetes secret)\n  4. Verify authentication still works\n  5. Delete old client secret from Azure AD\n  6. Update expiration reminder for next rotation (2028 + 2 years = 2030)\n\n**Cookie Secret Rotation:**\n\n```bash\n# Generate new 32-byte cookie secret\npython3 -c 'import os,base64; print(base64.urlsafe_b64encode(os.urandom(32)).decode())'\n\n# Update secret in Kubernetes\nkubectl create secret generic azure-oauth2-secret \\\n  --from-literal=cookie-secret=<NEW_SECRET> \\\n  --dry-run=client -o yaml | kubectl apply -f -\n\n# Restart OAuth2 Proxy\nkubectl rollout restart deployment/oauth2-proxy -n eapref-app\n```",
+    "76": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#session-security]\n\n### Session Security\n\n**Session Cookie Settings (OAuth2 Proxy defaults):**\n\n- **Cookie name**: `_oauth2_proxy`\n- **Secure flag**: True (HTTPS only)\n- **HttpOnly**: True (not accessible via JavaScript)\n- **SameSite**: `lax` (CSRF protection)\n- **Max age**: 7 days (604800 seconds) - configurable\n- **Domain**: Automatic from ingress host\n\n**Redis Session Storage:**\n\n- **Persistence**: None (in-memory only)\n- **Eviction**: LRU (Least Recently Used) when memory limit reached\n- **TTL**: Matches cookie max age (7 days)\n- **Encryption**: Not encrypted at rest (sessions are in cluster-internal network)\n\n**Security Best Practices:**\n\n- ✅ Secrets stored in Kubernetes Secrets (encrypted at rest if cluster encryption enabled)\n- ✅ GitHub Environment Secrets for sensitive values\n- ✅ Redis accessible only within cluster (no external exposure)\n- ✅ OAuth2 Proxy v7.6.0 (latest stable release)\n- ✅ HTTPS enforced on all ingress endpoints",
+    "77": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#ip-address-logging]\n\n### IP Address Logging\n\n**Privacy Considerations:**\n\n- `x-auth-request-user` header includes authenticated user email\n- NGINX logs include client IP addresses\n- Consider GDPR/privacy regulations for your jurisdiction\n- **Recommendation**:\n    - Document data retention policy (e.g., 90 days)\n    - Implement log rotation and deletion\n    - Inform users about authentication logging in privacy policy",
+    "78": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#network-security]\n\n### Network Security\n\n**Network Policies (Recommended):**\n\n```yaml\napiVersion: networking.k8s.io/v1\nkind: NetworkPolicy\nmetadata:\n  name: redis-network-policy\n  namespace: eapref-app\nspec:\n  podSelector:\n    matchLabels:\n      app: redis\n  policyTypes:\n  - Ingress\n  ingress:\n  - from:\n    - podSelector:\n        matchLabels:\n          app: oauth2-proxy\n    ports:\n    - protocol: TCP\n      port: 6379\n```\n\nThis restricts Redis access to only OAuth2 Proxy pods.\n\n---",
+    "79": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#next-steps]\n\n## Next Steps\n\nAfter authentication is deployed:\n\n1. **✅ Phase 1 Complete** - OAuth2 Proxy + Redis authentication in production\n2. **→ Phase 2: Monitoring** - Set up CloudWatch dashboards and alerts\n3. **→ Phase 3: Rating System** - Implement AI Feedback Service (see [ai_response_rating_system.md](ai_response_rating_system.md))\n4. **→ Phase 4: Analytics** - Build rating analytics dashboard\n5. **→ Phase 5: Automation** - Implement automated follow-up workflows\n\n---",
+    "80": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#support--contacts]\n\n## Support & Contacts\n\n**Azure AD Configuration:**\n\n- Contact: Gainwell IT Security Team\n- Ticket system: ServiceNow\n\n**Kubernetes/Infrastructure:**\n\n- Contact: Platform Engineering Team\n- Slack: #platform-engineering\n\n**Application Support:**\n\n- Contact: Enterprise Architecture Practice\n- Email: <eap@gainwell.com>\n\n---",
+    "81": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#appendix-deployment-architecture]\n\n## Appendix: Deployment Architecture",
+    "82": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#github-workflow-implementation]\n\n### GitHub Workflow Implementation\n\n**Primary File:** `.github/workflows/deploy-mkdocs-platform.yml`\n\n**Components Deployed:**\n\n1. **Redis Session Storage**\n   - Image: `redis:7-alpine`\n   - Memory: 256MB with LRU eviction\n   - Service: `redis` on port 6379\n   - Lines: 2166-2214 in workflow\n\n2. **OAuth2 Proxy**\n   - Image: `quay.io/oauth2-proxy/oauth2-proxy:v7.6.0`\n   - Replicas: 2\n   - Session store: Redis backend\n   - Service: `oauth2-proxy` on port 4180\n   - Lines: 2215-2360 in workflow\n\n3. **NGINX Ingress**\n   - Auth URL: `http://oauth2-proxy.eapref-app.svc.cluster.local:4180/oauth2/auth`\n   - Proxy buffer size: 32k\n   - Proxy buffers: 8 x 32k\n   - Lines: 2760-2766 in workflow\n\n4. **MkDocs Platform**\n   - Deployment with 2 replicas\n   - Service on port 8000\n   - Integrated with OAuth2 authentication",
+    "83": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#key-configuration-changes]\n\n### Key Configuration Changes\n\n**Redirect URI Change:**\n\n- **Old**: `/oauth2/idpresponse` (AWS ALB OIDC standard)\n- **New**: `/oauth2/callback` (OAuth2 Proxy standard)\n- **Impact**: Azure AD app registration must use new redirect URI\n- **Commit**: 9d58fd22 - \"Enable Azure AD authentication with Redis session storage\"\n\n**NGINX Buffer Increase:**\n\n- **Old**: Default 4k buffers\n- **New**: 32k buffers (proxy-buffer-size and proxy-buffers annotations)\n- **Reason**: Handle large OAuth2 response headers from Azure AD with 70+ groups\n- **Lines**: 2765-2766 in workflow\n\n**OAuth2 Proxy Environment Variables:**\n\n```yaml\n- OAUTH2_PROXY_SKIP_GROUPS_CLAIM: \"true\"\n- OAUTH2_PROXY_SESSION_STORE_TYPE: \"redis\"\n- OAUTH2_PROXY_REDIS_CONNECTION_URL: \"redis://redis:6379\"\n- OAUTH2_PROXY_PROVIDER: \"azure\"\n- OAUTH2_PROXY_AZURE_TENANT: \"c663f89c-ef9b-418f-bd3d-41e46c0ce068\"\n```\n\n**Lines**: 2278-2283 in workflow",
+    "84": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#kubernetes-resources]\n\n### Kubernetes Resources\n\n**Namespace:** `eapref-app`\n\n**Deployments:**\n\n```\nredis                    1 replica\noauth2-proxy             2 replicas\neap-mkdocs               2 replicas\n```\n\n**Services:**\n\n```\nredis                    ClusterIP    6379/TCP\noauth2-proxy             ClusterIP    4180/TCP, 44180/TCP\neap-mkdocs-service       ClusterIP    8000/TCP\n```\n\n**Ingress:**\n\n```\neapref-app-mkdocs-ingress\n  Host: ea-reference.shared.dev.pgwcloud.net\n  Annotations:\n    - nginx.ingress.kubernetes.io/auth-url\n    - nginx.ingress.kubernetes.io/auth-signin\n    - nginx.ingress.kubernetes.io/auth-response-headers\n    - nginx.ingress.kubernetes.io/proxy-buffer-size: \"32k\"\n    - nginx.ingress.kubernetes.io/proxy-buffers: \"8 32k\"\n```\n\n**Secrets:**\n\n```\nazure-oauth2-secret\n  - client-id (from GitHub Environment Secret)\n  - client-secret (from GitHub Environment Secret)\n  - cookie-secret (auto-generated)\n```",
+    "85": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#related-files]\n\n### Related Files\n\n**Session Management APIs (Optional):**\n\n```\n.tooling/components/apis/rag-service/src/api/session.py\n.tooling/components/apis/ai-gov-review-service/src/api/auth/session.py\n```\n\n**Frontend Integration (Optional):**\n\n```\n.tooling/components/apps/mkdocs-platform/docs/javascripts/session-manager.js\n.tooling/components/apps/mkdocs-platform/docs/stylesheets/session.css\n```",
+    "86": "[.tooling/components/apps/mkdocs-platform/docs/azure_ad_authentication_deployment.md#deployment-commands]\n\n### Deployment Commands\n\n**Automatic Deployment:**\n\n```bash\n# Push to trigger GitHub workflow\ngit push origin mkdocs-security\n\n# Or manually trigger via GitHub Actions UI\n```\n\n**Manual Deployment:**\n\n```bash\n# Set environment variables\nexport GITHUB_TOKEN=<your-github-token>\n\n# For Dev environment\nexport AZURE_CLIENT_ID=efed4b35-f243-4560-a0dd-ad7aca65fdaa\nexport AZURE_CLIENT_SECRET=<dev-client-secret>\n\n# Or for Prod environment\n# export AZURE_CLIENT_ID=97ff4494-c579-4181-87b7-641866f004c0\n# export AZURE_CLIENT_SECRET=<prod-client-secret>\n\n# Trigger workflow\ngh workflow run deploy-mkdocs-platform.yml \\\n  --ref mkdocs-security \\\n  -f environment=dev  # or environment=prod\n```\n\n**Verify Deployment:**\n\n```bash\n# Check all pods are running\nkubectl get pods -n eapref-app\n\n# Check services\nkubectl get svc -n eapref-app\n\n# Check ingress\nkubectl get ingress -n eapref-app\n\n# Check logs\nkubectl logs -n eapref-app -l app=oauth2-proxy --tail=50\nkubectl logs -n eapref-app -l app=redis --tail=20\n```\n\n---\n\n**Document Version:** 2.0.0\n**Last Updated:** March 3, 2026\n**Next Review:** April 2026\n**Architecture Status:** Production-Ready\n**Dev Deployment:** Active - Client ID `efed4b35-f243-4560-a0dd-ad7aca65fdaa`\n**Prod Deployment:** Ready - Client ID `97ff4494-c579-4181-87b7-641866f004c0`"
+  },
+  "coverage": {
+    "total_pages": 86,
+    "covered_pages": 86,
+    "sampled_pages": 86,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 86
+  }
+}

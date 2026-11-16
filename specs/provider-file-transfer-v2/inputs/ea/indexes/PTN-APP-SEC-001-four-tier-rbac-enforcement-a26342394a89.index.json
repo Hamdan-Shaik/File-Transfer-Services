@@ -1,0 +1,278 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "ADR-SEC-002: Four-Tier RBAC Enforcement Model",
+  "document_description": "Access control is enforced at four distinct tiers, each at a different layer of the stack. Tiers 2 and 4 are enforced **server-side** — hidden components and redacted fields never reach the browser. Tiers 1 and 3 are enforced client-side after server-side filtering. The active persona is stored in a **non-httpOnly cookie** so both client-side rendering and server-side BFF redaction can read it. Fi",
+  "total_pages": 28,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 28,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "ADR-SEC-002: Four-Tier RBAC Enforcement Model",
+          "node_id": "adr-sec-002-four-tier-rbac-enforcement-model",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Decision Summary",
+          "node_id": "decision-summary",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Context and Problem Statement",
+          "node_id": "context-and-problem-statement",
+          "start_index": 5,
+          "end_index": 6,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Decision Drivers",
+              "node_id": "decision-drivers",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Required Option",
+          "node_id": "required-option",
+          "start_index": 7,
+          "end_index": 13,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Four-Tier RBAC with Server-Side Enforcement at Tiers 2 and 4",
+              "node_id": "four-tier-rbac-with-server-side-enforcement-at-tiers-2-and-4",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Tier 4 Extended: Two-Property FieldPolicy",
+              "node_id": "tier-4-extended-two-property-fieldpolicy",
+              "start_index": 9,
+              "end_index": 13,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Property 1 — `access` (required)",
+                  "node_id": "property-1--access-required",
+                  "start_index": 10,
+                  "end_index": 10,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Property 2 — `masked` (boolean, default `false`)",
+                  "node_id": "property-2--masked-boolean-default-false",
+                  "start_index": 11,
+                  "end_index": 11,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "`masked: true` — Behaviour Detail",
+                  "node_id": "masked-true--behaviour-detail",
+                  "start_index": 12,
+                  "end_index": 12,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Tier 4 Write Path — BFF Session Merge",
+                  "node_id": "tier-4-write-path--bff-session-merge",
+                  "start_index": 13,
+                  "end_index": 13,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Considered Options",
+          "node_id": "considered-options",
+          "start_index": 14,
+          "end_index": 17,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Option 1: Four-Tier Model with Server-Side Enforcement at Tiers 2 and 4 (Selected)",
+              "node_id": "option-1-four-tier-model-with-server-side-enforcement-at-tiers-2-and-4-selected",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Option 2: Client-Side-Only RBAC",
+              "node_id": "option-2-client-side-only-rbac",
+              "start_index": 16,
+              "end_index": 16,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Option 3: Deny-by-Default Field Policies",
+              "node_id": "option-3-deny-by-default-field-policies",
+              "start_index": 17,
+              "end_index": 17,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Decision Outcome",
+          "node_id": "decision-outcome",
+          "start_index": 18,
+          "end_index": 18,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Consequences",
+          "node_id": "consequences",
+          "start_index": 19,
+          "end_index": 22,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "✅ Positive",
+              "node_id": "-positive",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "❌ Negative",
+              "node_id": "-negative",
+              "start_index": 21,
+              "end_index": 21,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "⚪ Neutral",
+              "node_id": "-neutral",
+              "start_index": 22,
+              "end_index": 22,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Risk Assessment & Mitigation",
+          "node_id": "risk-assessment--mitigation",
+          "start_index": 23,
+          "end_index": 25,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "⚠️ Risks",
+              "node_id": "-risks",
+              "start_index": 24,
+              "end_index": 24,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "🛡️ Mitigations",
+              "node_id": "-mitigations",
+              "start_index": 25,
+              "end_index": 25,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Compliance Notes",
+          "node_id": "compliance-notes",
+          "start_index": 26,
+          "end_index": 26,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Review and Approval",
+          "node_id": "review-and-approval",
+          "start_index": 27,
+          "end_index": 27,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "📋 Change Log",
+          "node_id": "-change-log",
+          "start_index": 28,
+          "end_index": 28,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "> **Promoted from:** `mmes-cms-studio/docs/decisions/ADR-SEC-002-four-tier-rbac-enforcement.md`  \n> **Ref-arch artifact ID:** `PTN-APP-SEC-001-four-tier-rbac-enforcement`  \n> This document has been promoted to the Enterprise Architecture Platform reference architecture. Product repos should reference this artifact rather than maintaining their own copy.\n\n---",
+    "2": "[patterns/application/PTN-APP-SEC-001-four-tier-rbac-enforcement.md#adr-sec-002-four-tier-rbac-enforcement-model]\n\n## ADR-SEC-002: Four-Tier RBAC Enforcement Model\n\n---\n\n|               |                                                                                                                                              |\n| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |\n| **Status**    | ✅ Accepted                                                                                                                                   |\n| **Date**      | 2026-07-29                                                                                                                                   |\n| **Issuer**    | [Enterprise Architecture Practice](mailto:EAP-Core@mygainwell.onmicrosoft.com?subject=ADR-SEC-002%20Four-Tier-RBAC)                        |\n| **Consulted** | Mike Goppert, James Macurak, Security Team                                                                                                  |\n| **Informed**  | MMES Platform Team, Gainwell EA                                                                                                             |\n\n---",
+    "3": "[patterns/application/PTN-APP-SEC-001-four-tier-rbac-enforcement.md#table-of-contents]\n\n## Table of Contents\n\n- [Decision Summary](#decision-summary)\n- [Context and Problem Statement](#context-and-problem-statement)\n- [Required Option](#required-option)\n- [Considered Options](#considered-options)\n- [Decision Outcome](#decision-outcome)\n- [Consequences](#consequences)\n- [Risk Assessment & Mitigation](#risk-assessment--mitigation)\n- [Compliance Notes](#compliance-notes)\n- [Review and Approval](#review-and-approval)\n\n---",
+    "4": "[patterns/application/PTN-APP-SEC-001-four-tier-rbac-enforcement.md#decision-summary]\n\n## Decision Summary\n\nAccess control is enforced at four distinct tiers, each at a different layer of the stack. Tiers 2 and 4 are enforced **server-side** — hidden components and redacted fields never reach the browser. Tiers 1 and 3 are enforced client-side after server-side filtering. The active persona is stored in a **non-httpOnly cookie** so both client-side rendering and server-side BFF redaction can read it. Field policies default to **open** (all fields pass through unless explicitly restricted).\n\n**Amendment v1.1 (2026-08-06):** Tier 4 now uses a **two-property FieldPolicy** per field per persona: an `access` value (`none` | `readonly` | `full`) and an independent `masked` boolean. The `masked` flag is only valid when `access` is `readonly` or `full`. The BFF write-path session-merge pattern is also added. See the Tier 4 extended section below.\n\n---",
+    "5": "[patterns/application/PTN-APP-SEC-001-four-tier-rbac-enforcement.md#context-and-problem-statement]\n\n## Context and Problem Statement\n\n**Business Context:** Medicaid portals serve multiple persona types (Member, Caseworker, Billing Agent, State Agent) with different data access rights. Sensitive fields (e.g., Social Security Number, date of birth) must never be transmitted to unauthorized personas — not merely hidden in the UI.\n\n**Technical Context:** The system composes components from multiple product domains onto a single page. RBAC must work across all components regardless of which domain built them.\n\n**Problem Statement:** Where is each tier of access control enforced, and why is server-side enforcement critical for tiers 2 and 4?",
+    "6": "[patterns/application/PTN-APP-SEC-001-four-tier-rbac-enforcement.md#decision-drivers]\n\n### Decision Drivers\n\n- 🔒 HIPAA — sensitive PHI fields must never be transmitted to unauthorized clients\n- 📋 Defense in depth — multiple enforcement layers prevent single-point bypass\n- ⚡ Performance — server-side filtering at PageAssembly publish time (tier 2) avoids per-request evaluation\n\n---",
+    "7": "[patterns/application/PTN-APP-SEC-001-four-tier-rbac-enforcement.md#required-option]\n\n## Required Option",
+    "8": "[patterns/application/PTN-APP-SEC-001-four-tier-rbac-enforcement.md#four-tier-rbac-with-server-side-enforcement-at-tiers-2-and-4]\n\n### Four-Tier RBAC with Server-Side Enforcement at Tiers 2 and 4\n\n| Tier | Name | What it controls | Where enforced | Mechanism |\n|------|------|-----------------|----------------|-----------|\n| 1 | Navigation reach | Which nav items a persona can see | Client-side (PortalNav) for standard nav items; **server-side at publish time** for sensitive nav items whose existence is itself sensitive data | `visibleToPersonas[]` gate on `NavItem`; group headers auto-hidden when all children are gated. Standard nav items are client-side only — bypassing tier 1 gains the attacker a visible link, but tier 2 prevents the destination page from rendering any unauthorized components. **Exception:** if the existence of a nav item reveals sensitive information (e.g., \"Fraud Investigation\" visible to a Member), that nav item must be dropped server-side at PageAssembly publish time using the same mechanism as tier 2 |\n| 2 | Component visibility | Whether a component appears at all (hidden / read-only / full) | **Server-side** (PageAssembly publish) | `resolveComponentAccess()` — hidden components are dropped from the assembly before it is written to Redis; they never reach the browser |\n| 3 | Action permissions | Which component-level actions (Save, Export, Delete) a persona may invoke | **Dual-enforced — server-side (BFF) AND client-side (component)** | BFF validates `ActionPermission[]` from `PageAssembly` before processing any action request; client-side additionally hides/disables disallowed buttons for UX. Server enforcement is mandatory — client enforcement is UX-only and must never be the sole gate |\n| 4 | Field-level data access | Which response fields a persona may receive, in what form, and how write-path updates are handled | **Server-side** (BFF Route Handler) | `resolveFieldPolicy()` applies a four-level setting per field; write-path `mergeRestrictedFields()` restores session-stored restricted values before forwarding to domain API |\n\n**Persona cookie design:** The active persona ID is stored in a **non-httpOnly cookie** (`studio_persona_<portalId>_<envId>`). This is intentional: the BFF Route Handler (a Next.js Server Action) must read the persona to perform tier-4 field redaction before the response leaves the server. Client-side code also reads it for tier-1 nav filtering and tier-3 action display. HttpOnly would block both.\n\n**Field policy default — open-by-default:** No FieldPolicy for a persona+endpoint combination means all fields pass through unredacted (`full`). Operators add FieldPolicies to restrict access. This default reduces friction for initial deployment; tighten access explicitly for sensitive fields.\n\n---",
+    "9": "[patterns/application/PTN-APP-SEC-001-four-tier-rbac-enforcement.md#tier-4-extended-two-property-fieldpolicy]\n\n### Tier 4 Extended: Two-Property FieldPolicy\n\nEach field in a domain API response is governed by two independent properties per persona, both configured in Studio and enforced server-side by the BFF.",
+    "10": "[patterns/application/PTN-APP-SEC-001-four-tier-rbac-enforcement.md#property-1--access-required]\n\n#### Property 1 — `access` (required)\n\n| Value | BFF read behaviour | Write-path behaviour |\n|---|---|---|\n| `none` | Field stripped from response; never reaches browser | BFF strips field from any request body the client sends; session-stored value merged back before forwarding to domain API |\n| `readonly` | Field value returned in response | BFF strips field from request body — user cannot write it |\n| `full` | Field value returned in response | Field passes through write path unchanged |",
+    "11": "[patterns/application/PTN-APP-SEC-001-four-tier-rbac-enforcement.md#property-2--masked-boolean-default-false]\n\n#### Property 2 — `masked` (boolean, default `false`)\n\n`masked` is only valid when `access` is `readonly` or `full`. It is a **display treatment** applied on top of a field the persona can already access. Setting `masked: true` on `access: none` is invalid and treated as `none`.\n\n| `access` | `masked` | What the user sees | Can they edit? |\n|---|---|---|---|\n| `none` | — | Nothing | No |\n| `readonly` | `false` | Full value | No |\n| `readonly` | `true` | `***-**-6789` + reveal button | No (can reveal to verify) |\n| `full` | `false` | Full value | Yes |\n| `full` | `true` | `***-**-6789` + reveal button | Yes — but must reveal first before field becomes editable |\n\n**FieldPolicy schema:**\n\n```json\n{\n  \"fieldId\": \"ssn\",\n  \"access\": \"readonly\",\n  \"masked\": true\n}\n```",
+    "12": "[patterns/application/PTN-APP-SEC-001-four-tier-rbac-enforcement.md#masked-true--behaviour-detail]\n\n#### `masked: true` — Behaviour Detail\n\n1. **Read:** BFF applies a format-preserving mask per field type (SSN → `***-**-NNNN`, DOB → `**/**/YYYY`, account number → `****NNNN`). The masked string is transmitted; the real value does not leave the server on the initial response.\n2. **Reveal:** The component renders a reveal button (`aria-label=\"Reveal [field name]\"`, `aria-pressed=\"false\"`). On click, the component calls `GET /bff/fields/reveal?field={fieldId}&recordId={id}`. The BFF validates the persona's `access` is still `readonly` or `full`, fetches the real value, writes an **audit log entry** (who, field, record, timestamp), and returns the real value. The component displays it transiently — never written to DOM `data-*` attributes or persistent React state.\n3. **`full + masked` — reveal before edit:** When `access: full, masked: true`, the field is not editable in its masked state. The reveal action transitions the field into an editable input pre-populated with the real value. This prevents the user from accidentally submitting `***-**-6789` as the actual value.\n4. **Audit requirement (GUID-SEC-DATA-MASK-2.5.06):** Every reveal call MUST produce an audit event. Non-negotiable for HIPAA Minimum Necessary — selective disclosure is only defensible when logged.\n5. **Accessibility:** The reveal toggle MUST carry `aria-label=\"Reveal [field name]\"`, update `aria-pressed` on activation, and trigger an `aria-live=\"polite\"` announcement.",
+    "13": "[patterns/application/PTN-APP-SEC-001-four-tier-rbac-enforcement.md#tier-4-write-path--bff-session-merge]\n\n#### Tier 4 Write Path — BFF Session Merge\n\nWhen the BFF serves a GET response, it stores the **original unrestricted values** of fields where `access: none` or `masked: true` in the server-side session store (Redis, keyed by `{sessionId}:{recordId}:{endpointId}`). Only these restricted field values are stored — not the full record.\n\nOn a write postback (POST/PATCH from the component):\n\n1. BFF applies write-side FieldPolicy: strips any `access:none` or `masked:true` fields the client may have injected in the request body (prevents a malicious or buggy client from overwriting restricted fields directly).\n2. BFF checks the session store for the merge baseline.\n   - If found: merges the session-stored restricted field values back into the request before forwarding.\n   - If not found (session expired): returns `409 Conflict` with `{\"code\": \"SESSION_BASELINE_EXPIRED\", \"action\": \"refetch\"}` — the component must re-fetch the record and restart the edit.\n3. BFF forwards the merged payload to the domain API via **PATCH** (partial update). For PUT-only domain APIs, BFF performs a read-before-write, merges the submitted fields with the current record, and issues PUT with the full merged payload.\n4. Session baseline is cleared after a successful write.\n\n**Minimum Necessary:** Only the field values that were restricted from the user are stored in session — not the entire record. This limits the PHI-in-session surface to the minimum required by the merge operation (aligned with GUID-SEC-DATA-MASK-2.5.06 and HIPAA 45 CFR 164.502(b)).\n\n**Domain API obligation:** Domain APIs whose endpoints carry FieldPolicy-restricted fields MUST support PATCH with partial-update semantics (absent field = no change). This is enforced at API registration time in Studio (`APIIntegrationService`) — endpoints that only support PUT are flagged and the BFF falls back to the read-before-write path, which is documented as a TOCTOU risk in the endpoint's adapter contract.\n\n**Pros:**\n- ✅ Tiers 2 and 4 are server-side — cannot be bypassed by browser developer tools\n- ✅ Hidden components never reach the browser; no information leakage about their existence\n- ✅ Field redaction is the last line of defense for PHI; enforced at the network boundary\n- ✅ Defense-in-depth: bypass of any one tier does not expose full data\n\n**Cons:**\n- ❌ Persona cookie is non-httpOnly — XSS can read the persona ID (see mitigations)\n- ❌ Open-by-default field policy means operators must explicitly configure restrictions for sensitive fields\n- ❌ Tier-2 enforcement at publish time means RBAC changes require re-publishing affected pages\n- ❌ Tier-3 server-side enforcement requires the BFF to load the `ActionPermission[]` manifest on each request to validate the action — small additional BFF overhead vs. client-only enforcement\n\n---",
+    "14": "[patterns/application/PTN-APP-SEC-001-four-tier-rbac-enforcement.md#considered-options]\n\n## Considered Options",
+    "15": "[patterns/application/PTN-APP-SEC-001-four-tier-rbac-enforcement.md#option-1-four-tier-model-with-server-side-enforcement-at-tiers-2-and-4-selected]\n\n### Option 1: Four-Tier Model with Server-Side Enforcement at Tiers 2 and 4 (Selected)\n\n**Description:** Layered enforcement; server-side for data-critical tiers.\n\n**Pros:** ✅ PHI never leaves server for unauthorized personas; defense in depth\n\n**Cons:** ❌ Non-httpOnly persona cookie; open-by-default field policy",
+    "16": "[patterns/application/PTN-APP-SEC-001-four-tier-rbac-enforcement.md#option-2-client-side-only-rbac]\n\n### Option 2: Client-Side-Only RBAC\n\n**Description:** All four tiers enforced via JavaScript in the browser.\n\n**Pros:** ✅ Simpler implementation; no server-side persona context required\n\n**Cons:** ❌ Browser developer tools can bypass client-side RBAC; PHI fields transmitted to browser then hidden — HIPAA violation risk",
+    "17": "[patterns/application/PTN-APP-SEC-001-four-tier-rbac-enforcement.md#option-3-deny-by-default-field-policies]\n\n### Option 3: Deny-by-Default Field Policies\n\n**Description:** BFF returns no fields unless explicitly allowed by a FieldPolicy.\n\n**Pros:** ✅ Maximum data minimization; no accidental PHI transmission\n\n**Cons:** ❌ Every new endpoint requires a FieldPolicy before any data flows; high operational friction for initial deployment; operators must enumerate all allowed fields upfront\n\n---",
+    "18": "[patterns/application/PTN-APP-SEC-001-four-tier-rbac-enforcement.md#decision-outcome]\n\n## Decision Outcome\n\n**Selected:** Option 1 — Four-tier model with server-side enforcement at tiers 2 and 4, open-by-default field policies.\n\n**Field policy review requirement:** Any endpoint that handles PHI/PII fields must have a FieldPolicy configured before the portal goes live. This is a deployment checklist item, not an automated gate (in the initial release).\n\n---",
+    "19": "[patterns/application/PTN-APP-SEC-001-four-tier-rbac-enforcement.md#consequences]\n\n## Consequences",
+    "20": "[patterns/application/PTN-APP-SEC-001-four-tier-rbac-enforcement.md#-positive]\n\n### ✅ Positive\n\n- PHI fields are never transmitted to unauthorized personas\n- Hidden components are invisible to all browser-side inspection\n- Layered enforcement means no single bypass exposes all data",
+    "21": "[patterns/application/PTN-APP-SEC-001-four-tier-rbac-enforcement.md#-negative]\n\n### ❌ Negative\n\n- RBAC changes at tier 2 require page republish\n- Open-by-default field policy requires operator discipline for PHI endpoints\n- Session-stored restricted field values create a PHI-at-rest surface in Redis — the session store must be classified as PHI-adjacent and governed with SC-28 controls (encryption at rest, IRSA-only access)\n- Session expiry during a long form session returns 409 — the user must re-fetch and restart their edit; UX must communicate this clearly\n- TOCTOU race condition exists on the read-before-write fallback path for PUT-only domain APIs — accepted risk, documented per endpoint in the adapter contract",
+    "22": "[patterns/application/PTN-APP-SEC-001-four-tier-rbac-enforcement.md#-neutral]\n\n### ⚪ Neutral\n\n- Persona cookie is low-sensitivity (a role name, not a session token); XSS risk is acceptable given CSP controls\n\n---",
+    "23": "[patterns/application/PTN-APP-SEC-001-four-tier-rbac-enforcement.md#risk-assessment--mitigation]\n\n## Risk Assessment & Mitigation",
+    "24": "[patterns/application/PTN-APP-SEC-001-four-tier-rbac-enforcement.md#-risks]\n\n### ⚠️ Risks\n\n- XSS reads persona cookie and impersonates a higher-privilege persona in BFF requests\n- Operator fails to configure FieldPolicy for a PHI endpoint before go-live\n- Tier-2 RBAC changes require republish — operators may delay re-deployment",
+    "25": "[patterns/application/PTN-APP-SEC-001-four-tier-rbac-enforcement.md#-mitigations]\n\n### 🛡️ Mitigations\n\n- CSP `script-src 'self'` and Shadow DOM component isolation significantly reduce XSS attack surface; persona cookie value is a role slug (not a session token) — stealing it grants no server-side session escalation\n- PHI endpoint FieldPolicy configuration is a required pre-go-live checklist item; logical architecture phase will define the formal gate\n- Tier-2 changes are Studio Designer actions — Studio surfaces a \"republish required\" indicator when RBAC rules change\n\n---",
+    "26": "[patterns/application/PTN-APP-SEC-001-four-tier-rbac-enforcement.md#compliance-notes]\n\n## Compliance Notes\n\n- **HIPAA:** Tier-4 field redaction ensures PHI fields are stripped at the server boundary before transmission. This addresses HIPAA Minimum Necessary standard for data transmission.\n- **Security:** Non-httpOnly persona cookie is a deliberate design tradeoff documented here. CSP mitigates the primary XSS risk. Reviewed and accepted by Security Team.\n- **Standards:** References `eap-ref-architecture/strategy/guidance/security/` RBAC and data protection guidance.\n\n---",
+    "27": "[patterns/application/PTN-APP-SEC-001-four-tier-rbac-enforcement.md#review-and-approval]\n\n## Review and Approval\n\n| Role                         | Name          | Date       | Status     |\n| ---------------------------- | ------------- | ---------- | ---------- |\n| EA Security Domain Lead                 | Jesse Adams   | 2026-07-29 | 🔄 Pending |\n| Enterprise Architecture Lead            | Mike Goppert  | 2026-07-29 | 🔄 Pending |\n| Enterprise Application Architect Lead   | James Macurak | 2026-07-29 | 🔄 Pending |",
+    "28": "[patterns/application/PTN-APP-SEC-001-four-tier-rbac-enforcement.md#-change-log]\n\n## 📋 Change Log\n\n| Version | Date       | Author       | Description              |\n| ------- | ---------- | ------------ | ------------------------ |\n| 1.2     | 2026-08-06 | Mike Goppert | Tier 4 model revised: two-property FieldPolicy (`access`: none/readonly/full + `masked`: boolean); `masked` is independent of `access` — no combined enum values needed; `full+masked` requires reveal before edit |\n| 1.1     | 2026-08-06 | Mike Goppert | Tier 4 extended: masked reveal flow with audit logging; BFF write-path session-merge pattern; domain API PATCH obligation |\n| 1.0     | 2026-07-29 | Mike Goppert | Initial decision document |"
+  },
+  "coverage": {
+    "total_pages": 28,
+    "covered_pages": 28,
+    "sampled_pages": 28,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 28
+  }
+}

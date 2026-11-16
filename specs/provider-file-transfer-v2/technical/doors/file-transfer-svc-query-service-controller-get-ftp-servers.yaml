@@ -1,0 +1,62 @@
+door:
+  id: file-transfer-svc-query-service-controller-get-ftp-servers
+  kind: api
+  name: GetFtpServers
+  class: HPP.FileTransfer.BAS.FileTransferApi.Controllers.FileTransferSvcQueryServiceController
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferApi\Controllers\FileTransferSvcQueryServiceController.cs
+  line: 33
+  entry:
+  - HPP.FileTransfer.BAS.FileTransferApi.Controllers.FileTransferSvcQueryServiceController.GetFtpServers(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+  endpoints:
+  - POST /FileTransferSvcQueryService
+procedures: []
+tables:
+- name: orm:FTP_SERVER
+  access:
+  - reads
+shared_uses: []
+external_uses:
+- package: hpp.core.bas.cqrs
+  version: 30.0.0
+  method: HPP.Core.BAS.CQRS.Base.QueryServiceBase.TryRoute<TQuery>(TQuery)
+  calls:
+  - at: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferApi\Queries\FileTransferSvcQueryService.cs:43
+    type_arguments:
+    - HPP.Core.BAS.CQRS.Base.Query
+    arguments:
+    - name: query
+      expression: query
+polymorphic_hooks: []
+stops: []
+calls:
+- from: HPP.FileTransfer.BAS.FileTransferApi.Controllers.FileTransferSvcQueryServiceController.GetFtpServers(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+  via: INVOKES
+  to: HPP.FileTransfer.BAS.FileTransferApi.Interfaces.IFileTransferSvcQueryService.GetFtpServers(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+- from: HPP.FileTransfer.BAS.FileTransferApi.Controllers.FileTransferSvcQueryServiceController.GetFtpServers(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+  via: READS_FROM
+  to: orm:FTP_SERVER
+- from: HPP.FileTransfer.BAS.FileTransferApi.Interfaces.IFileTransferSvcQueryService.GetFtpServers(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+  via: DISPATCH
+  to: HPP.FileTransfer.BAS.FileTransferApi.Queries.FileTransferSvcQueryService.GetFtpServers(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+- from: HPP.FileTransfer.BAS.FileTransferApi.Interfaces.IFileTransferSvcQueryService.GetFtpServers(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+  via: READS_FROM
+  to: orm:FTP_SERVER
+- from: HPP.FileTransfer.BAS.FileTransferApi.Queries.FileTransferSvcQueryService.GetFtpServers(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+  via: INVOKES
+  to: HPP.FileTransfer.BAS.FileTransferApi.Queries.FileTransferSvcQueryService.TryRouteQuery(HPP.Core.BAS.CQRS.Base.Query)
+- from: HPP.FileTransfer.BAS.FileTransferApi.Queries.FileTransferSvcQueryService.GetFtpServers(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+  via: READS_FROM
+  to: orm:FTP_SERVER
+methods:
+- name: HPP.FileTransfer.BAS.FileTransferApi.Controllers.FileTransferSvcQueryServiceController.GetFtpServers(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferApi\Controllers\FileTransferSvcQueryServiceController.cs
+  line: 33
+- name: HPP.FileTransfer.BAS.FileTransferApi.Interfaces.IFileTransferSvcQueryService.GetFtpServers(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferApi\Interfaces\IFileTransferSvcQueryService.cs
+  line: 41
+- name: HPP.FileTransfer.BAS.FileTransferApi.Queries.FileTransferSvcQueryService.GetFtpServers(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferApi\Queries\FileTransferSvcQueryService.cs
+  line: 26
+- name: HPP.FileTransfer.BAS.FileTransferApi.Queries.FileTransferSvcQueryService.TryRouteQuery(HPP.Core.BAS.CQRS.Base.Query)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferApi\Queries\FileTransferSvcQueryService.cs
+  line: 41

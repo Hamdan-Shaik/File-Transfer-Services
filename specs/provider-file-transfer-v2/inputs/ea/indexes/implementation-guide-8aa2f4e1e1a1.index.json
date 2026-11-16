@@ -1,0 +1,842 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Enterprise Architecture Platform - Implementation Guide",
+  "document_description": "This guide provides step-by-step instructions for setting up, configuring, and deploying the Enterprise Architecture Platform on AWS EKS. The platform consists of two main components deployed as containerized services in Kubernetes with shared infrastructure.",
+  "total_pages": 88,
+  "tree": [
+    {
+      "title": "Enterprise Architecture Platform - Implementation Guide",
+      "node_id": "enterprise-architecture-platform---implementation-guide",
+      "start_index": 1,
+      "end_index": 88,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "🚀 Deployment Overview",
+          "node_id": "-deployment-overview",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "📋 Prerequisites & Requirements",
+          "node_id": "-prerequisites--requirements",
+          "start_index": 3,
+          "end_index": 6,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "System Requirements",
+              "node_id": "system-requirements",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Account Requirements",
+              "node_id": "account-requirements",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Development Tools (Recommended)",
+              "node_id": "development-tools-recommended",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "🏗️ Platform Setup & Installation",
+          "node_id": "-platform-setup--installation",
+          "start_index": 7,
+          "end_index": 23,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "1. Repository Setup",
+              "node_id": "1-repository-setup",
+              "start_index": 8,
+              "end_index": 9,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Clone Repository",
+                  "node_id": "clone-repository",
+                  "start_index": 9,
+                  "end_index": 9,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "2. MKDocs Documentation Platform Setup",
+              "node_id": "2-mkdocs-documentation-platform-setup",
+              "start_index": 10,
+              "end_index": 14,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Navigate to Component Directory",
+                  "node_id": "navigate-to-component-directory",
+                  "start_index": 11,
+                  "end_index": 11,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Execute Automated Setup",
+                  "node_id": "execute-automated-setup",
+                  "start_index": 12,
+                  "end_index": 12,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Verify Installation Success",
+                  "node_id": "verify-installation-success",
+                  "start_index": 13,
+                  "end_index": 13,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Launch Development Server",
+                  "node_id": "launch-development-server",
+                  "start_index": 14,
+                  "end_index": 14,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "3. RAG AI Services Platform Setup",
+              "node_id": "3-rag-ai-services-platform-setup",
+              "start_index": 15,
+              "end_index": 19,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Navigate to Service Directory",
+                  "node_id": "navigate-to-service-directory",
+                  "start_index": 16,
+                  "end_index": 16,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Execute Automated Setup",
+                  "node_id": "execute-automated-setup",
+                  "start_index": 17,
+                  "end_index": 17,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Verify Service Installation",
+                  "node_id": "verify-service-installation",
+                  "start_index": 18,
+                  "end_index": 18,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Launch API Development Server",
+                  "node_id": "launch-api-development-server",
+                  "start_index": 19,
+                  "end_index": 19,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "4. Content Indexing & Preview Validation",
+              "node_id": "4-content-indexing--preview-validation",
+              "start_index": 20,
+              "end_index": 23,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Content Discovery Approach",
+                  "node_id": "content-discovery-approach",
+                  "start_index": 21,
+                  "end_index": 21,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Preview Before Indexing",
+                  "node_id": "preview-before-indexing",
+                  "start_index": 22,
+                  "end_index": 22,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Content Processing Details",
+                  "node_id": "content-processing-details",
+                  "start_index": 23,
+                  "end_index": 23,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "⚙️ Configuration & Environment Setup",
+          "node_id": "-configuration--environment-setup",
+          "start_index": 24,
+          "end_index": 30,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "MKDocs Documentation Platform Configuration",
+              "node_id": "mkdocs-documentation-platform-configuration",
+              "start_index": 25,
+              "end_index": 27,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Environment Variables Configuration",
+                  "node_id": "environment-variables-configuration",
+                  "start_index": 26,
+                  "end_index": 26,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "MKDocs Configuration Management",
+                  "node_id": "mkdocs-configuration-management",
+                  "start_index": 27,
+                  "end_index": 27,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "RAG AI Service Configuration",
+              "node_id": "rag-ai-service-configuration",
+              "start_index": 28,
+              "end_index": 30,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Service Environment Variables",
+                  "node_id": "service-environment-variables",
+                  "start_index": 29,
+                  "end_index": 29,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Automatic Service Mode Detection",
+                  "node_id": "automatic-service-mode-detection",
+                  "start_index": 30,
+                  "end_index": 30,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "🔧 Development Workflow",
+          "node_id": "-development-workflow",
+          "start_index": 31,
+          "end_index": 41,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Code Quality Standards",
+              "node_id": "code-quality-standards",
+              "start_index": 32,
+              "end_index": 36,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Formatting",
+                  "node_id": "formatting",
+                  "start_index": 33,
+                  "end_index": 33,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Linting",
+                  "node_id": "linting",
+                  "start_index": 34,
+                  "end_index": 34,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Security",
+                  "node_id": "security",
+                  "start_index": 35,
+                  "end_index": 35,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Testing",
+                  "node_id": "testing",
+                  "start_index": 36,
+                  "end_index": 36,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Development Commands",
+              "node_id": "development-commands",
+              "start_index": 37,
+              "end_index": 38,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "In any component directory",
+                  "node_id": "in-any-component-directory",
+                  "start_index": 38,
+                  "end_index": 38,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Git Workflow",
+              "node_id": "git-workflow",
+              "start_index": 39,
+              "end_index": 41,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Feature Development",
+                  "node_id": "feature-development",
+                  "start_index": 40,
+                  "end_index": 40,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Quality Gates",
+                  "node_id": "quality-gates",
+                  "start_index": 41,
+                  "end_index": 41,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "🚀 Production Deployment",
+          "node_id": "-production-deployment",
+          "start_index": 42,
+          "end_index": 52,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "GitHub Actions CI/CD Workflows",
+              "node_id": "github-actions-cicd-workflows",
+              "start_index": 43,
+              "end_index": 46,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "1. Unified Platform Deployment (Production Deployment)",
+                  "node_id": "1-unified-platform-deployment-production-deployment",
+                  "start_index": 44,
+                  "end_index": 44,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "2. Manual Deployment Configuration",
+                  "node_id": "2-manual-deployment-configuration",
+                  "start_index": 45,
+                  "end_index": 45,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "2. Automated Verification Workflows",
+                  "node_id": "2-automated-verification-workflows",
+                  "start_index": 46,
+                  "end_index": 46,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "EKS Production Configuration",
+              "node_id": "eks-production-configuration",
+              "start_index": 47,
+              "end_index": 49,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Required GitHub Repository Secrets",
+                  "node_id": "required-github-repository-secrets",
+                  "start_index": 48,
+                  "end_index": 48,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Production Deployment Process",
+                  "node_id": "production-deployment-process",
+                  "start_index": 49,
+                  "end_index": 49,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Local Deployment Testing",
+              "node_id": "local-deployment-testing",
+              "start_index": 50,
+              "end_index": 52,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Test Documentation Site",
+                  "node_id": "test-documentation-site",
+                  "start_index": 51,
+                  "end_index": 51,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Test RAG Service",
+                  "node_id": "test-rag-service",
+                  "start_index": 52,
+                  "end_index": 52,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "🔒 Security Configuration",
+          "node_id": "-security-configuration",
+          "start_index": 53,
+          "end_index": 60,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Veracode Integration",
+              "node_id": "veracode-integration",
+              "start_index": 54,
+              "end_index": 57,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Setup Requirements",
+                  "node_id": "setup-requirements",
+                  "start_index": 55,
+                  "end_index": 55,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "GitHub Secrets Configuration",
+                  "node_id": "github-secrets-configuration",
+                  "start_index": 56,
+                  "end_index": 56,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Scanning Scope",
+                  "node_id": "scanning-scope",
+                  "start_index": 57,
+                  "end_index": 57,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Security Best Practices",
+              "node_id": "security-best-practices",
+              "start_index": 58,
+              "end_index": 60,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Code Security",
+                  "node_id": "code-security",
+                  "start_index": 59,
+                  "end_index": 59,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Infrastructure Security",
+                  "node_id": "infrastructure-security",
+                  "start_index": 60,
+                  "end_index": 60,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "📊 Monitoring and Maintenance",
+          "node_id": "-monitoring-and-maintenance",
+          "start_index": 61,
+          "end_index": 70,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Local Monitoring",
+              "node_id": "local-monitoring",
+              "start_index": 62,
+              "end_index": 64,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Documentation Platform",
+                  "node_id": "documentation-platform",
+                  "start_index": 63,
+                  "end_index": 63,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "RAG Service",
+                  "node_id": "rag-service",
+                  "start_index": 64,
+                  "end_index": 64,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Production Monitoring",
+              "node_id": "production-monitoring",
+              "start_index": 65,
+              "end_index": 67,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "EKS Cluster Monitoring",
+                  "node_id": "eks-cluster-monitoring",
+                  "start_index": 66,
+                  "end_index": 66,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Performance Metrics",
+                  "node_id": "performance-metrics",
+                  "start_index": 67,
+                  "end_index": 67,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Maintenance Tasks",
+              "node_id": "maintenance-tasks",
+              "start_index": 68,
+              "end_index": 70,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Regular Updates",
+                  "node_id": "regular-updates",
+                  "start_index": 69,
+                  "end_index": 69,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Monitoring Actions",
+                  "node_id": "monitoring-actions",
+                  "start_index": 70,
+                  "end_index": 70,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "🛠️ Troubleshooting",
+          "node_id": "-troubleshooting",
+          "start_index": 71,
+          "end_index": 79,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Common Issues",
+              "node_id": "common-issues",
+              "start_index": 72,
+              "end_index": 75,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Setup Issues",
+                  "node_id": "setup-issues",
+                  "start_index": 73,
+                  "end_index": 73,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Runtime Issues",
+                  "node_id": "runtime-issues",
+                  "start_index": 74,
+                  "end_index": 74,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Deployment Issues",
+                  "node_id": "deployment-issues",
+                  "start_index": 75,
+                  "end_index": 75,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Debug Commands",
+              "node_id": "debug-commands",
+              "start_index": 76,
+              "end_index": 79,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Check Environment",
+                  "node_id": "check-environment",
+                  "start_index": 77,
+                  "end_index": 77,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Verbose Logging",
+                  "node_id": "verbose-logging",
+                  "start_index": 78,
+                  "end_index": 78,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Test Components",
+                  "node_id": "test-components",
+                  "start_index": 79,
+                  "end_index": 79,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "📞 Support",
+          "node_id": "-support",
+          "start_index": 80,
+          "end_index": 88,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Getting Help",
+              "node_id": "getting-help",
+              "start_index": 81,
+              "end_index": 84,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Documentation",
+                  "node_id": "documentation",
+                  "start_index": 82,
+                  "end_index": 82,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Community",
+                  "node_id": "community",
+                  "start_index": 83,
+                  "end_index": 83,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Professional Support",
+                  "node_id": "professional-support",
+                  "start_index": 84,
+                  "end_index": 84,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Contributing",
+              "node_id": "contributing",
+              "start_index": 85,
+              "end_index": 88,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Bug Reports",
+                  "node_id": "bug-reports",
+                  "start_index": 86,
+                  "end_index": 86,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Feature Requests",
+                  "node_id": "feature-requests",
+                  "start_index": 87,
+                  "end_index": 87,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Code Contributions",
+                  "node_id": "code-contributions",
+                  "start_index": 88,
+                  "end_index": 88,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[.tooling/docs/implementation-guide.md#enterprise-architecture-platform---implementation-guide]\n\n# Enterprise Architecture Platform - Implementation Guide",
+    "2": "[.tooling/docs/implementation-guide.md#-deployment-overview]\n\n## 🚀 Deployment Overview\n\n**Platform Status**: ✅ **LIVE & OPERATIONAL**\n\nThis guide provides step-by-step instructions for setting up, configuring, and deploying the Enterprise Architecture Platform on AWS EKS. The platform consists of two main components deployed as containerized services in Kubernetes with shared infrastructure.",
+    "3": "[.tooling/docs/implementation-guide.md#-prerequisites--requirements]\n\n## 📋 Prerequisites & Requirements",
+    "4": "[.tooling/docs/implementation-guide.md#system-requirements]\n\n### System Requirements\n\n**Development Environment:**\n\n- **Operating System**: Windows 10/11, macOS 12+, or Linux Ubuntu 20.04+\n- **Python**: 3.12+ (required for latest performance improvements)\n- **Poetry**: Latest version (dependency management)\n- **Git**: Latest version with GitHub CLI\n- **Docker**: Latest version (container development and EKS deployment)\n- **kubectl**: Kubernetes CLI tool (EKS cluster management)\n- **Memory**: Minimum 8GB RAM (16GB recommended for AI development)\n- **Disk Space**: 4GB available space",
+    "5": "[.tooling/docs/implementation-guide.md#account-requirements]\n\n### Account Requirements\n\n**Essential Accounts:**\n\n- **GitHub Account**: Repository access and Actions permissions\n- **AWS Account**: EKS cluster access and ECR permissions\n- **Veracode Account**: Security scanning (enterprise compliance)",
+    "6": "[.tooling/docs/implementation-guide.md#development-tools-recommended]\n\n### Development Tools (Recommended)\n\n- **IDE**: VS Code with Python and Kubernetes extensions\n- **Terminal**: Windows Terminal (Windows) or iTerm2 (macOS)\n- **AWS CLI**: EKS cluster and ECR registry management\n- **Helm**: Kubernetes package manager (advanced deployments)",
+    "7": "[.tooling/docs/implementation-guide.md#-platform-setup--installation]\n\n## 🏗️ Platform Setup & Installation",
+    "8": "[.tooling/docs/implementation-guide.md#1-repository-setup]\n\n### 1. Repository Setup",
+    "9": "[.tooling/docs/implementation-guide.md#clone-repository]\n\n#### Clone Repository\n\n```bash\ngit clone https://github.com/mygainwell/eap-ref-architecture.git\ncd eap-ref-architecture\n```\n\n**Branch Information**: The platform is now stable on the `main` branch with all AI features integrated.",
+    "10": "[.tooling/docs/implementation-guide.md#2-mkdocs-documentation-platform-setup]\n\n### 2. MKDocs Documentation Platform Setup\n\n**Component Location**: `.tooling/components/apps/mkdocs-platform/`",
+    "11": "[.tooling/docs/implementation-guide.md#navigate-to-component-directory]\n\n#### Navigate to Component Directory\n\n```bash\ncd .tooling/components/apps/mkdocs-platform\n```",
+    "12": "[.tooling/docs/implementation-guide.md#execute-automated-setup]\n\n#### Execute Automated Setup\n\n```bash\npython _helpers/setup.py\n```\n\n**Setup Process Includes**:\n\n- System prerequisite verification (Python 3.12+, Poetry, Git)\n- Virtual environment creation via Poetry\n- Dependency installation with security scanning\n- Environment configuration with default values\n- Project structure verification and validation",
+    "13": "[.tooling/docs/implementation-guide.md#verify-installation-success]\n\n#### Verify Installation Success\n\n```bash\npython _helpers/verify.py\n```\n\n**Verification Checks**:\n\n- Code quality (Black, Ruff, Pylint)\n- Security scanning (Bandit)\n- Test execution with coverage reporting\n- Build process validation",
+    "14": "[.tooling/docs/implementation-guide.md#launch-development-server]\n\n#### Launch Development Server\n\n```bash\npython _helpers/run.py\n```\n\n**Local Development Features**:\n\n- **Documentation Site**: `http://localhost:8000`\n- **Live Reload**: Automatic refresh on content changes\n- **Material Theme**: Production-identical styling\n- **Full Search**: Client-side search functionality",
+    "15": "[.tooling/docs/implementation-guide.md#3-rag-ai-services-platform-setup]\n\n### 3. RAG AI Services Platform Setup\n\n**Component Location**: `.tooling/components/apis/rag-service/`",
+    "16": "[.tooling/docs/implementation-guide.md#navigate-to-service-directory]\n\n#### Navigate to Service Directory\n\n```bash\ncd .tooling/components/apis/rag-service\n```",
+    "17": "[.tooling/docs/implementation-guide.md#execute-automated-setup]\n\n#### Execute Automated Setup\n\n```bash\npython _helpers/setup.py\n```\n\n**Setup Process Includes**:\n\n- Python 3.12+ environment verification\n- Poetry dependency management setup\n- AI/ML library installation (LangChain, OpenAI SDK)\n- Environment variable configuration\n- Service structure validation",
+    "18": "[.tooling/docs/implementation-guide.md#verify-service-installation]\n\n#### Verify Service Installation\n\n```bash\npython _helpers/verify.py\n```\n\n**Verification Process**:\n\n- API endpoint testing\n- Async functionality verification\n- Data model validation\n- Mock mode testing (no external AI dependencies required)",
+    "19": "[.tooling/docs/implementation-guide.md#launch-api-development-server]\n\n#### Launch API Development Server\n\n```bash\npython _helpers/run.py\n```\n\n**Local API Services**:\n\n- **Main API**: `http://localhost:8001`\n- **Interactive Documentation**: `http://localhost:8001/docs`\n- **Health Check**: `http://localhost:8001/health`\n- **Quick Search**: `http://localhost:8001/api/v1/quick-search?query=architecture&limit=10`\n- **AI Search**: `http://localhost:8001/api/v1/search` (POST)\n- **Service Statistics**: `http://localhost:8001/stats`",
+    "20": "[.tooling/docs/implementation-guide.md#4-content-indexing--preview-validation]\n\n### 4. Content Indexing & Preview Validation\n\n**Content Strategy**: ✅ **MkDocs-Aligned Indexing**\n\nThe RAG service implements intelligent content discovery that ensures only published website content is indexed, not the entire repository. This maintains consistency between AI search results and what users can actually find on the documentation website.",
+    "21": "[.tooling/docs/implementation-guide.md#content-discovery-approach]\n\n#### Content Discovery Approach\n\n**Key Features**:\n\n- **MkDocs Navigation Parsing**: Reads `mkdocs.yml` configuration to discover published files\n- **Direct Git Repository Access**: Processes content directly from source files, not staging directories\n- **Published Content Only**: Ensures AI only references content available on the website\n- **Automatic Content Alignment**: Stays synchronized with website navigation changes",
+    "22": "[.tooling/docs/implementation-guide.md#preview-before-indexing]\n\n#### Preview Before Indexing\n\n**Validation Workflow**:\n\n```bash\n# Navigate to RAG service directory\ncd .tooling/components/apis/rag-service\n\n# Run indexing preview (dry-run mode)\npython preview_indexing.py\n```\n\n**Preview Benefits**:\n\n- **Cost Estimation**: Shows embedding generation costs before execution\n- **Content Validation**: Confirms only published files will be processed\n- **Quality Metrics**: Provides chunk distribution and sizing analysis\n- **Risk Mitigation**: Prevents indexing of unintended content\n\n**Expected Preview Results**:\n\n- **Files Processed**: ~160 published files from MkDocs navigation\n- **Estimated Cost**: ~$0.01-$0.02 for full repository indexing\n- **Chunk Quality**: Average 100-120 words per searchable segment\n- **Domain Coverage**: All major EA areas (standards, decisions, foundation, etc.)",
+    "23": "[.tooling/docs/implementation-guide.md#content-processing-details]\n\n#### Content Processing Details\n\n**Technical Implementation**:\n\n1. **Navigation Discovery**: Parses `mkdocs.yml` to extract file paths\n2. **Source Mapping**: Maps navigation paths to actual Git repository files\n3. **Content Validation**: Verifies all referenced files exist and are accessible\n4. **Chunk Generation**: Splits content into optimal sizes for semantic search\n5. **Metadata Extraction**: Captures document titles, domains, and modification dates\n\nThis approach ensures the RAG service maintains perfect alignment with the published documentation website while providing comprehensive AI-powered search capabilities.",
+    "24": "[.tooling/docs/implementation-guide.md#-configuration--environment-setup]\n\n## ⚙️ Configuration & Environment Setup",
+    "25": "[.tooling/docs/implementation-guide.md#mkdocs-documentation-platform-configuration]\n\n### MKDocs Documentation Platform Configuration",
+    "26": "[.tooling/docs/implementation-guide.md#environment-variables-configuration]\n\n#### Environment Variables Configuration\n\nCreate `.env` file in the `mkdocs-platform` directory:\n\n```bash\n# Site Configuration\nSITE_NAME=\"Enterprise Architecture Reference\"\nSITE_DESCRIPTION=\"Official EA documentation for Gainwell Technologies\"\nSITE_URL=\"https://your-alb-endpoint.elb.amazonaws.com\"\n\n# EKS Deployment Configuration\nKUBERNETES_NAMESPACE=\"eap-platform\"\nCONTAINER_PORT=\"8080\"\n\n# Theme Configuration\nTHEME_PRIMARY_COLOR=\"#1976d2\"\nTHEME_ACCENT_COLOR=\"#00bcd4\"\n\n# Development Settings\nDEV_MODE=true\n```",
+    "27": "[.tooling/docs/implementation-guide.md#mkdocs-configuration-management]\n\n#### MKDocs Configuration Management\n\nThe `mkdocs.yml` file is automatically generated by the setup script with these key features:\n\n```yaml\nsite_name: Enterprise Architecture Reference\nsite_url: https://your-alb-endpoint.elb.amazonaws.com\ntheme:\n  name: material\n  palette:\n    primary: blue\n    accent: cyan\n  features:\n    - navigation.tabs\n    - navigation.sections\n    - navigation.expand\n    - search.highlight\nplugins:\n  - search\n  - mermaid2\nmarkdown_extensions:\n  - tables\n  - codehilite\n  - admonition\n```",
+    "28": "[.tooling/docs/implementation-guide.md#rag-ai-service-configuration]\n\n### RAG AI Service Configuration",
+    "29": "[.tooling/docs/implementation-guide.md#service-environment-variables]\n\n#### Service Environment Variables\n\nCreate `.env` file in the `rag-service` directory:\n\n```bash\n# API Configuration\nAPI_HOST=0.0.0.0\nAPI_PORT=8080\nENABLE_SSL=true\nAPI_DEBUG=true\n\n# EKS Deployment Configuration\nKUBERNETES_NAMESPACE=eap-platform\nCONTAINER_PORTS=8080,8443\n\n# AI Configuration (Optional - service runs in mock mode without these)\nOPENAI_API_KEY=your_openai_key_here\nLANGCHAIN_TRACING_V2=false\n\n# Performance Settings\nRATE_LIMIT_REQUESTS=100\nRATE_LIMIT_WINDOW=60\n\n# Logging Configuration\nLOG_LEVEL=INFO\nLOG_FORMAT=json\n\n# SSL Configuration\nSSL_CERT_PATH=/app/ssl/server.crt\nSSL_KEY_PATH=/app/ssl/server.key\n```",
+    "30": "[.tooling/docs/implementation-guide.md#automatic-service-mode-detection]\n\n#### Automatic Service Mode Detection\n\nThe RAG service automatically configures itself based on available dependencies:\n\n- **Production Mode**: When AI dependencies and API keys are available\n- **Mock Mode**: When AI dependencies are not available (perfect for testing and development)",
+    "31": "[.tooling/docs/implementation-guide.md#-development-workflow]\n\n## 🔧 Development Workflow",
+    "32": "[.tooling/docs/implementation-guide.md#code-quality-standards]\n\n### Code Quality Standards\n\nBoth components enforce strict code quality standards:",
+    "33": "[.tooling/docs/implementation-guide.md#formatting]\n\n#### Formatting\n\n- **Black**: Code formatting\n- **isort**: Import sorting",
+    "34": "[.tooling/docs/implementation-guide.md#linting]\n\n#### Linting\n\n- **Ruff**: Fast Python linting\n- **Pylint**: Advanced static analysis",
+    "35": "[.tooling/docs/implementation-guide.md#security]\n\n#### Security\n\n- **Bandit**: Security vulnerability scanning\n- **Veracode**: Static application security testing",
+    "36": "[.tooling/docs/implementation-guide.md#testing]\n\n#### Testing\n\n- **Pytest**: Unit and integration testing\n- **Coverage**: Minimum 90% test coverage",
+    "37": "[.tooling/docs/implementation-guide.md#development-commands]\n\n### Development Commands",
+    "38": "[.tooling/docs/implementation-guide.md#in-any-component-directory]\n\n#### In any component directory\n\n```bash\n# Setup environment\npython _helpers/setup.py\n\n# Verify code quality\npython _helpers/verify.py\n\n# Run with auto-reload\npython _helpers/run.py\n\n# Manual quality checks\npoetry run black src/\npoetry run ruff check src/\npoetry run pylint src/\npoetry run bandit -r src/\npoetry run pytest --cov=src\n```",
+    "39": "[.tooling/docs/implementation-guide.md#git-workflow]\n\n### Git Workflow",
+    "40": "[.tooling/docs/implementation-guide.md#feature-development]\n\n#### Feature Development\n\n```bash\n# Create feature branch\ngit checkout -b feature/your-feature-name\n\n# Make changes and commit\ngit add .\ngit commit -m \"feat: add new feature\"\n\n# Push and create PR\ngit push origin feature/your-feature-name\n```",
+    "41": "[.tooling/docs/implementation-guide.md#quality-gates]\n\n#### Quality Gates\n\nBefore merging, ensure:\n\n- All tests pass\n- Code coverage ≥ 90%\n- No linting errors\n- Security scan passes\n- Documentation updated",
+    "42": "[.tooling/docs/implementation-guide.md#-production-deployment]\n\n## 🚀 Production Deployment",
+    "43": "[.tooling/docs/implementation-guide.md#github-actions-cicd-workflows]\n\n### GitHub Actions CI/CD Workflows",
+    "44": "[.tooling/docs/implementation-guide.md#1-unified-platform-deployment-production-deployment]\n\n#### 1. Unified Platform Deployment (Production Deployment)\n\n**Workflow Status**: ✅ **ACTIVE** - Unified EKS deployment workflow\n\n**Usage Instructions**:\n\n1. Navigate to GitHub Actions in the repository\n2. Select \"Deploy MKDocs Platform\" workflow\n3. Click \"Run workflow\" button\n4. Configure deployment parameters:\n   - **Environment**: `development`, `staging`, or `production`\n   - **Deploy RAG Service**: `true` or `false` (optional RAG service deployment)\n   - **Kubernetes Namespace**: `eap-platform` (default)\n\n**Deployment Features**:\n\n- **Unified Container Registry**: Single ECR repository for both MKDocs and RAG services\n- **Conditional Service Deployment**: Option to deploy MKDocs platform alone or with RAG service\n- **Environment-Specific Configuration**: Development, staging, and production deployment profiles\n- **Automated Security Management**: Secure RAG management API access via kubectl port-forward\n- **Real-time Notifications**: Email notifications on deployment success/failure\n\n**Deployment Security Model**:\n\nThe platform implements a sophisticated deployment security pattern that ensures management APIs are never exposed to the public internet while maintaining automated operational capabilities. For detailed technical flow analysis, see:\n\n- **[Technical Architecture - System Interaction Patterns](technical-architecture.md#system-interaction-patterns)**: Complete sequence diagrams showing deployment and security flows\n- **[Security Framework - API Security Control Flows](security-framework.md#api-security-control-flows)**: Detailed security boundary enforcement diagrams\n\n**Key Security Features**:\n\n- **Public API Restriction**: Only search and health endpoints accessible from internet\n- **Secure Management Access**: Administrative operations use kubectl port-forward tunnels\n- **Zero Additional Infrastructure**: Security achieved through ingress-level restrictions\n- **Complete Audit Trail**: All management operations logged through GitHub Actions",
+    "45": "[.tooling/docs/implementation-guide.md#2-manual-deployment-configuration]\n\n#### 2. Manual Deployment Configuration\n\n- Unified EKS cluster deployment for both services\n- Container image build and push to ECR\n- Kubernetes manifests application\n- Health checks and service verification\n- Email notifications for deployment status\n- Rollback capability via Kubernetes deployment history",
+    "46": "[.tooling/docs/implementation-guide.md#2-automated-verification-workflows]\n\n#### 2. Automated Verification Workflows\n\n**Trigger**: Automatic on push to any branch, PRs to main\n\n**Workflow Coverage**:\n\n- **Document Publisher Verification**: MKDocs platform quality assurance\n- **RAG Service Verification**: AI service platform quality assurance\n- **Security Scanning**: Integrated Veracode SAST for all Python code\n- **Quality Gates**: Code formatting, linting, testing, and coverage reporting",
+    "47": "[.tooling/docs/implementation-guide.md#eks-production-configuration]\n\n### EKS Production Configuration",
+    "48": "[.tooling/docs/implementation-guide.md#required-github-repository-secrets]\n\n#### Required GitHub Repository Secrets\n\n**AWS Infrastructure Secrets**:\n\n```bash\nAWS_ACCESS_KEY_ID=your_aws_access_key\nAWS_SECRET_ACCESS_KEY=your_aws_secret_key\nAWS_REGION=us-east-1\nEKS_CLUSTER_NAME=your-eks-cluster-name\n```\n\n**Container Registry Secrets**:\n\n```bash\nECR_REGISTRY=your-account-id.dkr.ecr.us-east-1.amazonaws.com\nECR_REPOSITORY=eap-platform\n```\n\n**Security Scanning Secrets**:\n\n```bash\nVERACODE_API_ID=your_veracode_api_id\nVERACODE_API_KEY=your_veracode_api_key\nVERACODE_AGENT_TOKEN=your_veracode_agent_token\n```\n\n**Kubernetes Configuration**:\n\n```bash\nKUBERNETES_NAMESPACE=eap-platform\nALB_ENDPOINT=your-alb-endpoint.elb.amazonaws.com\n```\n\n**Container Security Benefits**:\n\n- All deployments use signed container images\n- Runtime security policies enforced via Kubernetes\n- Network isolation via pod security policies\n- Automatic secret rotation and encryption at rest",
+    "49": "[.tooling/docs/implementation-guide.md#production-deployment-process]\n\n#### Production Deployment Process\n\n**Automated Steps**:\n\n1. **Infrastructure Verification**: AWS EKS cluster and ECR registry access validation\n2. **Container Build**: Docker image creation for both MKDocs and RAG services\n3. **Security Scanning**: Veracode SAST execution and container vulnerability scanning\n4. **Image Push**: Container images pushed to ECR with proper tagging\n5. **Kubernetes Deployment**: Manifests applied to EKS cluster\n6. **Service Health Checks**: Pod health verification and service discovery\n7. **Load Balancer Configuration**: ALB target group and health check setup\n8. **Authentication Setup**: Automatic password protection configuration\n9. **Verification**: Post-deployment health checks and performance validation",
+    "50": "[.tooling/docs/implementation-guide.md#local-deployment-testing]\n\n### Local Deployment Testing",
+    "51": "[.tooling/docs/implementation-guide.md#test-documentation-site]\n\n#### Test Documentation Site\n\n```bash\ncd .tooling/components/apps/mkdocs-platform\npython _helpers/run.py\n# Visit http://localhost:8000\n```",
+    "52": "[.tooling/docs/implementation-guide.md#test-rag-service]\n\n#### Test RAG Service\n\n```bash\ncd .tooling/components/apis/rag-service\npython _helpers/run.py\n# Visit http://localhost:8001/docs\n```",
+    "53": "[.tooling/docs/implementation-guide.md#-security-configuration]\n\n## 🔒 Security Configuration",
+    "54": "[.tooling/docs/implementation-guide.md#veracode-integration]\n\n### Veracode Integration",
+    "55": "[.tooling/docs/implementation-guide.md#setup-requirements]\n\n#### Setup Requirements\n\n1. **Veracode Account**: Enterprise security scanning account\n2. **API Credentials**: API ID and Key from Veracode\n3. **Agent Token**: Enhanced scanning token",
+    "56": "[.tooling/docs/implementation-guide.md#github-secrets-configuration]\n\n#### GitHub Secrets Configuration\n\n```\nVERACODE_API_ID=your_api_id_here\nVERACODE_API_KEY=your_api_key_here\nVERACODE_AGENT_TOKEN=your_agent_token_here\n```",
+    "57": "[.tooling/docs/implementation-guide.md#scanning-scope]\n\n#### Scanning Scope\n\n- **MKDocs Platform**: All Python files in `src/` directory\n- **RAG Service**: All Python files in `src/` directory\n- **Exclusions**: Test files and cache directories",
+    "58": "[.tooling/docs/implementation-guide.md#security-best-practices]\n\n### Security Best Practices",
+    "59": "[.tooling/docs/implementation-guide.md#code-security]\n\n#### Code Security\n\n- Regular dependency updates\n- Secret management via GitHub Secrets\n- Input validation for all APIs\n- Error handling without information leakage",
+    "60": "[.tooling/docs/implementation-guide.md#infrastructure-security]\n\n#### Infrastructure Security\n\n- HTTPS everywhere\n- Least-privilege access\n- Regular security scanning\n- Audit logging",
+    "61": "[.tooling/docs/implementation-guide.md#-monitoring-and-maintenance]\n\n## 📊 Monitoring and Maintenance",
+    "62": "[.tooling/docs/implementation-guide.md#local-monitoring]\n\n### Local Monitoring",
+    "63": "[.tooling/docs/implementation-guide.md#documentation-platform]\n\n#### Documentation Platform\n\n- Build logs in terminal\n- Browser developer tools\n- MKDocs built-in serving logs",
+    "64": "[.tooling/docs/implementation-guide.md#rag-service]\n\n#### RAG Service\n\n- FastAPI automatic logs\n- Health check endpoint: `/health`\n- Service stats endpoint: `/stats`\n- Interactive docs: `/docs`",
+    "65": "[.tooling/docs/implementation-guide.md#production-monitoring]\n\n### Production Monitoring",
+    "66": "[.tooling/docs/implementation-guide.md#eks-cluster-monitoring]\n\n#### EKS Cluster Monitoring\n\n- Pod and service logs via kubectl\n- CloudWatch Container Insights\n- Application Load Balancer metrics\n- Container health monitoring",
+    "67": "[.tooling/docs/implementation-guide.md#performance-metrics]\n\n#### Performance Metrics\n\n- Page load times\n- API response times\n- Error rates\n- User engagement",
+    "68": "[.tooling/docs/implementation-guide.md#maintenance-tasks]\n\n### Maintenance Tasks",
+    "69": "[.tooling/docs/implementation-guide.md#regular-updates]\n\n#### Regular Updates\n\n- Dependency updates via Poetry\n- Security patches\n- Content updates\n- Performance optimization",
+    "70": "[.tooling/docs/implementation-guide.md#monitoring-actions]\n\n#### Monitoring Actions\n\n- Review deployment logs\n- Check error rates\n- Monitor performance metrics\n- Update documentation",
+    "71": "[.tooling/docs/implementation-guide.md#-troubleshooting]\n\n## 🛠️ Troubleshooting",
+    "72": "[.tooling/docs/implementation-guide.md#common-issues]\n\n### Common Issues",
+    "73": "[.tooling/docs/implementation-guide.md#setup-issues]\n\n#### Setup Issues\n\n**Python Version**\n\n```bash\n# Check Python version\npython --version\n# Should be 3.12+\n```\n\n**Poetry Not Found**\n\n```bash\n# Install Poetry\ncurl -sSL https://install.python-poetry.org | python3 -\n```\n\n**Permission Errors**\n\n```bash\n# On Windows, run as Administrator\n# On macOS/Linux, check permissions\nchmod +x _helpers/*.py\n```",
+    "74": "[.tooling/docs/implementation-guide.md#runtime-issues]\n\n#### Runtime Issues\n\n**MKDocs Build Errors**\n\n- Check markdown syntax\n- Verify file paths\n- Review mkdocs.yml configuration\n\n**RAG Service Errors**\n\n- Check Python 3.12+ requirement\n- Verify environment variables\n- Review service logs\n\n**Dependency Conflicts**\n\n```bash\n# Clear Poetry cache\npoetry cache clear pypi --all\n# Reinstall dependencies\npoetry install\n```",
+    "75": "[.tooling/docs/implementation-guide.md#deployment-issues]\n\n#### Deployment Issues\n\n**AWS Permissions**\n\n- Verify IAM policy\n- Check access keys\n- Confirm region settings\n\n**GitHub Actions Failures**\n\n- Review workflow logs\n- Check required secrets\n- Verify branch protection",
+    "76": "[.tooling/docs/implementation-guide.md#debug-commands]\n\n### Debug Commands",
+    "77": "[.tooling/docs/implementation-guide.md#check-environment]\n\n#### Check Environment\n\n```bash\n# Python environment info\npoetry env info\n\n# Installed packages\npoetry show\n\n# Environment variables\npoetry run python -c \"import os; print(os.environ)\"\n```",
+    "78": "[.tooling/docs/implementation-guide.md#verbose-logging]\n\n#### Verbose Logging\n\n```bash\n# Enable debug mode\nexport DEBUG=true\npython _helpers/run.py\n```",
+    "79": "[.tooling/docs/implementation-guide.md#test-components]\n\n#### Test Components\n\n```bash\n# Test documentation build\ncd mkdocs-platform\npoetry run mkdocs build --verbose\n\n# Test RAG service\ncd rag-service\npoetry run pytest -v --tb=short\n```",
+    "80": "[.tooling/docs/implementation-guide.md#-support]\n\n## 📞 Support",
+    "81": "[.tooling/docs/implementation-guide.md#getting-help]\n\n### Getting Help",
+    "82": "[.tooling/docs/implementation-guide.md#documentation]\n\n#### Documentation\n\n- [Technical Architecture](technical-architecture.md)\n- [Security Framework](security-framework.md)\n- [Operations Guide](operations-guide.md)",
+    "83": "[.tooling/docs/implementation-guide.md#community]\n\n#### Community\n\n- GitHub Issues for bug reports\n- GitHub Discussions for questions\n- Enterprise Architecture Practice meetings",
+    "84": "[.tooling/docs/implementation-guide.md#professional-support]\n\n#### Professional Support\n\n- **Email**: [EAP-Core@mygainwell.onmicrosoft.com](mailto:EAP-Core@mygainwell.onmicrosoft.com)\n- **Repository**: [mygainwell/eap-ref-architecture](https://github.com/mygainwell/eap-ref-architecture)",
+    "85": "[.tooling/docs/implementation-guide.md#contributing]\n\n### Contributing",
+    "86": "[.tooling/docs/implementation-guide.md#bug-reports]\n\n#### Bug Reports\n\n1. Search existing issues\n2. Create detailed bug report\n3. Include reproduction steps\n4. Provide environment details",
+    "87": "[.tooling/docs/implementation-guide.md#feature-requests]\n\n#### Feature Requests\n\n1. Check roadmap and existing requests\n2. Create feature request issue\n3. Provide business justification\n4. Include technical requirements",
+    "88": "[.tooling/docs/implementation-guide.md#code-contributions]\n\n#### Code Contributions\n\n1. Fork repository\n2. Create feature branch\n3. Follow development workflow\n4. Submit pull request\n5. Address review feedback\n\n---\n\nThis implementation guide provides comprehensive instructions for setting up and maintaining the Enterprise Architecture Platform. For specific technical details, refer to the [Technical Architecture](technical-architecture.md) document."
+  },
+  "coverage": {
+    "total_pages": 88,
+    "covered_pages": 88,
+    "sampled_pages": 88,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 88
+  }
+}

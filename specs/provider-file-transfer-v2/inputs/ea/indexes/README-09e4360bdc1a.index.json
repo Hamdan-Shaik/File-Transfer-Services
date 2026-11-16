@@ -1,0 +1,83 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Infrastructure Domain - Governance Patterns",
+  "document_description": "This directory contains infrastructure-level governance patterns for enforcing architectural standards automatically within CI/CD pipelines. These patterns implement Layers 1 and 3 of the four-layer verification architecture defined in the [Enterprise Architecture Verification Strategy](../../../strategy/white-papers/engineering/enterprise-architecture-verification-strategy.md).",
+  "total_pages": 7,
+  "tree": [
+    {
+      "title": "Infrastructure Domain - Governance Patterns",
+      "node_id": "infrastructure-domain---governance-patterns",
+      "start_index": 1,
+      "end_index": 7,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Overview",
+          "node_id": "overview",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Purpose",
+          "node_id": "purpose",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Implementation Phasing",
+          "node_id": "implementation-phasing",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Patterns in this Category",
+          "node_id": "patterns-in-this-category",
+          "start_index": 5,
+          "end_index": 5,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Four-Layer Verification Architecture",
+          "node_id": "four-layer-verification-architecture",
+          "start_index": 6,
+          "end_index": 6,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Related Pattern Categories",
+          "node_id": "related-pattern-categories",
+          "start_index": 7,
+          "end_index": 7,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[patterns/infrastructure/governance/README.md#infrastructure-domain---governance-patterns]\n\n# Infrastructure Domain - Governance Patterns\n\n**← Back to [EAP Home](../../../README.md) • [Patterns](../../README.md) • [Infrastructure](../README.md)**\n\n---",
+    "2": "[patterns/infrastructure/governance/README.md#overview]\n\n## Overview\n\nThis directory contains infrastructure-level governance patterns for enforcing architectural standards automatically within CI/CD pipelines. These patterns implement Layers 1 and 3 of the four-layer verification architecture defined in the [Enterprise Architecture Verification Strategy](../../../strategy/white-papers/engineering/enterprise-architecture-verification-strategy.md).\n\nThese patterns convert the standards defined in Golden Paths and Verification Contracts into automated, machine-enforceable pipeline gates — shifting governance from after-the-fact human review to pre-provisioning automated enforcement.",
+    "3": "[patterns/infrastructure/governance/README.md#purpose]\n\n## Purpose\n\nEstablish automated infrastructure governance that:\n\n- Validates repository structure and compliance metadata against declared Golden Paths before any build resources are consumed (L1)\n- Blocks non-compliant Terraform plans before any cloud resources are provisioned (L3)\n- Produces machine-readable conformance evidence at every pipeline run\n- Routes non-conforming output to human architectural review through a defined exception management process",
+    "4": "[patterns/infrastructure/governance/README.md#implementation-phasing]\n\n## Implementation Phasing\n\nThese patterns align to Phase 2 of the [Enterprise Golden Path Strategy](../../../strategy/white-papers/engineering/enterprise-golden-path-strategy.md):\n\n| Phase | Patterns Required | Timing |\n|---|---|---|\n| Phase 2 — Governance Automation | PTN-INFRA-GOV-001, PTN-INFRA-GOV-002 | Months 7–12 |\n\n> **Note:** These patterns require the governance patterns in [governance/ai-development](../../governance/ai-development/) (especially PTN-GOV-AI-001, PTN-GOV-AI-003, PTN-GOV-AI-004) to be operational before deployment.",
+    "5": "[patterns/infrastructure/governance/README.md#patterns-in-this-category]\n\n## Patterns in this Category\n\n| Pattern ID | Name | Purpose | Verification Layer |\n|---|---|---|---|\n| [PTN-INFRA-GOV-001](./PTN-INFRA-GOV-001-architecture-conformance-gate-pattern.md) | **Architecture Conformance Gate** | Fast-fail CI/CD pipeline stage that validates repository structure against the declared Golden Path's Verification Contract before tests or deployment | Layer 1 — Build Time |\n| [PTN-INFRA-GOV-002](./PTN-INFRA-GOV-002-policy-as-code-enforcement-pattern.md) | **Policy-as-Code Enforcement** | OPA/Rego evaluation of Terraform plans as a hard pre-provisioning gate that blocks non-compliant infrastructure before any cloud resources are created | Layer 3 — Pre-Deployment |",
+    "6": "[patterns/infrastructure/governance/README.md#four-layer-verification-architecture]\n\n## Four-Layer Verification Architecture\n\nThese patterns implement 2 of the 4 layers:\n\n```\nL1: Architecture Conformance Gate ◄── PTN-INFRA-GOV-001 (this directory)\n        ↓\nL2: Architecture Fitness Functions ◄── PTN-APP-GOV-001 (application/governance)\n        ↓\nL3: Policy-as-Code Enforcement ◄── PTN-INFRA-GOV-002 (this directory)\n        ↓\nL4: Runtime Behavioral Invariant Monitors ◄── PTN-APP-GOV-003 (application/governance)\n```",
+    "7": "[patterns/infrastructure/governance/README.md#related-pattern-categories]\n\n## Related Pattern Categories\n\n- **[Governance AI Development](../../governance/ai-development/)** — foundational patterns (Catalog, Verification Contract, Evidence Store) that these gates depend on\n- **[Application Governance](../../application/governance/)** — L2 and L4 of the verification architecture\n- **[Infrastructure API Microservices](../api-microservices/)** — IaC patterns governed by PTN-INFRA-GOV-002\n- **[Infrastructure Kubernetes](../kubernetes/)** — Kubernetes platform patterns enforced by these gates"
+  },
+  "coverage": {
+    "total_pages": 7,
+    "covered_pages": 7,
+    "sampled_pages": 7,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 7
+  }
+}

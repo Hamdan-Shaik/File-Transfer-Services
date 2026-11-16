@@ -1,0 +1,637 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Application Event Batching Pattern",
+  "document_description": "pattern_name: 'Application Event Batching Pattern'",
+  "total_pages": 67,
+  "tree": [
+    {
+      "title": "Application Event Batching Pattern",
+      "node_id": "application-event-batching-pattern",
+      "start_index": 1,
+      "end_index": 67,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Executive Summary",
+          "node_id": "executive-summary",
+          "start_index": 3,
+          "end_index": 7,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Problem Statement",
+              "node_id": "problem-statement",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Solution Overview",
+              "node_id": "solution-overview",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "When to Use",
+              "node_id": "when-to-use",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Benefits",
+              "node_id": "benefits",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Target Audience",
+          "node_id": "target-audience",
+          "start_index": 8,
+          "end_index": 8,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Context and Problem",
+          "node_id": "context-and-problem",
+          "start_index": 9,
+          "end_index": 18,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Business Context",
+              "node_id": "business-context",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Technical Context",
+              "node_id": "technical-context",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Problem Details",
+              "node_id": "problem-details",
+              "start_index": 12,
+              "end_index": 17,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Problem 1: Excessive API Call Overhead",
+                  "node_id": "problem-1-excessive-api-call-overhead",
+                  "start_index": 13,
+                  "end_index": 13,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Problem 2: Poor Throughput and Scalability",
+                  "node_id": "problem-2-poor-throughput-and-scalability",
+                  "start_index": 14,
+                  "end_index": 14,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Problem 3: Increased Latency and Resource Contention",
+                  "node_id": "problem-3-increased-latency-and-resource-contention",
+                  "start_index": 15,
+                  "end_index": 15,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Problem 4: Cost Inefficiency",
+                  "node_id": "problem-4-cost-inefficiency",
+                  "start_index": 16,
+                  "end_index": 16,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Problem 5: Operational Complexity",
+                  "node_id": "problem-5-operational-complexity",
+                  "start_index": 17,
+                  "end_index": 17,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Forces and Constraints",
+              "node_id": "forces-and-constraints",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Solution",
+          "node_id": "solution",
+          "start_index": 19,
+          "end_index": 33,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Pattern Description",
+              "node_id": "pattern-description",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Architecture Diagram",
+              "node_id": "architecture-diagram",
+              "start_index": 21,
+              "end_index": 21,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Components",
+              "node_id": "components",
+              "start_index": 22,
+              "end_index": 22,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Interactions",
+              "node_id": "interactions",
+              "start_index": 23,
+              "end_index": 27,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Normal Operation (Steady State)",
+                  "node_id": "normal-operation-steady-state",
+                  "start_index": 24,
+                  "end_index": 24,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Failure Scenario with Retry",
+                  "node_id": "failure-scenario-with-retry",
+                  "start_index": 25,
+                  "end_index": 25,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Time-Based Flush (Low Volume)",
+                  "node_id": "time-based-flush-low-volume",
+                  "start_index": 26,
+                  "end_index": 26,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Graceful Shutdown",
+                  "node_id": "graceful-shutdown",
+                  "start_index": 27,
+                  "end_index": 27,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Variations",
+              "node_id": "variations",
+              "start_index": 28,
+              "end_index": 33,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Variation 1: Fixed-Size Batching (Simplest)",
+                  "node_id": "variation-1-fixed-size-batching-simplest",
+                  "start_index": 29,
+                  "end_index": 29,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Variation 2: Time-Windowed Batching (Balanced)",
+                  "node_id": "variation-2-time-windowed-batching-balanced",
+                  "start_index": 30,
+                  "end_index": 30,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Variation 3: Adaptive Batching (Most Sophisticated)",
+                  "node_id": "variation-3-adaptive-batching-most-sophisticated",
+                  "start_index": 31,
+                  "end_index": 31,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Variation 4: Per-Partition Batching (Ordering Preserved)",
+                  "node_id": "variation-4-per-partition-batching-ordering-preserved",
+                  "start_index": 32,
+                  "end_index": 32,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Variation 5: Hybrid Batching (Critical vs Non-Critical)",
+                  "node_id": "variation-5-hybrid-batching-critical-vs-non-critical",
+                  "start_index": 33,
+                  "end_index": 33,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Implementation Guidelines",
+          "node_id": "implementation-guidelines",
+          "start_index": 34,
+          "end_index": 45,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Prerequisites",
+              "node_id": "prerequisites",
+              "start_index": 35,
+              "end_index": 35,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Step-by-Step Implementation",
+              "node_id": "step-by-step-implementation",
+              "start_index": 36,
+              "end_index": 40,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Phase 1: Design and Configuration",
+                  "node_id": "phase-1-design-and-configuration",
+                  "start_index": 37,
+                  "end_index": 37,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Phase 2: Implement Core Batching Logic",
+                  "node_id": "phase-2-implement-core-batching-logic",
+                  "start_index": 38,
+                  "end_index": 38,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Phase 3: Add Error Handling and Retry Logic",
+                  "node_id": "phase-3-add-error-handling-and-retry-logic",
+                  "start_index": 39,
+                  "end_index": 39,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Phase 4: Implement Graceful Shutdown",
+                  "node_id": "phase-4-implement-graceful-shutdown",
+                  "start_index": 40,
+                  "end_index": 40,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Configuration Examples",
+              "node_id": "configuration-examples",
+              "start_index": 41,
+              "end_index": 43,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Example 1: Spring Boot Kafka Batching Configuration",
+                  "node_id": "example-1-spring-boot-kafka-batching-configuration",
+                  "start_index": 42,
+                  "end_index": 42,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Example 2: Python Async Batching with asyncio",
+                  "node_id": "example-2-python-async-batching-with-asyncio",
+                  "start_index": 43,
+                  "end_index": 43,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Best Practices",
+              "node_id": "best-practices",
+              "start_index": 44,
+              "end_index": 44,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Common Pitfalls",
+              "node_id": "common-pitfalls",
+              "start_index": 45,
+              "end_index": 45,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Governance and Compliance",
+          "node_id": "governance-and-compliance",
+          "start_index": 46,
+          "end_index": 50,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Standards Alignment",
+              "node_id": "standards-alignment",
+              "start_index": 47,
+              "end_index": 47,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Compliance Requirements",
+              "node_id": "compliance-requirements",
+              "start_index": 48,
+              "end_index": 48,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Approval Process",
+              "node_id": "approval-process",
+              "start_index": 49,
+              "end_index": 49,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Monitoring and Metrics",
+              "node_id": "monitoring-and-metrics",
+              "start_index": 50,
+              "end_index": 50,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Examples and Use Cases",
+          "node_id": "examples-and-use-cases",
+          "start_index": 51,
+          "end_index": 60,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Real-World Example 1: Claims Processing Service Optimization",
+              "node_id": "real-world-example-1-claims-processing-service-optimization",
+              "start_index": 52,
+              "end_index": 52,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Real-World Example 2: Pharmacy Benefits Event Publishing",
+              "node_id": "real-world-example-2-pharmacy-benefits-event-publishing",
+              "start_index": 53,
+              "end_index": 53,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Use Case Scenarios",
+              "node_id": "use-case-scenarios",
+              "start_index": 54,
+              "end_index": 57,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Scenario 1: High-Volume Audit Logging",
+                  "node_id": "scenario-1-high-volume-audit-logging",
+                  "start_index": 55,
+                  "end_index": 55,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Scenario 2: Near-Real-Time Member Eligibility Updates",
+                  "node_id": "scenario-2-near-real-time-member-eligibility-updates",
+                  "start_index": 56,
+                  "end_index": 56,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Scenario 3: Bursty Provider Directory Sync",
+                  "node_id": "scenario-3-bursty-provider-directory-sync",
+                  "start_index": 57,
+                  "end_index": 57,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Before and After Comparison",
+              "node_id": "before-and-after-comparison",
+              "start_index": 58,
+              "end_index": 60,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Before (Individual Event Publishing)",
+                  "node_id": "before-individual-event-publishing",
+                  "start_index": 59,
+                  "end_index": 59,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "After (Batch Event Publishing)",
+                  "node_id": "after-batch-event-publishing",
+                  "start_index": 60,
+                  "end_index": 60,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Related Patterns and References",
+          "node_id": "related-patterns-and-references",
+          "start_index": 61,
+          "end_index": 64,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Related Patterns",
+              "node_id": "related-patterns",
+              "start_index": 62,
+              "end_index": 62,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Dependencies",
+              "node_id": "dependencies",
+              "start_index": 63,
+              "end_index": 63,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "External References",
+              "node_id": "external-references",
+              "start_index": 64,
+              "end_index": 64,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Change History",
+          "node_id": "change-history",
+          "start_index": 65,
+          "end_index": 65,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Review Log",
+          "node_id": "review-log",
+          "start_index": 66,
+          "end_index": 66,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "TL;DR",
+          "node_id": "tldr",
+          "start_index": 67,
+          "end_index": 67,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#application-event-batching-pattern]\n\n# Application Event Batching Pattern\n\n**← Back to [EAP Home](../../../README.md) • [Patterns](../../README.md) • [Application](../README.md) • [Event-Driven](./README.md)**\n\n---\n\n**Pattern Metadata**\n\n```yaml\npattern_id: 'PTN-APP-EVT-001'\npattern_name: 'Application Event Batching Pattern'\npattern_type: 'performance-optimization'\ndomain: 'application'\nversion: '1.0.0'\nstatus: 'draft'\ntags: ['application', 'performance-optimization', 'batching', 'eaas']\n```\n\n---",
+    "2": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#table-of-contents]\n\n## Table of Contents\n\n- [Executive Summary](#executive-summary)\n- [Context and Problem](#context-and-problem)\n- [Solution](#solution)\n- [Implementation Guidelines](#implementation-guidelines)\n- [Governance and Compliance](#governance-and-compliance)\n- [Examples and Use Cases](#examples-and-use-cases)\n- [Related Patterns and References](#related-patterns-and-references)\n- [Change History](#change-history)\n- [Review Log](#review-log)\n- [TL;DR](#tldr)\n\n---",
+    "3": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#executive-summary]\n\n## Executive Summary",
+    "4": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#problem-statement]\n\n### Problem Statement\n\nHigh-volume event-driven systems in healthcare processing millions of events daily face significant performance and cost challenges when publishing events individually. Each individual event publish incurs network overhead, API call costs, serialization overhead, and broker processing time. For systems processing insurance claims, member eligibility changes, provider updates, and pharmacy transactions, this approach results in excessive API calls, increased latency, elevated cloud costs, and broker saturation during peak loads. Individual event publishing creates unnecessary strain on event brokers, increases operational costs, and limits system scalability for growing healthcare workloads.",
+    "5": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#solution-overview]\n\n### Solution Overview\n\nThe Event Batching Pattern aggregates multiple events into batches before publishing to event brokers (Kafka, SNS, EventBridge), reducing network roundtrips, API call overhead, and broker processing load. Events are collected in memory buffers and flushed based on configurable triggers: batch size thresholds (100-1000 events), time windows (100-500ms), or memory limits. The pattern implements asynchronous batch accumulation with non-blocking event collection, intelligent batch flushing based on multiple criteria, error handling with partial batch retry logic, and monitoring of batch efficiency metrics. This approach achieves significant reduction in API calls and improved throughput while maintaining acceptable latency for near-real-time processing requirements.",
+    "6": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#when-to-use]\n\n### When to Use\n\n**Ideal Scenarios:**\n\n- **High-Volume Event Publishing**: Systems generating 100K+ events per day where individual publishing creates bottlenecks\n- **Non-Critical Latency Requirements**: Events where 100-500ms buffering delay is acceptable (not life-critical alerts)\n- **Cost Optimization**: Cloud cost reduction goals where API call charges are significant portion of infrastructure spend\n- **Broker Saturation**: Event brokers experiencing performance degradation from excessive small message traffic\n- **Predictable Event Patterns**: Applications with steady event generation rates amenable to batching strategies\n\n**Specific Healthcare Use Cases:**\n\n- Claims processing pipelines publishing claim events to downstream systems (adjudication, payment, reporting)\n- Member eligibility systems publishing daily eligibility snapshot events to data warehouse\n- Provider directory updates publishing provider profile changes to search indexes\n- Pharmacy benefit events publishing prescription fills, prior authorizations, and drug utilization events\n- Audit logging systems publishing compliance audit events to centralized audit store\n\n**When NOT to Use:**\n\n- Real-time alerts requiring immediate delivery (fraud detection, clinical alerts, system outages)\n- Low-volume event streams (< 1000 events/day) where batching overhead exceeds benefits\n- Exactly-once delivery requirements where batch atomicity cannot be guaranteed\n- Interactive user-facing operations requiring immediate feedback (synchronous API responses)",
+    "7": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#benefits]\n\n### Benefits\n\n**Performance Improvements:**\n\n- **Reduced Network Overhead**: Significant reduction in network roundtrips by consolidating events into single batch requests\n- **Increased Throughput**: Improved events/second by amortizing connection overhead across batches\n- **Lower Latency (Aggregate)**: Reduced end-to-end processing time for event batches despite individual event buffering delay\n- **Broker Efficiency**: Reduced broker CPU/memory utilization by processing fewer, larger requests vs. many small requests\n\n**Cost Savings:**\n\n- **API Call Reduction**: Significant reduction in API calls to event brokers (significant for pay-per-request services like AWS SNS/EventBridge)\n- **Infrastructure Costs**: Reduced event broker infrastructure costs due to improved efficiency\n- **Data Transfer**: Reduced data transfer costs through payload compression and amortized protocol overhead\n- **Operational Overhead**: Lower monitoring, logging, and support costs due to simplified event flow\n\n**Scalability Benefits:**\n\n- **Linear Scaling**: Event throughput scales linearly with application instances (each batching independently)\n- **Burst Handling**: Better handling of traffic spikes by absorbing bursts in batch buffers\n- **Resource Utilization**: More efficient use of broker resources enabling higher total event volumes\n- **Future-Proofing**: Architecture scales to support significant event volume growth without infrastructure redesign",
+    "8": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#target-audience]\n\n## Target Audience\n\nThis pattern is intended for:\n\n- **Event-Driven Developer**: Developers implementing high-volume event publishing in healthcare systems who need to optimize throughput and reduce broker overhead.\n- **Platform Engineer**: Engineers responsible for event broker infrastructure (Kafka, SNS, EventBridge) who need to reduce saturation and operational costs.\n- **Solutions Architect**: Architects designing event-driven systems who need to evaluate batching trade-offs between latency, throughput, and reliability.",
+    "9": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#context-and-problem]\n\n## Context and Problem",
+    "10": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#business-context]\n\n### Business Context\n\nGainwell's healthcare technology platforms process massive volumes of transactional events supporting Medicaid and Medicare programs serving 60+ million beneficiaries across multiple states. Core event-generating systems include:\n\n- **Claims Processing**: 50-100 million claims annually generating events for claim submission, validation, adjudication, payment, and denial\n- **Member Eligibility**: 60+ million member records with daily eligibility determination events, enrollment changes, and program transitions\n- **Provider Management**: 2+ million provider profiles generating credential updates, network status changes, and directory synchronization events\n- **Pharmacy Benefits**: 500+ million prescription fill events annually including prior authorizations, drug utilization reviews, and rebate calculations\n- **Audit and Compliance**: Regulatory audit events for HIPAA, state requirements, and internal controls (100M+ events/year)\n\nState contracts mandate **99.9%+ system availability** with sub-hour recovery times and real-time or near-real-time processing for critical workflows. However, current event publishing patterns using individual event-by-event publishing create performance bottlenecks, excessive cloud costs, and scalability limitations threatening SLA compliance and operational efficiency.\n\n**Business Pressures:**\n\n- **Cost Optimization Mandate**: CTO directive to reduce cloud infrastructure costs while maintaining service levels\n- **Volume Growth**: Ongoing growth in transaction volumes as new state contracts are onboarded\n- **Processing Performance**: Faster end-to-end processing times as a quality differentiator\n- **Operational Efficiency**: Reduce operational overhead supporting event infrastructure to refocus resources on value-added features",
+    "11": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#technical-context]\n\n### Technical Context\n\nGainwell's event-driven architecture leverages AWS services for event broker infrastructure:\n\n**Current Event Infrastructure:**\n\n- **Amazon MSK (Managed Kafka)**: Primary event broker for inter-service communication; 12-node clusters per environment\n- **Amazon SNS/SQS**: Pub-sub messaging for asynchronous notifications and queue-based processing\n- **Amazon EventBridge**: Event bus for cross-account and partner system integrations\n- **Microservices**: 200+ Spring Boot microservices producing and consuming events\n\n**Technology Stack:**\n\n- **Programming Languages**: Java 17 (Spring Boot 3.x), Python 3.11, Node.js 18\n- **Event Libraries**: Spring Kafka, Spring Cloud Stream, AWS SDK for Java/Python\n- **Deployment**: Amazon EKS (Kubernetes) with horizontal pod autoscaling\n- **Monitoring**: CloudWatch, Prometheus, Grafana, Datadog APM\n\n**Current Event Publishing Pattern:**\n\nMost services implement synchronous individual event publishing:\n\n```java\n// Current approach - publishes each event individually\nfor (ClaimEvent event : claimEvents) {\n    kafkaTemplate.send(\"claim-events\", event.getClaimId(), event).get(); // Synchronous send\n}\n```\n\nThis creates **N network calls, N serialization operations, N broker writes** for N events, resulting in high latency and poor throughput.",
+    "12": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#problem-details]\n\n### Problem Details",
+    "13": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#problem-1-excessive-api-call-overhead]\n\n#### Problem 1: Excessive API Call Overhead\n\n**Symptoms:**\n\nIndividual event publishing generates 10-50 million API calls daily to event brokers across all services. Each API call incurs:\n\n- **Network overhead**: TCP handshake, TLS negotiation, HTTP/2 framing (5-10ms per call)\n- **Authentication**: AWS IAM SigV4 signing or SASL authentication overhead (2-5ms)\n- **Serialization**: JSON or Avro serialization per event (1-3ms for small events)\n- **Broker processing**: Kafka partition assignment, replication coordination, acknowledgment (5-15ms)\n\n**Real-World Impact:**\n\nA claims adjudication service processing 200K claims/day generates 800K events (4 events per claim: received, validated, adjudicated, paid). With individual publishing:\n\n- **800K API calls/day** = 33K calls/hour = 9 calls/second average (50+ calls/second during peak)\n- **Network time**: 800K × 10ms = 8,000 seconds = 2.2 hours of cumulative network wait time\n- **API costs**: Per-call pricing accumulates significantly across high call volumes (adds up across 200+ services)\n- **Connection pool exhaustion**: 50 concurrent calls during peak saturates connection pools causing timeouts\n\n**Cost Breakdown:**\n\nFor AWS EventBridge (pay-per-request pricing):\n\n- Per-event costs scale linearly with individual publish volume\n- Across many event-publishing services, aggregate costs are significant\n- Additional data transfer costs for cross-AZ broker traffic add further overhead",
+    "14": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#problem-2-poor-throughput-and-scalability]\n\n#### Problem 2: Poor Throughput and Scalability\n\n**Symptoms:**\n\nServices struggle to achieve required event throughput due to synchronous publishing bottlenecks:\n\n- **Blocking I/O**: Synchronous send() calls block application threads waiting for broker acknowledgment\n- **Sequential Processing**: Events published one-at-a-time preventing parallelization benefits\n- **Connection Limits**: HTTP client connection pools limit concurrent requests (typically 50-200 connections)\n- **Broker Saturation**: Kafka brokers overwhelmed by small message traffic (high metadata overhead relative to payload)\n\n**Real-World Measurement:**\n\nLoad testing a provider directory sync service showed:\n\n- **Individual Publishing**: 150 events/second throughput per pod (20 pods = 3,000 events/sec total)\n- **Required Throughput**: 10,000 events/second during nightly provider bulk updates\n- **Scaling Required**: 67 pods needed to meet throughput (expensive, inefficient resource utilization)\n- **P95 Latency**: 450ms per event during peak load (unacceptable for near-real-time requirements)\n\n**Kafka Broker Metrics During Peak:**\n\n- **CPU Utilization**: 85% (approaching throttling threshold)\n- **Request Queue**: 5,000+ pending requests (indicates saturation)\n- **Produce Request Rate**: 15,000 requests/second (small 2KB average message size)\n- **Bandwidth Utilization**: Only 20% of available network (CPU-bound, not network-bound = inefficient)",
+    "15": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#problem-3-increased-latency-and-resource-contention]\n\n#### Problem 3: Increased Latency and Resource Contention\n\n**Symptoms:**\n\nIndividual event publishing increases overall system latency and creates resource contention:\n\n- **Application Thread Blocking**: Worker threads blocked on network I/O reducing application throughput\n- **GC Pressure**: Frequent small object allocations for individual requests increase garbage collection overhead\n- **Context Switching**: High rate of network I/O operations causes excessive OS context switching\n- **Connection Pool Contention**: Threads competing for limited connection pool resources\n\n**Performance Profiling Results:**\n\nJava Flight Recorder profiling of a claims processing service revealed:\n\n- **35% CPU time** spent in network I/O wait (blocking on event publish)\n- **15% CPU time** in object serialization (Avro serialization per event)\n- **8% CPU time** in garbage collection (Minor GC every 2 seconds from allocation churn)\n- **Actual business logic**: Only 42% CPU time on claim adjudication logic\n\n**Memory Profile:**\n\n- **Connection objects**: 200 HTTP connections × 50KB = 10MB overhead\n- **Serialization buffers**: 50 concurrent serializations × 100KB = 5MB\n- **Event staging**: Individual event objects awaiting publish = 5-10MB\n- **Total overhead**: 20-25MB per service instance just for event publishing infrastructure",
+    "16": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#problem-4-cost-inefficiency]\n\n#### Problem 4: Cost Inefficiency\n\n**Symptoms:**\n\nPay-per-request pricing models for managed event services (SNS, EventBridge, API Gateway) make individual event publishing expensive:\n\n- **EventBridge**: Pay-per-event pricing compounds at high volumes\n- **SNS**: Per-publish charges accumulate with individual event publishing\n- **API Gateway**: Per-request pricing adds cost for high-frequency patterns\n- **Data Transfer**: Cross-AZ transfer charges for broker traffic\n\n**Monthly Cost Analysis (Single Service):**\n\nA pharmacy benefits service publishing events individually incurs per-event charges for broker ingestion, fan-out, data transfer, and monitoring metrics that compound significantly at scale.\n\n**Opportunity Cost:**\n\nBatching events substantially reduces per-event API call charges since each batch request counts as a single API call regardless of the number of events it contains.",
+    "17": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#problem-5-operational-complexity]\n\n#### Problem 5: Operational Complexity\n\n**Symptoms:**\n\nIndividual event publishing creates operational challenges:\n\n- **Monitoring Overhead**: 10M+ individual publish operations generate excessive CloudWatch metrics and logs\n- **Troubleshooting Difficulty**: Debugging individual event failures in high-volume streams (needle in haystack)\n- **Alert Fatigue**: Thousands of individual event failures trigger excessive alerts masking systemic issues\n- **Testing Challenges**: Load testing requires generating millions of individual events (time-consuming, expensive)\n\n**CloudWatch Costs:**\n\n- High individual event volumes generate proportionally more CloudWatch metrics and log entries\n- Monitoring costs scale with individual event volume; batching reduces both log volume and metric datapoints\n- Across many topics, monitoring overhead can represent a significant portion of infrastructure spend\n\n**Incident Response:**\n\nDuring a recent Kafka outage incident:\n\n- **50,000 individual event publish failures** in 5-minute outage window\n- **5,000 error logs** generated overwhelming log aggregation system\n- **200 alert notifications** sent to on-call engineer (alert storm)\n- **2 hours** to identify root cause (obscured by volume of failure symptoms)",
+    "18": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#forces-and-constraints]\n\n### Forces and Constraints\n\n**Competing Concerns:**\n\n1. **Latency vs. Throughput Trade-off**\n   - Batching introduces buffering delay (100-500ms) increasing individual event latency\n   - However, improves aggregate throughput enabling faster overall processing\n   - Healthcare near-real-time requirements demand balancing these concerns\n\n2. **Cost vs. Simplicity**\n   - Batching reduces costs substantially but adds implementation complexity\n   - Simple individual publishing easier to understand and debug\n   - Cost pressures justify complexity for high-volume services\n\n3. **Reliability vs. Performance**\n   - Batching can reduce reliability if partial batch failures not handled correctly\n   - Individual publishing has simpler failure semantics\n   - Robust error handling required to maintain reliability with batching\n\n4. **Consistency vs. Availability**\n   - Batch atomicity (all-or-nothing) may be desired but limits availability\n   - Partial batch success (best-effort) improves availability but complicates consistency\n   - Healthcare audit requirements demand clear failure semantics\n\n**Technical Constraints:**\n\n- **Event Ordering**: Kafka partition ordering must be maintained within batches\n- **Message Size Limits**: Kafka max message size (1MB default) limits batch size\n- **Memory Constraints**: Batch buffers consume heap memory requiring careful sizing\n- **Broker Limits**: Kafka max request size (100MB default) constrains maximum batch\n\n**Organizational Constraints:**\n\n- **Library Standardization**: 200+ services use various event libraries (Spring Kafka, AWS SDK, custom)\n- **Team Skills**: Not all teams have expertise implementing efficient batching logic\n- **Testing Requirements**: Batch implementations must pass existing integration test suites\n- **Backwards Compatibility**: Cannot break existing consumer contracts expecting individual events\n\n**Compliance Constraints:**\n\n- **Audit Requirements**: HIPAA audit trails require tracking individual event delivery\n- **Timeliness**: State contracts require \"timely\" event processing (typically < 1 hour, often < 5 minutes)\n- **Data Retention**: Event batches must support same retention and replay capabilities as individual events\n- **Disaster Recovery**: Batch buffers must not introduce data loss risks exceeding RPO requirements",
+    "19": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#solution]\n\n## Solution",
+    "20": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#pattern-description]\n\n### Pattern Description\n\nThe Event Batching Pattern implements an **accumulate-and-flush** strategy where events are collected in memory buffers and periodically flushed to event brokers as batches. The pattern consists of four core mechanisms:\n\n1. **Event Accumulation**: Incoming events are added to thread-safe in-memory buffers organized by destination topic/partition. Events are staged without blocking the calling thread using non-blocking concurrent data structures (ConcurrentLinkedQueue, ArrayBlockingQueue).\n\n2. **Intelligent Flushing**: Batches are flushed based on multiple configurable triggers working in combination:\n   - **Size-based**: Flush when batch reaches size threshold (e.g., 100, 500, 1000 events)\n   - **Time-based**: Flush after maximum wait time (e.g., 100ms, 250ms, 500ms) to prevent unbounded latency\n   - **Memory-based**: Flush when buffer memory usage exceeds threshold to prevent OOM\n   - **Shutdown**: Flush all pending batches during graceful application shutdown\n\n3. **Asynchronous Publishing**: Batches are published asynchronously to event brokers using non-blocking I/O, freeing application threads to continue processing. Publish operations return CompletableFuture or reactive types enabling callback-based success/failure handling.\n\n4. **Error Handling and Retry**: Implements sophisticated error handling for batch publish failures:\n   - **Partial Batch Retry**: On failure, retry individual events from failed batch to identify specific failures\n   - **Dead Letter Queue**: Events that fail after retries are routed to DLQ for manual investigation\n   - **Circuit Breaker**: Temporarily halt publishing when broker health degrades to prevent cascade failures\n   - **Metrics and Monitoring**: Expose batch efficiency metrics, failure rates, and latency distributions\n\n**Key Design Principles:**\n\n- **Non-Blocking**: Event staging never blocks application threads; publishing happens asynchronously on dedicated threads\n- **Tunability**: Batch size and time thresholds configurable per topic based on latency/throughput requirements\n- **Observability**: Comprehensive metrics expose batch efficiency, buffer utilization, and publish success rates\n- **Reliability**: Graceful degradation to individual publishing if batching fails; no silent event loss\n- **Backwards Compatible**: Consumers receive events identically whether published individually or batched",
+    "21": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#architecture-diagram]\n\n### Architecture Diagram\n\n```mermaid\ngraph TB\n    subgraph \"Application Service\"\n        APP[Business Logic]\n        BATCHER[Event Batcher]\n        BUFFER1[Buffer: Topic A]\n        BUFFER2[Buffer: Topic B]\n        FLUSHER[Flush Coordinator]\n        PUBLISHER[Async Publisher]\n\n        APP -->|1. Emit Event| BATCHER\n        BATCHER -->|2. Stage in Buffer| BUFFER1\n        BATCHER -->|2. Stage in Buffer| BUFFER2\n        FLUSHER -->|3. Check Triggers| BUFFER1\n        FLUSHER -->|3. Check Triggers| BUFFER2\n        BUFFER1 -->|4. Flush Batch| PUBLISHER\n        BUFFER2 -->|4. Flush Batch| PUBLISHER\n    end\n\n    subgraph \"Flush Triggers\"\n        TRIGGER1[Size: 100 events]\n        TRIGGER2[Time: 250ms]\n        TRIGGER3[Memory: 10MB]\n        TRIGGER1 -.-> FLUSHER\n        TRIGGER2 -.-> FLUSHER\n        TRIGGER3 -.-> FLUSHER\n    end\n\n    subgraph \"Event Broker\"\n        KAFKA[Kafka/SNS/EventBridge]\n        TOPIC1[Topic: claims]\n        TOPIC2[Topic: members]\n        DLQ[Dead Letter Queue]\n\n        PUBLISHER -->|5. Batch Publish| KAFKA\n        KAFKA --> TOPIC1\n        KAFKA --> TOPIC2\n        PUBLISHER -.->|Failed Events| DLQ\n    end\n\n    subgraph \"Monitoring\"\n        METRICS[CloudWatch Metrics]\n        LOGS[Application Logs]\n\n        BATCHER -.->|Batch Stats| METRICS\n        PUBLISHER -.->|Publish Results| METRICS\n        PUBLISHER -.->|Error Details| LOGS\n    end\n\n    subgraph \"Downstream Consumers\"\n        CONSUMER1[Claims Processor]\n        CONSUMER2[Analytics Service]\n        CONSUMER3[Audit Logger]\n\n        TOPIC1 --> CONSUMER1\n        TOPIC1 --> CONSUMER2\n        TOPIC2 --> CONSUMER3\n    end\n\n    style BATCHER fill:#e1f5ff\n    style PUBLISHER fill:#e1f5ff\n    style KAFKA fill:#fff4e6\n    style METRICS fill:#f0f0f0\n```\n\n**Flow Description:**\n\n1. **Event Emission**: Business logic emits events to Event Batcher (non-blocking call, returns immediately)\n2. **Buffer Staging**: Events staged in topic-specific buffers organized by partition key\n3. **Trigger Evaluation**: Flush Coordinator continuously checks size/time/memory triggers\n4. **Batch Formation**: When trigger fires, buffer contents extracted and formed into batch\n5. **Async Publishing**: Batch published asynchronously to event broker\n6. **Success Handling**: On success, batch cleared and metrics updated\n7. **Failure Handling**: On failure, individual events retried or sent to DLQ\n8. **Consumer Processing**: Downstream consumers receive events identically to individual publishing",
+    "22": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#components]\n\n### Components\n\n| Component | Responsibility | Dependencies |\n| --------- | -------------- | ------------ |\n| **Event Batcher** | Provides API for application to emit events; routes events to appropriate buffers; non-blocking staging | Thread-safe buffers, Metrics collector |\n| **Topic Buffers** | In-memory storage for events pending publish; organized by topic/partition; thread-safe concurrent collections | ConcurrentLinkedQueue or ArrayBlockingQueue |\n| **Flush Coordinator** | Monitors buffers and triggers batch flushes based on size/time/memory thresholds; runs on scheduled thread pool | Scheduled executor, Buffers, Configuration |\n| **Async Publisher** | Publishes batches to event brokers using non-blocking I/O; handles success/failure callbacks; implements retry logic | Kafka Producer API, AWS SDK, HTTP clients |\n| **Partition Strategy** | Determines partition key for events ensuring ordering guarantees maintained within batches | Event metadata, Partitioning algorithm |\n| **Error Handler** | Processes batch publish failures; implements partial retry, DLQ routing, circuit breaking | Retry policies, DLQ producer, Circuit breaker |\n| **Metrics Collector** | Tracks batch efficiency metrics (batch size, latency, success rate); publishes to CloudWatch/Prometheus | CloudWatch SDK, Prometheus client |\n| **Configuration Manager** | Manages per-topic batch configuration (size thresholds, time windows, memory limits) | Spring Configuration, Environment variables |\n| **Graceful Shutdown Hook** | Flushes all pending batches during application shutdown; ensures no event loss | JVM shutdown hooks, Buffers |\n| **Dead Letter Queue** | Stores events that fail after retries for manual investigation and replay | Kafka DLQ topic, S3 bucket, DynamoDB table |",
+    "23": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#interactions]\n\n### Interactions",
+    "24": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#normal-operation-steady-state]\n\n#### Normal Operation (Steady State)\n\n```text\nApplication Thread:\n\n1. Business logic emits claim event → eventBatcher.emit(event)\n2. Event Batcher stages event in claim-events buffer (non-blocking, returns immediately)\n3. Application continues processing next claim (no blocking)\n\nFlush Coordinator Thread (runs every 50ms):\n\n4. Check claim-events buffer size: 87 events (threshold: 100)\n5. Check time since first event: 220ms (threshold: 250ms)\n6. No flush trigger met, continue monitoring\n\n[30ms later]\n\nFlush Coordinator Thread:\n\n7. Check claim-events buffer size: 112 events (threshold: 100) → TRIGGER\n8. Extract 112 events from buffer into batch\n9. Submit batch to Async Publisher\n\nAsync Publisher Thread:\n\n10. Serialize 112 events into single Kafka ProduceRequest (250KB payload)\n11. Send batch to Kafka broker asynchronously\n12. Kafka broker acknowledges successful write (15ms)\n13. Update metrics: batch_size=112, latency=15ms, success=true\n14. Invoke success callback (optional application logic)\n\nTotal Time: 220ms buffering + 15ms publish = 235ms end-to-end latency\nIndividual Publishing Comparison: 112 events × 25ms = 2,800ms (11x slower)\n```",
+    "25": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#failure-scenario-with-retry]\n\n#### Failure Scenario with Retry\n\n```text\nAsync Publisher Thread:\n\n1. Publish batch of 150 events to Kafka\n2. Kafka returns error: \"Topic not available\" (broker restart in progress)\n3. Error Handler invoked with failed batch\n4. Check retry count: 0 (max retries: 3)\n5. Wait exponential backoff: 100ms\n6. Retry batch publish\n\n[After 100ms]\n\n7. Retry publish attempt #1\n8. Kafka returns error: \"Request timeout\" (broker still recovering)\n9. Increment retry count: 1\n10. Wait exponential backoff: 200ms\n11. Retry batch publish\n\n[After 200ms]\n\n12. Retry publish attempt #2\n13. Kafka successfully accepts batch\n14. Update metrics: batch_size=150, retries=2, success=true\n15. Total latency: 300ms + 15ms = 315ms (acceptable for near-real-time)\n\nAlternative Failure Path (Max Retries Exceeded):\n3a. After 3 retries, batch still failing\n4a. Fallback to individual event publish for this batch\n5a. Identify specific failing events (e.g., malformed event payload)\n6a. Publish successful events (147 succeed)\n7a. Route failed events (3 fail) to Dead Letter Queue\n8a. Update metrics: batch_size=150, partial_success=147, dlq=3\n9a. Trigger alert for manual investigation\n```",
+    "26": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#time-based-flush-low-volume]\n\n#### Time-Based Flush (Low Volume)\n\n```text\nScenario: Only 15 events received in 250ms window\n\nFlush Coordinator Thread (t=0):\n\n1. First event arrives, note timestamp: t=0\n2. Buffer contains: 1 event\n\nFlush Coordinator Thread (t=50ms):\n\n3. Check buffer: 5 events (below 100 threshold)\n4. Check time: 50ms since first event (below 250ms threshold)\n5. No flush trigger, continue\n\nFlush Coordinator Thread (t=100ms):\n\n6. Check buffer: 9 events\n7. Check time: 100ms since first event\n8. No flush trigger\n\nFlush Coordinator Thread (t=150ms):\n\n9. Check buffer: 12 events\n10. Check time: 150ms since first event\n11. No flush trigger\n\nFlush Coordinator Thread (t=200ms):\n\n12. Check buffer: 14 events\n13. Check time: 200ms since first event\n14. No flush trigger\n\nFlush Coordinator Thread (t=250ms):\n\n15. Check buffer: 15 events\n16. Check time: 250ms since first event → TIME TRIGGER\n17. Extract 15 events from buffer into batch\n18. Publish batch (prevents unbounded latency for low-volume events)\n\nResult: Small batch published after 250ms ensuring timely delivery\n```",
+    "27": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#graceful-shutdown]\n\n#### Graceful Shutdown\n\n```text\nJVM Shutdown Initiated:\n\n1. Application receives SIGTERM signal\n2. Shutdown hook triggered\n3. Event Batcher set to \"draining\" mode (reject new events)\n4. Flush Coordinator notified of shutdown\n\nFlush All Pending Batches:\n\n5. Topic A buffer: 47 events → flush immediately\n6. Topic B buffer: 132 events → flush immediately\n7. Topic C buffer: 8 events → flush immediately\n8. Wait for all async publishes to complete (max 5 seconds)\n9. All batches successfully published\n10. Close Kafka producer connections\n11. Complete shutdown\n\nTotal Shutdown Time: 500ms (graceful, no event loss)\n\nTimeout Scenario:\n8a. One batch publish exceeds 5-second timeout\n9a. Force-close connections, events potentially lost\n10a. Log error with event IDs for manual recovery\n11a. Continue shutdown (prioritize timely shutdown over hanging)\n```",
+    "28": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#variations]\n\n### Variations",
+    "29": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#variation-1-fixed-size-batching-simplest]\n\n#### Variation 1: Fixed-Size Batching (Simplest)\n\n**Configuration:**\n- Batch size: 100 events (fixed)\n- Time window: None (wait indefinitely for 100 events)\n- Flush on shutdown: Yes\n\n**When to Use:**\n- Extremely high-volume streams where size threshold always met quickly (< 100ms)\n- Simplest implementation with minimal code complexity\n- Latency less critical than throughput optimization\n\n**Trade-offs:**\n- **Pro**: Simplest implementation; predictable batch sizes; easy to reason about\n- **Con**: Unbounded latency for low-volume streams; last 99 events never published until shutdown\n- **Con**: Poor performance during off-peak hours or traffic drops\n\n**Example Use Case:**\nClaims processing during business hours (consistent 5,000+ events/minute)",
+    "30": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#variation-2-time-windowed-batching-balanced]\n\n#### Variation 2: Time-Windowed Batching (Balanced)\n\n**Configuration:**\n- Batch size: 100 events (soft maximum)\n- Time window: 250ms (guaranteed flush)\n- Flush on shutdown: Yes\n\n**When to Use:**\n- Variable volume streams with peak/off-peak patterns\n- Near-real-time requirements demanding < 500ms latency\n- General-purpose batching for most healthcare applications\n\n**Trade-offs:**\n- **Pro**: Bounded latency guarantees; handles variable volume; good balance\n- **Con**: Slightly more complex implementation; variable batch sizes complicate capacity planning\n- **Con**: Small batches during low volume periods (reduced efficiency)\n\n**Example Use Case:**\nMember eligibility events (high volume during business hours, low at night)",
+    "31": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#variation-3-adaptive-batching-most-sophisticated]\n\n#### Variation 3: Adaptive Batching (Most Sophisticated)\n\n**Configuration:**\n- Batch size: Dynamic (10-1000 events based on throughput)\n- Time window: Dynamic (50ms during peak, 500ms during off-peak)\n- Memory limit: 10MB per buffer\n- Adaptive algorithm: Adjust thresholds based on observed throughput and latency\n\n**When to Use:**\n- Highly variable traffic patterns (10x difference peak vs off-peak)\n- Strict latency SLAs requiring optimization across traffic conditions\n- Enterprise platform supporting multiple workload types\n\n**Trade-offs:**\n- **Pro**: Optimal efficiency across all traffic conditions; self-tuning\n- **Con**: Complex implementation requiring feedback loops and heuristics\n- **Con**: Unpredictable behavior requires extensive testing\n- **Con**: Harder to troubleshoot when batch sizes vary widely\n\n**Example Use Case:**\nMulti-tenant platform where different tenants have vastly different traffic patterns",
+    "32": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#variation-4-per-partition-batching-ordering-preserved]\n\n#### Variation 4: Per-Partition Batching (Ordering Preserved)\n\n**Configuration:**\n- Separate buffers per Kafka partition (not just per topic)\n- Batch size: 50 events per partition\n- Time window: 200ms per partition\n- Partition key: Extracted from event (e.g., member ID, claim ID)\n\n**When to Use:**\n- Strict event ordering requirements within entity (e.g., all events for member ID must be ordered)\n- Kafka consumers relying on partition-level ordering guarantees\n- High-cardinality partition keys ensuring balanced partition distribution\n\n**Trade-offs:**\n- **Pro**: Maintains Kafka ordering guarantees; safe for order-sensitive consumers\n- **Con**: More memory overhead (buffers per partition, not per topic)\n- **Con**: Smaller batch sizes if events spread across many partitions\n- **Con**: Complex buffer management and partition assignment logic\n\n**Example Use Case:**\nClaims pipeline where all events for single claim ID must be processed in order",
+    "33": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#variation-5-hybrid-batching-critical-vs-non-critical]\n\n#### Variation 5: Hybrid Batching (Critical vs Non-Critical)\n\n**Configuration:**\n- **Critical events**: Small batches (25 events) + short window (50ms) = lower latency\n- **Non-critical events**: Large batches (500 events) + long window (500ms) = higher efficiency\n- Separate buffers and configurations based on event priority\n\n**When to Use:**\n- Mixed workload with different latency requirements (alerts vs audit logs)\n- Want to optimize cost for bulk operations without impacting critical path\n- Need to prioritize system resources during contention\n\n**Trade-offs:**\n- **Pro**: Optimize each workload independently; critical events not delayed by bulk\n- **Con**: Duplicate batching infrastructure; more configuration complexity\n- **Con**: Need event classification logic to route to appropriate buffer\n\n**Example Use Case:**\n- Critical: Fraud alerts, clinical notifications (50ms batches)\n- Non-critical: Audit logs, analytics events (500ms batches)",
+    "34": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#implementation-guidelines]\n\n## Implementation Guidelines",
+    "35": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#prerequisites]\n\n### Prerequisites\n\n**Technology Requirements:**\n\n- **Java 17+** or **Python 3.9+** with async/await support\n- **Event Broker**: Kafka 2.8+, AWS SNS, or AWS EventBridge\n- **Spring Boot 3.x** (for Java implementations) with Spring Kafka or Spring Cloud Stream\n- **Concurrent Collections**: Java ConcurrentLinkedQueue or Python asyncio.Queue\n- **Monitoring**: CloudWatch, Prometheus, or Datadog for metrics collection\n\n**Infrastructure Requirements:**\n\n- Event broker with sufficient throughput capacity (Kafka: 1000+ MB/s per broker)\n- Application pods with sufficient memory for batch buffers (recommended 2GB+ heap for high-volume services)\n- Network connectivity with low latency to event brokers (< 5ms RTT)\n- Dead Letter Queue infrastructure for failed event handling\n\n**Skills and Knowledge:**\n\n- Understanding of concurrent programming and thread safety\n- Familiarity with event broker APIs (Kafka Producer API, AWS SDK)\n- Experience with asynchronous programming patterns (CompletableFuture, reactive streams)\n- Knowledge of backpressure handling and flow control\n\n**Organizational Readiness:**\n\n- Architecture Review Board approval for batching strategy\n- Downstream consumer teams notified (batching transparent but worth communicating)\n- Load testing environment for validating batch performance\n- Monitoring dashboards configured for batch metrics",
+    "36": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#step-by-step-implementation]\n\n### Step-by-Step Implementation",
+    "37": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#phase-1-design-and-configuration]\n\n#### Phase 1: Design and Configuration\n\n1. **Identify Target Services and Topics**\n\n   Analyze event publishing patterns to identify high-volume services:\n\n   ```sql\n   -- Query CloudWatch Insights for event publish rates\n   SELECT service_name, topic_name, COUNT(*) as events_per_day\n   FROM event_publish_logs\n   WHERE timestamp > NOW() - INTERVAL 7 DAY\n   GROUP BY service_name, topic_name\n   HAVING events_per_day > 100000\n   ORDER BY events_per_day DESC;\n   ```\n\n   Focus on services with 100K+ events/day where batching provides significant benefit.\n\n2. **Define Batch Configuration Parameters**\n\n   For each topic, determine appropriate batch settings:\n\n   ```yaml\n   # application.yml - Batch configuration\n   event-batching:\n     topics:\n       claim-events:\n         batch-size: 100              # Flush after 100 events\n         linger-ms: 250               # Maximum 250ms wait time\n         buffer-memory: 10485760      # 10MB buffer limit\n         compression: gzip            # Compress batches\n       member-events:\n         batch-size: 500              # Higher volume = larger batches\n         linger-ms: 500               # Longer window acceptable\n         buffer-memory: 20971520      # 20MB buffer\n         compression: snappy\n       audit-events:\n         batch-size: 1000             # Bulk events, efficiency priority\n         linger-ms: 1000              # 1 second window acceptable\n         buffer-memory: 52428800      # 50MB buffer\n         compression: gzip\n   ```\n\n3. **Calculate Memory Requirements**\n\n   Estimate heap memory needed for batch buffers:\n\n   ```text\n   Per-topic buffer size = batch-size × average-event-size × 2 (safety margin)\n\n   Example:\n   - claim-events: 100 × 2KB × 2 = 400KB\n   - member-events: 500 × 1KB × 2 = 1MB\n   - audit-events: 1000 × 500B × 2 = 1MB\n\n   Total buffer memory: ~2.5MB\n   Plus JVM overhead: ~512MB\n   Recommended heap: 3GB minimum\n   ```\n\n4. **Design Error Handling Strategy**\n\n   Define retry policies and DLQ routing:\n\n   ```yaml\n   retry-policy:\n     max-attempts: 3\n     backoff-multiplier: 2\n     initial-interval: 100ms\n     max-interval: 2000ms\n\n   dead-letter-queue:\n     topic: \"dlq-events\"\n     max-retry-before-dlq: 3\n     dlq-retention: 7days\n   ```",
+    "38": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#phase-2-implement-core-batching-logic]\n\n#### Phase 2: Implement Core Batching Logic\n\n1. **Create Event Batcher Component (Java Example)**\n\n   ```java\n   @Component\n   public class EventBatcher<T> {\n       private final Map<String, ConcurrentLinkedQueue<T>> buffers = new ConcurrentHashMap<>();\n       private final Map<String, Long> firstEventTimestamp = new ConcurrentHashMap<>();\n       private final BatchConfiguration config;\n       private final AsyncEventPublisher publisher;\n       private final ScheduledExecutorService scheduler;\n\n       public EventBatcher(BatchConfiguration config, AsyncEventPublisher publisher) {\n           this.config = config;\n           this.publisher = publisher;\n           this.scheduler = Executors.newScheduledThreadPool(2);\n\n           // Start flush coordinator\n           scheduler.scheduleAtFixedRate(this::checkAndFlush, 50, 50, TimeUnit.MILLISECONDS);\n       }\n\n       public void emit(String topic, T event) {\n           // Get or create buffer for topic\n           ConcurrentLinkedQueue<T> buffer = buffers.computeIfAbsent(\n               topic, k -> new ConcurrentLinkedQueue<>()\n           );\n\n           // Track first event timestamp\n           firstEventTimestamp.putIfAbsent(topic, System.currentTimeMillis());\n\n           // Add event to buffer (non-blocking)\n           buffer.offer(event);\n\n           // Check if immediate flush needed (size threshold exceeded)\n           if (buffer.size() >= config.getBatchSize(topic)) {\n               flushTopic(topic);\n           }\n       }\n\n       private void checkAndFlush() {\n           for (String topic : buffers.keySet()) {\n               ConcurrentLinkedQueue<T> buffer = buffers.get(topic);\n               if (buffer.isEmpty()) continue;\n\n               // Check time-based trigger\n               long firstTimestamp = firstEventTimestamp.getOrDefault(topic, 0L);\n               long elapsed = System.currentTimeMillis() - firstTimestamp;\n\n               if (elapsed >= config.getLingerMs(topic)) {\n                   flushTopic(topic);\n               }\n           }\n       }\n\n       private void flushTopic(String topic) {\n           ConcurrentLinkedQueue<T> buffer = buffers.get(topic);\n           if (buffer == null || buffer.isEmpty()) return;\n\n           // Extract events from buffer\n           List<T> batch = new ArrayList<>();\n           T event;\n           while ((event = buffer.poll()) != null && batch.size() < config.getBatchSize(topic)) {\n               batch.add(event);\n           }\n\n           if (!batch.isEmpty()) {\n               // Reset timestamp\n               firstEventTimestamp.remove(topic);\n\n               // Publish batch asynchronously\n               publisher.publishBatch(topic, batch)\n                   .thenAccept(result -> onPublishSuccess(topic, batch.size()))\n                   .exceptionally(ex -> onPublishFailure(topic, batch, ex));\n           }\n       }\n   }\n   ```\n\n2. **Implement Async Publisher with Kafka**\n\n   ```java\n   @Component\n   public class KafkaAsyncPublisher implements AsyncEventPublisher {\n       private final KafkaTemplate<String, Object> kafkaTemplate;\n       private final MeterRegistry metrics;\n\n       @Override\n       public CompletableFuture<SendResult> publishBatch(String topic, List<Object> events) {\n           // Create batch record\n           ProducerRecord<String, Object> batchRecord = new ProducerRecord<>(\n               topic,\n               null,  // partition determined by key\n               createBatchPayload(events)\n           );\n\n           // Send asynchronously\n           ListenableFuture<SendResult<String, Object>> future =\n               kafkaTemplate.send(batchRecord);\n\n           // Convert to CompletableFuture\n           CompletableFuture<SendResult> result = new CompletableFuture<>();\n           future.addCallback(\n               success -> {\n                   recordMetrics(topic, events.size(), true);\n                   result.complete(success);\n               },\n               failure -> {\n                   recordMetrics(topic, events.size(), false);\n                   result.completeExceptionally(failure);\n               }\n           );\n\n           return result;\n       }\n\n       private BatchPayload createBatchPayload(List<Object> events) {\n           return BatchPayload.builder()\n               .events(events)\n               .batchSize(events.size())\n               .timestamp(System.currentTimeMillis())\n               .build();\n       }\n   }\n   ```",
+    "39": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#phase-3-add-error-handling-and-retry-logic]\n\n#### Phase 3: Add Error Handling and Retry Logic\n\n1. **Implement Retry with Exponential Backoff**\n\n   ```java\n   @Component\n   public class BatchErrorHandler {\n       private final DeadLetterQueuePublisher dlqPublisher;\n       private final RetryPolicy retryPolicy;\n\n       public CompletableFuture<Void> handleFailure(\n           String topic,\n           List<Object> failedBatch,\n           Throwable error\n       ) {\n           return retryBatch(topic, failedBatch, 0)\n               .exceptionally(ex -> {\n                   // After all retries exhausted, try individual events\n                   return fallbackToIndividualPublish(topic, failedBatch);\n               });\n       }\n\n       private CompletableFuture<Void> retryBatch(\n           String topic,\n           List<Object> batch,\n           int attempt\n       ) {\n           if (attempt >= retryPolicy.getMaxAttempts()) {\n               return CompletableFuture.failedFuture(\n                   new MaxRetriesExceededException()\n               );\n           }\n\n           long backoffMs = retryPolicy.calculateBackoff(attempt);\n\n           return CompletableFuture\n               .delayedExecutor(backoffMs, TimeUnit.MILLISECONDS)\n               .execute(() -> publisher.publishBatch(topic, batch))\n               .exceptionally(ex -> retryBatch(topic, batch, attempt + 1));\n       }\n\n       private Void fallbackToIndividualPublish(String topic, List<Object> batch) {\n           List<Object> failed = new ArrayList<>();\n\n           for (Object event : batch) {\n               try {\n                   publisher.publishSingle(topic, event).get(5, TimeUnit.SECONDS);\n               } catch (Exception e) {\n                   failed.add(event);\n               }\n           }\n\n           // Send truly failed events to DLQ\n           if (!failed.isEmpty()) {\n               dlqPublisher.sendToDLQ(topic, failed);\n               metrics.counter(\"batch.dlq.events\", \"topic\", topic).increment(failed.size());\n           }\n\n           return null;\n       }\n   }\n   ```\n\n2. **Implement Circuit Breaker (Resilience4j)**\n\n   ```java\n   @Configuration\n   public class BatchingCircuitBreakerConfig {\n\n       @Bean\n       public CircuitBreaker batchPublishCircuitBreaker() {\n           CircuitBreakerConfig config = CircuitBreakerConfig.custom()\n               .failureRateThreshold(50)                    // Open after 50% failures\n               .waitDurationInOpenState(Duration.ofSeconds(30))  // Wait 30s before retry\n               .slidingWindowSize(100)                      // Evaluate last 100 calls\n               .minimumNumberOfCalls(10)                    // Need 10 calls before evaluation\n               .build();\n\n           return CircuitBreaker.of(\"batch-publisher\", config);\n       }\n   }\n\n   @Component\n   public class CircuitBreakerAwarePublisher {\n       private final CircuitBreaker circuitBreaker;\n       private final AsyncEventPublisher publisher;\n\n       public CompletableFuture<SendResult> publishBatch(String topic, List<Object> batch) {\n           return circuitBreaker.executeCompletionStage(\n               () -> publisher.publishBatch(topic, batch)\n           ).toCompletableFuture();\n       }\n   }\n   ```",
+    "40": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#phase-4-implement-graceful-shutdown]\n\n#### Phase 4: Implement Graceful Shutdown\n\n1. **Add Shutdown Hook to Flush Pending Batches**\n\n   ```java\n   @Component\n   public class EventBatcherShutdownHook {\n       private final EventBatcher<?> eventBatcher;\n\n       @PostConstruct\n       public void registerShutdownHook() {\n           Runtime.getRuntime().addShutdownHook(new Thread(() -> {\n               log.info(\"Shutdown initiated, flushing pending batches...\");\n\n               try {\n                   // Stop accepting new events\n                   eventBatcher.setAcceptingEvents(false);\n\n                   // Flush all buffers\n                   eventBatcher.flushAll();\n\n                   // Wait for pending publishes (max 5 seconds)\n                   boolean completed = eventBatcher.awaitCompletion(5, TimeUnit.SECONDS);\n\n                   if (completed) {\n                       log.info(\"All batches flushed successfully\");\n                   } else {\n                       log.warn(\"Timeout waiting for batch flush, {} events may be lost\",\n                           eventBatcher.getPendingEventCount());\n                   }\n               } catch (Exception e) {\n                   log.error(\"Error during shutdown flush\", e);\n               }\n           }));\n       }\n   }\n   ```",
+    "41": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#configuration-examples]\n\n### Configuration Examples",
+    "42": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#example-1-spring-boot-kafka-batching-configuration]\n\n#### Example 1: Spring Boot Kafka Batching Configuration\n\n```yaml\n# application.yml\nspring:\n  kafka:\n    producer:\n      # Disable Kafka's built-in batching, we control it\n      batch-size: 0\n      linger-ms: 0\n      # Connection settings\n      bootstrap-servers: kafka-broker1:9092,kafka-broker2:9092\n      # Serialization\n      key-serializer: org.apache.kafka.common.serialization.StringSerializer\n      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer\n      # Reliability settings\n      acks: all\n      retries: 3\n      # Compression\n      compression-type: gzip\n\n# Custom batching configuration\nevent-batching:\n  enabled: true\n  topics:\n    claim-submitted:\n      batch-size: 100\n      linger-ms: 250\n      max-memory-bytes: 10485760\n    claim-adjudicated:\n      batch-size: 200\n      linger-ms: 500\n      max-memory-bytes: 20971520\n    member-eligibility-changed:\n      batch-size: 500\n      linger-ms: 1000\n      max-memory-bytes: 52428800\n\n  # Global retry settings\n  retry:\n    max-attempts: 3\n    initial-interval-ms: 100\n    multiplier: 2.0\n    max-interval-ms: 2000\n\n  # Dead Letter Queue\n  dlq:\n    enabled: true\n    topic-suffix: \".dlq\"\n    retention-days: 7\n\n  # Monitoring\n  metrics:\n    enabled: true\n    export-interval-seconds: 60\n```",
+    "43": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#example-2-python-async-batching-with-asyncio]\n\n#### Example 2: Python Async Batching with asyncio\n\n```python\nimport asyncio\nfrom collections import defaultdict\nfrom dataclasses import dataclass\nfrom typing import List, Dict, Any\nimport time\n\n@dataclass\nclass BatchConfig:\n    batch_size: int = 100\n    linger_ms: int = 250\n    max_memory_bytes: int = 10 * 1024 * 1024\n\nclass AsyncEventBatcher:\n    def __init__(self, config: BatchConfig, publisher):\n        self.config = config\n        self.publisher = publisher\n        self.buffers: Dict[str, List[Any]] = defaultdict(list)\n        self.first_event_time: Dict[str, float] = {}\n        self.flush_task = None\n\n    async def start(self):\n        \"\"\"Start background flush coordinator\"\"\"\n        self.flush_task = asyncio.create_task(self._flush_coordinator())\n\n    async def emit(self, topic: str, event: Any):\n        \"\"\"Add event to batch buffer (non-blocking)\"\"\"\n        # Add to buffer\n        if topic not in self.first_event_time:\n            self.first_event_time[topic] = time.time()\n\n        self.buffers[topic].append(event)\n\n        # Check size trigger\n        if len(self.buffers[topic]) >= self.config.batch_size:\n            await self._flush_topic(topic)\n\n    async def _flush_coordinator(self):\n        \"\"\"Background task to check time-based triggers\"\"\"\n        while True:\n            await asyncio.sleep(0.05)  # Check every 50ms\n\n            for topic, buffer in self.buffers.items():\n                if not buffer:\n                    continue\n\n                # Check time trigger\n                elapsed_ms = (time.time() - self.first_event_time.get(topic, time.time())) * 1000\n                if elapsed_ms >= self.config.linger_ms:\n                    await self._flush_topic(topic)\n\n    async def _flush_topic(self, topic: str):\n        \"\"\"Flush events for a topic\"\"\"\n        buffer = self.buffers[topic]\n        if not buffer:\n            return\n\n        # Extract batch\n        batch = buffer[:self.config.batch_size]\n        self.buffers[topic] = buffer[self.config.batch_size:]\n\n        # Reset timer if buffer still has events\n        if self.buffers[topic]:\n            self.first_event_time[topic] = time.time()\n        else:\n            self.first_event_time.pop(topic, None)\n\n        # Publish asynchronously\n        try:\n            await self.publisher.publish_batch(topic, batch)\n            print(f\"Published batch of {len(batch)} events to {topic}\")\n        except Exception as e:\n            print(f\"Failed to publish batch: {e}\")\n            # Re-add to buffer for retry\n            self.buffers[topic] = batch + self.buffers[topic]\n\n    async def shutdown(self):\n        \"\"\"Graceful shutdown - flush all pending\"\"\"\n        print(\"Flushing pending batches...\")\n        for topic in list(self.buffers.keys()):\n            await self._flush_topic(topic)\n\n        if self.flush_task:\n            self.flush_task.cancel()\n\n# Usage example\nasync def main():\n    batcher = AsyncEventBatcher(\n        config=BatchConfig(batch_size=100, linger_ms=250),\n        publisher=KafkaPublisher()\n    )\n\n    await batcher.start()\n\n    # Emit events\n    for i in range(1000):\n        await batcher.emit(\"claim-events\", {\"claim_id\": i, \"amount\": 100.0})\n\n    # Graceful shutdown\n    await batcher.shutdown()\n```",
+    "44": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#best-practices]\n\n### Best Practices\n\n**Architecture and Design:**\n\n1. **Start with Time-Windowed Batching**: Implement both size and time triggers from the start; never use size-only batching which can cause unbounded latency for low-volume streams\n\n2. **Tune Per-Topic**: Different event topics have different characteristics; configure batch parameters independently based on volume and latency requirements\n\n3. **Monitor Buffer Memory**: Track buffer memory usage and set appropriate limits to prevent OutOfMemoryErrors; typically allocate 10-20% of heap for batch buffers\n\n4. **Preserve Partition Ordering**: If using Kafka partition keys, ensure events for same key stay in same batch to maintain ordering guarantees\n\n5. **Plan for Graceful Shutdown**: Always implement shutdown hooks to flush pending batches; prevents event loss during deployments or scaling operations\n\n**Implementation:**\n\n6. **Use Non-Blocking Operations**: Event staging must never block application threads; use concurrent collections (ConcurrentLinkedQueue) and async publishing\n\n7. **Implement Idempotent Consumers**: Since batch retry logic may result in duplicate delivery, ensure downstream consumers are idempotent\n\n8. **Batch Size Sweet Spot**: Test different batch sizes; 100-500 events typically optimal balancing efficiency vs latency (larger not always better)\n\n9. **Compress Large Batches**: Enable compression (gzip, snappy) for batches > 10KB to reduce network transfer time and costs\n\n10. **Separate Flush Thread**: Run flush coordinator on dedicated thread pool separate from application threads; prevents interference\n\n**Error Handling:**\n\n11. **Implement Partial Batch Retry**: On batch failure, retry individual events to identify specific failures; don't retry entire batch indefinitely\n\n12. **Use Dead Letter Queues**: Route persistently failing events to DLQ for manual investigation; prevents blocking of healthy events\n\n13. **Circuit Breaker Pattern**: Implement circuit breakers to stop publishing during broker outages; prevents resource exhaustion\n\n14. **Alert on DLQ Growth**: Monitor DLQ depth and alert when exceeds threshold; indicates systemic publish failures\n\n15. **Log Batch Failures with Context**: Include batch size, topic, timestamp, and sample event IDs in error logs for troubleshooting\n\n**Performance:**\n\n16. **Load Test Thoroughly**: Test batch implementation under 3x expected peak load to identify bottlenecks and memory issues\n\n17. **Profile Memory Usage**: Use heap dump analysis to validate buffer memory stays within bounds under various traffic patterns\n\n18. **Optimize Serialization**: Use efficient serializers (Avro, Protobuf) over JSON; serialization overhead multiplies with batch size\n\n19. **Connection Pool Tuning**: Configure adequate connection pools (50-100 connections) for async publishing; too few causes queuing\n\n20. **Batch Too Large**: Kafka max message size (1MB default) limits batch size; calculate max events per batch based on average event size\n\n**Monitoring and Observability:**\n\n21. **Track Batch Efficiency Metrics**: Monitor average batch size, batch fill rate (actual/target size), and time-triggered vs size-triggered ratios\n\n22. **Alert on Buffer Buildup**: If buffers grow beyond thresholds, indicates publish rate can't keep up with event generation rate\n\n23. **Measure End-to-End Latency**: Track latency from event emission to broker acknowledgment including buffering time\n\n24. **Dashboard Per-Topic Metrics**: Create separate dashboard panels per topic for easy identification of problem topics",
+    "45": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#common-pitfalls]\n\n### Common Pitfalls\n\n**Pitfall 1: Unbounded Latency with Size-Only Batching**\n\n**Problem**: Implementing only size-based flushing (e.g., flush every 100 events) without time window. During low-volume periods, events sit in buffer indefinitely waiting for 100th event.\n\n**Example**: Audit logging service batching 100 events. During overnight hours, only 15 events generated per hour → 85 events stuck in buffer for hours.\n\n**Solution**: Always implement time-based flushing as fallback. Set maximum linger time based on latency requirements (250-500ms typical).\n\n```java\n// BAD - size-only batching\nif (buffer.size() >= 100) {\n    flush();\n}\n\n// GOOD - size OR time batching\nif (buffer.size() >= 100 || elapsedMs >= 250) {\n    flush();\n}\n```\n\n**Pitfall 2: Memory Leaks from Unbounded Buffers**\n\n**Problem**: Using unbounded queues (ConcurrentLinkedQueue) for buffers without memory limits. If publish rate exceeds consumption rate, buffers grow unbounded causing OutOfMemoryError.\n\n**Example**: Kafka broker outage for 10 minutes. Application continues accepting events into buffer. Buffer grows from 5MB to 2GB, exhausts heap, application crashes.\n\n**Solution**: Use bounded queues (ArrayBlockingQueue) or implement memory-based flush triggers. Monitor buffer depth and implement backpressure.\n\n```java\n// BAD - unbounded buffer\nConcurrentLinkedQueue<Event> buffer = new ConcurrentLinkedQueue<>();\n\n// GOOD - bounded buffer with memory limit\nBlockingQueue<Event> buffer = new ArrayBlockingQueue<>(10000);\n// Or check memory usage\nif (bufferMemoryBytes > maxMemoryBytes) {\n    flush();\n}\n```\n\n**Pitfall 3: Blocking Application Threads on Batch Publish**\n\n**Problem**: Using synchronous publish calls that block application threads waiting for broker acknowledgment. Negates performance benefits of batching.\n\n**Example**: Claims processing thread emits event, batching code calls `kafkaTemplate.send().get()` blocking thread for 15ms. Throughput limited to 66 events/second per thread.\n\n**Solution**: Always use asynchronous publishing with callbacks or CompletableFuture. Application threads return immediately after staging event in buffer.\n\n```java\n// BAD - blocks calling thread\nSendResult result = kafkaTemplate.send(topic, batch).get();\n\n// GOOD - async with callback\nkafkaTemplate.send(topic, batch)\n    .addCallback(this::onSuccess, this::onFailure);\n```\n\n**Pitfall 4: Not Flushing on Shutdown**\n\n**Problem**: Application shuts down without flushing pending batches. Events in buffers at shutdown time are lost.\n\n**Example**: Claims service deployed with rolling restart. Each pod has 47 events buffered. 20 pods × 47 events = 940 events lost per deployment.\n\n**Solution**: Register shutdown hook to flush all buffers before JVM exits. Wait for pending publishes to complete (with timeout).\n\n```java\n@PreDestroy\npublic void shutdown() {\n    flushAll();\n    awaitCompletion(5, TimeUnit.SECONDS);\n}\n```\n\n**Pitfall 5: Ignoring Batch Failure Semantics**\n\n**Problem**: Treating batch publish as atomic operation (all-or-nothing). When batch fails, entire batch retried together. If one malformed event causes failure, all 100 events fail repeatedly.\n\n**Example**: Batch of 100 claim events includes 1 event with invalid JSON. Batch rejected by Kafka. All 100 events retried 3 times then sent to DLQ, losing 99 valid events.\n\n**Solution**: On batch failure, fall back to individual event publish to identify specific failures. Only send truly failed events to DLQ.\n\n```java\n// After batch retry exhausted\nfor (Event event : failedBatch) {\n    try {\n        publishSingle(event);\n    } catch (Exception e) {\n        sendToDLQ(event); // Only this event goes to DLQ\n    }\n}\n```\n\n**Pitfall 6: Excessive Batch Size**\n\n**Problem**: Configuring very large batches (1000+ events) thinking bigger is always better. Large batches increase buffering latency, memory usage, and reduce failure granularity.\n\n**Example**: Setting batch size to 2000 events. Average event size 2KB → 4MB batches. Kafka max message size 1MB → publish fails with MessageTooLargeException.\n\n**Solution**: Calculate max batch size based on average event size and broker limits. 100-500 events typically optimal. Test under load.\n\n```text\nmax_batch_size = broker_max_message_size / (avg_event_size * 1.5)\nExample: 1MB / (2KB * 1.5) = 341 events max\nRecommended: 250 events (safety margin)\n```\n\n**Pitfall 7: Not Preserving Event Ordering**\n\n**Problem**: Batching events across multiple partitions without considering ordering requirements. Events for same entity (e.g., claim ID) split across batches going to different partitions.\n\n**Example**: Claim events for claim-12345: \"submitted\" → \"validated\" → \"paid\". Events batched randomly across partitions. Consumer sees \"paid\" before \"validated\" violating ordering.\n\n**Solution**: Implement partition-aware batching where events with same key always go to same batch/partition.\n\n```java\n// Separate buffers per partition\nMap<Integer, Queue<Event>> buffersByPartition;\n\nint partition = calculatePartition(event.getKey());\nbuffersByPartition.get(partition).add(event);\n```\n\n**Pitfall 8: Missing Monitoring and Alerts**\n\n**Problem**: Deploying batching without proper metrics and alerts. No visibility into batch efficiency, buffer growth, or publish failures.\n\n**Example**: Batch publish rate drops 50% due to Kafka broker issue. No alerts fired. Buffers fill up over 2 hours until OutOfMemoryError crashes application.\n\n**Solution**: Implement comprehensive metrics from day one. Alert on buffer depth, publish failures, and latency anomalies.\n\n```java\n// Key metrics to track\nmetrics.gauge(\"batch.buffer.size\", buffer::size);\nmetrics.gauge(\"batch.buffer.memory\", this::bufferMemoryBytes);\nmetrics.timer(\"batch.publish.latency\").record(duration);\nmetrics.counter(\"batch.publish.success\").increment();\nmetrics.counter(\"batch.publish.failure\").increment();\n```\n\n**Pitfall 9: Inadequate Load Testing**\n\n**Problem**: Testing batching implementation only at normal traffic levels. Performance degrades or failures occur at peak traffic that wasn't tested.\n\n**Example**: Load tested at 1000 events/sec. Batching worked fine. Production peak hit 5000 events/sec. Buffer memory exhausted, GC thrashing, application unresponsive.\n\n**Solution**: Load test at 3-5x expected peak traffic. Include sustained high load (hours) and traffic spikes. Profile memory usage and GC behavior.\n\n**Pitfall 10: Tight Coupling to Specific Broker**\n\n**Problem**: Implementing batching logic tightly coupled to specific event broker API (e.g., Kafka). Makes migration to different broker (SNS, EventBridge) difficult.\n\n**Example**: Batching code directly uses Kafka ProducerRecord and specific Kafka configuration. Team wants to migrate to AWS EventBridge but batching code must be rewritten.\n\n**Solution**: Abstract batching logic behind generic interface. Implement broker-specific publishers as pluggable adapters.\n\n```java\n// Generic interface\npublic interface EventPublisher<T> {\n    CompletableFuture<PublishResult> publishBatch(String topic, List<T> events);\n}\n\n// Kafka-specific implementation\npublic class KafkaEventPublisher implements EventPublisher<ClaimEvent> { }\n\n// SNS-specific implementation\npublic class SnsEventPublisher implements EventPublisher<ClaimEvent> { }\n```",
+    "46": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#governance-and-compliance]\n\n## Governance and Compliance",
+    "47": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#standards-alignment]\n\n### Standards Alignment\n\nThis pattern aligns with and implements the following enterprise architecture standards:\n\n- **Application Architecture Standard (STD-APP-001)**: Defines performance optimization patterns for microservices including event batching for high-volume operations\n- **Event-Driven Architecture Standard (STD-INT-002)**: Specifies event publishing patterns, reliability requirements, and broker integration guidelines\n- **Performance Engineering Standard (STD-APP-005)**: Requires performance optimization for services exceeding 100K operations/day\n- **Cloud Cost Optimization Standard (STD-INF-004)**: Mandates cost reduction strategies for high-volume API operations including batching and compression\n- **Monitoring and Observability Standard (STD-OPS-001)**: Defines required metrics, logging, and alerting for production services\n- **Resilience and Fault Tolerance Standard (STD-APP-003)**: Requires circuit breakers, retries, and graceful degradation for external service calls",
+    "48": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#compliance-requirements]\n\n### Compliance Requirements\n\n**Performance and Scalability:**\n\n- Services processing > 100K events/day **must** evaluate event batching for cost and performance optimization\n- Event batching implementation **must** meet or exceed existing throughput requirements (no performance degradation)\n- Batch latency **must** stay within application SLA requirements (typically < 500ms additional delay acceptable)\n\n**Reliability and Data Integrity:**\n\n- Batching implementation **must not** introduce data loss risk; graceful shutdown required to flush pending batches\n- Failed events **must** be routed to Dead Letter Queue for investigation; no silent event loss permitted\n- Event ordering semantics **must** be preserved if required by consumers (partition-aware batching for Kafka)\n- Duplicate event delivery acceptable (at-least-once semantics) but consumers **must** be idempotent\n\n**Audit and Compliance:**\n\n- HIPAA audit requirements: Individual event delivery **must** be trackable even when published in batches\n- Batch publish events **must** include batch metadata (size, timestamp, correlation ID) for audit trails\n- DLQ events **must** be retained for minimum 7 days for investigation and potential replay\n- Event retention policies **must** apply identically to batched and individual events\n\n**Cost Governance:**\n\n- Batching implementations with significant event volumes **should** be prioritized in development roadmap\n- Cost impact from batching **must** be tracked and reported quarterly\n- Services implementing batching **must** provide before/after performance comparison for architecture review",
+    "49": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#approval-process]\n\n### Approval Process\n\n**Architecture Review Required:**\n\n1. **Service Assessment** (1 week)\n   - Analyze event publishing patterns: volume, topics, latency requirements\n   - Calculate projected cost savings and performance improvements\n   - Identify any consumer compatibility concerns\n\n2. **Design Review** (ARB Meeting - 2 weeks)\n   - Present batching strategy: batch sizes, time windows, memory limits\n   - Review error handling approach: retry logic, DLQ strategy, circuit breakers\n   - Demonstrate backwards compatibility with existing consumers\n   - Approval criteria: Clear benefit, low risk, well-designed error handling\n\n3. **Implementation Review** (Peer Review)\n   - Code review focusing on thread safety, memory management, graceful shutdown\n   - Review test coverage: unit tests, integration tests, load tests\n   - Validate monitoring instrumentation and alerting configuration\n\n4. **Load Testing Approval** (Performance Team)\n   - Load test at 3x peak traffic demonstrating adequate performance\n   - Memory profiling showing buffer memory stays within bounds\n   - Soak test (24+ hours) showing no memory leaks or degradation\n\n5. **Production Deployment Approval** (Change Advisory Board)\n   - Submit change request with rollback plan\n   - Phased rollout plan (canary → 25% → 50% → 100%)\n   - Success criteria and monitoring dashboard defined\n   - On-call engineer identified for deployment support\n\n**Simplified Approval for Low-Risk Changes:**\n\nServices processing < 1M events/day with non-critical latency requirements may use expedited approval:\n\n- Skip formal ARB presentation, email approval from architecture team sufficient\n- Standard peer review and load testing still required\n- Deployment follows normal change management process",
+    "50": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#monitoring-and-metrics]\n\n### Monitoring and Metrics\n\n**Batch Efficiency Metrics:**\n\n| Metric | Target | Measurement Method |\n| ------ | ------ | ------------------ |\n| Average Batch Size | 70-90% of max | `avg(batch.events.count)` per topic |\n| Batch Fill Rate | > 80% | Events batched / (Batch size * Batch count) |\n| Time-Triggered Batches | < 20% | Count batches triggered by time vs size |\n| Buffer Memory Usage | < 50% of limit | `gauge(batch.buffer.memory.bytes)` |\n| Batch Publish Latency P95 | < 100ms | `timer(batch.publish.latency).p95` |\n\n**Reliability Metrics:**\n\n| Metric | Target | Measurement Method |\n| ------ | ------ | ------------------ |\n| Batch Publish Success Rate | > 99.9% | Successful publishes / Total publishes |\n| Batch Retry Rate | < 1% | Retried batches / Total batches |\n| DLQ Event Rate | < 0.01% | DLQ events / Total events |\n| Circuit Breaker Open Duration | < 5 min/day | Sum of open state duration |\n| Events Lost at Shutdown | 0 | Counter of unflushed events |\n\n**Performance Metrics:**\n\n| Metric | Target | Measurement Method |\n| ------ | ------ | ------------------ |\n| Events Per Second (Throughput) | > Baseline * 2 | `rate(events.published.count[1m])` |\n| API Calls Reduction | Significant vs. baseline | Before API calls / After API calls |\n| End-to-End Latency P95 | < Baseline + 500ms | Event emission to broker ack time |\n| GC Pause Time | < 100ms | JVM GC metrics from Flight Recorder |\n| CPU Utilization | Stable or reduced | CloudWatch EC2/EKS CPU metrics |\n\n**Cost Metrics:**\n\n| Metric | Target | Measurement Method |\n| ------ | ------ | ------------------ |\n| Monthly Event Broker Costs | Reduced vs. baseline | AWS Cost Explorer for EventBridge/SNS |\n| Cost Per Million Events | Track trend | Monthly broker cost / Events published |\n| Cost Savings vs Baseline | Document quarterly | (Baseline cost - Current cost) * 12 |\n\n**Operational Metrics:**\n\n| Metric | Target | Measurement Method |\n| ------ | ------ | ------------------ |\n| Alert Frequency | < 5 per week | Count of batching-related alerts |\n| Incident Count | < 1 per month | P2+ incidents related to batching |\n| Mean Time to Detection | < 5 minutes | Time from issue to alert |\n| Mean Time to Resolution | < 30 minutes | Time from alert to resolution |\n\n**Dashboard Requirements:**\n\nAll services implementing event batching must maintain a CloudWatch/Grafana dashboard with:\n\n- Real-time batch size distribution histogram\n- Buffer depth gauge per topic\n- Publish success/failure rate counters\n- Latency percentiles (P50, P95, P99)\n- DLQ depth over time\n- Cost impact tracking (events published before vs. after batching)",
+    "51": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#examples-and-use-cases]\n\n## Examples and Use Cases",
+    "52": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#real-world-example-1-claims-processing-service-optimization]\n\n### Real-World Example 1: Claims Processing Service Optimization\n\n**Context:**\n\nA state Medicaid claims processing service handling 200K claims per day (800K events: claim submitted, validated, adjudicated, payment issued). Each claim generated 4 events published individually to Kafka. Performance issues:\n\n- Individual event publishing: 800K Kafka API calls/day\n- Average latency: 25ms per event (includes serialization + network + broker)\n- Total processing time: 800K × 25ms = 5.5 hours of cumulative event publish time\n- Peak hour throughput: 150 events/second per pod limited by synchronous publishing\n- Infrastructure: 15 pods required to handle peak load\n- Monthly Kafka costs: significant (broker instances + data transfer)\n\n**Implementation:**\n\nTeam implemented time-windowed batching with these parameters:\n\n```yaml\nevent-batching:\n  claim-submitted:\n    batch-size: 100\n    linger-ms: 250\n  claim-adjudicated:\n    batch-size: 150\n    linger-ms: 300\n```\n\n**Changes:**\n\n1. Replaced synchronous `kafkaTemplate.send().get()` with async batching\n2. Events staged in concurrent queue (non-blocking)\n3. Background flush coordinator running every 50ms\n4. Graceful shutdown hook to flush pending batches\n5. Circuit breaker added for Kafka broker failures\n6. CloudWatch dashboard with batch efficiency metrics\n\n**Outcome:**\n\n**Performance Improvements:**\n- API calls reduced significantly (average batch size ~100 events)\n- Throughput increased substantially per pod\n- Latency improved despite buffering window due to async processing\n- Compute resources reduced due to improved throughput per pod\n\n**Cost Savings:**\n- Kafka broker instance count reduced\n- Monthly infrastructure costs reduced\n- Implementation effort paid back quickly\n\n**Reliability:**\n- Zero data loss during 6-month operation\n- 4 Kafka broker outages handled gracefully by circuit breaker\n- 12 events sent to DLQ over 6 months (investigation showed malformed JSON from upstream)\n- No production incidents related to batching\n\n**Lessons Learned:**\n1. Initial batch size 500 too large (caused MessageTooLargeException), reduced to 100-150\n2. Time window critical: without it, events stuck during overnight low-volume hours\n3. Load testing revealed memory leak in buffer management (fixed before production)\n4. Monitoring essential: batch fill rate metric identified suboptimal configuration",
+    "53": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#real-world-example-2-pharmacy-benefits-event-publishing]\n\n### Real-World Example 2: Pharmacy Benefits Event Publishing\n\n**Context:**\n\nPharmacy benefits platform publishing prescription fill events to analytics pipeline for drug utilization analysis. Volume:\n\n- 500M prescription fills annually = 1.37M fills/day\n- Each fill generates 3 events (fill submitted, pharmacy verified, rebate calculated)\n- Total: several million events/day published to AWS EventBridge\n- At EventBridge pay-per-event pricing, aggregate costs across multiple services are significant\n\n**Business Driver:**\n\nCTO cost optimization mandate: reduce cloud infrastructure costs while maintaining service levels. Event infrastructure identified as optimization opportunity.\n\n**Implementation:**\n\nImplemented adaptive batching with dynamic batch sizes:\n\n```python\nclass AdaptiveBatcher:\n    def __init__(self):\n        self.min_batch = 50\n        self.max_batch = 1000\n        self.target_latency_ms = 300\n        self.current_batch_size = 100\n\n    def adjust_batch_size(self, observed_latency_ms, throughput):\n        if observed_latency_ms < self.target_latency_ms * 0.8:\n            # Latency good, can increase batch for efficiency\n            self.current_batch_size = min(self.max_batch,\n                                         self.current_batch_size * 1.2)\n        elif observed_latency_ms > self.target_latency_ms:\n            # Latency too high, reduce batch size\n            self.current_batch_size = max(self.min_batch,\n                                         self.current_batch_size * 0.8)\n```\n\n**Outcome:**\n\n**Cost Reduction:**\n- API calls reduced substantially (average batch ~82 events)\n- EventBridge costs reduced significantly per service\n- Enterprise-wide costs reduced proportionally\n\n**Performance:**\n- Throughput maintained: No degradation in end-to-end processing time\n- P95 latency: 320ms (280ms buffering + 40ms publish) within SLA\n- Adaptive algorithm: Batch size ranged 50-800 based on traffic patterns\n- Peak hour: Batch size 600-800 (high volume, maximize efficiency)\n- Off-peak: Batch size 50-100 (low volume, minimize latency)\n\n**Operational:**\n- Implementation time: 1 week (Python async implementation simpler than Java)\n- Zero production issues in 4-month operation\n- Monitoring showed 95% batch fill rate (excellent efficiency)",
+    "54": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#use-case-scenarios]\n\n### Use Case Scenarios",
+    "55": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#scenario-1-high-volume-audit-logging]\n\n#### Scenario 1: High-Volume Audit Logging\n\n**Situation:**\nCompliance audit service logging high volumes of audit events daily to S3 via Kinesis Firehose. Events non-critical (bulk analytics, not real-time). Firehose PUT request charges accumulate at high individual event volumes.\n\n**Batching Strategy:**\n- Large batches: 500-1000 events (cost priority over latency)\n- Long time window: 1000ms (events can wait 1 second)\n- Memory-based flush: 5MB per buffer (prevent memory buildup)\n\n**Expected Outcome:**\n- Firehose PUT requests reduced substantially (large batch sizes)\n- Cost reduced proportionally to batch size increase\n- Latency: 1 second max acceptable for audit pipeline\n\n**Implementation Consideration:**\nAdd shutdown hook critical since audit events must not be lost. Compliance requirements demand no data loss.",
+    "56": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#scenario-2-near-real-time-member-eligibility-updates]\n\n#### Scenario 2: Near-Real-Time Member Eligibility Updates\n\n**Situation:**\nMember eligibility service publishing eligibility change events consumed by real-time portals. Latency requirement < 500ms end-to-end.\n\n**Batching Strategy:**\n- Small batches: 50-100 events (latency priority)\n- Short time window: 200ms (ensure < 500ms total latency)\n- Partition-aware: Maintain ordering per member ID\n\n**Expected Outcome:**\n- Moderate API reduction (smaller batches)\n- Latency maintained: 200ms buffer + 50ms publish = 250ms (within 500ms SLA)\n- Ordering preserved: Per-member events stay in order\n\n**Implementation Consideration:**\nMonitor P95 latency closely. If approaching 500ms limit, reduce batch size or linger time.",
+    "57": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#scenario-3-bursty-provider-directory-sync]\n\n#### Scenario 3: Bursty Provider Directory Sync\n\n**Situation:**\nProvider directory service syncing 2M provider records nightly. Updates published as events. Traffic pattern: 50K events/hour during 4-hour sync window, < 100 events/hour rest of day.\n\n**Batching Strategy:**\n- Adaptive batching: Large batches during sync (500+), small batches off-peak (50)\n- Hybrid triggers: Size-based during sync, time-based off-peak\n- Memory monitoring: 20MB buffer limit during bulk operations\n\n**Expected Outcome:**\n- Sync window: Large batches of 500+ substantially reduce API calls during bulk operations\n- Off-peak: Small batches prevent stale data (< 1 minute latency)\n- Resource efficiency: No memory bloat during bulk sync\n\n**Implementation Consideration:**\nAdaptive algorithm complexity justified by extreme traffic variance (500x difference peak/off-peak).",
+    "58": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#before-and-after-comparison]\n\n### Before and After Comparison",
+    "59": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#before-individual-event-publishing]\n\n#### Before (Individual Event Publishing)\n\n**Architecture:**\n- Each microservice publishes events individually as generated\n- Synchronous publishing: `kafkaTemplate.send().get()` blocks thread\n- No buffering or aggregation layer\n- Simple implementation, easy to understand\n\n**Performance Characteristics:**\n- Throughput: 100-200 events/sec per pod (I/O bound)\n- Latency: 20-30ms per event (network + broker)\n- API calls: 1:1 ratio (1 event = 1 API call)\n- Resource usage: High connection pool utilization, frequent GC\n\n**Cost Profile:**\n- EventBridge, SNS, and CloudWatch charges scale linearly with individual event volume\n- Individual publishing maximizes per-event API call count and corresponding charges\n\n**Operational:**\n- High log volume: One log entry per event publish\n- Alert noise: Individual failures trigger many alerts\n- Troubleshooting: Hard to identify patterns in high-volume failures\n\n**Scaling Challenges:**\n- Linear scaling: Need 2x pods for 2x events\n- Connection limits: HTTP pools saturate at high concurrency\n- Broker strain: Small messages cause high metadata overhead",
+    "60": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#after-batch-event-publishing]\n\n#### After (Batch Event Publishing)\n\n**Architecture:**\n- Events staged in in-memory buffers (non-blocking)\n- Background flush coordinator monitors size/time triggers\n- Batches published asynchronously\n- Slightly more complex but well-encapsulated\n\n**Performance Characteristics:**\n- Throughput: 400-800 events/sec per pod (3-4x improvement)\n- Latency: 250ms buffer + 15ms publish = 265ms (higher per-event but better aggregate)\n- API calls: 1:100 ratio (100 events = 1 API call)\n- Resource usage: Lower connection pool usage, reduced GC pressure\n\n**Cost Profile:**\n- EventBridge: batching consolidates many events into single requests, dramatically reducing per-event API call charges\n- Data transfer: similar total data volume but fewer requests reduces overhead\n- CloudWatch: fewer batch-level metric datapoints vs. per-event metrics reduces monitoring costs\n\n**Operational:**\n- Cleaner logs: Batch-level logging reduces log volume 100x\n- Better alerts: Batch failures easier to spot, less noise\n- Easier troubleshooting: Batch metrics show clear patterns\n\n**Scaling Benefits:**\n- Sub-linear scaling: 3x events = 1.5x pods (batching efficiency)\n- Connection efficiency: Fewer connections, higher utilization\n- Broker efficiency: Larger messages reduce metadata overhead\n\n**Quantitative Comparison:**\n\n| Metric | Before (Individual) | After (Batched) | Improvement |\n|--------|--------------------|-----------------|--------------|\n| Events/sec per pod | Lower | Higher | Improved by batching |\n| API calls (per batch of 100 events) | 100 calls | 1 call | 99% reduction |\n| P95 publish latency | Higher per-call | Lower per-batch | Improved aggregate |\n| Pods needed (peak) | More | Fewer | Reduced compute |\n| Connection pool usage | Higher | Lower | Reduced contention |\n| GC pause time P95 | Higher | Lower | Reduced allocation pressure |\n| Log volume (GB/day) | 50 GB | 0.5 GB | 99% reduction |\n| Alert frequency | 50/week | 2/week | 96% reduction |",
+    "61": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#related-patterns-and-references]\n\n## Related Patterns and References",
+    "62": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#related-patterns]\n\n### Related Patterns\n\n**Complementary Patterns:**\n\n- **Event Transformation Pattern** (PTN-APP-EVT-015) - Often combined with batching; transform events before batching to reduce payload size\n\n- **Circuit Breaker Pattern** - Essential companion to batching for handling event broker failures; prevents cascade failures during outages\n\n- **Dead Letter Queue Pattern** (PTN-INFRA-EVT-001) - Used together with batching for handling persistently failing events after batch retry exhausted\n\n- **Event Retry Pattern** (PTN-INFRA-EVT-002) - Batch-level and individual-level retry strategies for handling transient failures\n\n- **Asynchronous Processing Pattern** - Batching implements async publishing; can be combined with async consumption for end-to-end pipeline\n\n- **Backpressure Handling Pattern** - When batch buffers fill faster than publish rate, backpressure mechanisms prevent memory exhaustion\n\n**Alternative Patterns:**\n\n- **Stream Processing Micro-Batching** (Spark Streaming, Flink) - Framework-level batching for stream processing; different from application-level batching\n  - *When to use*: Complex stream analytics with windowing aggregations\n  - *Trade-off*: Higher infrastructure complexity but powerful processing capabilities\n\n- **Database Batch Insert** - Similar concept applied to database writes instead of event publishing\n  - *When to use*: High-volume database writes (OLTP applications)\n  - *Trade-off*: Same benefits (reduced round-trips) but different failure semantics\n\n- **Message Queuing with Batch Polling** - Consumer pulls batches from queue instead of producer pushing batches\n  - *When to use*: Consumer-driven batching where consumer wants to control batch size\n  - *Trade-off*: Shifts batching responsibility to consumer, simpler producer",
+    "63": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#dependencies]\n\n### Dependencies\n\n**Pattern Dependencies:**\n\n- **Asynchronous Programming Pattern** - Batching requires async/non-blocking I/O to achieve performance benefits\n\n- **Graceful Shutdown Pattern** - Critical for flushing pending batches during application termination\n\n- **Health Check Pattern** - Batch buffers and publish latency must be included in health checks\n\n- **Monitoring and Metrics Pattern** - Comprehensive metrics essential for tuning batch parameters and troubleshooting\n\n**Technology Dependencies:**\n\n- **Event Broker**: Kafka, AWS SNS/EventBridge, Azure Event Hubs, or Google Pub/Sub\n\n- **Concurrent Collections**: Thread-safe queues (Java ConcurrentLinkedQueue, Python asyncio.Queue)\n\n- **Async Libraries**: Spring WebFlux, CompletableFuture, Python asyncio, Node.js Promises\n\n- **Monitoring**: CloudWatch, Prometheus, Datadog, or equivalent metrics platform\n\n**Standards Dependencies:**\n\n- **Event-Driven Architecture Standard** (STD-INT-002) - Defines event schema, reliability, and broker patterns\n\n- **Performance Engineering Standard** (STD-APP-005) - Requires performance optimization for high-volume services\n\n- **Resilience Standard** (STD-APP-003) - Mandates circuit breakers and retry logic",
+    "64": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#external-references]\n\n### External References\n\n**Kafka Documentation:**\n\n- [Kafka Producer Configurations](https://kafka.apache.org/documentation/#producerconfigs) - Official Kafka producer tuning guide including batching parameters\n\n- [Kafka Performance Tuning](https://kafka.apache.org/documentation/#maximizingefficiency) - Best practices for maximizing Kafka throughput\n\n- [Kafka Batch Configuration](https://kafka.apache.org/documentation/#design_batching) - How Kafka's built-in batching works (linger.ms, batch.size)\n\n**AWS Documentation:**\n\n- [EventBridge PutEvents API](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_PutEvents.html) - Supports batching up to 10 events per API call\n\n- [SNS Batch Publishing](https://docs.aws.amazon.com/sns/latest/api/API_PublishBatch.html) - SNS batch API documentation (up to 10 messages)\n\n- [Kinesis PutRecords](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_PutRecords.html) - Kinesis batch write API (up to 500 records)\n\n**Performance Patterns:**\n\n- [Martin Fowler - Event-Driven Architecture](https://martinfowler.com/articles/201701-event-driven.html) - Foundational article on event-driven patterns\n\n- [High-Performance Kafka](https://www.confluent.io/blog/configure-kafka-to-minimize-latency/) - Confluent blog on Kafka performance optimization\n\n- [AWS Well-Architected - Performance Efficiency](https://docs.aws.amazon.com/wellarchitected/latest/performance-efficiency-pillar/welcome.html) - AWS performance best practices\n\n**Resilience Patterns:**\n\n- [Release It! by Michael Nygard](https://pragprog.com/titles/mnee2/release-it-second-edition/) - Chapter 5 covers bulk operations and batching patterns\n\n- [Resilience4j Circuit Breaker](https://resilience4j.readme.io/docs/circuitbreaker) - Circuit breaker library documentation\n\n- [Martin Fowler - Circuit Breaker](https://martinfowler.com/bliki/CircuitBreaker.html) - Classic article on circuit breaker pattern\n\n**Academic Papers:**\n\n- [\"Scalable Event Processing\" - Google Research](https://research.google/pubs/pub62/) - Research on event processing at scale\n\n- [\"Stream Processing with Batch Semantics\" - Apache Beam](https://beam.apache.org/documentation/programming-guide/) - Unified batch and stream processing model\n\n**Open Source Projects:**\n\n- [Spring Kafka Batch Listener](https://docs.spring.io/spring-kafka/reference/html/#batch-listeners) - Spring framework batch consumption patterns\n\n- [AWS Lambda Event Source Batching](https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html) - Lambda batch processing examples\n\n- [Kafka Streams](https://kafka.apache.org/documentation/streams/) - Stream processing with micro-batching\n\n**Industry Blogs:**\n\n- [LinkedIn Engineering - Kafka at Scale](https://engineering.linkedin.com/kafka/running-kafka-scale) - Real-world Kafka batching at massive scale\n\n- [Uber Engineering - Event-Driven Architecture](https://eng.uber.com/reliable-reprocessing/) - Event batching in Uber's platform\n\n- [Netflix Tech Blog - Event Aggregation](https://netflixtechblog.com/data-pipeline-asset-management-with-dataflow-86525b3e21ca) - Netflix's approach to event batching",
+    "65": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#change-history]\n\n## Change History\n\n_Detailed change log for this pattern. Include all significant modifications, updates, and revisions._\n\n| Date       | Version | Author        | Description              | Impact      |\n| ---------- | ------- | ------------- | ------------------------ | ----------- |\n| 2025-12-26 | 1.0.0   | EAP Team | Initial pattern creation | New pattern |",
+    "66": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#review-log]\n\n## Review Log\n\n_Record of all formal reviews conducted for this pattern._\n\n| Review Date | Review Type | Reviewer(s)      | Status | Comments | Actions |\n| ----------- | ----------- | ---------------- | ------ | -------- | ------- |\n| 2025-12-26  | Self-Review | EAP Team | Approved  | Comprehensive event batching pattern with Spring Boot/Python implementations, real-world healthcare examples, extensive error handling and monitoring guidance | Ready for Architecture Review Board |\n\n---",
+    "67": "[patterns/application/event-driven/PTN-APP-EVT-001-application-event-batching-pattern.md#tldr]\n\n## TL;DR\n\n**Problem:** High-volume event-driven healthcare systems publishing millions of events daily face excessive API call overhead, poor throughput, elevated cloud costs, and broker saturation during peak loads when publishing events individually, resulting in performance bottlenecks, increased latency, and unsustainable cost growth as transaction volumes increase.\n\n**Solution:** Implement event batching by aggregating multiple events into batches before publishing to event brokers (Kafka, SNS, EventBridge) using in-memory buffers flushed based on configurable triggers (batch size 100-1000 events, time window 100-500ms, memory limits), asynchronous publishing with non-blocking I/O, intelligent retry logic with exponential backoff and partial batch retry, dead letter queues for failed events, circuit breakers for broker failures, and graceful shutdown hooks to flush pending batches, achieving significant API call reduction, improved throughput, and reduced infrastructure costs.\n\n**When to Use:**\n- High-volume event publishing services (100K+ events/day) where individual publishing creates bottlenecks\n- Non-critical latency requirements where 100-500ms buffering delay acceptable (not life-critical alerts)\n- Cost optimization goals where API call charges are significant portion of infrastructure spend\n- Event brokers experiencing saturation from excessive small message traffic\n- Claims processing, member eligibility, provider updates, pharmacy events, or audit logging systems\n\n**Key Benefits:**\n- **API Reduction**: Significant fewer API calls — batching events consolidates N calls into 1 per batch\n- **Cost Savings**: Reduced infrastructure cost; pay-per-request services (EventBridge/SNS) charge per API call, not per event in batch\n- **Throughput**: Improved events/second by amortizing connection overhead across batches\n- **Scalability**: Better resource utilization enabling higher total event volumes with fewer compute resources\n- **Operational**: Reduced log volume, less alert noise, easier troubleshooting\n\n**Implementation Complexity:** Medium\n\n**Prerequisites:** Event broker (Kafka/SNS/EventBridge), async programming support (Java CompletableFuture, Python asyncio), concurrent collections, monitoring infrastructure (CloudWatch/Prometheus), understanding of thread safety and graceful shutdown patterns, non-critical latency requirements (< 500ms buffering acceptable).\n\n**Related Patterns:** Event Transformation Pattern (PTN-APP-EVT-015), Circuit Breaker Pattern, Dead Letter Queue Pattern (PTN-INFRA-EVT-001), Event Retry Pattern (PTN-INFRA-EVT-002), Asynchronous Processing Pattern, Backpressure Handling Pattern\n\n---"
+  },
+  "coverage": {
+    "total_pages": 67,
+    "covered_pages": 67,
+    "sampled_pages": 67,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 67
+  }
+}

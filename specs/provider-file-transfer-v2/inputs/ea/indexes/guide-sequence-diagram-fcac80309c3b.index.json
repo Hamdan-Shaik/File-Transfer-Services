@@ -1,0 +1,139 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Sequence Diagram Styling and Elements You've Established",
+  "document_description": "1. **Actor**: `actor User` - for human users",
+  "total_pages": 13,
+  "tree": [
+    {
+      "title": "Sequence Diagram Styling and Elements You've Established",
+      "node_id": "sequence-diagram-styling-and-elements-youve-established",
+      "start_index": 1,
+      "end_index": 13,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "**Participant Types and Styling:**",
+          "node_id": "participant-types-and-styling",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "**Arrow Types and Conventions:**",
+          "node_id": "arrow-types-and-conventions",
+          "start_index": 3,
+          "end_index": 7,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "**Front-Channel Interactions (Browser-mediated)**",
+              "node_id": "front-channel-interactions-browser-mediated",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "**Back-Channel Interactions (Server-to-server)**",
+              "node_id": "back-channel-interactions-server-to-server",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "**User Interactions**",
+              "node_id": "user-interactions",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "**Response Patterns**",
+              "node_id": "response-patterns",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "**Sequence Flow Patterns:**",
+          "node_id": "sequence-flow-patterns",
+          "start_index": 8,
+          "end_index": 8,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "**Note Conventions:**",
+          "node_id": "note-conventions",
+          "start_index": 9,
+          "end_index": 9,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "**Advanced Flow Constructs:**",
+          "node_id": "advanced-flow-constructs",
+          "start_index": 10,
+          "end_index": 10,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "**Channel Communication Examples:**",
+          "node_id": "channel-communication-examples",
+          "start_index": 11,
+          "end_index": 13,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "**Front-Channel Pattern:**",
+              "node_id": "front-channel-pattern",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "**Back-Channel Pattern:**",
+              "node_id": "back-channel-pattern",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[strategy/guidance/security/guide-sequence-diagram.md#sequence-diagram-styling-and-elements-youve-established]\n\n## Sequence Diagram Styling and Elements You've Established",
+    "2": "[strategy/guidance/security/guide-sequence-diagram.md#participant-types-and-styling]\n\n### **Participant Types and Styling:**\n\n1. **Actor**: `actor User` - for human users\n2. **Participant**: `participant Browser` - for browser/client applications\n3. **Participant with Aliases**: `participant App as Test Application` - descriptive aliases\n4. **Multi-line Participant Names**: Using `<br/>` for line breaks in names like:\n   - `Environment AAA<br/>(Identity Broker)`\n   - `Environment BBB<br/>(External OIDC IdP)`",
+    "3": "[strategy/guidance/security/guide-sequence-diagram.md#arrow-types-and-conventions]\n\n### **Arrow Types and Conventions:**",
+    "4": "[strategy/guidance/security/guide-sequence-diagram.md#front-channel-interactions-browser-mediated]\n\n#### **Front-Channel Interactions (Browser-mediated)**\n\n1. **Browser Redirects**:\n   - **Redirect Trigger** (dotted line): `App-->>Browser: 302 Redirect to IdP`\n   - **Browser Follows Redirect** (solid line): `Browser->>IdP: Follow redirect (authorization request)`\n   - Shows the full interaction through the Browser for front-channel flows",
+    "5": "[strategy/guidance/security/guide-sequence-diagram.md#back-channel-interactions-server-to-server]\n\n#### **Back-Channel Interactions (Server-to-server)**\n\n1. **Solid Arrows (`->>`)**: For all back-channel communications\n   - API calls: `App->>IdP: Token exchange (back-channel)`\n   - Service-to-service: `IdP->>External_API: Fetch user attributes`\n   - Database calls: `IdP->>UserStore: Query user profile`",
+    "6": "[strategy/guidance/security/guide-sequence-diagram.md#user-interactions]\n\n#### **User Interactions**\n\n1. **User Actions**: `User->>Browser: Click login button`\n2. **No Browser-to-User Responses**: Browser responses to User are assumed and not shown\n   - if appropriate, instead of the line add a \"Note over Browser, User: {description}`\n3. **User Input**: `User->>Browser: Enter credentials`",
+    "7": "[strategy/guidance/security/guide-sequence-diagram.md#response-patterns]\n\n#### **Response Patterns**\n\n1. **Dashed Arrows (`-->>`)**: For responses back through the call chain\n   - API responses: `IdP-->>App: ID token + access token`\n   - Redirect responses: `IdP-->>Browser: Authorization code redirect`",
+    "8": "[strategy/guidance/security/guide-sequence-diagram.md#sequence-flow-patterns]\n\n### **Sequence Flow Patterns:**\n\n1. **Autonumber**: `autonumber` for step tracking\n2. **Front-Channel vs Back-Channel Distinction**:\n   - Front-channel: Dotted trigger → Solid browser follow → Response chain\n   - Back-channel: Solid calls throughout\n3. **Detailed Message Labels**: Descriptive messages like:\n   - `302 Redirect: /authorize?client_id=...&redirect_uri=...`\n   - `POST /token (back-channel): authorization_code + PKCE verifier`\n   - `ID token + access token + refresh token`",
+    "9": "[strategy/guidance/security/guide-sequence-diagram.md#note-conventions]\n\n### **Note Conventions:**\n\n1. **Process Notes**: `Note over IdP: Detects external IdP required`\n2. **Multi-line Notes**: Using `<br/>` for line breaks\n3. **Cross-references**: `Note over IdP: JIT User Create/Update Process<br/>(See detailed diagram below)`\n4. **User Context Notes**: `Note over Browser: User completes MFA challenge`\n5. **Technical Details**: `Note over IdP: Validates PKCE code_challenge<br/>Generates tokens with user claims`",
+    "10": "[strategy/guidance/security/guide-sequence-diagram.md#advanced-flow-constructs]\n\n### **Advanced Flow Constructs:**\n\n1. **Alt/Else Blocks**: For conditional logic (MFA required, first-time user, etc.)\n2. **Self-calls**: `IdP->>IdP: Generate tokens with user context`\n3. **Detailed Claims**: `ID Token with claims:<br/>sub, email, groups, tenant_id, etc.`\n4. **Error Handling**: `IdP-->>Browser: 400 Bad Request (invalid_grant)`",
+    "11": "[strategy/guidance/security/guide-sequence-diagram.md#channel-communication-examples]\n\n### **Channel Communication Examples:**",
+    "12": "[strategy/guidance/security/guide-sequence-diagram.md#front-channel-pattern]\n\n#### **Front-Channel Pattern:**\n\n```mermaid\nUser->>Browser: Click \"Login\"\nBrowser->>App: GET /protected-resource\nApp-->>Browser: 302 Redirect to IdP\nBrowser->>IdP: GET /authorize?client_id=...\n```",
+    "13": "[strategy/guidance/security/guide-sequence-diagram.md#back-channel-pattern]\n\n#### **Back-Channel Pattern:**\n\n```mermaid\nApp->>IdP: POST /token (authorization_code)\nIdP->>UserStore: Query user attributes\nUserStore-->>IdP: User profile data\nIdP-->>App: ID token + access token\n```\n\nThis styling creates very clear, professional sequence diagrams that distinguish between front-channel browser redirects and back-channel server communications, while eliminating unnecessary Browser-to-User response arrows that are assumed in web interactions."
+  },
+  "coverage": {
+    "total_pages": 13,
+    "covered_pages": 13,
+    "sampled_pages": 13,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 13
+  }
+}

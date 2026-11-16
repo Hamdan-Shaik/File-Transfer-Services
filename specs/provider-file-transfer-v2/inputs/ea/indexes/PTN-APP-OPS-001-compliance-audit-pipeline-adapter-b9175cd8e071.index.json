@@ -1,0 +1,296 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "ADR-OPS-003: Compliance Audit Pipeline — Adapter Pattern, Event Schema, and S3 Object Lock Retention",
+  "document_description": "Portal Studio uses an **adapter-pattern audit pipeline** — the BFF writes audit events through an `AuditAdapter` interface with two implementations selected at runtime by the `AUDIT_ADAPTER` environment variable. `local` appends JSON lines to a rotating file for development and CI. `s3` is a fire-and-forget async pipeline: the BFF pushes each event to a Redis LIST; a Kubernetes CronJob flusher dra",
+  "total_pages": 30,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 30,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "ADR-OPS-003: Compliance Audit Pipeline — Adapter Pattern, Event Schema, and S3 Object Lock Retention",
+          "node_id": "adr-ops-003-compliance-audit-pipeline--adapter-pattern-event-schema-and-s3-object-lock-retention",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Decision Summary",
+          "node_id": "decision-summary",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Context and Problem Statement",
+          "node_id": "context-and-problem-statement",
+          "start_index": 5,
+          "end_index": 6,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Decision Drivers",
+              "node_id": "decision-drivers",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Required Option",
+          "node_id": "required-option",
+          "start_index": 7,
+          "end_index": 14,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Adapter-Pattern Audit Pipeline with `local` and `s3` Implementations",
+              "node_id": "adapter-pattern-audit-pipeline-with-local-and-s3-implementations",
+              "start_index": 8,
+              "end_index": 14,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "1. Adapter Interface and Environment-Driven Selection",
+                  "node_id": "1-adapter-interface-and-environment-driven-selection",
+                  "start_index": 9,
+                  "end_index": 9,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "2. `local` Adapter — Rotating JSON Lines File",
+                  "node_id": "2-local-adapter--rotating-json-lines-file",
+                  "start_index": 10,
+                  "end_index": 10,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "3. `s3` Adapter — Async Redis Queue + CronJob Flusher",
+                  "node_id": "3-s3-adapter--async-redis-queue--cronjob-flusher",
+                  "start_index": 11,
+                  "end_index": 11,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "4. Unified Audit Event Schema",
+                  "node_id": "4-unified-audit-event-schema",
+                  "start_index": 12,
+                  "end_index": 12,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "5. Action Types and Firing Conditions",
+                  "node_id": "5-action-types-and-firing-conditions",
+                  "start_index": 13,
+                  "end_index": 13,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "6. S3 Key Structure and Retention",
+                  "node_id": "6-s3-key-structure-and-retention",
+                  "start_index": 14,
+                  "end_index": 14,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Considered Options",
+          "node_id": "considered-options",
+          "start_index": 15,
+          "end_index": 19,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Option 1: Adapter Pattern with `local` + `s3` Implementations (Selected)",
+              "node_id": "option-1-adapter-pattern-with-local--s3-implementations-selected",
+              "start_index": 16,
+              "end_index": 16,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Option 2: Synchronous S3 PutObject per Event",
+              "node_id": "option-2-synchronous-s3-putobject-per-event",
+              "start_index": 17,
+              "end_index": 17,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Option 3: Synchronous CloudWatch PutLogEvents per Event",
+              "node_id": "option-3-synchronous-cloudwatch-putlogevents-per-event",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Option 4: Kafka / Kinesis Event Stream",
+              "node_id": "option-4-kafka--kinesis-event-stream",
+              "start_index": 19,
+              "end_index": 19,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Decision Outcome",
+          "node_id": "decision-outcome",
+          "start_index": 20,
+          "end_index": 20,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Consequences",
+          "node_id": "consequences",
+          "start_index": 21,
+          "end_index": 24,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "✅ Positive",
+              "node_id": "-positive",
+              "start_index": 22,
+              "end_index": 22,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "❌ Negative",
+              "node_id": "-negative",
+              "start_index": 23,
+              "end_index": 23,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "⚪ Neutral",
+              "node_id": "-neutral",
+              "start_index": 24,
+              "end_index": 24,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Risk Assessment & Mitigation",
+          "node_id": "risk-assessment--mitigation",
+          "start_index": 25,
+          "end_index": 27,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "⚠️ Risks",
+              "node_id": "-risks",
+              "start_index": 26,
+              "end_index": 26,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "🛡️ Mitigations",
+              "node_id": "-mitigations",
+              "start_index": 27,
+              "end_index": 27,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Compliance Notes",
+          "node_id": "compliance-notes",
+          "start_index": 28,
+          "end_index": 28,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Review and Approval",
+          "node_id": "review-and-approval",
+          "start_index": 29,
+          "end_index": 29,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "📋 Change Log",
+          "node_id": "-change-log",
+          "start_index": 30,
+          "end_index": 30,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "> **Promoted from:** `mmes-cms-studio/docs/decisions/ADR-OPS-003-audit-event-adapter.md`  \n> **Ref-arch artifact ID:** `PTN-APP-OPS-001-compliance-audit-pipeline-adapter`  \n> This document has been promoted to the Enterprise Architecture Platform reference architecture. Product repos should reference this artifact rather than maintaining their own copy.\n\n---",
+    "2": "[patterns/application/PTN-APP-OPS-001-compliance-audit-pipeline-adapter.md#adr-ops-003-compliance-audit-pipeline--adapter-pattern-event-schema-and-s3-object-lock-retention]\n\n## ADR-OPS-003: Compliance Audit Pipeline — Adapter Pattern, Event Schema, and S3 Object Lock Retention\n\n---\n\n|               |                                                                                                                                              |\n| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |\n| **Status**    | ✅ Accepted                                                                                                                                   |\n| **Date**      | 2026-08-06                                                                                                                                   |\n| **Issuer**    | [Enterprise Architecture Practice](mailto:EAP-Core@mygainwell.onmicrosoft.com?subject=ADR-OPS-003%20Audit-Event-Adapter)                  |\n| **Consulted** | Mike Goppert, James Macurak                                                                                                                 |\n| **Informed**  | MMES Platform Team, Gainwell EA                                                                                                             |\n\n---",
+    "3": "[patterns/application/PTN-APP-OPS-001-compliance-audit-pipeline-adapter.md#table-of-contents]\n\n## Table of Contents\n\n- [Decision Summary](#decision-summary)\n- [Context and Problem Statement](#context-and-problem-statement)\n- [Required Option](#required-option)\n- [Considered Options](#considered-options)\n- [Decision Outcome](#decision-outcome)\n- [Consequences](#consequences)\n- [Risk Assessment & Mitigation](#risk-assessment--mitigation)\n- [Compliance Notes](#compliance-notes)\n- [Review and Approval](#review-and-approval)\n\n---",
+    "4": "[patterns/application/PTN-APP-OPS-001-compliance-audit-pipeline-adapter.md#decision-summary]\n\n## Decision Summary\n\nPortal Studio uses an **adapter-pattern audit pipeline** — the BFF writes audit events through an `AuditAdapter` interface with two implementations selected at runtime by the `AUDIT_ADAPTER` environment variable. `local` appends JSON lines to a rotating file for development and CI. `s3` is a fire-and-forget async pipeline: the BFF pushes each event to a Redis LIST; a Kubernetes CronJob flusher drains the queue every 60 seconds (or at 1,000 events) and writes a compressed `.jsonl.gz` file to S3 with COMPLIANCE Object Lock and 6-year minimum retention (HIPAA §164.312(b)). This ADR is a companion to ADR-OPS-002 — OPS-002 governs operational telemetry and structured logging; OPS-003 governs the compliance audit trail produced by the BFF.\n\n---",
+    "5": "[patterns/application/PTN-APP-OPS-001-compliance-audit-pipeline-adapter.md#context-and-problem-statement]\n\n## Context and Problem Statement\n\n**Business Context:** Portal Studio's BFF layer sits between end users and PHI-adjacent Product Domain APIs. Every access — read, reveal, write, deployment, authentication, and authorization denial — must be recorded in a tamper-evident audit trail that regulators can query to reconstruct \"who accessed what, when, from which persona.\" State Medicaid programs and HIPAA §164.312(b) require this without exception.\n\n**Technical Context:** ADR-OPS-002 established an immutable CloudWatch audit log for Studio-plane security events (deployments, configuration changes, persona changes). That design pre-dates the BFF and does not address high-frequency per-request audit events at BFF scale. The BFF must record an audit event for every PHI-adjacent API call, every field reveal, and every auth event — potentially thousands of events per minute per tenant in production. A synchronous S3 write per request is incompatible with the BFF's `< 50ms p95` overhead target. A separate, purpose-built pipeline is required.\n\n**Problem Statement:** How does the BFF record a compliant, immutable audit trail for all PHI-adjacent access without adding unacceptable per-request latency, and how is the same code exercised in local development and CI without any external dependencies?",
+    "6": "[patterns/application/PTN-APP-OPS-001-compliance-audit-pipeline-adapter.md#decision-drivers]\n\n### Decision Drivers\n\n- 📋 HIPAA — §164.312(b) Audit Controls: systems containing e-PHI must record and examine activity; audit log itself must be PHI-free\n- 📋 Ref arch — `GUID-SEC-INT-API GATEWAY-2.8.01` \"Log all API transactions; Mask PHI in logs\"; `GUID-SEC-DATA-MASK-2.5.06` \"detokenization workflows SHALL be audited\"\n- ⚡ Performance — BFF p95 overhead target `< 50ms`; direct S3 PutObject adds 20–80ms per request\n- 🔒 Durability — audit events must survive BFF crashes and flusher restarts without loss\n- 🧪 Developer experience — local development and CI must produce auditable output without Redis or S3 dependencies\n\n---",
+    "7": "[patterns/application/PTN-APP-OPS-001-compliance-audit-pipeline-adapter.md#required-option]\n\n## Required Option",
+    "8": "[patterns/application/PTN-APP-OPS-001-compliance-audit-pipeline-adapter.md#adapter-pattern-audit-pipeline-with-local-and-s3-implementations]\n\n### Adapter-Pattern Audit Pipeline with `local` and `s3` Implementations\n\n---",
+    "9": "[patterns/application/PTN-APP-OPS-001-compliance-audit-pipeline-adapter.md#1-adapter-interface-and-environment-driven-selection]\n\n#### 1. Adapter Interface and Environment-Driven Selection\n\n**Decision:** The BFF records audit events through an `AuditAdapter` interface. The concrete implementation is resolved once at startup from the `AUDIT_ADAPTER` environment variable. Application code never references an implementation directly — all call sites use the interface.\n\n| `AUDIT_ADAPTER` value | Implementation | When used |\n|---|---|---|\n| `local` | Appends JSON lines to a rotating local file | Local development, CI |\n| `s3` | Fire-and-forget async via Redis LIST + CronJob flusher | All deployed environments (dev through prd) |\n\n**Default:** `AUDIT_ADAPTER=local` in the Docker Compose dev stack and in CI. The deployed Helm chart sets `AUDIT_ADAPTER=s3`.\n\n---",
+    "10": "[patterns/application/PTN-APP-OPS-001-compliance-audit-pipeline-adapter.md#2-local-adapter--rotating-json-lines-file]\n\n#### 2. `local` Adapter — Rotating JSON Lines File\n\n**Decision:** The `local` adapter appends one JSON line per event to `.tmp/audit.log` (relative to the BFF working directory). The file rotates at 10MB — the active file is renamed to `.tmp/audit-{timestamp}.log` and a new `.tmp/audit.log` is opened. Rotation is synchronous and performed inline before the write.\n\n**Rationale:** Zero external dependencies. CI pipelines can assert audit events were recorded by reading `.tmp/audit.log`. Developers can tail the file for real-time audit visibility without running Redis or localstack.\n\n**Constraints:**\n- The `.tmp/` directory is gitignored — audit logs are never committed\n- The `local` adapter MUST NOT be used in any deployed environment (`AUDIT_ADAPTER=s3` is required by the Helm chart)\n- Log rotation is best-effort; no retention policy applies to local files\n\n---",
+    "11": "[patterns/application/PTN-APP-OPS-001-compliance-audit-pipeline-adapter.md#3-s3-adapter--async-redis-queue--cronjob-flusher]\n\n#### 3. `s3` Adapter — Async Redis Queue + CronJob Flusher\n\n**Decision:** The `s3` adapter is a two-component pipeline. The BFF writes events asynchronously to Redis; a separate Kubernetes CronJob drains the queue and uploads to S3.\n\n**BFF write path (Redis LPUSH):**\n\n1. BFF constructs the audit event (see Section 4 for schema)\n2. BFF calls `LPUSH audit:{tenantId}:{YYYY-MM-DD} <json>` — fire-and-forget; the BFF response is NOT blocked on this call\n3. Redis LPUSH latency: ~0.1ms; does not contribute meaningfully to BFF p95 overhead\n\n**Flusher CronJob (Kubernetes):**\n\n1. Runs every 60 seconds (or immediately when the queue length reaches 1,000 events, via a list-length watch)\n2. Uses `BRPOPLPUSH audit:{tenantId}:{date} audit:inflight:{tenantId}:{date}` to atomically move a batch from the primary queue to an in-flight staging key before upload\n3. Compresses the batch as `.jsonl.gz`\n4. Uploads to S3 at the key: `s3://audit-{env}/{tenantId}/{YYYY}/{MM}/{DD}/audit-{HH}-{flushTimestamp}.jsonl.gz`\n5. On successful upload: `DEL audit:inflight:{tenantId}:{date}` entries for the uploaded batch\n6. On upload failure: items remain in `audit:inflight:{tenantId}:{date}`; the next flusher cycle retries them without data loss\n\n**Crash recovery:** If the flusher pod crashes mid-upload, the in-progress batch remains in `audit:inflight:{tenantId}:{date}`. The restarted flusher detects the inflight key and reprocesses it before pulling new items from the primary queue. Each event carries a UUID `eventId` — S3-side deduplication on `eventId` prevents double-counting if a batch is uploaded twice due to a retry.\n\n**CloudWatch alarm:** A CloudWatch metric alarm fires if any `audit:inflight:{tenantId}:*` key is non-empty for more than 5 consecutive minutes, indicating a sustained upload failure.\n\n**Analytics summary cache (shared flusher, same CronJob):**\n\nThe same CronJob flusher that drains the audit queue also maintains a rolling 24-hour analytics summary in Redis for the `AnalyticsEvent` pipeline (separate Redis key namespace). After flushing each analytics batch to S3, the flusher updates pre-computed aggregates under `analytics:summary:{portalId}:{date}:*` with a 25-hour TTL (1 day + 1 hour buffer for timezone overlap). This gives the Studio Analytics Dashboard (FC-003) sub-millisecond reads for today/yesterday metrics without Athena queries.\n\n```text\nKey schema (ADR-APP-006 compliant — all under analytics:summary: namespace):\n\nanalytics:summary:{portalId}:{date}:page_views   → hash { slug: count }\nanalytics:summary:{portalId}:{date}:sessions      → integer counter\nanalytics:summary:{portalId}:{date}:errors        → hash { statusCode: count }\nanalytics:summary:{portalId}:{date}:rum           → hash { LCP_p75, LCP_p95, INP_p75, CLS_p75, count }\nanalytics:summary:{portalId}:{date}:components    → hash { namespace: mountCount }\n\nAll keys: TTL 25h (auto-expires — no explicit delete needed)\nAll updates: HINCR / INCR — atomic, non-blocking, < 0.1ms per key\n```\n\n**Query strategy for the Studio Analytics Dashboard:**\n\n| Time range | Data source | Latency |\n|---|---|---|\n| Today / yesterday | Redis summary keys | < 5ms |\n| Last 7 days | Athena on S3 (yesterday+) + Redis (today) | 2–5s |\n| Last 30 days | Athena on S3 only | 5–15s |\n\nThe flusher also increments two CloudWatch custom metrics (`analytics.events.flushed`, `analytics.rum.lcp_p75_ms`) so the ops team can monitor trends in CloudWatch dashboards without waiting for the Studio Analytics surface to be built.\n\n**Why Redis LIST over Pub/Sub:** `LPUSH` + `BRPOPLPUSH` provides durable consumption with acknowledgement. Redis Pub/Sub drops in-flight events if the subscriber crashes. The LIST approach guarantees no event is lost as long as Redis itself is available.\n\n**Why async (not synchronous S3 write):** Direct S3 `PutObject` adds 20–80ms of network latency per call. The BFF's `< 50ms` p95 overhead target makes this infeasible. Redis `LPUSH` at ~0.1ms is the only viable path.\n\n---",
+    "12": "[patterns/application/PTN-APP-OPS-001-compliance-audit-pipeline-adapter.md#4-unified-audit-event-schema]\n\n#### 4. Unified Audit Event Schema\n\n**Decision:** All event types use a single schema discriminated by the `action` field. There is no separate schema per action type — this enables a single Athena table definition and forward-compatible schema evolution via `schemaVersion`.\n\n```typescript\n{\n  eventId:       string    // UUID v4 — idempotency key; prevents duplicate flush on retry\n  timestamp:     string    // ISO 8601 UTC\n  correlationId: string    // x-correlation-id from inbound BFF request (PTN-OPS-API-001)\n  userId:        string    // AAD oid — immutable identity anchor; NEVER email as the key\n  userEmail:     string    // cached from JWT — display/search only; not used as identity key\n  personaId:     string    // active persona slug\n  sessionId:     string    // session cookie ID — links events within a session\n  tenantId:      string    // tenant slug\n  portalId:      string    // portal slug (null for Studio-plane events)\n  environment:   string    // dev | test | prf | sit | uat | prd\n  action:        string    // READ | REVEAL | WRITE | DEPLOY | AUTH | AUTHZ_DENY | POLICY_CHANGE\n  resourceType:  string    // member | claim | portal | page | user_authorization | field_policy | session\n  resourceId:    string    // record identifier — NEVER field values; NEVER PHI data\n  endpointId:    string    // nullable — BFF endpoint for READ / REVEAL / WRITE\n  fieldId:       string    // nullable — only set for REVEAL events\n  outcomeCode:   number    // HTTP status code\n  durationMs:    number    // nullable — BFF overhead for READ / REVEAL / WRITE\n  schemaVersion: string    // \"1.0\" — for forward-compatible Athena table evolution\n}\n```\n\n**PHI prohibition (absolute):** Actual field values — SSN, date of birth, diagnosis codes, claim amounts, member names, or any value returned by a BFF API response — MUST NEVER appear in the audit log. The audit record captures access context only (`userId + resourceId + timestamp + personaId + endpointId`). Regulators reconstruct \"what did the user see\" by joining audit events with the `FieldPolicy` configuration active at that time. This design keeps the audit store itself out of the PHI classification tier.\n\n---",
+    "13": "[patterns/application/PTN-APP-OPS-001-compliance-audit-pipeline-adapter.md#5-action-types-and-firing-conditions]\n\n#### 5. Action Types and Firing Conditions\n\n| Action | Fires when |\n|---|---|\n| `READ` | Every BFF call to a PHI-adjacent endpoint, regardless of which fields the active persona can see |\n| `REVEAL` | Every masked-field reveal (ADR-SEC-002 v1.2) |\n| `WRITE` | Create, update, or delete operation via BFF |\n| `DEPLOY` | Portal publish, promote, or rollback (streaming complement to the `deployment_audit_log` PostgreSQL table) |\n| `AUTH` | Login, logout, session creation, session expiry |\n| `AUTHZ_DENY` | Any request denied by RBAC tiers 1–4 |\n| `POLICY_CHANGE` | `FieldPolicy` setting changed for a persona + endpoint combination |\n\n---",
+    "14": "[patterns/application/PTN-APP-OPS-001-compliance-audit-pipeline-adapter.md#6-s3-key-structure-and-retention]\n\n#### 6. S3 Key Structure and Retention\n\n**S3 key structure:**\n```\ns3://audit-{env}/{tenantId}/{YYYY}/{MM}/{DD}/audit-{HH}-{flushTimestamp}.jsonl.gz\n```\n\nPartitioned by tenant, year, month, and day for Athena query efficiency. The hour prefix within the day partition is derived from the flush timestamp — multiple flushes in the same hour produce distinct files.\n\n**Retention:**\n- S3 bucket configured with Object Lock in `COMPLIANCE` mode\n- Minimum retention: 6 years (HIPAA §164.312(b) 6-year requirement)\n- KMS CMK encryption per ADR-SEC-004\n- Versioning enabled; `COMPLIANCE` mode prevents deletion by any actor including root during the retention period\n\n**Relationship to `deployment_audit_log` (PostgreSQL):** The PostgreSQL `deployment_audit_log` table (ADR-APP-009) is retained for structural deployment state — page assembly snapshots, schema version before/after, and rollback lineage. The S3 audit stream carries `DEPLOY` action events for compliance querying. The two stores are complementary: PostgreSQL for operational deployment queries, S3 for regulatory audit queries. Neither replaces the other.\n\n**Relationship to ADR-OPS-002:** The CloudWatch immutable audit log defined in OPS-002 covers Studio-plane security events (configuration changes, persona changes, admin actions). The S3 pipeline defined in this ADR covers BFF-plane per-request events at high frequency. Both logs are required; they serve different query patterns and retention regimes.\n\n---\n\n**Pros:**\n- ✅ `local` adapter enables full audit coverage in development and CI with zero external dependencies\n- ✅ Redis LPUSH at ~0.1ms keeps BFF p95 overhead well within the `< 50ms` target\n- ✅ BRPOPLPUSH provides crash-safe durable consumption — no events lost on flusher restart\n- ✅ Single unified schema with `schemaVersion` supports Athena table evolution without migration\n- ✅ PHI-free audit store — audit log itself does not require PHI-tier data classification\n\n**Cons:**\n- ❌ Two-component pipeline (BFF + CronJob flusher) increases operational surface area\n- ❌ Redis is a new runtime dependency for the audit path (Redis is already required for caching per ADR-APP-007; no net new infrastructure, but the audit queue adds criticality to Redis availability)\n- ❌ Up to 60 seconds of events may be in-queue during a Redis restart (events are not written to S3 until flushed)\n\n---",
+    "15": "[patterns/application/PTN-APP-OPS-001-compliance-audit-pipeline-adapter.md#considered-options]\n\n## Considered Options",
+    "16": "[patterns/application/PTN-APP-OPS-001-compliance-audit-pipeline-adapter.md#option-1-adapter-pattern-with-local--s3-implementations-selected]\n\n### Option 1: Adapter Pattern with `local` + `s3` Implementations (Selected)\n\n**Description:** Environment-driven adapter interface. `local` writes to a rotating JSON lines file; `s3` uses async Redis queue with a CronJob flusher and COMPLIANCE Object Lock retention.\n\n**Pros:** ✅ No per-request latency impact; developer-friendly local mode; crash-safe via BRPOPLPUSH; PHI-free store\n\n**Cons:** ❌ Two-component pipeline; Redis queue adds up to 60-second delivery lag",
+    "17": "[patterns/application/PTN-APP-OPS-001-compliance-audit-pipeline-adapter.md#option-2-synchronous-s3-putobject-per-event]\n\n### Option 2: Synchronous S3 PutObject per Event\n\n**Description:** The BFF writes each audit event directly to S3 via `PutObject` in the request handler before returning the response.\n\n**Pros:** ✅ Simple implementation; immediate S3 durability; no queue infrastructure\n\n**Cons:** ❌ S3 `PutObject` adds 20–80ms per request — violates the BFF `< 50ms` p95 overhead target; S3 throttling under burst load creates correlated latency spikes; no local dev option without localstack",
+    "18": "[patterns/application/PTN-APP-OPS-001-compliance-audit-pipeline-adapter.md#option-3-synchronous-cloudwatch-putlogevents-per-event]\n\n### Option 3: Synchronous CloudWatch PutLogEvents per Event\n\n**Description:** Extend the OPS-002 CloudWatch audit log to also receive BFF per-request events.\n\n**Pros:** ✅ Reuses existing CloudWatch infrastructure; no new components\n\n**Cons:** ❌ CloudWatch `PutLogEvents` adds 5–30ms per request — unacceptable at BFF scale; CloudWatch `PutLogEvents` batching requires buffering logic that reintroduces the async complexity without the crash-safety guarantees of Redis LIST; CloudWatch Logs Insights queries are slower and more expensive than Athena on S3 for high-volume audit analytics; mixes operational and compliance logs in the same backend",
+    "19": "[patterns/application/PTN-APP-OPS-001-compliance-audit-pipeline-adapter.md#option-4-kafka--kinesis-event-stream]\n\n### Option 4: Kafka / Kinesis Event Stream\n\n**Description:** BFF publishes audit events to a Kafka topic or Kinesis stream; a downstream consumer writes to S3.\n\n**Pros:** ✅ High throughput; standard event-streaming pattern\n\n**Cons:** ❌ Kafka/Kinesis are not currently provisioned for Portal Studio; introduces significant infrastructure overhead for a use case that Redis LIST already satisfies; out of scope for this phase\n\n---",
+    "20": "[patterns/application/PTN-APP-OPS-001-compliance-audit-pipeline-adapter.md#decision-outcome]\n\n## Decision Outcome\n\n**Selected:** Option 1 — Adapter Pattern with `local` (dev/CI) and `s3` (deployed environments) implementations.\n\n---",
+    "21": "[patterns/application/PTN-APP-OPS-001-compliance-audit-pipeline-adapter.md#consequences]\n\n## Consequences",
+    "22": "[patterns/application/PTN-APP-OPS-001-compliance-audit-pipeline-adapter.md#-positive]\n\n### ✅ Positive\n\n- BFF per-request audit overhead is ~0.1ms (Redis LPUSH) — no measurable impact on p95 latency\n- Developers get full audit coverage in local and CI without any external service dependencies\n- BRPOPLPUSH guarantees no events are lost during flusher restarts or pod crashes\n- Single unified event schema with `schemaVersion` enables forward-compatible Athena queries across all event types\n- Audit store is PHI-free — classification tier is lower than the underlying data it audits",
+    "23": "[patterns/application/PTN-APP-OPS-001-compliance-audit-pipeline-adapter.md#-negative]\n\n### ❌ Negative\n\n- Two-component pipeline (BFF write path + CronJob flusher) requires separate deployment lifecycle management\n- Redis availability becomes a dependency for audit event queuing; Redis downtime causes audit events to queue in memory (BFF) or be dropped if the BFF also restarts — see risk mitigation below\n- Flusher CronJob adds Kubernetes resource overhead and a separate container image to maintain",
+    "24": "[patterns/application/PTN-APP-OPS-001-compliance-audit-pipeline-adapter.md#-neutral]\n\n### ⚪ Neutral\n\n- `eventId` UUID deduplication is implemented in the flusher, not the Athena table — analysts querying across retried flushes must apply `GROUP BY eventId` or use a deduplication view\n- The S3 audit pipeline and the CloudWatch audit log (OPS-002) coexist permanently; they are not redundant — they serve different query patterns\n\n---",
+    "25": "[patterns/application/PTN-APP-OPS-001-compliance-audit-pipeline-adapter.md#risk-assessment--mitigation]\n\n## Risk Assessment & Mitigation",
+    "26": "[patterns/application/PTN-APP-OPS-001-compliance-audit-pipeline-adapter.md#-risks]\n\n### ⚠️ Risks\n\n- **Redis unavailability:** If Redis is unavailable, `LPUSH` fails. The BFF must not block the user response on audit write failure. Unqueued events during a Redis outage represent a gap in the compliance audit trail.\n- **Flusher sustained failure:** If the flusher fails to upload for more than 5 minutes, the in-flight key grows unbounded. Redis memory exhaustion is possible under extreme sustained failure.\n- **PHI inadvertently included in `resourceId` or `detail` fields:** Developers may incorrectly populate the schema with actual field values rather than record identifiers.\n- **`eventId` collision:** UUID v4 collision probability is negligible but non-zero; a collision would cause a legitimate event to be silently deduplicated.",
+    "27": "[patterns/application/PTN-APP-OPS-001-compliance-audit-pipeline-adapter.md#-mitigations]\n\n### 🛡️ Mitigations\n\n- **Redis unavailability:** BFF catches `LPUSH` errors and logs a `WARN`-level structured log entry (never silently drops). A CloudWatch alarm fires if WARN-level audit write failures exceed 10 per minute. Redis is deployed with a replica (per ADR-APP-007); single-node failure triggers automatic failover.\n- **Flusher sustained failure:** CloudWatch alarm fires if `audit:inflight:{tenantId}:*` is non-empty for > 5 consecutive minutes. On-call team is paged; Redis memory alert is also configured at 80% capacity to provide early warning before exhaustion.\n- **PHI in audit fields:** ESLint rule (ADR-SEC-005 Control 2) is extended to audit event construction code. Integration test asserts no PHI patterns in `.tmp/audit.log` during CI — same enforcement as ADR-OPS-002 Section 2.\n- **`eventId` collision:** UUID v4 with 122 bits of entropy; collision probability across 1 trillion events is ~10⁻¹³. No additional mitigation is warranted.\n\n---",
+    "28": "[patterns/application/PTN-APP-OPS-001-compliance-audit-pipeline-adapter.md#compliance-notes]\n\n## Compliance Notes\n\n- **HIPAA:** 45 CFR §164.312(b) — Audit Controls: hardware, software, and procedural mechanisms that record and examine activity in information systems that contain or use e-PHI. The S3 audit pipeline with COMPLIANCE Object Lock and 6-year retention satisfies this requirement. The audit store itself is PHI-free — access context is logged, not field values.\n- **HIPAA §164.312(a)(2)(i):** Unique user identification — `userId` is the AAD `oid` (immutable), never email. Email is stored as `userEmail` for display and search only.\n- **NIST 800-53:** AU-2 (event logging), AU-3 (content of audit records), AU-9 (protection of audit information), AU-11 (audit record retention), AU-12 (audit record generation).\n- **Standards:**\n  - `eap-ref-architecture/strategy/guidance/security/GUID-SEC-INT-API GATEWAY-2.8.01` — \"Log all API transactions; Note: Mask PHI in logs\"\n  - `eap-ref-architecture/strategy/guidance/security/GUID-SEC-DATA-MASK-2.5.06` — \"detokenization workflows SHALL be audited\" (mapped to `REVEAL` action events in this ADR)\n  - ADR-OPS-002 (this repo) — companion ADR governing operational telemetry and Studio-plane audit log\n  - ADR-SEC-002 (this repo) — PHI masking; `REVEAL` event firing condition\n  - ADR-SEC-004 (this repo) — KMS CMK encryption for S3 audit bucket\n  - ADR-APP-007 (this repo) — Redis infrastructure; Redis replica topology\n  - ADR-APP-009 (this repo) — `deployment_audit_log` PostgreSQL schema; complementary to the `DEPLOY` action events in this pipeline\n\n---",
+    "29": "[patterns/application/PTN-APP-OPS-001-compliance-audit-pipeline-adapter.md#review-and-approval]\n\n## Review and Approval\n\n| Role                         | Name          | Date       | Status     |\n| ---------------------------- | ------------- | ---------- | ---------- |\n| Enterprise Architecture Lead            | Mike Goppert  | 2026-08-06 | 🔄 Pending |\n| Enterprise Application Architect Lead   | James Macurak | 2026-08-06 | 🔄 Pending |",
+    "30": "[patterns/application/PTN-APP-OPS-001-compliance-audit-pipeline-adapter.md#-change-log]\n\n## 📋 Change Log\n\n| Version | Date       | Author       | Description              |\n| ------- | ---------- | ------------ | ------------------------ |\n| 1.0     | 2026-08-06 | Mike Goppert | Initial decision document |"
+  },
+  "coverage": {
+    "total_pages": 30,
+    "covered_pages": 30,
+    "sampled_pages": 30,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 30
+  }
+}

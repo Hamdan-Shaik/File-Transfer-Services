@@ -1,0 +1,111 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Rating Service - Infrastructure Documentation",
+  "document_description": "The rating-service requires the following infrastructure to be deployed before the application:",
+  "total_pages": 10,
+  "tree": [
+    {
+      "title": "Rating Service - Infrastructure Documentation",
+      "node_id": "rating-service---infrastructure-documentation",
+      "start_index": 1,
+      "end_index": 10,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Required Infrastructure Components",
+          "node_id": "required-infrastructure-components",
+          "start_index": 2,
+          "end_index": 5,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "1. PostgreSQL Database (CloudNativePG)",
+              "node_id": "1-postgresql-database-cloudnativepg",
+              "start_index": 3,
+              "end_index": 3,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "2. Shared Ingress Route",
+              "node_id": "2-shared-ingress-route",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "3. Update Service Secret with Correct Database URL",
+              "node_id": "3-update-service-secret-with-correct-database-url",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Deployment Order",
+          "node_id": "deployment-order",
+          "start_index": 6,
+          "end_index": 6,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Verification",
+          "node_id": "verification",
+          "start_index": 7,
+          "end_index": 7,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Database Schema",
+          "node_id": "database-schema",
+          "start_index": 8,
+          "end_index": 8,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Resource Requirements",
+          "node_id": "resource-requirements",
+          "start_index": 9,
+          "end_index": 9,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Security Notes",
+          "node_id": "security-notes",
+          "start_index": 10,
+          "end_index": 10,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[.tooling/components/apis/rating-service/k8s/INFRASTRUCTURE.md#rating-service---infrastructure-documentation]\n\n# Rating Service - Infrastructure Documentation",
+    "2": "[.tooling/components/apis/rating-service/k8s/INFRASTRUCTURE.md#required-infrastructure-components]\n\n## Required Infrastructure Components\n\nThe rating-service requires the following infrastructure to be deployed before the application:",
+    "3": "[.tooling/components/apis/rating-service/k8s/INFRASTRUCTURE.md#1-postgresql-database-cloudnativepg]\n\n### 1. PostgreSQL Database (CloudNativePG)\n\n**File**: `postgres-cluster.yaml`\n\nCreates a highly available PostgreSQL cluster with:\n\n- **3 replicas** for high availability\n- **10Gi storage** (EBS backed)\n- **Automated backups** to S3 with 30-day retention\n- **Connection pooler** (PgBouncer) for efficient connection management\n- **Database**: `ratings`\n- **User**: `application_user`\n\n**Deploy**:\n\n```bash\n# Set environment variables\nexport NAMESPACE=eapref-app\nexport BUCKET_NAME=your-backup-bucket\n\n# Apply PostgreSQL cluster\nenvsubst < k8s/postgres-cluster.yaml | kubectl apply -f -\n\n# Wait for cluster to be ready (this takes 2-3 minutes)\nkubectl wait --for=condition=Ready cluster/rating-postgres -n ${NAMESPACE} --timeout=5m\n\n# Verify cluster status\nkubectl get cluster -n ${NAMESPACE} rating-postgres\nkubectl get pods -n ${NAMESPACE} -l cnpg.io/cluster=rating-postgres\n```\n\n**Connection Details**:\n\n- **Direct connection**: `rating-postgres-rw:5432` (read-write primary)\n- **Pooler connection**: `rating-postgres-pooler-rw:5432` (recommended for app)\n- **Database name**: `ratings`\n- **Username**: `application_user`\n- **Password**: Set in `rating-db-app-secret` (change default!)",
+    "4": "[.tooling/components/apis/rating-service/k8s/INFRASTRUCTURE.md#2-shared-ingress-route]\n\n### 2. Shared Ingress Route\n\nThe rating service needs to be added to the shared `eapref-app-ingress` in the RAG service.\n\n**Update**: `.tooling/components/apis/rag-service/k8s/ingress.yaml`\n\nAdd this path to the `spec.rules[0].http.paths` array:\n\n```yaml\n# Rating Service endpoints - HTTPS on port 8443\n- path: /api/rating/v1\n  pathType: Prefix\n  backend:\n    service:\n      name: rating-service\n      port:\n        number: 8443\n```\n\n**Apply the updated ingress**:\n\n```bash\nexport NAMESPACE=eapref-app\nexport EKS_INGRESS_HOST=ea-reference.shared.dev.pgwcloud.net\n\nenvsubst < .tooling/components/apis/rag-service/k8s/ingress.yaml | kubectl apply -f -\n```",
+    "5": "[.tooling/components/apis/rating-service/k8s/INFRASTRUCTURE.md#3-update-service-secret-with-correct-database-url]\n\n### 3. Update Service Secret with Correct Database URL\n\nAfter PostgreSQL is deployed, update the `rating-service-secrets` with the correct connection string:\n\n```bash\n# Using pooler (recommended):\nexport DB_URL=\"postgresql+asyncpg://application_user:YOUR_PASSWORD@rating-postgres-pooler-rw:5432/ratings\"\n\n# Or direct connection:\nexport DB_URL=\"postgresql+asyncpg://application_user:YOUR_PASSWORD@rating-postgres-rw:5432/ratings\"\n\n# Create base64 encoded value\necho -n \"$DB_URL\" | base64\n\n# Update k8s/secret.yaml with the new value, then apply:\nkubectl apply -f k8s/secret.yaml\n```",
+    "6": "[.tooling/components/apis/rating-service/k8s/INFRASTRUCTURE.md#deployment-order]\n\n## Deployment Order\n\n1. **PostgreSQL Cluster** → `postgres-cluster.yaml` (wait for ready)\n2. **ConfigMap** → `configmap.yaml`\n3. **Secret** → `secret.yaml` (update with correct DB URL first!)\n4. **Deployment** → `deployment.yaml`\n5. **Service** → `service.yaml`\n6. **Ingress** → Update shared ingress in RAG service",
+    "7": "[.tooling/components/apis/rating-service/k8s/INFRASTRUCTURE.md#verification]\n\n## Verification\n\n```bash\n# Check PostgreSQL cluster\nkubectl get cluster -n eapref-app rating-postgres\nkubectl get pooler -n eapref-app rating-postgres-pooler\n\n# Check application pods\nkubectl get pods -n eapref-app -l app=rating-service\n\n# Check service\nkubectl get svc -n eapref-app rating-service\n\n# Test connection internally\nkubectl exec -n eapref-app -it deployment/rating-service -- \\\n  curl -k https://localhost:8443/api/rating/v1/health\n\n# Test via ingress\ncurl -k https://ea-reference.shared.dev.pgwcloud.net/api/rating/v1/health\n```",
+    "8": "[.tooling/components/apis/rating-service/k8s/INFRASTRUCTURE.md#database-schema]\n\n## Database Schema\n\nThe service automatically creates tables on startup via `init_db()` in `src/db/session.py`:\n\n- `aria_ratings` - ARIA search feedback\n- `governance_ratings` - Governance review feedback\n- `rating_statistics` - Aggregated metrics\n\nFor production, consider using Alembic migrations instead of automatic table creation.",
+    "9": "[.tooling/components/apis/rating-service/k8s/INFRASTRUCTURE.md#resource-requirements]\n\n## Resource Requirements\n\n**PostgreSQL Cluster**:\n\n- CPU: 100m request, 500m limit (per pod × 3 replicas)\n- Memory: 256Mi request, 1Gi limit (per pod × 3 replicas)\n- Storage: 10Gi EBS volume (per pod × 3 replicas)\n\n**Rating Service**:\n\n- CPU: 250m request, 1000m limit (per pod × 2 replicas)\n- Memory: 512Mi request, 2Gi limit (per pod × 2 replicas)\n\n**Total**:\n\n- CPU: ~1.05 cores\n- Memory: ~5.5 GB\n- Storage: 30 GB (PostgreSQL only)",
+    "10": "[.tooling/components/apis/rating-service/k8s/INFRASTRUCTURE.md#security-notes]\n\n## Security Notes\n\n- Change the default database password in `rating-db-app-secret`\n- Use sealed-secrets or external-secrets for production\n- The service uses HTTPS with self-signed certificates\n- Database backups are encrypted in S3\n- All connections use TLS"
+  },
+  "coverage": {
+    "total_pages": 10,
+    "covered_pages": 10,
+    "sampled_pages": 10,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 10
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Architecture Decision Record",
+  "document_description": "Behavioral parity across all supported language implementations is validated through shared, language-neutral contract test specifications. Each language must pass the same behavioral assertions to be release-ready.",
+  "total_pages": 9,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 1,
+      "summary": "",
+      "nodes": []
+    },
+    {
+      "title": "Architecture Decision Record",
+      "node_id": "architecture-decision-record",
+      "start_index": 2,
+      "end_index": 9,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "ADR-TEC-006: Cross-Language Contract Testing",
+          "node_id": "adr-tec-006-cross-language-contract-testing",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Decision Summary",
+          "node_id": "decision-summary",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "How It Works",
+          "node_id": "how-it-works",
+          "start_index": 5,
+          "end_index": 5,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Contract Specification Format",
+          "node_id": "contract-specification-format",
+          "start_index": 6,
+          "end_index": 6,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Rules",
+          "node_id": "rules",
+          "start_index": 7,
+          "end_index": 7,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Enterprise References",
+          "node_id": "enterprise-references",
+          "start_index": 8,
+          "end_index": 8,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Change Log",
+          "node_id": "change-log",
+          "start_index": 9,
+          "end_index": 9,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "> **Promoted from:** `mmes-cmn-core/docs/decisions/technology/adr-tec-006-cross-language-contract-testing.md`  \n> **Ref-arch artifact ID:** `PTN-APP-TEST-002-cross-language-contract-testing`  \n> This document has been promoted to the Enterprise Architecture Platform reference architecture. Product repos should reference this artifact rather than maintaining their own copy.\n\n---",
+    "2": "[patterns/application/testing/PTN-APP-TEST-002-cross-language-contract-testing.md#architecture-decision-record]\n\n# Architecture Decision Record",
+    "3": "[patterns/application/testing/PTN-APP-TEST-002-cross-language-contract-testing.md#adr-tec-006-cross-language-contract-testing]\n\n## ADR-TEC-006: Cross-Language Contract Testing\n\n---\n\n|               |                                                                 |\n| ------------- | --------------------------------------------------------------- |\n| **Status**    | Accepted                                                        |\n| **Date**      | 2026-05-07                                                      |\n| **Issuer**    | MMES Platform Team                                              |\n| **Consulted** | Enterprise Architecture Practice, Domain Service Leads          |\n| **Informed**  | All MMES development teams                                      |\n\n---",
+    "4": "[patterns/application/testing/PTN-APP-TEST-002-cross-language-contract-testing.md#decision-summary]\n\n## Decision Summary\n\nBehavioral parity across all supported language implementations is validated through shared, language-neutral contract test specifications. Each language must pass the same behavioral assertions to be release-ready.\n\n---",
+    "5": "[patterns/application/testing/PTN-APP-TEST-002-cross-language-contract-testing.md#how-it-works]\n\n## How It Works\n\n```mermaid\ngraph TD\n    spec[Contract Specifications<br/>Language-neutral YAML/JSON]\n    spec --> runners[Per-Language Test Runners<br/>One per supported language]\n    runners --> pass{All pass?}\n    pass -->|Yes| release[Release allowed]\n    pass -->|No| fix[Fix divergence]\n```\n\n---",
+    "6": "[patterns/application/testing/PTN-APP-TEST-002-cross-language-contract-testing.md#contract-specification-format]\n\n## Contract Specification Format\n\nContracts defined in `contracts/` at the repo root:\n\n```text\ncontracts/\n├── clock.yml\n├── logging.yml\n├── correlation.yml\n├── health.yml\n└── ...\n```\n\nEach contract defines:\n\n- **Given**: Setup state (inputs, configuration)\n- **When**: Action performed (method call with arguments)\n- **Then**: Expected outcome (return value, side effect, exception type)\n\n---",
+    "7": "[patterns/application/testing/PTN-APP-TEST-002-cross-language-contract-testing.md#rules]\n\n## Rules\n\n| Rule | Detail |\n| --- | --- |\n| **Contracts are authoritative** | Implementation differs from contract = implementation is wrong |\n| **All languages must pass** | CI blocks release if any language fails any contract |\n| **Contracts evolve with interfaces** | New interfaces get new contracts |\n| **Edge cases explicit** | Null handling, empty inputs, boundary values specified |\n| **Error behavior specified** | Exception/error types for invalid inputs must be consistent |\n\n---",
+    "8": "[patterns/application/testing/PTN-APP-TEST-002-cross-language-contract-testing.md#enterprise-references]\n\n## Enterprise References\n\n| Reference | Title | Relevance |\n| --- | --- | --- |\n| [ADR-APP-001](https://github.com/MyGainwell/eap-ref-architecture/blob/main/decisions/application/ADR-APP-001-design-patterns-languages.md) | Software Design Patterns and Programming Languages | Polyglot consistency |\n\n---",
+    "9": "[patterns/application/testing/PTN-APP-TEST-002-cross-language-contract-testing.md#change-log]\n\n## Change Log\n\n| Version | Date       | Author             | Description                |\n| ------- | ---------- | ------------------ | -------------------------- |\n| 1.0     | 2026-05-07 | MMES Platform Team | Initial decision document. |"
+  },
+  "coverage": {
+    "total_pages": 9,
+    "covered_pages": 9,
+    "sampled_pages": 9,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 9
+  }
+}

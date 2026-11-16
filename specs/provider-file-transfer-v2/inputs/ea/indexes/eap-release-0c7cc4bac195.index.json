@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Pre-Release Checks",
+  "document_description": "Create a GitHub release based on the current repository version.",
+  "total_pages": 5,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 5,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Pre-Release Checks",
+          "node_id": "pre-release-checks",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Workflow",
+          "node_id": "workflow",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Release Notes Format",
+          "node_id": "release-notes-format",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Guidelines",
+          "node_id": "guidelines",
+          "start_index": 5,
+          "end_index": 5,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "Create a GitHub release based on the current repository version.\n\n**Prerequisites:** Use `/version` first to analyze changes and update version numbers in the repository.",
+    "2": "[.claude/commands/eap-release.md#pre-release-checks]\n\n## Pre-Release Checks\n\nBefore starting the release workflow, verify:\n\n1. **Current branch is `main`**:\n\n   ```bash\n   git branch --show-current\n   ```\n\n   If not on main, warn the user and stop. Releases must be created from main after all changes are merged.\n\n2. **No open issues exist**:\n\n   ```bash\n   gh issue list --state open\n   ```\n\n   If there are open issues, list them and refuse to proceed. The user must close or defer all issues before releasing.\n\n3. **Working tree is clean**:\n\n   ```bash\n   git status\n   ```\n\n   If there are uncommitted changes, warn and stop.",
+    "3": "[.claude/commands/eap-release.md#workflow]\n\n## Workflow\n\n1. **Read the current version from the repository:**\n   - Extract version from `README.md` badge: `![Version](https://img.shields.io/badge/version-X.Y.Z-blue)`\n   - Verify it matches `.utils/pyproject.toml`: `version = \"X.Y.Z\"`\n   - If versions mismatch, warn and stop\n\n2. **Check if the tag already exists:**\n\n   ```bash\n   git tag --list \"vX.Y.Z\"\n   ```\n\n   If the tag exists, warn the user and stop (never overwrite existing tags)\n\n3. **Determine the base reference for release notes:**\n   - Run `git tag --sort=-v:refname | head -1` to get the previous tag\n   - If no previous tag exists, use the initial commit\n\n4. **Gather change information for release notes:**\n   - Run `git log --oneline <base>..HEAD` to see all commits since the last release\n   - Run `git diff <base>..HEAD --stat` for file-level change summary\n   - Run `git diff <base>..HEAD` to read the full diff\n\n5. **Draft the release notes:**\n   - Follow the format below — be thorough and specific\n   - Group changes by purpose (features, improvements, fixes)\n   - Call out breaking changes, upgrade notes, and new dependencies\n\n6. **Present the release notes to the user for confirmation:**\n   - Show the version that will be released\n   - Display the drafted release notes\n   - Ask: \"Create release v<version>? (Y/n)\"\n\n7. **Create the tag and push:**\n\n   ```bash\n   git tag -a v<version> -m \"Release v<version>\"\n   git push origin v<version>\n   ```\n\n8. **Create the GitHub release:**\n\n   ```bash\n   gh release create v<version> --title \"v<version> — <short title>\" --notes \"<release notes>\"\n   ```\n\n9. **Return the release URL**",
+    "4": "[.claude/commands/eap-release.md#release-notes-format]\n\n## Release Notes Format\n\nRelease notes must be detailed enough that users understand what changed, what's new, and what to watch out for — without reading the diff.\n\n```markdown\n## Highlights\n\n<2-3 sentence overview of the most important changes in this release.>\n\n## What's New\n\n### <Feature or area 1>\n- <Specific change> — <what it does and why it matters>\n- <Specific change> — <what it does and why it matters>\n\n### <Feature or area 2>\n- <Specific change> — <what it does and why it matters>\n\n(Group by purpose. Be specific — name the files, commands, skills, or workflows affected.)\n\n## Improvements\n\n- <Enhancement> — <what improved and how>\n- <Enhancement> — <what improved and how>\n\n## Bug Fixes\n\n- <Fix> — <what was broken and how it was fixed>\n\n(Omit this section if there are no bug fixes.)\n\n## Breaking Changes\n\n<List any breaking changes with migration steps, or \"None\" if there aren't any.>\n\n## Upgrade Notes\n\n<Steps users need to take when upgrading, e.g.:>\n- Run `onboarding/vscode/setup.sh` to pick up new dependencies\n- Re-run `/health-check` to verify environment\n- Review updated skill files if you customized them\n\n(Omit if no action required.)\n\n## Dependencies\n\n- <New or updated dependencies>\n\n(Omit if unchanged.)\n\n## Contributors\n\n<List contributors for this release.>\n```",
+    "5": "[.claude/commands/eap-release.md#guidelines]\n\n## Guidelines\n\n- The version number comes from the repository files (README.md, pyproject.toml) — do NOT calculate it\n- Use `/version` first to bump the version before running `/release`\n- Never overwrite or delete existing tags without explicit confirmation\n- **Read the full diff before writing release notes** — don't guess what changed\n- Group changes by purpose and impact, not by file type\n- Call out anything that requires user action (setup changes, new dependencies, breaking changes)\n- Reference PRs with `#<number>` and ADO work items with `AB#<id>`\n\n$ARGUMENTS"
+  },
+  "coverage": {
+    "total_pages": 5,
+    "covered_pages": 5,
+    "sampled_pages": 5,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 5
+  }
+}

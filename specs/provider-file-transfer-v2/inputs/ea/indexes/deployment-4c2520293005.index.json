@@ -1,0 +1,871 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "AI Governance Review Service - Deployment Guide",
+  "document_description": "This guide covers deploying the AI Governance Review Service across three environments:",
+  "total_pages": 92,
+  "tree": [
+    {
+      "title": "AI Governance Review Service - Deployment Guide",
+      "node_id": "ai-governance-review-service---deployment-guide",
+      "start_index": 1,
+      "end_index": 92,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Overview",
+          "node_id": "overview",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Deployment Strategy",
+          "node_id": "deployment-strategy",
+          "start_index": 3,
+          "end_index": 4,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Infrastructure-as-Code with Terraform",
+              "node_id": "infrastructure-as-code-with-terraform",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Prerequisites",
+          "node_id": "prerequisites",
+          "start_index": 5,
+          "end_index": 9,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "AWS Requirements",
+              "node_id": "aws-requirements",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Local Development Requirements",
+              "node_id": "local-development-requirements",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Remote Deployment Requirements (Dev/Prod)",
+              "node_id": "remote-deployment-requirements-devprod",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Region Considerations",
+              "node_id": "region-considerations",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "AWS Resources Required",
+          "node_id": "aws-resources-required",
+          "start_index": 10,
+          "end_index": 33,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "1. Storage Resources",
+              "node_id": "1-storage-resources",
+              "start_index": 11,
+              "end_index": 14,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "PostgreSQL Database (CloudNativePG)",
+                  "node_id": "postgresql-database-cloudnativepg",
+                  "start_index": 12,
+                  "end_index": 12,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "S3 Bucket",
+                  "node_id": "s3-bucket",
+                  "start_index": 13,
+                  "end_index": 13,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "ElastiCache Redis Cluster",
+                  "node_id": "elasticache-redis-cluster",
+                  "start_index": 14,
+                  "end_index": 14,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "2. Compute Resources",
+              "node_id": "2-compute-resources",
+              "start_index": 15,
+              "end_index": 18,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Amazon ECR Repository",
+                  "node_id": "amazon-ecr-repository",
+                  "start_index": 16,
+                  "end_index": 16,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Amazon EKS Cluster",
+                  "node_id": "amazon-eks-cluster",
+                  "start_index": 17,
+                  "end_index": 17,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Kubernetes Resources",
+                  "node_id": "kubernetes-resources",
+                  "start_index": 18,
+                  "end_index": 18,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "3. Networking Resources",
+              "node_id": "3-networking-resources",
+              "start_index": 19,
+              "end_index": 24,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "VPC Resources",
+                  "node_id": "vpc-resources",
+                  "start_index": 20,
+                  "end_index": 20,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Security Groups",
+                  "node_id": "security-groups",
+                  "start_index": 21,
+                  "end_index": 21,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Application Load Balancer",
+                  "node_id": "application-load-balancer",
+                  "start_index": 22,
+                  "end_index": 22,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Target Group",
+                  "node_id": "target-group",
+                  "start_index": 23,
+                  "end_index": 23,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "ALB Listener",
+                  "node_id": "alb-listener",
+                  "start_index": 24,
+                  "end_index": 24,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "4. IAM Resources",
+              "node_id": "4-iam-resources",
+              "start_index": 25,
+              "end_index": 27,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "IAM Role: `ai-gov-review-pod-role`",
+                  "node_id": "iam-role-ai-gov-review-pod-role",
+                  "start_index": 26,
+                  "end_index": 26,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "IAM Role: `AmazonEKSNodeRole` (Platform-Level)",
+                  "node_id": "iam-role-amazoneksnoderole-platform-level",
+                  "start_index": 27,
+                  "end_index": 27,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "5. Monitoring Resources",
+              "node_id": "5-monitoring-resources",
+              "start_index": 28,
+              "end_index": 30,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "CloudWatch Log Group",
+                  "node_id": "cloudwatch-log-group",
+                  "start_index": 29,
+                  "end_index": 29,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "CloudWatch Alarms",
+                  "node_id": "cloudwatch-alarms",
+                  "start_index": 30,
+                  "end_index": 30,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "6. Optional Resources",
+              "node_id": "6-optional-resources",
+              "start_index": 31,
+              "end_index": 33,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "AWS Glue Catalog (Phase 2 - Training Data)",
+                  "node_id": "aws-glue-catalog-phase-2---training-data",
+                  "start_index": 32,
+                  "end_index": 32,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Amazon Athena Workgroup (Phase 2)",
+                  "node_id": "amazon-athena-workgroup-phase-2",
+                  "start_index": 33,
+                  "end_index": 33,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Terraform Module Structure",
+          "node_id": "terraform-module-structure",
+          "start_index": 34,
+          "end_index": 35,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Key Terraform Variables",
+              "node_id": "key-terraform-variables",
+              "start_index": 35,
+              "end_index": 35,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Manual Setup Reference",
+          "node_id": "manual-setup-reference",
+          "start_index": 36,
+          "end_index": 36,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "AWS Infrastructure Setup",
+          "node_id": "aws-infrastructure-setup",
+          "start_index": 37,
+          "end_index": 45,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Step 1: Enable Bedrock Model Access",
+              "node_id": "step-1-enable-bedrock-model-access",
+              "start_index": 38,
+              "end_index": 38,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Step 2: Create DynamoDB Tables",
+              "node_id": "step-2-create-dynamodb-tables",
+              "start_index": 39,
+              "end_index": 42,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Reviews Table",
+                  "node_id": "reviews-table",
+                  "start_index": 40,
+                  "end_index": 40,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Templates Table",
+                  "node_id": "templates-table",
+                  "start_index": 41,
+                  "end_index": 41,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Verify Tables",
+                  "node_id": "verify-tables",
+                  "start_index": 42,
+                  "end_index": 42,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Step 3: Create S3 Bucket for Templates and Reviews",
+              "node_id": "step-3-create-s3-bucket-for-templates-and-reviews",
+              "start_index": 43,
+              "end_index": 43,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Step 4: Create IAM Role for ECS Task",
+              "node_id": "step-4-create-iam-role-for-ecs-task",
+              "start_index": 44,
+              "end_index": 44,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Step 4: Load Initial Templates",
+              "node_id": "step-4-load-initial-templates",
+              "start_index": 45,
+              "end_index": 45,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Local Development Deployment",
+          "node_id": "local-development-deployment",
+          "start_index": 46,
+          "end_index": 51,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Prerequisites",
+              "node_id": "prerequisites",
+              "start_index": 47,
+              "end_index": 47,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Setup and Run",
+              "node_id": "setup-and-run",
+              "start_index": 48,
+              "end_index": 48,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Test the Service",
+              "node_id": "test-the-service",
+              "start_index": 49,
+              "end_index": 49,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Optional: Local Redis for Caching",
+              "node_id": "optional-local-redis-for-caching",
+              "start_index": 50,
+              "end_index": 50,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Stopping the Service",
+              "node_id": "stopping-the-service",
+              "start_index": 51,
+              "end_index": 51,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Remote Deployment (Dev/Prod) - AWS EKS",
+          "node_id": "remote-deployment-devprod---aws-eks",
+          "start_index": 52,
+          "end_index": 56,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Build and Push Container Image",
+              "node_id": "build-and-push-container-image",
+              "start_index": 53,
+              "end_index": 53,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Deploy to EKS with Kubernetes",
+              "node_id": "deploy-to-eks-with-kubernetes",
+              "start_index": 54,
+              "end_index": 54,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Redis Caching Strategy",
+              "node_id": "redis-caching-strategy",
+              "start_index": 55,
+              "end_index": 55,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Example Kubernetes Deployment",
+              "node_id": "example-kubernetes-deployment",
+              "start_index": 56,
+              "end_index": 56,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Configuration Management",
+          "node_id": "configuration-management",
+          "start_index": 57,
+          "end_index": 59,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Environment Variables",
+              "node_id": "environment-variables",
+              "start_index": 58,
+              "end_index": 58,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "AWS Systems Manager Parameter Store (Recommended)",
+              "node_id": "aws-systems-manager-parameter-store-recommended",
+              "start_index": 59,
+              "end_index": 59,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Monitoring & Logging",
+          "node_id": "monitoring--logging",
+          "start_index": 60,
+          "end_index": 63,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "CloudWatch Logs",
+              "node_id": "cloudwatch-logs",
+              "start_index": 61,
+              "end_index": 61,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "CloudWatch Metrics",
+              "node_id": "cloudwatch-metrics",
+              "start_index": 62,
+              "end_index": 62,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "CloudWatch Alarms",
+              "node_id": "cloudwatch-alarms",
+              "start_index": 63,
+              "end_index": 63,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Deployment Updates",
+          "node_id": "deployment-updates",
+          "start_index": 64,
+          "end_index": 66,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Rolling Update (Zero Downtime)",
+              "node_id": "rolling-update-zero-downtime",
+              "start_index": 65,
+              "end_index": 65,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Rollback Deployment",
+              "node_id": "rollback-deployment",
+              "start_index": 66,
+              "end_index": 66,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Troubleshooting",
+          "node_id": "troubleshooting",
+          "start_index": 67,
+          "end_index": 71,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Pods Won't Start",
+              "node_id": "pods-wont-start",
+              "start_index": 68,
+              "end_index": 68,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "High Latency",
+              "node_id": "high-latency",
+              "start_index": 69,
+              "end_index": 69,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Out of Memory",
+              "node_id": "out-of-memory",
+              "start_index": 70,
+              "end_index": 70,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Database Connection Issues",
+              "node_id": "database-connection-issues",
+              "start_index": 71,
+              "end_index": 71,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Cost Optimization",
+          "node_id": "cost-optimization",
+          "start_index": 72,
+          "end_index": 76,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Bedrock Costs",
+              "node_id": "bedrock-costs",
+              "start_index": 73,
+              "end_index": 73,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "DynamoDB Costs",
+              "node_id": "dynamodb-costs",
+              "start_index": 74,
+              "end_index": 74,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "EKS/EC2 Costs",
+              "node_id": "eksec2-costs",
+              "start_index": 75,
+              "end_index": 75,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Total Estimated Monthly Cost",
+              "node_id": "total-estimated-monthly-cost",
+              "start_index": 76,
+              "end_index": 76,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Security Best Practices",
+          "node_id": "security-best-practices",
+          "start_index": 77,
+          "end_index": 81,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Network Security",
+              "node_id": "network-security",
+              "start_index": 78,
+              "end_index": 78,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "IAM Best Practices",
+              "node_id": "iam-best-practices",
+              "start_index": 79,
+              "end_index": 79,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Data Security",
+              "node_id": "data-security",
+              "start_index": 80,
+              "end_index": 80,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Secrets Management",
+              "node_id": "secrets-management",
+              "start_index": 81,
+              "end_index": 81,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Disaster Recovery",
+          "node_id": "disaster-recovery",
+          "start_index": 82,
+          "end_index": 84,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Backup Strategy",
+              "node_id": "backup-strategy",
+              "start_index": 83,
+              "end_index": 83,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Recovery Procedures",
+              "node_id": "recovery-procedures",
+              "start_index": 84,
+              "end_index": 84,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Compliance & Auditing",
+          "node_id": "compliance--auditing",
+          "start_index": 85,
+          "end_index": 87,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Audit Logging",
+              "node_id": "audit-logging",
+              "start_index": 86,
+              "end_index": 86,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Compliance Considerations",
+              "node_id": "compliance-considerations",
+              "start_index": 87,
+              "end_index": 87,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Performance Tuning",
+          "node_id": "performance-tuning",
+          "start_index": 88,
+          "end_index": 91,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Application Optimization",
+              "node_id": "application-optimization",
+              "start_index": 89,
+              "end_index": 89,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Infrastructure Optimization",
+              "node_id": "infrastructure-optimization",
+              "start_index": 90,
+              "end_index": 90,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Monitoring Performance",
+              "node_id": "monitoring-performance",
+              "start_index": 91,
+              "end_index": 91,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Conclusion",
+          "node_id": "conclusion",
+          "start_index": 92,
+          "end_index": 92,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#ai-governance-review-service---deployment-guide]\n\n# AI Governance Review Service - Deployment Guide",
+    "2": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#overview]\n\n## Overview\n\nThis guide covers deploying the AI Governance Review Service across three environments:\n\n| Environment | Platform | Purpose | Deployment Method |\n|-------------|----------|---------|-------------------|\n| **Local** | uvicorn | Developer laptop testing | Poetry + uvicorn (no Docker) |\n| **Dev** | AWS EKS | Remote development/testing | Terraform + Kubernetes |\n| **Prod** | AWS EKS | Production | Terraform + Kubernetes |\n\n**All AWS infrastructure must be deployed using Terraform** from the `components/iac/terraform` directory following enterprise Infrastructure-as-Code standards.\n\nThe service uses AWS managed services (Bedrock, PostgreSQL on EKS, S3, ElastiCache) for scalable container orchestration.",
+    "3": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#deployment-strategy]\n\n## Deployment Strategy",
+    "4": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#infrastructure-as-code-with-terraform]\n\n### Infrastructure-as-Code with Terraform\n\n**All AWS resources MUST be deployed using Terraform.** Manual AWS CLI commands are provided for reference only.\n\n**Terraform Location**: `c:\\GitHub\\Repos\\eap-ref-architecture\\.tooling\\iac\\terraform\\`\n\n**Required Terraform Modules**:\n\n- See [AWS Resources Required](#aws-resources-required) section below for complete list\n- Coordinate with Platform Engineering Team for shared/platform-level resources\n- Use Terragrunt for environment-specific configurations",
+    "5": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#prerequisites]\n\n## Prerequisites",
+    "6": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#aws-requirements]\n\n### AWS Requirements\n\n- **AWS Account** with appropriate permissions\n- **Terraform** 1.5+ installed\n- **Terragrunt** (optional, for multi-environment deployments)\n- **AWS CLI** v2.x installed and configured\n- **Bedrock Model Access**: Claude Sonnet 4.5 enabled in your AWS region\n- **IAM Permissions** for:\n    - PostgreSQL database management (EKS)\n    - S3 bucket creation and management\n    - EKS cluster and service management\n    - ElastiCache Redis cluster management\n    - Bedrock model invocation\n    - ECR repository access\n    - IAM role creation\n    - VPC and security group management\n    - Application Load Balancer creation",
+    "7": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#local-development-requirements]\n\n### Local Development Requirements\n\n- **Python** 3.12+ with Poetry\n- **AWS credentials** configured (`~/.aws/credentials` or environment variables) - Optional for local testing\n- **Redis** 7+ (optional - for testing caching locally)",
+    "8": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#remote-deployment-requirements-devprod]\n\n### Remote Deployment Requirements (Dev/Prod)\n\n- **Docker** 20.10+ (for building container images)\n- **kubectl** configured for EKS cluster access\n- **AWS credentials** with appropriate permissions",
+    "9": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#region-considerations]\n\n### Region Considerations\n\n**Recommended Regions:**\n\n- `us-east-1` (N. Virginia) - Best Bedrock availability\n- `us-west-2` (Oregon) - Alternative with Bedrock support\n\n**Check Bedrock availability:**\n\n```bash\naws bedrock list-foundation-models --region us-east-1 \\\n  --query 'modelSummaries[?contains(modelId, `claude-3-5-sonnet`)].modelId'\n```\n\n---",
+    "10": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#aws-resources-required]\n\n## AWS Resources Required\n\nAll resources below should be defined in Terraform modules within `components/iac/terraform/formations/aws/ai-gov-review-service/`.",
+    "11": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#1-storage-resources]\n\n### 1. Storage Resources",
+    "12": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#postgresql-database-cloudnativepg]\n\n#### PostgreSQL Database (CloudNativePG)\n\n**Purpose**: Store review metadata, findings, templates, and iteration history\n\n**Deployment**: CloudNativePG operator on EKS\n\n- **Version**: PostgreSQL 16\n- **High Availability**: 3-replica cluster with automatic failover\n- **Connection Pooler**: PgBouncer for connection management\n- **Storage**: AWS EBS gp3 volumes with encryption\n- **Backups**: Automatic backups to S3 (CloudNativePG)\n- **Tables**:\n    - `review_sessions` - Review metadata and status\n    - `iterations` - Document revisions and scores\n    - `findings` - AI-generated feedback items\n    - `templates` - Board-specific evaluation criteria\n\n**Kubernetes Resources**:\n\n- `k8s/postgres-cluster.yaml` - CloudNativePG Cluster definition\n- `k8s/postgres-secrets.yaml` - Database credentials\n\n- **Purpose**: Store template configurations and evaluation criteria\n- **Partition Key**: `template_id` (String)\n- **Billing**: PAY_PER_REQUEST\n- **Attributes**: template_id, review_type, version, name, sections, active, created_at, updated_at\n- **Point-in-Time Recovery**: Enabled\n- **Encryption**: AWS managed key",
+    "13": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#s3-bucket]\n\n#### S3 Bucket\n\n**Bucket: `ai-governance-reviews`**\n\n- **Purpose**: Store templates, review documents, outputs, and training data\n- **Region**: Same as primary deployment region\n- **Versioning**: Enabled (for template history)\n- **Encryption**: SSE-S3 (AES256)\n- **Public Access**: Blocked (all public access blocked)\n- **Lifecycle Policies**:\n    - Reviews → Glacier after 730 days, expire after 2555 days (7 years)\n    - Training data → Glacier after 730 days, expire after 1825 days (5 years)\n- **Folder Structure**:\n    - `templates/{review_type}/{version}/`\n    - `reviews/{review_type}/{review_id}/v{N}/`\n    - `training-data/{review_type}/{data_type}/date=YYYY-MM-DD/`",
+    "14": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#elasticache-redis-cluster]\n\n#### ElastiCache Redis Cluster\n\n**Cluster: `ai-gov-review-cache`**\n\n- **Purpose**: Cache section evaluations, templates, and responses\n- **Node Type**:\n    - Dev/Test: `cache.t3.micro` (0.5 GB)\n    - Production: `cache.t3.small` (1.37 GB) or `cache.r6g.large` (13.07 GB) for high volume\n- **Engine**: Redis 7.x\n- **Multi-AZ**: Enabled (production)\n- **Automatic Failover**: Enabled (production)\n- **Encryption in Transit**: Enabled (TLS)\n- **Encryption at Rest**: Enabled\n- **Eviction Policy**: `allkeys-lru`\n- **Parameter Group**: Custom with maxmemory-policy=allkeys-lru",
+    "15": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#2-compute-resources]\n\n### 2. Compute Resources",
+    "16": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#amazon-ecr-repository]\n\n#### Amazon ECR Repository\n\n**Repository: `ai-gov-review-service`**\n\n- **Purpose**: Store Docker images for EKS deployments\n- **Image Scanning**: Enabled\n- **Encryption**: AES-256\n- **Lifecycle Policy**: Keep last 10 images, remove untagged after 14 days\n- **Tag Immutability**: Enabled (production)",
+    "17": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#amazon-eks-cluster]\n\n#### Amazon EKS Cluster\n\n**Cluster: `governance-eks-cluster`**\n\n- **Kubernetes Version**: 1.28+\n- **Node Groups**:\n    - **Dev**: t3.medium (2 vCPU, 4 GB) - 2-4 nodes\n    - **Prod**: t3.large (2 vCPU, 8 GB) - 3-10 nodes\n- **Networking**: VPC CNI plugin\n- **IRSA**: IAM Roles for Service Accounts enabled\n- **Add-ons**: CoreDNS, kube-proxy, VPC CNI, EBS CSI driver\n- **Logging**: Control plane logs to CloudWatch",
+    "18": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#kubernetes-resources]\n\n#### Kubernetes Resources\n\n**Namespace: `ai-gov-review`**\n\n**Deployment:**\n\n- **Name**: `ai-gov-review-service`\n- **Replicas**:\n    - Dev: 1\n    - Prod: 2-4 (with HPA)\n- **Container**:\n    - Image: From ECR repository\n    - Port: 8001\n    - Resources:\n        - Requests: 1 vCPU, 2 GB RAM\n        - Limits: 2 vCPU, 4 GB RAM\n    - Health checks: `/health` endpoint\n    - Environment: ConfigMap + Secrets\n\n**Service (ClusterIP):**\n\n- **Name**: `ai-gov-review-service`\n- **Port**: 8001\n- **Target Port**: 8001\n- **Selector**: app=ai-gov-review\n\n**Ingress (ALB):**\n\n- **Controller**: AWS Load Balancer Controller\n- **Scheme**: internet-facing (or internal)\n- **Health Check**: /health\n- **TLS**: ACM certificate (prod)\n\n**HorizontalPodAutoscaler (Prod):**\n\n- **Min**: 2\n- **Max**: 10\n- **Metrics**: CPU (70%), Memory (80%)\n\n**ServiceAccount:**\n\n- **Name**: `ai-gov-review-sa`\n- **Annotations**: IAM role ARN (IRSA)\n\n**ConfigMap:**\n\n- Non-sensitive configuration (Bedrock model ID, cache TTL, etc.)\n\n**Secret:**\n\n- Redis connection string (if using ElastiCache)\n- Any sensitive configuration",
+    "19": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#3-networking-resources]\n\n### 3. Networking Resources",
+    "20": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#vpc-resources]\n\n#### VPC Resources\n\n**Note**: Coordinate with Platform Engineering - VPC may be shared infrastructure\n\n- **VPC**: Use existing platform VPC or create dedicated VPC\n- **Subnets**:\n    - Public subnets (2 AZs) for ALB and NAT Gateways\n    - Private subnets (2 AZs) for EKS nodes, ElastiCache\n- **NAT Gateways**: 2 (one per AZ for HA)\n- **Internet Gateway**: For public subnet routing\n- **VPC Endpoints**: S3 (to reduce NAT costs)",
+    "21": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#security-groups]\n\n#### Security Groups\n\n**Security Group: `ai-gov-review-alb-sg`**\n\n- **Purpose**: Application Load Balancer\n- **VPC**: Primary VPC\n- **Inbound Rules**:\n    - HTTP (80) from 0.0.0.0/0\n    - HTTPS (443) from 0.0.0.0/0\n- **Outbound Rules**:\n    - All traffic to ai-gov-review-task-sg (port 8000)\n\n**Security Group: `ai-gov-review-eks-nodes-sg`**\n\n- **Purpose**: EKS worker nodes\n- **VPC**: Primary VPC\n- **Inbound Rules**:\n    - Port 8001 from ai-gov-review-alb-sg (for ALB health checks)\n    - All traffic from same security group (node-to-node)\n- **Outbound Rules**:\n    - HTTPS (443) to 0.0.0.0/0 (Bedrock, DynamoDB, S3, ECR)\n    - Port 6379 to ai-gov-review-cache-sg (Redis)\n    - Port 443 to EKS control plane\n\n**Security Group: `ai-gov-review-cache-sg`**\n\n- **Purpose**: ElastiCache Redis\n- **VPC**: Primary VPC\n- **Inbound Rules**:\n    - Port 6379 from ai-gov-review-task-sg\n- **Outbound Rules**: None required",
+    "22": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#application-load-balancer]\n\n#### Application Load Balancer\n\n**Load Balancer: `ai-gov-review-alb`**\n\n- **Scheme**: Internet-facing\n- **IP Address Type**: IPv4\n- **Subnets**: Public subnets (2 AZs)\n- **Security Groups**: ai-gov-review-alb-sg\n- **Deletion Protection**: Enabled (production)\n- **Access Logs**: Enabled, stored in S3\n- **Idle Timeout**: 60 seconds",
+    "23": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#target-group]\n\n#### Target Group\n\n**Target Group: `ai-gov-review-tg`**\n\n- **Target Type**: IP (for EKS pods)\n- **Protocol**: HTTP\n- **Port**: 8001\n- **VPC**: Primary VPC\n- **Health Check**:\n    - Protocol: HTTP\n    - Path: `/health`\n    - Interval: 30 seconds\n    - Timeout: 5 seconds\n    - Healthy Threshold: 2\n    - Unhealthy Threshold: 3\n    - Success Codes: 200\n- **Deregistration Delay**: 30 seconds",
+    "24": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#alb-listener]\n\n#### ALB Listener\n\n**Listener: HTTP (Port 80)**\n\n- **Default Action**: Forward to ai-gov-review-tg\n- **Future**: Add HTTPS listener with ACM certificate",
+    "25": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#4-iam-resources]\n\n### 4. IAM Resources",
+    "26": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#iam-role-ai-gov-review-pod-role]\n\n#### IAM Role: `ai-gov-review-pod-role`\n\n**Purpose**: Pod role for Kubernetes service account (IRSA - IAM Roles for Service Accounts)\n\n**Trust Policy**:\n\n```json\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [{\n    \"Effect\": \"Allow\",\n    \"Principal\": {\n      \"Federated\": \"arn:aws:iam::<account-id>:oidc-provider/oidc.eks.<region>.amazonaws.com/id/<eks-cluster-oidc-id>\"\n    },\n    \"Action\": \"sts:AssumeRoleWithWebIdentity\",\n    \"Condition\": {\n      \"StringEquals\": {\n        \"oidc.eks.<region>.amazonaws.com/id/<eks-cluster-oidc-id>:sub\": \"system:serviceaccount:ai-gov-review:ai-gov-review-sa\"\n      }\n    }\n  }]\n}\n```\n\n**Managed Policies**: None\n\n**Inline Policy: `ai-gov-review-policy`**:\n\n```json\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"BedrockAccess\",\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"bedrock:InvokeModel\",\n        \"bedrock:InvokeModelWithResponseStream\"\n      ],\n      \"Resource\": \"arn:aws:bedrock:*:*:model/anthropic.claude-3-5-sonnet-20240620-v1:0\"\n    },\n    {\n      \"Sid\": \"S3Access\",\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"s3:GetObject\",\n        \"s3:PutObject\",\n        \"s3:DeleteObject\",\n        \"s3:ListBucket\"\n      ],\n      \"Resource\": [\n        \"arn:aws:s3:::ai-governance-reviews\",\n        \"arn:aws:s3:::ai-governance-reviews/*\"\n      ]\n    },\n    {\n      \"Sid\": \"CloudWatchLogs\",\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"logs:CreateLogGroup\",\n        \"logs:CreateLogStream\",\n        \"logs:PutLogEvents\"\n      ],\n      \"Resource\": \"arn:aws:logs:*:*:log-group:/eks/ai-gov-review:*\"\n    }\n  ]\n}\n```",
+    "27": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#iam-role-amazoneksnoderole-platform-level]\n\n#### IAM Role: `AmazonEKSNodeRole` (Platform-Level)\n\n**Purpose**: Standard EKS node role (typically managed by platform team)\n\n**Managed Policies**:\n\n- `arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy`\n- `arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy`\n- `arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly`",
+    "28": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#5-monitoring-resources]\n\n### 5. Monitoring Resources",
+    "29": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#cloudwatch-log-group]\n\n#### CloudWatch Log Group\n\n**Log Group: `/eks/ai-gov-review`**\n\n- **Retention**: 30 days (dev/test), 90 days (production)\n- **Encryption**: AWS managed key\n- **Purpose**: Container logs from Kubernetes pods",
+    "30": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#cloudwatch-alarms]\n\n#### CloudWatch Alarms\n\n**Alarm: `ai-gov-review-high-cpu`**\n\n- **Metric**: Kubernetes Pod CPU Utilization\n- **Threshold**: > 80% for 5 minutes\n- **Action**: SNS notification to ops team\n\n**Alarm: `ai-gov-review-high-memory`**\n\n- **Metric**: Kubernetes Pod Memory Utilization\n- **Threshold**: > 85% for 5 minutes\n- **Action**: SNS notification to ops team\n\n**Alarm: `ai-gov-review-target-unhealthy`**\n\n- **Metric**: UnHealthyHostCount\n- **Threshold**: > 0 for 2 minutes\n- **Action**: SNS notification to ops team\n\n**Alarm: `ai-gov-review-5xx-errors`**\n\n- **Metric**: HTTPCode_Target_5XX_Count\n- **Threshold**: > 10 in 5 minutes\n- **Action**: SNS notification to ops team",
+    "31": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#6-optional-resources]\n\n### 6. Optional Resources",
+    "32": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#aws-glue-catalog-phase-2---training-data]\n\n#### AWS Glue Catalog (Phase 2 - Training Data)\n\n**Database: `ai_governance_training`**\n\n- **Purpose**: Catalog training data in S3 for Athena queries\n- **Tables**:\n    - `reviews` - Partitioned by review_type and date\n    - `evaluations` - Partitioned by review_type and date\n    - `feedback` - Partitioned by review_type and date",
+    "33": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#amazon-athena-workgroup-phase-2]\n\n#### Amazon Athena Workgroup (Phase 2)\n\n**Workgroup: `ai-governance-analytics`**\n\n- **Purpose**: Query training data for ML preparation\n- **Output Location**: s3://ai-governance-reviews/athena-results/\n- **Encryption**: SSE-S3\n\n---",
+    "34": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#terraform-module-structure]\n\n## Terraform Module Structure\n\nRecommended Terraform structure in `components/iac/terraform/formations/aws/ai-gov-review-service/`:\n\n```\nai-gov-review-service/\n├── main.tf                 # Main configuration\n├── variables.tf            # Input variables\n├── outputs.tf              # Output values\n├── providers.tf            # Provider configuration\n├── versions.tf             # Terraform version constraints\n├── modules/\n│   ├── dynamodb/\n│   │   ├── main.tf\n│   │   ├── variables.tf\n│   │   └── outputs.tf\n│   ├── s3/\n│   │   ├── main.tf\n│   │   ├── variables.tf\n│   │   └── outputs.tf\n│   ├── elasticache/\n│   │   ├── main.tf\n│   │   ├── variables.tf\n│   │   └── outputs.tf\n│   ├── eks/\n│   │   ├── main.tf          # EKS cluster, node groups\n│   │   ├── variables.tf\n│   │   └── outputs.tf\n│   ├── kubernetes/\n│   │   ├── main.tf          # Deployment, Service, Ingress, HPA\n│   │   ├── variables. tf\n│   │   └── outputs.tf\n│   ├── alb/\n│   │   ├── main.tf          # ALB, target group, listeners\n│   │   ├── variables.tf\n│   │   └── outputs.tf\n│   ├── iam/\n│   │   ├── main.tf          # Task role, policies\n│   │   ├── variables.tf\n│   │   └── outputs.tf\n│   └── monitoring/\n│       ├── main.tf          # CloudWatch logs, alarms\n│       ├── variables.tf\n│       └── outputs.tf\n└── environments/\n    ├── dev.tfvars\n    ├── test.tfvars\n    └── prod.tfvars\n```",
+    "35": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#key-terraform-variables]\n\n### Key Terraform Variables\n\n```hcl\nvariable \"environment\" {\n  description = \"Environment name (dev, test, prod)\"\n  type        = string\n}\n\nvariable \"aws_region\" {\n  description = \"AWS region for deployment\"\n  type        = string\n  default     = \"us-east-1\"\n}\n\nvariable \"vpc_id\" {\n  description = \"VPC ID for resource deployment\"\n  type        = string\n}\n\nvariable \"private_subnet_ids\" {\n  description = \"Private subnet IDs for ECS tasks and ElastiCache\"\n  type        = list(string)\n}\n\nvariable \"public_subnet_ids\" {\n  description = \"Public subnet IDs for ALB\"\n  type        = list(string)\n}\n\nvariable \"ecs_task_cpu\" {\n  description = \"CPU units for ECS task (1024 = 1 vCPU)\"\n  type        = number\n  default     = 2048\n}\n\nvariable \"ecs_task_memory\" {\n  description = \"Memory for ECS task in MB\"\n  type        = number\n  default     = 4096\n}\n\nvariable \"ecs_service_desired_count\" {\n  description = \"Desired number of ECS tasks\"\n  type        = number\n  default     = 2\n}\n\nvariable \"redis_node_type\" {\n  description = \"ElastiCache Redis node type\"\n  type        = string\n  default     = \"cache.t3.small\"\n}\n\nvariable \"enable_multi_az\" {\n  description = \"Enable Multi-AZ for ElastiCache\"\n  type        = bool\n  default     = true\n}\n\nvariable \"bedrock_model_id\" {\n  description = \"Bedrock model identifier\"\n  type        = string\n  default     = \"anthropic.claude-3-5-sonnet-20240620-v1:0\"\n}\n```\n\n---",
+    "36": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#manual-setup-reference]\n\n## Manual Setup Reference\n\n**Note**: The following AWS CLI commands are for reference only. Use Terraform for actual deployment.",
+    "37": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#aws-infrastructure-setup]\n\n## AWS Infrastructure Setup",
+    "38": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#step-1-enable-bedrock-model-access]\n\n### Step 1: Enable Bedrock Model Access\n\n1. Navigate to AWS Console → Bedrock → Model access\n2. Request access to \"Claude 3.5 Sonnet\" by Anthropic\n3. Wait for approval (usually instant for most AWS accounts)\n4. Verify access:\n\n```bash\naws bedrock invoke-model \\\n  --region us-east-1 \\\n  --model-id anthropic.claude-3-5-sonnet-20240620-v1:0 \\\n  --body '{\"anthropic_version\":\"bedrock-2023-05-31\",\"max_tokens\":100,\"messages\":[{\"role\":\"user\",\"content\":\"Hello\"}]}' \\\n  output.json\n```",
+    "39": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#step-2-create-dynamodb-tables]\n\n### Step 2: Create DynamoDB Tables",
+    "40": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#reviews-table]\n\n#### Reviews Table\n\n```bash\naws dynamodb create-table \\\n  --table-name governance-reviews \\\n  --attribute-definitions \\\n    AttributeName=review_id,AttributeType=S \\\n    AttributeName=submitter_email,AttributeType=S \\\n    AttributeName=review_type,AttributeType=S \\\n    AttributeName=created_at,AttributeType=S \\\n  --key-schema AttributeName=review_id,KeyType=HASH \\\n  --billing-mode PAY_PER_REQUEST \\\n  --global-secondary-indexes \\\n    '[\n      {\n        \"IndexName\": \"submitter_email-index\",\n        \"KeySchema\": [{\"AttributeName\":\"submitter_email\",\"KeyType\":\"HASH\"}],\n        \"Projection\": {\"ProjectionType\":\"ALL\"}\n      },\n      {\n        \"IndexName\": \"review_type-created_at-index\",\n        \"KeySchema\": [\n          {\"AttributeName\":\"review_type\",\"KeyType\":\"HASH\"},\n          {\"AttributeName\":\"created_at\",\"KeyType\":\"RANGE\"}\n        ],\n        \"Projection\": {\"ProjectionType\":\"ALL\"}\n      }\n    ]' \\\n  --region us-east-1\n```",
+    "41": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#templates-table]\n\n#### Templates Table\n\n```bash\naws dynamodb create-table \\\n  --table-name governance-templates \\\n  --attribute-definitions AttributeName=template_id,AttributeType=S \\\n  --key-schema AttributeName=template_id,KeyType=HASH \\\n  --billing-mode PAY_PER_REQUEST \\\n  --region us-east-1\n```",
+    "42": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#verify-tables]\n\n#### Verify Tables\n\n```bash\naws dynamodb list-tables --region us-east-1\naws dynamodb describe-table --table-name governance-reviews --region us-east-1\n```",
+    "43": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#step-3-create-s3-bucket-for-templates-and-reviews]\n\n### Step 3: Create S3 Bucket for Templates and Reviews\n\nCreate the S3 bucket:\n\n```bash\naws s3api create-bucket \\\n  --bucket ai-governance-reviews \\\n  --region us-east-1\n```\n\nEnable versioning (for template history):\n\n```bash\naws s3api put-bucket-versioning \\\n  --bucket ai-governance-reviews \\\n  --versioning-configuration Status=Enabled \\\n  --region us-east-1\n```\n\nEnable encryption:\n\n```bash\naws s3api put-bucket-encryption \\\n  --bucket ai-governance-reviews \\\n  --server-side-encryption-configuration '{\n    \"Rules\": [{\n      \"ApplyServerSideEncryptionByDefault\": {\n        \"SSEAlgorithm\": \"AES256\"\n      }\n    }]\n  }' \\\n  --region us-east-1\n```\n\nCreate folder structure:\n\n```bash\n# Templates folder\naws s3api put-object \\\n  --bucket ai-governance-reviews \\\n  --key templates/ \\\n  --region us-east-1\n\n# Reviews folder\naws s3api put-object \\\n  --bucket ai-governance-reviews \\\n  --key reviews/ \\\n  --region us-east-1\n\n# Training data folder\naws s3api put-object \\\n  --bucket ai-governance-reviews \\\n  --key training-data/ \\\n  --region us-east-1\n```\n\nSet lifecycle policy (move old data to Glacier):\n\nCreate `lifecycle-policy.json`:\n\n```json\n{\n  \"Rules\": [\n    {\n      \"Id\": \"MoveOldReviewsToGlacier\",\n      \"Filter\": {\n        \"Prefix\": \"reviews/\"\n      },\n      \"Status\": \"Enabled\",\n      \"Transitions\": [\n        {\n          \"Days\": 730,\n          \"StorageClass\": \"GLACIER\"\n        }\n      ],\n      \"Expiration\": {\n        \"Days\": 2555\n      }\n    },\n    {\n      \"Id\": \"MoveOldTrainingDataToGlacier\",\n      \"Filter\": {\n        \"Prefix\": \"training-data/\"\n      },\n      \"Status\": \"Enabled\",\n      \"Transitions\": [\n        {\n          \"Days\": 730,\n          \"StorageClass\": \"GLACIER\"\n        }\n      ],\n      \"Expiration\": {\n        \"Days\": 1825\n      }\n    }\n  ]\n}\n```\n\nApply lifecycle policy:\n\n```bash\naws s3api put-bucket-lifecycle-configuration \\\n  --bucket ai-governance-reviews \\\n  --lifecycle-configuration file://lifecycle-policy.json \\\n  --region us-east-1\n```\n\nBlock public access (security best practice):\n\n```bash\naws s3api put-public-access-block \\\n  --bucket ai-governance-reviews \\\n  --public-access-block-configuration \\\n    \"BlockPublicAcls=true,IgnorePublicAcls=true,BlockPublicPolicy=true,RestrictPublicBuckets=true\" \\\n  --region us-east-1\n```",
+    "44": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#step-4-create-iam-role-for-ecs-task]\n\n### Step 4: Create IAM Role for ECS Task\n\nCreate `ecs-task-role.json`:\n\n```json\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Principal\": {\n        \"Service\": \"ecs-tasks.amazonaws.com\"\n      },\n      \"Action\": \"sts:AssumeRole\"\n    }\n  ]\n}\n```\n\nCreate role:\n\n```bash\naws iam create-role \\\n  --role-name ai-gov-review-task-role \\\n  --assume-role-policy-document file://ecs-task-role.json\n```\n\nCreate `ecs-task-policy.json`:\n\n```json\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"bedrock:InvokeModel\",\n        \"bedrock:InvokeModelWithResponseStream\"\n      ],\n      \"Resource\": \"arn:aws:bedrock:*:*:model/anthropic.claude-3-5-sonnet-20240620-v1:0\"\n    },\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"dynamodb:GetItem\",\n        \"dynamodb:PutItem\",\n        \"dynamodb:UpdateItem\",\n        \"dynamodb:DeleteItem\",\n        \"dynamodb:Query\",\n        \"dynamodb:Scan\"\n      ],\n      \"Resource\": [\n        \"arn:aws:dynamodb:*:*:table/governance-reviews\",\n        \"arn:aws:dynamodb:*:*:table/governance-reviews/index/*\",\n        \"arn:aws:dynamodb:*:*:table/governance-templates\",\n        \"arn:aws:dynamodb:*:*:table/governance-templates/index/*\"\n      ]\n    },\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"s3:GetObject\",\n        \"s3:PutObject\",\n        \"s3:DeleteObject\",\n        \"s3:ListBucket\"\n      ],\n      \"Resource\": [\n        \"arn:aws:s3:::ai-governance-reviews\",\n        \"arn:aws:s3:::ai-governance-reviews/*\"\n      ]\n    },\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"logs:CreateLogGroup\",\n        \"logs:CreateLogStream\",\n        \"logs:PutLogEvents\"\n      ],\n      \"Resource\": \"arn:aws:logs:*:*:log-group:/ecs/ai-gov-review:*\"\n    }\n  ]\n}\n```\n\nAttach policy:\n\n```bash\naws iam put-role-policy \\\n  --role-name ai-gov-review-task-role \\\n  --policy-name ai-gov-review-policy \\\n  --policy-document file://ecs-task-policy.json\n```",
+    "45": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#step-4-load-initial-templates]\n\n### Step 4: Load Initial Templates\n\nCreate `arb-template.json`:\n\n```json\n{\n  \"template_id\": {\"S\": \"arb\"},\n  \"name\": {\"S\": \"Architecture Review Board\"},\n  \"version\": {\"S\": \"1.0.0\"},\n  \"required_sections\": {\n    \"L\": [\n      {\"S\": \"Executive Summary\"},\n      {\"S\": \"Business Context\"},\n      {\"S\": \"Architecture Overview\"},\n      {\"S\": \"Technical Design\"},\n      {\"S\": \"Security Considerations\"},\n      {\"S\": \"Operations & Support\"}\n    ]\n  },\n  \"evaluation_criteria\": {\n    \"M\": {\n      \"completeness\": {\n        \"M\": {\n          \"description\": {\"S\": \"All required sections present with sufficient detail\"},\n          \"weight\": {\"N\": \"0.3\"}\n        }\n      },\n      \"clarity\": {\n        \"M\": {\n          \"description\": {\"S\": \"Clear, well-structured, easy to understand\"},\n          \"weight\": {\"N\": \"0.25\"}\n        }\n      },\n      \"technical_depth\": {\n        \"M\": {\n          \"description\": {\"S\": \"Sufficient technical detail for architecture decisions\"},\n          \"weight\": {\"N\": \"0.25\"}\n        }\n      },\n      \"compliance\": {\n        \"M\": {\n          \"description\": {\"S\": \"Adheres to enterprise standards and policies\"},\n          \"weight\": {\"N\": \"0.2\"}\n        }\n      }\n    }\n  },\n  \"scoring_config\": {\n    \"M\": {\n      \"pass_threshold\": {\"N\": \"70\"},\n      \"dimension_weights\": {\n        \"M\": {\n          \"completeness\": {\"N\": \"0.3\"},\n          \"clarity\": {\"N\": \"0.25\"},\n          \"technical_depth\": {\"N\": \"0.25\"},\n          \"compliance\": {\"N\": \"0.2\"}\n        }\n      }\n    }\n  },\n  \"active\": {\"BOOL\": true}\n}\n```\n\nLoad template:\n\n```bash\naws dynamodb put-item \\\n  --table-name governance-templates \\\n  --item file://arb-template.json \\\n  --region us-east-1\n```\n\nRepeat for other review types (CRB, DRB, SRB, etc.)\n\n---",
+    "46": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#local-development-deployment]\n\n## Local Development Deployment\n\nFor local laptop testing only. Remote environments (Dev/Prod) use EKS - see next section.",
+    "47": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#prerequisites]\n\n### Prerequisites\n\n```bash\n# Verify Python and Poetry\npython --version  # 3.12+\npoetry --version  # 2.2.1+\n\n# Clone repository\ncd .tooling/components/apis/ai-gov-review-service\n```",
+    "48": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#setup-and-run]\n\n### Setup and Run\n\n```bash\n# 1. Setup environment (.env.local → .env)\npoetry run python _helpers/setup.py\n\n# 2. Install dependencies\npoetry run python _helpers/build.py\n\n# 3. Optional: Configure AWS credentials for Bedrock testing\n# Edit .env file or use AWS CLI\naws configure\n\n# 4. Run development server\npoetry run python _helpers/run.py\n\n# Server starts at http://localhost:8001\n```",
+    "49": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#test-the-service]\n\n### Test the Service\n\n```bash\n# Health check\ncurl http://localhost:8001/health\n\n# API documentation\nopen http://localhost:8001/docs\n\n# Alternative: ReDoc\nopen http://localhost:8001/redoc\n\n# OpenAPI schema\ncurl http://localhost:8001/openapi.json\n```",
+    "50": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#optional-local-redis-for-caching]\n\n### Optional: Local Redis for Caching\n\n```bash\n# macOS\nbrew install redis\nbrew services start redis\n\n# Verify\nredis-cli ping  # Should return \"PONG\"\n\n# Update .env\nREDIS_URL=redis://localhost:6379\nCACHE_ENABLED=true\n```",
+    "51": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#stopping-the-service]\n\n### Stopping the Service\n\n```bash\n# If running in foreground: Ctrl+C\n\n# If running in background:\npkill -f \"uvicorn src.main:app\"\n```\n\n---",
+    "52": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#remote-deployment-devprod---aws-eks]\n\n## Remote Deployment (Dev/Prod) - AWS EKS\n\nAll remote deployments use Amazon EKS (Kubernetes) with Terraform for infrastructure.",
+    "53": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#build-and-push-container-image]\n\n### Build and Push Container Image\n\n```bash\n# 1. Build Docker image\ndocker build -t ai-gov-review-service:latest .\n\n# 2. Tag for ECR\ndocker tag ai-gov-review-service:latest \\\n  <account-id>.dkr.ecr.us-east-1.amazonaws.com/ai-gov-review-service:latest\n\n# 3. Login to ECR\naws ecr get-login-password --region us-east-1 | \\\n  docker login --username AWS --password-stdin \\\n  <account-id>.dkr.ecr.us-east-1.amazonaws.com\n\n# 4. Push to ECR\ndocker push <account-id>.dkr.ecr.us-east-1.amazonaws.com/ai-gov-review-service:latest\n```",
+    "54": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#deploy-to-eks-with-kubernetes]\n\n### Deploy to EKS with Kubernetes\n\n**Kubernetes manifests** should be in `k8s/` directory:\n\n```bash\nk8s/\n├── namespace.yaml\n├── configmap.yaml\n├── secret.yaml\n├── deployment.yaml\n├── service.yaml\n├── ingress.yaml\n├── hpa.yaml\n└── serviceaccount.yaml\n```\n\n**Deploy to Dev:**\n\n```bash\n# Set context\nkubectl config use-context dev-eks-cluster\n\n# Apply manifests\nkubectl apply -f k8s/namespace.yaml\nkubectl apply -f k8s/configmap.yaml\nkubectl apply -f k8s/secret.yaml  # Pre-populate secrets first!\nkubectl apply -f k8s/serviceaccount.yaml\nkubectl apply -f k8s/deployment.yaml\nkubectl apply -f k8s/service.yaml\nkubectl apply -f k8s/ingress.yaml\nkubectl apply -f k8s/hpa.yaml\n\n# Verify deployment\nkubectl get pods -n ai-gov-review\nkubectl logs -f deployment/ai-gov-review-service -n ai-gov-review\n```\n\n**Deploy to Prod:**\n\n```bash\n# Set context\nkubectl config use-context prod-eks-cluster\n\n# Update image tag for production\nkubectl set image deployment/ai-gov-review-service \\\n  ai-gov-review=<account-id>.dkr.ecr.us-east-1.amazonaws.com/ai-gov-review-service:v1.0.0 \\\n  -n ai-gov-review\n\n# Monitor rollout\nkubectl rollout status deployment/ai-gov-review-service -n ai-gov-review\n```",
+    "55": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#redis-caching-strategy]\n\n### Redis Caching Strategy\n\nThe AI Gov Review Service uses **Redis as a sidecar container** in Kubernetes deployments (Dev and Prod). This approach provides:\n\n**Benefits:**\n\n- **Pod-local caching**: Each pod has its own Redis instance running on localhost\n- **No external dependencies**: No need for ElastiCache or managed Redis services\n- **Simplified networking**: Application connects to `redis://localhost:6379/0`\n- **Automatic scaling**: Redis scales with application pods (each replica gets its own cache)\n- **Cost-effective**: Utilizes existing pod resources, no additional infrastructure\n- **Zero authentication**: localhost connections don't require passwords or TLS\n\n**Architecture:**\n\n```\n┌─────────────────────────────────────┐\n│ Kubernetes Pod                      │\n│                                     │\n│  ┌──────────────────────────────┐  │\n│  │ ai-gov-review (FastAPI)      │  │\n│  │ Port: 8001                   │  │\n│  │ Connects to: localhost:6379  │  │\n│  └──────────────────────────────┘  │\n│               ↓ localhost           │\n│  ┌──────────────────────────────┐  │\n│  │ redis (Sidecar)              │  │\n│  │ Port: 6379                   │  │\n│  │ Memory: 256MB (LRU eviction) │  │\n│  └──────────────────────────────┘  │\n└─────────────────────────────────────┘\n```\n\n**Configuration:**\n\n- **Local Development**: Uses `brew install redis` running on localhost\n- **Dev/Prod (EKS)**: Uses Redis sidecar container in the same pod\n- **Both use**: `REDIS_URL=redis://localhost:6379/0` (no authentication)\n\n**Cache Settings:**\n\n- Max memory: 256MB per pod (configurable)\n- Eviction policy: `allkeys-lru` (least recently used)\n- Persistence: Disabled (ephemeral cache, not for durable data)\n- TTL: 7 days for AI evaluation results\n\nThis sidecar pattern is ideal for high-performance caching where:\n\n- Cache hit rate is high (96%+)\n- Data doesn't need to be shared across pods\n- Simplicity and cost are priorities over centralized cache management",
+    "56": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#example-kubernetes-deployment]\n\n### Example Kubernetes Deployment\n\n**deployment.yaml:**\n\n```yaml\napiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: ai-gov-review-service\n  namespace: ai-gov-review\nspec:\n  replicas: 2\n  selector:\n    matchLabels:\n      app: ai-gov-review\n  template:\n    metadata:\n      labels:\n        app: ai-gov-review\n    spec:\n      serviceAccountName: ai-gov-review-sa\n      containers:\n      # Main application container\n      - name: ai-gov-review\n        image: <account-id>.dkr.ecr.us-east-1.amazonaws.com/ai-gov-review-service:latest\n        ports:\n        - containerPort: 8001\n        envFrom:\n        - configMapRef:\n            name: ai-gov-review-config\n        - secretRef:\n            name: ai-gov-review-secrets\n        env:\n        - name: REDIS_URL\n          value: \"redis://localhost:6379/0\"\n        resources:\n          requests:\n            cpu: \"1000m\"\n            memory: \"2Gi\"\n          limits:\n            cpu: \"2000m\"\n            memory: \"4Gi\"\n        livenessProbe:\n          httpGet:\n            path: /health\n            port: 8001\n          initialDelaySeconds: 30\n          periodSeconds: 10\n        readinessProbe:\n          httpGet:\n            path: /health\n            port: 8001\n          initialDelaySeconds: 10\n          periodSeconds: 5\n\n      # Redis sidecar container (pod-local cache)\n      - name: redis\n        image: redis:7-alpine\n        ports:\n        - containerPort: 6379\n          name: redis\n        args:\n        - redis-server\n        - --maxmemory\n        - \"256mb\"\n        - --maxmemory-policy\n        - allkeys-lru\n        - --save\n        - \"\"\n        - --appendonly\n        - \"no\"\n        resources:\n          requests:\n            cpu: \"100m\"\n            memory: \"256Mi\"\n          limits:\n            cpu: \"500m\"\n            memory: \"512Mi\"\n        livenessProbe:\n          tcpSocket:\n            port: 6379\n          initialDelaySeconds: 10\n          periodSeconds: 5\n        readinessProbe:\n          exec:\n            command:\n            - redis-cli\n            - ping\n          initialDelaySeconds: 5\n          periodSeconds: 3\n```\n\n---",
+    "57": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#configuration-management]\n\n## Configuration Management",
+    "58": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#environment-variables]\n\n### Environment Variables\n\n**Required:**\n\n```bash\nAWS_REGION=us-east-1\nDYNAMODB_REVIEWS_TABLE=governance-reviews\nDYNAMODB_TEMPLATES_TABLE=governance-templates\nBEDROCK_MODEL_ID=anthropic.claude-3-5-sonnet-20240620-v1:0\n```\n\n**Optional:**\n\n```bash\nBEDROCK_MAX_TOKENS=8000\nBEDROCK_TEMPERATURE=0.1\nLOG_LEVEL=INFO\nENABLE_CACHE=true\nCACHE_TTL=3600\nMAX_DOCUMENT_SIZE_MB=10\nALLOWED_FILE_TYPES=docx,md\n```",
+    "59": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#aws-systems-manager-parameter-store-recommended]\n\n### AWS Systems Manager Parameter Store (Recommended)\n\nStore sensitive configuration in Parameter Store:\n\n```bash\n# Store configuration\naws ssm put-parameter \\\n  --name /ai-gov-review/bedrock/model-id \\\n  --value anthropic.claude-3-5-sonnet-20240620-v1:0 \\\n  --type String\n\naws ssm put-parameter \\\n  --name /ai-gov-review/dynamodb/reviews-table \\\n  --value governance-reviews \\\n  --type String\n```\n\nUpdate task definition to use parameters:\n\n```json\n{\n  \"secrets\": [\n    {\n      \"name\": \"BEDROCK_MODEL_ID\",\n      \"valueFrom\": \"/ai-gov-review/bedrock/model-id\"\n    }\n  ]\n}\n```",
+    "60": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#monitoring--logging]\n\n## Monitoring & Logging",
+    "61": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#cloudwatch-logs]\n\n### CloudWatch Logs\n\nCreate log group:\n\n```bash\naws logs create-log-group \\\n  --log-group-name /eks/ai-gov-review \\\n  --region us-east-1\n```\n\nView logs (Kubernetes):\n\n```bash\n# All pods\nkubectl logs -l app=ai-gov-review -n ai-gov-review --tail=100 -f\n\n# Specific pod\nkubectl logs <pod-name> -n ai-gov-review -f\n\n# CloudWatch Logs Insights\naws logs tail /eks/ai-gov-review --follow\n```",
+    "62": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#cloudwatch-metrics]\n\n### CloudWatch Metrics\n\n**EKS/Kubernetes Metrics:**\n\n- `pod_cpu_utilization` - Pod CPU usage\n- `pod_memory_utilization` - Pod memory usage\n- `TargetResponseTime` - ALB response time\n- `pod_network_rx_bytes` - Network received\n- `pod_network_tx_bytes` - Network transmitted\n\n**Custom Metrics (Future):**\n\n- Review processing duration\n- Bedrock API call duration\n- DynamoDB operation latency\n- Error rate by endpoint",
+    "63": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#cloudwatch-alarms]\n\n### CloudWatch Alarms\n\nCreate alarm for high error rate:\n\n```bash\naws cloudwatch put-metric-alarm \\\n  --alarm-name ai-gov-review-high-errors \\\n  --alarm-description \"Alert when error rate > 5%\" \\\n  --metric-name HTTPCode_Target_5XX_Count \\\n  --namespace AWS/ApplicationELB \\\n  --statistic Sum \\\n  --period 300 \\\n  --evaluation-periods 2 \\\n  --threshold 10 \\\n  --comparison-operator GreaterThanThreshold \\\n  --dimensions Name=LoadBalancer,Value=<alb-arn>\n```",
+    "64": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#deployment-updates]\n\n## Deployment Updates",
+    "65": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#rolling-update-zero-downtime]\n\n### Rolling Update (Zero Downtime)\n\nUpdate deployment with new image:\n\n```bash\n# Update deployment image\nkubectl set image deployment/ai-gov-review-service \\\n  ai-gov-review=<account-id>.dkr.ecr.us-east-1.amazonaws.com/ai-gov-review-service:v1.0.1 \\\n  -n ai-gov-review\n\n# Monitor rollout\nkubectl rollout status deployment/ai-gov-review-service -n ai-gov-review\n\n# Check rollout history\nkubectl rollout history deployment/ai-gov-review-service -n ai-gov-review\n```",
+    "66": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#rollback-deployment]\n\n### Rollback Deployment\n\n```bash\n# Rollback to previous version\nkubectl rollout undo deployment/ai-gov-review-service -n ai-gov-review\n\n# Rollback to specific revision\nkubectl rollout undo deployment/ai-gov-review-service --to-revision=2 -n ai-gov-review\n```",
+    "67": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#troubleshooting]\n\n## Troubleshooting",
+    "68": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#pods-wont-start]\n\n### Pods Won't Start\n\n**Check pod status:**\n\n```bash\nkubectl get pods -n ai-gov-review\nkubectl describe pod <pod-name> -n ai-gov-review\nkubectl logs <pod-name> -n ai-gov-review\n```\n\n**Common issues:**\n\n- AWS credentials/IRSA not configured (check ServiceAccount)\n- Bedrock model access not enabled\n- DynamoDB tables don't exist\n- Security group blocking traffic\n- Image pull errors (check ECR permissions)\n- ConfigMap or Secret not found",
+    "69": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#high-latency]\n\n### High Latency\n\n**Check Bedrock performance:**\n\n- Review Bedrock metrics in CloudWatch\n- Check if hitting throttling limits\n- Consider requesting quota increase\n\n**Check DynamoDB performance:**\n\n- Review DynamoDB metrics\n- Check if provisioned capacity sufficient (if not using on-demand)\n- Review query patterns for efficiency",
+    "70": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#out-of-memory]\n\n### Out of Memory\n\n**Increase pod memory:**\n\n```yaml\n# Update deployment.yaml\nresources:\n  requests:\n    memory: \"4Gi\"\n  limits:\n    memory: \"8Gi\"\n```\n\nApply changes:\n\n```bash\nkubectl apply -f k8s/deployment.yaml\n```",
+    "71": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#database-connection-issues]\n\n### Database Connection Issues\n\n**Check security groups:**\n\n- Ensure task security group allows outbound HTTPS (443)\n- DynamoDB uses HTTPS endpoints\n\n**Check IAM permissions:**\n\n- Verify task role has DynamoDB permissions\n- Check CloudTrail for access denied errors",
+    "72": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#cost-optimization]\n\n## Cost Optimization",
+    "73": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#bedrock-costs]\n\n### Bedrock Costs\n\n**Claude 3.5 Sonnet Pricing (as of Jan 2026):**\n\n- Input: $3 per million tokens\n- Output: $15 per million tokens\n\n**Estimate:**\n\n- Average document: ~5,000 tokens input + 1,000 tokens output\n- Cost per review: ~$0.03\n- 1,000 reviews/month: ~$30/month\n\n**Optimization:**\n\n- Use prompt caching for repeated templates\n- Limit max_tokens to reduce unnecessary output\n- Batch multiple sections in single API call",
+    "74": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#dynamodb-costs]\n\n### DynamoDB Costs\n\n**On-Demand Pricing:**\n\n- Write: $1.25 per million write request units\n- Read: $0.25 per million read request units\n\n**Estimate:**\n\n- 1,000 reviews/month: ~$2-5/month\n\n**Optimization:**\n\n- Use batch operations where possible\n- Implement caching for frequent reads\n- Design queries to avoid scans",
+    "75": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#eksec2-costs]\n\n### EKS/EC2 Costs\n\n**EKS Control Plane:**\n\n- EKS cluster: $0.10 per hour = $73/month\n\n**Worker Nodes (EC2):**\n\n**Dev Environment (t3.medium nodes):**\n\n- 2 nodes × t3.medium ($0.0416/hour) = $60/month\n- **Total Dev**: ~$133/month\n\n**Prod Environment (t3.large nodes):**\n\n- 3 nodes × t3.large ($0.0832/hour) = $180/month\n- **Total Prod**: ~$253/month\n\n**Optimization:**\n\n- Right-size pod resource requests/limits\n- Use spot instances for non-production node groups\n- Implement Horizontal Pod Autoscaler (HPA)\n- Use Cluster Autoscaler for node scaling\n- Consider Fargate for serverless pods (dev/test)",
+    "76": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#total-estimated-monthly-cost]\n\n### Total Estimated Monthly Cost\n\n**Development Environment:**\n\n- **Bedrock (500 reviews)**: $15\n- **DynamoDB**: $2\n- **EKS Control Plane**: $73\n- **EKS Worker Nodes (2 × t3.medium)**: $60\n- **ALB**: $20\n- **Data transfer**: $5\n- **CloudWatch**: $3\n- **Total Dev: ~$178/month**\n\n**Production Environment (moderate usage):**\n\n- **Bedrock (2,000 reviews)**: $60\n- **DynamoDB**: $10\n- **EKS Control Plane**: $73\n- **EKS Worker Nodes (3 × t3.large)**: $180\n- **ElastiCache Redis**: $25\n- **ALB**: $20\n- **Data transfer**: $15\n- **CloudWatch**: $10\n- **Total Prod: ~$393/month**",
+    "77": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#security-best-practices]\n\n## Security Best Practices",
+    "78": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#network-security]\n\n### Network Security\n\n- **Use VPC endpoints** for DynamoDB and S3 (reduce NAT costs and improve security)\n- **Private subnets** for EKS worker nodes\n- **Security groups** with least-privilege access\n- **TLS 1.3** on ALB with ACM certificates\n- **Network policies** in Kubernetes for pod-to-pod communication",
+    "79": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#iam-best-practices]\n\n### IAM Best Practices\n\n- **IRSA (IAM Roles for Service Accounts)** for pod permissions\n- **Principle of least privilege** - grant only required permissions\n- **No hard-coded credentials** - use IAM roles and ServiceAccounts\n- **Separate roles** for different workloads",
+    "80": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#data-security]\n\n### Data Security\n\n- **Encryption in transit**: TLS for all communications\n- **Encryption at rest**: DynamoDB encryption enabled by default\n- **Document handling**: Don't permanently store uploaded documents\n- **Audit logging**: Log all review requests with metadata",
+    "81": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#secrets-management]\n\n### Secrets Management\n\n- **Use AWS Secrets Manager** for API keys\n- **Use Parameter Store** for configuration\n- **Rotate credentials** regularly\n- **Never commit secrets** to version control",
+    "82": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#disaster-recovery]\n\n## Disaster Recovery",
+    "83": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#backup-strategy]\n\n### Backup Strategy\n\n**DynamoDB:**\n\n- Enable point-in-time recovery (PITR)\n- Automated backups for 35 days\n- On-demand backups for long-term retention\n\nEnable PITR:\n\n```bash\naws dynamodb update-continuous-backups \\\n  --table-name governance-reviews \\\n  --point-in-time-recovery-specification PointInTimeRecoveryEnabled=true\n```",
+    "84": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#recovery-procedures]\n\n### Recovery Procedures\n\n**Table Recovery:**\n\n```bash\n# Restore from point-in-time\naws dynamodb restore-table-to-point-in-time \\\n  --source-table-name governance-reviews \\\n  --target-table-name governance-reviews-restored \\\n  --restore-date-time 2026-01-03T10:00:00Z\n```\n\n**Multi-Region Deployment:**\n\n- Deploy to secondary region (us-west-2)\n- Use DynamoDB global tables for replication\n- Route53 for failover DNS",
+    "85": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#compliance--auditing]\n\n## Compliance & Auditing",
+    "86": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#audit-logging]\n\n### Audit Logging\n\nAll review requests logged with:\n\n- Request ID\n- Submitter email\n- Document metadata (filename, size, hash)\n- Review type\n- Timestamp\n- Results summary\n\nQuery audit logs:\n\n```bash\naws logs filter-log-events \\\n  --log-group-name /ecs/ai-gov-review \\\n  --filter-pattern '{ $.event = \"review_created\" }' \\\n  --start-time $(date -d '7 days ago' +%s)000\n```",
+    "87": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#compliance-considerations]\n\n### Compliance Considerations\n\n- **Data Residency**: Choose AWS region based on requirements\n- **Data Retention**: Configure DynamoDB TTL for automatic deletion\n- **Access Control**: Implement authentication/authorization\n- **Audit Trail**: Maintain immutable audit logs",
+    "88": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#performance-tuning]\n\n## Performance Tuning",
+    "89": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#application-optimization]\n\n### Application Optimization\n\n- **Connection pooling**: Reuse DynamoDB connections\n- **Async processing**: All I/O operations use async/await\n- **Caching**: Template caching reduces DynamoDB reads\n- **Background tasks**: Long operations don't block API responses",
+    "90": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#infrastructure-optimization]\n\n### Infrastructure Optimization\n\n- **Task sizing**: Monitor CPU/memory usage, right-size tasks\n- **Auto-scaling**: Configure based on actual traffic patterns\n- **DynamoDB**: Use on-demand for unpredictable workloads\n- **ALB**: Enable connection draining for graceful shutdowns",
+    "91": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#monitoring-performance]\n\n### Monitoring Performance\n\n**Key Metrics:**\n\n- API response time (p50, p95, p99)\n- Bedrock call duration\n- DynamoDB operation latency\n- Task CPU/memory utilization\n- Error rate by endpoint",
+    "92": "[.tooling/components/apis/ai-gov-review-service/docs/deployment.md#conclusion]\n\n## Conclusion\n\nThis deployment guide covers production deployment to AWS ECS with Fargate, using managed services (Bedrock, DynamoDB) for simplicity and scalability. The architecture supports auto-scaling, monitoring, and disaster recovery while minimizing operational overhead.\n\nFor questions or issues, refer to the [AI Review Process](./ai-review-process.md) for design details or contact the Enterprise Architecture team."
+  },
+  "coverage": {
+    "total_pages": 92,
+    "covered_pages": 92,
+    "sampled_pages": 92,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 92
+  }
+}

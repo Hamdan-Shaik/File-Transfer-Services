@@ -1,0 +1,240 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Architecture Decision Record",
+  "document_description": "Migrations are applied by a dedicated Kubernetes Job that runs as part of the ArgoCD sync wave before the Deployment rollout:",
+  "total_pages": 24,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 1,
+      "summary": "",
+      "nodes": []
+    },
+    {
+      "title": "Architecture Decision Record",
+      "node_id": "architecture-decision-record",
+      "start_index": 2,
+      "end_index": 24,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "ADR-APP-007: Database Migration Strategy",
+          "node_id": "adr-app-007-database-migration-strategy",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Decision Summary",
+          "node_id": "decision-summary",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Context and Problem Statement",
+          "node_id": "context-and-problem-statement",
+          "start_index": 5,
+          "end_index": 6,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Decision Drivers",
+              "node_id": "decision-drivers",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Decision",
+          "node_id": "decision",
+          "start_index": 7,
+          "end_index": 12,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Migration Tooling",
+              "node_id": "migration-tooling",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Migration Policy",
+              "node_id": "migration-policy",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Application Mechanism — Kubernetes Job",
+              "node_id": "application-mechanism--kubernetes-job",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Multi-Tenant Fan-Out",
+              "node_id": "multi-tenant-fan-out",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Rollback Strategy",
+              "node_id": "rollback-strategy",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Considered Options",
+          "node_id": "considered-options",
+          "start_index": 13,
+          "end_index": 16,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Option 1: Flyway / Liquibase (Rejected)",
+              "node_id": "option-1-flyway--liquibase-rejected",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Option 2: Raw SQL Scripts Applied by CI (Rejected)",
+              "node_id": "option-2-raw-sql-scripts-applied-by-ci-rejected",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Option 3: EF Core Migrations + Kubernetes Job PreSync (Selected)",
+              "node_id": "option-3-ef-core-migrations--kubernetes-job-presync-selected",
+              "start_index": 16,
+              "end_index": 16,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Consequences",
+          "node_id": "consequences",
+          "start_index": 17,
+          "end_index": 20,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Positive",
+              "node_id": "positive",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Negative",
+              "node_id": "negative",
+              "start_index": 19,
+              "end_index": 19,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Neutral",
+              "node_id": "neutral",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Compliance Notes",
+          "node_id": "compliance-notes",
+          "start_index": 21,
+          "end_index": 21,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Related Decisions",
+          "node_id": "related-decisions",
+          "start_index": 22,
+          "end_index": 22,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Review and Approval",
+          "node_id": "review-and-approval",
+          "start_index": 23,
+          "end_index": 23,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Change Log",
+          "node_id": "change-log",
+          "start_index": 24,
+          "end_index": 24,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "> **Promoted from:** `mmes-cms-mbr/docs/decisions/adr-app-007-database-migration-strategy.md`  \n> **Ref-arch artifact ID:** `GUID-APP-DB-001-forward-only-migration-strategy`  \n> This document has been promoted to the Enterprise Architecture Platform reference architecture. Product repos should reference this artifact rather than maintaining their own copy.\n\n---",
+    "2": "[strategy/guidance/application/GUID-APP-DB-001-forward-only-migration-strategy.md#architecture-decision-record]\n\n# Architecture Decision Record",
+    "3": "[strategy/guidance/application/GUID-APP-DB-001-forward-only-migration-strategy.md#adr-app-007-database-migration-strategy]\n\n## ADR-APP-007: Database Migration Strategy\n\n---\n\n|               |                                                                                                                                            |\n| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |\n| **Status**    | Accepted                                                                                                                                   |\n| **Date**      | 2026-07-10                                                                                                                                 |\n| **Issuer**    | [Enterprise Architecture Practice](mailto:EAP-Core@mygainwell.onmicrosoft.com?subject=ADR-APP-007%20Database%20Migration%20Strategy)       |\n| **Consulted** | MBR Development Team, Database Engineering, DevOps, Platform Engineering                                                                   |\n| **Informed**  | All MMES service teams, QA, Compliance                                                                                                     |\n\n---",
+    "4": "[strategy/guidance/application/GUID-APP-DB-001-forward-only-migration-strategy.md#decision-summary]\n\n## Decision Summary\n\n**Entity Framework Core Migrations** is the sole approved tool for Aurora PostgreSQL schema changes in the Member BC. All migrations are **forward-only** (no automatic rollback scripts), **idempotent**, and applied as a **Kubernetes Job** that runs before pod rollout in each environment. For multi-tenant deployments, a Terraform-automated fan-out applies the migration Job sequentially across all tenant clusters before the new pod version is released.\n\n---",
+    "5": "[strategy/guidance/application/GUID-APP-DB-001-forward-only-migration-strategy.md#context-and-problem-statement]\n\n## Context and Problem Statement\n\n- **Business Context**: The Member BC manages PHI for multiple state tenants, each with a dedicated Aurora PostgreSQL cluster (ADR-APP-005). Schema changes must be applied to all tenant clusters reliably, in order, and without data loss before any new application version processes live member data.\n- **Technical Context**: ADR-APP-001 mandates Entity Framework Core (Npgsql) as the ORM. The logical architecture mandates \"EF Core migrations run as Kubernetes Job pre-rollout.\" The multi-tenant data model means a single migration must fan out to N Aurora clusters — one per deployed state tenant — before the rolling pod update proceeds. Without a documented strategy, each developer team member will make independent decisions about tooling, rollback, and fan-out.\n- **Problem Statement**: How are database schema changes authored, tested, versioned, applied across N tenant clusters, and rolled back if needed — in a way that satisfies HIPAA change-control requirements and supports zero-downtime deployments?",
+    "6": "[strategy/guidance/application/GUID-APP-DB-001-forward-only-migration-strategy.md#decision-drivers]\n\n### Decision Drivers\n\n- EF Core is already mandated (ADR-APP-001) — migration authoring tooling is settled\n- Multi-tenant topology (ADR-APP-005) requires fan-out to N clusters — must be automated\n- Zero-downtime deployments require migrations to be backward-compatible with the running pod version\n- HIPAA change-control requirements demand an auditable migration history per tenant cluster\n- ArgoCD GitOps (ADR-INFRA-005) is the deployment mechanism — migration Jobs must fit the GitOps model\n\n---",
+    "7": "[strategy/guidance/application/GUID-APP-DB-001-forward-only-migration-strategy.md#decision]\n\n## Decision",
+    "8": "[strategy/guidance/application/GUID-APP-DB-001-forward-only-migration-strategy.md#migration-tooling]\n\n### Migration Tooling\n\n**Entity Framework Core Migrations** (via `dotnet ef migrations add` / `dotnet ef database update`). No alternative tools (Flyway, Liquibase, raw SQL scripts) are used for the Member BC relational schema. EF Core is the authoritative migration source.",
+    "9": "[strategy/guidance/application/GUID-APP-DB-001-forward-only-migration-strategy.md#migration-policy]\n\n### Migration Policy\n\n| Rule | Detail |\n| --- | --- |\n| **Forward-only** | No `Down()` migration methods are implemented. Rollback is handled by deploying the previous application version (which is compatible with the current schema — see backward-compatibility rule below). Automatic schema rollback is prohibited — it risks data loss on populated tables. |\n| **Backward-compatible** | Every migration must be safe to run while the previous application version is still serving traffic. This means: add columns as nullable first; populate with defaults; add NOT NULL constraint in a follow-on migration at the next release. Drop columns only after the column has been unused for one full release cycle. |\n| **Idempotent** | All migrations are generated with `--idempotent` flag for `script` output. The migration runner checks `__EFMigrationsHistory` and skips already-applied migrations. |\n| **Single source of truth** | Migration files live in `components/dotnet/src/<concern>/Migrations/`. No hand-edited SQL migration scripts alongside EF migrations. |\n| **Naming convention** | EF Core timestamp prefix is preserved: `20260706143022_AddEligibilitySpanIndex.cs`. PR title must reference the migration name. |",
+    "10": "[strategy/guidance/application/GUID-APP-DB-001-forward-only-migration-strategy.md#application-mechanism--kubernetes-job]\n\n### Application Mechanism — Kubernetes Job\n\nMigrations are applied by a dedicated Kubernetes Job that runs as part of the ArgoCD sync wave before the Deployment rollout:\n\n```yaml\n# helm/templates/migration-job.yaml\napiVersion: batch/v1\nkind: Job\nmetadata:\n  name: mbr-migration-{{ .Release.Revision }}\n  annotations:\n    argocd.argoproj.io/hook: PreSync\n    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation\nspec:\n  template:\n    spec:\n      containers:\n        - name: migrator\n          image: \"{{ .Values.image.repository }}:{{ .Values.image.tag }}\"\n          command: [\"dotnet\", \"MMES.CMS.MBR.Migrator.dll\"]\n          env:\n            - name: MMES_DATABASE_URL\n              valueFrom:\n                secretKeyRef:\n                  name: mbr-aurora-credentials\n                  key: connection-string\n      restartPolicy: Never\n  backoffLimit: 3\n```\n\n- The Job uses `argocd.argoproj.io/hook: PreSync` — it must complete successfully before any pod is replaced\n- If the Job fails after 3 retries, the ArgoCD sync is aborted; the running pods continue serving with the current schema\n- Job completion is verified before the Deployment rollout proceeds (ArgoCD sync wave ordering)",
+    "11": "[strategy/guidance/application/GUID-APP-DB-001-forward-only-migration-strategy.md#multi-tenant-fan-out]\n\n### Multi-Tenant Fan-Out\n\nEach tenant has a dedicated Aurora cluster. The same migration Job manifest is deployed to each tenant's EKS namespace via ArgoCD ApplicationSets:\n\n```yaml\n# argocd/applicationset-migration.yaml\ngenerators:\n  - list:\n      elements:\n        - tenant: oh\n          cluster: eks-oh.gainwell.internal\n        - tenant: oh\n          cluster: eks-oh.gainwell.internal\ntemplate:\n  metadata:\n    name: mbr-migration-{{tenant}}\n  spec:\n    syncPolicy:\n      syncOptions:\n        - CreateNamespace=true\n```\n\n- Migrations are applied **sequentially per tenant** (not in parallel) to limit blast radius\n- Terraform automation provisions the ApplicationSet entries when a new state tenant is onboarded — no manual step required\n- Each tenant's `__EFMigrationsHistory` table provides an independent audit trail per cluster",
+    "12": "[strategy/guidance/application/GUID-APP-DB-001-forward-only-migration-strategy.md#rollback-strategy]\n\n### Rollback Strategy\n\nSchema rollback is **not automated**. Rollback is achieved by:\n\n1. **Code rollback** (primary): Deploy the previous application image tag via ArgoCD — the previous version is compatible with the current schema because all migrations are backward-compatible\n2. **Data fix migration** (if schema change caused data corruption): Author a new forward migration that corrects the data; deploy it as a normal release\n3. **Break-glass** (catastrophic failure only): Aurora PITR restore — RTO 4 hours per ADR-INFRA-001; requires Database Engineering approval and produces a compliance incident record\n\n---",
+    "13": "[strategy/guidance/application/GUID-APP-DB-001-forward-only-migration-strategy.md#considered-options]\n\n## Considered Options",
+    "14": "[strategy/guidance/application/GUID-APP-DB-001-forward-only-migration-strategy.md#option-1-flyway--liquibase-rejected]\n\n### Option 1: Flyway / Liquibase (Rejected)\n\n**Pros**: Technology-agnostic; SQL-first; widely used\n**Cons**: Introduces a second migration tool alongside EF Core; migration files would diverge from the EF Core model; no benefit over EF Core for a .NET-only codebase; adds operational dependency",
+    "15": "[strategy/guidance/application/GUID-APP-DB-001-forward-only-migration-strategy.md#option-2-raw-sql-scripts-applied-by-ci-rejected]\n\n### Option 2: Raw SQL Scripts Applied by CI (Rejected)\n\n**Pros**: Full control over SQL; no framework dependency\n**Cons**: No migration history tracking; no idempotency guarantee; incompatible with EF Core change tracking; violates ADR-APP-001 (EF Core as ORM)",
+    "16": "[strategy/guidance/application/GUID-APP-DB-001-forward-only-migration-strategy.md#option-3-ef-core-migrations--kubernetes-job-presync-selected]\n\n### Option 3: EF Core Migrations + Kubernetes Job PreSync (Selected)\n\nSee Decision above.\n\n---",
+    "17": "[strategy/guidance/application/GUID-APP-DB-001-forward-only-migration-strategy.md#consequences]\n\n## Consequences",
+    "18": "[strategy/guidance/application/GUID-APP-DB-001-forward-only-migration-strategy.md#positive]\n\n### Positive\n\n- Single tool for schema and migration — EF Core model and migration files stay in sync\n- GitOps-compatible — migration Job is a Kubernetes manifest in the Helm chart; reviewed and audited like any other change\n- Automatic fan-out via ArgoCD ApplicationSets — no manual per-tenant deployment steps\n- Pre-sync hook ensures schema is always ahead of or equal to the application version",
+    "19": "[strategy/guidance/application/GUID-APP-DB-001-forward-only-migration-strategy.md#negative]\n\n### Negative\n\n- Forward-only policy requires discipline — breaking schema changes must be staged across two releases\n- Fan-out is sequential, not parallel — applying migrations to 10 tenant clusters adds ~10× the migration time to the deployment pipeline\n- EF Core migration conflicts (two developers add migrations simultaneously) must be resolved by rebasing migration files",
+    "20": "[strategy/guidance/application/GUID-APP-DB-001-forward-only-migration-strategy.md#neutral]\n\n### Neutral\n\n- `dotnet ef migrations bundle` produces a self-contained migration executable suitable for the Job container without requiring the full SDK in production images\n\n---",
+    "21": "[strategy/guidance/application/GUID-APP-DB-001-forward-only-migration-strategy.md#compliance-notes]\n\n## Compliance Notes\n\n- **Security**: Migration Job uses AWS Secrets Manager CSI Driver to inject Aurora credentials (ADR-APP-011); credentials never in environment variables or image layers\n- **Regulatory**: `__EFMigrationsHistory` table per tenant cluster provides an auditable, timestamped record of every schema change — satisfies HIPAA change-control requirement; retained with Aurora cluster for 7 years\n- **Standards**: Forward-only idempotent migrations align with STD-APP-CFG-001 (configuration management) change management principles\n\n---",
+    "22": "[strategy/guidance/application/GUID-APP-DB-001-forward-only-migration-strategy.md#related-decisions]\n\n## Related Decisions\n\n- **ADR-APP-001** — EF Core mandated as ORM; migration tooling follows from this\n- **ADR-APP-005** — Per-tenant Aurora clusters; fan-out automation required\n- **ADR-APP-011** — Secrets Management; migration Job injects credentials via CSI Driver\n- **ADR-INFRA-001** — Aurora PostgreSQL; PITR as break-glass rollback mechanism\n- **ADR-INFRA-005** — ArgoCD GitOps; PreSync hook mechanism\n\n---",
+    "23": "[strategy/guidance/application/GUID-APP-DB-001-forward-only-migration-strategy.md#review-and-approval]\n\n## Review and Approval\n\n| Role                         | Name   | Date       | Status     |\n| ---------------------------- | ------ | ---------- | ---------- |\n| Chief Technology Officer     |        |            | Pending    |\n| Chief Architect              |        |            | Pending    |\n| Enterprise Architecture Lead |        |            | Pending    |\n| Domain Enterprise Architect  |        |            | Pending    |\n\n---",
+    "24": "[strategy/guidance/application/GUID-APP-DB-001-forward-only-migration-strategy.md#change-log]\n\n## Change Log\n\n| Version | Date       | Author | Description                |\n| ------- | ---------- | ------ | -------------------------- |\n| 1.0     | 2026-07-10 |        | Initial decision document. |"
+  },
+  "coverage": {
+    "total_pages": 24,
+    "covered_pages": 24,
+    "sampled_pages": 24,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 24
+  }
+}

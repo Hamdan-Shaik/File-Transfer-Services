@@ -1,0 +1,74 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Manage Population Health Outreach (CM) - Process Flow Diagram",
+  "document_description": "subgraph TRIGGERS_ENV[\"⚡ Environment-Based Triggers\"]",
+  "total_pages": 6,
+  "tree": [
+    {
+      "title": "Manage Population Health Outreach (CM) - Process Flow Diagram",
+      "node_id": "manage-population-health-outreach-cm---process-flow-diagram",
+      "start_index": 1,
+      "end_index": 6,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Process Overview",
+          "node_id": "process-overview",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Target Population Selection",
+          "node_id": "target-population-selection",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "External Data Sources",
+          "node_id": "external-data-sources",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Results",
+          "node_id": "results",
+          "start_index": 5,
+          "end_index": 5,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Performance Measures",
+          "node_id": "performance-measures",
+          "start_index": 6,
+          "end_index": 6,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[standards/business/MITA-3.0/bpt-workflows/care_management/CM_Manage_Population_Health_Outreach_BPT_v3.0.mermaid.md#manage-population-health-outreach-cm---process-flow-diagram]\n\n# Manage Population Health Outreach (CM) - Process Flow Diagram\n\n> Business Area: Care Management | Sub-Category: Case Management | Process Code: CM | MITA Version 3.0",
+    "2": "[standards/business/MITA-3.0/bpt-workflows/care_management/CM_Manage_Population_Health_Outreach_BPT_v3.0.mermaid.md#process-overview]\n\n## Process Overview\n\n```mermaid\nflowchart TB\n    subgraph TRIGGERS_ENV[\"⚡ Environment-Based Triggers\"]\n        T1[\"Census, vital statistics,<br/>public health, immigration data\"]\n        T2[\"Periodic timetable<br/>(monthly, quarterly) due\"]\n        T3[\"New population/problem-specific<br/>legislated health initiatives\"]\n        T4[\"Request from federal actions<br/>or constituency interests\"]\n    end\n\n    subgraph TRIGGERS_INT[\"🔗 Interaction-Based Triggers\"]\n        T5[\"Receive alert from Establish Case<br/>for care management monitoring\"]\n    end\n\n    subgraph PREDECESSORS[\"📥 Predecessor Processes\"]\n        P1[Identify Utilization Anomalies]\n        P2[Manage Performance Measures]\n        P3[Manage Member Grievance and Appeal]\n        P4[Manage Provider Grievance and Appeal]\n        P5[Manage Health Plan Information]\n    end\n\n    subgraph MAIN[\"🔄 Manage Population Health Outreach Process\"]\n        START([1. START: Receive request for<br/>outreach materials/communication])\n        STEP2[2. Identify & define target<br/>population by analyzing data]\n        STEP3[3. Approve, deny, or modify<br/>outreach communication decisions]\n        STEP4[4. Determine content &<br/>communication method]\n        STEP5[5. Determine performance<br/>measures]\n        STEP6[6. Prepare linguistically &<br/>culturally appropriate content]\n        STEP7[7. Review and approve<br/>communication]\n        STEP8[8. Generate communication<br/>in agreed format]\n        STEP9[9. Log communication sent<br/>to target population]\n        ENDS([10. END: Evaluate efficacy<br/>satisfaction, resolution rate])\n    end\n\n    subgraph METHODS[\"📡 Communication Methods\"]\n        M1[Email]\n        M2[Mail / Brochures]\n        M3[Web Pages]\n        M4[Mobile Device]\n        M5[Facsimile]\n        M6[Telephone]\n        M7[Kiosk]\n        M8[Radio/Billboard/TV]\n        M9[Face-to-Face Meetings]\n        M10[EDI]\n    end\n\n    subgraph OUTREACH_TYPES[\"📋 Outreach Types\"]\n        O1[Campaigns for new<br/>member enrollment]\n        O2[New health plan/<br/>benefit offering]\n        O3[Modification to existing<br/>health plan/benefit]\n    end\n\n    subgraph SUCCESSORS[\"📤 Successor Processes\"]\n        S1[Manage Applicant and Member Communication]\n        S2[Perform Population and Member Outreach]\n        S3[Manage Provider Communication]\n        S4[Perform Provider Outreach]\n        S5[Manage Contractor Communication]\n        S6[Manage Performance Measures]\n    end\n\n    subgraph DATA[\"💾 Shared Data\"]\n        D1[(Member Data Store)]\n        D2[(Provider Data Store)]\n        D3[(Contractor Data Store)]\n        D4[(Plan Data Store)]\n        D5[(Health Benefit Store)]\n        D6[(External Agency Data)]\n    end\n\n    %% Trigger connections\n    T1 --> START\n    T2 --> START\n    T3 --> START\n    T4 --> START\n    T5 --> START\n\n    %% Predecessor connections\n    P1 -.-> START\n    P2 -.-> START\n    P3 -.-> START\n    P4 -.-> START\n    P5 -.-> START\n\n    %% Main flow\n    START --> STEP2\n    STEP2 --> STEP3\n    STEP3 --> STEP4\n    STEP4 --> STEP5\n    STEP5 --> STEP6\n    STEP6 --> STEP7\n    STEP7 --> STEP8\n    STEP8 --> STEP9\n    STEP9 --> ENDS\n\n    %% Method connections\n    STEP4 -.-> M1\n    STEP4 -.-> M2\n    STEP4 -.-> M3\n    STEP4 -.-> M4\n    STEP4 -.-> M5\n    STEP4 -.-> M6\n    STEP4 -.-> M7\n    STEP4 -.-> M8\n    STEP4 -.-> M9\n    STEP4 -.-> M10\n\n    %% Outreach type connections\n    STEP3 -.-> O1\n    STEP3 -.-> O2\n    STEP3 -.-> O3\n\n    %% Successor connections\n    ENDS -.-> S1\n    ENDS -.-> S2\n    ENDS -.-> S3\n    ENDS -.-> S4\n    ENDS -.-> S5\n    ENDS -.-> S6\n\n    %% Data connections\n    STEP2 <-->|Read| D1\n    STEP2 <-->|Read| D6\n\n    %% Styling\n    classDef trigger fill:#e1f5fe,stroke:#0288d1,stroke-width:2px\n    classDef triggerInt fill:#e8eaf6,stroke:#3f51b5,stroke-width:2px\n    classDef predecessor fill:#fff3e0,stroke:#ff9800,stroke-width:2px\n    classDef successor fill:#e8f5e9,stroke:#4caf50,stroke-width:2px\n    classDef process fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px\n    classDef startend fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    classDef datastore fill:#fff8e1,stroke:#ffc107,stroke-width:2px\n    classDef method fill:#fce4ec,stroke:#e91e63,stroke-width:1px\n    classDef outreach fill:#e0f2f1,stroke:#00897b,stroke-width:1px\n\n    class T1,T2,T3,T4 trigger\n    class T5 triggerInt\n    class P1,P2,P3,P4,P5 predecessor\n    class S1,S2,S3,S4,S5,S6 successor\n    class STEP2,STEP3,STEP4,STEP5,STEP6,STEP7,STEP8,STEP9 process\n    class START,ENDS startend\n    class D1,D2,D3,D4,D5,D6 datastore\n    class M1,M2,M3,M4,M5,M6,M7,M8,M9,M10 method\n    class O1,O2,O3 outreach\n```",
+    "3": "[standards/business/MITA-3.0/bpt-workflows/care_management/CM_Manage_Population_Health_Outreach_BPT_v3.0.mermaid.md#target-population-selection]\n\n## Target Population Selection\n\nPopulations or individuals selected by:\n\n- Cultural indicators\n- Diagnostic indicators\n- Demographic indicators",
+    "4": "[standards/business/MITA-3.0/bpt-workflows/care_management/CM_Manage_Population_Health_Outreach_BPT_v3.0.mermaid.md#external-data-sources]\n\n## External Data Sources\n\n| Source | Data Type |\n|--------|-----------|\n| Census | Population data |\n| Vital Statistics | Birth/death records |\n| Immigration | Immigration data |\n| Public Health | Health statistics |\n| Various Registries | Health registries |",
+    "5": "[standards/business/MITA-3.0/bpt-workflows/care_management/CM_Manage_Population_Health_Outreach_BPT_v3.0.mermaid.md#results]\n\n## Results\n\n| Outcome | Description |\n|---------|-------------|\n| 📬 Outreach Communications | Mailing brochures, web pages, email, kiosk, radio/TV/billboard ads |\n| 🤝 Face-to-Face | In-person meetings conducted |\n| 📈 Tracking | Performance and BAM data |",
+    "6": "[standards/business/MITA-3.0/bpt-workflows/care_management/CM_Manage_Population_Health_Outreach_BPT_v3.0.mermaid.md#performance-measures]\n\n## Performance Measures\n\n| Metric | Target |\n|--------|--------|\n| Phone completion time | __ minutes |\n| Email completion time | __ hours |\n| Mail completion time | __ days |\n| Communication accuracy | __% |\n| Successful delivery | __% |\n\n---\n\n*Generated from: CM_Manage_Population_Health_Outreach_BPT_v3.0.json*"
+  },
+  "coverage": {
+    "total_pages": 6,
+    "covered_pages": 6,
+    "sampled_pages": 6,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 6
+  }
+}

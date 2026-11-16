@@ -1,0 +1,140 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Runtime Application Self-Protection (RASP)",
+  "document_description": "guidance_id: 'GUID-SEC-APP-ABB-RASP-2.7.20'",
+  "total_pages": 13,
+  "tree": [
+    {
+      "title": "Runtime Application Self-Protection (RASP)",
+      "node_id": "runtime-application-self-protection-rasp",
+      "start_index": 1,
+      "end_index": 13,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Architecture Guidance Metadata",
+          "node_id": "architecture-guidance-metadata",
+          "start_index": 2,
+          "end_index": 4,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "ABB Context",
+              "node_id": "abb-context",
+              "start_index": 3,
+              "end_index": 3,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "ABB Scope",
+              "node_id": "abb-scope",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Detailed Guidance",
+          "node_id": "detailed-guidance",
+          "start_index": 5,
+          "end_index": 13,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Core Principles",
+              "node_id": "core-principles",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Key Capabilities",
+              "node_id": "key-capabilities",
+              "start_index": 7,
+              "end_index": 9,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "In-Process Observation",
+                  "node_id": "in-process-observation",
+                  "start_index": 8,
+                  "end_index": 8,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Attack Interception",
+                  "node_id": "attack-interception",
+                  "start_index": 9,
+                  "end_index": 9,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Integration Interfaces",
+              "node_id": "integration-interfaces",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Zero Trust Alignment (NIST SP 800-207)",
+              "node_id": "zero-trust-alignment-nist-sp-800-207",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "NIST SP 800-53 Intent Alignment",
+              "node_id": "nist-sp-800-53-intent-alignment",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Constraints and Dependencies",
+              "node_id": "constraints-and-dependencies",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-RASP-2.7.20.md#runtime-application-self-protection-rasp]\n\n# Runtime Application Self-Protection (RASP)\n\n**← Back to [EAP Home](../../../../../README.md) • [Strategy](../../../../README.md) • [Guidance](../../../README.md) • [Security](../../README.md) • [Application](../README.md)**\n\n---",
+    "2": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-RASP-2.7.20.md#architecture-guidance-metadata]\n\n## Architecture Guidance Metadata\n\n```yaml\nguidance_id: 'GUID-SEC-APP-ABB-RASP-2.7.20'\nguidance_name: 'Runtime Application Self-Protection (RASP)'\nguidance_type: 'architecture-building-block'\nabb_type: 'component'\nadm_phase: 'Phase B-D'\nparent_abb: 'GUID-SEC-APP-ABB-CAT-2.7.06'\nparent_vision: 'GUID-SEC-APP-REF-1.7.01'\nrealized_by_sbbs: []\npaired_rad: 'GUID-SEC-APP-RA-WEBAPP-PROTECT-2.7.30'\ncategory: 'security'\nversion: '0.1.0'\nstatus: 'draft'\napplicability: 'enterprise'\ntags: ['security', 'application', 'architecture-building-block', 'rasp', 'web-application-protection']\nsource_story: 'AB#802670'\n```\n\n---\n\n> **TOGAF ADM Note**: This is a **Component ABB** (Phase B–D) within the Application Security domain. Per [GUID-SEC-APP-REF-1.7.01](../GUID-SEC-APP-REF-1.7.01.md): **SHALL** = mandatory; **SHOULD** = strongly recommended; **MAY** = optional.",
+    "3": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-RASP-2.7.20.md#abb-context]\n\n### ABB Context\n\n- **Parent L2 Capability**: Web Application Protection — [GUID-SEC-APP-CAP-DESC-1.7.02](../GUID-SEC-APP-CAP-DESC-1.7.02.md)\n- **ABB Catalog**: [GUID-SEC-APP-ABB-CAT-2.7.06](../GUID-SEC-APP-ABB-CAT-2.7.06.md)\n- **Capability Statement**: The enterprise MAY employ an architectural capability to instrument running application processes to detect and block exploitation attempts from within the application execution context, providing a last line of defense against attacks that bypass perimeter controls.",
+    "4": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-RASP-2.7.20.md#abb-scope]\n\n### ABB Scope\n\n**In Scope**:\n- Architectural capability to instrument application runtime to observe function calls, data flows, and execution context\n- Detection and optional blocking of exploitation attempts identified through in-process observation\n- In-process detection of attack patterns that are not visible at the network perimeter (e.g., SQL injection identified at the database call level, not at the HTTP layer)\n\n**Out of Scope**:\n- Perimeter-level HTTP traffic inspection (see GUID-SEC-APP-ABB-WAF-2.7.19)\n- Container runtime behavioral monitoring (see GUID-SEC-APP-ABB-RTCON-2.7.14)\n- Pre-deployment dynamic testing (see GUID-SEC-APP-ABB-DAST-2.7.08)\n- Security controls, tool selection, or configuration baselines (`standards/security/`)\n\n---",
+    "5": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-RASP-2.7.20.md#detailed-guidance]\n\n## Detailed Guidance",
+    "6": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-RASP-2.7.20.md#core-principles]\n\n### Core Principles\n\n- RASP is designated as an optional (MAY) capability; it is most appropriate for high-value applications where the cost of a breach justifies the operational overhead of instrumentation.\n- RASP instrumentation SHALL be validated in pre-production to confirm it does not introduce application stability issues or unacceptable performance degradation.\n- RASP events SHALL be forwarded to the enterprise security monitoring capability regardless of whether blocking mode is enabled.\n- RASP SHOULD initially be deployed in detection-only mode; blocking mode SHOULD be enabled only after a defined period of validated detection accuracy.",
+    "7": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-RASP-2.7.20.md#key-capabilities]\n\n### Key Capabilities",
+    "8": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-RASP-2.7.20.md#in-process-observation]\n\n#### In-Process Observation\n\n**Architectural intent**: Observe application execution at a level of fidelity that allows exploitation attempts to be identified within the application's own execution context.\n\n**Design guidance**:\n- Instrumentation SHALL be applied at a level that provides visibility into security-relevant function calls (e.g., database query construction, file system access, external process execution).\n- The instrumentation mechanism SHOULD NOT require modification of application source code.\n- Performance impact SHALL be characterized in representative load testing before production deployment.",
+    "9": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-RASP-2.7.20.md#attack-interception]\n\n#### Attack Interception\n\n**Architectural intent**: Terminate or modify execution of an identified exploitation attempt before the attack payload reaches its target.\n\n**Design guidance**:\n- Blocking decisions SHOULD be logged with full context (request, execution path, blocked payload) for forensic purposes.\n- A defined exception and false-positive handling process SHALL exist before blocking mode is enabled in any production environment.",
+    "10": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-RASP-2.7.20.md#integration-interfaces]\n\n### Integration Interfaces\n\n| Interface | Direction | Consuming ABB | Description |\n|---|---|---|---|\n| Application Process | Bidirectional | Instrumented Application | In-process agent observes and optionally intercepts execution |\n| Security Events | Outbound | SecOps SIEM/Monitoring | Attack detections and interception events forwarded |\n| WAF Correlation | Outbound | GUID-SEC-APP-ABB-WAF-2.7.19 | In-process attack signals correlated with perimeter observations |",
+    "11": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-RASP-2.7.20.md#zero-trust-alignment-nist-sp-800-207]\n\n### Zero Trust Alignment (NIST SP 800-207)\n\nRASP advances the Applications and Workloads pillar by providing a final enforcement layer within the application process itself — recognizing that perimeter controls alone cannot be assumed to be complete, and that in-process verification of execution safety is a valid architectural pattern.",
+    "12": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-RASP-2.7.20.md#nist-sp-800-53-intent-alignment]\n\n### NIST SP 800-53 Intent Alignment\n\nThis ABB enables the architectural intent of the SI (System and Information Integrity) family — specifically runtime monitoring for malicious input and execution anomalies — and the IR (Incident Response) family, which benefits from in-process attack detection signals for rapid detection and response.",
+    "13": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-RASP-2.7.20.md#constraints-and-dependencies]\n\n### Constraints and Dependencies\n\n- RASP applicability is language- and runtime-dependent; not all application architectures support effective RASP instrumentation.\n- RASP in blocking mode carries a risk of availability impact from false positives; a robust exception process and gradual rollout are architectural prerequisites.\n- RASP is one layer of a defense-in-depth posture and SHALL NOT be used as a substitute for WAF perimeter protection or application-layer input validation.\n\n---\n\n*[Enterprise Architecture Practice](../../../../../README.md) — Gainwell Technologies*"
+  },
+  "coverage": {
+    "total_pages": 13,
+    "covered_pages": 13,
+    "sampled_pages": 13,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 13
+  }
+}

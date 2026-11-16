@@ -1,0 +1,276 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Architecture Decision Record",
+  "document_description": "Documents the implementation-level decisions made when building the AI Agent Spec Execution Model (reference architecture `docs/design/reference-architecture.md`) on the `ai-spec-poc` branch. These decisions cover language choice, code organization, security boundary placement, and workflow structure.",
+  "total_pages": 28,
+  "tree": [
+    {
+      "title": "Architecture Decision Record",
+      "node_id": "architecture-decision-record",
+      "start_index": 1,
+      "end_index": 28,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "ADR-TEC-019: AI Agent Spec Execution Model — Implementation Decisions",
+          "node_id": "adr-tec-019-ai-agent-spec-execution-model--implementation-decisions",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Decision Summary",
+          "node_id": "decision-summary",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Context and Problem Statement",
+          "node_id": "context-and-problem-statement",
+          "start_index": 5,
+          "end_index": 6,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Decision Drivers",
+              "node_id": "decision-drivers",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Decisions",
+          "node_id": "decisions",
+          "start_index": 7,
+          "end_index": 17,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "D1: Python for Pre-Engine Utilities",
+              "node_id": "d1-python-for-pre-engine-utilities",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "D2: All Four Utilities Externalized from Workflow Markdown",
+              "node_id": "d2-all-four-utilities-externalized-from-workflow-markdown",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "D3: Single Dispatch Workflow with Separate Agent-Type Workflows",
+              "node_id": "d3-single-dispatch-workflow-with-separate-agent-type-workflows",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "D4: Separation-of-Duties Enforced in Shell",
+              "node_id": "d4-separation-of-duties-enforced-in-shell",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "D5: Regex-Based Injection and PHI Screening",
+              "node_id": "d5-regex-based-injection-and-phi-screening",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "D6: Agent Files Use Persona-Style Markdown Instructions",
+              "node_id": "d6-agent-files-use-persona-style-markdown-instructions",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "D7: Prompt Files as Thin Wrappers",
+              "node_id": "d7-prompt-files-as-thin-wrappers",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "D8: Test Fixtures as Separate Markdown Files",
+              "node_id": "d8-test-fixtures-as-separate-markdown-files",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "D9: Label Taxonomy in YAML, Deployed via Shell Script",
+              "node_id": "d9-label-taxonomy-in-yaml-deployed-via-shell-script",
+              "start_index": 16,
+              "end_index": 16,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "D10: No `.lock.yml` Generated",
+              "node_id": "d10-no-lockyml-generated",
+              "start_index": 17,
+              "end_index": 17,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Consequences",
+          "node_id": "consequences",
+          "start_index": 18,
+          "end_index": 21,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "✅ Positive",
+              "node_id": "-positive",
+              "start_index": 19,
+              "end_index": 19,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "❌ Negative",
+              "node_id": "-negative",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "⚪ Neutral",
+              "node_id": "-neutral",
+              "start_index": 21,
+              "end_index": 21,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Risk Assessment & Mitigation",
+          "node_id": "risk-assessment--mitigation",
+          "start_index": 22,
+          "end_index": 24,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "⚠️ Risks",
+              "node_id": "-risks",
+              "start_index": 23,
+              "end_index": 23,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "🛡️ Mitigations",
+              "node_id": "-mitigations",
+              "start_index": 24,
+              "end_index": 24,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Compliance Notes",
+          "node_id": "compliance-notes",
+          "start_index": 25,
+          "end_index": 25,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Review and Approval",
+          "node_id": "review-and-approval",
+          "start_index": 26,
+          "end_index": 26,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "📋 Change Log",
+          "node_id": "-change-log",
+          "start_index": 27,
+          "end_index": 27,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "🔍 Last Reviewed",
+          "node_id": "-last-reviewed",
+          "start_index": 28,
+          "end_index": 28,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[decisions/technology/ADR-TEC-019-ai-agent-implementation-decisions.md#architecture-decision-record]\n\n# Architecture Decision Record",
+    "2": "[decisions/technology/ADR-TEC-019-ai-agent-implementation-decisions.md#adr-tec-019-ai-agent-spec-execution-model--implementation-decisions]\n\n## ADR-TEC-019: AI Agent Spec Execution Model — Implementation Decisions\n\n---\n\n|               |                                                                |\n| ------------- | -------------------------------------------------------------- |\n| **Status**    | 🟡 Proposed                                                    |\n| **Date**      | 2026-05-11                                                     |\n| **Issuer**    | Enterprise Architecture Practice                               |\n| **Consulted** | AI Lead, Technology Domain EA Lead, Platform Engineering, Development Teams |\n| **Informed**  | All Development Teams, Enterprise Architecture Practice, Solutions Architects |\n| **Related**   | [ADR-GOV-009](../governance/ADR-GOV-009-ai-agent-spec-execution-model.md) — the governance decision this ADR provides the technology-tier implementation decisions for |\n\n---",
+    "3": "[decisions/technology/ADR-TEC-019-ai-agent-implementation-decisions.md#table-of-contents]\n\n## Table of Contents\n\n- [Decision Summary](#decision-summary)\n- [Context and Problem Statement](#context-and-problem-statement)\n- [Decisions](#decisions)\n- [Consequences](#consequences)\n- [Risk Assessment & Mitigation](#risk-assessment--mitigation)\n- [Compliance Notes](#compliance-notes)\n- [Review and Approval](#review-and-approval)\n\n---",
+    "4": "[decisions/technology/ADR-TEC-019-ai-agent-implementation-decisions.md#decision-summary]\n\n## Decision Summary\n\nDocuments the implementation-level decisions made when building the AI Agent Spec Execution Model (reference architecture `docs/design/reference-architecture.md`) on the `ai-spec-poc` branch. These decisions cover language choice, code organization, security boundary placement, and workflow structure.\n\n---",
+    "5": "[decisions/technology/ADR-TEC-019-ai-agent-implementation-decisions.md#context-and-problem-statement]\n\n## Context and Problem Statement\n\n- **Business Context**: The AI Agent Spec Execution Model defines *what* to build — a label-driven pipeline that validates agent task specs, screens for injection/PHI, assembles context, dispatches to specialized agents, and enforces traceability. The reference architecture does not prescribe *how* to implement the pre-engine utilities or organize the workflow files.\n- **Technical Context**: The implementation spans `.utils/agent/` (Python utilities), `.github/agents/` (agent definitions), `.github/prompts/` (prompt files), `.github/workflows/` (gh-aw workflow sources), and supporting files (issue template, label taxonomy, deploy script).\n- **Problem Statement**: Multiple viable approaches exist for each implementation concern. These decisions must be recorded so reviewers understand the rationale and future contributors know what is revisitable.",
+    "6": "[decisions/technology/ADR-TEC-019-ai-agent-implementation-decisions.md#decision-drivers]\n\n### Decision Drivers\n\n- 🔒 Security gates must execute before untrusted input reaches the LLM\n- 🧪 Validation logic must be deterministically testable\n- 📐 Implementation should follow existing project conventions\n- 🔧 Minimize new runtime dependencies on CI runners\n\n---",
+    "7": "[decisions/technology/ADR-TEC-019-ai-agent-implementation-decisions.md#decisions]\n\n## Decisions",
+    "8": "[decisions/technology/ADR-TEC-019-ai-agent-implementation-decisions.md#d1-python-for-pre-engine-utilities]\n\n### D1: Python for Pre-Engine Utilities\n\n**Decision**: Implement `validate_spec.py`, `screen_spec.py`, `assemble_context.py`, and `traceability.py` as Python modules in `.utils/agent/`.\n\n**Runtime validation**: Confirmed via [GitHub docs](https://docs.github.com/en/copilot/customizing-copilot/customizing-the-development-environment-for-copilot-coding-agent) that gh-aw runs on **standard GitHub Actions runners** (`ubuntu-latest` by default). Python 3.12+ is pre-installed on the base image. The utilities use only stdlib modules (re, json, argparse, datetime) — no `pip install` or network access to PyPI is required. This eliminates any runtime availability concern.\n\n**Alternatives considered**:\n\n| Alternative | Pros | Cons |\n|---|---|---|\n| Shell scripts | No Python dependency on runner | Fragile regex, no structured JSON output, poor testability |\n| Node.js | Also pre-installed on runners | Not used elsewhere in `.utils/`; adds second test framework |\n| Inline in workflow markdown | No external files | Agent would process untrusted input before validation runs |\n\n**Rationale**: Python is the established language for `.utils/` tooling (7 existing formatters). The shared `.utils/.venv/` environment and pytest test runner are already in place. Adding Python modules follows the existing pattern with zero new dependencies. Python availability on gh-aw runners is confirmed — no setup step required for stdlib-only modules.\n\n**Revisitable?** Partially. `assemble_context.py` and `traceability.py` could be moved to agent instructions (see D2).\n\n---",
+    "9": "[decisions/technology/ADR-TEC-019-ai-agent-implementation-decisions.md#d2-all-four-utilities-externalized-from-workflow-markdown]\n\n### D2: All Four Utilities Externalized from Workflow Markdown\n\n**Decision**: All validation, screening, context assembly, and traceability logic lives in `.py` files invoked from `steps.run` blocks. No logic is embedded in the agent markdown body.\n\n**Rationale**: `validate_spec.py` and `screen_spec.py` are security gates — they *must* run in `steps:` before the Copilot engine activates, so the LLM never sees a malformed or malicious spec. `assemble_context.py` and `traceability.py` were externalized for consistency and testability.\n\n**Revisitable?** Yes, for the non-security utilities. Context assembly (parsing issue sections into JSON) and traceability block generation (formatting a markdown table) could reasonably be agent instructions. This would reduce the Python surface area from 4 modules to 2.\n\n---",
+    "10": "[decisions/technology/ADR-TEC-019-ai-agent-implementation-decisions.md#d3-single-dispatch-workflow-with-separate-agent-type-workflows]\n\n### D3: Single Dispatch Workflow with Separate Agent-Type Workflows\n\n**Decision**: `agent-dispatch.md` handles the `label_command` trigger, runs pre-engine validation, and invokes the dispatch agent. Four separate workflow sources (`agent-implement.md`, `agent-document.md`, `agent-test.md`, `agent-infra.md`) are triggered via `workflow_dispatch` for specialized execution.\n\n**Alternatives considered**:\n\n| Alternative | Pros | Cons |\n|---|---|---|\n| Single monolithic workflow | Fewer files | Dispatch agent would need to do everything; no separation of concerns |\n| Dispatch only (no agent-type workflows) | Simpler | Specialized agents lose dedicated workflow configuration (timeouts, permissions, safe-outputs) |\n\n**Rationale**: Matches the reference architecture's separation of dispatch from execution. Each agent type gets its own `safe-outputs` configuration, timeout, and `engine.agent` reference.\n\n**Revisitable?** Yes — if the dispatch agent can invoke specialized agents within its own engine context, the separate workflows may be unnecessary.\n\n---",
+    "11": "[decisions/technology/ADR-TEC-019-ai-agent-implementation-decisions.md#d4-separation-of-duties-enforced-in-shell]\n\n### D4: Separation-of-Duties Enforced in Shell\n\n**Decision**: The `LABEL_ACTOR != ISSUE_AUTHOR` check is a bash conditional in `agent-dispatch.md`'s `steps.run` block, not in Python.\n\n**Rationale**: This is a one-line check with no structured output needed. Keeping it in the shell step avoids adding a Python dependency for a trivial comparison. It runs pre-engine, which is the correct boundary.\n\n**Revisitable?** No. This is the right place and approach.\n\n---",
+    "12": "[decisions/technology/ADR-TEC-019-ai-agent-implementation-decisions.md#d5-regex-based-injection-and-phi-screening]\n\n### D5: Regex-Based Injection and PHI Screening\n\n**Decision**: `screen_spec.py` uses compiled regular expressions to detect 6 injection patterns and 6 PHI patterns. No LLM-based classifier is used.\n\n**Alternatives considered**:\n\n| Alternative | Pros | Cons |\n|---|---|---|\n| LLM-based classifier | Better at novel attacks | Non-deterministic, requires API call pre-engine, adds latency and cost |\n| Static word list | Simplest | Too many false positives/negatives |\n\n**Rationale**: Regex is deterministic, fast, testable (17 tests cover all patterns), and runs pre-engine with no external API calls. A known-pattern approach is appropriate for the first line of defense.\n\n**Revisitable?** Could layer an LLM-based screen later as a second pass, but regex remains the correct baseline gate.\n\n---",
+    "13": "[decisions/technology/ADR-TEC-019-ai-agent-implementation-decisions.md#d6-agent-files-use-persona-style-markdown-instructions]\n\n### D6: Agent Files Use Persona-Style Markdown Instructions\n\n**Decision**: Each `.github/agents/<name>.agent.md` contains YAML frontmatter (`description`, `tools`, `model`) and a markdown body with persona, routing rules, and behavioral constraints.\n\n**Rationale**: This is the standard gh-aw `.agent.md` format. No alternative was considered.\n\n**Revisitable?** No.\n\n---",
+    "14": "[decisions/technology/ADR-TEC-019-ai-agent-implementation-decisions.md#d7-prompt-files-as-thin-wrappers]\n\n### D7: Prompt Files as Thin Wrappers\n\n**Decision**: Each `.github/prompts/<name>.prompt.md` contains `mode: agent` frontmatter and a brief system instruction. All detailed behavior lives in the corresponding `.agent.md`.\n\n**Rationale**: Avoids duplicating instructions between prompt and agent files. The prompt file exists to provide a VS Code / Copilot Chat entry point; the agent file is the single source of truth for behavior.\n\n**Revisitable?** No.\n\n---",
+    "15": "[decisions/technology/ADR-TEC-019-ai-agent-implementation-decisions.md#d8-test-fixtures-as-separate-markdown-files]\n\n### D8: Test Fixtures as Separate Markdown Files\n\n**Decision**: 7 fixture files in `.utils/agent/tests/fixtures/` (`valid_spec.md`, `missing_goal.md`, `injection_attempt.md`, etc.) rather than inline strings in test code.\n\n**Rationale**: Agent task specs are multi-section markdown documents (Goal, Acceptance Criteria, Constraints, Enterprise Work Item). Embedding them as Python strings would be unreadable and hard to maintain. Separate files let fixtures serve as documentation of the spec format.\n\n**Revisitable?** No.\n\n---",
+    "16": "[decisions/technology/ADR-TEC-019-ai-agent-implementation-decisions.md#d9-label-taxonomy-in-yaml-deployed-via-shell-script]\n\n### D9: Label Taxonomy in YAML, Deployed via Shell Script\n\n**Decision**: Labels defined declaratively in `.github/agent-labels.yml`. Deployment via `.utils/scripts/deploy-agent-labels.sh` using `gh label create`.\n\n**Alternatives considered**:\n\n| Alternative | Pros | Cons |\n|---|---|---|\n| GitHub Action that syncs on push | Automatic | More infrastructure; labels rarely change |\n| Manual creation | No tooling needed | Error-prone, undocumented |\n\n**Rationale**: Declarative YAML is the source of truth; the shell script is a one-time setup command. Labels change infrequently, so automation isn't justified yet.\n\n**Revisitable?** Could move to a GitHub Action if label changes become frequent.\n\n---",
+    "17": "[decisions/technology/ADR-TEC-019-ai-agent-implementation-decisions.md#d10-no-lockyml-generated]\n\n### D10: No `.lock.yml` Generated\n\n**Decision**: `agent-dispatch.lock.yml` was not generated because it is a compilation artifact produced by `gh aw compile agent-dispatch --approve-updates`.\n\n**Rationale**: Lock files are never hand-authored. Generating one requires the `gh-aw` CLI extension which may not be installed in all environments. The workflow source (`.md`) is the authoritative file; the lock file is derived.\n\n**Consequence**: The dispatch workflow is not runnable on GitHub Actions until someone with `gh-aw` installed compiles it.\n\n**Revisitable?** No — but this is a known gap that must be resolved before the pipeline goes live.\n\n---",
+    "18": "[decisions/technology/ADR-TEC-019-ai-agent-implementation-decisions.md#consequences]\n\n## Consequences",
+    "19": "[decisions/technology/ADR-TEC-019-ai-agent-implementation-decisions.md#-positive]\n\n### ✅ Positive\n\n- Security gates run deterministically before the LLM processes any input\n- 48 tests cover all validation, screening, context assembly, and traceability logic\n- Implementation follows existing `.utils/` conventions — no new patterns introduced\n- Each agent type has isolated workflow configuration (permissions, timeouts, safe-outputs)",
+    "20": "[decisions/technology/ADR-TEC-019-ai-agent-implementation-decisions.md#-negative]\n\n### ❌ Negative\n\n- 4 Python modules where 2 might suffice (D2 — context assembly and traceability could be agent instructions)\n- Dispatch workflow not runnable without `gh aw compile` step (D10)",
+    "21": "[decisions/technology/ADR-TEC-019-ai-agent-implementation-decisions.md#-neutral]\n\n### ⚪ Neutral\n\n- Agent-type workflows (`agent-implement.md`, etc.) are currently `workflow_dispatch`-only; dispatch-to-execution routing is not yet wired\n\n---",
+    "22": "[decisions/technology/ADR-TEC-019-ai-agent-implementation-decisions.md#risk-assessment--mitigation]\n\n## Risk Assessment & Mitigation",
+    "23": "[decisions/technology/ADR-TEC-019-ai-agent-implementation-decisions.md#-risks]\n\n### ⚠️ Risks\n\n- **Regex coverage gaps**: Novel injection patterns not covered by the 6 compiled patterns will bypass screening\n- **Lock file gap**: No `.lock.yml` means the workflow cannot execute until compiled",
+    "24": "[decisions/technology/ADR-TEC-019-ai-agent-implementation-decisions.md#-mitigations]\n\n### 🛡️ Mitigations\n\n- Regex patterns are a first line of defense; the agent's own instructions include additional safety constraints\n- Lock file compilation is documented as a required pre-production step in the reference architecture\n\n---",
+    "25": "[decisions/technology/ADR-TEC-019-ai-agent-implementation-decisions.md#compliance-notes]\n\n## Compliance Notes\n\n- **Security**: Pre-engine injection screening (D5) and separation-of-duties enforcement (D4) directly support HIPAA security controls\n- **Regulatory**: PHI pattern screening prevents accidental inclusion of protected health information in agent task specs\n- **Standards**: Implementation follows STD-GOV-AI-001 (spec structure), STD-GOV-AI-002 (label taxonomy), STD-GOV-AI-003 (traceability)\n\n---",
+    "26": "[decisions/technology/ADR-TEC-019-ai-agent-implementation-decisions.md#review-and-approval]\n\n## Review and Approval\n\n| Role                         | Name   | Date       | Status     |\n| ---------------------------- | ------ | ---------- | ---------- |\n| Enterprise Architecture Lead | —      | —          | 🔄 Pending |\n\n---",
+    "27": "[decisions/technology/ADR-TEC-019-ai-agent-implementation-decisions.md#-change-log]\n\n## 📋 Change Log\n\n| Version | Date       | Author                         | Description                              |\n| ------- | ---------- | ------------------------------ | ---------------------------------------- |\n| 1.0     | 2026-05-11 | Enterprise Architecture Practice | Initial decision document — POC branch |\n\n---",
+    "28": "[decisions/technology/ADR-TEC-019-ai-agent-implementation-decisions.md#-last-reviewed]\n\n## 🔍 Last Reviewed\n\n| Review Date | Reviewer | Review Type | Status     |\n| ----------- | -------- | ----------- | ---------- |\n| —           | —        | —           | 🔄 Pending |"
+  },
+  "coverage": {
+    "total_pages": 28,
+    "covered_pages": 28,
+    "sampled_pages": 28,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 28
+  }
+}

@@ -1,0 +1,654 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Canary Deployment Pattern",
+  "document_description": "pattern_name: 'Canary Deployment Pattern'",
+  "total_pages": 69,
+  "tree": [
+    {
+      "title": "Canary Deployment Pattern",
+      "node_id": "canary-deployment-pattern",
+      "start_index": 1,
+      "end_index": 69,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Executive Summary",
+          "node_id": "executive-summary",
+          "start_index": 3,
+          "end_index": 8,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Problem Statement",
+              "node_id": "problem-statement",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Solution Overview",
+              "node_id": "solution-overview",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "When to Use",
+              "node_id": "when-to-use",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Target Audience",
+              "node_id": "target-audience",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Benefits",
+              "node_id": "benefits",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Context and Problem",
+          "node_id": "context-and-problem",
+          "start_index": 9,
+          "end_index": 16,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Business Context",
+              "node_id": "business-context",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Technical Landscape",
+              "node_id": "technical-landscape",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Problem Scenarios",
+              "node_id": "problem-scenarios",
+              "start_index": 12,
+              "end_index": 16,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Problem 1: Claims Adjudication Rules Engine Update—Hypothetical Full Deployment Failure",
+                  "node_id": "problem-1-claims-adjudication-rules-engine-updatehypothetical-full-deployment-failure",
+                  "start_index": 13,
+                  "end_index": 13,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Problem 2: Provider Portal UI Redesign—User Experience Degradation",
+                  "node_id": "problem-2-provider-portal-ui-redesignuser-experience-degradation",
+                  "start_index": 14,
+                  "end_index": 14,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Problem 3: Eligibility Verification API Performance Regression",
+                  "node_id": "problem-3-eligibility-verification-api-performance-regression",
+                  "start_index": 15,
+                  "end_index": 15,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Problem 4: FHIR API Breaking Change Affecting State Integrations",
+                  "node_id": "problem-4-fhir-api-breaking-change-affecting-state-integrations",
+                  "start_index": 16,
+                  "end_index": 16,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Solution",
+          "node_id": "solution",
+          "start_index": 17,
+          "end_index": 31,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Pattern Description",
+              "node_id": "pattern-description",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Architecture Diagram",
+              "node_id": "architecture-diagram",
+              "start_index": 19,
+              "end_index": 19,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Components",
+              "node_id": "components",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Interactions",
+              "node_id": "interactions",
+              "start_index": 21,
+              "end_index": 24,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Interaction 1: Successful Progressive Canary Rollout",
+                  "node_id": "interaction-1-successful-progressive-canary-rollout",
+                  "start_index": 22,
+                  "end_index": 22,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Interaction 2: Canary Failure Detected and Rolled Back",
+                  "node_id": "interaction-2-canary-failure-detected-and-rolled-back",
+                  "start_index": 23,
+                  "end_index": 23,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Interaction 3: Business KPI-Based Canary Decision",
+                  "node_id": "interaction-3-business-kpi-based-canary-decision",
+                  "start_index": 24,
+                  "end_index": 24,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Pattern Variations",
+              "node_id": "pattern-variations",
+              "start_index": 25,
+              "end_index": 31,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Variation 1: Percentage-Based Random Routing",
+                  "node_id": "variation-1-percentage-based-random-routing",
+                  "start_index": 26,
+                  "end_index": 26,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Variation 2: Sticky Session (User-Based) Canary",
+                  "node_id": "variation-2-sticky-session-user-based-canary",
+                  "start_index": 27,
+                  "end_index": 27,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Variation 3: Attribute-Based Canary (Targeted Rollout)",
+                  "node_id": "variation-3-attribute-based-canary-targeted-rollout",
+                  "start_index": 28,
+                  "end_index": 28,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Variation 4: Header-Based Canary (Manual Testing)",
+                  "node_id": "variation-4-header-based-canary-manual-testing",
+                  "start_index": 29,
+                  "end_index": 29,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Variation 5: Canary with Kubernetes (Istio/Linkerd Service Mesh)",
+                  "node_id": "variation-5-canary-with-kubernetes-istiolinkerd-service-mesh",
+                  "start_index": 30,
+                  "end_index": 30,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Variation 6: Canary with Feature Flags (Hybrid Approach)",
+                  "node_id": "variation-6-canary-with-feature-flags-hybrid-approach",
+                  "start_index": 31,
+                  "end_index": 31,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Implementation Guidelines",
+          "node_id": "implementation-guidelines",
+          "start_index": 32,
+          "end_index": 40,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Prerequisites",
+              "node_id": "prerequisites",
+              "start_index": 33,
+              "end_index": 33,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Implementation Steps",
+              "node_id": "implementation-steps",
+              "start_index": 34,
+              "end_index": 38,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Phase 1: Traffic Router Setup",
+                  "node_id": "phase-1-traffic-router-setup",
+                  "start_index": 35,
+                  "end_index": 35,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Phase 2: Monitoring and Metrics",
+                  "node_id": "phase-2-monitoring-and-metrics",
+                  "start_index": 36,
+                  "end_index": 36,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Phase 3: Automated Canary Analysis",
+                  "node_id": "phase-3-automated-canary-analysis",
+                  "start_index": 37,
+                  "end_index": 37,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Phase 4: Progressive Rollout Automation",
+                  "node_id": "phase-4-progressive-rollout-automation",
+                  "start_index": 38,
+                  "end_index": 38,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Best Practices",
+              "node_id": "best-practices",
+              "start_index": 39,
+              "end_index": 39,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Common Pitfalls",
+              "node_id": "common-pitfalls",
+              "start_index": 40,
+              "end_index": 40,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Governance and Compliance",
+          "node_id": "governance-and-compliance",
+          "start_index": 41,
+          "end_index": 47,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Standards Alignment",
+              "node_id": "standards-alignment",
+              "start_index": 42,
+              "end_index": 42,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Mandatory Requirements",
+              "node_id": "mandatory-requirements",
+              "start_index": 43,
+              "end_index": 43,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Approval Process",
+              "node_id": "approval-process",
+              "start_index": 44,
+              "end_index": 44,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Monitoring and Reporting",
+              "node_id": "monitoring-and-reporting",
+              "start_index": 45,
+              "end_index": 45,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Compliance Considerations",
+              "node_id": "compliance-considerations",
+              "start_index": 46,
+              "end_index": 46,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Related Patterns",
+              "node_id": "related-patterns",
+              "start_index": 47,
+              "end_index": 47,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Examples and Use Cases",
+          "node_id": "examples-and-use-cases",
+          "start_index": 48,
+          "end_index": 52,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Example 1: Claims Adjudication Rules Update - Successful Canary",
+              "node_id": "example-1-claims-adjudication-rules-update---successful-canary",
+              "start_index": 49,
+              "end_index": 49,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Example 2: Provider Portal Performance Regression - Canary Catches Issue",
+              "node_id": "example-2-provider-portal-performance-regression---canary-catches-issue",
+              "start_index": 50,
+              "end_index": 50,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Example 3: State-Targeted FHIR API Rollout",
+              "node_id": "example-3-state-targeted-fhir-api-rollout",
+              "start_index": 51,
+              "end_index": 51,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Use Case Scenarios",
+              "node_id": "use-case-scenarios",
+              "start_index": 52,
+              "end_index": 52,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Related Patterns and References",
+          "node_id": "related-patterns-and-references",
+          "start_index": 53,
+          "end_index": 55,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Related Patterns",
+              "node_id": "related-patterns",
+              "start_index": 54,
+              "end_index": 54,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "External References",
+              "node_id": "external-references",
+              "start_index": 55,
+              "end_index": 55,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Change History",
+          "node_id": "change-history",
+          "start_index": 56,
+          "end_index": 56,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Review Log",
+          "node_id": "review-log",
+          "start_index": 57,
+          "end_index": 57,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "TL;DR",
+          "node_id": "tldr",
+          "start_index": 58,
+          "end_index": 69,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Quick Summary",
+              "node_id": "quick-summary",
+              "start_index": 59,
+              "end_index": 59,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "When to Use This Pattern",
+              "node_id": "when-to-use-this-pattern",
+              "start_index": 60,
+              "end_index": 60,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Implementation Checklist",
+              "node_id": "implementation-checklist",
+              "start_index": 61,
+              "end_index": 64,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Prerequisites (Must Have)",
+                  "node_id": "prerequisites-must-have",
+                  "start_index": 62,
+                  "end_index": 62,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Deployment Phases",
+                  "node_id": "deployment-phases",
+                  "start_index": 63,
+                  "end_index": 63,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Decision Criteria (Define Before Deployment)",
+                  "node_id": "decision-criteria-define-before-deployment",
+                  "start_index": 64,
+                  "end_index": 64,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Quick Start Steps",
+              "node_id": "quick-start-steps",
+              "start_index": 65,
+              "end_index": 65,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Key Metrics to Track",
+              "node_id": "key-metrics-to-track",
+              "start_index": 66,
+              "end_index": 66,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Common Pitfalls and Quick Fixes",
+              "node_id": "common-pitfalls-and-quick-fixes",
+              "start_index": 67,
+              "end_index": 67,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Related Patterns",
+              "node_id": "related-patterns",
+              "start_index": 68,
+              "end_index": 68,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Need Help?",
+              "node_id": "need-help",
+              "start_index": 69,
+              "end_index": 69,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#canary-deployment-pattern]\n\n# Canary Deployment Pattern\n\n**← Back to [EAP Home](../../../README.md) • [Patterns](../../README.md) • [Technology](../README.md) • [API & Microservices](./README.md)**\n\n---\n\n**Pattern Metadata**\n\n```yaml\npattern_id: 'PTN-TEC-API-002'\npattern_name: 'Canary Deployment Pattern'\npattern_type: 'deployment-release'\ndomain: 'operations'\nversion: '1.0.0'\nstatus: 'draft'\ntags: ['deployment', 'canary', 'progressive', 'risk-mitigation']\n```\n\n---",
+    "2": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#table-of-contents]\n\n## Table of Contents\n\n- [Executive Summary](#executive-summary)\n- [Context and Problem](#context-and-problem)\n- [Solution](#solution)\n- [Implementation Guidelines](#implementation-guidelines)\n- [Governance and Compliance](#governance-and-compliance)\n- [Examples and Use Cases](#examples-and-use-cases)\n- [Related Patterns and References](#related-patterns-and-references)\n- [Change History](#change-history)\n- [Review Log](#review-log)\n- [TL;DR](#tldr)\n\n---",
+    "3": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#executive-summary]\n\n## Executive Summary",
+    "4": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#problem-statement]\n\n### Problem Statement\n\nTraditional all-or-nothing deployment approaches—whether blue-green instant cutover or rolling updates—expose the entire user base to potential issues simultaneously, creating significant risk for high-impact changes like major feature releases, architectural refactors, or rule engine modifications. While blue-green deployment enables instant rollback, issues must first be detected in production, meaning all users experience degraded service during the detection window (typically 5-30 minutes). For mission-critical healthcare systems, even brief exposures of high-risk changes to the full user population can result in contractual penalties, large-scale member impact, and erosion of state agency trust. Pre-production testing, while essential, cannot replicate all production scenarios—edge cases involving specific state configurations, high-volume data patterns, or rare member circumstances often surface only under real production traffic.",
+    "5": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#solution-overview]\n\n### Solution Overview\n\nThe Canary Deployment Pattern mitigates risk by deploying new versions to a small subset of production users (typically 5-10% \"canary\" cohort) while the majority continues using the stable current version (90-95% \"baseline\" cohort). The canary cohort experiences the new version under real production conditions with actual user traffic, data patterns, and system load, enabling detection of issues at limited scale before wider exposure. If canary metrics (error rates, latency, business KPIs) match or exceed baseline metrics, traffic gradually increases to the new version (10% → 25% → 50% → 100%) over hours or days. If canary metrics degrade significantly compared to baseline, the deployment rolls back by routing canary cohort back to the stable version, affecting only 5-10% of users during the issue window versus 100% with instant cutover. This staged approach transforms high-risk deployments into controlled experiments with measurable success criteria, built-in control groups for comparison, and minimal blast radius for failures.",
+    "6": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#when-to-use]\n\n### When to Use\n\n- **High-risk feature releases** with uncertain production behavior (major UI redesigns, algorithm changes, rules engine modifications affecting adjudication logic)\n- **Architectural refactors or technology migrations** where pre-production testing cannot fully validate production-scale behavior (database migration, caching layer introduction, new payment gateway)\n- **Regulatory or compliance-sensitive changes** requiring production validation before full rollout (CMS FHIR API changes, prior authorization rule updates, eligibility determination logic)\n- **Performance-critical optimizations** where production load patterns differ significantly from test environments (query optimizations, caching strategies, batch processing changes)\n- **Major version upgrades** of dependencies or frameworks with potential unknown side effects (Java 17 → 21, Spring Boot 2.x → 3.x, database engine upgrades)\n- **User experience experiments** requiring A/B testing with real user behavior before committing to full deployment (new member portal workflow, provider claims submission redesign)\n- **Deployments affecting high-value or high-risk user segments** where gradual rollout enables targeted monitoring (large provider groups, specific state contracts, high-volume claims processors)",
+    "7": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#target-audience]\n\n### Target Audience\n\nThis pattern is intended for:\n\n- **Platform Engineers** responsible for designing progressive delivery pipelines and traffic routing infrastructure\n- **DevOps Engineers** managing deployment risk through staged rollouts and automated metric-based promotion gates\n- **Solutions Architects** evaluating deployment strategies for high-risk changes to healthcare systems requiring production validation\n- **Site Reliability Engineers (SREs)** monitoring canary vs. baseline metrics and making data-driven rollout promotion decisions",
+    "8": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#benefits]\n\n### Benefits\n\n1. **Reduced Blast Radius**: Issues impact only 5-10% of users during canary phase vs. 100% with instant cutover—significantly reducing user-impacting incidents\n2. **Real Production Validation**: Canary cohort experiences actual production traffic patterns, data volumes, and user behaviors impossible to replicate in test environments—catches issues missed by pre-production testing\n3. **Statistical Confidence**: Side-by-side comparison of canary vs. baseline cohorts provides statistical evidence of deployment safety—clear metrics-driven go/no-go decisions rather than subjective assessments\n4. **Gradual Risk Exposure**: Progressive rollout (10% → 25% → 50% → 100%) spreads risk over time, enabling early detection and rollback before majority of users affected\n5. **Business Metrics Validation**: Monitor business KPIs (claim approval rates, eligibility verification success, provider enrollment completion) in canary cohort before full rollout—ensures new version doesn't negatively impact healthcare operations\n6. **Faster Issue Detection**: Smaller canary cohort generates more focused logs and metrics, making issue diagnosis faster than analyzing mixed traffic patterns\n7. **Lower Rollback Cost**: Rolling back 5-10% of traffic is operationally simpler and less disruptive than rolling back 100% (minimal stakeholder communication, reduced urgency)\n8. **Regulatory Compliance Support**: Demonstrates risk management best practices for audit purposes—documented staged rollout with monitoring and decision criteria satisfies change management controls\n9. **Team Confidence Building**: Successful canary deployments build team confidence for future high-risk changes, enabling faster innovation cycles without compromising stability\n10. **Cost-Effective Risk Mitigation**: Adds minimal infrastructure cost (<10% additional capacity for canary vs. 100% for blue-green) while providing comparable risk reduction through statistical monitoring",
+    "9": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#context-and-problem]\n\n## Context and Problem",
+    "10": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#business-context]\n\n### Business Context\n\nGainwell Technologies operates mission-critical healthcare infrastructure with strict contractual uptime SLAs. The product portfolio spans claims processing, provider management, pharmacy benefits, member portals, and CMS Interoperability compliance services—all requiring continuous availability and frequent deployments to meet regulatory changes, state-specific requirements, and operational needs.\n\nHowever, not all deployments carry equal risk. While routine bug fixes and minor enhancements can safely deploy via blue-green instant cutover, major changes—new adjudication rules affecting millions of claims, redesigned provider portals impacting thousands of users, architectural refactors changing fundamental system behavior—require more cautious approaches. These high-risk deployments can result in large-scale incidents if issues aren't caught quickly: a claims adjudication bug might incorrectly deny a large number of claims before detection, an eligibility API defect could block pharmacy transactions for many members, or a provider portal issue might prevent offices from submitting claims for payment.\n\nState contracts impose financial penalties per SLA violation, with graduated penalties for extended outages. A major deployment failure affecting multiple states simultaneously could result in significant contractual penalties, plus immeasurable damage to customer relationships and potential contract non-renewals. Beyond financial penalties, deployment failures impact healthcare delivery: provider offices unable to verify eligibility delay patient care, pharmacy systems unable to process prescriptions interrupt medication regimens, and claims processing errors affect provider cash flow and payment cycles.",
+    "11": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#technical-landscape]\n\n### Technical Landscape\n\nGainwell's deployment practices have matured significantly, with most services now using either rolling updates or blue-green deployments. However, both approaches have limitations for high-risk changes:\n\n**Rolling Updates (55% of services)**\n- **Deployment Behavior**: Kubernetes gradually replaces pods with new version (20% → 40% → 60% → 80% → 100% over 10-15 minutes)\n- **Risk Profile**: Partial failure states expose increasing percentages of users to buggy versions during rollout\n- **Detection Window**: 5-15 minutes of mixed versions before issues become obvious in aggregate metrics\n- **Rollback Impact**: Kubernetes rollback takes 8-15 minutes to complete, affecting all traffic during rollback period\n- **Use Cases**: Suitable for low-risk changes (bug fixes, minor features, configuration updates)\n\n**Blue-Green Deployments (15% of services)**\n- **Deployment Behavior**: Instant 100% traffic cutover from Blue to Green after pre-cutover validation\n- **Risk Profile**: All users immediately exposed to new version—if issues exist, entire user base affected\n- **Detection Window**: 5-30 minutes to detect issues under production load and make rollback decision\n- **Rollback Impact**: Instant <5 second rollback, but all users experienced degradation during detection window\n- **Use Cases**: Suitable for well-tested changes with confidence in pre-cutover validation\n\n**Gap**: Neither approach adequately addresses high-risk deployments where:\n- Pre-production testing cannot replicate all production scenarios (specific state data, high-volume patterns, rare edge cases)\n- Instant exposure of all users creates unacceptable business risk (major features, rules changes, architectural refactors)\n- Statistical confidence needed before full rollout (compare new version metrics to current version baseline)\n- Business stakeholders require proof of safety before committing to full deployment",
+    "12": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#problem-scenarios]\n\n### Problem Scenarios",
+    "13": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#problem-1-claims-adjudication-rules-engine-updatehypothetical-full-deployment-failure]\n\n#### Problem 1: Claims Adjudication Rules Engine Update—Hypothetical Full Deployment Failure\n\n**Scenario**: On March 15, 2025, Claims Processing API deployed version 4.2.0 containing updated adjudication rules for institutional claims (inpatient hospital stays) to comply with new CMS billing guidelines. The rules engine changes were extensively tested in staging with synthetic claims data and passed all validation. The deployment used blue-green instant cutover at 10:00 AM, switching 100% of production traffic to the new version simultaneously.\n\n**Timeline and Impact**:\n- **10:00 AM**: Blue-green cutover completed, 100% of traffic on version 4.2.0\n- **10:05 AM**: Claims processing appears normal, monitoring dashboards show typical metrics\n- **10:18 AM**: State Medicaid office calls support reporting \"unusual number of institutional claim denials\" from hospitals\n- **10:25 AM**: Engineering team pulls logs, discovers new rules engine incorrectly denying institutional claims with specific DRG code combinations (edge case not present in staging test data)\n- **10:32 AM**: Confirms issue affects all institutional claims with DRG codes in 400-series (respiratory system diagnoses), approximately 8% of institutional claims volume\n- **10:35 AM**: Decision made to rollback to version 4.1.0 (previous stable version)\n- **10:37 AM**: Blue-green rollback executed, traffic switched back to Blue environment\n- **10:37 AM**: Service restored, new institutional claims processing correctly again\n\n**Impact**:\n- **Duration**: ~37 minutes from cutover to rollback complete\n- **Affected Claims**: A significant number of institutional claims were incorrectly denied before the rollback\n- **Affected Providers**: Multiple hospitals across several states submitted affected claims\n- **Operational Impact**: Manual claim reprocessing required; state agencies received complaints from hospitals requiring formal incident reports\n- **Reputational Impact**: State agencies affected required follow-up remediation plans\n\n**Root Cause**: Staging environment test data did not include sufficient volume of 400-series DRG codes (respiratory diagnoses common during flu season). The edge case represented a small fraction of staging data but a meaningful portion of production data. Pre-cutover testing passed because sample size was insufficient to identify the edge case.\n\n**Canary Would Have Changed**:\n- **10% Canary Deployment**: Deploy to 10% of traffic, monitor for 30 minutes\n- **Issue Detection**: Within 5 minutes, canary cohort metrics show elevated institutional denial rate vs. baseline\n- **Statistical Significance**: Denial count in canary significantly exceeds expected baseline rate—clearly significant\n- **Rollback Decision**: Route canary cohort back to stable version before issue propagates to full traffic\n- **Actual Impact**: Approximately 90% reduction in affected claims (only canary cohort affected, not full deployment)\n- **Zero Full Deployment**: Issue caught in canary, full deployment never executed, the vast majority of users never experienced the bug",
+    "14": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#problem-2-provider-portal-ui-redesignuser-experience-degradation]\n\n#### Problem 2: Provider Portal UI Redesign—User Experience Degradation\n\n**Scenario**: On December 8, 2024, the provider portal deployed version 6.0.0 featuring a complete UI redesign of the claims submission workflow. The redesign consolidated the multi-step claims submission into a shorter wizard, added inline validation, and introduced a new JavaScript framework (React replacing AngularJS). The team conducted extensive UAT with provider office staff across multiple states, receiving positive feedback. Deployment used blue-green cutover at 6:00 AM (off-peak), switching all provider traffic immediately.\n\n**Timeline and Impact**:\n- **6:00 AM**: Blue-green cutover, 100% of provider portal traffic on version 6.0.0\n- **6:45 AM**: First support ticket received: Provider office reports \"claims submission extremely slow, page freezes\"\n- **7:15 AM**: Multiple support tickets open, all reporting performance issues with claims submission\n- **7:30 AM**: Engineering investigates, discovers new React framework loads a significantly larger JavaScript bundle (vs. old AngularJS version), causing slow page loads for providers with low-bandwidth connections (rural areas, mobile hotspots)\n- **7:45 AM**: Growing support ticket queue; provider offices frustrated, some reporting inability to submit claims (timeouts on slow connections)\n- **8:00 AM**: Engineering team debates whether to rollback—UI itself works correctly, just slow for subset of users\n- **8:15 AM**: Management decides to rollback to preserve provider experience during peak claims submission hours (8 AM - noon)\n- **8:18 AM**: Blue-green rollback executed, provider portal reverted to previous version\n- **8:30 AM**: Support tickets subside, provider offices report normal performance\n\n**Impact**:\n- **Duration**: 2 hours 30 minutes from cutover to rollback\n- **Affected Providers**: A significant portion of active morning users experienced performance degradation, particularly those with limited bandwidth connections\n- **Operational Impact**: Multiple support tickets filed; provider offices experienced delayed workflow during peak submission hours\n- **Reputational Impact**: Multiple provider offices filed formal complaints, some escalated to state contract managers\n\n**Root Cause**: UAT testing conducted on high-bandwidth office networks did not replicate real-world conditions for rural providers on DSL or mobile hotspots. The new framework's larger JavaScript bundle took significantly longer to load on slow connections. Performance testing focused on backend API response times but didn't measure frontend page load times under various network conditions.\n\n**Canary Would Have Changed**:\n- **15% Canary Deployment**: Route 15% of provider portal traffic to new version, 85% remain on current version\n- **Monitoring**: Track page load times, time-to-interactive, user session duration, support ticket rates\n- **Issue Detection**: Within 30 minutes, canary cohort shows significantly worse page load times and elevated support ticket rates vs. baseline\n- **Rollback Decision**: Route canary cohort back to stable version before peak submission hours\n- **Actual Impact**: Only ~15% of users affected instead of all users—85% reduction in scope\n- **Remediation Time**: Team redesigns UI with code-splitting and lazy loading to reduce initial JavaScript bundle size, tests with canary again before full rollout",
+    "15": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#problem-3-eligibility-verification-api-performance-regression]\n\n#### Problem 3: Eligibility Verification API Performance Regression\n\n**Scenario**: On October 22, 2024, Eligibility Verification API deployed version 5.8.0 containing a database query optimization expected to reduce latency. The optimization replaced multiple sequential database queries with a single complex JOIN query. Load testing in staging showed latency improvement. Deployment used blue-green cutover, switching 100% of production traffic (which operates at significantly higher volume than staging) to the new version.\n\n**Timeline and Impact**:\n- **2:00 PM**: Blue-green cutover, 100% of traffic on version 5.8.0\n- **2:00-2:10 PM**: Metrics look excellent—P95 latency improved from baseline\n- **2:15 PM**: Latency begins climbing—P95 now worse than baseline\n- **2:20 PM**: Latency continues degrading; timeout errors begin appearing (~1.2% error rate)\n- **2:23 PM**: PagerDuty alert fires: \"Eligibility API Latency Critical\"\n- **2:25 PM**: On-call engineer investigates, sees latency spike coinciding with deployment\n- **2:28 PM**: Database monitoring shows query execution plan changed under high load—complex JOIN now doing full table scans instead of using indexes\n- **2:30 PM**: Rollback decision made\n- **2:31 PM**: Blue-green rollback executed\n- **2:32 PM**: Latency restored to baseline\n\n**Impact**:\n- **Duration**: 32 minutes from cutover to rollback (9 minutes from alert to rollback)\n- **Degraded Requests**: A large number of requests experienced elevated latency during the 32-minute window\n- **Business Impact**:\n  - Many eligibility checks failed, affecting pharmacy transactions and provider verifications\n  - Multiple pharmacy locations called support reporting degraded performance\n  - Multiple provider offices were unable to verify patient eligibility for appointments\n- **SLA Impact**: Error rate exceeded SLA threshold, resulting in contractual service credit\n\n**Root Cause**: Database query optimizer made different execution plan decisions under production load vs. staging load. At low request rates, complex JOIN query used indexes efficiently. At high production request rates, database statistics changed (table lock contention, buffer cache pressure), causing optimizer to choose sequential scan strategy. Staging load testing was insufficient to trigger the problematic execution plan.\n\n**Canary Would Have Changed**:\n- **10% Canary with Production Load Monitoring**: Route 10% of traffic to version 5.8.0\n- **Issue Detection**: Within 10 minutes of canary start, metrics show significantly worse P95 latency in canary vs. baseline, plus elevated error rate and full table scan indicators in database monitoring\n- **Rollback Decision**: Route canary back to stable version before degradation impacts majority of users\n- **Actual Impact**: ~90% reduction in degraded requests (only canary cohort affected)\n- **Remediation**: Team adds explicit index hints to complex JOIN query, tests with canary successfully before full rollout",
+    "16": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#problem-4-fhir-api-breaking-change-affecting-state-integrations]\n\n#### Problem 4: FHIR API Breaking Change Affecting State Integrations\n\n**Scenario**: On August 14, 2024, the FHIR API deployed version 3.0.0 upgrading from FHIR R4 version 4.0.1 to 4.3.0 to support new CMS interoperability requirements. The FHIR specification upgrade included several breaking changes in resource structure (Patient, Coverage, ExplanationOfBenefit resources). The team validated compatibility with CMS Da Vinci specifications and tested with 3 state health information exchanges (HIEs) that confirmed compatibility. Deployment used blue-green cutover at 11:00 PM (off-peak maintenance window).\n\n**Timeline and Impact**:\n- **11:00 PM**: Blue-green cutover, 100% of FHIR API traffic on version 3.0.0\n- **11:00 PM - 7:00 AM**: Low overnight traffic, no issues detected\n- **7:15 AM**: California HIE integration begins failing—unable to parse Coverage resources\n- **7:30 AM**: Texas HIE reports similar errors with Patient resources\n- **7:45 AM**: Multiple states now reporting FHIR API compatibility issues\n- **8:00 AM**: Engineering team called in, investigates breaking changes\n- **8:15 AM**: Realizes many states running older FHIR client libraries (HAPI FHIR 5.4.0) incompatible with FHIR R4 version 4.3.0 resource changes\n- **8:30 AM**: Rollback decision made—too many states affected to remediate quickly\n- **8:33 AM**: Blue-green rollback to version 2.8.0 (FHIR R4 4.0.1)\n- **8:45 AM**: States confirm FHIR integrations restored\n\n**Impact**:\n- **Duration**: Nearly 10 hours from cutover to rollback (~1.5 hours from first report to rollback)\n- **Affected States**: Multiple states experienced FHIR API integration failures\n- **Failed Transactions**: A large number of FHIR API requests failed (patient data access, prior authorization lookups, claims status inquiries)\n- **Business Impact**:\n  - Multiple state HIEs unable to retrieve patient data for care coordination (CMS Interoperability Final Rule compliance at risk)\n  - Multiple provider offices unable to access patient eligibility via HIE integrations\n  - Prior authorization requests blocked awaiting patient data lookups\n- **Compliance Impact**: Affected states received CMS compliance violation notices, requiring formal remediation plans\n\n**Root Cause**: Only 3 states tested with pre-release FHIR API version (those using newest HAPI FHIR 6.2.0 client libraries compatible with R4 4.3.0). Remaining states running older HAPI FHIR 5.4.0 clients were not included in UAT. Breaking changes document distributed but states did not upgrade client libraries proactively.\n\n**Canary Would Have Changed**:\n- **State-Targeted Canary**: Deploy version 3.0.0 to 3 states initially (those confirmed compatible), 47 states remain on 2.8.0\n- **Monitoring**: Track FHIR API request success rates, error types, client library versions\n- **Issue Detection**: After 24 hours, request other states to test integration compatibility before expanding canary\n- **Phased Rollout**: Gradually expand to states that confirm client library upgrades (10 states → 25 states → all 50 states over 4 weeks)\n- **Actual Impact**: Zero production failures—all states validate compatibility before receiving new version\n- **CMS Compliance**: No state experiences downtime, no compliance violations",
+    "17": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#solution]\n\n## Solution",
+    "18": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#pattern-description]\n\n### Pattern Description\n\nThe Canary Deployment Pattern routes a small percentage of production traffic (typically 5-15%) to a new application version (the \"canary\") while the majority of traffic (85-95%) continues using the current stable version (the \"baseline\"). The canary cohort provides a real-world test under actual production conditions with genuine user behavior, data patterns, and system load. Both versions run simultaneously, enabling side-by-side metric comparison—if canary metrics (error rates, latency, business KPIs) match or exceed baseline performance, traffic gradually increases to the new version in stages (10% → 25% → 50% → 100%); if canary metrics degrade significantly, the deployment rolls back by routing canary traffic back to the stable version, limiting user impact to the small canary cohort.\n\n**Core Mechanics**:\n1. **Baseline Version** (current stable): Serves 90-95% of production traffic, provides control group for comparison\n2. **Canary Version** (new deployment): Serves 5-10% of production traffic, undergoes real-world validation\n3. **Traffic Routing**: Load balancer, service mesh, or API gateway routes users to canary or baseline based on routing rules (random selection, user attributes, geography, etc.)\n4. **Metric Collection**: Both versions emit identical metrics (error rates, latency, throughput, business KPIs) for comparison\n5. **Statistical Analysis**: Automated or manual comparison determines if canary metrics significantly differ from baseline\n6. **Progressive Rollout**: If canary succeeds, gradually increase canary traffic percentage over hours or days\n7. **Rollback if Needed**: If canary fails, route all traffic back to baseline version\n\n**Key Differentiators from Other Patterns**:\n- **vs. Blue-Green Deployment**: Gradual traffic ramp-up vs. instant 100% cutover (canary limits blast radius, blue-green enables instant rollback)\n- **vs. Rolling Update**: Controlled percentage-based routing vs. automatic pod replacement (canary maintains cohort separation for comparison, rolling update gradually replaces all instances)\n- **vs. A/B Testing**: Deployment safety validation vs. feature conversion optimization (canary focuses on technical metrics and rollback decisions, A/B testing focuses on business metrics and feature selection)\n- **vs. Feature Flags**: Infrastructure-level traffic routing vs. application-level feature control (can be combined for layered control)",
+    "19": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#architecture-diagram]\n\n### Architecture Diagram\n\n```text\n┌─────────────────────────────────────────────────────────────────────────────┐\n│                          CANARY DEPLOYMENT                                  │\n│                                                                             │\n│                                                                             │\n│  PHASE 1: INITIAL CANARY (10% Traffic)                                     │\n│  ═══════════════════════════════════                                       │\n│                                                                             │\n│                              PRODUCTION TRAFFIC                             │\n│                              ↓↓↓↓↓↓↓↓↓↓↓↓↓                                 │\n│                                                                             │\n│                     ┌──────────────────────────┐                           │\n│                     │  Load Balancer /         │                           │\n│                     │  Service Mesh /          │                           │\n│                     │  API Gateway             │                           │\n│                     │                          │                           │\n│                     │  Traffic Routing Rules:  │                           │\n│                     │  • 10% → Canary          │                           │\n│                     │  • 90% → Baseline        │                           │\n│                     └────────┬────────┬────────┘                           │\n│                              │        │                                     │\n│                    10% ↓     │        │     ↓ 90%                          │\n│           ┌──────────────────┘        └──────────────────┐                 │\n│           │                                                │                 │\n│           ▼                                                ▼                 │\n│  ┌─────────────────────┐                       ┌─────────────────────┐     │\n│  │  CANARY Environment  │                       │ BASELINE Environment │     │\n│  │  (NEW VERSION)       │                       │ (CURRENT STABLE)     │     │\n│  │                      │                       │                      │     │\n│  │  Version: v3.2.0     │                       │  Version: v3.1.0     │     │\n│  │  Traffic: 10%        │                       │  Traffic: 90%        │     │\n│  │  Status: Testing     │                       │  Status: Stable      │     │\n│  │                      │                       │                      │     │\n│  │  Metrics:            │     COMPARISON        │  Metrics:            │     │\n│  │  • Error Rate        │  ◄══════════════►     │  • Error Rate        │     │\n│  │  • P95 Latency       │   Statistical         │  • P95 Latency       │     │\n│  │  • Throughput        │   Analysis            │  • Throughput        │     │\n│  │  • Business KPIs     │                       │  • Business KPIs     │     │\n│  │                      │                       │                      │     │\n│  │  ┌────────────────┐  │                       │  ┌────────────────┐  │     │\n│  │  │ Instance 1     │  │                       │  │ Instance 1     │  │     │\n│  │  │ Instance 2     │  │                       │  │ Instance 2     │  │     │\n│  │  └────────────────┘  │                       │  │ Instance 3     │  │     │\n│  └──────────┬───────────┘                       │  │ Instance 4     │  │     │\n│             │                                    │  │ Instance 5     │  │     │\n│             │                                    │  └────────────────┘  │     │\n│             │                                    └──────────┬───────────┘     │\n│             │                                               │                 │\n│             └───────────────┬───────────────────────────────┘                 │\n│                             │                                                 │\n│                             ▼                                                 │\n│                 ┌───────────────────────┐                                    │\n│                 │  Shared Production    │                                    │\n│                 │  Dependencies         │                                    │\n│                 │                       │                                    │\n│                 │  • Database           │                                    │\n│                 │  • Kafka              │                                    │\n│                 │  • Redis Cache        │                                    │\n│                 │  • Downstream APIs    │                                    │\n│                 └───────────────────────┘                                    │\n│                                                                             │\n│  MONITORING DASHBOARD:                                                      │\n│  ┌─────────────────────────────────────────────────────────────────┐      │\n│  │  Canary vs. Baseline Metrics (Real-Time Comparison)             │      │\n│  │                                                                  │      │\n│  │  Error Rate:     Canary: 0.3%  │  Baseline: 0.2%  ✓ Similar    │      │\n│  │  P95 Latency:    Canary: 187ms │  Baseline: 182ms ✓ Similar    │      │\n│  │  Throughput:     Canary: 1,200/min │ Baseline: 10,800/min      │      │\n│  │  Success Rate:   Canary: 99.7% │  Baseline: 99.8% ✓ Similar    │      │\n│  │                                                                  │      │\n│  │  Decision: PROCEED to 25% canary (metrics acceptable)           │      │\n│  └─────────────────────────────────────────────────────────────────┘      │\n│                                                                             │\n└─────────────────────────────────────────────────────────────────────────────┘\n\n┌─────────────────────────────────────────────────────────────────────────────┐\n│  PHASE 2: EXPANDED CANARY (25% Traffic)                                    │\n│  ═══════════════════════════════════════                                   │\n│                                                                             │\n│                              PRODUCTION TRAFFIC                             │\n│                              ↓↓↓↓↓↓↓↓↓↓↓↓↓                                 │\n│                                                                             │\n│                     ┌──────────────────────────┐                           │\n│                     │  Load Balancer           │                           │\n│                     │                          │                           │\n│                     │  Traffic Routing Rules:  │                           │\n│                     │  • 25% → Canary          │  ← INCREASED              │\n│                     │  • 75% → Baseline        │                           │\n│                     └────────┬────────┬────────┘                           │\n│                              │        │                                     │\n│                    25% ↓     │        │     ↓ 75%                          │\n│           ┌──────────────────┘        └──────────────────┐                 │\n│           │                                                │                 │\n│           ▼                                                ▼                 │\n│  ┌─────────────────────┐                       ┌─────────────────────┐     │\n│  │  CANARY Environment  │                       │ BASELINE Environment │     │\n│  │                      │                       │                      │     │\n│  │  Version: v3.2.0     │                       │  Version: v3.1.0     │     │\n│  │  Traffic: 25%        │  ← MORE TRAFFIC       │  Traffic: 75%        │     │\n│  │  Status: Testing     │                       │  Status: Stable      │     │\n│  │                      │                       │                      │     │\n│  │  ┌────────────────┐  │                       │  ┌────────────────┐  │     │\n│  │  │ Instance 1     │  │                       │  │ Instance 1     │  │     │\n│  │  │ Instance 2     │  │                       │  │ Instance 2     │  │     │\n│  │  │ Instance 3     │  │  ← SCALED UP          │  │ Instance 3     │  │     │\n│  │  └────────────────┘  │                       │  │ Instance 4     │  │     │\n│  └──────────────────────┘                       │  │ Instance 5     │  │     │\n│                                                  │  └────────────────┘  │     │\n│                                                  └─────────────────────┘     │\n│                                                                             │\n│  MONITORING: Continue comparing metrics for another 30-60 minutes          │\n│                                                                             │\n└─────────────────────────────────────────────────────────────────────────────┘\n\n┌─────────────────────────────────────────────────────────────────────────────┐\n│  PHASE 3: MAJORITY CANARY (50% Traffic)                                    │\n│  ══════════════════════════════════════                                    │\n│                                                                             │\n│                              PRODUCTION TRAFFIC                             │\n│                              ↓↓↓↓↓↓↓↓↓↓↓↓↓                                 │\n│                                                                             │\n│                     ┌──────────────────────────┐                           │\n│                     │  Load Balancer           │                           │\n│                     │                          │                           │\n│                     │  Traffic Routing Rules:  │                           │\n│                     │  • 50% → Canary          │  ← EQUAL SPLIT            │\n│                     │  • 50% → Baseline        │                           │\n│                     └────────┬────────┬────────┘                           │\n│                              │        │                                     │\n│                    50% ↓     │        │     ↓ 50%                          │\n│           ┌──────────────────┘        └──────────────────┐                 │\n│           │                                                │                 │\n│           ▼                                                ▼                 │\n│  ┌─────────────────────┐                       ┌─────────────────────┐     │\n│  │  CANARY Environment  │                       │ BASELINE Environment │     │\n│  │                      │                       │                      │     │\n│  │  Version: v3.2.0     │                       │  Version: v3.1.0     │     │\n│  │  Traffic: 50%        │  ← EQUAL TRAFFIC      │  Traffic: 50%        │     │\n│  │                      │                       │                      │     │\n│  │  ┌────────────────┐  │                       │  ┌────────────────┐  │     │\n│  │  │ Instance 1-5   │  │  ← SCALED TO MATCH    │  │ Instance 1-5   │  │     │\n│  │  └────────────────┘  │                       │  └────────────────┘  │     │\n│  └──────────────────────┘                       └─────────────────────┘     │\n│                                                                             │\n└─────────────────────────────────────────────────────────────────────────────┘\n\n┌─────────────────────────────────────────────────────────────────────────────┐\n│  PHASE 4: FULL CUTOVER (100% Traffic)                                      │\n│  ════════════════════════════════════                                      │\n│                                                                             │\n│                              PRODUCTION TRAFFIC                             │\n│                              ↓↓↓↓↓↓↓↓↓↓↓↓↓                                 │\n│                                                                             │\n│                     ┌──────────────────────────┐                           │\n│                     │  Load Balancer           │                           │\n│                     │                          │                           │\n│                     │  Traffic Routing Rules:  │                           │\n│                     │  • 100% → Canary (New)   │  ← FULL DEPLOYMENT        │\n│                     │  • 0% → Baseline (Old)   │                           │\n│                     └─────────────┬────────────┘                           │\n│                                   │                                         │\n│                            100% ↓ │                                         │\n│                                   │                                         │\n│                                   ▼                                         │\n│                       ┌─────────────────────┐                              │\n│                       │  NEW VERSION (was    │                              │\n│                       │  Canary, now Main)   │                              │\n│                       │                      │                              │\n│                       │  Version: v3.2.0     │                              │\n│                       │  Traffic: 100%       │                              │\n│                       │  Status: Production  │                              │\n│                       │                      │                              │\n│                       │  ┌────────────────┐  │                              │\n│                       │  │ All Instances  │  │                              │\n│                       │  └────────────────┘  │                              │\n│                       └─────────────────────┘                              │\n│                                                                             │\n│  OLD VERSION (Baseline) can be:                                            │\n│  • Decommissioned (if confident in new version)                            │\n│  • Kept as warm standby for disaster recovery (1-7 days)                   │\n│  • Scaled down to minimal capacity (cost optimization)                     │\n│                                                                             │\n└─────────────────────────────────────────────────────────────────────────────┘\n\n┌─────────────────────────────────────────────────────────────────────────────┐\n│  PHASE 5 (IF NEEDED): ROLLBACK SCENARIO                                    │\n│  ══════════════════════════════════════════                                │\n│                                                                             │\n│  ISSUE DETECTED at 25% Canary Phase:                                       │\n│  • Canary error rate: 2.8% (Baseline: 0.2%)  ❌ SIGNIFICANT DEGRADATION   │\n│  • Canary P95 latency: 3,247ms (Baseline: 182ms)  ❌ 18× WORSE            │\n│                                                                             │\n│                              PRODUCTION TRAFFIC                             │\n│                              ↓↓↓↓↓↓↓↓↓↓↓↓↓                                 │\n│                                                                             │\n│                     ┌──────────────────────────┐                           │\n│                     │  Load Balancer           │                           │\n│                     │                          │                           │\n│                     │  Traffic Routing Rules:  │                           │\n│                     │  • 0% → Canary           │  ← ROLLBACK TO BASELINE   │\n│                     │  • 100% → Baseline       │                           │\n│                     └─────────────┬────────────┘                           │\n│                                   │                                         │\n│                            100% ↓ │                                         │\n│                                   │                                         │\n│                                   ▼                                         │\n│                       ┌─────────────────────┐                              │\n│                       │ BASELINE Environment │                              │\n│                       │ (Restored to Full)   │                              │\n│                       │                      │                              │\n│                       │  Version: v3.1.0     │  ← STABLE VERSION RESTORED  │\n│                       │  Traffic: 100%       │                              │\n│                       │  Status: Production  │                              │\n│                       └─────────────────────┘                              │\n│                                                                             │\n│  CANARY Environment (Failed):                                              │\n│  • Isolated from production traffic                                        │\n│  • Kept for post-mortem analysis                                           │\n│  • Team investigates root cause                                            │\n│  • Fixed version will go through canary process again                      │\n│                                                                             │\n│  USER IMPACT:                                                               │\n│  • Only 25% of users experienced degraded service (vs. 100% with blue-green) │\n│  • Rollback duration: <30 seconds (traffic routing change)                 │\n│  • 75% reduction in blast radius compared to full deployment               │\n│                                                                             │\n└─────────────────────────────────────────────────────────────────────────────┘\n```",
+    "20": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#components]\n\n### Components\n\n| Component | Responsibility | Dependencies |\n|-----------|----------------|--------------|\n| **Canary Environment** | Runs new application version; receives small percentage of production traffic (5-50%); emits metrics for comparison; provides real-world validation under production conditions | Shared production database, Kafka, Redis, downstream APIs; load balancer health checks; monitoring infrastructure |\n| **Baseline Environment** | Runs current stable application version; receives majority of production traffic (50-95%); provides control group for comparison; serves as fallback for rollback | Shared production database, Kafka, Redis, downstream APIs; load balancer health checks; monitoring infrastructure |\n| **Traffic Router** | Routes production traffic to canary or baseline based on routing rules; implements percentage-based splits (10% canary, 90% baseline); supports various routing strategies (random, user-based, geography-based); enables instant rollback by changing routing rules | Load balancer (AWS ALB, Azure Load Balancer, NGINX), service mesh (Istio, Linkerd), or API gateway (Kong, Apigee); routing configuration (percentage splits, user attributes, headers) |\n| **Metrics Collection System** | Captures identical metrics from both canary and baseline environments; aggregates metrics by cohort (canary vs. baseline); calculates statistical significance of differences; triggers alerts for anomalies | Prometheus, CloudWatch, Datadog, New Relic; application instrumentation (metric emission); time-series database; alerting infrastructure |\n| **Automated Analysis Engine** | Compares canary metrics to baseline metrics in real-time; calculates statistical significance (t-tests, chi-square tests, confidence intervals); makes automated rollout/rollback decisions based on thresholds; generates deployment health reports | Metrics collection system; statistical analysis libraries; decision threshold configuration; PagerDuty or alert integration |\n| **Deployment Orchestrator** | Manages progressive rollout phases (10% → 25% → 50% → 100%); updates traffic router with new percentage splits; coordinates scaling of canary environment; executes rollback if needed; maintains deployment state and history | CI/CD pipeline (GitHub Actions, Jenkins, GitLab CI); traffic router API; infrastructure provisioning (Terraform, Kubernetes); rollback automation scripts |\n| **Monitoring Dashboard** | Displays side-by-side comparison of canary vs. baseline metrics; visualizes error rates, latency, throughput, business KPIs; shows statistical significance indicators; provides rollback button for manual intervention | Grafana, Kibana, custom dashboards; metrics collection system; real-time data streams; alerting visualization |\n| **User Cohort Manager** | Assigns users to canary or baseline cohort based on routing strategy; maintains consistent user experience (sticky sessions); tracks cohort membership for analysis; supports targeted canary releases (specific states, user segments) | User session management; routing rules configuration; user attributes (geography, account type, state); cookie or header-based cohort assignment |",
+    "21": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#interactions]\n\n### Interactions",
+    "22": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#interaction-1-successful-progressive-canary-rollout]\n\n#### Interaction 1: Successful Progressive Canary Rollout\n\n1. **Pre-Deployment State**: Baseline environment serving 100% of production traffic with version 3.1.0\n2. **Canary Deployment Initiated**: Version 3.2.0 deployed to canary environment, scaled to handle 10% of production traffic\n3. **Phase 1: 10% Canary** (Duration: 30-60 minutes)\n   - Traffic router updated: 10% canary, 90% baseline\n   - Canary environment begins receiving 1,200 requests/minute (10% of 12,000 req/min)\n   - Metrics collected from both environments for 30 minutes\n   - Automated analysis compares:\n     - Error rate: Canary 0.3% vs. Baseline 0.2% (not statistically significant, p=0.18)\n     - P95 latency: Canary 189ms vs. Baseline 182ms (+3.8%, within 5% tolerance)\n     - Business KPI (claim approval rate): Canary 94.2% vs. Baseline 94.5% (not significant)\n   - **Decision**: Metrics acceptable, proceed to Phase 2\n4. **Phase 2: 25% Canary** (Duration: 30-60 minutes)\n   - Traffic router updated: 25% canary, 75% baseline\n   - Canary environment scaled from 2 instances → 3 instances to handle increased traffic (3,000 req/min)\n   - Metrics monitored for 30 minutes, comparison continues\n   - Error rate: Canary 0.2% vs. Baseline 0.2% (equal)\n   - P95 latency: Canary 184ms vs. Baseline 182ms (essentially equal)\n   - **Decision**: Metrics excellent, proceed to Phase 3\n5. **Phase 3: 50% Canary** (Duration: 60-120 minutes)\n   - Traffic router updated: 50% canary, 50% baseline\n   - Canary scaled to 5 instances (matching baseline instance count)\n   - Metrics monitored for 60 minutes with equal traffic volumes enabling robust statistical comparison\n   - All metrics remain within acceptable thresholds\n   - **Decision**: Deployment safe, proceed to full rollout\n6. **Phase 4: 100% Canary** (Full Deployment)\n   - Traffic router updated: 100% canary, 0% baseline\n   - All production traffic now on version 3.2.0\n   - Baseline environment scaled down to 1 instance (warm standby for disaster recovery)\n   - Monitoring continues for 4-24 hours post-full-deployment\n7. **Deployment Complete**: After monitoring period, baseline environment decommissioned, version 3.2.0 becomes new stable baseline for next deployment\n\n**Total Rollout Duration**: 2-4 hours from initial canary to full deployment (compared to instant cutover with blue-green)",
+    "23": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#interaction-2-canary-failure-detected-and-rolled-back]\n\n#### Interaction 2: Canary Failure Detected and Rolled Back\n\n1. **Pre-Deployment State**: Baseline environment serving 100% of traffic with version 4.1.0\n2. **Canary Deployment**: Version 4.2.0 deployed to canary environment\n3. **Phase 1: 10% Canary Started** (10:00 AM)\n   - Traffic router: 10% canary, 90% baseline\n   - Canary receiving 1,200 req/min\n4. **Monitoring Period** (10:00 AM - 10:15 AM)\n   - Metrics collected for 15 minutes\n   - Initial metrics look acceptable\n5. **Issue Detection** (10:15 AM)\n   - Automated analysis flags anomaly:\n     - Canary error rate: 2.8% vs. Baseline 0.2% (14× worse, p < 0.001)\n     - Canary P95 latency: 3,247ms vs. Baseline 182ms (18× worse, p < 0.001)\n   - PagerDuty alert fires: \"Canary Deployment Failed - Metrics Degraded\"\n6. **On-Call Engineer Review** (10:16 AM)\n   - Engineer reviews monitoring dashboard, sees clear degradation in canary cohort\n   - Confirms only 10% of users affected (vs. 100% with blue-green instant cutover)\n   - Checks logs from canary instances, sees database connection pool exhaustion errors\n7. **Rollback Decision** (10:17 AM)\n   - Given clear metric degradation, engineer decides to rollback canary\n   - No need to diagnose root cause immediately—priority is restoring service\n8. **Rollback Execution** (10:18 AM)\n   - Traffic router updated: 0% canary, 100% baseline\n   - Canary traffic switched to baseline in 25 seconds\n   - All users now on stable version 4.1.0\n9. **Service Restored** (10:18 AM)\n   - Error rate returns to 0.2% baseline\n   - Latency returns to 182ms baseline\n   - No further user impact\n\n**Impact Assessment**:\n- **User-Impacting Duration**: 18 minutes (10:00 AM canary start → 10:18 AM rollback complete)\n- **Affected Users**: 10% of user base experienced degraded service (vs. 100% with blue-green)\n- **Blast Radius Reduction**: 90% fewer users impacted compared to full deployment failure\n- **Total Affected Requests**: 21,600 requests experienced elevated latency (1,200 req/min × 18 min)\n- **Failed Requests**: 605 requests failed (2.8% error rate × 21,600 requests)\n\n**Comparison to Blue-Green Full Deployment Failure** (Hypothetical):\n- If version 4.2.0 deployed via blue-green instant cutover:\n  - 100% of traffic exposed immediately\n  - Detection time: 5-10 minutes under full load\n  - Rollback duration: <5 seconds\n  - Total impact: 10 minutes × 12,000 req/min = 120,000 affected requests\n  - Failed requests: 2.8% × 120,000 = 3,360 failures\n- **Canary Advantage**: 605 failures (canary) vs. 3,360 failures (blue-green) = 82% reduction in failed requests",
+    "24": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#interaction-3-business-kpi-based-canary-decision]\n\n#### Interaction 3: Business KPI-Based Canary Decision\n\n1. **Deployment**: Claims Processing API version 5.3.0 with new adjudication rules deployed to canary\n2. **Phase 1: 10% Canary** (Duration: 60 minutes)\n   - Technical metrics look excellent:\n     - Error rate: Canary 0.2% vs. Baseline 0.2% (equal)\n     - P95 latency: Canary 178ms vs. Baseline 182ms (slightly better)\n   - Business metrics show concern:\n     - Claim approval rate: Canary 91.2% vs. Baseline 94.5% (3.3 percentage points lower, p = 0.003)\n     - Claim denial rate (code 123 \"Insufficient Documentation\"): Canary 5.8% vs. Baseline 2.1% (2.8× higher)\n3. **Business Impact Analysis**:\n   - 3.3 percentage point drop in approval rate = 990 additional claim denials over 60-minute canary period (30,000 claims × 3.3%)\n   - Potentially affecting provider payments and member benefits\n   - Technical metrics don't show issue—adjudication rules executing correctly, just producing different outcomes\n4. **Rollback Decision**:\n   - Product team decides to rollback canary based on business KPI degradation\n   - Even though technical metrics healthy, business impact unacceptable\n   - Rollback executed, canary traffic routed to baseline\n5. **Post-Rollback Investigation**:\n   - Team discovers new adjudication rules too restrictive for specific claim types\n   - Rules modified to match historical approval rates\n   - Redeployed to canary with corrected rules, passed business KPI validation\n\n**Key Learning**: Canary deployment validates both technical metrics (error rates, latency) and business metrics (claim approval rates, provider enrollment success rates, eligibility verification accuracy)—catches issues that technical testing alone would miss",
+    "25": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#pattern-variations]\n\n### Pattern Variations",
+    "26": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#variation-1-percentage-based-random-routing]\n\n#### Variation 1: Percentage-Based Random Routing\n\n**Use Case**: Standard canary deployment where any user can be randomly assigned to canary cohort.\n\n**Implementation**:\n- Load balancer uses random number generator to route traffic\n- 10% of requests randomly routed to canary (each request independent)\n- Simple to implement, no state management required\n\n**Routing Logic**:\n```javascript\nfunction routeRequest(request) {\n  const random = Math.random(); // 0.0 to 1.0\n  if (random < 0.10) {  // 10% canary\n    return 'canary';\n  } else {\n    return 'baseline';\n  }\n}\n```\n\n**Benefits**:\n- Simple implementation\n- No user state tracking needed\n- True random distribution\n\n**Challenges**:\n- User may experience inconsistent behavior (some requests to canary, some to baseline)\n- No user session consistency\n\n**Best For**: Stateless APIs, read-only operations, backend services",
+    "27": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#variation-2-sticky-session-user-based-canary]\n\n#### Variation 2: Sticky Session (User-Based) Canary\n\n**Use Case**: User-facing applications requiring consistent experience—once a user assigned to canary, all subsequent requests go to canary.\n\n**Implementation**:\n- User assigned to canary or baseline cohort on first request\n- Cohort assignment stored in cookie or session\n- Load balancer reads cookie to route subsequent requests consistently\n\n**Routing Logic**:\n```javascript\nfunction routeRequest(request) {\n  let cohort = request.cookies.get('cohort');\n\n  if (!cohort) {\n    // First-time user, assign cohort\n    const random = Math.random();\n    cohort = (random < 0.10) ? 'canary' : 'baseline';\n    response.cookies.set('cohort', cohort, { maxAge: 86400 }); // 24-hour cookie\n  }\n\n  return cohort;\n}\n```\n\n**Benefits**:\n- Consistent user experience\n- Enables testing of multi-step workflows (claims submission, enrollment processes)\n- User sees same version throughout session\n\n**Challenges**:\n- Cookie management complexity\n- Must handle cookie expiration and renewal\n- Users \"locked\" to canary even if it's failing (unless proactive re-assignment)\n\n**Best For**: Web applications, member portals, provider portals, multi-step workflows",
+    "28": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#variation-3-attribute-based-canary-targeted-rollout]\n\n#### Variation 3: Attribute-Based Canary (Targeted Rollout)\n\n**Use Case**: Target specific user segments for canary testing—deploy to internal users first, then specific states, then all users.\n\n**Implementation**:\n- Routing rules based on user attributes (geography, account type, organization)\n- Example: \"Route California state agency users to canary, all other states to baseline\"\n- Enables phased rollout by state, provider group, or member segment\n\n**Routing Logic**:\n```javascript\nfunction routeRequest(request) {\n  const userState = request.headers.get('X-User-State');\n  const userType = request.headers.get('X-User-Type');\n\n  // Internal users always get canary (dogfooding)\n  if (userType === 'internal') {\n    return 'canary';\n  }\n\n  // Specific states in canary\n  if (['CA', 'TX', 'FL'].includes(userState)) {\n    return 'canary';\n  }\n\n  // Everyone else on baseline\n  return 'baseline';\n}\n```\n\n**Benefits**:\n- Control over which users experience new version\n- Enables state-specific validation (FHIR API deployments)\n- Internal dogfooding before external release\n- Gradual geographic rollout\n\n**Challenges**:\n- Requires user attribute metadata in routing layer\n- More complex routing configuration\n- Must ensure compliance (no discriminatory routing)\n\n**Best For**: Multi-state products, FHIR APIs, provider network platforms, phased geographic rollouts",
+    "29": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#variation-4-header-based-canary-manual-testing]\n\n#### Variation 4: Header-Based Canary (Manual Testing)\n\n**Use Case**: Enable QA teams or product managers to manually test canary version by sending special header.\n\n**Implementation**:\n- Request header (e.g., `X-Canary-Opt-In: true`) routes to canary\n- Enables manual testing of canary in production environment\n- Doesn't affect regular user traffic\n\n**Routing Logic**:\n```javascript\nfunction routeRequest(request) {\n  // Check for explicit canary opt-in header\n  if (request.headers.get('X-Canary-Opt-In') === 'true') {\n    return 'canary';\n  }\n\n  // Otherwise, standard percentage-based routing\n  const random = Math.random();\n  return (random < 0.10) ? 'canary' : 'baseline';\n}\n```\n\n**Benefits**:\n- QA can test canary version without waiting for random assignment\n- Product managers can validate new features in production\n- Doesn't affect automated canary rollout percentages\n\n**Challenges**:\n- Requires header support in client\n- Must document for internal users\n- Security concern if header exposes internal testing capabilities\n\n**Best For**: Internal testing, QA validation, product management reviews",
+    "30": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#variation-5-canary-with-kubernetes-istiolinkerd-service-mesh]\n\n#### Variation 5: Canary with Kubernetes (Istio/Linkerd Service Mesh)\n\n**Use Case**: Canary deployment in Kubernetes clusters using service mesh for sophisticated traffic management.\n\n**Implementation**:\n- Deploy canary as separate Kubernetes Deployment with different label\n- Istio VirtualService configures percentage-based traffic splitting\n- Prometheus metrics integration for automated analysis\n\n**Istio VirtualService Configuration**:\n```yaml\napiVersion: networking.istio.io/v1beta1\nkind: VirtualService\nmetadata:\n  name: claims-api\nspec:\n  hosts:\n    - claims-api.prod.gainwell.com\n  http:\n    - match:\n        - headers:\n            X-Canary-Opt-In:\n              exact: \"true\"\n      route:\n        - destination:\n            host: claims-api-canary\n            subset: v5-3-0\n          weight: 100\n    - route:\n        - destination:\n            host: claims-api-baseline\n            subset: v5-2-0\n          weight: 90\n        - destination:\n            host: claims-api-canary\n            subset: v5-3-0\n          weight: 10  # 10% canary traffic\n```\n\n**Benefits**:\n- Native Kubernetes integration\n- Sophisticated traffic management (header-based routing, percentage splits, mirroring)\n- Built-in observability (metrics, tracing, logging)\n- Easy rollback via configuration update\n\n**Challenges**:\n- Requires service mesh (Istio or Linkerd) installation and expertise\n- Additional infrastructure complexity\n- Learning curve for team\n\n**Best For**: Kubernetes-native environments, microservices architectures, teams with service mesh expertise",
+    "31": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#variation-6-canary-with-feature-flags-hybrid-approach]\n\n#### Variation 6: Canary with Feature Flags (Hybrid Approach)\n\n**Use Case**: Combine infrastructure-level canary deployment with application-level feature flags for maximum control.\n\n**Implementation**:\n- Deploy new version to canary using percentage-based routing\n- New features behind feature flags (default: OFF)\n- Enable feature flags progressively: 10% canary users → 100% canary users → 10% baseline users → 100% all users\n\n**Deployment Phases**:\n1. **Phase 1**: Deploy code to canary (10% traffic), feature flags OFF\n   - Validates new code runs without activating new features\n2. **Phase 2**: Enable feature flags for 50% of canary users\n   - Tests new features with small subset (5% of total traffic)\n3. **Phase 3**: Enable feature flags for 100% of canary users\n   - Full feature testing in canary cohort (10% of total traffic)\n4. **Phase 4**: Increase canary to 100% of traffic, keep feature flags 100% enabled\n   - All users on new code with new features\n5. **Phase 5**: Remove feature flags in next release (technical debt cleanup)\n\n**Benefits**:\n- Separates deployment risk from feature activation risk\n- Granular control (infrastructure + application layers)\n- Can rollback at two levels: traffic routing OR feature flags\n- Enables A/B testing within canary cohort\n\n**Challenges**:\n- Increased complexity managing both traffic routing and feature flags\n- Technical debt from feature flag code\n- Requires feature flag infrastructure (LaunchDarkly, Unleash, custom)\n\n**Best For**: High-risk features, complex multi-component changes, teams wanting maximum control",
+    "32": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#implementation-guidelines]\n\n## Implementation Guidelines",
+    "33": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#prerequisites]\n\n### Prerequisites\n\nBefore implementing canary deployment, ensure the following prerequisites are met:\n\n1. **Traffic Routing Capability**:\n   - ✓ Load balancer, API gateway, or service mesh capable of percentage-based traffic splitting\n   - ✓ Routing rules configurable via API or configuration files (not manual)\n   - ✓ Support for gradual traffic shifts (10% → 25% → 50% → 100%)\n   - ✓ Instant routing changes for rollback scenarios\n\n2. **Comprehensive Monitoring**:\n   - ✓ Metrics collection from both canary and baseline environments\n   - ✓ Ability to segment metrics by cohort (canary vs. baseline)\n   - ✓ Real-time dashboards comparing canary to baseline\n   - ✓ Automated alerting for metric anomalies\n\n3. **Statistical Analysis Capability**:\n   - ✓ Tools or scripts to calculate statistical significance\n   - ✓ Decision thresholds defined (acceptable error rate variance, latency variance)\n   - ✓ Business KPI tracking (claim approval rates, eligibility success rates)\n   - ✓ Automated or semi-automated go/no-go decision framework\n\n4. **Application Readiness**:\n   - ✓ Stateless application design OR sticky session support\n   - ✓ Identical metric emission from canary and baseline\n   - ✓ Graceful degradation under partial traffic\n   - ✓ No hardcoded dependencies on specific instance counts\n\n5. **Operational Readiness**:\n   - ✓ Runbook for canary deployment execution\n   - ✓ Rollback procedure documented and tested\n   - ✓ On-call team trained on canary monitoring and rollback\n   - ✓ Communication plan for stakeholders during gradual rollout",
+    "34": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#implementation-steps]\n\n### Implementation Steps",
+    "35": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#phase-1-traffic-router-setup]\n\n#### Phase 1: Traffic Router Setup\n\n**Step 1.1: Configure Load Balancer for Canary Routing**\n\n**AWS ALB Example with Target Groups**:\n```yaml\n# Terraform configuration for canary routing\nresource \"aws_lb_listener_rule\" \"canary\" {\n  listener_arn = aws_lb_listener.https.arn\n  priority     = 100\n\n  action {\n    type = \"forward\"\n    forward {\n      target_group {\n        arn    = aws_lb_target_group.baseline.arn\n        weight = 90  # 90% to baseline\n      }\n      target_group {\n        arn    = aws_lb_target_group.canary.arn\n        weight = 10  # 10% to canary\n      }\n      stickiness {\n        enabled  = true\n        duration = 3600  # 1-hour sticky sessions\n      }\n    }\n  }\n\n  condition {\n    path_pattern {\n      values = [\"/api/*\"]\n    }\n  }\n}\n```\n\n**Istio Service Mesh Example**:\n```yaml\napiVersion: networking.istio.io/v1beta1\nkind: VirtualService\nmetadata:\n  name: claims-api-canary\nspec:\n  hosts:\n    - claims-api.prod.gainwell.com\n  http:\n    - match:\n        - headers:\n            cookie:\n              regex: \".*canary=true.*\"\n      route:\n        - destination:\n            host: claims-api-canary\n          weight: 100\n    - route:\n        - destination:\n            host: claims-api-baseline\n          weight: 90\n        - destination:\n            host: claims-api-canary\n          weight: 10\n```",
+    "36": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#phase-2-monitoring-and-metrics]\n\n#### Phase 2: Monitoring and Metrics\n\n**Step 2.1: Configure Metrics Collection**\n\n**Prometheus Metrics by Cohort**:\n```yaml\n# Relabel metrics to include cohort label\nscrape_configs:\n\n  - job_name: 'claims-api-baseline'\n    static_configs:\n      - targets: ['baseline-pod-1:8080', 'baseline-pod-2:8080']\n        labels:\n          cohort: 'baseline'\n          version: 'v5.2.0'\n\n  - job_name: 'claims-api-canary'\n    static_configs:\n      - targets: ['canary-pod-1:8080', 'canary-pod-2:8080']\n        labels:\n          cohort: 'canary'\n          version: 'v5.3.0'\n```\n\n**Step 2.2: Create Canary Comparison Dashboard**\n\n**Grafana Dashboard**:\n```json\n{\n  \"panels\": [\n    {\n      \"title\": \"Error Rate Comparison\",\n      \"targets\": [\n        {\n          \"expr\": \"sum(rate(http_requests_total{status=~\\\"5..\\\",cohort=\\\"baseline\\\"}[5m])) / sum(rate(http_requests_total{cohort=\\\"baseline\\\"}[5m]))\",\n          \"legendFormat\": \"Baseline Error Rate\"\n        },\n        {\n          \"expr\": \"sum(rate(http_requests_total{status=~\\\"5..\\\",cohort=\\\"canary\\\"}[5m])) / sum(rate(http_requests_total{cohort=\\\"canary\\\"}[5m]))\",\n          \"legendFormat\": \"Canary Error Rate\"\n        }\n      ]\n    },\n    {\n      \"title\": \"P95 Latency Comparison\",\n      \"targets\": [\n        {\n          \"expr\": \"histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket{cohort=\\\"baseline\\\"}[5m])) by (le))\",\n          \"legendFormat\": \"Baseline P95\"\n        },\n        {\n          \"expr\": \"histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket{cohort=\\\"canary\\\"}[5m])) by (le))\",\n          \"legendFormat\": \"Canary P95\"\n        }\n      ]\n    }\n  ]\n}\n```",
+    "37": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#phase-3-automated-canary-analysis]\n\n#### Phase 3: Automated Canary Analysis\n\n**Step 3.1: Statistical Comparison Script**\n\n**Python Script for Automated Analysis**:\n```python\nimport requests\nfrom scipy import stats\nimport numpy as np\n\ndef get_metrics(prometheus_url, query, cohort):\n    \"\"\"Fetch metrics from Prometheus for specific cohort\"\"\"\n    response = requests.get(f\"{prometheus_url}/api/v1/query\", params={'query': query.format(cohort=cohort)})\n    return float(response.json()['data']['result'][0]['value'][1])\n\ndef analyze_canary(prometheus_url):\n    \"\"\"Compare canary metrics to baseline and determine if canary is healthy\"\"\"\n\n    # Fetch error rates\n    baseline_errors = get_metrics(prometheus_url,\n        'sum(rate(http_requests_total{{status=~\"5..\",cohort=\"{cohort}\"}}[10m])) / sum(rate(http_requests_total{{cohort=\"{cohort}\"}}[10m]))',\n        'baseline')\n    canary_errors = get_metrics(prometheus_url,\n        'sum(rate(http_requests_total{{status=~\"5..\",cohort=\"{cohort}\"}}[10m])) / sum(rate(http_requests_total{{cohort=\"{cohort}\"}}[10m]))',\n        'canary')\n\n    # Fetch P95 latencies\n    baseline_p95 = get_metrics(prometheus_url,\n        'histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket{{cohort=\"{cohort}\"}}[10m])) by (le))',\n        'baseline')\n    canary_p95 = get_metrics(prometheus_url,\n        'histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket{{cohort=\"{cohort}\"}}[10m])) by (le))',\n        'canary')\n\n    # Decision thresholds\n    MAX_ERROR_RATE_VARIANCE = 0.01  # 1 percentage point\n    MAX_LATENCY_VARIANCE_PCT = 0.20  # 20%\n\n    # Check error rate\n    error_diff = canary_errors - baseline_errors\n    if error_diff > MAX_ERROR_RATE_VARIANCE:\n        return {\n            'decision': 'ROLLBACK',\n            'reason': f'Canary error rate {canary_errors:.2%} exceeds baseline {baseline_errors:.2%} by {error_diff:.2%}'\n        }\n\n    # Check latency\n    latency_variance = (canary_p95 - baseline_p95) / baseline_p95\n    if latency_variance > MAX_LATENCY_VARIANCE_PCT:\n        return {\n            'decision': 'ROLLBACK',\n            'reason': f'Canary P95 latency {canary_p95:.3f}s exceeds baseline {baseline_p95:.3f}s by {latency_variance:.1%}'\n        }\n\n    return {\n        'decision': 'PROCEED',\n        'reason': f'Canary metrics acceptable (errors: {canary_errors:.2%} vs {baseline_errors:.2%}, P95: {canary_p95:.3f}s vs {baseline_p95:.3f}s)'\n    }\n\n# Execute analysis\nresult = analyze_canary('http://prometheus.prod.gainwell.com')\nprint(f\"Decision: {result['decision']}\")\nprint(f\"Reason: {result['reason']}\")\n```",
+    "38": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#phase-4-progressive-rollout-automation]\n\n#### Phase 4: Progressive Rollout Automation\n\n**Step 4.1: Deployment Pipeline with Canary Stages**\n\n**GitHub Actions Workflow**:\n```yaml\nname: Canary Deployment\n\non:\n  push:\n    branches: [main]\n\njobs:\n  deploy-canary:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Deploy to Canary (10%)\n        run: |\n          # Update traffic routing: 10% canary, 90% baseline\n          aws elbv2 modify-listener --listener-arn $LISTENER_ARN \\\n            --default-actions Type=forward,ForwardConfig='{\"TargetGroups\":[{\"TargetGroupArn\":\"'$BASELINE_TG'\",\"Weight\":90},{\"TargetGroupArn\":\"'$CANARY_TG'\",\"Weight\":10}]}'\n\n      - name: Monitor Canary (30 minutes)\n        run: |\n          sleep 1800  # Wait 30 minutes\n          python scripts/analyze_canary.py\n\n      - name: Increase to 25% Canary\n        if: success()\n        run: |\n          aws elbv2 modify-listener --listener-arn $LISTENER_ARN \\\n            --default-actions Type=forward,ForwardConfig='{\"TargetGroups\":[{\"TargetGroupArn\":\"'$BASELINE_TG'\",\"Weight\":75},{\"TargetGroupArn\":\"'$CANARY_TG'\",\"Weight\":25}]}'\n\n      - name: Monitor 25% Canary (30 minutes)\n        if: success()\n        run: |\n          sleep 1800\n          python scripts/analyze_canary.py\n\n      - name: Increase to 50% Canary\n        if: success()\n        run: |\n          aws elbv2 modify-listener --listener-arn $LISTENER_ARN \\\n            --default-actions Type=forward,ForwardConfig='{\"TargetGroups\":[{\"TargetGroupArn\":\"'$BASELINE_TG'\",\"Weight\":50},{\"TargetGroupArn\":\"'$CANARY_TG'\",\"Weight\":50}]}'\n\n      - name: Monitor 50% Canary (60 minutes)\n        if: success()\n        run: |\n          sleep 3600\n          python scripts/analyze_canary.py\n\n      - name: Full Deployment (100% Canary)\n        if: success()\n        run: |\n          aws elbv2 modify-listener --listener-arn $LISTENER_ARN \\\n            --default-actions Type=forward,TargetGroupArn=$CANARY_TG\n\n      - name: Rollback on Failure\n        if: failure()\n        run: |\n          # Route 100% back to baseline\n          aws elbv2 modify-listener --listener-arn $LISTENER_ARN \\\n            --default-actions Type=forward,TargetGroupArn=$BASELINE_TG\n          echo \"Canary deployment failed, rolled back to baseline\"\n```",
+    "39": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#best-practices]\n\n### Best Practices\n\n1. **Start with Small Canary Percentage** (5-10%): Minimize blast radius for initial validation\n2. **Monitor for Sufficient Duration**: 30-60 minutes per phase to collect statistically significant samples\n3. **Define Clear Decision Criteria**: Document objective thresholds for rollout/rollback decisions\n4. **Use Sticky Sessions**: Ensure consistent user experience for stateful applications\n5. **Track Business KPIs**: Monitor business metrics (approval rates, success rates) not just technical metrics\n6. **Automate Analysis**: Use statistical tests and automated decision-making to reduce human error\n7. **Gradual Rollout Phases**: Use 10% → 25% → 50% → 100% progression to spread risk\n8. **Keep Baseline Running**: Maintain baseline environment as rollback target during full canary deployment\n9. **Document Rollback Triggers**: Clear criteria for when to rollback (error rate >2×, latency >1.5×, business KPI degradation)\n10. **Communicate with Stakeholders**: Inform business stakeholders of gradual rollout timeline",
+    "40": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#common-pitfalls]\n\n### Common Pitfalls\n\n| Pitfall | Impact | Solution |\n|---------|--------|----------|\n| **Insufficient Sample Size** | False positive/negative decisions due to statistical noise | Monitor for minimum 30-60 minutes per phase, ensure canary receives enough requests (>1,000) for statistical significance |\n| **Inconsistent Metric Emission** | Can't compare canary to baseline if metrics differ | Ensure identical metric instrumentation in both versions; validate metric compatibility before deployment |\n| **Ignoring Business KPIs** | Technical metrics healthy but business outcomes degraded | Monitor business metrics (claim approval rates, eligibility success rates) alongside technical metrics |\n| **Rollout Too Fast** | Issues surface after progressing to next phase | Use sufficient monitoring duration per phase (30-60 min for 10%, 60-120 min for 50%) |\n| **No Sticky Sessions** | Users experience inconsistent behavior (some requests canary, some baseline) | Implement sticky sessions via cookies or session affinity for user-facing applications |\n| **Canary Infrastructure Mismatch** | Canary environment differs from baseline (instance types, scaling) | Ensure canary infrastructure identical to baseline except version |\n| **Alert Fatigue** | Too many alerts during canary deployment overwhelm team | Configure canary-specific alert thresholds (less sensitive during testing phase) |\n| **Missing Rollback Automation** | Manual rollback delays increase user impact | Automate rollback triggered by metric thresholds or manual command |",
+    "41": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#governance-and-compliance]\n\n## Governance and Compliance",
+    "42": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#standards-alignment]\n\n### Standards Alignment\n\n- **Gainwell Enterprise API Strategy**: Supports progressive rollout capability for high-risk deployments with statistical validation\n- **Operational Excellence Guiding Principles**: Implements risk management best practices, automated decision-making, and controlled experimentation\n- **Reliability Guiding Principles**: Reduces blast radius through gradual traffic exposure, maintains service availability during deployments\n- **Change Management Standards**: Provides structured deployment process with validation gates, monitoring windows, and rollback procedures\n- **Monitoring and Observability Standards**: Requires comprehensive metrics, cohort-based analysis, and statistical significance testing",
+    "43": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#mandatory-requirements]\n\n### Mandatory Requirements\n\nCanary deployment is **REQUIRED** for:\n\n1. **Major Feature Releases**: New features significantly changing user experience or business logic\n2. **Architectural Refactors**: Changes to fundamental system architecture (database migrations, caching layer introductions)\n3. **Rules Engine Updates**: Claims adjudication, eligibility determination, or prior authorization rule changes affecting outcomes\n4. **Framework Upgrades**: Major version upgrades of dependencies (Java, Spring Boot, .NET) with potential breaking changes\n5. **Performance Optimizations with Uncertainty**: Database query changes, caching strategies where production validation needed\n6. **Regulatory Changes**: Updates implementing new CMS requirements, state-specific regulations with compliance risk\n\nCanary deployment is **RECOMMENDED** for:\n\n- Any deployment where pre-production testing cannot fully replicate production conditions\n- Changes affecting high-value user segments (large provider groups, specific state contracts)\n- First deployment after extended development periods (>4 weeks since last production release)",
+    "44": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#approval-process]\n\n### Approval Process\n\n**Phase 1: Canary Deployment Plan (ARB Review)**\n- Document deployment strategy: canary percentages, monitoring duration, decision criteria\n- Cost analysis: additional infrastructure for canary environment\n- Rollback plan and triggers\n- **Approval**: Architecture Review Board\n\n**Phase 2: Deployment Execution (Deployment Lead Approval)**\n- Validate monitoring dashboard operational\n- Confirm rollback automation tested\n- Verify decision criteria documented\n- **Approval**: Platform Engineering Deployment Lead\n\n**Phase 3: Progressive Rollout (Automated + Manual Gates)**\n- 10% → 25%: Automated based on metrics\n- 25% → 50%: Automated or manual approval\n- 50% → 100%: Manual approval for high-risk deployments",
+    "45": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#monitoring-and-reporting]\n\n### Monitoring and Reporting\n\n**Required Metrics**:\n- Error rate (canary vs. baseline)\n- P95/P99 latency (canary vs. baseline)\n- Throughput (canary vs. baseline)\n- Business KPIs (claim approval rates, eligibility success rates)\n- Statistical significance (p-values, confidence intervals)\n\n**Reporting**:\n- Real-time dashboard during deployment\n- Post-deployment report (deployment duration, phases completed, rollback events)\n- Quarterly review of canary deployment effectiveness",
+    "46": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#compliance-considerations]\n\n### Compliance Considerations\n\n**HIPAA**: Both canary and baseline environments maintain identical security controls; no PHI data routing differences\n**CMS Compliance**: Canary deployments enable validation of CMS rule changes before full rollout\n**State Contracts**: Gradual rollout reduces risk of SLA violations across multiple states\n**SOC 2**: Canary deployment automation provides audit trail for change management controls",
+    "47": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#related-patterns]\n\n### Related Patterns\n\n- **[PTN-TEC-API-001] Blue-Green Deployment**: Use for low-risk deployments; canary for high-risk\n- **[PTN-DEPLOY-FEATURE-001] Feature Flag Pattern**: Combine with canary for layered risk control\n- **[PTN-MON-METRICS-001] Metrics Monitoring**: Required for cohort-based comparison\n- **[PTN-MON-SLA-001] SLA Monitoring**: Validates canary effectiveness in maintaining uptime",
+    "48": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#examples-and-use-cases]\n\n## Examples and Use Cases",
+    "49": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#example-1-claims-adjudication-rules-update---successful-canary]\n\n### Example 1: Claims Adjudication Rules Update - Successful Canary\n\n**Context**: Claims API deploying version 5.3.0 with new institutional claims adjudication rules (DRG-based reimbursement updates).\n\n**Deployment Strategy**:\n- **10% Canary**: 30 minutes monitoring\n- **25% Canary**: 30 minutes monitoring\n- **50% Canary**: 60 minutes monitoring\n- **100% Full deployment**\n\n**Execution Timeline**:\n- **2:00 PM**: Deploy to canary, route 10% traffic (1,200 req/min)\n- **2:30 PM**: Metrics comparison excellent (error rate equal, latency within 5%), increase to 25%\n- **3:00 PM**: 25% canary continues performing well, increase to 50%\n- **4:00 PM**: 50% canary validated for full hour, proceed to 100%\n- **4:05 PM**: Deployment complete\n\n**Outcome**:\n- Zero user-impacting issues\n- Gradual rollout provided confidence at each phase\n- Business KPI (claim approval rate) remained stable: 94.3% baseline vs. 94.5% canary",
+    "50": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#example-2-provider-portal-performance-regression---canary-catches-issue]\n\n### Example 2: Provider Portal Performance Regression - Canary Catches Issue\n\n**Context**: Provider Portal version 6.0.0 UI redesign deployed via canary.\n\n**Timeline**:\n- **6:00 AM**: 10% canary started\n- **6:30 AM**: Metrics show canary P95 page load time 45 seconds vs. baseline 4 seconds\n- **6:35 AM**: Rollback executed, 10% of users routed back to baseline\n- **Impact**: Only 10% of providers experienced slow page loads (90% reduction vs. full deployment)\n\n**Remediation**: Team optimized JavaScript bundle size, redeployed via canary successfully in January 2025.",
+    "51": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#example-3-state-targeted-fhir-api-rollout]\n\n### Example 3: State-Targeted FHIR API Rollout\n\n**Context**: FHIR API version 3.0.0 upgrade (R4 4.0.1 → 4.3.0) requires state-by-state validation.\n\n**Strategy**: Attribute-based canary routing by state\n- **Phase 1**: California, Texas, Florida (3 states, 2 weeks monitoring)\n- **Phase 2**: 10 additional states (2 weeks monitoring)\n- **Phase 3**: Remaining 37 states (2 weeks monitoring)\n\n**Outcome**: Zero production failures, all states validated client library compatibility before receiving new version, CMS compliance maintained.",
+    "52": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#use-case-scenarios]\n\n### Use Case Scenarios\n\n**Scenario 1: When to Use Canary vs. Blue-Green**\n\n| Factor | Use Canary | Use Blue-Green |\n|--------|------------|----------------|\n| Risk Level | High (major rules changes) | Low-Medium (bug fixes) |\n| Pre-Production Testing Confidence | Low (can't replicate production) | High (staging validates fully) |\n| Acceptable Blast Radius | 5-10% (minimize impact) | 100% (confident in rollback) |\n| Deployment Duration | 2-4 hours (gradual rollout) | 15 minutes (instant cutover) |\n\n**Scenario 2: Combining Canary with Feature Flags**\n- Deploy code via 10% canary with feature flags OFF\n- Enable feature flags for 50% of canary users (5% of total traffic)\n- Validate feature metrics before expanding\n- Maximum risk control: infrastructure + application layers",
+    "53": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#related-patterns-and-references]\n\n## Related Patterns and References",
+    "54": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#related-patterns]\n\n### Related Patterns\n\n- [Blue-Green Deployment Pattern](./blue-green-deployment-pattern.md)",
+    "55": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#external-references]\n\n### External References\n\n- [Canary Releases by Martin Fowler](https://martinfowler.com/bliki/CanaryRelease.html)",
+    "56": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#change-history]\n\n## Change History\n\n| Date       | Version | Author              | Description              | Impact      |\n| ---------- | ------- | ------------------- | ------------------------ | ----------- |\n| 2026-01-02 | 1.0.0   | Enterprise Architect | Initial pattern creation | New pattern |",
+    "57": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#review-log]\n\n## Review Log\n\n| Review Date | Review Type | Reviewer(s) | Status | Comments | Actions |\n| ----------- | ----------- | ----------- | ------ | -------- | ------- |\n| TBD         | TBD         | TBD         | Draft  | TBD      | TBD     |\n\n---",
+    "58": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#tldr]\n\n## TL;DR",
+    "59": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#quick-summary]\n\n### Quick Summary\n\n**Problem**: All-or-nothing deployments expose entire user base to potential issues simultaneously. Blue-green instant cutover risks 100% user impact if problems surface post-deployment. Pre-production testing cannot replicate all production scenarios (specific data patterns, high volumes, rare edge cases). For Gainwell's mission-critical healthcare systems, full deployment failures can affect millions of beneficiaries, trigger contractual penalties ($5K-10K per incident), and damage state agency relationships.\n\n**Solution**: Canary Deployment routes small percentage of traffic (5-15%) to new version while majority continues using stable version. Monitor canary cohort under real production conditions for 30-60 minutes. If metrics acceptable (error rates, latency, business KPIs), gradually increase canary traffic (10% → 25% → 50% → 100%). If metrics degrade, rollback by routing canary traffic to stable version, limiting impact to small cohort.\n\n**Core Mechanism**:\n1. Deploy new version to canary environment (5-10% of infrastructure)\n2. Route 10% of production traffic to canary via load balancer\n3. Monitor for 30-60 minutes, compare canary vs. baseline metrics\n4. If successful: Increase to 25%, monitor, then 50%, then 100%\n5. If failed: Route canary traffic back to baseline (<30 seconds)\n\n**Key Benefits**:\n- **90-95% Blast Radius Reduction**: Only 5-10% of users affected if canary fails vs. 100% with full deployment\n- **Real Production Validation**: Canary experiences actual traffic, data, and load patterns impossible to replicate in testing\n- **Statistical Confidence**: Side-by-side comparison provides objective go/no-go decisions\n- **Gradual Risk Exposure**: Progressive rollout enables early detection before majority affected\n- **Business Metrics Validation**: Catch issues affecting business outcomes (claim approval rates, eligibility success) before full rollout\n\n---",
+    "60": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#when-to-use-this-pattern]\n\n### When to Use This Pattern\n\n✅ **Use Canary Deployment When**:\n\n1. **High-Risk Features**: Major rules changes, UI redesigns, algorithm modifications with uncertain production behavior\n2. **Architectural Refactors**: Database migrations, framework upgrades, technology changes\n3. **Low Pre-Production Confidence**: Cannot fully replicate production in staging (data volumes, edge cases)\n4. **Regulatory Changes**: CMS rule updates, state-specific requirements requiring production validation\n5. **Performance Optimizations**: Query changes, caching strategies where staging doesn't match production load\n6. **Major Upgrades**: Framework version upgrades (Java 17→21, Spring Boot 2.x→3.x) with breaking changes\n7. **State-Specific Deployments**: FHIR APIs, eligibility rules requiring per-state validation\n\n❌ **Use Blue-Green Instead When**:\n\n1. **Low-Risk Changes**: Bug fixes, minor features, configuration updates\n2. **High Pre-Production Confidence**: Staging fully validates production behavior\n3. **Fast Deployment Required**: Need instant cutover, canary 2-4 hour rollout too slow\n4. **No Traffic Segmentation Needed**: Don't need cohort comparison, instant rollback sufficient\n\n---",
+    "61": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#implementation-checklist]\n\n### Implementation Checklist",
+    "62": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#prerequisites-must-have]\n\n#### Prerequisites (Must Have)\n\n- [ ] Load balancer with percentage-based traffic splitting\n- [ ] Metrics collection segmented by cohort (canary vs. baseline)\n- [ ] Real-time comparison dashboard (Grafana, custom)\n- [ ] Statistical analysis tools or scripts\n- [ ] Automated or semi-automated rollout/rollback capability\n- [ ] Sticky session support (for stateful applications)",
+    "63": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#deployment-phases]\n\n#### Deployment Phases\n\n- [ ] **Phase 1**: 10% canary (30-60 min monitoring)\n- [ ] **Phase 2**: 25% canary (30-60 min monitoring)\n- [ ] **Phase 3**: 50% canary (60-120 min monitoring)\n- [ ] **Phase 4**: 100% full deployment",
+    "64": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#decision-criteria-define-before-deployment]\n\n#### Decision Criteria (Define Before Deployment)\n\n- [ ] Maximum acceptable error rate variance (e.g., +1 percentage point)\n- [ ] Maximum acceptable latency variance (e.g., +20%)\n- [ ] Business KPI thresholds (e.g., claim approval rate -2 percentage points)\n- [ ] Minimum monitoring duration per phase\n- [ ] Statistical significance threshold (e.g., p < 0.05)\n\n**Total Implementation Time**: 6-8 weeks (setup) + 2-4 hours per deployment\n\n---",
+    "65": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#quick-start-steps]\n\n### Quick Start Steps\n\n**Step 1**: Deploy new version to canary environment (10% capacity)\n```bash\nkubectl apply -f canary-deployment.yaml\n```\n\n**Step 2**: Route 10% traffic to canary\n```bash\naws elbv2 modify-listener --listener-arn $LISTENER_ARN \\\n\n  --default-actions Type=forward,ForwardConfig='{\"TargetGroups\":[{\"TargetGroupArn\":\"'$BASELINE_TG'\",\"Weight\":90},{\"TargetGroupArn\":\"'$CANARY_TG'\",\"Weight\":10}]}'\n```\n\n**Step 3**: Monitor for 30 minutes, compare metrics\n```bash\npython scripts/analyze_canary.py --duration 30m\n```\n\n**Step 4**: If successful, increase to 25%\n```bash\naws elbv2 modify-listener --listener-arn $LISTENER_ARN \\\n\n  --default-actions Type=forward,ForwardConfig='{\"TargetGroups\":[{\"TargetGroupArn\":\"'$BASELINE_TG'\",\"Weight\":75},{\"TargetGroupArn\":\"'$CANARY_TG'\",\"Weight\":25}]}'\n```\n\n**Step 5**: Repeat monitoring and progressive increases to 50%, then 100%\n\n**Step 6 (If Issues)**: Rollback to baseline\n```bash\naws elbv2 modify-listener --listener-arn $LISTENER_ARN \\\n\n  --default-actions Type=forward,TargetGroupArn=$BASELINE_TG\n```\n\n---",
+    "66": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#key-metrics-to-track]\n\n### Key Metrics to Track\n\n| Metric | Target Comparison | Threshold |\n|--------|-------------------|------------|\n| **Error Rate** | Canary ≤ Baseline + 1% | If exceeded, rollback |\n| **P95 Latency** | Canary ≤ Baseline × 1.2 | If exceeded by >20%, rollback |\n| **Throughput** | Canary ≈ Baseline (adjusted for traffic %) | Validate no capacity issues |\n| **Business KPI** | Canary ≈ Baseline ± 2% | Claim approval rate, eligibility success |\n| **Statistical Significance** | p < 0.05 | Ensure differences meaningful, not noise |\n\n---",
+    "67": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#common-pitfalls-and-quick-fixes]\n\n### Common Pitfalls and Quick Fixes\n\n| Problem | Quick Fix |\n|---------|----------|\n| **Users experience inconsistent behavior** | Enable sticky sessions (cookie-based routing) |\n| **Canary metrics look worse due to insufficient sample size** | Wait longer (60 min vs. 30 min) or increase canary percentage |\n| **Can't determine if differences statistically significant** | Use automated analysis scripts with t-tests, chi-square tests |\n| **Rollout too fast, issues surface after progressing** | Use longer monitoring windows (60-120 min per phase) |\n| **Canary environment underperforms due to scaling** | Ensure canary infrastructure proportional to traffic percentage |\n| **Business KPI degradation not caught** | Monitor business metrics (approval rates) alongside technical metrics |\n\n---",
+    "68": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#related-patterns]\n\n### Related Patterns\n\n- **[PTN-TEC-API-001] Blue-Green Deployment**: Use for low-risk deployments with instant cutover; canary for high-risk with gradual rollout\n- **[PTN-DEPLOY-FEATURE-001] Feature Flag Pattern**: Combine with canary for maximum control (deploy code via canary, activate features via flags)\n- **[PTN-MON-METRICS-001] Metrics Monitoring**: Required prerequisite for cohort-based comparison\n- **[PTN-MON-SLA-001] SLA Monitoring**: Tracks SLA impact during canary deployments\n\n---",
+    "69": "[patterns/technology/api-microservices/PTN-TEC-API-002-canary-deployment-pattern.md#need-help]\n\n### Need Help?\n\n**Implementation Questions**: Platform Engineering team via Slack #platform-engineering\n**Deployment Guidance**: Deployment runbooks at https://runbooks.gainwell.com/canary-deployment\n**Statistical Analysis**: Data Engineering team for analysis script templates\n**Urgent Issues**: Page Platform Engineering on-call via PagerDuty\n\n---"
+  },
+  "coverage": {
+    "total_pages": 69,
+    "covered_pages": 69,
+    "sampled_pages": 69,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 69
+  }
+}

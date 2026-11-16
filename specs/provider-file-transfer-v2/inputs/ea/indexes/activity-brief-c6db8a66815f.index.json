@@ -1,0 +1,129 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Scope",
+  "document_description": "Produce a leadership-ready activity brief from Azure Boards and GitHub activity for a single person over a date range — without a mechanical data dump, and without naming the person in the final deliverable.",
+  "total_pages": 12,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 12,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Scope",
+          "node_id": "scope",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Prerequisites",
+          "node_id": "prerequisites",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Azure DevOps MCP Tools",
+          "node_id": "azure-devops-mcp-tools",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "GitHub MCP Tools",
+          "node_id": "github-mcp-tools",
+          "start_index": 5,
+          "end_index": 5,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Workflow",
+          "node_id": "workflow",
+          "start_index": 6,
+          "end_index": 11,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Phase 1 — Azure Boards pull (strict, assignee-only)",
+              "node_id": "phase-1--azure-boards-pull-strict-assignee-only",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Phase 2 — GitHub pull (strict, author-only)",
+              "node_id": "phase-2--github-pull-strict-author-only",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Phase 3 — Build the evidence + inference trail (`activity-<range-fs>-inference.md`)",
+              "node_id": "phase-3--build-the-evidence--inference-trail-activity-range-fs-inferencemd",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Phase 4 — Synthesize the audience brief (`activity-brief-<range-fs>.md`)",
+              "node_id": "phase-4--synthesize-the-audience-brief-activity-brief-range-fsmd",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Phase 5 — Optional slide (`--slide`)",
+              "node_id": "phase-5--optional-slide---slide",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Guardrails",
+          "node_id": "guardrails",
+          "start_index": 12,
+          "end_index": 12,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "Produce a leadership-ready activity brief from Azure Boards and GitHub activity for a single person over a date range — without a mechanical data dump, and without naming the person in the final deliverable.",
+    "2": "[.claude/commands/activity-brief.md#scope]\n\n## Scope\n\n- If `$ARGUMENTS` omits `assignee=<ado-email>` or `author=<github-login>`, halt per the Prerequisites section below — both are required and there is no default.\n- If `$ARGUMENTS` contains `range=<start:end>` in ISO dates, use that range. Otherwise, default to the prior full calendar month. **When building GitHub search qualifiers, replace the `:` separator with `..`** (e.g., `range=2026-08-01:2026-08-31` → use `author-date:2026-08-01..2026-08-31` in search queries). **When constructing output filenames, replace the `:` separator with `--`** (e.g., `range=2026-08-01:2026-08-31` → filenames use `2026-08-01--2026-08-31`). The colon is illegal in Windows filenames; the `--` form is the filesystem-safe token used throughout this command wherever filenames appear. **Derive a filesystem-safe author token from `author=<github-login>`** (strip any character illegal in Windows/POSIX filenames). Write every output for this run under the per-run directory `<run-dir>` = `.tmp/activity-brief/<author-token>-<range-fs>/` — keying the run on both identity and range means two people run against the same date range write to different directories, instead of one run's evidence trail and brief silently overwriting the other's.\n- If `$ARGUMENTS` contains `audience=<cto|leadership|team>`, use that audience framing for the final brief. Otherwise, default to `cto`. This controls the framing and detail level of the final brief, not the underlying evidence gathering.\n- If `$ARGUMENTS` contains `org=<github-org>`, use that org to scope `search_commits`, `search_pull_requests`, and `search_repositories` calls. Otherwise, default to `mygainwell`.\n- If `$ARGUMENTS` contains `repos=<owner/repo,owner/repo,...>`, scope all GitHub evidence gathering (commits, PRs, and repo discovery) to exactly that set rather than the whole org. Otherwise, discover repos with matching author activity by searching the GitHub org (see Phase 2) rather than assuming a fixed list.\n- If `$ARGUMENTS` contains `--slide`, also generate a 1-slide deck summary of the final brief via `/presenter` (Phase 5). Otherwise, produce only the two core documents.",
+    "3": "[.claude/commands/activity-brief.md#prerequisites]\n\n## Prerequisites\n\nIf `assignee` or `author` is absent from `$ARGUMENTS`, halt immediately and report: `activity-brief requires both assignee=<ado-email> and author=<github-login>. Provide both and retry.` Do not proceed with partial identity data.\n\nIf the Azure DevOps MCP integration is unreachable, halt and report which tools failed. Do not produce a brief that silently omits Azure Boards activity — a brief claiming to cover both sources but missing one will mislead the audience.\n\nIf the GitHub MCP integration is unreachable, halt with the same rationale.\n\nThis command produces **two core documents** in the per-run directory `<run-dir>` (always), plus a **three-file slide bundle** in `<run-dir>/deck/` when `--slide` is passed — five files total with `--slide`, two without:\n\n1. `<run-dir>/activity-<range-fs>-inference.md` — the full evidence + labeled-inference trail (internal working document, may reference the person by name/login since it is a traceability artifact, not a leadership deliverable)\n2. `<run-dir>/activity-brief-<range-fs>.md` — the audience-facing outcomes brief (no individual attribution, no low-level implementation detail; the anonymity guarantee covers the document's content, not the run directory's path)\n3. (if `--slide`) `<run-dir>/deck/activity-brief-<range-fs>.drawio` + `<run-dir>/deck/activity-brief-<range-fs>.svg` + `<run-dir>/deck/activity-brief-<range-fs>-notes.md` — three-file slide bundle per the `/presenter` skill's deck conventions",
+    "4": "[.claude/commands/activity-brief.md#azure-devops-mcp-tools]\n\n## Azure DevOps MCP Tools\n\n| Tool | Purpose |\n|---|---|\n| `mcp_microsoft_azu_wit_query_by_wiql` | Query work items strictly by `System.AssignedTo` |\n| `mcp_microsoft_azu_wit_get_work_items_batch_by_ids` | Fetch full field detail (title, tags, state, dates, description, acceptance criteria) for the returned IDs |\n| `mcp_microsoft_azu_wit_list_work_item_revisions` | Pull field-level history for items called out in the brief, to show state-transition evidence (e.g., research→active→review) |\n| `mcp_microsoft_azu_wit_list_work_item_comments` | Pull comments for items with linked PRs or coding-agent activity |",
+    "5": "[.claude/commands/activity-brief.md#github-mcp-tools]\n\n## GitHub MCP Tools\n\n| Tool | Purpose |\n|---|---|\n| `search_repositories` | When `repos=` is absent, enumerate **all** repositories in the org — use `org:<org>` with no keyword filter and paginate through all results. Keyword-filtered discovery cannot surface repos whose only matching activity is on unmerged branches; exhaustive enumeration followed by per-repo author filtering is the only reliable path. |\n| `search_commits` | `org:<org> author-date:<range> author:<login>` — never broaden past `author:`. **Note:** GitHub's commit-search API only indexes commits reachable from each repo's default branch. For branch coverage, enumerate each repo's branches and call `list_commits` per branch with `author` and date filtering — calling `list_commits` per repo without a `sha`/branch argument also defaults to the default branch and repeats the same limitation. |\n| `search_pull_requests` | Run three queries — `org:<org> author:<login> created:<range>`, `org:<org> author:<login> updated:<range>`, and `org:<org> author:<login> merged:<range>`. When `repos=` is supplied, add a `repo:<owner>/<name>` qualifier for each listed repository to every query (or filter results to that set) so PR evidence is not drawn from repositories outside the requested scope — then deduplicate by repository-qualified key (`<owner>/<repo>#<number>` or node ID). Deduplicating by PR number alone silently drops activity when different repos have the same PR number. Using only `created:` omits PRs opened before the range but updated or merged during it. |\n| `pull_request_read` (`get`) | **Mandatory** for every PR cited as an outcome in the final brief — fetch live `state`, `merged`, `mergeable_state`, `merged_at`, `closed_at`, and the full PR body. Search-index results go stale; the PR body's own text (e.g., \"Status: draft\") reflects the PR's current review state more reliably than a stale search snapshot. This confirms the **PR's own** live state only — it does not establish the governance status of any artifact the PR touches (see Phase 4 guardrail: artifact governance status must be read from that artifact's own declared `status:` field). |\n| `pull_request_read` (`get_reviews`, `get_comments`, `get_check_runs`) | For items where the brief will claim review rigor, security findings, or iteration — pull the actual review thread rather than inferring it from commit message text alone |",
+    "6": "[.claude/commands/activity-brief.md#workflow]\n\n## Workflow",
+    "7": "[.claude/commands/activity-brief.md#phase-1--azure-boards-pull-strict-assignee-only]\n\n### Phase 1 — Azure Boards pull (strict, assignee-only)\n\n1. Run two WIQL queries and union the results: (a) `[System.AssignedTo] = '<assignee>' AND [System.ChangedDate] >= '<start>' AND [System.ChangedDate] < '<end+1day>'` (an exclusive upper bound at the start of the day immediately following `<end>` — a date-only literal for `<end>` itself resolves to midnight at the *start* of that day, so a `<=` comparison would exclude activity later on the final date) — items still showing in-range activity; (b) `[System.AssignedTo] = '<assignee>'` with no date filter, then retain only items where `mcp_microsoft_azu_wit_list_work_item_revisions` shows the item was in an active, non-terminal state during `range`. The second pass is required because `System.ChangedDate` stores the *current* last-touched timestamp — an item worked on in August but closed in September will have a September `ChangedDate` and is excluded by a date-bounded filter even though it represents in-range activity. Do not add `ChangedBy`/`CreatedBy` to either filter — those pull in other people's items and defeat the \"no individual attribution to the wrong person\" goal. Deduplicate IDs across both result sets before proceeding.\n2. **Known quirk:** the `project` parameter passed to the WIQL tool does not scope the query when the WIQL itself has no `System.TeamProject` clause — it will silently return org-wide results. Verify this by checking the `System.TeamProject` field on the returned items rather than trusting the `project` argument. If cross-project results are unexpected, add an explicit `AND [System.TeamProject] = '<project>'` clause.\n3. Batch-fetch full field detail for every returned ID (title, type, state, tags, dates, description, acceptance criteria). Full descriptions and acceptance criteria are the primary source of \"what work must have preceded this\" inference in Phase 3 — do not skip them to save a call.",
+    "8": "[.claude/commands/activity-brief.md#phase-2--github-pull-strict-author-only]\n\n### Phase 2 — GitHub pull (strict, author-only)\n\n1. If `repos=` was not supplied, use the `search_repositories` tool to enumerate **all** repositories in the org (paginate through all results — do not stop at the first page). Do not use keyword filtering or unscoped commit/PR searches for discovery: `search_commits` only surfaces repos with activity on their default branch, so any repo whose matching activity is entirely on unmerged branches will be invisible to search-based discovery. Enumerate completely, then filter for author activity per repo.\n2. For each repo, pull commits for `author:<login>` within `range` with full branch coverage: enumerate the repo's branches (paginate through all pages — do not stop at the first page), then call `list_commits` per branch filtered by `author` and date, **paginating through all result pages for every branch** — a branch with more than one page of matching commits is silently truncated otherwise. Do not call `list_commits` at the repo level without specifying a branch via the `sha` argument — it defaults to the default branch and has the same coverage gap as `search_commits`. Deduplicate commits by SHA across branches before proceeding. Pull PRs using the three-query union from the tools table (created + updated + merged), **paginating through all result pages for each of the three queries**, scoped to `repos=` when supplied, deduplicated by repository-qualified key (`<owner>/<repo>#<number>` or node ID).\n3. For every PR that will be cited in the brief as evidence of an outcome, call `pull_request_read` with `method=get` to confirm **live** `state`/`merged`/`mergeable_state`/`merged_at`/`closed_at`, and read the PR body in full. Do not rely solely on the `search_pull_requests` snapshot — it can be stale relative to the PR's current state and never carries the PR body's own status callouts. The `merged_at` and `closed_at` values retrieved here are required for the within-range timestamp verification in Phase 4 step 4.",
+    "9": "[.claude/commands/activity-brief.md#phase-3--build-the-evidence--inference-trail-activity-range-fs-inferencemd]\n\n### Phase 3 — Build the evidence + inference trail (`activity-<range-fs>-inference.md`)\n\n**Skill:** Read `.claude/skills/documenter/SKILL.md` and apply its guidance for document synthesis and inference framing in this phase.\n\n1. Group findings into themes (not a flat chronological dump). A theme is a distinct initiative/workstream, not a single work item.\n2. For each theme, write an **Evidence** block (facts with citations — work item IDs, PR numbers, commit SHAs, exact quoted PR/commit text) and a separate, clearly labeled **Inferred** block (professional judgment about what work must have preceded the cited artifact — grounded in specifics, not fabricated meetings/people/dates).\n3. Close with a **\"What this document deliberately does not claim\"** section — state explicitly what is not asserted (no invented collaborators, no invented timestamps, no crediting bot/AI-agent output as the person's own work beyond describing their dispatch-and-supervise role).\n4. This document may name the person and reference exact system identifiers — it is the audit trail, not the leadership deliverable.",
+    "10": "[.claude/commands/activity-brief.md#phase-4--synthesize-the-audience-brief-activity-brief-range-fsmd]\n\n### Phase 4 — Synthesize the audience brief (`activity-brief-<range-fs>.md`)\n\n**Skill:** Read `.claude/skills/documenter/SKILL.md` and apply its guidance for brief authoring, audience framing, and recommendation synthesis in this phase.\n\n1. **No individual attribution anywhere in this document.** Refer to \"the team,\" \"the practice,\" or the initiative name — never the person's name or login, even though Phase 3's document does.\n2. **No low-level implementation detail** — no commit SHAs, no UI-click procedures, no raw system IDs. Report outcomes and decisions only.\n3. Structure: Bottom Line (one paragraph) → What Was Delivered (numbered items, each with an Evidence-grounded description + an explicit **Outcome:** line) → Risk & Governance Posture (table) → Recommendations for `<audience>` Attention (numbered, actionable) → \"What This Brief Deliberately Leaves Out.\"\n4. **Calibrate every completion claim against live state AND within-range timestamps.** Current state alone does not prove completion occurred during `range` — a PR merged after the range end is not a delivery for this period even if it currently shows `merged: true`. For PRs: confirm both `merged: true` and that `merged_at` falls within `range`. For work items: confirm both a terminal state (`Resolved`/`Closed`) and that the state-transition revision (from `mcp_microsoft_azu_wit_list_work_item_revisions`) recording that transition falls within `range`. Do not describe a PR or work item as \"closed,\" \"proven,\" or \"delivered\" unless both conditions are met. A PR that is `state: open` and `mergeable_state: blocked` is \"in review\" or \"in draft,\" never \"delivered.\" Do not use the word \"ratified\" for any artifact in this brief — a merged PR does not prove ratification; an ADR, standard, or pattern can remain Proposed/Draft after merge. If the artifact's governance status must be stated, read its declared `status:` frontmatter field directly and report that verbatim.\n5. Set the `**Source:**` line to a generic description of the method (e.g., \"AI Augmented analysis of Azure Boards and GitHub activities\") — never a link to the named Phase 3 file.\n6. This brief is a **draft for the requester to review** — it is not a mandatory-gated, auto-validated final artifact. Present it and apply whatever corrections the requester asks for; do not add extra confirmation loops unless asked.",
+    "11": "[.claude/commands/activity-brief.md#phase-5--optional-slide---slide]\n\n### Phase 5 — Optional slide (`--slide`)\n\n1. Read `.claude/skills/presenter/SKILL.md` for its mandatory deck conventions, then invoke `/presenter` to produce a single 16:9 deck slide summarizing `<run-dir>/activity-brief-<range-fs>.md`: one card per numbered outcome item, a bottom-line banner, a key-takeaway/guardrails bar, and a footer citing the same generic source line as the brief (no individual attribution on the slide either).\n2. Follow all `/presenter` mandatory conventions: `sourceMarkdown` pointing at `<run-dir>/activity-brief-<range-fs>.md`, `diagramContext=\"deck\"`, SVG export via the draw.io CLI with the background-transparency fix, and the mandatory companion notes file (`<slide-name>-notes.md`) with sourced key numbers.",
+    "12": "[.claude/commands/activity-brief.md#guardrails]\n\n## Guardrails\n\n- Never include a work item or commit from anyone other than `assignee`/`author` in either artifact.\n- Never assert a completion state (merged, proven, closed) without confirming both: (a) the live state from Phase 1 (work items) or Phase 2 (PRs) supports the claim, AND (b) the completion event timestamp (`merged_at`, `closed_at`, or state-transition revision date) falls within `range`. Do not use \"ratified\" — artifact ratification requires governance approval that cannot be inferred from PR or work-item state alone; read the artifact's declared `status:` field if governance status must be stated.\n- Never let the audience brief cite the internal inference document by its named filename.\n- Keep Phase 3 and Phase 4 as separate files — do not collapse the audit trail and the leadership deliverable into one document; they have different audiences and different attribution rules.\n- **Known limitation**: both Phase 1 WIQL queries filter on the *current* `System.AssignedTo` value. A work item assigned to `assignee` during `range` but reassigned to someone else afterward will not match either query and is silently omitted — querying \"all items regardless of current assignee, filtered by revision history\" is not bounded to a practical WIQL query at organization scale. If the brief's completeness is questioned, disclose this limitation rather than presenting the evidence set as exhaustive."
+  },
+  "coverage": {
+    "total_pages": 12,
+    "covered_pages": 12,
+    "sampled_pages": 12,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 12
+  }
+}

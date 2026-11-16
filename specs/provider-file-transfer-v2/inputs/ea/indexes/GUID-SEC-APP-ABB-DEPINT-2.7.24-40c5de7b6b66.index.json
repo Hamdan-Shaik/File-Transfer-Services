@@ -1,0 +1,140 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Dependency Integrity Verification",
+  "document_description": "guidance_id: 'GUID-SEC-APP-ABB-DEPINT-2.7.24'",
+  "total_pages": 13,
+  "tree": [
+    {
+      "title": "Dependency Integrity Verification",
+      "node_id": "dependency-integrity-verification",
+      "start_index": 1,
+      "end_index": 13,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Architecture Guidance Metadata",
+          "node_id": "architecture-guidance-metadata",
+          "start_index": 2,
+          "end_index": 4,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "ABB Context",
+              "node_id": "abb-context",
+              "start_index": 3,
+              "end_index": 3,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "ABB Scope",
+              "node_id": "abb-scope",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Detailed Guidance",
+          "node_id": "detailed-guidance",
+          "start_index": 5,
+          "end_index": 13,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Core Principles",
+              "node_id": "core-principles",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Key Capabilities",
+              "node_id": "key-capabilities",
+              "start_index": 7,
+              "end_index": 9,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Hash Verification",
+                  "node_id": "hash-verification",
+                  "start_index": 8,
+                  "end_index": 8,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Artifact Signing",
+                  "node_id": "artifact-signing",
+                  "start_index": 9,
+                  "end_index": 9,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Integration Interfaces",
+              "node_id": "integration-interfaces",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Zero Trust Alignment (NIST SP 800-207)",
+              "node_id": "zero-trust-alignment-nist-sp-800-207",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "NIST SP 800-53 Intent Alignment",
+              "node_id": "nist-sp-800-53-intent-alignment",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Constraints and Dependencies",
+              "node_id": "constraints-and-dependencies",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-DEPINT-2.7.24.md#dependency-integrity-verification]\n\n# Dependency Integrity Verification\n\n**← Back to [EAP Home](../../../../../README.md) • [Strategy](../../../../README.md) • [Guidance](../../../README.md) • [Security](../../README.md) • [Application](../README.md)**\n\n---",
+    "2": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-DEPINT-2.7.24.md#architecture-guidance-metadata]\n\n## Architecture Guidance Metadata\n\n```yaml\nguidance_id: 'GUID-SEC-APP-ABB-DEPINT-2.7.24'\nguidance_name: 'Dependency Integrity Verification'\nguidance_type: 'architecture-building-block'\nabb_type: 'component'\nadm_phase: 'Phase B-D'\nparent_abb: 'GUID-SEC-APP-ABB-CAT-2.7.06'\nparent_vision: 'GUID-SEC-APP-REF-1.7.01'\nrealized_by_sbbs: []\npaired_rad: 'GUID-SEC-APP-RA-SUPPLY-CHAIN-2.7.31'\ncategory: 'security'\nversion: '0.1.0'\nstatus: 'draft'\napplicability: 'enterprise'\ntags: ['security', 'application', 'architecture-building-block', 'supply-chain', 'dependency-integrity']\nsource_story: 'AB#802670'\n```\n\n---\n\n> **TOGAF ADM Note**: This is a **Component ABB** (Phase B–D) within the Application Security domain. Per [GUID-SEC-APP-REF-1.7.01](../GUID-SEC-APP-REF-1.7.01.md): **SHALL** = mandatory; **SHOULD** = strongly recommended; **MAY** = optional.",
+    "3": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-DEPINT-2.7.24.md#abb-context]\n\n### ABB Context\n\n- **Parent L2 Capability**: Software Supply Chain Security — [GUID-SEC-APP-CAP-DESC-1.7.02](../GUID-SEC-APP-CAP-DESC-1.7.02.md)\n- **ABB Catalog**: [GUID-SEC-APP-ABB-CAT-2.7.06](../GUID-SEC-APP-ABB-CAT-2.7.06.md)\n- **Capability Statement**: The enterprise SHALL have an architectural capability to verify that software components and build artifacts resolved during a build process are cryptographically identical to their declared originals — detecting tampering or substitution in the software supply chain.",
+    "4": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-DEPINT-2.7.24.md#abb-scope]\n\n### ABB Scope\n\n**In Scope**:\n- Architectural capability to verify cryptographic hashes of resolved dependencies against declared manifests or lock files\n- Detection of dependency substitution attacks (a dependency resolved with a different hash than previously approved)\n- Build artifact signing to enable downstream consumers to verify artifact integrity\n\n**Out of Scope**:\n- Vulnerability assessment of dependencies (see GUID-SEC-APP-ABB-SCA-2.7.10)\n- SBOM generation and component inventory (see GUID-SEC-APP-ABB-SBOM-2.7.23)\n- Container image integrity verification (addressed partially in GUID-SEC-APP-ABB-IMGSC-2.7.13)\n- Security controls, configuration baselines (`standards/security/`)\n\n---",
+    "5": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-DEPINT-2.7.24.md#detailed-guidance]\n\n## Detailed Guidance",
+    "6": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-DEPINT-2.7.24.md#core-principles]\n\n### Core Principles\n\n- Dependency resolution during builds SHALL be pinned to specific, cryptographically verifiable versions; floating version ranges that could resolve to an attacker-substituted version SHALL NOT be used in production builds.\n- Build artifacts SHALL be signed after successful build and verification; consumers SHOULD verify signatures before use.\n- Any dependency hash mismatch SHALL cause the build to fail; hash mismatches SHALL NOT be silently resolved by re-fetching.\n- Signing keys for build artifact attestation SHALL be managed through GUID-SEC-APP-ABB-VAULT-2.7.21.",
+    "7": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-DEPINT-2.7.24.md#key-capabilities]\n\n### Key Capabilities",
+    "8": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-DEPINT-2.7.24.md#hash-verification]\n\n#### Hash Verification\n\n**Architectural intent**: Ensure that every component resolved during a build is byte-for-byte identical to its declared version.\n\n**Design guidance**:\n- Build pipelines SHALL use lock files or equivalent mechanisms that record the cryptographic hash of every dependency at the version in use.\n- Dependency resolution SHALL verify the hash of each resolved component against the lock file; verification failures SHALL abort the build.\n- Hash verification SHALL cover both direct and transitive dependencies.",
+    "9": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-DEPINT-2.7.24.md#artifact-signing]\n\n#### Artifact Signing\n\n**Architectural intent**: Provide downstream consumers — including deployment pipelines and admission controllers — with a mechanism to verify that a build artifact was produced by an authorized, verified build process.\n\n**Design guidance**:\n- Build artifacts (container images, deployment packages) SHALL be signed using a build pipeline identity.\n- Signatures SHOULD be stored as attestations associated with the artifact in the artifact registry.\n- The signing process SHOULD occur only after all integrity checks (including hash verification) have passed.",
+    "10": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-DEPINT-2.7.24.md#integration-interfaces]\n\n### Integration Interfaces\n\n| Interface | Direction | Consuming ABB | Description |\n|---|---|---|---|\n| Lock File | Inbound | Source Repository | Dependency hash manifest consumed for verification |\n| Resolved Dependencies | Inbound | Package Registry / Artifact Store | Components fetched for hash comparison |\n| Signing Key | Outbound | GUID-SEC-APP-ABB-VAULT-2.7.21 | Artifact signing key retrieved for build attestation |\n| Signed Artifact | Outbound | Artifact Registry / GUID-SEC-APP-ABB-IMGSC-2.7.13 | Signed artifact with integrity attestation |",
+    "11": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-DEPINT-2.7.24.md#zero-trust-alignment-nist-sp-800-207]\n\n### Zero Trust Alignment (NIST SP 800-207)\n\nDependency Integrity Verification advances the Applications and Workloads pillar by ensuring that the provenance of every component in a workload can be verified — operationalizing the Zero Trust principle that workload identity and composition must be attested, not assumed.",
+    "12": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-DEPINT-2.7.24.md#nist-sp-800-53-intent-alignment]\n\n### NIST SP 800-53 Intent Alignment\n\nThis ABB enables the architectural intent of the SA (System and Services Acquisition) family — specifically supply chain integrity and software provenance — and the SI (System and Information Integrity) family's intent for protection against tampered software.",
+    "13": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-DEPINT-2.7.24.md#constraints-and-dependencies]\n\n### Constraints and Dependencies\n\n- Lock file-based verification requires discipline in lock file maintenance; lock files that are not committed to version control or are frequently regenerated reduce the effectiveness of this ABB.\n- Artifact signing key management depends on GUID-SEC-APP-ABB-VAULT-2.7.21.\n- This ABB is complementary to GUID-SEC-APP-ABB-SBOM-2.7.23 — integrity verification ensures the components are what they claim to be; SBOM documents what those components are.\n\n---\n\n*[Enterprise Architecture Practice](../../../../../README.md) — Gainwell Technologies*"
+  },
+  "coverage": {
+    "total_pages": 13,
+    "covered_pages": 13,
+    "sampled_pages": 13,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 13
+  }
+}

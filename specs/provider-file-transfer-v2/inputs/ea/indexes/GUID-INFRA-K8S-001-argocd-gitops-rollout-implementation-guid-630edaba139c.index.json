@@ -1,0 +1,380 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Argo CD GitOps Rollout Implementation Guide",
+  "document_description": "guidance_name: 'Argo CD GitOps Rollout Implementation Guide'",
+  "total_pages": 39,
+  "tree": [
+    {
+      "title": "Argo CD GitOps Rollout Implementation Guide",
+      "node_id": "argo-cd-gitops-rollout-implementation-guide",
+      "start_index": 1,
+      "end_index": 39,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Executive Summary",
+          "node_id": "executive-summary",
+          "start_index": 3,
+          "end_index": 6,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Purpose Statement",
+              "node_id": "purpose-statement",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Business Value",
+              "node_id": "business-value",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Target Audience",
+              "node_id": "target-audience",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Scope and Applicability",
+          "node_id": "scope-and-applicability",
+          "start_index": 7,
+          "end_index": 10,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Applicable Scenarios",
+              "node_id": "applicable-scenarios",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Scope Boundaries",
+              "node_id": "scope-boundaries",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Related Artifacts",
+              "node_id": "related-artifacts",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Repository Structure Requirements",
+          "node_id": "repository-structure-requirements",
+          "start_index": 11,
+          "end_index": 16,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Overview",
+              "node_id": "overview",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "App-of-Apps Repository Layout",
+              "node_id": "app-of-apps-repository-layout",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Application Repository Layout (Mono-Repo)",
+              "node_id": "application-repository-layout-mono-repo",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Manifest Authoring Rules",
+              "node_id": "manifest-authoring-rules",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Repository Access Authentication",
+              "node_id": "repository-access-authentication",
+              "start_index": 16,
+              "end_index": 16,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Argo CD Application Sync Policies",
+          "node_id": "argo-cd-application-sync-policies",
+          "start_index": 17,
+          "end_index": 23,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "AppProject Configuration",
+              "node_id": "appproject-configuration",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Application Sync Policy Configuration",
+              "node_id": "application-sync-policy-configuration",
+              "start_index": 19,
+              "end_index": 22,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Dev Environment — Automated Sync with Self-Heal",
+                  "node_id": "dev-environment--automated-sync-with-self-heal",
+                  "start_index": 20,
+                  "end_index": 20,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Staging Environment — Automated Sync, No Self-Heal",
+                  "node_id": "staging-environment--automated-sync-no-self-heal",
+                  "start_index": 21,
+                  "end_index": 21,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Production Environment — Manual Sync Only",
+                  "node_id": "production-environment--manual-sync-only",
+                  "start_index": 22,
+                  "end_index": 22,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Health Checks and Sync Windows",
+              "node_id": "health-checks-and-sync-windows",
+              "start_index": 23,
+              "end_index": 23,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Environment Promotion Workflow",
+          "node_id": "environment-promotion-workflow",
+          "start_index": 24,
+          "end_index": 30,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Workflow Overview",
+              "node_id": "workflow-overview",
+              "start_index": 25,
+              "end_index": 25,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Promotion Step Detail",
+              "node_id": "promotion-step-detail",
+              "start_index": 26,
+              "end_index": 29,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Step 1: Dev Validation",
+                  "node_id": "step-1-dev-validation",
+                  "start_index": 27,
+                  "end_index": 27,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 2: Staging Promotion",
+                  "node_id": "step-2-staging-promotion",
+                  "start_index": 28,
+                  "end_index": 28,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 3: Production Promotion",
+                  "node_id": "step-3-production-promotion",
+                  "start_index": 29,
+                  "end_index": 29,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Rollback Procedure",
+              "node_id": "rollback-procedure",
+              "start_index": 30,
+              "end_index": 30,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Production Rollout Checklist",
+          "node_id": "production-rollout-checklist",
+          "start_index": 31,
+          "end_index": 35,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Repository and Manifest Readiness",
+              "node_id": "repository-and-manifest-readiness",
+              "start_index": 32,
+              "end_index": 32,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Argo CD Configuration",
+              "node_id": "argo-cd-configuration",
+              "start_index": 33,
+              "end_index": 33,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Security and Compliance",
+              "node_id": "security-and-compliance",
+              "start_index": 34,
+              "end_index": 34,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Operational Readiness",
+              "node_id": "operational-readiness",
+              "start_index": 35,
+              "end_index": 35,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Governance and Compliance",
+          "node_id": "governance-and-compliance",
+          "start_index": 36,
+          "end_index": 38,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "HIPAA Change Management Alignment",
+              "node_id": "hipaa-change-management-alignment",
+              "start_index": 37,
+              "end_index": 37,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Platform Team Gate",
+              "node_id": "platform-team-gate",
+              "start_index": 38,
+              "end_index": 38,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Change History",
+          "node_id": "change-history",
+          "start_index": 39,
+          "end_index": 39,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[strategy/guidance/implementation/GUID-INFRA-K8S-001-argocd-gitops-rollout-implementation-guide.md#argo-cd-gitops-rollout-implementation-guide]\n\n# Argo CD GitOps Rollout Implementation Guide\n\n**← Back to [EAP Home](../../../README.md) • [Strategy](../../README.md) • [Guidance](../README.md)**\n\n---\n\n**Architecture Guidance Metadata**\n\n```yaml\nguidance_id: 'GUID-INFRA-K8S-001'\nguidance_name: 'Argo CD GitOps Rollout Implementation Guide'\nguidance_type: 'platform-implementation'\ncategory: 'implementation'\nversion: '1.0.0'\nstatus: 'approved'\napplicability: 'enterprise'\ntags: ['implementation', 'infrastructure', 'kubernetes', 'gitops', 'argocd', 'continuous-delivery', 'eks', 'environment-promotion']\napproved_by: 'Enterprise Architecture Practice'\napproval_date: '2026-04-22'\n```\n\n---",
+    "2": "[strategy/guidance/implementation/GUID-INFRA-K8S-001-argocd-gitops-rollout-implementation-guide.md#table-of-contents]\n\n## Table of Contents\n\n- [Executive Summary](#executive-summary)\n- [Scope and Applicability](#scope-and-applicability)\n- [Related Artifacts](#related-artifacts)\n- [Repository Structure Requirements](#repository-structure-requirements)\n- [Argo CD Application Sync Policies](#argo-cd-application-sync-policies)\n- [Environment Promotion Workflow](#environment-promotion-workflow)\n- [Production Rollout Checklist](#production-rollout-checklist)\n- [Governance and Compliance](#governance-and-compliance)\n- [Change History](#change-history)\n\n---",
+    "3": "[strategy/guidance/implementation/GUID-INFRA-K8S-001-argocd-gitops-rollout-implementation-guide.md#executive-summary]\n\n## Executive Summary",
+    "4": "[strategy/guidance/implementation/GUID-INFRA-K8S-001-argocd-gitops-rollout-implementation-guide.md#purpose-statement]\n\n### Purpose Statement\n\nThis guide provides prescriptive implementation guidance for teams onboarding to Argo CD as the GitOps continuous delivery platform for Kubernetes workloads on Amazon EKS at Gainwell. It covers the required Git repository structure, Argo CD Application sync policy configuration, the approved environment promotion workflow (dev → staging → prod), and the production rollout checklist that each team must complete prior to enabling automated sync in production.",
+    "5": "[strategy/guidance/implementation/GUID-INFRA-K8S-001-argocd-gitops-rollout-implementation-guide.md#business-value]\n\n### Business Value\n\nAdopting a standardized Argo CD GitOps rollout approach delivers measurable operational value:\n\n- **Audit Trail**: Every deployment is traceable to a Git commit, author, and timestamp — satisfying HIPAA change-management requirements without manual documentation overhead.\n- **Deployment Consistency**: Declarative manifests stored in Git eliminate environment-specific drift and remove the reliance on undocumented imperative kubectl commands.\n- **Self-Service Promotion**: Teams promote from dev to staging to production via Git pull requests rather than platform-team intervention, reducing deployment lead time.\n- **Instant Rollback**: A Git revert of the offending commit initiates an automated rollback without requiring direct cluster access.\n- **Reduced Blast Radius**: Sync policies and health checks constrain Argo CD to apply only validated manifests, limiting the impact of misconfiguration.",
+    "6": "[strategy/guidance/implementation/GUID-INFRA-K8S-001-argocd-gitops-rollout-implementation-guide.md#target-audience]\n\n### Target Audience\n\n**Primary Audience:**\n- **Platform Engineers**: Responsible for Argo CD installation, project configuration, and access control.\n- **Application Developers and DevOps Engineers**: Teams onboarding workloads to GitOps and configuring Application resources.\n- **Site Reliability Engineers (SREs)**: Operating Argo CD, monitoring sync health, and responding to failed deployments.\n\n**Secondary Audience:**\n- **Solution Architects**: Evaluating GitOps adoption for new product portfolios.\n- **Security Engineers**: Validating RBAC and secret management practices.\n- **Compliance Teams**: Confirming that GitOps controls satisfy HIPAA audit trail requirements.\n\n---",
+    "7": "[strategy/guidance/implementation/GUID-INFRA-K8S-001-argocd-gitops-rollout-implementation-guide.md#scope-and-applicability]\n\n## Scope and Applicability",
+    "8": "[strategy/guidance/implementation/GUID-INFRA-K8S-001-argocd-gitops-rollout-implementation-guide.md#applicable-scenarios]\n\n### Applicable Scenarios\n\n- New application teams onboarding to EKS who require a standard continuous delivery mechanism.\n- Existing teams migrating from imperative `kubectl apply` or Helm-only workflows to a GitOps model.\n- Platform engineers establishing a new Argo CD installation or AppProject for a product portfolio.",
+    "9": "[strategy/guidance/implementation/GUID-INFRA-K8S-001-argocd-gitops-rollout-implementation-guide.md#scope-boundaries]\n\n### Scope Boundaries\n\n**In Scope:**\n- Git repository layout (app-of-apps and environment overlay directory conventions).\n- Argo CD Application and AppProject manifest authoring.\n- Sync policy configuration for automated and manual promotion gates.\n- Environment promotion workflow (dev → staging → prod).\n- Pre-production and production onboarding checklists.\n\n**Out of Scope:**\n- Argo CD server installation and cluster-level infrastructure (covered by platform engineering runbooks).\n- Secret management (use AWS Secrets Manager with External Secrets Operator per STD-TEC-EKS-006).\n- Progressive delivery strategies (canary, blue-green) — covered in a forthcoming rollout patterns guide.\n- Argo CD Workflows or Argo Events (separate tooling with separate guidance).",
+    "10": "[strategy/guidance/implementation/GUID-INFRA-K8S-001-argocd-gitops-rollout-implementation-guide.md#related-artifacts]\n\n### Related Artifacts\n\n| Artifact ID | Title | Location |\n|-------------|-------|----------|\n| PTN-INFRA-K8S-003 | Infrastructure GitOps Deployment Pattern | `patterns/infrastructure/kubernetes/PTN-INFRA-K8S-003-infrastructure-gitops-deployment-pattern.md` |\n| PTN-INFRA-K8S-005 | Infrastructure Multi-Cluster Management Pattern | `patterns/infrastructure/kubernetes/PTN-INFRA-K8S-005-infrastructure-multi-cluster-management-pattern.md` |\n| STD-TEC-EKS-006 | EKS Security Standard | `standards/technology/eks/STD-TEC-EKS-006-security.md` |\n| ADR-IFR-009 | Komodor EKS Cluster Management and Monitoring — ADR | `decisions/infrastructure/ADR-IFR-009-komodor-eks-cluster-management-platform-selection.md` |\n| GUID-SEC-EKS-001 | Komodor Access Model Security Guidance | `strategy/guidance/security/GUID-SEC-EKS-001-komodor-access-model-security-guidance.md` |\n\n---",
+    "11": "[strategy/guidance/implementation/GUID-INFRA-K8S-001-argocd-gitops-rollout-implementation-guide.md#repository-structure-requirements]\n\n## Repository Structure Requirements",
+    "12": "[strategy/guidance/implementation/GUID-INFRA-K8S-001-argocd-gitops-rollout-implementation-guide.md#overview]\n\n### Overview\n\nGainwell's GitOps model uses two distinct Git repository types:\n\n1. **App-of-Apps Repository** (`gitops-platform`): Owned by the platform team. Contains Argo CD `AppProject` and top-level `Application` manifests that bootstrap all portfolio-level Argo CD Applications.\n2. **Centralized Application Manifests Repository** (`gitops-config`): A single shared repository owned by the platform team and contributed to by all product teams. Contains all application Kubernetes manifests and Helm values files organized by application name and environment overlay. This mono-repo model is preferred over per-team repositories because it centralizes access control, simplifies RBAC auditing, reduces GitHub repository sprawl, and provides a single change-history view across all application deployments.\n\nSeparating platform-level Argo CD configuration (`gitops-platform`) from application manifests (`gitops-config`) enforces least-privilege: application teams cannot modify their own AppProject or cluster-level resources.",
+    "13": "[strategy/guidance/implementation/GUID-INFRA-K8S-001-argocd-gitops-rollout-implementation-guide.md#app-of-apps-repository-layout]\n\n### App-of-Apps Repository Layout\n\n```\ngitops-platform/\n├── argocd/\n│   ├── projects/\n│   │   ├── medicaid.yaml           # AppProject for Medicaid portfolio\n│   │   ├── payment-integrity.yaml\n│   │   └── provider-solutions.yaml\n│   └── applications/\n│       ├── medicaid/\n│       │   ├── claims-processing.yaml\n│       │   └── eligibility-service.yaml\n│       └── payment-integrity/\n│           └── fraud-detection.yaml\n└── README.md\n```",
+    "14": "[strategy/guidance/implementation/GUID-INFRA-K8S-001-argocd-gitops-rollout-implementation-guide.md#application-repository-layout-mono-repo]\n\n### Application Repository Layout (Mono-Repo)\n\nAll application teams contribute manifests to a single `gitops-config` repository under an `apps/` top-level directory, with each application owning a subdirectory. This prevents repository sprawl and enables the platform team to enforce consistent policies and perform centralized change audits.\n\n```\ngitops-config/\n├── apps/\n│   ├── claims-processing/\n│   │   ├── base/                          # Shared Kubernetes manifests (kustomize base)\n│   │   │   ├── deployment.yaml\n│   │   │   ├── service.yaml\n│   │   │   ├── serviceaccount.yaml\n│   │   │   └── kustomization.yaml\n│   │   └── overlays/\n│   │       ├── dev/\n│   │       │   ├── kustomization.yaml     # Patches for dev (replica count, resource limits)\n│   │       │   └── configmap-patch.yaml\n│   │       ├── staging/\n│   │       │   ├── kustomization.yaml\n│   │       │   └── configmap-patch.yaml\n│   │       └── prod/\n│   │           ├── kustomization.yaml\n│   │           └── configmap-patch.yaml\n│   ├── eligibility-service/\n│   │   ├── base/\n│   │   └── overlays/\n│   │       ├── dev/\n│   │       ├── staging/\n│   │       └── prod/\n│   └── fraud-detection/\n│       ├── base/\n│       └── overlays/\n│           ├── dev/\n│           ├── staging/\n│           └── prod/\n└── README.md\n```\n\nTeams using Helm-based charts instead of Kustomize follow the same top-level layout under `apps/<app-name>/`, substituting `Chart.yaml`, `values.yaml`, and per-environment `values-<env>.yaml` files in place of the Kustomize base/overlay structure.",
+    "15": "[strategy/guidance/implementation/GUID-INFRA-K8S-001-argocd-gitops-rollout-implementation-guide.md#manifest-authoring-rules]\n\n### Manifest Authoring Rules\n\n- **Kustomize or Helm are both permitted** for environment-specific overlays. Teams already using Helm for first-party services may continue to do so. The platform team **SHALL** confirm that the chosen approach is consistent within a single application directory; mixing Kustomize and Helm within one app **SHALL NOT** be used.\n- All manifests MUST include the following labels:\n  ```yaml\n  labels:\n    app.kubernetes.io/name: <service-name>\n    app.kubernetes.io/part-of: <portfolio>\n    app.kubernetes.io/managed-by: argocd\n    gainwell.com/environment: <dev|staging|prod>\n  ```\n- **Namespaces are pre-provisioned by the platform team** and are not created by Argo CD. Teams MUST confirm the target namespace exists and is assigned to their portfolio before submitting an Application manifest. The `CreateNamespace=false` sync option (set in all Application manifests in this guide) enforces this requirement.\n- Image tags MUST be immutable digests (`sha256:…`) in staging and production overlays. Mutable tags (e.g., `latest`) are prohibited in all environments except local development.\n- Secrets MUST NOT be stored in the GitOps config repository. Use External Secrets Operator referencing AWS Secrets Manager per STD-TEC-EKS-006.",
+    "16": "[strategy/guidance/implementation/GUID-INFRA-K8S-001-argocd-gitops-rollout-implementation-guide.md#repository-access-authentication]\n\n### Repository Access Authentication\n\nArgo CD must authenticate to the `gitops-config` mono-repo and to the `gitops-platform` app-of-apps repository. The credential is a non-human identity subject to Gainwell's non-human identity lifecycle requirements (GUID-SEC-IAM-NON-HUMAN).\n\n- **Credential type**: Argo CD **SHALL** authenticate to GitHub repositories using a **GitHub App** installation credential. Personal Access Tokens (PATs) **SHALL NOT** be used. PATs are tied to a human account, carry over-broad scope, and provide no automated rotation.\n- **Credential storage**: The GitHub App private key **SHALL** be stored in AWS Secrets Manager and synchronized to the `argocd` namespace as an Argo CD repository credential secret via External Secrets Operator. The credential **SHALL NOT** be applied as a manually created static Kubernetes `Secret`.\n- **Permission scope**: The GitHub App installation **SHALL** be scoped to `contents: read` and `metadata: read` on the `gitops-config` and `gitops-platform` repositories only. Write, admin, and webhook scope **SHALL NOT** be granted.\n- **Rotation**: The GitHub App private key **SHALL** be rotated on a 90-day cycle, automated via the platform team's secrets management pipeline, per GUID-SEC-APPS-KUBERNETES-PLATFORM-2.7.04 §1.2.\n\n---",
+    "17": "[strategy/guidance/implementation/GUID-INFRA-K8S-001-argocd-gitops-rollout-implementation-guide.md#argo-cd-application-sync-policies]\n\n## Argo CD Application Sync Policies",
+    "18": "[strategy/guidance/implementation/GUID-INFRA-K8S-001-argocd-gitops-rollout-implementation-guide.md#appproject-configuration]\n\n### AppProject Configuration\n\nEach portfolio MUST have a dedicated `AppProject` that restricts:\n\n- **Source repositories**: Only the team's approved GitOps config repository is a valid source.\n- **Destination clusters and namespaces**: Scoped to the team's assigned namespaces; cluster-scoped resource creation is prohibited unless explicitly granted by the platform team.\n- **Permitted resource types**: Deny `ClusterRole`, `ClusterRoleBinding`, and `Namespace` creation at the AppProject level to prevent privilege escalation.\n\nExample AppProject:\n\n```yaml\napiVersion: argoproj.io/v1alpha1\nkind: AppProject\nmetadata:\n  name: medicaid\n  namespace: argocd\nspec:\n  description: Medicaid portfolio GitOps project\n  sourceRepos:\n    - https://github.com/mygainwell/gitops-config\n  destinations:\n    - namespace: medicaid-dev\n      server: https://kubernetes.default.svc\n    - namespace: medicaid-staging\n      server: https://eks-staging.gainwell.internal\n    - namespace: medicaid-prod\n      server: https://eks-prod.gainwell.internal\n  clusterResourceWhitelist: []        # No cluster-scoped resources permitted\n  namespaceResourceBlacklist:\n    - group: ''\n      kind: ResourceQuota             # Managed by platform team only\n    - group: 'rbac.authorization.k8s.io'\n      kind: Role                      # RBAC changes must flow through platform team pipeline\n    - group: 'rbac.authorization.k8s.io'\n      kind: RoleBinding               # RBAC changes must flow through platform team pipeline\n  roles:\n    - name: deploy\n      description: Write access for CI/CD pipeline\n      policies:\n        - p, proj:medicaid:deploy, applications, sync, medicaid/*, allow\n      jwtTokens: []\n```\n\n> **Note — RBAC Resource Management**: `Role` and `RoleBinding` objects are excluded from application team AppProject sync by the `namespaceResourceBlacklist` above. All Kubernetes RBAC object creation and modification **MUST** flow through the platform team's privileged pipeline and **SHALL NOT** be submitted via application team AppProject sync. This prevents application teams with `applications, sync` permission from binding existing `ClusterRole` definitions to `ServiceAccount`s they control, which would constitute privilege escalation within portfolio namespaces (OWASP A01:2021 — Broken Access Control; NIST SP 800-53 AC-6).",
+    "19": "[strategy/guidance/implementation/GUID-INFRA-K8S-001-argocd-gitops-rollout-implementation-guide.md#application-sync-policy-configuration]\n\n### Application Sync Policy Configuration\n\nArgo CD sync policy is configured per environment with different automation levels:",
+    "20": "[strategy/guidance/implementation/GUID-INFRA-K8S-001-argocd-gitops-rollout-implementation-guide.md#dev-environment--automated-sync-with-self-heal]\n\n#### Dev Environment — Automated Sync with Self-Heal\n\nDev clusters are low-risk. Automated sync with self-heal ensures that any drift from the Git-declared state is immediately corrected, accelerating inner-loop development feedback.\n\n```yaml\napiVersion: argoproj.io/v1alpha1\nkind: Application\nmetadata:\n  name: claims-processing-dev\n  namespace: argocd\nspec:\n  project: medicaid\n  source:\n    repoURL: https://github.com/mygainwell/gitops-config\n    targetRevision: main\n    path: apps/claims-processing/overlays/dev\n  destination:\n    server: https://kubernetes.default.svc\n    namespace: medicaid-dev\n  syncPolicy:\n    automated:\n      prune: true                     # Remove resources deleted from Git\n      selfHeal: true                  # Correct any manual drift\n    syncOptions:\n      - CreateNamespace=false         # Namespace must pre-exist (platform-managed)\n      - PrunePropagationPolicy=foreground\n    retry:\n      limit: 5\n      backoff:\n        duration: 5s\n        factor: 2\n        maxDuration: 3m\n```",
+    "21": "[strategy/guidance/implementation/GUID-INFRA-K8S-001-argocd-gitops-rollout-implementation-guide.md#staging-environment--automated-sync-no-self-heal]\n\n#### Staging Environment — Automated Sync, No Self-Heal\n\nStaging receives automated sync when commits land on the `staging` branch (via promotion PR merge), but self-heal is disabled. This allows SREs to investigate drift before correction.\n\n```yaml\nsyncPolicy:\n  automated:\n    prune: true\n    selfHeal: false                   # Manual investigation before correcting drift\n  syncOptions:\n    - CreateNamespace=false\n    - PrunePropagationPolicy=foreground\n  retry:\n    limit: 3\n    backoff:\n      duration: 10s\n      factor: 2\n      maxDuration: 5m\n```",
+    "22": "[strategy/guidance/implementation/GUID-INFRA-K8S-001-argocd-gitops-rollout-implementation-guide.md#production-environment--manual-sync-only]\n\n#### Production Environment — Manual Sync Only\n\nProduction sync requires explicit human approval. Automated sync is disabled. A named team member initiates sync via the Argo CD UI or CLI following change-management approval.\n\n```yaml\nsyncPolicy:\n  # No 'automated' block — sync is manual only\n  syncOptions:\n    - CreateNamespace=false\n    - PrunePropagationPolicy=foreground\n    - Validate=true                   # Dry-run validation before apply\n  retry:\n    limit: 2\n    backoff:\n      duration: 30s\n      factor: 2\n      maxDuration: 10m\n```",
+    "23": "[strategy/guidance/implementation/GUID-INFRA-K8S-001-argocd-gitops-rollout-implementation-guide.md#health-checks-and-sync-windows]\n\n### Health Checks and Sync Windows\n\n- All Applications MUST define an `ignoreDifferences` block to exclude fields managed by Kubernetes controllers (e.g., `status`, `lastAppliedConfiguration`) that would otherwise trigger false-positive out-of-sync alerts. Example:\n  ```yaml\n  spec:\n    ignoreDifferences:\n      - group: apps\n        kind: Deployment\n        jsonPointers:\n          - /spec/replicas           # HPA-managed; exclude to prevent drift alerts\n      - kind: Service\n        jsonPointers:\n          - /spec/clusterIP          # Assigned by kube-controller-manager; immutable post-create\n  ```\n- Production Applications MUST configure a `syncWindow` using `kind: allow` scoped to approved change windows. Argo CD implicitly blocks sync outside defined `allow` windows when at least one `allow` window exists. A blanket `deny` window covering 24 hours **MUST NOT** be combined with `allow` windows, as Argo CD evaluates `deny` windows with higher priority, blocking all syncs even during intended change windows. Example:\n  ```yaml\n  syncWindows:\n    - kind: allow\n      schedule: '0 10 * * 2,4'    # allow Tuesday and Thursday 10:00–14:00 UTC only\n      duration: 4h\n      namespaces:\n        - '*-prod'\n  ```\n  Emergency break-glass syncs outside the allow window require the procedure documented in the platform runbook.\n\n---",
+    "24": "[strategy/guidance/implementation/GUID-INFRA-K8S-001-argocd-gitops-rollout-implementation-guide.md#environment-promotion-workflow]\n\n## Environment Promotion Workflow",
+    "25": "[strategy/guidance/implementation/GUID-INFRA-K8S-001-argocd-gitops-rollout-implementation-guide.md#workflow-overview]\n\n### Workflow Overview\n\nThe approved promotion flow moves changes from dev to staging to production using Git branch conventions and pull request gates. No environment variable is modified directly — all promotion is expressed as a change to a Git overlay.\n\n```\nDeveloper commits to feature branch\n            │\n            ▼\n    ┌───────────────┐\n    │   Dev overlay  │  ← Argo CD auto-syncs from 'main' branch\n    │  (main branch) │\n    └───────┬───────┘\n            │  PR: cherry-pick or overlay diff → staging branch\n            ▼\n    ┌────────────────┐\n    │ Staging overlay │  ← Argo CD auto-syncs from 'staging' branch\n    │(staging branch) │    (no self-heal)\n    └───────┬────────┘\n            │  PR: overlay diff → prod branch + change ticket\n            ▼\n    ┌──────────────────┐\n    │  Prod overlay     │  ← Manual sync only; change ticket required\n    │  (prod branch)   │\n    └──────────────────┘\n```",
+    "26": "[strategy/guidance/implementation/GUID-INFRA-K8S-001-argocd-gitops-rollout-implementation-guide.md#promotion-step-detail]\n\n### Promotion Step Detail",
+    "27": "[strategy/guidance/implementation/GUID-INFRA-K8S-001-argocd-gitops-rollout-implementation-guide.md#step-1-dev-validation]\n\n#### Step 1: Dev Validation\n\n1. Feature branch is merged to `main` after passing CI (unit tests, container image build, vulnerability scan).\n2. Argo CD detects the change and auto-syncs the dev overlay within 3 minutes.\n3. Developer confirms deployment health via the Argo CD UI (all pods `Running`, Application `Healthy`).\n4. Integration and smoke tests execute against the dev environment.",
+    "28": "[strategy/guidance/implementation/GUID-INFRA-K8S-001-argocd-gitops-rollout-implementation-guide.md#step-2-staging-promotion]\n\n#### Step 2: Staging Promotion\n\n1. Developer opens a pull request from `main` → `staging` updating only the staging overlay (image digest, config values).\n2. PR requires approval from at least one peer reviewer and MUST pass all CI checks.\n3. On merge, Argo CD auto-syncs the staging overlay (prune enabled, self-heal disabled).\n4. SRE or developer monitors deployment health for a minimum of 15 minutes post-sync.\n5. End-to-end integration tests execute in the staging environment.",
+    "29": "[strategy/guidance/implementation/GUID-INFRA-K8S-001-argocd-gitops-rollout-implementation-guide.md#step-3-production-promotion]\n\n#### Step 3: Production Promotion\n\n1. Engineer opens a pull request from `staging` → `prod` updating only the prod overlay.\n2. PR requires approval from the team lead AND the on-call SRE. No auto-merge is permitted.\n3. A ServiceNow change ticket MUST be opened and linked in the PR description before the PR is merged.\n4. After the change window opens and the change ticket is approved, the SRE synchronizes the Application via the Argo CD UI or CLI:\n   ```bash\n   argocd app sync claims-processing-prod --timeout 300\n   ```\n5. SRE monitors deployment health for at least 30 minutes. If any health check fails, the SRE initiates rollback (see below).",
+    "30": "[strategy/guidance/implementation/GUID-INFRA-K8S-001-argocd-gitops-rollout-implementation-guide.md#rollback-procedure]\n\n### Rollback Procedure\n\n**Automated rollback is not configured for production.** All rollbacks are human-initiated.\n\n```bash\n# Option 1: Revert the Git commit and re-promote (preferred — maintains Git history integrity)\ngit revert <commit-sha>\ngit push origin prod\n\n# Option 2: Roll back via Argo CD to the previous known-good revision\nargocd app rollback claims-processing-prod <revision-id>\n```\n\nBoth options MUST be accompanied by a ServiceNow incident ticket documenting the reason for rollback, the revision rolled back to, and the engineer performing the action.\n\n---",
+    "31": "[strategy/guidance/implementation/GUID-INFRA-K8S-001-argocd-gitops-rollout-implementation-guide.md#production-rollout-checklist]\n\n## Production Rollout Checklist\n\nTeams MUST complete all items on this checklist and attach it to the ServiceNow change ticket before the first production sync is authorized by the platform team.",
+    "32": "[strategy/guidance/implementation/GUID-INFRA-K8S-001-argocd-gitops-rollout-implementation-guide.md#repository-and-manifest-readiness]\n\n### Repository and Manifest Readiness\n\n- [ ] Application directory (`apps/<app-name>/`) created in the `gitops-config` mono-repo under the `mygainwell` GitHub organization; access granted to the `argocd-platform` service account.\n- [ ] `base/` manifests authored, peer-reviewed, and free of hardcoded environment-specific values.\n- [ ] `overlays/dev/`, `overlays/staging/`, and `overlays/prod/` overlay directories present and kustomization validated (`kubectl kustomize apps/<app-name>/overlays/prod | kubectl apply --dry-run=client -f -`).\n- [ ] Production overlay uses immutable image digest (not a mutable tag).\n- [ ] No secrets stored in the GitOps repository; all secret references use External Secrets Operator CRDs pointing to AWS Secrets Manager.\n- [ ] Required Kubernetes labels applied to all manifests.\n- [ ] Target namespace confirmed as pre-provisioned by the platform team; `CreateNamespace=false` set in the Application manifest.",
+    "33": "[strategy/guidance/implementation/GUID-INFRA-K8S-001-argocd-gitops-rollout-implementation-guide.md#argo-cd-configuration]\n\n### Argo CD Configuration\n\n- [ ] AppProject created by the platform team and scoped to the production cluster and `<portfolio>-prod` namespace only.\n- [ ] Argo CD Application manifest created with `syncPolicy.automated` block absent (manual sync only for production).\n- [ ] `ignoreDifferences` entries defined for all controller-managed fields.\n- [ ] `syncWindow` configured to restrict sync to approved change windows.\n- [ ] Health check thresholds confirmed (Application reports `Healthy` in staging after ≥ 15 minutes of observation).\n- [ ] RBAC confirmed: only named SREs and team leads have `applications, sync` permission on the production Application.",
+    "34": "[strategy/guidance/implementation/GUID-INFRA-K8S-001-argocd-gitops-rollout-implementation-guide.md#security-and-compliance]\n\n### Security and Compliance\n\n- [ ] STD-TEC-EKS-006 security requirements verified: pod security context, non-root user, read-only root filesystem, dropped capabilities.\n- [ ] External Secrets Operator confirmed operational in the production namespace; secret sync verified.\n- [ ] IRSA (IAM Roles for Service Accounts) configured for any AWS API calls; no long-lived IAM credentials in pods.\n- [ ] Network policies applied to restrict ingress and egress to declared sources only.\n- [ ] Container images scanned for HIGH/CRITICAL vulnerabilities; no open HIGH/CRITICAL findings in production image.\n- [ ] Argo CD repository credential configured as a GitHub App private key stored in AWS Secrets Manager; synchronized to `argocd` namespace via External Secrets Operator. No PAT stored as a static Kubernetes Secret.\n- [ ] Container image build provenance attestation available (SLSA Level 2 minimum per GUID-SEC-APPS-KUBERNETES-PLATFORM-2.7.04 §2.1); attestation verifiable at deploy time.",
+    "35": "[strategy/guidance/implementation/GUID-INFRA-K8S-001-argocd-gitops-rollout-implementation-guide.md#operational-readiness]\n\n### Operational Readiness\n\n- [ ] Monitoring dashboards (CloudWatch or Dynatrace) configured for the production workload; alerts routed to the on-call SRE queue.\n- [ ] Rollback procedure documented in the team runbook and the on-call SRE is aware of the procedure.\n- [ ] ServiceNow change ticket opened, linked to this PR, and approved by the change advisory board.\n- [ ] On-call SRE assigned and available during the production sync window.\n- [ ] Stakeholder notification sent for any user-facing change.\n\n---",
+    "36": "[strategy/guidance/implementation/GUID-INFRA-K8S-001-argocd-gitops-rollout-implementation-guide.md#governance-and-compliance]\n\n## Governance and Compliance",
+    "37": "[strategy/guidance/implementation/GUID-INFRA-K8S-001-argocd-gitops-rollout-implementation-guide.md#hipaa-change-management-alignment]\n\n### HIPAA Change Management Alignment\n\nGitOps via Argo CD satisfies HIPAA §164.312(b) audit control requirements by providing an immutable, timestamped record of all configuration changes and their authors in Git history. Teams MUST NOT bypass the Git-based promotion workflow (e.g., direct `kubectl apply` in production) as this breaks the audit chain. Any emergency out-of-band change MUST be followed within 24 hours by a retroactive Git commit capturing the change and a post-incident review.",
+    "38": "[strategy/guidance/implementation/GUID-INFRA-K8S-001-argocd-gitops-rollout-implementation-guide.md#platform-team-gate]\n\n### Platform Team Gate\n\nThe platform team reviews and approves new AppProject configurations before any production Application is created. This gate ensures that namespace isolation, RBAC scoping, and source repository restrictions are correct before any production workload is onboarded.\n\n---",
+    "39": "[strategy/guidance/implementation/GUID-INFRA-K8S-001-argocd-gitops-rollout-implementation-guide.md#change-history]\n\n## Change History\n\n| Version | Date | Author | Summary |\n|---------|------|--------|---------|\n| 1.0.0 | 2026-04-21 | Enterprise Architecture Practice | Initial publication |\n| 1.0.1 | 2026-04-22 | Enterprise Architecture Practice | Security review remediation: add `Role`/`RoleBinding` to AppProject `namespaceResourceBlacklist`; promote `status` to `approved` |\n| 1.0.2 | 2026-05-01 | Enterprise Architecture Practice | Switch to centralized `gitops-config` mono-repo (per platform team preference); allow Helm as alternative to Kustomize for first-party services; clarify namespaces are platform-pre-provisioned; fix sync window to use `allow`-only pattern (deny+allow overlap blocks all syncs); add `ignoreDifferences` example; replace Prometheus with Dynatrace in checklist |\n\n---\n\n*This guidance is informative. For normative EKS security requirements, see [STD-TEC-EKS-006](../../../standards/technology/eks/STD-TEC-EKS-006-security.md). For the GitOps deployment pattern, see [PTN-INFRA-K8S-003](../../../patterns/infrastructure/kubernetes/PTN-INFRA-K8S-003-infrastructure-gitops-deployment-pattern.md).*"
+  },
+  "coverage": {
+    "total_pages": 39,
+    "covered_pages": 39,
+    "sampled_pages": 39,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 39
+  }
+}

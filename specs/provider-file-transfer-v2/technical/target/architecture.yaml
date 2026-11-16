@@ -1,0 +1,138 @@
+module: provider-file-transfer-v2
+deployables:
+  - name: fxfer-db-schema
+    kind: schema
+    path: schema/fxfer-db
+    stack: PostgreSQL migrations (Flyway)
+    role: Per-tenant FXFER database schema migrations.
+    build: flyway -configFiles=schema/fxfer-db/flyway.conf validate
+    depends_on: []
+  - name: fxfer-domain-api
+    kind: dotnet-service
+    path: services/fxfer-domain-api
+    stack: .NET 10 (ASP.NET Core; AOT preferred)
+    role: Authoritative command/query APIs for FXFER configuration and tracking.
+    build: dotnet build services/fxfer-domain-api
+    depends_on: [fxfer-db-schema]
+  - name: fxfer-projection-worker
+    kind: projector
+    path: workers/fxfer-projection-worker
+    stack: .NET 10 worker runtime
+    role: Builds/updates read models from FXFER domain events.
+    build: dotnet build workers/fxfer-projection-worker
+    depends_on: [fxfer-domain-api, fxfer-db-schema]
+  - name: fxfer-transfer-worker
+    kind: worker
+    path: workers/fxfer-transfer-worker
+    stack: .NET 10 worker runtime
+    role: Scheduled execution of protocol I/O and recording outcomes via domain APIs.
+    build: dotnet build workers/fxfer-transfer-worker
+    depends_on: [fxfer-domain-api]
+  - name: fxfer-soap-facade
+    kind: dotnet-service
+    path: services/fxfer-soap-facade
+    stack: .NET 10 (CoreWCF)
+    role: SOAP compatibility facade for legacy consumers (no new SOAP functionality).
+    build: dotnet build services/fxfer-soap-facade
+    depends_on: [fxfer-domain-api]
+  - name: fxfer-bff
+    kind: bff
+    path: services/fxfer-bff
+    stack: .NET 10 (Native AOT)
+    role: Browser-facing API facade for the FXFER micro-frontend.
+    build: dotnet build services/fxfer-bff
+    depends_on: [fxfer-domain-api]
+  - name: fxfer-mfe
+    kind: mfe
+    path: apps/fxfer-mfe
+    stack: Node.js + Next.js 15 + React 19
+    role: Operator UI for FXFER configuration and tracking.
+    build: npm --prefix apps/fxfer-mfe ci && npm --prefix apps/fxfer-mfe run build
+    depends_on: [fxfer-bff]
+placement:
+  backend-bas-file-transfer-api: {deployable: fxfer-domain-api, folder: src/Api}
+  backend-bas-file-transfer-svc: {deployable: fxfer-soap-facade, folder: src/LegacyWcf}
+  backend-bas-file-transfer-svc-2: {deployable: fxfer-soap-facade, folder: src/CoreWcf}
+  backend-batch-business: {deployable: fxfer-transfer-worker, folder: src/Application}
+  backend-business-aggregates: {deployable: fxfer-domain-api, folder: src/Domain}
+  backend-business-aggregates-2: {deployable: fxfer-domain-api, folder: src/Domain}
+  backend-business-command-handlers: {deployable: fxfer-domain-api, folder: src/Application/Commands}
+  backend-business-command-handlers-2: {deployable: fxfer-domain-api, folder: src/Application/Commands}
+  backend-business-helpers: {deployable: fxfer-transfer-worker, folder: src/Application/Helpers}
+  backend-business-helpers-2: {deployable: fxfer-transfer-worker, folder: src/Application/Helpers}
+  backend-business-profiles: {deployable: fxfer-domain-api, folder: src/Domain/Profiles}
+  backend-configure-source-locations-and-destinations-api: {deployable: fxfer-domain-api, folder: src/Api}
+  backend-data-access-batch-data-access: {deployable: fxfer-transfer-worker, folder: src/Infrastructure/DataAccess}
+  backend-data-access-batch-data-access-2: {deployable: fxfer-transfer-worker, folder: src/Infrastructure/DataAccess}
+  backend-data-access-event-handlers: {deployable: fxfer-projection-worker, folder: src/Infrastructure/Projections}
+  backend-data-access-event-handlers-2: {deployable: fxfer-projection-worker, folder: src/Infrastructure/Projections}
+  backend-data-access-query-handlers: {deployable: fxfer-domain-api, folder: src/Application/Queries}
+  backend-data-access-query-handlers-2: {deployable: fxfer-domain-api, folder: src/Application/Queries}
+  backend-data-file-transfer: {deployable: fxfer-bff, folder: src/Contracts}
+  backend-data-file-transfer-constants: {deployable: fxfer-mfe, folder: src/legacy-constants}
+  backend-data-file-transfer-tracking: {deployable: fxfer-bff, folder: src/Contracts/Tracking}
+  backend-file-transfer-constants-localization: {deployable: fxfer-mfe, folder: src/legacy-constants/localization}
+  backend-file-transfer-mgmt-business: {deployable: fxfer-transfer-worker, folder: src/Application}
+  backend-file-transfer-mgmt-ctrl: {deployable: fxfer-transfer-worker, folder: src/Infrastructure/Adapters}
+  backend-file-transfer-mgmt-data-access: {deployable: fxfer-transfer-worker, folder: src/Infrastructure/DataAccess}
+  backend-file-transfer-svc-main: {deployable: fxfer-soap-facade, folder: src/Host}
+  backend-localization-labels: {deployable: fxfer-mfe, folder: src/legacy-constants/localization}
+  backend-providers-file-transfer: {deployable: fxfer-bff, folder: src/Application/Providers}
+  backend-run-file-transfer-batch-api: {deployable: fxfer-transfer-worker, folder: src/Worker}
+  data-data-access-entities: {deployable: fxfer-domain-api, folder: src/Infrastructure/DataAccess}
+  data-data-access-entities-2: {deployable: fxfer-domain-api, folder: src/Infrastructure/DataAccess}
+  data-data-access-entities-3: {deployable: fxfer-domain-api, folder: src/Infrastructure/DataAccess}
+  shared-common-common-constants: {deployable: fxfer-domain-api, folder: src/Domain/Constants}
+  shared-common-constants-validation: {deployable: fxfer-domain-api, folder: src/Domain/Validation}
+  shared-common-file-transfer-management-constants: {deployable: fxfer-transfer-worker, folder: src/Domain/Constants}
+  shared-contracts-batch: {deployable: fxfer-transfer-worker, folder: src/Contracts}
+  shared-contracts-commands: {deployable: fxfer-domain-api, folder: src/Contracts/Commands}
+  shared-contracts-domain: {deployable: fxfer-domain-api, folder: src/Contracts/Domain}
+  shared-contracts-domain-2: {deployable: fxfer-domain-api, folder: src/Contracts/Domain}
+  shared-contracts-events: {deployable: fxfer-domain-api, folder: src/Contracts/Events}
+  shared-contracts-exceptions: {deployable: fxfer-domain-api, folder: src/Contracts/Exceptions}
+  shared-contracts-queries: {deployable: fxfer-domain-api, folder: src/Contracts/Queries}
+  shared-contracts-utilities: {deployable: fxfer-domain-api, folder: src/Contracts/Utilities}
+  shared-data-file-transfer-constants: {deployable: fxfer-mfe, folder: src/legacy-constants}
+  shared-exceptions-file-transfer-exception-constants: {deployable: fxfer-domain-api, folder: src/Contracts/Exceptions}
+  shared-file-transfer-svc-data-access: {deployable: fxfer-domain-api, folder: src/Infrastructure/DataAccess/Constants}
+  shared-file-transfer-svc-data-access-2: {deployable: fxfer-domain-api, folder: src/Infrastructure/DataAccess/Constants}
+  shared-queries-parameters: {deployable: fxfer-domain-api, folder: src/Contracts/Queries}
+  shared-queries-parameters-2: {deployable: fxfer-domain-api, folder: src/Contracts/Queries}
+  ui-configure-source-locations-and-destinations-screens: {deployable: fxfer-mfe, folder: src/screens/configure-source-locations-and-destinations}
+  ui-file-transfer-api-controllers: {deployable: fxfer-bff, folder: src/Api}
+  ui-manage-ftp-servers-and-credentials-screens: {deployable: fxfer-mfe, folder: src/screens/manage-ftp-servers-and-credentials}
+uses:
+  - name: Platform identity broker (OIDC)
+    path: ''
+    role: Issues JWTs for operators; provides authentication context including tenant_id.
+  - name: API Gateway (edge)
+    path: ''
+    role: Validates JWTs/WAF policy; routes browser traffic to FXFER BFF.
+  - name: Event Backbone (SNS/SQS pattern)
+    path: ''
+    role: Tenant-scoped event distribution and durable work item delivery.
+  - name: Event Adapter
+    path: ''
+    role: Publishes/consumes events between FXFER and the Event Backbone.
+  - name: Tenant Registry + feature flags
+    path: ''
+    role: Resolves tenant policies and capability enablement.
+  - name: Secrets Manager + KMS
+    path: ''
+    role: Stores per-tenant database credentials and endpoint secrets.
+  - name: Aurora PostgreSQL (per-tenant)
+    path: ''
+    role: System of record for FXFER configuration and tracking (database-per-tenant).
+  - name: External partner endpoints
+    path: ''
+    role: Protocol endpoints (SFTP/FTPS/HTTPS/etc) reached only by the transfer worker.
+  - name: Shared shell (micro-frontend host)
+    path: ''
+    role: Hosts the FXFER micro-frontend remote module.
+flow_order:
+  - manage-ftp-servers-and-credentials
+  - configure-source-locations-and-destinations
+  - manage-integration-files
+  - run-file-transfer-batch
+  - search-and-track-file-transfers

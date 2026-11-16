@@ -1,0 +1,148 @@
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
+
+namespace FxferService.Projections.Infrastructure.Persistence.Migrations;
+
+public partial class InitialProjectionsSchema : Migration
+{
+    protected override void Up(MigrationBuilder migrationBuilder)
+    {
+        migrationBuilder.Sql(@"
+CREATE TABLE IF NOT EXISTS ""FXFER_INBOX"" (
+  ""EVENT_ID"" uuid PRIMARY KEY,
+  ""PROCESSED_TS"" timestamptz NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS ""FTP_SERVER"" (
+  ""FTP_SERVER_ID"" uuid PRIMARY KEY,
+  ""FTP_SERVER_NAME"" varchar(50) NOT NULL,
+  ""FTP_SERVER_IP"" varchar(50) NOT NULL,
+  ""FTP_TRANSFER_MODE"" text NOT NULL,
+  ""FTP_USER"" varchar(50) NOT NULL,
+  ""FTP_PASSWORD"" varchar(50) NOT NULL,
+  ""FTP_DESCRIPTION"" varchar(100) NOT NULL,
+  ""FTP_PORT"" smallint NOT NULL,
+  ""FTP_PROXY_ADR"" varchar(200) NULL,
+  ""FTP_PROXY_PORT"" smallint NULL,
+  ""SSH_AUTHENTICATION"" boolean NOT NULL,
+  ""IS_VALID"" boolean NOT NULL,
+  ""OPERATOR_ID"" varchar(200) NOT NULL,
+  ""LAST_MODIFIED_TS"" timestamptz NOT NULL,
+  ""CREATED_TS"" timestamptz NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS ""FTS_SOURCE_LOCATION"" (
+  ""FTS_SOURCE_LOCATION_ID"" uuid PRIMARY KEY,
+  ""CONFIG_ID"" integer NOT NULL,
+  ""CONFIG_NAME"" varchar(50) NOT NULL,
+  ""SOURCE_PROTOCOL_CD"" varchar(4) NOT NULL,
+  ""SOURCE_ADDRESS"" varchar(248) NOT NULL,
+  ""SOURCE_FILE_MASK"" varchar(50) NOT NULL,
+  ""FTP_SERVER_ID"" uuid NULL,
+  ""SEND_NOTIFICATIONS_IND"" boolean NOT NULL,
+  ""OWNER_NAME"" varchar(50) NOT NULL,
+  ""MODULE_ID"" uuid NOT NULL,
+  ""OWNER_PHONE"" varchar(10) NOT NULL,
+  ""OWNER_EMAIL"" varchar(150) NOT NULL,
+  ""CONFIG_DESCRIPTION"" varchar(200) NULL,
+  ""RUN_ON_MONDAY_IND"" boolean NOT NULL,
+  ""RUN_ON_TUESDAY_IND"" boolean NOT NULL,
+  ""RUN_ON_WED_IND"" boolean NOT NULL,
+  ""RUN_ON_THURS_IND"" boolean NOT NULL,
+  ""RUN_ON_FRI_IND"" boolean NOT NULL,
+  ""RUN_ON_SAT_IND"" boolean NOT NULL,
+  ""RUN_ON_SUN_IND"" boolean NOT NULL,
+  ""RUN_ON_FRST_DAY_OF_MONTH_IND"" boolean NOT NULL,
+  ""RUN_ON_LAST_DAY_OF_MONTH_IND"" boolean NOT NULL,
+  ""RUN_ON_THIS_DAY_OF_MONTH"" smallint NOT NULL,
+  ""START_TIME_24HHMM"" varchar(4) NOT NULL,
+  ""END_TIME_24HHMM"" varchar(4) NOT NULL,
+  ""FILE_DIRECTION"" varchar(50) NULL,
+  ""TRADING_PARTNER"" varchar(10) NULL,
+  ""IS_VALID"" boolean NOT NULL,
+  ""IS_SUSPENDED"" boolean NOT NULL,
+  ""IS_SUSPENDED_CHANGED_TS"" timestamptz NULL,
+  ""OPERATOR_ID"" varchar(200) NOT NULL,
+  ""LAST_MODIFIED_TS"" timestamptz NOT NULL,
+  ""CREATED_TS"" timestamptz NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS ""FTS_DESTINATION"" (
+  ""DESTINATION_ID"" uuid PRIMARY KEY,
+  ""FTS_SOURCE_LOCATION_ID"" uuid NOT NULL,
+  ""DESTINATION_ADDRESS"" varchar(248) NOT NULL,
+  ""DEST_PROTOCOL_CD"" varchar(4) NOT NULL,
+  ""OVERWRITE_AT_DEST_IND"" boolean NOT NULL,
+  ""COMPRESS_AT_DEST_IND"" boolean NOT NULL,
+  ""RENAME_AT_DEST_IND"" boolean NOT NULL,
+  ""DEST_IS_ARCHIVE_IND"" boolean NOT NULL,
+  ""IS_VALID"" boolean NOT NULL,
+  ""FTP_SERVER_ID"" uuid NOT NULL,
+  ""RENAME_PATTERN"" varchar(50) NULL,
+  ""CONTACT_NAME"" varchar(50) NULL,
+  ""CONTACT_PHONE"" varchar(15) NULL,
+  ""CONTACT_EMAIL"" varchar(150) NULL,
+  ""OPERATOR_ID"" varchar(200) NOT NULL,
+  ""CREATION_TS"" timestamptz NOT NULL,
+  ""LAST_MODIFIED_TS"" timestamptz NOT NULL,
+  ""CDE_ENCRYPTION"" varchar(8) NULL,
+  ""ENCRYPTION_PUBLICKEY"" text NULL,
+  ""ENCRYPTION_PRIVATEKEY"" text NULL,
+  ""PRIVATEKEY_PASSWORD"" varchar(25) NULL,
+  ""EXTERNAL_FILE_DEFN_ID"" uuid NULL,
+  ""DESTINATION_TYPE"" varchar(200) NULL,
+  ""CONTRACT_NAME"" varchar(200) NULL,
+  CONSTRAINT ""FK_FTS_DESTINATION_SOURCE"" FOREIGN KEY (""FTS_SOURCE_LOCATION_ID"") REFERENCES ""FTS_SOURCE_LOCATION"" (""FTS_SOURCE_LOCATION_ID"") ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS ""FTS_INBOUND_TARGET"" (
+  ""FTS_INBOUND_TARGET_ID"" uuid PRIMARY KEY,
+  ""EXTERNAL_FILE_DEFN_ID"" uuid NOT NULL,
+  ""IMPORT_JOB_NAME"" varchar(200) NOT NULL,
+  ""CONTRACT_NAME"" varchar(200) NOT NULL,
+  ""OPERATOR_ID"" varchar(200) NOT NULL,
+  ""IS_VALID"" boolean NOT NULL,
+  ""CREATED_TS"" timestamptz NOT NULL,
+  ""LAST_MODIFIED_TS"" timestamptz NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS ""FTS_INTEGRATION_FILE"" (
+  ""FTS_INTEGRATION_FILE_ID"" uuid PRIMARY KEY,
+  ""GROUP_ID"" uuid NULL,
+  ""CONFIG_ID"" integer NULL,
+  ""FILE_NAME"" varchar(500) NOT NULL,
+  ""ETF_OUTBOUND_METADATA_DEFN_ID"" uuid NOT NULL,
+  ""IS_PROCESSED"" boolean NOT NULL,
+  ""OPERATOR_ID"" varchar(200) NOT NULL,
+  ""IS_VALID"" boolean NOT NULL,
+  ""CREATED_TS"" timestamptz NOT NULL,
+  ""LAST_MODIFIED_TS"" timestamptz NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS ""FTS_SUSPENSION"" (
+  ""SUSPENSION_ID"" uuid PRIMARY KEY,
+  ""FTS_SOURCE_LOCATION_ID"" uuid NOT NULL,
+  ""ERROR_TEXT"" varchar(250) NOT NULL,
+  ""STACK_TRACE"" varchar(1000) NOT NULL,
+  ""OPERATOR_ID"" varchar(200) NOT NULL,
+  ""LAST_MODIFIED_TS"" timestamptz NOT NULL,
+  ""CREATED_TS"" timestamptz NOT NULL,
+  CONSTRAINT ""FK_FTS_SUSPENSION_SOURCE"" FOREIGN KEY (""FTS_SOURCE_LOCATION_ID"") REFERENCES ""FTS_SOURCE_LOCATION"" (""FTS_SOURCE_LOCATION_ID"") ON DELETE CASCADE
+);
+");
+    }
+
+    protected override void Down(MigrationBuilder migrationBuilder)
+    {
+        migrationBuilder.Sql(@"
+DROP TABLE IF EXISTS ""FTS_SUSPENSION"";
+DROP TABLE IF EXISTS ""FTS_INTEGRATION_FILE"";
+DROP TABLE IF EXISTS ""FTS_INBOUND_TARGET"";
+DROP TABLE IF EXISTS ""FTS_DESTINATION"";
+DROP TABLE IF EXISTS ""FTS_SOURCE_LOCATION"";
+DROP TABLE IF EXISTS ""FTP_SERVER"";
+DROP TABLE IF EXISTS ""FXFER_INBOX"";
+");
+    }
+}

@@ -1,0 +1,350 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Architecture Decision Record",
+  "document_description": "The Member BC adopts an **isolation gradient** deployment topology that matches the degree of multi-tenancy to each architectural layer's risk profile:",
+  "total_pages": 36,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 1,
+      "summary": "",
+      "nodes": []
+    },
+    {
+      "title": "Architecture Decision Record",
+      "node_id": "architecture-decision-record",
+      "start_index": 2,
+      "end_index": 36,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "ADR-APP-005: Multi-Tenancy Deployment Topology",
+          "node_id": "adr-app-005-multi-tenancy-deployment-topology",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Decision Summary",
+          "node_id": "decision-summary",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Context and Problem Statement",
+          "node_id": "context-and-problem-statement",
+          "start_index": 5,
+          "end_index": 6,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Decision Drivers",
+              "node_id": "decision-drivers",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Required Option",
+          "node_id": "required-option",
+          "start_index": 7,
+          "end_index": 12,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Isolation Gradient: Shared Presentation, Shared Compute, Siloed Data",
+              "node_id": "isolation-gradient-shared-presentation-shared-compute-siloed-data",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "UI Layer Multi-Tenancy",
+              "node_id": "ui-layer-multi-tenancy",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Tiered AWS Account Model",
+              "node_id": "tiered-aws-account-model",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Tenant Context Propagation",
+              "node_id": "tenant-context-propagation",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Forward-Compatible Application Design",
+              "node_id": "forward-compatible-application-design",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Considered Options",
+          "node_id": "considered-options",
+          "start_index": 13,
+          "end_index": 16,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Option 1: Shared Application, Shared Data Clusters (ADR-APP-005 Original)",
+              "node_id": "option-1-shared-application-shared-data-clusters-adr-app-005-original",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Option 2: Full Silo (Dedicated AWS Account per Tenant, All Tenants, Including UI)",
+              "node_id": "option-2-full-silo-dedicated-aws-account-per-tenant-all-tenants-including-ui",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Option 3: Shared Everything (Single Database, Row-Level Security)",
+              "node_id": "option-3-shared-everything-single-database-row-level-security",
+              "start_index": 16,
+              "end_index": 16,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Decision Outcome",
+          "node_id": "decision-outcome",
+          "start_index": 17,
+          "end_index": 21,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Encryption Isolation Model",
+              "node_id": "encryption-isolation-model",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Tenant Isolation Summary",
+              "node_id": "tenant-isolation-summary",
+              "start_index": 19,
+              "end_index": 19,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Subdomain and OIDC Configuration",
+              "node_id": "subdomain-and-oidc-configuration",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Implementation",
+              "node_id": "implementation",
+              "start_index": 21,
+              "end_index": 21,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Consequences",
+          "node_id": "consequences",
+          "start_index": 22,
+          "end_index": 25,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Positive",
+              "node_id": "positive",
+              "start_index": 23,
+              "end_index": 23,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Negative",
+              "node_id": "negative",
+              "start_index": 24,
+              "end_index": 24,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Neutral",
+              "node_id": "neutral",
+              "start_index": 25,
+              "end_index": 25,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Configuration Model",
+          "node_id": "configuration-model",
+          "start_index": 26,
+          "end_index": 26,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Enterprise Alignment",
+          "node_id": "enterprise-alignment",
+          "start_index": 27,
+          "end_index": 27,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Risk Assessment & Mitigation",
+          "node_id": "risk-assessment--mitigation",
+          "start_index": 28,
+          "end_index": 30,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Risks",
+              "node_id": "risks",
+              "start_index": 29,
+              "end_index": 29,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Mitigations",
+              "node_id": "mitigations",
+              "start_index": 30,
+              "end_index": 30,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Compliance Notes",
+          "node_id": "compliance-notes",
+          "start_index": 31,
+          "end_index": 31,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "References",
+          "node_id": "references",
+          "start_index": 32,
+          "end_index": 32,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Related Decisions",
+          "node_id": "related-decisions",
+          "start_index": 33,
+          "end_index": 33,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Supporting Analysis",
+          "node_id": "supporting-analysis",
+          "start_index": 34,
+          "end_index": 34,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Review and Approval",
+          "node_id": "review-and-approval",
+          "start_index": 35,
+          "end_index": 35,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Change Log",
+          "node_id": "change-log",
+          "start_index": 36,
+          "end_index": 36,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "> **Promoted from:** `mmes-cms-mbr/docs/decisions/adr-app-005-multi-tenancy-model.md`  \n> **Ref-arch artifact ID:** `ADR-INFRA-CMN-001-medicaid-silo-tenancy-isolation`  \n> This document has been promoted to the Enterprise Architecture Platform reference architecture. Product repos should reference this artifact rather than maintaining their own copy.\n\n---",
+    "2": "[decisions/infrastructure/ADR-INFRA-CMN-001-medicaid-silo-tenancy-isolation.md#architecture-decision-record]\n\n# Architecture Decision Record",
+    "3": "[decisions/infrastructure/ADR-INFRA-CMN-001-medicaid-silo-tenancy-isolation.md#adr-app-005-multi-tenancy-deployment-topology]\n\n## ADR-APP-005: Multi-Tenancy Deployment Topology\n\n---\n\n|               |                                                                                                                                            |\n| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |\n| **Status**    | Proposed                                                                                                                                   |\n| **Date**      | 2026-06-22                                                                                                                                 |\n| **Issuer**    | [Enterprise Architecture Practice](mailto:EAP-Core@mygainwell.onmicrosoft.com?subject=ADR-APP-005%20Multi-Tenancy%20Topology)               |\n| **Consulted** | MBR Development Team, Security Architecture, Platform Engineering, Database Engineering, mmes-helix Architecture Team                      |\n| **Informed**  | State Contract Teams, Compliance, DevOps, Finance                                                                                          |\n\n---",
+    "4": "[decisions/infrastructure/ADR-INFRA-CMN-001-medicaid-silo-tenancy-isolation.md#decision-summary]\n\n## Decision Summary\n\nThe Member BC adopts an **isolation gradient** deployment topology that matches the degree of multi-tenancy to each architectural layer's risk profile:\n\n| Layer | Tenancy Model | Rationale |\n| --- | --- | --- |\n| **Presentation (UI)** | Fully shared | No PHI at rest; configuration-driven rendering; maximum cost efficiency and feature velocity |\n| **Compute (EKS)** | Shared with namespace isolation | Stateless; PHI transits but is not persisted; mTLS protects in-transit |\n| **Data (Aurora, MSK, Redis, S3)** | Fully siloed per tenant | Per-tenant CMEK forced by cluster-level encryption; zero blast radius |\n\nThe **UI/presentation layer is the primary multi-tenancy leverage point** — a single deployment serves all tenants with tenant-specific branding, configuration, and feature sets driven entirely through the configuration service. This is where sharing delivers the greatest return (cost, velocity, consistency) with the least risk (no data at rest, session isolation via subdomain-scoped cookies).\n\nAt the data layer, per-tenant Customer-Managed Encryption Keys (CMEK) are the architectural forcing function — AWS encryption granularity at the cluster level makes shared data-plane clusters physically incompatible with per-tenant keys. Tenants are further classified into tiers (X-LARGE or STANDARD) that determine whether a dedicated AWS account or a shared account with VPC isolation is used.\n\nThe application layer carries `tenant_id` (`state_code`) through all layers regardless of deployment topology, enabling future consolidation if infrastructure multi-tenancy tooling matures.\n\n---",
+    "5": "[decisions/infrastructure/ADR-INFRA-CMN-001-medicaid-silo-tenancy-isolation.md#context-and-problem-statement]\n\n## Context and Problem Statement\n\n- **Business Context**: Gainwell operates Medicaid benefits administration across multiple state contracts. Each state is a distinct tenant with sovereign PHI, independent encryption requirements, distinct audit obligations, and contractual vendor-exit provisions requiring provable data destruction. At the same time, states share substantial UI/UX patterns, workflow logic, and portal features — differentiated only by branding, configuration, and state-specific policy rules.\n- **Technical Context**: ADR-APP-005 (this ADR) established multi-tenancy as a requirement but specified shared Aurora clusters and shared Kafka with tenant-prefixed topics. The mmes-helix future-state architecture (P6: Silo Tenancy, DD-004) specifies dedicated infrastructure per tenant with per-tenant CMEK. AWS encryption is enforced at the cluster level for Aurora, MSK, and Redis — this prevents per-tenant encryption on shared clusters. However, the presentation layer has no data-at-rest concern and is the natural candidate for aggressive multi-tenancy.\n- **Problem Statement**: Given that per-tenant CMEK is a hard requirement for Medicaid PHI at the data layer, and that the UI layer stores no PHI at rest, what deployment topology maximizes sharing where it's safe (presentation, compute) while enforcing isolation where encryption physics demand it (data)?",
+    "6": "[decisions/infrastructure/ADR-INFRA-CMN-001-medicaid-silo-tenancy-isolation.md#decision-drivers]\n\n### Decision Drivers\n\n- The UI layer stores no PHI at rest — encryption-at-rest constraints do not apply to the presentation tier\n- Per-tenant CMEK is mandatory for Medicaid PHI at the data layer (PTN-APP-MTN-003, PTN-APP-MTN-008)\n- AWS Aurora, MSK, and ElastiCache enforce encryption at the cluster level — per-tenant keys require separate clusters\n- A single shared UI deployment maximizes feature velocity (fix once, all tenants benefit) and minimizes build/deployment overhead\n- Tenant-specific branding, layouts, and feature availability are configuration concerns, not code concerns\n- EKS compute is stateless — PHI transits pods but is not persisted on compute volumes\n- Cryptographic erasure on vendor exit requires per-tenant key lifecycle management\n- mmes-helix future-state architecture mandates silo data plane (P6, DD-004)\n- Operational simplicity of IaC-stamped identical data-plane stacks vs. isolation engineering on shared infrastructure\n- State auditors require clean audit scope boundaries at the data layer but have no concerns about shared portal code\n\n---",
+    "7": "[decisions/infrastructure/ADR-INFRA-CMN-001-medicaid-silo-tenancy-isolation.md#required-option]\n\n## Required Option",
+    "8": "[decisions/infrastructure/ADR-INFRA-CMN-001-medicaid-silo-tenancy-isolation.md#isolation-gradient-shared-presentation-shared-compute-siloed-data]\n\n### Isolation Gradient: Shared Presentation, Shared Compute, Siloed Data\n\n**Description**: The architecture applies multi-tenancy aggressively at the top of the stack (where risk is lowest and ROI is highest) and enforces strict isolation at the bottom (where encryption physics and compliance requirements demand it). A single UI codebase and deployment serves all tenants via configuration; shared EKS compute hosts stateless services with namespace isolation; all stateful data-plane infrastructure is dedicated per tenant with per-tenant CMEK.\n\n**Architecture layers:**\n\n| Layer | Approach | Why This Level of Sharing |\n| --- | --- | --- |\n| **Presentation (UI)** | Single React/Next.js deployment; tenant-resolved from subdomain; branding, features, and layout driven by config service | No PHI at rest. Stateless rendering. Subdomain-scoped cookies isolate sessions. Maximum ROI from sharing. |\n| **API Gateway** | Shared gateway; tenant resolved at ingress from subdomain; per-tenant OIDC client validates JWT | Stateless routing. Tenant context is established here and flows downstream. |\n| **Compute (EKS)** | Shared cluster with per-tenant namespaces, network policies, resource quotas, pod security admission | Stateless. PHI transits but is not persisted. mTLS (App Mesh) protects in-transit. Mature K8s multi-tenancy tooling. |\n| **Database (Aurora)** | Dedicated cluster per tenant, per-tenant CMEK, independent scaling | Cluster-level encryption forces separation. PHI at rest. |\n| **Event Streaming (MSK)** | Dedicated cluster per tenant, per-tenant CMEK, independent topic management | Cluster-level encryption forces separation. Event payloads contain PHI. |\n| **Cache (Redis)** | Dedicated cluster per tenant, per-tenant CMEK | Cluster-level encryption forces separation. Cache may contain PHI projections. |\n| **Object Storage (S3)** | Dedicated buckets per tenant, per-tenant CMEK, independent lifecycle policies | Supports per-tenant key; contains documents with PHI. |\n| **Encryption** | Per-tenant CMEK (KMS); tenant key cannot decrypt other tenants' data | Foundational security constraint. |\n| **Application Code** | Single codebase; `tenant_id`/`state_code` propagated through all layers | Topology-agnostic. Configuration-driven behavior. |\n| **Configuration** | Per-tenant config profiles (aid categories, feature flags, retro limits, branding, UI layout) | Drives all tenant differentiation without code branching. |\n| **Observability** | Tenant dimension on all metrics, traces, and logs | Enables per-tenant SLA monitoring on shared infrastructure. |",
+    "9": "[decisions/infrastructure/ADR-INFRA-CMN-001-medicaid-silo-tenancy-isolation.md#ui-layer-multi-tenancy]\n\n### UI Layer Multi-Tenancy\n\nThe presentation layer is the primary multi-tenancy leverage point. A single portal deployment serves all tenants with differentiation driven entirely by the configuration service:\n\n| UI Concern | Multi-Tenancy Mechanism |\n| --- | --- |\n| **Tenant resolution** | Subdomain (e.g., `{state_code}.portal.gainwell.com`) resolved at CDN/ingress |\n| **Branding** | Logo, color palette, typography loaded from tenant config |\n| **Feature availability** | Feature flags per tenant (e.g., Working Healthy enabled per state configuration) |\n| **Layout and navigation** | Menu structure, available modules driven by tenant's licensed capabilities |\n| **Terminology** | State-specific labels (e.g., \"Aid Category\" vs. \"Eligibility Group\") from config |\n| **Session isolation** | Subdomain-scoped cookies; no cross-tenant session sharing at browser level |\n| **Data access** | All API calls carry tenant JWT; backend enforces data-plane isolation |\n| **Static assets** | Single CDN distribution; shared assets (framework, components) + tenant-specific assets (logos, stylesheets) |\n\n**Why UI sharing is safe:**\n\n- The portal renders data; it does not store PHI at rest\n- All data access flows through tenant-scoped API calls (isolation enforced at API gateway and service layer)\n- Browser session isolation is enforced by subdomain-scoped cookies (a browser cannot access `{state_code}.portal.gainwell.com` cookies from `oh.portal.gainwell.com`)\n- The OIDC client is per-tenant — a user authenticated against one state's IdP cannot obtain a token valid for another state's APIs\n- No encryption-at-rest constraint applies to the CDN or portal static assets\n\n**Why UI sharing is valuable:**\n\n- Single build pipeline, single deployment, single CDN distribution — minimal operational overhead\n- Bug fixes and feature enhancements are available to all tenants immediately\n- UX consistency across states (same interaction patterns, accessibility compliance)\n- Tenant onboarding for the UI layer is purely configuration — no deployment required",
+    "10": "[decisions/infrastructure/ADR-INFRA-CMN-001-medicaid-silo-tenancy-isolation.md#tiered-aws-account-model]\n\n### Tiered AWS Account Model\n\n| Tier | Criteria | Deployment |\n| --- | --- | --- |\n| **X-LARGE** | >5M members, contractual account isolation requirement, aggressive state audit posture, high political sensitivity | Dedicated AWS account per tenant; dedicated VPC; full account-boundary isolation |\n| **STANDARD** | <5M members, standard HIPAA/MARS-E compliance, cost-sensitive | Shared AWS account; dedicated VPC per tenant; IAM permission boundaries; per-tenant CMEK |\n\nBoth tiers receive identical application code, identical per-tenant CMEK, identical dedicated data-plane clusters, and the same shared UI deployment. The only difference is the AWS account boundary for the data plane.\n\n**Promotion path**: A STANDARD tenant can be promoted to X-LARGE (dedicated account) via Terraform migration without application-layer changes. The application — including the UI — is account-agnostic and topology-agnostic.",
+    "11": "[decisions/infrastructure/ADR-INFRA-CMN-001-medicaid-silo-tenancy-isolation.md#tenant-context-propagation]\n\n### Tenant Context Propagation\n\nEvery request must carry tenant identity from the UI through to the data layer:\n\n1. **CDN/Portal** — user navigates to `{state_code}.portal.gainwell.com`; subdomain establishes tenant context for the UI; config service returns state-specific branding, features, layout\n2. **OIDC** — tenant-specific OIDC client authenticates user; JWT contains `tenant` claim scoped to single `state_code`\n3. **API Gateway** — validates subdomain-resolved `state_code` matches JWT `tenant` claim; rejects mismatches with 403\n4. **Service Middleware** — sets `TenantContext` on request scope from validated JWT\n5. **Repository layer** — uses TenantContext to select correct database connection (dedicated Aurora cluster)\n6. **Event publishing** — includes `state_code` in event metadata; routes to tenant-specific MSK cluster/topics\n7. **Audit** — stamps every audit record with `state_code`",
+    "12": "[decisions/infrastructure/ADR-INFRA-CMN-001-medicaid-silo-tenancy-isolation.md#forward-compatible-application-design]\n\n### Forward-Compatible Application Design\n\nAll application layers carry `tenant_id` (`state_code`) regardless of deployment topology:\n\n- UI components receive tenant context from config service and pass it on API calls\n- Repository interfaces require TenantContext parameter\n- Event schemas include tenant metadata\n- Database schemas include `state_code` columns\n- Row-level security (RLS) policies enforce tenant filtering as defense-in-depth\n\nThis enables the platform to transition between isolation strategies (silo -> bridge -> pool) without application code changes, should infrastructure-level multi-tenancy tooling mature in the future (e.g., per-topic encryption on shared MSK, per-database CMEK on shared Aurora clusters).\n\n**Important**: `tenant_id` in the application layer is a future optionality hedge, not a claim that pooling is safe today. The deployment topology is an infrastructure decision; the application is topology-agnostic.\n\n---",
+    "13": "[decisions/infrastructure/ADR-INFRA-CMN-001-medicaid-silo-tenancy-isolation.md#considered-options]\n\n## Considered Options",
+    "14": "[decisions/infrastructure/ADR-INFRA-CMN-001-medicaid-silo-tenancy-isolation.md#option-1-shared-application-shared-data-clusters-adr-app-005-original]\n\n### Option 1: Shared Application, Shared Data Clusters (ADR-APP-005 Original)\n\n**Description**: Single Aurora cluster with database-per-tenant (schemas within shared cluster). Shared MSK with tenant-prefixed topics. Shared UI (retained in this option).\n\n**Rejected because:**\n- Shared Aurora cluster = shared CMEK. Per-tenant encryption keys are impossible.\n- Shared MSK cluster = shared CMEK. Same constraint.\n- Key compromise exposes ALL tenants' PHI (mass breach notification).\n- Cryptographic erasure on vendor exit is impossible without affecting other tenants.\n- Violates PTN-APP-MTN-003 (database-per-tenant mandate for PHI).\n- Contradicts mmes-helix DD-004 (which explicitly rejects pool tenancy for Medicaid PHI).\n\nNote: The UI-layer sharing in ADR-APP-005 was correct and is retained in this decision.",
+    "15": "[decisions/infrastructure/ADR-INFRA-CMN-001-medicaid-silo-tenancy-isolation.md#option-2-full-silo-dedicated-aws-account-per-tenant-all-tenants-including-ui]\n\n### Option 2: Full Silo (Dedicated AWS Account per Tenant, All Tenants, Including UI)\n\n**Description**: Every state tenant gets a dedicated AWS account with dedicated VPC, EKS cluster, dedicated UI deployment, and all data-plane infrastructure. Aligned 1:1 with mmes-helix P6.\n\n**Rejected because:**\n- Requires dedicated EKS control plane per tenant ($73/mo + system node overhead per cluster) — adds up at scale.\n- Dedicated UI deployment per tenant sacrifices the primary multi-tenancy value proposition (single deployment, shared velocity, shared bug fixes).\n- Over-engineers for small tenants (e.g., Wyoming with <100K members).\n- Account provisioning overhead is disproportionate for initial 2-3 tenant deployments.\n- EKS compute is stateless; the security benefit of dedicated EKS clusters is marginal since PHI is not persisted on compute volumes.\n- The UI stores no PHI at rest — there is no encryption or isolation justification for separating it per tenant.\n- Namespace isolation + network policies + mTLS (via App Mesh) adequately protect in-transit data on shared compute.",
+    "16": "[decisions/infrastructure/ADR-INFRA-CMN-001-medicaid-silo-tenancy-isolation.md#option-3-shared-everything-single-database-row-level-security]\n\n### Option 3: Shared Everything (Single Database, Row-Level Security)\n\n**Description**: Single database with `state_code` column filtering. Single MSK cluster with shared topics.\n\n**Rejected because:**\n- Single CMEK for all tenants — cannot satisfy per-tenant encryption requirements.\n- Single point of failure affects all states simultaneously.\n- RLS misconfiguration = cross-tenant PHI leak (single layer of defense).\n- State auditors have access to infrastructure containing all states' data.\n- Explicitly rejected by enterprise pattern PTN-APP-MTN-003 for PHI workloads.\n\n---",
+    "17": "[decisions/infrastructure/ADR-INFRA-CMN-001-medicaid-silo-tenancy-isolation.md#decision-outcome]\n\n## Decision Outcome\n\n**Chosen Option**: **Isolation Gradient — Shared Presentation, Shared Compute, Siloed Data with Tiered Account Model** (Required Option)\n\n**Rationale**: The architecture follows a deliberate gradient: share aggressively at the top where risk is zero and value is highest (UI), share pragmatically in the middle where risk is low and tooling is mature (EKS), and silo completely at the bottom where encryption physics and compliance requirements demand it (data). Per-tenant CMEK at the data layer is non-negotiable; AWS cluster-level encryption makes it physically impossible to satisfy on shared infrastructure. The UI layer has no such constraint and is the highest-ROI target for multi-tenant sharing — a single deployment, single CDN, configuration-driven differentiation, immediate feature propagation to all tenants.",
+    "18": "[decisions/infrastructure/ADR-INFRA-CMN-001-medicaid-silo-tenancy-isolation.md#encryption-isolation-model]\n\n### Encryption Isolation Model\n\n| Boundary | Mechanism |\n| --- | --- |\n| **UI/Portal** | Shared (no data at rest; no encryption-at-rest concern) |\n| **Aurora** | Dedicated cluster per tenant; encrypted with tenant-specific KMS CMK |\n| **MSK** | Dedicated cluster per tenant; encrypted with tenant-specific KMS CMK |\n| **Redis** | Dedicated cluster per tenant; encrypted with tenant-specific KMS CMK |\n| **S3** | Dedicated buckets per tenant; encrypted with tenant-specific KMS CMK |\n| **EKS** | Shared cluster; data at rest is in siloed data-plane services, not on EKS volumes |\n| **Key management** | One CMK per tenant; key policies restrict access to tenant's IAM roles only |\n| **Cryptographic erasure** | Schedule tenant CMK deletion -> all tenant data is rendered permanently inaccessible |",
+    "19": "[decisions/infrastructure/ADR-INFRA-CMN-001-medicaid-silo-tenancy-isolation.md#tenant-isolation-summary]\n\n### Tenant Isolation Summary\n\n| Boundary | Mechanism |\n| --- | --- |\n| **Presentation** | Subdomain-scoped cookies; per-tenant OIDC; configuration-driven rendering; no PHI stored |\n| **Application** | TenantContext middleware; all queries scoped by `state_code` |\n| **Compute** | Per-tenant EKS namespace; network policies; resource quotas; mTLS |\n| **Database** | Dedicated Aurora cluster per tenant; per-tenant CMEK |\n| **Events** | Dedicated MSK cluster per tenant; per-tenant CMEK |\n| **Cache** | Dedicated Redis cluster per tenant; per-tenant CMEK |\n| **Storage** | Dedicated S3 buckets per tenant; per-tenant CMEK |\n| **Row-level security** | Defense-in-depth: RLS policies as safety net within dedicated databases |\n| **Secrets** | Per-tenant database credentials in Secrets Manager |\n| **Audit** | Tenant context on every audit record; tenant-scoped audit queries |\n| **Network** | Dedicated VPC per tenant (no routes between tenant VPCs) |",
+    "20": "[decisions/infrastructure/ADR-INFRA-CMN-001-medicaid-silo-tenancy-isolation.md#subdomain-and-oidc-configuration]\n\n### Subdomain and OIDC Configuration\n\n| Configuration | Detail |\n| --- | --- |\n| **Subdomain pattern** | `{state_code}.portal.gainwell.com` |\n| **OIDC client** | One OIDC client registration per subdomain; JWTs scoped to single `state_code` |\n| **Session isolation** | Subdomain-scoped cookies; no cross-tenant session sharing |\n| **Cross-tenant access** | Users with multi-state responsibilities authenticate separately per subdomain |\n| **UI config resolution** | Portal loads tenant config (branding, features, layout) on initialization based on subdomain |",
+    "21": "[decisions/infrastructure/ADR-INFRA-CMN-001-medicaid-silo-tenancy-isolation.md#implementation]\n\n### Implementation\n\n- **Key Steps**: Implement per-tenant KMS CMK provisioning; Terraform modules for stamped data-plane stacks; EKS namespace provisioning with network policies and resource quotas; TenantContext middleware; connection routing per tenant; configuration service with per-tenant profiles (including UI branding/features).\n- **New State Onboarding**: Create tenant configuration profile (branding, features, layout) -> Provision KMS CMK -> Provision Aurora cluster -> Provision MSK cluster -> Provision Redis cluster -> Provision S3 buckets -> Create EKS namespace -> Register OIDC client -> Configure DNS subdomain -> Load reference data -> Configure feature flags -> Validate with synthetic enrollment. UI is immediately available — no portal deployment required.\n- **Tenant Promotion (STANDARD -> X-LARGE)**: Create new AWS account -> Terraform apply (stamps identical data-plane stack) -> Migrate data -> Update DNS for API endpoints -> Decommission old VPC resources. Zero application changes. Zero UI changes. The shared portal continues to serve the promoted tenant via its subdomain.\n- **Success Criteria**: Zero cross-tenant data leakage in penetration testing; per-tenant query latency within SLA; new state onboarding < 1 day (IaC automated); cryptographic erasure demonstrated in DR exercises; UI tenant onboarding < 1 hour (configuration only).\n\n---",
+    "22": "[decisions/infrastructure/ADR-INFRA-CMN-001-medicaid-silo-tenancy-isolation.md#consequences]\n\n## Consequences",
+    "23": "[decisions/infrastructure/ADR-INFRA-CMN-001-medicaid-silo-tenancy-isolation.md#positive]\n\n### Positive\n\n- UI multi-tenancy delivers maximum ROI: single deployment, single build, configuration-driven differentiation, immediate feature velocity to all tenants\n- Per-tenant CMEK satisfies HIPAA encryption requirements and state contract obligations\n- Cryptographic erasure provides provable data destruction on vendor exit (single API call)\n- Blast radius is contained at the data layer: failure in one tenant's infrastructure affects only that tenant\n- No noisy-neighbor risk on data-plane services (dedicated clusters)\n- State auditors access only their tenant's data infrastructure — clean audit scope\n- IaC-stamped stacks are operationally simpler than managing isolation engineering on shared infrastructure\n- Shared EKS reduces compute overhead while maintaining adequate in-transit security\n- Tiered account model right-sizes investment per tenant risk profile\n- Forward-compatible application design preserves optionality for future data-layer pooling\n- Full alignment with mmes-helix future-state data-plane isolation (P6, DD-004)",
+    "24": "[decisions/infrastructure/ADR-INFRA-CMN-001-medicaid-silo-tenancy-isolation.md#negative]\n\n### Negative\n\n- Higher infrastructure cost than shared data-plane (dedicated clusters per tenant)\n- Operational automation (Terraform modules, Terragrunt) is essential to manage per-tenant data-plane stacks\n- Cross-tenant reporting requires fan-out aggregation service\n- Schema migrations must be applied to all tenant Aurora clusters (automation required)\n- Per-tenant OIDC client registration adds IdP configuration management overhead\n- Users with multi-tenant responsibilities must manage separate browser sessions",
+    "25": "[decisions/infrastructure/ADR-INFRA-CMN-001-medicaid-silo-tenancy-isolation.md#neutral]\n\n### Neutral\n\n- EKS shared compute requires namespace governance (quotas, network policies, pod security) — manageable with mature K8s multi-tenancy tooling\n- Tenant count (number of states) is bounded and grows slowly — not a SaaS-scale concern\n- Testing must include tenant isolation validation as standard security gate\n- RLS is defense-in-depth within dedicated databases, not primary isolation mechanism\n- UI sharing requires robust configuration service — but this is needed regardless for backend tenant configuration\n\n---",
+    "26": "[decisions/infrastructure/ADR-INFRA-CMN-001-medicaid-silo-tenancy-isolation.md#configuration-model]\n\n## Configuration Model\n\nThe configuration service drives differentiation at every layer, with the UI being the highest-leverage consumer:\n\n| Configuration Area | UI Impact | Backend Impact |\n| --- | --- | --- |\n| Branding (logo, colors, typography) | Direct — renders tenant-specific look and feel | None |\n| Feature flags | Direct — shows/hides UI modules per tenant | Direct — enables/disables backend behavior |\n| Navigation and layout | Direct — menu structure, available screens | None |\n| Terminology overrides | Direct — state-specific labels in UI | Minimal — log/audit labels |\n| Eligibility rules | Indirect — form validation rules | Direct — processing logic |\n| Reference data (aid categories, benefit plans) | Indirect — dropdown options, displays | Direct — domain logic |\n| Integration settings | None | Direct — external system connections |\n| Security (roles, address protection) | Indirect — route guards, field visibility | Direct — authorization enforcement |\n\n---",
+    "27": "[decisions/infrastructure/ADR-INFRA-CMN-001-medicaid-silo-tenancy-isolation.md#enterprise-alignment]\n\n## Enterprise Alignment\n\n| Reference | Alignment |\n| --- | --- |\n| PTN-APP-MTN-002 | Single codebase, configuration-driven tenant behavior (core pattern) — UI layer exemplifies this |\n| PTN-APP-MTN-003 | Database-per-tenant mandate for PHI (data isolation pattern) — fully satisfied at data layer |\n| PTN-APP-MTN-008 | Per-tenant encryption keys, zero cross-tenant security violations (compliance pattern) |\n| STD-SEC-AUTHZ-001 | TenantContext in authorization; cross-tenant access restricted |\n| mmes-helix P6 | Silo tenancy — data plane siloed, control plane shared |\n| mmes-helix DD-004 | Silo tenancy decision — rejects pool tenancy for Medicaid PHI |\n| ADR-APP-005 | Predecessor — retains subdomain routing, OIDC model, TenantContext propagation, UI sharing; supersedes data-plane topology |\n\n---",
+    "28": "[decisions/infrastructure/ADR-INFRA-CMN-001-medicaid-silo-tenancy-isolation.md#risk-assessment--mitigation]\n\n## Risk Assessment & Mitigation",
+    "29": "[decisions/infrastructure/ADR-INFRA-CMN-001-medicaid-silo-tenancy-isolation.md#risks]\n\n### Risks\n\n- Tenant context omission in a code path causes cross-tenant data access\n- UI configuration error renders wrong tenant's branding or features\n- Terraform automation failure leaves a tenant without provisioned data-plane infrastructure\n- EKS namespace misconfiguration allows cross-namespace network traffic\n- Shared EKS cluster CVE enables container escape affecting multiple tenants\n- Cost overrun from per-tenant data-plane clusters for numerous small-state tenants",
+    "30": "[decisions/infrastructure/ADR-INFRA-CMN-001-medicaid-silo-tenancy-isolation.md#mitigations]\n\n### Mitigations\n\n- **Compile-time enforcement**: Repository interfaces require TenantContext parameter (cannot query without it)\n- **UI isolation by design**: All API calls carry tenant-scoped JWT; UI cannot access data outside tenant boundary even if misconfigured; branding misconfiguration is cosmetic, not a data leak\n- **RLS defense-in-depth**: Even if application layer fails, RLS prevents cross-tenant reads within dedicated databases\n- **Integration tests**: Cross-tenant access tests verify isolation on every PR; UI integration tests validate tenant-specific rendering\n- **IaC validation**: Terraform plan review and policy-as-code (OPA/Sentinel) gate infrastructure changes\n- **Network policies**: Default-deny between namespaces; explicit allow only within tenant namespace\n- **EKS security**: Pod Security Admission (restricted profile); regular CVE patching; Falco runtime detection\n- **Cost management**: Serverless v2 (Aurora) and right-sized MSK instances minimize idle cost for small tenants\n- **Penetration testing**: Quarterly tenant isolation penetration tests\n- **DR exercises**: Annual cryptographic erasure drill validates vendor-exit readiness\n\n---",
+    "31": "[decisions/infrastructure/ADR-INFRA-CMN-001-medicaid-silo-tenancy-isolation.md#compliance-notes]\n\n## Compliance Notes\n\n- **HIPAA**: Per-tenant CMEK satisfies encryption at rest requirements; mTLS satisfies encryption in transit; dedicated clusters satisfy data isolation; audit trails are tenant-scoped; shared UI is compliant because no PHI is stored at the presentation layer\n- **MARS-E 2.0**: Per-tenant data infrastructure aligns with MARS-E security zone requirements\n- **State Contracts**: Cryptographic erasure provides contractually-compliant data destruction on vendor exit; dedicated infrastructure supports data residency requirements\n- **CMS Certification**: Dedicated data-plane infrastructure per state simplifies certification scope (each state is independently certifiable)\n- **MITA Alignment**: Modular architecture with per-state configuration satisfies MITA modularity principles; shared UI demonstrates reusable, configurable components\n\n---",
+    "32": "[decisions/infrastructure/ADR-INFRA-CMN-001-medicaid-silo-tenancy-isolation.md#references]\n\n## References\n\n| Source | Path/Location |\n| --- | --- |\n| PTN-APP-MTN-002 | `eap-ref-architecture/patterns/application/multi-tenancy/PTN-APP-MTN-002-application-multi-tenant-architecture-core.md` |\n| PTN-APP-MTN-003 | `eap-ref-architecture/patterns/application/multi-tenancy/PTN-APP-MTN-003-application-multi-tenant-data-isolation-domain.md` |\n| PTN-APP-MTN-008 | `eap-ref-architecture/patterns/application/multi-tenancy/PTN-APP-MTN-008-application-multi-tenant-compliance-security-domain.md` |\n| STD-SEC-AUTHZ-001 | `eap-ref-architecture/standards/security/authorization/STD-SEC-AUTHZ-001-authorization-implementation.md` |\n| mmes-helix P6 | `mmes-helix/docs/design/future-state/conceptual/02-platform-blueprint-principles.md` (Principle 6: Silo Tenancy) |\n| mmes-helix DD-004 | `mmes-helix/docs/design/future-state/conceptual/05-platform-design-decisions.md` (DD-004: Silo Tenancy) |\n| mmes-helix Physical | `mmes-helix/docs/design/future-state/physical/deployment-topology.md` (AWS account structure, per-tenant clusters) |\n\n---",
+    "33": "[decisions/infrastructure/ADR-INFRA-CMN-001-medicaid-silo-tenancy-isolation.md#related-decisions]\n\n## Related Decisions\n\n| ADR | Relationship |\n| --- | --- |\n| ADR-APP-005 | Superseded by this document. Retains application-layer design and UI sharing; supersedes data-plane topology. |\n| ADR-APP-005 (Event-Driven Architecture) | Events route to per-tenant MSK clusters; tenant metadata in event schema |\n| ADR-INFRA-001 (Aurora PostgreSQL) | Dedicated cluster per tenant rather than shared cluster |\n| ADR-INFRA-003 (Kubernetes) | Shared EKS with namespace isolation |\n\n---",
+    "34": "[decisions/infrastructure/ADR-INFRA-CMN-001-medicaid-silo-tenancy-isolation.md#supporting-analysis]\n\n## Supporting Analysis\n\nFor detailed technical analysis, cost modeling, and justification of this decision, see [explain-app-004a.md](explain-app-004a.md).\n\n---",
+    "35": "[decisions/infrastructure/ADR-INFRA-CMN-001-medicaid-silo-tenancy-isolation.md#review-and-approval]\n\n## Review and Approval\n\n| Role                         | Name   | Date       | Status     |\n| ---------------------------- | ------ | ---------- | ---------- |\n| Chief Technology Officer     |        |            | Pending    |\n| Chief Architect              |        |            | Pending    |\n| Enterprise Architecture Lead |        |            | Pending    |\n| Domain Enterprise Architect  |        |            | Pending    |\n| Security Architecture        |        |            | Pending    |\n\n---",
+    "36": "[decisions/infrastructure/ADR-INFRA-CMN-001-medicaid-silo-tenancy-isolation.md#change-log]\n\n## Change Log\n\n| Version | Date       | Author | Description |\n| ------- | ---------- | ------ | --- |\n| 1.0     | 2026-06-22 |        | Initial draft. Supersedes ADR-APP-005. Adopts isolation gradient (shared UI, shared compute, siloed data) with tiered account model based on encryption forcing function analysis. |"
+  },
+  "coverage": {
+    "total_pages": 36,
+    "covered_pages": 36,
+    "sampled_pages": 36,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 36
+  }
+}

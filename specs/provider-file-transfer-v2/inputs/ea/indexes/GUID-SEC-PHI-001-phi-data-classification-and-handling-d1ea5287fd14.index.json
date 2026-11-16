@@ -1,0 +1,257 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Architecture Decision Record",
+  "document_description": "PHI in the Member BC is classified into four sensitivity tiers. **Aurora Transparent Data Encryption (TDE)** via per-tenant AWS KMS Customer Managed Keys (CMK) provides at-rest encryption for all tiers. **Application-layer AES-256-GCM encryption** provides an additional protection layer for Tier 1 (highest sensitivity) fields — SSN is hashed (SHA-256), never stored in plaintext. All PHI fields are",
+  "total_pages": 26,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 1,
+      "summary": "",
+      "nodes": []
+    },
+    {
+      "title": "Architecture Decision Record",
+      "node_id": "architecture-decision-record",
+      "start_index": 2,
+      "end_index": 26,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "ADR-APP-014: PHI Data Classification and Handling Policy",
+          "node_id": "adr-app-014-phi-data-classification-and-handling-policy",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Decision Summary",
+          "node_id": "decision-summary",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Context and Problem Statement",
+          "node_id": "context-and-problem-statement",
+          "start_index": 5,
+          "end_index": 6,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Decision Drivers",
+              "node_id": "decision-drivers",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Decision",
+          "node_id": "decision",
+          "start_index": 7,
+          "end_index": 16,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "PHI Classification Taxonomy",
+              "node_id": "phi-classification-taxonomy",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Encryption Strategy by Tier",
+              "node_id": "encryption-strategy-by-tier",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "KMS CMK Model (per ADR-APP-005)",
+              "node_id": "kms-cmk-model-per-adr-app-005",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Encryption in Transit",
+              "node_id": "encryption-in-transit",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Log Redaction",
+              "node_id": "log-redaction",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Kafka Event Payload PHI",
+              "node_id": "kafka-event-payload-phi",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "PHI in API Responses",
+              "node_id": "phi-in-api-responses",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Data Retention Schedule",
+              "node_id": "data-retention-schedule",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Cryptographic Erasure on Tenant Offboarding",
+              "node_id": "cryptographic-erasure-on-tenant-offboarding",
+              "start_index": 16,
+              "end_index": 16,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "PHI Field Registry",
+          "node_id": "phi-field-registry",
+          "start_index": 17,
+          "end_index": 17,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Consequences",
+          "node_id": "consequences",
+          "start_index": 18,
+          "end_index": 21,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Positive",
+              "node_id": "positive",
+              "start_index": 19,
+              "end_index": 19,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Negative",
+              "node_id": "negative",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Neutral",
+              "node_id": "neutral",
+              "start_index": 21,
+              "end_index": 21,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Compliance Notes",
+          "node_id": "compliance-notes",
+          "start_index": 22,
+          "end_index": 22,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "References",
+          "node_id": "references",
+          "start_index": 23,
+          "end_index": 23,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Related Decisions",
+          "node_id": "related-decisions",
+          "start_index": 24,
+          "end_index": 24,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Review and Approval",
+          "node_id": "review-and-approval",
+          "start_index": 25,
+          "end_index": 25,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Change Log",
+          "node_id": "change-log",
+          "start_index": 26,
+          "end_index": 26,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "> **Promoted from:** `mmes-cms-mbr/docs/decisions/adr-app-014-phi-data-classification.md`  \n> **Ref-arch artifact ID:** `GUID-SEC-PHI-001-phi-data-classification-and-handling`  \n> This document has been promoted to the Enterprise Architecture Platform reference architecture. Product repos should reference this artifact rather than maintaining their own copy.\n\n---",
+    "2": "[strategy/guidance/security/GUID-SEC-PHI-001-phi-data-classification-and-handling.md#architecture-decision-record]\n\n# Architecture Decision Record",
+    "3": "[strategy/guidance/security/GUID-SEC-PHI-001-phi-data-classification-and-handling.md#adr-app-014-phi-data-classification-and-handling-policy]\n\n## ADR-APP-014: PHI Data Classification and Handling Policy\n\n---\n\n|               |                                                                                                                                            |\n| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |\n| **Status**    | Accepted                                                                                                                                   |\n| **Date**      | 2026-07-10                                                                                                                                 |\n| **Issuer**    | [Enterprise Architecture Practice](mailto:EAP-Core@mygainwell.onmicrosoft.com?subject=ADR-APP-014%20PHI%20Data%20Classification)           |\n| **Consulted** | MBR Development Team, Security Architecture, Compliance, Legal                                                                             |\n| **Informed**  | All MMES service teams, QA, State Contract Teams                                                                                           |\n\n---",
+    "4": "[strategy/guidance/security/GUID-SEC-PHI-001-phi-data-classification-and-handling.md#decision-summary]\n\n## Decision Summary\n\nPHI in the Member BC is classified into four sensitivity tiers. **Aurora Transparent Data Encryption (TDE)** via per-tenant AWS KMS Customer Managed Keys (CMK) provides at-rest encryption for all tiers. **Application-layer AES-256-GCM encryption** provides an additional protection layer for Tier 1 (highest sensitivity) fields — SSN is hashed (SHA-256), never stored in plaintext. All PHI fields are tagged in the schema and redacted from logs by mmes-cmn-core. On tenant offboarding, cryptographic erasure is achieved by deleting the tenant CMK. Retention follows HIPAA 7-year minimum.\n\n---",
+    "5": "[strategy/guidance/security/GUID-SEC-PHI-001-phi-data-classification-and-handling.md#context-and-problem-statement]\n\n## Context and Problem Statement\n\n- **Business Context**: The Member BC stores Social Security Numbers, dates of birth, names, addresses, and health coverage data for Medicaid members — all HIPAA Protected Health Information. A breach exposes the state to federal penalties under 45 CFR Part 164 and triggers mandatory CMS notification. Classification and handling decisions must be explicit, auditable, and consistently enforced across all system components.\n- **Technical Context**: The logical architecture has a PHI handling table but it is inline documentation — not a governed decision record. Developers authoring new schema columns, event payloads, or API responses need a single authoritative classification to refer to. GUID-SEC-APP-DATABASE-2.7.03 (database security RAD) provides the enterprise patterns; this ADR applies them to the Member BC.\n- **Problem Statement**: How is PHI classified? What protection applies to each tier? How is SSN handled? What happens to PHI on tenant offboarding? What is the retention schedule?",
+    "6": "[strategy/guidance/security/GUID-SEC-PHI-001-phi-data-classification-and-handling.md#decision-drivers]\n\n### Decision Drivers\n\n- HIPAA §164.312(a)(2)(iv): encryption/decryption capability\n- HIPAA §164.312(e)(2)(ii): encryption of PHI in transit\n- HIPAA §164.530(j): retention of documentation for 6 years (PHI records for 7 years minimum)\n- GUID-SEC-APP-DATABASE-2.7.03: database encryption patterns and access control\n- ADR-APP-005: per-tenant CMEK — cryptographic erasure on vendor exit\n\n---",
+    "7": "[strategy/guidance/security/GUID-SEC-PHI-001-phi-data-classification-and-handling.md#decision]\n\n## Decision",
+    "8": "[strategy/guidance/security/GUID-SEC-PHI-001-phi-data-classification-and-handling.md#phi-classification-taxonomy]\n\n### PHI Classification Taxonomy\n\n| Tier | Classification | Definition | Member BC Fields |\n| --- | --- | --- | --- |\n| **Tier 1 — Restricted** | Highest sensitivity | Government-issued identifiers; financial data | SSN (stored as hash only), spenddown obligation amount, patient liability amount |\n| **Tier 2 — Sensitive** | High sensitivity | Direct identifiers that individually identify a person | Full name, date of birth, address, phone, email, member_id (external state ID) |\n| **Tier 3 — Limited** | Moderate sensitivity | Clinical/eligibility data that requires member_id to be meaningful | Aid category, benefit plan, eligibility dates, MCO assignment, coverage type, diagnosis codes |\n| **Tier 4 — Internal** | Low sensitivity | Operational data — identifiable only in combination | Transaction IDs, audit event IDs, internal UUIDs, timestamps |",
+    "9": "[strategy/guidance/security/GUID-SEC-PHI-001-phi-data-classification-and-handling.md#encryption-strategy-by-tier]\n\n### Encryption Strategy by Tier\n\n| Tier | At-Rest Encryption | Additional Protection |\n| --- | --- | --- |\n| Tier 1 | Aurora TDE (KMS CMK per tenant) | SSN: SHA-256 hash — stored hash only, plaintext never persisted; spenddown amounts: accessible by `eligibility_reader`+ only (ADR-APP-008) |\n| Tier 2 | Aurora TDE (KMS CMK per tenant) | API response masking by role (ADR-APP-008); address suppression flag for sensitive cases (DV, witness protection) |\n| Tier 3 | Aurora TDE (KMS CMK per tenant) | Standard role-based access (ADR-APP-008) |\n| Tier 4 | Aurora TDE (KMS CMK per tenant) | No additional protection beyond TDE |\n\n**Why SHA-256 hash for SSN, not reversible encryption?**\nSSN is used at Member BC only for identity resolution at ingest and for EMPI correlation — both use the hash directly. There is no Member BC use case requiring SSN decryption. Storing only the hash eliminates the entire class of SSN decryption vulnerabilities.",
+    "10": "[strategy/guidance/security/GUID-SEC-PHI-001-phi-data-classification-and-handling.md#kms-cmk-model-per-adr-app-005]\n\n### KMS CMK Model (per ADR-APP-005)\n\nEach tenant has a dedicated AWS KMS Customer Managed Key:\n\n```\nKey ARN: arn:aws:kms:us-east-1:{account}:key/{tenant-cmk-id}\nKey alias: alias/mmes-cms-mbr-{state_code}-{env}\nKey policy: MMES CMS MBR {STATE} {ENV} - restricted to EKS IRSA roles for this tenant\n```\n\nKMS key rotation: annual automatic rotation enabled. Key rotation does **not** re-encrypt existing Aurora data — Aurora uses data keys encrypted by the CMK; rotation re-encrypts future data keys only.",
+    "11": "[strategy/guidance/security/GUID-SEC-PHI-001-phi-data-classification-and-handling.md#encryption-in-transit]\n\n### Encryption in Transit\n\nAll PHI in transit is protected by TLS 1.3 (enforced by ADR-SEC-002). No PHI crosses a non-TLS path. mTLS (App Mesh) provides mutual identity verification for service-to-service PHI transmission.",
+    "12": "[strategy/guidance/security/GUID-SEC-PHI-001-phi-data-classification-and-handling.md#log-redaction]\n\n### Log Redaction\n\nmmes-cmn-core Logging concern automatically redacts PHI from all log output:\n\n- Fields annotated `[Redact]` in the application model are suppressed in structured log properties\n- Pattern-based redaction catches common PHI patterns (SSN format, phone format) in message strings\n- Event payload PHI is never logged at any log level — the event envelope `eventId` and `aggregateId` are logged; the `payload` field is not",
+    "13": "[strategy/guidance/security/GUID-SEC-PHI-001-phi-data-classification-and-handling.md#kafka-event-payload-phi]\n\n### Kafka Event Payload PHI\n\nDomain events (ADR-APP-004) may contain Tier 2–3 PHI in the payload (e.g., eligibility dates, MCO assignment). Payload PHI is:\n\n- Encrypted in transit via MSK TLS (ADR-INFRA-002)\n- Protected by per-tenant MSK ACLs — only authorized consumer groups can read the topic\n- Subject to schema governance (ADR-APP-012) — PHI fields are tagged in the JSON Schema with `\"phi\": true` metadata\n- Not logged by producer or consumer (mmes-cmn-core Events concern omits payload from log output)",
+    "14": "[strategy/guidance/security/GUID-SEC-PHI-001-phi-data-classification-and-handling.md#phi-in-api-responses]\n\n### PHI in API Responses\n\nAPI response fields are annotated with their PHI tier:\n\n```csharp\npublic class MemberDemographicsResponse\n{\n    public string MemberId { get; set; }                    // Tier 4 — Internal UUID\n\n    [PhiField(PhiFieldClassification.Sensitive)]            // Tier 2\n    public string FirstName { get; set; }\n\n    [PhiField(PhiFieldClassification.Sensitive)]            // Tier 2\n    public string LastName { get; set; }\n\n    [PhiField(PhiFieldClassification.Restricted)]           // Tier 1 — masked to \"***-**-XXXX\"\n    public string SsnLast4 { get; set; }                    // Never full SSN; last 4 only for data_steward+\n}\n```\n\nThe response filter (ADR-APP-008 ABAC layer) applies masking based on the caller's role before serialization.",
+    "15": "[strategy/guidance/security/GUID-SEC-PHI-001-phi-data-classification-and-handling.md#data-retention-schedule]\n\n### Data Retention Schedule\n\n| Data Category | Retention Period | Mechanism | Legal Basis |\n| --- | --- | --- | --- |\n| Member PHI (Aurora member, eligibility, coverage schemas) | 7 years minimum from last activity | Aurora automated snapshots; annual snapshot retained 7 years | HIPAA §164.530(j); state contract requirements |\n| Audit trail (Aurora audit schema) | 7 years | Aurora automated snapshots + S3 export | HIPAA §164.312(b) audit controls |\n| Domain events (MSK Kafka log) | 7 days hot (MSK); 7 years cold (S3 Sink) | MSK log retention + Kafka Connect S3 Sink Connector | Event replay capability + HIPAA |\n| CMS reports (S3) | 7 years | S3 lifecycle policy | CMS reporting requirements |\n| Migration files (S3) | 3 years post-migration | S3 lifecycle policy | Change control documentation |",
+    "16": "[strategy/guidance/security/GUID-SEC-PHI-001-phi-data-classification-and-handling.md#cryptographic-erasure-on-tenant-offboarding]\n\n### Cryptographic Erasure on Tenant Offboarding\n\nOn state contract termination:\n\n1. Aurora clusters, MSK clusters, Redis clusters for the tenant are marked for deletion\n2. The tenant KMS CMK is **scheduled for deletion** (7-day waiting period per AWS minimum)\n3. All S3 objects encrypted with tenant-derived data keys become permanently unreadable when the CMK is deleted — this constitutes cryptographic erasure without requiring physical deletion of every byte\n4. A formal data destruction certificate is generated citing CMK deletion as the erasure mechanism\n\nThis satisfies the \"right to erasure\" and vendor-exit requirements stated in ADR-APP-005.\n\n---",
+    "17": "[strategy/guidance/security/GUID-SEC-PHI-001-phi-data-classification-and-handling.md#phi-field-registry]\n\n## PHI Field Registry\n\nThe authoritative PHI field registry is maintained as schema metadata annotations in the EF Core model. The CI gate `phi-audit` generates a PHI field report from model annotations on every build — any unannotated field in a PHI-bearing entity fails the build.\n\n---",
+    "18": "[strategy/guidance/security/GUID-SEC-PHI-001-phi-data-classification-and-handling.md#consequences]\n\n## Consequences",
+    "19": "[strategy/guidance/security/GUID-SEC-PHI-001-phi-data-classification-and-handling.md#positive]\n\n### Positive\n\n- SSN hash model eliminates the largest class of PHI exposure risk — no decryption key to steal\n- Per-tenant CMK means a compromise of one tenant's key does not affect other tenants\n- Cryptographic erasure on offboarding satisfies vendor-exit requirements without multi-TB data deletion operations\n- Log redaction is automatic via mmes-cmn-core — developers cannot accidentally log PHI",
+    "20": "[strategy/guidance/security/GUID-SEC-PHI-001-phi-data-classification-and-handling.md#negative]\n\n### Negative\n\n- SSN hash is one-way — the Member BC cannot retrieve SSN for external reporting; this is intentional (no use case requires it within MBR)\n- Annual CMK rotation requires coordination with Aurora snapshot restore procedures (snapshots use the CMK version active at backup time)",
+    "21": "[strategy/guidance/security/GUID-SEC-PHI-001-phi-data-classification-and-handling.md#neutral]\n\n### Neutral\n\n- PHI field annotations in the EF Core model are the source of truth for the API response filter (ADR-APP-008), log redaction (ADR-APP-002), and CI audit gate — one annotation, three enforcement mechanisms\n\n---",
+    "22": "[strategy/guidance/security/GUID-SEC-PHI-001-phi-data-classification-and-handling.md#compliance-notes]\n\n## Compliance Notes\n\n- **HIPAA**: §164.312(a)(2)(iv) encryption capability satisfied by Aurora TDE + AES-256-GCM; §164.312(b) audit controls satisfied by immutable audit trail and CloudTrail; §164.530(j) retention satisfied by 7-year snapshot + S3 archive\n- **NIST 800-53**: SC-28 (Protection of Information at Rest), SC-8 (Transmission Confidentiality), AU-9 (Protection of Audit Information)\n- **ARC-AMPE v1.02 (CMS)**: PHI encryption and audit controls satisfy CMS Medicaid system security requirements\n- **Standards**: Implements GUID-SEC-APP-DATABASE-2.7.03 database encryption patterns; aligns with GUID-SEC-APP-ABB-DBENC-2.7.18 (Data-at-Rest Encryption ABB)\n\n---",
+    "23": "[strategy/guidance/security/GUID-SEC-PHI-001-phi-data-classification-and-handling.md#references]\n\n## References\n\n- `eap-ref-architecture/strategy/guidance/security/Application/GUID-SEC-APP-DATABASE-2.7.03.md` — database security reference architecture; encryption and access control patterns\n- `eap-ref-architecture/strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-DBENC-2.7.18.md` — Data-at-Rest Encryption ABB\n- `eap-ref-architecture/strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-DAM-2.7.17.md` — Database Activity Monitoring ABB",
+    "24": "[strategy/guidance/security/GUID-SEC-PHI-001-phi-data-classification-and-handling.md#related-decisions]\n\n## Related Decisions\n\n- **ADR-APP-005** — Per-tenant CMEK; cryptographic erasure on offboarding\n- **ADR-APP-008** — ABAC authorization model; PHI field-level access control enforces this classification\n- **ADR-APP-011** — Secrets management; KMS CMK ARNs stored in AWS Secrets Manager\n- **ADR-APP-012** — Event schema governance; PHI fields tagged in JSON Schema with `\"phi\": true`\n- **ADR-INFRA-001** — Aurora PostgreSQL; TDE via KMS CMK\n\n---",
+    "25": "[strategy/guidance/security/GUID-SEC-PHI-001-phi-data-classification-and-handling.md#review-and-approval]\n\n## Review and Approval\n\n| Role                         | Name   | Date       | Status     |\n| ---------------------------- | ------ | ---------- | ---------- |\n| Chief Technology Officer     |        |            | Pending    |\n| Chief Architect              |        |            | Pending    |\n| Enterprise Architecture Lead |        |            | Pending    |\n| Domain Enterprise Architect  |        |            | Pending    |\n\n---",
+    "26": "[strategy/guidance/security/GUID-SEC-PHI-001-phi-data-classification-and-handling.md#change-log]\n\n## Change Log\n\n| Version | Date       | Author | Description                |\n| ------- | ---------- | ------ | -------------------------- |\n| 1.0     | 2026-07-10 |        | Initial decision document. |"
+  },
+  "coverage": {
+    "total_pages": 26,
+    "covered_pages": 26,
+    "sampled_pages": 26,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 26
+  }
+}

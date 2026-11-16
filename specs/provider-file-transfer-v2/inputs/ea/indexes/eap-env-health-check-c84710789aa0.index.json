@@ -1,0 +1,38 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Workflow",
+  "document_description": "Verify the repository environment is correctly set up and ready to use.",
+  "total_pages": 2,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 2,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Workflow",
+          "node_id": "workflow",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "Verify the repository environment is correctly set up and ready to use.",
+    "2": "[.claude/commands/eap-env-health-check.md#workflow]\n\n## Workflow\n\nCheck each item and report pass/fail:\n\n1. **Python**: `python3 --version` — requires 3.13+\n2. **Virtual environment**: `.utils/.venv/` exists and activates\n3. **Dependencies**: `pip list` in venv matches `.utils/requirements.txt`\n4. **Playwright**: `playwright --version` and Chromium is installed\n5. **Pandoc**: `pandoc --version` is available\n6. **Node.js**: `node --version` is available\n7. **Task**: `task --version` is available\n8. **Git**: repo is clean or show uncommitted changes\n9. **Remote**: `git remote -v` shows expected remotes\n10. **VS Code settings**: `.vscode/settings.json` exists\n11. **Linters**: `black --version`, `ruff --version`, `mypy --version` available in venv\n12. **GitHub CLI**: `gh --version` is installed and `gh auth status` shows authenticated\n13. **ADO MCP**: check if `AZURE_DEVOPS_EXT_PAT` is set and `.mcp.json` has ADO config with a non-empty org\n\nPresent results as:\n\n```text\n| Check              | Status | Details          |\n```\n\nFlag any failures and suggest the fix (usually re-running the setup script).\n\nFor GitHub: suggest `gh auth login` if not authenticated.\nFor ADO: suggest re-running `/setup` and choosing \"y\" for ADO integration if PAT is missing.\n\n$ARGUMENTS"
+  },
+  "coverage": {
+    "total_pages": 2,
+    "covered_pages": 2,
+    "sampled_pages": 2,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 2
+  }
+}

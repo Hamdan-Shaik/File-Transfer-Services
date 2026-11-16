@@ -1,0 +1,653 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Metrics and Monitoring Pattern",
+  "document_description": "pattern_name: 'Metrics and Monitoring Pattern'",
+  "total_pages": 69,
+  "tree": [
+    {
+      "title": "Metrics and Monitoring Pattern",
+      "node_id": "metrics-and-monitoring-pattern",
+      "start_index": 1,
+      "end_index": 69,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Executive Summary",
+          "node_id": "executive-summary",
+          "start_index": 3,
+          "end_index": 8,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Problem Statement",
+              "node_id": "problem-statement",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Solution Overview",
+              "node_id": "solution-overview",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "When to Use",
+              "node_id": "when-to-use",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Target Audience",
+              "node_id": "target-audience",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Benefits",
+              "node_id": "benefits",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Context and Problem",
+          "node_id": "context-and-problem",
+          "start_index": 9,
+          "end_index": 17,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Business Context",
+              "node_id": "business-context",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Technical Context",
+              "node_id": "technical-context",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Problem Details",
+              "node_id": "problem-details",
+              "start_index": 12,
+              "end_index": 16,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Problem 1: Delayed Incident Detection Leading to Extended Customer Impact",
+                  "node_id": "problem-1-delayed-incident-detection-leading-to-extended-customer-impact",
+                  "start_index": 13,
+                  "end_index": 13,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Problem 2: Inability to Diagnose Root Cause Without Detailed Metrics",
+                  "node_id": "problem-2-inability-to-diagnose-root-cause-without-detailed-metrics",
+                  "start_index": 14,
+                  "end_index": 14,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Problem 3: No Capacity Planning Data Causing Emergency Scaling",
+                  "node_id": "problem-3-no-capacity-planning-data-causing-emergency-scaling",
+                  "start_index": 15,
+                  "end_index": 15,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Problem 4: Lack of Business Metrics Obscuring Revenue Impact",
+                  "node_id": "problem-4-lack-of-business-metrics-obscuring-revenue-impact",
+                  "start_index": 16,
+                  "end_index": 16,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Forces and Constraints",
+              "node_id": "forces-and-constraints",
+              "start_index": 17,
+              "end_index": 17,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Solution",
+          "node_id": "solution",
+          "start_index": 18,
+          "end_index": 34,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Pattern Description",
+              "node_id": "pattern-description",
+              "start_index": 19,
+              "end_index": 19,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Architecture Diagram",
+              "node_id": "architecture-diagram",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Components",
+              "node_id": "components",
+              "start_index": 21,
+              "end_index": 21,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Metric Types",
+              "node_id": "metric-types",
+              "start_index": 22,
+              "end_index": 26,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "1. Counter (Monotonically Increasing Value)",
+                  "node_id": "1-counter-monotonically-increasing-value",
+                  "start_index": 23,
+                  "end_index": 23,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "2. Gauge (Value That Can Go Up or Down)",
+                  "node_id": "2-gauge-value-that-can-go-up-or-down",
+                  "start_index": 24,
+                  "end_index": 24,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "3. Histogram (Distribution of Values in Buckets)",
+                  "node_id": "3-histogram-distribution-of-values-in-buckets",
+                  "start_index": 25,
+                  "end_index": 25,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "4. Summary (Similar to Histogram with Pre-Calculated Quantiles)",
+                  "node_id": "4-summary-similar-to-histogram-with-pre-calculated-quantiles",
+                  "start_index": 26,
+                  "end_index": 26,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Metric Naming Conventions",
+              "node_id": "metric-naming-conventions",
+              "start_index": 27,
+              "end_index": 27,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Dashboard Organization",
+              "node_id": "dashboard-organization",
+              "start_index": 28,
+              "end_index": 31,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "1. SRE Dashboards (Incident Response and Operations)",
+                  "node_id": "1-sre-dashboards-incident-response-and-operations",
+                  "start_index": 29,
+                  "end_index": 29,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "2. Developer Dashboards (Performance Analysis)",
+                  "node_id": "2-developer-dashboards-performance-analysis",
+                  "start_index": 30,
+                  "end_index": 30,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "3. Product Manager Dashboards (Business Metrics)",
+                  "node_id": "3-product-manager-dashboards-business-metrics",
+                  "start_index": 31,
+                  "end_index": 31,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Alert Rule Examples",
+              "node_id": "alert-rule-examples",
+              "start_index": 32,
+              "end_index": 32,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Integration with Distributed Tracing",
+              "node_id": "integration-with-distributed-tracing",
+              "start_index": 33,
+              "end_index": 33,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Variations",
+              "node_id": "variations",
+              "start_index": 34,
+              "end_index": 34,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Implementation Guidelines",
+          "node_id": "implementation-guidelines",
+          "start_index": 35,
+          "end_index": 46,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Prerequisites",
+              "node_id": "prerequisites",
+              "start_index": 36,
+              "end_index": 36,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Step-by-Step Implementation",
+              "node_id": "step-by-step-implementation",
+              "start_index": 37,
+              "end_index": 44,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Step 1: Install Prometheus Client Library",
+                  "node_id": "step-1-install-prometheus-client-library",
+                  "start_index": 38,
+                  "end_index": 38,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 2: Configure Metrics Endpoint",
+                  "node_id": "step-2-configure-metrics-endpoint",
+                  "start_index": 39,
+                  "end_index": 39,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 3: Add Custom Business Metrics",
+                  "node_id": "step-3-add-custom-business-metrics",
+                  "start_index": 40,
+                  "end_index": 40,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 4: Configure Kubernetes Pod for Prometheus Scraping",
+                  "node_id": "step-4-configure-kubernetes-pod-for-prometheus-scraping",
+                  "start_index": 41,
+                  "end_index": 41,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 5: Configure Prometheus Server",
+                  "node_id": "step-5-configure-prometheus-server",
+                  "start_index": 42,
+                  "end_index": 42,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 6: Create Grafana Dashboard",
+                  "node_id": "step-6-create-grafana-dashboard",
+                  "start_index": 43,
+                  "end_index": 43,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 7: Configure Alerting Rules",
+                  "node_id": "step-7-configure-alerting-rules",
+                  "start_index": 44,
+                  "end_index": 44,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Best Practices",
+              "node_id": "best-practices",
+              "start_index": 45,
+              "end_index": 45,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Common Pitfalls",
+              "node_id": "common-pitfalls",
+              "start_index": 46,
+              "end_index": 46,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Governance and Compliance",
+          "node_id": "governance-and-compliance",
+          "start_index": 47,
+          "end_index": 50,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Standards and Policies",
+              "node_id": "standards-and-policies",
+              "start_index": 48,
+              "end_index": 48,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "HIPAA Compliance",
+              "node_id": "hipaa-compliance",
+              "start_index": 49,
+              "end_index": 49,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Monitoring and Success Metrics",
+              "node_id": "monitoring-and-success-metrics",
+              "start_index": 50,
+              "end_index": 50,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Examples and Use Cases",
+          "node_id": "examples-and-use-cases",
+          "start_index": 51,
+          "end_index": 54,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Example 1: Claims Adjudication Performance Monitoring",
+              "node_id": "example-1-claims-adjudication-performance-monitoring",
+              "start_index": 52,
+              "end_index": 52,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Example 2: Provider Portal Capacity Planning",
+              "node_id": "example-2-provider-portal-capacity-planning",
+              "start_index": 53,
+              "end_index": 53,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Example 3: Business Metrics Dashboard for Product Manager",
+              "node_id": "example-3-business-metrics-dashboard-for-product-manager",
+              "start_index": 54,
+              "end_index": 54,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "TL;DR (Too Long; Didn't Read)",
+          "node_id": "tldr-too-long-didnt-read",
+          "start_index": 55,
+          "end_index": 64,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "The Problem",
+              "node_id": "the-problem",
+              "start_index": 56,
+              "end_index": 56,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "The Solution",
+              "node_id": "the-solution",
+              "start_index": 57,
+              "end_index": 57,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Quick Start",
+              "node_id": "quick-start",
+              "start_index": 58,
+              "end_index": 58,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Key Benefits (Quantified)",
+              "node_id": "key-benefits-quantified",
+              "start_index": 59,
+              "end_index": 59,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Must-Know Metric Types",
+              "node_id": "must-know-metric-types",
+              "start_index": 60,
+              "end_index": 60,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Dashboard Patterns",
+              "node_id": "dashboard-patterns",
+              "start_index": 61,
+              "end_index": 61,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Critical Warnings",
+              "node_id": "critical-warnings",
+              "start_index": 62,
+              "end_index": 62,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Implementation Complexity",
+              "node_id": "implementation-complexity",
+              "start_index": 63,
+              "end_index": 63,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Next Steps",
+              "node_id": "next-steps",
+              "start_index": 64,
+              "end_index": 64,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Related Patterns and References",
+          "node_id": "related-patterns-and-references",
+          "start_index": 65,
+          "end_index": 67,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Related Patterns",
+              "node_id": "related-patterns",
+              "start_index": 66,
+              "end_index": 66,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "External References",
+              "node_id": "external-references",
+              "start_index": 67,
+              "end_index": 67,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Change History",
+          "node_id": "change-history",
+          "start_index": 68,
+          "end_index": 68,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Review Log",
+          "node_id": "review-log",
+          "start_index": 69,
+          "end_index": 69,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#metrics-and-monitoring-pattern]\n\n# Metrics and Monitoring Pattern\n\n**← Back to [EAP Home](../../../README.md) • [Patterns](../../README.md) • [ITSM Operations](../README.md) • [API & Microservices](./README.md)**\n\n---\n\n**Pattern Metadata**\n\n```yaml\npattern_id: 'PTN-OPS-API-005'\npattern_name: 'Metrics and Monitoring Pattern'\npattern_type: 'observability-monitoring'\ndomain: 'operations'\nversion: '1.0.0'\nstatus: 'draft'\ntags: ['observability', 'metrics', 'monitoring', 'prometheus']\n```\n\n---",
+    "2": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#table-of-contents]\n\n## Table of Contents\n\n- [Executive Summary](#executive-summary)\n- [Context and Problem](#context-and-problem)\n- [Solution](#solution)\n- [Implementation Guidelines](#implementation-guidelines)\n- [Governance and Compliance](#governance-and-compliance)\n- [Examples and Use Cases](#examples-and-use-cases)\n- [Related Patterns and References](#related-patterns-and-references)\n- [Change History](#change-history)\n- [Review Log](#review-log)\n- [TL;DR](#tldr)\n\n---",
+    "3": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#executive-summary]\n\n## Executive Summary",
+    "4": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#problem-statement]\n\n### Problem Statement\n\nModern microservices architectures at Gainwell Technologies operate at massive scale—processing 500K+ daily claims through the enterprise platform, handling 20M+ member portal sessions via the enterprise platform, and adjudicating 3M+ prescriptions through the enterprise platform. Without comprehensive metrics and monitoring, engineering teams operate blind to performance degradation, capacity constraints, and emerging incidents until they become critical outages affecting millions of Medicaid beneficiaries.\n\nThe consequences of inadequate metrics visibility are severe and recurring at Gainwell:",
+    "5": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#solution-overview]\n\n### Solution Overview\n\nThe Metrics and Monitoring Pattern implements a comprehensive, multi-layered metrics collection and visualization strategy using industry-standard observability tools (Prometheus for metrics collection, Grafana for visualization, Alertmanager for alerting). The pattern defines four distinct metric layers—Infrastructure Metrics, Application Metrics, Business Metrics, and SLA Metrics—that together provide complete operational visibility from hardware resources through business outcomes.\n\n**Core Solution Components**:\n\n- **Prometheus Metrics Collection**: Time-series database pulling metrics from instrumented services every 15 seconds, storing 90 days of historical data with configurable retention, enabling both real-time monitoring and historical trend analysis\n- **Application Instrumentation**: Services expose `/metrics` endpoints in Prometheus format using client libraries (Prometheus.NET for .NET services, Micrometer for Spring Boot, prom-client for Node.js), automatically collecting standard metrics (HTTP request rates, durations, error rates) plus custom business metrics\n- **Grafana Dashboards**: Pre-built dashboard templates for common patterns (Golden Signals, USE Method, RED Method) with service-specific dashboards showing latency percentiles (P50/P95/P99), throughput, error rates, and resource utilization\n- **Alerting Rules**: Prometheus Alertmanager with configurable alert rules based on metric thresholds, rate of change, and anomaly detection, integrated with PagerDuty for on-call escalation and Microsoft Teams for team notifications\n- **Multi-Dimensional Metrics**: Labels enable filtering and aggregation by environment (dev/test/prod), region (state deployment), service version, tenant ID, API endpoint, and response status, supporting detailed drill-down analysis\n\n**Implementation Approach**:\n\n1. **Instrument Services**: Add Prometheus client library to services, expose `/metrics` endpoint, configure automatic collection of HTTP/gRPC metrics\n2. **Define Custom Metrics**: Instrument business-critical operations with counters (claims processed), gauges (queue depth), histograms (payment amount distribution), summaries (latency percentiles)\n3. **Configure Prometheus**: Deploy Prometheus server with service discovery (Kubernetes annotations), define scrape intervals and retention policies\n4. **Build Dashboards**: Create Grafana dashboards organized by persona (SRE, developer, product manager, business operations) and use case (incident response, capacity planning, business reporting)\n5. **Configure Alerts**: Define alert rules for critical thresholds (error rate >1%, latency P99 >5s, throughput drop >20%) with appropriate severity levels and escalation paths",
+    "6": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#when-to-use]\n\n### When to Use\n\nImplement the Metrics and Monitoring Pattern in these scenarios:\n\n1. **All Production Services**: Every production service MUST expose Prometheus metrics and have corresponding Grafana dashboards (enterprise standard)\n2. **Performance-Sensitive Applications**: Services with strict latency SLAs (member portals <2s, prior authorization <5s, claims submission <3s) require detailed percentile metrics (P50/P95/P99)\n3. **High-Volume Transaction Systems**: Claims processing (500K+ daily), pharmacy POS (3M+ monthly), member portal sessions (20M+ monthly) need throughput and capacity metrics\n5. **Microservices Architectures**: Distributed systems with 15+ services need per-service metrics plus aggregate system-level views\n6. **Capacity Planning and Forecasting**: Systems requiring proactive scaling decisions based on trend analysis (claims volume growth, seasonal member portal usage, pharmacy benefit utilization)\n7. **SLA Compliance Reporting**: Contracts with state agencies requiring documented uptime percentages (99.9%), response time compliance (95% under 2s), and throughput guarantees (process 100K claims/hour)",
+    "7": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#target-audience]\n\n### Target Audience\n\nThis pattern is intended for:\n\n- **Site Reliability Engineers (SREs)** responsible for observability, incident response, and service reliability\n- **Platform Engineers** building and operating shared platform services\n- **DevOps Engineers** implementing monitoring and operational tooling\n- **Operations Engineers** managing production systems and service health",
+    "8": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#benefits]\n\n### Benefits\n\nImplementing comprehensive metrics and monitoring delivers quantified operational and business value at Gainwell:\n\n\n\n\n\n\n\n7. **Performance Optimization Identification**: Member Portal performance optimization project (2025) reduced P95 response time from 5.1s to 1.8s by identifying redundant Provider Directory API calls (3.2 avg per member session) via metrics showing HTTP dependency call counts by endpoint. Detailed metrics enable systematic performance optimization across portfolio: identifying N+1 query patterns (database calls per request), cache inefficiencies (hit rate <80%), inefficient serialization (JSON encoding >50ms), and connection pool saturation (wait time >10ms). Quarterly performance optimization reviews using metrics dashboards yield average 28% latency reduction and 19% infrastructure cost savings across optimized services.\n\n8. **Anomaly Detection and Trend Deviation Alerts**: Beyond static threshold alerts (error rate >1%), metrics enable rate-of-change and anomaly detection alerts. When Pharmacy Benefit Service experienced gradual memory leak, absolute memory utilization (68%) was below alert threshold (80%), but 7-day rate of change (+2.3% daily) indicated unsustainable growth. Alerting on trend deviations (memory growth >1.5% daily) provides 5-7 day advance warning of capacity issues vs. reacting when thresholds are breached. Across 8 gradual degradation incidents in 2025 (memory leaks, database connection leaks, disk space exhaustion), average detection was 2.1 days before critical impact; trend-based alerts project detection 6.8 days earlier, preventing incidents through proactive intervention.",
+    "9": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#context-and-problem]\n\n## Context and Problem",
+    "10": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#business-context]\n\n### Business Context\n\nGainwell Technologies operates mission-critical healthcare technology platforms serving 50+ state Medicaid programs supporting over 72 million beneficiaries. The scale and complexity of operations demand comprehensive observability:\n\n**Product Portfolio Scale**:\n- **the enterprise platform**: 23 microservices managing 850K+ active providers, 23K monthly enrollment applications (target: 15-minute completion, 24-hour approval), credentialing for NCQA-accredited platform, provider directory searches 340K+ monthly queries\n- **Gainwell Connect™**: 34 microservices for modular MMIS integration, EDI gateway clearinghouse processing 1.2B+ annual encounters (14,200 claims/hour target), X12 837/835 transaction handling, HL7 FHIR R4 interoperability APIs deployed across 15 states\n- **the enterprise platform**: 23 microservices for member engagement, mobile app supporting 5M active members, 20M+ monthly portal sessions, member services portal with <2s response time SLA, CMS Interoperability Final Rule compliance for patient data access\n- **the enterprise platform**: 18 microservices for pharmacy benefit management, 3M+ monthly prescriptions processed, NCPDP point-of-sale transactions, drug formulary management covering 12,500+ NDC codes, prior authorization workflows (average 8 services per PA request)\n- **Gainwell Genius™**: 29 microservices for healthcare analytics, 12K+ monthly reports generated, data warehouse integration processing 2.4TB monthly, predictive analytics for care quality and fraud detection\n- **Care Management**: 15 microservices for population health, care coordination for 340K high-risk members, health risk assessments, care plan management, outreach campaigns\n\n**Operational Scale and Complexity**:\n- **200+ Production Microservices**: Distributed across 8 product portfolios, each requiring independent monitoring and alerting\n- **12-18 Services Per Transaction**: Typical healthcare workflows span multiple services (claims submission: Intake → Validation → Pricing → Adjudication → Payment → Remittance = 8-12 services, prior authorization: Request → Clinical Review → Medical Necessity → Formulary → Guidelines → Decision = 8 services)\n- **Multi-Tenant Architecture**: 50+ state deployments with tenant isolation, per-state performance and capacity requirements, state-specific SLA commitments (uptime 99.5-99.9%, response time <2-5s depending on contract)\n- **Infrastructure Footprint**: Azure Kubernetes Service (AKS) with 800+ concurrent pods, SQL Server databases (47 databases, 12.8TB total storage), Azure Service Bus (340 queues/topics, 2.3M messages/day), Redis caching (23 clusters, 847GB total cache), Azure Blob Storage (4.7PB healthcare data)\n- **Peak Load Characteristics**: Month-end batch processing 3.2× normal volume, open enrollment periods 4.8× normal member portal traffic, state fiscal year-end reporting 6.1× data warehouse queries, pharmacy benefit year transitions requiring formulary updates for 12,500+ NDC codes\n\n**Regulatory and Compliance Requirements**:\n- **HIPAA Security Rule**: Audit controls (§164.312(b)) requiring monitoring of system activity, integrity controls (§164.312(c)(1)) requiring protection against improper alteration, transmission security (§164.312(e)(1)) requiring monitoring of message integrity\n- **State Contract SLAs**: Documented uptime percentages (99.5-99.9% depending on state), response time compliance metrics (95% of requests meet target latency), throughput guarantees (process 100K claims/hour during peak), incident response timeframes (critical incidents <15 minutes, major incidents <1 hour)\n- **CMS Interoperability Final Rule**: Patient access API uptime requirements (99.5%), response time standards (<2s for common queries), volume capacity (support 1,000 concurrent member requests per 100,000 enrollees)\n- **SOC 2 Type II Compliance**: Availability controls requiring continuous monitoring, performance monitoring as part of system operations, capacity planning and forecasting based on metrics, incident detection and response metrics",
+    "11": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#technical-context]\n\n### Technical Context\n\nGainwell's observability landscape is fragmented across product teams with inconsistent tooling, metrics standards, and monitoring practices:\n\n**Current Monitoring Approaches** (Across 200+ Services):\n- **Application Insights**: 73% of .NET services use Azure Application Insights for application performance monitoring (APM), automatic HTTP request tracking, dependency telemetry, but inconsistent custom metrics implementation (only 34% of services instrument business-specific metrics)\n- **Prometheus Adoption**: 28% of services (primarily newer microservices) expose Prometheus `/metrics` endpoints, typically implemented by platform teams with observability focus, but lacking standardization in metric naming, labels, and instrumentation depth\n- **Legacy Monitoring**: 19% of services rely on legacy monitoring approaches (Windows Performance Counters, custom log parsing, SQL Server monitoring tools), no structured metrics format, difficult to aggregate across services\n- **No Monitoring**: 11% of services have minimal or no monitoring beyond basic infrastructure health checks, typically internal services or background workers assumed low-risk\n\n**Fragmented Dashboarding and Visualization**:\n- **Azure Monitor**: Used by 82% of teams for infrastructure metrics (CPU, memory, disk, network), built-in dashboards for AKS cluster health, SQL Database DTU/query performance, Service Bus queue depth and throughput\n- **Grafana**: Deployed by 6 product teams (31% of services) with Prometheus backend, custom dashboards showing application-level metrics, inconsistent dashboard structure and metric selection across teams\n- **Application Insights Dashboards**: Default Application Insights portal used by majority of teams for request rates, failure rates, response times, but limited customization and correlation with infrastructure or business metrics\n- **Custom Solutions**: 14% of teams built custom monitoring dashboards (PowerBI, Excel-based reports pulling from databases, internal web portals querying metrics APIs), high maintenance overhead and limited real-time visibility\n\n**Technology Stack Diversity**:\n- **.NET Services**: 70% of microservices (.NET 6/8, ASP.NET Core), primarily using Application Insights SDK with OpenTelemetry migration beginning, Serilog for structured logging with some custom metrics via ILogger\n- **Spring Boot Services**: 20% of microservices (Java 17/21, Spring Boot 3.x), Micrometer metrics library exposing Prometheus endpoints, Actuator for health checks and metrics, Logback for logging\n- **Node.js Services**: 10% of microservices (Node.js 18/20, Express/Fastify), prom-client for Prometheus metrics, Winston for logging, some services use custom metrics implementation\n\n**Alerting Challenges**:\n- **Inconsistent Alert Configuration**: No centralized alert rule definitions, each team configures alerts independently in Azure Monitor (73% of teams), PagerDuty (41% of teams), or custom solutions (18% of teams)\n- **Alert Fatigue**: High-volume low-signal alerts due to poorly tuned thresholds (average 2,847 alerts/week across platform, 87% resolved as false positives or self-recovered), leading to alert desensitization and ignored critical alerts\n- **No Alert Hierarchy**: Flat alert structure without severity levels or escalation paths, all alerts routed to single on-call engineer regardless of impact (infrastructure warning vs. customer-facing outage)\n- **Limited Context**: Alerts contain minimal context (service name, threshold exceeded), requiring engineers to manually access dashboards and logs to understand root cause, increasing mean time to resolution",
+    "12": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#problem-details]\n\n### Problem Details\n\nThe absence of comprehensive, standardized metrics and monitoring creates four critical operational challenges:",
+    "13": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#problem-1-delayed-incident-detection-leading-to-extended-customer-impact]\n\n#### Problem 1: Delayed Incident Detection Leading to Extended Customer Impact\n\n**Scenario: Claims Adjudication Performance Degradation (November 18, 2025)**\n\n**Timeline**:\n- **9:15 AM**: Claims Adjudication Service begins experiencing gradual performance degradation due to memory pressure from inefficient LINQ query causing excessive object allocations\n- **9:15-10:45 AM (90 minutes)**: Service continues processing claims with increasing latency, no alerts fire because:\n  - Basic uptime check continues returning 200 OK (service is running)\n  - No P95/P99 latency metrics instrumented, only tracking P50 average response time\n  - Average latency (850ms → 1.2s) still below alert threshold (2s) despite P95 rising to 4.2s\n  - No memory utilization metrics configured, heap pressure not visible\n- **10:45 AM**: First alert fires after average latency crosses 2s threshold, 90 minutes after degradation began\n- **10:45-10:52 AM**: On-call SRE investigates, reviews basic Application Insights dashboard showing elevated average latency but no breakdown by operation or percentiles\n- **10:52 AM**: SRE escalates to Claims platform team, provides limited context (service slow, no specific metrics)\n- **11:05 AM**: Engineering team begins investigation, manually queries Application Insights for dependency telemetry, discovers database queries not unusually slow\n- **11:18 AM**: Team deploys instrumented version with detailed memory profiling to staging environment\n- **11:35 AM**: Profiling reveals LINQ query allocating 2.3GB objects per 1,000 claims batch\n- **11:47 AM**: Hotfix deployed optimizing query to use streaming approach, reducing allocations by 94%\n- **12:02 PM**: Service performance returns to normal (latency P95: 780ms)\n\n**Impact**:\n- **90-Minute Detection Delay**: Degradation began 9:15 AM, detected 10:45 AM (1.5 hours later)\n- **2.75-Hour Total Incident Duration**: Detection to resolution (10:45 AM - 12:02 PM = 77 minutes) + 90-minute delayed detection = 167 minutes total\n- **12,847 Claims Affected**: Claims processed during degradation period with latency exceeding SLA (>2s)\n- **State Agency Escalation**: 3 state agencies contacted Gainwell support reporting \"slow claims processing\" during incident\n\n**Root Cause**:\n- No P95/P99 latency metrics configured, only tracking average latency which masked tail latency degradation\n- No memory utilization or garbage collection metrics to detect heap pressure\n- Alert threshold based on average latency (2s) failed to detect P95 latency exceeding 4s\n- No method-level or operation-level metrics to identify which specific code path was slow\n\n**Prevention with Metrics**:\n- **P95 latency alert** (threshold: >1.5s) would have fired at 9:23 AM (8 minutes after degradation began) instead of 10:45 AM\n- **Memory utilization trend alert** (heap growth rate >5% over 10 minutes) would have fired at 9:28 AM showing unsustainable allocation rate\n- **Grafana dashboard** with percentile latency breakdown (P50/P95/P99), memory utilization, GC frequency would have immediately shown:\n  - P95 latency: 4.2s (9:45 AM) vs. baseline 820ms\n  - Heap utilization: 87% and climbing (9:40 AM) vs. typical 62%\n  - Gen 2 GC collections: 14 per minute (9:35 AM) vs. typical 1-2 per minute\n- **Detection improvement**: 85 minutes earlier (9:23 AM vs. 10:45 AM), reducing customer impact by 66%",
+    "14": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#problem-2-inability-to-diagnose-root-cause-without-detailed-metrics]\n\n#### Problem 2: Inability to Diagnose Root Cause Without Detailed Metrics\n\n**Scenario: Provider Portal Performance Investigation (December 5, 2025)**\n\n**Timeline**:\n- **2:15 PM**: Product manager reports Provider Portal \"feels slow\" during provider enrollment period, no quantifiable metrics\n- **2:20 PM**: Engineering checks Application Insights, sees average response time 3.8s (baseline: 1.2s), confirms slowness but no detail on cause\n- **2:25-2:45 PM (20 minutes)**: Team reviews Application Insights dependency telemetry showing:\n  - Database queries: 147ms average (baseline: 142ms) - not significantly elevated\n  - External API calls: \"HTTP requests\" 890ms average (baseline: 780ms) - somewhat elevated but unclear which APIs\n  - No visibility into which specific operations or endpoints are slow\n- **2:45-3:30 PM (45 minutes)**: Team manually instruments Provider Search endpoint with custom logging:\n  - Deploy instrumented version to staging environment\n  - Replay production traffic patterns using saved requests\n  - Review verbose logs showing timing for each operation step\n  - Identify database query for provider specialty filtering taking 3.2s (N+1 query pattern, executing 127 queries per search)\n- **3:30-4:15 PM (45 minutes)**: Team instruments external API calls with detailed timing:\n  - Discovers external credentialing API (NPPES NPI Registry validation) taking 2.8s per provider\n  - Portal calls credentialing API for every provider in search results (avg 12 providers per search)\n  - Total external API time: 2.8s × 12 = 33.6s sequential calls\n- **4:15-5:00 PM (45 minutes)**: Team instruments caching layer:\n  - Provider search results cache hit rate: 31% (baseline: 87%)\n  - Cache expiration policy misconfigured during recent deployment, causing cache invalidation every 5 minutes instead of 1 hour\n  - Low cache hit rate forces database queries and external API calls for most searches\n- **5:00-5:30 PM (30 minutes)**: Team develops fix:\n  - Optimize database query using single JOIN instead of N+1 queries: 3.2s → 180ms\n  - Implement parallel external API calls with caching: 33.6s → 2.8s (call once, cache for 1 hour)\n  - Correct cache expiration policy: 5 minutes → 1 hour\n- **5:45 PM**: Hotfix deployed, portal response time improves to 1.1s\n\n**Impact**:\n- **6 Hours Investigation Time**: 2:15 PM - 5:45 PM (3.5 hours) to diagnose + develop fix\n- **15% Application Abandonment Rate**: 351 providers abandoned enrollment due to timeout errors or slow response, requiring manual outreach to re-engage\n- **3 Manual Instrumentation Cycles**: Deploy custom logging → Test → Analyze → Repeat, each taking 45 minutes\n\n**Root Cause**:\n- No per-endpoint latency metrics showing which operations are slow (search vs. enrollment vs. credentialing)\n- No per-operation timing metrics within endpoint execution (database query duration, external API call duration, cache access duration)\n- No cache hit rate metrics to identify caching inefficiency\n- No histogram metrics showing latency distribution (could reveal bimodal distribution: fast cache hits vs. slow cache misses)\n\n**Prevention with Metrics**:\nIf comprehensive metrics had been instrumented:\n\n- **Per-Endpoint Metrics**: Grafana dashboard showing latency by endpoint would immediately reveal Provider Search endpoint at 8.3s vs. Provider Enrollment at 1.4s, focusing investigation\n- **Database Query Duration Metrics**: Histogram showing query duration distribution would show Provider Specialty Filter query at 3.2s, isolating database performance issue immediately\n- **HTTP Dependency Metrics by Endpoint**: Labels identifying external API (NPPES endpoint) and showing 2.8s average latency × 12 calls per request = 33.6s total\n- **Cache Hit Rate Gauge**: Real-time metric showing cache hit rate drop from 87% (baseline) to 31% (current), indicating caching problem\n- **Investigation Time Reduction**: 6 hours → 35 minutes (identifying issues via existing Grafana dashboards showing all relevant metrics without manual instrumentation)",
+    "15": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#problem-3-no-capacity-planning-data-causing-emergency-scaling]\n\n#### Problem 3: No Capacity Planning Data Causing Emergency Scaling\n\n**Scenario: Payment Integrity Platform Capacity Incident (October 28, 2025)**\n\n**Timeline**:\n- **October 1-27**: Gradual increase in payment validation transaction volume (month-end state agency batch processing increasing from 87K transactions/day to 107K transactions/day, +23% growth)\n- **October 1-27**: No historical trending metrics available showing:\n  - Transaction throughput over time\n  - CPU utilization trending upward (62% avg → 76% avg)\n  - Memory consumption increasing (68% → 82%)\n  - Database connection pool utilization growing (54% → 68%)\n  - No capacity planning alerts or forecasting\n- **October 28, 2:47 AM**: Payment Validation Service begins returning HTTP 503 errors as CPU reaches 97%, memory 96%, database connection pool exhausted (95% connections in use, new requests waiting)\n- **2:51 AM**: PagerDuty alert fires for HTTP error rate >5% (now at 12.3%)\n- **2:53 AM**: On-call SRE receives page, begins investigation\n- **2:58 AM**: SRE reviews Azure Monitor CPU/Memory dashboards, confirms resource exhaustion, determines horizontal scaling needed\n- **3:15 AM**: Emergency horizontal scaling action: increase Payment Validation Service from 4 replicas to 8 replicas\n- **3:24 AM**: New replicas online and healthy, service begins recovering\n- **3:34 AM**: Error rate drops below 1%, service stabilized\n- **4:14 AM**: 87-minute payment processing backlog cleared, system fully recovered\n\n**Impact**:\n- **87-Minute Payment Processing Delay**: From first 503 error (2:47 AM) to full recovery (4:14 AM)\n- **14 States Affected**: Multi-tenant platform serving 50+ states, incident affected 14 states using October 28 payment batch window\n- **Emergency After-Hours Response**: On-call SRE paged at 2:51 AM, 32-minute response time to scale infrastructure\n\n**Root Cause**:\n- No historical trending metrics showing gradual capacity consumption increase over 4-week period\n- No proactive capacity planning alerts (e.g., \"at current growth rate, CPU will reach 90% in 7 days\")\n- Alert only fires when system is already failing (error rate >5%), not when approaching capacity limits\n- Operations team had no visibility into month-end batch processing volume patterns to anticipate increased load\n\n**Prevention with Metrics**:\n- **30-Day Transaction Throughput Trend**: Line graph showing transaction volume increasing from 87K/day (Sept 28) to 107K/day (Oct 27), clear upward trend\n- **CPU Utilization Trend with Forecast**: Graph showing CPU increasing 2.1% per week, with linear regression projecting 90% utilization by October 26 (2 days before incident)\n- **Database Connection Pool Saturation Trend**: Gauge showing connection pool utilization climbing from 54% → 68%, with alert threshold at 75% providing 4-day advance warning\n- **Capacity Planning Alert**: Automated alert firing October 21 (7 days before incident): \"CPU utilization growing at 2.1%/week, will reach 90% threshold in 5 days based on current trend, consider scaling\"\n- **Proactive Scaling**: Operations team schedules infrastructure scaling during maintenance window October 24 (4 days before incident), increasing capacity during business hours with no customer impact\n- **Incident Prevention**: Complete prevention of 87-minute outage, no provider payment delays, no emergency after-hours response",
+    "16": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#problem-4-lack-of-business-metrics-obscuring-revenue-impact]\n\n#### Problem 4: Lack of Business Metrics Obscuring Revenue Impact\n\n**Scenario: EDI Gateway Throughput Degradation (September 14-25, 2025)**\n\n**Timeline**:\n- **September 14, 3:15 PM**: Gainwell Connect™ EDI Gateway Service experiences gradual throughput degradation after deployment of new message validation logic\n- **September 14-25 (11 days)**: Service continues processing claims with reduced throughput:\n  - Normal throughput: 14,200 claims/hour (baseline)\n  - Degraded throughput: 8,900 claims/hour (37% reduction)\n  - Technical health checks show service as \"healthy\":\n    - Uptime: 100% (service never crashed or became unavailable)\n    - HTTP endpoints returning 200 OK responses\n    - CPU utilization: 68% (below 80% alert threshold)\n    - Memory utilization: 71% (below 85% alert threshold)\n    - Error rate: 0.02% (below 1% alert threshold)\n- **September 14-25**: No alerts fire because technical metrics show \"healthy\" system:\n  - Infrastructure monitoring shows resources within normal ranges\n  - Application monitoring shows low error rates\n  - No throughput metrics configured to detect processing rate degradation\n- **September 25, 10:23 AM**: California state agency contacts Gainwell account manager reporting \"delayed remittance advice\" for claims submitted September 17-24\n- **September 25, 11:15 AM**: Account manager escalates to operations team\n- **September 25, 11:30 AM - 2:45 PM (3.25 hours)**: Engineering investigation:\n  - Review EDI Gateway logs, identify throughput reduction (8,900 vs. 14,200 claims/hour baseline)\n  - Correlate timing with September 14 deployment\n  - Profile message validation logic, discover inefficient XML parsing causing 40% performance regression\n  - Develop fix optimizing validation using streaming parser instead of loading full XML into memory\n- **September 25, 3:30 PM**: Hotfix deployed, throughput returns to 14,200 claims/hour\n- **September 25-30**: Backlog processing of 58,700 claims delayed during 11-day degradation period\n\n**Impact**:\n- **11-Day Delayed Detection**: Issue began September 14, detected September 25 (after state agency escalation)\n- **58,700 Claims Processing Delayed**: Calculated as (14,200 - 8,900 claims/hour) × 11 days × 10 hours/day = 583,000 claim-hours delayed, avg 58,700 claims experienced delayed remittance\n- **State Agency Relationship Impact**: California agency escalation requiring executive-level response and remediation plan\n- **3 Additional States Report Issues**: After California escalation, 3 other states confirm experiencing delayed remittances but hadn't yet escalated\n\n**Root Cause**:\n- No business-level metrics tracking claims processing throughput (claims/hour, claims/day)\n- Technical health checks (uptime, error rate, CPU, memory) all showed \"healthy\" despite 37% throughput reduction\n- No alerting on processing rate degradation (claims/hour below baseline)\n- No visibility into remittance advice generation timeliness (claim submission to remittance generation duration)\n\n**Prevention with Metrics**:\n- **Claims Processing Rate Gauge**: Real-time metric showing claims/hour throughput, would drop from 14,200 → 8,900 at 3:15 PM September 14\n- **Throughput Alert**: Automated alert firing September 14, 3:20 PM (5 minutes after deployment): \"Claims processing rate 8,900/hour, 37% below baseline 14,200/hour\"\n- **Remittance Generation Lag Histogram**: Metric tracking duration from claim submission to remittance advice generation, would show delays increasing from 1.8 hours → 4.2 hours\n- **Business Impact Dashboard**: Grafana dashboard showing:\n  - Claims processing rate: 8,900/hour (red, below 12,000 threshold)\n  - Claims processing backlog: +5,300 claims/day (growing)\n  - Average remittance generation time: 4.2 hours (red, above 3-hour SLA)\n- **Detection Time Improvement**: 11 days → 5 minutes (alert fires immediately after deployment showing throughput degradation)",
+    "17": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#forces-and-constraints]\n\n### Forces and Constraints\n\n**Performance Impact**:\n- Metrics collection overhead must be <0.5% CPU impact per service (acceptable for comprehensive observability vs. blind operation)\n- Prometheus scrape interval (15 seconds default) must balance metrics freshness vs. network/storage overhead\n- High-cardinality metrics (e.g., metrics with customer ID or transaction ID labels) can cause Prometheus performance degradation and storage explosion\n- Histogram metrics with many buckets increase storage requirements (each bucket is separate time series)\n\n**Implementation Complexity**:\n- Requires Prometheus client library dependency in all services (.NET, Java, Node.js)\n- Teams must learn Prometheus metrics types (Counter, Gauge, Histogram, Summary) and when to use each\n- PromQL query language learning curve for creating dashboards and alerts\n- Grafana dashboard creation requires understanding of visualization types, panel queries, template variables\n\n**Organizational Alignment**:\n- Enterprise standard requiring ALL services expose Prometheus metrics (mandate for new services, migration plan for legacy services)\n- Standardized metric naming conventions required across teams (e.g., `http_request_duration_seconds` vs. `http_requests_latency_ms` vs. `request_time`)\n- Consistent label naming (service_name vs. serviceName vs. service, environment vs. env)\n- Alert threshold standardization (when is P95 latency alert threshold 1.5s vs. 2s vs. 5s depending on service type)\n\n**Multi-Tenancy Requirements**:\n- Metrics must include tenant identifier label (state code) for per-state analysis and troubleshooting\n- Grafana dashboards must support filtering by tenant (state-specific views)\n- Per-tenant alerting (some states have tighter SLAs than others)\n- Care required to avoid exposing tenant-specific metrics cross-tenant (security boundary in Grafana access controls)\n\n**Cost Considerations**:\n- Prometheus storage retention policy balance (90 days retention vs. cost of storage for 200+ services × thousands of metrics)\n- Grafana Cloud vs. self-hosted Grafana (managed service cost vs. operational overhead)\n- High-frequency metrics collection (15s scrape interval) generates significant network traffic and storage volume\n- Per-service Prometheus exporter overhead (memory footprint, HTTP endpoint serving metrics)\n\n**HIPAA Compliance**:\n- Metrics must NOT contain Protected Health Information (PHI) in metric names, labels, or values\n- Use opaque identifiers (member_count: 1247) rather than identifying information (member: \"John Doe\")\n- Audit logging required for Grafana dashboard access (who viewed which metrics when)\n- Encryption in transit for Prometheus scraping endpoints (TLS required)\n- Metrics retention aligned with HIPAA audit trail requirements (6-year minimum for audit-related metrics)\n\n**Backward Compatibility**:\n- Legacy services using Application Insights cannot immediately migrate to Prometheus (dual instrumentation overhead)\n- Phased migration approach required (new services: Prometheus first, legacy services: Application Insights with gradual Prometheus adoption)\n- Unified visualization challenge: dashboards showing both Application Insights and Prometheus metrics require integration layer\n\n**Alert Tuning Challenges**:\n- Static thresholds (error rate >1%) cause false positives during legitimate traffic spikes or scheduled maintenance\n- Dynamic thresholds based on historical baselines require time to learn patterns (2-4 weeks of metrics history)\n- Alert fatigue from poorly tuned alerts reduces effectiveness (teams ignore alerts when 87% are false positives)\n- Balance between alert sensitivity (early detection) and specificity (avoid false positives)",
+    "18": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#solution]\n\n## Solution",
+    "19": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#pattern-description]\n\n### Pattern Description\n\nThe Metrics and Monitoring Pattern implements a comprehensive observability strategy using **Prometheus** for metrics collection and **Grafana** for visualization, organized into four metric layers providing visibility from infrastructure through business outcomes:\n\n**Four-Layer Metrics Architecture**:\n\n1. **Infrastructure Metrics** (Platform Layer): CPU utilization, memory consumption, disk I/O, network throughput, container/pod health\n2. **Application Metrics** (Service Layer): HTTP request rates, response time percentiles (P50/P95/P99), error rates, dependency latency, queue depths\n3. **Business Metrics** (Domain Layer): Claims processed per hour, provider enrollments completed, member portal sessions, payment amounts processed, prescription authorizations\n4. **SLA Metrics** (Contract Layer): Uptime percentages, latency compliance (% requests meeting SLA), throughput capacity utilization\n\n**Core Solution Flow**:\n\n1. **Service Instrumentation**: Services expose `/metrics` HTTP endpoint in Prometheus format using client libraries (Prometheus.NET for .NET, Micrometer for Java, prom-client for Node.js)\n2. **Metrics Collection**: Prometheus server scrapes `/metrics` endpoints every 15 seconds (configurable), stores time-series data with 90-day retention (configurable)\n3. **Service Discovery**: Prometheus automatically discovers service endpoints via Kubernetes annotations (pod labels `prometheus.io/scrape: \"true\"` and `prometheus.io/port`)\n4. **Multi-Dimensional Labels**: All metrics tagged with labels (service name, environment, region, version, tenant ID) enabling filtering and aggregation\n5. **Visualization**: Grafana queries Prometheus using PromQL, displays metrics in dashboards organized by persona (SRE, developer, product manager) and use case (incident response, capacity planning)\n6. **Alerting**: Prometheus Alertmanager evaluates alert rules (PromQL queries with thresholds), sends notifications to PagerDuty (critical/major) and Microsoft Teams (minor/warning)\n7. **Historical Analysis**: Prometheus stores 90 days of metrics for trend analysis, capacity planning, and performance regression detection",
+    "20": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#architecture-diagram]\n\n### Architecture Diagram\n\n```text\n┌─────────────────────────────────────────────────────────────────────────────┐\n│                         METRICS AND MONITORING ARCHITECTURE                  │\n└─────────────────────────────────────────────────────────────────────────────┘\n\n┌───────────────────────────────────────────────────────────────────────────┐\n│  SERVICE LAYER (Instrumented Microservices)                               │\n├───────────────────────────────────────────────────────────────────────────┤\n│                                                                             │\n│  ┌─────────────────┐   ┌─────────────────┐   ┌─────────────────┐        │\n│  │ Claims Service  │   │ Provider Service│   │ Member Service  │        │\n│  │ (.NET Core)     │   │ (Spring Boot)   │   │ (Node.js)       │        │\n│  ├─────────────────┤   ├─────────────────┤   ├─────────────────┤        │\n│  │ Prometheus.NET  │   │   Micrometer    │   │  prom-client    │        │\n│  │  Client Library │   │  Client Library │   │  Client Library │        │\n│  ├─────────────────┤   ├─────────────────┤   ├─────────────────┤        │\n│  │ /metrics        │   │ /metrics        │   │ /metrics        │        │\n│  │                 │   │                 │   │                 │        │\n│  │ # Infrastructure Metrics                                     │        │\n│  │ process_cpu_seconds_total                                    │        │\n│  │ process_resident_memory_bytes                                │        │\n│  │                                                               │        │\n│  │ # Application Metrics (RED Method)                           │        │\n│  │ http_request_duration_seconds{endpoint=\"/api/claims\"}        │        │\n│  │ http_requests_total{endpoint,method,status}                  │        │\n│  │ http_requests_in_flight                                      │        │\n│  │                                                               │        │\n│  │ # Business Metrics                                           │        │\n│  │ claims_processed_total{state,claim_type}                     │        │\n│  │ claims_processing_duration_seconds                           │        │\n│  │ payment_amount_dollars{state}                                │        │\n│  └───────────────────────────────────────────────────────────────────────┘\n│                     │                    │                    │            │\n│                     │  Expose Metrics    │                    │            │\n│                     └────────────────────┴────────────────────┘            │\n│                                      │                                      │\n└──────────────────────────────────────┼──────────────────────────────────────┘\n                                       │\n                    ┌──────────────────▼──────────────────┐\n                    │ Kubernetes Pod Annotations          │\n                    │ (Service Discovery)                 │\n                    ├─────────────────────────────────────┤\n                    │ metadata:                           │\n                    │   annotations:                      │\n                    │     prometheus.io/scrape: \"true\"    │\n                    │     prometheus.io/port: \"8080\"      │\n                    │     prometheus.io/path: \"/metrics\"  │\n                    └──────────────────┬──────────────────┘\n                                       │\n                                       │ Auto-Discovery\n                                       │\n┌──────────────────────────────────────▼──────────────────────────────────────┐\n│  COLLECTION LAYER (Prometheus Server)                                       │\n├─────────────────────────────────────────────────────────────────────────────┤\n│                                                                              │\n│  ┌────────────────────────────────────────────────────────────────────┐   │\n│  │ Prometheus Server                                                   │   │\n│  ├────────────────────────────────────────────────────────────────────┤   │\n│  │                                                                      │   │\n│  │  Service Discovery (Kubernetes)                                     │   │\n│  │   • Automatically discover pods with prometheus.io/scrape: \"true\"   │   │\n│  │   • Monitor service additions/removals dynamically                  │   │\n│  │                                                                      │   │\n│  │  Scraping (Pull Model)                                              │   │\n│  │   • HTTP GET /metrics every 15 seconds (configurable)               │   │\n│  │   • Parse Prometheus text format response                           │   │\n│  │   • Add timestamp and scrape metadata                               │   │\n│  │                                                                      │   │\n│  │  Time-Series Storage                                                │   │\n│  │   • Store metrics with labels as dimensions                         │   │\n│  │   • 90-day retention (configurable)                                 │   │\n│  │   • Efficient compression (avg 1.3 bytes per sample)                │   │\n│  │                                                                      │   │\n│  │  PromQL Query Engine                                                │   │\n│  │   • Aggregate metrics: sum, avg, max, quantile                      │   │\n│  │   • Filter by labels: {service=\"claims\", environment=\"prod\"}        │   │\n│  │   • Time-series functions: rate(), increase(), delta()              │   │\n│  │                                                                      │   │\n│  └──────────────┬──────────────────────────┬────────────────────────────┘   │\n│                 │                          │                                 │\n│      Metrics Query Interface      Alerting Rules                            │\n│                 │                          │                                 │\n└─────────────────┼──────────────────────────┼─────────────────────────────────┘\n                  │                          │\n                  │                          │\n  ┌───────────────▼────────────┐   ┌────────▼──────────────────────┐\n  │ VISUALIZATION LAYER        │   │ ALERTING LAYER                 │\n  │ (Grafana)                  │   │ (Prometheus Alertmanager)      │\n  ├────────────────────────────┤   ├────────────────────────────────┤\n  │                            │   │                                 │\n  │ Dashboards:                │   │ Alert Rules (PromQL):          │\n  │                            │   │                                 │\n  │ • Golden Signals           │   │ • Error Rate Alert:            │\n  │   Rate, Errors, Duration   │   │   rate(http_requests_total     │\n  │                            │   │     {status=~\"5..\"}[5m]) >0.01 │\n  │ • RED Method               │   │                                 │\n  │   Request Rate             │   │ • High Latency Alert:          │\n  │   Error Rate               │   │   histogram_quantile(0.95,     │\n  │   Duration (P50/P95/P99)   │   │     http_duration_seconds)>2.0 │\n  │                            │   │                                 │\n  │ • USE Method               │   │ • Throughput Drop Alert:       │\n  │   Utilization (CPU/Memory) │   │   rate(claims_processed[5m]) < │\n  │   Saturation (Queue Depth) │   │     (avg_over_time([1h]) *0.8) │\n  │   Errors (Failed Requests) │   │                                 │\n  │                            │   │ Notification Routing:          │\n  │ • Business KPIs            │   │  Critical → PagerDuty          │\n  │   Claims Processed/Hour    │   │  Major    → PagerDuty          │\n  │   Provider Enrollments     │   │  Minor    → MS Teams           │\n  │   Member Portal Sessions   │   │  Warning  → MS Teams           │\n  │   Payment Processing $     │   │                                 │\n  │                            │   │ Alert Grouping & Deduplication │\n  │ Template Variables:        │   │ Inhibition Rules               │\n  │  - Environment Filter      │   │ Silence Management             │\n  │  - Service Filter          │   │                                 │\n  │  - State/Tenant Filter     │   └─────────────────────────────────┘\n  │                            │\n  │ Visualization Types:       │\n  │  - Time Series Graphs      │\n  │  - Stat Panels (Current)   │\n  │  - Gauge Panels (%)        │\n  │  - Table Panels (Lists)    │\n  │  - Heatmaps (Distribution) │\n  └────────────────────────────┘\n\n┌─────────────────────────────────────────────────────────────────────────────┐\n│  USERS AND CONSUMERS                                                         │\n├─────────────────────────────────────────────────────────────────────────────┤\n│                                                                              │\n│  SRE Team                  Dev Teams              Product Managers          │\n│  • Incident Response       • Performance Debug    • Business Metrics        │\n│  • Capacity Planning       • Latency Analysis     • KPI Dashboards          │\n│  • Alert Management        • Error Investigation  • Trend Reports           │\n│                                                                              │\n└─────────────────────────────────────────────────────────────────────────────┘\n```",
+    "21": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#components]\n\n### Components\n\n| Component | Responsibility | Key Features |\n|-----------|----------------|--------------|\n| **Prometheus Client Libraries** | Instrument application code to expose metrics | - Prometheus.NET (C#/.NET)<br>- Micrometer (Java/Spring Boot)<br>- prom-client (Node.js)<br>- Automatic HTTP metrics collection<br>- Custom metric registration<br>- Multi-dimensional labels |\n| **Metrics Endpoint** | HTTP endpoint serving metrics in Prometheus text format | - `/metrics` endpoint convention<br>- Text-based format (easy debugging)<br>- Efficient parsing<br>- Atomic metric snapshots |\n| **Prometheus Server** | Time-series database scraping and storing metrics | - Pull-based architecture (services don't push)<br>- 15-second scrape interval default<br>- 90-day retention configurable<br>- Efficient compression (~1.3 bytes/sample)<br>- PromQL query language |\n| **Service Discovery** | Automatic detection of services to monitor | - Kubernetes pod annotations<br>- Consul integration<br>- File-based static configuration<br>- DNS-based discovery<br>- Dynamic service registration |\n| **Grafana** | Visualization platform for metrics dashboards | - PromQL data source integration<br>- 100+ pre-built dashboard templates<br>- Custom dashboard creation<br>- Template variables for filtering<br>- Panel types: graphs, gauges, tables, heatmaps |\n| **Prometheus Alertmanager** | Alert routing, grouping, and notification | - PromQL-based alert rules<br>- Multi-channel notifications (PagerDuty, Slack, email)<br>- Alert grouping and deduplication<br>- Inhibition rules (suppress related alerts)<br>- Silence management (maintenance windows) |",
+    "22": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#metric-types]\n\n### Metric Types\n\nPrometheus defines four core metric types, each suited to different measurement scenarios:",
+    "23": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#1-counter-monotonically-increasing-value]\n\n#### 1. Counter (Monotonically Increasing Value)\n\n**Use Case**: Count events that only increase (requests, errors, messages processed)\n\n**Examples**:\n- `http_requests_total{method=\"GET\", endpoint=\"/api/claims\", status=\"200\"}` - Total HTTP requests\n- `claims_processed_total{state=\"CA\", claim_type=\"professional\"}` - Total claims processed\n- `payments_completed_total{state=\"NY\"}` - Total payments completed\n\n**PromQL Queries**:\n```promql\n# Request rate (requests per second) over last 5 minutes\nrate(http_requests_total[5m])\n\n# Total requests in last hour\nincrease(http_requests_total[1h])\n\n# Error rate percentage\nrate(http_requests_total{status=~\"5..\"}[5m]) / rate(http_requests_total[5m]) * 100\n```",
+    "24": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#2-gauge-value-that-can-go-up-or-down]\n\n#### 2. Gauge (Value That Can Go Up or Down)\n\n**Use Case**: Measure current state or level (temperature, memory usage, queue depth)\n\n**Examples**:\n- `claims_queue_depth` - Current number of claims in processing queue\n- `database_connection_pool_active` - Current active database connections\n- `service_replicas_ready` - Number of healthy service replicas\n\n**PromQL Queries**:\n```promql\n# Current queue depth\nclaims_queue_depth\n\n# Average memory usage over last 10 minutes\navg_over_time(process_resident_memory_bytes[10m])\n\n# Max connection pool utilization in last hour\nmax_over_time(database_connections_active[1h])\n```",
+    "25": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#3-histogram-distribution-of-values-in-buckets]\n\n#### 3. Histogram (Distribution of Values in Buckets)\n\n**Use Case**: Measure request latency, payment amounts, message sizes\n\n**Examples**:\n- `http_request_duration_seconds_bucket{le=\"0.1\"}` - Requests completing in ≤100ms\n- `http_request_duration_seconds_bucket{le=\"0.5\"}` - Requests completing in ≤500ms\n- `http_request_duration_seconds_bucket{le=\"1.0\"}` - Requests completing in ≤1s\n\n**Prometheus Automatically Tracks**:\n- `_bucket` suffixed metrics for each configured bucket\n- `_sum` total of all observed values\n- `_count` total number of observations\n\n**PromQL Queries**:\n```promql\n# P95 latency (95th percentile)\nhistogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m]))\n\n# P99 latency (99th percentile)\nhistogram_quantile(0.99, rate(http_request_duration_seconds_bucket[5m]))\n\n# Average request duration\nrate(http_request_duration_seconds_sum[5m]) / rate(http_request_duration_seconds_count[5m])\n```",
+    "26": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#4-summary-similar-to-histogram-with-pre-calculated-quantiles]\n\n#### 4. Summary (Similar to Histogram with Pre-Calculated Quantiles)\n\n**Use Case**: When client-side quantile calculation preferred over server-side\n\n**Examples**:\n- `api_response_time_seconds{quantile=\"0.5\"}` - Median response time (P50)\n- `api_response_time_seconds{quantile=\"0.95\"}` - P95 response time\n- `api_response_time_seconds{quantile=\"0.99\"}` - P99 response time\n\n**Note**: Histograms are generally preferred over summaries because they enable server-side aggregation and quantile calculation across multiple instances.",
+    "27": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#metric-naming-conventions]\n\n### Metric Naming Conventions\n\nFollow Prometheus naming best practices for consistency and clarity:\n\n**Structure**: `{namespace}_{subsystem}_{metric_name}_{unit}`\n\n**Examples**:\n- `http_request_duration_seconds` - HTTP request duration in seconds\n- `claims_processed_total` - Total claims processed (counter)\n- `database_connection_pool_active` - Active database connections (gauge)\n- `payment_amount_dollars_bucket` - Payment amount distribution (histogram)\n\n**Naming Rules**:\n- Use lowercase with underscores (snake_case)\n- Include unit suffix for time/size/currency (`_seconds`, `_bytes`, `_dollars`)\n- Counter metrics end with `_total` suffix\n- Histogram/summary metrics automatically get `_bucket`, `_sum`, `_count` suffixes\n- Use meaningful labels for dimensions, not separate metric names",
+    "28": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#dashboard-organization]\n\n### Dashboard Organization\n\nOrganize Grafana dashboards by **persona** (audience) and **use case**:",
+    "29": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#1-sre-dashboards-incident-response-and-operations]\n\n#### 1. SRE Dashboards (Incident Response and Operations)\n\n**Golden Signals Dashboard** (Google SRE Book):\n- **Latency**: Request duration percentiles (P50, P95, P99)\n- **Traffic**: Request rate (requests per second)\n- **Errors**: Error rate (% of requests failing)\n- **Saturation**: Resource utilization (CPU, memory, queue depth)\n\n**USE Method Dashboard** (Utilization, Saturation, Errors):\n- **Utilization**: % of time resource busy (CPU utilization, memory usage)\n- **Saturation**: Degree of queueing (queue depth, connection pool wait time)\n- **Errors**: Error counts and rates (failed requests, exceptions)\n\n**RED Method Dashboard** (Rate, Errors, Duration):\n- **Rate**: Throughput (requests/sec, transactions/min)\n- **Errors**: Error count and percentage\n- **Duration**: Latency distribution (histogram, percentiles)",
+    "30": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#2-developer-dashboards-performance-analysis]\n\n#### 2. Developer Dashboards (Performance Analysis)\n\n**Service Performance Dashboard**:\n- Per-endpoint latency breakdown\n- Dependency call duration (database, external APIs)\n- Cache hit rates and miss rates\n- Thread pool utilization\n- Garbage collection metrics (.NET/Java)\n\n**Database Performance Dashboard**:\n- Query duration by operation\n- Connection pool metrics (active, idle, waiting)\n- Database CPU and memory\n- Slow query identification (P99 >1s)",
+    "31": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#3-product-manager-dashboards-business-metrics]\n\n#### 3. Product Manager Dashboards (Business Metrics)\n\n**Business KPI Dashboard**:\n- Claims processed per hour/day\n- Provider enrollments completed\n- Member portal active sessions\n- Payment processing volume and value\n- API call volume by partner\n\n**SLA Compliance Dashboard**:\n- Uptime percentage (target: 99.9%)\n- Latency compliance (% requests meeting SLA target)\n- Throughput capacity utilization (% of contracted capacity)\n- Incident counts and MTTR",
+    "32": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#alert-rule-examples]\n\n### Alert Rule Examples\n\nDefine alert rules in Prometheus using PromQL with thresholds:\n\n**High Error Rate Alert**:\n```yaml\n- alert: HighErrorRate\n  expr: |\n    rate(http_requests_total{status=~\"5..\"}[5m]) / rate(http_requests_total[5m]) > 0.01\n  for: 5m\n  labels:\n    severity: critical\n  annotations:\n    summary: \"High error rate detected on {{ $labels.service }}\"\n    description: \"Error rate is {{ $value | humanizePercentage }} (threshold: 1%)\"\n```\n\n**High Latency Alert**:\n```yaml\n- alert: HighLatencyP95\n  expr: |\n    histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m])) > 2.0\n  for: 10m\n  labels:\n    severity: major\n  annotations:\n    summary: \"P95 latency exceeds 2 seconds on {{ $labels.service }}\"\n    description: \"Current P95 latency: {{ $value | humanizeDuration }}\"\n```\n\n**Throughput Drop Alert**:\n```yaml\n- alert: ThroughputDrop\n  expr: |\n    rate(claims_processed_total[5m]) < (avg_over_time(rate(claims_processed_total[5m])[1h]) * 0.80)\n  for: 15m\n  labels:\n    severity: major\n  annotations:\n    summary: \"Claims processing throughput dropped 20% below baseline\"\n    description: \"Current: {{ $value }} claims/sec, Baseline: {{ $baseline }} claims/sec\"\n```\n\n**Capacity Warning Alert**:\n```yaml\n- alert: HighCPUUtilization\n  expr: |\n    avg(rate(process_cpu_seconds_total[5m])) > 0.80\n  for: 30m\n  labels:\n    severity: warning\n  annotations:\n    summary: \"CPU utilization above 80% on {{ $labels.service }}\"\n    description: \"Consider scaling. Current utilization: {{ $value | humanizePercentage }}\"\n```",
+    "33": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#integration-with-distributed-tracing]\n\n### Integration with Distributed Tracing\n\nMetrics complement distributed tracing by providing aggregate views:\n\n- **Metrics**: Aggregate performance (P95 latency across all requests), trends over time, alert thresholds\n- **Tracing**: Individual request details (which specific request was slow), drill-down from metrics to traces\n\n**Integration Pattern**:\n1. Grafana dashboard shows P95 latency spike at 10:45 AM\n2. Engineer clicks spike, filtered to that time range\n3. Dashboard link to distributed tracing UI (Jaeger) filtered to slow traces during 10:45 AM\n4. Engineer views specific slow traces to identify root cause",
+    "34": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#variations]\n\n### Variations\n\n**Variation 1: Basic Monitoring (Small Teams)**\n- Single Prometheus server\n- Manual service configuration (static targets)\n- Basic pre-built Grafana dashboards\n- Simple threshold alerts\n\n**Variation 2: Enterprise Monitoring (Gainwell Scale)**\n- Prometheus federation (multiple Prometheus servers aggregating to central)\n- Kubernetes service discovery\n- Custom dashboards per product/service\n- Dynamic alert thresholds based on historical baselines\n- Integration with PagerDuty, ServiceNow, Microsoft Teams\n\n**Variation 3: Multi-Tenant Monitoring**\n- Tenant label on all metrics (`state=\"CA\"`, `state=\"NY\"`)\n- Per-tenant Grafana dashboards\n- Per-tenant alert rules and thresholds\n- Tenant-isolated Prometheus instances for security\n\n**Variation 4: Hybrid Monitoring**\n- Prometheus for application metrics\n- Azure Monitor for infrastructure metrics (VM, AKS, SQL Database)\n- Grafana unified dashboards querying both Prometheus and Azure Monitor\n- Single pane of glass for complete observability",
+    "35": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#implementation-guidelines]\n\n## Implementation Guidelines",
+    "36": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#prerequisites]\n\n### Prerequisites\n\n- **Prometheus Server**: Deployed and accessible (standalone, containerized, or Kubernetes operator)\n- **Grafana**: Installed with Prometheus data source configured\n- **Service Framework**: ASP.NET Core, Spring Boot, or Node.js/Express\n- **Kubernetes Cluster**: (Recommended) For automatic service discovery via pod annotations\n- **Alert Routing**: PagerDuty/MS Teams/Slack for alert notifications",
+    "37": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#step-by-step-implementation]\n\n### Step-by-Step Implementation",
+    "38": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#step-1-install-prometheus-client-library]\n\n#### Step 1: Install Prometheus Client Library\n\n**.NET Service**:\n```bash\ndotnet add package prometheus-net.AspNetCore\n```\n\n**Java/Spring Boot Service**:\n```xml\n<dependency>\n    <groupId>io.micrometer</groupId>\n    <artifactId>micrometer-registry-prometheus</artifactId>\n</dependency>\n```\n\n**Node.js Service**:\n```bash\nnpm install prom-client\n```",
+    "39": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#step-2-configure-metrics-endpoint]\n\n#### Step 2: Configure Metrics Endpoint\n\n**.NET (ASP.NET Core)**:\n```csharp\n// Program.cs\nusing Prometheus;\n\nvar builder = WebApplication.CreateBuilder(args);\n\n// Add services\nbuilder.Services.AddControllers();\n\nvar app = builder.Build();\n\n// Enable HTTP metrics middleware (automatic request/response metrics)\napp.UseHttpMetrics();\n\n// Enable routing before mapping metrics endpoint\napp.UseRouting();\n\n// Map Prometheus metrics endpoint\napp.MapMetrics();  // Exposes /metrics endpoint\n\napp.MapControllers();\n\napp.Run();\n```\n\n**Automatic Metrics Collected**:\n- `http_requests_received_total` - Total HTTP requests by method, controller, action, status\n- `http_request_duration_seconds` - Request duration histogram with P50/P95/P99\n- `http_requests_in_progress` - Current in-flight requests\n\n**Java (Spring Boot with Micrometer)**:\n```java\n// application.properties\nmanagement.endpoints.web.exposure.include=prometheus,health,info\nmanagement.metrics.export.prometheus.enabled=true\n\n// No additional code required - Spring Boot Actuator automatically exposes /actuator/prometheus\n```\n\n**Automatic Metrics Collected**:\n- `http_server_requests_seconds` - Request duration with percentiles\n- `http_server_requests_seconds_count` - Total requests\n- `jvm_memory_used_bytes` - JVM memory usage\n- `jvm_gc_pause_seconds` - Garbage collection metrics\n\n**Node.js (Express)**:\n```javascript\nconst express = require('express');\nconst promClient = require('prom-client');\n\nconst app = express();\n\n// Create a Registry which registers the metrics\nconst register = new promClient.Registry();\n\n// Add default metrics (CPU, memory, event loop lag)\npromClient.collectDefaultMetrics({ register });\n\n// Create HTTP metrics\nconst httpRequestDuration = new promClient.Histogram({\n  name: 'http_request_duration_seconds',\n  help: 'Duration of HTTP requests in seconds',\n  labelNames: ['method', 'route', 'status_code'],\n  buckets: [0.1, 0.5, 1, 2, 5]\n});\n\nregister.registerMetric(httpRequestDuration);\n\n// Middleware to measure request duration\napp.use((req, res, next) => {\n  const end = httpRequestDuration.startTimer();\n  res.on('finish', () => {\n    end({ method: req.method, route: req.route?.path || req.path, status_code: res.statusCode });\n  });\n  next();\n});\n\n// Expose metrics endpoint\napp.get('/metrics', async (req, res) => {\n  res.set('Content-Type', register.contentType);\n  res.end(await register.metrics());\n});\n\n// Your application routes\napp.get('/api/claims', (req, res) => {\n  // Handle claims request\n});\n\napp.listen(3000);\n```",
+    "40": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#step-3-add-custom-business-metrics]\n\n#### Step 3: Add Custom Business Metrics\n\n**.NET - Counter (Claims Processed)**:\n```csharp\nusing Prometheus;\n\npublic class ClaimsService\n{\n    // Define counter with labels\n    private static readonly Counter ClaimsProcessed = Metrics.CreateCounter(\n        \"claims_processed_total\",\n        \"Total number of claims processed\",\n        new CounterConfiguration\n        {\n            LabelNames = new[] { \"state\", \"claim_type\", \"status\" }\n        });\n\n    public async Task ProcessClaimAsync(Claim claim)\n    {\n        try\n        {\n            // Process claim logic...\n            await _repository.SaveAsync(claim);\n\n            // Increment counter with labels\n            ClaimsProcessed\n                .WithLabels(claim.StateCode, claim.ClaimType, \"success\")\n                .Inc();\n        }\n        catch (Exception ex)\n        {\n            ClaimsProcessed\n                .WithLabels(claim.StateCode, claim.ClaimType, \"failed\")\n                .Inc();\n            throw;\n        }\n    }\n}\n```\n\n**.NET - Histogram (Payment Amount Distribution)**:\n```csharp\nusing Prometheus;\n\npublic class PaymentService\n{\n    private static readonly Histogram PaymentAmount = Metrics.CreateHistogram(\n        \"payment_amount_dollars\",\n        \"Distribution of payment amounts in dollars\",\n        new HistogramConfiguration\n        {\n            LabelNames = new[] { \"state\", \"payment_type\" },\n            Buckets = new[] { 100, 500, 1000, 5000, 10000, 50000 }\n        });\n\n    public async Task ProcessPaymentAsync(Payment payment)\n    {\n        // Process payment...\n\n        // Record payment amount\n        PaymentAmount\n            .WithLabels(payment.StateCode, payment.PaymentType)\n            .Observe(payment.Amount);\n    }\n}\n```\n\n**.NET - Gauge (Queue Depth)**:\n```csharp\nusing Prometheus;\n\npublic class ClaimsQueueMonitor : BackgroundService\n{\n    private static readonly Gauge QueueDepth = Metrics.CreateGauge(\n        \"claims_queue_depth\",\n        \"Current number of claims in processing queue\",\n        new GaugeConfiguration\n        {\n            LabelNames = new[] { \"queue_name\" }\n        });\n\n    protected override async Task ExecuteAsync(CancellationToken stoppingToken)\n    {\n        while (!stoppingToken.IsCancellationRequested)\n        {\n            // Query queue depth from Azure Service Bus\n            var depth = await _serviceBusClient.GetQueueDepthAsync(\"claims-queue\");\n\n            QueueDepth\n                .WithLabels(\"claims-queue\")\n                .Set(depth);\n\n            await Task.Delay(TimeSpan.FromSeconds(15), stoppingToken);\n        }\n    }\n}\n```\n\n**Java (Spring Boot) - Custom Metrics**:\n```java\nimport io.micrometer.core.instrument.Counter;\nimport io.micrometer.core.instrument.MeterRegistry;\nimport org.springframework.stereotype.Service;\n\n@Service\npublic class ClaimsService {\n\n    private final Counter claimsProcessed;\n\n    public ClaimsService(MeterRegistry registry) {\n        this.claimsProcessed = Counter.builder(\"claims_processed_total\")\n            .description(\"Total claims processed\")\n            .tag(\"application\", \"claims-service\")\n            .register(registry);\n    }\n\n    public void processClaim(Claim claim) {\n        // Process claim...\n\n        // Increment counter\n        claimsProcessed.increment();\n    }\n}\n```\n\n**Node.js - Custom Metrics**:\n```javascript\nconst promClient = require('prom-client');\n\n// Define counter\nconst claimsProcessed = new promClient.Counter({\n  name: 'claims_processed_total',\n  help: 'Total claims processed',\n  labelNames: ['state', 'claim_type', 'status']\n});\n\n// Increment counter\nasync function processClaim(claim) {\n  try {\n    // Process claim logic...\n    await repository.save(claim);\n\n    claimsProcessed.labels(claim.state, claim.claimType, 'success').inc();\n  } catch (error) {\n    claimsProcessed.labels(claim.state, claim.claimType, 'failed').inc();\n    throw error;\n  }\n}\n```",
+    "41": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#step-4-configure-kubernetes-pod-for-prometheus-scraping]\n\n#### Step 4: Configure Kubernetes Pod for Prometheus Scraping\n\n```yaml\napiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: claims-service\nspec:\n  replicas: 3\n  selector:\n    matchLabels:\n      app: claims-service\n  template:\n    metadata:\n      labels:\n        app: claims-service\n      annotations:\n        # Prometheus scraping annotations\n        prometheus.io/scrape: \"true\"\n        prometheus.io/port: \"8080\"\n        prometheus.io/path: \"/metrics\"\n    spec:\n      containers:\n      - name: claims-service\n        image: claims-service:1.2.3\n        ports:\n        - containerPort: 8080\n          name: http\n```",
+    "42": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#step-5-configure-prometheus-server]\n\n#### Step 5: Configure Prometheus Server\n\n**prometheus.yml** (Kubernetes Service Discovery):\n```yaml\nglobal:\n  scrape_interval: 15s      # Scrape targets every 15 seconds\n  evaluation_interval: 15s  # Evaluate alert rules every 15 seconds\n\nscrape_configs:\n  # Kubernetes pod discovery\n  - job_name: 'kubernetes-pods'\n    kubernetes_sd_configs:\n      - role: pod\n\n    # Keep only pods with prometheus.io/scrape: \"true\" annotation\n    relabel_configs:\n      - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]\n        action: keep\n        regex: true\n\n      # Use port from prometheus.io/port annotation\n      - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_port]\n        action: replace\n        target_label: __address__\n        regex: ([^:]+)(?::\\d+)?\n\n      # Use path from prometheus.io/path annotation (default /metrics)\n      - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_path]\n        action: replace\n        target_label: __metrics_path__\n        regex: (.+)\n\n      # Add pod labels as metric labels\n      - action: labelmap\n        regex: __meta_kubernetes_pod_label_(.+)\n\n      # Add namespace, pod name as labels\n      - source_labels: [__meta_kubernetes_namespace]\n        target_label: kubernetes_namespace\n      - source_labels: [__meta_kubernetes_pod_name]\n        target_label: kubernetes_pod_name\n```",
+    "43": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#step-6-create-grafana-dashboard]\n\n#### Step 6: Create Grafana Dashboard\n\n**Import Pre-Built Dashboard** (Recommended for getting started):\n1. Login to Grafana\n2. Click **+** → **Import**\n3. Enter dashboard ID for pre-built templates:\n   - **1860**: Node Exporter Full (infrastructure metrics)\n   - **6417**: Kubernetes Cluster Monitoring\n   - **10280**: Spring Boot 2.1 Statistics\n   - **11159**: ASP.NET Core Metrics\n\n**Create Custom Dashboard**:\n```json\n{\n  \"dashboard\": {\n    \"title\": \"Claims Service Performance\",\n    \"panels\": [\n      {\n        \"title\": \"Request Rate\",\n        \"targets\": [\n          {\n            \"expr\": \"rate(http_requests_total{service=\\\"claims-service\\\"}[5m])\",\n            \"legendFormat\": \"{{method}} {{endpoint}}\"\n          }\n        ],\n        \"type\": \"graph\"\n      },\n      {\n        \"title\": \"P95 Latency\",\n        \"targets\": [\n          {\n            \"expr\": \"histogram_quantile(0.95, rate(http_request_duration_seconds_bucket{service=\\\"claims-service\\\"}[5m]))\",\n            \"legendFormat\": \"P95\"\n          }\n        ],\n        \"type\": \"graph\"\n      },\n      {\n        \"title\": \"Claims Processed/Hour\",\n        \"targets\": [\n          {\n            \"expr\": \"rate(claims_processed_total[1h]) * 3600\",\n            \"legendFormat\": \"{{state}} - {{claim_type}}\"\n          }\n        ],\n        \"type\": \"graph\"\n      }\n    ]\n  }\n}\n```",
+    "44": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#step-7-configure-alerting-rules]\n\n#### Step 7: Configure Alerting Rules\n\n**alert-rules.yml**:\n```yaml\ngroups:\n\n  - name: claims_service_alerts\n    interval: 30s\n    rules:\n      # High error rate alert\n      - alert: HighErrorRate\n        expr: |\n          rate(http_requests_total{status=~\"5..\", service=\"claims-service\"}[5m])\n          / rate(http_requests_total{service=\"claims-service\"}[5m]) > 0.01\n        for: 5m\n        labels:\n          severity: critical\n          service: claims-service\n        annotations:\n          summary: \"High error rate on Claims Service\"\n          description: \"Error rate is {{ $value | humanizePercentage }} (threshold: 1%)\"\n\n      # High P95 latency alert\n      - alert: HighP95Latency\n        expr: |\n          histogram_quantile(0.95,\n            rate(http_request_duration_seconds_bucket{service=\"claims-service\"}[5m])\n          ) > 2.0\n        for: 10m\n        labels:\n          severity: major\n          service: claims-service\n        annotations:\n          summary: \"P95 latency exceeds 2 seconds\"\n          description: \"Current P95 latency: {{ $value | humanizeDuration }}\"\n\n      # Throughput drop alert\n      - alert: ClaimsThroughputDrop\n        expr: |\n          rate(claims_processed_total[5m]) <\n          (avg_over_time(rate(claims_processed_total[5m])[1h]) * 0.80)\n        for: 15m\n        labels:\n          severity: major\n          service: claims-service\n        annotations:\n          summary: \"Claims processing throughput dropped 20%\"\n          description: \"Current rate: {{ $value }} claims/sec\"\n\n      # Capacity warning\n      - alert: HighCPUUtilization\n        expr: |\n          avg(rate(process_cpu_seconds_total{service=\"claims-service\"}[5m])) > 0.80\n        for: 30m\n        labels:\n          severity: warning\n          service: claims-service\n        annotations:\n          summary: \"CPU utilization above 80%\"\n          description: \"Consider horizontal scaling. Current: {{ $value | humanizePercentage }}\"\n```\n\n**Alertmanager Configuration** (alertmanager.yml):\n```yaml\nglobal:\n  resolve_timeout: 5m\n\nroute:\n  # Default receiver\n  receiver: 'team-notifications'\n\n  # Group alerts by service and alertname\n  group_by: ['service', 'alertname']\n  group_wait: 10s\n  group_interval: 10s\n  repeat_interval: 12h\n\n  # Route critical alerts to PagerDuty\n  routes:\n    - match:\n        severity: critical\n      receiver: pagerduty-critical\n      continue: true\n\n    - match:\n        severity: major\n      receiver: pagerduty-major\n      continue: true\n\n    - match:\n        severity: warning\n      receiver: teams-notifications\n\nreceivers:\n\n  - name: 'pagerduty-critical'\n    pagerduty_configs:\n      - service_key: '<pagerduty-integration-key>'\n        severity: critical\n\n  - name: 'pagerduty-major'\n    pagerduty_configs:\n      - service_key: '<pagerduty-integration-key>'\n        severity: warning\n\n  - name: 'teams-notifications'\n    webhook_configs:\n      - url: '<microsoft-teams-webhook-url>'\n\n  - name: 'team-notifications'\n    webhook_configs:\n      - url: '<microsoft-teams-webhook-url>'\n```",
+    "45": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#best-practices]\n\n### Best Practices\n\n| Best Practice | Description | Example |\n|---------------|-------------|---------|\n| **Use Standard Metric Names** | Follow Prometheus naming conventions | `http_request_duration_seconds` not `request_time_ms` |\n| **Include Units in Names** | Add suffix indicating unit | `_seconds`, `_bytes`, `_dollars`, `_total` |\n| **Use Labels for Dimensions** | Don't create separate metrics for each dimension | `http_requests_total{method=\"GET\", endpoint=\"/api/claims\"}` not `http_requests_get_claims_total` |\n| **Limit Label Cardinality** | Avoid high-cardinality labels (user ID, transaction ID) | Use `state=\"CA\"` (50 values) not `user_id=\"12345\"` (5M values) |\n| **Instrument at Boundaries** | Add metrics at service boundaries (HTTP, queues, database) | Measure inbound requests, outbound API calls, database queries |\n| **Use Histograms for Latency** | Track latency distribution, not just averages | Histogram enables P50/P95/P99 calculation |\n| **Configure Appropriate Buckets** | Set histogram buckets matching expected distribution | Latency buckets: [0.1, 0.5, 1, 2, 5, 10] for API with 1s SLA |\n| **Scrape Don't Push** | Let Prometheus scrape metrics (pull model) | Expose `/metrics` endpoint, don't send metrics to Prometheus |\n| **Monitor Golden Signals** | Track Rate, Errors, Duration (RED), and Saturation | Essential metrics for service health |\n| **Test Metrics in Dev** | Verify metrics appear in Prometheus before deploying to prod | Query Prometheus after local deployment |",
+    "46": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#common-pitfalls]\n\n### Common Pitfalls\n\n| Pitfall | Impact | Solution |\n|---------|--------|----------|\n| **High-Cardinality Labels** | Prometheus performance degradation, storage explosion | Never use user ID, transaction ID, or timestamp as labels. Use low-cardinality dimensions (service, environment, state) |\n| **Too Many Metrics** | Memory overhead, slow queries | Focus on actionable metrics. Don't instrument everything. Start with Golden Signals (Rate, Errors, Duration) |\n| **Inconsistent Metric Names** | Difficult to query across services | Establish naming conventions enterprise-wide. Use standard prefixes (`http_`, `db_`, `queue_`) |\n| **Missing Units in Names** | Ambiguity (seconds vs milliseconds?) | Always include unit suffix: `_seconds`, `_bytes`, `_total` |\n| **Averaging Percentiles** | Mathematically incorrect | Use histograms and calculate percentiles from buckets, never average P95 values |\n| **No Alert Tuning** | Alert fatigue from false positives | Start conservative (high thresholds, long duration), tune based on actual performance baselines over 2-4 weeks |\n| **Metrics Without Labels** | Can't filter or aggregate | Always include service name, environment labels at minimum |\n| **Push Instead of Pull** | Metrics lost if service crashes before push | Use Prometheus pull model (service exposes `/metrics`, Prometheus scrapes) |",
+    "47": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#governance-and-compliance]\n\n## Governance and Compliance",
+    "48": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#standards-and-policies]\n\n### Standards and Policies\n\n| Standard | Requirement | Enforcement |\n|----------|-------------|-------------|\n| **Metrics Endpoint** | ALL production services MUST expose `/metrics` endpoint in Prometheus format | Code review, automated testing, deployment gate |\n| **Kubernetes Annotations** | ALL Kubernetes pods MUST include `prometheus.io/scrape: \"true\"` annotation | Kubernetes admission controller validation |\n| **Standard Metrics** | ALL HTTP services MUST expose standard RED metrics (Rate, Errors, Duration) | Prometheus client library automatic instrumentation |\n| **Business Metrics** | Services MUST instrument business-critical operations (claims processed, payments completed, enrollments) | Architecture review requirement |\n| **Metric Naming** | Metrics MUST follow Prometheus naming conventions (snake_case, unit suffixes) | Linting rules in CI/CD pipeline |\n| **Label Cardinality** | Metrics MUST NOT use high-cardinality labels (user ID, transaction ID) | Prometheus performance monitoring, alert on high cardinality |\n| **Dashboard Creation** | Each service MUST have Grafana dashboard showing Golden Signals | Service onboarding checklist |\n| **Alert Configuration** | Each service MUST configure alerts for error rate >1% and P95 latency exceeding SLA | Service deployment requirement |",
+    "49": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#hipaa-compliance]\n\n### HIPAA Compliance\n\n**PHI Protection in Metrics**:\n- Metrics MUST NOT contain Protected Health Information in metric names, label values, or metric values\n- Use aggregate counts (`member_count: 1247`) not identifiable information (`member_name: \"John Doe\"`)\n- Use opaque IDs if absolutely necessary (`claim_id: \"CLM-12345\"`) not member names/SSNs\n- Review metrics for PHI exposure before exposing `/metrics` endpoint\n\n**Audit Logging**:\n- Grafana dashboard access must be logged (who viewed which dashboard when)\n- Alert notification history must be retained (who was notified about which alert)\n- Metrics retention aligned with HIPAA requirements (6-year minimum for audit-related metrics)\n\n**Access Controls**:\n- Grafana dashboards with PHI-adjacent metrics (member counts, claims volumes by state) require authentication\n- Role-based access control (RBAC) for Grafana (developers see dev/test, operations see prod)\n- Prometheus `/metrics` endpoints protected by network policies (accessible only from Prometheus server, not public internet)",
+    "50": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#monitoring-and-success-metrics]\n\n### Monitoring and Success Metrics\n\n| Metric | Target | Measurement |\n|--------|--------|-------------|\n| **Metrics Coverage** | 100% of production services expose Prometheus metrics | Automated discovery: count services with `/metrics` endpoint / total services |\n| **Dashboard Availability** | 100% of services have Grafana dashboard | Service inventory check: services with dashboard / total services |\n| **Alert Response Time** | Critical alerts acknowledged within 5 minutes | PagerDuty metrics: time from alert fire to acknowledge |\n| **Mean Time to Detection (MTTD)** | <5 minutes for performance degradation | Compare incident start time (from logs/traces) to alert fire time |\n| **Mean Time to Resolution (MTTR)** | <45 minutes for performance incidents | Incident timestamp from alert to resolution |\n| **Alert Accuracy** | >80% of alerts are actionable (not false positives) | Manual review: actionable alerts / total alerts |\n| **Dashboard Usage** | Dashboards viewed during 90% of incidents | Incident postmortems: was dashboard consulted? |",
+    "51": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#examples-and-use-cases]\n\n## Examples and Use Cases",
+    "52": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#example-1-claims-adjudication-performance-monitoring]\n\n### Example 1: Claims Adjudication Performance Monitoring\n\n**Dashboard**: Claims Service Golden Signals\n\n**Metrics Displayed**:\n\n```promql\n# Request Rate (requests per second)\nrate(http_requests_total{service=\"claims-service\"}[5m])\n\n# Error Rate (percentage)\nrate(http_requests_total{service=\"claims-service\", status=~\"5..\"}[5m])\n/ rate(http_requests_total{service=\"claims-service\"}[5m]) * 100\n\n# P50 Latency\nhistogram_quantile(0.50, rate(http_request_duration_seconds_bucket{service=\"claims-service\"}[5m]))\n\n# P95 Latency\nhistogram_quantile(0.95, rate(http_request_duration_seconds_bucket{service=\"claims-service\"}[5m]))\n\n# P99 Latency\nhistogram_quantile(0.99, rate(http_request_duration_seconds_bucket{service=\"claims-service\"}[5m]))\n\n# Claims Processing Rate (claims per hour)\nrate(claims_processed_total{service=\"claims-service\"}[1h]) * 3600\n```\n\n**Alert Example** (P95 latency threshold):\n```yaml\n- alert: ClaimsServiceHighLatency\n  expr: |\n    histogram_quantile(0.95,\n      rate(http_request_duration_seconds_bucket{service=\"claims-service\"}[5m])\n    ) > 1.5\n  for: 5m\n  labels:\n    severity: major\n    service: claims-service\n  annotations:\n    summary: \"Claims Service P95 latency exceeds 1.5 seconds\"\n    description: \"Current P95: {{ $value | humanizeDuration }}. SLA threshold: 2s\"\n```\n\n**Incident Response Using Dashboard**:\n1. **10:45 AM**: Alert fires \"ClaimsServiceHighLatency\" (P95: 4.2s)\n2. **10:46 AM**: SRE opens Grafana dashboard, sees:\n   - Request rate normal (847 req/min, baseline 820)\n   - Error rate normal (0.3%, threshold 1%)\n   - P95 latency spiked from 780ms → 4.2s at 9:15 AM\n   - CPU utilization increased from 62% → 87%\n   - Memory utilization increased from 68% → 93%\n3. **10:48 AM**: SRE drills into per-endpoint metrics, sees `/api/claims/process` endpoint latency elevated\n4. **10:50 AM**: SRE escalates to Claims platform team with specific dashboard link filtered to slow endpoint\n5. **11:05 AM**: Engineering reviews Application Performance Monitoring (APM), discovers memory pressure from inefficient LINQ query\n6. **11:47 AM**: Hotfix deployed optimizing query, dashboard shows P95 latency returning to 780ms",
+    "53": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#example-2-provider-portal-capacity-planning]\n\n### Example 2: Provider Portal Capacity Planning\n\n**Dashboard**: Provider Portal Capacity Planning (30-Day Trends)\n\n**Metrics Displayed**:\n\n```promql\n# CPU Utilization Trend (30 days)\navg(rate(process_cpu_seconds_total{service=\"provider-portal\"}[5m]))\n\n# Memory Utilization Trend (30 days)\navg(process_resident_memory_bytes{service=\"provider-portal\"})\n\n# Request Rate Trend (30 days)\nrate(http_requests_total{service=\"provider-portal\"}[5m])\n\n# Database Connection Pool Utilization (30 days)\navg(database_connections_active{service=\"provider-portal\"}\n    / database_connections_max{service=\"provider-portal\"})\n```\n\n**Capacity Alert** (proactive scaling warning):\n```yaml\n- alert: ProviderPortalCPUTrendWarning\n  expr: |\n    predict_linear(\n      avg(rate(process_cpu_seconds_total{service=\"provider-portal\"}[5m]))[7d:],\n      7*24*3600\n    ) > 0.85\n  for: 1h\n  labels:\n    severity: warning\n    service: provider-portal\n  annotations:\n    summary: \"Provider Portal CPU projected to exceed 85% in 7 days\"\n    description: \"Current: {{ $value | humanizePercentage }}. Consider scaling before peak utilization.\"\n```\n\n**Capacity Planning Workflow**:\n1. **Week 1-4**: Metrics collected showing gradual traffic increase (enrollment period approaching)\n2. **Day 28**: Dashboard shows:\n   - CPU utilization trending upward: 62% (Week 1) → 76% (Week 4)\n   - Request rate increasing: 347 req/min (Week 1) → 512 req/min (Week 4)\n   - Database connection pool: 54% utilized (Week 1) → 68% utilized (Week 4)\n   - Linear regression forecast: CPU will reach 85% in 7 days\n3. **Day 28**: Alert fires \"ProviderPortalCPUTrendWarning\"\n4. **Day 29**: Operations team reviews dashboard, decides to scale from 4 to 6 replicas\n5. **Day 30**: Horizontal scaling completed during maintenance window\n6. **Week 5**: Peak enrollment traffic arrives, CPU utilization stays at 72% (with 6 replicas vs. projected 91% with 4 replicas)\n\n**Result**: Proactive capacity planning prevented outage during peak enrollment period",
+    "54": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#example-3-business-metrics-dashboard-for-product-manager]\n\n### Example 3: Business Metrics Dashboard for Product Manager\n\n**Dashboard**: Claims Processing Business KPIs\n\n**Metrics Displayed**:\n\n```promql\n# Total Claims Processed Today\nsum(increase(claims_processed_total{status=\"success\"}[24h]))\n\n# Claims Processing Rate (per hour)\nsum(rate(claims_processed_total{status=\"success\"}[1h])) * 3600\n\n# Claims by State (breakdown)\nsum by (state) (rate(claims_processed_total[1h])) * 3600\n\n# Total Payment Value Processed Today\nsum(increase(payment_amount_dollars_sum[24h]))\n\n# Average Claim Processing Duration\nrate(claims_processing_duration_seconds_sum[1h])\n/ rate(claims_processing_duration_seconds_count[1h])\n\n# Error Rate by Claim Type\nsum by (claim_type) (\n  rate(claims_processed_total{status=\"failed\"}[1h])\n) / sum by (claim_type) (\n  rate(claims_processed_total[1h])\n) * 100\n```\n\n**Product Manager View**:\n- **Claims Processed Today**: 487,234 claims (target: 500K, 97% of target)\n- **Processing Rate**: 14,180 claims/hour (baseline: 14,200/hour, -0.1%)\n- **Top States by Volume**: CA (127K), NY (94K), FL (73K), TX (68K)\n- **Average Processing Time**: 2.1 seconds (target: <3s, meeting SLA)\n- **Error Rate by Type**: Professional claims 0.3%, Institutional claims 0.8%\n\n**Use Case**: Product manager presents weekly business review showing claims volume trends, processing efficiency, and state-by-state performance without requiring engineering support",
+    "55": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#tldr-too-long-didnt-read]\n\n## TL;DR (Too Long; Didn't Read)",
+    "56": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#the-problem]\n\n### The Problem\n\nOperating microservices blind without metrics causes:\n\n- **90-minute detection delays** for performance degradation (claims service incident)\n- **6-hour investigations** to diagnose slow endpoints without detailed metrics (provider portal)\n- **Emergency capacity scaling** from lack of trend analysis (payment integrity platform)\n- **11-day delayed detection** of throughput degradation when technical health checks show \"healthy\" (EDI gateway)",
+    "57": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#the-solution]\n\n### The Solution\n\nImplement comprehensive metrics with **Prometheus** (collection) and **Grafana** (visualization):\n\n- **Instrument services** with Prometheus client libraries (Prometheus.NET, Micrometer, prom-client)\n- **Expose `/metrics` endpoint** in Prometheus text format\n- **Collect automatically** via Prometheus scraping (15-second interval)\n- **Visualize in Grafana** dashboards showing Golden Signals (Rate, Errors, Duration, Saturation)\n- **Alert proactively** using PromQL rules with PagerDuty/MS Teams integration",
+    "58": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#quick-start]\n\n### Quick Start\n\n**1. Add Client Library**:\n```bash\n# .NET\ndotnet add package prometheus-net.AspNetCore\n\n# Java\n# Add micrometer-registry-prometheus dependency\n\n# Node.js\nnpm install prom-client\n```\n\n**2. Expose Metrics Endpoint**:\n```csharp\n// .NET\napp.UseHttpMetrics();  // Auto-collect HTTP metrics\napp.MapMetrics();      // Expose /metrics endpoint\n```\n\n**3. Add Kubernetes Annotations**:\n```yaml\nannotations:\n  prometheus.io/scrape: \"true\"\n  prometheus.io/port: \"8080\"\n  prometheus.io/path: \"/metrics\"\n```\n\n**4. Query Metrics in Grafana**:\n```promql\n# P95 latency\nhistogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m]))\n\n# Error rate\nrate(http_requests_total{status=~\"5..\"}[5m]) / rate(http_requests_total[5m])\n\n# Request rate\nrate(http_requests_total[5m])\n```",
+    "59": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#key-benefits-quantified]\n\n### Key Benefits (Quantified)\n\n| Benefit | Improvement |\n|---------|-------------|\n| **Incident Detection** | 90 minutes → 5 minutes (94% faster) with P95 latency alerts |\n| **MTTR** | 6 hours → 35 minutes (90% faster) with detailed performance metrics |\n| **Capacity Planning** | Prevent emergency scaling with 7-day forecast alerts |\n| **Business Visibility** | Real-time KPI dashboards (claims/hour, payments $, enrollments) |\n| **SLA Reporting** | Automated uptime/latency compliance reports (28 hours → 4 hours quarterly) |",
+    "60": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#must-know-metric-types]\n\n### Must-Know Metric Types\n\n| Type | Use Case | Example |\n|------|----------|---------|\n| **Counter** | Events that only increase | `http_requests_total`, `claims_processed_total` |\n| **Gauge** | Current level (up or down) | `queue_depth`, `cpu_utilization_percent` |\n| **Histogram** | Distribution (latency, amount) | `http_request_duration_seconds` (enables P50/P95/P99) |\n| **Summary** | Pre-calculated quantiles | Similar to histogram, but client-side calculation |",
+    "61": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#dashboard-patterns]\n\n### Dashboard Patterns\n\n- **Golden Signals**: Latency, Traffic, Errors, Saturation (Google SRE)\n- **RED Method**: Rate, Errors, Duration (for services)\n- **USE Method**: Utilization, Saturation, Errors (for resources)",
+    "62": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#critical-warnings]\n\n### Critical Warnings\n\n❌ **DO NOT**:\n\n- Use high-cardinality labels (user ID, transaction ID) - causes Prometheus performance issues\n- Average percentiles (mathematically wrong) - use histograms and `histogram_quantile()`\n- Include PHI in metrics (HIPAA violation) - use aggregate counts only\n- Push metrics to Prometheus - use pull model (Prometheus scrapes `/metrics`)\n\n✅ **DO**:\n\n- Follow naming conventions (`http_request_duration_seconds` with units)\n- Use labels for dimensions (`{service=\"claims\", environment=\"prod\"}`)\n- Instrument Golden Signals at minimum (Rate, Errors, Duration)\n- Start with pre-built dashboards (import from Grafana.com)\n- Tune alerts over 2-4 weeks to reduce false positives",
+    "63": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#implementation-complexity]\n\n### Implementation Complexity\n\n**Medium** - Requires:\n- Prometheus client library (5-10 lines code)\n- Kubernetes annotations (3 lines YAML)\n- Prometheus server deployment\n- Grafana setup with dashboards\n- Alert rule configuration\n\n**Time Estimate**:\n- First service instrumentation: 4 hours\n- Prometheus/Grafana deployment: 8 hours\n- Dashboard creation: 2-4 hours per service\n- Alert configuration: 2-3 hours per service\n- Enterprise rollout: 6-12 weeks for 200+ services",
+    "64": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#next-steps]\n\n### Next Steps\n\n1. **Pilot service** - Instrument one service with Prometheus.NET/Micrometer/prom-client (4 hours)\n2. **Deploy Prometheus** - Standalone or Kubernetes operator (4 hours)\n3. **Create first dashboard** - Import Golden Signals template, customize (2 hours)\n4. **Configure alerts** - Error rate and P95 latency alerts (2 hours)\n5. **Validate metrics** - Verify metrics appear in Prometheus, dashboard queries work (1 hour)\n6. **Scale rollout** - Apply to remaining services following same pattern (ongoing)",
+    "65": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#related-patterns-and-references]\n\n## Related Patterns and References",
+    "66": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#related-patterns]\n\n### Related Patterns\n\n- [Health Check Pattern](./PTN-OPS-API-002-health-check-pattern.md)\n- [SLA Monitoring Pattern](./sla-monitoring-pattern.md)",
+    "67": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#external-references]\n\n### External References\n\n- [Prometheus](https://prometheus.io/)\n- [Grafana](https://grafana.com/)",
+    "68": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#change-history]\n\n## Change History\n\n| Date       | Version | Author              | Description              | Impact      |\n| ---------- | ------- | ------------------- | ------------------------ | ----------- |\n| 2026-01-02 | 1.0.0   | Enterprise Architect | Initial pattern creation | New pattern |",
+    "69": "[patterns/itsm-operations/api-microservices/PTN-OPS-API-005-metrics-monitoring-pattern.md#review-log]\n\n## Review Log\n\n| Review Date | Review Type | Reviewer(s) | Status | Comments | Actions |\n| ----------- | ----------- | ----------- | ------ | -------- | ------- |\n| TBD         | TBD         | TBD         | Draft  | TBD      | TBD     |\n\n---"
+  },
+  "coverage": {
+    "total_pages": 69,
+    "covered_pages": 69,
+    "sampled_pages": 69,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 69
+  }
+}

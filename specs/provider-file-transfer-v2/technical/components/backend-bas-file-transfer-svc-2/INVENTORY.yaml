@@ -1,0 +1,106 @@
+component: backend-bas-file-transfer-svc-2
+tier: backend
+depends_on: []
+classes:
+- name: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferModuleConfigurator
+  kind: Class
+  tier: unknown
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvcCore\FileTransferModuleConfigurator.cs
+  line: 14
+  line_end: 33
+  project: HPP.FileTransfer.BAS.FileTransferSvc
+  methods:
+  - name: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferModuleConfigurator.ConfigureContractAssemblies(HPP.Core.BAS.CQRS.Interfaces.IDataContractRegistry)
+    line: 16
+    line_end: 18
+  - name: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferModuleConfigurator.ConfigureDependencies(Autofac.ContainerBuilder)
+    line: 20
+    line_end: 28
+  - name: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferModuleConfigurator.ConfigureEvents(HPP.Core.BAS.CQRS.Interfaces.IDistributableEventRegistry)
+    line: 30
+    line_end: 32
+  uses: []
+  tables:
+    orm:FTP_SERVER:
+    - reads
+    orm:FTS_INBOUND_TARGET:
+    - reads
+    orm:FTS_INTEGRATION_FILE:
+    - reads
+    orm:FTS_SUSPENSION:
+    - reads
+  packages:
+  - autofac
+- name: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcEventService
+  kind: Class
+  tier: backend
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvcCore\FileTransferSvcEventService.cs
+  line: 13
+  line_end: 28
+  project: HPP.FileTransfer.BAS.FileTransferSvc
+  methods:
+  - name: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcEventService.GetConfigurator()
+    line: 23
+    line_end: 26
+  - name: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcEventService.TryRouteCommand(HPP.Core.BAS.CQRS.Base.Command)
+    line: 18
+    line_end: 21
+  uses: []
+  packages:
+  - hpp.core.bas.cqrs
+- name: HPP.FileTransfer.BAS.FileTransferSvc.IFileTransferSvcQueryService
+  kind: Interface
+  tier: backend
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvcCore\IFileTransferSvcQueryService.cs
+  line: 25
+  line_end: 81
+  project: HPP.FileTransfer.BAS.FileTransferSvc
+  methods: []
+  uses: []
+- name: HPP.FileTransfer.BAS.FileTransferSvc.IFileTransferSvcService
+  kind: Interface
+  tier: backend
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvcCore\IFileTransferSvcService.cs
+  line: 40
+  line_end: 212
+  project: HPP.FileTransfer.BAS.FileTransferSvc
+  methods: []
+  uses: []
+- name: HPP.FileTransfer.BAS.FileTransferSvc.Program
+  kind: Class
+  tier: unknown
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvcCore\Program.cs
+  line: 13
+  line_end: 29
+  project: HPP.FileTransfer.BAS.FileTransferSvc
+  methods:
+  - name: HPP.FileTransfer.BAS.FileTransferSvc.Program.CreateHostBuilder(string[])
+    line: 23
+    line_end: 28
+  - name: HPP.FileTransfer.BAS.FileTransferSvc.Program.Main(string[])
+    line: 15
+    line_end: 21
+  uses: []
+  packages:
+  - hpp.core.bas.cqrs
+- name: HPP.FileTransfer.BAS.FileTransferSvc.Startup
+  kind: Class
+  tier: unknown
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvcCore\Startup.cs
+  line: 20
+  line_end: 68
+  project: HPP.FileTransfer.BAS.FileTransferSvc
+  methods:
+  - name: HPP.FileTransfer.BAS.FileTransferSvc.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder, Microsoft.AspNetCore.Hosting.IWebHostEnvironment, Microsoft.Extensions.Logging.ILogger<HPP.FileTransfer.BAS.FileTransferSvc.Startup>)
+    line: 36
+    line_end: 62
+  - name: HPP.FileTransfer.BAS.FileTransferSvc.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+    line: 30
+    line_end: 34
+  - name: HPP.FileTransfer.BAS.FileTransferSvc.Startup.ParseEnum<T>(string)
+    line: 64
+    line_end: 67
+  uses: []
+  packages:
+  - corewcf.primitives
+  - hpp.core.bas.cqrs

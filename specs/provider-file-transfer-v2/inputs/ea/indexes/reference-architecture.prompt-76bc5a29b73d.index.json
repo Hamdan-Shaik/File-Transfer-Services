@@ -1,0 +1,28 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "reference-architecture.prompt",
+  "document_description": "Read `.claude/commands/reference-architecture.md` for the full workflow. Determines the architecture domain and type; if the domain is Security, redirects to `/guidance` instead, since all new security reference architecture content belongs in `strategy/guidance/security/`. Otherwise resolves the actual domain directory under `strategy/reference/` (directory names do not always match the domain na",
+  "total_pages": 1,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 1,
+      "summary": "",
+      "nodes": []
+    }
+  ],
+  "page_texts": {
+    "1": "Read `.claude/commands/reference-architecture.md` for the full workflow. Determines the architecture domain and type; if the domain is Security, redirects to `/guidance` instead, since all new security reference architecture content belongs in `strategy/guidance/security/`. Otherwise resolves the actual domain directory under `strategy/reference/` (directory names do not always match the domain name literally — e.g., Information-domain artifacts live under `data/`, not `information/`) and checks it for an existing reference architecture matching the request. If none exists, reads `strategy/reference/reference-architecture-creation-guidelines.md`, derives a kebab-case title slug from the request, finds the next available `REF-<DOMAIN>-<TYPE>-<NNN>` number, copies the template from `resources/work-templates/assets/artifacts/reference-architecture.md`, and creates `strategy/reference/<domain-dir>/REF-<DOMAIN>-<TYPE>-<NNN>-<title-slug>.md` with status `'draft'`. If one exists, revises it in place, preserving its ID and path, bumps the version, and logs the change in its Change History. Reviews against `strategy/reference/reference-architecture-quality-checklist.md` and updates both the domain `README.md` and the top-level `strategy/reference/README.md` Published Reference Architectures index either way. Ends with a convergence pass per `.claude/skills/ai-convergence/SKILL.md`. A reference architecture integrates existing Standards, Patterns, Guidance, and ADRs into one deployable blueprint — it does not introduce new normative requirements."
+  },
+  "coverage": {
+    "total_pages": 1,
+    "covered_pages": 1,
+    "sampled_pages": 1,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 1
+  }
+}

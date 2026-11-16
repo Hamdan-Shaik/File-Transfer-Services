@@ -1,0 +1,74 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Establish Case (CM) - Process Flow Diagram",
+  "document_description": "subgraph TRIGGERS_ENV[\"⚡ Environment-Based Triggers\"]",
+  "total_pages": 6,
+  "tree": [
+    {
+      "title": "Establish Case (CM) - Process Flow Diagram",
+      "node_id": "establish-case-cm---process-flow-diagram",
+      "start_index": 1,
+      "end_index": 6,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Process Overview",
+          "node_id": "process-overview",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Case Types Supported",
+          "node_id": "case-types-supported",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Results",
+          "node_id": "results",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Performance Measures",
+          "node_id": "performance-measures",
+          "start_index": 5,
+          "end_index": 5,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Constraints & Failures",
+          "node_id": "constraints--failures",
+          "start_index": 6,
+          "end_index": 6,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[standards/business/MITA-3.0/bpt-workflows/care_management/CM_Establish_Case_BPT_v3.0.mermaid.md#establish-case-cm---process-flow-diagram]\n\n# Establish Case (CM) - Process Flow Diagram\n\n> Business Area: Care Management | Sub-Category: Case Management | Process Code: CM | MITA Version 3.0",
+    "2": "[standards/business/MITA-3.0/bpt-workflows/care_management/CM_Establish_Case_BPT_v3.0.mermaid.md#process-overview]\n\n## Process Overview\n\n```mermaid\nflowchart TB\n    subgraph TRIGGERS_ENV[\"⚡ Environment-Based Triggers\"]\n        T1[\"Periodic review to scan<br/>for new cases is due\"]\n        T2[\"Request to look into<br/>a specific case\"]\n    end\n\n    subgraph TRIGGERS_INT[\"🔗 Interaction-Based Triggers\"]\n        T3[\"Alert triggered by diagnosis<br/>or referral from claim\"]\n        T4[\"Receive enrollment from<br/>Enroll Member process\"]\n        T5[\"Receive information to<br/>establish case (EDI)\"]\n    end\n\n    subgraph PREDECESSORS[\"📥 Predecessor Processes\"]\n        P1[Receive Inbound Transaction]\n        P2[Enroll Member]\n        P3[Manage Applicant and Member Communication]\n        P4[Manage Member Grievance and Appeal]\n        P5[Identify Utilization Anomalies]\n    end\n\n    subgraph MAIN[\"🔄 Establish Case Process\"]\n        START([1. START: Identify candidates<br/>for new cases])\n        STEP2[2. Identify information<br/>requirements & parameters]\n        STEP3[3. Identify new cases<br/>based on requirements]\n        STEP4[4. Create case record<br/>for each new case]\n        STEP5[5. Assign care manager]\n        STEP6[6. Care manager reviews<br/>HIE health/clinical info]\n        STEP7[7. Assess member needs<br/>for care management]\n        STEP8[8. Determine appropriate<br/>program(s) for member]\n        STEP9[9. Establish treatment plan<br/>services, providers, settings]\n        STEP10[10. Select & confirm<br/>providers, record decisions]\n        STEP11[11. Record care management<br/>determination & info]\n        ENDS([12. END: Send alert to<br/>notify member of case])\n    end\n\n    subgraph SUCCESSORS[\"📤 Successor Processes\"]\n        S1[Send Outbound Transaction]\n        S2[Manage Case Information]\n        S3[Manage Applicant and Member Communication]\n        S4[Authorize Treatment Plan]\n        S5[Manage Treatment Plan and Outcomes]\n    end\n\n    subgraph DATA[\"💾 Shared Data\"]\n        D1[(Member Data Store)]\n        D2[(HIE Data Store)]\n        D3[(EMPI)]\n        D4[(Provider Data Store)]\n        D5[(Health Benefits Store)]\n    end\n\n    %% Trigger connections\n    T1 --> START\n    T2 --> START\n    T3 --> START\n    T4 --> START\n    T5 --> START\n\n    %% Predecessor connections\n    P1 -.-> START\n    P2 -.-> START\n    P3 -.-> START\n    P4 -.-> START\n    P5 -.-> START\n\n    %% Main flow\n    START --> STEP2\n    STEP2 --> STEP3\n    STEP3 --> STEP4\n    STEP4 --> STEP5\n    STEP5 --> STEP6\n    STEP6 --> STEP7\n    STEP7 --> STEP8\n    STEP8 --> STEP9\n    STEP9 --> STEP10\n    STEP10 --> STEP11\n    STEP11 --> ENDS\n\n    %% Successor connections\n    ENDS -.-> S1\n    ENDS -.-> S2\n    ENDS -.-> S3\n    ENDS -.-> S4\n    ENDS -.-> S5\n\n    %% Data connections\n    STEP6 <-->|Read| D2\n    STEP7 <-->|Read/Write| D1\n    STEP9 <-->|Read| D5\n    STEP10 <-->|Read| D4\n\n    %% Styling\n    classDef trigger fill:#e1f5fe,stroke:#0288d1,stroke-width:2px\n    classDef triggerInt fill:#e8eaf6,stroke:#3f51b5,stroke-width:2px\n    classDef predecessor fill:#fff3e0,stroke:#ff9800,stroke-width:2px\n    classDef successor fill:#e8f5e9,stroke:#4caf50,stroke-width:2px\n    classDef process fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px\n    classDef startend fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    classDef datastore fill:#fff8e1,stroke:#ffc107,stroke-width:2px\n\n    class T1,T2 trigger\n    class T3,T4,T5 triggerInt\n    class P1,P2,P3,P4,P5 predecessor\n    class S1,S2,S3,S4,S5 successor\n    class STEP2,STEP3,STEP4,STEP5,STEP6,STEP7,STEP8,STEP9,STEP10,STEP11 process\n    class START,ENDS startend\n    class D1,D2,D3,D4,D5 datastore\n```",
+    "3": "[standards/business/MITA-3.0/bpt-workflows/care_management/CM_Establish_Case_BPT_v3.0.mermaid.md#case-types-supported]\n\n## Case Types Supported\n\n| Category | Examples |\n|----------|----------|\n| Medicaid Waiver | HCBS, Other |\n| Disease Management | Chronic conditions |\n| Catastrophic Cases | State-defined |\n| EPSDT | Early Periodic Screening, Diagnosis, Treatment |\n| Immunizations | Vaccines for children and adults |\n| Population Management | Target populations |",
+    "4": "[standards/business/MITA-3.0/bpt-workflows/care_management/CM_Establish_Case_BPT_v3.0.mermaid.md#results]\n\n## Results\n\n| Outcome | Description |\n|---------|-------------|\n| 📋 Member List | Members associated with cases and programs |\n| 📊 Needs Assessment | Assessment of member care management needs |\n| 📝 Treatment Plan | Plan for member |\n| 👥 Provider List | Associated providers |\n| 📁 Case File | Case file information |\n| 📬 Communications | Information for providers and members |\n| 🔔 Alert | Notify member of care management case |\n| 📈 Tracking | Performance and BAM data |",
+    "5": "[standards/business/MITA-3.0/bpt-workflows/care_management/CM_Establish_Case_BPT_v3.0.mermaid.md#performance-measures]\n\n## Performance Measures\n\n| Metric | Target |\n|--------|--------|\n| Time to establish case | State-defined |\n| Effectiveness of selection criteria | Measured |",
+    "6": "[standards/business/MITA-3.0/bpt-workflows/care_management/CM_Establish_Case_BPT_v3.0.mermaid.md#constraints--failures]\n\n## Constraints & Failures\n\n- **Constraints**: States use different criteria for establishing cases. Disease management and catastrophic case handling varies by state. Must conform to ACA requirements for EPSDT and immunizations.\n- **Potential Failures**: Case details inconsistent with criteria; case discontinued\n\n---\n\n*Generated from: CM_Establish_Case_BPT_v3.0.json*"
+  },
+  "coverage": {
+    "total_pages": 6,
+    "covered_pages": 6,
+    "sampled_pages": 6,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 6
+  }
+}

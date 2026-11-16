@@ -1,0 +1,165 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Architecture Decision Record",
+  "document_description": "Standardize on **Webpack 5 `ModuleFederationPlugin` with no additional platform layer for now** (Option 1), deferring adoption of a coordinating toolchain (Bit, Nx, or `@module-federation/enhanced`) until the MFE estate reaches a scale where manual configuration governance creates measurable delivery friction. `@module-federation/enhanced` is recommended as a concurrent incremental adoption by Pla",
+  "total_pages": 16,
+  "tree": [
+    {
+      "title": "Architecture Decision Record",
+      "node_id": "architecture-decision-record",
+      "start_index": 1,
+      "end_index": 16,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "ADR-APP-004: Micro-Frontend Platform Layer Selection",
+          "node_id": "adr-app-004-micro-frontend-platform-layer-selection",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Decision Summary",
+          "node_id": "decision-summary",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Context and Problem Statement",
+          "node_id": "context-and-problem-statement",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Evaluation Criteria",
+          "node_id": "evaluation-criteria",
+          "start_index": 5,
+          "end_index": 5,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Options Evaluated",
+          "node_id": "options-evaluated",
+          "start_index": 6,
+          "end_index": 10,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Option 1: Bare Webpack 5 + Shared Config Templates (SELECTED)",
+              "node_id": "option-1-bare-webpack-5--shared-config-templates-selected",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Option 2: Nx (`@nx/react` + `@nx/module-federation`)",
+              "node_id": "option-2-nx-nxreact--nxmodule-federation",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Option 3: Bit (`@frontend/module-federation` app types)",
+              "node_id": "option-3-bit-frontendmodule-federation-app-types",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Option 4: `@module-federation/enhanced` (Module Federation 2.0)",
+              "node_id": "option-4-module-federationenhanced-module-federation-20",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Options Comparison Matrix",
+          "node_id": "options-comparison-matrix",
+          "start_index": 11,
+          "end_index": 11,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Decision Outcome",
+          "node_id": "decision-outcome",
+          "start_index": 12,
+          "end_index": 12,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Portal Studio Exception",
+          "node_id": "portal-studio-exception",
+          "start_index": 13,
+          "end_index": 13,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Consequences",
+          "node_id": "consequences",
+          "start_index": 14,
+          "end_index": 14,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Related Documents",
+          "node_id": "related-documents",
+          "start_index": 15,
+          "end_index": 15,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Change Log",
+          "node_id": "change-log",
+          "start_index": 16,
+          "end_index": 16,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[decisions/application/ADR-APP-004-mfe-platform-layer-selection.md#architecture-decision-record]\n\n# Architecture Decision Record",
+    "2": "[decisions/application/ADR-APP-004-mfe-platform-layer-selection.md#adr-app-004-micro-frontend-platform-layer-selection]\n\n## ADR-APP-004: Micro-Frontend Platform Layer Selection\n\n**Status:** Proposed (2026-04-08)\n**Issuer:** Enterprise Architecture Practice\n\n---",
+    "3": "[decisions/application/ADR-APP-004-mfe-platform-layer-selection.md#decision-summary]\n\n## Decision Summary\n\nStandardize on **Webpack 5 `ModuleFederationPlugin` with no additional platform layer for now** (Option 1), deferring adoption of a coordinating toolchain (Bit, Nx, or `@module-federation/enhanced`) until the MFE estate reaches a scale where manual configuration governance creates measurable delivery friction. `@module-federation/enhanced` is recommended as a concurrent incremental adoption by Platform Engineering. **Portal Studio shell acts as the MF host; product UI components are MF remotes.**\n\n---",
+    "4": "[decisions/application/ADR-APP-004-mfe-platform-layer-selection.md#context-and-problem-statement]\n\n## Context and Problem Statement\n\nADR-APP-002 established React + Module Federation as the enterprise MFE standard. As the portfolio migrates from ASP.NET legacy applications (PTN-APP-MFE-013), the number of independently deployable remote modules will grow. Without a recorded decision, competing toolchains (Bit, Nx, Turborepo, bare Webpack) were being evaluated independently by different teams, blocking STD-APP-FE-001 §3.1 finalization.\n\nThree independent risks motivate a platform layer:\n1. Configuration drift — teams copying `webpack.config.js` and diverging on singleton version pinning\n2. CI/CD duplication — no shared Azure Pipelines template governance\n3. Build performance at scale — Webpack 5 cold build times accumulating as module count grows\n\n---",
+    "5": "[decisions/application/ADR-APP-004-mfe-platform-layer-selection.md#evaluation-criteria]\n\n## Evaluation Criteria\n\n| # | Criterion | Source |\n|---|---|---|\n| C1 | Module Federation production compatibility | PTN-APP-MFE-003 §Governance |\n| C2 | Webpack 5 compatible — no bundler swap required | ADR-APP-002 |\n| C3 | Shared configuration governance | PTN-APP-MFE-006 §Governance; STD-APP-FE-001 §3.1 |\n| C4 | Azure Pipelines CI/CD template sharing | STD-APP-FE-001 §9.0 STD-FE-024 |\n| C5 | Bundle budget enforcement in CI (≤500KB gzipped) | STD-APP-FE-001 §4.1 STD-FE-007 |\n| C6 | RSpack migration path | PTN-APP-MFE-007 §Target State |\n| C7 | Multi-repo composition support | PTN-APP-MFE-003; PTN-APP-MFE-008 |\n| C8 | Commercial licensing cost justified | PTN-APP-MFE-006 §Budget |\n| C9 | PHI/HIPAA exposure risk from cloud-hosted registries | STD-APP-FE-001 §2.1 |\n| C10 | Additive over existing Care Management Webpack infrastructure | PTN-APP-MFE-003 §Prerequisites |\n\n---",
+    "6": "[decisions/application/ADR-APP-004-mfe-platform-layer-selection.md#options-evaluated]\n\n## Options Evaluated",
+    "7": "[decisions/application/ADR-APP-004-mfe-platform-layer-selection.md#option-1-bare-webpack-5--shared-config-templates-selected]\n\n### Option 1: Bare Webpack 5 + Shared Config Templates (SELECTED)\n\nRetain Webpack 5 `ModuleFederationPlugin` as the sole composition mechanism. Platform Engineering publishes a canonical `webpack.config.mfe.js` shared base — teams extend via `webpack-merge`. CI/CD standardized via reusable Azure Pipelines template library.\n\n**Key gaps:** Config governance is convention-based only (C3 partial); multi-repo URL coordination is manual (C7 partial); RSpack migration is per-module rewrite (C6 partial).",
+    "8": "[decisions/application/ADR-APP-004-mfe-platform-layer-selection.md#option-2-nx-nxreact--nxmodule-federation]\n\n### Option 2: Nx (`@nx/react` + `@nx/module-federation`)\n\nStrongest for monorepo config governance and affected-only CI. Requires Care Management migration into Nx workspace. Nx Cloud telemetry must be validated for PHI exclusion before enabling in HIPAA environments.",
+    "9": "[decisions/application/ADR-APP-004-mfe-platform-layer-selection.md#option-3-bit-frontendmodule-federation-app-types]\n\n### Option 3: Bit (`@frontend/module-federation` app types)\n\nStrongest multi-repo composition (cross-repo component versioning). Bit Cloud requires commercial licensing and a formal HIPAA/PHI security assessment before adoption can be recommended.",
+    "10": "[decisions/application/ADR-APP-004-mfe-platform-layer-selection.md#option-4-module-federationenhanced-module-federation-20]\n\n### Option 4: `@module-federation/enhanced` (Module Federation 2.0)\n\nDrop-in replacement for Webpack's built-in plugin (import path change only). Adds type safety for exposed module APIs, dynamic remote registration (`@module-federation/runtime`), and native RSpack support. Near-zero adoption cost; Care Management unchanged.\n\n---",
+    "11": "[decisions/application/ADR-APP-004-mfe-platform-layer-selection.md#options-comparison-matrix]\n\n## Options Comparison Matrix\n\n| Criterion | Bare Webpack | Nx | Bit | MF 2.0 |\n|---|---|---|---|---|\n| C1: MF compatibility | Full | Full | Full | Full |\n| C2: No bundler swap | Yes | Yes | Yes | Yes |\n| C3: Config governance | Partial | Full | Full | Partial |\n| C4: Azure Pipelines | Full | Full | Full | Full |\n| C5: Bundle budget CI | Full | Full | Full | Full |\n| C6: RSpack path | Partial | Full | Full | Full |\n| C7: Multi-repo | Partial | Partial | Full | Full |\n| C8: Licensing cost | None | None (Cloud paid) | Commercial | None |\n| C9: PHI/HIPAA risk | None | Low | Evaluate | None |\n| C10: Care Mgmt additive | Full | Migration | Migration | Near-zero |\n| Adoption cost | None | Low | Medium | Near-zero |\n\n---",
+    "12": "[decisions/application/ADR-APP-004-mfe-platform-layer-selection.md#decision-outcome]\n\n## Decision Outcome\n\n**Selected: Option 1 — Bare Webpack 5 with Shared Config Templates**\n\n**Justification:** The MFE estate is at early scale. Governance and build-performance problems that motivate Nx/Bit adoption do not yet materialize at current module count. Adopting either platform now would incur real migration cost to solve problems that do not yet exist.\n\n**Recommended concurrent action:** Platform Engineering should adopt `@module-federation/enhanced` simultaneously with this ADR's acceptance — it resolves the two concrete gaps in bare Webpack (no type safety for remote APIs; hardcoded URL management for multi-repo) at near-zero cost.\n\n**Scale re-evaluation trigger:** When the active remote module count reaches **8 modules with 3+ teams building concurrently**, this ADR must be revisited.\n\n**Bit vs. Nx routing:** If the majority of MFE remote modules remain in separate product repositories, Bit's model is favored over Nx's monorepo model — but Bit Cloud PHI/HIPAA security assessment must be completed first.\n\n---",
+    "13": "[decisions/application/ADR-APP-004-mfe-platform-layer-selection.md#portal-studio-exception]\n\n## Portal Studio Exception\n\nPortal Studio is a product-level composition shell that applies the Webpack 5 Module Federation standard in a specific host/remote topology. This is fully consistent with the selected option — it is Webpack 5 MF, with the host and remote roles explicitly assigned.\n\n| Role | Component | Technology |\n|---|---|---|\n| MF Host | Portal Studio shell | Next.js + `@module-federation/enhanced` |\n| MF Remotes | Product UI components | Webpack 5 + `@module-federation/enhanced` |\n\n**Key architectural decisions within this exception:**\n\n- **Portal Studio shell** is a Next.js application that acts as the Module Federation HOST. It dynamically loads registered remotes at runtime. The shell is not yet built; this ADR governs the remote side.\n- **Product UI components** are Module Federation REMOTES. Each component ships a `remoteEntry.js` served from JFrog/CDN rather than an IIFE bundle. Components are built with Webpack 5 + `@module-federation/enhanced`.\n- **`studio-manifest.json` is the remote registry.** It replaces hardcoded `remoteEntry` URLs in the host configuration. Each component entry in the manifest carries a `remoteEntry` URL field; the legacy `entryPoint` (IIFE path) field is removed as IIFE bundles are retired.\n- **ESM library unchanged.** The `@mmes/<name>` ESM package (built with Vite) used for developer React app consumption continues to be published without modification. Vite remains the ESM library build tool only; it does not produce the MF remote output.\n- **React and ReactDOM are shared singletons.** They are declared as `shared` in the Webpack MF config and are not bundled into each remote. This aligns with ADR-APP-002 singleton version requirements.\n- **Bundle budget: ≤500KB gzipped per remote** (shared React excluded), enforced in CI per STD-APP-FE-001 §4.1.\n- **Test harnesses** load `remoteEntry.js` via dynamic `import()` rather than a `<script>` tag injection.\n\nThis topology is consistent with the enterprise standard and does not require a re-evaluation trigger. It is the reference implementation of Webpack 5 MF at product scope.\n\n---",
+    "14": "[decisions/application/ADR-APP-004-mfe-platform-layer-selection.md#consequences]\n\n## Consequences\n\n**Positive:** Care Management baseline unchanged; Platform Engineering can publish `@gainwell/mfe-webpack-base` immediately; no commercial licensing cost; no PHI/HIPAA surface area from third-party registries; clear re-evaluation trigger prevents premature over-engineering.\n\n**Negative:** Config governance remains convention-based; no component-level semantic versioning; build performance at scale (>8 modules) unaddressed.\n\n**Neutral:** STD-APP-FE-001 §3.1 updated to reflect Webpack 5 as current standard; PTN-APP-MFE-007 should be updated to remove the unresolved Vite/Webpack split.\n\n---",
+    "15": "[decisions/application/ADR-APP-004-mfe-platform-layer-selection.md#related-documents]\n\n## Related Documents\n\n- ADR-APP-002 — parent decision (React + Module Federation standard)\n- STD-APP-FE-001 — React Application Standards (§3.1 updated by this ADR)\n- PTN-APP-MFE-003 — Module Composition Pattern\n- PTN-APP-MFE-006 — Governance Pattern\n- PTN-APP-MFE-007 — Build Infrastructure Modernization (requires Vite/Webpack split resolution)\n- PTN-APP-MFE-013 — ASP.NET to React Migration (migration timeline context)\n- GUID-APP-TEC-001 — Next.js vs React Selection Guidance\n\n---",
+    "16": "[decisions/application/ADR-APP-004-mfe-platform-layer-selection.md#change-log]\n\n## Change Log\n\n| Version | Date | Author | Description |\n|---|---|---|---|\n| 0.1 | 2026-04-08 | Enterprise Architecture Practice | Initial draft |\n| 1.1 | 2026-08-03 | Enterprise Architecture Practice | Added Portal Studio host/remote clarification |"
+  },
+  "coverage": {
+    "total_pages": 16,
+    "covered_pages": 16,
+    "sampled_pages": 16,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 16
+  }
+}

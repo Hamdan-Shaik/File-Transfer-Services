@@ -1,0 +1,47 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Workflow",
+  "document_description": "Generate a PowerPoint deck from SVG diagrams organized in a directory.",
+  "total_pages": 3,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 3,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Workflow",
+          "node_id": "workflow",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Examples",
+          "node_id": "examples",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "Generate a PowerPoint deck from SVG diagrams organized in a directory.",
+    "2": "[.claude/commands/eap-deck-generate.md#workflow]\n\n## Workflow\n\n1. **Identify the source directory**\n   - If `$ARGUMENTS` specifies a directory, use it\n   - If `$ARGUMENTS` specifies a deck name only, ask for the directory\n   - If `$ARGUMENTS` is empty, ask the user for the directory\n\n2. **Read instructions (if present)**\n   - Check for `INSTRUCTIONS.md` or `README.md` in the source directory\n   - If found, read it for context on template structure, section naming, output filename, and any special instructions\n   - Follow any instructions in that file for how to build the deck\n\n3. **Generate the PPTX**\n   - Run the pptx-generator tool:\n\n     ```bash\n     source .utils/.venv/bin/activate && python .utils/generators/pptx-generator/pptx-generator.py <source-dir> -o <output.pptx> -v\n     ```\n\n   - The tool:\n     - Opens `TEMPLATE.pptx` if present (preserves title + closing slides, uses section divider template)\n     - If no template, creates a blank 16:9 deck\n     - Creates a section divider slide per subfolder (number prefixes stripped from titles)\n     - Creates one full-page SVG slide per SVG file, edge-to-edge\n     - Reorders: title slide first, generated sections in the middle, closing slides at end\n   - If no `-o` is provided, auto-generates `deck-<YYYY-MM-DD-HH-MM-SS>.pptx` in the source directory\n\n4. **Output**\n   - Report the file path and slide count\n   - Remind the user:\n     > To convert to native shapes: Open in PowerPoint → Select SVG → Right-click → Convert to Shape",
+    "3": "[.claude/commands/eap-deck-generate.md#examples]\n\n## Examples\n\n```text\n/generate-deck docs/presentations/elt/roadmaps/mmes-modernization/\n```\n\nReads the README, uses the template, generates the deck per instructions.\n\n```text\n/generate-deck\n```\n\nAsks for the source directory.\n\n$ARGUMENTS"
+  },
+  "coverage": {
+    "total_pages": 3,
+    "covered_pages": 3,
+    "sampled_pages": 3,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 3
+  }
+}

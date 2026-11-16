@@ -1,0 +1,684 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Feature Toggle Pattern",
+  "document_description": "tags: ['infrastructure', 'deployment-release', 'feature-flag', 'progressive-rollout', 'moderate', 'microservices', 'proven', 'developers', 'devops']",
+  "total_pages": 72,
+  "tree": [
+    {
+      "title": "Feature Toggle Pattern",
+      "node_id": "feature-toggle-pattern",
+      "start_index": 1,
+      "end_index": 72,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Executive Summary",
+          "node_id": "executive-summary",
+          "start_index": 3,
+          "end_index": 7,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Problem Statement",
+              "node_id": "problem-statement",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Solution Overview",
+              "node_id": "solution-overview",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "When to Use",
+              "node_id": "when-to-use",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Benefits",
+              "node_id": "benefits",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Target Audience",
+          "node_id": "target-audience",
+          "start_index": 8,
+          "end_index": 8,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Context and Problem",
+          "node_id": "context-and-problem",
+          "start_index": 9,
+          "end_index": 18,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Business Context",
+              "node_id": "business-context",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Technical Context",
+              "node_id": "technical-context",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Problem Details",
+              "node_id": "problem-details",
+              "start_index": 12,
+              "end_index": 17,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Problem 1: Deployment-Release Coupling Creates Risk",
+                  "node_id": "problem-1-deployment-release-coupling-creates-risk",
+                  "start_index": 13,
+                  "end_index": 13,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Problem 2: Inability to Perform Progressive Validation",
+                  "node_id": "problem-2-inability-to-perform-progressive-validation",
+                  "start_index": 14,
+                  "end_index": 14,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Problem 3: No Mechanism for Safe Experimentation",
+                  "node_id": "problem-3-no-mechanism-for-safe-experimentation",
+                  "start_index": 15,
+                  "end_index": 15,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Problem 4: Regulatory and State-Specific Requirements",
+                  "node_id": "problem-4-regulatory-and-state-specific-requirements",
+                  "start_index": 16,
+                  "end_index": 16,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Problem 5: Emergency Feature Disabling",
+                  "node_id": "problem-5-emergency-feature-disabling",
+                  "start_index": 17,
+                  "end_index": 17,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Forces and Constraints",
+              "node_id": "forces-and-constraints",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Solution",
+          "node_id": "solution",
+          "start_index": 19,
+          "end_index": 32,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Pattern Description",
+              "node_id": "pattern-description",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Architecture Diagram",
+              "node_id": "architecture-diagram",
+              "start_index": 21,
+              "end_index": 21,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Components",
+              "node_id": "components",
+              "start_index": 22,
+              "end_index": 22,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Interactions",
+              "node_id": "interactions",
+              "start_index": 23,
+              "end_index": 26,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Sequence 1: Flag Evaluation (Normal Flow)",
+                  "node_id": "sequence-1-flag-evaluation-normal-flow",
+                  "start_index": 24,
+                  "end_index": 24,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Sequence 2: Progressive Rollout",
+                  "node_id": "sequence-2-progressive-rollout",
+                  "start_index": 25,
+                  "end_index": 25,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Sequence 3: Emergency Kill Switch",
+                  "node_id": "sequence-3-emergency-kill-switch",
+                  "start_index": 26,
+                  "end_index": 26,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Variations",
+              "node_id": "variations",
+              "start_index": 27,
+              "end_index": 32,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Variation 1: Server-Side Evaluation",
+                  "node_id": "variation-1-server-side-evaluation",
+                  "start_index": 28,
+                  "end_index": 28,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Variation 2: Client-Side Evaluation with SDK",
+                  "node_id": "variation-2-client-side-evaluation-with-sdk",
+                  "start_index": 29,
+                  "end_index": 29,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Variation 3: Static Configuration File",
+                  "node_id": "variation-3-static-configuration-file",
+                  "start_index": 30,
+                  "end_index": 30,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Variation 4: Hybrid Approach",
+                  "node_id": "variation-4-hybrid-approach",
+                  "start_index": 31,
+                  "end_index": 31,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Variation 5: Edge-Based Evaluation",
+                  "node_id": "variation-5-edge-based-evaluation",
+                  "start_index": 32,
+                  "end_index": 32,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Implementation Guidelines",
+          "node_id": "implementation-guidelines",
+          "start_index": 33,
+          "end_index": 41,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Prerequisites",
+              "node_id": "prerequisites",
+              "start_index": 34,
+              "end_index": 34,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Step-by-Step Implementation",
+              "node_id": "step-by-step-implementation",
+              "start_index": 35,
+              "end_index": 39,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Phase 1: Platform Selection and Setup (Weeks 1-2)",
+                  "node_id": "phase-1-platform-selection-and-setup-weeks-1-2",
+                  "start_index": 36,
+                  "end_index": 36,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Phase 2: SDK Integration (Weeks 2-4)",
+                  "node_id": "phase-2-sdk-integration-weeks-2-4",
+                  "start_index": 37,
+                  "end_index": 37,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Phase 3: Flag Management and Rollout (Weeks 4-6)",
+                  "node_id": "phase-3-flag-management-and-rollout-weeks-4-6",
+                  "start_index": 38,
+                  "end_index": 38,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Phase 4: Testing Strategy (Ongoing)",
+                  "node_id": "phase-4-testing-strategy-ongoing",
+                  "start_index": 39,
+                  "end_index": 39,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Best Practices",
+              "node_id": "best-practices",
+              "start_index": 40,
+              "end_index": 40,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Common Pitfalls",
+              "node_id": "common-pitfalls",
+              "start_index": 41,
+              "end_index": 41,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Governance and Compliance",
+          "node_id": "governance-and-compliance",
+          "start_index": 42,
+          "end_index": 54,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Standards Alignment",
+              "node_id": "standards-alignment",
+              "start_index": 43,
+              "end_index": 43,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Compliance Requirements",
+              "node_id": "compliance-requirements",
+              "start_index": 44,
+              "end_index": 47,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "HIPAA Compliance",
+                  "node_id": "hipaa-compliance",
+                  "start_index": 45,
+                  "end_index": 45,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "State-Specific Compliance",
+                  "node_id": "state-specific-compliance",
+                  "start_index": 46,
+                  "end_index": 46,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Security Compliance",
+                  "node_id": "security-compliance",
+                  "start_index": 47,
+                  "end_index": 47,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Approval Process",
+              "node_id": "approval-process",
+              "start_index": 48,
+              "end_index": 50,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Flag Creation Approval",
+                  "node_id": "flag-creation-approval",
+                  "start_index": 49,
+                  "end_index": 49,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Flag Toggle Approval (Production)",
+                  "node_id": "flag-toggle-approval-production",
+                  "start_index": 50,
+                  "end_index": 50,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Monitoring and Metrics",
+              "node_id": "monitoring-and-metrics",
+              "start_index": 51,
+              "end_index": 54,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Technical Metrics",
+                  "node_id": "technical-metrics",
+                  "start_index": 52,
+                  "end_index": 52,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Business Metrics",
+                  "node_id": "business-metrics",
+                  "start_index": 53,
+                  "end_index": 53,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Operational Metrics",
+                  "node_id": "operational-metrics",
+                  "start_index": 54,
+                  "end_index": 54,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Examples and Use Cases",
+          "node_id": "examples-and-use-cases",
+          "start_index": 55,
+          "end_index": 65,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Real-World Example 1: Claims Auto-Adjudication Enhancement",
+              "node_id": "real-world-example-1-claims-auto-adjudication-enhancement",
+              "start_index": 56,
+              "end_index": 56,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Real-World Example 2: FHIR API Performance Optimization",
+              "node_id": "real-world-example-2-fhir-api-performance-optimization",
+              "start_index": 57,
+              "end_index": 57,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Real-World Example 3: Emergency Kill Switch - Payment Processing Defect",
+              "node_id": "real-world-example-3-emergency-kill-switch---payment-processing-defect",
+              "start_index": 58,
+              "end_index": 58,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Use Case Scenarios",
+              "node_id": "use-case-scenarios",
+              "start_index": 59,
+              "end_index": 62,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Scenario 1: State-Specific Regulatory Feature",
+                  "node_id": "scenario-1-state-specific-regulatory-feature",
+                  "start_index": 60,
+                  "end_index": 60,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Scenario 2: Dark Launch for Load Testing",
+                  "node_id": "scenario-2-dark-launch-for-load-testing",
+                  "start_index": 61,
+                  "end_index": 61,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Scenario 3: Trunk-Based Development with Long-Running Feature",
+                  "node_id": "scenario-3-trunk-based-development-with-long-running-feature",
+                  "start_index": 62,
+                  "end_index": 62,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Before and After Comparison",
+              "node_id": "before-and-after-comparison",
+              "start_index": 63,
+              "end_index": 65,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Before (Problem State)",
+                  "node_id": "before-problem-state",
+                  "start_index": 64,
+                  "end_index": 64,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "After (Solution State)",
+                  "node_id": "after-solution-state",
+                  "start_index": 65,
+                  "end_index": 65,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Related Patterns and References",
+          "node_id": "related-patterns-and-references",
+          "start_index": 66,
+          "end_index": 69,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Related Patterns",
+              "node_id": "related-patterns",
+              "start_index": 67,
+              "end_index": 67,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Dependencies",
+              "node_id": "dependencies",
+              "start_index": 68,
+              "end_index": 68,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "External References",
+              "node_id": "external-references",
+              "start_index": 69,
+              "end_index": 69,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Change History",
+          "node_id": "change-history",
+          "start_index": 70,
+          "end_index": 70,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Review Log",
+          "node_id": "review-log",
+          "start_index": 71,
+          "end_index": 71,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "TL;DR",
+          "node_id": "tldr",
+          "start_index": 72,
+          "end_index": 72,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#feature-toggle-pattern]\n\n# Feature Toggle Pattern\n\n**← Back to [EAP Home](../../../README.md) • [Patterns](../../README.md) • [Infrastructure](../README.md) • [API & Microservices](./README.md)**\n\n---\n\n**Pattern Metadata**\n\n```yaml\npattern_id: 'PTN-INFRA-API-008'\npattern_name: 'Feature Toggle Pattern'\npattern_type: 'deployment-release'\ndomain: 'infrastructure'\nversion: '1.0.0'\nstatus: 'draft'\ntags: ['infrastructure', 'deployment-release', 'feature-flag', 'progressive-rollout', 'moderate', 'microservices', 'proven', 'developers', 'devops']\n```\n\n---",
+    "2": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#table-of-contents]\n\n## Table of Contents\n\n- [Executive Summary](#executive-summary)\n- [Context and Problem](#context-and-problem)\n- [Solution](#solution)\n- [Implementation Guidelines](#implementation-guidelines)\n- [Governance and Compliance](#governance-and-compliance)\n- [Examples and Use Cases](#examples-and-use-cases)\n- [Related Patterns and References](#related-patterns-and-references)\n- [Change History](#change-history)\n- [Review Log](#review-log)\n- [TL;DR](#tldr)\n\n---",
+    "3": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#executive-summary]\n\n## Executive Summary",
+    "4": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#problem-statement]\n\n### Problem Statement\n\nIn healthcare systems serving millions of beneficiaries, deploying new features directly into production creates significant risk. Traditional deployment approaches tightly couple code deployment with feature release, making it impossible to validate features with real production traffic before full rollout. When issues arise, rolling back requires redeployment, causing extended downtime. Teams need the ability to release features progressively to small user segments, perform A/B testing, and instantly disable problematic features without code changes or redeployment.",
+    "5": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#solution-overview]\n\n### Solution Overview\n\nFeature toggles (also called feature flags) provide runtime control over feature availability by decoupling deployment from release. Features are deployed to production in a disabled state and controlled through configuration that can be changed dynamically without code deployment. This enables progressive rollouts (e.g., 1% → 10% → 50% → 100% of users), targeted releases to specific user segments, A/B testing for measuring feature impact, and instant feature disabling if issues occur. The pattern uses a centralized feature flag management system that provides real-time control, user targeting rules, and observability into feature usage and performance.",
+    "6": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#when-to-use]\n\n### When to Use\n\n- **Progressive Rollouts**: Release high-risk features gradually to detect issues before full deployment (e.g., new claims adjudication logic to 1% of providers before statewide rollout)\n- **A/B Testing**: Compare feature variants to measure impact on user behavior or system performance (e.g., testing two different prior authorization workflows)\n- **Targeted Releases**: Enable features for specific user segments, states, or environments (e.g., new FHIR APIs for pilot states only)\n- **Dark Launches**: Deploy and test features in production without user visibility to validate performance and scalability\n- **Kill Switches**: Provide instant ability to disable features experiencing issues without redeployment (e.g., disable new payment processing if errors detected)\n- **Regulatory Compliance**: Enable state-specific features only in states where regulations allow (e.g., telehealth benefit rules varying by state)\n- **Trunk-Based Development**: Merge incomplete features to main branch while keeping them disabled until ready for release",
+    "7": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#benefits]\n\n### Benefits\n\n- **Risk Reduction**: Progressive rollouts limit blast radius of defects, allowing issues to be detected with minimal user impact\n- **Faster Recovery**: Instant feature disabling via configuration change (seconds) vs. code rollback and redeployment (minutes to hours)\n- **Experimentation**: A/B testing enables data-driven decisions about feature effectiveness and user experience\n- **Deployment Decoupling**: Deploy code continuously while controlling feature release timing independently\n- **Operational Flexibility**: Enable features for maintenance windows, pilot programs, or specific customer segments\n- **Reduced Code Branches**: Eliminate long-lived feature branches by using toggles, simplifying version control and reducing merge conflicts\n- **Compliance Control**: Ensure features are enabled only in jurisdictions where they are legally permitted",
+    "8": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#target-audience]\n\n## Target Audience\n\nThis pattern is intended for the following technical roles:\n\n- **Software Engineer** — integrating feature flag SDKs into application code and managing flag lifecycle\n- **Platform Engineer** — building and maintaining the shared feature flag service infrastructure\n- **DevOps Engineer** — integrating feature flag workflows into CI/CD pipelines and deployment automation\n- **Site Reliability Engineer (SRE)** — using kill switches for rapid incident mitigation and monitoring flag-correlated metrics",
+    "9": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#context-and-problem]\n\n## Context and Problem",
+    "10": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#business-context]\n\n### Business Context\n\nGainwell Technologies serves 50+ state Medicaid programs supporting over 72 million beneficiaries through mission-critical healthcare systems. These systems process billions of dollars in healthcare payments annually and must maintain 99.95%+ availability while continuously evolving to meet regulatory changes, state-specific requirements, and competitive pressures.\n\nState contracts increasingly require rapid feature delivery while maintaining zero-defect quality standards. Regulatory changes (e.g., CMS Interoperability Final Rule, new HIPAA security requirements) often have hard deadlines that cannot be missed. At the same time, the high visibility and impact of healthcare systems means that defects in production can result in:\n\n- **Payment Errors**: Incorrect claims adjudication affecting provider payments and member cost-sharing\n- **Compliance Violations**: HIPAA breaches, state contract penalties, or regulatory enforcement actions\n- **Operational Disruption**: State agency workflows disrupted, provider inability to submit claims, member access issues\n- **Reputational Damage**: Negative publicity impacting state relationships and competitive positioning\n\nProduct teams face conflicting pressures: deploy features quickly to meet deadlines while ensuring production stability. Traditional all-or-nothing deployments create a binary choice between speed and safety that is increasingly untenable.",
+    "11": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#technical-context]\n\n### Technical Context\n\nGainwell's product portfolio has evolved to microservices architectures with CI/CD pipelines enabling multiple deployments per day. However, several technical realities create risk:\n\n**Distributed System Complexity**\n- 100+ microservices across products like Gainwell Enterprise™, Provider+™, and Connect™\n- Features often span multiple services requiring coordinated releases\n- Dependencies between services make it difficult to predict downstream impacts\n- Integration testing cannot cover all real-world scenarios and data combinations\n\n**Production Environment Variability**\n- Each state deployment has unique configuration, data volumes, and usage patterns\n- Performance characteristics vary significantly (e.g., California vs. Wyoming scale differences)\n- State-specific customizations and regulatory requirements create test coverage gaps\n- Load testing environments cannot fully replicate production traffic patterns and edge cases\n\n**Rapid Change Velocity**\n- Average of 15-20 features in development simultaneously across product teams\n- Regulatory deadlines require features to be deployed even if adjacent features aren't ready\n- Multiple teams contributing to shared services increase coordination complexity\n- Long-lived feature branches create merge conflicts and integration challenges\n\n**Legacy System Constraints**\n- Some components built with monolithic architecture patterns where full system restart is required for changes\n- Database schema changes require careful coordination and cannot be easily rolled back\n- Third-party integrations (e.g., pharmacy POS systems) have limited flexibility for rapid changes\n- State agency systems have limited change windows (e.g., no changes during enrollment periods)",
+    "12": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#problem-details]\n\n### Problem Details",
+    "13": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#problem-1-deployment-release-coupling-creates-risk]\n\n#### Problem 1: Deployment-Release Coupling Creates Risk\n\nTraditional deployment processes tightly couple code deployment with feature availability. When new code is deployed, all changes become immediately active for all users. This creates several problems:\n\n**Example Scenario: Claims Auto-Adjudication Enhancement**\nA team develops enhanced claims auto-adjudication logic expected to significantly improve straight-through processing rates for a large state. The logic is complex, involving 30+ business rules across multiple service types (inpatient, outpatient, pharmacy, dental).\n\nWith traditional deployment:\n\n- Feature must be deployed to all claims processing simultaneously\n- If a defect exists in one service type rule, it affects all claim types\n- Rollback requires full system redeployment, taking 45-60 minutes\n- During rollback, claim processing is halted, creating provider payment delays\n- No ability to test with real production data before full deployment\n\n**Impact**: Teams choose between delaying beneficial features (reducing business value) or accepting high risk (potential production incidents).",
+    "14": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#problem-2-inability-to-perform-progressive-validation]\n\n#### Problem 2: Inability to Perform Progressive Validation\n\nHealthcare systems process highly variable workloads with edge cases that are impossible to fully test in pre-production environments. Even comprehensive testing misses scenarios only present in production data.\n\n**Example Scenario: New FHIR API Endpoints**\nImplementing CMS Interoperability Final Rule requirements for Patient Access API (FHIR R4). The API must serve member health records to consumer apps with <2 second response time. Testing in pre-production with synthetic data shows good performance.\n\nWithout progressive rollout capability:\n\n- API deployed to all 3.5 million members simultaneously on go-live date\n- Actual production queries reveal performance issues with members having 10+ years of claims history\n- Some complex queries timeout, failing CMS compliance requirements\n- No ability to identify and fix performance issues with small user subset before full exposure\n- Emergency hotfix required under time pressure, increasing defect risk\n\n**Impact**: Higher likelihood of production incidents and inability to learn from real production behavior before full rollout.",
+    "15": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#problem-3-no-mechanism-for-safe-experimentation]\n\n#### Problem 3: No Mechanism for Safe Experimentation\n\nData-driven decision-making requires the ability to measure feature impact on key metrics (e.g., user engagement, system performance, business outcomes). Without experimentation capability, teams rely on assumptions rather than evidence.\n\n**Example Scenario: Provider Portal Workflow Redesign**\nProvider+™ team redesigns provider enrollment workflow, expecting to significantly reduce completion time and increase completion rate. However, the new workflow uses different navigation patterns and form structures.\n\nWithout A/B testing capability:\n\n- Cannot measure actual impact on completion time and rates before full rollout\n- If new design performs worse than expected, all providers affected\n- Reversion to old design requires development effort to restore previous code\n- No data to inform iterative improvements\n- Risk of deploying changes that reduce user satisfaction without knowing until after full rollout\n\n**Impact**: Features based on assumptions rather than evidence, potentially reducing user satisfaction and business outcomes.",
+    "16": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#problem-4-regulatory-and-state-specific-requirements]\n\n#### Problem 4: Regulatory and State-Specific Requirements\n\nDifferent states have different regulatory requirements, contract terms, and readiness timelines. Features must often be enabled for specific states at specific times, but code deployment is typically all-or-nothing.\n\n**Example Scenario: Telehealth Benefits Expansion**\nFollowing COVID-19, states implemented varying telehealth coverage policies. Some states expanded benefits permanently, others temporarily, and others maintain pre-pandemic restrictions. The system must enforce different rules per state.\n\nWithout feature toggle capability:\n\n- Code contains logic for all state variations but no runtime control mechanism\n- State-specific logic controlled by database configuration that requires migration scripts\n- Enabling telehealth for one state requires database changes tested and deployed across all states\n- Risk of accidentally enabling benefits in states where they shouldn't be available\n- Difficulty coordinating with state agency go-live schedules and communication plans\n\n**Impact**: Increased deployment complexity, risk of compliance violations, and difficulty meeting state-specific timelines.",
+    "17": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#problem-5-emergency-feature-disabling]\n\n#### Problem 5: Emergency Feature Disabling\n\nWhen production issues occur, the fastest mitigation is often to disable the problematic feature. However, traditional architectures require code changes and redeployment, creating extended outage windows.\n\n**Example Scenario: Payment Processing Defect**\nA deployed feature for calculating supplemental payments contains a logic error that results in overpayments. The issue is discovered after a significant number of incorrect payments have been processed. The defect must be fixed, but the immediate priority is stopping further incorrect payments.\n\nWithout kill switch capability:\n\n- Development team must prepare code fix, requiring several hours\n- Code fix must be tested to ensure it doesn't introduce additional issues\n- Deployment requires change approval, build process, and production deployment\n- Total time to disable feature: 4-6 hours\n- During this time, additional incorrect payments continue processing\n- Financial exposure increases with every hour of delay\n\n**Impact**: Extended exposure to defects, larger financial and compliance impact, and reduced system reliability.",
+    "18": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#forces-and-constraints]\n\n### Forces and Constraints\n\nSeveral competing concerns must be balanced when implementing feature toggles:\n\n**Complexity vs. Simplicity**\n- Feature toggles add code complexity (conditional logic, toggle evaluation)\n- Must balance runtime flexibility with code maintainability and testing burden\n- Too many toggles create \"toggle debt\" that becomes difficult to manage\n\n**Performance vs. Flexibility**\n- Toggle evaluation adds latency (typically microseconds, but can accumulate)\n- Network calls to feature flag service introduce failure points\n- Caching improves performance but reduces real-time control\n- Must ensure toggle evaluation doesn't degrade user experience\n\n**Security vs. Accessibility**\n- Feature flag configuration is powerful (controls production behavior)\n- Access must be carefully controlled to prevent unauthorized feature enabling\n- Audit logging required for compliance and security investigation\n- Balance between accessibility for rapid response and security controls\n\n**Testing Complexity**\n- Each toggle creates multiple code paths that must be tested\n- n toggles create 2^n possible configurations (combinatorial explosion)\n- Must prioritize testing of likely toggle combinations\n- Need strategy for testing toggle transitions (feature enabled → disabled)\n\n**Technical Debt Management**\n- Temporary toggles must be removed after feature proves stable\n- Long-lived toggles require ongoing maintenance and documentation\n- Need governance process to prevent toggle proliferation\n- Must track toggle lifecycle and plan for removal",
+    "19": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#solution]\n\n## Solution",
+    "20": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#pattern-description]\n\n### Pattern Description\n\nThe Feature Toggle Pattern decouples feature deployment from feature release by introducing a configuration layer that controls feature availability at runtime. Features are deployed to production in a disabled state and enabled progressively through centralized configuration management. This approach transforms deployment risk from a binary (all-or-nothing) proposition into a graduated, controllable process.\n\nThe pattern consists of several key architectural elements:\n\n**1. Feature Flag Management Service**\nA centralized service that stores feature flag configuration, evaluates targeting rules, and provides APIs for flag status queries. This service maintains the source of truth for which features are enabled for which users/contexts.\n\n**2. Client SDKs**\nLibraries integrated into application code that query the feature flag service, cache responses for performance, and provide simple APIs for checking flag status (e.g., `if (featureFlags.isEnabled(\"new-claims-logic\")) { ... }`).\n\n**3. Targeting Rules Engine**\nConfiguration that defines which users/contexts receive which features based on attributes such as:\n\n- User percentage (e.g., enable for 10% of users)\n- User attributes (e.g., enable for users in specific states)\n- Environment (e.g., enable in staging but not production)\n- Time windows (e.g., enable during specific hours)\n- Custom rules (e.g., enable for users with specific entitlements)\n\n**4. Configuration UI and API**\nInterface for operations teams to manage feature flags, modify targeting rules, monitor flag usage, and perform emergency feature disabling without code deployment.\n\n**5. Observability Integration**\nInstrumentation that tracks feature flag evaluations, correlates flags with application metrics, and provides visibility into feature performance and usage patterns.\n\nThe pattern supports multiple types of feature toggles with different lifecycles and purposes:\n\n**Release Toggles**: Short-lived toggles for progressive feature rollout (days to weeks)\n**Experiment Toggles**: Medium-lived toggles for A/B testing (weeks to months)\n**Ops Toggles**: Long-lived toggles for operational control (months to permanent)\n**Permission Toggles**: Long-lived toggles for user entitlements (permanent)",
+    "21": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#architecture-diagram]\n\n### Architecture Diagram\n\n```mermaid\ngraph TB\n    subgraph \"Application Layer\"\n        API[API Service]\n        BG[Background Worker]\n        UI[Web UI]\n    end\n\n    subgraph \"Feature Flag SDK\"\n        SDK[Flag SDK Client]\n        Cache[Local Cache]\n        Eval[Rule Evaluator]\n    end\n\n    subgraph \"Feature Flag Service\"\n        FFS[Flag Service API]\n        Rules[Targeting Rules Engine]\n        Store[Flag Configuration Store]\n        Stream[Real-time Updates Stream]\n    end\n\n    subgraph \"Management Layer\"\n        Admin[Admin Console]\n        API_Mgmt[Management API]\n        Audit[Audit Log]\n    end\n\n    subgraph \"Observability\"\n        Metrics[Metrics Collector]\n        Dash[Monitoring Dashboard]\n        Alerts[Alert Manager]\n    end\n\n    API --> SDK\n    BG --> SDK\n    UI --> SDK\n\n    SDK --> Cache\n    SDK --> Eval\n    SDK -.Check Flag.-> FFS\n\n    FFS --> Rules\n    FFS --> Store\n    FFS --> Stream\n    Stream -.Push Updates.-> SDK\n\n    Admin --> API_Mgmt\n    API_Mgmt --> FFS\n    API_Mgmt --> Audit\n\n    SDK --> Metrics\n    FFS --> Metrics\n    Metrics --> Dash\n    Metrics --> Alerts\n\n    style SDK fill:#e1f5ff\n    style FFS fill:#fff4e1\n    style Admin fill:#f0e1ff\n```\n\n**Architecture Components Flow:**\n\n1. **Application Code Integration**: Services (API, Background Workers, UI) integrate Flag SDK Client\n2. **Flag Evaluation**: SDK checks local cache first, then queries Flag Service API if needed\n3. **Targeting Evaluation**: Flag Service evaluates targeting rules based on user context\n4. **Configuration Management**: Operators use Admin Console to manage flags and rules\n5. **Real-time Updates**: Flag Service streams configuration changes to SDKs for immediate effect\n6. **Observability**: All flag evaluations and changes tracked for monitoring and alerting",
+    "22": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#components]\n\n### Components\n\n| Component | Responsibility | Dependencies |\n|-----------|---------------|--------------|\n| **Feature Flag SDK** | Embedded in application code; evaluates flags locally with caching; queries flag service for updates; provides simple API for feature checks | Flag Service API, Local Cache, Metrics Collector |\n| **Flag Service API** | Centralized service for flag configuration; evaluates targeting rules; provides real-time flag status; manages flag lifecycle | Targeting Rules Engine, Configuration Store, Audit Log |\n| **Targeting Rules Engine** | Evaluates complex targeting logic; supports percentage rollouts, user attributes, time windows; provides A/B testing capabilities | Configuration Store |\n| **Configuration Store** | Persistent storage for flag definitions and rules; version history for rollback; multi-environment support | Database (PostgreSQL/DynamoDB) |\n| **Admin Console** | Web UI for flag management; rule configuration; rollout control; emergency kill switches | Management API, Audit Log |\n| **Management API** | RESTful API for programmatic flag control; supports CI/CD integration; provides bulk operations | Flag Service, Configuration Store |\n| **Real-time Updates Stream** | Pushes flag configuration changes to SDK clients; ensures minimal propagation delay; supports WebSocket or SSE | Flag Service, SDK Clients |\n| **Local Cache** | Reduces latency by caching flag evaluations; provides resilience if flag service unavailable; configurable TTL and size | SDK, Flag Service |\n| **Audit Log** | Records all flag changes with user, timestamp, reason; supports compliance requirements; enables investigation | Configuration Store, Management API |\n| **Metrics Collector** | Tracks flag evaluations, latency, errors; correlates flags with business metrics; provides usage analytics | SDK, Flag Service, Monitoring System |\n| **Monitoring Dashboard** | Visualizes flag usage, performance, rollout progress; alerts on anomalies; provides operational insights | Metrics Collector, Alert Manager |",
+    "23": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#interactions]\n\n### Interactions",
+    "24": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#sequence-1-flag-evaluation-normal-flow]\n\n#### Sequence 1: Flag Evaluation (Normal Flow)\n\n```mermaid\nsequenceDiagram\n    participant App as Application Code\n    participant SDK as Feature Flag SDK\n    participant Cache as Local Cache\n    participant FS as Flag Service\n    participant Rules as Rules Engine\n\n    App->>SDK: isEnabled(\"new-feature\", userContext)\n    SDK->>Cache: Check cached value\n\n    alt Cache Hit\n        Cache-->>SDK: Return cached result\n        SDK-->>App: true/false\n    else Cache Miss\n        SDK->>FS: GET /flags/new-feature/evaluate\n        FS->>Rules: Evaluate targeting rules\n        Rules-->>FS: Evaluation result\n        FS-->>SDK: Flag status + TTL\n        SDK->>Cache: Store result\n        SDK-->>App: true/false\n    end\n\n    SDK->>Metrics: Record evaluation\n```",
+    "25": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#sequence-2-progressive-rollout]\n\n#### Sequence 2: Progressive Rollout\n\n```mermaid\nsequenceDiagram\n    participant Ops as Operations Team\n    participant Admin as Admin Console\n    participant FS as Flag Service\n    participant SDK as SDK Clients (100s)\n    participant App as Applications\n\n    Ops->>Admin: Set \"new-feature\" to 1% rollout\n    Admin->>FS: PUT /flags/new-feature (percentage: 1)\n    FS->>FS: Update configuration\n    FS-->>Admin: Success\n    FS->>SDK: Broadcast update via WebSocket\n\n    Note over Ops,App: Monitor metrics for 1 hour\n\n    Ops->>Admin: Increase to 10% rollout\n    Admin->>FS: PUT /flags/new-feature (percentage: 10)\n    FS->>SDK: Broadcast update\n\n    Note over Ops,App: Monitor metrics for 4 hours\n\n    Ops->>Admin: Increase to 50% rollout\n    Admin->>FS: PUT /flags/new-feature (percentage: 50)\n    FS->>SDK: Broadcast update\n\n    Note over Ops,App: Monitor metrics for 24 hours\n\n    Ops->>Admin: Increase to 100% rollout\n    Admin->>FS: PUT /flags/new-feature (percentage: 100)\n    FS->>SDK: Broadcast update\n```",
+    "26": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#sequence-3-emergency-kill-switch]\n\n#### Sequence 3: Emergency Kill Switch\n\n```mermaid\nsequenceDiagram\n    participant Monitor as Monitoring System\n    participant Ops as On-call Engineer\n    participant Admin as Admin Console\n    participant FS as Flag Service\n    participant SDK as SDK Clients\n    participant App as Applications\n\n    Monitor->>Ops: ALERT: High error rate on new-feature\n    Ops->>Admin: Access kill switch dashboard\n    Ops->>Admin: Disable \"new-feature\" flag\n    Admin->>FS: PUT /flags/new-feature (enabled: false)\n    FS->>FS: Update configuration\n    FS-->>Admin: Success (< 100ms)\n    FS->>SDK: Broadcast disable via WebSocket\n    SDK->>SDK: Clear cache\n    SDK-->>App: Flag now returns false\n\n    Note over App: Feature immediately disabled\n    Note over App: No code deployment required\n\n    App->>Monitor: Error rate returns to normal\n    Monitor->>Ops: RESOLVED: Error rate normalized\n```",
+    "27": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#variations]\n\n### Variations",
+    "28": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#variation-1-server-side-evaluation]\n\n#### Variation 1: Server-Side Evaluation\n\n**Use Case**: High-security scenarios where client cannot be trusted or for backend-only toggles\n\n**Implementation**:\n- Application code makes synchronous API call to flag service for every evaluation\n- No client-side caching or rule evaluation\n- Flag service performs all targeting logic server-side\n\n**Pros**:\n- More secure (targeting logic not exposed to client)\n- Real-time propagation of flag changes (no cache delay)\n- Simpler SDK with no local evaluation logic\n\n**Cons**:\n- Higher latency (network call for each evaluation)\n- Increased load on flag service\n- Dependency on flag service availability\n\n**When to Use**: Permission toggles, financial calculations, security-sensitive features",
+    "29": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#variation-2-client-side-evaluation-with-sdk]\n\n#### Variation 2: Client-Side Evaluation with SDK\n\n**Use Case**: Standard implementation for most scenarios\n\n**Implementation**:\n- SDK downloads full flag configuration and targeting rules\n- Evaluates flags locally with caching\n- Periodically polls or receives streaming updates from flag service\n\n**Pros**:\n- Low latency (local evaluation)\n- Resilient to flag service outages\n- Reduced load on flag service\n\n**Cons**:\n- Delay in propagating flag changes (bounded by cache TTL)\n- More complex SDK with rule evaluation logic\n- Larger SDK footprint\n\n**When to Use**: Release toggles, experiment toggles, ops toggles",
+    "30": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#variation-3-static-configuration-file]\n\n#### Variation 3: Static Configuration File\n\n**Use Case**: Simple scenarios with infrequent changes and no dynamic targeting\n\n**Implementation**:\n- Feature flags defined in configuration file\n- Deployed with application code\n- Requires redeployment to change flags\n\n**Pros**:\n- Extremely simple (no external dependencies)\n- Zero runtime overhead\n- No flag service infrastructure needed\n\n**Cons**:\n- Requires deployment to change flags (defeats purpose of pattern)\n- No progressive rollout or targeting capability\n- No emergency kill switch\n\n**When to Use**: Environment-specific configuration, build-time toggles, legacy systems",
+    "31": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#variation-4-hybrid-approach]\n\n#### Variation 4: Hybrid Approach\n\n**Use Case**: Balance between simplicity and flexibility\n\n**Implementation**:\n- Critical flags use server-side evaluation for security/compliance\n- Standard flags use client-side evaluation for performance\n- Static configuration files for environment-specific settings\n\n**Pros**:\n- Optimizes for different requirements per toggle type\n- Reduces complexity where advanced features not needed\n- Cost-effective (minimizes flag service usage)\n\n**Cons**:\n- Multiple systems to manage and understand\n- Inconsistent developer experience across toggle types\n- Requires clear guidelines on which approach to use\n\n**When to Use**: Large organizations with diverse use cases and legacy system constraints",
+    "32": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#variation-5-edge-based-evaluation]\n\n#### Variation 5: Edge-Based Evaluation\n\n**Use Case**: Global applications requiring low latency across geographic regions\n\n**Implementation**:\n- Flag configuration deployed to CDN edge locations\n- Flag evaluation occurs at edge nodes close to users\n- Reduces latency for globally distributed applications\n\n**Pros**:\n- Extremely low latency (edge evaluation)\n- Reduced load on central flag service\n- Improved user experience for global users\n\n**Cons**:\n- More complex deployment and update propagation\n- Potential for inconsistency during configuration updates\n- Higher infrastructure costs\n\n**When to Use**: Global SaaS applications, consumer-facing applications with latency SLAs",
+    "33": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#implementation-guidelines]\n\n## Implementation Guidelines",
+    "34": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#prerequisites]\n\n### Prerequisites\n\n**Technical Requirements:**\n- Feature flag management platform (LaunchDarkly, Split.io, Unleash, or custom solution)\n- Monitoring and observability infrastructure (metrics, logging, tracing)\n- CI/CD pipeline with automated deployment capability\n- Configuration management system\n- Audit logging infrastructure for compliance\n\n**Organizational Prerequisites:**\n- Development teams trained on feature toggle best practices\n- Operations team with 24/7 on-call coverage for emergency flag changes\n- Defined process for flag lifecycle management (creation to removal)\n- Agreement on flag naming conventions and categorization\n- Metrics and monitoring dashboards for tracking flag impact\n\n**Skills and Knowledge:**\n- Understanding of distributed systems and caching strategies\n- Experience with A/B testing and statistical significance\n- Knowledge of progressive delivery patterns\n- Familiarity with observability and monitoring tools\n- Understanding of your application's architecture and deployment model\n\n**Infrastructure Readiness:**\n- Network connectivity from all environments to flag service\n- Appropriate security controls (authentication, authorization, encryption)\n- Sufficient capacity for flag service (query volume estimation)\n- Backup and disaster recovery plan for flag configuration\n- Geographic distribution if serving global user base",
+    "35": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#step-by-step-implementation]\n\n### Step-by-Step Implementation",
+    "36": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#phase-1-platform-selection-and-setup-weeks-1-2]\n\n#### Phase 1: Platform Selection and Setup (Weeks 1-2)\n\n**Step 1.1: Evaluate Feature Flag Platforms**\n\nCompare platforms based on criteria:\n\n| Criteria | LaunchDarkly | Split.io | Unleash (OSS) | Custom Build |\n|----------|--------------|----------|---------------|--------------|\n| **Cost** | $$$$ | $$$ | $ (hosting) | $$$ (dev time) |\n| **Features** | Comprehensive | Comprehensive | Good | Limited |\n| **Integration** | Excellent | Excellent | Good | Custom |\n| **Support** | Enterprise | Enterprise | Community | Internal |\n| **Compliance** | SOC 2, HIPAA | SOC 2 | Self-managed | Self-managed |\n| **Latency** | <50ms | <50ms | Varies | Optimizable |\n\n**Recommendation for Gainwell**: LaunchDarkly or Split.io for enterprise features, compliance certifications, and support. Unleash for cost-sensitive projects with engineering resources.\n\n**Step 1.2: Set Up Flag Service Infrastructure**\n\nFor SaaS platforms:\n```yaml\n# Example: LaunchDarkly Setup\n1. Create organization account\n2. Set up environments (dev, staging, production)\n3. Configure security settings:\n   - Enable SSO integration (SAML/Okta)\n   - Configure role-based access control\n   - Enable audit logging\n   - Set up API access tokens\n4. Integrate with monitoring (DataDog, New Relic, etc.)\n5. Configure alerting for flag service health\n```\n\nFor self-hosted (Unleash):\n```yaml\n# Unleash Deployment (Kubernetes)\napiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: unleash-server\nspec:\n  replicas: 3\n  template:\n    spec:\n      containers:\n      - name: unleash\n        image: unleashorg/unleash-server:latest\n        env:\n        - name: DATABASE_URL\n          valueFrom:\n            secretKeyRef:\n              name: unleash-db\n              key: url\n        - name: UNLEASH_URL\n          value: https://unleash.gainwell.com\n        resources:\n          requests:\n            memory: \"512Mi\"\n            cpu: \"500m\"\n          limits:\n            memory: \"1Gi\"\n            cpu: \"1000m\"\n\n---\napiVersion: v1\nkind: Service\nmetadata:\n  name: unleash-service\nspec:\n  type: LoadBalancer\n  ports:\n\n  - port: 443\n    targetPort: 4242\n  selector:\n    app: unleash\n```\n\n**Step 1.3: Configure Security and Access Control**\n\n```yaml\n# Example RBAC Configuration\nroles:\n\n  - name: developer\n    permissions:\n      - read_flags\n      - create_flags_in_dev\n      - toggle_flags_in_dev\n\n  - name: ops_engineer\n    permissions:\n      - read_flags\n      - toggle_flags_in_staging\n      - toggle_flags_in_production\n      - view_audit_logs\n\n  - name: sre_manager\n    permissions:\n      - all_permissions\n      - manage_users\n      - view_audit_logs\n      - export_data\n```",
+    "37": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#phase-2-sdk-integration-weeks-2-4]\n\n#### Phase 2: SDK Integration (Weeks 2-4)\n\n**Step 2.1: Integrate Flag SDK into Applications**\n\nExample for .NET microservice:\n```csharp\n// Program.cs - Startup Configuration\nusing LaunchDarkly.Sdk.Server;\n\npublic class Program\n{\n    public static void Main(string[] args)\n    {\n        var builder = WebApplication.CreateBuilder(args);\n\n        // Configure LaunchDarkly SDK\n        var ldClient = new LdClient(\n            Configuration.Builder(builder.Configuration[\"LaunchDarkly:SdkKey\"])\n                .StartWaitTime(TimeSpan.FromSeconds(5))\n                .Build()\n        );\n\n        // Register as singleton for dependency injection\n        builder.Services.AddSingleton<ILdClient>(ldClient);\n\n        builder.Services.AddControllers();\n        var app = builder.Build();\n\n        app.UseRouting();\n        app.UseEndpoints(endpoints => endpoints.MapControllers());\n        app.Run();\n    }\n}\n\n// ClaimsController.cs - Using Feature Flags\nusing LaunchDarkly.Sdk.Server;\n\n[ApiController]\n[Route(\"api/claims\")]\npublic class ClaimsController : ControllerBase\n{\n    private readonly ILdClient _ldClient;\n    private readonly IClaimsService _claimsService;\n    private readonly ILogger<ClaimsController> _logger;\n\n    public ClaimsController(\n        ILdClient ldClient,\n        IClaimsService claimsService,\n        ILogger<ClaimsController> logger)\n    {\n        _ldClient = ldClient;\n        _claimsService = claimsService;\n        _logger = logger;\n    }\n\n    [HttpPost]\n    public async Task<IActionResult> ProcessClaim([FromBody] ClaimRequest claim)\n    {\n        // Create user context for flag evaluation\n        var user = User.Builder(claim.ProviderId)\n            .Name(claim.ProviderName)\n            .Custom(\"state\", claim.State)\n            .Custom(\"claimType\", claim.Type)\n            .Build();\n\n        // Check feature flag with context\n        var useEnhancedAdjudication = _ldClient.BoolVariation(\n            \"enhanced-claims-adjudication\",\n            user,\n            false // default if flag service unavailable\n        );\n\n        try\n        {\n            ClaimResult result;\n            if (useEnhancedAdjudication)\n            {\n                _logger.LogInformation(\n                    \"Processing claim {ClaimId} with enhanced adjudication for provider {ProviderId}\",\n                    claim.Id, claim.ProviderId\n                );\n                result = await _claimsService.ProcessWithEnhancedLogic(claim);\n            }\n            else\n            {\n                result = await _claimsService.ProcessWithStandardLogic(claim);\n            }\n\n            return Ok(result);\n        }\n        catch (Exception ex)\n        {\n            _logger.LogError(ex,\n                \"Error processing claim {ClaimId} with enhanced={Enhanced}\",\n                claim.Id, useEnhancedAdjudication\n            );\n            throw;\n        }\n    }\n}\n```\n\n**Step 2.2: Implement Flag Evaluation Best Practices**\n\n```csharp\n// FeatureFlagService.cs - Abstraction Layer\npublic interface IFeatureFlagService\n{\n    bool IsEnabled(string flagKey, UserContext user);\n    T GetVariation<T>(string flagKey, UserContext user, T defaultValue);\n    Task<Dictionary<string, bool>> GetAllFlags(UserContext user);\n}\n\npublic class LaunchDarklyFeatureFlagService : IFeatureFlagService\n{\n    private readonly ILdClient _client;\n    private readonly ILogger<LaunchDarklyFeatureFlagService> _logger;\n    private readonly IMetricsCollector _metrics;\n\n    public bool IsEnabled(string flagKey, UserContext user)\n    {\n        var startTime = Stopwatch.GetTimestamp();\n        try\n        {\n            var ldUser = MapToLdUser(user);\n            var result = _client.BoolVariation(flagKey, ldUser, false);\n\n            // Record metrics\n            _metrics.RecordFlagEvaluation(flagKey, result, user);\n\n            return result;\n        }\n        catch (Exception ex)\n        {\n            _logger.LogError(ex,\n                \"Error evaluating flag {FlagKey} for user {UserId}, returning false\",\n                flagKey, user.Id\n            );\n\n            // Fail safe - return default value\n            return false;\n        }\n        finally\n        {\n            var elapsed = Stopwatch.GetElapsedTime(startTime);\n            _metrics.RecordFlagEvaluationLatency(flagKey, elapsed);\n        }\n    }\n\n    // Helper to map domain user context to LaunchDarkly user\n    private User MapToLdUser(UserContext user)\n    {\n        return User.Builder(user.Id)\n            .Name(user.Name)\n            .Email(user.Email)\n            .Custom(\"state\", user.State)\n            .Custom(\"role\", user.Role)\n            .Custom(\"organizationId\", user.OrganizationId)\n            .Build();\n    }\n}\n```\n\n**Step 2.3: Configure Caching Strategy**\n\n```csharp\n// appsettings.json\n{\n  \"LaunchDarkly\": {\n    \"SdkKey\": \"sdk-key-from-vault\",\n    \"StartWaitTime\": \"00:00:05\",\n    \"Events\": {\n      \"Capacity\": 10000,\n      \"FlushInterval\": \"00:00:05\"\n    },\n    \"Offline\": false,\n    \"StreamingEnabled\": true\n  }\n}\n\n// Advanced caching configuration\nvar config = Configuration.Builder(sdkKey)\n    .StartWaitTime(TimeSpan.FromSeconds(5)) // Wait for initial flag sync\n    .Events(\n        Components.SendEvents()\n            .Capacity(10000)\n            .FlushInterval(TimeSpan.FromSeconds(5))\n    )\n    .DataStore(\n        Components.PersistentDataStore(\n            // Use Redis for shared cache across instances\n            Redis.DataStore().Uri(\"redis://cache:6379\")\n        )\n    )\n    .Build();\n```",
+    "38": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#phase-3-flag-management-and-rollout-weeks-4-6]\n\n#### Phase 3: Flag Management and Rollout (Weeks 4-6)\n\n**Step 3.1: Create Feature Flag with Targeting Rules**\n\n```yaml\n# Example Flag Configuration\nflag_key: enhanced-claims-adjudication\nname: Enhanced Claims Adjudication Logic\ndescription: New auto-adjudication logic to increase straight-through processing\n\nenvironments:\n  development:\n    enabled: true\n    default_variation: on\n\n  staging:\n    enabled: true\n    default_variation: on\n\n  production:\n    enabled: true\n    default_variation: off  # Start disabled\n    targeting:\n      rules:\n        # Rule 1: Pilot states only\n        - clauses:\n            - attribute: state\n              operator: in\n              values: [AZ, NM]  # Pilot states\n          variation: on\n\n        # Rule 2: Percentage rollout\n        - rollout:\n            variations:\n              - variation: on\n                weight: 5  # 5% of remaining traffic\n              - variation: off\n                weight: 95\n```\n\n**Step 3.2: Progressive Rollout Process**\n\n```yaml\n# Rollout Schedule\nWeek 1:\n\n  - Enable for internal users (flag rule: email ends with @gainwell.com)\n  - Monitor metrics: error rate, latency, business outcomes\n\nWeek 2:\n\n  - Enable for pilot states (Arizona, New Mexico)\n  - Target: 100% of users in these states\n  - Monitor: claims processing rates, provider feedback\n\nWeek 3:\n\n  - Progressive percentage rollout in remaining states:\n    - Day 1: 1% of users\n    - Day 2: 5% of users\n    - Day 3: 10% of users\n    - Day 4: 25% of users\n    - Day 5: 50% of users\n    - Day 6: 75% of users\n    - Day 7: 100% of users\n  - Pause progression if errors detected\n\nWeek 4:\n\n  - Monitor stability at 100%\n  - Plan flag removal (convert to permanent code)\n```\n\n**Step 3.3: Implement Monitoring and Alerting**\n\n```csharp\n// MetricsCollector.cs\npublic class FeatureFlagMetricsCollector : IMetricsCollector\n{\n    private readonly IMetricsService _metrics;\n\n    public void RecordFlagEvaluation(string flagKey, bool result, UserContext user)\n    {\n        _metrics.Increment(\n            \"feature_flag.evaluation\",\n            tags: new[] {\n                $\"flag:{flagKey}\",\n                $\"result:{result}\",\n                $\"state:{user.State}\",\n                $\"environment:{_environment}\"\n            }\n        );\n    }\n\n    public void RecordFlagEvaluationLatency(string flagKey, TimeSpan latency)\n    {\n        _metrics.RecordTiming(\n            \"feature_flag.evaluation.latency\",\n            latency.TotalMilliseconds,\n            tags: new[] { $\"flag:{flagKey}\" }\n        );\n    }\n\n    public void RecordBusinessMetric(string flagKey, string metricName, double value)\n    {\n        // Correlate business metrics with flag status\n        _metrics.Gauge(\n            $\"business.{metricName}\",\n            value,\n            tags: new[] { $\"flag:{flagKey}\" }\n        );\n    }\n}\n```\n\nAlert configuration:\n```yaml\n# DataDog Alert Example\nalerts:\n\n  - name: High Feature Flag Error Rate\n    query: |\n      avg(last_5m):sum:error.count{flag:enhanced-claims-adjudication} > 100\n    message: |\n      Enhanced claims adjudication flag showing elevated error rate.\n      Consider disabling flag via kill switch.\n      @pagerduty-claims-team @slack-ops-channel\n\n  - name: Feature Flag Service Unavailable\n    query: |\n      avg(last_5m):avg:feature_flag.evaluation.latency > 1000\n    message: |\n      Feature flag service responding slowly or unavailable.\n      Applications using cached flag values.\n      @pagerduty-sre @slack-platform-team\n```",
+    "39": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#phase-4-testing-strategy-ongoing]\n\n#### Phase 4: Testing Strategy (Ongoing)\n\n**Step 4.1: Unit Testing with Feature Flags**\n\n```csharp\n// ClaimsControllerTests.cs\npublic class ClaimsControllerTests\n{\n    private Mock<ILdClient> _mockFlagClient;\n    private Mock<IClaimsService> _mockClaimsService;\n    private ClaimsController _controller;\n\n    [SetUp]\n    public void Setup()\n    {\n        _mockFlagClient = new Mock<ILdClient>();\n        _mockClaimsService = new Mock<IClaimsService>();\n        _controller = new ClaimsController(\n            _mockFlagClient.Object,\n            _mockClaimsService.Object,\n            Mock.Of<ILogger<ClaimsController>>()\n        );\n    }\n\n    [Test]\n    public async Task ProcessClaim_WithFlagEnabled_UsesEnhancedLogic()\n    {\n        // Arrange\n        _mockFlagClient\n            .Setup(x => x.BoolVariation(\n                \"enhanced-claims-adjudication\",\n                It.IsAny<User>(),\n                false))\n            .Returns(true);\n\n        var claim = CreateTestClaim();\n\n        // Act\n        await _controller.ProcessClaim(claim);\n\n        // Assert\n        _mockClaimsService.Verify(\n            x => x.ProcessWithEnhancedLogic(claim),\n            Times.Once\n        );\n        _mockClaimsService.Verify(\n            x => x.ProcessWithStandardLogic(It.IsAny<ClaimRequest>()),\n            Times.Never\n        );\n    }\n\n    [Test]\n    public async Task ProcessClaim_WithFlagDisabled_UsesStandardLogic()\n    {\n        // Arrange\n        _mockFlagClient\n            .Setup(x => x.BoolVariation(\n                \"enhanced-claims-adjudication\",\n                It.IsAny<User>(),\n                false))\n            .Returns(false);\n\n        var claim = CreateTestClaim();\n\n        // Act\n        await _controller.ProcessClaim(claim);\n\n        // Assert\n        _mockClaimsService.Verify(\n            x => x.ProcessWithStandardLogic(claim),\n            Times.Once\n        );\n    }\n\n    [Test]\n    public async Task ProcessClaim_WithFlagServiceError_UsesDefaultBehavior()\n    {\n        // Arrange\n        _mockFlagClient\n            .Setup(x => x.BoolVariation(\n                It.IsAny<string>(),\n                It.IsAny<User>(),\n                false))\n            .Throws(new Exception(\"Flag service unavailable\"));\n\n        var claim = CreateTestClaim();\n\n        // Act\n        await _controller.ProcessClaim(claim);\n\n        // Assert - should use standard logic (default false)\n        _mockClaimsService.Verify(\n            x => x.ProcessWithStandardLogic(claim),\n            Times.Once\n        );\n    }\n}\n```\n\n**Step 4.2: Integration Testing**\n\n```csharp\n// Integration test with real flag service (test environment)\n[TestFixture]\n[Category(\"Integration\")]\npublic class ClaimsProcessingIntegrationTests\n{\n    private ILdClient _flagClient;\n    private string _testUserId;\n\n    [OneTimeSetUp]\n    public void OneTimeSetup()\n    {\n        // Use test environment SDK key\n        var sdkKey = Environment.GetEnvironmentVariable(\"LAUNCHDARKLY_TEST_SDK_KEY\");\n        _flagClient = new LdClient(sdkKey);\n        _testUserId = $\"test-user-{Guid.NewGuid()}\";\n    }\n\n    [Test]\n    public async Task VerifyFlagBehaviorInTestEnvironment()\n    {\n        // Create test user context\n        var user = User.Builder(_testUserId)\n            .Custom(\"state\", \"AZ\")\n            .Build();\n\n        // Verify flag is configured correctly in test environment\n        var flagEnabled = _flagClient.BoolVariation(\n            \"enhanced-claims-adjudication\",\n            user,\n            false\n        );\n\n        Assert.IsTrue(flagEnabled,\n            \"Flag should be enabled in test environment for AZ state\");\n    }\n}\n```\n\n**Step 4.3: Load Testing with Flag Variations**\n\n```yaml\n# K6 Load Test Script\nimport http from 'k6/http';\nimport { check } from 'k6';\n\nexport let options = {\n  stages: [\n    { duration: '5m', target: 100 },  // Ramp up\n    { duration: '10m', target: 100 }, // Steady state\n    { duration: '5m', target: 0 },    // Ramp down\n  ],\n};\n\nexport default function () {\n  // Test with flag enabled\n  let userEnabledFlag = {\n    providerId: `provider-${__VU}`,\n    state: 'AZ', // State where flag is enabled\n    claim: { /* claim data */ }\n  };\n\n  let res1 = http.post(\n    'https://api.gainwell.com/claims',\n    JSON.stringify(userEnabledFlag),\n    { headers: { 'Content-Type': 'application/json' } }\n  );\n\n  check(res1, {\n    'status is 200': (r) => r.status === 200,\n    'response time < 500ms': (r) => r.timings.duration < 500,\n  });\n\n  // Test with flag disabled\n  let userDisabledFlag = {\n    providerId: `provider-${__VU}`,\n    state: 'CA', // State where flag is disabled\n    claim: { /* claim data */ }\n  };\n\n  let res2 = http.post(\n    'https://api.gainwell.com/claims',\n    JSON.stringify(userDisabledFlag),\n    { headers: { 'Content-Type': 'application/json' } }\n  );\n\n  check(res2, {\n    'status is 200': (r) => r.status === 200,\n    'response time < 500ms': (r) => r.timings.duration < 500,\n  });\n}\n```",
+    "40": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#best-practices]\n\n### Best Practices\n\n**1. Flag Naming Conventions**\n```yaml\n# Use consistent naming: [domain]-[feature]-[type]\nGood Examples:\n\n  - claims-enhanced-adjudication\n  - provider-portal-redesign-v2\n  - member-fhir-api-r4\n  - payment-batch-processing-optimization\n\nBad Examples:\n\n  - newFeature\n  - test123\n  - try-this\n  - temporary-fix\n```\n\n**2. Flag Lifecycle Management**\n```yaml\n# Document expected lifecycle for each flag\nflag: claims-enhanced-adjudication\ntype: release-toggle\ncreated: 2026-01-05\nexpected_lifespan: 30 days\nremoval_plan: |\n\n  - Week 1-2: Progressive rollout\n  - Week 3: Monitor at 100%\n  - Week 4: Remove flag, make feature permanent\n  - Create ticket: TECH-DEBT-1234 for flag removal\n```\n\n**3. Default to Safe Values**\n```csharp\n// Always provide safe default values\nvar useNewFeature = _flagClient.BoolVariation(\n    \"risky-feature\",\n    user,\n    false  // Default to disabled if flag service unavailable\n);\n\n// For multi-variate flags, default to most conservative option\nvar paymentMethod = _flagClient.StringVariation(\n    \"payment-processing-method\",\n    user,\n    \"standard\"  // Default to proven method, not experimental\n);\n```\n\n**4. Minimize Flag Evaluation**\n```csharp\n// BAD: Evaluate flag in tight loop\nfor (int i = 0; i < 10000; i++)\n{\n    if (_flagClient.BoolVariation(\"flag\", user, false))\n    {\n        // Process item\n    }\n}\n\n// GOOD: Evaluate once, reuse result\nvar flagEnabled = _flagClient.BoolVariation(\"flag\", user, false);\nfor (int i = 0; i < 10000; i++)\n{\n    if (flagEnabled)\n    {\n        // Process item\n    }\n}\n```\n\n**5. Context-Rich Evaluation**\n```csharp\n// Provide rich context for targeting\nvar user = User.Builder(userId)\n    .Name(userName)\n    .Email(email)\n    .Custom(\"state\", userState)\n    .Custom(\"memberSegment\", segment)  // e.g., \"pediatric\", \"elderly\"\n    .Custom(\"planType\", planType)      // e.g., \"managed-care\", \"fee-for-service\"\n    .Custom(\"organizationType\", orgType) // e.g., \"hospital\", \"clinic\"\n    .Build();\n```\n\n**6. Observability and Debugging**\n```csharp\n// Log flag evaluations for debugging\n_logger.LogInformation(\n    \"Feature flag {FlagKey} evaluated to {Result} for user {UserId} (state={State}, segment={Segment})\",\n    flagKey,\n    result,\n    user.Id,\n    user.State,\n    user.Segment\n);\n\n// Include flag context in error logs\ncatch (Exception ex)\n{\n    _logger.LogError(ex,\n        \"Error with flag {FlagKey}={FlagValue}: {ErrorMessage}\",\n        flagKey,\n        flagEnabled,\n        ex.Message\n    );\n}\n```\n\n**7. Testing Both Paths**\n```yaml\n# Ensure both code paths are exercised\ntesting_strategy:\n  unit_tests:\n    - Test with flag enabled\n    - Test with flag disabled\n    - Test with flag service error (default behavior)\n\n  integration_tests:\n    - Verify flag configuration in each environment\n    - Test targeting rules work as expected\n\n  load_tests:\n    - Test performance with flag enabled\n    - Test performance with flag disabled\n    - Verify no performance degradation from flag evaluation\n```",
+    "41": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#common-pitfalls]\n\n### Common Pitfalls\n\n**1. Toggle Debt Accumulation**\n- **Problem**: Flags accumulate over time and are never removed, creating maintenance burden\n- **Symptoms**: Hundreds of flags, unclear which are still needed, complex conditional logic\n- **Prevention**:\n  - Set expiration dates for release toggles\n  - Create technical debt tickets for flag removal\n  - Regular flag hygiene reviews (monthly)\n  - Automated alerts for flags older than expected lifespan\n- **Recovery**: Conduct flag audit, prioritize removal, allocate engineering time\n\n**2. Insufficient Testing of Toggle States**\n- **Problem**: Only one code path (flag on OR flag off) is tested, other path has defects\n- **Symptoms**: Bugs appear when flag is toggled in production\n- **Prevention**:\n  - Mandate testing both enabled and disabled states\n  - Use code coverage tools to verify both paths exercised\n  - Integration tests with different flag configurations\n- **Recovery**: Add comprehensive tests before next flag toggle\n\n**3. Performance Degradation from Excessive Evaluation**\n- **Problem**: Flags evaluated in tight loops or high-frequency code paths\n- **Symptoms**: Increased latency, high CPU usage from SDK, flag service overload\n- **Prevention**:\n  - Evaluate flags once per request, not per iteration\n  - Use appropriate caching strategies\n  - Monitor flag evaluation latency metrics\n  - Performance test with realistic flag evaluation patterns\n- **Recovery**: Refactor to cache flag results, optimize evaluation frequency\n\n**4. Lack of Kill Switch Documentation**\n- **Problem**: In emergency, team doesn't know which flags to disable or how\n- **Symptoms**: Extended incident response time, confusion during outages\n- **Prevention**:\n  - Document kill switch procedures in runbooks\n  - Train on-call engineers on flag management\n  - Create dashboard with critical flags prominently displayed\n  - Test kill switch procedures in fire drills\n- **Recovery**: Update documentation, conduct training, add to incident post-mortems\n\n**5. Overuse of Feature Flags**\n- **Problem**: Using flags for every tiny change, even when not needed\n- **Symptoms**: Code bloated with conditional logic, difficult to understand flow\n- **Prevention**:\n  - Use flags only for features with significant risk or requiring progressive rollout\n  - Small, low-risk changes should be deployed directly\n  - Review flag proposals in design reviews\n- **Recovery**: Remove unnecessary flags, establish clear criteria for when flags are needed\n\n**6. Security and Access Control Gaps**\n- **Problem**: Insufficient controls on who can toggle flags in production\n- **Symptoms**: Unauthorized flag changes, lack of audit trail\n- **Prevention**:\n  - Implement role-based access control\n  - Require approval workflows for production flag changes\n  - Enable comprehensive audit logging\n  - Regular access reviews\n- **Recovery**: Implement access controls, audit historical flag changes\n\n**7. Inconsistent User Experience**\n- **Problem**: User experiences different behavior across sessions due to flag changes\n- **Symptoms**: User confusion, support tickets about \"disappearing\" features\n- **Prevention**:\n  - Use sticky bucketing (same user always gets same variation)\n  - Provide clear user communication about feature changes\n  - Avoid changing flags during peak usage hours\n  - Consider user session lifecycle in flag changes\n- **Recovery**: Communicate changes, implement sticky bucketing",
+    "42": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#governance-and-compliance]\n\n## Governance and Compliance",
+    "43": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#standards-alignment]\n\n### Standards Alignment\n\nThis pattern aligns with the following enterprise architecture standards:\n\n**Deployment and Release Standards**\n- [Continuous Deployment Standard](../../../decisions/technology/continuous-deployment.md) - Feature toggles enable continuous deployment while controlling feature release\n- [Zero-Downtime Deployment Standard](../../../decisions/infrastructure/zero-downtime-deployment.md) - Progressive rollouts reduce deployment risk\n- [Change Management Standard](../../../decisions/governance/change-management.md) - Flag changes follow approval workflows\n\n**Security Standards**\n- [API Security Standard](../../../standards/security/api-security-standard.md) - Flag service requires authentication and authorization\n- [Audit Logging Standard](../../../standards/security/audit-logging-standard.md) - All flag changes must be logged with user, timestamp, and reason\n- [Access Control Standard](../../../standards/security/access-control-standard.md) - RBAC for flag management operations\n\n**Operations Standards**\n- [Observability Standard](../../../standards/operations/observability-standard.md) - Flag evaluations integrated with metrics and tracing\n- [Incident Response Standard](../../../standards/operations/incident-response.md) - Kill switch procedures documented in runbooks\n- [Monitoring and Alerting Standard](../../../standards/operations/monitoring-alerting.md) - Alerts for flag-related anomalies\n\n**Development Standards**\n- [Code Review Standard](../../../standards/development/code-review.md) - Flag usage reviewed in code reviews\n- [Testing Standard](../../../standards/development/testing.md) - Both flag states must be tested\n- [Technical Debt Management](../../../standards/development/technical-debt.md) - Flag removal tracked as technical debt",
+    "44": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#compliance-requirements]\n\n### Compliance Requirements",
+    "45": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#hipaa-compliance]\n\n#### HIPAA Compliance\n\nFeature toggles must not compromise HIPAA security and privacy requirements:\n\n**Access Controls (§164.312(a)(1))**\n- Flag service access restricted to authorized personnel via SSO and MFA\n- Role-based access control limiting production flag changes to operations team\n- Regular access reviews ensuring least privilege principle\n\n**Audit Controls (§164.312(b))**\n- Comprehensive audit logging of all flag configuration changes\n- Logs include user identity, timestamp, old/new values, and business justification\n- Audit logs retained for 6 years per HIPAA requirements\n- Tamper-proof log storage with integrity verification\n\n**PHI Protection**\n- User context provided to flag service must not include PHI\n- Use de-identified attributes (user ID, state, role) rather than names or health information\n- Flag evaluation logs must not contain PHI\n- Example: Use `userId: \"USER123\"` not `userName: \"John Smith\"`\n\n**Transmission Security (§164.312(e)(1))**\n- All flag service communication encrypted via TLS 1.2+\n- API keys and SDK keys stored in secure vault (not in code)\n- Flag service deployed in compliant infrastructure with appropriate network segmentation",
+    "46": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#state-specific-compliance]\n\n#### State-Specific Compliance\n\n**Contract Requirements**\n- State contracts may require notification before significant system changes\n- Flag-based rollouts provide evidence of controlled, gradual deployment\n- Document flag usage in operational reports to demonstrate risk management\n\n**Prior Authorization Requirements**\n- Flags controlling benefit coverage must maintain audit trail\n- State-specific business rules enabled via flags must be clearly documented\n- Demonstrate ability to enable/disable state-specific logic per contract\n\n**Data Residency**\n- If using SaaS flag service, ensure data residency requirements met\n- Some states require data to remain within state or US boundaries\n- Self-hosted options (Unleash) provide full control over data location",
+    "47": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#security-compliance]\n\n#### Security Compliance\n\n**SOC 2 Type II**\n- If using third-party flag service (LaunchDarkly, Split.io), verify SOC 2 certification\n- Review vendor security controls in annual vendor assessment\n- Ensure flag service meets organization's security requirements\n\n**Penetration Testing**\n- Include flag service in annual penetration testing scope\n- Test for unauthorized flag access, injection attacks, and privilege escalation\n- Verify flag service doesn't expose sensitive configuration externally\n\n**Vulnerability Management**\n- Keep flag SDK libraries updated with security patches\n- Subscribe to security advisories from flag service vendor\n- Include flag service in vulnerability scanning",
+    "48": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#approval-process]\n\n### Approval Process",
+    "49": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#flag-creation-approval]\n\n#### Flag Creation Approval\n\n**Low-Risk Flags** (Approval: Tech Lead)\n- Minor UI changes\n- Performance optimizations\n- Internal-only features\n- Non-PHI data processing changes\n\n**Medium-Risk Flags** (Approval: Engineering Manager + Security Review)\n- New business logic affecting claims or payments\n- Integration with external systems\n- Changes to authentication/authorization\n- Database schema changes\n\n**High-Risk Flags** (Approval: Architecture Review Board)\n- Core adjudication logic changes\n- Payment processing changes affecting financial accuracy\n- Security control modifications\n- Changes affecting HIPAA compliance\n\n**Flag Creation Request Template:**\n```yaml\nflag_request:\n  flag_key: \"claims-enhanced-adjudication\"\n  flag_name: \"Enhanced Claims Adjudication\"\n  description: \"New auto-adjudication logic to increase straight-through processing\"\n\n  risk_level: \"high\"  # low/medium/high\n\n  business_justification: |\n    Increase claims auto-adjudication rate, reducing manual review workload\n    and improving provider payment speed.\n\n  affected_systems:\n    - Gainwell Enterprise Claims Processing\n    - Payment Engine\n    - Provider Portal\n\n  rollout_plan:\n    - Phase 1: Internal testing (1 week)\n    - Phase 2: Pilot states (AZ, NM) (1 week)\n    - Phase 3: Progressive rollout 1% -> 100% (1 week)\n\n  success_criteria:\n    - Straight-through processing rate > 73%\n    - Error rate < 0.1%\n    - Average processing time < 5 seconds\n\n  rollback_plan: |\n    Disable flag via kill switch if error rate exceeds 0.1%\n    or processing time degrades by >20%.\n\n  expected_lifespan: \"30 days\"\n\n  removal_date: \"2026-02-05\"\n\n  approvers:\n    - tech_lead: \"Jane Smith\"\n    - engineering_manager: \"Bob Johnson\"\n    - security_reviewer: \"Alice Chen\"\n```",
+    "50": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#flag-toggle-approval-production]\n\n#### Flag Toggle Approval (Production)\n\n**Emergency Kill Switch** (No Approval Required)\n- On-call engineer can disable any flag immediately if production incident occurring\n- Must be documented in incident report with justification\n- Post-incident review required within 24 hours\n\n**Percentage Increase** (Approval: Engineering Manager)\n- Progressive rollout increases (e.g., 10% -> 25%)\n- Requires monitoring data showing no issues at current percentage\n- Slack approval workflow with metrics screenshots\n\n**State-Specific Enablement** (Approval: Product Manager + State Liaison)\n- Enabling feature for specific state\n- Requires confirmation from state agency\n- Coordination with state go-live timeline\n\n**Full Rollout (100%)** (Approval: Engineering Manager + Product Manager)\n- Enabling feature for all users\n- Requires minimum 48 hours at high percentage (e.g., 75%) with no issues\n- Review of key metrics before approval",
+    "51": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#monitoring-and-metrics]\n\n### Monitoring and Metrics",
+    "52": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#technical-metrics]\n\n#### Technical Metrics\n\n**Flag Service Health**\n| Metric | Target | Alert Threshold | Action |\n|--------|--------|-----------------|--------|\n| Flag Service Availability | 99.95% | <99.9% | Page SRE team |\n| Flag Evaluation Latency | <50ms p99 | >100ms p99 | Investigate performance |\n| SDK Sync Latency | <1s | >5s | Check network/service health |\n| Flag Cache Hit Rate | >95% | <90% | Review caching configuration |\n\n**Flag Usage Metrics**\n| Metric | Purpose | Dashboard |\n|--------|---------|-----------|\n| Evaluations per Flag | Track flag usage volume | Flag Overview |\n| Evaluations by Result | Monitor enabled vs disabled ratio | Flag Details |\n| Targeting Rule Matches | Verify targeting working as expected | Targeting Analysis |\n| Flag-Correlated Error Rate | Detect issues with specific flags | Error Analysis |\n\n**Rollout Progress Metrics**\n| Metric | Purpose | Review Cadence |\n|--------|---------|----------------|\n| User Exposure Percentage | Track rollout progress | Every 4 hours |\n| Variation Distribution | Ensure even bucket allocation | Daily |\n| State-Specific Enablement | Monitor geographic rollout | Per deployment |\n| Conversion/Success Rate | Measure feature impact | Continuous |",
+    "53": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#business-metrics]\n\n#### Business Metrics\n\n**Feature Impact Assessment**\n```yaml\n# Example: Claims Adjudication Feature\n# This structure illustrates the metric schema; actual values come from your observability platform.\nmetrics:\n  baseline_period: \"7 days before flag enabled\"\n  measurement_period: \"7 days after flag enabled\"\n\n  primary_metrics:\n    - metric: \"Straight-through processing rate\"\n      baseline: \"[measured from observability]\"\n      target: \"[defined in success criteria]\"\n      actual: \"[measured after rollout]\"\n      status: \"[success/failure vs target]\"\n\n    - metric: \"Average adjudication time\"\n      baseline: \"[measured from observability]\"\n      target: \"[defined in success criteria]\"\n      actual: \"[measured after rollout]\"\n      status: \"[success/failure vs target]\"\n\n  secondary_metrics:\n    - metric: \"Manual review workload\"\n      baseline: \"[measured from observability]\"\n      actual: \"[measured after rollout]\"\n      improvement: \"[calculated from measured values]\"\n\n    - metric: \"Provider payment speed\"\n      baseline: \"[measured from observability]\"\n      actual: \"[measured after rollout]\"\n      improvement: \"[calculated from measured values]\"\n\n  quality_metrics:\n    - metric: \"Adjudication error rate\"\n      baseline: \"[measured from observability]\"\n      threshold: \"[defined acceptance threshold]\"\n      actual: \"[measured after rollout]\"\n      status: \"[pass/fail vs threshold]\"\n```\n\n**A/B Test Statistical Analysis**\n```python\n# Example: Measuring conversion rate improvement\nfrom scipy import stats\n\n# Control group (flag disabled)\ncontrol_conversions = 1250\ncontrol_total = 10000\ncontrol_rate = control_conversions / control_total  # 12.5%\n\n# Treatment group (flag enabled)\ntreatment_conversions = 1450\ntreatment_total = 10000\ntreatment_rate = treatment_conversions / treatment_total  # 14.5%\n\n# Chi-square test for statistical significance\ncontingency_table = [\n    [control_conversions, control_total - control_conversions],\n    [treatment_conversions, treatment_total - treatment_conversions]\n]\nchi2, p_value, dof, expected = stats.chi2_contingency(contingency_table)\n\n# Result interpretation\nif p_value < 0.05:\n    print(f\"Statistically significant improvement: {treatment_rate - control_rate:.2%}\")\n    print(f\"p-value: {p_value:.4f}\")\n    print(\"Decision: Proceed with full rollout\")\nelse:\n    print(\"No statistically significant difference detected\")\n    print(\"Decision: Reevaluate feature or run longer test\")\n```",
+    "54": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#operational-metrics]\n\n#### Operational Metrics\n\n**Flag Lifecycle Tracking**\n| Metric | Purpose | Review Frequency |\n|--------|---------|------------------|\n| Active Flags Count | Monitor flag accumulation | Weekly |\n| Flag Age Distribution | Identify old flags for removal | Monthly |\n| Flags by Type | Balance temporary vs permanent | Monthly |\n| Flags Removed per Month | Track technical debt reduction | Monthly |\n\n**Governance Metrics**\n| Metric | Target | Review |\n|--------|--------|--------|\n| Flags with Removal Dates | 100% for release toggles | Weekly |\n| Flags Removed on Schedule | >80% | Monthly |\n| Flag Change Approval Time | <2 hours for emergencies | Quarterly |\n| Audit Log Completeness | 100% | Monthly |\n\n**Dashboard Requirements**\n\n1. **Executive Dashboard**\n   - Total active flags across products\n   - Flags by risk level\n   - Recent production flag changes\n   - Flag-related incidents\n\n2. **Operations Dashboard**\n   - Critical flags with kill switch access\n   - Flag service health metrics\n   - Recent flag changes with rollout status\n   - Alerts and anomalies\n\n3. **Feature Team Dashboard**\n   - Flags owned by team\n   - Rollout progress for active deployments\n   - Feature impact metrics\n   - Technical debt (flags pending removal)\n\n4. **Security Dashboard**\n   - Flag service access logs\n   - Unauthorized access attempts\n   - Flag changes by user\n   - Compliance status",
+    "55": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#examples-and-use-cases]\n\n## Examples and Use Cases",
+    "56": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#real-world-example-1-claims-auto-adjudication-enhancement]\n\n### Real-World Example 1: Claims Auto-Adjudication Enhancement\n\n**Context:** Gainwell Enterprise™ claims processing system handles a large volume of claims per day for a large state. The product team developed enhanced auto-adjudication logic expected to significantly improve straight-through processing rates, reducing manual review workload and improving provider payment speed. However, the logic is complex, involving 30+ business rules across multiple service types, creating significant risk if issues exist.\n\n**Implementation:**\n\n**Phase 1: Flag Configuration**\n```yaml\nflag_key: enhanced-claims-adjudication\nname: Enhanced Claims Adjudication Logic\ndescription: |\n  New auto-adjudication algorithms including:\n\n  - Enhanced diagnosis code validation\n  - Improved procedure code bundling logic\n  - Advanced duplicate claim detection\n  - Predictive denial prevention\n\ntargeting:\n  production:\n    # Start with internal users only\n    rules:\n      - name: \"Internal Testing\"\n        clauses:\n          - attribute: email\n            operator: ends_with\n            value: \"@gainwell.com\"\n        variation: enabled\n\n      - name: \"Default\"\n        variation: disabled\n```\n\n**Phase 2: Progressive Rollout**\n\nWeek 1: Internal validation with Gainwell employees\n```yaml\nMetrics:\n  - Claims processed: [tracked via observability tooling]\n  - Straight-through rate: [compared against baseline]\n  - Error rate: [compared against threshold]\n  - Decision: Proceed to pilot states if metrics within acceptable range\n```\n\nWeek 2: Pilot states (Arizona, New Mexico)\n```yaml\ntargeting:\n  rules:\n    - name: \"Pilot States\"\n      clauses:\n        - attribute: state\n          operator: in\n          values: [\"AZ\", \"NM\"]\n      variation: enabled\n\nMetrics:\n  - Claims processed: [tracked via observability tooling]\n  - Straight-through rate: [compared against baseline]\n  - Error rate: [compared against threshold]\n  - Provider feedback: [monitored via support channels]\n  - Decision: Begin percentage rollout to remaining states if metrics acceptable\n```\n\nWeek 3: Progressive percentage rollout\n```yaml\nDay 1: 1% of users in remaining states\n  - Monitor claims volume, error rate, and straight-through rate\n  - Pause if error rate exceeds defined threshold\n\nDay 2: 5% of users\n  - Continue monitoring all key metrics\n  - Pause if anomalies detected\n\nDay 3: 10% of users\nDay 4: 25% of users\nDay 5: 50% of users\nDay 6: 75% of users\nDay 7: 100% of users\n  - Each stage: pause progression if errors detected\n```\n\n**Outcome:**\n- ✅ Successfully increased straight-through processing rate to target level\n- ✅ Reduced manual review workload measurably\n- ✅ Improved average provider payment speed\n- ✅ Error rate stayed below defined threshold throughout rollout\n- ✅ Zero production incidents requiring rollback\n- **Lessons Learned:**\n  - Pilot state testing caught two edge cases not found in pre-production\n  - Progressive rollout allowed performance tuning at 25% before full deployment\n  - Clear metrics and automated rollback criteria enabled confident progression\n\n**Flag Removal:** After 30 days at 100% with stable metrics, flag removed and feature made permanent in code base.",
+    "57": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#real-world-example-2-fhir-api-performance-optimization]\n\n### Real-World Example 2: FHIR API Performance Optimization\n\n**Context:** Gainwell deployed Patient Access API (FHIR R4) to comply with CMS Interoperability Final Rule. Initial production deployment revealed performance issues with complex queries for members with 10+ years of claims history. Query times exceeded 2-second requirement, risking compliance. Team developed query optimization but needed to validate performance improvement without risking all API traffic.\n\n**Implementation:**\n\n**Flag Configuration for A/B Testing**\n```yaml\nflag_key: fhir-api-query-optimization\nname: FHIR API Query Optimization\ndescription: |\n  Optimized query execution plan:\n\n  - Indexed query optimization\n  - Result set pagination\n  - Selective field loading\n  - Query result caching\n\ntargeting:\n  production:\n    # A/B test: 50% control, 50% treatment\n    rules:\n      - name: \"A/B Test\"\n        rollout:\n          variations:\n            - variation: optimized\n              weight: 50\n            - variation: standard\n              weight: 50\n```\n\n**Monitoring Both Variations**\n```python\n# Metrics collection code\n@app.route('/fhir/Patient/<patient_id>/ExplanationOfBenefit')\ndef get_patient_eob(patient_id):\n    user_context = create_user_context(patient_id)\n\n    # Determine which variation user receives\n    use_optimized = flag_client.bool_variation(\n        'fhir-api-query-optimization',\n        user_context,\n        False\n    )\n\n    start_time = time.time()\n\n    if use_optimized:\n        result = execute_optimized_query(patient_id)\n        variation = 'optimized'\n    else:\n        result = execute_standard_query(patient_id)\n        variation = 'standard'\n\n    duration = time.time() - start_time\n\n    # Record metrics tagged by variation\n    metrics.histogram(\n        'fhir.api.query.duration',\n        duration,\n        tags=[f'variation:{variation}', f'record_count:{len(result)}']\n    )\n\n    return jsonify(result)\n```\n\n**Results After 7 Days**\n```yaml\nStandard Query (Control):\n  - Requests: [volume tracked via metrics]\n  - p50/p95/p99 latency: [above 2-second SLA for complex queries]\n  - Timeout rate: [above acceptable threshold]\n\nOptimized Query (Treatment):\n  - Requests: [comparable volume to control]\n  - p50/p95/p99 latency: [within 2-second SLA]\n  - Timeout rate: [significantly reduced]\n\nStatistical Analysis:\n  - Improvement: statistically significant reduction in median latency\n  - Significance: chi-square test with p-value below 0.05\n  - Decision: Roll out optimized queries to 100%\n```\n\n**Outcome:**\n- ✅ Achieved response times within the CMS-mandated 2-second requirement for the vast majority of requests\n- ✅ Significantly reduced timeout errors\n- ✅ Improved member experience and CMS compliance\n- ✅ A/B testing provided statistical confidence before full rollout\n- **Lessons Learned:**\n  - A/B testing essential for performance optimizations with unclear impact\n  - Real production data patterns differed significantly from test data\n  - Metric tagging by variation enabled clear comparison",
+    "58": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#real-world-example-3-emergency-kill-switch---payment-processing-defect]\n\n### Real-World Example 3: Emergency Kill Switch - Payment Processing Defect\n\n**Context:** A deployed feature for calculating supplemental payments contained a logic error discovered after a significant amount in overpayments was processed. Issue needed immediate mitigation while root cause was analyzed and a fix developed.\n\n**Implementation:**\n\n**Incident Timeline**\n\n```yaml\n09:15 AM: Monitoring alert - unusual spike in supplemental payment amounts\n09:18 AM: On-call engineer investigates, identifies potential overpayment issue\n09:22 AM: Engineer accesses flag dashboard, identifies suspicious flag\n09:23 AM: KILL SWITCH ACTIVATED - Flag 'supplemental-payment-calculation-v2' disabled\n09:24 AM: Payment processing reverts to previous logic\n09:26 AM: Confirmation - payment amounts return to expected range\n09:30 AM: Incident declared, war room assembled\n10:15 AM: Root cause identified - incorrect copay calculation in edge case\n11:45 AM: Fix developed and tested\n01:30 PM: Fix deployed to production\n02:00 PM: Flag re-enabled with fix, progressive rollout begins\n05:00 PM: Monitoring confirms fix working correctly, rollout continues\n```\n\n**Kill Switch Execution**\n```yaml\n# Emergency flag disable via Admin Console\naction: disable_flag\nflag: supplemental-payment-calculation-v2\nreason: \"Emergency - Detected overpayment calculation error\"\ndisabled_by: ops-engineer-sarah-chen\ntimestamp: 2026-01-10T09:23:15Z\nnotification:\n\n  - pagerduty: claims-team\n  - slack: #ops-alerts, #claims-engineering\n  - email: engineering-managers@gainwell.com\n```\n\n**Financial Impact Analysis**\n```yaml\nWithout Kill Switch (Traditional Rollback):\n  - Detection to mitigation: 4-6 hours (code fix + deployment)\n  - Additional overpayments during rollback: [compounding with each hour of delay]\n  - State reconciliation complexity: High\n  - Regulatory exposure: Significant\n\nWith Kill Switch (Feature Toggle):\n  - Detection to mitigation: 8 minutes\n  - Additional overpayments: [limited to minutes of exposure]\n  - State reconciliation: Manageable\n  - Regulatory exposure: Minimal\n```\n\n**Outcome:**\n- ✅ Stopped overpayments within 8 minutes of detection\n- ✅ Significantly limited financial exposure compared to a multi-hour code rollback\n- ✅ No system downtime or restart required\n- ✅ Fix deployed and validated same day\n- ✅ Demonstrated value of kill switch pattern to leadership\n- **Lessons Learned:**\n  - Kill switch capability is insurance worth the complexity overhead\n  - Clear runbooks and dashboard access critical for rapid response\n  - Automated alerting on business metric anomalies enabled quick detection",
+    "59": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#use-case-scenarios]\n\n### Use Case Scenarios",
+    "60": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#scenario-1-state-specific-regulatory-feature]\n\n#### Scenario 1: State-Specific Regulatory Feature\n\n**Situation:** State X implements new telehealth coverage rules effective January 1, 2026. State Y delays implementation to March 1, 2026. State Z opts out entirely.\n\n**Flag Implementation:**\n```yaml\nflag_key: telehealth-expanded-coverage\nname: Expanded Telehealth Coverage Rules\ndescription: |\n  Implements state-specific telehealth coverage expansion:\n\n  - Audio-only visits covered\n  - Extended provider types (OT, PT, behavioral health)\n  - Expanded diagnosis codes\n\ntargeting:\n  production:\n    rules:\n      - name: \"State X - Active\"\n        clauses:\n          - attribute: state\n            operator: equals\n            value: \"X\"\n          - attribute: current_date\n            operator: after\n            value: \"2026-01-01\"\n        variation: enabled\n\n      - name: \"State Y - Delayed\"\n        clauses:\n          - attribute: state\n            operator: equals\n            value: \"Y\"\n          - attribute: current_date\n            operator: after\n            value: \"2026-03-01\"\n        variation: enabled\n\n      - name: \"State Z - Opted Out\"\n        clauses:\n          - attribute: state\n            operator: equals\n            value: \"Z\"\n        variation: disabled\n\n      - name: \"Default\"\n        variation: disabled\n```\n\n**Benefits:**\n- ✅ Single code base handles all state variations\n- ✅ Time-based enablement ensures compliance with effective dates\n- ✅ Easy to add or modify state rules without code changes\n- ✅ Clear audit trail of when/where feature enabled",
+    "61": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#scenario-2-dark-launch-for-load-testing]\n\n#### Scenario 2: Dark Launch for Load Testing\n\n**Situation:** New claims validation service needs performance validation with production load before cutover from legacy service. Team wants to run both services in parallel, measuring performance without impacting production claims processing.\n\n**Flag Implementation:**\n```yaml\nflag_key: claims-validation-service-v2\nname: Claims Validation Service V2\ndescription: |\n  Dark launch of new validation service.\n  Runs in parallel with legacy service but results not used.\n\nvariations:\n\n  - dark_launch: Run new service, use legacy results\n  - full_cutover: Use new service results\n\ntargeting:\n  production:\n    # Dark launch mode - run new service but don't use results\n    default_variation: dark_launch\n```\n\n**Code Implementation:**\n```csharp\npublic async Task<ValidationResult> ValidateClaim(Claim claim)\n{\n    var flagValue = _flagClient.StringVariation(\n        \"claims-validation-service-v2\",\n        CreateUserContext(claim),\n        \"legacy_only\"\n    );\n\n    // Always call legacy service (current production system)\n    var legacyResult = await _legacyValidationService.Validate(claim);\n\n    if (flagValue == \"dark_launch\")\n    {\n        // Call new service in parallel but don't wait or use results\n        _ = Task.Run(async () =>\n        {\n            try\n            {\n                var newResult = await _newValidationService.Validate(claim);\n\n                // Log for comparison analysis\n                _metrics.LogDarkLaunch(\n                    claimId: claim.Id,\n                    legacyResult: legacyResult,\n                    newResult: newResult,\n                    matchesLegacy: legacyResult.IsValid == newResult.IsValid\n                );\n            }\n            catch (Exception ex)\n            {\n                _logger.LogWarning(ex, \"Dark launch validation failed\");\n            }\n        });\n    }\n    else if (flagValue == \"full_cutover\")\n    {\n        // Use new service results\n        return await _newValidationService.Validate(claim);\n    }\n\n    // Return legacy results (dark launch mode)\n    return legacyResult;\n}\n```\n\n**Benefits:**\n- ✅ Validate performance with real production load\n- ✅ Compare results between old and new service\n- ✅ Zero impact on production claims processing\n- ✅ Build confidence before cutover",
+    "62": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#scenario-3-trunk-based-development-with-long-running-feature]\n\n#### Scenario 3: Trunk-Based Development with Long-Running Feature\n\n**Situation:** Team developing major provider portal redesign requiring 6 weeks of development. Want to use trunk-based development (no long-lived branches) but feature won't be ready for release until fully complete.\n\n**Flag Implementation:**\n```yaml\nflag_key: provider-portal-redesign-v3\nname: Provider Portal Redesign V3\ndescription: |\n  Major portal redesign with new navigation, workflows, and UI.\n  Feature under active development.\n\ntargeting:\n  development:\n    default_variation: enabled  # Always on in dev\n\n  staging:\n    default_variation: enabled  # Always on in staging\n\n  production:\n    rules:\n      - name: \"Internal Preview\"\n        clauses:\n          - attribute: email\n            operator: ends_with\n            value: \"@gainwell.com\"\n          - attribute: beta_tester\n            operator: equals\n            value: true\n        variation: enabled\n\n      - name: \"Default\"\n        variation: disabled  # Disabled for providers until launch\n```\n\n**Development Workflow:**\n```typescript\n// ProviderPortalApp.tsx\nexport const ProviderPortalApp: React.FC = () => {\n  const { flagsReady, useNewDesign } = useFeatureFlags();\n\n  if (!flagsReady) {\n    return <LoadingSpinner />;\n  }\n\n  return useNewDesign\n    ? <ProviderPortalV3 />  // New redesign\n    : <ProviderPortalV2 />;  // Current production version\n};\n```\n\n**Benefits:**\n- ✅ Continuous integration to main branch\n- ✅ No merge conflicts from long-lived branches\n- ✅ Internal preview and feedback during development\n- ✅ Production deployments continue while feature in progress\n- ✅ Single-click launch when ready (change flag to enabled)",
+    "63": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#before-and-after-comparison]\n\n### Before and After Comparison",
+    "64": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#before-problem-state]\n\n#### Before (Problem State)\n\n**Deployment Process:**\n1. Feature development completed in feature branch\n2. Extensive testing in staging environment\n3. Merge to main triggers production deployment\n4. Feature immediately active for ALL users\n5. Issues discovered with real production data\n6. Emergency rollback requires:\n   - Revert code changes\n   - Rebuild and redeploy\n   - 45-60 minute outage window\n   - Risk of introducing new issues in rushed rollback\n\n**Consequences:**\n- ❌ All-or-nothing deployment creates high risk\n- ❌ No ability to test with production traffic before full exposure\n- ❌ Slow rollback extends incident duration\n- ❌ Long-lived feature branches cause merge conflicts\n- ❌ No data-driven decision making (no A/B testing)\n- ❌ State-specific features require complex configuration management",
+    "65": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#after-solution-state]\n\n#### After (Solution State)\n\n**Deployment Process:**\n1. Feature development with feature flag wrapping new code\n2. Merged to main continuously, deployed to production DISABLED\n3. Progressive rollout:\n   - Week 1: Internal users (10 people)\n   - Week 2: Pilot states (2 states)\n   - Week 3: 1% → 10% → 50% → 100% of users\n4. Monitor metrics at each stage, pause if issues detected\n5. If issues occur:\n   - Disable flag via dashboard (< 1 minute)\n   - No code changes or redeployment needed\n   - Fix developed under time pressure, re-enable gradually\n\n**Outcomes:**\n- ✅ Gradual risk introduction with early issue detection\n- ✅ Real production validation before full deployment\n- ✅ Instant rollback capability (seconds vs hours)\n- ✅ Continuous integration without long-lived branches\n- ✅ Data-driven decisions with A/B testing\n- ✅ Fine-grained control for state-specific features\n- ✅ Dark launches for performance validation\n- ✅ Improved reliability and reduced MTTR (Mean Time To Recovery)\n\n**Qualitative Improvements:**\n```yaml\nDeployment Confidence:\n  Before: Low confidence — no ability to validate with real production traffic before full exposure\n  After: Higher confidence — features validated progressively with real users before full rollout\n\nIncident Recovery Time:\n  Before: Slow — code rollback and redeployment required (tens of minutes to hours)\n  After: Fast — feature disable via configuration change (seconds to minutes)\n\nProduction Incidents:\n  Before: Higher risk — all-or-nothing deployment exposes all users immediately\n  After: Reduced risk — progressive rollout limits blast radius of defects\n\nFeature Delivery Speed:\n  Before: Coupled — deployment timing tied to release readiness\n  After: Decoupled — code deployed continuously, release timing controlled independently\n```",
+    "66": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#related-patterns-and-references]\n\n## Related Patterns and References",
+    "67": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#related-patterns]\n\n### Related Patterns\n\n- [Canary Deployment Pattern](./canary-deployment-pattern.md) - Complementary progressive rollout approach using infrastructure-level traffic splitting; combines well with feature toggles for multi-layered rollout control\n- [Blue-Green Deployment Pattern](./blue-green-deployment-pattern.md) - Zero-downtime deployment strategy; feature toggles enable instant cutover between versions\n- [Circuit Breaker Pattern](../09-resilience/circuit-breaker-pattern.md) - Automated failure protection; works alongside manual kill switches for comprehensive failure mitigation",
+    "68": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#dependencies]\n\n### Dependencies\n\n- [API Gateway Pattern](../01-gateway-routing/api-gateway-pattern.md) - API gateway can enforce feature flag evaluation at entry point\n- [Observability Pattern](../10-monitoring-observability/observability-pattern.md) - Essential for monitoring flag-correlated metrics and detecting issues during rollout\n- [Authentication and Authorization Pattern](../02-security-auth/oauth-authentication-pattern.md) - Flag service requires secure authentication and authorization controls",
+    "69": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#external-references]\n\n### External References\n\n**Industry Resources:**\n- [Feature Toggles (Martin Fowler)](https://martinfowler.com/articles/feature-toggles.html) - Comprehensive guide to feature toggle types, patterns, and best practices\n- [Testing in Production (Charity Majors)](https://increment.com/testing/i-test-in-production/) - Philosophy and practices for safe production testing\n- [Progressive Delivery (CNCF)](https://github.com/cncf/tag-app-delivery/blob/main/progressive-delivery/README.md) - Cloud Native Computing Foundation guidance on progressive delivery patterns\n\n**Feature Flag Platforms:**\n- [LaunchDarkly](https://launchdarkly.com/) - Enterprise feature management platform (commercial, SOC 2 certified)\n- [Split.io](https://www.split.io/) - Feature experimentation and release platform (commercial)\n- [Unleash](https://www.getunleash.io/) - Open-source feature toggle system (self-hosted or cloud)\n- [Flagsmith](https://www.flagsmith.com/) - Open-source feature flag and remote config service\n- [ConfigCat](https://configcat.com/) - Feature flag service with emphasis on developer experience\n\n**Academic and Research:**\n- [A/B Testing at Scale (Kohavi et al.)](https://exp-platform.com/Documents/2013-02-OPTIMIZELY-KDDPaper.pdf) - Statistical foundations for A/B testing\n- [Controlled Experiments on the Web (Kohavi)](https://ai.stanford.edu/~ronnyk/2009-ExP-StatisticalAnalysis.pdf) - Survey of online experimentation practices",
+    "70": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#change-history]\n\n## Change History\n\n| Date       | Version | Author              | Description              | Impact      |\n| ---------- | ------- | ------------------- | ------------------------ | ----------- |\n| 2026-01-02 | 1.0.0   | Enterprise Architect | Initial pattern creation | New pattern |",
+    "71": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#review-log]\n\n## Review Log\n\n| Review Date | Review Type | Reviewer(s) | Status | Comments | Actions |\n| ----------- | ----------- | ----------- | ------ | -------- | ------- |\n| TBD         | TBD         | TBD         | Draft  | TBD      | TBD     |\n\n---",
+    "72": "[patterns/infrastructure/api-microservices/PTN-INFRA-API-008-feature-toggle-pattern.md#tldr]\n\n## TL;DR\n\n**Problem:** Healthcare systems require continuous feature delivery while maintaining zero-defect quality standards. Traditional all-or-nothing deployments create unacceptable risk when features affect claims processing, payments, or member data. Teams need the ability to validate features with production traffic before full rollout, quickly disable problematic features, and enable capabilities only where regulations permit.\n\n**Solution:** Feature toggles decouple code deployment from feature release by introducing runtime configuration that controls feature availability. Features are deployed to production in a disabled state and enabled progressively (1% → 10% → 50% → 100%) through centralized flag management. This provides progressive risk introduction, instant kill switches for emergency mitigation, A/B testing for data-driven decisions, and state-specific feature control for regulatory compliance.\n\n**When to Use:**\n- Progressive rollout of high-risk features (new claims logic, payment calculations)\n- A/B testing to measure feature impact on business metrics\n- State-specific regulatory features with varying effective dates\n- Dark launches to validate performance with production load\n- Emergency kill switches for rapid incident mitigation\n- Trunk-based development with long-running features\n\n**Key Benefits:**\n- **Faster Recovery**: Disable features in seconds via configuration change vs multi-step code rollback and redeployment\n- **Fewer Incidents**: Progressive rollouts limit blast radius, allowing issues to be detected with minimal user impact before full exposure\n- **Data-Driven Decisions**: A/B testing provides statistical evidence of feature effectiveness\n- **Regulatory Compliance**: State-specific enablement ensures features active only where permitted\n- **Deployment Flexibility**: Deploy code continuously, control release timing independently\n\n**Implementation Complexity:** Medium\n\n**Prerequisites:**\n- Feature flag management platform (LaunchDarkly, Split.io, Unleash)\n- SDK integration in application code\n- Monitoring infrastructure for flag-correlated metrics\n- Operations team trained on flag management\n- Governance process for flag lifecycle management\n\n**Related Patterns:**\n- [Canary Deployment Pattern](./canary-deployment-pattern.md) - Complementary progressive rollout approach\n- [Blue-Green Deployment Pattern](./blue-green-deployment-pattern.md) - Zero-downtime deployment strategy\n- [Circuit Breaker Pattern](../09-resilience/circuit-breaker-pattern.md) - Automated failure protection\n\n**Related Patterns:** [Canary Deployment, Blue-Green]\n\n---"
+  },
+  "coverage": {
+    "total_pages": 72,
+    "covered_pages": 72,
+    "sampled_pages": 72,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 72
+  }
+}

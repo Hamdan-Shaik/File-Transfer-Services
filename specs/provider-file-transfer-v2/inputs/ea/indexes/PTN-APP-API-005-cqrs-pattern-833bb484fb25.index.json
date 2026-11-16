@@ -1,0 +1,1085 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Microservices CQRS Pattern",
+  "document_description": "tags: ['application', 'api-microservices', 'cqrs', 'command-query', 'scalability', 'healthcare', 'complex', 'proven']",
+  "total_pages": 115,
+  "tree": [
+    {
+      "title": "Microservices CQRS Pattern",
+      "node_id": "microservices-cqrs-pattern",
+      "start_index": 1,
+      "end_index": 115,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Executive Summary",
+          "node_id": "executive-summary",
+          "start_index": 3,
+          "end_index": 7,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Problem Statement",
+              "node_id": "problem-statement",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Solution Overview",
+              "node_id": "solution-overview",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "When to Use",
+              "node_id": "when-to-use",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Benefits",
+              "node_id": "benefits",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Target Audience",
+          "node_id": "target-audience",
+          "start_index": 8,
+          "end_index": 8,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Context and Problem",
+          "node_id": "context-and-problem",
+          "start_index": 9,
+          "end_index": 18,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Business Context",
+              "node_id": "business-context",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Technical Context",
+              "node_id": "technical-context",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Problem Details",
+              "node_id": "problem-details",
+              "start_index": 12,
+              "end_index": 17,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "1. Single Model Performance Bottleneck",
+                  "node_id": "1-single-model-performance-bottleneck",
+                  "start_index": 13,
+                  "end_index": 13,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "2. Read/Write Impedance Mismatch",
+                  "node_id": "2-readwrite-impedance-mismatch",
+                  "start_index": 14,
+                  "end_index": 14,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "3. Scaling Constraints",
+                  "node_id": "3-scaling-constraints",
+                  "start_index": 15,
+                  "end_index": 15,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "4. Analytics and Reporting Performance",
+                  "node_id": "4-analytics-and-reporting-performance",
+                  "start_index": 16,
+                  "end_index": 16,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "5. Mobile API Performance Requirements",
+                  "node_id": "5-mobile-api-performance-requirements",
+                  "start_index": 17,
+                  "end_index": 17,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Forces and Constraints",
+              "node_id": "forces-and-constraints",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Solution",
+          "node_id": "solution",
+          "start_index": 19,
+          "end_index": 53,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Overview",
+              "node_id": "overview",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Core Architecture",
+              "node_id": "core-architecture",
+              "start_index": 21,
+              "end_index": 21,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Command Flow (Write Path)",
+              "node_id": "command-flow-write-path",
+              "start_index": 22,
+              "end_index": 22,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Query Flow (Read Path)",
+              "node_id": "query-flow-read-path",
+              "start_index": 23,
+              "end_index": 23,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Read Model Projection Architecture",
+              "node_id": "read-model-projection-architecture",
+              "start_index": 24,
+              "end_index": 24,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Key Components and Responsibilities",
+              "node_id": "key-components-and-responsibilities",
+              "start_index": 25,
+              "end_index": 27,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Command Side Components",
+                  "node_id": "command-side-components",
+                  "start_index": 26,
+                  "end_index": 26,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Query Side Components",
+                  "node_id": "query-side-components",
+                  "start_index": 27,
+                  "end_index": 27,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Data Flow and Interaction Patterns",
+              "node_id": "data-flow-and-interaction-patterns",
+              "start_index": 28,
+              "end_index": 31,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Write Flow Pattern",
+                  "node_id": "write-flow-pattern",
+                  "start_index": 29,
+                  "end_index": 29,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Read Flow Pattern",
+                  "node_id": "read-flow-pattern",
+                  "start_index": 30,
+                  "end_index": 30,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Projection Update Pattern",
+                  "node_id": "projection-update-pattern",
+                  "start_index": 31,
+                  "end_index": 31,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Integration Points with Other Patterns",
+              "node_id": "integration-points-with-other-patterns",
+              "start_index": 32,
+              "end_index": 32,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Architecture Variations",
+              "node_id": "architecture-variations",
+              "start_index": 33,
+              "end_index": 36,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Variation 1: Simple CQRS (Same Database)",
+                  "node_id": "variation-1-simple-cqrs-same-database",
+                  "start_index": 34,
+                  "end_index": 34,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Variation 2: CQRS with Event Sourcing",
+                  "node_id": "variation-2-cqrs-with-event-sourcing",
+                  "start_index": 35,
+                  "end_index": 35,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Variation 3: Multi-Database CQRS",
+                  "node_id": "variation-3-multi-database-cqrs",
+                  "start_index": 36,
+                  "end_index": 36,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Consistency Models",
+              "node_id": "consistency-models",
+              "start_index": 37,
+              "end_index": 40,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Eventual Consistency",
+                  "node_id": "eventual-consistency",
+                  "start_index": 38,
+                  "end_index": 38,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Read-Your-Writes Consistency",
+                  "node_id": "read-your-writes-consistency",
+                  "start_index": 39,
+                  "end_index": 39,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Strong Consistency",
+                  "node_id": "strong-consistency",
+                  "start_index": 40,
+                  "end_index": 40,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Trade-offs and Considerations",
+              "node_id": "trade-offs-and-considerations",
+              "start_index": 41,
+              "end_index": 44,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Benefits",
+                  "node_id": "benefits",
+                  "start_index": 42,
+                  "end_index": 42,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Challenges",
+                  "node_id": "challenges",
+                  "start_index": 43,
+                  "end_index": 43,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "When NOT to Use CQRS",
+                  "node_id": "when-not-to-use-cqrs",
+                  "start_index": 44,
+                  "end_index": 44,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Anti-Patterns to Avoid",
+              "node_id": "anti-patterns-to-avoid",
+              "start_index": 45,
+              "end_index": 49,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "1. Synchronous Projections",
+                  "node_id": "1-synchronous-projections",
+                  "start_index": 46,
+                  "end_index": 46,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "2. Query Logic in Commands",
+                  "node_id": "2-query-logic-in-commands",
+                  "start_index": 47,
+                  "end_index": 47,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "3. Shared Models Between Read/Write",
+                  "node_id": "3-shared-models-between-readwrite",
+                  "start_index": 48,
+                  "end_index": 48,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "4. Missing Idempotency in Projections",
+                  "node_id": "4-missing-idempotency-in-projections",
+                  "start_index": 49,
+                  "end_index": 49,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Technology Stack Recommendations",
+              "node_id": "technology-stack-recommendations",
+              "start_index": 50,
+              "end_index": 53,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Write Side",
+                  "node_id": "write-side",
+                  "start_index": 51,
+                  "end_index": 51,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Read Side",
+                  "node_id": "read-side",
+                  "start_index": 52,
+                  "end_index": 52,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Projection Services",
+                  "node_id": "projection-services",
+                  "start_index": 53,
+                  "end_index": 53,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Implementation Guidelines",
+          "node_id": "implementation-guidelines",
+          "start_index": 54,
+          "end_index": 72,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Phased Implementation Approach",
+              "node_id": "phased-implementation-approach",
+              "start_index": 55,
+              "end_index": 59,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Phase 1: Proof of Concept (2-4 weeks)",
+                  "node_id": "phase-1-proof-of-concept-2-4-weeks",
+                  "start_index": 56,
+                  "end_index": 56,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Phase 2: Event-Driven Projections (4-6 weeks)",
+                  "node_id": "phase-2-event-driven-projections-4-6-weeks",
+                  "start_index": 57,
+                  "end_index": 57,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Phase 3: Multiple Read Models (6-8 weeks)",
+                  "node_id": "phase-3-multiple-read-models-6-8-weeks",
+                  "start_index": 58,
+                  "end_index": 58,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Phase 4: Production Hardening (4-6 weeks)",
+                  "node_id": "phase-4-production-hardening-4-6-weeks",
+                  "start_index": 59,
+                  "end_index": 59,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Implementation Checklist",
+              "node_id": "implementation-checklist",
+              "start_index": 60,
+              "end_index": 68,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Write Side (Command Model)",
+                  "node_id": "write-side-command-model",
+                  "start_index": 61,
+                  "end_index": 61,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Read Side (Query Models)",
+                  "node_id": "read-side-query-models",
+                  "start_index": 62,
+                  "end_index": 62,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Event Infrastructure",
+                  "node_id": "event-infrastructure",
+                  "start_index": 63,
+                  "end_index": 63,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Projection Services",
+                  "node_id": "projection-services",
+                  "start_index": 64,
+                  "end_index": 64,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Consistency Management",
+                  "node_id": "consistency-management",
+                  "start_index": 65,
+                  "end_index": 65,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Monitoring and Operations",
+                  "node_id": "monitoring-and-operations",
+                  "start_index": 66,
+                  "end_index": 66,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Testing",
+                  "node_id": "testing",
+                  "start_index": 67,
+                  "end_index": 67,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Documentation",
+                  "node_id": "documentation",
+                  "start_index": 68,
+                  "end_index": 68,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Code Examples",
+              "node_id": "code-examples",
+              "start_index": 69,
+              "end_index": 71,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": ".NET Implementation",
+                  "node_id": "net-implementation",
+                  "start_index": 70,
+                  "end_index": 70,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Java Implementation",
+                  "node_id": "java-implementation",
+                  "start_index": 71,
+                  "end_index": 71,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Best Practices and Recommendations",
+              "node_id": "best-practices-and-recommendations",
+              "start_index": 72,
+              "end_index": 72,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Governance and Compliance",
+          "node_id": "governance-and-compliance",
+          "start_index": 73,
+          "end_index": 99,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Regulatory Compliance Requirements",
+              "node_id": "regulatory-compliance-requirements",
+              "start_index": 74,
+              "end_index": 77,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "HIPAA Compliance for Dual Data Models",
+                  "node_id": "hipaa-compliance-for-dual-data-models",
+                  "start_index": 75,
+                  "end_index": 75,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "State-Specific Regulatory Requirements",
+                  "node_id": "state-specific-regulatory-requirements",
+                  "start_index": 76,
+                  "end_index": 76,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "SOC 2 Compliance",
+                  "node_id": "soc-2-compliance",
+                  "start_index": 77,
+                  "end_index": 77,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Architecture Review Board (ARB) Approval",
+              "node_id": "architecture-review-board-arb-approval",
+              "start_index": 78,
+              "end_index": 80,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "ARB Submission Requirements",
+                  "node_id": "arb-submission-requirements",
+                  "start_index": 79,
+                  "end_index": 79,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "ARB Review Criteria",
+                  "node_id": "arb-review-criteria",
+                  "start_index": 80,
+                  "end_index": 80,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Change Management and Version Control",
+              "node_id": "change-management-and-version-control",
+              "start_index": 81,
+              "end_index": 83,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Event Schema Versioning",
+                  "node_id": "event-schema-versioning",
+                  "start_index": 82,
+                  "end_index": 82,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Read Model Schema Changes",
+                  "node_id": "read-model-schema-changes",
+                  "start_index": 83,
+                  "end_index": 83,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Monitoring and Audit Requirements",
+              "node_id": "monitoring-and-audit-requirements",
+              "start_index": 84,
+              "end_index": 87,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Required Metrics and Alerts",
+                  "node_id": "required-metrics-and-alerts",
+                  "start_index": 85,
+                  "end_index": 85,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Audit Logging Requirements",
+                  "node_id": "audit-logging-requirements",
+                  "start_index": 86,
+                  "end_index": 86,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Compliance Reporting",
+                  "node_id": "compliance-reporting",
+                  "start_index": 87,
+                  "end_index": 87,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Performance and Scalability Governance",
+              "node_id": "performance-and-scalability-governance",
+              "start_index": 88,
+              "end_index": 90,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Performance SLA Requirements",
+                  "node_id": "performance-sla-requirements",
+                  "start_index": 89,
+                  "end_index": 89,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Capacity Planning",
+                  "node_id": "capacity-planning",
+                  "start_index": 90,
+                  "end_index": 90,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Security and Data Protection",
+              "node_id": "security-and-data-protection",
+              "start_index": 91,
+              "end_index": 93,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Data Classification in CQRS Models",
+                  "node_id": "data-classification-in-cqrs-models",
+                  "start_index": 92,
+                  "end_index": 92,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Encryption Standards",
+                  "node_id": "encryption-standards",
+                  "start_index": 93,
+                  "end_index": 93,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Disaster Recovery and Business Continuity",
+              "node_id": "disaster-recovery-and-business-continuity",
+              "start_index": 94,
+              "end_index": 96,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Backup and Recovery Strategy",
+                  "node_id": "backup-and-recovery-strategy",
+                  "start_index": 95,
+                  "end_index": 95,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Projection Rebuild Procedures",
+                  "node_id": "projection-rebuild-procedures",
+                  "start_index": 96,
+                  "end_index": 96,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Third-Party and Vendor Management",
+              "node_id": "third-party-and-vendor-management",
+              "start_index": 97,
+              "end_index": 99,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Event Bus Provider Assessment",
+                  "node_id": "event-bus-provider-assessment",
+                  "start_index": 98,
+                  "end_index": 98,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Database Provider Assessment",
+                  "node_id": "database-provider-assessment",
+                  "start_index": 99,
+                  "end_index": 99,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Examples and Use Cases",
+          "node_id": "examples-and-use-cases",
+          "start_index": 100,
+          "end_index": 109,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Example 1: Provider Remittance Portal (High-Volume Queries)",
+              "node_id": "example-1-provider-remittance-portal-high-volume-queries",
+              "start_index": 101,
+              "end_index": 102,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Problem Statement",
+                  "node_id": "problem-statement",
+                  "start_index": 102,
+                  "end_index": 102,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Example 2: State Analytics and Reporting (Complex Aggregations)",
+              "node_id": "example-2-state-analytics-and-reporting-complex-aggregations",
+              "start_index": 103,
+              "end_index": 104,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Problem Statement",
+                  "node_id": "problem-statement",
+                  "start_index": 104,
+                  "end_index": 104,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Example 3: Mobile API for Gainwell Go™ (Low-Latency Document Access)",
+              "node_id": "example-3-mobile-api-for-gainwell-go-low-latency-document-access",
+              "start_index": 105,
+              "end_index": 106,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Problem Statement",
+                  "node_id": "problem-statement",
+                  "start_index": 106,
+                  "end_index": 106,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Example 4: Provider Search (Full-Text Search with Elasticsearch)",
+              "node_id": "example-4-provider-search-full-text-search-with-elasticsearch",
+              "start_index": 107,
+              "end_index": 108,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Problem Statement",
+                  "node_id": "problem-statement",
+                  "start_index": 108,
+                  "end_index": 108,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Summary of Use Cases",
+              "node_id": "summary-of-use-cases",
+              "start_index": 109,
+              "end_index": 109,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Related Patterns and References",
+          "node_id": "related-patterns-and-references",
+          "start_index": 110,
+          "end_index": 112,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Related Patterns",
+              "node_id": "related-patterns",
+              "start_index": 111,
+              "end_index": 111,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "External References",
+              "node_id": "external-references",
+              "start_index": 112,
+              "end_index": 112,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Change History",
+          "node_id": "change-history",
+          "start_index": 113,
+          "end_index": 113,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Review Log",
+          "node_id": "review-log",
+          "start_index": 114,
+          "end_index": 114,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "TL;DR",
+          "node_id": "tldr",
+          "start_index": 115,
+          "end_index": 115,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#microservices-cqrs-pattern]\n\n# Microservices CQRS Pattern\n\n**← Back to [EAP Home](../../../README.md) • [Patterns](../../README.md) • [Application](../README.md) • [API & Microservices](./README.md)**\n\n---\n\n**Pattern Metadata**\n\n```yaml\npattern_id: 'PTN-APP-API-005'\npattern_name: 'CQRS Pattern'\npattern_type: 'api-microservices'\ndomain: 'application'\nversion: '1.0.0'\nstatus: 'draft'\ntags: ['application', 'api-microservices', 'cqrs', 'command-query', 'scalability', 'healthcare', 'complex', 'proven']\n```\n\n---",
+    "2": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#table-of-contents]\n\n## Table of Contents\n\n- [Executive Summary](#executive-summary)\n- [Context and Problem](#context-and-problem)\n- [Solution](#solution)\n- [Implementation Guidelines](#implementation-guidelines)\n- [Governance and Compliance](#governance-and-compliance)\n- [Examples and Use Cases](#examples-and-use-cases)\n- [Related Patterns and References](#related-patterns-and-references)\n- [Change History](#change-history)\n- [Review Log](#review-log)\n- [TL;DR](#tldr)\n\n---",
+    "3": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#executive-summary]\n\n## Executive Summary",
+    "4": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#problem-statement]\n\n### Problem Statement\n\nIn healthcare systems processing millions of transactions, read and write operations have fundamentally different requirements. When Gainwell's Claims Processing service uses a single database model optimized for transactional writes (claim adjudication, payment processing), complex read queries for analytics, reporting, and provider portals become extremely slow, consuming excessive resources and impacting write performance. A normalized relational model perfect for maintaining data consistency during claim updates becomes a performance bottleneck when generating provider remittance reports requiring 15+ table joins across 500K+ claims. This single-model approach forces unacceptable trade-offs: either sacrifice write performance with denormalized schemas, or accept slow read queries that timeout and frustrate users.",
+    "5": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#solution-overview]\n\n### Solution Overview\n\nCommand Query Responsibility Segregation (CQRS) separates the write model (commands that change state) from the read model (queries that retrieve data), allowing each to be independently optimized for its specific workload characteristics. Commands are handled by a write-optimized model focused on business logic validation and transactional consistency, while queries are served from denormalized, read-optimized projections tailored to specific query patterns. State changes flow from the command side to read side asynchronously through events, enabling eventual consistency while maintaining strong consistency where required. This separation allows independent scaling, technology choices, and optimization strategies for reads and writes.",
+    "6": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#when-to-use]\n\n### When to Use\n\nThis pattern is essential for:\n\n- **High-Volume Read Workloads**: Systems with 10:1 or higher read-to-write ratios (provider portals, member self-service, reporting dashboards)\n- **Complex Query Requirements**: Applications needing denormalized views, pre-aggregated data, or specialized search indexes\n- **Independent Scaling Needs**: Read-heavy operations requiring horizontal scaling separate from write operations\n- **Performance-Critical Reads**: Sub-second query requirements that can't be met with normalized schemas\n- **Event-Driven Architecture**: Systems already using event sourcing or domain events for state changes\n- **Multiple Read Models**: Different consumer types requiring optimized data representations (mobile apps, analytics, third-party integrations)",
+    "7": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#benefits]\n\n### Benefits\n\n- **Independent Optimization**: Write models optimized for transactional consistency, read models optimized for query performance\n- **Scalable Reads**: Read replicas, caching layers, and search indexes can scale independently based on demand\n- **Specialized Data Stores**: Use SQL for writes, Elasticsearch for search, MongoDB for mobile APIs, Redis for caching\n- **Simplified Queries**: Denormalized read models eliminate complex joins, improving query performance\n- **Better User Experience**: Fast queries for dashboards, reports, and portals without impacting write operations\n- **Evolutionary Architecture**: Add new read models without modifying write side, supporting new use cases incrementally",
+    "8": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#target-audience]\n\n## Target Audience\n\nThis pattern is intended for the following technical roles:\n\n- **Solution Architect**: Determines when CQRS is warranted based on read/write asymmetry and defines the event flow between write and read sides.\n- **Backend Developer**: Implements command handlers, query handlers, and projection services; manages eventual consistency trade-offs.\n- **Platform Engineer**: Provisions and operates the event bus, specialized read-model data stores, and projection infrastructure.\n- **Enterprise Architect**: Evaluates CQRS fit within the broader service and data architecture, particularly for HIPAA audit trail requirements.",
+    "9": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#context-and-problem]\n\n## Context and Problem",
+    "10": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#business-context]\n\n### Business Context\n\nGainwell Technologies operates healthcare platforms processing massive transaction volumes while simultaneously serving diverse read-intensive use cases:\n\n**Write-Intensive Operations:**\n- **Claims Adjudication**: 500K+ daily claims requiring complex business logic validation, benefit calculations, and transactional updates\n- **Provider Enrollment**: Real-time credentialing applications with multi-step workflows and state transitions\n- **Payment Processing**: $150M+ monthly payments requiring ACID transactions and financial reconciliation\n- **Member Eligibility Updates**: Real-time eligibility changes from state systems requiring immediate consistency\n\n**Read-Intensive Operations:**\n- **Provider Portals**: 400K+ providers querying claim status, remittance advice, and payment history\n- **Analytics Dashboards**: State agencies running complex reports across years of historical claims data\n- **Member Self-Service**: Gainwell Go™ mobile app serving millions of members with sub-second query requirements\n- **Regulatory Reporting**: Complex aggregations for CMS, state agencies, and compliance audits\n- **FHIR APIs**: 15+ states requiring patient access to health records via standardized APIs\n\n**Business Drivers:**\n\n1. **State SLA Requirements**\n   - Provider portal queries must complete in < 2 seconds (99th percentile)\n   - Claims adjudication must maintain < 5 second response time\n   - Analytics dashboards must load in < 10 seconds\n   - Mobile APIs must respond in < 500ms for member experience\n\n2. **Regulatory Compliance**\n   - CMS Interoperability Final Rule: Patient data access within 1 second\n   - State reporting: Daily, weekly, monthly aggregations across millions of records\n   - Audit trails: All state changes must be traceable and queryable\n\n3. **Scalability Demands**\n   - Read volume: 10:1 to 100:1 read-to-write ratio depending on service\n   - Peak loads: Open enrollment periods generate 50x normal query traffic\n   - Growth: 10-15% annual enrollment growth across state programs\n\n4. **Cost Optimization**\n   - Database licensing costs are high for read-heavy SQL Server workloads\n   - Infrastructure costs: Over-provisioning write databases to handle read spikes\n   - Maintenance burden: Complex indexes and materialized views slow down writes",
+    "11": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#technical-context]\n\n### Technical Context\n\n**Current Architecture Challenges:**\n\nGainwell's current microservices architecture uses traditional CRUD patterns where services expose a single API surface for both reads and writes, backed by a single database schema optimized primarily for transactional consistency.\n\n**Technology Stack:**\n- **Write Side**: SQL Server, PostgreSQL for transactional data\n- **Read Requirements**: Complex joins across 15+ tables for provider reports\n- **Caching**: Redis used inconsistently across services\n- **Search**: Limited Elasticsearch adoption for text search only\n- **APIs**: REST APIs mixing command and query operations\n\n**Existing Patterns:**\n- **Database per Service**: Each microservice owns its data, but uses single model\n- **Event-Driven Architecture**: Some services publish domain events, but not consistently consumed for read models\n- **API Gateway**: Routes requests but doesn't distinguish between commands and queries\n- **Caching**: Ad-hoc caching strategies, no systematic read model projection\n\n**Performance Baselines (Current State):**\n\n| Operation Type | Current Performance | SLA Requirement | Gap |\n|---------------|-------------------|----------------|-----|\n| Claim Submission (Write) | 1.2 seconds avg | < 5 seconds | ✓ Meeting |\n| Provider Claim History (Read) | 8.5 seconds avg | < 2 seconds | ❌ 325% over |\n| Member Benefits Query (Read) | 1.8 seconds avg | < 500ms | ❌ 260% over |\n| State Analytics Report (Read) | 45+ seconds | < 10 seconds | ❌ 350% over |\n| Payment Status Lookup (Read) | 3.2 seconds avg | < 1 second | ❌ 220% over |",
+    "12": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#problem-details]\n\n### Problem Details",
+    "13": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#1-single-model-performance-bottleneck]\n\n#### 1. Single Model Performance Bottleneck\n\n**Scenario: Provider Remittance Report**\n\nThe Claims service uses a normalized schema optimized for transactional claim processing:\n\n```sql\n-- Normalized schema (optimized for writes)\nClaims (ClaimId, MemberId, ProviderId, SubmissionDate, Status, Amount, ...)\nClaimLines (LineId, ClaimId, ServiceCode, Quantity, LineAmount, ...)\nAdjustments (AdjustmentId, ClaimId, AdjustmentType, Amount, ...)\nPayments (PaymentId, ClaimId, PaymentDate, Amount, Method, ...)\nDenials (DenialId, ClaimId, DenialCode, DenialReason, ...)\nProviders (ProviderId, Name, TIN, Address, ...)\nMembers (MemberId, Name, DateOfBirth, EligibilityStatus, ...)\n... 15+ related tables\n```\n\n**Provider Portal Query Requirement:**\n\"Show me all my claims from the past 90 days with payment status, denial reasons, and adjustments\"\n\n```sql\n-- Current query (15+ table joins)\nSELECT\n    c.ClaimId,\n    c.SubmissionDate,\n    m.MemberName,\n    cl.ServiceCode,\n    cl.LineAmount,\n    a.AdjustmentAmount,\n    p.PaymentDate,\n    p.PaymentAmount,\n    d.DenialReason\nFROM Claims c\nJOIN Members m ON c.MemberId = m.MemberId\nJOIN ClaimLines cl ON c.ClaimId = cl.ClaimId\nLEFT JOIN Adjustments a ON c.ClaimId = a.ClaimId\nLEFT JOIN Payments p ON c.ClaimId = p.ClaimId\nLEFT JOIN Denials d ON c.ClaimId = d.ClaimId\nJOIN Providers pr ON c.ProviderId = pr.ProviderId\nWHERE pr.ProviderId = @providerId\n  AND c.SubmissionDate >= DATEADD(day, -90, GETDATE())\nORDER BY c.SubmissionDate DESC;\n\n-- Execution time: 8.5 seconds for provider with 5,000 claims\n-- Result set: 5,000 rows requiring multiple joins per row\n-- Database load: 95% CPU during peak hours\n-- Index requirements: 12 indexes to optimize, slowing writes by 15%\n```\n\n**Problems:**\n- 8.5 second query time exceeds 2-second SLA by 325%\n- Complex joins consume excessive CPU and memory\n- Provider portal timeouts during peak hours (9 AM - 11 AM)\n- Database requires massive over-provisioning for read spikes\n- Indexes needed for reads slow down claim adjudication writes",
+    "14": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#2-readwrite-impedance-mismatch]\n\n#### 2. Read/Write Impedance Mismatch\n\n**Write Model Requirements:**\n- **Normalization**: 3NF to prevent data anomalies during updates\n- **Transactional Consistency**: ACID guarantees for claim adjudication\n- **Business Logic**: Complex validation rules, state machines\n- **Audit Trails**: Track every state change for regulatory compliance\n- **Referential Integrity**: Foreign keys ensure data consistency\n\n**Read Model Requirements:**\n- **Denormalization**: Pre-joined data for fast queries\n- **Aggregations**: Pre-calculated totals, counts, averages\n- **Search Optimization**: Full-text search, faceted search\n- **Multiple Projections**: Different views for different consumers\n- **Eventual Consistency**: Acceptable for most read scenarios\n\n**Conflict Example: Member Benefits Query**\n\n```csharp\n// Write model: Highly normalized for transactional updates\npublic class MemberEligibility\n{\n    public Guid MemberId { get; set; }\n    public Guid PlanId { get; set; }\n    public DateTime EffectiveDate { get; set; }\n    public DateTime? TerminationDate { get; set; }\n}\n\npublic class Plan\n{\n    public Guid PlanId { get; set; }\n    public string PlanName { get; set; }\n    public Guid BenefitPackageId { get; set; }\n}\n\npublic class BenefitPackage\n{\n    public Guid BenefitPackageId { get; set; }\n    public List<Benefit> Benefits { get; set; }\n}\n\n// Query for \"What are this member's current benefits?\" requires:\n// 1. Join MemberEligibility → Plan\n// 2. Join Plan → BenefitPackage\n// 3. Join BenefitPackage → Benefits\n// 4. Filter by current date\n// Result: 1.8 second query time\n\n// Desired read model: Denormalized for instant lookup\npublic class MemberBenefitsSummary\n{\n    public Guid MemberId { get; set; }\n    public string MemberName { get; set; }\n    public string CurrentPlan { get; set; }\n    public List<string> ActiveBenefits { get; set; }  // Pre-joined\n    public DateTime CoverageStartDate { get; set; }\n    public DateTime CoverageEndDate { get; set; }\n    public Dictionary<string, decimal> Copays { get; set; }  // Pre-calculated\n    // Single document lookup: < 50ms query time\n}\n```",
+    "15": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#3-scaling-constraints]\n\n#### 3. Scaling Constraints\n\n**Problem: Read and Write Scaling Requirements Differ**\n\nCurrent architecture scales read and write together as a single unit:\n\n```text\n┌─────────────────────────────────────────────────────┐\n│          Claims Service Pod                         │\n│                                                     │\n│  ┌──────────────┐  ┌──────────────────────────┐   │\n│  │ Write API    │  │ Read API                 │   │\n│  │ POST /claims │  │ GET /claims/{providerId} │   │\n│  │ PUT /claims  │  │ GET /claims/search       │   │\n│  └──────┬───────┘  └──────────┬───────────────┘   │\n│         │                     │                    │\n│         └──────────┬──────────┘                    │\n│                    ↓                               │\n│           ┌─────────────────┐                      │\n│           │ Single Database │                      │\n│           │  (Read + Write) │                      │\n│           └─────────────────┘                      │\n└─────────────────────────────────────────────────────┘\n\nProblem: During provider portal peak hours (9-11 AM):\n\n- Read traffic: 50,000 req/min (provider queries)\n- Write traffic: 5,000 req/min (claims submissions)\n- Solution attempted: Scale pods to handle read spike\n- Result: 10x pods needed for reads, wasting resources for writes\n- Database: Single instance can't scale horizontally for reads\n```\n\n**Impact:**\n- High infrastructure costs for over-provisioned write capacity\n- Read latency still high despite scaling (database bottleneck)\n- Write performance degraded by read load on shared database\n- Peak-hour pod count: 20 pods, off-peak need: 2 pods (90% waste)",
+    "16": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#4-analytics-and-reporting-performance]\n\n#### 4. Analytics and Reporting Performance\n\n**State Monthly Report Example:**\n\n```sql\n-- Texas Medicaid monthly claims summary report\n-- Required by state contract: Daily at 6 AM\n-- Current execution time: 45+ minutes\n\nSELECT\n    p.ProviderName,\n    COUNT(DISTINCT c.ClaimId) as TotalClaims,\n    SUM(c.Amount) as TotalAmount,\n    AVG(c.Amount) as AverageClaimAmount,\n    COUNT(CASE WHEN c.Status = 'Paid' THEN 1 END) as PaidClaims,\n    COUNT(CASE WHEN c.Status = 'Denied' THEN 1 END) as DeniedClaims,\n    AVG(DATEDIFF(day, c.SubmissionDate, p.PaymentDate)) as AvgProcessingDays\nFROM Claims c\nJOIN Providers p ON c.ProviderId = p.ProviderId\nJOIN ClaimLines cl ON c.ClaimId = cl.ClaimId\nLEFT JOIN Payments pay ON c.ClaimId = pay.ClaimId\nWHERE c.SubmissionDate >= @MonthStart\n  AND c.SubmissionDate < @MonthEnd\n  AND c.StateCode = 'TX'\nGROUP BY p.ProviderId, p.ProviderName\nORDER BY TotalAmount DESC;\n\n-- Data volume: 2.5M claims per month for Texas\n-- Join operations: 7.5M+ rows joined\n-- Aggregation: 120K unique providers\n-- Execution: 45+ minutes, blocks transactional operations\n-- Database impact: CPU spikes to 100%, write latency increases 10x\n```\n\n**Problems:**\n- Report exceeds 10-second SLA by a wide margin\n- Morning report run blocks claim adjudication (peak hours)\n- State contract penalty per late report\n- Database maintenance windows required for large reports\n- Can't run multiple concurrent reports without database failures",
+    "17": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#5-mobile-api-performance-requirements]\n\n#### 5. Mobile API Performance Requirements\n\n**Gainwell Go™ Member Portal:**\n\nMobile app requirements:\n\n- **Initial Load**: < 500ms (member dashboard)\n- **Benefit Lookup**: < 300ms (coverage details)\n- **Claims History**: < 1 second (past 12 months)\n- **Provider Search**: < 500ms (nearby providers with specialties)\n\nCurrent performance with single model:\n\n- **Initial Load**: 1.8 seconds (360% over target)\n- **Benefit Lookup**: 1.2 seconds (300% over target)\n- **Claims History**: 3.5 seconds (250% over target)\n- **Provider Search**: 2.5 seconds (400% over target)\n\n**User Impact:**\n- 47% app abandonment rate (users close app before load completes)\n- 1.8 star App Store rating\n- State complaints about member experience\n- CMS Interoperability compliance at risk (1-second requirement)",
+    "18": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#forces-and-constraints]\n\n### Forces and Constraints\n\n**Competing Concerns:**\n\n1. **Strong vs. Eventual Consistency**\n   - Write operations require immediate consistency for financial accuracy\n   - Read operations can tolerate eventual consistency (seconds to minutes)\n   - Challenge: Determining acceptable consistency windows per use case\n\n2. **Complexity vs. Performance**\n   - CQRS adds architectural complexity (dual models, synchronization)\n   - Performance gains are essential for SLA compliance\n   - Trade-off: Accept complexity for 10-100x read performance improvement\n\n3. **Unified vs. Segregated Data Stores**\n   - Single database simplifies operations and backups\n   - Multiple specialized stores optimize for specific workloads\n   - Decision: Cost of complexity vs. performance and scalability benefits\n\n4. **Immediate vs. Eventual Consistency Visibility**\n   - Users expect to see their updates immediately\n   - Read model updates may lag write model by seconds\n   - Solution: Write-through caching or redirect to write model for immediate reads\n\n**Regulatory and Compliance Constraints:**\n\n- **HIPAA Audit Controls §164.312(b)**: All data access must be auditable, including read models\n- **Financial Accuracy**: Payment calculations must be exact, no rounding errors in projections\n- **Data Retention**: Read models must match write model retention policies (7+ years)\n- **Backup and Recovery**: Read models must be recoverable to match write model state\n- **Data Consistency**: Read models can't show stale data beyond acceptable windows\n\n**Operational Constraints:**\n\n- **Team Skills**: Development teams need training on CQRS patterns and eventual consistency\n- **Monitoring Complexity**: Need to monitor synchronization lag and projection health\n- **Debugging Challenges**: Troubleshooting issues requires understanding dual models\n- **Data Migration**: Existing systems need migration path to CQRS without downtime\n- **Testing Complexity**: Integration tests must verify both command and query paths",
+    "19": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#solution]\n\n## Solution",
+    "20": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#overview]\n\n### Overview\n\nThe CQRS (Command Query Responsibility Segregation) pattern solves the read/write optimization problem by separating the data model into two distinct paths:\n\n1. **Command Model (Write Side)**: Optimized for business logic validation and transactional consistency\n2. **Query Model (Read Side)**: Optimized for fast retrieval and complex queries\n\nThis separation allows each side to be independently optimized, scaled, and evolved based on its specific requirements.",
+    "21": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#core-architecture]\n\n### Core Architecture\n\n```mermaid\ngraph TB\n    subgraph \"Client Applications\"\n        UI[Web UI]\n        Mobile[Mobile App]\n        API[External API]\n    end\n\n    subgraph \"Command Side Write Model\"\n        CmdAPI[Command API Gateway]\n        CmdHandler[Command Handlers]\n        ValidateLogic[Business Logic & Validation]\n        WriteDB[(Write Database<br/>Normalized Schema<br/>SQL Server/PostgreSQL)]\n        EventPub[Event Publisher]\n    end\n\n    subgraph \"Event Bus\"\n        EventStream[Event Stream<br/>Azure Service Bus/Kafka]\n    end\n\n    subgraph \"Query Side Read Models\"\n        EventSub[Event Subscribers<br/>Projections]\n        ReadDB1[(Provider Read Model<br/>Denormalized<br/>SQL Server)]\n        ReadDB2[(Search Index<br/>Elasticsearch)]\n        ReadDB3[(Mobile Read Model<br/>MongoDB)]\n        ReadDB4[(Cache<br/>Redis)]\n        QueryAPI[Query API Gateway]\n    end\n\n    UI -->|Commands| CmdAPI\n    Mobile -->|Commands| CmdAPI\n    API -->|Commands| CmdAPI\n\n    CmdAPI --> CmdHandler\n    CmdHandler --> ValidateLogic\n    ValidateLogic --> WriteDB\n    ValidateLogic --> EventPub\n    EventPub --> EventStream\n\n    EventStream --> EventSub\n    EventSub -->|Update| ReadDB1\n    EventSub -->|Index| ReadDB2\n    EventSub -->|Store| ReadDB3\n    EventSub -->|Cache| ReadDB4\n\n    UI -->|Queries| QueryAPI\n    Mobile -->|Queries| QueryAPI\n    API -->|Queries| QueryAPI\n\n    QueryAPI --> ReadDB1\n    QueryAPI --> ReadDB2\n    QueryAPI --> ReadDB3\n    QueryAPI --> ReadDB4\n\n    style CmdAPI fill:#ff9999\n    style WriteDB fill:#ff9999\n    style QueryAPI fill:#99ccff\n    style ReadDB1 fill:#99ccff\n    style ReadDB2 fill:#99ccff\n    style ReadDB3 fill:#99ccff\n    style ReadDB4 fill:#99ccff\n```",
+    "22": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#command-flow-write-path]\n\n### Command Flow (Write Path)\n\n```mermaid\nsequenceDiagram\n    participant Client\n    participant CmdAPI as Command API\n    participant Handler as Command Handler\n    participant WriteDB as Write Database\n    participant EventBus as Event Bus\n    participant Projection as Projection Service\n    participant ReadDB as Read Database\n\n    Client->>CmdAPI: POST /claims (ProcessClaimCommand)\n    CmdAPI->>Handler: Route command\n    Handler->>Handler: Validate business rules\n    Handler->>WriteDB: BEGIN TRANSACTION\n    Handler->>WriteDB: INSERT claim record\n    Handler->>WriteDB: UPDATE member balance\n    Handler->>WriteDB: COMMIT TRANSACTION\n    Handler->>EventBus: Publish ClaimProcessedEvent\n    Handler-->>CmdAPI: 202 Accepted {commandId}\n    CmdAPI-->>Client: 202 Accepted\n\n    Note over EventBus: Asynchronous boundary\n\n    EventBus->>Projection: ClaimProcessedEvent\n    Projection->>ReadDB: Update denormalized view\n    Projection->>ReadDB: Update search index\n    Projection->>ReadDB: Invalidate cache\n    Projection-->>EventBus: ACK\n```",
+    "23": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#query-flow-read-path]\n\n### Query Flow (Read Path)\n\n```mermaid\nsequenceDiagram\n    participant Client\n    participant QueryAPI as Query API\n    participant Cache as Redis Cache\n    participant ReadDB as Read Database\n\n    Client->>QueryAPI: GET /providers/{id}/remittances\n    QueryAPI->>Cache: Check cache\n\n    alt Cache Hit\n        Cache-->>QueryAPI: Return cached data\n        QueryAPI-->>Client: 200 OK (50ms)\n    else Cache Miss\n        Cache-->>QueryAPI: Not found\n        QueryAPI->>ReadDB: Query denormalized view\n        Note over ReadDB: Single table lookup<br/>No joins required\n        ReadDB-->>QueryAPI: Return data\n        QueryAPI->>Cache: Store in cache\n        QueryAPI-->>Client: 200 OK (200ms)\n    end\n```",
+    "24": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#read-model-projection-architecture]\n\n### Read Model Projection Architecture\n\n```mermaid\ngraph TB\n    subgraph \"Write Events\"\n        E1[ClaimProcessedEvent]\n        E2[PaymentAuthorizedEvent]\n        E3[RemittanceGeneratedEvent]\n        E4[ProviderUpdatedEvent]\n    end\n\n    subgraph \"Projection Services\"\n        P1[Provider Remittance<br/>Projection]\n        P2[Search Index<br/>Projection]\n        P3[Analytics<br/>Projection]\n        P4[Mobile API<br/>Projection]\n    end\n\n    subgraph \"Read Models\"\n        RM1[(Provider Remittance View<br/>SQL Server<br/>Denormalized)]\n        RM2[(Search Index<br/>Elasticsearch<br/>Full-text search)]\n        RM3[(Analytics Cube<br/>SQL Server<br/>Pre-aggregated)]\n        RM4[(Mobile Documents<br/>MongoDB<br/>JSON documents)]\n    end\n\n    E1 --> P1\n    E2 --> P1\n    E3 --> P1\n    E4 --> P1\n\n    E1 --> P2\n    E3 --> P2\n    E4 --> P2\n\n    E1 --> P3\n    E2 --> P3\n    E3 --> P3\n\n    E1 --> P4\n    E2 --> P4\n    E4 --> P4\n\n    P1 --> RM1\n    P2 --> RM2\n    P3 --> RM3\n    P4 --> RM4\n\n    style RM1 fill:#99ccff\n    style RM2 fill:#99ccff\n    style RM3 fill:#99ccff\n    style RM4 fill:#99ccff\n```",
+    "25": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#key-components-and-responsibilities]\n\n### Key Components and Responsibilities",
+    "26": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#command-side-components]\n\n#### Command Side Components\n\n| Component | Responsibility | Technology |\n|-----------|---------------|------------|\n| **Command API Gateway** | Route commands to handlers, authentication, rate limiting | ASP.NET Core API, Azure API Management |\n| **Command Handlers** | Execute business logic, enforce invariants, validate rules | .NET/C#, MediatR |\n| **Write Database** | Store normalized, transactionally consistent data | SQL Server, PostgreSQL |\n| **Event Publisher** | Publish domain events to event bus | Azure Service Bus, Apache Kafka |\n| **Saga Orchestrators** | Coordinate distributed transactions across services | .NET/C#, NServiceBus |\n\n**Write Model Characteristics**:\n- Normalized schema (3NF) for data integrity\n- Strong consistency (ACID transactions)\n- Optimized for writes and business logic validation\n- Contains complete audit trail\n- Single source of truth",
+    "27": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#query-side-components]\n\n#### Query Side Components\n\n| Component | Responsibility | Technology |\n|-----------|---------------|------------|\n| **Query API Gateway** | Route queries to appropriate read model, caching | ASP.NET Core API, Azure API Management |\n| **Projection Services** | Subscribe to events, update read models | .NET/C#, Background Services |\n| **Read Databases** | Store denormalized, query-optimized data | SQL Server, Elasticsearch, MongoDB, Redis |\n| **Cache Layer** | Cache frequently accessed data | Redis, Azure Cache |\n| **Query Handlers** | Execute optimized queries against read models | .NET/C#, Dapper, EF Core |\n\n**Read Model Characteristics**:\n- Denormalized schema optimized for specific queries\n- Eventual consistency (typically 100-500ms lag)\n- Optimized for reads and query performance\n- Can use specialized data stores (document, search, graph)\n- Disposable and rebuildable from events",
+    "28": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#data-flow-and-interaction-patterns]\n\n### Data Flow and Interaction Patterns",
+    "29": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#write-flow-pattern]\n\n#### Write Flow Pattern\n\n```text\n1. Client sends Command → Command API\n2. Command API validates and routes → Command Handler\n3. Command Handler:\n   a. Validates business rules\n   b. Executes domain logic\n   c. Persists to Write Database (transaction)\n   d. Publishes Domain Events\n   e. Returns 202 Accepted (async) or 200 OK (sync)\n\n4. Event Bus distributes events to subscribers\n```",
+    "30": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#read-flow-pattern]\n\n#### Read Flow Pattern\n\n```text\n1. Client sends Query → Query API\n2. Query API checks cache:\n   a. Cache Hit → Return immediately (50-100ms)\n   b. Cache Miss → Query Read Database\n\n3. Query Handler executes optimized query\n4. Result cached for future requests\n5. Return 200 OK with data\n```",
+    "31": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#projection-update-pattern]\n\n#### Projection Update Pattern\n\n```text\n1. Projection Service subscribes to domain events\n2. On event received:\n   a. Apply event to read model (idempotent)\n   b. Update denormalized views\n   c. Update search indexes\n   d. Invalidate related caches\n   e. Track projection position/offset\n\n3. Acknowledge event (at-least-once delivery)\n4. Monitor lag metrics (time behind write model)\n```",
+    "32": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#integration-points-with-other-patterns]\n\n### Integration Points with Other Patterns\n\n| Pattern | Integration Point | Purpose |\n|---------|------------------|---------|\n| **Event Sourcing** | Event store as write model | Commands generate events that become both write log and projection source |\n| **Database per Service** | Separate databases for command/query | Each read model can use optimal database technology |\n| **API Gateway** | Separate command/query gateways | Route based on operation type (POST/PUT vs GET) |\n| **Cache-Aside** | Read model caching | Reduce load on read databases, improve response times |\n| **Saga Pattern** | Command orchestration | Coordinate distributed transactions across write models |\n| **Materialized View** | Read model projections | Pre-compute complex queries as denormalized views |",
+    "33": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#architecture-variations]\n\n### Architecture Variations",
+    "34": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#variation-1-simple-cqrs-same-database]\n\n#### Variation 1: Simple CQRS (Same Database)\n\n**Use when**: Getting started with CQRS, lower complexity tolerance\n\n```mermaid\ngraph LR\n    subgraph \"Single Database\"\n        WriteSchema[(Write Schema<br/>Normalized)]\n        ReadViews[(Read Views<br/>Materialized Views)]\n    end\n\n    Commands[Commands] --> WriteSchema\n    WriteSchema -.->|DB Triggers or<br/>Scheduled Jobs| ReadViews\n    Queries[Queries] --> ReadViews\n\n    style WriteSchema fill:#ff9999\n    style ReadViews fill:#99ccff\n```\n\n**Characteristics**:\n- Same database, separate schemas or materialized views\n- Synchronous or near-synchronous updates\n- Lower operational complexity\n- Limited scaling benefits\n- Good starting point before full CQRS\n\n**Example**: Provider remittance view as SQL Server materialized view updated by triggers.",
+    "35": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#variation-2-cqrs-with-event-sourcing]\n\n#### Variation 2: CQRS with Event Sourcing\n\n**Use when**: Need complete audit trail, temporal queries, event replay\n\n```mermaid\ngraph TB\n    Commands[Commands] --> EventStore[(Event Store<br/>Immutable Events)]\n    EventStore --> Projections[Projection Services]\n    Projections --> ReadModel1[(Read Model 1)]\n    Projections --> ReadModel2[(Read Model 2)]\n    Projections --> ReadModel3[(Read Model 3)]\n    Queries[Queries] --> ReadModel1\n    Queries[Queries] --> ReadModel2\n    Queries[Queries] --> ReadModel3\n\n    style EventStore fill:#ff9999\n    style ReadModel1 fill:#99ccff\n    style ReadModel2 fill:#99ccff\n    style ReadModel3 fill:#99ccff\n```\n\n**Characteristics**:\n- Events are the source of truth (no separate write database)\n- Complete history for audit and compliance\n- Can rebuild read models from event replay\n- Supports temporal queries (\"what was the state on date X?\")\n- Higher complexity and storage requirements\n\n**Example**: Claims processing with full audit trail for HIPAA compliance, ability to rebuild state analytics for any historical date.",
+    "36": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#variation-3-multi-database-cqrs]\n\n#### Variation 3: Multi-Database CQRS\n\n**Use when**: Need specialized data stores for different query patterns\n\n```mermaid\ngraph TB\n    Commands[Commands] --> WriteDB[(Write DB<br/>SQL Server)]\n    WriteDB --> EventBus[Event Bus]\n    EventBus --> P1[Projection 1]\n    EventBus --> P2[Projection 2]\n    EventBus --> P3[Projection 3]\n    EventBus --> P4[Projection 4]\n\n    P1 --> SQL[(SQL Read Model<br/>Relational queries)]\n    P2 --> Elastic[(Elasticsearch<br/>Full-text search)]\n    P3 --> Mongo[(MongoDB<br/>Mobile API)]\n    P4 --> Redis[(Redis<br/>Real-time cache)]\n\n    Queries[Queries] --> SQL\n    Queries --> Elastic\n    Queries --> Mongo\n    Queries --> Redis\n\n    style WriteDB fill:#ff9999\n    style SQL fill:#99ccff\n    style Elastic fill:#99ccff\n    style Mongo fill:#99ccff\n    style Redis fill:#99ccff\n```\n\n**Characteristics**:\n- Multiple specialized read databases\n- Each optimized for specific query patterns\n- Maximum performance and flexibility\n- Higher operational complexity\n- Independent scaling per read model\n\n**Example**:\n- SQL Server: Provider remittance queries (joins, aggregations)\n- Elasticsearch: Provider search (full-text, fuzzy matching)\n- MongoDB: Mobile API (document-oriented, low latency)\n- Redis: Real-time dashboards (sub-second response)",
+    "37": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#consistency-models]\n\n### Consistency Models",
+    "38": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#eventual-consistency]\n\n#### Eventual Consistency\n\n**Default CQRS model**: Write completes → Events published → Read models updated asynchronously\n\n```text\nWrite Model: t=0ms    Commands persisted, events published\nRead Model:  t=100ms  Provider view updated\n             t=150ms  Search index updated\n             t=200ms  Mobile cache updated\n```\n\n**Strategies**:\n- Return command correlation ID to client\n- Provide \"check status\" endpoint for polling\n- Use SignalR/WebSockets for push notifications when read model updated\n- Display \"Processing...\" indicator in UI\n\n**Acceptable for**:\n- Analytics and reporting (lag tolerance: seconds to minutes)\n- Search results (lag tolerance: 100-500ms)\n- Non-critical dashboards (lag tolerance: 1-5 seconds)",
+    "39": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#read-your-writes-consistency]\n\n#### Read-Your-Writes Consistency\n\n**Use when**: User must immediately see their own changes\n\n**Implementation strategies**:\n\n1. **Return projection from command**:\n```csharp\npublic async Task<ProviderRemittanceDto> ProcessClaim(ProcessClaimCommand cmd)\n{\n    var result = await commandHandler.Handle(cmd);\n    var projection = await BuildProjection(result); // Synchronous projection\n    return projection;\n}\n```\n\n2. **Versioned reads with retry**:\n```csharp\n// Command returns version/timestamp\nvar response = await commandApi.ProcessClaim(cmd); // Returns version: 42\n\n// Query with version requirement\nvar view = await queryApi.GetRemittance(providerId, minVersion: 42); // Waits until version ≥ 42\n```\n\n3. **Session-based consistency**:\n```csharp\n// Store write version in session/cookie\nResponse.Cookies.Append(\"LastWriteVersion\", writeVersion);\n\n// Query checks session version\nvar sessionVersion = Request.Cookies[\"LastWriteVersion\"];\nvar view = await queryApi.GetRemittance(providerId, sessionVersion);\n```",
+    "40": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#strong-consistency]\n\n#### Strong Consistency\n\n**Use when**: Business rules require immediate consistency (rare in CQRS)\n\n**Implementation**:\n- Synchronous projection updates within same transaction\n- Blocks command response until read model updated\n- Defeats main CQRS benefits (independent scaling, performance)\n\n**Use cases**:\n- Regulatory requirements (e.g., account balance before withdrawal)\n- Inventory management (prevent overselling)\n- Seat reservations (prevent double-booking)\n\n**Example**:\n```csharp\nusing var transaction = await dbContext.Database.BeginTransactionAsync();\ntry\n{\n    // Update write model\n    await commandHandler.Handle(cmd);\n\n    // Update read model synchronously\n    await projectionService.UpdateReadModel(cmd);\n\n    await transaction.CommitAsync();\n    return Ok();\n}\ncatch\n{\n    await transaction.RollbackAsync();\n    throw;\n}\n```",
+    "41": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#trade-offs-and-considerations]\n\n### Trade-offs and Considerations",
+    "42": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#benefits]\n\n#### Benefits\n\n| Benefit | Impact | Example |\n|---------|--------|---------|\n| **Independent Optimization** | Each side optimized for its purpose | Write model: normalized 3NF; Read model: single denormalized table |\n| **Scalability** | Scale reads and writes independently | 50K reads/min (10 pods) + 5K writes/min (2 pods) vs. 50K combined (20 pods) |\n| **Performance** | Significant query performance improvement | Provider remittance: 8.5s → 180ms |\n| **Specialized Storage** | Use optimal database for each pattern | SQL writes + Elasticsearch search + MongoDB mobile + Redis cache |\n| **Simplified Queries** | No complex joins in read models | Single table lookup vs. 15-table join |\n| **Technology Flexibility** | Different stacks for read/write | .NET write side + Node.js read side |",
+    "43": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#challenges]\n\n#### Challenges\n\n| Challenge | Mitigation | Example |\n|-----------|-----------|---------|\n| **Eventual Consistency** | Design UI for async updates, provide status endpoints | Show \"Processing...\" indicator, poll for completion |\n| **Increased Complexity** | Start with simple CQRS, add features incrementally | Begin with materialized views, evolve to event-driven |\n| **Data Duplication** | Accept trade-off for performance, storage is cheap | Provider data in SQL + Elasticsearch + MongoDB |\n| **Projection Lag** | Monitor lag metrics, alert if exceeds threshold | Alert if read model > 1 second behind write model |\n| **Operational Overhead** | Automate projection rebuilds, use managed services | Automated event replay for read model recovery |\n| **Debugging Difficulty** | Comprehensive logging, correlation IDs, tracing | Distributed tracing across command → event → projection |",
+    "44": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#when-not-to-use-cqrs]\n\n#### When NOT to Use CQRS\n\n| Scenario | Reason | Better Alternative |\n|----------|--------|-------------------|\n| **Simple CRUD** | Overhead not justified | Standard REST API with EF Core |\n| **Low Traffic** | Complexity exceeds benefit | Monolithic application with database indexes |\n| **Strong Consistency Required** | CQRS assumes eventual consistency | Traditional ACID transactions |\n| **Small Team** | Operational burden too high | Simple 3-tier architecture |\n| **Write-Heavy Workload** | Read optimization not needed | Focus on write optimization (batching, async processing) |",
+    "45": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#anti-patterns-to-avoid]\n\n### Anti-Patterns to Avoid",
+    "46": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#1-synchronous-projections]\n\n#### 1. Synchronous Projections\n\n**Problem**: Updating read models synchronously defeats CQRS benefits\n\n```csharp\n// ❌ BAD: Synchronous projection\npublic async Task<IActionResult> ProcessClaim(ProcessClaimCommand cmd)\n{\n    await commandHandler.Handle(cmd);\n    await projectionService.UpdateAllReadModels(cmd); // Blocks response\n    return Ok();\n}\n```\n\n**Solution**: Asynchronous event-driven projections\n\n```csharp\n// ✅ GOOD: Asynchronous projection\npublic async Task<IActionResult> ProcessClaim(ProcessClaimCommand cmd)\n{\n    var commandId = await commandHandler.Handle(cmd);\n    // Events published asynchronously, projections update in background\n    return Accepted(new { commandId }); // Return immediately\n}\n```",
+    "47": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#2-query-logic-in-commands]\n\n#### 2. Query Logic in Commands\n\n**Problem**: Mixing query logic into command handlers\n\n```csharp\n// ❌ BAD: Query in command handler\npublic async Task Handle(ProcessClaimCommand cmd)\n{\n    var provider = await queryDb.Providers\n        .Include(p => p.Remittances)\n        .Include(p => p.PaymentHistory) // Complex query\n        .FirstOrDefaultAsync(p => p.Id == cmd.ProviderId);\n\n    // Business logic...\n}\n```\n\n**Solution**: Commands only use write model, queries use read model\n\n```csharp\n// ✅ GOOD: Command uses write model only\npublic async Task Handle(ProcessClaimCommand cmd)\n{\n    var provider = await writeDb.Providers.FindAsync(cmd.ProviderId); // Simple lookup\n    // Business logic...\n}\n```",
+    "48": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#3-shared-models-between-readwrite]\n\n#### 3. Shared Models Between Read/Write\n\n**Problem**: Using same DTOs/models for commands and queries\n\n```csharp\n// ❌ BAD: Shared model\npublic class ProviderDto\n{\n    public Guid Id { get; set; }\n    public string Name { get; set; }\n    // Used for both commands and queries\n}\n```\n\n**Solution**: Separate models optimized for each side\n\n```csharp\n// ✅ GOOD: Separate models\npublic class UpdateProviderCommand\n{\n    public Guid ProviderId { get; set; }\n    public string Name { get; set; }\n    // Write model: focused on command intent\n}\n\npublic class ProviderRemittanceView\n{\n    public Guid ProviderId { get; set; }\n    public string ProviderName { get; set; }\n    public decimal TotalRemittances { get; set; }\n    public List<RemittanceDto> RecentRemittances { get; set; }\n    // Read model: denormalized, query-optimized\n}\n```",
+    "49": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#4-missing-idempotency-in-projections]\n\n#### 4. Missing Idempotency in Projections\n\n**Problem**: Projection services not handling duplicate events\n\n```csharp\n// ❌ BAD: Non-idempotent projection\npublic async Task Handle(ClaimProcessedEvent evt)\n{\n    await readDb.ExecuteSqlAsync(\n        \"UPDATE ProviderStats SET ClaimCount = ClaimCount + 1 WHERE ProviderId = {0}\",\n        evt.ProviderId\n    ); // Duplicate event = incorrect count\n}\n```\n\n**Solution**: Idempotent projections using event IDs\n\n```csharp\n// ✅ GOOD: Idempotent projection\npublic async Task Handle(ClaimProcessedEvent evt)\n{\n    if (await processedEvents.ContainsAsync(evt.EventId))\n        return; // Already processed\n\n    await readDb.ExecuteSqlAsync(\n        \"UPDATE ProviderStats SET ClaimCount = ClaimCount + 1 WHERE ProviderId = {0}\",\n        evt.ProviderId\n    );\n\n    await processedEvents.AddAsync(evt.EventId);\n}\n```",
+    "50": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#technology-stack-recommendations]\n\n### Technology Stack Recommendations",
+    "51": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#write-side]\n\n#### Write Side\n\n| Component | Recommended Technology | Rationale |\n|-----------|----------------------|-----------|\n| **Database** | SQL Server, PostgreSQL | ACID transactions, relational integrity, proven at scale |\n| **ORM** | Entity Framework Core, Dapper | Type-safe queries, migration support |\n| **Event Bus** | Azure Service Bus, Apache Kafka | Reliable delivery, replay capability, high throughput |\n| **Command Framework** | MediatR, NServiceBus | Command pattern implementation, pipeline behaviors |",
+    "52": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#read-side]\n\n#### Read Side\n\n| Component | Recommended Technology | Rationale |\n|-----------|----------------------|-----------|\n| **Relational Queries** | SQL Server, PostgreSQL | Complex queries, aggregations, reporting |\n| **Full-Text Search** | Elasticsearch, Azure Cognitive Search | Fast search, fuzzy matching, faceted navigation |\n| **Document Store** | MongoDB, Azure Cosmos DB | Flexible schema, low latency, mobile APIs |\n| **Cache** | Redis, Azure Cache for Redis | Sub-second response, high throughput |\n| **ORM** | Dapper, EF Core (read-only) | Fast query execution, minimal overhead |",
+    "53": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#projection-services]\n\n#### Projection Services\n\n| Component | Recommended Technology | Rationale |\n|-----------|----------------------|-----------|\n| **Background Processing** | .NET Background Services, Hangfire | Reliable event processing, retry logic |\n| **Message Consumption** | Azure Service Bus SDK, Kafka Consumer API | At-least-once delivery, offset management |\n| **Monitoring** | Application Insights, Prometheus + Grafana | Lag metrics, error rates, projection health |",
+    "54": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#implementation-guidelines]\n\n## Implementation Guidelines",
+    "55": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#phased-implementation-approach]\n\n### Phased Implementation Approach\n\nCQRS implementation should be phased to manage complexity and validate benefits before full commitment:",
+    "56": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#phase-1-proof-of-concept-2-4-weeks]\n\n#### Phase 1: Proof of Concept (2-4 weeks)\n\n**Goal**: Validate CQRS approach for single high-value use case\n\n**Activities**:\n1. Select pilot use case (e.g., Provider Remittance Query)\n2. Implement simple CQRS with materialized view\n3. Measure performance improvements\n4. Validate eventual consistency acceptance\n\n**Implementation**:\n```sql\n-- Create read model materialized view\nCREATE VIEW ProviderRemittanceView AS\nSELECT\n    p.ProviderId,\n    p.ProviderName,\n    p.TaxId,\n    COUNT(r.RemittanceId) AS RemittanceCount,\n    SUM(r.Amount) AS TotalAmount,\n    MAX(r.ProcessedDate) AS LastRemittanceDate\nFROM Providers p\nLEFT JOIN Remittances r ON p.ProviderId = r.ProviderId\nGROUP BY p.ProviderId, p.ProviderName, p.TaxId;\n\n-- Create indexed table for better performance\nCREATE TABLE ProviderRemittanceReadModel (\n    ProviderId uniqueidentifier PRIMARY KEY,\n    ProviderName nvarchar(200),\n    TaxId nvarchar(20),\n    RemittanceCount int,\n    TotalAmount decimal(18,2),\n    LastRemittanceDate datetime2,\n    LastUpdated datetime2\n);\n\nCREATE INDEX IX_ProviderRemittance_TaxId ON ProviderRemittanceReadModel(TaxId);\nCREATE INDEX IX_ProviderRemittance_LastUpdated ON ProviderRemittanceReadModel(LastUpdated);\n```\n\n**Success Criteria**:\n- Query performance: < 200ms (vs. 8.5s baseline)\n- Write operations: No degradation\n- Team understanding: Able to explain trade-offs",
+    "57": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#phase-2-event-driven-projections-4-6-weeks]\n\n#### Phase 2: Event-Driven Projections (4-6 weeks)\n\n**Goal**: Implement asynchronous event-based read model updates\n\n**Activities**:\n1. Implement event publishing from write operations\n2. Create projection service to consume events\n3. Update read models asynchronously\n4. Monitor projection lag\n\n**Implementation**:\n```csharp\n// 1. Publish events from write operations\npublic class ClaimService\n{\n    private readonly ClaimRepository _writeRepo;\n    private readonly IEventPublisher _eventPublisher;\n\n    public async Task<Guid> ProcessClaim(ProcessClaimCommand command)\n    {\n        // Write to normalized model\n        var claim = new Claim(command.ClaimId, command.ProviderId, command.Amount);\n        await _writeRepo.SaveAsync(claim);\n\n        // Publish domain event\n        var evt = new ClaimProcessedEvent\n        {\n            EventId = Guid.NewGuid(),\n            ClaimId = claim.ClaimId,\n            ProviderId = claim.ProviderId,\n            Amount = claim.Amount,\n            ProcessedDate = DateTime.UtcNow,\n            Timestamp = DateTime.UtcNow\n        };\n        await _eventPublisher.PublishAsync(evt);\n\n        return claim.ClaimId;\n    }\n}\n\n// 2. Consume events and update read model\npublic class ProviderRemittanceProjection : BackgroundService\n{\n    private readonly IServiceBusClient _serviceBus;\n    private readonly ILogger<ProviderRemittanceProjection> _logger;\n\n    protected override async Task ExecuteAsync(CancellationToken stoppingToken)\n    {\n        await _serviceBus.SubscribeAsync<ClaimProcessedEvent>(\n            async (evt, cancellationToken) =>\n            {\n                await UpdateReadModel(evt);\n            },\n            stoppingToken);\n    }\n\n    private async Task UpdateReadModel(ClaimProcessedEvent evt)\n    {\n        using var scope = _serviceProvider.CreateScope();\n        var readDb = scope.ServiceProvider.GetRequiredService<ReadDbContext>();\n\n        // Idempotency check\n        if (await readDb.ProcessedEvents.AnyAsync(e => e.EventId == evt.EventId))\n        {\n            _logger.LogInformation(\"Event {EventId} already processed\", evt.EventId);\n            return;\n        }\n\n        // Update read model\n        var provider = await readDb.ProviderRemittanceReadModel\n            .FirstOrDefaultAsync(p => p.ProviderId == evt.ProviderId);\n\n        if (provider == null)\n        {\n            provider = new ProviderRemittanceReadModel\n            {\n                ProviderId = evt.ProviderId,\n                RemittanceCount = 0,\n                TotalAmount = 0\n            };\n            readDb.ProviderRemittanceReadModel.Add(provider);\n        }\n\n        provider.RemittanceCount++;\n        provider.TotalAmount += evt.Amount;\n        provider.LastRemittanceDate = evt.ProcessedDate;\n        provider.LastUpdated = DateTime.UtcNow;\n\n        // Track processed event\n        readDb.ProcessedEvents.Add(new ProcessedEvent\n        {\n            EventId = evt.EventId,\n            ProcessedAt = DateTime.UtcNow\n        });\n\n        await readDb.SaveChangesAsync();\n\n        _logger.LogInformation(\n            \"Updated read model for provider {ProviderId} from event {EventId}\",\n            evt.ProviderId, evt.EventId);\n    }\n}\n\n// 3. Monitor projection lag\npublic class ProjectionHealthCheck : IHealthCheck\n{\n    private readonly ReadDbContext _readDb;\n    private readonly WriteDbContext _writeDb;\n\n    public async Task<HealthCheckResult> CheckHealthAsync(\n        HealthCheckContext context,\n        CancellationToken cancellationToken = default)\n    {\n        var lastWriteTime = await _writeDb.Claims\n            .MaxAsync(c => (DateTime?)c.ProcessedDate, cancellationToken)\n            ?? DateTime.UtcNow;\n\n        var lastReadUpdate = await _readDb.ProviderRemittanceReadModel\n            .MaxAsync(p => (DateTime?)p.LastUpdated, cancellationToken)\n            ?? DateTime.UtcNow;\n\n        var lag = lastWriteTime - lastReadUpdate;\n\n        if (lag.TotalSeconds > 5)\n        {\n            return HealthCheckResult.Degraded(\n                $\"Projection lag: {lag.TotalSeconds:F1} seconds\");\n        }\n\n        return HealthCheckResult.Healthy(\n            $\"Projection lag: {lag.TotalMilliseconds:F0} ms\");\n    }\n}\n```\n\n**Success Criteria**:\n- Projection lag: < 500ms (p99)\n- Event delivery: 100% (with retry)\n- Idempotency: No duplicate processing",
+    "58": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#phase-3-multiple-read-models-6-8-weeks]\n\n#### Phase 3: Multiple Read Models (6-8 weeks)\n\n**Goal**: Implement specialized read models for different query patterns\n\n**Activities**:\n1. Add Elasticsearch for full-text search\n2. Add MongoDB for mobile API\n3. Add Redis for caching\n4. Implement query routing\n\n**Implementation**:\n```csharp\n// Query API with routing to specialized read models\n[ApiController]\n[Route(\"api/providers\")]\npublic class ProviderQueryController : ControllerBase\n{\n    private readonly SqlReadRepository _sqlRepo;\n    private readonly ElasticsearchClient _searchClient;\n    private readonly MongoRepository _mongoRepo;\n    private readonly ICacheService _cache;\n\n    // Relational query - use SQL read model\n    [HttpGet(\"{providerId}/remittances\")]\n    public async Task<ActionResult<ProviderRemittanceView>> GetRemittances(\n        Guid providerId)\n    {\n        var cacheKey = $\"provider-remittance:{providerId}\";\n\n        // Try cache first\n        var cached = await _cache.GetAsync<ProviderRemittanceView>(cacheKey);\n        if (cached != null)\n            return Ok(cached);\n\n        // Query SQL read model\n        var view = await _sqlRepo.GetProviderRemittanceAsync(providerId);\n\n        // Cache for 5 minutes\n        await _cache.SetAsync(cacheKey, view, TimeSpan.FromMinutes(5));\n\n        return Ok(view);\n    }\n\n    // Full-text search - use Elasticsearch\n    [HttpGet(\"search\")]\n    public async Task<ActionResult<IEnumerable<ProviderSearchResult>>> Search(\n        [FromQuery] string query,\n        [FromQuery] int page = 1,\n        [FromQuery] int pageSize = 20)\n    {\n        var searchRequest = new SearchRequest<ProviderSearchDocument>\n        {\n            Query = new MultiMatchQuery\n            {\n                Query = query,\n                Fields = new[] { \"providerName^2\", \"taxId\", \"address\" },\n                Fuzziness = Fuzziness.Auto\n            },\n            From = (page - 1) * pageSize,\n            Size = pageSize\n        };\n\n        var response = await _searchClient.SearchAsync<ProviderSearchDocument>(\n            searchRequest);\n\n        var results = response.Documents.Select(d => new ProviderSearchResult\n        {\n            ProviderId = d.ProviderId,\n            ProviderName = d.ProviderName,\n            TaxId = d.TaxId,\n            Relevance = d.Score\n        });\n\n        return Ok(results);\n    }\n\n    // Mobile API - use MongoDB for low-latency document access\n    [HttpGet(\"{providerId}/mobile\")]\n    public async Task<ActionResult<ProviderMobileView>> GetMobileView(\n        Guid providerId)\n    {\n        // MongoDB document optimized for mobile app\n        var view = await _mongoRepo.GetProviderMobileViewAsync(providerId);\n\n        if (view == null)\n            return NotFound();\n\n        return Ok(view);\n    }\n}\n\n// Elasticsearch projection\npublic class ProviderSearchProjection : BackgroundService\n{\n    private readonly IServiceBusClient _serviceBus;\n    private readonly ElasticsearchClient _searchClient;\n\n    protected override async Task ExecuteAsync(CancellationToken stoppingToken)\n    {\n        await _serviceBus.SubscribeAsync<ProviderUpdatedEvent>(\n            async (evt, cancellationToken) =>\n            {\n                await IndexProvider(evt);\n            },\n            stoppingToken);\n    }\n\n    private async Task IndexProvider(ProviderUpdatedEvent evt)\n    {\n        var document = new ProviderSearchDocument\n        {\n            ProviderId = evt.ProviderId,\n            ProviderName = evt.ProviderName,\n            TaxId = evt.TaxId,\n            Address = evt.Address,\n            City = evt.City,\n            State = evt.State,\n            ZipCode = evt.ZipCode,\n            LastUpdated = DateTime.UtcNow\n        };\n\n        await _searchClient.IndexAsync(document, idx => idx\n            .Index(\"providers\")\n            .Id(evt.ProviderId.ToString()));\n    }\n}\n\n// MongoDB projection for mobile API\npublic class ProviderMobileProjection : BackgroundService\n{\n    private readonly IServiceBusClient _serviceBus;\n    private readonly IMongoCollection<ProviderMobileView> _collection;\n\n    protected override async Task ExecuteAsync(CancellationToken stoppingToken)\n    {\n        // Subscribe to multiple events\n        await Task.WhenAll(\n            _serviceBus.SubscribeAsync<ProviderUpdatedEvent>(\n                async (evt, ct) => await UpdateProviderDocument(evt), stoppingToken),\n            _serviceBus.SubscribeAsync<ClaimProcessedEvent>(\n                async (evt, ct) => await UpdateClaimSummary(evt), stoppingToken)\n        );\n    }\n\n    private async Task UpdateProviderDocument(ProviderUpdatedEvent evt)\n    {\n        var filter = Builders<ProviderMobileView>.Filter.Eq(p => p.ProviderId, evt.ProviderId);\n\n        var update = Builders<ProviderMobileView>.Update\n            .Set(p => p.ProviderName, evt.ProviderName)\n            .Set(p => p.Address, $\"{evt.Address}, {evt.City}, {evt.State} {evt.ZipCode}\")\n            .Set(p => p.LastUpdated, DateTime.UtcNow);\n\n        await _collection.UpdateOneAsync(\n            filter, update, new UpdateOptions { IsUpsert = true });\n    }\n\n    private async Task UpdateClaimSummary(ClaimProcessedEvent evt)\n    {\n        var filter = Builders<ProviderMobileView>.Filter.Eq(p => p.ProviderId, evt.ProviderId);\n\n        var update = Builders<ProviderMobileView>.Update\n            .Inc(p => p.RecentClaimCount, 1)\n            .Inc(p => p.TotalClaimAmount, evt.Amount)\n            .Set(p => p.LastClaimDate, evt.ProcessedDate);\n\n        await _collection.UpdateOneAsync(filter, update);\n    }\n}\n```\n\n**Success Criteria**:\n- Search queries: < 100ms (vs. 3s SQL LIKE queries)\n- Mobile API: < 50ms (p95)\n- Cache hit rate: > 80%",
+    "59": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#phase-4-production-hardening-4-6-weeks]\n\n#### Phase 4: Production Hardening (4-6 weeks)\n\n**Goal**: Production-ready reliability, monitoring, and operations\n\n**Activities**:\n1. Implement comprehensive monitoring\n2. Add distributed tracing\n3. Implement projection replay capability\n4. Create operational runbooks\n\n**Implementation**:\n```csharp\n// Comprehensive monitoring\npublic class CqrsMetricsCollector\n{\n    private readonly IMetricsRegistry _metrics;\n\n    public CqrsMetricsCollector(IMetricsRegistry metrics)\n    {\n        _metrics = metrics;\n\n        // Command metrics\n        _metrics.Counter(\"cqrs_commands_total\", \"Total commands processed\");\n        _metrics.Counter(\"cqrs_commands_failed\", \"Failed commands\");\n        _metrics.Histogram(\"cqrs_command_duration_ms\", \"Command processing duration\");\n\n        // Query metrics\n        _metrics.Counter(\"cqrs_queries_total\", \"Total queries processed\");\n        _metrics.Histogram(\"cqrs_query_duration_ms\", \"Query processing duration\");\n        _metrics.Counter(\"cqrs_cache_hits\", \"Cache hits\");\n        _metrics.Counter(\"cqrs_cache_misses\", \"Cache misses\");\n\n        // Projection metrics\n        _metrics.Gauge(\"cqrs_projection_lag_seconds\", \"Projection lag in seconds\");\n        _metrics.Counter(\"cqrs_events_processed\", \"Total events processed\");\n        _metrics.Counter(\"cqrs_events_failed\", \"Failed event processing\");\n        _metrics.Counter(\"cqrs_duplicate_events\", \"Duplicate events detected\");\n    }\n\n    public void RecordCommandDuration(string commandType, double durationMs)\n    {\n        _metrics.RecordHistogram(\"cqrs_command_duration_ms\", durationMs,\n            new Dictionary<string, string> { { \"command_type\", commandType } });\n    }\n\n    public void RecordQueryDuration(string queryType, double durationMs, bool cacheHit)\n    {\n        _metrics.RecordHistogram(\"cqrs_query_duration_ms\", durationMs,\n            new Dictionary<string, string> { { \"query_type\", queryType } });\n\n        if (cacheHit)\n            _metrics.IncrementCounter(\"cqrs_cache_hits\");\n        else\n            _metrics.IncrementCounter(\"cqrs_cache_misses\");\n    }\n\n    public void RecordProjectionLag(string projectionName, double lagSeconds)\n    {\n        _metrics.SetGauge(\"cqrs_projection_lag_seconds\", lagSeconds,\n            new Dictionary<string, string> { { \"projection\", projectionName } });\n    }\n}\n\n// Distributed tracing\npublic class TracedCommandHandler<TCommand> : ICommandHandler<TCommand>\n    where TCommand : ICommand\n{\n    private readonly ICommandHandler<TCommand> _inner;\n    private readonly ITracer _tracer;\n\n    public async Task<CommandResult> HandleAsync(TCommand command)\n    {\n        using var span = _tracer.StartSpan($\"Command.{typeof(TCommand).Name}\");\n        span.SetTag(\"command.id\", command.CommandId.ToString());\n        span.SetTag(\"command.type\", typeof(TCommand).Name);\n\n        try\n        {\n            var result = await _inner.HandleAsync(command);\n            span.SetTag(\"result.success\", result.Success);\n            return result;\n        }\n        catch (Exception ex)\n        {\n            span.SetTag(\"error\", true);\n            span.Log(new Dictionary<string, object>\n            {\n                { \"event\", \"error\" },\n                { \"error.kind\", ex.GetType().Name },\n                { \"message\", ex.Message },\n                { \"stack\", ex.StackTrace }\n            });\n            throw;\n        }\n    }\n}\n\n// Projection replay capability\npublic class ProjectionRebuilder\n{\n    private readonly IEventStore _eventStore;\n    private readonly ReadDbContext _readDb;\n    private readonly ILogger<ProjectionRebuilder> _logger;\n\n    public async Task RebuildProjection(\n        string projectionName,\n        DateTime? fromDate = null,\n        CancellationToken cancellationToken = default)\n    {\n        _logger.LogInformation(\n            \"Starting projection rebuild: {ProjectionName} from {FromDate}\",\n            projectionName, fromDate ?? DateTime.MinValue);\n\n        // Clear existing projection data\n        await ClearProjection(projectionName);\n\n        // Replay events\n        var startPosition = fromDate?.Ticks ?? 0;\n        await foreach (var evt in _eventStore.ReadEventsAsync(\n            startPosition, cancellationToken))\n        {\n            try\n            {\n                await ApplyEvent(projectionName, evt);\n            }\n            catch (Exception ex)\n            {\n                _logger.LogError(ex,\n                    \"Error replaying event {EventId} for projection {ProjectionName}\",\n                    evt.EventId, projectionName);\n                throw;\n            }\n        }\n\n        _logger.LogInformation(\n            \"Completed projection rebuild: {ProjectionName}\",\n            projectionName);\n    }\n\n    private async Task ClearProjection(string projectionName)\n    {\n        switch (projectionName)\n        {\n            case \"ProviderRemittance\":\n                await _readDb.Database.ExecuteSqlRawAsync(\n                    \"TRUNCATE TABLE ProviderRemittanceReadModel\");\n                break;\n            // Other projections...\n        }\n    }\n\n    private async Task ApplyEvent(string projectionName, DomainEvent evt)\n    {\n        // Route event to appropriate projection handler\n        // Implementation depends on projection architecture\n    }\n}\n\n// Operational dashboard\n[ApiController]\n[Route(\"api/operations/cqrs\")]\npublic class CqrsOperationsController : ControllerBase\n{\n    private readonly IProjectionHealthService _health;\n    private readonly IMetricsRegistry _metrics;\n\n    [HttpGet(\"health\")]\n    public async Task<ActionResult<CqrsHealthStatus>> GetHealth()\n    {\n        var projectionHealth = await _health.GetAllProjectionHealthAsync();\n\n        return Ok(new CqrsHealthStatus\n        {\n            OverallStatus = projectionHealth.All(p => p.IsHealthy) ? \"Healthy\" : \"Degraded\",\n            Projections = projectionHealth,\n            Metrics = new\n            {\n                CommandsProcessed = _metrics.GetCounter(\"cqrs_commands_total\"),\n                QueriesProcessed = _metrics.GetCounter(\"cqrs_queries_total\"),\n                CacheHitRate = CalculateCacheHitRate(),\n                AverageProjectionLag = CalculateAverageProjectionLag()\n            }\n        });\n    }\n\n    [HttpPost(\"projections/{projectionName}/rebuild\")]\n    public async Task<ActionResult> RebuildProjection(\n        string projectionName,\n        [FromQuery] DateTime? fromDate)\n    {\n        // Trigger projection rebuild\n        await _health.RebuildProjectionAsync(projectionName, fromDate);\n\n        return Accepted(new\n        {\n            Message = $\"Projection rebuild started: {projectionName}\",\n            EstimatedDuration = \"10-30 minutes\"\n        });\n    }\n}\n```\n\n**Success Criteria**:\n- Monitoring: Complete visibility into command/query/projection metrics\n- Alerting: Automatic alerts for lag > 5s or error rate > 1%\n- Recovery: Projection rebuild completes in < 30 minutes\n- Documentation: Runbooks for common operational scenarios",
+    "60": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#implementation-checklist]\n\n### Implementation Checklist\n\nUse this checklist to ensure complete CQRS implementation:",
+    "61": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#write-side-command-model]\n\n#### Write Side (Command Model)\n\n- [ ] Command models defined (DTOs for commands)\n- [ ] Command handlers implemented with business logic\n- [ ] Write database schema normalized (3NF)\n- [ ] ACID transactions for write operations\n- [ ] Domain events published after successful writes\n- [ ] Command validation (authorization, business rules)\n- [ ] Audit logging for all commands\n- [ ] Error handling and retry logic\n- [ ] Command correlation IDs for tracing\n- [ ] Unit tests for command handlers (>80% coverage)",
+    "62": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#read-side-query-models]\n\n#### Read Side (Query Models)\n\n- [ ] Read models defined (optimized DTOs for queries)\n- [ ] Read database schema denormalized for queries\n- [ ] Query handlers implemented\n- [ ] Caching strategy defined (Redis)\n- [ ] Cache invalidation logic\n- [ ] Query authorization\n- [ ] Pagination for large result sets\n- [ ] Unit tests for query handlers (>80% coverage)",
+    "63": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#event-infrastructure]\n\n#### Event Infrastructure\n\n- [ ] Event bus configured (Azure Service Bus/Kafka)\n- [ ] Event schemas defined\n- [ ] Event versioning strategy\n- [ ] Event publisher implemented\n- [ ] Event subscribers implemented\n- [ ] Dead-letter queue handling\n- [ ] Event retry policy (exponential backoff)\n- [ ] Event ordering guarantees (if required)\n- [ ] Event correlation IDs\n- [ ] Integration tests for event flow",
+    "64": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#projection-services]\n\n#### Projection Services\n\n- [ ] Projection services implemented as background workers\n- [ ] Idempotency handling (event ID tracking)\n- [ ] Projection lag monitoring\n- [ ] Error handling and alerting\n- [ ] Projection rebuild capability\n- [ ] Multiple read model updates from single event\n- [ ] Projection health checks\n- [ ] Graceful shutdown handling\n- [ ] Unit tests for projection logic (>80% coverage)",
+    "65": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#consistency-management]\n\n#### Consistency Management\n\n- [ ] Eventual consistency documented and accepted\n- [ ] UI/UX designed for async updates\n- [ ] Status endpoints for command tracking\n- [ ] Read-your-writes strategy (if required)\n- [ ] Conflict resolution strategy\n- [ ] Data reconciliation process",
+    "66": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#monitoring-and-operations]\n\n#### Monitoring and Operations\n\n- [ ] Command metrics (count, duration, errors)\n- [ ] Query metrics (count, duration, cache hit rate)\n- [ ] Projection lag metrics\n- [ ] Event processing metrics\n- [ ] Distributed tracing (correlation IDs)\n- [ ] Alerting rules configured\n- [ ] Operational dashboard\n- [ ] Runbooks for common issues\n- [ ] Performance baselines documented",
+    "67": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#testing]\n\n#### Testing\n\n- [ ] Unit tests for all handlers\n- [ ] Integration tests for event flow\n- [ ] End-to-end tests for critical paths\n- [ ] Performance tests (load, stress)\n- [ ] Chaos engineering tests (network failures, database outages)\n- [ ] Projection lag tests\n- [ ] Idempotency tests (duplicate event handling)",
+    "68": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#documentation]\n\n#### Documentation\n\n- [ ] Architecture diagrams (command flow, query flow, projections)\n- [ ] API documentation (commands, queries)\n- [ ] Event schemas documented\n- [ ] Deployment guide\n- [ ] Operational runbooks\n- [ ] Troubleshooting guide\n- [ ] Performance tuning guide",
+    "69": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#code-examples]\n\n### Code Examples",
+    "70": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#net-implementation]\n\n#### .NET Implementation\n\n**Complete CQRS implementation with MediatR and Entity Framework Core**:\n\n```csharp\n// Command definition\npublic class ProcessClaimCommand : IRequest<CommandResult>\n{\n    public Guid CommandId { get; set; } = Guid.NewGuid();\n    public Guid ClaimId { get; set; }\n    public Guid ProviderId { get; set; }\n    public Guid MemberId { get; set; }\n    public decimal Amount { get; set; }\n    public DateTime ServiceDate { get; set; }\n}\n\n// Command handler\npublic class ProcessClaimCommandHandler : IRequestHandler<ProcessClaimCommand, CommandResult>\n{\n    private readonly WriteDbContext _writeDb;\n    private readonly IEventPublisher _eventPublisher;\n    private readonly ILogger<ProcessClaimCommandHandler> _logger;\n\n    public ProcessClaimCommandHandler(\n        WriteDbContext writeDb,\n        IEventPublisher eventPublisher,\n        ILogger<ProcessClaimCommandHandler> logger)\n    {\n        _writeDb = writeDb;\n        _eventPublisher = eventPublisher;\n        _logger = logger;\n    }\n\n    public async Task<CommandResult> Handle(\n        ProcessClaimCommand request,\n        CancellationToken cancellationToken)\n    {\n        using var transaction = await _writeDb.Database.BeginTransactionAsync(cancellationToken);\n\n        try\n        {\n            // Validate business rules\n            var provider = await _writeDb.Providers.FindAsync(\n                new object[] { request.ProviderId }, cancellationToken);\n\n            if (provider == null)\n                return CommandResult.Failure(\"Provider not found\");\n\n            if (!provider.IsActive)\n                return CommandResult.Failure(\"Provider is not active\");\n\n            // Execute business logic\n            var claim = new Claim\n            {\n                ClaimId = request.ClaimId,\n                ProviderId = request.ProviderId,\n                MemberId = request.MemberId,\n                Amount = request.Amount,\n                ServiceDate = request.ServiceDate,\n                ProcessedDate = DateTime.UtcNow,\n                Status = ClaimStatus.Processed\n            };\n\n            _writeDb.Claims.Add(claim);\n            await _writeDb.SaveChangesAsync(cancellationToken);\n\n            // Publish domain event\n            var evt = new ClaimProcessedEvent\n            {\n                EventId = Guid.NewGuid(),\n                ClaimId = claim.ClaimId,\n                ProviderId = claim.ProviderId,\n                MemberId = claim.MemberId,\n                Amount = claim.Amount,\n                ProcessedDate = claim.ProcessedDate,\n                Timestamp = DateTime.UtcNow\n            };\n\n            await _eventPublisher.PublishAsync(evt, cancellationToken);\n            await transaction.CommitAsync(cancellationToken);\n\n            _logger.LogInformation(\n                \"Claim processed: {ClaimId}, Provider: {ProviderId}, Amount: {Amount}\",\n                claim.ClaimId, claim.ProviderId, claim.Amount);\n\n            return CommandResult.Success(claim.ClaimId);\n        }\n        catch (Exception ex)\n        {\n            await transaction.RollbackAsync(cancellationToken);\n            _logger.LogError(ex, \"Error processing claim: {ClaimId}\", request.ClaimId);\n            throw;\n        }\n    }\n}\n\n// Query definition\npublic class GetProviderRemittancesQuery : IRequest<ProviderRemittanceView>\n{\n    public Guid ProviderId { get; set; }\n}\n\n// Query handler\npublic class GetProviderRemittancesQueryHandler\n    : IRequestHandler<GetProviderRemittancesQuery, ProviderRemittanceView>\n{\n    private readonly ReadDbContext _readDb;\n    private readonly IDistributedCache _cache;\n    private readonly ILogger<GetProviderRemittancesQueryHandler> _logger;\n\n    public GetProviderRemittancesQueryHandler(\n        ReadDbContext readDb,\n        IDistributedCache cache,\n        ILogger<GetProviderRemittancesQueryHandler> logger)\n    {\n        _readDb = readDb;\n        _cache = cache;\n        _logger = logger;\n    }\n\n    public async Task<ProviderRemittanceView> Handle(\n        GetProviderRemittancesQuery request,\n        CancellationToken cancellationToken)\n    {\n        var cacheKey = $\"provider-remittance:{request.ProviderId}\";\n\n        // Try cache first\n        var cachedJson = await _cache.GetStringAsync(cacheKey, cancellationToken);\n        if (cachedJson != null)\n        {\n            _logger.LogDebug(\"Cache hit: {CacheKey}\", cacheKey);\n            return JsonSerializer.Deserialize<ProviderRemittanceView>(cachedJson);\n        }\n\n        // Query read model (denormalized, optimized view)\n        var view = await _readDb.ProviderRemittanceReadModel\n            .AsNoTracking()\n            .Where(p => p.ProviderId == request.ProviderId)\n            .Select(p => new ProviderRemittanceView\n            {\n                ProviderId = p.ProviderId,\n                ProviderName = p.ProviderName,\n                TaxId = p.TaxId,\n                RemittanceCount = p.RemittanceCount,\n                TotalAmount = p.TotalAmount,\n                LastRemittanceDate = p.LastRemittanceDate,\n                RecentRemittances = p.RecentRemittances\n                    .OrderByDescending(r => r.ProcessedDate)\n                    .Take(10)\n                    .ToList()\n            })\n            .FirstOrDefaultAsync(cancellationToken);\n\n        if (view != null)\n        {\n            // Cache for 5 minutes\n            var cacheOptions = new DistributedCacheEntryOptions\n            {\n                AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(5)\n            };\n            await _cache.SetStringAsync(\n                cacheKey,\n                JsonSerializer.Serialize(view),\n                cacheOptions,\n                cancellationToken);\n        }\n\n        return view;\n    }\n}\n\n// Event publisher (Azure Service Bus)\npublic class AzureServiceBusEventPublisher : IEventPublisher\n{\n    private readonly ServiceBusSender _sender;\n    private readonly ILogger<AzureServiceBusEventPublisher> _logger;\n\n    public AzureServiceBusEventPublisher(\n        ServiceBusClient client,\n        ILogger<AzureServiceBusEventPublisher> logger)\n    {\n        _sender = client.CreateSender(\"domain-events\");\n        _logger = logger;\n    }\n\n    public async Task PublishAsync<TEvent>(TEvent evt, CancellationToken cancellationToken = default)\n        where TEvent : DomainEvent\n    {\n        var json = JsonSerializer.Serialize(evt);\n        var message = new ServiceBusMessage(json)\n        {\n            MessageId = evt.EventId.ToString(),\n            ContentType = \"application/json\",\n            Subject = typeof(TEvent).Name,\n            CorrelationId = evt.CorrelationId\n        };\n\n        // Add custom properties\n        message.ApplicationProperties[\"EventType\"] = typeof(TEvent).Name;\n        message.ApplicationProperties[\"Timestamp\"] = evt.Timestamp;\n\n        await _sender.SendMessageAsync(message, cancellationToken);\n\n        _logger.LogInformation(\n            \"Published event: {EventType}, EventId: {EventId}\",\n            typeof(TEvent).Name, evt.EventId);\n    }\n}\n\n// Projection service (Background Worker)\npublic class ProviderRemittanceProjectionService : BackgroundService\n{\n    private readonly IServiceProvider _serviceProvider;\n    private readonly ServiceBusProcessor _processor;\n    private readonly ILogger<ProviderRemittanceProjectionService> _logger;\n\n    public ProviderRemittanceProjectionService(\n        IServiceProvider serviceProvider,\n        ServiceBusClient serviceBusClient,\n        ILogger<ProviderRemittanceProjectionService> logger)\n    {\n        _serviceProvider = serviceProvider;\n        _logger = logger;\n\n        _processor = serviceBusClient.CreateProcessor(\"domain-events\", \"provider-remittance-projection\");\n        _processor.ProcessMessageAsync += ProcessMessageAsync;\n        _processor.ProcessErrorAsync += ProcessErrorAsync;\n    }\n\n    protected override async Task ExecuteAsync(CancellationToken stoppingToken)\n    {\n        await _processor.StartProcessingAsync(stoppingToken);\n\n        // Wait until cancellation\n        await Task.Delay(Timeout.Infinite, stoppingToken);\n    }\n\n    private async Task ProcessMessageAsync(ProcessMessageEventArgs args)\n    {\n        var eventType = args.Message.ApplicationProperties[\"EventType\"].ToString();\n        var json = args.Message.Body.ToString();\n\n        _logger.LogInformation(\"Processing event: {EventType}, MessageId: {MessageId}\",\n            eventType, args.Message.MessageId);\n\n        using var scope = _serviceProvider.CreateScope();\n        var readDb = scope.ServiceProvider.GetRequiredService<ReadDbContext>();\n\n        try\n        {\n            switch (eventType)\n            {\n                case nameof(ClaimProcessedEvent):\n                    var claimEvent = JsonSerializer.Deserialize<ClaimProcessedEvent>(json);\n                    await UpdateFromClaimProcessed(readDb, claimEvent);\n                    break;\n\n                case nameof(RemittanceGeneratedEvent):\n                    var remittanceEvent = JsonSerializer.Deserialize<RemittanceGeneratedEvent>(json);\n                    await UpdateFromRemittanceGenerated(readDb, remittanceEvent);\n                    break;\n\n                default:\n                    _logger.LogDebug(\"Event type {EventType} not handled by this projection\", eventType);\n                    break;\n            }\n\n            // Complete the message\n            await args.CompleteMessageAsync(args.Message);\n        }\n        catch (Exception ex)\n        {\n            _logger.LogError(ex, \"Error processing event: {EventType}, MessageId: {MessageId}\",\n                eventType, args.Message.MessageId);\n\n            // Abandon message for retry\n            await args.AbandonMessageAsync(args.Message);\n        }\n    }\n\n    private async Task UpdateFromClaimProcessed(ReadDbContext readDb, ClaimProcessedEvent evt)\n    {\n        // Idempotency check\n        var eventId = evt.EventId.ToString();\n        if (await readDb.ProcessedEvents.AnyAsync(e => e.EventId == eventId))\n        {\n            _logger.LogInformation(\"Event already processed: {EventId}\", eventId);\n            return;\n        }\n\n        // Update read model\n        var provider = await readDb.ProviderRemittanceReadModel\n            .FirstOrDefaultAsync(p => p.ProviderId == evt.ProviderId);\n\n        if (provider == null)\n        {\n            // Create new read model entry\n            provider = new ProviderRemittanceReadModel\n            {\n                ProviderId = evt.ProviderId,\n                ProviderName = await GetProviderName(readDb, evt.ProviderId),\n                RemittanceCount = 0,\n                TotalAmount = 0,\n                RecentRemittances = new List<RemittanceDto>()\n            };\n            readDb.ProviderRemittanceReadModel.Add(provider);\n        }\n\n        provider.RemittanceCount++;\n        provider.TotalAmount += evt.Amount;\n        provider.LastUpdated = DateTime.UtcNow;\n\n        // Track processed event\n        readDb.ProcessedEvents.Add(new ProcessedEvent\n        {\n            EventId = eventId,\n            EventType = nameof(ClaimProcessedEvent),\n            ProcessedAt = DateTime.UtcNow\n        });\n\n        await readDb.SaveChangesAsync();\n\n        _logger.LogInformation(\n            \"Updated read model for provider {ProviderId} from event {EventId}\",\n            evt.ProviderId, evt.EventId);\n    }\n\n    private async Task<string> GetProviderName(ReadDbContext readDb, Guid providerId)\n    {\n        // Fallback query if provider name not in event\n        var provider = await readDb.Providers.FindAsync(providerId);\n        return provider?.Name ?? \"Unknown\";\n    }\n\n    private Task ProcessErrorAsync(ProcessErrorEventArgs args)\n    {\n        _logger.LogError(args.Exception,\n            \"Error in message processing: {ErrorSource}\",\n            args.ErrorSource);\n        return Task.CompletedTask;\n    }\n\n    public override async Task StopAsync(CancellationToken cancellationToken)\n    {\n        await _processor.StopProcessingAsync(cancellationToken);\n        await base.StopAsync(cancellationToken);\n    }\n}\n\n// Startup configuration\npublic class Startup\n{\n    public void ConfigureServices(IServiceCollection services)\n    {\n        // Write side\n        services.AddDbContext<WriteDbContext>(options =>\n            options.UseSqlServer(Configuration.GetConnectionString(\"WriteDb\")));\n\n        // Read side\n        services.AddDbContext<ReadDbContext>(options =>\n            options.UseSqlServer(Configuration.GetConnectionString(\"ReadDb\")));\n\n        // Cache\n        services.AddStackExchangeRedisCache(options =>\n        {\n            options.Configuration = Configuration.GetConnectionString(\"Redis\");\n            options.InstanceName = \"CQRS:\";\n        });\n\n        // MediatR for CQRS\n        services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Startup).Assembly));\n\n        // Event bus\n        services.AddSingleton(sp =>\n            new ServiceBusClient(Configuration.GetConnectionString(\"ServiceBus\")));\n\n        services.AddSingleton<IEventPublisher, AzureServiceBusEventPublisher>();\n\n        // Projection services\n        services.AddHostedService<ProviderRemittanceProjectionService>();\n\n        // Health checks\n        services.AddHealthChecks()\n            .AddDbContextCheck<WriteDbContext>(\"write-db\")\n            .AddDbContextCheck<ReadDbContext>(\"read-db\")\n            .AddRedis(Configuration.GetConnectionString(\"Redis\"), \"redis\")\n            .AddCheck<ProjectionHealthCheck>(\"projections\");\n\n        services.AddControllers();\n    }\n}\n```",
+    "71": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#java-implementation]\n\n#### Java Implementation\n\n**CQRS with Spring Boot and Apache Kafka**:\n\n```java\n// Command\n@Data\npublic class ProcessClaimCommand {\n    private UUID commandId = UUID.randomUUID();\n    private UUID claimId;\n    private UUID providerId;\n    private UUID memberId;\n    private BigDecimal amount;\n    private LocalDate serviceDate;\n}\n\n// Command handler\n@Service\n@Transactional\npublic class ProcessClaimCommandHandler {\n    private final ClaimRepository writeRepository;\n    private final KafkaTemplate<String, DomainEvent> eventPublisher;\n    private final Logger logger = LoggerFactory.getLogger(getClass());\n\n    public CommandResult handle(ProcessClaimCommand command) {\n        // Validate business rules\n        Provider provider = writeRepository.findProviderById(command.getProviderId())\n            .orElseThrow(() -> new BusinessException(\"Provider not found\"));\n\n        if (!provider.isActive()) {\n            return CommandResult.failure(\"Provider is not active\");\n        }\n\n        // Execute business logic\n        Claim claim = new Claim();\n        claim.setClaimId(command.getClaimId());\n        claim.setProviderId(command.getProviderId());\n        claim.setMemberId(command.getMemberId());\n        claim.setAmount(command.getAmount());\n        claim.setServiceDate(command.getServiceDate());\n        claim.setProcessedDate(LocalDateTime.now());\n        claim.setStatus(ClaimStatus.PROCESSED);\n\n        writeRepository.save(claim);\n\n        // Publish domain event\n        ClaimProcessedEvent event = new ClaimProcessedEvent();\n        event.setEventId(UUID.randomUUID());\n        event.setClaimId(claim.getClaimId());\n        event.setProviderId(claim.getProviderId());\n        event.setMemberId(claim.getMemberId());\n        event.setAmount(claim.getAmount());\n        event.setProcessedDate(claim.getProcessedDate());\n        event.setTimestamp(LocalDateTime.now());\n\n        eventPublisher.send(\"domain-events\", event.getEventId().toString(), event);\n\n        logger.info(\"Claim processed: {}, Provider: {}, Amount: {}\",\n            claim.getClaimId(), claim.getProviderId(), claim.getAmount());\n\n        return CommandResult.success(claim.getClaimId());\n    }\n}\n\n// Query\n@Data\npublic class GetProviderRemittancesQuery {\n    private UUID providerId;\n}\n\n// Query handler\n@Service\npublic class GetProviderRemittancesQueryHandler {\n    private final ProviderRemittanceReadRepository readRepository;\n    private final RedisTemplate<String, ProviderRemittanceView> cacheTemplate;\n    private final Logger logger = LoggerFactory.getLogger(getClass());\n\n    public ProviderRemittanceView handle(GetProviderRemittancesQuery query) {\n        String cacheKey = \"provider-remittance:\" + query.getProviderId();\n\n        // Try cache first\n        ProviderRemittanceView cached = cacheTemplate.opsForValue().get(cacheKey);\n        if (cached != null) {\n            logger.debug(\"Cache hit: {}\", cacheKey);\n            return cached;\n        }\n\n        // Query read model\n        ProviderRemittanceView view = readRepository.findByProviderId(query.getProviderId())\n            .orElse(null);\n\n        if (view != null) {\n            // Cache for 5 minutes\n            cacheTemplate.opsForValue().set(cacheKey, view, 5, TimeUnit.MINUTES);\n        }\n\n        return view;\n    }\n}\n\n// Projection service (Kafka consumer)\n@Service\npublic class ProviderRemittanceProjectionService {\n    private final ProviderRemittanceReadRepository readRepository;\n    private final ProcessedEventRepository processedEvents;\n    private final Logger logger = LoggerFactory.getLogger(getClass());\n\n    @KafkaListener(topics = \"domain-events\", groupId = \"provider-remittance-projection\")\n    public void handleEvent(ConsumerRecord<String, String> record) {\n        String eventType = record.headers().lastHeader(\"EventType\").value().toString();\n        String json = record.value();\n\n        logger.info(\"Processing event: {}, Offset: {}\", eventType, record.offset());\n\n        try {\n            switch (eventType) {\n                case \"ClaimProcessedEvent\":\n                    ClaimProcessedEvent claimEvent =\n                        objectMapper.readValue(json, ClaimProcessedEvent.class);\n                    updateFromClaimProcessed(claimEvent);\n                    break;\n\n                case \"RemittanceGeneratedEvent\":\n                    RemittanceGeneratedEvent remittanceEvent =\n                        objectMapper.readValue(json, RemittanceGeneratedEvent.class);\n                    updateFromRemittanceGenerated(remittanceEvent);\n                    break;\n\n                default:\n                    logger.debug(\"Event type {} not handled by this projection\", eventType);\n                    break;\n            }\n        } catch (Exception ex) {\n            logger.error(\"Error processing event: {}\", eventType, ex);\n            throw new RuntimeException(ex);  // Will trigger Kafka retry\n        }\n    }\n\n    @Transactional\n    private void updateFromClaimProcessed(ClaimProcessedEvent event) {\n        // Idempotency check\n        String eventId = event.getEventId().toString();\n        if (processedEvents.existsById(eventId)) {\n            logger.info(\"Event already processed: {}\", eventId);\n            return;\n        }\n\n        // Update read model\n        ProviderRemittanceReadModel provider = readRepository\n            .findById(event.getProviderId())\n            .orElseGet(() -> {\n                ProviderRemittanceReadModel newProvider = new ProviderRemittanceReadModel();\n                newProvider.setProviderId(event.getProviderId());\n                newProvider.setRemittanceCount(0);\n                newProvider.setTotalAmount(BigDecimal.ZERO);\n                return newProvider;\n            });\n\n        provider.setRemittanceCount(provider.getRemittanceCount() + 1);\n        provider.setTotalAmount(provider.getTotalAmount().add(event.getAmount()));\n        provider.setLastUpdated(LocalDateTime.now());\n\n        readRepository.save(provider);\n\n        // Track processed event\n        ProcessedEvent processedEvent = new ProcessedEvent();\n        processedEvent.setEventId(eventId);\n        processedEvent.setEventType(\"ClaimProcessedEvent\");\n        processedEvent.setProcessedAt(LocalDateTime.now());\n        processedEvents.save(processedEvent);\n\n        logger.info(\"Updated read model for provider {} from event {}\",\n            event.getProviderId(), event.getEventId());\n    }\n}\n\n// Spring Boot configuration\n@Configuration\npublic class CqrsConfiguration {\n    @Bean\n    @Primary\n    public DataSource writeDataSource() {\n        return DataSourceBuilder.create()\n            .url(\"jdbc:sqlserver://write-db.example.com:1433;databaseName=ClaimsWrite\")\n            .build();\n    }\n\n    @Bean\n    public DataSource readDataSource() {\n        return DataSourceBuilder.create()\n            .url(\"jdbc:sqlserver://read-db.example.com:1433;databaseName=ClaimsRead\")\n            .build();\n    }\n\n    @Bean\n    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory) {\n        RedisTemplate<String, Object> template = new RedisTemplate<>();\n        template.setConnectionFactory(factory);\n        template.setKeySerializer(new StringRedisSerializer());\n        template.setValueSerializer(new GenericJackson2JsonRedisSerializer());\n        return template;\n    }\n\n    @Bean\n    public KafkaTemplate<String, DomainEvent> eventPublisher(\n            ProducerFactory<String, DomainEvent> factory) {\n        return new KafkaTemplate<>(factory);\n    }\n}\n```",
+    "72": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#best-practices-and-recommendations]\n\n### Best Practices and Recommendations\n\n1. **Start Simple**: Begin with single-database CQRS (materialized views) before moving to fully separated models\n2. **Monitor Lag**: Track projection lag metrics and alert if exceeds threshold (e.g., > 1 second)\n3. **Idempotency**: Always implement idempotent projection handlers to handle duplicate events\n4. **Correlation IDs**: Use correlation IDs throughout command → event → projection flow for tracing\n5. **Rebuild Capability**: Implement projection rebuild from events for disaster recovery\n6. **Cache Strategy**: Use Redis/cache for frequently accessed read models (80%+ hit rate target)\n7. **Event Versioning**: Plan for event schema evolution from day one\n8. **Documentation**: Maintain clear documentation of command/query separation and eventual consistency behavior\n9. **Testing**: Include projection lag and eventual consistency in integration tests\n10. **Gradual Rollout**: Implement CQRS for one use case at a time, validate benefits before expanding",
+    "73": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#governance-and-compliance]\n\n## Governance and Compliance",
+    "74": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#regulatory-compliance-requirements]\n\n### Regulatory Compliance Requirements",
+    "75": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#hipaa-compliance-for-dual-data-models]\n\n#### HIPAA Compliance for Dual Data Models\n\nCQRS implementations handling Protected Health Information (PHI) must ensure compliance across both write and read models:\n\n**Write Model HIPAA Requirements**:\n\n| Requirement | Implementation | Verification |\n|-------------|----------------|--------------|\n| **Access Controls** | Role-based access for commands, MFA for sensitive operations | Audit logs showing authentication/authorization |\n| **Audit Trail** | Complete audit log of all write operations with user, timestamp, data changed | Command history table, immutable event log |\n| **Encryption at Rest** | TDE (Transparent Data Encryption) for write database | SQL Server TDE enabled, encryption verified |\n| **Encryption in Transit** | TLS 1.2+ for all database connections | Connection strings enforce encryption |\n| **Data Integrity** | ACID transactions, checksums, foreign key constraints | Transaction logs, referential integrity checks |\n| **Minimum Necessary** | Commands only access required data fields | Code reviews, least-privilege queries |\n\n**Read Model HIPAA Requirements**:\n\n| Requirement | Implementation | Verification |\n|-------------|----------------|--------------|\n| **Access Controls** | Same RBAC as write model, query-level authorization | Authorization middleware, integration tests |\n| **Audit Trail** | Log all PHI access (who, what, when) | Query audit logs with correlation to users |\n| **Encryption at Rest** | TDE for SQL read models, encryption for document stores | Encryption configuration for all read databases |\n| **Encryption in Transit** | TLS 1.2+ for all connections | Network traffic inspection, SSL certificate validation |\n| **Data Minimization** | Read models only contain fields needed for specific queries | Schema reviews, projection logic audits |\n| **Cache Security** | Encrypt cached PHI, short TTLs (≤5 minutes) | Redis encryption enabled, cache policy review |\n\n**Event Bus HIPAA Requirements**:\n\n| Requirement | Implementation | Verification |\n|-------------|----------------|--------------|\n| **Message Encryption** | Encrypt event payloads containing PHI | Message serialization includes encryption |\n| **Access Controls** | Service identity authentication, topic-level authorization | Azure RBAC, service principal permissions |\n| **Audit Logging** | Log event publication and consumption | Event bus audit logs, correlation IDs |\n| **Message Retention** | Retain events for 7 years (HIPAA requirement) | Event store backup policy, compliance audits |\n\n**Projection Lag and Data Currency**:\n- Document acceptable lag for PHI queries (e.g., provider demographics: 1 second lag acceptable)\n- Critical data (e.g., member eligibility): Consider read-your-writes or synchronous updates\n- Inform users when data may be slightly delayed (\"Data as of [timestamp]\")\n\n**Example HIPAA-Compliant Command Handler**:\n\n```csharp\npublic class UpdateMemberDemographicsCommandHandler : IRequestHandler<UpdateMemberDemographicsCommand, CommandResult>\n{\n    private readonly WriteDbContext _writeDb;\n    private readonly IEventPublisher _eventPublisher;\n    private readonly IAuditLogger _auditLogger;\n    private readonly IAuthorizationService _authz;\n\n    public async Task<CommandResult> Handle(\n        UpdateMemberDemographicsCommand command,\n        CancellationToken cancellationToken)\n    {\n        // 1. Authorization check (HIPAA Access Control)\n        var authResult = await _authz.AuthorizeAsync(\n            User, command, \"UpdateMemberDemographics\");\n\n        if (!authResult.Succeeded)\n        {\n            await _auditLogger.LogAccessDeniedAsync(\n                User.Identity.Name,\n                \"UpdateMemberDemographics\",\n                command.MemberId,\n                \"Insufficient permissions\");\n\n            return CommandResult.Failure(\"Access denied\");\n        }\n\n        using var transaction = await _writeDb.Database.BeginTransactionAsync(cancellationToken);\n\n        try\n        {\n            var member = await _writeDb.Members.FindAsync(\n                new object[] { command.MemberId }, cancellationToken);\n\n            if (member == null)\n                return CommandResult.Failure(\"Member not found\");\n\n            // 2. Capture before state for audit (HIPAA Audit Trail)\n            var beforeState = new\n            {\n                member.FirstName,\n                member.LastName,\n                member.DateOfBirth,\n                member.Address\n            };\n\n            // 3. Update member (HIPAA Data Integrity)\n            member.FirstName = command.FirstName;\n            member.LastName = command.LastName;\n            member.DateOfBirth = command.DateOfBirth;\n            member.Address = command.Address;\n            member.LastModified = DateTime.UtcNow;\n            member.ModifiedBy = User.Identity.Name;\n\n            await _writeDb.SaveChangesAsync(cancellationToken);\n\n            // 4. Audit log (HIPAA Audit Trail)\n            await _auditLogger.LogDataChangeAsync(new AuditEntry\n            {\n                UserId = User.Identity.Name,\n                UserRole = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value,\n                Action = \"UpdateMemberDemographics\",\n                EntityType = \"Member\",\n                EntityId = member.MemberId.ToString(),\n                BeforeState = JsonSerializer.Serialize(beforeState),\n                AfterState = JsonSerializer.Serialize(new\n                {\n                    member.FirstName,\n                    member.LastName,\n                    member.DateOfBirth,\n                    member.Address\n                }),\n                Timestamp = DateTime.UtcNow,\n                IpAddress = HttpContext.Connection.RemoteIpAddress?.ToString(),\n                CorrelationId = command.CommandId.ToString()\n            });\n\n            // 5. Publish event with PHI encryption (HIPAA Encryption in Transit)\n            var evt = new MemberDemographicsUpdatedEvent\n            {\n                EventId = Guid.NewGuid(),\n                MemberId = member.MemberId,\n                FirstName = member.FirstName,  // Will be encrypted by event publisher\n                LastName = member.LastName,\n                DateOfBirth = member.DateOfBirth,\n                Address = member.Address,\n                Timestamp = DateTime.UtcNow,\n                ModifiedBy = User.Identity.Name\n            };\n\n            await _eventPublisher.PublishAsync(evt, cancellationToken);\n            await transaction.CommitAsync(cancellationToken);\n\n            return CommandResult.Success(member.MemberId);\n        }\n        catch (Exception ex)\n        {\n            await transaction.RollbackAsync(cancellationToken);\n\n            await _auditLogger.LogErrorAsync(\n                User.Identity.Name,\n                \"UpdateMemberDemographics\",\n                command.MemberId.ToString(),\n                ex.Message);\n\n            throw;\n        }\n    }\n}\n```",
+    "76": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#state-specific-regulatory-requirements]\n\n#### State-Specific Regulatory Requirements\n\nDifferent states may have varying requirements for data access and retention:\n\n| State | Requirement | CQRS Impact |\n|-------|-------------|-------------|\n| **California** | CCPA right to deletion within 45 days | Implement deletion across all read models, verify projection completeness |\n| **Texas** | Medicaid data retention: 7 years | Event store retention policy, read model archival strategy |\n| **New York** | Data breach notification within 72 hours | Monitoring for unauthorized access to both write and read models |\n| **Illinois** | BIPA biometric data restrictions | Ensure biometric PHI not cached or stored in insecure read models |\n\n**Multi-State Compliance Strategy**:\n1. Tag data with state jurisdiction in both write and read models\n2. Apply strictest retention/deletion rules across all states\n3. Implement state-specific access controls in projection services\n4. Audit read model access by state for compliance reporting",
+    "77": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#soc-2-compliance]\n\n#### SOC 2 Compliance\n\nCQRS systems must meet SOC 2 Trust Service Criteria:\n\n**Security (CC6)**:\n- Implement authentication and authorization for both command and query APIs\n- Encrypt data at rest (TDE) and in transit (TLS 1.2+) for all models\n- Monitor and log all access to command handlers and read models\n- Implement rate limiting and DDoS protection on API gateways\n\n**Availability (A1)**:\n- Design for 99.9%+ uptime across write and read sides\n- Implement circuit breakers for event bus and projection services\n- Plan for database failover (write and read replicas)\n- Monitor projection lag and alert if availability affected\n\n**Processing Integrity (PI1)**:\n- Validate all command inputs (business rules, data types)\n- Implement idempotency in projection handlers to prevent duplicate processing\n- Use ACID transactions for write operations\n- Verify read model consistency through reconciliation jobs\n\n**Confidentiality (C1)**:\n- Apply data classification (Public, Internal, Confidential, PHI)\n- Implement field-level encryption for sensitive data in read models\n- Limit data exposure in events (publish only necessary fields)\n- Monitor for data leakage in logs and error messages\n\n**Privacy (P1)**:\n- Implement data subject access requests (DSAR) across all models\n- Support right to deletion in both write and read databases\n- Document data flows (write → events → projections → read models)\n- Provide transparency about eventual consistency to end users",
+    "78": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#architecture-review-board-arb-approval]\n\n### Architecture Review Board (ARB) Approval\n\nCQRS implementations require ARB approval before production deployment:",
+    "79": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#arb-submission-requirements]\n\n#### ARB Submission Requirements\n\n**Architecture Documentation**:\n- [ ] Command and query API specifications (OpenAPI/Swagger)\n- [ ] Write model database schema (ERD)\n- [ ] Read model database schemas for all projections\n- [ ] Event schemas and event flow diagrams\n- [ ] Projection service architecture and dependencies\n- [ ] Consistency model documentation (eventual vs. read-your-writes)\n- [ ] Infrastructure diagram (databases, event bus, caching)\n\n**Business Justification**:\n- [ ] Performance baseline metrics (current state)\n- [ ] Performance improvement targets (post-CQRS)\n- [ ] Cost-benefit analysis (infrastructure costs vs. performance gains)\n- [ ] Use case suitability analysis (why CQRS vs. alternatives)\n- [ ] Impact on user experience (eventual consistency implications)\n\n**Implementation Plan**:\n- [ ] Phased rollout plan (POC → Event-Driven → Multi-Read → Production)\n- [ ] Testing strategy (unit, integration, end-to-end, performance, chaos)\n- [ ] Rollback plan (revert to pre-CQRS state if needed)\n- [ ] Training plan for development and operations teams\n- [ ] Documentation plan (architecture, runbooks, troubleshooting)\n\n**Risk Assessment**:\n- [ ] Complexity risk (team capability to implement and maintain)\n- [ ] Consistency risk (eventual consistency acceptance by business)\n- [ ] Operational risk (projection lag, event bus failures)\n- [ ] Security risk (data duplication, encryption across models)\n- [ ] Vendor risk (dependency on event bus provider)\n\n**Compliance Evidence**:\n- [ ] HIPAA compliance checklist (access controls, audit, encryption)\n- [ ] State regulatory requirements (data retention, breach notification)\n- [ ] SOC 2 controls mapping (TSC to CQRS components)\n- [ ] Data privacy impact assessment (GDPR, CCPA compliance)",
+    "80": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#arb-review-criteria]\n\n#### ARB Review Criteria\n\nThe ARB will evaluate CQRS proposals against these criteria:\n\n| Criteria | Evaluation Question | Approval Threshold |\n|----------|---------------------|-------------------|\n| **Performance Need** | Does the use case have documented performance issues (>2s queries, SLA violations)? | Yes, with baseline metrics |\n| **Read/Write Ratio** | Is read traffic significantly higher than write traffic (>5:1)? | Yes, supported by APM data |\n| **Team Capability** | Does the team have experience with event-driven architecture and eventual consistency? | Yes, or training plan in place |\n| **Operational Readiness** | Are monitoring, alerting, and runbooks prepared for projection lag and failures? | Yes, documented and reviewed |\n| **Compliance** | Does the design meet HIPAA, SOC 2, and state regulatory requirements? | Yes, with evidence |\n| **Cost Justification** | Do performance gains justify increased infrastructure and operational costs? | Yes, with documented analysis |\n\n**Approval Process**:\n1. Submit ARB package 2 weeks before review meeting\n2. ARB review meeting (1 hour presentation + Q&A)\n3. ARB decision: Approved / Approved with Conditions / Rejected\n4. If approved with conditions: Address conditions and re-submit evidence\n5. Final approval: Proceed to implementation",
+    "81": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#change-management-and-version-control]\n\n### Change Management and Version Control",
+    "82": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#event-schema-versioning]\n\n#### Event Schema Versioning\n\nEvents are the contract between write and read sides. Schema changes must be managed carefully:\n\n**Versioning Strategy**:\n```csharp\n// Version 1\npublic class MemberDemographicsUpdatedEventV1 : DomainEvent\n{\n    public Guid MemberId { get; set; }\n    public string FirstName { get; set; }\n    public string LastName { get; set; }\n}\n\n// Version 2 - Add field\npublic class MemberDemographicsUpdatedEventV2 : DomainEvent\n{\n    public Guid MemberId { get; set; }\n    public string FirstName { get; set; }\n    public string LastName { get; set; }\n    public string MiddleName { get; set; }  // New field - optional\n}\n\n// Event upcaster for projection services\npublic class MemberDemographicsUpdatedEventUpcaster\n{\n    public MemberDemographicsUpdatedEventV2 Upcast(MemberDemographicsUpdatedEventV1 v1)\n    {\n        return new MemberDemographicsUpdatedEventV2\n        {\n            MemberId = v1.MemberId,\n            FirstName = v1.FirstName,\n            LastName = v1.LastName,\n            MiddleName = null  // Default for legacy events\n        };\n    }\n}\n```\n\n**Change Compatibility Matrix**:\n\n| Change Type | Backward Compatible? | Forward Compatible? | Strategy |\n|-------------|---------------------|---------------------|----------|\n| **Add optional field** | ✅ Yes | ✅ Yes | Safe - projections ignore unknown fields |\n| **Add required field** | ❌ No | ✅ Yes | Publish new event type, update projections, migrate |\n| **Remove field** | ✅ Yes | ❌ No | Deprecate field, remove from projections first, then publisher |\n| **Rename field** | ❌ No | ❌ No | Publish both old and new fields during transition period |\n| **Change field type** | ❌ No | ❌ No | Publish new event type, dual-write during migration |",
+    "83": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#read-model-schema-changes]\n\n#### Read Model Schema Changes\n\nRead model schema changes require coordination with projection services:\n\n**Change Process**:\n1. **Add new read model table/collection** (additive change)\n   - Deploy projection service to populate new model\n   - Verify lag < 1 second\n   - Update query APIs to use new model\n   - Deprecate old model after 30 days\n\n2. **Modify existing read model** (breaking change)\n   - Create new version of read model (e.g., `ProviderRemittanceV2`)\n   - Deploy projection service for new model\n   - Run both projections in parallel for 7 days\n   - Validate consistency between old and new models\n   - Switch query APIs to new model\n   - Decommission old projection after 30 days\n\n3. **Projection logic change** (non-breaking)\n   - Deploy new projection service version\n   - Trigger projection rebuild for affected read model\n   - Verify read model consistency\n   - Monitor for errors or lag spikes",
+    "84": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#monitoring-and-audit-requirements]\n\n### Monitoring and Audit Requirements",
+    "85": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#required-metrics-and-alerts]\n\n#### Required Metrics and Alerts\n\n**Command Side Metrics**:\n\n| Metric | Target | Alert Threshold | Action |\n|--------|--------|----------------|--------|\n| Command success rate | >99.9% | <99% | Page on-call engineer |\n| Command processing time (p95) | <500ms | >1s | Investigate performance |\n| Command validation failure rate | <5% | >10% | Review validation logic |\n| Failed transaction rollback rate | <0.1% | >1% | Investigate database issues |\n| Event publication failures | 0 | >5/hour | Check event bus health |\n\n**Query Side Metrics**:\n\n| Metric | Target | Alert Threshold | Action |\n|--------|--------|----------------|--------|\n| Query success rate | >99.95% | <99.5% | Page on-call engineer |\n| Query response time (p95) | <200ms | >500ms | Investigate performance |\n| Cache hit rate | >80% | <70% | Review caching strategy |\n| Read model availability | >99.95% | <99.9% | Check database health |\n\n**Projection Metrics**:\n\n| Metric | Target | Alert Threshold | Action |\n|--------|--------|----------------|--------|\n| Projection lag (p99) | <500ms | >5s | Investigate event processing |\n| Event processing failure rate | <0.1% | >1% | Check projection logic |\n| Duplicate event detections | Any | >10/hour | Verify idempotency |\n| Projection rebuild time | <30min | >1hr | Optimize projection logic |\n| Dead-letter queue depth | 0 | >10 | Investigate failed events |",
+    "86": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#audit-logging-requirements]\n\n#### Audit Logging Requirements\n\n**Command Audit Log** (Write Operations):\n\n```csharp\npublic class CommandAuditEntry\n{\n    public Guid AuditId { get; set; }\n    public Guid CommandId { get; set; }\n    public string CommandType { get; set; }\n    public string UserId { get; set; }\n    public string UserRole { get; set; }\n    public string IpAddress { get; set; }\n    public DateTime Timestamp { get; set; }\n    public string EntityType { get; set; }\n    public string EntityId { get; set; }\n    public string Action { get; set; }  // Create, Update, Delete\n    public string BeforeState { get; set; }  // JSON\n    public string AfterState { get; set; }   // JSON\n    public bool Success { get; set; }\n    public string ErrorMessage { get; set; }\n    public string CorrelationId { get; set; }\n}\n```\n\n**Query Audit Log** (PHI Access):\n\n```csharp\npublic class QueryAuditEntry\n{\n    public Guid AuditId { get; set; }\n    public string QueryType { get; set; }\n    public string UserId { get; set; }\n    public string UserRole { get; set; }\n    public string IpAddress { get; set; }\n    public DateTime Timestamp { get; set; }\n    public string EntityType { get; set; }\n    public string EntityId { get; set; }  // Provider ID, Member ID, etc.\n    public bool Success { get; set; }\n    public string AccessDeniedReason { get; set; }\n    public int ResultCount { get; set; }\n    public string CorrelationId { get; set; }\n}\n```\n\n**Projection Audit Log** (Read Model Updates):\n\n```csharp\npublic class ProjectionAuditEntry\n{\n    public Guid AuditId { get; set; }\n    public string ProjectionName { get; set; }\n    public Guid EventId { get; set; }\n    public string EventType { get; set; }\n    public DateTime EventTimestamp { get; set; }\n    public DateTime ProcessedTimestamp { get; set; }\n    public double LagMilliseconds { get; set; }\n    public bool Success { get; set; }\n    public string ErrorMessage { get; set; }\n    public bool WasDuplicate { get; set; }\n}\n```",
+    "87": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#compliance-reporting]\n\n#### Compliance Reporting\n\n**Monthly CQRS Compliance Report** (submit to compliance team):\n\n1. **HIPAA Compliance**:\n   - PHI access audit summary (command and query counts by user role)\n   - Encryption verification (TDE, TLS certificates, cache encryption)\n   - Access control violations (authorization failures)\n   - Projection lag for PHI queries (p50, p95, p99)\n\n2. **SOC 2 Compliance**:\n   - Availability metrics (uptime %, outage incidents)\n   - Processing integrity metrics (validation failures, idempotency violations)\n   - Security incidents (unauthorized access attempts)\n   - Data retention compliance (event store and read model retention)\n\n3. **State Regulatory Compliance**:\n   - Data retention adherence by state\n   - Deletion request processing (CCPA, GDPR)\n   - Breach notification readiness (detection and response time)",
+    "88": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#performance-and-scalability-governance]\n\n### Performance and Scalability Governance",
+    "89": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#performance-sla-requirements]\n\n#### Performance SLA Requirements\n\nCQRS implementations must meet these SLAs:\n\n| Operation Type | Response Time (p95) | Throughput | Availability |\n|----------------|---------------------|------------|--------------|\n| **Commands** | <500ms | 5,000 req/min per pod | 99.9% |\n| **Queries (cached)** | <100ms | 50,000 req/min per pod | 99.95% |\n| **Queries (uncached)** | <200ms | 10,000 req/min per pod | 99.95% |\n| **Projections** | <500ms lag (p99) | 10,000 events/min | 99.9% |\n\n**SLA Violation Response**:\n- **Severity 1** (customer-impacting): Page on-call, incident response within 15 minutes\n- **Severity 2** (degraded performance): Alert team, investigate within 1 hour\n- **Severity 3** (approaching threshold): Create ticket, investigate within 24 hours",
+    "90": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#capacity-planning]\n\n#### Capacity Planning\n\n**Scaling Thresholds**:\n\n| Resource | Scale-Out Trigger | Target After Scaling |\n|----------|------------------|---------------------|\n| **Command API pods** | CPU >70% or Memory >80% | Scale to CPU <50%, Memory <60% |\n| **Query API pods** | CPU >70% or Request queue >100 | Scale to CPU <50%, Queue <20 |\n| **Write database** | DTU >80% or Storage >70% | Scale to DTU <60%, Storage <50% |\n| **Read databases** | DTU >80% for >5 minutes | Scale to DTU <60% |\n| **Event bus** | Throughput >70% of limit | Increase partitions/throughput units |\n| **Cache** | Memory >75% or Eviction rate >10% | Increase cache size |\n\n**Annual Capacity Review**:\n- Review growth trends (commands/sec, queries/sec, data size)\n- Project capacity needs for next 12 months\n- Budget for infrastructure scaling (compute, storage, event bus)\n- Plan for read model optimization (add indexes, partition tables)",
+    "91": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#security-and-data-protection]\n\n### Security and Data Protection",
+    "92": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#data-classification-in-cqrs-models]\n\n#### Data Classification in CQRS Models\n\nApply data classification tags to all models:\n\n| Classification | Examples | Write Model | Read Models | Events | Cache |\n|----------------|----------|-------------|-------------|--------|-------|\n| **Public** | Provider directory | ✅ TLS | ✅ TLS | ✅ TLS | ✅ Plain |\n| **Internal** | Internal analytics | ✅ TLS | ✅ TLS + TDE | ✅ TLS + Encrypt | ✅ Encrypted |\n| **Confidential** | Financial data | ✅ TLS + TDE | ✅ TLS + TDE | ✅ TLS + Encrypt | ✅ Encrypted, TTL <5min |\n| **PHI** | Member demographics | ✅ TLS + TDE + Audit | ✅ TLS + TDE + Audit | ✅ TLS + Encrypt + Audit | ✅ Encrypted, TTL <5min |",
+    "93": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#encryption-standards]\n\n#### Encryption Standards\n\n**At Rest**:\n- Write database: SQL Server TDE with AES-256\n- Read databases: TDE (SQL Server), encryption at rest (MongoDB, Elasticsearch)\n- Event store: Encrypted storage (Azure Storage SSE, S3 encryption)\n- Cache: Redis encryption (requirepass + TLS)\n\n**In Transit**:\n- All connections: TLS 1.2 or higher\n- Certificate validation: Enforce certificate checks, no self-signed certs in production\n- Event bus: TLS for all connections, SAS tokens or managed identities\n\n**Field-Level Encryption** (for highly sensitive PHI):\n```csharp\npublic class MemberSensitiveData\n{\n    public Guid MemberId { get; set; }\n\n    [Encrypted]  // Field-level encryption\n    public string SocialSecurityNumber { get; set; }\n\n    [Encrypted]\n    public string BankAccountNumber { get; set; }\n}\n```",
+    "94": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#disaster-recovery-and-business-continuity]\n\n### Disaster Recovery and Business Continuity",
+    "95": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#backup-and-recovery-strategy]\n\n#### Backup and Recovery Strategy\n\n**Write Model**:\n- Full backup: Daily at 2 AM ET\n- Differential backup: Every 6 hours\n- Transaction log backup: Every 15 minutes\n- Retention: 30 days online, 7 years archived\n- Recovery Point Objective (RPO): 15 minutes\n- Recovery Time Objective (RTO): 4 hours\n\n**Read Models**:\n- Backup frequency: Daily at 3 AM ET (after write model backup)\n- Retention: 7 days (read models are rebuildable from events)\n- Alternative: Rely on event replay for recovery (RPO = event store RPO)\n\n**Event Store**:\n- Continuous backup/replication\n- Retention: 7 years (HIPAA requirement)\n- Recovery Point Objective (RPO): 5 minutes (replicated to secondary region)\n- Recovery Time Objective (RTO): 1 hour",
+    "96": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#projection-rebuild-procedures]\n\n#### Projection Rebuild Procedures\n\n**When to Rebuild**:\n1. Data corruption detected in read model\n2. Major projection logic bug fixed (need to reprocess historical events)\n3. New read model added (populate from event history)\n4. Disaster recovery scenario (restore from event store)\n\n**Rebuild Process**:\n1. Halt projection service for affected read model\n2. Clear existing read model data (or create new version)\n3. Execute `ProjectionRebuilder.RebuildProjection(projectionName, fromDate)`\n4. Monitor rebuild progress (events processed, lag metrics)\n5. Validate read model consistency (spot-check queries, row counts)\n6. Resume normal projection service\n7. Monitor for errors and lag spikes\n\n**Rebuild SLA**:\n- Small read model (<1M rows): < 15 minutes\n- Medium read model (1M-10M rows): < 1 hour\n- Large read model (>10M rows): < 4 hours",
+    "97": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#third-party-and-vendor-management]\n\n### Third-Party and Vendor Management",
+    "98": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#event-bus-provider-assessment]\n\n#### Event Bus Provider Assessment\n\n| Provider | Assessment Criteria | Approval Status |\n|----------|---------------------|-----------------|\n| **Azure Service Bus** | ✅ HIPAA compliant, ✅ SOC 2, ✅ 99.9% SLA, ✅ Message retention 7 days+ | ✅ Approved |\n| **Apache Kafka (Confluent Cloud)** | ✅ HIPAA compliant, ✅ SOC 2, ✅ 99.95% SLA, ✅ Long-term retention | ✅ Approved |\n| **AWS SNS/SQS** | ✅ HIPAA compliant, ✅ SOC 2, ⚠️ Message retention 14 days max | ⚠️ Conditional (requires extended retention strategy) |\n| **RabbitMQ (self-hosted)** | ❌ Operational burden, ⚠️ SLA depends on hosting | ❌ Not recommended for production |",
+    "99": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#database-provider-assessment]\n\n#### Database Provider Assessment\n\n| Provider | Use Case | Assessment | Status |\n|----------|----------|------------|--------|\n| **SQL Server (Azure SQL)** | Write model, Relational read models | ✅ HIPAA, ✅ TDE, ✅ 99.99% SLA | ✅ Approved |\n| **PostgreSQL (Azure Database)** | Write model, Relational read models | ✅ HIPAA, ✅ Encryption, ✅ 99.99% SLA | ✅ Approved |\n| **Elasticsearch (Elastic Cloud)** | Search read models | ✅ HIPAA, ✅ Encryption, ⚠️ Complexity | ✅ Approved |\n| **MongoDB (Atlas)** | Document read models | ✅ HIPAA, ✅ Encryption, ✅ 99.95% SLA | ✅ Approved |\n| **Redis (Azure Cache)** | Cache layer | ✅ Encryption, ✅ 99.9% SLA, ⚠️ Not for persistent data | ✅ Approved (cache only) |",
+    "100": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#examples-and-use-cases]\n\n## Examples and Use Cases",
+    "101": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#example-1-provider-remittance-portal-high-volume-queries]\n\n### Example 1: Provider Remittance Portal (High-Volume Queries)",
+    "102": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#problem-statement]\n\n#### Problem Statement\n\nThe Provider Portal allows 400,000+ healthcare providers to view remittance details (payments, adjustments, claim denials). Original implementation used single normalized database with complex 15-table joins:\n\n**Original Architecture**:\n- Query: `GET /api/providers/{id}/remittances?startDate={date}&endDate={date}`\n- Implementation: EF Core query with 15 joins across Claims, Payments, Adjustments, Providers, Members tables\n- Performance: 8.5 seconds (p95) vs. 2-second SLA\n- Infrastructure: 20 pods needed to handle 50,000 queries/min during peak hours (9-11 AM)\n\n**CQRS Solution**:\n\n```mermaid\ngraph LR\n    subgraph \"Write Side\"\n        Claims[Claims API<br/>POST /claims]\n        Payments[Payment API<br/>POST /payments]\n        WriteDB[(Write DB<br/>Normalized)]\n    end\n\n    subgraph \"Events\"\n        EventBus[Azure Service Bus]\n    end\n\n    subgraph \"Read Side\"\n        Projection[Remittance<br/>Projection]\n        ReadDB[(Remittance View<br/>Denormalized)]\n        Cache[Redis Cache]\n        Query[Query API<br/>GET /remittances]\n    end\n\n    Claims --> WriteDB\n    Payments --> WriteDB\n    WriteDB --> EventBus\n    EventBus --> Projection\n    Projection --> ReadDB\n    Query --> Cache\n    Cache -.-> ReadDB\n\n    style WriteDB fill:#ff9999\n    style ReadDB fill:#99ccff\n    style Cache fill:#99ccff\n```\n\n**Read Model Schema** (Denormalized):\n\n```sql\nCREATE TABLE ProviderRemittanceReadModel (\n    ProviderId uniqueidentifier NOT NULL,\n    RemittanceId uniqueidentifier NOT NULL,\n    RemittanceDate date NOT NULL,\n    CheckNumber nvarchar(50),\n    TotalAmount decimal(18,2) NOT NULL,\n    ClaimCount int NOT NULL,\n\n    -- Denormalized provider data\n    ProviderName nvarchar(200) NOT NULL,\n    TaxId nvarchar(20) NOT NULL,\n    ProviderNPI nvarchar(10),\n\n    -- Pre-aggregated summaries\n    PaidAmount decimal(18,2),\n    AdjustmentAmount decimal(18,2),\n    DeniedAmount decimal(18,2),\n\n    -- JSON for nested details (avoids additional joins)\n    ClaimDetails nvarchar(max),  -- JSON array of claim line items\n\n    LastUpdated datetime2 NOT NULL,\n\n    PRIMARY KEY (ProviderId, RemittanceId)\n);\n\nCREATE INDEX IX_ProviderRemittance_Date ON ProviderRemittanceReadModel(ProviderId, RemittanceDate DESC);\nCREATE INDEX IX_ProviderRemittance_CheckNumber ON ProviderRemittanceReadModel(CheckNumber);\n```\n\n**Query Handler Implementation**:\n\n```csharp\npublic async Task<ProviderRemittanceView> GetRemittances(\n    Guid providerId, DateTime startDate, DateTime endDate)\n{\n    var cacheKey = $\"remittance:{providerId}:{startDate:yyyyMMdd}:{endDate:yyyyMMdd}\";\n\n    // 1. Try cache (Redis)\n    var cached = await _cache.GetAsync<ProviderRemittanceView>(cacheKey);\n    if (cached != null)\n        return cached;  // Cache hit: 45ms response\n\n    // 2. Query denormalized read model (single table, no joins)\n    var remittances = await _readDb.ProviderRemittanceReadModel\n        .AsNoTracking()\n        .Where(r => r.ProviderId == providerId\n                 && r.RemittanceDate >= startDate\n                 && r.RemittanceDate <= endDate)\n        .OrderByDescending(r => r.RemittanceDate)\n        .ToListAsync();\n\n    var view = new ProviderRemittanceView\n    {\n        ProviderId = providerId,\n        ProviderName = remittances.FirstOrDefault()?.ProviderName,\n        TotalRemittances = remittances.Count,\n        TotalAmount = remittances.Sum(r => r.TotalAmount),\n        Remittances = remittances.Select(r => new RemittanceDto\n        {\n            RemittanceId = r.RemittanceId,\n            Date = r.RemittanceDate,\n            CheckNumber = r.CheckNumber,\n            Amount = r.TotalAmount,\n            ClaimDetails = JsonSerializer.Deserialize<List<ClaimDetail>>(r.ClaimDetails)\n        }).ToList()\n    };\n\n    // 3. Cache for 5 minutes\n    await _cache.SetAsync(cacheKey, view, TimeSpan.FromMinutes(5));\n\n    return view;  // DB query: 180ms response\n}\n```\n\n**Results**:\n\n| Metric | Before CQRS | After CQRS |\n|--------|-------------|------------|\n| **Query Response Time (p95)** | 8.5s | 180ms (uncached) / 45ms (cached) |\n| **Cache Hit Rate** | N/A | 87% |\n| **Infrastructure** | 20 pods | 10 query pods + 2 write pods |\n| **Throughput** | 50K req/min (max) | 200K req/min (max) |\n| **SLA Compliance** | 0% (8.5s vs. 2s SLA) | Compliant (180ms vs. 2s SLA) |\n\n**Business Impact**:\n- Provider satisfaction with portal performance improved\n- Support tickets for \"slow portal\" reduced\n- Peak-hour abandonment rate reduced\n- Enabled real-time remittance notifications (previously impossible due to performance)",
+    "103": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#example-2-state-analytics-and-reporting-complex-aggregations]\n\n### Example 2: State Analytics and Reporting (Complex Aggregations)",
+    "104": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#problem-statement]\n\n#### Problem Statement\n\nState Medicaid agencies require monthly reports with complex aggregations (claims by service type, payments by provider category, member utilization trends). Original implementation ran ad-hoc queries against operational database:\n\n**Original Architecture**:\n- Report: \"Texas Monthly Claims Summary\" (aggregations across 50M+ claims)\n- Implementation: SQL query with GROUP BY, HAVING, multiple CTEs\n- Performance: 45+ minutes to generate report\n- Impact: Blocks transactional workload during report generation (claims processing slows to 50% capacity)\n- SLA: 10 seconds for dashboard queries = **27,000% SLA violation**\n\n**CQRS Solution**:\n\n```mermaid\ngraph TB\n    subgraph \"Write Side\"\n        Claims[Claims Service]\n        WriteDB[(Operational DB)]\n    end\n\n    subgraph \"Events\"\n        EventBus[Event Bus]\n    end\n\n    subgraph \"Read Side Analytics\"\n        AnalyticsProj[Analytics Projection]\n        AnalyticsCube[(Analytics Cube<br/>Pre-Aggregated)]\n        ReportAPI[Reporting API]\n        Dashboard[Real-Time Dashboard]\n    end\n\n    Claims --> WriteDB\n    WriteDB --> EventBus\n    EventBus --> AnalyticsProj\n    AnalyticsProj --> AnalyticsCube\n    ReportAPI --> AnalyticsCube\n    Dashboard --> AnalyticsCube\n\n    style WriteDB fill:#ff9999\n    style AnalyticsCube fill:#99ccff\n```\n\n**Analytics Read Model** (Pre-Aggregated Cube):\n\n```sql\n-- Monthly aggregations table\nCREATE TABLE MonthlyClaimsSummary (\n    StateCode char(2) NOT NULL,\n    YearMonth int NOT NULL,  -- YYYYMM format\n    ServiceTypeCode varchar(10) NOT NULL,\n    ProviderCategory varchar(50) NOT NULL,\n\n    -- Pre-aggregated metrics\n    ClaimCount int NOT NULL,\n    TotalAmount decimal(18,2) NOT NULL,\n    PaidAmount decimal(18,2) NOT NULL,\n    DeniedAmount decimal(18,2) NOT NULL,\n    UniqueMembers int NOT NULL,\n    UniqueProviders int NOT NULL,\n\n    -- Averages\n    AvgClaimAmount decimal(18,2),\n    AvgProcessingDays decimal(5,2),\n\n    LastUpdated datetime2 NOT NULL,\n\n    PRIMARY KEY (StateCode, YearMonth, ServiceTypeCode, ProviderCategory)\n);\n\n-- Daily aggregations for real-time dashboard\nCREATE TABLE DailyClaimsSummary (\n    StateCode char(2) NOT NULL,\n    ReportDate date NOT NULL,\n    HourOfDay int NOT NULL,  -- 0-23\n\n    ClaimCount int NOT NULL,\n    TotalAmount decimal(18,2) NOT NULL,\n\n    LastUpdated datetime2 NOT NULL,\n\n    PRIMARY KEY (StateCode, ReportDate, HourOfDay)\n);\n```\n\n**Analytics Projection Implementation**:\n\n```csharp\npublic class AnalyticsProjectionService : BackgroundService\n{\n    private readonly IServiceBusClient _serviceBus;\n    private readonly AnalyticsDbContext _analyticsDb;\n\n    protected override async Task ExecuteAsync(CancellationToken stoppingToken)\n    {\n        await _serviceBus.SubscribeAsync<ClaimProcessedEvent>(\n            async (evt, ct) => await UpdateAnalytics(evt), stoppingToken);\n    }\n\n    private async Task UpdateAnalytics(ClaimProcessedEvent evt)\n    {\n        // Update monthly summary\n        var yearMonth = evt.ProcessedDate.Year * 100 + evt.ProcessedDate.Month;\n\n        var monthlySummary = await _analyticsDb.MonthlyClaimsSummary\n            .FirstOrDefaultAsync(s =>\n                s.StateCode == evt.StateCode\n                && s.YearMonth == yearMonth\n                && s.ServiceTypeCode == evt.ServiceTypeCode\n                && s.ProviderCategory == evt.ProviderCategory);\n\n        if (monthlySummary == null)\n        {\n            monthlySummary = new MonthlyClaimsSummary\n            {\n                StateCode = evt.StateCode,\n                YearMonth = yearMonth,\n                ServiceTypeCode = evt.ServiceTypeCode,\n                ProviderCategory = evt.ProviderCategory,\n                ClaimCount = 0,\n                TotalAmount = 0,\n                PaidAmount = 0\n            };\n            _analyticsDb.MonthlyClaimsSummary.Add(monthlySummary);\n        }\n\n        monthlySummary.ClaimCount++;\n        monthlySummary.TotalAmount += evt.Amount;\n        monthlySummary.PaidAmount += evt.PaidAmount;\n        monthlySummary.LastUpdated = DateTime.UtcNow;\n\n        // Recalculate averages\n        monthlySummary.AvgClaimAmount = monthlySummary.TotalAmount / monthlySummary.ClaimCount;\n\n        // Update daily summary for real-time dashboard\n        var hourOfDay = evt.ProcessedDate.Hour;\n\n        var dailySummary = await _analyticsDb.DailyClaimsSummary\n            .FirstOrDefaultAsync(s =>\n                s.StateCode == evt.StateCode\n                && s.ReportDate == evt.ProcessedDate.Date\n                && s.HourOfDay == hourOfDay);\n\n        if (dailySummary == null)\n        {\n            dailySummary = new DailyClaimsSummary\n            {\n                StateCode = evt.StateCode,\n                ReportDate = evt.ProcessedDate.Date,\n                HourOfDay = hourOfDay,\n                ClaimCount = 0,\n                TotalAmount = 0\n            };\n            _analyticsDb.DailyClaimsSummary.Add(dailySummary);\n        }\n\n        dailySummary.ClaimCount++;\n        dailySummary.TotalAmount += evt.Amount;\n        dailySummary.LastUpdated = DateTime.UtcNow;\n\n        await _analyticsDb.SaveChangesAsync();\n    }\n}\n```\n\n**Report API Implementation**:\n\n```csharp\n[HttpGet(\"reports/monthly-summary\")]\npublic async Task<ActionResult<MonthlyReportDto>> GetMonthlySummary(\n    string stateCode, int year, int month)\n{\n    var yearMonth = year * 100 + month;\n\n    // Query pre-aggregated cube (no GROUP BY needed)\n    var summary = await _analyticsDb.MonthlyClaimsSummary\n        .AsNoTracking()\n        .Where(s => s.StateCode == stateCode && s.YearMonth == yearMonth)\n        .ToListAsync();\n\n    var report = new MonthlyReportDto\n    {\n        StateCode = stateCode,\n        Year = year,\n        Month = month,\n        TotalClaims = summary.Sum(s => s.ClaimCount),\n        TotalAmount = summary.Sum(s => s.TotalAmount),\n        PaidAmount = summary.Sum(s => s.PaidAmount),\n        DeniedAmount = summary.Sum(s => s.DeniedAmount),\n        UniqueMembers = summary.Sum(s => s.UniqueMembers),\n        UniqueProviders = summary.Sum(s => s.UniqueProviders),\n\n        ByServiceType = summary.GroupBy(s => s.ServiceTypeCode)\n            .Select(g => new ServiceTypeSummary\n            {\n                ServiceType = g.Key,\n                ClaimCount = g.Sum(s => s.ClaimCount),\n                TotalAmount = g.Sum(s => s.TotalAmount)\n            })\n            .ToList(),\n\n        ByProviderCategory = summary.GroupBy(s => s.ProviderCategory)\n            .Select(g => new ProviderCategorySummary\n            {\n                Category = g.Key,\n                ClaimCount = g.Sum(s => s.ClaimCount),\n                TotalAmount = g.Sum(s => s.TotalAmount)\n            })\n            .ToList()\n    };\n\n    return Ok(report);  // Response time: 3.2 seconds → 120ms\n}\n```\n\n**Results**:\n\n| Metric | Before CQRS | After CQRS |\n|--------|-------------|------------|\n| **Monthly Report Generation** | 45 minutes | 120ms |\n| **Dashboard Query (Real-Time)** | 30s | 85ms |\n| **Operational Impact** | Slowdown during reports | No interference |\n| **SLA Compliance** | Violated (45min vs. 10s) | Compliant (120ms vs. 10s) |\n| **Report Frequency** | Monthly (too slow for ad-hoc) | Real-time (any time period) |\n| **Storage Cost** | N/A | +$800/month (analytics DB) |\n\n**Business Impact**:\n- State agencies can access real-time dashboards (previously only monthly reports)\n- Ad-hoc analysis now possible (e.g., \"Show claims for last 7 days by provider category\")\n- Reduced operational incidents caused by long-running report queries\n- Enabled new business insights (hourly trend analysis, real-time fraud detection)",
+    "105": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#example-3-mobile-api-for-gainwell-go-low-latency-document-access]\n\n### Example 3: Mobile API for Gainwell Go™ (Low-Latency Document Access)",
+    "106": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#problem-statement]\n\n#### Problem Statement\n\nThe Gainwell Go™ mobile app provides members with claims history, provider search, and benefit information. Original implementation queried normalized relational database:\n\n**Original Architecture**:\n- API: `GET /api/members/{id}/dashboard`\n- Implementation: 8 SQL queries (claims, benefits, providers, messages, notifications, preferences)\n- Performance: 1.8 seconds (p95) vs. 500ms target\n- Impact: High abandonment rate (users close app before data loads)\n- Mobile data consumption: High (repeated queries on each app open)\n\n**CQRS Solution**:\n\n```mermaid\ngraph TB\n    subgraph \"Write Side\"\n        MemberSvc[Member Service]\n        ClaimsSvc[Claims Service]\n        WriteDB[(Relational DB)]\n    end\n\n    subgraph \"Events\"\n        EventBus[Event Bus]\n    end\n\n    subgraph \"Mobile Read Side\"\n        MobileProj[Mobile Projection]\n        MongoDB[(MongoDB<br/>Document Store)]\n        MobileAPI[Mobile API]\n    end\n\n    MemberSvc --> WriteDB\n    ClaimsSvc --> WriteDB\n    WriteDB --> EventBus\n    EventBus --> MobileProj\n    MobileProj --> MongoDB\n    MobileAPI --> MongoDB\n\n    style WriteDB fill:#ff9999\n    style MongoDB fill:#99ccff\n```\n\n**Mobile Read Model** (MongoDB Document):\n\n```json\n{\n  \"_id\": \"550e8400-e29b-41d4-a716-446655440000\",\n  \"memberId\": \"550e8400-e29b-41d4-a716-446655440000\",\n  \"memberName\": \"John Doe\",\n  \"memberIdNumber\": \"MEM-123456\",\n\n  \"dashboard\": {\n    \"recentClaims\": [\n      {\n        \"claimId\": \"CLM-789012\",\n        \"serviceDate\": \"2025-12-15\",\n        \"providerName\": \"City Medical Center\",\n        \"status\": \"Paid\",\n        \"yourCost\": 25.00,\n        \"paidAmount\": 175.00\n      }\n    ],\n\n    \"benefits\": {\n      \"deductible\": {\n        \"total\": 1500.00,\n        \"used\": 850.00,\n        \"remaining\": 650.00\n      },\n      \"outOfPocketMax\": {\n        \"total\": 5000.00,\n        \"used\": 1200.00,\n        \"remaining\": 3800.00\n      }\n    },\n\n    \"nearbyProviders\": [\n      {\n        \"providerId\": \"PRV-456789\",\n        \"name\": \"City Medical Center\",\n        \"distance\": 1.2,\n        \"rating\": 4.5\n      }\n    ],\n\n    \"messages\": [\n      {\n        \"messageId\": \"MSG-345678\",\n        \"subject\": \"Your claim has been processed\",\n        \"date\": \"2025-12-20\",\n        \"isRead\": false\n      }\n    ]\n  },\n\n  \"preferences\": {\n    \"notifications\": {\n      \"claimProcessed\": true,\n      \"appointmentReminders\": true\n    },\n    \"language\": \"en\",\n    \"theme\": \"light\"\n  },\n\n  \"lastUpdated\": \"2025-12-20T10:30:00Z\",\n  \"version\": 42\n}\n```\n\n**Mobile Projection Implementation**:\n\n```csharp\npublic class MobileProjectionService : BackgroundService\n{\n    private readonly IServiceBusClient _serviceBus;\n    private readonly IMongoCollection<MemberDashboardDocument> _collection;\n\n    protected override async Task ExecuteAsync(CancellationToken stoppingToken)\n    {\n        await Task.WhenAll(\n            _serviceBus.SubscribeAsync<ClaimProcessedEvent>(\n                async (evt, ct) => await UpdateClaimSummary(evt), stoppingToken),\n\n            _serviceBus.SubscribeAsync<MemberDemographicsUpdatedEvent>(\n                async (evt, ct) => await UpdateMemberInfo(evt), stoppingToken),\n\n            _serviceBus.SubscribeAsync<MessageReceivedEvent>(\n                async (evt, ct) => await AddMessage(evt), stoppingToken)\n        );\n    }\n\n    private async Task UpdateClaimSummary(ClaimProcessedEvent evt)\n    {\n        var filter = Builders<MemberDashboardDocument>.Filter.Eq(d => d.MemberId, evt.MemberId);\n\n        var update = Builders<MemberDashboardDocument>.Update\n            .Push(\"dashboard.recentClaims\", new\n            {\n                claimId = evt.ClaimId,\n                serviceDate = evt.ServiceDate,\n                providerName = evt.ProviderName,\n                status = evt.Status,\n                yourCost = evt.MemberResponsibility,\n                paidAmount = evt.PaidAmount\n            })\n            .Inc(\"dashboard.benefits.deductible.used\", evt.DeductibleApplied)\n            .Inc(\"dashboard.benefits.outOfPocketMax.used\", evt.MemberResponsibility)\n            .Set(\"lastUpdated\", DateTime.UtcNow)\n            .Inc(\"version\", 1);\n\n        // Keep only 10 most recent claims\n        var trimUpdate = Builders<MemberDashboardDocument>.Update\n            .Slice(\"dashboard.recentClaims\", -10);\n\n        await _collection.UpdateOneAsync(\n            filter,\n            Builders<MemberDashboardDocument>.Update.Combine(update, trimUpdate),\n            new UpdateOptions { IsUpsert = true });\n    }\n}\n```\n\n**Mobile API Implementation**:\n\n```csharp\n[HttpGet(\"members/{memberId}/dashboard\")]\npublic async Task<ActionResult<MemberDashboardView>> GetDashboard(Guid memberId)\n{\n    // Single MongoDB document lookup (no joins, no multiple queries)\n    var document = await _collection\n        .Find(d => d.MemberId == memberId)\n        .FirstOrDefaultAsync();\n\n    if (document == null)\n        return NotFound();\n\n    // Map document to DTO (no transformation needed, document already optimized for mobile)\n    var view = new MemberDashboardView\n    {\n        MemberName = document.MemberName,\n        MemberIdNumber = document.MemberIdNumber,\n        Dashboard = document.Dashboard,\n        Preferences = document.Preferences,\n        LastUpdated = document.LastUpdated\n    };\n\n    return Ok(view);  // Response time: 42ms\n}\n```\n\n**Results**:\n\n| Metric | Before CQRS | After CQRS |\n|--------|-------------|------------|\n| **API Response Time (p95)** | 1.8s | 42ms |\n| **Database Queries per Request** | 8 queries | 1 document lookup |\n| **Data Transfer Size** | 120 KB | 18 KB |\n| **Abandonment Rate** | High | Reduced |\n| **API Throughput** | 5K req/min | 50K req/min |\n\n**Business Impact**:\n- Member engagement increased\n- App Store rating improved\n- Support calls for \"app is slow\" reduced\n- Enabled offline mode (mobile app can cache dashboard document for offline access)\n- Reduced mobile data costs for members (18 KB vs. 120 KB per load)",
+    "107": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#example-4-provider-search-full-text-search-with-elasticsearch]\n\n### Example 4: Provider Search (Full-Text Search with Elasticsearch)",
+    "108": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#problem-statement]\n\n#### Problem Statement\n\nProvider directory search allows members to find healthcare providers by name, specialty, location, or insurance acceptance. Original SQL implementation used LIKE queries:\n\n**Original Architecture**:\n- Query: `SELECT * FROM Providers WHERE Name LIKE '%Smith%' OR Specialty LIKE '%Smith%'`\n- Performance: 3+ seconds for fuzzy search (p95)\n- Limitations: No relevance ranking, no typo tolerance, slow for partial matches\n\n**CQRS Solution with Elasticsearch**:\n\n```mermaid\ngraph LR\n    subgraph \"Write Side\"\n        ProviderAPI[Provider API]\n        WriteDB[(SQL DB)]\n    end\n\n    subgraph \"Events\"\n        EventBus[Event Bus]\n    end\n\n    subgraph \"Search Read Side\"\n        SearchProj[Search Projection]\n        Elasticsearch[(Elasticsearch<br/>Search Index)]\n        SearchAPI[Search API]\n    end\n\n    ProviderAPI --> WriteDB\n    WriteDB --> EventBus\n    EventBus --> SearchProj\n    SearchProj --> Elasticsearch\n    SearchAPI --> Elasticsearch\n\n    style WriteDB fill:#ff9999\n    style Elasticsearch fill:#99ccff\n```\n\n**Elasticsearch Index Mapping**:\n\n```json\n{\n  \"mappings\": {\n    \"properties\": {\n      \"providerId\": { \"type\": \"keyword\" },\n      \"providerName\": {\n        \"type\": \"text\",\n        \"analyzer\": \"standard\",\n        \"fields\": {\n          \"keyword\": { \"type\": \"keyword\" },\n          \"suggest\": { \"type\": \"completion\" }\n        }\n      },\n      \"specialty\": {\n        \"type\": \"text\",\n        \"fields\": {\n          \"keyword\": { \"type\": \"keyword\" }\n        }\n      },\n      \"location\": {\n        \"type\": \"geo_point\"\n      },\n      \"address\": { \"type\": \"text\" },\n      \"city\": { \"type\": \"keyword\" },\n      \"state\": { \"type\": \"keyword\" },\n      \"zipCode\": { \"type\": \"keyword\" },\n      \"acceptingNewPatients\": { \"type\": \"boolean\" },\n      \"insuranceAccepted\": { \"type\": \"keyword\" },\n      \"rating\": { \"type\": \"float\" },\n      \"phoneNumber\": { \"type\": \"keyword\" },\n      \"lastUpdated\": { \"type\": \"date\" }\n    }\n  }\n}\n```\n\n**Search API Implementation**:\n\n```csharp\n[HttpGet(\"providers/search\")]\npublic async Task<ActionResult<ProviderSearchResults>> Search(\n    string query,\n    string specialty = null,\n    string city = null,\n    double? latitude = null,\n    double? longitude = null,\n    int radius = 10,  // miles\n    int page = 1,\n    int pageSize = 20)\n{\n    var searchRequest = new SearchRequest<ProviderSearchDocument>(\"providers\")\n    {\n        Query = new BoolQuery\n        {\n            Must = new List<QueryContainer>\n            {\n                // Multi-field search with fuzzy matching\n                new MultiMatchQuery\n                {\n                    Query = query,\n                    Fields = new[] { \"providerName^3\", \"specialty^2\", \"address\" },\n                    Fuzziness = Fuzziness.Auto,  // Handles typos\n                    Operator = Operator.Or\n                }\n            },\n            Filter = new List<QueryContainer>()\n        },\n        From = (page - 1) * pageSize,\n        Size = pageSize,\n        Sort = new List<ISort>\n        {\n            new ScoreSort { Order = SortOrder.Descending }  // Relevance ranking\n        }\n    };\n\n    // Add specialty filter if provided\n    if (!string.IsNullOrEmpty(specialty))\n    {\n        searchRequest.Query.Bool.Filter.Add(\n            new TermQuery { Field = \"specialty.keyword\", Value = specialty });\n    }\n\n    // Add city filter if provided\n    if (!string.IsNullOrEmpty(city))\n    {\n        searchRequest.Query.Bool.Filter.Add(\n            new TermQuery { Field = \"city\", Value = city });\n    }\n\n    // Add geo-distance filter if lat/lon provided\n    if (latitude.HasValue && longitude.HasValue)\n    {\n        searchRequest.Query.Bool.Filter.Add(\n            new GeoDistanceQuery\n            {\n                Field = \"location\",\n                DistanceType = GeoDistanceType.Arc,\n                Distance = $\"{radius}mi\",\n                Location = new GeoLocation(latitude.Value, longitude.Value)\n            });\n\n        // Sort by distance\n        searchRequest.Sort.Insert(0, new GeoDistanceSort\n        {\n            Field = \"location\",\n            Points = new[] { new GeoLocation(latitude.Value, longitude.Value) },\n            Order = SortOrder.Ascending\n        });\n    }\n\n    var response = await _elasticClient.SearchAsync<ProviderSearchDocument>(searchRequest);\n\n    var results = new ProviderSearchResults\n    {\n        Total = response.Total,\n        Page = page,\n        PageSize = pageSize,\n        Providers = response.Documents.Select(d => new ProviderSearchResult\n        {\n            ProviderId = d.ProviderId,\n            ProviderName = d.ProviderName,\n            Specialty = d.Specialty,\n            Address = $\"{d.Address}, {d.City}, {d.State} {d.ZipCode}\",\n            Distance = latitude.HasValue\n                ? response.Hits.First(h => h.Source.ProviderId == d.ProviderId)\n                    .Sorts?.FirstOrDefault() as double?\n                : null,\n            Rating = d.Rating,\n            AcceptingNewPatients = d.AcceptingNewPatients,\n            PhoneNumber = d.PhoneNumber\n        }).ToList()\n    };\n\n    return Ok(results);  // Response time: 65ms\n}\n```\n\n**Results**:\n\n| Metric | Before CQRS (SQL LIKE) | After CQRS (Elasticsearch) |\n|--------|----------------------|---------------------------|\n| **Search Response Time (p95)** | 3.2s | 65ms |\n| **Fuzzy Search (typos)** | Not supported | Supported (Fuzziness.Auto) |\n| **Relevance Ranking** | Not supported | Supported (BM25 scoring) |\n| **Geo-Distance Search** | Complex SQL | Native support |\n| **Autocomplete** | Not supported | Supported (completion suggester) |\n| **Search Throughput** | 500 req/min | 10K req/min |\n\n**Business Impact**:\n- Search abandonment rate reduced\n- \"Provider not found\" support tickets reduced (typo tolerance improved matching)\n- Geo-search enabled new feature: \"Find providers near me\" (mobile app)\n- Member satisfaction with provider directory improved",
+    "109": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#summary-of-use-cases]\n\n### Summary of Use Cases\n\n| Use Case | Problem | CQRS Approach | Performance (Before → After) | Business Impact |\n|----------|---------|---------------|------------------------------|-----------------|\n| **Provider Remittance Portal** | 8.5s queries with 15 joins | Denormalized SQL read model + Redis cache | 8.5s → 180ms uncached, 45ms cached | Reduced support tickets, right-sized infrastructure |\n| **State Analytics Reports** | 45-minute reports blocking operations | Pre-aggregated analytics cube | 45min → 120ms | Real-time dashboards, zero operational impact |\n| **Mobile Dashboard API** | 1.8s load time, 8 queries | MongoDB document store (single lookup) | 1.8s → 42ms | Improved engagement, reduced abandonment |\n| **Provider Search** | 3+ second LIKE queries, no fuzzy matching | Elasticsearch with relevance ranking | 3+s → 65ms | Fewer \"not found\" tickets, geo-search enabled |",
+    "110": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#related-patterns-and-references]\n\n## Related Patterns and References",
+    "111": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#related-patterns]\n\n### Related Patterns\n\n- [Event Sourcing Pattern](./PTN-APP-API-012-event-sourcing-pattern.md)\n- [Database per Service Pattern](./database-per-service-pattern.md)",
+    "112": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#external-references]\n\n### External References\n\n- [CQRS by Martin Fowler](https://martinfowler.com/bliki/CQRS.html)",
+    "113": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#change-history]\n\n## Change History\n\n| Date       | Version | Author              | Description              | Impact      |\n| ---------- | ------- | ------------------- | ------------------------ | ----------- |\n| 2026-01-02 | 1.0.0   | Enterprise Architect | Initial pattern creation | New pattern |",
+    "114": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#review-log]\n\n## Review Log\n\n| Review Date | Review Type | Reviewer(s) | Status | Comments | Actions |\n| ----------- | ----------- | ----------- | ------ | -------- | ------- |\n| TBD         | TBD         | TBD         | Draft  | TBD      | TBD     |\n\n---",
+    "115": "[patterns/application/api-microservices/PTN-APP-API-005-cqrs-pattern.md#tldr]\n\n## TL;DR\n\n**Problem:** Single data model cannot optimize for both writes (ACID transactions, normalization) and reads (fast queries, denormalization). Results in slow complex queries (8.5s with 15 joins), over-provisioned infrastructure, and SLA violations.\n\n**Solution:** Separate Command Model (write side, normalized, transactional) and Query Model (read side, denormalized, optimized). Commands update write DB and publish events. Projection services consume events and update specialized read models (SQL, Elasticsearch, MongoDB, Redis).\n\n**When to Use:**\n- Read-to-write ratio > 5:1 (e.g., 50K reads vs. 5K writes per minute)\n- Complex queries with many joins (>5 tables) or aggregations\n- Performance SLA violations (queries > 2s)\n- Need for specialized data stores (search, document, cache)\n- High operational costs from over-provisioning\n- **Don't use for**: Simple CRUD, low traffic, strong consistency requirements, small teams\n\n**Key Benefits:**\n- **Performance**: Significant query performance improvement through denormalized read models (e.g., 8.5s → 180ms for provider portal)\n- **Independent Scaling**: Scale reads and writes separately (10 query pods + 2 write pods vs. 20 combined)\n- **Specialized Storage**: Use optimal DB for each query pattern (SQL, Elasticsearch, MongoDB, Redis)\n- **Simplified Queries**: Denormalized read models eliminate complex joins\n- **Cost Savings**: Right-sized scaling reduces infrastructure costs\n\n**Implementation Complexity:** High (event infrastructure, projection services, monitoring, eventual consistency)\n\n**Prerequisites:**\n- Event bus (Azure Service Bus, Kafka)\n- Event-driven architecture experience\n- Acceptance of eventual consistency (100-500ms lag)\n- Operational capability for projection monitoring and recovery\n\n**Quick Start** (3-line code example):\n\n```csharp\n// Command: Update write model + publish event\nawait writeDb.Claims.AddAsync(claim);\nawait eventBus.PublishAsync(new ClaimProcessedEvent { ClaimId = claim.Id });\n\n// Query: Single read from denormalized view (no joins)\nvar view = await readDb.ProviderRemittanceView.FindAsync(providerId);  // 180ms vs. 8.5s\n\n// Projection: Update read model from event\nawait readDb.ExecuteSqlAsync(\"UPDATE ProviderStats SET ClaimCount += 1 WHERE ProviderId = @p0\", evt.ProviderId);\n```\n\n**Related Patterns:**\n- [Event Sourcing Pattern](./PTN-APP-API-012-event-sourcing-pattern.md) - Use events as source of truth for write model\n- [Database per Service Pattern](./database-per-service-pattern.md) - Each read model can use different database\n- API Gateway Pattern - Route commands (POST/PUT) vs. queries (GET) to separate endpoints\n- Cache-Aside Pattern - Cache read model results for sub-second responses\n- Materialized View Pattern - Read models are materialized views of write model\n\n**Real-World Results at Gainwell**:\n- Provider Portal: 8.5s → 180ms query response, right-sized infrastructure\n- State Analytics: 45min → 120ms, real-time dashboards enabled\n- Mobile API: 1.8s → 42ms, improved engagement and reduced abandonment\n- Provider Search: 3+ seconds → 65ms, fuzzy matching and geo-search enabled\n\n---"
+  },
+  "coverage": {
+    "total_pages": 115,
+    "covered_pages": 115,
+    "sampled_pages": 115,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 115
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Available Scripts",
+  "document_description": "This directory contains development automation scripts for LOCAL LAPTOP TESTING ONLY.",
+  "total_pages": 13,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 13,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Available Scripts",
+          "node_id": "available-scripts",
+          "start_index": 2,
+          "end_index": 6,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "setup.py",
+              "node_id": "setuppy",
+              "start_index": 3,
+              "end_index": 3,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "build.py",
+              "node_id": "buildpy",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "run.py",
+              "node_id": "runpy",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "verify.py",
+              "node_id": "verifypy",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Development Workflow",
+          "node_id": "development-workflow",
+          "start_index": 7,
+          "end_index": 7,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Environment Variables",
+          "node_id": "environment-variables",
+          "start_index": 8,
+          "end_index": 8,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Testing",
+          "node_id": "testing",
+          "start_index": 9,
+          "end_index": 9,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Code Quality",
+          "node_id": "code-quality",
+          "start_index": 10,
+          "end_index": 10,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Database Management",
+          "node_id": "database-management",
+          "start_index": 11,
+          "end_index": 11,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Production Deployment",
+          "node_id": "production-deployment",
+          "start_index": 12,
+          "end_index": 12,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Support",
+          "node_id": "support",
+          "start_index": 13,
+          "end_index": 13,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "\"\"\"\nRating Service - Helper Scripts\n\nThis directory contains development automation scripts for LOCAL LAPTOP TESTING ONLY.\n\n**Deployment Environments:**\n\n- **Local**: Developer's laptop - uvicorn testing (these scripts)\n- **Dev**: Remote EKS cluster - Terraform + Kubernetes\n- **Prod**: Remote EKS cluster - Terraform + Kubernetes\n\n**Quick Start (Local Testing):**\n\n```bash\npoetry run python _helpers/setup.py   # Setup .env + start PostgreSQL\npoetry run python _helpers/build.py   # Install dependencies + create DB tables\npoetry run python _helpers/run.py     # Run on http://localhost:8002\n```",
+    "2": "[.tooling/components/apis/rating-service/_helpers/README.md#available-scripts]\n\n## Available Scripts",
+    "3": "[.tooling/components/apis/rating-service/_helpers/README.md#setuppy]\n\n### setup.py\n\nEnvironment setup and initialization script.\n\n**Usage:**\n\n```bash\npoetry run python _helpers/setup.py [--upgrade]\n```\n\n**What it does:**\n\n- ✅ Checks prerequisites (Python 3.12+, Poetry, Git, Docker, Docker Compose)\n- ✅ Creates .env file from .env.local\n- ✅ Configures Poetry environment (virtualenvs.in-project=true)\n- ✅ Starts PostgreSQL container via Docker Compose\n- ✅ Waits for PostgreSQL to be ready\n- ✅ Installs dependencies with optional upgrade\n- ✅ Creates required directories (.tmp, logs, src, tests)\n- ✅ Verifies installation\n- ✅ Prints next steps\n\n**Options:**\n\n- `--upgrade`: Upgrade all dependencies to latest compatible versions\n\n**Example:**\n\n```bash\n# Initial setup\npoetry run python _helpers/setup.py\n\n# Setup with dependency upgrades\npoetry run python _helpers/setup.py --upgrade\n```",
+    "4": "[.tooling/components/apis/rating-service/_helpers/README.md#buildpy]\n\n### build.py\n\nBuild script (install dependencies and run database migrations).\n\n**Usage:**\n\n```bash\npoetry run python _helpers/build.py\n```\n\n**What it does:**\n\n- ✅ Checks if PostgreSQL is running\n- ✅ Installs dependencies with Poetry\n- ✅ Runs Alembic migrations to create/update database tables\n- ✅ Verifies build completion\n\n**Example:**\n\n```bash\npoetry run python _helpers/build.py\n```",
+    "5": "[.tooling/components/apis/rating-service/_helpers/README.md#runpy]\n\n### run.py\n\nDevelopment server launcher.\n\n**Usage:**\n\n```bash\npoetry run python _helpers/run.py\n```\n\n**What it does:**\n\n- Checks .env and .venv existence\n- Starts FastAPI server with uvicorn\n- Enables hot reload for development\n- Runs on <http://0.0.0.0:8002>\n- API docs available at /docs\n\n**Server URLs:**\n\n- API: <http://localhost:8002>\n- Swagger UI: <http://localhost:8002/docs>\n- ReDoc: <http://localhost:8002/redoc>\n- Health: <http://localhost:8002/health>\n- ARIA Metrics: <http://localhost:8002/api/rating/v1/aria/analytics>\n- Page Ratings: <http://localhost:8002/api/rating/v1/page-ratings>\n\n**Helpful Features:**\n\n- Auto-starts database container if stopped\n- Provides troubleshooting tips on errors\n- Shows all access URLs on startup",
+    "6": "[.tooling/components/apis/rating-service/_helpers/README.md#verifypy]\n\n### verify.py\n\nCode quality verification script.\n\n**Usage:**\n\n```bash\npoetry run python _helpers/verify.py                 # Run all checks\npoetry run python _helpers/verify.py --verbose       # Show detailed output\npoetry run python _helpers/verify.py --fix           # Auto-fix issues\npoetry run python _helpers/verify.py --skip-tests    # Code quality only\npoetry run python _helpers/verify.py --tests-only    # Tests only\n```\n\n**What it does:**\n\n- ✅ Code formatting verification (Black)\n- ✅ Import sorting verification (isort)\n- ✅ Linting and style checks (Ruff)\n- ✅ Static analysis and code quality (Pylint)\n- ✅ Security vulnerability scanning (Bandit)\n- ✅ Unit tests with coverage reporting (80% minimum)\n\n**Options:**\n\n- `--verbose`: Show detailed output from all tools\n- `--fix`: Auto-fix formatting and linting issues\n- `--skip-tests`: Skip running tests (code quality only)\n- `--tests-only`: Run only tests, skip code quality checks\n- `--fast`: Skip slow tests for faster verification\n\n**Reports Generated:**\n\n- .tmp/coverage-report/index.html - Test coverage report\n- .tmp/pylint-report.html - Pylint analysis\n- .tmp/bandit-security-report.html - Security scan results",
+    "7": "[.tooling/components/apis/rating-service/_helpers/README.md#development-workflow]\n\n## Development Workflow\n\n**First Time Setup:**\n\n```bash\n# 1. Setup environment\npoetry run python _helpers/setup.py\n\n# 2. Build (create tables)\npoetry run python _helpers/build.py\n\n# 3. Run development server\npoetry run python _helpers/run.py\n```\n\n**Daily Development:**\n\n```bash\n# Start server (auto-starts database if needed)\npoetry run python _helpers/run.py\n\n# Before committing code\npoetry run python _helpers/verify.py --fix\n```\n\n**Troubleshooting:**\n\n```bash\n# Check database status\ndocker compose ps\n\n# View database logs\ndocker compose logs -f postgres\n\n# Restart database\ndocker compose restart postgres\n\n# Clean restart\ndocker compose down\ndocker compose up -d postgres\n```",
+    "8": "[.tooling/components/apis/rating-service/_helpers/README.md#environment-variables]\n\n## Environment Variables\n\nThe `.env` file is created from `.env.local` during setup. Key variables:\n\n```dotenv\n# Service Configuration\nSERVICE_NAME=rating-service\nAPI_PORT=8002\nLOG_LEVEL=INFO\n\n# Database (local development)\nDATABASE_URL=postgresql://postgres:postgres@localhost:5432/ratings\n\n# CORS Configuration\nCORS_ORIGINS=http://localhost:3000,http://localhost:8000\n```",
+    "9": "[.tooling/components/apis/rating-service/_helpers/README.md#testing]\n\n## Testing\n\n**Run all tests:**\n\n```bash\npoetry run pytest\n```\n\n**Run with coverage:**\n\n```bash\npoetry run pytest --cov=src --cov-report=html\n```\n\n**Run specific test:**\n\n```bash\npoetry run pytest tests/test_specific.py\n```",
+    "10": "[.tooling/components/apis/rating-service/_helpers/README.md#code-quality]\n\n## Code Quality\n\n**Format code:**\n\n```bash\npoetry run black src tests\n```\n\n**Sort imports:**\n\n```bash\npoetry run isort src tests\n```\n\n**Lint code:**\n\n```bash\npoetry run ruff check src tests\n```\n\n**Security scan:**\n\n```bash\npoetry run bandit -r src\n```",
+    "11": "[.tooling/components/apis/rating-service/_helpers/README.md#database-management]\n\n## Database Management\n\n**Start database:**\n\n```bash\ndocker compose up -d postgres\n```\n\n**Stop database:**\n\n```bash\ndocker compose down\n```\n\n**Connect to database:**\n\n```bash\ndocker exec -it rating-service-postgres psql -U postgres -d ratings\n```\n\n**Useful SQL queries:**\n\n```sql\n-- List all tables\n\\dt\n\n-- View ARIA ratings\nSELECT * FROM aria_ratings ORDER BY created_at DESC LIMIT 10;\n\n-- View page ratings\nSELECT * FROM page_ratings ORDER BY created_at DESC LIMIT 10;\n\n-- Check database size\nSELECT pg_size_pretty(pg_database_size('ratings'));\n```",
+    "12": "[.tooling/components/apis/rating-service/_helpers/README.md#production-deployment]\n\n## Production Deployment\n\nThese scripts are for LOCAL DEVELOPMENT ONLY. For production deployment:\n\n1. **Infrastructure**: Use Terragrunt to deploy S3 buckets\n\n   ```bash\n   cd .tooling/iac/terraform/deployments/aws/development/deploy-rating/primary\n   terragrunt plan\n   terragrunt apply\n   ```\n\n2. **Database**: Deploy PostgreSQL cluster via kubectl\n\n   ```bash\n   cd .tooling/components/apis/rating-service/k8s\n   export NAMESPACE=eapref-app\n   export BUCKET_NAME=pfe-pg-dev-us1-cm-s3-eapref-postgres-backups\n   envsubst < postgres-cluster.yaml | kubectl apply -f -\n   ```\n\n3. **Service**: Trigger GitHub Actions workflow\n   - Workflow: `.github/workflows/deploy-rating-svc.yml`\n   - Builds Docker container\n   - Deploys to EKS cluster\n   - Updates ingress routing",
+    "13": "[.tooling/components/apis/rating-service/_helpers/README.md#support]\n\n## Support\n\nFor questions or issues:\n\n- Check the main [README.md](../README.md) in the rating-service directory\n- Review [INFRASTRUCTURE.md](../k8s/INFRASTRUCTURE.md) for Kubernetes details\n- Contact the Enterprise Architecture team\n\"\"\""
+  },
+  "coverage": {
+    "total_pages": 13,
+    "covered_pages": 13,
+    "sampled_pages": 13,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 13
+  }
+}

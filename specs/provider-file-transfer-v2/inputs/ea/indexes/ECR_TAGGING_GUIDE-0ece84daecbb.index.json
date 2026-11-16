@@ -1,0 +1,167 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "ECR Image Tagging Guide",
+  "document_description": "python _helpers/scripts/build_docker.py --docker-env=dev --pushazonaws.com`",
+  "total_pages": 16,
+  "tree": [
+    {
+      "title": "ECR Image Tagging Guide",
+      "node_id": "ecr-image-tagging-guide",
+      "start_index": 1,
+      "end_index": 16,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "How Image Tagging Works in Your ECR Repository",
+          "node_id": "how-image-tagging-works-in-your-ecr-repository",
+          "start_index": 2,
+          "end_index": 16,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Image Naming Format",
+              "node_id": "image-naming-format",
+              "start_index": 3,
+              "end_index": 3,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Tag Generation Strategies",
+              "node_id": "tag-generation-strategies",
+              "start_index": 4,
+              "end_index": 8,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "1. Git Commit Strategy (Recommended for Production)",
+                  "node_id": "1-git-commit-strategy-recommended-for-production",
+                  "start_index": 5,
+                  "end_index": 5,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "2. Git Branch Strategy",
+                  "node_id": "2-git-branch-strategy",
+                  "start_index": 6,
+                  "end_index": 6,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "3. Timestamp Strategy",
+                  "node_id": "3-timestamp-strategy",
+                  "start_index": 7,
+                  "end_index": 7,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "4. Custom Tags",
+                  "node_id": "4-custom-tags",
+                  "start_index": 8,
+                  "end_index": 8,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Configuration Files",
+              "node_id": "configuration-files",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Example Build Commands",
+              "node_id": "example-build-commands",
+              "start_index": 10,
+              "end_index": 12,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Build and Push to Your ECR Repository",
+                  "node_id": "build-and-push-to-your-ecr-repository",
+                  "start_index": 11,
+                  "end_index": 11,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Override ECR Settings via Command Line",
+                  "node_id": "override-ecr-settings-via-command-line",
+                  "start_index": 12,
+                  "end_index": 12,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Multiple Images in Same Repository",
+              "node_id": "multiple-images-in-same-repository",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Viewing Images in ECR",
+              "node_id": "viewing-images-in-ecr",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "CI/CD Integration",
+              "node_id": "cicd-integration",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Best Practices",
+              "node_id": "best-practices",
+              "start_index": 16,
+              "end_index": 16,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[.tooling/components/apps/mkdocs-platform/docker/ECR_TAGGING_GUIDE.md#ecr-image-tagging-guide]\n\n# ECR Image Tagging Guide",
+    "2": "[.tooling/components/apps/mkdocs-platform/docker/ECR_TAGGING_GUIDE.md#how-image-tagging-works-in-your-ecr-repository]\n\n## How Image Tagging Works in Your ECR Repository\n\nBased on your ECR configuration:\n\n- **ECR Registry URL**: `707203271462.dkr.ecr.us-east-steps:\n  - name: Build and push to ECR\n    run: |\n      python _helpers/scripts/build_docker.py --docker-env=dev --pushazonaws.com`\n- **Repository Name**: `pfe-pg-dev-us1-cm-ecr-platform-shared`",
+    "3": "[.tooling/components/apps/mkdocs-platform/docker/ECR_TAGGING_GUIDE.md#image-naming-format]\n\n### Image Naming Format\n\nYour images will be tagged in this format:\n\n```text\n{ECR_REGISTRY_URL}/{ECR_REPOSITORY_NAME}:{tag}\n```\n\nFor example:\n\n```text\n707203271462.dkr.ecr.us-east-1.amazonaws.com/pfe-pg-dev-us1-cm-ecr-platform-shared:mkdocs-platform-staging-abc123\n```",
+    "4": "[.tooling/components/apps/mkdocs-platform/docker/ECR_TAGGING_GUIDE.md#tag-generation-strategies]\n\n### Tag Generation Strategies",
+    "5": "[.tooling/components/apps/mkdocs-platform/docker/ECR_TAGGING_GUIDE.md#1-git-commit-strategy-recommended-for-production]\n\n#### 1. Git Commit Strategy (Recommended for Production)\n\n```bash\n# Environment variable configuration:\nECR_IMAGE_TAG_STRATEGY=git-commit\nECR_IMAGE_TAG_PREFIX=mkdocs-platform\n\n# Generated tags:\nmkdocs-platform-dev-a1b2c3d   # For dev environment\nmkdocs-platform-prod-a1b2c3d  # For prod environment\n```",
+    "6": "[.tooling/components/apps/mkdocs-platform/docker/ECR_TAGGING_GUIDE.md#2-git-branch-strategy]\n\n#### 2. Git Branch Strategy\n\n```bash\n# Environment variable configuration:\nECR_IMAGE_TAG_STRATEGY=git-branch\nECR_IMAGE_TAG_PREFIX=mkdocs-platform\n\n# Generated tags:\nmkdocs-platform-dev-feature-ai-rag-search\nmkdocs-platform-prod-main\n```",
+    "7": "[.tooling/components/apps/mkdocs-platform/docker/ECR_TAGGING_GUIDE.md#3-timestamp-strategy]\n\n#### 3. Timestamp Strategy\n\n```bash\n# Environment variable configuration:\nECR_IMAGE_TAG_STRATEGY=timestamp\nECR_IMAGE_TAG_PREFIX=mkdocs-platform\n\n# Generated tags:\nmkdocs-platform-dev-20250816-143022\nmkdocs-platform-prod-20250816-143022\n```",
+    "8": "[.tooling/components/apps/mkdocs-platform/docker/ECR_TAGGING_GUIDE.md#4-custom-tags]\n\n#### 4. Custom Tags\n\n```bash\n# Command line override:\npython _helpers/scripts/build_docker.py --docker-env=dev --tag=v1.2.3-dev\n\n# Result:\n707203271462.dkr.ecr.us-east-1.amazonaws.com/pfe-pg-dev-us1-cm-ecr-platform-shared:v1.2.3-dev\n```",
+    "9": "[.tooling/components/apps/mkdocs-platform/docker/ECR_TAGGING_GUIDE.md#configuration-files]\n\n### Configuration Files\n\nUse the provided environment templates to configure your ECR settings:\n\n```bash\n# Copy the ECR/EKS template for your environment\ncp env-eks-template.env .env.eks.staging\n\n# Edit the file to set your specific values\n# ECR_REGISTRY_URL=707203271462.dkr.ecr.us-east-1.amazonaws.com\n# ECR_REPOSITORY_NAME=pfe-pg-dev-us1-cm-ecr-platform-shared\n# ECR_IMAGE_TAG_STRATEGY=git-commit\n# ECR_IMAGE_TAG_PREFIX=mkdocs-platform\n\n# Load the environment variables\nsource .env.eks.staging\n```",
+    "10": "[.tooling/components/apps/mkdocs-platform/docker/ECR_TAGGING_GUIDE.md#example-build-commands]\n\n### Example Build Commands",
+    "11": "[.tooling/components/apps/mkdocs-platform/docker/ECR_TAGGING_GUIDE.md#build-and-push-to-your-ecr-repository]\n\n#### Build and Push to Your ECR Repository\n\n```bash\n# Set environment variables (or load from .env file)\nexport ECR_REGISTRY_URL=707203271462.dkr.ecr.us-east-1.amazonaws.com\nexport ECR_REPOSITORY_NAME=pfe-pg-dev-us1-cm-ecr-platform-shared\nexport ECR_IMAGE_TAG_STRATEGY=git-commit\nexport ECR_IMAGE_TAG_PREFIX=mkdocs-platform\n\n# Build for dev environment\npython _helpers/scripts/build_docker.py --docker-env=dev\n\n# Build and push for dev environment\npython _helpers/scripts/build_docker.py --docker-env=dev --push\n\n# Build with custom tag\npython _helpers/scripts/build_docker.py --docker-env=prod --tag=v1.0.0 --push\n```",
+    "12": "[.tooling/components/apps/mkdocs-platform/docker/ECR_TAGGING_GUIDE.md#override-ecr-settings-via-command-line]\n\n#### Override ECR Settings via Command Line\n\n```bash\n# Override repository (useful for different projects in same ECR registry)\npython _helpers/scripts/build_docker.py \\\n  --repository=pfe-pg-dev-us1-cm-ecr-platform-shared \\\n  --docker-env=dev \\\n  --push\n\n# Override tag strategy\npython _helpers/scripts/build_docker.py \\\n  --tag-strategy=timestamp \\\n  --tag-prefix=docs-platform \\\n  --docker-env=prod \\\n  --push\n```",
+    "13": "[.tooling/components/apps/mkdocs-platform/docker/ECR_TAGGING_GUIDE.md#multiple-images-in-same-repository]\n\n### Multiple Images in Same Repository\n\nSince you're using a shared ECR repository, you can differentiate images using prefixes:\n\n```bash\n# For different applications in the same repository:\nECR_IMAGE_TAG_PREFIX=mkdocs-platform    # Results in: mkdocs-platform-dev-abc123, mkdocs-platform-prod-abc123\nECR_IMAGE_TAG_PREFIX=api-service         # Results in: api-service-dev-abc123, api-service-prod-abc123\nECR_IMAGE_TAG_PREFIX=web-frontend        # Results in: web-frontend-dev-abc123, web-frontend-prod-abc123\n```",
+    "14": "[.tooling/components/apps/mkdocs-platform/docker/ECR_TAGGING_GUIDE.md#viewing-images-in-ecr]\n\n### Viewing Images in ECR\n\nAfter pushing, you can view your images:\n\n```bash\n# List all images in your repository\naws ecr describe-images \\\n  --repository-name pfe-pg-dev-us1-cm-ecr-platform-shared \\\n  --region us-east-1\n\n# List only mkdocs-platform images\naws ecr describe-images \\\n  --repository-name pfe-pg-dev-us1-cm-ecr-platform-shared \\\n  --region us-east-1 \\\n  --image-ids imageTag=mkdocs-platform-staging-latest\n```",
+    "15": "[.tooling/components/apps/mkdocs-platform/docker/ECR_TAGGING_GUIDE.md#cicd-integration]\n\n### CI/CD Integration\n\nIn your GitHub Actions workflow, the tagging will work automatically:\n\n```yaml\nenv:\n  ECR_REGISTRY_URL: 707203271462.dkr.ecr.us-east-1.amazonaws.com\n  ECR_REPOSITORY_NAME: pfe-pg-dev-us1-cm-ecr-platform-shared\n  ECR_IMAGE_TAG_STRATEGY: git-commit\n  ECR_IMAGE_TAG_PREFIX: mkdocs-platform\n\nsteps:\n  - name: Build and push to ECR\n    run: |\n      python _helpers/scripts/build_docker.py --docker-env=staging --push\n```\n\nThis will automatically generate a unique tag for each commit and push it to your ECR repository.",
+    "16": "[.tooling/components/apps/mkdocs-platform/docker/ECR_TAGGING_GUIDE.md#best-practices]\n\n### Best Practices\n\n1. **Use git-commit strategy for production** - Ensures traceability\n2. **Include environment in prefix** - Easy to identify environment-specific images\n3. **Use semantic versioning for releases** - e.g., `--tag=v1.2.3-production`\n4. **Enable lifecycle policies** - Automatically cleanup old images to save costs\n\nYour ECR repository will now contain images with clear, traceable tags that make it easy to deploy specific versions to EKS."
+  },
+  "coverage": {
+    "total_pages": 16,
+    "covered_pages": 16,
+    "sampled_pages": 16,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 16
+  }
+}

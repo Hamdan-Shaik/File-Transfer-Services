@@ -1,0 +1,287 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "ADR-SEC-011: IAM Bootstrap Seed Strategy — Root Admin Seeding via IaC and Kubernetes Init Job",
+  "document_description": "A new Portal Studio environment has an empty `user_authorization` table. No user can log in with admin rights to grant the first admin — a classic bootstrap chicken-and-egg problem. This ADR resolves it by having the `deploy-studio` Terraform formation accept a `bootstrap_admin_email` variable per environment, storing it in AWS Secrets Manager during `IAC-FOUNDATION-{env}` provisioning, and execut",
+  "total_pages": 29,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 29,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "ADR-SEC-011: IAM Bootstrap Seed Strategy — Root Admin Seeding via IaC and Kubernetes Init Job",
+          "node_id": "adr-sec-011-iam-bootstrap-seed-strategy--root-admin-seeding-via-iac-and-kubernetes-init-job",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Decision Summary",
+          "node_id": "decision-summary",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Context and Problem Statement",
+          "node_id": "context-and-problem-statement",
+          "start_index": 5,
+          "end_index": 6,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Decision Drivers",
+              "node_id": "decision-drivers",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Required Option",
+          "node_id": "required-option",
+          "start_index": 7,
+          "end_index": 13,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "IaC-Seeded Root Admin via Secrets Manager and Kubernetes Init Job",
+              "node_id": "iac-seeded-root-admin-via-secrets-manager-and-kubernetes-init-job",
+              "start_index": 8,
+              "end_index": 13,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Step 1: Terraform Variable at Environment Scaffold Time",
+                  "node_id": "step-1-terraform-variable-at-environment-scaffold-time",
+                  "start_index": 9,
+                  "end_index": 9,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 2: Secret Stored in AWS Secrets Manager During IAC-FOUNDATION",
+                  "node_id": "step-2-secret-stored-in-aws-secrets-manager-during-iac-foundation",
+                  "start_index": 10,
+                  "end_index": 10,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 3: Kubernetes Init Job Writes the Bootstrap Row",
+                  "node_id": "step-3-kubernetes-init-job-writes-the-bootstrap-row",
+                  "start_index": 11,
+                  "end_index": 11,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 4: Post-Bootstrap Actions (Deploying Engineer)",
+                  "node_id": "step-4-post-bootstrap-actions-deploying-engineer",
+                  "start_index": 12,
+                  "end_index": 12,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "IRSA Role Separation",
+                  "node_id": "irsa-role-separation",
+                  "start_index": 13,
+                  "end_index": 13,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Considered Options",
+          "node_id": "considered-options",
+          "start_index": 14,
+          "end_index": 18,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Option 1: IaC-Seeded Root Admin via Secrets Manager and Kubernetes Init Job — Selected",
+              "node_id": "option-1-iac-seeded-root-admin-via-secrets-manager-and-kubernetes-init-job--selected",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Option 2: \"First User Wins\" (First Authenticated User Becomes Admin)",
+              "node_id": "option-2-first-user-wins-first-authenticated-user-becomes-admin",
+              "start_index": 16,
+              "end_index": 16,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Option 3: Hard-Coded Bootstrap User in Application Config File",
+              "node_id": "option-3-hard-coded-bootstrap-user-in-application-config-file",
+              "start_index": 17,
+              "end_index": 17,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Option 4: Manual DB Insert by DBA",
+              "node_id": "option-4-manual-db-insert-by-dba",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Decision Outcome",
+          "node_id": "decision-outcome",
+          "start_index": 19,
+          "end_index": 19,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Consequences",
+          "node_id": "consequences",
+          "start_index": 20,
+          "end_index": 23,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "✅ Positive",
+              "node_id": "-positive",
+              "start_index": 21,
+              "end_index": 21,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "❌ Negative",
+              "node_id": "-negative",
+              "start_index": 22,
+              "end_index": 22,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "⚪ Neutral",
+              "node_id": "-neutral",
+              "start_index": 23,
+              "end_index": 23,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Risk Assessment & Mitigation",
+          "node_id": "risk-assessment--mitigation",
+          "start_index": 24,
+          "end_index": 26,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "⚠️ Risks",
+              "node_id": "-risks",
+              "start_index": 25,
+              "end_index": 25,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "🛡️ Mitigations",
+              "node_id": "-mitigations",
+              "start_index": 26,
+              "end_index": 26,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Compliance Notes",
+          "node_id": "compliance-notes",
+          "start_index": 27,
+          "end_index": 27,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Review and Approval",
+          "node_id": "review-and-approval",
+          "start_index": 28,
+          "end_index": 28,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "📋 Change Log",
+          "node_id": "-change-log",
+          "start_index": 29,
+          "end_index": 29,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "> **Promoted from:** `mmes-cms-studio/docs/decisions/ADR-SEC-011-iam-bootstrap-seed.md`  \n> **Ref-arch artifact ID:** `GUID-SEC-IAM-001-iam-bootstrap-seed-strategy`  \n> This document has been promoted to the Enterprise Architecture Platform reference architecture. Product repos should reference this artifact rather than maintaining their own copy.\n\n---",
+    "2": "[strategy/guidance/security/GUID-SEC-IAM-001-iam-bootstrap-seed-strategy.md#adr-sec-011-iam-bootstrap-seed-strategy--root-admin-seeding-via-iac-and-kubernetes-init-job]\n\n## ADR-SEC-011: IAM Bootstrap Seed Strategy — Root Admin Seeding via IaC and Kubernetes Init Job\n\n---\n\n|               |                                                                                                                                              |\n| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |\n| **Status**    | ✅ Accepted                                                                                                                                   |\n| **Date**      | 2026-08-05                                                                                                                                   |\n| **Issuer**    | [Enterprise Architecture Practice](mailto:EAP-Core@mygainwell.onmicrosoft.com?subject=ADR-SEC-011%20IAM-Bootstrap-Seed)                   |\n| **Consulted** | Mike Goppert, James Macurak                                                                                                                 |\n| **Informed**  | MMES Platform Team, Gainwell EA                                                                                                             |\n\n---",
+    "3": "[strategy/guidance/security/GUID-SEC-IAM-001-iam-bootstrap-seed-strategy.md#table-of-contents]\n\n## Table of Contents\n\n- [Decision Summary](#decision-summary)\n- [Context and Problem Statement](#context-and-problem-statement)\n- [Required Option](#required-option)\n- [Considered Options](#considered-options)\n- [Decision Outcome](#decision-outcome)\n- [Consequences](#consequences)\n- [Risk Assessment & Mitigation](#risk-assessment--mitigation)\n- [Compliance Notes](#compliance-notes)\n- [Review and Approval](#review-and-approval)\n\n---",
+    "4": "[strategy/guidance/security/GUID-SEC-IAM-001-iam-bootstrap-seed-strategy.md#decision-summary]\n\n## Decision Summary\n\nA new Portal Studio environment has an empty `user_authorization` table. No user can log in with admin rights to grant the first admin — a classic bootstrap chicken-and-egg problem. This ADR resolves it by having the `deploy-studio` Terraform formation accept a `bootstrap_admin_email` variable per environment, storing it in AWS Secrets Manager during `IAC-FOUNDATION-{env}` provisioning, and executing a Kubernetes init Job (`studio-bootstrap`) during the first Helm chart deployment. The init Job reads the secret via IRSA and writes exactly one `studio-admin` row to `user_authorization` (with `email` set and `aad_object_id = NULL`). The AAD Object ID is resolved and backfilled when the bootstrap admin first logs in. The operation is idempotent via `INSERT ... ON CONFLICT DO NOTHING`.\n\n---",
+    "5": "[strategy/guidance/security/GUID-SEC-IAM-001-iam-bootstrap-seed-strategy.md#context-and-problem-statement]\n\n## Context and Problem Statement\n\n**Business Context:** ADR-SEC-002 defines the four-tier RBAC model and establishes `studio-admin` as the top authorization tier, with the ability to grant or revoke roles for any user in any tenant or environment. However, ADR-SEC-002 does not specify how the first `studio-admin` row enters the `user_authorization` table when a new environment is provisioned from scratch. Without a governed bootstrap path, teams resort to ad-hoc manual DB inserts, hard-coded bootstrap users in config files, or \"first user wins\" logic — all of which carry security or auditability risks.\n\n**Technical Context:** The `user_authorization` table is owned by `StudioServer` and is empty on first deployment. The Portal Studio authorization middleware rejects any request that does not have a matching `studio-admin` row for the authenticated user's AAD Object ID. This means there is no UI path to create the first admin — the middleware blocks it before any admin endpoint is reachable.\n\n**Problem Statement:** How does the first `studio-admin` row get into `user_authorization` in a governed, auditable, and IaC-driven way, without requiring a DBA manual insert or a privileged application bypass?",
+    "6": "[strategy/guidance/security/GUID-SEC-IAM-001-iam-bootstrap-seed-strategy.md#decision-drivers]\n\n### Decision Drivers\n\n- 🔒 **Zero privileged credentials** — no password, PAT, or service account credential should be stored; the AAD OID is a public identifier\n- 📋 **Auditability** — the bootstrap row must be distinguishable from human-granted rows in the audit log\n- ⚙️ **IaC-driven** — the bootstrap identity must be configurable at environment scaffold time, not hard-coded in application code or config files\n- 🔄 **Idempotency** — re-running the init Job (e.g., after a rollback or re-deploy) must never create duplicate rows or corrupt existing authorization state\n- 🔑 **Least privilege** — the Secrets Manager secret should only be readable by the bootstrap Job, not by application pods\n\n---",
+    "7": "[strategy/guidance/security/GUID-SEC-IAM-001-iam-bootstrap-seed-strategy.md#required-option]\n\n## Required Option",
+    "8": "[strategy/guidance/security/GUID-SEC-IAM-001-iam-bootstrap-seed-strategy.md#iac-seeded-root-admin-via-secrets-manager-and-kubernetes-init-job]\n\n### IaC-Seeded Root Admin via Secrets Manager and Kubernetes Init Job",
+    "9": "[strategy/guidance/security/GUID-SEC-IAM-001-iam-bootstrap-seed-strategy.md#step-1-terraform-variable-at-environment-scaffold-time]\n\n#### Step 1: Terraform Variable at Environment Scaffold Time\n\nThe `deploy-studio` Terraform formation accepts a per-environment input variable:\n\n```hcl\nvariable \"bootstrap_admin_email\" {\n  description = \"Gainwell email of the engineer bootstrapping studio-admin access for this environment (e.g. mgoppert@gainwelltechnologies.com). One-time per environment.\"\n  type        = string\n  sensitive   = false\n}\n```\n\nThe deploying engineer supplies their own Gainwell email address. This is a one-time operation per environment performed during initial scaffolding. The email must match the `email` claim that Azure AD will issue in the JWT when that person authenticates — which is their standard Gainwell corporate email.",
+    "10": "[strategy/guidance/security/GUID-SEC-IAM-001-iam-bootstrap-seed-strategy.md#step-2-secret-stored-in-aws-secrets-manager-during-iac-foundation]\n\n#### Step 2: Secret Stored in AWS Secrets Manager During IAC-FOUNDATION\n\nDuring `IAC-FOUNDATION-{env}` provisioning, Terraform writes the value to Secrets Manager:\n\n```\n{product_name}/{env}/bootstrap-admin-email\n```\n\nThe secret is a plain string containing the Gainwell email address. Email is not a credential — it is acceptable to store in Secrets Manager for operational convenience. It is protected by the `alias/portal-studio-secrets-{env}` KMS CMK (per ADR-SEC-008). The secret's resource policy grants `secretsmanager:GetSecretValue` only to the `studio-bootstrap-irsa` IRSA role.",
+    "11": "[strategy/guidance/security/GUID-SEC-IAM-001-iam-bootstrap-seed-strategy.md#step-3-kubernetes-init-job-writes-the-bootstrap-row]\n\n#### Step 3: Kubernetes Init Job Writes the Bootstrap Row\n\nA Kubernetes `Job` named `studio-bootstrap` is declared in the Portal Studio Helm chart. It runs as an init-style job on first deployment (controlled via a Helm `hook` annotation). The Job:\n\n1. Assumes the `studio-bootstrap-irsa` IRSA role (bound to the `studio-bootstrap` Kubernetes service account)\n2. Calls `secretsmanager:GetSecretValue` for `{product_name}/{env}/bootstrap-admin-oid`\n3. Executes the following SQL against the `studio-config` Aurora cluster:\n\n```sql\nINSERT INTO user_authorization (\n  aad_object_id,   -- NULL; resolved when the bootstrap admin first logs in\n  email,           -- value from Secrets Manager\n  tenant_id,\n  environment,\n  role,\n  granted_by,\n  revoked_at\n)\nVALUES (\n  NULL,\n  '<value from Secrets Manager>',\n  '*',\n  '*',\n  'studio-admin',\n  'system:bootstrap',\n  NULL\n)\nON CONFLICT (email, tenant_id, environment, role) DO NOTHING;\n```\n\nWhen the bootstrap admin first authenticates, `AuthorizationService` matches the incoming JWT `email` claim against `user_authorization.email WHERE aad_object_id IS NULL`, backfills `aad_object_id` from the JWT `sub` (= AAD oid), and all subsequent lookups use `aad_object_id`.\n\nThe `tenant_id = '*'` and `environment = '*'` wildcards grant global studio-admin access, matching the ADR-SEC-002 four-tier model's top-tier scope. The `granted_by = 'system:bootstrap'` value is a reserved sentinel that distinguishes bootstrap rows from UI-granted rows in all audit queries.",
+    "12": "[strategy/guidance/security/GUID-SEC-IAM-001-iam-bootstrap-seed-strategy.md#step-4-post-bootstrap-actions-deploying-engineer]\n\n#### Step 4: Post-Bootstrap Actions (Deploying Engineer)\n\nAfter first login, the bootstrap admin should:\n\n1. Log in to Portal Studio and confirm `studio-admin` access is active\n2. Grant at least one other user `studio-admin` via the UI (belt-and-suspenders redundancy)\n3. Optionally revoke their own bootstrap row via the UI once a replacement admin is in place\n\nThe bootstrap row is never auto-deleted. It persists as an audit trail. The `granted_by = 'system:bootstrap'` marker makes it queryable and distinguishable. Revoking it sets `revoked_at` to the current timestamp (soft delete), consistent with the standard authorization revocation model.",
+    "13": "[strategy/guidance/security/GUID-SEC-IAM-001-iam-bootstrap-seed-strategy.md#irsa-role-separation]\n\n#### IRSA Role Separation\n\n| IRSA Role | Secrets Manager Access |\n|---|---|\n| `studio-bootstrap-irsa` | `secretsmanager:GetSecretValue` for `{product_name}/{env}/bootstrap-admin-oid` only |\n| `studio-server-irsa` | No access to `bootstrap-admin-oid` secret |\n| `portal-data-service-irsa` | No access to `bootstrap-admin-oid` secret |\n\nThe `studio-bootstrap-irsa` role exists solely for the init Job. It has no other permissions and is not used by any long-running application pod.\n\n**Pros:**\n- ✅ No privileged credential stored anywhere — AAD OID is a public identifier, not a secret\n- ✅ Fully IaC-driven — bootstrap identity is set at environment scaffold time, not in application code\n- ✅ Auditable — `granted_by = 'system:bootstrap'` is a distinct, queryable sentinel value\n- ✅ Idempotent — `ON CONFLICT DO NOTHING` prevents duplicates on re-run\n- ✅ Least privilege — `studio-bootstrap-irsa` is the only role that can read the bootstrap secret; no application pod can access it\n- ✅ Revocable — the bootstrap row can be soft-deleted via the UI once a replacement admin is established\n\n**Cons:**\n- ❌ Requires the deploying engineer to know their AAD Object ID at environment scaffold time\n- ❌ One additional IRSA role (`studio-bootstrap-irsa`) and Helm Job to maintain\n\n---",
+    "14": "[strategy/guidance/security/GUID-SEC-IAM-001-iam-bootstrap-seed-strategy.md#considered-options]\n\n## Considered Options",
+    "15": "[strategy/guidance/security/GUID-SEC-IAM-001-iam-bootstrap-seed-strategy.md#option-1-iac-seeded-root-admin-via-secrets-manager-and-kubernetes-init-job--selected]\n\n### Option 1: IaC-Seeded Root Admin via Secrets Manager and Kubernetes Init Job — Selected\n\n**Pros:** ✅ Zero privileged credentials; fully IaC-driven; auditable; idempotent; least-privilege secret access  \n**Cons:** ❌ Deploying engineer must supply their AAD OID at scaffold time; one additional IRSA role",
+    "16": "[strategy/guidance/security/GUID-SEC-IAM-001-iam-bootstrap-seed-strategy.md#option-2-first-user-wins-first-authenticated-user-becomes-admin]\n\n### Option 2: \"First User Wins\" (First Authenticated User Becomes Admin)\n\n**Pros:** ✅ Zero configuration; no engineer action required  \n**Cons:** ❌ Race-condition risk in environments with multiple users; cannot be automated or predicted in IaC; violates the principle that access grants must be intentional and auditable; creates a window where any authenticated user can claim studio-admin before the intended admin logs in",
+    "17": "[strategy/guidance/security/GUID-SEC-IAM-001-iam-bootstrap-seed-strategy.md#option-3-hard-coded-bootstrap-user-in-application-config-file]\n\n### Option 3: Hard-Coded Bootstrap User in Application Config File\n\n**Pros:** ✅ Simple; no Terraform variable needed  \n**Cons:** ❌ Violates ADR-APP-016 (Secrets Manager is the approved secrets store); hard-coded OIDs in config files are not environment-specific and create risk of bootstrap access persisting across promotions; does not satisfy the auditability requirement",
+    "18": "[strategy/guidance/security/GUID-SEC-IAM-001-iam-bootstrap-seed-strategy.md#option-4-manual-db-insert-by-dba]\n\n### Option 4: Manual DB Insert by DBA\n\n**Pros:** ✅ No application code change; no IaC change  \n**Cons:** ❌ Not auditable via the application's authorization audit log (the insert bypasses `granted_by` tracking); violates least-privilege (DBA must have direct write access to the `user_authorization` table); not repeatable or scriptable in a governed way; creates operational dependency on DBA availability at environment bootstrap time\n\n---",
+    "19": "[strategy/guidance/security/GUID-SEC-IAM-001-iam-bootstrap-seed-strategy.md#decision-outcome]\n\n## Decision Outcome\n\n**Selected:** Option 1 — IaC-seeded root admin via AWS Secrets Manager and a Kubernetes `studio-bootstrap` init Job. The deploying engineer supplies their Gainwell email as a Terraform variable at environment scaffold time. The init Job reads the secret and writes a single idempotent `studio-admin` row (`aad_object_id = NULL`, `email = <value>`) with `granted_by = 'system:bootstrap'`. The AAD oid is resolved and backfilled on first login.\n\n---",
+    "20": "[strategy/guidance/security/GUID-SEC-IAM-001-iam-bootstrap-seed-strategy.md#consequences]\n\n## Consequences",
+    "21": "[strategy/guidance/security/GUID-SEC-IAM-001-iam-bootstrap-seed-strategy.md#-positive]\n\n### ✅ Positive\n\n- The bootstrap path is fully repeatable, IaC-controlled, and environment-specific — no manual steps or DBA involvement\n- `granted_by = 'system:bootstrap'` rows are permanently distinguishable from human-granted rows in all authorization audit queries\n- The AAD OID stored in Secrets Manager is a public identifier — its exposure carries no credential risk\n- Idempotency via `ON CONFLICT DO NOTHING` ensures safe re-execution during rollbacks or re-deploys\n- The bootstrap admin can delegate authority and optionally self-revoke — the system does not depend on the bootstrap row remaining active indefinitely\n- IRSA role separation ensures no running application pod can read the bootstrap secret after the init Job completes",
+    "22": "[strategy/guidance/security/GUID-SEC-IAM-001-iam-bootstrap-seed-strategy.md#-negative]\n\n### ❌ Negative\n\n- Deploying engineers must know how to retrieve their AAD Object ID (`az ad user show`) — runbook documentation is required\n- One additional IRSA role (`studio-bootstrap-irsa`) increases the IAM surface in the Terraform formation",
+    "23": "[strategy/guidance/security/GUID-SEC-IAM-001-iam-bootstrap-seed-strategy.md#-neutral]\n\n### ⚪ Neutral\n\n- The bootstrap row remains in `user_authorization` indefinitely as an audit trail; it does not affect normal authorization behavior once the bootstrap admin has delegated to other admins and (optionally) revoked their own row\n- The `studio-bootstrap` Kubernetes Job runs once per first deployment; subsequent deploys skip it (controlled via Helm hook annotation `helm.sh/hook-delete-policy: before-hook-creation,hook-succeeded`)\n\n---",
+    "24": "[strategy/guidance/security/GUID-SEC-IAM-001-iam-bootstrap-seed-strategy.md#risk-assessment--mitigation]\n\n## Risk Assessment & Mitigation",
+    "25": "[strategy/guidance/security/GUID-SEC-IAM-001-iam-bootstrap-seed-strategy.md#-risks]\n\n### ⚠️ Risks\n\n- **Wrong email supplied at scaffold time** — the init Job writes the wrong user as the bootstrap admin; the intended admin has no access\n- **Bootstrap secret accessed by unintended role** — a misconfigured IRSA binding grants an application pod access to the bootstrap secret\n- **Bootstrap row never revoked** — the bootstrap admin retains global `studio-admin` access indefinitely even after leaving the project",
+    "26": "[strategy/guidance/security/GUID-SEC-IAM-001-iam-bootstrap-seed-strategy.md#-mitigations]\n\n### 🛡️ Mitigations\n\n- **Wrong email:** Email is a human-readable value the deploying engineer knows without a lookup command. The Terraform variable description explicitly states it must match the Gainwell corporate email Azure AD will issue in the JWT. The init Job can be re-run after correcting the Secrets Manager value — the existing row's `ON CONFLICT DO NOTHING` is on `(email, tenant_id, environment, role)`, so a corrected email creates a new row cleanly.\n- **Secret access:** The `studio-bootstrap-irsa` IRSA role is bound only to the `studio-bootstrap` Kubernetes service account. The `studio-server` and `portal-data-service` service accounts are not bound to this role. The Secrets Manager resource policy enforces this at the AWS layer independently of the IRSA binding.\n- **Bootstrap row persistence:** The `granted_by = 'system:bootstrap'` sentinel is included in the quarterly authorization hygiene review process. Environments with an active bootstrap row and more than 30 days of active operation trigger a review notification. The bootstrap admin is responsible for revoking their own row once successor admins are established — this is documented in the environment runbook and the post-bootstrap checklist.\n\n---",
+    "27": "[strategy/guidance/security/GUID-SEC-IAM-001-iam-bootstrap-seed-strategy.md#compliance-notes]\n\n## Compliance Notes\n\n- **ADR-SEC-002** — defines the four-tier RBAC model; this ADR governs how the top tier (`studio-admin`) is seeded on first environment provisioning\n- **ADR-APP-016** — mandates AWS Secrets Manager for all secrets; the bootstrap OID is stored there, not in config files or environment variables\n- **ADR-SEC-008** — the `{product_name}/{env}/bootstrap-admin-oid` secret is encrypted by `alias/portal-studio-secrets-{env}` CMK, consistent with the KMS key catalog\n- **GUID-SEC-CLOUD-IAM-2.6.01** — least-privilege identity; the `studio-bootstrap-irsa` role has the minimum permissions required for the bootstrap operation and no others\n- **HIPAA §164.312(a)(1)** — access control; the bootstrap authorization grant is fully auditable via the `granted_by` field and Secrets Manager CloudTrail logs\n- **Related ADRs:** ADR-SEC-001 (identity broker), ADR-SEC-002 (RBAC model), ADR-APP-016 (secrets management), ADR-SEC-008 (KMS governance)\n\n---",
+    "28": "[strategy/guidance/security/GUID-SEC-IAM-001-iam-bootstrap-seed-strategy.md#review-and-approval]\n\n## Review and Approval\n\n| Role | Name | Date | Status |\n| --- | --- | --- | --- |\n| Enterprise Architecture Lead | Mike Goppert | 2026-08-05 | ✅ Approved |\n| Enterprise Application Architect Lead | James Macurak | 2026-08-05 | ✅ Approved |\n\n---",
+    "29": "[strategy/guidance/security/GUID-SEC-IAM-001-iam-bootstrap-seed-strategy.md#-change-log]\n\n## 📋 Change Log\n\n| Version | Date | Author | Description |\n| --- | --- | --- | --- |\n| 1.0 | 2026-08-05 | Mike Goppert | Initial decision — IaC-seeded root admin via Secrets Manager and Kubernetes init Job |"
+  },
+  "coverage": {
+    "total_pages": 29,
+    "covered_pages": 29,
+    "sampled_pages": 29,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 29
+  }
+}

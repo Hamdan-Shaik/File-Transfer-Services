@@ -1,0 +1,157 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "File Resolution (auto-detect, never ask)",
+  "document_description": "Create diagrams for a markdown document. Auto-detects the source file and auto-routes to `/modeler` or `/presenter` based on content analysis.",
+  "total_pages": 15,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 15,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "File Resolution (auto-detect, never ask)",
+          "node_id": "file-resolution-auto-detect-never-ask",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Route Resolution (auto-detect, confirm don't ask)",
+          "node_id": "route-resolution-auto-detect-confirm-dont-ask",
+          "start_index": 3,
+          "end_index": 6,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Explicit flags (skip analysis)",
+              "node_id": "explicit-flags-skip-analysis",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Content-based auto-routing (no flags)",
+              "node_id": "content-based-auto-routing-no-flags",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Confirm, don't ask",
+              "node_id": "confirm-dont-ask",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Keyword Signals",
+          "node_id": "keyword-signals",
+          "start_index": 7,
+          "end_index": 7,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Cascade Mode (`--cascade <path>`)",
+          "node_id": "cascade-mode---cascade-path",
+          "start_index": 8,
+          "end_index": 11,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Cascade workflow",
+              "node_id": "cascade-workflow",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "When to skip cascade",
+              "node_id": "when-to-skip-cascade",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Cascade example",
+              "node_id": "cascade-example",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Shared Resources",
+          "node_id": "shared-resources",
+          "start_index": 12,
+          "end_index": 12,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "When Both Skills Are Needed",
+          "node_id": "when-both-skills-are-needed",
+          "start_index": 13,
+          "end_index": 13,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Workflow",
+          "node_id": "workflow",
+          "start_index": 14,
+          "end_index": 14,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Examples",
+          "node_id": "examples",
+          "start_index": 15,
+          "end_index": 15,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "Create diagrams for a markdown document. Auto-detects the source file and auto-routes to `/modeler` or `/presenter` based on content analysis.",
+    "2": "[.claude/commands/eap-diagram.md#file-resolution-auto-detect-never-ask]\n\n## File Resolution (auto-detect, never ask)\n\nResolve the source file in this order — use the **first match**, do not prompt:\n\n1. `$ARGUMENTS` contains a file path → use that\n2. `$ARGUMENTS` contains `--model` or `--present` with no path → fall through to #3\n3. IDE context — check for ANY of these (they may appear anywhere in the conversation, not just the current message):\n   - `ide_selection` tags with a file path\n   - `ide_opened_file` tags with a file path\n   - File attachments pinned to the chat window\n   - Recently referenced file paths in the conversation\n4. **None of the above** → ask the user which file (this is the only time to ask about the file)",
+    "3": "[.claude/commands/eap-diagram.md#route-resolution-auto-detect-confirm-dont-ask]\n\n## Route Resolution (auto-detect, confirm don't ask)",
+    "4": "[.claude/commands/eap-diagram.md#explicit-flags-skip-analysis]\n\n### Explicit flags (skip analysis)\n\n- `--model` → route to `/modeler`, no questions\n- `--present` → route to `/presenter`, no questions",
+    "5": "[.claude/commands/eap-diagram.md#content-based-auto-routing-no-flags]\n\n### Content-based auto-routing (no flags)\n\nRead the document and analyze its content. Route based on what you find:\n\n**Route to `/presenter`** when the document contains:\n\n- Org charts, team structures, reporting hierarchies\n- Budget tables, cost breakdowns, ROI calculations\n- Phase timelines, roadmaps, milestone summaries\n- Approach comparisons, side-by-side evaluations\n- Content clearly aimed at leadership/ELT communication\n- Existing `-deck.drawio` files in the `assets/` folder\n\n**Route to `/modeler`** when the document contains:\n\n- Entity relationships, data schemas, database design\n- API flows, service interactions, integration sequences\n- Process logic, decision trees, validation flows\n- State machines, lifecycle transitions\n- Domain models, bounded contexts, aggregate roots\n- C4 architecture (context, container, component)\n\n**Route to both** when the document has a mix — e.g., a plan with both technical architecture (modeler) and leadership-facing phases/budget (presenter).",
+    "6": "[.claude/commands/eap-diagram.md#confirm-dont-ask]\n\n### Confirm, don't ask\n\nAfter analyzing, **state your routing decision and proceed** — don't present a menu. Example:\n\n```text\nThis document has org structure, budget, and phase timelines — routing to `/presenter` for deck visuals.\n```\n\n```text\nThis document has API sequences and an ER model — routing to `/modeler` for inline Mermaid diagrams.\n```\n\n```text\nThis document has both technical architecture (sequences, data model) and leadership content (phases, budget). Creating:\n- `/modeler` — inline Mermaid for the architecture sections\n- `/presenter` — Draw.io deck visuals for the phases and budget\n```\n\nIf the analysis is truly ambiguous (rare), state what you see and ask.",
+    "7": "[.claude/commands/eap-diagram.md#keyword-signals]\n\n## Keyword Signals\n\nThese keywords short-circuit content analysis:\n\n**Route to `/presenter`**: \"deck\", \"slide\", \"presentation\", \"ELT\", \"pitch\", \"comparison chart\"\n\n**Route to `/modeler`**: \"ER diagram\", \"data model\", \"sequence diagram\", \"flowchart\", \"state machine\", \"C4\"",
+    "8": "[.claude/commands/eap-diagram.md#cascade-mode---cascade-path]\n\n## Cascade Mode (`--cascade <path>`)\n\nWhen `/documenter` modifies a markdown file, run in cascade mode to detect and update affected diagrams:\n\n```text\n/diagram --cascade docs/design/path/to/changed-file.md\n```",
+    "9": "[.claude/commands/eap-diagram.md#cascade-workflow]\n\n### Cascade workflow\n\n1. Grep all `.drawio` files for `sourceMarkdown` attributes matching the changed path:\n\n   ```bash\n   grep -rl 'sourceMarkdown=\"<changed-file-relative-path>\"' --include='*.drawio' docs/\n   ```\n\n2. For each matched `.drawio` file, read the `<diagram>` element:\n   - `diagramContext=\"deck\"` → route to **`/presenter`**\n     - Use `--content-only` if only text/numbers changed\n     - Use full regenerate if structure changed\n   - `diagramContext=\"document\"` or absent → route to **`/modeler`**\n3. Pass context to the skill: the changed markdown path, a summary of what changed, and whether it is content-only or structural\n4. After the skill completes, re-export SVGs for all updated `.drawio` files",
+    "10": "[.claude/commands/eap-diagram.md#when-to-skip-cascade]\n\n### When to skip cascade\n\n- The markdown change is trivial (typo, formatting) and does not affect diagram content\n- The markdown file has no matching `sourceMarkdown` in any `.drawio` file (most docs won't)",
+    "11": "[.claude/commands/eap-diagram.md#cascade-example]\n\n### Cascade example\n\n```text\n1. /documenter updates approach-comparison.md (phases renamed)\n2. /diagram --cascade approach-comparison.md\n3. Grep finds: strangler-fig-migration-deck.drawio (sourceMarkdown matches, diagramContext=\"deck\")\n4. Routes to /presenter with:\n   - File: strangler-fig-migration-deck.drawio\n   - Change: \"Phase labels renamed, timeline months shifted\"\n   - Mode: --content-only\n5. /presenter updates .drawio XML and re-exports SVG\n```",
+    "12": "[.claude/commands/eap-diagram.md#shared-resources]\n\n## Shared Resources\n\nBoth skills use:\n\n- `.claude/templates/diagram-style-guide.md` — color palette, font rules, contrast safety\n- `assets/` subfolder convention for Draw.io files\n- SVG naming convention (single tab = same name, multi-tab = name + tab name)\n- `--svg-theme light` for all SVG exports",
+    "13": "[.claude/commands/eap-diagram.md#when-both-skills-are-needed]\n\n## When Both Skills Are Needed\n\nWhen a technical model also needs a presentation version:\n\n1. `/modeler` creates the authoritative Mermaid diagram in the markdown\n2. `/presenter` creates a branded Draw.io version for the deck, referencing the same data\n3. Both artifacts are maintained — Mermaid is the source of truth, Draw.io is the presentation layer",
+    "14": "[.claude/commands/eap-diagram.md#workflow]\n\n## Workflow\n\n1. **Resolve file** — auto-detect per rules above\n2. **Read the full document** — understand its structure and content\n3. **Check `assets/`** — look for existing diagrams that may need updating\n4. **Determine route** — analyze content, state your decision, proceed\n5. **Invoke skill(s)** — `/modeler` and/or `/presenter`\n6. **Report results** — list each diagram created with location",
+    "15": "[.claude/commands/eap-diagram.md#examples]\n\n## Examples\n\n```text\n/diagram docs/design/future-state/conceptual/01-platform-architecture.md\n```\n\nReads the file, sees C4 architecture and data flows, states \"routing to `/modeler`\", creates Mermaid diagrams.\n\n```text\n/diagram --present\n```\n\nUses the IDE's open file, routes directly to `/presenter`.\n\n```text\n/diagram\n```\n\nUses the IDE's open file, reads it, auto-routes based on content.\n\n$ARGUMENTS"
+  },
+  "coverage": {
+    "total_pages": 15,
+    "covered_pages": 15,
+    "sampled_pages": 15,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 15
+  }
+}

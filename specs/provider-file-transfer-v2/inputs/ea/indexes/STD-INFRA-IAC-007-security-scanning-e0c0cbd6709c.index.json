@@ -1,0 +1,424 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "IaC Security Scanning with Checkov Standard",
+  "document_description": "standard_name: 'IaC Security Scanning with Checkov Standard'",
+  "total_pages": 44,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 1,
+      "summary": "",
+      "nodes": []
+    },
+    {
+      "title": "IaC Security Scanning with Checkov Standard",
+      "node_id": "iac-security-scanning-with-checkov-standard",
+      "start_index": 2,
+      "end_index": 44,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Executive Summary",
+          "node_id": "executive-summary",
+          "start_index": 4,
+          "end_index": 8,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Purpose Statement",
+              "node_id": "purpose-statement",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Scope",
+              "node_id": "scope",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Compliance Level",
+              "node_id": "compliance-level",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Business Rationale",
+              "node_id": "business-rationale",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Standard Requirements",
+          "node_id": "standard-requirements",
+          "start_index": 9,
+          "end_index": 20,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Mandatory Requirements",
+              "node_id": "mandatory-requirements",
+              "start_index": 10,
+              "end_index": 17,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "REQ-IAC-007-01: Checkov Must Run Against `iac/terraform/formations/aws/` on Every PR",
+                  "node_id": "req-iac-007-01-checkov-must-run-against-iacterraformformationsaws-on-every-pr",
+                  "start_index": 11,
+                  "end_index": 11,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-IAC-007-02: `CKV_TF_1` Is Suppressed for `pfe-iac-modules` — Release Tags Are the Approved Pinning Mechanism",
+                  "node_id": "req-iac-007-02-ckvtf1-is-suppressed-for-pfe-iac-modules--release-tags-are-the-approved-pinning-mechanism",
+                  "start_index": 12,
+                  "end_index": 12,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-IAC-007-03: Checkov Findings Are Non-Blocking in CI but Must Be Reviewed",
+                  "node_id": "req-iac-007-03-checkov-findings-are-non-blocking-in-ci-but-must-be-reviewed",
+                  "start_index": 13,
+                  "end_index": 13,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-IAC-007-04: HIPAA-Relevant Checks Must Not Be Suppressed Without Written Architecture Exception",
+                  "node_id": "req-iac-007-04-hipaa-relevant-checks-must-not-be-suppressed-without-written-architecture-exception",
+                  "start_index": 14,
+                  "end_index": 14,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-IAC-007-05: Security Suppressions in Formation Code Must Include Justification and Be Reviewed by Security Architecture",
+                  "node_id": "req-iac-007-05-security-suppressions-in-formation-code-must-include-justification-and-be-reviewed-by-security-architecture",
+                  "start_index": 15,
+                  "end_index": 15,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-IAC-007-06: Checkov Results Must Be Uploaded as CI Artifacts for Audit Trail",
+                  "node_id": "req-iac-007-06-checkov-results-must-be-uploaded-as-ci-artifacts-for-audit-trail",
+                  "start_index": 16,
+                  "end_index": 16,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-IAC-007-07: New Formations Must Have Zero CRITICAL Checkov Findings at First Production Deployment",
+                  "node_id": "req-iac-007-07-new-formations-must-have-zero-critical-checkov-findings-at-first-production-deployment",
+                  "start_index": 17,
+                  "end_index": 17,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Recommended Practices",
+              "node_id": "recommended-practices",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Prohibited Practices",
+              "node_id": "prohibited-practices",
+              "start_index": 19,
+              "end_index": 19,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Exceptions Process",
+              "node_id": "exceptions-process",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Technical Specifications",
+          "node_id": "technical-specifications",
+          "start_index": 21,
+          "end_index": 27,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Checkov CI Step Configuration (GitHub Actions)",
+              "node_id": "checkov-ci-step-configuration-github-actions",
+              "start_index": 22,
+              "end_index": 22,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "`verify.sh` Checkov Stage",
+              "node_id": "verifysh-checkov-stage",
+              "start_index": 23,
+              "end_index": 23,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Inline Suppression Pattern (Correct)",
+              "node_id": "inline-suppression-pattern-correct",
+              "start_index": 24,
+              "end_index": 24,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "HIPAA-Relevant Suppression Pattern (Architecture Exception Required)",
+              "node_id": "hipaa-relevant-suppression-pattern-architecture-exception-required",
+              "start_index": 25,
+              "end_index": 25,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "`.checkov.yaml` Baseline for Formation-Wide Suppressions",
+              "node_id": "checkovyaml-baseline-for-formation-wide-suppressions",
+              "start_index": 26,
+              "end_index": 26,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Severity and Blocking Behavior Reference",
+              "node_id": "severity-and-blocking-behavior-reference",
+              "start_index": 27,
+              "end_index": 27,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Implementation Guidelines",
+          "node_id": "implementation-guidelines",
+          "start_index": 28,
+          "end_index": 31,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Implementation Requirements",
+              "node_id": "implementation-requirements",
+              "start_index": 29,
+              "end_index": 29,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Validation Criteria",
+              "node_id": "validation-criteria",
+              "start_index": 30,
+              "end_index": 30,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Testing Requirements",
+              "node_id": "testing-requirements",
+              "start_index": 31,
+              "end_index": 31,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Compliance and Governance",
+          "node_id": "compliance-and-governance",
+          "start_index": 32,
+          "end_index": 36,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Compliance Assessment",
+              "node_id": "compliance-assessment",
+              "start_index": 33,
+              "end_index": 33,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Monitoring Requirements",
+              "node_id": "monitoring-requirements",
+              "start_index": 34,
+              "end_index": 34,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Exception Handling",
+              "node_id": "exception-handling",
+              "start_index": 35,
+              "end_index": 35,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Governance Oversight",
+              "node_id": "governance-oversight",
+              "start_index": 36,
+              "end_index": 36,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Examples and References",
+          "node_id": "examples-and-references",
+          "start_index": 37,
+          "end_index": 42,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Implementation Examples",
+              "node_id": "implementation-examples",
+              "start_index": 38,
+              "end_index": 40,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Example 1: Handling a CRITICAL Finding Before First Production Deployment",
+                  "node_id": "example-1-handling-a-critical-finding-before-first-production-deployment",
+                  "start_index": 39,
+                  "end_index": 39,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Example 2: PR Description Finding Status Note",
+                  "node_id": "example-2-pr-description-finding-status-note",
+                  "start_index": 40,
+                  "end_index": 40,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Related Standards",
+              "node_id": "related-standards",
+              "start_index": 41,
+              "end_index": 41,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "External References",
+              "node_id": "external-references",
+              "start_index": 42,
+              "end_index": 42,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Change History",
+          "node_id": "change-history",
+          "start_index": 43,
+          "end_index": 43,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Review Log",
+          "node_id": "review-log",
+          "start_index": 44,
+          "end_index": 44,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "**[Home](../../../README.md)** > **[Standards](../../README.md)** > **[Infrastructure](../README.md)** > **IaC**\n\n---",
+    "2": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#iac-security-scanning-with-checkov-standard]\n\n# IaC Security Scanning with Checkov Standard\n\n---\n\n**Standards Metadata**\n\n```yaml\nstandard_id: 'STD-INFRA-IAC-007'\nstandard_name: 'IaC Security Scanning with Checkov Standard'\nstandard_type: 'iac'\ncategory: 'infrastructure'\nversion: '1.0.1'\nstatus: 'draft'\ncompliance_level: 'mandatory'\neffective_date: '2026-07-24'\ntags: ['infrastructure', 'iac', 'terraform', 'checkov', 'security-scanning', 'mandatory', 'aws', 'healthcare', 'hipaa', 'supply-chain', 'compliance', 'cis', 'audit']\n```\n\n---",
+    "3": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#table-of-contents]\n\n## Table of Contents\n\n- [Executive Summary](#executive-summary)\n- [Standard Requirements](#standard-requirements)\n- [Technical Specifications](#technical-specifications)\n- [Implementation Guidelines](#implementation-guidelines)\n- [Compliance and Governance](#compliance-and-governance)\n- [Examples and References](#examples-and-references)\n- [Change History](#change-history)\n- [Review Log](#review-log)\n\n---",
+    "4": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#executive-summary]\n\n## Executive Summary",
+    "5": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#purpose-statement]\n\n### Purpose Statement\n\nThis standard defines the mandatory IaC security scanning requirements for all Terraform formation files in Gainwell product repositories. It establishes Checkov as the required scanning tool, mandates scanning against `iac/terraform/formations/aws/` on every PR, documents the approved `CKV_TF_1` exception for `pfe-iac-modules` semver-tag sourcing, specifies the non-blocking but review-mandatory posture for CI findings, prohibits the suppression of HIPAA-relevant controls without a written Architecture Exception, requires justification comments for all inline suppressions, mandates CI artifact upload for audit trail, and establishes zero CRITICAL findings as the deployment gate for new formations entering production.",
+    "6": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#scope]\n\n### Scope\n\n**In scope**: All Terraform `.tf` files in product repository formation directories (`iac/terraform/formations/aws/`). The Checkov execution step in `iac/terraform/.utils/verify.sh` and in the CI pipeline. Finding severity classification, CI artifact requirements, and the inline suppression documentation requirement.\n\n**Out of scope**: Container image scanning (governed by STD-INFRA-EKS-001). AWS Config rule compliance (governed by Platform Engineering). Secrets scanning for application code (governed by application security standards). SAST for non-IaC code. Checkov scanning of `pfe-iac-modules` (governed by Platform Engineering).",
+    "7": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#compliance-level]\n\n### Compliance Level\n\n**Mandatory.** Checkov **must** run against every PR that modifies files in `iac/terraform/formations/aws/`. CI findings are non-blocking (continue-on-error) but generate a mandatory review obligation. CRITICAL findings constitute a deployment gate for new formations entering any production environment. Bypassing Checkov entirely is **prohibited**.",
+    "8": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#business-rationale]\n\n### Business Rationale\n\nIaC misconfigurations are among the most prevalent causes of cloud security incidents. An S3 bucket without encryption at rest, an IAM role with a wildcard resource condition, or a security group with an unrestricted `0.0.0.0/0` ingress rule can each expose PHI or enable lateral movement within the platform. Checkov scans these misconfigurations statically, before any infrastructure is deployed, providing a shift-left security control that catches issues when they are cheapest to fix — during the PR review, before `terraform apply`.\n\nFor a HIPAA-covered entity handling protected health information, encryption at rest, encryption in transit, and access logging are not optional controls. This standard ensures those controls cannot be silently suppressed in IaC without a formal, documented Architecture Exception.\n\n---",
+    "9": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#standard-requirements]\n\n## Standard Requirements",
+    "10": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#mandatory-requirements]\n\n### Mandatory Requirements",
+    "11": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#req-iac-007-01-checkov-must-run-against-iacterraformformationsaws-on-every-pr]\n\n#### REQ-IAC-007-01: Checkov Must Run Against `iac/terraform/formations/aws/` on Every PR\n\nCheckov **must** be executed against `iac/terraform/formations/aws/` as part of the CI pipeline on every PR that modifies `.tf` files in that directory.\n\n- **REQ-IAC-007-01a**: The Checkov scan **must** target the full `iac/terraform/formations/aws/` path using the `-d` flag: `checkov -d iac/terraform/formations/aws/ --framework terraform`. Scoping the scan to a single formation subdirectory is permitted as an optimization but must not be used to avoid scanning a formation that contains known findings.\n- **REQ-IAC-007-01b**: Checkov **must** also run as stage 5 of `verify.sh` when `verify.sh` is invoked locally or in CI. The `verify.sh` invocation targets the specific formation directory. Both the PR-wide CI scan (REQ-IAC-007-01a) and the per-formation `verify.sh` scan are required.\n- **REQ-IAC-007-01c**: The Checkov version used in CI **must** be pinned. Floating `latest` Checkov versions in CI are **prohibited** because check IDs and severity classifications change between Checkov releases.\n- **REQ-IAC-007-01d**: Checkov **must** be configured with `--framework terraform` to scope scanning to Terraform-specific checks. Omitting `--framework` causes Checkov to attempt scanning all framework types including Kubernetes manifests and Dockerfiles, producing irrelevant findings and slowing execution.\n\n**Rationale**: Consistent, mandatory Checkov execution on every PR that touches IaC ensures that no formation reaches the deployment pipeline without at minimum one pass of static security analysis. The per-PR scope ensures that formations introduced in green-field PRs receive their first scan before any code is merged to main. The pinned version requirement ensures that a security finding introduced in a new Checkov release is not silently missed because the CI runner happens to be running an older version.",
+    "12": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#req-iac-007-02-ckvtf1-is-suppressed-for-pfe-iac-modules--release-tags-are-the-approved-pinning-mechanism]\n\n#### REQ-IAC-007-02: `CKV_TF_1` Is Suppressed for `pfe-iac-modules` — Release Tags Are the Approved Pinning Mechanism\n\nThe Checkov check `CKV_TF_1` (\"Ensure Terraform module sources use a commit hash\") **must** be suppressed for all module sources from `pfe-iac-modules` that use semver tags, per STD-INFRA-IAC-002.\n\n- **REQ-IAC-007-02a**: `CKV_TF_1` requires modules to be pinned to a specific git commit hash. Gainwell's module sourcing standard (STD-INFRA-IAC-002) mandates semver tag pinning for `pfe-iac-modules` (`?ref=v2.3.1`). These requirements are in direct conflict. The semver tag approach is the approved Gainwell strategy; `CKV_TF_1` must be suppressed.\n- **REQ-IAC-007-02b**: The suppression **must** be applied at the scan level via `--skip-check CKV_TF_1` in the `checkov` invocation. This is the narrowest possible scope for this suppression because every module source in a Gainwell product formation is a `pfe-iac-modules` git-SSH source (per STD-INFRA-IAC-002), making a scan-level skip equivalent to a per-resource inline skip.\n- **REQ-IAC-007-02c**: This exception is conditioned on Platform Engineering's guarantee of tag immutability in `pfe-iac-modules`. If PE ever adopts mutable tags or allows the same tag to reference different commits, this exception **must** be immediately revoked and commit hash pinning **must** become mandatory.\n- **REQ-IAC-007-02d**: If a formation contains any module source that is not a `pfe-iac-modules` git-SSH source (which is itself a violation of STD-INFRA-IAC-002), the `CKV_TF_1` suppression does NOT apply to that source. The non-`pfe-iac-modules` source is both a sourcing violation and a `CKV_TF_1` finding, and must be remediated.\n\n**Rationale**: `CKV_TF_1` was designed to prevent floating references such as `?ref=main` that can change without notice. Gainwell's semver tags in `pfe-iac-modules` serve the same purpose as commit hashes — they are a specific, unambiguous, human-readable version pin managed by Platform Engineering with an immutability guarantee. Suppressing `CKV_TF_1` for these sources while retaining the broader module sourcing enforcement in STD-INFRA-IAC-002 correctly implements the intent of the original control.",
+    "13": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#req-iac-007-03-checkov-findings-are-non-blocking-in-ci-but-must-be-reviewed]\n\n#### REQ-IAC-007-03: Checkov Findings Are Non-Blocking in CI but Must Be Reviewed\n\nThe Checkov CI step **must** run with `continue-on-error: true` (non-blocking). However, all findings — regardless of severity — **must** be reviewed before the formation is deployed to a production environment.\n\n- **REQ-IAC-007-03a**: The CI pipeline **must** configure the Checkov step with `continue-on-error: true` so that Checkov findings do not automatically fail the PR merge. This allows developers to see findings without being blocked from merging urgent, non-security-related changes.\n- **REQ-IAC-007-03b**: Non-blocking does not mean ignored. Checkov findings appearing in the CI step output **must** be reviewed by the PR author and at least one reviewer before the PR is merged. The PR description **must** include a brief note on the status of any Checkov findings (e.g., \"No new findings,\" \"Two MEDIUM findings reviewed — tracked in issue #143 for remediation\").\n- **REQ-IAC-007-03c**: Any CRITICAL finding in the Checkov output **must** be either remediated (the IaC is fixed) or escalated to an Architecture Exception before the formation is deployed to any production environment. See REQ-IAC-007-07 for the production deployment gate.\n- **REQ-IAC-007-03d**: The non-blocking posture is subject to Security Architecture review at quarterly compliance checkpoints. If the review reveals systematic deferral of CRITICAL findings, Security Architecture may recommend converting to a blocking posture for CRITICAL severity.\n\n**Rationale**: A fully blocking Checkov CI gate creates a disincentive to run Checkov, as teams add noise suppressions to avoid failed builds rather than addressing findings. A non-blocking-but-mandatory-review posture surfaces findings without halting development velocity, while ensuring findings are not silently ignored. The CRITICAL production deployment gate (REQ-IAC-007-07) provides the enforcement backstop for the most severe findings.",
+    "14": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#req-iac-007-04-hipaa-relevant-checks-must-not-be-suppressed-without-written-architecture-exception]\n\n#### REQ-IAC-007-04: HIPAA-Relevant Checks Must Not Be Suppressed Without Written Architecture Exception\n\nCheckov checks related to encryption at rest, encryption in transit, and logging **must not** be suppressed without a written Architecture Exception reviewed by Security Architecture.\n\n- **REQ-IAC-007-04a**: The following check categories represent HIPAA-required controls and are subject to this requirement: S3 encryption at rest (`CKV_AWS_119`, `CKV_AWS_145`), RDS encryption at rest (`CKV_AWS_17`), EBS volume encryption (`CKV_AWS_8`), KMS key rotation (`CKV_AWS_7`), CloudTrail encryption and logging (`CKV_AWS_35`, `CKV_AWS_36`), VPC Flow Logs (`CKV_AWS_73`), and encryption in transit for any load balancer or API Gateway (`CKV_AWS_91`, `CKV_AWS_76`).\n- **REQ-IAC-007-04b**: Suppressing any check in the categories listed in REQ-IAC-007-04a via inline `# checkov:skip` annotation or `.checkov.yaml` baseline requires a written Architecture Exception. The exception document must name the specific check ID, identify the compensating control, and be approved by Security Architecture before the suppression is committed.\n- **REQ-IAC-007-04c**: The written Architecture Exception approval date and reference number **must** appear in the suppression comment. A suppression comment that does not reference an approved exception is invalid and will be rejected in PR review.\n- **REQ-IAC-007-04d**: HIPAA-relevant check suppressions are time-bounded: maximum 90 days. Suppressions that remain in place beyond 90 days without renewal constitute a compliance finding and are escalated to the ARB.\n\n**Rationale**: HIPAA requires covered entities to implement technical safeguards for PHI confidentiality, integrity, and availability. Encryption at rest, encryption in transit, and audit logging are the primary technical controls that satisfy these requirements. A Checkov suppression of these checks is equivalent to a declaration that the control does not apply — a declaration that can only be made with documented justification and Security Architecture oversight.",
+    "15": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#req-iac-007-05-security-suppressions-in-formation-code-must-include-justification-and-be-reviewed-by-security-architecture]\n\n#### REQ-IAC-007-05: Security Suppressions in Formation Code Must Include Justification and Be Reviewed by Security Architecture\n\nAll Checkov inline suppressions in formation `.tf` files must include a justification comment and be reviewed by a Security Architecture representative before merge.\n\n- **REQ-IAC-007-05a**: Inline suppressions **must** use the format: `# checkov:skip=<CHECK_ID>: <justification>` on the line immediately preceding the flagged resource or module block. A suppression comment without a justification is invalid.\n- **REQ-IAC-007-05b**: Justification comments **must** explain why the Checkov check is a false positive in this context (e.g., the control is enforced inside the `pfe-iac-modules` module that Checkov cannot introspect), not merely assert that the suppression is approved.\n- **REQ-IAC-007-05c**: PRs that add one or more `# checkov:skip` inline suppressions **must** be reviewed by a member of Security Architecture in addition to the standard engineering reviewer. The PR template must include a checkbox prompting the author to request Security Architecture review when suppressions are present.\n- **REQ-IAC-007-05d**: Inline suppressions added to address a HIPAA-relevant check (REQ-IAC-007-04) must additionally reference the Architecture Exception approval per REQ-IAC-007-04c. A non-HIPAA suppression requires only the justification comment.\n\n**Rationale**: Inline suppressions without documentation are the primary mechanism by which security controls are silently circumvented in IaC. A justified, reviewed suppression is a deliberate architectural decision with a documented rationale and an accountable reviewer — not a \"to silence the linter\" annotation that no one will question later.",
+    "16": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#req-iac-007-06-checkov-results-must-be-uploaded-as-ci-artifacts-for-audit-trail]\n\n#### REQ-IAC-007-06: Checkov Results Must Be Uploaded as CI Artifacts for Audit Trail\n\nCheckov scan results **must** be captured and uploaded as CI artifacts to provide a persistent audit record of security findings at the time of each PR.\n\n- **REQ-IAC-007-06a**: The Checkov invocation in CI **must** include output format options that produce a file-based result: at minimum `--output sarif --output-file-path checkov-results.sarif` in addition to console output.\n- **REQ-IAC-007-06b**: The SARIF file **must** be uploaded as a GitHub Actions artifact using `actions/upload-artifact` with a retention period of at least 90 days. This provides an immutable record of the security findings present at each PR merge.\n- **REQ-IAC-007-06c**: If GitHub Advanced Security (GHAS) is enabled for the repository, the SARIF file **must** also be uploaded to GitHub's code scanning API using `github/codeql-action/upload-sarif`. GHAS upload is in addition to, not a replacement for, the artifact upload requirement.\n- **REQ-IAC-007-06d**: CI artifact uploads **must not** be conditional on whether findings are present. The artifact must be uploaded regardless of the Checkov finding count (including zero). A missing artifact for a PR that ran Checkov is a compliance gap in the audit trail.\n\n**Rationale**: HIPAA requires covered entities to maintain audit trails for changes to PHI-handling infrastructure. Checkov SARIF artifacts serve as the security finding record at each IaC change event. Without artifact upload, there is no persistent evidence that security scanning occurred or what findings were present at the time of each deployment. A 90-day retention period covers the typical audit lookback window for security incidents.",
+    "17": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#req-iac-007-07-new-formations-must-have-zero-critical-checkov-findings-at-first-production-deployment]\n\n#### REQ-IAC-007-07: New Formations Must Have Zero CRITICAL Checkov Findings at First Production Deployment\n\nNew formation directories being deployed to a production environment for the first time **must** have zero unaddressed CRITICAL Checkov findings in their last CI scan before the production deployment.\n\n- **REQ-IAC-007-07a**: A \"new formation\" is defined as a formation directory that has never previously been deployed to any production environment (cfg, sit, uat, prd). This requirement applies at the point of the first deployment to any environment in the production tier.\n- **REQ-IAC-007-07b**: \"Zero CRITICAL findings\" means that all CRITICAL-severity Checkov check violations in the formation's `.tf` files have been either remediated (IaC fixed) or suppressed with a justified inline `# checkov:skip` annotation and an approved Architecture Exception per REQ-IAC-007-05.\n- **REQ-IAC-007-07c**: The CD pipeline **must** verify that the Checkov artifact from the last CI run shows zero CRITICAL findings before proceeding with the first production apply. If the artifact shows CRITICAL findings, the deployment **must** be halted and the findings resolved.\n- **REQ-IAC-007-07d**: This requirement does not restrict MEDIUM or LOW findings at first production deployment. MEDIUM and LOW findings must be tracked and remediated per an agreed sprint plan but do not gate the initial production release.\n\n**Rationale**: Allowing a formation with known CRITICAL security misconfigurations to enter production creates a known security debt that is statistically unlikely to be remediated once the formation is in production operation. Setting a zero-CRITICAL gate at first production deployment is the most effective point to enforce remediation — before the formation becomes part of the production operational baseline and before the urgency to fix it competes with new feature development.\n\n---",
+    "18": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#recommended-practices]\n\n### Recommended Practices\n\n- **Run Checkov locally before pushing**: Install Checkov with `pip install checkov` and run `checkov -d iac/terraform/formations/aws/<formation> --framework terraform --skip-check CKV_TF_1` before pushing to see findings before CI does.\n- **Review the GHAS Code Scanning tab**: For repositories with GHAS enabled, review the Security > Code Scanning tab weekly to track MEDIUM and LOW findings over time and identify accumulating security debt.\n- **Create a formation-level `.checkov.yaml` for persistent false positives**: When a formation has multiple module invocations that each produce the same `CKV_TF_1` or other approved suppression, consolidate suppressions in a `.checkov.yaml` baseline file rather than adding identical inline comments to every module block.\n- **Keep Checkov version current**: Update the pinned Checkov version quarterly. New check IDs added in newer versions may identify issues that older versions miss, including issues relevant to new AWS service features.\n\n---",
+    "19": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#prohibited-practices]\n\n### Prohibited Practices\n\n| Prohibited Practice | Reason |\n|---------------------|--------|\n| Removing the Checkov step from `verify.sh` or the CI pipeline | Eliminates the IaC security scanning gate entirely |\n| `--soft-fail` applied globally in CI (silencing all findings) | Makes Checkov advisory-only; CRITICAL findings are invisibly ignored |\n| `--skip-path` excluding a formation directory | Silently disables scanning for all resources in the directory |\n| `# checkov:skip` without a justification comment | Undocumented suppression; cannot be reviewed, audited, or reversed |\n| Using floating `latest` Checkov version in CI | Check IDs and severities change silently; new CRITICAL checks may not run |\n| Suppressing `CKV_TF_1` for non-`pfe-iac-modules` sources | The check is valid for those sources; suppression hides a genuine sourcing violation |\n| HIPAA-relevant check suppression without Architecture Exception | HIPAA technical safeguard compliance requires documented exception for any control removal |\n| Deploying a new formation to production with unaddressed CRITICAL findings | Known critical security debt entering production operational baseline |\n| Skipping CI artifact upload | No persistent audit record; audit trail gap for HIPAA compliance |\n\n---",
+    "20": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#exceptions-process]\n\n### Exceptions Process\n\n1. **CRITICAL or HIGH false positive**: Submit a Platform Engineering security review request documenting the specific check ID and why the finding is a false positive given the `pfe-iac-modules` wrapper that Checkov cannot introspect. PE provides written approval for the inline suppression before it is committed.\n2. **HIPAA-relevant check suppression**: Requires a written Architecture Exception with Security Architecture approval, expiry date, and compensating control description. The exception reference must appear in the suppression comment. Maximum 90-day validity before renewal.\n3. **Exceptions to the blocking CRITICAL production gate**: Require ARB approval. Maximum 30-day validity with a documented remediation plan signed by the product engineering lead and Security Architecture.\n\n---",
+    "21": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#technical-specifications]\n\n## Technical Specifications",
+    "22": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#checkov-ci-step-configuration-github-actions]\n\n### Checkov CI Step Configuration (GitHub Actions)\n\n```yaml\n- name: Checkov IaC Security Scan\n  # REQ-IAC-007-01: runs on every PR; continue-on-error per REQ-IAC-007-03\n  continue-on-error: true\n  run: |\n    checkov \\\n      -d iac/terraform/formations/aws/ \\\n      --framework terraform \\\n      --skip-check CKV_TF_1 \\\n      --output cli \\\n      --output sarif \\\n      --output-file-path checkov-results.sarif \\\n      --compact\n\n- name: Upload Checkov Results as Artifact\n  # REQ-IAC-007-06: upload regardless of finding count; 90-day retention\n  if: always()\n  uses: actions/upload-artifact@v4\n  with:\n    name: checkov-results-${{ github.run_id }}\n    path: checkov-results.sarif\n    retention-days: 90\n\n- name: Upload Checkov Results to GHAS\n  # REQ-IAC-007-06c: GHAS upload if code scanning is enabled\n  if: always()\n  uses: github/codeql-action/upload-sarif@v3\n  with:\n    sarif_file: checkov-results.sarif\n    category: checkov-iac\n```",
+    "23": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#verifysh-checkov-stage]\n\n### `verify.sh` Checkov Stage\n\n```bash\n#!/usr/bin/env bash\n# iac/terraform/.utils/verify.sh — stage 5\n\necho \"=== Stage 5: checkov ===\"\n# REQ-IAC-007-01: target formation directory with terraform framework\n# REQ-IAC-007-02: CKV_TF_1 suppressed for pfe-iac-modules semver tags per STD-INFRA-IAC-002\ncheckov \\\n  -d \"${FORMATION_PATH}\" \\\n  --framework terraform \\\n  --skip-check CKV_TF_1 \\\n  --output cli \\\n  --compact\n```",
+    "24": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#inline-suppression-pattern-correct]\n\n### Inline Suppression Pattern (Correct)\n\n```hcl\n# main.tf — inline suppression with required justification (REQ-IAC-007-05)\n\n# checkov:skip=CKV_TF_1: pfe-iac-modules semver tags are PE-managed immutable releases per STD-INFRA-IAC-002.\n# Commit hash pinning is not required when tag immutability is guaranteed by Platform Engineering.\nmodule \"ecs_service\" {\n  source = \"git::ssh://git@github.com/mygainwell/pfe-iac-modules.git//modules/aws/ecs-service?ref=v2.3.1\"\n  # ...\n}\n```",
+    "25": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#hipaa-relevant-suppression-pattern-architecture-exception-required]\n\n### HIPAA-Relevant Suppression Pattern (Architecture Exception Required)\n\n```hcl\n# main.tf — HIPAA-relevant suppression with Architecture Exception reference (REQ-IAC-007-04)\n\n# checkov:skip=CKV_AWS_145: S3 SSE-KMS enforced inside pfe-iac-modules/modules/aws/s3-bucket at apply time.\n# Checkov cannot introspect pfe-iac-modules to verify — the encryption policy is applied by the module,\n# not in this formation's resource block. Architecture Exception: ARCH-EX-2026-047, approved 2026-07-24,\n# expires 2026-10-24. Security Architecture reviewer: [name].\nmodule \"audit_bucket\" {\n  source = \"git::ssh://git@github.com/mygainwell/pfe-iac-modules.git//modules/aws/s3-bucket?ref=v1.8.0\"\n  # ...\n}\n```",
+    "26": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#checkovyaml-baseline-for-formation-wide-suppressions]\n\n### `.checkov.yaml` Baseline for Formation-Wide Suppressions\n\n```yaml\n# iac/terraform/formations/aws/<formation-name>/.checkov.yaml\n# Only suppressions for known false positives approved by Platform Engineering or Security Architecture.\n\nskipped_checks:\n  - id: \"CKV_TF_1\"\n    suppress_comment: \"pfe-iac-modules semver tags are PE-managed immutable releases per STD-INFRA-IAC-002. REQ-IAC-007-02.\"\n```",
+    "27": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#severity-and-blocking-behavior-reference]\n\n### Severity and Blocking Behavior Reference\n\n| Checkov Severity | CI Behavior | Production Gate |\n|-----------------|-------------|-----------------|\n| CRITICAL | Non-blocking (continue-on-error) but **must** be reviewed | Blocks first production deployment (REQ-IAC-007-07) |\n| HIGH | Non-blocking but **must** be reviewed | Sprint-tracked remediation before next major release |\n| MEDIUM | Non-blocking; must be reviewed before prod | Tracked and remediated per agreed sprint plan |\n| LOW | Non-blocking; reviewed as part of PR | Best-effort remediation |\n| `CKV_TF_1` (pfe-iac-modules) | Suppressed | Not reported |\n\n---",
+    "28": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#implementation-guidelines]\n\n## Implementation Guidelines",
+    "29": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#implementation-requirements]\n\n### Implementation Requirements\n\n1. **Add Checkov to `verify.sh` as stage 5**: Use the `verify.sh` template in the Technical Specifications section. Include `--skip-check CKV_TF_1` and `--framework terraform`.\n2. **Add the CI Checkov step with `continue-on-error: true`**: Configure the CI workflow using the GitHub Actions template in the Technical Specifications section. Ensure the artifact upload step uses `if: always()`.\n3. **Create `.checkov.yaml` in each formation directory**: Use the baseline template with the `CKV_TF_1` suppression. This ensures the suppression applies to both the `verify.sh` local run and the CI scan.\n4. **Review all existing Checkov findings before any production deployment**: For formations that are newly adopting this standard, conduct a one-time findings review. Document the disposition of each finding (remediated, tracked, or suppressed with justification) before the formation is promoted to production.\n5. **Add the Security Architecture reviewer checkbox to the PR template**: Update `.github/PULL_REQUEST_TEMPLATE.md` to include a checkbox prompting authors to tag Security Architecture when `# checkov:skip` annotations are added.\n6. **Pin the Checkov version**: Add `pip install checkov==<version>` to the CI setup step. Record the version in `iac/terraform/.utils/README.md`.",
+    "30": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#validation-criteria]\n\n### Validation Criteria\n\n| Requirement | Verification Method | Evidence Required |\n|-------------|--------------------|--------------------|\n| REQ-IAC-007-01 | Checkov runs in CI on every PR touching formations | CI workflow definition; CI log |\n| REQ-IAC-007-02 | `--skip-check CKV_TF_1` in both `verify.sh` and CI | PR diff review |\n| REQ-IAC-007-03 | `continue-on-error: true` on CI Checkov step | CI workflow definition |\n| REQ-IAC-007-04 | HIPAA check suppressions reference Architecture Exception number | PR diff review; exception log |\n| REQ-IAC-007-05 | All `# checkov:skip` annotations have justification comments | `grep -rn 'checkov:skip' formations/` |\n| REQ-IAC-007-06 | SARIF artifact uploaded with `if: always()` and 90-day retention | CI workflow definition |\n| REQ-IAC-007-07 | Last Checkov CI artifact for the formation shows zero CRITICAL findings | Pre-deployment checklist; artifact review |",
+    "31": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#testing-requirements]\n\n### Testing Requirements\n\n- Introduce a deliberate CRITICAL finding (e.g., add an S3 bucket resource with `acl = \"public-read\"`) in a test branch and confirm CI surfaces it in the output and in the uploaded SARIF artifact.\n- Confirm that `CKV_TF_1` is suppressed by adding a `pfe-iac-modules` module call and verifying the CI step output does not report `CKV_TF_1`.\n- Confirm `continue-on-error` behavior by verifying the CI pipeline proceeds to the artifact upload step even when Checkov finds a CRITICAL issue.\n- Verify the 90-day artifact retention by checking the artifact settings in the Actions tab after the first upload.\n\n---",
+    "32": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#compliance-and-governance]\n\n## Compliance and Governance",
+    "33": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#compliance-assessment]\n\n### Compliance Assessment\n\n| Area | Criterion | Assessment Frequency |\n|------|-----------|---------------------|\n| Checkov in pipeline and `verify.sh` | Step present in CI; stage 5 in `verify.sh` | Per PR — CI gate |\n| `CKV_TF_1` suppression configured | `--skip-check CKV_TF_1` in CI and `verify.sh` | Per PR — PR diff review |\n| CRITICAL findings reviewed | PR description notes finding disposition | Per PR — PR review |\n| HIPAA suppressions documented | Exception reference in suppression comments | Per PR — Security Architecture review |\n| CI artifacts uploaded | SARIF artifact present for all PRs | Quarterly audit of artifact retention |\n| Zero CRITICAL at first prod deploy | Checkov artifact reviewed before prod apply | Pre-deployment checklist |",
+    "34": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#monitoring-requirements]\n\n### Monitoring Requirements\n\nPlatform Engineering reviews GHAS code scanning findings across all product repositories monthly. Repositories with persistent CRITICAL or HIGH findings that have not been triaged within 30 days receive an escalation notification to the product engineering lead and Security Architecture. At quarterly architecture health checks, formations with missing `.checkov.yaml` files, undocumented suppressions, or unreviewed HIPAA-relevant suppressions are flagged as compliance debt.",
+    "35": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#exception-handling]\n\n### Exception Handling\n\nCRITICAL and HIGH suppression exceptions require PE Security Engineering approval with a 30-day maximum validity. HIPAA-relevant check suppressions require Security Architecture approval with a 90-day maximum validity. Exceptions are time-bounded; expired exceptions without renewal constitute active compliance findings and are escalated to the ARB. All approved exceptions are recorded in the exception registry maintained by Security Architecture.",
+    "36": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#governance-oversight]\n\n### Governance Oversight\n\n- **Standards Owner**: Platform Engineering — responsible for Checkov version guidance, `verify.sh` maintenance, and scan configuration.\n- **Security Policy Owner**: Security Architecture — reviews suppression exceptions, maintains the HIPAA control mapping, monitors GHAS findings.\n- **Governance Body**: Architecture Review Board — approves changes to blocking severity posture, reviews HIPAA suppression exception escalations, governs standard revisions.\n\n---",
+    "37": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#examples-and-references]\n\n## Examples and References",
+    "38": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#implementation-examples]\n\n### Implementation Examples",
+    "39": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#example-1-handling-a-critical-finding-before-first-production-deployment]\n\n#### Example 1: Handling a CRITICAL Finding Before First Production Deployment\n\n**Context**: The `mmes-cms-ecs` formation has a CRITICAL Checkov finding for `CKV_AWS_17` (RDS encryption not enabled) identified during a PR scan.\n\n**Process per REQ-IAC-007-07**:\n1. Review the finding: confirm the RDS resource is managed by `pfe-iac-modules` and encryption is configured inside the module.\n2. Since Checkov cannot introspect the module, add an inline suppression with justification: `# checkov:skip=CKV_AWS_17: Encryption enforced inside pfe-iac-modules/modules/aws/rds at apply time. Verified in module source v3.2.0.`\n3. Per REQ-IAC-007-04: `CKV_AWS_17` is a HIPAA-relevant encryption check — obtain written Architecture Exception before committing the suppression.\n4. Add Architecture Exception reference to the suppression comment.\n5. PR passes Security Architecture review.\n6. Checkov CI artifact for the PR shows zero unaddressed CRITICAL findings.\n7. Formation proceeds to first production deployment.",
+    "40": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#example-2-pr-description-finding-status-note]\n\n#### Example 2: PR Description Finding Status Note\n\n```markdown\n## Checkov Security Scan Status\n\n- No new findings introduced by this PR.\n- Formation has 2 existing MEDIUM findings (tracked in #143):\n  - CKV_AWS_88: EC2 instance not in VPC — false positive; instance managed by pfe-iac-modules\n  - CKV_AWS_126: EC2 detailed monitoring — will be addressed in sprint 47\n- Zero CRITICAL or HIGH findings.\n```",
+    "41": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#related-standards]\n\n### Related Standards\n\n- [STD-INFRA-IAC-001 — IaC Repository Structure](./STD-INFRA-IAC-001-repository-scaffold.md) — Defines `verify.sh` where Checkov runs as stage 5.\n- [STD-INFRA-IAC-002 — Module Sourcing](./STD-INFRA-IAC-002-module-sourcing.md) — The semver tag pinning strategy that justifies the `CKV_TF_1` suppression in REQ-IAC-007-02.\n- [STD-INFRA-IAC-006 — IaC Linting](./STD-INFRA-IAC-006-linting.md) — Defines `tflint` stages that run before Checkov in `verify.sh`.\n- [STD-INFRA-EKS-001 — EKS Container Compute Standard](../eks/STD-INFRA-EKS-001-eks-auto-mode-container-compute.md) — Governs container image scanning, which is out of scope for this standard.",
+    "42": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#external-references]\n\n### External References\n\n- [Checkov Documentation](https://www.checkov.io/1.Welcome/What%20is%20Checkov.html) — Official Checkov documentation including check reference and configuration options.\n- [Checkov Terraform Checks Reference](https://www.checkov.io/5.Policy%20Index/terraform.html) — Full list of `CKV_TF_*` and `CKV_AWS_*` check IDs with descriptions.\n- [Checkov SARIF Output](https://www.checkov.io/2.Basics/CLI%20Command%20Reference.html) — Reference for `--output sarif` and `--output-file-path` flags.\n- [GitHub Advanced Security Code Scanning](https://docs.github.com/en/code-security/code-scanning/introduction-to-code-scanning/about-code-scanning) — GHAS documentation for SARIF upload via `github/codeql-action/upload-sarif`.\n\n---",
+    "43": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#change-history]\n\n## Change History\n\n| Date | Version | Author | Description | Impact |\n|------|---------|--------|-------------|--------|\n| 2026-07-24 | 1.0.0 | Enterprise Architecture Practice | Initial standard creation. Mandates Checkov scanning against `iac/terraform/formations/aws/` on every PR, documents `CKV_TF_1` exception for `pfe-iac-modules` semver tags, establishes non-blocking-but-review-mandatory posture, prohibits HIPAA check suppression without Architecture Exception, requires justification on all inline suppressions, mandates CI artifact upload, and sets zero CRITICAL production deployment gate for new formations. | New mandatory standard — all formations must have `.checkov.yaml` with `CKV_TF_1` suppression; all inline suppressions must be documented; CI pipelines must add Checkov step with artifact upload; new formations must resolve CRITICAL findings before first production deployment. |\n| 2026-09-04 | 1.0.1 | EA Practice | Corrected REQ-IAC-007-07c's responsible actor from \"the deployer skill and CD pipeline\" to \"the CD pipeline\" | Patch — no change to the requirement's substance |\n\n---",
+    "44": "[standards/infrastructure/iac/STD-INFRA-IAC-007-security-scanning.md#review-log]\n\n## Review Log\n\n| Date | Reviewer | Role | Finding Summary | Resolution |\n|------|----------|------|-----------------|------------|\n| — | — | — | Pending initial ARB review | — |"
+  },
+  "coverage": {
+    "total_pages": 44,
+    "covered_pages": 44,
+    "sampled_pages": 44,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 44
+  }
+}

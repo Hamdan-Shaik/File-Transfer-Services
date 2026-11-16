@@ -1,0 +1,177 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "API Security: Reference Architecture",
+  "document_description": "guidance_id: 'GUID-SEC-APP-API-SECURITY-2.7.01'",
+  "total_pages": 17,
+  "tree": [
+    {
+      "title": "API Security: Reference Architecture",
+      "node_id": "api-security-reference-architecture",
+      "start_index": 1,
+      "end_index": 17,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Architecture Guidance Metadata",
+          "node_id": "architecture-guidance-metadata",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Purpose and Scope",
+          "node_id": "purpose-and-scope",
+          "start_index": 3,
+          "end_index": 4,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "RAD Scope",
+              "node_id": "rad-scope",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Platform Engineering Scope",
+          "node_id": "platform-engineering-scope",
+          "start_index": 5,
+          "end_index": 7,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Capability Domain Boundary",
+              "node_id": "capability-domain-boundary",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Control Responsibility Matrix",
+              "node_id": "control-responsibility-matrix",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Logical Architecture",
+          "node_id": "logical-architecture",
+          "start_index": 8,
+          "end_index": 10,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Architecture Diagram",
+              "node_id": "architecture-diagram",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Logical Components",
+              "node_id": "logical-components",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Architecture Patterns",
+          "node_id": "architecture-patterns",
+          "start_index": 11,
+          "end_index": 14,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Pattern 1: External API Access with Token-Based Authentication",
+              "node_id": "pattern-1-external-api-access-with-token-based-authentication",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Pattern 2: Internal Service-to-Service API Access (Zero Trust)",
+              "node_id": "pattern-2-internal-service-to-service-api-access-zero-trust",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Pattern 3: API Threat Detection and Rate Enforcement",
+              "node_id": "pattern-3-api-threat-detection-and-rate-enforcement",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "API Lifecycle Security",
+          "node_id": "api-lifecycle-security",
+          "start_index": 15,
+          "end_index": 15,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Deployment Context Considerations",
+          "node_id": "deployment-context-considerations",
+          "start_index": 16,
+          "end_index": 16,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Constraints and Exceptions",
+          "node_id": "constraints-and-exceptions",
+          "start_index": 17,
+          "end_index": 17,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[strategy/guidance/security/Application/GUID-SEC-APP-API-SECURITY-2.7.01.md#api-security-reference-architecture]\n\n# API Security: Reference Architecture\n\n**← Back to [EAP Home](../../../../README.md) • [Strategy](../../../README.md) • [Guidance](../../README.md) • [Security](../README.md) • [Application](README.md)**\n\n---",
+    "2": "[strategy/guidance/security/Application/GUID-SEC-APP-API-SECURITY-2.7.01.md#architecture-guidance-metadata]\n\n## Architecture Guidance Metadata\n\n```yaml\nguidance_id: 'GUID-SEC-APP-API-SECURITY-2.7.01'\nguidance_name: 'API Security: Reference Architecture'\nguidance_type: 'reference-architecture-document'\nrad_type: 'composite'\npaired_abb:\n  - 'GUID-SEC-APP-ABB-APIGW-2.7.11'\n  - 'GUID-SEC-APP-ABB-APIAZ-2.7.12'\nparent_abb: 'GUID-SEC-APP-ABB-CAT-2.7.06'\nparent_vision: 'GUID-SEC-APP-REF-1.7.01'\nadm_phase: 'Phase C-D'\ncategory: 'security'\nversion: '2.0.0'\nstatus: 'active'\napplicability: 'enterprise'\ntags: ['security', 'application', 'reference-architecture', 'api', 'zero-trust', 'phase-c', 'phase-d']\n```\n\n---\n\n> **Informative Content Notice**: Technology categories referenced in this document are **illustrative only** — they represent classes of solution, not mandated selections. Organizations SHOULD evaluate tooling based on integration fit, licensing, and operational context.\n>\n> **The architectural patterns in this document reflect normative requirements from the paired ABBs** and represent required design outcomes. The specific tooling used to realize them is a local implementation decision.\n\n---",
+    "3": "[strategy/guidance/security/Application/GUID-SEC-APP-API-SECURITY-2.7.01.md#purpose-and-scope]\n\n## Purpose and Scope\n\nThis Reference Architecture Document (RAD) provides illustrative patterns and logical component descriptions for realizing the API Security capability. It is the primary consumption point for:\n\n- [GUID-SEC-APP-ABB-APIGW-2.7.11 — API Gateway Security](abbs/GUID-SEC-APP-ABB-APIGW-2.7.11.md)\n- [GUID-SEC-APP-ABB-APIAZ-2.7.12 — API Authorization](abbs/GUID-SEC-APP-ABB-APIAZ-2.7.12.md)\n\nRelated ABBs that this RAD interacts with:\n- [GUID-SEC-APP-ABB-WAF-2.7.19 — Web Application Firewall](abbs/GUID-SEC-APP-ABB-WAF-2.7.19.md) — runtime traffic protection at the HTTP layer\n- [GUID-SEC-APP-ABB-IDBRKR-2.7.26 — Application Identity Broker](abbs/GUID-SEC-APP-ABB-IDBRKR-2.7.26.md) — issues tokens consumed at the API layer\n- [GUID-SEC-APP-ABB-TOKVAL-2.7.27 — Token Validation](abbs/GUID-SEC-APP-ABB-TOKVAL-2.7.27.md) — validates tokens before authorization evaluation",
+    "4": "[strategy/guidance/security/Application/GUID-SEC-APP-API-SECURITY-2.7.01.md#rad-scope]\n\n### RAD Scope\n\nThis document covers:\n\n- API Gateway placement as the central enforcement point for inbound API traffic\n- Authentication and token validation at the gateway vs. application layer\n- Fine-grained authorization patterns for API operations\n- API lifecycle security — from registration to decommission\n- Observability and threat detection for API traffic\n\n---",
+    "5": "[strategy/guidance/security/Application/GUID-SEC-APP-API-SECURITY-2.7.01.md#platform-engineering-scope]\n\n## Platform Engineering Scope",
+    "6": "[strategy/guidance/security/Application/GUID-SEC-APP-API-SECURITY-2.7.01.md#capability-domain-boundary]\n\n### Capability Domain Boundary\n\nAPI Security covers the enforcement boundary from the point where an API consumer reaches an enterprise-managed endpoint through to the point where a validated and authorized request is forwarded to application logic. The upstream boundary is the network entry point (WAF / DDoS protection — Network Security domain). The downstream boundary is the application service that processes the request.",
+    "7": "[strategy/guidance/security/Application/GUID-SEC-APP-API-SECURITY-2.7.01.md#control-responsibility-matrix]\n\n### Control Responsibility Matrix\n\n| Activity | Platform Engineering | Security Architecture | Development Teams |\n|---|---|---|---|\n| API Gateway infrastructure and availability | **Owns** | Advises | — |\n| Authentication policy (token validation config) | Supports | **Owns** | Informs |\n| Authorization policy definition | Supports | Advises | **Owns** |\n| API registration and lifecycle governance | Supports | Advises | **Owns** |\n| Threat detection rules and alerting | Supports | **Owns** | Informs |\n\n---",
+    "8": "[strategy/guidance/security/Application/GUID-SEC-APP-API-SECURITY-2.7.01.md#logical-architecture]\n\n## Logical Architecture",
+    "9": "[strategy/guidance/security/Application/GUID-SEC-APP-API-SECURITY-2.7.01.md#architecture-diagram]\n\n### Architecture Diagram\n\n```mermaid\ngraph LR\n    A[API Consumer] -->|HTTPS + Bearer Token| B[API Gateway]\n    B -->|Token Validation| C[Token Validation Layer]\n    C -->|Invalid| D[Reject 401]\n    C -->|Valid Claims| E[Authorization Policy Engine]\n    E -->|Denied| F[Reject 403]\n    E -->|Authorized| G[Backend API Service]\n    B --> H[Rate Limiting / Throttling]\n    B --> I[API Event Log]\n    I --> J[SecOps SIEM]\n    B -->|Service Mesh| K[Internal API Consumer]\n    K -->|mTLS + Service Identity Token| B\n```\n\n*Logical flow — component names are illustrative placeholders. Do not use vendor names in diagrams.*",
+    "10": "[strategy/guidance/security/Application/GUID-SEC-APP-API-SECURITY-2.7.01.md#logical-components]\n\n### Logical Components\n\n| Component | Type | Architectural Role |\n|---|---|---|\n| API Gateway | ABB Realization — GUID-SEC-APP-ABB-APIGW-2.7.11 | Central inbound enforcement point; routes, throttles, and logs all API traffic |\n| Token Validation Layer | ABB Realization — GUID-SEC-APP-ABB-TOKVAL-2.7.27 | Verifies token cryptographic integrity, expiry, and audience on each request |\n| Authorization Policy Engine | ABB Realization — GUID-SEC-APP-ABB-APIAZ-2.7.12 | Evaluates fine-grained access policy against validated claims |\n| API Event Forwarder | Integration | Routes access logs and anomaly events to SecOps SIEM |\n| Rate Limiting / Throttling | Logical Component | Protects backend services from abuse and denial-of-service conditions |\n\n---",
+    "11": "[strategy/guidance/security/Application/GUID-SEC-APP-API-SECURITY-2.7.01.md#architecture-patterns]\n\n## Architecture Patterns",
+    "12": "[strategy/guidance/security/Application/GUID-SEC-APP-API-SECURITY-2.7.01.md#pattern-1-external-api-access-with-token-based-authentication]\n\n### Pattern 1: External API Access with Token-Based Authentication\n\n**When to use**: All enterprise APIs accessible to external consumers (partners, clients, public-facing services).\n\n**Logical flow**:\n1. Consumer obtains a token from the Application Identity Broker (or an external authorization server for partner flows)\n2. Consumer presents the bearer token with each API request to the API Gateway\n3. API Gateway invokes Token Validation to verify the token's signature, expiry, and audience\n4. Token Validation returns the validated claims to the Authorization Policy Engine\n5. Authorization Policy Engine evaluates whether the caller's identity and scopes permit the requested operation\n6. Authorized requests are forwarded to the backend service with the validated identity context\n\n**Illustrative technology class**: API Gateway with native JWT/OAuth validation; external authorization service for policy evaluation",
+    "13": "[strategy/guidance/security/Application/GUID-SEC-APP-API-SECURITY-2.7.01.md#pattern-2-internal-service-to-service-api-access-zero-trust]\n\n### Pattern 2: Internal Service-to-Service API Access (Zero Trust)\n\n**When to use**: API calls between services within the enterprise platform where both services have platform-assigned workload identities.\n\n**Logical flow**:\n1. Calling service obtains a short-lived platform identity token (workload identity)\n2. Service presents the token with each API request, routed through the service mesh or API Gateway\n3. Token Validation confirms the calling service's identity\n4. Authorization Policy Engine confirms the calling service is permitted to invoke the requested operation\n5. Request proceeds; no network-layer trust is assumed\n\n**Illustrative technology class**: Service mesh with mutual TLS and platform identity tokens; policy engine embedded in the sidecar proxy",
+    "14": "[strategy/guidance/security/Application/GUID-SEC-APP-API-SECURITY-2.7.01.md#pattern-3-api-threat-detection-and-rate-enforcement]\n\n### Pattern 3: API Threat Detection and Rate Enforcement\n\n**When to use**: All APIs, as a layer of protection against abuse, enumeration, and denial-of-service.\n\n**Logical flow**:\n1. All API requests pass through the gateway before reaching backend services\n2. Rate limiting enforces per-consumer and per-endpoint thresholds\n3. Anomaly detection identifies unusual patterns (e.g., unexpected spike in authentication failures, unusual response payload sizes)\n4. Anomaly events are forwarded to SecOps SIEM for correlation with other signals\n5. Requests exceeding thresholds are rejected; the consumer is notified with an appropriate response\n\n---",
+    "15": "[strategy/guidance/security/Application/GUID-SEC-APP-API-SECURITY-2.7.01.md#api-lifecycle-security]\n\n## API Lifecycle Security\n\nThe API Gateway and Authorization capability must support the full API lifecycle:\n\n| Lifecycle Stage | Security Requirement |\n|---|---|\n| Registration | APIs SHALL be registered in a catalog before exposure; security review SHALL be part of registration |\n| Versioning | Deprecated API versions SHALL be decommissioned on a defined timeline; parallel operation SHALL be minimized |\n| Access grant | Authorization policy SHALL be explicitly defined per API; no default-open access |\n| Monitoring | All production APIs SHALL emit event logs; access patterns SHALL be baselined for anomaly detection |\n| Decommission | API endpoints SHALL be disabled (not merely deprecated) when decommissioned; consumers SHALL be notified in advance |\n\n---",
+    "16": "[strategy/guidance/security/Application/GUID-SEC-APP-API-SECURITY-2.7.01.md#deployment-context-considerations]\n\n## Deployment Context Considerations\n\n| Context | Architectural Consideration |\n|---|---|\n| Cloud-native (container-based) | Service mesh provides east-west API security inside the cluster; external gateway handles north-south; the two must have consistent policy |\n| Multi-cloud / multi-region | API Gateway federation or a global routing layer must ensure consistent policy enforcement regardless of region |\n| Legacy system integration | Legacy backends may not support modern authentication; a protocol translation or facade pattern at the gateway is needed for these integrations |\n\n---",
+    "17": "[strategy/guidance/security/Application/GUID-SEC-APP-API-SECURITY-2.7.01.md#constraints-and-exceptions]\n\n## Constraints and Exceptions\n\n- The API Gateway is in the critical path for all API traffic; availability and latency requirements must be addressed in capacity and resilience planning.\n- Authorization policy complexity must be managed; overly complex policies are difficult to audit and may contain unintended grants.\n- APIs with very high call volumes may require asynchronous authorization patterns to avoid latency; these patterns must preserve the integrity of the authorization decision.\n\n---\n\n*[Enterprise Architecture Practice](../../../../README.md) — Gainwell Technologies*"
+  },
+  "coverage": {
+    "total_pages": 17,
+    "covered_pages": 17,
+    "sampled_pages": 17,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 17
+  }
+}

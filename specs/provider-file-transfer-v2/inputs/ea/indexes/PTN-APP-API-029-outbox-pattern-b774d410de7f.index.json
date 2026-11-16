@@ -1,0 +1,922 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Outbox Pattern",
+  "document_description": "Healthcare microservices must atomically update their local database and publish events to notify other services, but these are two separate operations that cannot be executed atomically—this is the \"dual-write problem.\" At Gainwell, when the Claims Service adjudicates a claim, it must (1) save the claim decision to the database and (2) publish a `claim.adjudicated` event for downstream services (",
+  "total_pages": 98,
+  "tree": [
+    {
+      "title": "Outbox Pattern",
+      "node_id": "outbox-pattern",
+      "start_index": 1,
+      "end_index": 98,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Executive Summary",
+          "node_id": "executive-summary",
+          "start_index": 3,
+          "end_index": 7,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Problem Statement",
+              "node_id": "problem-statement",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Solution Overview",
+              "node_id": "solution-overview",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "When to Use",
+              "node_id": "when-to-use",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Benefits",
+              "node_id": "benefits",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Context and Problem",
+          "node_id": "context-and-problem",
+          "start_index": 8,
+          "end_index": 16,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Business Context",
+              "node_id": "business-context",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Technical Context",
+              "node_id": "technical-context",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Problem Details",
+              "node_id": "problem-details",
+              "start_index": 11,
+              "end_index": 15,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Problem 1: Dual-Write Inconsistency - Database Commits But Event Publish Fails",
+                  "node_id": "problem-1-dual-write-inconsistency---database-commits-but-event-publish-fails",
+                  "start_index": 12,
+                  "end_index": 12,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Problem 2: Event Publishes But Database Transaction Rolls Back",
+                  "node_id": "problem-2-event-publishes-but-database-transaction-rolls-back",
+                  "start_index": 13,
+                  "end_index": 13,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Problem 3: Distributed Transaction Overhead and Fragility",
+                  "node_id": "problem-3-distributed-transaction-overhead-and-fragility",
+                  "start_index": 14,
+                  "end_index": 14,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Problem 4: Manual Reconciliation Burden",
+                  "node_id": "problem-4-manual-reconciliation-burden",
+                  "start_index": 15,
+                  "end_index": 15,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Forces and Constraints",
+              "node_id": "forces-and-constraints",
+              "start_index": 16,
+              "end_index": 16,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Solution",
+          "node_id": "solution",
+          "start_index": 17,
+          "end_index": 32,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Pattern Description",
+              "node_id": "pattern-description",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Architecture Diagrams",
+              "node_id": "architecture-diagrams",
+              "start_index": 19,
+              "end_index": 21,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "High-Level Flow",
+                  "node_id": "high-level-flow",
+                  "start_index": 20,
+                  "end_index": 20,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Sequence Diagram - Claim Adjudication with Outbox",
+                  "node_id": "sequence-diagram---claim-adjudication-with-outbox",
+                  "start_index": 21,
+                  "end_index": 21,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Components",
+              "node_id": "components",
+              "start_index": 22,
+              "end_index": 22,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Outbox Table Schema",
+              "node_id": "outbox-table-schema",
+              "start_index": 23,
+              "end_index": 23,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Interaction Flows",
+              "node_id": "interaction-flows",
+              "start_index": 24,
+              "end_index": 27,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Flow 1: Transactional Outbox Write (Atomicity)",
+                  "node_id": "flow-1-transactional-outbox-write-atomicity",
+                  "start_index": 25,
+                  "end_index": 25,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Flow 2: Message Relay (Polling-Based)",
+                  "node_id": "flow-2-message-relay-polling-based",
+                  "start_index": 26,
+                  "end_index": 26,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Flow 3: Change Data Capture (CDC) Alternative",
+                  "node_id": "flow-3-change-data-capture-cdc-alternative",
+                  "start_index": 27,
+                  "end_index": 27,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Pattern Variations",
+              "node_id": "pattern-variations",
+              "start_index": 28,
+              "end_index": 32,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Variation 1: Immediate Delete After Publish",
+                  "node_id": "variation-1-immediate-delete-after-publish",
+                  "start_index": 29,
+                  "end_index": 29,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Variation 2: Archive to Separate Table",
+                  "node_id": "variation-2-archive-to-separate-table",
+                  "start_index": 30,
+                  "end_index": 30,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Variation 3: Multiple Outbox Tables (Domain-Specific)",
+                  "node_id": "variation-3-multiple-outbox-tables-domain-specific",
+                  "start_index": 31,
+                  "end_index": 31,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Variation 4: Outbox with Saga Coordination",
+                  "node_id": "variation-4-outbox-with-saga-coordination",
+                  "start_index": 32,
+                  "end_index": 32,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Implementation Guidelines",
+          "node_id": "implementation-guidelines",
+          "start_index": 33,
+          "end_index": 41,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Prerequisites",
+              "node_id": "prerequisites",
+              "start_index": 34,
+              "end_index": 34,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Step-by-Step Implementation",
+              "node_id": "step-by-step-implementation",
+              "start_index": 35,
+              "end_index": 38,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Phase 1: Outbox Table and Basic Integration (Week 1-2)",
+                  "node_id": "phase-1-outbox-table-and-basic-integration-week-1-2",
+                  "start_index": 36,
+                  "end_index": 36,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Phase 2: Message Relay Implementation (Week 3-4)",
+                  "node_id": "phase-2-message-relay-implementation-week-3-4",
+                  "start_index": 37,
+                  "end_index": 37,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Phase 3: Production Hardening (Week 5-6)",
+                  "node_id": "phase-3-production-hardening-week-5-6",
+                  "start_index": 38,
+                  "end_index": 38,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Configuration Examples",
+              "node_id": "configuration-examples",
+              "start_index": 39,
+              "end_index": 39,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Best Practices",
+              "node_id": "best-practices",
+              "start_index": 40,
+              "end_index": 40,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Common Pitfalls",
+              "node_id": "common-pitfalls",
+              "start_index": 41,
+              "end_index": 41,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Governance and Compliance",
+          "node_id": "governance-and-compliance",
+          "start_index": 42,
+          "end_index": 49,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Outbox Table Standards",
+              "node_id": "outbox-table-standards",
+              "start_index": 43,
+              "end_index": 43,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Event Schema Governance",
+              "node_id": "event-schema-governance",
+              "start_index": 44,
+              "end_index": 44,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Message Relay Policies",
+              "node_id": "message-relay-policies",
+              "start_index": 45,
+              "end_index": 45,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Monitoring and Metrics",
+              "node_id": "monitoring-and-metrics",
+              "start_index": 46,
+              "end_index": 46,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Compliance Requirements",
+              "node_id": "compliance-requirements",
+              "start_index": 47,
+              "end_index": 47,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Access Control and Security",
+              "node_id": "access-control-and-security",
+              "start_index": 48,
+              "end_index": 48,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Operational Procedures",
+              "node_id": "operational-procedures",
+              "start_index": 49,
+              "end_index": 49,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Examples and Use Cases",
+          "node_id": "examples-and-use-cases",
+          "start_index": 50,
+          "end_index": 61,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Example 1: Claims Adjudication with Guaranteed Event Delivery",
+              "node_id": "example-1-claims-adjudication-with-guaranteed-event-delivery",
+              "start_index": 51,
+              "end_index": 51,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Example 2: Member Enrollment with Multi-Service Provisioning",
+              "node_id": "example-2-member-enrollment-with-multi-service-provisioning",
+              "start_index": 52,
+              "end_index": 52,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Example 3: Payment Processing with Financial Audit Trail",
+              "node_id": "example-3-payment-processing-with-financial-audit-trail",
+              "start_index": 53,
+              "end_index": 53,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Use Case Scenarios",
+              "node_id": "use-case-scenarios",
+              "start_index": 54,
+              "end_index": 58,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Scenario 1: Prior Authorization Workflow Coordination",
+                  "node_id": "scenario-1-prior-authorization-workflow-coordination",
+                  "start_index": 55,
+                  "end_index": 55,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Scenario 2: Provider Credentialing Status Updates",
+                  "node_id": "scenario-2-provider-credentialing-status-updates",
+                  "start_index": 56,
+                  "end_index": 56,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Scenario 3: Pharmacy Point-of-Sale Transaction Logging",
+                  "node_id": "scenario-3-pharmacy-point-of-sale-transaction-logging",
+                  "start_index": 57,
+                  "end_index": 57,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Scenario 4: Member Portal Access Provisioning",
+                  "node_id": "scenario-4-member-portal-access-provisioning",
+                  "start_index": 58,
+                  "end_index": 58,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Before and After Comparison",
+              "node_id": "before-and-after-comparison",
+              "start_index": 59,
+              "end_index": 61,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Before: Dual-Write Architecture",
+                  "node_id": "before-dual-write-architecture",
+                  "start_index": 60,
+                  "end_index": 60,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "After: Outbox Pattern",
+                  "node_id": "after-outbox-pattern",
+                  "start_index": 61,
+                  "end_index": 61,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Related Patterns and References",
+          "node_id": "related-patterns-and-references",
+          "start_index": 62,
+          "end_index": 95,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Internal Pattern Relationships",
+              "node_id": "internal-pattern-relationships",
+              "start_index": 63,
+              "end_index": 69,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Event-Driven Architecture Pattern",
+                  "node_id": "event-driven-architecture-pattern",
+                  "start_index": 64,
+                  "end_index": 64,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Saga Pattern",
+                  "node_id": "saga-pattern",
+                  "start_index": 65,
+                  "end_index": 65,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Event Sourcing Pattern",
+                  "node_id": "event-sourcing-pattern",
+                  "start_index": 66,
+                  "end_index": 66,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Message Queue Pattern",
+                  "node_id": "message-queue-pattern",
+                  "start_index": 67,
+                  "end_index": 67,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Change Data Capture (CDC) Pattern",
+                  "node_id": "change-data-capture-cdc-pattern",
+                  "start_index": 68,
+                  "end_index": 68,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Idempotent Consumer Pattern",
+                  "node_id": "idempotent-consumer-pattern",
+                  "start_index": 69,
+                  "end_index": 69,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "External References",
+              "node_id": "external-references",
+              "start_index": 70,
+              "end_index": 77,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Transactional Outbox Pattern (Microservices.io)",
+                  "node_id": "transactional-outbox-pattern-microservicesio",
+                  "start_index": 71,
+                  "end_index": 71,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Debezium Change Data Capture Platform",
+                  "node_id": "debezium-change-data-capture-platform",
+                  "start_index": 72,
+                  "end_index": 72,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Enterprise Integration Patterns (Hohpe & Woolf)",
+                  "node_id": "enterprise-integration-patterns-hohpe--woolf",
+                  "start_index": 73,
+                  "end_index": 73,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Designing Data-Intensive Applications (Kleppmann)",
+                  "node_id": "designing-data-intensive-applications-kleppmann",
+                  "start_index": 74,
+                  "end_index": 74,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Azure Service Bus Documentation",
+                  "node_id": "azure-service-bus-documentation",
+                  "start_index": 75,
+                  "end_index": 75,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Apache Kafka Documentation",
+                  "node_id": "apache-kafka-documentation",
+                  "start_index": 76,
+                  "end_index": 76,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Pattern: Saga (Microservices.io)",
+                  "node_id": "pattern-saga-microservicesio",
+                  "start_index": 77,
+                  "end_index": 77,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Healthcare Integration Standards",
+              "node_id": "healthcare-integration-standards",
+              "start_index": 78,
+              "end_index": 81,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "HL7 FHIR Events",
+                  "node_id": "hl7-fhir-events",
+                  "start_index": 79,
+                  "end_index": 79,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "X12 EDI Transactions",
+                  "node_id": "x12-edi-transactions",
+                  "start_index": 80,
+                  "end_index": 80,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "CMS Interoperability and Patient Access Final Rule",
+                  "node_id": "cms-interoperability-and-patient-access-final-rule",
+                  "start_index": 81,
+                  "end_index": 81,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Technology-Specific Resources",
+              "node_id": "technology-specific-resources",
+              "start_index": 82,
+              "end_index": 86,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Entity Framework Core Transactions",
+                  "node_id": "entity-framework-core-transactions",
+                  "start_index": 83,
+                  "end_index": 83,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "SQL Server Transaction Log",
+                  "node_id": "sql-server-transaction-log",
+                  "start_index": 84,
+                  "end_index": 84,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "PostgreSQL Logical Replication",
+                  "node_id": "postgresql-logical-replication",
+                  "start_index": 85,
+                  "end_index": 85,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Background Services in .NET",
+                  "node_id": "background-services-in-net",
+                  "start_index": 86,
+                  "end_index": 86,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Monitoring and Observability",
+              "node_id": "monitoring-and-observability",
+              "start_index": 87,
+              "end_index": 90,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Distributed Tracing with OpenTelemetry",
+                  "node_id": "distributed-tracing-with-opentelemetry",
+                  "start_index": 88,
+                  "end_index": 88,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Database Monitoring for Outbox Tables",
+                  "node_id": "database-monitoring-for-outbox-tables",
+                  "start_index": 89,
+                  "end_index": 89,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Message Broker Metrics",
+                  "node_id": "message-broker-metrics",
+                  "start_index": 90,
+                  "end_index": 90,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Books and Further Reading",
+              "node_id": "books-and-further-reading",
+              "start_index": 91,
+              "end_index": 94,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "\"Building Microservices\" (Newman, 2021)",
+                  "node_id": "building-microservices-newman-2021",
+                  "start_index": 92,
+                  "end_index": 92,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "\"Microservices Patterns\" (Richardson, 2018)",
+                  "node_id": "microservices-patterns-richardson-2018",
+                  "start_index": 93,
+                  "end_index": 93,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "\"Software Architecture: The Hard Parts\" (Ford et al., 2021)",
+                  "node_id": "software-architecture-the-hard-parts-ford-et-al-2021",
+                  "start_index": 94,
+                  "end_index": 94,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Decision Records",
+              "node_id": "decision-records",
+              "start_index": 95,
+              "end_index": 95,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Change History",
+          "node_id": "change-history",
+          "start_index": 96,
+          "end_index": 96,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Review Log",
+          "node_id": "review-log",
+          "start_index": 97,
+          "end_index": 97,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "TL;DR",
+          "node_id": "tldr",
+          "start_index": 98,
+          "end_index": 98,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#outbox-pattern]\n\n# Outbox Pattern\n\n**← Back to [EAP Home](../../../README.md) • [Patterns](../../README.md) • [Application](../README.md) • [API & Microservices](./README.md)**\n\n---\n\n**Pattern Metadata**\n\n```yaml\npattern_id: 'PTN-APP-API-029'\npattern_name: 'Outbox Pattern'\npattern_type: 'integration-messaging'\ndomain: 'integration'\nversion: '1.0.0'\nstatus: 'active'\ntags:\n\n  - 'integration'\n  - 'outbox'\n  - 'transactional-messaging'\n  - 'reliability'\n  - 'dual-write-problem'\n  - 'event-publishing'\n  - 'guaranteed-delivery'\n  - 'atomic-consistency'\n  - 'database-transaction'\n  - 'message-relay'\n  - 'at-least-once'\n  - 'claims-processing'\n  - 'enrollment'\n  - 'payment-processing'\n  - 'audit-trail'\n  - 'change-data-capture'\n  - 'debezium'\n  - 'event-driven'\n```\n\n---",
+    "2": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#table-of-contents]\n\n## Table of Contents\n\n- [Executive Summary](#executive-summary)\n- [Context and Problem](#context-and-problem)\n- [Solution](#solution)\n- [Implementation Guidelines](#implementation-guidelines)\n- [Governance and Compliance](#governance-and-compliance)\n- [Examples and Use Cases](#examples-and-use-cases)\n- [Related Patterns and References](#related-patterns-and-references)\n- [Change History](#change-history)\n- [Review Log](#review-log)\n- [TL;DR](#tldr)\n\n---",
+    "3": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#executive-summary]\n\n## Executive Summary",
+    "4": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#problem-statement]\n\n### Problem Statement\n\nHealthcare microservices must atomically update their local database and publish events to notify other services, but these are two separate operations that cannot be executed atomically—this is the \"dual-write problem.\" At Gainwell, when the Claims Service adjudicates a claim, it must (1) save the claim decision to the database and (2) publish a `claim.adjudicated` event for downstream services (payment processing, member notifications, analytics, fraud detection). If the database commit succeeds but the message publish fails due to network issues, message broker outage, or service crash, the claim is saved but dependent services never receive notification—member doesn't get EOB, provider doesn't get payment, analytics dashboards show incorrect data. Conversely, if the event publishes successfully but the database transaction rolls back, downstream services process an event for a claim that doesn't exist in the database, causing data inconsistencies and reconciliation nightmares. Traditional approaches fail: executing both operations in sequence (save to DB, then publish event) creates a timing window where failures cause inconsistency; using distributed transactions (2PC/XA) with databases and message brokers adds significant complexity, performance overhead (10x slower), and fragility in cloud-native environments where brokers often don't support XA; attempting manual reconciliation with batch jobs to detect and fix inconsistencies adds operational burden and introduces data lag (minutes or hours behind real-time). The 2023 incident where 1,847 enrollment events were lost during a Kafka broker restart (database commits succeeded but events never published) required 3 days of manual reconciliation, impacted member portal access for 12 states, and cost $280K in operational response—highlighting the critical need for guaranteed atomic event publishing with database updates without distributed transactions.",
+    "5": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#solution-overview]\n\n### Solution Overview\n\nOutbox Pattern solves the dual-write problem by storing events in an \"outbox\" table within the same database transaction as the business data update, ensuring atomicity through the database's ACID guarantees, then asynchronously relaying events from the outbox to the message broker in a separate process. When adjudicating a claim, the Claims Service executes a single database transaction: (1) INSERT claim decision into `claims` table, (2) INSERT `claim.adjudicated` event into `outbox` table—both operations commit or rollback together atomically. A separate Message Relay process continuously polls the outbox table (or uses Change Data Capture for efficiency), publishes events to the message broker (Azure Service Bus, Kafka), marks events as published, and deletes processed events to prevent table growth. This approach provides guaranteed event publishing (events can't be lost since they're persisted in database), atomic consistency (business data and events always in sync), at-least-once delivery semantics (relay retries failures until successful), no distributed transactions needed (single database transaction only), and resilience to message broker outages (events accumulate in outbox until broker available). The pattern supports multiple implementations: polling-based relay (simple, works with any database), Change Data Capture using tools like Debezium (efficient, near-real-time, no polling overhead), or transaction log tailing (reading database write-ahead logs directly). Each approach has trade-offs in complexity, latency, and infrastructure requirements, but all solve the fundamental dual-write problem through transactional outbox writes followed by reliable message relay.",
+    "6": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#when-to-use]\n\n### When to Use\n\n**Event Publishing with Database Transactions**: Claims adjudication requiring claim record save and `claim.adjudicated` event publish atomically; enrollment processing creating member record and publishing `member.enrolled` event for ID card generation, portal provisioning, and care management assignment; provider credentialing saving credential approval and publishing `provider.credentialed` event for network directory updates and contract activation; payment processing recording remittance transaction and publishing `payment.issued` event for provider notification and accounting reconciliation—any scenario where business logic updates database and must notify other services via events without risk of inconsistency.\n\n**Guaranteed Event Delivery Requirements**: Enrollment events that trigger 8+ downstream workflows (ID cards, portal access, notifications, care management, analytics, state reporting, financial systems, audit trail) where missing a single event causes incomplete enrollment and member service disruptions; payment events for provider remittance where lost events mean providers don't receive payment notifications and state financial reconciliation fails; prior authorization approval events where downstream pharmacy systems need notification to allow prescription fills and missing events cause member prescription denials; regulatory reporting events (T-MSIS submissions, CMS reporting) where every transaction must be captured for compliance and missing events cause audit failures and state penalties.\n\n**Avoiding Distributed Transactions**: Microservices architectures where services own their databases and 2PC/XA distributed transactions are impractical (Azure Service Bus doesn't support XA, Kafka doesn't support XA, cloud-native databases often don't support XA); high-throughput scenarios where distributed transaction overhead (10x performance penalty, coordinator overhead, lock contention) is unacceptable—claims processing 15K/hour requires <5 second adjudication, can't afford 2PC latency; resilience requirements where distributed transaction coordinators introduce single points of failure and fragility incompatible with cloud-native fault tolerance.\n\n**Message Broker Outage Resilience**: Production environments where message broker maintenance windows shouldn't block business operations (claims adjudication continues during Kafka upgrade, enrollment processing continues during Service Bus maintenance); incident scenarios where broker failures (2023 Kafka partition leadership election causing 14-minute outage) shouldn't cause data loss or service disruption—outbox accumulates events during outage, relay publishes when broker recovers; multi-region deployments where network partitions might temporarily isolate message broker but database remains available.\n\n**Audit and Compliance Requirements**: HIPAA audit trails requiring every PHI access, member enrollment, claim adjudication, and payment transaction be durably logged before acknowledging to user—outbox provides database-backed audit log with guaranteed event publishing to audit service; regulatory compliance where state reporting must capture 100% of transactions without loss—outbox ensures every transaction generates corresponding event even during system failures; financial reconciliation where every payment, adjustment, and recoupment must have corresponding event for accounting systems—outbox table provides source of truth for reconciliation.",
+    "7": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#benefits]\n\n### Benefits\n\n**Atomic Consistency Through Database ACID**: Outbox pattern leverages database's native ACID transaction guarantees to ensure business data and events are always consistent—either both commit together or both rollback together, eliminating timing windows and partial failures that cause data inconsistencies; claims service saves claim decision and outbox event in single transaction, so either member has adjudicated claim and event exists to notify them, or neither exists (transaction rolled back)—no scenario where claim saved but member never notified; enrollment service creates member record and outbox event atomically, guaranteeing every enrolled member has corresponding event for downstream provisioning (ID cards, portal, notifications)—no incomplete enrollments or orphaned provisioning workflows; eliminates entire class of reconciliation bugs and data quality issues caused by dual-write inconsistencies.\n\n**Guaranteed Event Delivery**: Events stored in outbox table are durable and can't be lost (database persistence with backups, replication, point-in-time recovery), unlike in-memory event publishing that loses events on service crashes or message broker outages; message relay process retries event publishing with exponential backoff until successful, ensuring every outbox event eventually reaches message broker even during transient failures, broker maintenance, or network issues; at-least-once delivery semantics where events might be published multiple times (idempotent consumers handle duplicates), but never lost—critical for financial transactions, regulatory reporting, and audit compliance where event loss causes compliance violations and revenue leakage; 2023 Kafka outage that previously lost 1,847 enrollment events would have zero data loss with outbox pattern—events safely persisted in database, published when broker recovered.\n\n**No Distributed Transactions Required**: Avoids 2PC/XA distributed transaction complexity, performance overhead (10x latency penalty from coordinator communication and 2-phase locking), and fragility (coordinator single point of failure, timeout handling complexity, partial commit failures); works with cloud-native message brokers that don't support XA (Azure Service Bus, AWS SQS, Kafka) and modern databases that minimize XA support (cloud DBaaS offerings); single database transaction provides atomicity without coordination protocol overhead, enabling high-throughput processing (15K claims/hour) with <5 second adjudication times impossible with distributed transactions; simplified application code without transaction coordinator configuration, XA resource management, or heuristic exception handling.\n\n**Resilience to Message Broker Outages**: Business operations continue during message broker maintenance, upgrades, or outages—claims adjudication, enrollment processing, provider credentialing proceed normally with events accumulating in outbox table; when broker recovers, message relay automatically publishes accumulated events, bringing downstream services up-to-date without manual intervention or data loss; decouples critical business logic (saving claim decisions, enrolling members) from message infrastructure availability, improving overall system reliability and reducing dependency chains; outbox table provides buffering mechanism for broker capacity issues or backpressure—events persist in database until broker ready to process.\n\n**Audit Trail and Debuggability**: Outbox table provides queryable audit log of all events generated by service with timestamps, payload details, and processing status (pending, published, failed)—valuable for debugging, incident investigation, and compliance reporting; ability to replay events from outbox if downstream consumers missed events or need reprocessing (delete published flag, replay publishes events again)—useful for consumer service recovery, data migration, or new analytics services needing historical events; database-backed event store enables SQL queries for operational troubleshooting (\"show me all claim.adjudicated events published in last hour\", \"find enrollment events that failed to publish\", \"replay payment events from January 15th\"); compliance and audit requirements benefit from durable, tamper-evident event log with database backup and point-in-time recovery capabilities.",
+    "8": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#context-and-problem]\n\n## Context and Problem",
+    "9": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#business-context]\n\n### Business Context\n\nGainwell Technologies operates event-driven microservices architectures serving 72 million Medicaid beneficiaries across 50+ state programs, where services must atomically update their databases and publish events to coordinate workflows across the distributed system. The microservices ecosystem includes:\n\n**Claims Processing Domain**: Claims Service adjudicates 15,000 claims per hour during peak periods, saving claim decisions (approved/denied/pending) to its database and publishing `claim.adjudicated` events consumed by 8+ downstream services: Payment Service schedules provider remittance, Member Notification Service generates Explanation of Benefits (EOB) letters, Analytics Service updates dashboards and reporting, Fraud Detection Service analyzes patterns, Audit Service logs regulatory compliance events, State Reporting Service queues T-MSIS submissions, Provider Portal Service updates claim status displays, Care Management Service identifies potential quality issues. Each adjudicated claim must trigger all these workflows atomically—missing a single event causes incomplete processing, member complaints (no EOB received), provider payment delays, compliance gaps (missing T-MSIS records), and operational overhead (manual reconciliation).\n\n**Enrollment Domain**: Enrollment Service processes member selections during open enrollment periods (600,000 enrollments over 72-96 hours) and ongoing eligibility changes (50,000 monthly), creating member records and publishing `member.enrolled` or `member.updated` events that trigger 10+ provisioning workflows: ID Card Service generates and mails physical member cards, Portal Provisioning Service creates login credentials and sends welcome emails, Care Management Service assigns care coordinators based on risk stratification, Provider Network Service updates provider rosters, Pharmacy Benefit Service activates prescription coverage, Notification Service sends enrollment confirmation texts and emails, Analytics Service updates enrollment dashboards, State Reporting Service prepares enrollment files, Financial Service calculates premiums and subsidies, Audit Service logs enrollment for compliance. Missing enrollment events cause critical member service disruptions—member can't access portal, prescriptions denied at pharmacy, no care coordinator assigned—requiring expensive emergency provisioning and creating poor member experience.\n\n**Provider Credentialing Domain**: Provider Credentialing Service verifies licenses, sanctions, board certifications, and malpractice insurance for 250,000+ network providers, saving credential approvals to its database and publishing `provider.credentialed` or `provider.suspended` events consumed by Provider Directory Service (updates searchable provider directory), Contract Management Service (activates provider agreements), Claims Service (enables claim submissions), Prior Auth Service (allows authorization requests), Pharmacy Network Service (enables pharmacy claim adjudication), Member Portal Service (displays in-network providers), State Reporting Service (prepares provider enrollment files for states), Audit Service (logs credentialing actions for NCQA accreditation). Missing credentialing events cause provider frustration (can't submit claims after credentialing approval), member service issues (incorrect provider directory), compliance risks (un-credentialed providers paid), and state contract violations.\n\n**Payment Processing Domain**: Payment Service processes provider remittances (4 million payments annually totaling $18 billion), member reimbursements, and Third-Party Liability (TPL) recoveries, saving payment transactions to its database and publishing `payment.issued`, `payment.adjusted`, or `payment.reversed` events consumed by Provider Notification Service (sends remittance advice), Accounting Service (posts to general ledger), Financial Reconciliation Service (matches payments to claims), State Reporting Service (prepares financial reports), Bank Interface Service (generates ACH files), Audit Service (logs payment activity), Provider Portal Service (updates payment history). Missing payment events cause provider complaints (payment issued but no remittance advice received), accounting discrepancies (payments made but not recorded in GL), reconciliation failures (can't match payments to claims), and audit findings (payment activity not logged).\n\nThe challenge: each of these domains needs to atomically update local database state and publish events to coordinate distributed workflows, but database commits and message broker publishes are separate operations that can't be made atomic without the Outbox Pattern.",
+    "10": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#technical-context]\n\n### Technical Context\n\nGainwell's microservices architecture uses polyglot persistence where each service owns its database (SQL Server for transactional services, PostgreSQL for analytics services, Cosmos DB for high-scale services) and communicates through events published to message brokers (Azure Service Bus for Azure-native services, Kafka for high-throughput event streaming, RabbitMQ for on-premise installations). Services follow domain-driven design principles with clear bounded contexts and no shared databases.\n\n**Current Event Publishing Architecture**:\n- Services update local database using standard database transactions (BEGIN TRANSACTION → INSERT/UPDATE → COMMIT)\n- After database commit, services publish events to message broker using client libraries (Azure.Messaging.ServiceBus, Confluent.Kafka, RabbitMQ.Client)\n- This creates the dual-write problem: two separate operations (database commit, message publish) that can't be executed atomically\n\n**Infrastructure Components**:\n- **Databases**: SQL Server 2019+ (claims, enrollment, provider, payment services), PostgreSQL 14+ (analytics services), Azure Cosmos DB (high-scale member portal)\n- **Message Brokers**: Azure Service Bus Standard/Premium tiers (operational events), Apache Kafka 3.x (analytics event streams), RabbitMQ 3.11+ (on-premise state deployments)\n- **Cloud Platform**: Azure cloud for most services (99% of production workloads), on-premise for specific state contracts requiring data residency\n- **Application Stack**: .NET 6+ for backend services, C# as primary language, Entity Framework Core for data access, dependency injection for service composition\n\n**Performance Requirements**:\n- Claims adjudication: <5 seconds end-to-end including database save and event publish\n- Enrollment processing: <30 seconds per enrollment including provisioning event generation\n- Provider credentialing: <1 minute credential approval including directory update events\n- Payment processing: <10 seconds payment issuance including remittance events\n- High availability: 99.95% uptime SLA for claims and enrollment services (maximum 4.38 hours downtime annually)\n\n**Compliance Requirements**:\n- HIPAA: All PHI access events must be auditable with tamper-evident logs, no event loss allowed for compliance tracking\n- State Contracts: 100% claims adjudication tracking for T-MSIS reporting, complete enrollment event capture for state audits\n- Financial Regulations: Zero tolerance for payment event loss (impacts accounting reconciliation and state financial reporting)",
+    "11": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#problem-details]\n\n### Problem Details",
+    "12": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#problem-1-dual-write-inconsistency---database-commits-but-event-publish-fails]\n\n#### Problem 1: Dual-Write Inconsistency - Database Commits But Event Publish Fails\n\nThe most common failure mode is database transaction commits successfully but subsequent event publish fails due to message broker outage, network timeout, or service crash before publish completes—leaving database in updated state but no event published to notify downstream services.\n\n**Scenario**: Claims Service adjudicates a claim as \"Approved - $450.00\"\n\n```csharp\npublic class ClaimsService\n{\n    private readonly ClaimsDbContext _dbContext;\n    private readonly IServiceBusClient _serviceBus;\n\n    public async Task<ClaimDecision> AdjudicateClaimAsync(Claim claim)\n    {\n        // Step 1: Adjudicate claim (business logic)\n        var decision = await _adjudicationEngine.EvaluateClaimAsync(claim);\n\n        // Step 2: Save to database\n        await _dbContext.Claims.AddAsync(new ClaimRecord\n        {\n            ClaimId = claim.Id,\n            Status = decision.Status, // \"Approved\"\n            ApprovedAmount = decision.Amount, // $450.00\n            AdjudicationDate = DateTime.UtcNow\n        });\n\n        await _dbContext.SaveChangesAsync(); // ✅ COMMITS SUCCESSFULLY\n\n        // Step 3: Publish event to message broker\n        var claimEvent = new ClaimAdjudicatedEvent\n        {\n            ClaimId = claim.Id,\n            Status = decision.Status,\n            Amount = decision.Amount,\n            ProviderId = claim.ProviderId,\n            MemberId = claim.MemberId\n        };\n\n        await _serviceBus.PublishAsync(\"claim.adjudicated\", claimEvent);\n        // ❌ FAILS - Azure Service Bus timeout, network partition, or service crashes here\n\n        return decision;\n    }\n}\n```\n\n**Consequences**:\n- **Database State**: Claim #12345 saved with Status=\"Approved\", Amount=$450.00 ✅\n- **Event State**: No `claim.adjudicated` event published ❌\n- **Downstream Impact**:\n  - Payment Service never schedules provider remittance (provider doesn't get paid $450)\n  - Member Notification Service never generates EOB (member doesn't know claim approved)\n  - Analytics dashboards show incorrect counts (claim saved but not counted in \"adjudicated\" metrics)\n  - State Reporting Service missing claim for T-MSIS submission (compliance violation)\n  - Provider Portal shows claim as \"Pending\" indefinitely (database shows \"Approved\" but portal never got event)\n\n**2023 Incident**: Kafka broker restart during leader election caused 14-minute outage where 1,847 enrollment events were lost (database commits succeeded, publishes failed). Required 3-day manual reconciliation effort: query database for enrollments during outage window, manually re-publish events, verify downstream provisioning completed, handle duplicates from partial provisioning. Impact: 12 states affected, 1,847 members with incomplete provisioning (no portal access, no ID cards, no care coordinators), $280K incident response and remediation cost.",
+    "13": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#problem-2-event-publishes-but-database-transaction-rolls-back]\n\n#### Problem 2: Event Publishes But Database Transaction Rolls Back\n\nLess common but equally problematic: event publishes successfully but database transaction subsequently rolls back due to constraint violation, deadlock, or application exception—leaving message broker with event for entity that doesn't exist in database.\n\n**Scenario**: Enrollment Service processing member enrollment\n\n```csharp\npublic async Task<EnrollmentResult> EnrollMemberAsync(EnrollmentRequest request)\n{\n    using var transaction = await _dbContext.Database.BeginTransactionAsync();\n\n    try\n    {\n        // Step 1: Create member record\n        var member = new Member\n        {\n            MemberId = request.MemberId,\n            FirstName = request.FirstName,\n            LastName = request.LastName,\n            SelectedPlanId = request.PlanId,\n            EffectiveDate = request.EffectiveDate\n        };\n\n        await _dbContext.Members.AddAsync(member);\n\n        // Step 2: Publish enrollment event BEFORE database commit\n        var enrollmentEvent = new MemberEnrolledEvent\n        {\n            MemberId = request.MemberId,\n            PlanId = request.PlanId,\n            EffectiveDate = request.EffectiveDate\n        };\n\n        await _serviceBus.PublishAsync(\"member.enrolled\", enrollmentEvent);\n        // ✅ EVENT PUBLISHED SUCCESSFULLY\n\n        // Step 3: Save to database\n        await _dbContext.SaveChangesAsync();\n        // ❌ FAILS - Unique constraint violation (MemberId already exists),\n        //           deadlock with concurrent enrollment, or application exception\n\n        await transaction.CommitAsync(); // Never reaches here\n\n        return EnrollmentResult.Success();\n    }\n    catch (Exception ex)\n    {\n        await transaction.RollbackAsync(); // Database rollback\n        // Event already published - INCONSISTENCY!\n        throw;\n    }\n}\n```\n\n**Consequences**:\n- **Database State**: No member record exists (transaction rolled back) ❌\n- **Event State**: `member.enrolled` event published and consumed by downstream services ✅\n- **Downstream Impact**:\n  - ID Card Service generates and mails card for non-existent member (wasted materials, incorrect member receives card)\n  - Portal Provisioning Service creates login credentials for non-existent member (orphaned portal account)\n  - Care Management Service assigns care coordinator to non-existent member (wasted coordinator time)\n  - Analytics dashboards overcount enrollments (event received but member doesn't exist)\n  - State Reporting Service reports enrollment that didn't happen (incorrect state metrics)\n\n**Reconciliation Complexity**: Harder to detect than Problem 1 because event consumers completed processing successfully—requires cross-referencing event logs with database queries to find \"phantom\" events for missing entities.",
+    "14": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#problem-3-distributed-transaction-overhead-and-fragility]\n\n#### Problem 3: Distributed Transaction Overhead and Fragility\n\nAttempting to solve dual-write with distributed transactions (2PC/XA) introduces significant performance overhead, complexity, and fragility incompatible with cloud-native microservices.\n\n**Distributed Transaction Approach**:\n\n```csharp\npublic async Task<ClaimDecision> AdjudicateClaimWithXA(Claim claim)\n{\n    // Requires XA-compliant database and message broker (most cloud services don't support)\n    using var scope = new TransactionScope(\n        TransactionScopeOption.Required,\n        new TransactionOptions { IsolationLevel = IsolationLevel.ReadCommitted },\n        TransactionScopeAsyncFlowOption.Enabled);\n\n    try\n    {\n        // Phase 1: Prepare - both resources prepare to commit\n        await _dbContext.Claims.AddAsync(claimRecord);\n        await _dbContext.SaveChangesAsync(); // Prepare phase (not committed)\n\n        await _xaServiceBus.PublishAsync(claimEvent); // Prepare phase (not committed)\n\n        // Phase 2: Commit - coordinator tells both resources to commit\n        scope.Complete(); // 2PC coordinator commits both\n\n        // Performance impact: 10x slower than single-phase commit\n        // Failure modes: coordinator timeout, partial commit, heuristic exceptions\n    }\n    catch (Exception ex)\n    {\n        // Rollback both resources\n        throw;\n    }\n}\n```\n\n**Problems with Distributed Transactions**:\n\n1. **Performance Overhead**: 2PC requires coordinator communication, prepare phase locking, and two-phase commit protocol—typically 10x slower than single-phase commits (claims adjudication <5s SLA violated, becomes 50+ seconds)\n\n2. **Cloud-Native Incompatibility**: Azure Service Bus doesn't support XA, AWS SQS doesn't support XA, Kafka doesn't support XA, many cloud DBaaS offerings minimize XA support—forcing on-premise or compatible infrastructure\n\n3. **Coordinator Fragility**: Distributed transaction coordinator (DTC) becomes single point of failure; coordinator crashes or timeouts cause heuristic exceptions requiring manual intervention; partial commits create worst-case inconsistency (one resource committed, other didn't)\n\n4. **Lock Contention**: Prepare phase holds locks on database rows until commit phase completes—reduces concurrency, increases deadlock probability, impacts throughput under load\n\n5. **Operational Complexity**: Configuring XA resources, managing transaction coordinator, monitoring distributed transaction metrics, handling heuristic exceptions, troubleshooting timeout issues adds significant operational burden\n\n**Quantified Impact**: Lab testing showed 2PC approach averaged 47 seconds per claim adjudication vs <5 seconds without XA, reducing throughput from 15,000 claims/hour to <2,000 claims/hour—97% throughput degradation unacceptable for production.",
+    "15": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#problem-4-manual-reconciliation-burden]\n\n#### Problem 4: Manual Reconciliation Burden\n\nWithout atomicity guarantees, teams implement batch reconciliation jobs to detect and fix inconsistencies—expensive, lag-prone, and error-prone operational burden.\n\n**Typical Reconciliation Job**:\n\n```csharp\n// Nightly job to find claims adjudicated in database but no event published\npublic async Task ReconcileMissingClaimEventsAsync()\n{\n    // Step 1: Query database for claims adjudicated today\n    var adjudicatedClaims = await _dbContext.Claims\n        .Where(c => c.AdjudicationDate >= DateTime.Today)\n        .ToListAsync();\n\n    // Step 2: Query event store for published claim.adjudicated events today\n    var publishedEvents = await _eventStore\n        .GetEventsAsync(\"claim.adjudicated\", DateTime.Today);\n\n    // Step 3: Find claims in database but not in event store\n    var missingEvents = adjudicatedClaims\n        .Where(c => !publishedEvents.Any(e => e.ClaimId == c.ClaimId))\n        .ToList();\n\n    // Step 4: Re-publish missing events (manual recovery)\n    foreach (var claim in missingEvents)\n    {\n        await _serviceBus.PublishAsync(\"claim.adjudicated\", new ClaimAdjudicatedEvent\n        {\n            ClaimId = claim.ClaimId,\n            Status = claim.Status,\n            Amount = claim.ApprovedAmount\n        });\n\n        _logger.LogWarning(\"Reconciliation published missing event for claim {ClaimId}\", claim.ClaimId);\n    }\n}\n```\n\n**Reconciliation Challenges**:\n\n1. **Data Lag**: Reconciliation runs nightly (or hourly), so inconsistencies persist for hours—member doesn't receive EOB for hours, provider payment delayed\n\n2. **Duplicate Detection**: Reconciliation might re-publish events that were actually published but not logged properly, causing duplicate processing if consumers aren't idempotent\n\n3. **Complex Logic**: Matching database records to events requires complex correlation logic, handling schema changes, dealing with data transformations\n\n4. **Operational Cost**: 2023 incident required 3 engineers for 3 days ($280K fully-loaded cost) to reconcile 1,847 missing enrollment events—scales poorly as event volume grows\n\n5. **False Confidence**: Reconciliation creates illusion of \"eventually consistent\" but masks underlying architectural problem, doesn't prevent inconsistencies from occurring",
+    "16": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#forces-and-constraints]\n\n### Forces and Constraints\n\n**Atomicity Requirement**: Database updates and event publishing must commit together or rollback together—no partial success states allowed where claim saved but event lost or event published but claim doesn't exist.\n\n**Performance SLA**: Outbox pattern must maintain performance requirements (claims adjudication <5 seconds, enrollment <30 seconds) without distributed transaction overhead; message relay latency from outbox write to broker publish should be <1 second for operational events, <5 seconds acceptable for analytics events.\n\n**At-Least-Once Semantics**: Outbox guarantees events published at least once (may publish duplicates during relay retries), requiring idempotent consumers; financial transactions, enrollment provisioning, and audit logging must handle duplicate events without double-processing (duplicate payment, duplicate ID card, duplicate audit entry).\n\n**Message Broker Diversity**: Must work with Azure Service Bus (Azure-native services), Kafka (high-throughput streaming), and RabbitMQ (on-premise state deployments)—no assumption of XA support or broker-specific features.\n\n**Database Compatibility**: Must work with SQL Server (claims, enrollment, provider), PostgreSQL (analytics), and Cosmos DB (member portal)—implement using standard SQL transactions without proprietary database features.\n\n**Operational Simplicity**: Prefer polling-based relay (simple, reliable, works with any database) over CDC/log tailing (complex infrastructure, database-specific, additional operational burden)—unless high-throughput requirements justify CDC complexity.\n\n**Compliance and Audit**: HIPAA requires tamper-evident audit trail—outbox table provides queryable event log for compliance; state contracts require 100% event capture—outbox ensures no events lost even during outages; financial regulations require payment event audit trail—outbox persists all payment events durably.\n\n**Table Growth Management**: Outbox tables accumulate events continuously—must implement cleanup strategy (delete published events after retention period, archive to cold storage) to prevent unbounded growth; 15,000 claims/hour = 360,000 events/day = 131 million events/year requires active management.\n\n**Idempotency and Ordering**: Message relay may publish duplicate events (retry after timeout), requiring idempotent consumers; relay should preserve event order where possible (process outbox in ID ascending order) but can't guarantee strict ordering across service restarts or concurrent relay instances.",
+    "17": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#solution]\n\n## Solution",
+    "18": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#pattern-description]\n\n### Pattern Description\n\nOutbox Pattern solves the dual-write problem by writing events to an \"outbox\" database table within the same database transaction as the business data update, ensuring atomicity through the database's ACID guarantees. A separate Message Relay process then asynchronously reads events from the outbox table and publishes them to the message broker. This decouples atomic event persistence (solved by database transaction) from reliable event delivery (solved by message relay retry logic).\n\n**Core Mechanism**:\n\n1. **Transactional Outbox Write**: Service executes single database transaction containing both business data changes AND outbox event inserts—database ACID properties ensure both commit together or rollback together atomically\n\n2. **Message Relay Polling**: Separate process (background worker, scheduled job, or CDC consumer) continuously queries outbox table for unpublished events, publishes to message broker, marks events as published, deletes or archives processed events\n\n3. **At-Least-Once Delivery**: Relay retries failures with exponential backoff until successful publish, providing guaranteed delivery with possibility of duplicates (idempotent consumers required)\n\n**Key Characteristics**:\n\n- **Atomicity**: Database transaction guarantees business data and events always consistent (both saved or both rolled back)\n- **Reliability**: Events persisted durably in database with backups, replication, point-in-time recovery—can't be lost\n- **Decoupling**: Business logic completes when database commits; message broker publishing is asynchronous background operation\n- **Resilience**: Message broker outages don't block business operations—events accumulate in outbox, published when broker available\n- **Simplicity**: No distributed transactions, no 2PC coordinator, no XA configuration—standard single-database transactions only",
+    "19": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#architecture-diagrams]\n\n### Architecture Diagrams",
+    "20": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#high-level-flow]\n\n#### High-Level Flow\n\n```mermaid\nflowchart TD\n    A[Claims Service] -->|1. BEGIN TRANSACTION| B[Database Transaction]\n    B -->|2. INSERT claim| C[(Claims Table)]\n    B -->|3. INSERT event| D[(Outbox Table)]\n    B -->|4. COMMIT| E[Transaction Committed ✅]\n\n    F[Message Relay Process] -->|5. SELECT unpublished| D\n    F -->|6. Publish event| G[Azure Service Bus]\n    F -->|7. UPDATE published=true| D\n\n    G -->|8. Consume event| H[Payment Service]\n    G -->|9. Consume event| I[Notification Service]\n    G -->|10. Consume event| J[Analytics Service]\n\n    style A fill:#e1f5ff\n    style E fill:#c3e6cb\n    style G fill:#fff3cd\n    style D fill:#f8d7da\n```",
+    "21": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#sequence-diagram---claim-adjudication-with-outbox]\n\n#### Sequence Diagram - Claim Adjudication with Outbox\n\n```mermaid\nsequenceDiagram\n    participant ClaimsService\n    participant Database\n    participant OutboxTable\n    participant MessageRelay\n    participant ServiceBus\n    participant PaymentService\n\n    ClaimsService->>Database: BEGIN TRANSACTION\n    ClaimsService->>Database: INSERT INTO claims (id, status, amount)\n    ClaimsService->>OutboxTable: INSERT INTO outbox (event_type, payload, published)\n    ClaimsService->>Database: COMMIT\n    Database-->>ClaimsService: ✅ Transaction Committed\n\n    Note over ClaimsService,Database: Both claim and event saved atomically\n\n    loop Every 5 seconds\n        MessageRelay->>OutboxTable: SELECT * FROM outbox WHERE published=false\n        OutboxTable-->>MessageRelay: Unpublished events\n\n        MessageRelay->>ServiceBus: Publish claim.adjudicated event\n        ServiceBus-->>MessageRelay: ✅ Published\n\n        MessageRelay->>OutboxTable: UPDATE outbox SET published=true, published_at=NOW()\n    end\n\n    ServiceBus->>PaymentService: claim.adjudicated event\n    PaymentService-->>ServiceBus: ✅ Acknowledged\n\n    Note over MessageRelay,PaymentService: Message relay ensures eventual delivery\n```",
+    "22": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#components]\n\n### Components\n\n| Component | Responsibility | Technology Options | Details |\n|-----------|---------------|-------------------|---------|\n| **Outbox Table** | Stores events to be published in same database as business data | SQL Server, PostgreSQL, Cosmos DB | Schema: id (PK), event_type, aggregate_id, payload (JSON), published (bool), published_at (timestamp), created_at (timestamp); indexed on (published, created_at) for efficient relay queries |\n| **Business Service** | Executes database transactions that include outbox writes | .NET 6+, Entity Framework Core, ADO.NET | Implements business logic (claim adjudication, enrollment processing), writes to business tables and outbox table in single transaction using standard BEGIN/COMMIT |\n| **Message Relay** | Polls outbox table and publishes events to message broker | Background Worker Service, Azure Functions, Kubernetes CronJob | Queries `WHERE published=false ORDER BY created_at`, publishes to broker, updates published=true, handles retries with exponential backoff, logs failures |\n| **Message Broker** | Receives published events and delivers to consumers | Azure Service Bus, Kafka, RabbitMQ | Standard broker functionality—no special outbox integration required; relay acts as standard publisher |\n| **Event Consumers** | Subscribe to events and process business logic | Payment Service, Notification Service, Analytics Service | Must be idempotent (handle duplicate events from relay retries); standard event-driven architecture consumers |\n| **Outbox Cleanup Job** | Archives or deletes published events to manage table growth | Scheduled job, database maintenance script | Runs daily/weekly: DELETE FROM outbox WHERE published=true AND published_at < NOW() - INTERVAL '7 days'; prevents unbounded growth |",
+    "23": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#outbox-table-schema]\n\n### Outbox Table Schema\n\n**SQL Server Schema**:\n\n```sql\nCREATE TABLE Outbox (\n    Id BIGINT IDENTITY(1,1) PRIMARY KEY,\n    EventType VARCHAR(255) NOT NULL,            -- e.g., 'claim.adjudicated', 'member.enrolled'\n    AggregateId VARCHAR(100) NOT NULL,          -- Business entity ID (ClaimId, MemberId, etc.)\n    Payload NVARCHAR(MAX) NOT NULL,             -- JSON event data\n    Published BIT NOT NULL DEFAULT 0,           -- false = pending, true = published\n    PublishedAt DATETIME2 NULL,                 -- Timestamp when event published to broker\n    CreatedAt DATETIME2 NOT NULL DEFAULT GETUTCDATE(),  -- When event written to outbox\n\n    -- Index for message relay queries (unpublished events in creation order)\n    INDEX IX_Outbox_Relay (Published, CreatedAt) WHERE Published = 0\n);\n```\n\n**PostgreSQL Schema**:\n\n```sql\nCREATE TABLE outbox (\n    id BIGSERIAL PRIMARY KEY,\n    event_type VARCHAR(255) NOT NULL,\n    aggregate_id VARCHAR(100) NOT NULL,\n    payload JSONB NOT NULL,                     -- PostgreSQL native JSON type\n    published BOOLEAN NOT NULL DEFAULT false,\n    published_at TIMESTAMP WITH TIME ZONE,\n    created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),\n\n    -- Partial index for efficient relay queries\n    CREATE INDEX idx_outbox_relay ON outbox (created_at) WHERE published = false\n);\n```\n\n**Key Schema Design Decisions**:\n\n- **Id**: Auto-incrementing BIGINT provides natural ordering and efficient relay pagination\n- **EventType**: String discriminator for routing events to appropriate topics/queues\n- **AggregateId**: Business entity identifier for correlation and debugging (ClaimId, MemberId, PaymentId)\n- **Payload**: JSON blob containing full event data (avoid joins during relay—relay should be simple read-and-publish)\n- **Published Flag**: Boolean tracks relay processing status (false = pending, true = published); alternative: delete published events immediately (simpler but loses audit trail)\n- **Timestamps**: CreatedAt for ordering, PublishedAt for audit trail and cleanup queries\n- **Index**: Partial/filtered index on (Published, CreatedAt) for efficient relay queries (`WHERE published=false ORDER BY created_at`)",
+    "24": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#interaction-flows]\n\n### Interaction Flows",
+    "25": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#flow-1-transactional-outbox-write-atomicity]\n\n#### Flow 1: Transactional Outbox Write (Atomicity)\n\n```csharp\npublic class ClaimsService\n{\n    private readonly ClaimsDbContext _dbContext;\n\n    public async Task<ClaimDecision> AdjudicateClaimAsync(Claim claim)\n    {\n        // Business logic\n        var decision = await _adjudicationEngine.EvaluateClaimAsync(claim);\n\n        // Single database transaction ensures atomicity\n        using var transaction = await _dbContext.Database.BeginTransactionAsync();\n\n        try\n        {\n            // Step 1: Save business data\n            var claimRecord = new ClaimRecord\n            {\n                ClaimId = claim.Id,\n                Status = decision.Status,\n                ApprovedAmount = decision.Amount,\n                AdjudicationDate = DateTime.UtcNow\n            };\n            await _dbContext.Claims.AddAsync(claimRecord);\n\n            // Step 2: Save event to outbox table IN SAME TRANSACTION\n            var outboxEvent = new OutboxEvent\n            {\n                EventType = \"claim.adjudicated\",\n                AggregateId = claim.Id,\n                Payload = JsonSerializer.Serialize(new ClaimAdjudicatedEvent\n                {\n                    ClaimId = claim.Id,\n                    Status = decision.Status,\n                    Amount = decision.Amount,\n                    ProviderId = claim.ProviderId,\n                    MemberId = claim.MemberId,\n                    AdjudicationDate = DateTime.UtcNow\n                }),\n                Published = false,\n                CreatedAt = DateTime.UtcNow\n            };\n            await _dbContext.Outbox.AddAsync(outboxEvent);\n\n            // Step 3: Commit transaction - both tables updated atomically\n            await _dbContext.SaveChangesAsync();\n            await transaction.CommitAsync();\n            // ✅ Either BOTH claim and outbox event saved, or BOTH rolled back\n\n            return decision;\n        }\n        catch (Exception ex)\n        {\n            await transaction.RollbackAsync();\n            // ✅ Database rollback removes both claim and outbox event\n            throw;\n        }\n    }\n}\n```\n\n**Atomicity Guarantee**: Database ACID properties ensure claim record and outbox event are both committed together or both rolled back together—no partial success possible. If database commit succeeds, outbox event is guaranteed to exist for message relay.",
+    "26": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#flow-2-message-relay-polling-based]\n\n#### Flow 2: Message Relay (Polling-Based)\n\n```csharp\npublic class OutboxMessageRelay : BackgroundService\n{\n    private readonly IServiceScopeFactory _scopeFactory;\n    private readonly ILogger<OutboxMessageRelay> _logger;\n    private readonly TimeSpan _pollingInterval = TimeSpan.FromSeconds(5);\n\n    protected override async Task ExecuteAsync(CancellationToken stoppingToken)\n    {\n        _logger.LogInformation(\"Outbox Message Relay started\");\n\n        while (!stoppingToken.IsCancellationRequested)\n        {\n            try\n            {\n                await ProcessOutboxEventsAsync(stoppingToken);\n            }\n            catch (Exception ex)\n            {\n                _logger.LogError(ex, \"Error processing outbox events\");\n            }\n\n            await Task.Delay(_pollingInterval, stoppingToken);\n        }\n    }\n\n    private async Task ProcessOutboxEventsAsync(CancellationToken cancellationToken)\n    {\n        using var scope = _scopeFactory.CreateScope();\n        var dbContext = scope.ServiceProvider.GetRequiredService<ClaimsDbContext>();\n        var serviceBus = scope.ServiceProvider.GetRequiredService<IServiceBusClient>();\n\n        // Step 1: Query unpublished events (ordered by creation time)\n        var unpublishedEvents = await dbContext.Outbox\n            .Where(e => !e.Published)\n            .OrderBy(e => e.CreatedAt)\n            .Take(100) // Process in batches to avoid overwhelming broker\n            .ToListAsync(cancellationToken);\n\n        if (!unpublishedEvents.Any())\n            return; // No events to process\n\n        _logger.LogInformation(\"Processing {Count} unpublished outbox events\", unpublishedEvents.Count);\n\n        // Step 2: Publish each event to message broker\n        foreach (var outboxEvent in unpublishedEvents)\n        {\n            try\n            {\n                // Publish to broker with retry policy\n                await serviceBus.PublishAsync(\n                    topic: outboxEvent.EventType,\n                    message: outboxEvent.Payload,\n                    correlationId: outboxEvent.AggregateId);\n\n                // Step 3: Mark as published\n                outboxEvent.Published = true;\n                outboxEvent.PublishedAt = DateTime.UtcNow;\n\n                _logger.LogInformation(\"Published outbox event {Id} type {EventType} for aggregate {AggregateId}\",\n                    outboxEvent.Id, outboxEvent.EventType, outboxEvent.AggregateId);\n            }\n            catch (Exception ex)\n            {\n                // Publish failed - leave Published=false, will retry on next poll\n                _logger.LogError(ex, \"Failed to publish outbox event {Id}, will retry\", outboxEvent.Id);\n                // Don't update Published flag - event remains in queue for retry\n            }\n        }\n\n        // Step 4: Save published flags\n        await dbContext.SaveChangesAsync(cancellationToken);\n    }\n}\n```\n\n**Relay Characteristics**:\n- **Polling Interval**: 5-second default provides <5 second event latency; tune based on requirements (1 second for real-time, 30 seconds for batch)\n- **Batch Processing**: Process 100 events per poll to balance throughput and memory\n- **Ordered Processing**: Query `ORDER BY created_at` preserves event creation order (not strict guarantee but best-effort)\n- **Retry Logic**: Failed publishes leave Published=false, so event retried on next poll (exponential backoff handled by polling interval increase on repeated failures)\n- **Idempotency**: Relay may crash after publishing but before saving Published=true flag, causing duplicate publish—consumers must be idempotent",
+    "27": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#flow-3-change-data-capture-cdc-alternative]\n\n#### Flow 3: Change Data Capture (CDC) Alternative\n\nFor high-throughput scenarios where polling overhead is unacceptable, Change Data Capture provides real-time event relay by reading database transaction logs:\n\n**Debezium CDC Configuration** (PostgreSQL):\n\n```json\n{\n  \"name\": \"outbox-connector\",\n  \"config\": {\n    \"connector.class\": \"io.debezium.connector.postgresql.PostgresConnector\",\n    \"database.hostname\": \"claims-db.postgres.database.azure.com\",\n    \"database.port\": \"5432\",\n    \"database.user\": \"debezium_user\",\n    \"database.password\": \"***\",\n    \"database.dbname\": \"claims_db\",\n    \"database.server.name\": \"claims\",\n    \"table.include.list\": \"public.outbox\",\n    \"transforms\": \"outbox\",\n    \"transforms.outbox.type\": \"io.debezium.transforms.outbox.EventRouter\",\n    \"transforms.outbox.table.field.event.type\": \"event_type\",\n    \"transforms.outbox.table.field.event.id\": \"aggregate_id\",\n    \"transforms.outbox.table.field.event.payload\": \"payload\",\n    \"transforms.outbox.route.topic.replacement\": \"${routedByValue}\"\n  }\n}\n```\n\n**CDC Benefits**:\n- **Real-Time Latency**: <100ms from database commit to broker publish (vs 1-5 second polling)\n- **No Polling Overhead**: Database transaction log reading is efficient, doesn't query outbox table repeatedly\n- **Automatic Scaling**: CDC connector handles high throughput without tuning batch sizes or polling intervals\n\n**CDC Trade-offs**:\n- **Operational Complexity**: Requires Debezium infrastructure (Kafka Connect, connectors), database WAL configuration, monitoring CDC lag\n- **Database-Specific**: Debezium connectors specific to PostgreSQL, SQL Server, MySQL—not database-agnostic\n- **Additional Infrastructure**: Kafka Connect cluster for Debezium, separate from message broker (adds cost and complexity)\n\n**When to Use CDC**: High-throughput domains processing >10,000 events/hour where sub-second latency critical (pharmacy claims 500K/day, member portal real-time updates); otherwise polling simpler and sufficient.",
+    "28": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#pattern-variations]\n\n### Pattern Variations",
+    "29": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#variation-1-immediate-delete-after-publish]\n\n#### Variation 1: Immediate Delete After Publish\n\n**Approach**: Delete outbox events immediately after successful publish rather than marking Published=true\n\n```csharp\n// After successful publish\nawait dbContext.Outbox\n    .Where(e => e.Id == outboxEvent.Id)\n    .ExecuteDeleteAsync(); // SQL: DELETE FROM outbox WHERE id = ?\n```\n\n**Trade-offs**:\n- **PRO**: Simpler schema (no Published flag), smaller outbox table (only pending events), faster queries\n- **CON**: No audit trail of published events (can't query \"what events did we publish yesterday?\"), can't replay events if consumer needs reprocessing\n\n**When to Use**: Applications where event audit trail not required, outbox table growth is concern, replay capability not needed",
+    "30": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#variation-2-archive-to-separate-table]\n\n#### Variation 2: Archive to Separate Table\n\n**Approach**: Move published events to separate archive table for audit trail without impacting relay query performance\n\n```csharp\n// After successful publish\nawait dbContext.Database.ExecuteSqlRawAsync(@\"\n    INSERT INTO outbox_archive (id, event_type, aggregate_id, payload, published_at, created_at)\n    SELECT id, event_type, aggregate_id, payload, @now, created_at\n    FROM outbox\n    WHERE id = @eventId;\n\n    DELETE FROM outbox WHERE id = @eventId;\n\",\nnew SqlParameter(\"@now\", DateTime.UtcNow),\nnew SqlParameter(\"@eventId\", outboxEvent.Id));\n```\n\n**Trade-offs**:\n- **PRO**: Relay queries remain fast (outbox table only has pending events), audit trail preserved (archive table), can partition archive table by date for efficient queries\n- **CON**: Additional storage cost, more complex relay logic, archive table can grow large requiring its own cleanup strategy\n\n**When to Use**: High-throughput scenarios (15K+ events/hour) where relay query performance critical but audit trail required for compliance or debugging",
+    "31": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#variation-3-multiple-outbox-tables-domain-specific]\n\n#### Variation 3: Multiple Outbox Tables (Domain-Specific)\n\n**Approach**: Separate outbox tables per business domain to enable independent relay processes and scaling\n\n```sql\nCREATE TABLE claims_outbox (...);    -- Claims Service events\nCREATE TABLE enrollment_outbox (...); -- Enrollment Service events\nCREATE TABLE payment_outbox (...);    -- Payment Service events\n```\n\n**Trade-offs**:\n- **PRO**: Independent relay scaling (claims relay can process 10K/hour, enrollment 1K/hour without interference), isolated failures (claims relay crash doesn't affect enrollment), domain-specific optimizations (claims CDC for real-time, enrollment polling for simplicity)\n- **CON**: Multiple relay processes to deploy and monitor, more complex infrastructure, cross-domain event ordering not guaranteed\n\n**When to Use**: Large microservices architectures where domains have very different event volumes or latency requirements; enables domain-specific outbox strategies (CDC for high-volume, polling for low-volume)",
+    "32": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#variation-4-outbox-with-saga-coordination]\n\n#### Variation 4: Outbox with Saga Coordination\n\n**Approach**: Use outbox pattern within Saga Pattern for distributed transaction coordination\n\n```csharp\n// Saga step: Update local database and publish saga step event\npublic async Task ProcessSagaStepAsync(EnrollmentSaga saga)\n{\n    using var transaction = await _dbContext.Database.BeginTransactionAsync();\n\n    // Step 1: Update saga state\n    saga.CurrentStep = \"ProvisionPortal\";\n    saga.Status = \"InProgress\";\n    await _dbContext.Sagas.UpdateAsync(saga);\n\n    // Step 2: Write outbox event for next saga step\n    await _dbContext.Outbox.AddAsync(new OutboxEvent\n    {\n        EventType = \"enrollment.saga.provision-portal\",\n        AggregateId = saga.EnrollmentId,\n        Payload = JsonSerializer.Serialize(new SagaStepEvent { SagaId = saga.Id })\n    });\n\n    await transaction.CommitAsync();\n    // Saga state and outbox event saved atomically\n}\n```\n\n**Trade-offs**:\n- **PRO**: Saga coordination events guaranteed reliable delivery (can't lose saga step events causing hung sagas), saga state and events always consistent\n- **CON**: Saga pattern complexity combined with outbox pattern complexity, requires careful saga state machine design\n\n**When to Use**: Long-running distributed workflows (enrollment provisioning, provider credentialing) requiring multi-step coordination with guaranteed event delivery at each step",
+    "33": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#implementation-guidelines]\n\n## Implementation Guidelines",
+    "34": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#prerequisites]\n\n### Prerequisites\n\n**Database Infrastructure**:\n- SQL Server 2019+ (for claims, enrollment, provider, payment services using transactional databases)\n- PostgreSQL 14+ (for analytics services requiring JSONB and advanced indexing)\n- Entity Framework Core 6+ (for ORM-based outbox writes) or ADO.NET (for direct SQL control)\n- Database user permissions: INSERT/UPDATE/DELETE on outbox table, BEGIN TRANSACTION/COMMIT rights\n\n**Message Broker Infrastructure**:\n- Azure Service Bus Standard or Premium tier (for operational events requiring guaranteed delivery)\n- Apache Kafka 3.x (for high-throughput event streaming scenarios >10K events/hour)\n- RabbitMQ 3.11+ (for on-premise state deployments with data residency requirements)\n- Broker client libraries: Azure.Messaging.ServiceBus 7.15+, Confluent.Kafka 2.0+, RabbitMQ.Client 6.5+\n\n**Application Framework**:\n- .NET 6 or later (for background service support, dependency injection, async/await)\n- Background service hosting: IHostedService for relay process, Worker Service template, or Azure Functions Timer Trigger\n- Logging and monitoring: Application Insights for distributed tracing, Serilog for structured logging\n- Configuration management: IConfiguration for database connection strings, broker settings, polling intervals\n\n**Development Skills**:\n- Database transaction management (BEGIN/COMMIT/ROLLBACK, isolation levels, deadlock handling)\n- Asynchronous programming patterns (async/await, Task-based asynchrony, background workers)\n- Event-driven architecture concepts (event schemas, idempotent consumers, at-least-once semantics)\n- Message broker operations (topic/queue publishing, connection management, retry policies)",
+    "35": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#step-by-step-implementation]\n\n### Step-by-Step Implementation",
+    "36": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#phase-1-outbox-table-and-basic-integration-week-1-2]\n\n#### Phase 1: Outbox Table and Basic Integration (Week 1-2)\n\n**Step 1: Create Outbox Table Schema**\n\n```sql\n-- SQL Server Implementation\nCREATE TABLE Outbox (\n    Id BIGINT IDENTITY(1,1) PRIMARY KEY,\n    EventType VARCHAR(255) NOT NULL,\n    AggregateId VARCHAR(100) NOT NULL,\n    Payload NVARCHAR(MAX) NOT NULL,\n    Published BIT NOT NULL DEFAULT 0,\n    PublishedAt DATETIME2 NULL,\n    CreatedAt DATETIME2 NOT NULL DEFAULT GETUTCDATE(),\n\n    INDEX IX_Outbox_Relay (Published, CreatedAt) WHERE Published = 0\n);\n\n-- Add audit columns (optional but recommended)\nALTER TABLE Outbox ADD PublishAttempts INT NOT NULL DEFAULT 0;\nALTER TABLE Outbox ADD LastError NVARCHAR(MAX) NULL;\n```\n\n**Step 2: Create Entity Framework Entity**\n\n```csharp\npublic class OutboxEvent\n{\n    public long Id { get; set; }\n    public string EventType { get; set; } = null!;\n    public string AggregateId { get; set; } = null!;\n    public string Payload { get; set; } = null!;\n    public bool Published { get; set; }\n    public DateTime? PublishedAt { get; set; }\n    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;\n    public int PublishAttempts { get; set; }\n    public string? LastError { get; set; }\n}\n\npublic class ClaimsDbContext : DbContext\n{\n    public DbSet<ClaimRecord> Claims { get; set; }\n    public DbSet<OutboxEvent> Outbox { get; set; }\n\n    protected override void OnModelCreating(ModelBuilder modelBuilder)\n    {\n        modelBuilder.Entity<OutboxEvent>(entity =>\n        {\n            entity.ToTable(\"Outbox\");\n            entity.HasKey(e => e.Id);\n            entity.Property(e => e.EventType).HasMaxLength(255).IsRequired();\n            entity.Property(e => e.AggregateId).HasMaxLength(100).IsRequired();\n            entity.Property(e => e.Payload).IsRequired();\n            entity.Property(e => e.Published).IsRequired().HasDefaultValue(false);\n            entity.HasIndex(e => new { e.Published, e.CreatedAt })\n                .HasFilter(\"[Published] = 0\");\n        });\n    }\n}\n```\n\n**Step 3: Implement Outbox Writer in Business Service**\n\n```csharp\npublic class ClaimsService\n{\n    private readonly ClaimsDbContext _dbContext;\n    private readonly ILogger<ClaimsService> _logger;\n\n    public async Task<ClaimDecision> AdjudicateClaimAsync(Claim claim)\n    {\n        var decision = await _adjudicationEngine.EvaluateClaimAsync(claim);\n\n        // Start database transaction\n        using var transaction = await _dbContext.Database.BeginTransactionAsync();\n\n        try\n        {\n            // Business logic: Save claim\n            var claimRecord = new ClaimRecord\n            {\n                ClaimId = claim.Id,\n                Status = decision.Status,\n                ApprovedAmount = decision.Amount,\n                AdjudicationDate = DateTime.UtcNow\n            };\n            await _dbContext.Claims.AddAsync(claimRecord);\n\n            // Outbox: Save event for message relay\n            var claimEvent = new ClaimAdjudicatedEvent\n            {\n                ClaimId = claim.Id,\n                Status = decision.Status,\n                Amount = decision.Amount,\n                ProviderId = claim.ProviderId,\n                MemberId = claim.MemberId,\n                AdjudicationDate = DateTime.UtcNow\n            };\n\n            await _dbContext.Outbox.AddAsync(new OutboxEvent\n            {\n                EventType = \"claim.adjudicated\",\n                AggregateId = claim.Id,\n                Payload = JsonSerializer.Serialize(claimEvent),\n                Published = false,\n                CreatedAt = DateTime.UtcNow\n            });\n\n            // Atomic commit\n            await _dbContext.SaveChangesAsync();\n            await transaction.CommitAsync();\n\n            _logger.LogInformation(\"Claim {ClaimId} adjudicated: {Status} ${Amount}\",\n                claim.Id, decision.Status, decision.Amount);\n\n            return decision;\n        }\n        catch (Exception ex)\n        {\n            await transaction.RollbackAsync();\n            _logger.LogError(ex, \"Failed to adjudicate claim {ClaimId}\", claim.Id);\n            throw;\n        }\n    }\n}\n```",
+    "37": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#phase-2-message-relay-implementation-week-3-4]\n\n#### Phase 2: Message Relay Implementation (Week 3-4)\n\n**Step 1: Implement Polling-Based Message Relay**\n\n```csharp\npublic class OutboxMessageRelay : BackgroundService\n{\n    private readonly IServiceScopeFactory _scopeFactory;\n    private readonly ILogger<OutboxMessageRelay> _logger;\n    private readonly OutboxRelayOptions _options;\n\n    public OutboxMessageRelay(\n        IServiceScopeFactory scopeFactory,\n        ILogger<OutboxMessageRelay> logger,\n        IOptions<OutboxRelayOptions> options)\n    {\n        _scopeFactory = scopeFactory;\n        _logger = logger;\n        _options = options.Value;\n    }\n\n    protected override async Task ExecuteAsync(CancellationToken stoppingToken)\n    {\n        _logger.LogInformation(\"Outbox Message Relay started with {Interval}s polling interval\",\n            _options.PollingIntervalSeconds);\n\n        while (!stoppingToken.IsCancellationRequested)\n        {\n            try\n            {\n                await ProcessOutboxBatchAsync(stoppingToken);\n            }\n            catch (Exception ex)\n            {\n                _logger.LogError(ex, \"Error processing outbox batch\");\n            }\n\n            await Task.Delay(TimeSpan.FromSeconds(_options.PollingIntervalSeconds), stoppingToken);\n        }\n\n        _logger.LogInformation(\"Outbox Message Relay stopped\");\n    }\n\n    private async Task ProcessOutboxBatchAsync(CancellationToken cancellationToken)\n    {\n        using var scope = _scopeFactory.CreateScope();\n        var dbContext = scope.ServiceProvider.GetRequiredService<ClaimsDbContext>();\n        var publisher = scope.ServiceProvider.GetRequiredService<IEventPublisher>();\n\n        // Query unpublished events\n        var events = await dbContext.Outbox\n            .Where(e => !e.Published)\n            .Where(e => e.PublishAttempts < _options.MaxRetryAttempts)\n            .OrderBy(e => e.CreatedAt)\n            .Take(_options.BatchSize)\n            .ToListAsync(cancellationToken);\n\n        if (!events.Any())\n            return;\n\n        _logger.LogInformation(\"Processing {Count} outbox events\", events.Count);\n\n        foreach (var outboxEvent in events)\n        {\n            try\n            {\n                // Publish to message broker\n                await publisher.PublishAsync(\n                    eventType: outboxEvent.EventType,\n                    payload: outboxEvent.Payload,\n                    correlationId: outboxEvent.AggregateId,\n                    cancellationToken: cancellationToken);\n\n                // Mark as published\n                outboxEvent.Published = true;\n                outboxEvent.PublishedAt = DateTime.UtcNow;\n                outboxEvent.PublishAttempts++;\n\n                _logger.LogInformation(\"Published outbox event {Id} type {EventType}\",\n                    outboxEvent.Id, outboxEvent.EventType);\n            }\n            catch (Exception ex)\n            {\n                // Publish failed - increment attempts, log error\n                outboxEvent.PublishAttempts++;\n                outboxEvent.LastError = ex.Message;\n\n                _logger.LogError(ex, \"Failed to publish outbox event {Id} (attempt {Attempts})\",\n                    outboxEvent.Id, outboxEvent.PublishAttempts);\n            }\n        }\n\n        await dbContext.SaveChangesAsync(cancellationToken);\n    }\n}\n```\n\n**Step 2: Configure Relay as Background Service**\n\n```csharp\n// Program.cs\nbuilder.Services.Configure<OutboxRelayOptions>(\n    builder.Configuration.GetSection(\"OutboxRelay\"));\n\nbuilder.Services.AddHostedService<OutboxMessageRelay>();\n\n// appsettings.json\n{\n  \"OutboxRelay\": {\n    \"PollingIntervalSeconds\": 5,\n    \"BatchSize\": 100,\n    \"MaxRetryAttempts\": 10\n  }\n}\n```\n\n**Step 3: Implement Event Publisher Abstraction**\n\n```csharp\npublic interface IEventPublisher\n{\n    Task PublishAsync(string eventType, string payload, string correlationId, CancellationToken cancellationToken = default);\n}\n\npublic class ServiceBusEventPublisher : IEventPublisher\n{\n    private readonly ServiceBusClient _client;\n    private readonly ILogger<ServiceBusEventPublisher> _logger;\n\n    public async Task PublishAsync(string eventType, string payload, string correlationId, CancellationToken cancellationToken)\n    {\n        var sender = _client.CreateSender(eventType); // Topic name matches event type\n\n        var message = new ServiceBusMessage(payload)\n        {\n            CorrelationId = correlationId,\n            ContentType = \"application/json\",\n            MessageId = Guid.NewGuid().ToString()\n        };\n\n        await sender.SendMessageAsync(message, cancellationToken);\n\n        _logger.LogDebug(\"Published {EventType} event to Service Bus with correlation {CorrelationId}\",\n            eventType, correlationId);\n    }\n}\n```",
+    "38": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#phase-3-production-hardening-week-5-6]\n\n#### Phase 3: Production Hardening (Week 5-6)\n\n**Step 1: Add Outbox Cleanup Job**\n\n```csharp\npublic class OutboxCleanupJob : BackgroundService\n{\n    private readonly IServiceScopeFactory _scopeFactory;\n    private readonly ILogger<OutboxCleanupJob> _logger;\n    private readonly TimeSpan _cleanupInterval = TimeSpan.FromHours(24); // Daily cleanup\n    private readonly TimeSpan _retentionPeriod = TimeSpan.FromDays(7);   // 7-day retention\n\n    protected override async Task ExecuteAsync(CancellationToken stoppingToken)\n    {\n        while (!stoppingToken.IsCancellationRequested)\n        {\n            try\n            {\n                await CleanupPublishedEventsAsync(stoppingToken);\n            }\n            catch (Exception ex)\n            {\n                _logger.LogError(ex, \"Error cleaning up outbox events\");\n            }\n\n            await Task.Delay(_cleanupInterval, stoppingToken);\n        }\n    }\n\n    private async Task CleanupPublishedEventsAsync(CancellationToken cancellationToken)\n    {\n        using var scope = _scopeFactory.CreateScope();\n        var dbContext = scope.ServiceProvider.GetRequiredService<ClaimsDbContext>();\n\n        var cutoffDate = DateTime.UtcNow.Subtract(_retentionPeriod);\n\n        var deletedCount = await dbContext.Outbox\n            .Where(e => e.Published && e.PublishedAt < cutoffDate)\n            .ExecuteDeleteAsync(cancellationToken);\n\n        _logger.LogInformation(\"Cleaned up {Count} published outbox events older than {Days} days\",\n            deletedCount, _retentionPeriod.TotalDays);\n    }\n}\n```\n\n**Step 2: Add Circuit Breaker for Message Broker**\n\n```csharp\npublic class ResilientEventPublisher : IEventPublisher\n{\n    private readonly IEventPublisher _innerPublisher;\n    private readonly ResiliencePipeline _pipeline;\n\n    public ResilientEventPublisher(IEventPublisher innerPublisher)\n    {\n        _innerPublisher = innerPublisher;\n\n        _pipeline = new ResiliencePipelineBuilder()\n            .AddRetry(new RetryStrategyOptions\n            {\n                MaxRetryAttempts = 3,\n                Delay = TimeSpan.FromSeconds(2),\n                BackoffType = DelayBackoffType.Exponential\n            })\n            .AddCircuitBreaker(new CircuitBreakerStrategyOptions\n            {\n                FailureRatio = 0.5,\n                SamplingDuration = TimeSpan.FromSeconds(30),\n                MinimumThroughput = 10,\n                BreakDuration = TimeSpan.FromSeconds(60)\n            })\n            .AddTimeout(TimeSpan.FromSeconds(10))\n            .Build();\n    }\n\n    public async Task PublishAsync(string eventType, string payload, string correlationId, CancellationToken cancellationToken)\n    {\n        await _pipeline.ExecuteAsync(async ct =>\n        {\n            await _innerPublisher.PublishAsync(eventType, payload, correlationId, ct);\n        }, cancellationToken);\n    }\n}\n```\n\n**Step 3: Add Dead Letter Handling for Failed Events**\n\n```csharp\npublic class OutboxDeadLetterProcessor : BackgroundService\n{\n    private readonly IServiceScopeFactory _scopeFactory;\n    private readonly ILogger<OutboxDeadLetterProcessor> _logger;\n    private readonly int _maxRetryAttempts = 10;\n\n    protected override async Task ExecuteAsync(CancellationToken stoppingToken)\n    {\n        while (!stoppingToken.IsCancellationRequested)\n        {\n            try\n            {\n                await ProcessDeadLetterEventsAsync(stoppingToken);\n            }\n            catch (Exception ex)\n            {\n                _logger.LogError(ex, \"Error processing dead letter events\");\n            }\n\n            await Task.Delay(TimeSpan.FromMinutes(15), stoppingToken);\n        }\n    }\n\n    private async Task ProcessDeadLetterEventsAsync(CancellationToken cancellationToken)\n    {\n        using var scope = _scopeFactory.CreateScope();\n        var dbContext = scope.ServiceProvider.GetRequiredService<ClaimsDbContext>();\n\n        // Find events that exceeded max retry attempts\n        var deadLetterEvents = await dbContext.Outbox\n            .Where(e => !e.Published && e.PublishAttempts >= _maxRetryAttempts)\n            .ToListAsync(cancellationToken);\n\n        foreach (var evt in deadLetterEvents)\n        {\n            _logger.LogCritical(\n                \"Outbox event {Id} type {EventType} exceeded max retry attempts {MaxAttempts}. Last error: {Error}\",\n                evt.Id, evt.EventType, _maxRetryAttempts, evt.LastError);\n\n            // Alert operations team\n            // Move to dead letter table or archive for manual investigation\n        }\n    }\n}\n```",
+    "39": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#configuration-examples]\n\n### Configuration Examples\n\n**appsettings.json - Outbox Configuration**:\n\n```json\n{\n  \"ConnectionStrings\": {\n    \"ClaimsDatabase\": \"Server=claims-db.database.windows.net;Database=Claims;...\"\n  },\n  \"OutboxRelay\": {\n    \"PollingIntervalSeconds\": 5,\n    \"BatchSize\": 100,\n    \"MaxRetryAttempts\": 10,\n    \"EnableMetrics\": true\n  },\n  \"OutboxCleanup\": {\n    \"RetentionDays\": 7,\n    \"CleanupIntervalHours\": 24\n  },\n  \"ServiceBus\": {\n    \"ConnectionString\": \"Endpoint=sb://gainwell-events.servicebus.windows.net/...\",\n    \"TopicMappings\": {\n      \"claim.adjudicated\": \"claims-events\",\n      \"member.enrolled\": \"enrollment-events\",\n      \"payment.issued\": \"payment-events\"\n    }\n  }\n}\n```\n\n**Docker Compose - Local Development**:\n\n```yaml\nversion: '3.8'\nservices:\n  claims-service:\n    build: ./ClaimsService\n    environment:\n      - ConnectionStrings__ClaimsDatabase=Server=sqlserver;Database=Claims;User=sa;Password=YourStrong@Passw0rd\n      - OutboxRelay__PollingIntervalSeconds=5\n    depends_on:\n      - sqlserver\n      - azurite\n\n  sqlserver:\n    image: mcr.microsoft.com/mssql/server:2019-latest\n    environment:\n      - ACCEPT_EULA=Y\n      - SA_PASSWORD=YourStrong@Passw0rd\n    ports:\n      - \"1433:1433\"\n    volumes:\n      - sqldata:/var/opt/mssql\n\n  azurite:\n    image: mcr.microsoft.com/azure-storage/azurite\n    ports:\n      - \"10000:10000\" # Blob service\n      - \"10001:10001\" # Queue service (Service Bus emulator)\n\nvolumes:\n  sqldata:\n```",
+    "40": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#best-practices]\n\n### Best Practices\n\n**Outbox Table Design**:\n- Index on `(Published, CreatedAt) WHERE Published = 0` for efficient relay queries\n- Use BIGINT auto-increment ID for natural ordering and efficient pagination\n- Store full event payload as JSON to avoid joins during relay (self-contained events)\n- Include AggregateId for correlation, debugging, and potential event replay by entity\n- Track PublishAttempts and LastError for monitoring and dead letter detection\n\n**Transaction Management**:\n- Always use explicit transactions (`BeginTransaction/Commit/Rollback`) for business data + outbox writes\n- Set appropriate isolation level (Read Committed default, Serializable if ordering critical)\n- Keep transactions short (< 100ms) to minimize lock contention\n- Handle deadlocks with retry logic (transient fault handling)\n\n**Message Relay Resilience**:\n- Poll at 5-second intervals for <5s latency; tune based on requirements (1s real-time, 30s batch)\n- Process events in batches (100 events per poll) to balance throughput and memory\n- Implement exponential backoff for broker failures (retry with 2s, 4s, 8s, 16s delays)\n- Use circuit breaker pattern to avoid overwhelming failing broker (open circuit after 50% failure rate)\n- Query `ORDER BY CreatedAt` to preserve event creation order (best-effort, not strict guarantee)\n\n**Idempotent Consumers**:\n- Relay provides at-least-once delivery (may duplicate on retry), so consumers MUST be idempotent\n- Use event correlation IDs (ClaimId, MemberId) to detect duplicates\n- Track processed event IDs in consumer database to skip duplicates\n- Design business logic to be naturally idempotent (UPDATE with same values, INSERT with ON CONFLICT IGNORE)\n\n**Monitoring and Alerting**:\n- Alert on outbox queue depth >1000 (indicates relay falling behind or broker outage)\n- Alert on events with PublishAttempts >5 (persistent failures requiring investigation)\n- Track relay processing lag: MAX(NOW() - created_at) for unpublished events (alert if >1 minute)\n- Monitor relay throughput: events published per minute (baseline for capacity planning)\n- Log dead letter events (PublishAttempts >= MaxRetryAttempts) for manual investigation\n\n**Cleanup Strategy**:\n- Delete published events after retention period (7 days typical, 90 days for audit compliance)\n- Run cleanup job daily during low-traffic hours (2 AM)\n- Use batch deletes with `TOP (10000)` to avoid transaction log bloat\n- Consider archiving to separate table for audit trail before deletion\n- Monitor outbox table size: alert if >10GB (indicates cleanup not keeping up)",
+    "41": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#common-pitfalls]\n\n### Common Pitfalls\n\n**Pitfall 1: Outbox Write Outside Transaction**\n\n```csharp\n// ❌ WRONG - Outbox write separate from business transaction\nawait _dbContext.SaveChangesAsync(); // Business data saved\n\nawait _dbContext.Outbox.AddAsync(outboxEvent);\nawait _dbContext.SaveChangesAsync(); // Outbox event saved separately\n// Service crashes between saves - inconsistency!\n\n// ✅ CORRECT - Single transaction for both\nusing var transaction = await _dbContext.Database.BeginTransactionAsync();\nawait _dbContext.Claims.AddAsync(claim);\nawait _dbContext.Outbox.AddAsync(outboxEvent);\nawait _dbContext.SaveChangesAsync();\nawait transaction.CommitAsync(); // Both saved atomically\n```\n\n**Pitfall 2: Missing Relay Idempotency**\n\n```csharp\n// ❌ WRONG - Relay assumes publish succeeds if no exception\nawait publisher.PublishAsync(event);\noutboxEvent.Published = true; // What if this save fails? Event published but not marked!\n\n// ✅ CORRECT - Relay handles duplicate publishes\nawait publisher.PublishAsync(event);\noutboxEvent.Published = true;\nawait _dbContext.SaveChangesAsync(); // If this fails, event will be published again (idempotent consumers required)\n```\n\n**Pitfall 3: Unbounded Outbox Growth**\n\n```csharp\n// ❌ WRONG - Never deleting published events causes unbounded growth\n// 15K claims/hour = 360K events/day = 131M events/year = multi-TB table\n\n// ✅ CORRECT - Regular cleanup with retention policy\nDELETE FROM Outbox\nWHERE Published = 1\n  AND PublishedAt < DATEADD(day, -7, GETUTCDATE())\n```\n\n**Pitfall 4: Polling Without Filtering Index**\n\n```sql\n-- ❌ WRONG - Full table scan on every poll\nSELECT * FROM Outbox WHERE Published = 0 ORDER BY CreatedAt\n\n-- ✅ CORRECT - Filtered index for efficient relay queries\nCREATE INDEX IX_Outbox_Relay ON Outbox (Published, CreatedAt) WHERE Published = 0\n```\n\n**Pitfall 5: Synchronous Event Publishing in Transaction**\n\n```csharp\n// ❌ WRONG - Publishing to broker inside transaction blocks transaction\nusing var transaction = await _dbContext.Database.BeginTransactionAsync();\nawait _dbContext.Claims.AddAsync(claim);\nawait _serviceBus.PublishAsync(event); // Blocks transaction until broker responds (dual-write problem!)\nawait transaction.CommitAsync();\n\n// ✅ CORRECT - Only write to outbox in transaction, relay publishes asynchronously\nusing var transaction = await _dbContext.Database.BeginTransactionAsync();\nawait _dbContext.Claims.AddAsync(claim);\nawait _dbContext.Outbox.AddAsync(outboxEvent); // Fast database write\nawait transaction.CommitAsync(); // Transaction completes quickly\n// Relay publishes asynchronously in background\n```",
+    "42": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#governance-and-compliance]\n\n## Governance and Compliance",
+    "43": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#outbox-table-standards]\n\n### Outbox Table Standards\n\n**Naming Convention**: `{ServiceName}Outbox` or simply `Outbox` if service owns single database\n- Examples: `ClaimsOutbox`, `EnrollmentOutbox`, `PaymentOutbox`, or generic `Outbox` for single-service databases\n\n**Schema Requirements**: All outbox tables must include minimum fields:\n- `Id` (BIGINT auto-increment): Unique identifier and natural ordering for relay processing\n- `EventType` (VARCHAR 255): Event discriminator for routing (e.g., \"claim.adjudicated\", \"member.enrolled\")\n- `AggregateId` (VARCHAR 100): Business entity identifier for correlation and debugging\n- `Payload` (JSON/NVARCHAR(MAX)): Full event data as JSON, self-contained without foreign key dependencies\n- `Published` (BIT/BOOLEAN): Processing status flag (false = pending relay, true = published to broker)\n- `PublishedAt` (DATETIME2/TIMESTAMP): Timestamp when event successfully published (NULL if pending)\n- `CreatedAt` (DATETIME2/TIMESTAMP): Timestamp when event written to outbox (transaction commit time)\n\n**Optional but Recommended Fields**:\n- `PublishAttempts` (INT): Retry counter for monitoring and dead letter detection (default 0)\n- `LastError` (NVARCHAR(MAX)): Most recent publish failure message for troubleshooting\n- `CorrelationId` (VARCHAR 100): Distributed tracing correlation ID for cross-service debugging\n\n**Index Requirements**: Filtered/partial index on `(Published, CreatedAt) WHERE Published = 0` for efficient relay queries; additional indexes based on service-specific query patterns (e.g., index on EventType if routing logic varies)",
+    "44": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#event-schema-governance]\n\n### Event Schema Governance\n\n**Event Naming Convention**: Follow `{domain}.{entity}.{action}` pattern\n- Correct: `claim.adjudicated`, `member.enrolled`, `provider.credentialed`, `payment.issued`\n- Incorrect: `ClaimAdjudicated`, `MemberEnrollmentEvent`, `ProviderUpdate`\n\n**Event Schema Versioning**: Use semantic versioning in event type for breaking changes\n- `claim.adjudicated.v1`, `claim.adjudicated.v2` when schema changes incompatibly\n- Maintain backward compatibility for minor versions (add optional fields only)\n- Deprecation notice: 6 months before removing old event version support\n\n**Event Payload Requirements**:\n- Include all data needed for consumers to process event without additional database lookups (self-contained)\n- Use consistent JSON casing (camelCase for JavaScript consumers, PascalCase for C# consistency)\n- Include correlation IDs for distributed tracing (e.g., `correlationId`, `causationId`, `conversationId`)\n- Include timestamp fields for event occurrence time (e.g., `adjudicationDate`, `enrollmentDate`)\n- Exclude sensitive PHI unless consumers require it (prefer event with reference, consumer queries details if authorized)\n\n**Schema Evolution Rules**:\n- Additive changes allowed: add optional fields, new event types, extend enumerations\n- Breaking changes require coordination: rename fields, remove fields, change field types, change required/optional status\n- Test schema changes with old consumers before production deployment (ensure backward compatibility)",
+    "45": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#message-relay-policies]\n\n### Message Relay Policies\n\n**Polling Interval Standards**:\n- Real-time events (claims adjudication, pharmacy POS): 1-5 second polling interval for <5s latency\n- Operational events (enrollment, provider credentialing): 5-15 second polling interval acceptable\n- Analytics events (dashboards, reporting): 30-60 second polling interval sufficient\n- Tune based on service requirements, not universal default\n\n**Batch Size Guidelines**:\n- Default 100 events per poll balances throughput and memory consumption\n- High-volume services (15K+ events/hour): increase to 500-1000 events per batch\n- Low-volume services (<100 events/hour): reduce to 10-50 events per batch\n- Monitor relay processing time: should complete batch within polling interval (avoid backlog)\n\n**Retry Policy Standards**:\n- Max retry attempts: 10 (adjust based on broker SLA and failure patterns)\n- Exponential backoff: 2s, 4s, 8s, 16s, 32s, 60s, 60s, 60s, 60s, 60s (cap at 60s)\n- Circuit breaker: Open circuit after 50% failure rate over 30-second window, 60-second break duration\n- Dead letter threshold: Events exceeding max retries require manual investigation (alert operations team)\n\n**Relay High Availability**:\n- Single relay instance per service database (avoid concurrent relay processing causing race conditions)\n- Deploy relay as Kubernetes Deployment with single replica (liveness/readiness probes for auto-restart)\n- For multi-region deployments: relay in each region processes local database (geo-replication handled at database level)\n- Relay failure tolerance: Outbox accumulates events during relay downtime, processed when relay recovers (no data loss)",
+    "46": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#monitoring-and-metrics]\n\n### Monitoring and Metrics\n\n**Outbox Health Metrics**:\n\n| Metric | Threshold | Alert Level | Action Required |\n|--------|-----------|-------------|-----------------|\n| Outbox Queue Depth | >1000 unpublished events | Warning | Investigate relay performance or broker issues |\n| Outbox Queue Depth | >10000 unpublished events | Critical | Immediate investigation—relay failing or broker down |\n| Event Publish Lag | >30 seconds (MAX(NOW() - created_at) for unpublished) | Warning | Check relay processing speed or broker backpressure |\n| Event Publish Lag | >5 minutes | Critical | Relay or broker critical failure—escalate to on-call |\n| Relay Processing Rate | <80% of event creation rate | Warning | Relay falling behind—scale relay resources or tune batch size |\n| Dead Letter Events | >10 events with PublishAttempts >= MaxRetry | Warning | Manual investigation required—persistent failures |\n| Outbox Table Size | >10 GB | Warning | Cleanup job not keeping up—verify retention policy |\n| Outbox Table Size | >50 GB | Critical | Immediate cleanup required—risk of database storage exhaustion |\n\n**Relay Performance Metrics**:\n- Events published per minute: Establish baseline (e.g., 1000/min avg, 5000/min peak) for capacity planning\n- Publish success rate: >99.9% target (< 0.1% transient failures acceptable with retry)\n- Average publish latency: P50 <100ms, P95 <500ms, P99 <1s for broker publish operation\n- Relay loop duration: Poll + process + save should complete within polling interval (e.g., <5s for 5s poll interval)\n\n**Distributed Tracing Requirements**:\n- Include correlation ID in outbox event payload and Service Bus/Kafka message headers\n- Propagate trace context from original request through business service, outbox write, relay publish, and consumer processing\n- Use Application Insights or OpenTelemetry for end-to-end tracing (e.g., \"claim submitted\" → \"claim adjudicated\" → \"event published\" → \"payment scheduled\")\n- Track timing: time from outbox write to broker publish (relay latency), time from broker publish to consumer processing (consumer latency)",
+    "47": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#compliance-requirements]\n\n### Compliance Requirements\n\n**HIPAA Audit Trail**:\n- Outbox table provides tamper-evident audit log of all events generated by service (immutable after write)\n- Retention policy: 7 years for financial transaction events (claims, payments, adjustments), 90 days for operational events, 30 days for analytics events\n- Audit queries: Support compliance inquiries like \"show all payment.issued events for member 12345 in 2024\" (query outbox table directly)\n- Access controls: Restrict outbox table access to service account and DBAs only (prevent tampering or deletion outside cleanup job)\n\n**PHI Protection in Events**:\n- Minimize PHI in event payloads (prefer member ID reference, consumer queries authorized data if needed)\n- If PHI required in events (e.g., member name for notification email), encrypt sensitive fields or entire payload\n- Encryption at rest: Database-level encryption (TDE for SQL Server, transparent encryption for PostgreSQL)\n- Encryption in transit: TLS 1.2+ for message broker connections (Azure Service Bus enforces TLS by default)\n\n**State Contract Compliance**:\n- T-MSIS Reporting: Outbox ensures 100% claim event capture for state T-MSIS submissions (no events lost during broker outages)\n- Financial Reconciliation: Payment events in outbox provide audit trail for state financial reporting and reconciliation\n- Enrollment Tracking: Enrollment events in outbox ensure complete member lifecycle tracking for state audits\n\n**SOC 2 Controls**:\n- Change management: Schema changes to outbox table require architecture review and change advisory board approval\n- Operational monitoring: Outbox metrics dashboards and alerts demonstrate proactive operational management\n- Incident response: Dead letter events trigger alerts with defined escalation procedures\n- Quarterly review: Assess outbox retention policies, cleanup job effectiveness, and relay performance trends",
+    "48": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#access-control-and-security]\n\n### Access Control and Security\n\n**Database Permissions**:\n- Service account (application): INSERT, UPDATE, SELECT on outbox table; BEGIN TRANSACTION, COMMIT rights\n- Relay service account: SELECT, UPDATE, DELETE on outbox table for processing and cleanup\n- Read-only monitoring account: SELECT on outbox table for metrics queries and operational dashboards\n- DBA admin account: Full access for schema changes, emergency data recovery, manual interventions\n\n**Message Broker Permissions**:\n- Relay service account: Send permission on topics/queues (no listen/receive needed)\n- Follow principle of least privilege: Relay only publishes, doesn't consume (separate consumer accounts)\n- Rotate credentials annually or use managed identities (Azure AD for Service Bus, IAM for AWS SQS)\n\n**Secret Management**:\n- Store database connection strings and broker credentials in Azure Key Vault, AWS Secrets Manager, or HashiCorp Vault\n- Avoid hardcoded secrets in application code, Docker images, or Kubernetes ConfigMaps\n- Use managed identities where possible (Azure Managed Identity for Service Bus, no credential rotation needed)\n- Rotate secrets annually per security policy, or immediately if compromise suspected",
+    "49": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#operational-procedures]\n\n### Operational Procedures\n\n**Outbox Emergency Procedures**:\n\n1. **Scenario: Relay Stopped, Outbox Growing**\n   - Check relay process status: `kubectl get pods | grep relay`\n   - Check relay logs: `kubectl logs outbox-relay-pod --tail=100`\n   - Check outbox depth: `SELECT COUNT(*) FROM Outbox WHERE Published = 0`\n   - If relay failed: Restart relay service (`kubectl rollout restart deployment/outbox-relay`)\n   - If broker down: Verify broker status, relay will auto-resume when broker available\n   - Monitor recovery: Track outbox depth decreasing as relay catches up\n\n2. **Scenario: Events Stuck in Dead Letter (PublishAttempts >= MaxRetry)**\n   - Query dead letter events: `SELECT * FROM Outbox WHERE Published = 0 AND PublishAttempts >= 10`\n   - Investigate LastError field for failure reason (schema mismatch, broker configuration, network issue)\n   - Fix root cause (update event schema, fix broker routing, resolve network issue)\n   - Reset PublishAttempts to 0 for manual retry: `UPDATE Outbox SET PublishAttempts = 0 WHERE Id IN (...)`\n   - If unfixable: Move to separate table for manual processing or discard with approval\n\n3. **Scenario: Outbox Table Growth Exceeding Capacity**\n   - Check current size: `SELECT SUM(length(Payload)) FROM Outbox` or database storage metrics\n   - Run emergency cleanup: Delete published events older than 1 day instead of 7-day retention\n   - Verify cleanup job running: Check scheduled job logs, ensure job not disabled\n   - Increase cleanup frequency temporarily: Hourly instead of daily until backlog cleared\n   - Consider archiving to blob storage before deletion for audit trail preservation\n\n**Manual Event Replay**:\n- Reset Published flag: `UPDATE Outbox SET Published = 0, PublishAttempts = 0 WHERE AggregateId = 'claim-12345'`\n- Relay will republish on next poll cycle (consumers must be idempotent to handle duplicates)\n- Use for: Consumer service data loss requiring event reprocessing, new consumer service needs historical events, testing consumer with production events in staging\n\n**Disaster Recovery**:\n- Outbox events backed up with database backups (transaction log backups every 15 minutes, full backups daily)\n- Point-in-time recovery: Restore database to specific timestamp, replay outbox events from that point forward\n- Cross-region failover: Geo-replicated database contains outbox table, relay in secondary region processes after failover\n- Event loss prevention: Even if message broker completely fails, outbox persists events durably in database for replay when broker restored",
+    "50": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#examples-and-use-cases]\n\n## Examples and Use Cases",
+    "51": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#example-1-claims-adjudication-with-guaranteed-event-delivery]\n\n### Example 1: Claims Adjudication with Guaranteed Event Delivery\n\n**Context**: Claims Service processes 15,000 claims per hour during peak periods, saving adjudication decisions to SQL Server database and publishing `claim.adjudicated` events consumed by 8 downstream services (Payment, Notification, Analytics, Fraud Detection, Audit, State Reporting, Provider Portal, Care Management). Prior to outbox pattern, dual-write inconsistencies caused missing events when Kafka broker experienced outages or network timeouts.\n\n**Before (Dual-Write Problem)**:\n\n```csharp\npublic class ClaimsService\n{\n    private readonly ClaimsDbContext _dbContext;\n    private readonly IKafkaProducer _kafka;\n\n    public async Task<ClaimDecision> AdjudicateClaimAsync(Claim claim)\n    {\n        var decision = await _adjudicationEngine.EvaluateClaimAsync(claim);\n\n        // Step 1: Save claim to database\n        await _dbContext.Claims.AddAsync(new ClaimRecord\n        {\n            ClaimId = claim.Id,\n            Status = decision.Status,  // \"Approved\"\n            ApprovedAmount = decision.Amount  // $450.00\n        });\n        await _dbContext.SaveChangesAsync(); // ✅ Database commit succeeds\n\n        // Step 2: Publish event to Kafka\n        var claimEvent = new ClaimAdjudicatedEvent\n        {\n            ClaimId = claim.Id,\n            Status = decision.Status,\n            Amount = decision.Amount\n        };\n\n        await _kafka.ProduceAsync(\"claim.adjudicated\", claimEvent);\n        // ❌ Kafka broker timeout or network partition\n        //    Event never published, but claim saved in database\n\n        return decision;\n    }\n}\n```\n\n**Problems Experienced**:\n- **2023 Q3 Incident**: Kafka broker restart during leader election caused 14-minute outage; 3,489 claims adjudicated during outage window with database saves successful but event publishes failed\n- **Impact**: Payment Service never scheduled $1.2M in provider remittances (providers complained of payment delays); Member Notification Service never generated 3,489 EOB letters (members called support asking about claim status); Analytics dashboards undercounted claims by 3,489 causing incorrect state reporting; Provider Portal showed claims as \"Pending\" indefinitely despite database showing \"Approved\"\n- **Recovery**: 3-day manual reconciliation effort comparing database claims to Kafka event store, manually republishing 3,489 missing events, verifying downstream processing, handling duplicates from partial recovery attempts; estimated $280K fully-loaded cost for incident response team\n\n**After (Outbox Pattern)**:\n\n```csharp\npublic class ClaimsService\n{\n    private readonly ClaimsDbContext _dbContext;\n\n    public async Task<ClaimDecision> AdjudicateClaimAsync(Claim claim)\n    {\n        var decision = await _adjudicationEngine.EvaluateClaimAsync(claim);\n\n        // Single database transaction ensures atomicity\n        using var transaction = await _dbContext.Database.BeginTransactionAsync();\n\n        try\n        {\n            // Step 1: Save claim to claims table\n            var claimRecord = new ClaimRecord\n            {\n                ClaimId = claim.Id,\n                Status = decision.Status,\n                ApprovedAmount = decision.Amount,\n                AdjudicationDate = DateTime.UtcNow\n            };\n            await _dbContext.Claims.AddAsync(claimRecord);\n\n            // Step 2: Save event to outbox table IN SAME TRANSACTION\n            var claimEvent = new ClaimAdjudicatedEvent\n            {\n                ClaimId = claim.Id,\n                Status = decision.Status,\n                Amount = decision.Amount,\n                ProviderId = claim.ProviderId,\n                MemberId = claim.MemberId,\n                AdjudicationDate = DateTime.UtcNow\n            };\n\n            await _dbContext.Outbox.AddAsync(new OutboxEvent\n            {\n                EventType = \"claim.adjudicated\",\n                AggregateId = claim.Id,\n                Payload = JsonSerializer.Serialize(claimEvent),\n                Published = false,\n                CreatedAt = DateTime.UtcNow\n            });\n\n            // Step 3: Commit both atomically\n            await _dbContext.SaveChangesAsync();\n            await transaction.CommitAsync();\n            // ✅ Both claim and outbox event guaranteed saved together\n\n            return decision;\n        }\n        catch (Exception ex)\n        {\n            await transaction.RollbackAsync();\n            throw;\n        }\n    }\n}\n\n// Separate Message Relay publishes events asynchronously\npublic class OutboxMessageRelay : BackgroundService\n{\n    protected override async Task ExecuteAsync(CancellationToken stoppingToken)\n    {\n        while (!stoppingToken.IsCancellationRequested)\n        {\n            // Query unpublished events\n            var events = await _dbContext.Outbox\n                .Where(e => !e.Published)\n                .OrderBy(e => e.CreatedAt)\n                .Take(100)\n                .ToListAsync(stoppingToken);\n\n            foreach (var evt in events)\n            {\n                try\n                {\n                    // Publish to Kafka with retry\n                    await _kafka.ProduceAsync(evt.EventType, evt.Payload);\n\n                    // Mark as published\n                    evt.Published = true;\n                    evt.PublishedAt = DateTime.UtcNow;\n                }\n                catch (Exception ex)\n                {\n                    // Publish failed - will retry on next poll\n                    _logger.LogWarning(ex, \"Failed to publish event {Id}, will retry\", evt.Id);\n                }\n            }\n\n            await _dbContext.SaveChangesAsync(stoppingToken);\n            await Task.Delay(TimeSpan.FromSeconds(5), stoppingToken);\n        }\n    }\n}\n```\n\n**Results**:\n- **Zero Event Loss**: 2024 Q1 Kafka broker maintenance window (30 minutes planned downtime) → 7,500 claims adjudicated during outage with all events safely persisted in outbox table → Message relay published all 7,500 events when broker returned online → Zero manual reconciliation required, $280K incident cost avoided\n- **Atomic Consistency**: Database claims and outbox events always in sync (both committed together or both rolled back) → Eliminated entire class of reconciliation bugs from partial failures\n- **Operational Simplicity**: Removed complex batch reconciliation jobs that ran nightly to detect missing events → Reduced operational burden from daily manual checks of event counts vs database counts\n- **Audit Trail**: Outbox table provides queryable event log for compliance reporting (\"show all claim.adjudicated events for member 12345 in 2024\") → Supports HIPAA audit requirements with tamper-evident database-backed log\n\n**Quantified Outcomes**:\n- **100% event delivery guarantee** (zero events lost during 6 broker outages in 2024 vs 10,847 lost events in 2023)\n- **$280K annual savings** (eliminated incident response costs from dual-write reconciliation)\n- **60% faster incident resolution** (broker outages auto-recover when relay resumes vs manual reconciliation)\n- **Compliance improvement**: 100% claim event capture for T-MSIS state reporting (previously 99.7% with missing events requiring manual correction)\n\n---",
+    "52": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#example-2-member-enrollment-with-multi-service-provisioning]\n\n### Example 2: Member Enrollment with Multi-Service Provisioning\n\n**Context**: Enrollment Service processes member enrollments during open enrollment periods (600,000 enrollments over 72-96 hours) and ongoing eligibility updates (50,000 monthly). Each enrollment must atomically create member record and publish `member.enrolled` event consumed by 10+ provisioning services that generate ID cards, create portal accounts, assign care coordinators, activate pharmacy benefits, send welcome notifications, update analytics dashboards, prepare state reporting files, calculate premiums, log audit events, and notify providers. Missing enrollment events cause critical member service disruptions.\n\n**Before (Event Publish Before Database Commit)**:\n\n```csharp\npublic async Task<EnrollmentResult> EnrollMemberAsync(EnrollmentRequest request)\n{\n    using var transaction = await _dbContext.Database.BeginTransactionAsync();\n\n    try\n    {\n        var member = new Member\n        {\n            MemberId = request.MemberId,\n            FirstName = request.FirstName,\n            LastName = request.LastName,\n            SelectedPlanId = request.PlanId,\n            EffectiveDate = request.EffectiveDate\n        };\n\n        await _dbContext.Members.AddAsync(member);\n\n        // Publish event BEFORE database commit (wrong order!)\n        var enrollmentEvent = new MemberEnrolledEvent\n        {\n            MemberId = request.MemberId,\n            PlanId = request.PlanId,\n            EffectiveDate = request.EffectiveDate\n        };\n\n        await _serviceBus.PublishAsync(\"member.enrolled\", enrollmentEvent);\n        // ✅ Event published successfully to Azure Service Bus\n\n        await _dbContext.SaveChangesAsync();\n        // ❌ Database constraint violation (MemberId already exists)\n        //    Transaction rolls back, but event already published!\n\n        await transaction.CommitAsync(); // Never reaches here\n\n        return EnrollmentResult.Success();\n    }\n    catch (Exception ex)\n    {\n        await transaction.RollbackAsync();\n        // Event already consumed by 10+ services - PHANTOM ENROLLMENT!\n        throw;\n    }\n}\n```\n\n**Problems Experienced**:\n- **2023 Open Enrollment**: 847 enrollments failed database constraint validations (duplicate MemberIds, invalid plan selections, missing required fields) after events already published\n- **Impact**: ID Card Service generated and mailed 847 cards to wrong addresses (non-existent members); Portal Provisioning Service created 847 orphaned portal accounts (login credentials sent to wrong email addresses); Care Management Service assigned 847 care coordinators to non-existent members (wasted coordinator time); Pharmacy Benefit Service activated coverage for 847 non-existent members (prescription fills incorrectly approved); Analytics dashboards overcounted enrollment by 847; State Reporting submitted incorrect enrollment counts to 12 states\n- **Recovery**: Cross-referencing event logs with database to identify 847 phantom enrollments; manually reversing downstream provisioning (canceling ID cards, deleting portal accounts, unassigning care coordinators, deactivating pharmacy coverage); notifying states of corrected enrollment counts; estimated 120 staff-hours for remediation\n\n**After (Outbox Pattern with Transaction Scope)**:\n\n```csharp\npublic async Task<EnrollmentResult> EnrollMemberAsync(EnrollmentRequest request)\n{\n    using var transaction = await _dbContext.Database.BeginTransactionAsync();\n\n    try\n    {\n        // Step 1: Validate and create member record\n        var member = new Member\n        {\n            MemberId = request.MemberId,\n            FirstName = request.FirstName,\n            LastName = request.LastName,\n            SelectedPlanId = request.PlanId,\n            EffectiveDate = request.EffectiveDate\n        };\n\n        await _dbContext.Members.AddAsync(member);\n\n        // Step 2: Create enrollment event in outbox (same transaction)\n        var enrollmentEvent = new MemberEnrolledEvent\n        {\n            MemberId = request.MemberId,\n            PlanId = request.PlanId,\n            EffectiveDate = request.EffectiveDate,\n            EnrollmentDate = DateTime.UtcNow\n        };\n\n        await _dbContext.Outbox.AddAsync(new OutboxEvent\n        {\n            EventType = \"member.enrolled\",\n            AggregateId = request.MemberId,\n            Payload = JsonSerializer.Serialize(enrollmentEvent),\n            Published = false,\n            CreatedAt = DateTime.UtcNow\n        });\n\n        // Step 3: Commit transaction atomically\n        await _dbContext.SaveChangesAsync();\n        await transaction.CommitAsync();\n        // ✅ Either BOTH member and outbox event saved, or BOTH rolled back\n\n        return EnrollmentResult.Success();\n    }\n    catch (DbUpdateException ex) when (ex.InnerException is SqlException sqlEx && sqlEx.Number == 2627)\n    {\n        // Duplicate MemberID constraint violation\n        await transaction.RollbackAsync();\n        // ✅ Transaction rolled back - NO event in outbox, NO downstream phantom enrollment\n        return EnrollmentResult.Failed(\"Member ID already exists\");\n    }\n    catch (Exception ex)\n    {\n        await transaction.RollbackAsync();\n        throw;\n    }\n}\n```\n\n**Results**:\n- **Zero Phantom Enrollments**: 2024 open enrollment processed 680,000 enrollments with 1,243 validation failures (duplicate IDs, invalid plans) → All 1,243 failures rolled back cleanly with NO outbox events created → Zero phantom enrollments, zero downstream provisioning for non-existent members\n- **Consistent State**: Database member records and outbox enrollment events always in sync → Downstream services only process events for members that actually exist in database\n- **Simplified Error Handling**: Application code simply rolls back transaction on validation failure → No complex cleanup logic to un-publish events or notify downstream services of rollback\n- **Improved Member Experience**: Members who re-attempt enrollment after fixing validation errors don't receive duplicate ID cards, duplicate portal accounts, or duplicate notifications (no phantom provisioning from failed attempts)\n\n**Quantified Outcomes**:\n- **100% consistency** (zero phantom enrollments in 2024 vs 847 in 2023)\n- **120 staff-hours saved** annually (eliminated manual remediation of phantom enrollments)\n- **Zero incorrect state reporting** (enrollment counts accurate, no corrections required)\n- **Member satisfaction improvement**: Eliminated complaints about duplicate ID cards and wrong portal credentials\n\n---",
+    "53": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#example-3-payment-processing-with-financial-audit-trail]\n\n### Example 3: Payment Processing with Financial Audit Trail\n\n**Context**: Payment Service processes provider remittances (4 million payments annually totaling $18 billion), member reimbursements, and Third-Party Liability (TPL) recoveries. Each payment transaction must atomically record payment in database and publish `payment.issued` event for provider notification, accounting ledger posting, financial reconciliation, state reporting, bank interface, audit logging, and provider portal updates. Financial regulations require zero tolerance for payment event loss.\n\n**Before (Manual Reconciliation)**:\n\n```csharp\npublic async Task<PaymentResult> IssuePaymentAsync(Payment payment)\n{\n    // Step 1: Save payment to database\n    await _dbContext.Payments.AddAsync(new PaymentRecord\n    {\n        PaymentId = payment.Id,\n        ProviderId = payment.ProviderId,\n        Amount = payment.Amount,\n        CheckNumber = payment.CheckNumber,\n        IssuedDate = DateTime.UtcNow\n    });\n    await _dbContext.SaveChangesAsync(); // ✅ Database commit succeeds\n\n    // Step 2: Publish payment event\n    await _serviceBus.PublishAsync(\"payment.issued\", new PaymentIssuedEvent\n    {\n        PaymentId = payment.Id,\n        ProviderId = payment.ProviderId,\n        Amount = payment.Amount\n    });\n    // ❌ Service crashes before publish completes\n    //    Payment recorded in database, but event never published\n\n    return PaymentResult.Success();\n}\n\n// Nightly reconciliation job to find missing payment events\npublic async Task ReconcileMissingPaymentEventsAsync()\n{\n    // Compare database payments to published events\n    var paymentsToday = await _dbContext.Payments\n        .Where(p => p.IssuedDate >= DateTime.Today)\n        .ToListAsync();\n\n    var publishedEvents = await _eventStore\n        .GetEventsAsync(\"payment.issued\", DateTime.Today);\n\n    var missingEvents = paymentsToday\n        .Where(p => !publishedEvents.Any(e => e.PaymentId == p.PaymentId))\n        .ToList();\n\n    // Re-publish missing events (12-24 hour delay!)\n    foreach (var payment in missingEvents)\n    {\n        await _serviceBus.PublishAsync(\"payment.issued\", ...);\n        _logger.LogWarning(\"Reconciliation published missing payment event {PaymentId}\", payment.PaymentId);\n    }\n}\n```\n\n**Problems Experienced**:\n- **Ongoing Issue**: Average 12-18 payment events lost daily due to service restarts, network timeouts, transient Service Bus failures → Annual total: 5,840 missing payment events\n- **Impact**: Providers didn't receive remittance advice for 5,840 payments (average $3,000 per payment = $17.5M in payments without notification); Accounting Service missed 5,840 ledger entries requiring manual correction; Financial Reconciliation Service couldn't match 5,840 payments to claims (manual reconciliation effort); State Reporting showed incorrect payment totals (required corrections and re-submission); Provider Portal payment history incomplete (providers called support asking about missing payments)\n- **Operational Burden**: Nightly reconciliation job ran 2-4 hours comparing millions of database records to event logs; 12-24 hour delay between payment issuance and event publishing meant providers waited day+ for remittance advice; False positives from reconciliation logic caused duplicate event publishing; Monthly manual audit comparing payment totals across systems required 40 staff-hours\n\n**After (Outbox Pattern with Audit Trail)**:\n\n```csharp\npublic async Task<PaymentResult> IssuePaymentAsync(Payment payment)\n{\n    using var transaction = await _dbContext.Database.BeginTransactionAsync();\n\n    try\n    {\n        // Step 1: Record payment transaction\n        var paymentRecord = new PaymentRecord\n        {\n            PaymentId = payment.Id,\n            ProviderId = payment.ProviderId,\n            Amount = payment.Amount,\n            CheckNumber = payment.CheckNumber,\n            IssuedDate = DateTime.UtcNow\n        };\n        await _dbContext.Payments.AddAsync(paymentRecord);\n\n        // Step 2: Create payment event in outbox (same transaction)\n        var paymentEvent = new PaymentIssuedEvent\n        {\n            PaymentId = payment.Id,\n            ProviderId = payment.ProviderId,\n            Amount = payment.Amount,\n            CheckNumber = payment.CheckNumber,\n            IssuedDate = DateTime.UtcNow\n        };\n\n        await _dbContext.Outbox.AddAsync(new OutboxEvent\n        {\n            EventType = \"payment.issued\",\n            AggregateId = payment.Id,\n            Payload = JsonSerializer.Serialize(paymentEvent),\n            Published = false,\n            CreatedAt = DateTime.UtcNow\n        });\n\n        // Step 3: Commit payment and event atomically\n        await _dbContext.SaveChangesAsync();\n        await transaction.CommitAsync();\n        // ✅ Financial transaction and event guaranteed consistent\n\n        _logger.LogInformation(\"Payment {PaymentId} issued: ${Amount} to provider {ProviderId}\",\n            payment.Id, payment.Amount, payment.ProviderId);\n\n        return PaymentResult.Success();\n    }\n    catch (Exception ex)\n    {\n        await transaction.RollbackAsync();\n        _logger.LogError(ex, \"Failed to issue payment {PaymentId}\", payment.Id);\n        throw;\n    }\n}\n```\n\n**Results**:\n- **Zero Missing Payment Events**: All 4 million annual payments have corresponding events guaranteed by database transaction atomicity → Eliminated 5,840 missing events that occurred pre-outbox\n- **Real-Time Provider Notifications**: Message relay publishes payment events within 5 seconds of payment issuance (vs 12-24 hour delay from nightly reconciliation) → Providers receive remittance advice same day as payment → 85% reduction in provider support calls asking about payment status\n- **Simplified Reconciliation**: Financial Reconciliation Service matches 100% of payments to claims without manual intervention (previously required manual matching for 5,840 missing events annually)\n- **Audit Compliance**: Outbox table provides tamper-evident audit trail of all payment events with database backup and point-in-time recovery → Supports financial audits and regulatory inquiries with SQL queries (\"show all payment.issued events for provider 98765 in Q1 2024\")\n- **Eliminated Reconciliation Jobs**: Removed nightly reconciliation job that took 2-4 hours and caused false positives → Saved compute costs and eliminated operational burden\n\n**Quantified Outcomes**:\n- **100% payment event capture** (zero missing events in 2024 vs 5,840 in 2023)\n- **40 staff-hours monthly savings** (eliminated manual reconciliation audits)\n- **85% reduction in provider support calls** (real-time remittance advice vs 12-24 hour delay)\n- **$50K annual cost savings** (compute costs from reconciliation jobs, manual audit labor)\n\n---",
+    "54": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#use-case-scenarios]\n\n### Use Case Scenarios",
+    "55": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#scenario-1-prior-authorization-workflow-coordination]\n\n#### Scenario 1: Prior Authorization Workflow Coordination\n\n**When to Use**: Prior Auth Service processes authorization requests requiring database updates (save authorization decision) and event publishing (notify pharmacy network, member portal, care management, analytics) without dual-write risks.\n\n**Implementation**: Prior auth approval/denial written to `prior_authorizations` table and outbox event in single transaction; message relay publishes to `priorauth.decided` topic; downstream services consume events for workflow coordination (pharmacy allows prescription fill, portal updates auth status, care manager notified of denial for intervention).\n\n**Benefits**: Authorization decisions and notifications always consistent (no scenario where auth approved in database but pharmacy network never notified); guaranteed event delivery even during Service Bus maintenance; audit trail of all auth events for compliance reporting.",
+    "56": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#scenario-2-provider-credentialing-status-updates]\n\n#### Scenario 2: Provider Credentialing Status Updates\n\n**When to Use**: Provider Credentialing Service updates credential status (approved, suspended, terminated) requiring database updates and notifications to 8+ consuming services (provider directory, claims processing, prior auth, pharmacy network, member portal, state reporting, contract management, audit logging).\n\n**Implementation**: Credential status change written to `provider_credentials` table and outbox event in single transaction; relay publishes to `provider.credentialed` or `provider.suspended` topics; consumers update their respective systems (directory shows active status, claims service enables submissions, prior auth allows requests, pharmacy network activates, portal displays in-network).\n\n**Benefits**: Provider status always consistent across all systems (no scenario where provider approved but claims service doesn't allow submissions); atomic consistency prevents incomplete credential updates; supports NCQA accreditation audit requirements with event log.",
+    "57": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#scenario-3-pharmacy-point-of-sale-transaction-logging]\n\n#### Scenario 3: Pharmacy Point-of-Sale Transaction Logging\n\n**When to Use**: Pharmacy Service processes prescription adjudications at point-of-sale requiring transaction log (save pharmacy claim) and event publishing (notify DUR review, member adherence tracking, analytics, audit logging) with guaranteed delivery despite high transaction volume (500K claims/day).\n\n**Implementation**: Pharmacy claim written to `pharmacy_claims` table and outbox event in single transaction; CDC-based relay (Debezium) provides <100ms latency from database write to event publish; consumers process events for real-time DUR review, adherence tracking, fraud detection.\n\n**Benefits**: High-throughput pharmacy transactions (500K/day = 350/minute avg, 1,000/minute peak) with guaranteed event delivery; sub-second latency using CDC instead of polling; zero claims lost during Kafka broker maintenance or upgrades.",
+    "58": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#scenario-4-member-portal-access-provisioning]\n\n#### Scenario 4: Member Portal Access Provisioning\n\n**When to Use**: Member Portal Service provisions user accounts when members enroll, requiring database updates (create portal user) and event publishing (notify welcome email service, care coordinator, analytics) atomically to prevent incomplete provisioning.\n\n**Implementation**: Portal user creation written to `portal_users` table and outbox event in single transaction; if user creation fails validation (duplicate email, invalid password format), transaction rolls back and NO event published; relay publishes `portal.user.created` event only for successfully created users.\n\n**Benefits**: Eliminates phantom provisioning where welcome emails sent but portal accounts don't exist; ensures every enrolled member with portal account receives welcome email; supports member satisfaction by preventing duplicate welcome emails from retry logic.\n\n---",
+    "59": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#before-and-after-comparison]\n\n### Before and After Comparison",
+    "60": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#before-dual-write-architecture]\n\n#### Before: Dual-Write Architecture\n\n**Characteristics**:\n- Two separate operations: database commit, message publish\n- No atomicity guarantee between operations\n- Race conditions and timing windows cause inconsistencies\n- Manual reconciliation jobs detect and fix missing events (12-24 hour lag)\n- Incident response requires cross-referencing database with event logs\n\n**Incident Examples**:\n- 2023 Q3: 3,489 claim adjudication events lost during Kafka broker outage ($1.2M delayed payments, 3-day remediation, $280K cost)\n- 2023 Open Enrollment: 847 phantom enrollment events published for failed database transactions (847 wrong ID cards mailed, 120 staff-hours cleanup)\n- 2023 Annual: 5,840 payment events lost requiring nightly reconciliation (12-24 hour provider notification delay, 40 monthly audit hours)",
+    "61": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#after-outbox-pattern]\n\n#### After: Outbox Pattern\n\n**Characteristics**:\n- Single database transaction ensures atomic consistency\n- Events durably persisted with database ACID guarantees\n- Zero manual reconciliation required (events and data always in sync)\n- Message relay provides guaranteed delivery with automatic retry\n- Audit trail with queryable event log for compliance\n\n**Improvements**:\n- **Zero Event Loss**: 100% event delivery guarantee during 6 broker outages in 2024 (vs 10,847 lost events in 2023)\n- **Atomic Consistency**: Database state and events always synchronized (eliminated reconciliation bugs)\n- **Cost Savings**: $280K annually (eliminated incident response costs, reconciliation compute, manual audit labor)\n- **Compliance**: 100% event capture for T-MSIS reporting, financial audits, HIPAA requirements\n- **Operational Simplicity**: Removed complex reconciliation jobs, simplified error handling, reduced on-call burden",
+    "62": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#related-patterns-and-references]\n\n## Related Patterns and References",
+    "63": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#internal-pattern-relationships]\n\n### Internal Pattern Relationships",
+    "64": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#event-driven-architecture-pattern]\n\n#### Event-Driven Architecture Pattern\n\n- **Relationship**: Outbox Pattern is a foundational implementation technique for reliable event publishing in event-driven architectures\n- **Complementary Usage**: Event-Driven Architecture defines the overall system design with events as primary integration mechanism; Outbox Pattern ensures events are published atomically with database updates\n- **Key Difference**: Event-Driven Architecture is architectural style (how services communicate); Outbox Pattern is tactical solution to dual-write problem\n- **When to Use Together**: Any event-driven system where services update local databases and publish events requires Outbox Pattern to guarantee atomicity",
+    "65": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#saga-pattern]\n\n#### Saga Pattern\n\n- **Relationship**: Saga Pattern uses Outbox Pattern to guarantee reliable saga coordination events between saga steps\n- **Complementary Usage**: Saga orchestrates long-running distributed transactions; Outbox ensures each saga step's state change and next-step event are atomic\n- **Key Difference**: Saga Pattern provides distributed transaction coordination with compensation logic; Outbox Pattern provides atomic event publishing within single service\n- **When to Use Together**: Long-running workflows like enrollment provisioning (create member → assign plan → generate ID card → provision portal) use Saga Pattern for overall orchestration and Outbox Pattern for reliable step-to-step coordination events",
+    "66": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#event-sourcing-pattern]\n\n#### Event Sourcing Pattern\n\n- **Relationship**: Event Sourcing stores all state changes as immutable events; Outbox Pattern publishes those events reliably to external consumers\n- **Complementary Usage**: Event Sourcing service stores events in append-only event log; Outbox table acts as bridge to publish events to message broker for other services to consume\n- **Key Difference**: Event Sourcing stores events as primary state (event log is source of truth); Outbox stores events as secondary artifact for external notification (database records are source of truth)\n- **When to Use Together**: Event Sourcing system publishes domain events to message broker for consumers outside event-sourced bounded context; Outbox ensures events are atomically written to event log and published to broker",
+    "67": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#message-queue-pattern]\n\n#### Message Queue Pattern\n\n- **Relationship**: Outbox Pattern and Message Queue Pattern both provide reliable async messaging but solve different problems\n- **Complementary Usage**: Outbox solves atomic event publishing with database updates; Message Queue solves service-to-service async communication with load leveling and decoupling\n- **Key Difference**: Outbox ensures database transaction atomicity; Message Queue provides async processing and backpressure handling\n- **When to Use Together**: Service uses Outbox to publish events atomically with database updates; events go to Message Queue for async consumption by downstream services (Claims Service → Outbox → Azure Service Bus Queue → Payment Service)",
+    "68": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#change-data-capture-cdc-pattern]\n\n#### Change Data Capture (CDC) Pattern\n\n- **Relationship**: CDC is advanced implementation technique for Outbox Pattern providing real-time event relay by reading database transaction logs\n- **Complementary Usage**: Outbox Pattern defines transactional event storage; CDC provides efficient relay mechanism without polling overhead\n- **Key Difference**: Outbox Pattern is the architectural concept; CDC is one implementation approach (alternative to polling-based relay)\n- **When to Use Together**: High-throughput scenarios (>10,000 events/hour) where sub-second latency required—use Outbox for transactional writes, CDC (Debezium) for real-time relay to message broker",
+    "69": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#idempotent-consumer-pattern]\n\n#### Idempotent Consumer Pattern\n\n- **Relationship**: Outbox Pattern provides at-least-once event delivery; Idempotent Consumer Pattern handles duplicate events\n- **Complementary Usage**: Outbox relay may publish duplicate events (retry after timeout before database save); consumers must handle duplicates idempotently\n- **Key Difference**: Outbox focuses on producer-side reliability (guaranteed delivery); Idempotent Consumer focuses on consumer-side correctness (handle duplicates)\n- **When to Use Together**: Always—Outbox at-least-once semantics require idempotent consumers to prevent duplicate processing (duplicate payments, duplicate ID cards, duplicate notifications)\n\n---",
+    "70": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#external-references]\n\n### External References",
+    "71": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#transactional-outbox-pattern-microservicesio]\n\n#### Transactional Outbox Pattern (Microservices.io)\n\n- **Relevance**: Canonical description of Outbox Pattern from microservices patterns catalog\n- **Key Concepts**: Dual-write problem, outbox table design, message relay process, at-least-once delivery semantics\n- **Application**: Gainwell implementation follows this reference architecture with healthcare-specific adaptations (HIPAA audit requirements, financial transaction zero-loss tolerance)\n- **Resource**: [https://microservices.io/patterns/data/transactional-outbox.html](https://microservices.io/patterns/data/transactional-outbox.html)",
+    "72": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#debezium-change-data-capture-platform]\n\n#### Debezium Change Data Capture Platform\n\n- **Relevance**: Open-source CDC platform for real-time outbox relay reading PostgreSQL, SQL Server, MySQL transaction logs\n- **Key Capabilities**: PostgreSQL logical replication, SQL Server transaction log reading, Kafka Connect integration, Outbox Event Router transformation\n- **Application**: Pharmacy claims processing (500K/day) uses Debezium with PostgreSQL for <100ms event latency vs 5-second polling\n- **Resource**: [https://debezium.io/documentation/reference/stable/transformations/outbox-event-router.html](https://debezium.io/documentation/reference/stable/transformations/outbox-event-router.html)",
+    "73": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#enterprise-integration-patterns-hohpe--woolf]\n\n#### Enterprise Integration Patterns (Hohpe & Woolf)\n\n- **Relevance**: Foundational patterns book covering messaging, transactional consistency, guaranteed delivery\n- **Key Patterns**: Guaranteed Delivery (durable messaging), Message Store (persistent queue), Transactional Client (atomic operations)\n- **Application**: Outbox Pattern implements Guaranteed Delivery and Transactional Client patterns for healthcare event publishing\n- **Resource**: [Enterprise Integration Patterns](https://www.enterpriseintegrationpatterns.com/)",
+    "74": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#designing-data-intensive-applications-kleppmann]\n\n#### Designing Data-Intensive Applications (Kleppmann)\n\n- **Relevance**: Chapter 11 \"Stream Processing\" covers dual-write problem, CDC, and transactional outbox in depth\n- **Key Concepts**: Keeping systems in sync, change data capture, event sourcing, exactly-once semantics vs at-least-once\n- **Application**: Theoretical foundation for understanding why dual-write fails and how Outbox solves it with database ACID guarantees\n- **Resource**: [Designing Data-Intensive Applications](https://dataintensive.net/)",
+    "75": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#azure-service-bus-documentation]\n\n#### Azure Service Bus Documentation\n\n- **Relevance**: Primary message broker for Gainwell Azure-native services consuming outbox events\n- **Key Topics**: Topics and subscriptions, message sessions, duplicate detection, dead letter queues, at-least-once delivery guarantees\n- **Application**: Message relay publishes outbox events to Service Bus topics; consumers (Payment, Notification, Analytics services) subscribe with durable subscriptions\n- **Resource**: [https://learn.microsoft.com/en-us/azure/service-bus-messaging/](https://learn.microsoft.com/en-us/azure/service-bus-messaging/)",
+    "76": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#apache-kafka-documentation]\n\n#### Apache Kafka Documentation\n\n- **Relevance**: High-throughput event streaming platform for analytics and audit events from outbox tables\n- **Key Topics**: Producer acknowledgments, idempotent producers, exactly-once semantics (EOS), compacted topics\n- **Application**: Claims Service publishes adjudication events to Kafka `claim-events` topic; Analytics Service consumes for real-time dashboards\n- **Resource**: [https://kafka.apache.org/documentation/](https://kafka.apache.org/documentation/)",
+    "77": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#pattern-saga-microservicesio]\n\n#### Pattern: Saga (Microservices.io)\n\n- **Relevance**: Distributed transaction pattern that relies on Outbox for reliable saga coordination events\n- **Key Concepts**: Choreography vs orchestration, compensation transactions, saga state machine\n- **Application**: Enrollment provisioning saga (10+ steps) uses Outbox to guarantee each step's completion event published atomically with step state update\n- **Resource**: [https://microservices.io/patterns/data/saga.html](https://microservices.io/patterns/data/saga.html)\n\n---",
+    "78": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#healthcare-integration-standards]\n\n### Healthcare Integration Standards",
+    "79": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#hl7-fhir-events]\n\n#### HL7 FHIR Events\n\n- **Relevance**: Outbox events for FHIR-based integrations with state HIEs, provider portals, and payer-to-payer data exchange\n- **Application**: Member enrollment events formatted as FHIR Patient and Coverage resources in outbox payload; relay publishes to FHIR-compliant event subscribers (HIE, state systems)\n- **Integration**: Outbox payload contains FHIR JSON; relay transforms to FHIR Bundle and posts to FHIR subscriber endpoints\n- **Resource**: [https://hl7.org/fhir/workflow-communications.html](https://hl7.org/fhir/workflow-communications.html)",
+    "80": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#x12-edi-transactions]\n\n#### X12 EDI Transactions\n\n- **Relevance**: Claims (837), remittance advice (835), enrollment (834) EDI transactions generated from outbox events\n- **Application**: Payment Service publishes `payment.issued` event to outbox; EDI Gateway Service consumes event and generates 835 remittance EDI file\n- **Integration**: Outbox stores payment event as JSON; consumer transforms JSON to X12 835 format for provider transmission\n- **Resource**: [https://x12.org/](https://x12.org/)",
+    "81": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#cms-interoperability-and-patient-access-final-rule]\n\n#### CMS Interoperability and Patient Access Final Rule\n\n- **Relevance**: Regulatory requirement for patient data access APIs requiring reliable event publishing for audit compliance\n- **Application**: Member data access events (portal login, data export, FHIR API access) written to outbox for HIPAA audit trail; guaranteed event capture for compliance reporting\n- **Integration**: FHIR Patient Access API publishes `patient.data.accessed` events to outbox; Audit Service consumes for compliance logging\n- **Resource**: [https://www.cms.gov/regulations-and-guidance/guidance/interoperability/](https://www.cms.gov/regulations-and-guidance/guidance/interoperability/)\n\n---",
+    "82": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#technology-specific-resources]\n\n### Technology-Specific Resources",
+    "83": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#entity-framework-core-transactions]\n\n#### Entity Framework Core Transactions\n\n- **Relevance**: .NET ORM used for outbox table writes within database transactions\n- **Key Topics**: DbContext transactions, BeginTransaction/Commit/Rollback, transaction isolation levels, optimistic concurrency\n- **Application**: Claims Service, Enrollment Service, Payment Service use EF Core transactions for atomic business data + outbox event writes\n- **Resource**: [https://learn.microsoft.com/en-us/ef/core/saving/transactions](https://learn.microsoft.com/en-us/ef/core/saving/transactions)",
+    "84": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#sql-server-transaction-log]\n\n#### SQL Server Transaction Log\n\n- **Relevance**: Understanding transaction log for CDC-based outbox relay implementation\n- **Key Topics**: Write-ahead logging, transaction log reading, log shipping, Always On availability groups\n- **Application**: Debezium SQL Server connector reads transaction log for real-time outbox event relay without polling\n- **Resource**: [https://learn.microsoft.com/en-us/sql/relational-databases/logs/the-transaction-log-sql-server](https://learn.microsoft.com/en-us/sql/relational-databases/logs/the-transaction-log-sql-server)",
+    "85": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#postgresql-logical-replication]\n\n#### PostgreSQL Logical Replication\n\n- **Relevance**: PostgreSQL feature enabling CDC-based outbox relay\n- **Key Topics**: Logical decoding, replication slots, pgoutput plugin, Debezium PostgreSQL connector\n- **Application**: Pharmacy Service (PostgreSQL) uses logical replication for Debezium CDC outbox relay (500K claims/day)\n- **Resource**: [https://www.postgresql.org/docs/current/logical-replication.html](https://www.postgresql.org/docs/current/logical-replication.html)",
+    "86": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#background-services-in-net]\n\n#### Background Services in .NET\n\n- **Relevance**: IHostedService interface for implementing message relay as background worker\n- **Key Topics**: BackgroundService base class, Worker Service template, graceful shutdown, dependency injection scopes\n- **Application**: Outbox Message Relay implemented as BackgroundService polling every 5 seconds for unpublished events\n- **Resource**: [https://learn.microsoft.com/en-us/aspnet/core/fundamentals/host/hosted-services](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/host/hosted-services)\n\n---",
+    "87": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#monitoring-and-observability]\n\n### Monitoring and Observability",
+    "88": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#distributed-tracing-with-opentelemetry]\n\n#### Distributed Tracing with OpenTelemetry\n\n- **Relevance**: Tracing events from origination (business logic) through outbox write, relay publish, to consumer processing\n- **Key Topics**: Trace context propagation, correlation IDs, span attributes, baggage\n- **Application**: Claims adjudication traced end-to-end: claim submitted → adjudicated → outbox written → relay published → payment scheduled (visualize full workflow in Application Insights)\n- **Resource**: [https://opentelemetry.io/docs/instrumentation/net/](https://opentelemetry.io/docs/instrumentation/net/)",
+    "89": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#database-monitoring-for-outbox-tables]\n\n#### Database Monitoring for Outbox Tables\n\n- **Key Metrics**: Table size (GB), row count, unpublished event count, oldest unpublished event age, index fragmentation\n- **Alerting Thresholds**: >10GB table size, >10,000 unpublished events, oldest event >5 minutes old\n- **Tools**: SQL Server DMVs, Azure SQL Database insights, PostgreSQL pg_stat_user_tables\n- **Application**: Monitor outbox table growth and relay processing lag for capacity planning and incident detection",
+    "90": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#message-broker-metrics]\n\n#### Message Broker Metrics\n\n- **Key Metrics**: Topic throughput (events/sec), consumer lag, dead letter queue depth, network latency\n- **Integration**: Relay publish success rate, broker acknowledgment latency, connection pool health\n- **Tools**: Azure Service Bus metrics, Kafka JMX metrics, Prometheus exporters\n- **Application**: Correlate outbox relay performance with broker metrics to diagnose bottlenecks (slow relay vs broker backpressure)\n\n---",
+    "91": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#books-and-further-reading]\n\n### Books and Further Reading",
+    "92": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#building-microservices-newman-2021]\n\n#### \"Building Microservices\" (Newman, 2021)\n\n- **Relevance**: Chapter on data consistency in distributed systems covers outbox pattern implementation\n- **Key Topics**: Event-driven architecture, saga pattern, transactional boundaries, eventual consistency\n- **Application**: Gainwell microservices architecture design follows Newman's patterns for service boundaries and event-driven coordination",
+    "93": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#microservices-patterns-richardson-2018]\n\n#### \"Microservices Patterns\" (Richardson, 2018)\n\n- **Relevance**: Comprehensive coverage of Saga and Outbox patterns with code examples\n- **Key Topics**: Transactional outbox, polling publisher, transaction log tailing, saga orchestration vs choreography\n- **Application**: Reference architecture for Gainwell's saga implementations using outbox for coordination",
+    "94": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#software-architecture-the-hard-parts-ford-et-al-2021]\n\n#### \"Software Architecture: The Hard Parts\" (Ford et al., 2021)\n\n- **Relevance**: Trade-offs in distributed data management, consistency vs availability, outbox pattern analysis\n- **Key Topics**: Distributed transactions, CAP theorem implications, operational complexity\n- **Application**: Decision framework for when to use outbox pattern vs alternatives (2PC, eventual consistency with reconciliation)\n\n---",
+    "95": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#decision-records]\n\n### Decision Records\n\nRelated Architecture Decision Records (ADRs) influencing this pattern:\n\n- **ADR-DAT-001**: Eliminate Distributed Transactions (decided against 2PC/XA for cloud-native microservices, adopt Outbox Pattern for atomicity)\n- **ADR-INT-004**: Event Publishing Strategy (decided Outbox Pattern for all database-updating services publishing events, ensures guaranteed delivery without dual-write)\n- **ADR-INT-005**: Message Relay Implementation (decided polling-based relay as default, CDC for high-throughput domains >10K events/hour)\n- **ADR-OPS-002**: Event Audit Requirements (decided outbox table provides tamper-evident audit log for HIPAA compliance, 7-year retention for financial events)",
+    "96": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#change-history]\n\n## Change History\n\n| Date       | Version | Author              | Description              | Impact      |\n| ---------- | ------- | ------------------- | ------------------------ | ----------- |\n| 2026-01-02 | 1.0.0   | Enterprise Architect | Initial pattern creation | New pattern |",
+    "97": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#review-log]\n\n## Review Log\n\n| Review Date | Review Type      | Reviewer(s)          | Status   | Comments                                      | Actions      |\n| ----------- | ---------------- | -------------------- | -------- | --------------------------------------------- | ------------ |\n| 2026-01-12  | Technical Review | Enterprise Architect | Approved | Comprehensive pattern with healthcare context | None required |\n\n---",
+    "98": "[patterns/application/api-microservices/PTN-APP-API-029-outbox-pattern.md#tldr]\n\n## TL;DR\n\n**Problem:** Healthcare microservices must atomically update databases and publish events to notify downstream services, but database commits and message broker publishes are separate operations that can't be executed atomically—this is the \"dual-write problem.\" When Claims Service saves claim decision and publishes `claim.adjudicated` event, database might succeed but message publish fails (claim saved, no downstream notifications), or message publishes but database rolls back (phantom events for non-existent data). The 2023 Kafka outage lost 1,847 enrollment events ($280K remediation cost) and manual reconciliation jobs run nightly to detect missing events (12-24 hour lag).\n\n**Solution:** Outbox Pattern solves dual-write by writing events to \"outbox\" database table within same transaction as business data update, ensuring atomicity through database ACID guarantees. When adjudicating claim, service executes single transaction: INSERT claim record, INSERT outbox event—both commit together or rollback together. Separate Message Relay process polls outbox table (or uses CDC), publishes events to message broker, marks as published, deletes processed events. Provides guaranteed delivery (events can't be lost, persisted in database with backups), atomic consistency (business data and events always in sync), resilience to broker outages (events accumulate in outbox until broker available), no distributed transactions needed (single database transaction only).\n\n**When to Use:** Event publishing with database transactions (claims adjudication saving decision and publishing event atomically, enrollment creating member and publishing provisioning event), guaranteed event delivery requirements (payment events for remittance notifications with zero loss tolerance, enrollment events triggering 8+ downstream workflows, regulatory reporting events for compliance), avoiding distributed transactions (microservices where 2PC/XA impractical, high-throughput scenarios where distributed transaction overhead unacceptable), message broker outage resilience (business operations continue during broker maintenance with events accumulating in outbox), audit and compliance (HIPAA audit trail requiring durable event log, financial reconciliation needing 100% event capture).\n\n**Key Benefits:**\n- **Atomic Consistency Through Database ACID**: Single transaction ensures business data and events commit together or rollback together—eliminates timing windows and partial failures causing inconsistencies; claims service saves claim decision and outbox event atomically (either both exist or neither exists)\n- **Guaranteed Event Delivery**: Events persisted durably in database can't be lost (backups, replication, PITR); message relay retries with exponential backoff until successful; at-least-once delivery (events never lost but may duplicate, requiring idempotent consumers); 2023 Kafka outage would have zero data loss with outbox (events safely in database, published when broker recovered)\n- **No Distributed Transactions**: Avoids 2PC/XA complexity, 10x performance overhead, and fragility; works with cloud-native brokers without XA support (Azure Service Bus, Kafka); single database transaction provides atomicity without coordination protocol\n- **Resilience to Broker Outages**: Business operations continue during broker maintenance or failures—claims adjudication, enrollment processing proceed with events accumulating in outbox; when broker recovers, relay auto-publishes accumulated events without manual intervention\n- **Audit Trail and Debuggability**: Outbox table provides queryable audit log with timestamps, payload details, processing status; replay capability (reset Published flag to republish events); compliance-friendly with database backup and tamper-evident log\n\n**Implementation Complexity:** Medium-High—requires outbox table schema design with proper indexing for relay queries, transactional outbox writes integrated into business service code (BEGIN TRANSACTION → business data → outbox event → COMMIT), message relay background service with polling or CDC implementation, idempotent consumers to handle at-least-once delivery duplicates, cleanup jobs to manage outbox table growth (delete published events after retention period), monitoring for outbox depth/relay lag/dead letter events. Polling-based relay simpler but 1-5 second latency; CDC (Debezium) more complex but <100ms latency for high-throughput scenarios.\n\n**Prerequisites:** Database with ACID transaction support (SQL Server 2019+, PostgreSQL 14+), message broker (Azure Service Bus, Kafka, RabbitMQ), .NET 6+ with Entity Framework Core or ADO.NET for transaction management, background service hosting (IHostedService, Worker Service, Azure Functions Timer), monitoring infrastructure (Application Insights, database metrics, broker metrics), understanding of eventual consistency and at-least-once semantics requiring idempotent consumers.\n\n**Real-World Results:** 100% event delivery guarantee during 6 broker outages in 2024 (zero events lost vs 10,847 in 2023 pre-outbox); $280K annual savings from eliminated incident response costs, reconciliation compute, and manual audit labor; 100% claim event capture for T-MSIS state reporting compliance (previously 99.7% with missing events); zero phantom enrollments in 2024 (zero wrong ID cards mailed, zero duplicate portal accounts vs 847 in 2023); 85% reduction in provider support calls from real-time payment remittance notifications (<5s latency vs 12-24 hour reconciliation delay).\n\n**Related Patterns:** Event-Driven Architecture (outbox provides reliable event publishing for event-driven systems), Saga Pattern (saga coordination events use outbox for atomic step completion), Event Sourcing (outbox publishes event-sourced domain events to external consumers), Message Queue Pattern (outbox publishes to queues for async processing), Change Data Capture (CDC advanced relay implementation for real-time publishing), Idempotent Consumer (required for handling outbox at-least-once delivery duplicates).\n\n---"
+  },
+  "coverage": {
+    "total_pages": 98,
+    "covered_pages": 98,
+    "sampled_pages": 98,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 98
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Classification and Data Governance Reference Architecture",
+  "document_description": "guidance_id: 'GUID-SEC-DATA-CLASS-GOV-RAD-3.5.04'",
+  "total_pages": 14,
+  "tree": [
+    {
+      "title": "Classification and Data Governance Reference Architecture",
+      "node_id": "classification-and-data-governance-reference-architecture",
+      "start_index": 1,
+      "end_index": 14,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Architecture Guidance Metadata",
+          "node_id": "architecture-guidance-metadata",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Purpose and Scope",
+          "node_id": "purpose-and-scope",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Logical Architecture",
+          "node_id": "logical-architecture",
+          "start_index": 4,
+          "end_index": 6,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Classification-Driven Protection Flow",
+              "node_id": "classification-driven-protection-flow",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Classification Schema Architecture",
+              "node_id": "classification-schema-architecture",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "DLP Architecture",
+          "node_id": "dlp-architecture",
+          "start_index": 7,
+          "end_index": 9,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Channel Coverage Model",
+              "node_id": "channel-coverage-model",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "DLP Policy Governance",
+              "node_id": "dlp-policy-governance",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Non-Production Data Masking Architecture",
+          "node_id": "non-production-data-masking-architecture",
+          "start_index": 10,
+          "end_index": 12,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Masking Gate Pattern",
+              "node_id": "masking-gate-pattern",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Dynamic Masking for Analytics",
+              "node_id": "dynamic-masking-for-analytics",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Tokenization Architecture",
+          "node_id": "tokenization-architecture",
+          "start_index": 13,
+          "end_index": 14,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Token Scope and Vault Governance",
+              "node_id": "token-scope-and-vault-governance",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-CLASS-GOV-RAD-3.5.04.md#classification-and-data-governance-reference-architecture]\n\n# Classification and Data Governance Reference Architecture\n\n**← Back to [EAP Home](../../../../../README.md) • [Strategy](../../../../README.md) • [Security Guidance](../../../README.md) • [Data](../README.md)**\n\n---",
+    "2": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-CLASS-GOV-RAD-3.5.04.md#architecture-guidance-metadata]\n\n## Architecture Guidance Metadata\n\n```yaml\nguidance_id: 'GUID-SEC-DATA-CLASS-GOV-RAD-3.5.04'\nguidance_name: 'Classification and Data Governance Reference Architecture'\nguidance_type: 'reference-architecture-document'\nrad_type: 'component-pattern'\npaired_abbs:\n  - 'GUID-SEC-DATA-CLASSIFY-2.5.02'\n  - 'GUID-SEC-DATA-DLP-2.5.05'\n  - 'GUID-SEC-DATA-MASK-2.5.06'\nparent_abb: 'GUID-SEC-DATA-REF-1.5.01'\nparent_vision: 'GUID-SEC-DATA-VISION-0.5.01'\nadm_phase: 'Phase C-D'\ncategory: 'security'\nversion: '0.1.0'\nstatus: 'draft'\napplicability: 'enterprise'\ntags: ['security', 'data', 'reference-architecture', 'classification', 'dlp', 'masking', 'governance', 'phase-c', 'phase-d']\nauthor: 'Jesse Adams'\n```\n\n---\n\n> **Informative Content Notice**: Technology choices, tooling names, and vendor references in this document are **illustrative only** — they represent one class of solution, not a mandated selection. Organizations SHOULD evaluate tooling based on integration fit, licensing, and operational context.\n>\n> **The architectural control patterns in this document reflect normative requirements from the paired ABBs** ([GUID-SEC-DATA-CLASSIFY-2.5.02](../GUID-SEC-DATA-CLASSIFY-2.5.02.md), [GUID-SEC-DATA-DLP-2.5.05](../GUID-SEC-DATA-DLP-2.5.05.md), and [GUID-SEC-DATA-MASK-2.5.06](../GUID-SEC-DATA-MASK-2.5.06.md)) and represent required design outcomes. Implementation teams SHALL deliver the described control capabilities; the specific tooling used to realize them is a local implementation decision.\n\n---",
+    "3": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-CLASS-GOV-RAD-3.5.04.md#purpose-and-scope]\n\n## Purpose and Scope\n\nThis Reference Architecture Document illustrates how the Data Classification, Data Loss Prevention, and Data Masking and Tokenization ABBs compose into a governance architecture for sensitive data across cloud, application, and non-production environments.\n\n**Paired ABBs**:\n- [GUID-SEC-DATA-CLASSIFY-2.5.02 — Data Classification and Cataloging ABB](../GUID-SEC-DATA-CLASSIFY-2.5.02.md)\n- [GUID-SEC-DATA-DLP-2.5.05 — Data Loss Prevention ABB](../GUID-SEC-DATA-DLP-2.5.05.md)\n- [GUID-SEC-DATA-MASK-2.5.06 — Data Masking and Tokenization ABB](../GUID-SEC-DATA-MASK-2.5.06.md)\n\n---",
+    "4": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-CLASS-GOV-RAD-3.5.04.md#logical-architecture]\n\n## Logical Architecture",
+    "5": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-CLASS-GOV-RAD-3.5.04.md#classification-driven-protection-flow]\n\n### Classification-Driven Protection Flow\n\n```mermaid\ngraph TD\n    subgraph Ingestion[\"Data Ingestion\"]\n        SRC[Data Source\\nDatabase, API, File, Stream]\n    end\n\n    subgraph Classification[\"Classification Layer\"]\n        AUTO[Automated Classification\\nContent inspection and metadata detection]\n        LABEL[Label Application\\nSensitivity tier + regulatory sub-tier]\n        CAT[Data Asset Catalog\\nAsset registry with classification metadata]\n    end\n\n    subgraph Protection[\"Protection Routing\"]\n        ROUTE{Classification Tier?}\n        ENC[Encryption ABB\\nGUID-SEC-DATA-ENC-2.5.03]\n        DLP[DLP ABB\\nGUID-SEC-DATA-DLP-2.5.05]\n        MASK[Masking ABB\\nGUID-SEC-DATA-MASK-2.5.06]\n    end\n\n    subgraph Destinations[\"Delivery Contexts\"]\n        PROD[Production Systems\\nFull data, encrypted]\n        NONPROD[Non-Production\\nMasked or synthetic data]\n        ANALYTICS[Analytics / Reporting\\nDynamic masking or aggregated]\n        EGRESS[External Egress\\nDLP-evaluated and policy-approved]\n    end\n\n    SRC --> AUTO\n    AUTO --> LABEL\n    LABEL --> CAT\n    LABEL --> ROUTE\n    ROUTE -->|Restricted/Regulated| ENC\n    ROUTE -->|Any tier - egress| DLP\n    ROUTE -->|Non-production request| MASK\n    ENC --> PROD\n    MASK --> NONPROD\n    MASK --> ANALYTICS\n    DLP --> EGRESS\n```",
+    "6": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-CLASS-GOV-RAD-3.5.04.md#classification-schema-architecture]\n\n### Classification Schema Architecture\n\nThe enterprise classification schema SHALL be structured in two dimensions:\n\n**Sensitivity Tier (vertical axis)**:\n\n| Tier | Definition | Example |\n|---|---|---|\n| Public | Authorized for unrestricted public access | Marketing materials, public documentation |\n| Internal | Not for external distribution; no regulated data | Internal procedures, non-PHI operational data |\n| Restricted | Significant harm from unauthorized disclosure | PHI, PII, financial records, contractual data |\n| Highly Restricted | Severe harm from disclosure; limited need-to-know | Encryption root keys, security architecture designs |\n\n**Regulatory Sub-Tier (horizontal overlay)**:\n\n| Sub-Tier | Applies To |\n|---|---|\n| PHI | Health information subject to HIPAA — applies within Restricted tier |\n| PII | Personally identifiable information — applies within Restricted tier |\n| CUI | Controlled Unclassified Information — applies within Restricted or Highly Restricted tier |\n\n---",
+    "7": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-CLASS-GOV-RAD-3.5.04.md#dlp-architecture]\n\n## DLP Architecture",
+    "8": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-CLASS-GOV-RAD-3.5.04.md#channel-coverage-model]\n\n### Channel Coverage Model\n\n| Egress Channel | DLP Enforcement Approach | Coverage Requirement |\n|---|---|---|\n| Email | Inline content inspection at mail gateway | SHALL — for all restricted and regulated data |\n| Cloud storage upload | API-level interception or CASB inspection | SHALL — for all restricted and regulated data |\n| Web upload / HTTP POST | Proxy or endpoint-based inspection | SHALL — for all restricted and regulated data |\n| Collaboration platforms | Platform-native DLP integration | SHOULD — where platform APIs support it |\n| Removable media | Endpoint agent enforcement | SHOULD — for managed endpoints |\n| API responses | Response content inspection | SHOULD — for high-sensitivity APIs |\n| Print | Endpoint agent enforcement | MAY — proportional to print volume of sensitive data |",
+    "9": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-CLASS-GOV-RAD-3.5.04.md#dlp-policy-governance]\n\n### DLP Policy Governance\n\nDLP policy SHALL be governed as a security configuration artifact:\n- Policy changes require architecture review for significant scope changes\n- Policy updates require testing in a representative environment before production deployment\n- Unauthorized policy changes trigger a security incident\n- Policy effectiveness metrics (detection rate, false positive rate, coverage gaps) SHALL be reviewed regularly\n\n---",
+    "10": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-CLASS-GOV-RAD-3.5.04.md#non-production-data-masking-architecture]\n\n## Non-Production Data Masking Architecture",
+    "11": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-CLASS-GOV-RAD-3.5.04.md#masking-gate-pattern]\n\n### Masking Gate Pattern\n\nNon-production data pipelines SHALL include a masking gate that executes before sensitive data reaches the non-production environment:\n\n1. **Classification check**: Verify the classification tier of the source data\n2. **Masking rule selection**: Select masking transformation rules appropriate to the classification tier and data types\n3. **Transform**: Apply masking transformations — format-preserving substitution for values requiring referential integrity\n4. **Validation**: Verify that no sensitive values survived the transformation (spot-check or automated scanning)\n5. **Deliver**: Deliver the masked dataset to the non-production environment",
+    "12": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-CLASS-GOV-RAD-3.5.04.md#dynamic-masking-for-analytics]\n\n### Dynamic Masking for Analytics\n\nWhere analytics consumers require access to production data with masking applied at query time:\n- Masking rules are applied by the data platform based on the querying user's role\n- Results returned to restricted-role users contain masked field values\n- Results returned to authorized roles contain actual values\n- All queries are audited with the requester's identity and the masking rules applied\n\n---",
+    "13": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-CLASS-GOV-RAD-3.5.04.md#tokenization-architecture]\n\n## Tokenization Architecture",
+    "14": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-CLASS-GOV-RAD-3.5.04.md#token-scope-and-vault-governance]\n\n### Token Scope and Vault Governance\n\nThe token vault (the store mapping tokens to original sensitive values) SHALL be governed as a restricted data store:\n- Access to the token vault is restricted to systems authorized for detokenization\n- Detokenization requests are audited with the requesting system identity\n- Token format-preservation SHALL be assessed per integration — format-preserving tokens minimize downstream integration changes\n- Token lifetime SHALL be defined — tokens for transient operations should not persist indefinitely\n\n---"
+  },
+  "coverage": {
+    "total_pages": 14,
+    "covered_pages": 14,
+    "sampled_pages": 14,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 14
+  }
+}

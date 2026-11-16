@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Workflow — Create PR",
+  "document_description": "Create or manage GitHub pull requests using the `gh` CLI.",
+  "total_pages": 5,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 5,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Workflow — Create PR",
+          "node_id": "workflow--create-pr",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "PR Body Format",
+          "node_id": "pr-body-format",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Workflow — View / Manage PRs",
+          "node_id": "workflow--view--manage-prs",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Guidelines",
+          "node_id": "guidelines",
+          "start_index": 5,
+          "end_index": 5,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "Create or manage GitHub pull requests using the `gh` CLI.",
+    "2": "[.claude/commands/eap-appr-pr.md#workflow--create-pr]\n\n## Workflow — Create PR\n\n1. Run `git status` to check for uncommitted changes — commit first if needed\n2. Run `git log --oneline main..HEAD` to see ALL commits in the branch\n3. Run `git diff main...HEAD --stat` for file-level change summary\n4. Run `git diff main...HEAD` to read the FULL diff — you need this to write a detailed description\n5. Ensure the branch is pushed to the remote (push with `-u` if needed)\n6. **Auto-detect ADO work item from branch name:**\n   - Parse the current branch name for the pattern `AB#<number>` (e.g., `feature/AB#12345-eligibility-verification`)\n   - If found, pre-populate the `AB#<number>` in the Related section of the PR description and inform the user: \"Detected AB#12345 from branch name — linking to ADO.\"\n   - If no `AB#` pattern is found in the branch name, ask the user: \"ADO User Story number to link? (Enter number only, or press Enter to skip)\"\n     - Default (empty input): proceed without ADO linking\n     - If the user provides a number:\n       - Validate the work item exists by querying ADO (use MCP if available, or prompt for org name and validate manually)\n       - If found, append `AB#<number>` to the Related section of the PR description\n       - If not found, warn the user and ask if they want to proceed anyway or enter a different number\n7. Draft the PR description following the format below — be thorough and specific\n8. Create the PR with `gh pr create`\n9. Return the PR URL",
+    "3": "[.claude/commands/eap-appr-pr.md#pr-body-format]\n\n## PR Body Format\n\nThe PR description must be detailed enough that a reviewer understands the full scope without reading every file. Do NOT use vague summaries — be specific about what changed and why.\n\n```markdown\n## Summary\n\n<2-4 sentence overview of what this PR accomplishes and why. Include the motivation or problem being solved.>\n\n## What Changed\n\n### <Category or area 1> (e.g., \"CI/CD Pipelines\", \"Skills\", \"Setup Scripts\")\n- <Specific change with file path> — <why it was changed>\n- <Specific change with file path> — <why it was changed>\n\n### <Category or area 2>\n- <Specific change with file path> — <why it was changed>\n\n(Repeat for each logical group of changes. Group by purpose, not by file type.)\n\n## Design Decisions\n\n- <Any non-obvious choices made and the reasoning behind them>\n- <Trade-offs considered>\n- <Standards or patterns followed (reference eap-ref-architecture if applicable)>\n\n## Requirements Addressed\n\n(If this PR implements documented requirements, list them)\n\n| Requirement | Status |\n| --- | --- |\n| REQ-FN-NNN | Implemented / Partially addressed |\n\n## Breaking Changes\n\n<List any breaking changes, or \"None\" if there aren't any.>\n\n## Test Plan\n\n- [ ] <Specific verification step with expected outcome>\n- [ ] <Specific verification step with expected outcome>\n- [ ] <Regression check if applicable>\n\n## Related\n\n- <Link to ADO work items: AB#1234>\n- <Link to related PRs, issues, or ADRs>\n- <Link to relevant docs or decisions>\n```",
+    "4": "[.claude/commands/eap-appr-pr.md#workflow--view--manage-prs]\n\n## Workflow — View / Manage PRs\n\n- **List open PRs**: `gh pr list`\n- **View a PR**: `gh pr view <number>`\n- **Check PR status**: `gh pr checks <number>`\n- **Review comments**: `gh api repos/{owner}/{repo}/pulls/<number>/comments`",
+    "5": "[.claude/commands/eap-appr-pr.md#guidelines]\n\n## Guidelines\n\n- Keep PR titles under 70 characters — use the description for details\n- Target `main` branch by default unless the user specifies otherwise\n- **Read the full diff before writing the description** — don't guess what changed\n- Group changes by purpose (not alphabetically or by file type)\n- Call out non-obvious decisions, trade-offs, and standards followed\n- Include specific file paths so reviewers know where to look\n- If there are uncommitted changes, ask whether to commit first\n- Reference ADO work items with `AB#<id>` syntax for auto-linking\n\n$ARGUMENTS"
+  },
+  "coverage": {
+    "total_pages": 5,
+    "covered_pages": 5,
+    "sampled_pages": 5,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 5
+  }
+}

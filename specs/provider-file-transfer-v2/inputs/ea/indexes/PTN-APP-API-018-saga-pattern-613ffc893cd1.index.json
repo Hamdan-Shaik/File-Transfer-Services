@@ -1,0 +1,695 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Microservices Saga Pattern",
+  "document_description": "pattern_type: 'microservices-architecture'",
+  "total_pages": 73,
+  "tree": [
+    {
+      "title": "Microservices Saga Pattern",
+      "node_id": "microservices-saga-pattern",
+      "start_index": 1,
+      "end_index": 73,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Executive Summary",
+          "node_id": "executive-summary",
+          "start_index": 3,
+          "end_index": 9,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Problem Statement",
+              "node_id": "problem-statement",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Solution Overview",
+              "node_id": "solution-overview",
+              "start_index": 5,
+              "end_index": 7,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "**Choreography-Based Saga**",
+                  "node_id": "choreography-based-saga",
+                  "start_index": 6,
+                  "end_index": 6,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "**Orchestration-Based Saga**",
+                  "node_id": "orchestration-based-saga",
+                  "start_index": 7,
+                  "end_index": 7,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "When to Use",
+              "node_id": "when-to-use",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Benefits",
+              "node_id": "benefits",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Context and Problem",
+          "node_id": "context-and-problem",
+          "start_index": 10,
+          "end_index": 18,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Business Context",
+              "node_id": "business-context",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Technical Context",
+              "node_id": "technical-context",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Problem Details",
+              "node_id": "problem-details",
+              "start_index": 13,
+              "end_index": 17,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Problem 1: Two-Phase Commit is Not Viable",
+                  "node_id": "problem-1-two-phase-commit-is-not-viable",
+                  "start_index": 14,
+                  "end_index": 14,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Problem 2: Manual Compensation is Error-Prone and Slow",
+                  "node_id": "problem-2-manual-compensation-is-error-prone-and-slow",
+                  "start_index": 15,
+                  "end_index": 15,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Problem 3: Intermediate States Visible to Users",
+                  "node_id": "problem-3-intermediate-states-visible-to-users",
+                  "start_index": 16,
+                  "end_index": 16,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Problem 4: Lack of Visibility and Monitoring",
+                  "node_id": "problem-4-lack-of-visibility-and-monitoring",
+                  "start_index": 17,
+                  "end_index": 17,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Forces and Constraints",
+              "node_id": "forces-and-constraints",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Solution",
+          "node_id": "solution",
+          "start_index": 19,
+          "end_index": 27,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Solution Overview",
+              "node_id": "solution-overview",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Architecture Overview",
+              "node_id": "architecture-overview",
+              "start_index": 21,
+              "end_index": 21,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Orchestration-Based Saga Implementation",
+              "node_id": "orchestration-based-saga-implementation",
+              "start_index": 22,
+              "end_index": 23,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Saga Orchestrator (Azure Durable Functions)",
+                  "node_id": "saga-orchestrator-azure-durable-functions",
+                  "start_index": 23,
+                  "end_index": 23,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Choreography-Based Saga Implementation",
+              "node_id": "choreography-based-saga-implementation",
+              "start_index": 24,
+              "end_index": 25,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Event-Driven Saga (Member Plan Change)",
+                  "node_id": "event-driven-saga-member-plan-change",
+                  "start_index": 25,
+                  "end_index": 25,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Saga State Management",
+              "node_id": "saga-state-management",
+              "start_index": 26,
+              "end_index": 26,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Benefits of This Solution",
+              "node_id": "benefits-of-this-solution",
+              "start_index": 27,
+              "end_index": 27,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Implementation Guidelines",
+          "node_id": "implementation-guidelines",
+          "start_index": 28,
+          "end_index": 43,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Prerequisites",
+              "node_id": "prerequisites",
+              "start_index": 29,
+              "end_index": 29,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Phase 1: Choose Saga Implementation Approach",
+              "node_id": "phase-1-choose-saga-implementation-approach",
+              "start_index": 30,
+              "end_index": 30,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Phase 2: Implement Orchestration-Based Saga",
+              "node_id": "phase-2-implement-orchestration-based-saga",
+              "start_index": 31,
+              "end_index": 34,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Step 1: Install Azure Durable Functions",
+                  "node_id": "step-1-install-azure-durable-functions",
+                  "start_index": 32,
+                  "end_index": 32,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 2: Create Saga Orchestrator",
+                  "node_id": "step-2-create-saga-orchestrator",
+                  "start_index": 33,
+                  "end_index": 33,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 3: Implement Activity Functions",
+                  "node_id": "step-3-implement-activity-functions",
+                  "start_index": 34,
+                  "end_index": 34,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Phase 3: Implement Choreography-Based Saga",
+              "node_id": "phase-3-implement-choreography-based-saga",
+              "start_index": 35,
+              "end_index": 38,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Step 1: Configure Azure Service Bus",
+                  "node_id": "step-1-configure-azure-service-bus",
+                  "start_index": 36,
+                  "end_index": 36,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 2: Implement Event Publishers",
+                  "node_id": "step-2-implement-event-publishers",
+                  "start_index": 37,
+                  "end_index": 37,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 3: Implement Event Handlers",
+                  "node_id": "step-3-implement-event-handlers",
+                  "start_index": 38,
+                  "end_index": 38,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Phase 4: Implement Compensation Logic",
+              "node_id": "phase-4-implement-compensation-logic",
+              "start_index": 39,
+              "end_index": 39,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Phase 5: Implement Monitoring and Observability",
+              "node_id": "phase-5-implement-monitoring-and-observability",
+              "start_index": 40,
+              "end_index": 41,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Dashboard Requirements",
+                  "node_id": "dashboard-requirements",
+                  "start_index": 41,
+                  "end_index": 41,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Best Practices",
+              "node_id": "best-practices",
+              "start_index": 42,
+              "end_index": 42,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Common Pitfalls",
+              "node_id": "common-pitfalls",
+              "start_index": 43,
+              "end_index": 43,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Governance and Compliance",
+          "node_id": "governance-and-compliance",
+          "start_index": 44,
+          "end_index": 53,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Saga Design Standards",
+              "node_id": "saga-design-standards",
+              "start_index": 45,
+              "end_index": 48,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Standard 1: Orchestration vs Choreography Selection Criteria",
+                  "node_id": "standard-1-orchestration-vs-choreography-selection-criteria",
+                  "start_index": 46,
+                  "end_index": 46,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Standard 2: Saga State Management Requirements",
+                  "node_id": "standard-2-saga-state-management-requirements",
+                  "start_index": 47,
+                  "end_index": 47,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Standard 3: Compensation Transaction Standards",
+                  "node_id": "standard-3-compensation-transaction-standards",
+                  "start_index": 48,
+                  "end_index": 48,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "HIPAA Compliance Requirements",
+              "node_id": "hipaa-compliance-requirements",
+              "start_index": 49,
+              "end_index": 49,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Financial Accuracy Requirements",
+              "node_id": "financial-accuracy-requirements",
+              "start_index": 50,
+              "end_index": 50,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Monitoring Requirements",
+              "node_id": "monitoring-requirements",
+              "start_index": 51,
+              "end_index": 51,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "State-Specific Regulatory Compliance",
+              "node_id": "state-specific-regulatory-compliance",
+              "start_index": 52,
+              "end_index": 52,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Approval Process",
+              "node_id": "approval-process",
+              "start_index": 53,
+              "end_index": 53,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Examples and Use Cases",
+          "node_id": "examples-and-use-cases",
+          "start_index": 54,
+          "end_index": 67,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Example 1: Claims Adjudication Orchestration Saga",
+              "node_id": "example-1-claims-adjudication-orchestration-saga",
+              "start_index": 55,
+              "end_index": 58,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Business Context",
+                  "node_id": "business-context",
+                  "start_index": 56,
+                  "end_index": 56,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Implementation",
+                  "node_id": "implementation",
+                  "start_index": 57,
+                  "end_index": 57,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Results and Metrics",
+                  "node_id": "results-and-metrics",
+                  "start_index": 58,
+                  "end_index": 58,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Example 2: Provider Enrollment Choreography Saga",
+              "node_id": "example-2-provider-enrollment-choreography-saga",
+              "start_index": 59,
+              "end_index": 62,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Business Context",
+                  "node_id": "business-context",
+                  "start_index": 60,
+                  "end_index": 60,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Implementation",
+                  "node_id": "implementation",
+                  "start_index": 61,
+                  "end_index": 61,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Results and Metrics",
+                  "node_id": "results-and-metrics",
+                  "start_index": 62,
+                  "end_index": 62,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Example 3: Member Plan Change Saga with Compensation Failure",
+              "node_id": "example-3-member-plan-change-saga-with-compensation-failure",
+              "start_index": 63,
+              "end_index": 67,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Business Context",
+                  "node_id": "business-context",
+                  "start_index": 64,
+                  "end_index": 64,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Scenario: Card Service Failure with Successful Compensation",
+                  "node_id": "scenario-card-service-failure-with-successful-compensation",
+                  "start_index": 65,
+                  "end_index": 65,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Scenario: Compensation Failure Requiring Manual Review",
+                  "node_id": "scenario-compensation-failure-requiring-manual-review",
+                  "start_index": 66,
+                  "end_index": 66,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Manual Review Dashboard",
+                  "node_id": "manual-review-dashboard",
+                  "start_index": 67,
+                  "end_index": 67,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Related Patterns and References",
+          "node_id": "related-patterns-and-references",
+          "start_index": 68,
+          "end_index": 70,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Related Patterns",
+              "node_id": "related-patterns",
+              "start_index": 69,
+              "end_index": 69,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "External References",
+              "node_id": "external-references",
+              "start_index": 70,
+              "end_index": 70,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Change History",
+          "node_id": "change-history",
+          "start_index": 71,
+          "end_index": 71,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Review Log",
+          "node_id": "review-log",
+          "start_index": 72,
+          "end_index": 72,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "TL;DR",
+          "node_id": "tldr",
+          "start_index": 73,
+          "end_index": 73,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#microservices-saga-pattern]\n\n# Microservices Saga Pattern\n\n**← Back to [EAP Home](../../../README.md) • [Patterns](../../README.md) • [Application](../README.md) • [API & Microservices](./README.md)**\n\n---\n\n**Pattern Metadata**\n\n```yaml\npattern_id: 'PTN-APP-API-018'\npattern_name: 'Saga Pattern'\npattern_type: 'microservices-architecture'\ndomain: 'application'\nversion: '1.0.0'\nstatus: 'draft'\ntags: ['application', 'microservices-architecture', 'saga', 'distributed-transactions', 'compensation', 'eventual-consistency', 'healthcare', 'proven']\n```\n\n---",
+    "2": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#table-of-contents]\n\n## Table of Contents\n\n- [Executive Summary](#executive-summary)\n- [Context and Problem](#context-and-problem)\n- [Solution](#solution)\n- [Implementation Guidelines](#implementation-guidelines)\n- [Governance and Compliance](#governance-and-compliance)\n- [Examples and Use Cases](#examples-and-use-cases)\n- [Related Patterns and References](#related-patterns-and-references)\n- [Change History](#change-history)\n- [Review Log](#review-log)\n- [TL;DR](#tldr)\n\n---",
+    "3": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#executive-summary]\n\n## Executive Summary",
+    "4": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#problem-statement]\n\n### Problem Statement\n\nIn distributed microservices architectures following the **Database per Service** pattern, each microservice owns its data and database. This design provides service autonomy, independent scaling, and technology flexibility. However, it creates a fundamental challenge: **how to maintain data consistency across multiple services when executing business transactions that span service boundaries**.\n\nTraditional ACID transactions using two-phase commit (2PC) protocols are not viable in microservices architectures due to:\n\n1. **Tight Coupling**: 2PC requires all participating services to be available simultaneously, creating tight coupling that violates microservices principles of autonomy and independence\n\n2. **Blocking Behavior**: During the prepare phase, 2PC locks resources across all services, blocking other transactions and reducing system throughput. In healthcare systems processing millions of transactions daily, this blocking is unacceptable\n\n3. **Availability Impact**: 2PC follows a blocking protocol where coordinator failure blocks all participants indefinitely. In healthcare systems requiring 99.9% uptime for claims processing and member services, this availability impact violates SLA requirements\n\n4. **Performance Degradation**: 2PC latency grows linearly with the number of participants. In complex healthcare workflows involving 5-10 microservices (eligibility, benefits, pricing, authorization, payment), 2PC latency becomes prohibitive\n\n5. **Technology Heterogeneity**: Modern microservices use diverse data stores (SQL Server, PostgreSQL, MongoDB, Redis, Elasticsearch). 2PC requires XA transaction support across all databases, limiting technology choices\n\n**Healthcare-Specific Challenges at Gainwell:**\n\n**Claims Adjudication Workflow** (5-7 services):\n- **Eligibility Service**: Verify member coverage and eligibility\n- **Benefits Service**: Check covered services and limitations\n- **Pricing Service**: Calculate reimbursement based on fee schedules\n- **Prior Authorization Service**: Validate prior authorization requirements\n- **Third-Party Liability (TPL) Service**: Coordinate benefits with other payers\n- **Payment Service**: Create payment transaction\n- **Claims Repository Service**: Persist final claim decision\n\n**Problem**: If pricing service fails after eligibility is verified, how do we maintain consistency? Traditional rollback isn't possible since each service has its own database.\n\n**Provider Enrollment Workflow** (4-6 services):\n- **Provider Service**: Create provider record\n- **Credentialing Service**: Verify licenses and certifications\n- **Network Service**: Assign to provider networks\n- **Contract Service**: Create reimbursement contracts\n- **Directory Service**: Publish to provider directory\n- **Notification Service**: Send confirmation to provider\n\n**Problem**: If contract creation fails after credentialing completes (15-minute process), we can't leave provider in partially enrolled state.\n\n**Member Plan Selection** (3-5 services):\n- **Member Service**: Update member record\n- **Plan Service**: Assign health plan\n- **Benefits Service**: Calculate benefit coverage\n- **Card Service**: Generate member ID card\n- **Notification Service**: Send welcome packet\n\n**Problem**: Member must not receive ID card if plan assignment fails, but we can't use distributed transactions across these autonomous services.",
+    "5": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#solution-overview]\n\n### Solution Overview\n\nThe **Saga Pattern** provides a distributed transaction management approach that maintains **eventual consistency** across microservices without requiring distributed ACID transactions or two-phase commit. A saga is a sequence of **local transactions** where each transaction updates data within a single service and publishes an event or message to trigger the next transaction step.\n\n**Core Saga Principles:**\n\n1. **Local Transactions**: Each microservice executes its own local ACID transaction within its database boundary. These transactions commit immediately without waiting for other services.\n\n2. **Asynchronous Communication**: Services communicate through events (event-driven sagas) or commands (orchestration-based sagas) rather than synchronous blocking calls.\n\n3. **Compensating Transactions**: If any step in the saga fails, **compensating transactions** undo the changes made by previous steps, effectively \"rolling back\" the saga to maintain consistency.\n\n4. **Eventual Consistency**: The saga guarantees that the system will eventually reach a consistent state—either all saga steps complete successfully, or compensating transactions restore the system to its original state.\n\n**Two Saga Implementation Approaches:**",
+    "6": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#choreography-based-saga]\n\n#### **Choreography-Based Saga**\n\nServices publish domain events after completing local transactions. Other services listen for these events and react by executing their own local transactions and publishing new events.\n\n**Example - Claims Adjudication Saga (Choreography):**\n\n```text\n1. Claim submitted → ClaimService publishes ClaimSubmitted event\n2. EligibilityService listens → verifies eligibility → publishes EligibilityVerified event\n3. BenefitsService listens → checks coverage → publishes BenefitsValidated event\n4. PricingService listens → calculates payment → publishes PriceCalculated event\n5. PaymentService listens → creates payment → publishes PaymentCreated event\n6. ClaimService listens → updates claim status to Approved\n\nFailure Scenario:\n3b. BenefitsService fails validation → publishes BenefitsValidationFailed event\n4b. EligibilityService listens → compensates (releases eligibility hold) → publishes EligibilityCompensated\n5b. ClaimService listens → updates claim status to Denied\n```\n\n**Advantages**: Decentralized control, no single point of failure, services remain loosely coupled\n**Challenges**: Difficult to understand end-to-end flow, testing complex event chains, implementing compensation logic across multiple services",
+    "7": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#orchestration-based-saga]\n\n#### **Orchestration-Based Saga**\n\nA centralized saga orchestrator (coordinator) explicitly tells participants which local transactions to execute and coordinates the saga flow.\n\n**Example - Provider Enrollment Saga (Orchestration):**\n\n```text\nSagaOrchestrator coordinates:\n\n1. Command: CreateProvider → ProviderService → Success\n2. Command: VerifyCredentials → CredentialingService → Success\n3. Command: AssignNetwork → NetworkService → Success\n4. Command: CreateContract → ContractService → FAILURE\n5. Compensate: RemoveFromNetwork → NetworkService → Success (compensating)\n6. Compensate: RemoveCredentials → CredentialingService → Success (compensating)\n7. Compensate: DeleteProvider → ProviderService → Success (compensating)\n8. Result: Provider enrollment failed, all changes rolled back\n```\n\n**Advantages**: Centralized logic makes saga flow explicit and testable, easier to implement complex compensation logic, clear observability\n**Challenges**: Orchestrator becomes potential single point of failure, risk of creating centralized \"god service\"\n\n**Saga Guarantees:**\n\n- **Atomicity**: The saga as a whole is atomic—either all steps complete successfully or compensating transactions restore the original state\n- **Consistency**: System reaches eventual consistency through either forward progress (all steps succeed) or backward recovery (compensation)\n- **Isolation**: Saga isolation is **relaxed**. Other transactions may see intermediate states. This is acceptable in healthcare for many workflows but requires careful handling for financial transactions.\n- **Durability**: Each local transaction is durable within its service's database",
+    "8": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#when-to-use]\n\n### When to Use\n\n**✅ Use Saga Pattern When:**\n\n1. **Multi-Service Business Processes**: Business transaction spans multiple microservices with separate databases\n   - **Gainwell Example**: Claims adjudication requiring eligibility verification, benefits checking, pricing calculation, prior authorization, and payment creation across 5+ services\n\n2. **Database per Service Architecture**: Each microservice owns its database and cannot share transactions\n   - **Gainwell Example**: Provider enrollment service (SQL Server), credentialing service (PostgreSQL), network management service (MongoDB), contract service (SQL Server)\n\n3. **High Availability Requirements**: System must remain available even when some services are temporarily unavailable\n   - **Gainwell Requirement**: 99.9% uptime SLA for claims processing. Saga allows partial progress with eventual consistency rather than blocking on unavailable services.\n\n4. **Long-Running Business Processes**: Transactions take seconds, minutes, or hours to complete\n   - **Gainwell Example**: Provider credentialing workflow taking 5-15 minutes for license verification, background checks, and contract setup. Can't hold database locks for this duration.\n\n5. **Compensatable Operations**: Business logic allows for compensation/reversal of completed operations\n   - **Gainwell Example**: Provider enrollment can be reversed by removing network assignments, voiding contracts, and deleting provider record. Member plan selection can be undone before generating ID card.\n\n6. **Eventual Consistency Acceptable**: Business tolerates temporary inconsistency with guaranteed eventual consistency\n   - **Gainwell Example**: Claims adjudication workflow can show claim in \"Processing\" state while saga executes. Final \"Approved\" or \"Denied\" status achieved eventually.\n\n**❌ Do NOT Use Saga Pattern When:**\n\n1. **Strong Consistency Required**: Business requires immediate consistency and cannot tolerate any intermediate states\n   - **Anti-Example**: Financial reconciliation requiring exact balance at all times. Use single service with local ACID transaction instead.\n\n2. **Non-Compensatable Operations**: Some operations cannot be reversed or compensated\n   - **Anti-Example**: Sending payment to provider's bank account. Once ACH transaction submitted, it cannot be reliably reversed. Design saga to make payment creation the final step, avoiding need for compensation.\n\n3. **Cyclic Dependencies**: Saga steps create circular dependencies that make compensation order ambiguous\n   - **Anti-Example**: Service A depends on B, B depends on C, C depends on A. Redesign service boundaries to eliminate cycles.\n\n4. **Single Service Transaction**: All operations within same service and database boundary\n   - **Anti-Example**: Updating member address, phone, and email within Member Service. Use simple local ACID transaction, not saga.\n\n5. **Real-Time Strict Latency**: Business requires sub-second response time\n   - **Anti-Example**: Member portal API requiring <500ms response. Saga asynchronous nature adds latency. Use synchronous API with eventual consistency for background workflow.\n\n**Gainwell Healthcare Use Cases:**\n\n**Claims Processing Saga**:\n- **Scenario**: Claim submission through adjudication to payment\n- **Services**: Claim, Eligibility, Benefits, Pricing, Prior Authorization, TPL, Payment (7 services)\n- **Saga Type**: Orchestration-based (complex compensation logic, auditing requirements)\n- **Consistency**: Eventual consistency acceptable (claim shows \"Processing\" during saga execution)\n\n**Provider Enrollment Saga**:\n- **Scenario**: Provider application through credentialing to contract setup\n- **Services**: Provider, Credentialing, Network, Contract, Directory, Notification (6 services)\n- **Saga Type**: Orchestration-based (long-running 5-15 minutes, requires coordinator for timeout handling)\n- **Consistency**: Eventual consistency acceptable (provider enrollment may take minutes/hours)\n\n**Member Plan Change Saga**:\n- **Scenario**: Member selects new health plan mid-year\n- **Services**: Member, Plan, Benefits, Enrollment, Card, Notification (5 services)\n- **Saga Type**: Choreography-based (simpler workflow, event-driven architecture aligns with member domain events)\n- **Consistency**: Eventual consistency required (plan change effective date may be future date)\n\n**Pharmacy Prior Authorization Saga**:\n- **Scenario**: Pharmacist requests prior authorization for expensive medication\n- **Services**: Pharmacy, Drug, Clinical, Authorization, Notification (5 services)\n- **Saga Type**: Orchestration-based (strict compensation required if authorization denied after clinical review)\n- **Consistency**: Eventual consistency acceptable (prior auth decision may take hours/days)",
+    "9": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#benefits]\n\n### Benefits\n\n**Distributed Transaction Management Without 2PC:**\n- **Eliminates Blocking**: No distributed locks across services. Each service commits its local transaction immediately, avoiding resource contention and improving throughput.\n- **Improved Availability**: Services can fail and recover independently. Saga continues when services come back online, providing resilience unavailable in 2PC.\n- **Technology Heterogeneity**: Services can use different databases (SQL Server, PostgreSQL, MongoDB) without requiring XA transaction support.\n- **Scalability**: Asynchronous saga execution allows independent scaling of services based on load. Claims processing can scale independently from eligibility verification.\n\n**Service Autonomy Preservation:**\n- **Loose Coupling**: Services remain independent with no shared databases or distributed transactions. Each service owns its data and business logic.\n- **Independent Deployment**: Services can be deployed independently without coordinating database schema changes across services.\n- **Team Autonomy**: Different teams can own different saga participants without tight coordination, accelerating development velocity.\n\n**Healthcare-Specific Benefits:**\n\n**Claims Processing (Gainwell Enterprise™)**:\n- **Throughput**: Process 500,000+ claims/day with saga pattern vs 200,000/day with 2PC blocking (2.5x improvement)\n- **Availability**: 99.9% uptime achieved through eventual consistency. With 2PC, coordinator failures caused 0.5% downtime costing $1.2M/year in SLA penalties.\n- **Audit Trail**: Saga events provide complete audit trail for regulatory compliance. Every compensation action logged for claims integrity investigations.\n- **Failure Recovery**: Automatic compensation when pricing service fails after eligibility verification. No manual intervention required for 95% of failures.\n\n**Provider Enrollment (Gainwell Provider+™)**:\n- **Long-Running Workflows**: Provider credentialing taking 5-15 minutes no longer blocks resources. Saga coordinator manages state across hours/days if awaiting manual verification.\n- **Partial Progress**: Provider record created even if contract service temporarily down. Saga resumes when service available, avoiding provider re-submission.\n- **Visibility**: Operations team can monitor saga progress through orchestrator dashboard. Clear view of which step is executing or failed.\n\n**Member Plan Selection (Gainwell Go™)**:\n- **User Experience**: Member receives immediate confirmation of plan selection request. Saga executes asynchronously with email notification when complete.\n- **Failure Handling**: If ID card generation fails after plan assignment, saga automatically compensates by reversing plan assignment and notifying member of issue.\n- **Consistency**: Member never receives ID card for invalid plan enrollment. Saga guarantees all-or-nothing semantics.\n\n**Operational Benefits:**\n- **Monitoring and Observability**: Centralized saga orchestrator (for orchestration-based sagas) provides single view of saga status, duration, failure rate, and compensation frequency\n- **Testing**: Saga orchestrator enables end-to-end testing of complex multi-service workflows in lower environments\n- **Troubleshooting**: When saga fails, orchestrator logs clearly identify which step failed and which compensations executed, accelerating incident response\n- **Metrics**: Track saga success rate, average duration, compensation rate, step-level failure rates for continuous improvement",
+    "10": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#context-and-problem]\n\n## Context and Problem",
+    "11": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#business-context]\n\n### Business Context\n\nGainwell Technologies operates enterprise healthcare platforms serving 50+ state Medicaid agencies and supporting 72+ million enrollees. Our product portfolio processes complex, multi-step business workflows that span multiple microservices:\n\n**Claims Processing Complexity**:\n- **Volume**: 500,000+ claims/day across all state contracts\n- **Services Involved**: Claim intake, eligibility verification, benefits checking, pricing calculation, prior authorization, third-party liability coordination, payment creation, audit logging\n- **Duration**: Typical claim adjudication completes in 5-15 seconds for straightforward claims, up to minutes for complex cases requiring prior authorization\n- **Failure Rate**: 8-12% of claims experience transient failures in one or more services (network timeout, service overload, database connection pool exhaustion)\n\n**Provider Management Workflows**:\n- **Provider Enrollment**: 400,000+ providers across 50 states requiring enrollment, credentialing, network assignment, and contract creation\n- **Credentialing Duration**: 5-15 minutes for automated license verification via state medical board APIs\n- **Services Involved**: Provider record creation, license verification, background check, network assignment, contract generation, directory publication\n- **Complexity**: Each state has unique credentialing requirements, creating complex conditional logic across services\n\n**Member Operations**:\n- **Plan Selection**: Members changing health plans mid-year (special enrollment periods, life events)\n- **Services Involved**: Member record update, plan assignment, benefit calculation, card generation, notification delivery\n- **Timing Requirements**: Plan change must be atomic\\u2014member cannot have ID card for plan they're not actually enrolled in\n- **Volume**: 50,000+ plan changes per month across all states\n\n**Regulatory Requirements**:\n- **HIPAA Compliance**: Complete audit trail required for all PHI access and modifications across the saga\n- **State Contract SLAs**: 99.9% availability for claims processing, <24 hour provider enrollment\n- **CMS Interoperability Rule**: FHIR APIs must maintain data consistency across member, plan, and clinical services\n- **Financial Accuracy**: Payment transactions must be exactly once—no duplicate payments, no lost payments",
+    "12": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#technical-context]\n\n### Technical Context\n\nGainwell's microservices architecture follows **Database per Service** pattern where each microservice owns its database:\n\n**Current Architecture**:\n\n```text\nClaims Microservices:\n├── Claim Service (SQL Server)\n├── Eligibility Service (PostgreSQL)\n├── Benefits Service (SQL Server)\n├── Pricing Service (SQL Server)\n├── Prior Authorization Service (PostgreSQL)\n├── TPL Service (SQL Server)\n├── Payment Service (SQL Server)\n└── Audit Service (MongoDB)\n\nProvider Microservices:\n├── Provider Service (SQL Server)\n├── Credentialing Service (PostgreSQL)\n├── Network Service (MongoDB)\n├── Contract Service (SQL Server)\n└── Directory Service (Elasticsearch)\n\nMember Microservices:\n├── Member Service (SQL Server)\n├── Plan Service (PostgreSQL)\n├── Benefits Service (SQL Server)\n├── Card Service (SQL Server - separate instance)\n└── Notification Service (MongoDB)\n```\n\n**Database Independence**:\n- Each service has its own database instance/schema\n- No shared databases or tables across services\n- No foreign keys across service boundaries\n- Services communicate only through APIs (REST, gRPC) or events (Azure Service Bus)\n\n**Technology Stack**:\n- **Backend Services**: .NET 8, ASP.NET Core Web API\n- **Databases**: SQL Server, PostgreSQL, MongoDB, Redis, Elasticsearch\n- **Messaging**: Azure Service Bus (topics, queues, dead-letter queues)\n- **Orchestration**: Custom saga orchestrator built on top of Azure Durable Functions\n- **Monitoring**: Application Insights, Grafana, Prometheus\n\n**Existing Patterns**:\n- **API Gateway**: Azure API Management for external APIs\n- **Service Mesh**: Linkerd for service-to-service communication\n- **Circuit Breaker**: Polly library for resilience\n- **Event Sourcing**: Used for audit trail in claims and payment services",
+    "13": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#problem-details]\n\n### Problem Details",
+    "14": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#problem-1-two-phase-commit-is-not-viable]\n\n#### Problem 1: Two-Phase Commit is Not Viable\n\n**Traditional 2PC Approach (Not Used)**:\n\n```csharp\n// Hypothetical 2PC coordinator (NOT IMPLEMENTED - shown for illustration only)\npublic async Task<ClaimResult> AdjudicateClaim2PC(Claim claim)\n{\n    var transactionCoordinator = new DistributedTransactionCoordinator();\n\n    try\n    {\n        // PREPARE PHASE - Ask all services if they can commit\n        transactionCoordinator.Begin();\n\n        var eligibilityResult = await _eligibilityService.PrepareEligibilityCheck(claim.MemberId);\n        transactionCoordinator.Register(eligibilityResult);\n\n        var benefitsResult = await _benefitsService.PrepareBenefitsValidation(claim);\n        transactionCoordinator.Register(benefitsResult);\n\n        var pricingResult = await _pricingService.PreparePriceCalculation(claim);\n        transactionCoordinator.Register(pricingResult);\n\n        var paymentResult = await _paymentService.PreparePayment(claim);\n        transactionCoordinator.Register(paymentResult);\n\n        // COMMIT PHASE - Tell all services to commit\n        if (transactionCoordinator.CanCommit())\n        {\n            await transactionCoordinator.CommitAll();\n            return ClaimResult.Approved(claim.ClaimId);\n        }\n        else\n        {\n            await transactionCoordinator.RollbackAll();\n            return ClaimResult.Denied(claim.ClaimId);\n        }\n    }\n    catch (Exception ex)\n    {\n        // Coordinator failure during PREPARE phase - all participants blocked\n        // Resources locked in eligibility service, benefits service, pricing service\n        // Cannot proceed, cannot rollback - DEADLOCK\n\n        throw new DistributedTransactionException(\n            \"Coordinator failed during 2PC. All participants blocked.\", ex);\n    }\n}\n```\n\n**Why 2PC Fails in Healthcare Microservices**:\n\n1. **Blocking During Coordinator Failure**:\n   - If coordinator fails after sending PREPARE to 3 of 5 services, those 3 services have resources locked indefinitely\n   - In claims processing at 500K/day, even 5-minute coordinator recovery blocks 1,700+ claims\n   - Healthcare SLA requires <30 second recovery, impossible with 2PC\n\n2. **Cascading Availability Impact**:\n   - 2PC requires ALL services available simultaneously\n   - If benefits service is down (during deployment, network issue), entire claims adjudication stops\n   - With 8 services in the workflow, availability = 0.999^8 = 0.992 = 99.2% (below 99.9% SLA)\n\n3. **Performance Degradation**:\n   - 2PC latency: 5 services × (prepare + commit) × 50ms network latency = 500ms minimum overhead\n   - Without 2PC: asynchronous saga completes in 200ms average (2.5x faster)\n\n4. **Technology Limitations**:\n   - MongoDB doesn't support XA transactions (network service cannot participate in 2PC)\n   - Elasticsearch doesn't support distributed transactions (directory service cannot participate)\n   - Redis has limited transaction support (caching layer excluded from 2PC)",
+    "15": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#problem-2-manual-compensation-is-error-prone-and-slow]\n\n#### Problem 2: Manual Compensation is Error-Prone and Slow\n\n**Current Problem (Before Saga Pattern)**:\n\nWhen multi-service workflows fail partway through, operations team must manually identify and reverse completed steps:\n\n**Example - Provider Enrollment Failure Scenario**:\n\n```text\n10:15:00 - Provider submits enrollment application\n10:15:05 - Provider Service creates provider record (Provider ID: 12345) ✅\n10:15:10 - Credentialing Service starts license verification ✅\n10:18:30 - Credentialing completes (3min 20sec) ✅\n10:18:35 - Network Service assigns provider to networks ✅\n10:18:40 - Contract Service starts contract creation\n10:19:15 - Contract Service FAILS (timeout calling state contract system)\n\nRESULT: Provider partially enrolled\n\n- ✅ Provider record exists (Provider ID: 12345)\n- ✅ Credentials verified and stored\n- ✅ Network assignments active\n- ❌ Contract NOT created\n- ❌ Provider cannot submit claims (no contract)\n- ❌ Provider directory shows provider but \"not accepting patients\"\n```\n\n**Manual Cleanup Required** (Current Process - Takes 2-4 hours):\n\n1. **Incident Detection** (30 minutes):\n   - Provider calls support: \"I enrolled but can't submit claims\"\n   - Support team searches logs across 4 services to identify failure point\n   - Identifies contract creation failed at 10:19:15\n\n2. **Impact Analysis** (30 minutes):\n   - Which steps completed successfully? (provider, credentials, networks)\n   - Which steps need reversal? (networks, credentials, provider record)\n   - Are there dependent records? (claims submitted, directory entries)\n\n3. **Manual Compensation** (60-90 minutes):\n   - Call Network Service API to remove network assignments\n   - Call Credentialing Service API to delete credential records\n   - Call Provider Service API to delete provider record OR mark as \"enrollment failed\"\n   - Update provider directory to remove entry\n   - Notify provider that enrollment failed, ask to re-submit\n\n4. **Verification** (30 minutes):\n   - Verify all compensations completed successfully\n   - Check for orphaned data in related services\n   - Confirm provider can re-submit application\n\n**Cost of Manual Compensation**:\n- **Operations Burden**: 20-30 incidents/week × 2 hours = 40-60 hours/week = $4,000-6,000/week at $100/hour\n- **Provider Experience**: 2-4 hour delay in enrollment, provider frustration, support escalations\n- **Error Rate**: 15% of manual compensations miss a step, creating data inconsistency requiring further cleanup",
+    "16": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#problem-3-intermediate-states-visible-to-users]\n\n#### Problem 3: Intermediate States Visible to Users\n\n**Problem**: During multi-service workflows, intermediate states are visible to end users, creating confusing experiences.\n\n**Example - Member Plan Change**:\n\n```csharp\n// Current implementation without saga coordination\npublic async Task<PlanChangeResult> ChangeMemberPlan(Guid memberId, string newPlanId)\n{\n    // Step 1: Update member record with new plan\n    await _memberService.UpdatePlan(memberId, newPlanId);  // ✅ Completes\n\n    // Step 2: Calculate new benefits based on plan\n    await _benefitsService.RecalculateBenefits(memberId, newPlanId);  // ✅ Completes\n\n    // Step 3: Generate new member ID card\n    await _cardService.GenerateCard(memberId, newPlanId);  // ❌ FAILS (card service down)\n\n    // Problem: Member record shows new plan, benefits calculated, but NO CARD\n    // Member receives email: \"Your plan change is complete\" (from step 1)\n    // Member calls support: \"Where is my new card?\"\n    // Support sees: Member in new plan, benefits active, card generation failed\n    // Resolution: Manual card generation request, 2-3 day delay\n}\n```\n\n**User Impact**:\n- **Confusing State**: Member believes plan change complete but card never arrives\n- **Support Burden**: 500+ support calls/month for \"missing card\" after plan changes\n- **Trust Erosion**: Members lose confidence in digital plan change process, revert to phone-based changes\n\n**Technical Debt**:\n- No single source of truth for \"plan change status\"\n- Each service maintains its own state independently\n- Operations team queries 3-4 services to determine true plan change status",
+    "17": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#problem-4-lack-of-visibility-and-monitoring]\n\n#### Problem 4: Lack of Visibility and Monitoring\n\n**Problem**: Multi-service workflows span 5-10 services. When failure occurs, root cause analysis requires manual correlation of logs across services.\n\n**Example - Claims Adjudication Failure**:\n\n```text\nClaim ID: CLM-2024-12345678\nSubmitted: 2024-12-15 14:30:00\nStatus: FAILED\n\nQuestion: Why did this claim fail?\n\nRequired Investigation (30-60 minutes per claim):\n\n1. Check Claim Service logs: Claim submitted successfully\n2. Check Eligibility Service logs: Eligibility verified for member 87654321\n3. Check Benefits Service logs: Benefits validated for service code 99213\n4. Check Pricing Service logs: ERROR at 14:30:15 \"PriceScheduleNotFoundException\"\n   - Pricing service could not find fee schedule for provider 12345\n   - Pricing service returned 500 error\n5. Check Prior Auth Service logs: No entries (never reached this step)\n6. Check Payment Service logs: No entries (never reached this step)\n7. Check Audit Service logs: Partial entries (only steps 1-4 logged)\n\nRoot Cause: Provider 12345 not in any fee schedule (data quality issue)\nResolution: Add provider to default fee schedule, resubmit claim\n```\n\n**Monitoring Gaps**:\n- **No End-to-End Tracing**: Cannot trace claim journey across 7 services without manual log correlation\n- **No Saga State**: Cannot determine \"where is claim in adjudication workflow?\" without querying all services\n- **No Compensation Visibility**: If compensation executed, no record of which steps reversed and why\n- **Alert Fatigue**: Each service generates alerts independently. Single claim failure generates 4-5 alerts across services.",
+    "18": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#forces-and-constraints]\n\n### Forces and Constraints\n\n**Design Forces**:\n\n1. **Consistency vs Availability Trade-off**:\n   - **Consistency**: Healthcare regulations require financial consistency (no duplicate payments, no lost payments)\n   - **Availability**: SLA requires 99.9% uptime for claims processing\n   - **Saga Approach**: Choose eventual consistency over strong consistency to achieve high availability. Use compensating transactions to guarantee consistency eventually.\n\n2. **Orchestration vs Choreography Trade-off**:\n   - **Orchestration**: Centralized control provides visibility and testability but creates single point of failure\n   - **Choreography**: Decentralized events provide autonomy but make end-to-end flow difficult to understand\n   - **Gainwell Decision**: Use orchestration for complex workflows (claims, provider enrollment), choreography for simpler workflows (member notifications)\n\n3. **Performance vs Reliability Trade-off**:\n   - **Synchronous**: Faster response time but less reliable (blocking on service failures)\n   - **Asynchronous**: More reliable but slower (saga executes over seconds/minutes)\n   - **Gainwell Approach**: Use asynchronous sagas for background workflows, synchronous APIs with saga for user-initiated workflows with progress notifications\n\n**Healthcare Constraints**:\n\n1. **HIPAA Audit Requirements**:\n   - Every saga step accessing/modifying PHI must be logged with user context, timestamp, action\n   - Compensating transactions must be logged separately with reason for compensation\n   - Audit logs retained for 7 years for regulatory investigations\n\n2. **Financial Accuracy**:\n   - Payment transactions must be idempotent—retry must not create duplicate payment\n   - Compensation must guarantee payment reversal or mark for manual review if reversal impossible\n   - Saga must maintain exactly-once payment semantics\n\n3. **State-Specific Regulations**:\n   - Some states require real-time eligibility verification (cannot use stale cached data)\n   - Other states allow batch eligibility checks (can tolerate eventual consistency)\n   - Saga implementation must be configurable per state contract\n\n4. **CMS Interoperability Requirements**:\n   - FHIR APIs must return consistent patient data across services\n   - Saga for member data updates must ensure FHIR server projection consistency\n   - Cannot return partial patient data (all or nothing for FHIR resources)\n\n**Operational Constraints**:\n\n1. **Service Deployment Independence**:\n   - Teams deploy services independently 10-20 times/day\n   - Saga implementation must tolerate version skew across services\n   - Cannot require coordinated deployment of all saga participants\n\n2. **Technology Diversity**:\n   - Cannot mandate single database technology (teams choose SQL Server, PostgreSQL, MongoDB based on needs)\n   - Saga implementation must work with heterogeneous data stores\n   - Cannot rely on database-specific features (triggers, stored procedures)\n\n3. **Cloud Cost Optimization**:\n   - Saga messaging uses Azure Service Bus ($0.05 per million operations)\n   - Saga orchestrator uses Azure Durable Functions (consumption plan preferred)\n   - Must minimize unnecessary retries and duplicate messages to control costs",
+    "19": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#solution]\n\n## Solution",
+    "20": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#solution-overview]\n\n### Solution Overview\n\nThe **Saga Pattern** implementation at Gainwell uses **orchestration-based sagas** for complex healthcare workflows and **choreography-based sagas** for simpler event-driven processes. The solution provides:\n\n1. **Saga Orchestrator** (Azure Durable Functions) coordinating multi-service workflows\n2. **Compensating Transaction Logic** in each participating service\n3. **Event-Driven Communication** via Azure Service Bus for choreography sagas\n4. **Saga State Management** for tracking progress and handling failures\n5. **Monitoring and Observability** through Application Insights and custom dashboards",
+    "21": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#architecture-overview]\n\n### Architecture Overview\n\n```mermaid\ngraph TB\n    subgraph \"Orchestration-Based Saga (Claims Adjudication)\"\n        Client[Client/API Gateway]\n        Orchestrator[Saga Orchestrator<br/>Azure Durable Functions]\n\n        Client -->|1. Submit Claim| Orchestrator\n\n        Orchestrator -->|2. Verify Eligibility| EligService[Eligibility Service]\n        EligService -->|Success/Fail| Orchestrator\n\n        Orchestrator -->|3. Validate Benefits| BenService[Benefits Service]\n        BenService -->|Success/Fail| Orchestrator\n\n        Orchestrator -->|4. Calculate Price| PriceService[Pricing Service]\n        PriceService -->|FAILURE| Orchestrator\n\n        Orchestrator -->|5. Compensate Benefits| BenService\n        Orchestrator -->|6. Compensate Eligibility| EligService\n\n        Orchestrator -->|Result: Denied| Client\n    end\n\n    subgraph \"Choreography-Based Saga (Member Plan Change)\"\n        MemberSvc[Member Service] -->|PlanChangeRequested| ServiceBus[Azure Service Bus]\n        ServiceBus -->|Event| PlanSvc[Plan Service]\n        PlanSvc -->|PlanAssigned| ServiceBus\n        ServiceBus -->|Event| BenefitsSvc[Benefits Service]\n        BenefitsSvc -->|BenefitsCalculated| ServiceBus\n        ServiceBus -->|Event| CardSvc[Card Service]\n        CardSvc -->|CardGenerated| ServiceBus\n\n        CardSvc -->|FAILURE<br/>CardGenerationFailed| ServiceBus\n        ServiceBus -->|Compensate| BenefitsSvc\n        BenefitsSvc -->|BenefitsReverted| ServiceBus\n        ServiceBus -->|Compensate| PlanSvc\n        PlanSvc -->|PlanReverted| ServiceBus\n        ServiceBus -->|Compensate| MemberSvc\n    end\n\n    style Orchestrator fill:#4CAF50\n    style ServiceBus fill:#2196F3\n```",
+    "22": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#orchestration-based-saga-implementation]\n\n### Orchestration-Based Saga Implementation",
+    "23": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#saga-orchestrator-azure-durable-functions]\n\n#### Saga Orchestrator (Azure Durable Functions)\n\n```csharp\nusing Microsoft.Azure.WebJobs;\nusing Microsoft.Azure.WebJobs.Extensions.DurableTask;\nusing Microsoft.Extensions.Logging;\n\npublic class ClaimAdjudicationSaga\n{\n    private readonly IEligibilityService _eligibilityService;\n    private readonly IBenefitsService _benefitsService;\n    private readonly IPricingService _pricingService;\n    private readonly IPaymentService _paymentService;\n    private readonly ILogger<ClaimAdjudicationSaga> _logger;\n\n    /// <summary>\n    /// Saga orchestrator function coordinating claim adjudication workflow\n    /// </summary>\n    [FunctionName(\"ClaimAdjudicationSaga\")]\n    public async Task<ClaimAdjudicationResult> RunOrchestrator(\n        [OrchestrationTrigger] IDurableOrchestrationContext context,\n        ILogger log)\n    {\n        var claim = context.GetInput<Claim>();\n        var sagaId = context.InstanceId;\n\n        log.LogInformation($\"Starting saga {sagaId} for claim {claim.ClaimId}\");\n\n        try\n        {\n            // Step 1: Verify Eligibility\n            var eligibilityResult = await context.CallActivityAsync<EligibilityResult>(\n                \"VerifyEligibility\",\n                new EligibilityRequest\n                {\n                    MemberId = claim.MemberId,\n                    ServiceDate = claim.ServiceDate,\n                    SagaId = sagaId\n                });\n\n            if (!eligibilityResult.IsEligible)\n            {\n                log.LogWarning($\"Saga {sagaId}: Eligibility check failed for member {claim.MemberId}\");\n                return ClaimAdjudicationResult.Denied(claim.ClaimId, \"Member not eligible\");\n            }\n\n            // Step 2: Validate Benefits\n            var benefitsResult = await context.CallActivityAsync<BenefitsResult>(\n                \"ValidateBenefits\",\n                new BenefitsRequest\n                {\n                    MemberId = claim.MemberId,\n                    ServiceCode = claim.ServiceCode,\n                    SagaId = sagaId\n                });\n\n            if (!benefitsResult.IsCovered)\n            {\n                log.LogWarning($\"Saga {sagaId}: Benefits validation failed for service {claim.ServiceCode}\");\n\n                // Compensate eligibility verification\n                await context.CallActivityAsync(\n                    \"CompensateEligibility\",\n                    new CompensationRequest\n                    {\n                        MemberId = claim.MemberId,\n                        SagaId = sagaId,\n                        Reason = \"Benefits not covered\"\n                    });\n\n                return ClaimAdjudicationResult.Denied(claim.ClaimId, \"Service not covered\");\n            }\n\n            // Step 3: Calculate Pricing\n            var pricingResult = await context.CallActivityAsync<PricingResult>(\n                \"CalculatePricing\",\n                new PricingRequest\n                {\n                    ClaimId = claim.ClaimId,\n                    ProviderId = claim.ProviderId,\n                    ServiceCode = claim.ServiceCode,\n                    SagaId = sagaId\n                });\n\n            if (pricingResult.PaymentAmount <= 0)\n            {\n                log.LogWarning($\"Saga {sagaId}: Pricing calculation failed with amount {pricingResult.PaymentAmount}\");\n\n                // Compensate in reverse order\n                await context.CallActivityAsync(\n                    \"CompensateBenefits\",\n                    new CompensationRequest\n                    {\n                        MemberId = claim.MemberId,\n                        SagaId = sagaId,\n                        Reason = \"Pricing calculation failed\"\n                    });\n\n                await context.CallActivityAsync(\n                    \"CompensateEligibility\",\n                    new CompensationRequest\n                    {\n                        MemberId = claim.MemberId,\n                        SagaId = sagaId,\n                        Reason = \"Pricing calculation failed\"\n                    });\n\n                return ClaimAdjudicationResult.Denied(claim.ClaimId, \"Pricing error\");\n            }\n\n            // Step 4: Create Payment\n            var paymentResult = await context.CallActivityAsync<PaymentResult>(\n                \"CreatePayment\",\n                new PaymentRequest\n                {\n                    ClaimId = claim.ClaimId,\n                    ProviderId = claim.ProviderId,\n                    Amount = pricingResult.PaymentAmount,\n                    SagaId = sagaId\n                });\n\n            if (!paymentResult.Success)\n            {\n                log.LogError($\"Saga {sagaId}: Payment creation failed for claim {claim.ClaimId}\");\n\n                // Full compensation cascade\n                await context.CallActivityAsync(\n                    \"CompensatePricing\",\n                    new CompensationRequest\n                    {\n                        ClaimId = claim.ClaimId,\n                        SagaId = sagaId,\n                        Reason = \"Payment creation failed\"\n                    });\n\n                await context.CallActivityAsync(\n                    \"CompensateBenefits\",\n                    new CompensationRequest\n                    {\n                        MemberId = claim.MemberId,\n                        SagaId = sagaId,\n                        Reason = \"Payment creation failed\"\n                    });\n\n                await context.CallActivityAsync(\n                    \"CompensateEligibility\",\n                    new CompensationRequest\n                    {\n                        MemberId = claim.MemberId,\n                        SagaId = sagaId,\n                        Reason = \"Payment creation failed\"\n                    });\n\n                return ClaimAdjudicationResult.Denied(claim.ClaimId, \"Payment processing error\");\n            }\n\n            // Saga completed successfully\n            log.LogInformation($\"Saga {sagaId} completed successfully for claim {claim.ClaimId}. Payment: ${pricingResult.PaymentAmount}\");\n\n            return ClaimAdjudicationResult.Approved(\n                claim.ClaimId,\n                pricingResult.PaymentAmount,\n                paymentResult.PaymentId);\n        }\n        catch (Exception ex)\n        {\n            log.LogError(ex, $\"Saga {sagaId} failed with exception for claim {claim.ClaimId}\");\n\n            // Attempt full compensation on unexpected failure\n            await CompensateAll(context, claim, sagaId);\n\n            return ClaimAdjudicationResult.Error(claim.ClaimId, ex.Message);\n        }\n    }\n\n    /// <summary>\n    /// Compensate all saga steps in reverse order\n    /// </summary>\n    private async Task CompensateAll(\n        IDurableOrchestrationContext context,\n        Claim claim,\n        string sagaId)\n    {\n        try\n        {\n            await context.CallActivityAsync(\n                \"CompensatePayment\",\n                new CompensationRequest { ClaimId = claim.ClaimId, SagaId = sagaId, Reason = \"Saga failure\" });\n        }\n        catch (Exception ex)\n        {\n            context.SetCustomStatus($\"Payment compensation failed: {ex.Message}\");\n        }\n\n        try\n        {\n            await context.CallActivityAsync(\n                \"CompensatePricing\",\n                new CompensationRequest { ClaimId = claim.ClaimId, SagaId = sagaId, Reason = \"Saga failure\" });\n        }\n        catch (Exception ex)\n        {\n            context.SetCustomStatus($\"Pricing compensation failed: {ex.Message}\");\n        }\n\n        try\n        {\n            await context.CallActivityAsync(\n                \"CompensateBenefits\",\n                new CompensationRequest { MemberId = claim.MemberId, SagaId = sagaId, Reason = \"Saga failure\" });\n        }\n        catch (Exception ex)\n        {\n            context.SetCustomStatus($\"Benefits compensation failed: {ex.Message}\");\n        }\n\n        try\n        {\n            await context.CallActivityAsync(\n                \"CompensateEligibility\",\n                new CompensationRequest { MemberId = claim.MemberId, SagaId = sagaId, Reason = \"Saga failure\" });\n        }\n        catch (Exception ex)\n        {\n            context.SetCustomStatus($\"Eligibility compensation failed: {ex.Message}\");\n        }\n    }\n\n    /// <summary>\n    /// Activity function: Verify member eligibility\n    /// </summary>\n    [FunctionName(\"VerifyEligibility\")]\n    public async Task<EligibilityResult> VerifyEligibility(\n        [ActivityTrigger] EligibilityRequest request,\n        ILogger log)\n    {\n        log.LogInformation($\"Saga {request.SagaId}: Verifying eligibility for member {request.MemberId}\");\n\n        try\n        {\n            var result = await _eligibilityService.CheckEligibilityAsync(\n                request.MemberId,\n                request.ServiceDate);\n\n            // Record saga participation for compensation\n            await _eligibilityService.RecordSagaParticipation(\n                request.SagaId,\n                request.MemberId,\n                result);\n\n            return result;\n        }\n        catch (Exception ex)\n        {\n            log.LogError(ex, $\"Saga {request.SagaId}: Eligibility verification failed\");\n            return EligibilityResult.Failure(\"Service unavailable\");\n        }\n    }\n\n    /// <summary>\n    /// Activity function: Compensate eligibility verification\n    /// </summary>\n    [FunctionName(\"CompensateEligibility\")]\n    public async Task CompensateEligibility(\n        [ActivityTrigger] CompensationRequest request,\n        ILogger log)\n    {\n        log.LogWarning($\"Saga {request.SagaId}: Compensating eligibility for member {request.MemberId}. Reason: {request.Reason}\");\n\n        try\n        {\n            await _eligibilityService.CompensateEligibilityCheck(\n                request.SagaId,\n                request.MemberId,\n                request.Reason);\n\n            log.LogInformation($\"Saga {request.SagaId}: Eligibility compensation completed\");\n        }\n        catch (Exception ex)\n        {\n            log.LogError(ex, $\"Saga {request.SagaId}: Eligibility compensation failed\");\n            // Mark for manual review\n            await _eligibilityService.MarkForManualReview(request.SagaId, ex.Message);\n            throw;\n        }\n    }\n}\n```",
+    "24": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#choreography-based-saga-implementation]\n\n### Choreography-Based Saga Implementation",
+    "25": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#event-driven-saga-member-plan-change]\n\n#### Event-Driven Saga (Member Plan Change)\n\n```csharp\nusing Azure.Messaging.ServiceBus;\nusing Microsoft.Extensions.Logging;\n\n/// <summary>\n/// Member Service - Initiates plan change saga\n/// </summary>\npublic class MemberService\n{\n    private readonly ServiceBusClient _serviceBusClient;\n    private readonly IMemberRepository _memberRepository;\n    private readonly ILogger<MemberService> _logger;\n\n    public async Task<PlanChangeResult> RequestPlanChangeAsync(\n        Guid memberId,\n        string newPlanId,\n        DateTime effectiveDate)\n    {\n        var sagaId = Guid.NewGuid().ToString();\n\n        _logger.LogInformation($\"Saga {sagaId}: Member {memberId} requesting plan change to {newPlanId}\");\n\n        // Update member record with pending plan change\n        await _memberRepository.UpdatePlanStatus(\n            memberId,\n            newPlanId,\n            PlanStatus.PendingChange,\n            sagaId);\n\n        // Publish PlanChangeRequested event\n        var planChangeEvent = new PlanChangeRequestedEvent\n        {\n            SagaId = sagaId,\n            MemberId = memberId,\n            NewPlanId = newPlanId,\n            EffectiveDate = effectiveDate,\n            Timestamp = DateTime.UtcNow\n        };\n\n        await PublishEvent(\"plan-change-topic\", planChangeEvent);\n\n        _logger.LogInformation($\"Saga {sagaId}: PlanChangeRequested event published\");\n\n        return PlanChangeResult.Initiated(sagaId, memberId);\n    }\n\n    /// <summary>\n    /// Event handler: Plan change completed successfully\n    /// </summary>\n    public async Task OnPlanChangeCompleted(PlanChangeCompletedEvent evt)\n    {\n        _logger.LogInformation($\"Saga {evt.SagaId}: Plan change completed for member {evt.MemberId}\");\n\n        // Update member status to active\n        await _memberRepository.UpdatePlanStatus(\n            evt.MemberId,\n            evt.NewPlanId,\n            PlanStatus.Active,\n            evt.SagaId);\n\n        _logger.LogInformation($\"Saga {evt.SagaId}: Member plan status updated to Active\");\n    }\n\n    /// <summary>\n    /// Event handler: Plan change failed - compensate\n    /// </summary>\n    public async Task OnPlanChangeFailed(PlanChangeFailedEvent evt)\n    {\n        _logger.LogWarning($\"Saga {evt.SagaId}: Plan change failed for member {evt.MemberId}. Reason: {evt.Reason}\");\n\n        // Revert member plan to original\n        await _memberRepository.RevertPlanChange(\n            evt.MemberId,\n            evt.SagaId);\n\n        // Publish compensation complete event\n        var compensatedEvent = new MemberPlanCompensatedEvent\n        {\n            SagaId = evt.SagaId,\n            MemberId = evt.MemberId,\n            Reason = evt.Reason,\n            Timestamp = DateTime.UtcNow\n        };\n\n        await PublishEvent(\"plan-change-compensation-topic\", compensatedEvent);\n\n        _logger.LogInformation($\"Saga {evt.SagaId}: Member plan compensation completed\");\n    }\n}\n\n/// <summary>\n/// Plan Service - Assigns plan to member\n/// </summary>\npublic class PlanService\n{\n    private readonly ServiceBusClient _serviceBusClient;\n    private readonly IPlanRepository _planRepository;\n    private readonly ILogger<PlanService> _logger;\n\n    /// <summary>\n    /// Event handler: PlanChangeRequested event received\n    /// </summary>\n    public async Task OnPlanChangeRequested(PlanChangeRequestedEvent evt)\n    {\n        _logger.LogInformation($\"Saga {evt.SagaId}: Assigning plan {evt.NewPlanId} to member {evt.MemberId}\");\n\n        try\n        {\n            // Validate plan exists and member eligible\n            var plan = await _planRepository.GetPlanAsync(evt.NewPlanId);\n            if (plan == null)\n            {\n                throw new PlanNotFoundException(evt.NewPlanId);\n            }\n\n            // Assign plan to member\n            await _planRepository.AssignPlanToMember(\n                evt.MemberId,\n                evt.NewPlanId,\n                evt.EffectiveDate,\n                evt.SagaId);\n\n            // Publish PlanAssigned event\n            var planAssignedEvent = new PlanAssignedEvent\n            {\n                SagaId = evt.SagaId,\n                MemberId = evt.MemberId,\n                PlanId = evt.NewPlanId,\n                EffectiveDate = evt.EffectiveDate,\n                Timestamp = DateTime.UtcNow\n            };\n\n            await PublishEvent(\"plan-change-topic\", planAssignedEvent);\n\n            _logger.LogInformation($\"Saga {evt.SagaId}: Plan assigned successfully\");\n        }\n        catch (Exception ex)\n        {\n            _logger.LogError(ex, $\"Saga {evt.SagaId}: Plan assignment failed\");\n\n            // Publish failure event to trigger compensation\n            var failedEvent = new PlanChangeFailedEvent\n            {\n                SagaId = evt.SagaId,\n                MemberId = evt.MemberId,\n                Reason = $\"Plan assignment failed: {ex.Message}\",\n                FailedStep = \"PlanAssignment\",\n                Timestamp = DateTime.UtcNow\n            };\n\n            await PublishEvent(\"plan-change-topic\", failedEvent);\n        }\n    }\n\n    /// <summary>\n    /// Event handler: Compensate plan assignment\n    /// </summary>\n    public async Task OnPlanChangeCompensationRequested(MemberPlanCompensatedEvent evt)\n    {\n        _logger.LogWarning($\"Saga {evt.SagaId}: Compensating plan assignment for member {evt.MemberId}\");\n\n        try\n        {\n            // Remove plan assignment\n            await _planRepository.RemovePlanAssignment(\n                evt.MemberId,\n                evt.SagaId);\n\n            _logger.LogInformation($\"Saga {evt.SagaId}: Plan assignment compensation completed\");\n        }\n        catch (Exception ex)\n        {\n            _logger.LogError(ex, $\"Saga {evt.SagaId}: Plan compensation failed\");\n            // Mark for manual review\n            await _planRepository.MarkForManualReview(evt.SagaId, ex.Message);\n        }\n    }\n}\n```",
+    "26": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#saga-state-management]\n\n### Saga State Management\n\n```csharp\n/// <summary>\n/// Saga state tracking for monitoring and recovery\n/// </summary>\npublic class SagaStateManager\n{\n    private readonly ISagaStateRepository _stateRepository;\n    private readonly ILogger<SagaStateManager> _logger;\n\n    /// <summary>\n    /// Initialize new saga execution\n    /// </summary>\n    public async Task<SagaState> InitializeSagaAsync(\n        string sagaType,\n        string sagaId,\n        object sagaData)\n    {\n        var state = new SagaState\n        {\n            SagaId = sagaId,\n            SagaType = sagaType,\n            Status = SagaStatus.Started,\n            CurrentStep = 0,\n            TotalSteps = GetTotalSteps(sagaType),\n            SagaData = JsonSerializer.Serialize(sagaData),\n            StartedAt = DateTime.UtcNow,\n            UpdatedAt = DateTime.UtcNow\n        };\n\n        await _stateRepository.InsertAsync(state);\n\n        _logger.LogInformation($\"Saga {sagaId}: Initialized with {state.TotalSteps} steps\");\n\n        return state;\n    }\n\n    /// <summary>\n    /// Update saga progress after each step\n    /// </summary>\n    public async Task UpdateSagaProgressAsync(\n        string sagaId,\n        int stepNumber,\n        string stepName,\n        SagaStepStatus stepStatus)\n    {\n        var state = await _stateRepository.GetBySagaIdAsync(sagaId);\n\n        state.CurrentStep = stepNumber;\n        state.UpdatedAt = DateTime.UtcNow;\n\n        // Add step execution record\n        state.ExecutionHistory.Add(new SagaStepExecution\n        {\n            StepNumber = stepNumber,\n            StepName = stepName,\n            Status = stepStatus,\n            ExecutedAt = DateTime.UtcNow\n        });\n\n        // Update overall saga status\n        if (stepStatus == SagaStepStatus.Failed)\n        {\n            state.Status = SagaStatus.Compensating;\n        }\n        else if (stepNumber == state.TotalSteps && stepStatus == SagaStepStatus.Completed)\n        {\n            state.Status = SagaStatus.Completed;\n            state.CompletedAt = DateTime.UtcNow;\n        }\n\n        await _stateRepository.UpdateAsync(state);\n\n        _logger.LogInformation($\"Saga {sagaId}: Step {stepNumber}/{state.TotalSteps} ({stepName}) - {stepStatus}\");\n    }\n\n    /// <summary>\n    /// Mark saga as failed with compensation complete\n    /// </summary>\n    public async Task MarkSagaFailedAsync(\n        string sagaId,\n        string failureReason,\n        List<string> compensatedSteps)\n    {\n        var state = await _stateRepository.GetBySagaIdAsync(sagaId);\n\n        state.Status = SagaStatus.Failed;\n        state.FailureReason = failureReason;\n        state.CompensatedSteps = compensatedSteps;\n        state.CompletedAt = DateTime.UtcNow;\n        state.UpdatedAt = DateTime.UtcNow;\n\n        await _stateRepository.UpdateAsync(state);\n\n        _logger.LogWarning($\"Saga {sagaId}: Failed after compensating {compensatedSteps.Count} steps. Reason: {failureReason}\");\n    }\n}\n```",
+    "27": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#benefits-of-this-solution]\n\n### Benefits of This Solution\n\n**Distributed Transaction Management**:\n- No 2PC blocking—each service commits local transaction immediately\n- High availability—services can fail independently without blocking saga\n- Technology heterogeneity—works with SQL Server, PostgreSQL, MongoDB, Redis\n\n**Automatic Compensation**:\n- **95% of failures compensated automatically** without manual intervention\n- Operations burden reduced from 40-60 hours/week to 5-10 hours/week (85% reduction)\n- Provider/member experience improved—failures handled transparently with notifications\n\n**Visibility and Monitoring**:\n- Single dashboard showing all active sagas with current step and status\n- Saga execution history for troubleshooting and compliance audits\n- Alerting when saga takes longer than expected or compensation fails\n\n**Healthcare Compliance**:\n- Complete audit trail of all saga steps and compensations for HIPAA compliance\n- Financial accuracy through idempotent payment operations\n- State-specific configuration for varying regulatory requirements",
+    "28": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#implementation-guidelines]\n\n## Implementation Guidelines",
+    "29": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#prerequisites]\n\n### Prerequisites\n\n**Technology Stack**:\n- Azure Durable Functions for orchestration-based sagas\n- Azure Service Bus for event-driven choreography\n- .NET 8 with ASP.NET Core\n- Entity Framework Core or Dapper for data access\n- Application Insights for monitoring\n\n**Architectural Prerequisites**:\n- Database per Service pattern implemented (each service owns its database)\n- Event-driven infrastructure (Azure Service Bus topics/subscriptions)\n- Idempotency implementation for all state-changing operations\n- Distributed tracing with correlation IDs\n\n**Team Skills**:\n- Understanding of eventual consistency vs strong consistency\n- Experience with asynchronous messaging patterns\n- Familiarity with compensation transaction logic\n- Knowledge of distributed system failure modes",
+    "30": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#phase-1-choose-saga-implementation-approach]\n\n### Phase 1: Choose Saga Implementation Approach\n\n**Decision Matrix**:\n\n| Factor | Orchestration | Choreography |\n|--------|--------------|-------------|\n| **Workflow Complexity** | High (5+ services, conditional logic) | Low-Medium (3-5 services, linear flow) |\n| **Compensation Logic** | Complex (multiple compensation paths) | Simple (reverse order compensation) |\n| **Testing Requirements** | Need end-to-end integration tests | Can test services independently |\n| **Observability** | Centralized view critical | Distributed tracing acceptable |\n| **Team Autonomy** | Centralized coordination acceptable | High team independence required |\n\n**Gainwell Decisions**:\n- **Claims Adjudication**: Orchestration (7 services, complex compensation, regulatory audit requirements)\n- **Provider Enrollment**: Orchestration (6 services, long-running 5-15 min, timeout handling)\n- **Member Plan Change**: Choreography (4-5 services, simple linear flow, event-driven architecture)\n- **Pharmacy Prior Auth**: Orchestration (clinical rules, state-specific logic, compensation audit trail)",
+    "31": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#phase-2-implement-orchestration-based-saga]\n\n### Phase 2: Implement Orchestration-Based Saga",
+    "32": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#step-1-install-azure-durable-functions]\n\n#### Step 1: Install Azure Durable Functions\n\n```powershell\n# Install Durable Functions NuGet package\ndotnet add package Microsoft.Azure.WebJobs.Extensions.DurableTask --version 2.10.0\n\n# Install Application Insights for monitoring\ndotnet add package Microsoft.ApplicationInsights.AspNetCore\n```",
+    "33": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#step-2-create-saga-orchestrator]\n\n#### Step 2: Create Saga Orchestrator\n\n```csharp\nusing Microsoft.Azure.WebJobs;\nusing Microsoft.Azure.WebJobs.Extensions.DurableTask;\n\npublic class ProviderEnrollmentSaga\n{\n    [FunctionName(\"ProviderEnrollmentOrchestrator\")]\n    public async Task<EnrollmentResult> RunOrchestrator(\n        [OrchestrationTrigger] IDurableOrchestrationContext context)\n    {\n        var request = context.GetInput<ProviderEnrollmentRequest>();\n        var sagaId = context.InstanceId;\n\n        var compensations = new List<string>();\n\n        try\n        {\n            // Step 1: Create provider record\n            var providerResult = await context.CallActivityAsync<ProviderResult>(\n                \"CreateProvider\", request);\n\n            if (!providerResult.Success)\n                return EnrollmentResult.Failed(\"Provider creation failed\");\n\n            compensations.Add(\"DeleteProvider\");\n\n            // Step 2: Verify credentials (may take 5-15 minutes)\n            var credentialResult = await context.CallActivityAsync<CredentialResult>(\n                \"VerifyCredentials\", new CredentialRequest\n                {\n                    ProviderId = providerResult.ProviderId,\n                    LicenseNumber = request.LicenseNumber\n                });\n\n            if (!credentialResult.IsVerified)\n            {\n                await Compensate(context, compensations);\n                return EnrollmentResult.Failed(\"Credential verification failed\");\n            }\n\n            compensations.Add(\"RemoveCredentials\");\n\n            // Step 3: Assign to networks\n            var networkResult = await context.CallActivityAsync<NetworkResult>(\n                \"AssignNetwork\", new NetworkRequest\n                {\n                    ProviderId = providerResult.ProviderId,\n                    NetworkIds = request.NetworkIds\n                });\n\n            if (!networkResult.Success)\n            {\n                await Compensate(context, compensations);\n                return EnrollmentResult.Failed(\"Network assignment failed\");\n            }\n\n            compensations.Add(\"RemoveFromNetwork\");\n\n            // Step 4: Create contracts\n            var contractResult = await context.CallActivityAsync<ContractResult>(\n                \"CreateContract\", new ContractRequest\n                {\n                    ProviderId = providerResult.ProviderId,\n                    FeeScheduleId = request.FeeScheduleId\n                });\n\n            if (!contractResult.Success)\n            {\n                await Compensate(context, compensations);\n                return EnrollmentResult.Failed(\"Contract creation failed\");\n            }\n\n            // Saga completed successfully\n            return EnrollmentResult.Success(providerResult.ProviderId);\n        }\n        catch (Exception ex)\n        {\n            await Compensate(context, compensations);\n            return EnrollmentResult.Error(ex.Message);\n        }\n    }\n\n    private async Task Compensate(\n        IDurableOrchestrationContext context,\n        List<string> compensations)\n    {\n        // Execute compensations in reverse order\n        for (int i = compensations.Count - 1; i >= 0; i--)\n        {\n            try\n            {\n                await context.CallActivityAsync(compensations[i], context.InstanceId);\n            }\n            catch (Exception ex)\n            {\n                // Log compensation failure for manual review\n                context.SetCustomStatus($\"Compensation failed: {compensations[i]} - {ex.Message}\");\n            }\n        }\n    }\n}\n```",
+    "34": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#step-3-implement-activity-functions]\n\n#### Step 3: Implement Activity Functions\n\n```csharp\n[FunctionName(\"CreateProvider\")]\npublic async Task<ProviderResult> CreateProvider(\n    [ActivityTrigger] ProviderEnrollmentRequest request,\n    ILogger log)\n{\n    log.LogInformation($\"Creating provider for license {request.LicenseNumber}\");\n\n    var provider = new Provider\n    {\n        LicenseNumber = request.LicenseNumber,\n        Name = request.ProviderName,\n        Specialty = request.Specialty,\n        Status = ProviderStatus.Pending\n    };\n\n    await _providerRepository.CreateAsync(provider);\n\n    return ProviderResult.Success(provider.ProviderId);\n}\n\n[FunctionName(\"DeleteProvider\")]\npublic async Task DeleteProvider(\n    [ActivityTrigger] string sagaId,\n    ILogger log)\n{\n    log.LogWarning($\"Saga {sagaId}: Compensating - deleting provider\");\n\n    var provider = await _providerRepository.GetBySagaIdAsync(sagaId);\n    if (provider != null)\n    {\n        await _providerRepository.DeleteAsync(provider.ProviderId);\n    }\n}\n```",
+    "35": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#phase-3-implement-choreography-based-saga]\n\n### Phase 3: Implement Choreography-Based Saga",
+    "36": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#step-1-configure-azure-service-bus]\n\n#### Step 1: Configure Azure Service Bus\n\n```csharp\n// appsettings.json\n{\n  \"AzureServiceBus\": {\n    \"ConnectionString\": \"<connection-string>\",\n    \"Topics\": {\n      \"PlanChange\": \"plan-change-topic\",\n      \"PlanChangeCompensation\": \"plan-change-compensation-topic\"\n    }\n  }\n}\n```",
+    "37": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#step-2-implement-event-publishers]\n\n#### Step 2: Implement Event Publishers\n\n```csharp\npublic class EventPublisher\n{\n    private readonly ServiceBusClient _client;\n\n    public async Task PublishAsync<T>(string topicName, T eventData) where T : class\n    {\n        var sender = _client.CreateSender(topicName);\n\n        var message = new ServiceBusMessage(JsonSerializer.Serialize(eventData))\n        {\n            ContentType = \"application/json\",\n            CorrelationId = eventData.GetType().GetProperty(\"SagaId\")?.GetValue(eventData)?.ToString(),\n            MessageId = Guid.NewGuid().ToString()\n        };\n\n        await sender.SendMessageAsync(message);\n    }\n}\n```",
+    "38": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#step-3-implement-event-handlers]\n\n#### Step 3: Implement Event Handlers\n\n```csharp\npublic class PlanServiceEventHandler : IHostedService\n{\n    private ServiceBusProcessor _processor;\n\n    public async Task StartAsync(CancellationToken cancellationToken)\n    {\n        var options = new ServiceBusProcessorOptions\n        {\n            MaxConcurrentCalls = 10,\n            AutoCompleteMessages = false\n        };\n\n        _processor = _client.CreateProcessor(\"plan-change-topic\", \"plan-service-subscription\", options);\n        _processor.ProcessMessageAsync += ProcessMessageAsync;\n        _processor.ProcessErrorAsync += ProcessErrorAsync;\n\n        await _processor.StartProcessingAsync(cancellationToken);\n    }\n\n    private async Task ProcessMessageAsync(ProcessMessageEventArgs args)\n    {\n        var eventType = args.Message.ApplicationProperties[\"EventType\"].ToString();\n        var eventData = args.Message.Body.ToString();\n\n        switch (eventType)\n        {\n            case \"PlanChangeRequested\":\n                var evt = JsonSerializer.Deserialize<PlanChangeRequestedEvent>(eventData);\n                await _planService.OnPlanChangeRequested(evt);\n                break;\n\n            case \"PlanChangeCompensationRequested\":\n                var compEvt = JsonSerializer.Deserialize<CompensationRequestedEvent>(eventData);\n                await _planService.OnCompensationRequested(compEvt);\n                break;\n        }\n\n        await args.CompleteMessageAsync(args.Message);\n    }\n}\n```",
+    "39": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#phase-4-implement-compensation-logic]\n\n### Phase 4: Implement Compensation Logic\n\n**Best Practices for Compensating Transactions**:\n\n1. **Make Operations Semantically Reversible**\n```csharp\n// Forward transaction\npublic async Task AssignPlanToMember(Guid memberId, string planId)\n{\n    var assignment = new PlanAssignment\n    {\n        MemberId = memberId,\n        PlanId = planId,\n        AssignedAt = DateTime.UtcNow,\n        Status = PlanAssignmentStatus.Active\n    };\n\n    await _repository.CreateAsync(assignment);\n}\n\n// Compensating transaction\npublic async Task RevertPlanAssignment(Guid memberId, string sagaId)\n{\n    var assignment = await _repository.GetByMemberAndSagaAsync(memberId, sagaId);\n\n    if (assignment != null)\n    {\n        assignment.Status = PlanAssignmentStatus.Reverted;\n        assignment.RevertedAt = DateTime.UtcNow;\n        assignment.RevertReason = \"Saga compensation\";\n\n        await _repository.UpdateAsync(assignment);\n        // Don't delete - keep for audit trail\n    }\n}\n```\n\n2. **Handle Compensation Failures**\n```csharp\npublic async Task CompensateWithRetry(string compensationAction, int maxRetries = 3)\n{\n    for (int attempt = 1; attempt <= maxRetries; attempt++)\n    {\n        try\n        {\n            await ExecuteCompensation(compensationAction);\n            return; // Success\n        }\n        catch (Exception ex)\n        {\n            if (attempt == maxRetries)\n            {\n                // Mark for manual review\n                await _manualReviewQueue.EnqueueAsync(new ManualReviewTask\n                {\n                    SagaId = _sagaId,\n                    CompensationAction = compensationAction,\n                    FailureReason = ex.Message,\n                    RequiresManualIntervention = true\n                });\n\n                throw;\n            }\n\n            await Task.Delay(TimeSpan.FromSeconds(Math.Pow(2, attempt)));\n        }\n    }\n}\n```",
+    "40": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#phase-5-implement-monitoring-and-observability]\n\n### Phase 5: Implement Monitoring and Observability",
+    "41": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#dashboard-requirements]\n\n#### Dashboard Requirements\n\n```csharp\n// Saga metrics collection\npublic class SagaMetricsCollector\n{\n    private readonly TelemetryClient _telemetry;\n\n    public void RecordSagaStarted(string sagaType, string sagaId)\n    {\n        _telemetry.TrackEvent(\"SagaStarted\", new Dictionary<string, string>\n        {\n            [\"SagaType\"] = sagaType,\n            [\"SagaId\"] = sagaId\n        });\n\n        _telemetry.GetMetric(\"SagasActive\", \"SagaType\").TrackValue(1, sagaType);\n    }\n\n    public void RecordSagaCompleted(string sagaType, string sagaId, TimeSpan duration)\n    {\n        _telemetry.TrackEvent(\"SagaCompleted\", new Dictionary<string, string>\n        {\n            [\"SagaType\"] = sagaType,\n            [\"SagaId\"] = sagaId,\n            [\"DurationMs\"] = duration.TotalMilliseconds.ToString()\n        });\n\n        _telemetry.GetMetric(\"SagaDuration\", \"SagaType\").TrackValue(duration.TotalMilliseconds, sagaType);\n        _telemetry.GetMetric(\"SagasActive\", \"SagaType\").TrackValue(-1, sagaType);\n    }\n\n    public void RecordSagaFailed(string sagaType, string sagaId, string reason, int compensatedSteps)\n    {\n        _telemetry.TrackEvent(\"SagaFailed\", new Dictionary<string, string>\n        {\n            [\"SagaType\"] = sagaType,\n            [\"SagaId\"] = sagaId,\n            [\"FailureReason\"] = reason,\n            [\"CompensatedSteps\"] = compensatedSteps.ToString()\n        });\n\n        _telemetry.GetMetric(\"SagaFailures\", \"SagaType\").TrackValue(1, sagaType);\n    }\n}\n```",
+    "42": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#best-practices]\n\n### Best Practices\n\n1. **Design Idempotent Operations**: All saga steps must be idempotent to handle retries safely\n2. **Order Compensations Carefully**: Execute compensations in reverse order of forward transactions\n3. **Use Correlation IDs**: Propagate saga ID across all services for end-to-end tracing\n4. **Set Timeouts**: Configure appropriate timeouts for long-running operations (e.g., 15 min for credentialing)\n5. **Handle Partial Failures**: Design compensation logic to handle partial failures gracefully\n6. **Log Everything**: Comprehensive logging essential for troubleshooting and compliance audits\n7. **Test Compensation Logic**: Unit test and integration test all compensation paths\n8. **Monitor Saga Health**: Alert when sagas take longer than expected or compensation rate exceeds threshold",
+    "43": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#common-pitfalls]\n\n### Common Pitfalls\n\n1. **Non-Idempotent Operations**: Retrying non-idempotent operations creates duplicates (duplicate payments, double enrollments)\n2. **Missing Compensation**: Forgetting to implement compensation for a saga step leaves system in inconsistent state\n3. **Compensation Order Errors**: Compensating in wrong order (e.g., deleting provider before removing network assignments) causes orphaned data\n4. **Infinite Retry Loops**: Not setting retry limits for compensations can create infinite loops\n5. **Lost Correlation**: Failing to propagate saga ID across services makes troubleshooting impossible\n6. **Blocking Compensation**: Using synchronous compensation delays saga completion\n7. **Ignoring Compensation Failures**: Not handling compensation failures leads to data inconsistencies requiring manual cleanup",
+    "44": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#governance-and-compliance]\n\n## Governance and Compliance",
+    "45": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#saga-design-standards]\n\n### Saga Design Standards\n\nGainwell mandates the following saga design standards:",
+    "46": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#standard-1-orchestration-vs-choreography-selection-criteria]\n\n#### Standard 1: Orchestration vs Choreography Selection Criteria\n\n| Criteria | Use Orchestration | Use Choreography |\n|----------|------------------|------------------|\n| **Number of Services** | 5+ services | 3-4 services |\n| **Workflow Complexity** | Complex conditional logic, branching paths | Simple linear flow |\n| **Compensation Complexity** | Multiple compensation paths, conditional compensation | Simple reverse-order compensation |\n| **Compliance Requirements** | HIPAA audit trail, regulatory reporting | Standard logging sufficient |\n| **Testing Requirements** | End-to-end integration tests mandatory | Can test services independently |\n| **Observability** | Centralized dashboard required | Distributed tracing acceptable |\n\n**Enforcement**: Architecture Review Board (ARB) must approve saga design before implementation.",
+    "47": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#standard-2-saga-state-management-requirements]\n\n#### Standard 2: Saga State Management Requirements\n\nAll sagas MUST persist state for monitoring and recovery:\n\n**Required State Fields**:\n- `SagaId`: Unique identifier (GUID)\n- `SagaType`: Workflow name (e.g., \"ClaimAdjudication\", \"ProviderEnrollment\")\n- `Status`: Current status (Started, InProgress, Compensating, Completed, Failed)\n- `CurrentStep`: Current step number and name\n- `TotalSteps`: Total number of steps in saga\n- `ExecutionHistory`: List of completed steps with timestamps\n- `CompensatedSteps`: List of compensated steps if saga failed\n- `StartedAt`: Saga start timestamp\n- `CompletedAt`: Saga completion timestamp (success or failure)\n- `FailureReason`: Reason for failure if saga failed\n\n**State Persistence**: Store in SQL Server table `dbo.SagaState` with 90-day retention for operational troubleshooting, archive to cold storage for 7 years for HIPAA compliance.",
+    "48": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#standard-3-compensation-transaction-standards]\n\n#### Standard 3: Compensation Transaction Standards\n\nAll saga participants MUST implement compensation logic:\n\n**Compensation Requirements**:\n1. **Semantic Reversal**: Compensating transaction semantically reverses forward transaction without physically deleting data (mark as reverted, not delete)\n2. **Idempotency**: Compensation must be idempotent—executing twice has same effect as executing once\n3. **Audit Trail**: All compensations logged with saga ID, step name, reason for compensation, timestamp\n4. **Retry Logic**: Compensation attempts with exponential backoff (3 retries before marking for manual review)\n5. **Manual Review Queue**: Failed compensations enqueued for operations team review within 4 hours\n\n**Enforcement**: Code review checklist requires compensation logic review for all saga participants.",
+    "49": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#hipaa-compliance-requirements]\n\n### HIPAA Compliance Requirements\n\n**Audit Logging**:\n\nAll saga operations involving PHI MUST log:\n\n- **Saga Initiation**: User ID, timestamp, saga type, saga ID, PHI accessed (member ID, claim ID, provider ID)\n- **Saga Steps**: Each step execution with timestamp, service name, operation performed, PHI modified\n- **Saga Compensation**: Each compensation with timestamp, reason, PHI restored/reverted\n- **Saga Completion**: Final status (success/failure), total duration, PHI summary\n\n**Log Retention**: 7 years per HIPAA requirements\n\n**Access Controls**: Saga audit logs classified as security logs, restricted to:\n- Security team (read-only)\n- Compliance officers (read-only)\n- Operations team (read-only for troubleshooting)\n- Authorized auditors (read-only for regulatory investigations)\n\n**Log Format**:\n```json\n{\n  \"eventType\": \"SagaStepCompleted\",\n  \"timestamp\": \"2026-01-15T14:32:18.123Z\",\n  \"sagaId\": \"12345678-1234-1234-1234-123456789abc\",\n  \"sagaType\": \"ClaimAdjudication\",\n  \"stepNumber\": 3,\n  \"stepName\": \"PricingCalculation\",\n  \"serviceName\": \"PricingService\",\n  \"userId\": \"user-5678\",\n  \"operationPerformed\": \"CalculateClaimPayment\",\n  \"phiAccessed\": {\n    \"claimId\": \"CLM-2026-00123456\",\n    \"memberId\": \"HASHED-87654321\",\n    \"providerId\": \"PRV-12345\"\n  },\n  \"result\": \"Success\",\n  \"durationMs\": 1250\n}\n```",
+    "50": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#financial-accuracy-requirements]\n\n### Financial Accuracy Requirements\n\n**Payment Transaction Guarantees**:\n\n1. **Exactly-Once Payment Semantics**: Payment creation must be idempotent using idempotency keys\n   - Idempotency key format: `payment:{claimId}:{sagaId}:{date}`\n   - Store in Redis with 24-hour TTL\n   - Check cache before creating payment, return cached result if duplicate\n\n2. **Payment Compensation**: If saga fails after payment created, compensation must:\n   - Mark payment as \"Voided\" (not delete)\n   - Create offsetting payment reversal transaction\n   - If reversal fails, enqueue for manual review with priority alert\n\n3. **State Contract Compliance**: Many state contracts require financial reconciliation showing all payments and reversals\n   - Saga audit trail provides complete history for reconciliation\n   - Monthly reconciliation report includes saga failures and compensations",
+    "51": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#monitoring-requirements]\n\n### Monitoring Requirements\n\n**Required Metrics**:\n\n| Metric | Target Value | Alert Threshold |\n|--------|-------------|----------------|\n| `saga_active_count` | <1,000 concurrent sagas | >2,000 (capacity alert) |\n| `saga_duration_seconds` P95 | <30s (claims adjudication) | >60s (performance alert) |\n| `saga_success_rate` | >95% | <90% (reliability alert) |\n| `saga_compensation_rate` | <5% | >10% (quality alert) |\n| `saga_compensation_failure_rate` | <1% | >2% (manual review backlog) |\n| `saga_timeout_rate` | <2% | >5% (service health issue) |\n\n**Alerting Rules**:\n\n```yaml\n# Azure Monitor Alert: High Saga Failure Rate\n- alert: HighSagaFailureRate\n  expr: |\n    (\n      sum(rate(saga_failed_total[5m])) by (saga_type)\n      /\n      sum(rate(saga_started_total[5m])) by (saga_type)\n    ) > 0.10\n  for: 10m\n  labels:\n    severity: critical\n  annotations:\n    summary: \"High saga failure rate for {{ $labels.saga_type }}\"\n    description: \"{{ $value | humanizePercentage }} of {{ $labels.saga_type }} sagas failing in last 10 minutes. Investigate saga failures and compensation logic.\"\n\n# Azure Monitor Alert: High Compensation Failure Rate\n- alert: HighCompensationFailureRate\n  expr: compensation_failure_rate{saga_type=\"ClaimAdjudication\"} > 0.02\n  for: 5m\n  labels:\n    severity: critical\n  annotations:\n    summary: \"High compensation failure rate for claim adjudication\"\n    description: \"{{ $value | humanizePercentage }} of compensations failing. Manual review queue growing. Check service health and compensation logic.\"\n```\n\n**Dashboard Requirements**:\n\nAll saga implementations MUST provide Grafana dashboard with:\n\n1. **Active Sagas Panel**: Current count of in-progress sagas by type\n2. **Saga Duration Heatmap**: Distribution of saga durations (P50, P95, P99)\n3. **Saga Success Rate**: Success rate over time by saga type\n4. **Compensation Rate**: Percentage of sagas requiring compensation\n5. **Top Failure Reasons**: Bar chart of most common saga failure reasons\n6. **Manual Review Queue**: Count of failed compensations requiring manual intervention",
+    "52": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#state-specific-regulatory-compliance]\n\n### State-Specific Regulatory Compliance\n\n**State Contract Variations**:\n\nSome states impose unique requirements on saga implementation:\n\n**California** (CA):\n- Claims adjudication saga MUST complete within 30 seconds (P95) per contract SLA\n- If saga exceeds 30 seconds, enqueue for priority processing with notification to operations\n\n**Texas** (TX):\n- Provider enrollment saga MUST maintain complete audit trail for Texas Medical Board audits\n- Include license verification step details, background check results, network assignment timestamps\n\n**New York** (NY):\n- Member plan change saga MUST send notification to member within 24 hours of completion/failure\n- Saga orchestrator responsible for triggering notification step after final compensation\n\n**Saga Configuration per State**:\n```csharp\npublic class SagaStateConfiguration\n{\n    public string StateCode { get; set; }\n    public int MaxDurationSeconds { get; set; }  // CA: 30, other states: 60\n    public bool RequiresAuditTrail { get; set; }  // TX: true, other states: false\n    public bool RequiresMemberNotification { get; set; }  // NY: true, other states: false\n    public int CompensationRetryCount { get; set; }  // Default: 3\n}\n```",
+    "53": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#approval-process]\n\n### Approval Process\n\n**Pre-Implementation Review**:\n\n1. **Saga Design Review** (Architecture Review Board)\n   - Saga type selection (orchestration vs choreography) justified\n   - Service boundaries and responsibilities defined\n   - Compensation logic documented for all steps\n   - Timeout values justified based on expected duration\n   - State-specific requirements identified and addressed\n\n2. **Security Review** (Security Architecture Team)\n   - HIPAA audit logging requirements validated\n   - PHI access controls verified\n   - Idempotency key strategy reviewed\n   - Compensation failure handling assessed\n\n3. **Operations Review** (SRE Team)\n   - Monitoring metrics and dashboards defined\n   - Alert thresholds validated\n   - Manual review queue process documented\n   - Runbook for saga troubleshooting prepared\n\n**Post-Implementation Validation**:\n\n1. **Saga Execution Validation** (within 1 week of production deployment)\n   - Verify metrics publishing to Application Insights\n   - Confirm Grafana dashboard displaying saga status\n   - Test manual review queue workflow\n   - Validate HIPAA audit logs format and retention\n\n2. **Compensation Testing** (within 2 weeks)\n   - Inject failures at each saga step\n   - Verify compensation executes correctly\n   - Confirm manual review queue for compensation failures\n   - Validate audit trail includes compensation actions\n\n3. **Performance Validation** (within 1 month)\n   - Verify saga duration meets SLA (P95 < 30s for claims)\n   - Confirm saga success rate >95%\n   - Validate compensation rate <5%\n   - Check no saga timeout issues under normal load",
+    "54": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#examples-and-use-cases]\n\n## Examples and Use Cases",
+    "55": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#example-1-claims-adjudication-orchestration-saga]\n\n### Example 1: Claims Adjudication Orchestration Saga",
+    "56": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#business-context]\n\n#### Business Context\n\nGainwell's **Claims Adjudication Service** processes 500,000+ claims/day. Each claim requires verification across 7 microservices before payment can be created. Traditional 2PC would block resources and reduce throughput. Orchestration-based saga provides transaction management without blocking.",
+    "57": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#implementation]\n\n#### Implementation\n\n**Saga Flow** (Happy Path):\n\n```text\n1. Claim submitted via API Gateway\n2. Saga Orchestrator receives claim\n3. Step 1: Eligibility Service verifies member coverage → Success\n4. Step 2: Benefits Service validates service code coverage → Success\n5. Step 3: Pricing Service calculates reimbursement amount → Success\n6. Step 4: Prior Auth Service checks authorization requirements → Success (no auth required)\n7. Step 5: TPL Service checks third-party liability → Success (no TPL)\n8. Step 6: Payment Service creates provider payment → Success\n9. Step 7: Audit Service logs claim decision → Success\n10. Saga completes → Claim status: APPROVED, Payment: $150.00\n```\n\n**Saga Flow** (Failure with Compensation):\n\n```text\n1. Claim submitted via API Gateway\n2. Saga Orchestrator receives claim\n3. Step 1: Eligibility Service verifies member coverage → Success\n4. Step 2: Benefits Service validates service code coverage → Success\n5. Step 3: Pricing Service calculates reimbursement → FAILURE (provider not in fee schedule)\n6. COMPENSATION BEGINS\n7. Compensate Step 2: Benefits Service releases benefit authorization → Success\n8. Compensate Step 1: Eligibility Service releases eligibility lock → Success\n9. Saga fails → Claim status: DENIED, Reason: \"Provider not in fee schedule\"\n```\n\n**Code Implementation**:\n\n```csharp\n[FunctionName(\"ClaimAdjudicationSaga\")]\npublic async Task<ClaimResult> RunOrchestrator(\n    [OrchestrationTrigger] IDurableOrchestrationContext context)\n{\n    var claim = context.GetInput<Claim>();\n    var sagaId = context.InstanceId;\n\n    // Initialize saga state\n    await context.CallActivityAsync(\n        \"InitializeSagaState\",\n        new SagaInitRequest { SagaId = sagaId, SagaType = \"ClaimAdjudication\", TotalSteps = 7 });\n\n    try\n    {\n        // Step 1: Eligibility\n        var eligResult = await context.CallActivityAsync<EligibilityResult>(\n            \"VerifyEligibility\",\n            new { MemberId = claim.MemberId, ServiceDate = claim.ServiceDate, SagaId = sagaId });\n\n        if (!eligResult.IsEligible)\n        {\n            await context.CallActivityAsync(\n                \"UpdateSagaState\",\n                new { SagaId = sagaId, Step = 1, Status = \"Failed\", Reason = \"Member not eligible\" });\n            return ClaimResult.Denied(claim.ClaimId, \"Member not eligible\");\n        }\n\n        await context.CallActivityAsync(\n            \"UpdateSagaState\",\n            new { SagaId = sagaId, Step = 1, Status = \"Completed\" });\n\n        // Step 2: Benefits\n        var benResult = await context.CallActivityAsync<BenefitsResult>(\n            \"ValidateBenefits\",\n            new { MemberId = claim.MemberId, ServiceCode = claim.ServiceCode, SagaId = sagaId });\n\n        if (!benResult.IsCovered)\n        {\n            // Compensate eligibility\n            await context.CallActivityAsync(\n                \"CompensateEligibility\",\n                new { MemberId = claim.MemberId, SagaId = sagaId, Reason = \"Benefits validation failed\" });\n\n            await context.CallActivityAsync(\n                \"UpdateSagaState\",\n                new { SagaId = sagaId, Status = \"Failed\", CompensatedSteps = new[] { \"Eligibility\" } });\n\n            return ClaimResult.Denied(claim.ClaimId, \"Service not covered\");\n        }\n\n        await context.CallActivityAsync(\n            \"UpdateSagaState\",\n            new { SagaId = sagaId, Step = 2, Status = \"Completed\" });\n\n        // Step 3: Pricing (FAILS in this example)\n        var priceResult = await context.CallActivityAsync<PricingResult>(\n            \"CalculatePricing\",\n            new { ClaimId = claim.ClaimId, ProviderId = claim.ProviderId, ServiceCode = claim.ServiceCode, SagaId = sagaId });\n\n        if (priceResult.PaymentAmount <= 0)\n        {\n            // Compensate in reverse order\n            await context.CallActivityAsync(\n                \"CompensateBenefits\",\n                new { MemberId = claim.MemberId, SagaId = sagaId, Reason = \"Pricing calculation failed\" });\n\n            await context.CallActivityAsync(\n                \"CompensateEligibility\",\n                new { MemberId = claim.MemberId, SagaId = sagaId, Reason = \"Pricing calculation failed\" });\n\n            await context.CallActivityAsync(\n                \"UpdateSagaState\",\n                new { SagaId = sagaId, Status = \"Failed\", CompensatedSteps = new[] { \"Benefits\", \"Eligibility\" } });\n\n            return ClaimResult.Denied(claim.ClaimId, \"Provider not in fee schedule\");\n        }\n\n        // Continue with remaining steps...\n        // (Steps 4-7 omitted for brevity)\n\n        await context.CallActivityAsync(\n            \"UpdateSagaState\",\n            new { SagaId = sagaId, Status = \"Completed\" });\n\n        return ClaimResult.Approved(claim.ClaimId, priceResult.PaymentAmount);\n    }\n    catch (Exception ex)\n    {\n        // Handle unexpected failure\n        await CompensateAll(context, sagaId);\n\n        await context.CallActivityAsync(\n            \"UpdateSagaState\",\n            new { SagaId = sagaId, Status = \"Failed\", Reason = ex.Message });\n\n        return ClaimResult.Error(claim.ClaimId, ex.Message);\n    }\n}\n```",
+    "58": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#results-and-metrics]\n\n#### Results and Metrics\n\n**Before Saga Implementation**:\n- **Throughput**: 200,000 claims/day (limited by 2PC blocking)\n- **Failure Rate**: 12% due to transient service failures + 2PC coordinator failures\n- **Manual Intervention**: 24,000 claims/day requiring manual resubmission (12% of 200K)\n- **Operational Cost**: 400 hours/day × $100/hour = $40,000/day\n- **Provider Payment Delay**: 3-5 days for failed claims\n\n**After Saga Implementation**:\n- **Throughput**: 500,000 claims/day (2.5x improvement, no blocking)\n- **Failure Rate**: 5% (transient failures only, no coordinator failures)\n- **Automatic Compensation**: 95% of failures compensated automatically\n- **Manual Intervention**: 1,250 claims/day (5% of 25,000 failures requiring manual review)\n- **Operational Cost**: 20 hours/day × $100/hour = $2,000/day (95% reduction)\n- **Provider Payment**: Same-day payment for 95% of claims, 1-2 day delay for 5%\n\n**ROI Calculation**:\n- **Cost Savings**: ($40,000 - $2,000) × 365 days = $13.87M/year\n- **Implementation Cost**: 6 weeks × 4 developers × $150/hour × 40 hours = $144K\n- **ROI**: $13.87M / $144K = **96x return** in first year\n\n---",
+    "59": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#example-2-provider-enrollment-choreography-saga]\n\n### Example 2: Provider Enrollment Choreography Saga",
+    "60": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#business-context]\n\n#### Business Context\n\nGainwell's **Provider Enrollment** workflow onboards 1,000+ providers/month. Enrollment involves 6 services and can take 5-15 minutes due to state medical board license verification. Choreography-based saga using Azure Service Bus events provides loose coupling and service autonomy.",
+    "61": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#implementation]\n\n#### Implementation\n\n**Event Flow** (Happy Path):\n\n```text\n1. Provider submits enrollment application via Gainwell Provider+™ portal\n2. Provider Service creates provider record → publishes ProviderCreated event\n3. Credentialing Service listens → starts license verification (5-15 min) → publishes CredentialsVerified event\n4. Network Service listens → assigns provider to networks → publishes NetworkAssigned event\n5. Contract Service listens → creates reimbursement contracts → publishes ContractCreated event\n6. Directory Service listens → publishes provider to directory → publishes DirectoryPublished event\n7. Notification Service listens → sends welcome email to provider → publishes NotificationSent event\n8. Provider Service listens → updates status to ACTIVE\n```\n\n**Event Flow** (Failure with Compensation):\n\n```text\n1. Provider submits enrollment application\n2. Provider Service creates provider record → publishes ProviderCreated event\n3. Credentialing Service verifies license → publishes CredentialsVerified event\n4. Network Service assigns to networks → publishes NetworkAssigned event\n5. Contract Service starts contract creation → FAILS (state contract system timeout)\n6. Contract Service publishes ContractCreationFailed event\n7. COMPENSATION CASCADE:\n   a. Network Service listens → removes network assignments → publishes NetworkCompensated event\n   b. Credentialing Service listens → removes credentials → publishes CredentialsCompensated event\n   c. Provider Service listens → marks provider enrollment FAILED → publishes ProviderEnrollmentFailed event\n   d. Notification Service listens → sends failure email to provider\n```\n\n**Code Implementation**:\n\n```csharp\n// Provider Service - Initiates saga\npublic class ProviderService\n{\n    public async Task<EnrollmentResult> EnrollProviderAsync(ProviderApplication application)\n    {\n        var sagaId = Guid.NewGuid().ToString();\n\n        // Create provider record\n        var provider = new Provider\n        {\n            ProviderId = Guid.NewGuid(),\n            LicenseNumber = application.LicenseNumber,\n            Name = application.ProviderName,\n            Status = ProviderStatus.Pending,\n            SagaId = sagaId\n        };\n\n        await _providerRepository.CreateAsync(provider);\n\n        // Publish event to trigger next step\n        var providerCreatedEvent = new ProviderCreatedEvent\n        {\n            SagaId = sagaId,\n            ProviderId = provider.ProviderId,\n            LicenseNumber = provider.LicenseNumber,\n            Specialty = application.Specialty,\n            Timestamp = DateTime.UtcNow\n        };\n\n        await _eventPublisher.PublishAsync(\"provider-enrollment\", providerCreatedEvent);\n\n        _logger.LogInformation($\"Saga {sagaId}: Provider enrollment initiated for {provider.ProviderId}\");\n\n        return EnrollmentResult.Initiated(sagaId, provider.ProviderId);\n    }\n\n    // Event handler: Enrollment completed successfully\n    public async Task OnEnrollmentCompleted(DirectoryPublishedEvent evt)\n    {\n        var provider = await _providerRepository.GetBySagaIdAsync(evt.SagaId);\n\n        if (provider != null)\n        {\n            provider.Status = ProviderStatus.Active;\n            await _providerRepository.UpdateAsync(provider);\n\n            _logger.LogInformation($\"Saga {evt.SagaId}: Provider {provider.ProviderId} enrollment completed\");\n        }\n    }\n\n    // Event handler: Enrollment failed - compensate\n    public async Task OnCredentialsCompensated(CredentialsCompensatedEvent evt)\n    {\n        var provider = await _providerRepository.GetBySagaIdAsync(evt.SagaId);\n\n        if (provider != null)\n        {\n            provider.Status = ProviderStatus.EnrollmentFailed;\n            provider.FailureReason = evt.Reason;\n            await _providerRepository.UpdateAsync(provider);\n\n            // Publish final compensation event\n            var failedEvent = new ProviderEnrollmentFailedEvent\n            {\n                SagaId = evt.SagaId,\n                ProviderId = provider.ProviderId,\n                Reason = evt.Reason,\n                Timestamp = DateTime.UtcNow\n            };\n\n            await _eventPublisher.PublishAsync(\"provider-enrollment\", failedEvent);\n\n            _logger.LogWarning($\"Saga {evt.SagaId}: Provider {provider.ProviderId} enrollment failed and compensated\");\n        }\n    }\n}\n\n// Contract Service - Saga participant that may fail\npublic class ContractService\n{\n    public async Task OnNetworkAssigned(NetworkAssignedEvent evt)\n    {\n        _logger.LogInformation($\"Saga {evt.SagaId}: Creating contract for provider {evt.ProviderId}\");\n\n        try\n        {\n            // Attempt contract creation (may timeout calling state system)\n            var contract = await _stateContractSystem.CreateContractAsync(\n                evt.ProviderId,\n                evt.NetworkIds,\n                timeout: TimeSpan.FromSeconds(30));\n\n            // Success - publish event\n            var contractCreatedEvent = new ContractCreatedEvent\n            {\n                SagaId = evt.SagaId,\n                ProviderId = evt.ProviderId,\n                ContractId = contract.ContractId,\n                Timestamp = DateTime.UtcNow\n            };\n\n            await _eventPublisher.PublishAsync(\"provider-enrollment\", contractCreatedEvent);\n\n            _logger.LogInformation($\"Saga {evt.SagaId}: Contract {contract.ContractId} created successfully\");\n        }\n        catch (TimeoutException ex)\n        {\n            _logger.LogError(ex, $\"Saga {evt.SagaId}: Contract creation timed out\");\n\n            // Publish failure event to trigger compensation cascade\n            var failedEvent = new ContractCreationFailedEvent\n            {\n                SagaId = evt.SagaId,\n                ProviderId = evt.ProviderId,\n                Reason = \"State contract system timeout\",\n                Timestamp = DateTime.UtcNow\n            };\n\n            await _eventPublisher.PublishAsync(\"provider-enrollment\", failedEvent);\n        }\n    }\n}\n```",
+    "62": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#results-and-metrics]\n\n#### Results and Metrics\n\n**Before Saga Implementation**:\n- **Enrollment Time**: 5-15 minutes (synchronous workflow blocks until complete)\n- **Failure Rate**: 18% (credential verification timeouts, state system unavailability)\n- **Manual Compensation**: 180 enrollments/month × 2 hours each = 360 hours/month\n- **Provider Experience**: \"System timed out, please try again\" errors frustrate providers\n- **Operational Cost**: 360 hours × $100/hour = $36,000/month\n\n**After Saga Implementation**:\n- **Enrollment Time**: Immediate application acceptance, background processing with email notification when complete (5-15 min background)\n- **Failure Rate**: 18% (same transient failures) BUT automatic compensation\n- **Manual Compensation**: 18 enrollments/month requiring manual review (99% compensated automatically)\n- **Provider Experience**: \"Application received, we'll email you when enrollment complete\" - positive UX\n- **Operational Cost**: 18 hours × $100/hour = $1,800/month (95% reduction)\n\n**Provider Satisfaction**:\n- **Before**: 2.8/5 stars (complaints about timeouts, need to resubmit)\n- **After**: 4.5/5 stars (appreciate async processing, email notifications)\n\n---",
+    "63": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#example-3-member-plan-change-saga-with-compensation-failure]\n\n### Example 3: Member Plan Change Saga with Compensation Failure",
+    "64": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#business-context]\n\n#### Business Context\n\nMember plan changes involve 5 services. If any service fails, compensation must restore original state. This example demonstrates **compensation failure handling** and **manual review queue**.",
+    "65": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#scenario-card-service-failure-with-successful-compensation]\n\n#### Scenario: Card Service Failure with Successful Compensation\n\n```text\n1. Member requests plan change from PlanA to PlanB via Gainwell Go™ mobile app\n2. Member Service updates member record to PlanB → publishes PlanChangeRequested event\n3. Plan Service assigns PlanB → publishes PlanAssigned event\n4. Benefits Service calculates PlanB benefits → publishes BenefitsCalculated event\n5. Card Service generates PlanB ID card → FAILURE (card printing service down)\n6. Card Service publishes CardGenerationFailed event\n7. COMPENSATION CASCADE:\n   a. Benefits Service reverts to PlanA benefits → Success → publishes BenefitsReverted event\n   b. Plan Service reverts to PlanA → Success → publishes PlanReverted event\n   c. Member Service reverts member record to PlanA → Success\n\n8. Notification Service sends email: \"Plan change failed, your current plan (PlanA) remains active\"\n9. Member sees original plan, no confusion\n```",
+    "66": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#scenario-compensation-failure-requiring-manual-review]\n\n#### Scenario: Compensation Failure Requiring Manual Review\n\n```text\n1. Member requests plan change from PlanA to PlanB\n2. Member Service updates to PlanB → publishes PlanChangeRequested event\n3. Plan Service assigns PlanB → publishes PlanAssigned event\n4. Benefits Service calculates PlanB benefits → publishes BenefitsCalculated event\n5. Card Service generates PlanB ID card → FAILURE (card service down)\n6. Card Service publishes CardGenerationFailed event\n7. COMPENSATION CASCADE BEGINS:\n   a. Benefits Service attempts revert → FAILS (database connection timeout)\n   b. Benefits Service retries 3 times → All fail\n   c. Benefits Service publishes BenefitsCompensationFailed event\n   d. Benefits Service enqueues manual review task\n\n8. MANUAL REVIEW QUEUE:\n   - Task created with priority: HIGH\n   - Operations team notified via PagerDuty alert\n   - Task includes: Member ID, SagaId, failed compensation step, error details\n   - Operations team manually reverts benefits within 4 hours\n   - Task marked complete\n9. After manual compensation complete, remaining compensations proceed:\n   a. Plan Service reverts to PlanA → Success\n   b. Member Service reverts to PlanA → Success\n\n10. Notification Service sends email: \"Plan change encountered an issue. Our team resolved it, and your current plan (PlanA) remains active. We apologize for any confusion.\"\n```\n\n**Manual Review Queue Code**:\n\n```csharp\npublic class BenefitsService\n{\n    public async Task OnCardGenerationFailed(CardGenerationFailedEvent evt)\n    {\n        _logger.LogWarning($\"Saga {evt.SagaId}: Compensating benefits for member {evt.MemberId}\");\n\n        for (int attempt = 1; attempt <= 3; attempt++)\n        {\n            try\n            {\n                // Attempt to revert benefits\n                await _benefitsRepository.RevertBenefitsAsync(evt.MemberId, evt.SagaId);\n\n                // Success - publish compensation complete event\n                var compensatedEvent = new BenefitsRevertedEvent\n                {\n                    SagaId = evt.SagaId,\n                    MemberId = evt.MemberId,\n                    Timestamp = DateTime.UtcNow\n                };\n\n                await _eventPublisher.PublishAsync(\"plan-change\", compensatedEvent);\n\n                _logger.LogInformation($\"Saga {evt.SagaId}: Benefits compensation completed on attempt {attempt}\");\n                return; // Success\n            }\n            catch (Exception ex)\n            {\n                _logger.LogError(ex, $\"Saga {evt.SagaId}: Benefits compensation attempt {attempt} failed\");\n\n                if (attempt == 3)\n                {\n                    // All retries exhausted - enqueue for manual review\n                    var manualTask = new ManualReviewTask\n                    {\n                        TaskId = Guid.NewGuid().ToString(),\n                        SagaId = evt.SagaId,\n                        MemberId = evt.MemberId,\n                        TaskType = \"BenefitsCompensation\",\n                        Priority = ManualReviewPriority.High,\n                        Description = $\"Failed to compensate benefits after 3 attempts. Member: {evt.MemberId}, Saga: {evt.SagaId}\",\n                        ErrorDetails = ex.Message,\n                        CreatedAt = DateTime.UtcNow,\n                        DueBy = DateTime.UtcNow.AddHours(4) // 4-hour SLA\n                    };\n\n                    await _manualReviewQueue.EnqueueAsync(manualTask);\n\n                    // Alert operations team\n                    await _alertService.SendPagerDutyAlert(\n                        \"Benefits compensation failed after 3 retries\",\n                        $\"Saga {evt.SagaId} requires manual intervention for member {evt.MemberId}\");\n\n                    // Publish compensation failure event\n                    var failedEvent = new BenefitsCompensationFailedEvent\n                    {\n                        SagaId = evt.SagaId,\n                        MemberId = evt.MemberId,\n                        Reason = ex.Message,\n                        ManualTaskId = manualTask.TaskId,\n                        Timestamp = DateTime.UtcNow\n                    };\n\n                    await _eventPublisher.PublishAsync(\"plan-change\", failedEvent);\n\n                    _logger.LogCritical($\"Saga {evt.SagaId}: Benefits compensation enqueued for manual review. Task: {manualTask.TaskId}\");\n                }\n                else\n                {\n                    // Wait before retry (exponential backoff)\n                    await Task.Delay(TimeSpan.FromSeconds(Math.Pow(2, attempt)));\n                }\n            }\n        }\n    }\n}\n```",
+    "67": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#manual-review-dashboard]\n\n#### Manual Review Dashboard\n\nOperations team uses dashboard showing:\n\n- **Pending Tasks**: 3 tasks (1 high priority, 2 normal)\n- **Task Details**: Member ID, Saga ID, failed step, error message, created time, due by time\n- **Actions**: \"Manually Compensate\" button executes compensation, \"Mark Resolved\" closes task\n- **SLA Compliance**: 95% of manual tasks completed within 4-hour SLA",
+    "68": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#related-patterns-and-references]\n\n## Related Patterns and References",
+    "69": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#related-patterns]\n\n### Related Patterns\n\n- [Database per Service Pattern](./database-per-service-pattern.md)\n- [Event-Driven Architecture Pattern](../08-integration-messaging/event-driven-architecture-pattern.md)",
+    "70": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#external-references]\n\n### External References\n\n- [Microservices Patterns - Saga](https://microservices.io/patterns/data/saga.html)",
+    "71": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#change-history]\n\n## Change History\n\n| Date       | Version | Author              | Description              | Impact      |\n| ---------- | ------- | ------------------- | ------------------------ | ----------- |\n| 2026-01-02 | 1.0.0   | Enterprise Architect | Initial pattern creation | New pattern |",
+    "72": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#review-log]\n\n## Review Log\n\n| Review Date | Review Type | Reviewer(s) | Status | Comments | Actions |\n| ----------- | ----------- | ----------- | ------ | -------- | ------- |\n| TBD         | TBD         | TBD         | Draft  | TBD      | TBD     |\n\n---",
+    "73": "[patterns/application/api-microservices/PTN-APP-API-018-saga-pattern.md#tldr]\n\n## TL;DR\n\n**Problem:** Distributed transactions across microservices with database-per-service architecture. Partial failures during multi-step workflows (e.g., claims adjudication, provider enrollment) leave inconsistent state when a service fails mid-saga. Traditional 2PC is not viable due to blocking, single point of failure, and loss of service autonomy.\n\n**Solution:** Saga pattern coordinates multi-service transactions using either:\n- **Choreography:** Event-driven decentralized coordination where services publish domain events triggering next steps\n- **Orchestration:** Centralized saga orchestrator explicitly calling services and managing workflow state\n\nCompensating transactions automatically roll back completed saga steps when a later step fails, maintaining business consistency through eventual consistency.\n\n**When to Use:**\n- Multi-service business workflows requiring consistency (claims adjudication across 8 services, provider enrollment across 4 services)\n- Long-running processes spanning hours/days (prior authorization with clinical review)\n- Workflows crossing bounded contexts requiring coordination\n- Processes requiring complex compensation logic with non-trivial rollback\n- Business workflows with human approval steps (clinical review, contracting)\n- Integrations with external systems (state agencies, PBMs) requiring coordination\n\n**Avoid when:**\n- Single service operations where local ACID transactions are sufficient\n- ACID requirements needing immediate consistency (not eventual)\n- Simple CRUD operations without compensation complexity\n- Read-only operations with no consistency concerns\n\n**Key Benefits:**\n- **Eventual Consistency:** Automatic compensation maintains business invariants despite temporary inconsistency\n- **Service Autonomy:** Decoupled services owning data and business logic, independently deployable\n- **Fault Tolerance:** Automatic recovery from service failures through compensation\n- **Healthcare-Specific:** Claims integrity preventing duplicate payments/lost claims, provider experience with seamless enrollment, regulatory compliance with complete audit trail, financial accuracy through compensation\n\n**Quick Start** (MassTransit Choreography Saga):\n\n```csharp\n// 1. Install MassTransit\ndotnet add package MassTransit.RabbitMQ\n\n// 2. Define saga instance\npublic class ClaimsSagaInstance : SagaStateMachineInstance\n{\n    public Guid CorrelationId { get; set; }\n    public string ClaimId { get; set; }\n    public string CurrentState { get; set; }\n}\n\n// 3. Create state machine with compensation\npublic class ClaimsSaga : MassTransitStateMachine<ClaimsSagaInstance>\n{\n    public State EligibilityVerified { get; private set; }\n    public State Priced { get; private set; }\n    public State PriorAuthApproved { get; private set; }\n\n    public Event<ClaimSubmitted> ClaimSubmitted { get; private set; }\n    public Event<PaymentFailed> PaymentFailed { get; private set; }\n\n    public ClaimsSaga()\n    {\n        Initially(\n            When(ClaimSubmitted)\n                .TransitionTo(EligibilityVerified));\n\n        // Compensation flow\n        When(PaymentFailed)\n            .PublishAsync(context => context.Init<RollbackPriorAuth>(new { context.Saga.ClaimId }))\n            .PublishAsync(context => context.Init<RollbackPricing>(new { context.Saga.ClaimId }))\n            .PublishAsync(context => context.Init<RollbackEligibility>(new { context.Saga.ClaimId }))\n            .TransitionTo(Failed);\n    }\n}\n```\n\n**Implementation Complexity:** High\n- Requires saga library (MassTransit/Temporal/Camunda) installation and learning curve\n- Compensation logic design for every saga step ensuring idempotent inverse operations\n- Distributed tracing infrastructure (Jaeger/Zipkin) for end-to-end visibility\n- State management with durable database storing saga progress\n- Team learning curve: 4-6 weeks for saga concepts and tooling\n\n**Prerequisites:**\n- Event infrastructure (event bus, message broker) or orchestrator (Temporal/Camunda) for coordination\n- Compensation logic designed and implemented for every mutating saga step\n- Idempotency pattern with key storage (Redis/database) tracking `correlation_id + step_id`\n- Distributed tracing library (OpenTelemetry) with correlation propagation across services\n- Circuit breaker pattern protecting saga steps from cascading failures\n\n**Common Pitfalls:**\n- ❌ **Missing compensation logic** → Design compensation during saga design phase, not after\n- ❌ **Non-idempotent operations** → Implement idempotency keys with `correlation_id + step_id` deduplication\n- ❌ **No distributed tracing** → Implement Jaeger/Zipkin tracing every saga step with correlation_id\n- ❌ **Insufficient compensation testing** → Chaos engineering testing every compensation path with fault injection\n- ❌ **Saga state not persisted** → Use durable state store (SQL/NoSQL) with recovery after crashes\n- ❌ **Synchronous blocking** → Use async saga execution with message queues\n- ❌ **Saga timeout too long** → Configure 30-60s timeout with alerts, not infinite\n- ❌ **Lack of documentation** → Document saga steps, compensation logic, and bounded context boundaries\n\n**Real-World Results** (Gainwell Healthcare):\n- **Claims Processing:** Manual intervention reduced 95% (10K → 500 claims/day requiring support), cost savings $2.375M/month\n- **Provider Enrollment:** Enrollment success improved 82% → 97%, orphaned records eliminated 100%\n- **Data Consistency:** Improved from 87% → 99.5% (0.5% representing true failures after retry exhaustion)\n- **Operational Efficiency:** Support tickets reduced from 200 → 10/month, provider satisfaction improved 3.2/5 → 4.6/5 stars\n\n**Related Patterns:**\n- **Database per Service** - Creates the need for saga coordination across services with separate databases\n- **Event-Driven Architecture** - Enables choreography saga through domain events\n- **CQRS** - Read models benefit from eventual consistency provided by saga\n- **Event Sourcing** - Provides audit trail for saga execution and compensation\n- **Circuit Breaker** - Protects saga steps from cascading failures\n- **Retry Pattern** - Handles transient failures within individual saga steps\n- **Idempotency Pattern** - Ensures compensation operations are safe to retry\n\n---"
+  },
+  "coverage": {
+    "total_pages": 73,
+    "covered_pages": 73,
+    "sampled_pages": 73,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 73
+  }
+}

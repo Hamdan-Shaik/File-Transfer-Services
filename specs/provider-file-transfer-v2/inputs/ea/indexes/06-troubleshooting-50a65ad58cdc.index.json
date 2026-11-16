@@ -1,0 +1,428 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "RAG Service Troubleshooting Guide",
+  "document_description": "The RAG Service Troubleshooting Guide provides comprehensive diagnostic procedures, solutions, and optimization strategies for maintaining reliable AI-powered retrieval operations. This document serves as the primary operational reference for identifying, analyzing, and resolving issues across all deployment environments, from local development to production EKS clusters.",
+  "total_pages": 44,
+  "tree": [
+    {
+      "title": "RAG Service Troubleshooting Guide",
+      "node_id": "rag-service-troubleshooting-guide",
+      "start_index": 1,
+      "end_index": 44,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Overview",
+          "node_id": "overview",
+          "start_index": 2,
+          "end_index": 3,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Key Benefits",
+              "node_id": "key-benefits",
+              "start_index": 3,
+              "end_index": 3,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Quick Reference",
+          "node_id": "quick-reference",
+          "start_index": 5,
+          "end_index": 7,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Essential Commands",
+              "node_id": "essential-commands",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Diagnostic Checklist",
+              "node_id": "diagnostic-checklist",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Troubleshooting Environment Strategy",
+          "node_id": "troubleshooting-environment-strategy",
+          "start_index": 8,
+          "end_index": 10,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "DEV Environment as Primary Debugging Platform",
+              "node_id": "dev-environment-as-primary-debugging-platform",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "DEV Environment Troubleshooting Workflow",
+              "node_id": "dev-environment-troubleshooting-workflow",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Local Development Issues",
+          "node_id": "local-development-issues",
+          "start_index": 11,
+          "end_index": 15,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Service Startup Failures",
+              "node_id": "service-startup-failures",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Mock Service Configuration Issues",
+              "node_id": "mock-service-configuration-issues",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Problem: Test Failures",
+              "node_id": "problem-test-failures",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Test Execution Failures",
+              "node_id": "test-execution-failures",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "AWS Service Issues",
+          "node_id": "aws-service-issues",
+          "start_index": 16,
+          "end_index": 18,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "AWS Bedrock Access Denied Errors",
+              "node_id": "aws-bedrock-access-denied-errors",
+              "start_index": 17,
+              "end_index": 17,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "OpenSearch Connectivity Issues",
+              "node_id": "opensearch-connectivity-issues",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Infrastructure Configuration Mismatch",
+          "node_id": "infrastructure-configuration-mismatch",
+          "start_index": 19,
+          "end_index": 22,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "EKS Namespace Mismatch",
+              "node_id": "eks-namespace-mismatch",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "OpenSearch Endpoint URL Mismatch",
+              "node_id": "opensearch-endpoint-url-mismatch",
+              "start_index": 21,
+              "end_index": 21,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Prevention Strategies",
+              "node_id": "prevention-strategies",
+              "start_index": 22,
+              "end_index": 22,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "EKS Deployment Issues",
+          "node_id": "eks-deployment-issues",
+          "start_index": 23,
+          "end_index": 25,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Pod Startup and Lifecycle Failures",
+              "node_id": "pod-startup-and-lifecycle-failures",
+              "start_index": 24,
+              "end_index": 24,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Health Check and Readiness Failures",
+              "node_id": "health-check-and-readiness-failures",
+              "start_index": 25,
+              "end_index": 25,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "API Issues",
+          "node_id": "api-issues",
+          "start_index": 26,
+          "end_index": 29,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Search Endpoint Performance and Errors",
+              "node_id": "search-endpoint-performance-and-errors",
+              "start_index": 27,
+              "end_index": 27,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Silent Background Task Failures",
+              "node_id": "silent-background-task-failures",
+              "start_index": 28,
+              "end_index": 28,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Problem: CORS Issues",
+              "node_id": "problem-cors-issues",
+              "start_index": 29,
+              "end_index": 29,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Performance Issues",
+          "node_id": "performance-issues",
+          "start_index": 30,
+          "end_index": 40,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Problem: Slow Response Times",
+              "node_id": "problem-slow-response-times",
+              "start_index": 31,
+              "end_index": 31,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Problem: Memory Issues",
+              "node_id": "problem-memory-issues",
+              "start_index": 32,
+              "end_index": 32,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Performance Optimization Strategies",
+              "node_id": "performance-optimization-strategies",
+              "start_index": 33,
+              "end_index": 35,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Caching Implementation",
+                  "node_id": "caching-implementation",
+                  "start_index": 34,
+                  "end_index": 34,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Connection Pool Optimization",
+                  "node_id": "connection-pool-optimization",
+                  "start_index": 35,
+                  "end_index": 35,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Monitoring and Observability",
+              "node_id": "monitoring-and-observability",
+              "start_index": 36,
+              "end_index": 38,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Key Performance Metrics",
+                  "node_id": "key-performance-metrics",
+                  "start_index": 37,
+                  "end_index": 37,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Alerting Rules",
+                  "node_id": "alerting-rules",
+                  "start_index": 38,
+                  "end_index": 38,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Common Error Codes",
+              "node_id": "common-error-codes",
+              "start_index": 39,
+              "end_index": 39,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "AWS Error Codes",
+              "node_id": "aws-error-codes",
+              "start_index": 40,
+              "end_index": 40,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Getting Help",
+          "node_id": "getting-help",
+          "start_index": 41,
+          "end_index": 44,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Log Analysis",
+              "node_id": "log-analysis",
+              "start_index": 42,
+              "end_index": 42,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Escalation Process",
+              "node_id": "escalation-process",
+              "start_index": 43,
+              "end_index": 43,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Debug Mode",
+              "node_id": "debug-mode",
+              "start_index": 44,
+              "end_index": 44,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#rag-service-troubleshooting-guide]\n\n# RAG Service Troubleshooting Guide",
+    "2": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#overview]\n\n## Overview\n\nThe RAG Service Troubleshooting Guide provides comprehensive diagnostic procedures, solutions, and optimization strategies for maintaining reliable AI-powered retrieval operations. This document serves as the primary operational reference for identifying, analyzing, and resolving issues across all deployment environments, from local development to production EKS clusters.\n\nThis troubleshooting framework addresses the complete RAG service architecture, including AI integration components, vector database operations, container orchestration, and AWS service dependencies. The guide emphasizes systematic problem resolution with clear diagnostic procedures, proven solutions, and preventive measures to maintain optimal service performance.",
+    "3": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#key-benefits]\n\n### Key Benefits\n\n- **Rapid Issue Resolution** - Structured diagnostic procedures reduce mean time to resolution through systematic troubleshooting workflows\n- **Comprehensive Coverage** - Complete troubleshooting scenarios spanning local development, AWS services, EKS deployment, and API operations\n- **Performance Optimization** - Advanced strategies for memory management, caching implementation, and monitoring configuration\n- **Operational Excellence** - Monitoring, alerting, and observability practices ensure proactive issue detection and prevention\n- **Knowledge Transfer** - Documented error patterns, solutions, and escalation procedures facilitate team knowledge sharing\n\n```mermaid\ngraph TD\n    A[Issue Detection] --> B{Environment Type}\n    B -->|Local| C[Local Development Troubleshooting]\n    B -->|AWS| D[AWS Service Issues]\n    B -->|EKS| E[Kubernetes Deployment Issues]\n    B -->|API| F[Application Layer Issues]\n\n    C --> G[Environment Verification]\n    D --> H[Service Connectivity]\n    E --> I[Pod Diagnostics]\n    F --> J[API Testing]\n\n    G --> K[Solution Implementation]\n    H --> K\n    I --> K\n    J --> K\n\n    K --> L{Issue Resolved?}\n    L -->|Yes| M[Documentation Update]\n    L -->|No| N[Escalation Process]\n\n    style A fill:#e1f5fe\n    style K fill:#e8f5e8\n    style M fill:#f3e5f5\n    style N fill:#fff3e0\n```",
+    "4": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#table-of-contents]\n\n## Table of Contents\n\n- [Quick Reference](#quick-reference)\n- [Troubleshooting Environment Strategy](#troubleshooting-environment-strategy)\n- [Local Development Issues](#local-development-issues)\n- [AWS Service Issues](#aws-service-issues)\n- [Infrastructure Configuration Mismatch](#infrastructure-configuration-mismatch)\n- [EKS Deployment Issues](#eks-deployment-issues)\n- [API Issues](#api-issues)\n  - [Search Endpoint Performance and Errors](#search-endpoint-performance-and-errors)\n  - [Silent Background Task Failures](#silent-background-task-failures)\n- [Performance Issues](#performance-issues)\n- [Error Reference](#error-reference)",
+    "5": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#quick-reference]\n\n## Quick Reference",
+    "6": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#essential-commands]\n\n### Essential Commands\n\n```bash\n# Service health verification\ncurl http://localhost:8000/health\n\n# Local development server restart\npython _helpers/run.py\n\n# Test suite execution\npoetry run python -m pytest tests/ --tb=short -q\n\n# Environment setup verification\npython _helpers/verify.py\n\n# EKS deployment status (production environment)\nkubectl get pods -n <namespace>\nkubectl logs deployment/rag-service -n <namespace> --tail=50\n```",
+    "7": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#diagnostic-checklist]\n\n### Diagnostic Checklist\n\nSystematic verification procedures ensure comprehensive issue assessment before specific troubleshooting:\n\n- [ ] **Service Status** - Health endpoints responding with successful status codes\n- [ ] **Configuration Integrity** - Environment variables properly defined and accessible\n- [ ] **Authentication Verification** - AWS credentials valid with required service permissions (production mode)\n- [ ] **Development Mode** - Mock services enabled for local development environments\n- [ ] **Network Connectivity** - Successful communication with dependent AWS services\n- [ ] **Log Analysis** - Recent application logs reviewed for error patterns and anomalies",
+    "8": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#troubleshooting-environment-strategy]\n\n## Troubleshooting Environment Strategy",
+    "9": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#dev-environment-as-primary-debugging-platform]\n\n### DEV Environment as Primary Debugging Platform\n\n**Critical Context**: The RAG service troubleshooting primarily occurs in the DEV environment rather than locally due to architectural dependencies that are not replicated on developer machines.\n\n**Why DEV Environment Troubleshooting:**\n\n1. **Container Orchestration**: EKS cluster with full Kubernetes networking, ingress, and service discovery\n2. **AWS Managed Services**: OpenSearch clusters, AWS Bedrock, IAM roles, and VPC networking\n3. **Production-Like Configuration**: Environment variables, secrets management, and AWS service integration\n4. **Complex Dependencies**: Vector databases, AI services, and infrastructure that cannot be easily mocked locally\n\n**Local Development Limitations:**\n\n- **Mock Services Only**: Local development uses simplified mocks for AI and vector storage\n- **Missing Infrastructure**: No EKS, OpenSearch, or AWS service integration locally\n- **Configuration Differences**: Local environment cannot replicate production networking and security",
+    "10": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#dev-environment-troubleshooting-workflow]\n\n### DEV Environment Troubleshooting Workflow\n\n**Primary Tools and Techniques:**\n\n1. **kubectl for Resource Management:**\n\n   ```bash\n   # Get overall cluster and namespace status\n   kubectl get all -n eapref-app\n\n   # Check pod health and restart counts\n   kubectl get pods -n eapref-app -o wide\n\n   # Describe pods for detailed status and events\n   kubectl describe pod <pod-name> -n eapref-app\n\n   # Check resource usage and limits\n   kubectl top pods -n eapref-app\n   ```\n\n2. **Port-Forwarding for Direct Access:**\n\n   ```bash\n   # Forward RAG service API port for direct testing\n   kubectl port-forward -n eapref-app service/eap-rag-service 8443:443\n\n   # Test API endpoints directly\n   curl -k https://localhost:8443/health\n   curl -k https://localhost:8443/api/v1/stats\n\n   # Forward multiple ports if needed\n   kubectl port-forward -n eapref-app service/eap-rag-service 8443:443 8080:80\n   ```\n\n3. **Log Analysis and Monitoring:**\n\n   ```bash\n   # Real-time log monitoring\n   kubectl logs -n eapref-app -l app=eap-rag -f\n\n   # Historical logs with context\n   kubectl logs -n eapref-app deployment/eap-rag --tail=100\n\n   # Filter logs for specific issues\n   kubectl logs -n eapref-app -l app=eap-rag | grep -E \"(ERROR|WARN|OpenSearch|ConnectionTimeout)\"\n\n   # Multi-container pod logs\n   kubectl logs -n eapref-app pod/<pod-name> -c <container-name>\n   ```\n\n4. **Configuration and Secret Inspection:**\n\n   ```bash\n   # Check ConfigMap values\n   kubectl get configmap rag-service-config -n eapref-app -o yaml\n\n   # Verify environment variables (secrets masked)\n   kubectl exec deployment/eap-rag -n eapref-app -- env | grep -E \"(OPENSEARCH|AWS|BEDROCK)\"\n\n   # Check service account and IRSA configuration\n   kubectl get serviceaccount rag-service-account -n eapref-app -o yaml\n   ```\n\n5. **Network and Connectivity Testing:**\n\n   ```bash\n   # Test internal service connectivity\n   kubectl exec deployment/eap-rag -n eapref-app -- nslookup eap-rag-service.eapref-app.svc.cluster.local\n\n   # Test external AWS service connectivity\n   kubectl exec deployment/eap-rag -n eapref-app -- curl -k \"$OPENSEARCH_URL/_cluster/health\"\n\n   # Check ingress and load balancer configuration\n   kubectl get ingress -n eapref-app\n   kubectl describe ingress eapref-app-ingress -n eapref-app\n   ```\n\n**Troubleshooting Session Example:**\n\n```bash\n# 1. Start port-forwarding in background\nkubectl port-forward -n eapref-app service/eap-rag-service 8443:443 &\n\n# 2. Monitor logs in real-time\nkubectl logs -n eapref-app -l app=eap-rag -f &\n\n# 3. Test API endpoints\ncurl -k https://localhost:8443/health\ncurl -k https://localhost:8443/api/v1/stats\n\n# 4. Test problematic functionality\ncurl -k -X POST https://localhost:8443/api/v1/index \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"force_reindex\": false}'\n\n# 5. Monitor background task execution in logs\n# Look for OpenSearch connectivity, embedding generation, etc.\n\n# 6. Clean up\npkill -f \"kubectl port-forward\"\n```\n\n**When to Use Local vs DEV Environment:**\n\n| Scenario                      | Environment | Rationale                                          |\n| ----------------------------- | ----------- | -------------------------------------------------- |\n| Code syntax/logic testing     | Local       | Fast iteration, no infrastructure dependencies     |\n| API endpoint testing          | Local       | Mock services sufficient for basic functionality   |\n| Integration testing           | DEV         | Real AWS services, networking, authentication      |\n| OpenSearch connectivity       | DEV         | Requires actual vector database and VPC networking |\n| Background task debugging     | DEV         | Real AWS Bedrock, OpenSearch, and async processing |\n| Production issue reproduction | DEV         | Production-like configuration and services         |",
+    "11": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#local-development-issues]\n\n## Local Development Issues",
+    "12": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#service-startup-failures]\n\n### Service Startup Failures\n\nLocal development environments may experience startup failures due to dependency conflicts, configuration errors, or resource constraints. These issues typically manifest during initial service initialization or after environment changes.\n\n**Common Symptoms:**\n\n- Module import errors preventing application startup\n- Port binding conflicts with existing local services\n- Permission errors accessing required system resources\n- Missing or incompatible dependency packages\n\n**Resolution Procedures:**\n\n1. **Dependency Reinstallation:**\n\n   ```bash\n   # Execute comprehensive environment setup\n   python _helpers/setup.py\n   ```\n\n2. **Port Conflict Resolution:**\n\n   ```bash\n   # Verify port 8000 availability\n   netstat -an | grep 8000\n   # Terminate conflicting processes if necessary\n   lsof -ti:8000 | xargs kill -9\n   ```\n\n3. **Environment Verification:**\n\n   ```bash\n   # Confirm Python version compatibility (requires 3.12+)\n   python --version\n   # Verify Poetry package manager installation\n   poetry --version\n   ```",
+    "13": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#mock-service-configuration-issues]\n\n### Mock Service Configuration Issues\n\nDevelopment environments utilize mock services to simulate AWS dependencies without requiring cloud connectivity. Configuration issues with mock services can prevent proper local testing and development workflows.\n\n**Common Symptoms:**\n\n- AWS connection errors occurring in development mode\n- Authentication failures preventing local service startup\n- Service attempting real AWS connections instead of using mocks\n\n**Resolution Procedures:**\n\n1. **Environment Configuration Verification:**\n\n   ```bash\n   # Confirm mock mode configuration in environment\n   grep ENABLE_AI_MOCK .env\n   grep ENABLE_VECTOR_MOCK .env\n   ```\n\n2. **Mock Mode Activation:**\n\n   ```bash\n   # Configure environment for mock service usage\n   # Add to .env file\n   ENABLE_AI_MOCK=true\n   ENABLE_VECTOR_MOCK=true\n   ```\n\n3. **Service Restart:**\n\n   ```bash\n   # Restart with updated mock configuration\n   python _helpers/run.py\n   ```",
+    "14": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#problem-test-failures]\n\n### Problem: Test Failures\n\n**Symptoms:**\n\n- Tests hanging or failing\n- Import errors in tests\n- Mock assertions failing\n\n**Solutions:**\n\n1. **Run specific test categories:**\n\n   ```bash\n   # Skip rate limiter tests (if hanging)\n   poetry run python -m pytest tests/ -k \"not rate_limit\"\n\n   # Run only unit tests\n   poetry run python -m pytest tests/test_main.py\n   ```",
+    "15": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#test-execution-failures]\n\n### Test Execution Failures\n\nTest suite failures can indicate issues with the development environment, mock configurations, or changes that have introduced regressions. Systematic test debugging ensures development environment integrity.\n\n**Common Symptoms:**\n\n- Test processes hanging or timing out indefinitely\n- Import errors preventing test module loading\n- Mock assertion failures indicating configuration issues\n\n**Resolution Procedures:**\n\n1. **Selective Test Execution:**\n\n   ```bash\n   # Skip potentially problematic rate limiter tests\n   poetry run python -m pytest tests/ -k \"not rate_limit\"\n\n   # Execute only core unit tests for rapid validation\n   poetry run python -m pytest tests/test_main.py\n   ```\n\n2. **Environment Validation:**\n\n   ```bash\n   # Comprehensive test environment verification\n   python _helpers/verify.py\n   ```",
+    "16": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#aws-service-issues]\n\n## AWS Service Issues",
+    "17": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#aws-bedrock-access-denied-errors]\n\n### AWS Bedrock Access Denied Errors\n\nAmazon Bedrock access issues typically result from authentication failures, insufficient IAM permissions, or service availability constraints. These errors prevent the RAG service from accessing language models and embedding generation capabilities.\n\n**Common Symptoms:**\n\n- \"Access denied\" error responses from Bedrock API calls\n- \"InvalidRequestException\" errors during model invocation\n- Authentication failures preventing service initialization\n\n**Resolution Procedures:**\n\n1. **Credential Verification:**\n\n   ```bash\n   # Verify AWS identity and account access\n   aws sts get-caller-identity\n   # Confirm Bedrock service availability in target region\n   aws bedrock list-foundation-models --region us-east-1\n   ```\n\n2. **IAM Permission Validation:**\n\n   ```bash\n   # Review user-specific Bedrock access policies\n   aws iam get-user-policy --user-name <user-name> --policy-name BedrockAccess\n   ```\n\n3. **Model Accessibility Testing:**\n\n   ```bash\n   # Verify access to configured language models\n   # Current implementation: Claude 3.5 Sonnet (anthropic.claude-3-5-sonnet-20241022-v2:0)\n   aws bedrock get-foundation-model \\\n     --model-identifier <model-identifier> \\\n     --region <aws-region>\n   ```",
+    "18": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#opensearch-connectivity-issues]\n\n### OpenSearch Connectivity Issues\n\nOpenSearch connection failures prevent vector storage and retrieval operations, significantly impacting RAG functionality. These issues may stem from network configuration, authentication problems, VPC connectivity, or service availability.\n\n**Common Symptoms:**\n\n- \"Connection refused\" errors when accessing OpenSearch endpoints\n- SSL/TLS certificate validation failures\n- Request timeout errors indicating network latency issues\n- ConnectionTimeout exceptions during background indexing tasks\n- Silent indexing failures with no documents stored despite API success responses\n\n**Resolution Procedures:**\n\n1. **Environment-Specific Endpoint Verification:**\n\n   ```bash\n   # Verify correct environment-specific OpenSearch endpoint is configured\n   # Check GitHub environment variables configuration\n   echo \"Current endpoint: $AWS_OPENSEARCH_ENDPOINT\"\n\n   # Ensure endpoint matches environment VPC:\n   # DEV: vpc-dev-us1-cm-osd-eap-rag-svc-[suffix]\n   # PROD: vpc-prod-us1-cm-osd-eap-rag-svc-[suffix]\n   # AVOID: vpc-mgt-us1-cm-osd-eap-rag-svc-[suffix] (management VPC)\n   ```\n\n2. **VPC Connectivity Testing:**\n\n   ```bash\n   # Test connectivity from within EKS cluster\n   kubectl exec -it deployment/eap-rag -- curl -k \"$OPENSEARCH_URL/_cluster/health\"\n\n   # Check security group configuration\n   aws ec2 describe-security-groups --group-ids <opensearch-sg-id>\n\n   # Verify EKS worker node security groups allow OpenSearch communication\n   ```\n\n3. **Background Task Monitoring:**\n\n   ```bash\n   # Monitor for connection timeout errors in service logs\n   kubectl logs deployment/eap-rag -f | grep -E \"(ConnectionTimeout|OpenSearch|embedding)\"\n\n   # Check for successful embedding generation vs storage failures\n   kubectl logs deployment/eap-rag --tail=100 | grep -E \"(bedrock.*200|opensearch.*timeout)\"\n   ```\n\n4. **GitHub Environment Variables Configuration:**\n\n   **Problem:** Using wrong VPC endpoint (e.g., `vpc-mgt` instead of `vpc-dev`)\n\n   **Solution:**\n\n   - Navigate to GitHub repository Settings → Environments\n   - Select appropriate environment (dev/prod)\n   - Update `AWS_OPENSEARCH_ENDPOINT` variable to match environment VPC\n   - Redeploy service to apply new configuration\n\n5. **Service Configuration Validation:**\n\n   ```bash\n   # Verify domain configuration and accessibility\n   aws opensearch describe-domain --domain-name <domain-name>\n\n   # Check VPC configuration matches EKS cluster VPC\n   aws opensearch describe-domain-config --domain-name <domain-name> --query 'DomainConfig.VPCOptions'\n   ```\n\n**Common Root Causes:**\n\n- **VPC Mismatch**: OpenSearch domain in different VPC than EKS cluster\n- **Security Group Rules**: Missing ingress rules for EKS worker nodes\n- **Environment Variable Errors**: Hardcoded endpoints or wrong environment values\n- **Network Routing**: Subnet routing not configured for cross-service communication",
+    "19": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#infrastructure-configuration-mismatch]\n\n## Infrastructure Configuration Mismatch\n\n**Critical Issue**: Misalignment between Infrastructure as Code (Terraform) provisioning and GitHub Actions deployment configuration can cause connectivity failures, namespace errors, and service deployment issues.\n\n**Architecture Challenge:**\n\n- **Terraform/Terragrunt** provisions AWS infrastructure (EKS clusters, OpenSearch domains, VPCs, security groups)\n- **GitHub Actions** deploys applications using configuration variables that must match the provisioned infrastructure\n- **Configuration Drift** occurs when these two systems use different values for the same resources\n\n**Common Mismatch Scenarios:**",
+    "20": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#eks-namespace-mismatch]\n\n### EKS Namespace Mismatch\n\n**Problem**: GitHub Actions deploys to different namespace than what Terraform provisioned or expects.\n\n**Symptoms:**\n\n- Deployment succeeds but services are not accessible\n- Ingress routing failures\n- Service discovery issues between components\n- Resource not found errors in kubectl commands\n\n**Diagnostic Steps:**\n\n1. **Compare Terraform vs GitHub Actions namespace configuration:**\n\n   ```bash\n   # Check what namespace Terraform expects/configures\n   cd infrastructure-as-code/terraform/deployments/aws/development/deploy-rag/primary\n   terragrunt show | grep namespace\n\n   # Check what namespace GitHub Actions uses\n   # Look in .github/workflows/deploy-rag-service.yml for NAMESPACE env var\n   grep -n \"NAMESPACE:\" .github/workflows/deploy-rag-service.yml\n   ```\n\n2. **Verify current deployment namespace:**\n\n   ```bash\n   # List all namespaces to see what exists\n   kubectl get namespaces\n\n   # Check which namespace contains the RAG service\n   kubectl get pods --all-namespaces | grep rag\n\n   # Verify ingress configuration matches deployment namespace\n   kubectl get ingress --all-namespaces\n   ```\n\n**Resolution:**\n\n- Update GitHub Actions workflow to use the correct namespace defined in Terraform\n- Or update Terraform configuration to match the desired namespace\n- Ensure all related resources (ingress, service accounts, secrets) use consistent namespace",
+    "21": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#opensearch-endpoint-url-mismatch]\n\n### OpenSearch Endpoint URL Mismatch\n\n**Problem**: GitHub Actions environment variables reference different OpenSearch domain than what Terraform provisioned.\n\n**Symptoms:**\n\n- Connection refused errors to OpenSearch\n- Silent background task failures during indexing\n- Health checks pass but vector storage fails\n- GitHub Actions reports successful indexing but no documents stored\n\n**Diagnostic Steps:**\n\n1. **Compare Terraform output vs GitHub environment variables:**\n\n   ```bash\n   # Get OpenSearch endpoint from Terraform state\n   cd infrastructure-as-code/terraform/deployments/aws/development/deploy-rag/primary\n   terragrunt output | grep opensearch\n\n   # Check GitHub environment variable configuration\n   # GitHub Settings > Environments > dev > Environment variables\n   # Look for AWS_OPENSEARCH_ENDPOINT value\n   ```\n\n2. **Verify endpoint accessibility:**\n\n   ```bash\n   # Test connectivity to Terraform-provisioned endpoint\n   aws opensearch describe-domain --domain-name <terraform-domain-name>\n\n   # Test connectivity from within EKS cluster\n   kubectl exec deployment/eap-rag -- curl -k \"$OPENSEARCH_URL/_cluster/health\"\n   ```\n\n**Common Patterns:**\n\n- Terraform provisions `vpc-dev-us1-cm-osd-eap-rag-svc-*` domain\n- GitHub Actions configured with `vpc-mgt-us1-cm-osd-eap-rag-svc-*` domain\n- Environment mismatch: dev GitHub environment using prod OpenSearch URL\n\n**Resolution:**\n\n- Update GitHub environment variables to match Terraform outputs\n- Use Terraform output values to automatically populate GitHub variables\n- Implement validation checks in deployment workflow",
+    "22": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#prevention-strategies]\n\n### Prevention Strategies\n\n1. **Configuration Validation:**\n\n   ```bash\n   # Add validation step to GitHub Actions workflow\n   - name: Validate Infrastructure Alignment\n     run: |\n       # Compare expected vs actual resource names\n       # Fail deployment if critical mismatches detected\n   ```\n\n2. **Automated Synchronization:**\n\n   ```bash\n   # Use Terraform outputs to set GitHub environment variables\n   # Implement infrastructure discovery in deployment workflows\n   ```\n\n3. **Documentation Standards:**\n\n   - Maintain mapping between Terraform resource names and GitHub variables\n   - Document naming conventions and environment-specific patterns\n   - Establish change control process for infrastructure configuration\n\n4. **Monitoring and Alerting:**\n   - Monitor for deployment success vs actual functionality\n   - Alert on resource naming mismatches\n   - Track configuration drift between infrastructure and deployment",
+    "23": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#eks-deployment-issues]\n\n## EKS Deployment Issues",
+    "24": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#pod-startup-and-lifecycle-failures]\n\n### Pod Startup and Lifecycle Failures\n\nKubernetes pod failures in EKS environments typically result from image availability issues, resource constraints, or configuration errors. These failures prevent service deployment and can cause service unavailability.\n\n**Common Symptoms:**\n\n- Pods entering CrashLoopBackOff state due to repeated startup failures\n- ImagePullBackOff errors indicating container registry access issues\n- Pod scheduling failures due to resource constraints or node availability\n\n**Resolution Procedures:**\n\n1. **Pod Status Analysis:**\n\n   ```bash\n   # Comprehensive pod status and event information\n   kubectl get pods -n <namespace>\n   kubectl describe pod <pod-name> -n <namespace>\n   ```\n\n2. **Log Analysis:**\n\n   ```bash\n   # Current and previous pod execution logs\n   kubectl logs <pod-name> -n <namespace>\n   kubectl logs <pod-name> -n <namespace> --previous\n   ```\n\n3. **Container Image Verification:**\n\n   ```bash\n   # Verify container registry image availability\n   # Current implementation: Amazon ECR\n   aws ecr describe-images --repository-name <repo-name>\n   ```",
+    "25": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#health-check-and-readiness-failures]\n\n### Health Check and Readiness Failures\n\nLoad balancer health checks and Kubernetes readiness probes ensure traffic routing only to healthy service instances. Failures in these checks can result in service unavailability despite successful pod deployment.\n\n**Common Symptoms:**\n\n- Load balancer removing pods from traffic rotation due to health check failures\n- Readiness probe failures preventing pod traffic acceptance\n- Service unavailable errors despite running pods\n\n**Resolution Procedures:**\n\n1. **Direct Health Endpoint Testing:**\n\n   ```bash\n   # Test health endpoint bypassing load balancer\n   kubectl port-forward pod/<pod-name> 8000:8000 -n <namespace>\n   curl http://localhost:8000/health\n   ```\n\n2. **Service Configuration Validation:**\n\n   ```bash\n   # Review service definition and endpoint configuration\n   kubectl get service rag-service -n <namespace> -o yaml\n   ```\n\n3. **Probe Configuration Analysis:**\n\n   ```bash\n   # Examine readiness probe configuration and thresholds\n   kubectl get deployment rag-service -n <namespace> -o yaml | \\\n     grep -A 10 readinessProbe\n   ```",
+    "26": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#api-issues]\n\n## API Issues",
+    "27": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#search-endpoint-performance-and-errors]\n\n### Search Endpoint Performance and Errors\n\nSearch endpoint failures represent critical functionality issues that prevent users from accessing RAG capabilities. These issues may stem from AI service connectivity, vector database problems, or application logic errors.\n\n**Common Symptoms:**\n\n- HTTP 500 Internal Server Error responses indicating application failures\n- Request timeout errors suggesting performance bottlenecks\n- Invalid response format\n\n**Solutions:**\n\n1. **Test with simple query:**\n\n   ```bash\n   curl -X POST http://localhost:8000/search \\\n     -H \"Content-Type: application/json\" \\\n     -d '{\"query\": \"test\", \"max_results\": 1}'\n   ```\n\n2. **Check AI service status:**\n\n   ```bash\n   # Verify Bedrock connectivity\n   python -c \"\n   import boto3\n   client = boto3.client('bedrock-runtime', region_name='us-east-1')\n   print('Bedrock client created successfully')\n   \"\n   ```\n\n3. **Review application logs:**\n\n   ```bash\n   # Look for specific error patterns\n   kubectl logs deployment/rag-service -n <namespace> | grep ERROR\n   ```",
+    "28": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#silent-background-task-failures]\n\n### Silent Background Task Failures\n\n**Critical Issue**: The RAG service uses asynchronous background tasks for content indexing to ensure rapid API response times. This architecture can mask failures where the API responds with success (HTTP 200) but the background indexing process fails silently.\n\n**Architecture Pattern:**\n\n1. **API Request** - `/api/v1/index` receives indexing request\n2. **Immediate Response** - Returns HTTP 200 \"success\" acknowledgment\n3. **Background Task** - `BackgroundTasks.add_task()` triggers actual indexing asynchronously\n4. **Silent Failure Point** - Background task failures (OpenSearch connectivity, VPC issues) are not propagated to the original API response\n\n**Common Symptoms:**\n\n- GitHub Actions reports \"successful indexing\" with document counts (e.g., \"762 embeddings indexed\")\n- API health checks pass and service appears healthy\n- Search queries return no results or very few results\n- Stats endpoint shows 0 or unexpectedly low document counts\n- No obvious errors in application logs without debug-level logging\n\n**Diagnostic Procedures:**\n\n1. **Verify Actual vs Reported Indexing:**\n\n   ```bash\n   # Check what GitHub Actions workflow reported\n   # vs actual OpenSearch stats\n\n   # Get actual document count from OpenSearch\n   curl -k \"https://localhost:8443/api/v1/stats\" | jq '.indexing.total_documents'\n\n   # Compare with GitHub Actions workflow logs claiming success\n   ```\n\n2. **Monitor Background Task Execution:**\n\n   ```bash\n   # Enable DEBUG logging to see background task details\n   kubectl logs deployment/eap-rag -f | grep -E \"(BackgroundTask|indexing|OpenSearch|embedding)\"\n\n   # Look for patterns like:\n   # - \"Starting background indexing...\" (task started)\n   # - \"Generated embeddings successfully\" (Bedrock working)\n   # - \"ConnectionTimeout\" or \"OpenSearch error\" (actual failure point)\n   ```\n\n3. **Test Background Task Dependencies:**\n\n   ```bash\n   # Test OpenSearch connectivity from within pod\n   kubectl exec deployment/eap-rag -- curl -k \"$OPENSEARCH_URL/_cluster/health\"\n\n   # Check for VPC connectivity issues\n   kubectl exec deployment/eap-rag -- nslookup $OPENSEARCH_URL\n   ```\n\n4. **Verify Environment Configuration:**\n\n   ```bash\n   # Check if using correct environment-specific OpenSearch endpoint\n   kubectl get configmap rag-service-config -o yaml | grep OPENSEARCH_URL\n\n   # Ensure not using management VPC endpoint (vpc-mgt) for dev environment\n   # Should see vpc-dev for development, vpc-prod for production\n   ```\n\n**Root Cause Resolution:**\n\nThe most common cause is VPC connectivity issues where:\n\n- API and health checks work (service is healthy)\n- AWS authentication succeeds (Bedrock embeddings generate)\n- OpenSearch connection fails due to VPC/security group misconfiguration\n- Background tasks fail silently without affecting API response\n\n**Prevention Strategies:**\n\n1. **Enhanced Monitoring:**\n\n   ```bash\n   # Add monitoring for background task completion rates\n   # Track actual document count vs. expected count\n   # Alert on significant discrepancies between API success and actual indexing\n   ```\n\n2. **Validation Endpoints:**\n\n   ```bash\n   # After indexing operations, always verify with stats endpoint\n   curl -k \"https://localhost:8443/api/v1/stats\"\n\n   # Check document count matches expectations\n   # Verify last_indexed timestamp is recent\n   ```\n\n3. **Environment Variable Validation:**\n\n   - Use environment-specific GitHub variables for OpenSearch endpoints\n   - Avoid hardcoded URLs that may point to wrong VPC\n   - Test connectivity during deployment validation",
+    "29": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#problem-cors-issues]\n\n### Problem: CORS Issues\n\n**Symptoms:**\n\n- Browser blocking requests\n- \"Access-Control-Allow-Origin\" errors\n- Preflight request failures\n\n**Solutions:**\n\n1. **Check CORS configuration:**\n\n   ```python\n   # Verify CORS middleware in main.py\n   from fastapi.middleware.cors import CORSMiddleware\n   ```\n\n2. **Test from command line:**\n\n   ```bash\n   curl -X OPTIONS http://localhost:8000/search \\\n     -H \"Origin: http://localhost:3000\" \\\n     -H \"Access-Control-Request-Method: POST\"\n   ```",
+    "30": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#performance-issues]\n\n## Performance Issues",
+    "31": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#problem-slow-response-times]\n\n### Problem: Slow Response Times\n\n**Symptoms:**\n\n- Requests taking >30 seconds\n- Timeout errors\n- High CPU/memory usage\n\n**Solutions:**\n\n1. **Monitor resource usage:**\n\n   ```bash\n   # Check pod resources\n   kubectl top pods -n <namespace>\n   kubectl describe pod <pod-name> -n <namespace>\n   ```\n\n2. **Analyze bottlenecks:**\n\n   ```bash\n   # Check AI service response times\n   time curl -X POST http://localhost:8000/search \\\n     -H \"Content-Type: application/json\" \\\n     -d '{\"query\": \"test\", \"max_results\": 5}'\n   ```\n\n3. **Review vector search performance:**\n\n   ```bash\n   # Check OpenSearch cluster health\n   curl \"https://<opensearch-endpoint>/_cluster/health?pretty\"\n   ```",
+    "32": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#problem-memory-issues]\n\n### Problem: Memory Issues\n\n**Symptoms:**\n\n- Out of memory errors\n- Pod restarts\n- Slow garbage collection\n\n**Solutions:**\n\n1. **Increase pod memory limits:**\n\n   ```yaml\n   resources:\n     limits:\n       memory: '2Gi'\n     requests:\n       memory: '1Gi'\n   ```\n\n2. **Monitor memory usage:**\n\n   ```bash\n   kubectl top pod <pod-name> -n <namespace>\n   ```",
+    "33": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#performance-optimization-strategies]\n\n### Performance Optimization Strategies\n\nThe following optimization strategies can significantly improve RAG service performance:\n\n- **Caching** - Redis caching for frequent queries reduces response times and AWS API calls\n- **Connection Pooling** - Database connection optimization minimizes connection overhead\n- **Async Operations** - Non-blocking I/O operations improve concurrent request handling\n- **Load Balancing** - Horizontal scaling support distributes workload across multiple pods\n- **Vector Indexing** - Optimized similarity search algorithms enhance retrieval speed",
+    "34": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#caching-implementation]\n\n#### Caching Implementation\n\n```python\n# Redis caching for embeddings and responses\nCACHE_CONFIG = {\n    \"embedding_ttl\": 3600,  # 1 hour\n    \"response_ttl\": 1800,   # 30 minutes\n    \"max_memory\": \"2gb\"\n}\n```",
+    "35": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#connection-pool-optimization]\n\n#### Connection Pool Optimization\n\n```python\n# OpenSearch connection pooling\nOPENSEARCH_POOL = {\n    \"max_connections\": 50,\n    \"max_retries\": 3,\n    \"timeout\": 30\n}\n```",
+    "36": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#monitoring-and-observability]\n\n### Monitoring and Observability\n\nComprehensive monitoring ensures optimal service performance and early issue detection:\n\n- **Health Checks** - Service health endpoints provide real-time status information\n- **Metrics** - Performance and usage metrics track system behavior over time\n- **Logging** - Structured logging with correlation IDs enables request tracing\n- **Tracing** - Distributed request tracing shows complete request journey\n- **Alerting** - Automated issue detection triggers proactive responses",
+    "37": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#key-performance-metrics]\n\n#### Key Performance Metrics\n\nMonitor these critical metrics for optimal performance:\n\n```yaml\n# Prometheus metrics configuration\nmetrics:\n  - name: 'rag_request_duration_seconds'\n    description: 'Request processing time'\n    type: 'histogram'\n\n  - name: 'rag_embedding_generation_duration'\n    description: 'Embedding generation time'\n    type: 'histogram'\n\n  - name: 'rag_vector_search_duration'\n    description: 'Vector search time'\n    type: 'histogram'\n\n  - name: 'rag_llm_response_duration'\n    description: 'LLM response generation time'\n    type: 'histogram'\n```",
+    "38": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#alerting-rules]\n\n#### Alerting Rules\n\n```yaml\n# CloudWatch alerts\nalerts:\n  - name: 'High Response Time'\n    metric: 'rag_request_duration_seconds'\n    threshold: '> 30s'\n\n  - name: 'High Error Rate'\n    metric: 'rag_error_rate'\n    threshold: '> 5%'\n\n  - name: 'Memory Usage'\n    metric: 'container_memory_usage_bytes'\n    threshold: '> 80%'\n```",
+    "39": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#common-error-codes]\n\n### Common Error Codes\n\n| Error Code | Description           | Common Cause         | Solution                 |\n| ---------- | --------------------- | -------------------- | ------------------------ |\n| 500        | Internal Server Error | AWS service failure  | Check AWS connectivity   |\n| 503        | Service Unavailable   | Pod not ready        | Check health probes      |\n| 400        | Bad Request           | Invalid query format | Validate request payload |\n| 429        | Too Many Requests     | Rate limiting        | Implement retry logic    |",
+    "40": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#aws-error-codes]\n\n### AWS Error Codes\n\n| Error                 | Service    | Cause                    | Solution              |\n| --------------------- | ---------- | ------------------------ | --------------------- |\n| AccessDeniedException | Bedrock    | Missing IAM permissions  | Update IAM policy     |\n| ThrottlingException   | Bedrock    | Rate limit exceeded      | Implement backoff     |\n| ValidationException   | Bedrock    | Invalid model parameters | Check model ID        |\n| ConnectionTimeout     | OpenSearch | Network issues           | Check security groups |",
+    "41": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#getting-help]\n\n## Getting Help",
+    "42": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#log-analysis]\n\n### Log Analysis\n\n1. **Application logs:**\n\n   ```bash\n   kubectl logs deployment/rag-service -n <namespace> --tail=100\n   ```\n\n2. **AWS CloudWatch logs:**\n\n   ```bash\n   aws logs describe-log-groups\n   aws logs tail <log-group-name> --follow\n   ```",
+    "43": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#escalation-process]\n\n### Escalation Process\n\n1. **Check documentation** first\n2. **Search existing issues** in repository\n3. **Create issue** with:\n   - Error messages\n   - Reproduction steps\n   - Environment details\n   - Log excerpts",
+    "44": "[.tooling/components/apis/rag-service/docs/06-troubleshooting.md#debug-mode]\n\n### Debug Mode\n\nEnable debug logging for more detailed information:\n\n```bash\n# Local development\nLOG_LEVEL=DEBUG python _helpers/run.py\n\n# EKS deployment\nkubectl set env deployment/rag-service LOG_LEVEL=DEBUG -n <namespace>\n```\n\n---\n\n> **Note**: This troubleshooting guide addresses the current implementation using AWS Bedrock for language model services and Amazon EKS for container orchestration. For historical issues with alternative AI providers or deployment platforms, refer to archived documentation or version-specific guides."
+  },
+  "coverage": {
+    "total_pages": 44,
+    "covered_pages": 44,
+    "sampled_pages": 44,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 44
+  }
+}

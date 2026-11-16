@@ -1,0 +1,93 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Deployment - Acquire TFSTATE",
+  "document_description": "Back to [Project](../../../../../../README.md) | [IAC](../../../../../README.md) | [Terraform](../../../../README.md) | [Deployments](../../../README.md) | [AWS](../../README.md) | [Environment](../README.md)",
+  "total_pages": 8,
+  "tree": [
+    {
+      "title": "Deployment - Acquire TFSTATE",
+      "node_id": "deployment---acquire-tfstate",
+      "start_index": 1,
+      "end_index": 8,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Description",
+          "node_id": "description",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Formations",
+          "node_id": "formations",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Example Use",
+          "node_id": "example-use",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Dependent Deployments",
+          "node_id": "dependent-deployments",
+          "start_index": 5,
+          "end_index": 5,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Consuming Deployments",
+          "node_id": "consuming-deployments",
+          "start_index": 6,
+          "end_index": 7,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "deploy-rag",
+              "node_id": "deploy-rag",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "State",
+          "node_id": "state",
+          "start_index": 8,
+          "end_index": 8,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[.tooling/iac/terraform/deployments/aws/development/acquire-tfstate/README.md#deployment---acquire-tfstate]\n\n# Deployment - Acquire TFSTATE\n\nBack to [Project](../../../../../../README.md) | [IAC](../../../../../README.md) | [Terraform](../../../../README.md) | [Deployments](../../../README.md) | [AWS](../../README.md) | [Environment](../README.md)",
+    "2": "[.tooling/iac/terraform/deployments/aws/development/acquire-tfstate/README.md#description]\n\n## Description\n\nThis deployment gathers the product's TFSTATE established by Platform Gainwell (`pfe-pg` repo) for the `initialize-account` and `onboard-product` deployments. A copy of the state is saved into the product-specific state bucket for access by product-specific deployments.\n\n**Key Role**: This deployment serves as the foundation for product-specific deployments by providing access to shared infrastructure components (VPC, EKS cluster, subnets) that are managed by Platform Engineering but needed by product deployments like the RAG architecture.",
+    "3": "[.tooling/iac/terraform/deployments/aws/development/acquire-tfstate/README.md#formations]\n\n## Formations\n\n| Name                                                                                                                          | Version |\n| ----------------------------------------------------------------------------------------------------------------------------- | ------- |\n| [acquire-tfstate](https://github.com/mygainwell/pfe-iac-modules/tree/main/terraform/formations/aws/acquire-tfstate/README.md) | v1.3.3  |",
+    "4": "[.tooling/iac/terraform/deployments/aws/development/acquire-tfstate/README.md#example-use]\n\n## Example Use\n\nOpen a VSCode terminal and navigate to terragrunt.hcl file folder. The following commands are available:\n\n```text\nterragrunt init\nterragrunt plan\nterragrunt apply\nterragrunt destroy\n```",
+    "5": "[.tooling/iac/terraform/deployments/aws/development/acquire-tfstate/README.md#dependent-deployments]\n\n## Dependent Deployments\n\n**Prerequisites (Platform Gainwell controlled):**\n\n- `Initialize Account` - [Platform Gainwell](https://github.com/mygainwell/pfe-pg) controlled\n- `Onboard Product` - [Platform Gainwell](https://github.com/mygainwell/pfe-pg) controlled\n\n**Product Deployments (depends on this deployment):**\n\n- `deploy-rag` - RAG (Retrieval-Augmented Generation) architecture deployment using OpenSearch + Bedrock + EKS IRSA",
+    "6": "[.tooling/iac/terraform/deployments/aws/development/acquire-tfstate/README.md#consuming-deployments]\n\n## Consuming Deployments\n\nThe following deployments consume the acquired tfstate data:",
+    "7": "[.tooling/iac/terraform/deployments/aws/development/acquire-tfstate/README.md#deploy-rag]\n\n### deploy-rag\n\nThe RAG deployment references the following acquired state outputs:\n\n| Resource                          | Usage                                                               |\n| --------------------------------- | ------------------------------------------------------------------- |\n| `account_vpcs[\"shared-services\"]` | VPC configuration for OpenSearch domain placement                   |\n| `eks_cluster.eks`                 | EKS cluster configuration for IRSA (IAM Roles for Service Accounts) |\n| Private subnets                   | OpenSearch domain subnet placement in data-tier subnets             |\n\n**Example terragrunt dependency:**\n\n```hcl\ndependency \"platform\" {\n  config_path = \"../../acquire-tfstate/${local.region_context}\"\n}\n\n# Usage in inputs\nvpc_id = dependency.platform.outputs.remote_tfstates.account.outputs.account_vpcs[\"shared-services\"].vpc_id\neks_cluster_name = dependency.platform.outputs.remote_tfstates.account.outputs.eks_cluster.eks.id\n```",
+    "8": "[.tooling/iac/terraform/deployments/aws/development/acquire-tfstate/README.md#state]\n\n## State\n\nThis formation will persist IaC state in the account-level state bucket created by the [Platform Gainwell onboard-product deployment](https://github.com/mygainwell/pfe-pg/tree/main/infrastructure-as-code/terraform/deployments/aws/development/onboard-products/pfe-example)."
+  },
+  "coverage": {
+    "total_pages": 8,
+    "covered_pages": 8,
+    "sampled_pages": 8,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 8
+  }
+}

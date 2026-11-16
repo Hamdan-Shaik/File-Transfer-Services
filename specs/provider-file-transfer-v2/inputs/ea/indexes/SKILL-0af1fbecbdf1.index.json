@@ -1,0 +1,194 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Scope",
+  "document_description": "Review uncommitted or staged changes for authoring standard compliance, internal consistency, cross-document coherence, and — when GitHub Actions workflows or automation scripts are present — tooling correctness.",
+  "total_pages": 19,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 19,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Scope",
+          "node_id": "scope",
+          "start_index": 2,
+          "end_index": 3,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Skill Collaboration",
+              "node_id": "skill-collaboration",
+              "start_index": 3,
+              "end_index": 3,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Workflow",
+          "node_id": "workflow",
+          "start_index": 4,
+          "end_index": 18,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Step 1 — Gather and Categorize the Diff",
+              "node_id": "step-1--gather-and-categorize-the-diff",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Step 2 — Review EA Artifacts",
+              "node_id": "step-2--review-ea-artifacts",
+              "start_index": 6,
+              "end_index": 15,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Determine Artifact Type and Governing Standard",
+                  "node_id": "determine-artifact-type-and-governing-standard",
+                  "start_index": 7,
+                  "end_index": 7,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Security Domain Routing",
+                  "node_id": "security-domain-routing",
+                  "start_index": 8,
+                  "end_index": 8,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Authoring Standard Compliance",
+                  "node_id": "authoring-standard-compliance",
+                  "start_index": 9,
+                  "end_index": 9,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Content Quality",
+                  "node_id": "content-quality",
+                  "start_index": 10,
+                  "end_index": 10,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Internal Consistency",
+                  "node_id": "internal-consistency",
+                  "start_index": 11,
+                  "end_index": 11,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Cross-Document Consistency",
+                  "node_id": "cross-document-consistency",
+                  "start_index": 12,
+                  "end_index": 12,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Lifecycle and Change Impact",
+                  "node_id": "lifecycle-and-change-impact",
+                  "start_index": 13,
+                  "end_index": 13,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Structural and Governance Checks",
+                  "node_id": "structural-and-governance-checks",
+                  "start_index": 14,
+                  "end_index": 14,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "PR Description Compliance",
+                  "node_id": "pr-description-compliance",
+                  "start_index": 15,
+                  "end_index": 15,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Step 3 — Review GitHub Actions Workflows and Scripts (Conditional)",
+              "node_id": "step-3--review-github-actions-workflows-and-scripts-conditional",
+              "start_index": 16,
+              "end_index": 16,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Step 4 — Discover and Apply Applicable Standards",
+              "node_id": "step-4--discover-and-apply-applicable-standards",
+              "start_index": 17,
+              "end_index": 17,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Step 5 — Rank and Report Findings",
+              "node_id": "step-5--rank-and-report-findings",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Guidelines",
+          "node_id": "guidelines",
+          "start_index": 19,
+          "end_index": 19,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "Review uncommitted or staged changes for authoring standard compliance, internal consistency, cross-document coherence, and — when GitHub Actions workflows or automation scripts are present — tooling correctness.",
+    "2": "[.claude/skills/ea-reviewer/SKILL.md#scope]\n\n## Scope\n\n- If `$ARGUMENTS` is a PR number, review that PR's diff\n- If `$ARGUMENTS` is a branch name, review changes on that branch against main\n- If `$ARGUMENTS` is one or more file paths that are not yet committed, staged, or part of any PR, review those files directly — this supports quality-checking a draft before it is written, committed, or opened as a PR (e.g., when invoked as a subagent during an authoring agent's self-audit)\n- Otherwise review the current working tree changes\n\nThis Skill covers all Enterprise Architecture (EA) artifact types defined in `foundation/CONTRIBUTING.md` section 4.1:\n\n| Artifact Type | Target Directory | ID Convention |\n| --- | --- | --- |\n| Pattern | `patterns/{domain}/` | `PTN-{CATEGORY}-{TYPE}-{NNN}` |\n| Standard | `standards/{domain}/` | `STD-{CATEGORY}-{TYPE}-{NNN}` |\n| Architecture Guidance | `strategy/guidance/{domain}/` | `GUID-{CATEGORY}-{TYPE}-{NNN}` |\n| ADR | `decisions/` | No ID convention — named by decision |\n| Best Practice | `strategy/best-practices/` | `BP-{CATEGORY}-{TYPE}-{NNN}` |\n| Reference Architecture | `strategy/reference/` | `REF-{CATEGORY}-{TYPE}-{NNN}` |\n| White Paper | `strategy/white-papers/{domain}/` | No ID convention |\n| Guiding Principle | `guiding-principles/` | No ID convention |\n| Security artifact | `strategy/guidance/security/{subdomain}/` | See Security Domain Routing below |\n\nThis Skill also covers GitHub Actions workflow files and automation scripts when present in the diff.\n\nThis Skill does NOT cover: making fixes or authoring new content — direct the user to invoke the `ea-author` agent, which owns EA-artifact authoring and revision (per `AGENTS.md`'s Agent Separation of Duties table); AI construct definitions — Skills (`.claude/skills/`, `.github/skills/` pointers), Agents (`.github/agents/`), and Commands/Prompts (`.claude/commands/`, `.github/prompts/`) — governed by STD-TEC-AI-001/002/004, not by this Skill's `foundation/CONTRIBUTING.md` taxonomy. If asked to review one, say so directly and direct the user to `ai-reviewer` instead of forcing it through this Skill's checks; ordinary application source code, tests, configuration, or IaC changes that are neither an EA artifact nor an AI construct — this repository relies on GitHub Copilot's native PR review for those, the same native-review boundary `ea-reviewer.agent.md` and `ai-review.agent.md` already declare for PR-level review.",
+    "3": "[.claude/skills/ea-reviewer/SKILL.md#skill-collaboration]\n\n### Skill Collaboration\n\nThe reviewer **gates merges** — it reviews what changed, not the full repository.\n\n| Collaborator | Relationship |\n| --- | --- |\n| **enterprise-architect** | Reviewer checks architectural compliance in changed content. For deeper architectural concerns — including whether an artifact set is complete for its stated outcome — direct the user to invoke the `enterprise-architect` skill. |\n| **documenter** | If documentation is missing, incomplete, or requires new content, direct the user to invoke `/documenter`. |\n| **ai-convergence** | Author-side pre-commit gate that prevents the consistency gaps this Skill surfaces. When findings include parallel statement gaps, prose-to-structure mismatches, or cross-file enumeration inconsistencies, note that the author can resolve all of them in a single `/ai-convergence` pass before the next push. |\n\n**Glossary**: Read-only consumer.\n\n**Scope distinction from ai-convergence**: Reviewer is scoped to **what changed** (PR/diff) and renders an Approve/Request Changes verdict. ai-convergence is an author-side pre-commit gate that closes consistency gaps before the reviewer sees the diff.",
+    "4": "[.claude/skills/ea-reviewer/SKILL.md#workflow]\n\n## Workflow",
+    "5": "[.claude/skills/ea-reviewer/SKILL.md#step-1--gather-and-categorize-the-diff]\n\n### Step 1 — Gather and Categorize the Diff\n\n1. Gather the diff based on the scope argument routing above.\n2. Categorize each changed file using the artifact type table above.\n3. Note any files that are GitHub Actions workflow YAML or automation scripts — these are reviewed separately in Step 3.",
+    "6": "[.claude/skills/ea-reviewer/SKILL.md#step-2--review-ea-artifacts]\n\n### Step 2 — Review EA Artifacts\n\nFor each changed EA artifact, perform all checks below.",
+    "7": "[.claude/skills/ea-reviewer/SKILL.md#determine-artifact-type-and-governing-standard]\n\n#### Determine Artifact Type and Governing Standard\n\n1. Identify the artifact type by matching the file's directory path to the target directory column in the scope table.\n2. Locate the applicable governing resources from `foundation/CONTRIBUTING.md` section 4.1–4.4. Each artifact type lists its available governance resources (creation guidelines, quality checklist, or both) — read whichever are listed before reviewing that artifact type.\n3. For Security artifacts: apply the Security Domain Routing rule before assessing placement (see below).",
+    "8": "[.claude/skills/ea-reviewer/SKILL.md#security-domain-routing]\n\n#### Security Domain Routing\n\nThe Security domain consolidates all architecture content in `strategy/guidance/security/` by intentional design — see `foundation/CONTRIBUTING.md` section 4.1 for the full rationale.\n\n- **Route to `strategy/guidance/security/`**: All new security architecture content — reference architectures, architectural guidance, strategies, and domain-specific implementation guidance.\n- **Route to `patterns/security/`**: Technical implementation patterns unambiguously scoped to a single pattern type.\n- **Route to `standards/security/`**: Compliance-baseline standards unambiguously scoped to a single standard type.\n- **When content spans or blurs the boundary**: Route to `strategy/guidance/security/`.\n\nFor Security artifacts specifically, verify the correct TOGAF-aligned template was used. The seven templates — Architecture Vision, Capability Descriptions, Capability Map, ABB Definition, ABB Catalog, Reference Architecture, SBB — are defined in `resources/work-templates/assets/artifacts/` and governed by `resources/work-templates/assets/artifacts/security-template-creation-guidelines.md`.",
+    "9": "[.claude/skills/ea-reviewer/SKILL.md#authoring-standard-compliance]\n\n#### Authoring Standard Compliance\n\nVerify the artifact's structure, frontmatter fields, metadata block, and required sections conform to:\n- Its creation guidelines document (located via `foundation/CONTRIBUTING.md` section 4.1–4.4)\n- Its quality checklist (same location)",
+    "10": "[.claude/skills/ea-reviewer/SKILL.md#content-quality]\n\n#### Content Quality\n\nStructural compliance tells you the artifact has the right shape. Content quality tells you whether it's actually doing its job. Apply the criteria below based on artifact type — these are judgment questions, not mechanical checks.\n\n**Standard**: Is each requirement measurable and verifiable — can a team prove compliance? Is the rationale given (why mandatory rather than recommended)? Are exceptions and their approval path defined? Are requirements specific enough to act on, or are they vague mandates without actionable criteria?\n\n**Pattern**: Is the problem statement specific and recurring — would multiple teams face this same problem across different contexts? Does the solution describe structure, participants, and relationships — not just \"use technology X\"? Are forces and trade-offs documented, including when the pattern is the wrong choice? Would the pattern remain recognizable across different technology implementations?\n\n**Architecture Guidance**: Is the \"why\" stated before the \"how\"? Are the steps specific enough to execute without further clarification? Are decision points identified so a practitioner knows when to branch?\n\n**ADR**: Is the context specific enough that someone unfamiliar with the situation can understand why this was a decision point at all? Were real alternatives considered — not strawmen that were obviously wrong from the start? Is the rationale honest about trade-offs rather than just justifying the chosen option? Does it capture information that would be lost over time without this record?\n\n**White Paper**: Are claims evidence-based rather than asserted? Are recommendations specific and actionable, not just conclusions?\n\n**Best Practice**: Is there evidence of proven effectiveness, not just preference? Is it specific enough to implement and distinguish from a general guideline?\n\nContent quality gaps below Medium severity — vague language that doesn't impede understanding, minor incompleteness in non-critical sections — should be noted as suggestions, not blocking findings.",
+    "11": "[.claude/skills/ea-reviewer/SKILL.md#internal-consistency]\n\n#### Internal Consistency\n\nCheck each changed file for consistency gaps within the file itself:\n\n- **Parallel statement gaps** — identify every concept described in more than one section of the file; verify all occurrences are mutually consistent\n- **Prose-to-structure gaps** — verify prose descriptions match their structured counterparts (tables, step lists, numbered sequences, diagrams); a condition added to prose must appear in every table row, step, and diagram node that covers the same concept\n- **Counter-to-enumeration mismatches** — when a heading, intro, or summary states a count (\"12 core skills\", \"5 phases\", \"three required fields\"), count the actual items in the enumeration and verify they match\n- **Claim-vs-instruction gaps** — when a document states it addresses a risk or limitation, verify the procedure that follows actually closes the gap; a warning paired with steps that still produce the warned-about outcome is a defect",
+    "12": "[.claude/skills/ea-reviewer/SKILL.md#cross-document-consistency]\n\n#### Cross-Document Consistency\n\nCheck the changed files against each other and against existing documents in the repo:\n\n- **Cross-file enumeration propagation** — when multiple changed files enumerate the same concept (field list, classification set, item list), verify every enumeration is consistent; flag any file whose list omits an item present in the authoritative source\n- **Contradiction detection** — verify new content does not contradict existing documents; if a new ADR or standard conflicts with an existing one, flag both\n- **Claims verification** — when a document claims \"standard X requires Y\" or \"control Z provides W\", verify the referenced document actually exists and makes that claim",
+    "13": "[.claude/skills/ea-reviewer/SKILL.md#lifecycle-and-change-impact]\n\n#### Lifecycle and Change Impact\n\n- **Breaking change detection** — flag any change that weakens normative language (MUST → SHOULD → MAY), removes a requirement, or removes a required section from a previously accepted artifact; teams may have built compliance postures against it and a silent weakening constitutes an undisclosed breaking change\n- **Status transition compliance** — verify that a status change (draft → accepted, accepted → deprecated) is accompanied by evidence of the appropriate governance gate (EA practice team review, ARB approval); a document that self-promotes its own status without a governance record is a Critical finding\n- **Deprecation completeness** — when an artifact is deprecated or superseded, verify it references its replacement; a deprecated artifact with no successor leaves adopters with no migration path\n- **Traceability integrity** — when an artifact cites a governing standard, pattern, or guiding principle by ID or path, verify the referenced artifact exists and is at a lifecycle status the artifact type designates as authoritative (e.g., approved, active, Accepted, ratified); a guidance document that only cites proposed or draft authorities cannot carry normative weight\n- **Orphan risk on removals and renames** — when a file is removed or renamed, search for other documents in the repo that reference it by path; unresolved references become silently broken links in the enterprise source of truth\n- **Revision scope discipline** — for a revision (not new authorship), verify every change traces to a specific requested change or named finding; flag any restructuring, rewriting, or expansion of a section the request did not flag as an unauthorized scope expansion, not a quality improvement",
+    "14": "[.claude/skills/ea-reviewer/SKILL.md#structural-and-governance-checks]\n\n#### Structural and Governance Checks\n\n- **Cross-reference integrity** — verify all internal links resolve to actual files in the repo; do not assume paths are correct without checking\n- **Placeholder and stub detection** — flag any `[bracketed placeholder]`, `TODO`, `TBD`, or template boilerplate text that was not replaced; these pass structural checks silently and erode the repo's authority\n- **Normative authority** — when a document uses MUST, SHALL, or other normative language, verify the statement is not presented as already binding or enforceable while the document's own status is `draft`/`proposed`, or while it depends entirely on a cited authority that is itself `draft`/`proposed`. A `draft` Standard is expected to propose Mandatory Requirements — that is the normal drafting lifecycle, not a defect. The real defect is language asserting current enforceability (e.g., \"teams must comply with this today\") for a requirement that has not yet cleared governance ratification\n- **Directory taxonomy** — confirm new documents are placed in the correct directory per the artifact type table and Security domain routing rule; misplaced artifacts are a High severity finding\n- **ID scheme compliance** — verify new artifact IDs follow the naming convention for their type (see scope table); check for collisions with existing IDs in the same directory\n- **Version continuity** — for updated documents, verify the version bump is appropriate (patch/minor/major) and the change history table is updated",
+    "15": "[.claude/skills/ea-reviewer/SKILL.md#pr-description-compliance]\n\n#### PR Description Compliance\n\nWhen reviewing a PR (not a local diff), verify the PR description includes:\n- AI review confirmation — which model was used (per `foundation/CONTRIBUTING.md` section 10.0)\n- Key improvements made based on AI recommendations\n- Standards compliance notes for any linting or formatting issues resolved",
+    "16": "[.claude/skills/ea-reviewer/SKILL.md#step-3--review-github-actions-workflows-and-scripts-conditional]\n\n### Step 3 — Review GitHub Actions Workflows and Scripts (Conditional)\n\nPerform this step only when the diff contains `.github/workflows/` YAML files or automation scripts.\n\nFor each workflow or script change, analyze for:\n\n- **Correctness** — logic errors, incorrect trigger conditions, broken job dependencies\n- **Security** — exposed secrets, overly permissive permissions, unvalidated inputs\n- **Reliability** — missing error handling, unhandled edge cases in shell steps\n- **Standards** — deviations from applicable enterprise standards in `eap-ref-architecture/standards/`",
+    "17": "[.claude/skills/ea-reviewer/SKILL.md#step-4--discover-and-apply-applicable-standards]\n\n### Step 4 — Discover and Apply Applicable Standards\n\nDiscover applicable standards for the changed artifact types — do not rely on a hardcoded list.\n\n1. **Detect the artifact types** in the changed files, then scan `eap-ref-architecture/standards/` for applicable standards.\n2. **Scan domain directories** relevant to the changes:\n\n| If the changes involve... | Scan directory |\n| --- | --- |\n| APIs, microservices | `standards/application/api/`, `standards/application/integration/` |\n| Event-driven, messaging | `standards/application/event-driven/`, `standards/information/event-driven/` |\n| Security (auth, authz) | `strategy/guidance/security/` (primary), `standards/security/` (baseline only) |\n| Infrastructure / IaC | `standards/infrastructure/` |\n\n3. **Also check** `eap-ref-architecture/patterns/` for established patterns the changes should follow.",
+    "18": "[.claude/skills/ea-reviewer/SKILL.md#step-5--rank-and-report-findings]\n\n### Step 5 — Rank and Report Findings\n\n1. Rank each finding:\n   - **Critical** — must fix before merge; causes authority gaps, broken governance, or security issues\n   - **High** — strongly recommended fix; significant consistency gap, authoring standard violation, or misplaced artifact\n   - **Medium** — should fix; improves correctness, coherence, or maintainability\n   - **Low** — optional; minor improvement or suggestion\n\n2. Present findings as a table:\n\n   ```text\n   | # | Severity | File | Line(s) | Issue | Recommendation |\n   ```\n\n3. Provide an overall assessment: **Approve** or **Request Changes**.\n\n4. When findings include internal consistency gaps (parallel statement gaps, prose-to-structure mismatches, cross-file enumeration inconsistencies), note that the author can resolve all of them in a single `/ai-convergence` pass rather than addressing findings one at a time across multiple review rounds.\n\n5. This Skill does not apply fixes — if the user asks for the findings to be fixed, direct the user to invoke the `ea-author` agent, which owns EA-artifact authoring and revision (per `AGENTS.md`'s Agent Separation of Duties table). This keeps a single ownership model: the reviewer reads and reports, it does not modify.",
+    "19": "[.claude/skills/ea-reviewer/SKILL.md#guidelines]\n\n## Guidelines\n\n- Review what changed — do not critique surrounding untouched content\n- **Avoid nit-picking**: do not file findings for stylistic word choices between valid synonyms, active-vs-passive-voice preferences not mandated by a governing standard, subjective clarity judgments (\"this could be clearer\") without identifying what is specifically ambiguous and to whom, comma and whitespace preferences not mandated by a standard, or reordering suggestions when the current order is logically sound. These consume the author's attention without improving the artifact.\n- **Distinguish nit-picks from real findings that look minor**: broken links are always a real finding regardless of how small they seem; counter-to-enumeration mismatches are objective and always real; missing required sections are structural violations; ambiguous normative language (MUST vs. should) in a standards document is a real finding because it affects compliance. Never suppress these as \"too minor.\"\n- **Quality over compliance**: a technically compliant artifact that gives vague, unactionable guidance is a worse outcome than an artifact with a missing section heading. Surface substantive quality gaps — unclear requirements, strawman alternatives in ADRs, patterns that describe technology choices rather than structure — as High or Medium findings even when the structural checklist passes\n- Internal consistency gaps (parallel statements, prose-to-structure, counter-to-enumeration, claim-vs-instruction) are **High severity** findings by default in this repo — they are the primary source of multi-round review loops\n- Directory taxonomy violations are **High severity** — a misplaced artifact carries incorrect organizational signals about its compliance and audit obligations\n- Be specific: cite the exact file location and what is wrong, not vague concerns\n- Distinguish between \"this is broken\" and \"this could be improved\"\n- Acknowledge good changes — note improvements, not just problems\n- Verify links resolve — do not trust that paths are correct without checking\n- Consult `foundation/CONTRIBUTING.md` section 4.1 to determine the correct artifact type before assessing placement or authoring standard compliance\n- This Skill owns: review findings and the Approve/Request Changes verdict\n- This Skill reads but does not modify: any file under review\n- Direct the user to invoke `/documenter` for writing missing or updated documentation\n- Direct the user to invoke `enterprise-architect` for architectural design decisions revealed during review\n- Direct the user to invoke `enterprise-architect` for systemic or structural concerns that span beyond the diff"
+  },
+  "coverage": {
+    "total_pages": 19,
+    "covered_pages": 19,
+    "sampled_pages": 19,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 19
+  }
+}

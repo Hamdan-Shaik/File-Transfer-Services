@@ -1,0 +1,102 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Local Development Setup",
+  "document_description": "This guide is for developing and testing the RAG service Python code locally. **No Docker or AWS services needed.**",
+  "total_pages": 9,
+  "tree": [
+    {
+      "title": "Local Development Setup",
+      "node_id": "local-development-setup",
+      "start_index": 1,
+      "end_index": 9,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Quick Start for Local Python Development",
+          "node_id": "quick-start-for-local-python-development",
+          "start_index": 2,
+          "end_index": 6,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "1. Setup Environment",
+              "node_id": "1-setup-environment",
+              "start_index": 3,
+              "end_index": 3,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "2. Run Unit Tests",
+              "node_id": "2-run-unit-tests",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "3. Run Service Locally (Mock Mode)",
+              "node_id": "3-run-service-locally-mock-mode",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4. Test API Endpoints",
+              "node_id": "4-test-api-endpoints",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Development Workflow",
+          "node_id": "development-workflow",
+          "start_index": 7,
+          "end_index": 7,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Mock Mode Details",
+          "node_id": "mock-mode-details",
+          "start_index": 8,
+          "end_index": 8,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Files You'll Work With",
+          "node_id": "files-youll-work-with",
+          "start_index": 9,
+          "end_index": 9,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[.tooling/components/apis/rag-service/local-dev-config.md#local-development-setup]\n\n# Local Development Setup",
+    "2": "[.tooling/components/apis/rag-service/local-dev-config.md#quick-start-for-local-python-development]\n\n## Quick Start for Local Python Development\n\nThis guide is for developing and testing the RAG service Python code locally. **No Docker or AWS services needed.**",
+    "3": "[.tooling/components/apis/rag-service/local-dev-config.md#1-setup-environment]\n\n### 1. Setup Environment\n\n```bash\n# Copy local development configuration\ncp .env.local .env\n\n# Install dependencies\npoetry install\n\n# Activate virtual environment\npoetry shell\n```",
+    "4": "[.tooling/components/apis/rag-service/local-dev-config.md#2-run-unit-tests]\n\n### 2. Run Unit Tests\n\n```bash\n# Run all tests\npython -m pytest tests/ -v\n\n# Run with coverage\npython -m pytest tests/ --cov=src --cov-report=html\n```",
+    "5": "[.tooling/components/apis/rag-service/local-dev-config.md#3-run-service-locally-mock-mode]\n\n### 3. Run Service Locally (Mock Mode)\n\n```bash\n# Start the service in mock mode\npython src/main.py\n\n# Service will run at: http://127.0.0.1:8001\n# API docs available at: http://127.0.0.1:8001/docs\n```",
+    "6": "[.tooling/components/apis/rag-service/local-dev-config.md#4-test-api-endpoints]\n\n### 4. Test API Endpoints\n\n```bash\n# Health check\ncurl http://localhost:8001/health\n\n# Configuration check (verify mock mode)\ncurl http://localhost:8001/config\n\n# Test search (mock responses)\ncurl -X POST \"http://localhost:8001/api/rag/v1/search\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"query\": \"test query\"}'\n```",
+    "7": "[.tooling/components/apis/rag-service/local-dev-config.md#development-workflow]\n\n## Development Workflow\n\n1. **Code Changes**: Edit Python files in `src/`\n2. **Unit Tests**: Run `pytest` to verify changes\n3. **Local Testing**: Start service locally to test API endpoints\n4. **Build Check**: Run `docker build .` to verify Docker build works\n5. **Deploy**: Push to GitHub - Actions will handle EKS deployment",
+    "8": "[.tooling/components/apis/rag-service/local-dev-config.md#mock-mode-details]\n\n## Mock Mode Details\n\nWhen `ENVIRONMENT=local`, the service automatically runs in mock mode:\n\n- ✅ No AWS credentials required\n- ✅ No OpenSearch connection needed\n- ✅ Returns simulated search results\n- ✅ All API endpoints functional for testing",
+    "9": "[.tooling/components/apis/rag-service/local-dev-config.md#files-youll-work-with]\n\n## Files You'll Work With\n\n- `src/main.py` - Main FastAPI application\n- `src/rag/` - Core RAG functionality\n- `src/api/` - Authentication and rate limiting\n- `tests/` - Unit tests\n- `.env` - Your local environment configuration (git ignored)"
+  },
+  "coverage": {
+    "total_pages": 9,
+    "covered_pages": 9,
+    "sampled_pages": 9,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 9
+  }
+}

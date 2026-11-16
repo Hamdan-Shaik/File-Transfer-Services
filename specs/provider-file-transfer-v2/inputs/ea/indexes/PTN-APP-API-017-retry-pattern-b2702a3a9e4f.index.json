@@ -1,0 +1,849 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Retry Pattern",
+  "document_description": "pattern_type: 'microservices-architecture'",
+  "total_pages": 90,
+  "tree": [
+    {
+      "title": "Retry Pattern",
+      "node_id": "retry-pattern",
+      "start_index": 1,
+      "end_index": 90,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Executive Summary",
+          "node_id": "executive-summary",
+          "start_index": 3,
+          "end_index": 7,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Problem Statement",
+              "node_id": "problem-statement",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Solution Overview",
+              "node_id": "solution-overview",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "When to Use",
+              "node_id": "when-to-use",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Benefits",
+              "node_id": "benefits",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Context and Problem",
+          "node_id": "context-and-problem",
+          "start_index": 8,
+          "end_index": 16,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Business Context",
+              "node_id": "business-context",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Technical Context",
+              "node_id": "technical-context",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Problem Details",
+              "node_id": "problem-details",
+              "start_index": 11,
+              "end_index": 15,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Problem 1: Transient Network Failures Cause Permanent Request Failures",
+                  "node_id": "problem-1-transient-network-failures-cause-permanent-request-failures",
+                  "start_index": 12,
+                  "end_index": 12,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Problem 2: Service Overload Creates Cascading Failures",
+                  "node_id": "problem-2-service-overload-creates-cascading-failures",
+                  "start_index": 13,
+                  "end_index": 13,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Problem 3: Database Connection Pool Exhaustion",
+                  "node_id": "problem-3-database-connection-pool-exhaustion",
+                  "start_index": 14,
+                  "end_index": 14,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Problem 4: External API Rate Limiting",
+                  "node_id": "problem-4-external-api-rate-limiting",
+                  "start_index": 15,
+                  "end_index": 15,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Forces and Constraints",
+              "node_id": "forces-and-constraints",
+              "start_index": 16,
+              "end_index": 16,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Solution",
+          "node_id": "solution",
+          "start_index": 17,
+          "end_index": 25,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Solution Overview",
+              "node_id": "solution-overview",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Solution Architecture",
+              "node_id": "solution-architecture",
+              "start_index": 19,
+              "end_index": 24,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "1. Retry Policy Configuration",
+                  "node_id": "1-retry-policy-configuration",
+                  "start_index": 20,
+                  "end_index": 20,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "2. Integration with Circuit Breaker",
+                  "node_id": "2-integration-with-circuit-breaker",
+                  "start_index": 21,
+                  "end_index": 21,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "3. Transient Fault Detection",
+                  "node_id": "3-transient-fault-detection",
+                  "start_index": 22,
+                  "end_index": 22,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "4. Idempotency Implementation",
+                  "node_id": "4-idempotency-implementation",
+                  "start_index": 23,
+                  "end_index": 23,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "5. Monitoring and Observability",
+                  "node_id": "5-monitoring-and-observability",
+                  "start_index": 24,
+                  "end_index": 24,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Solution Benefits",
+              "node_id": "solution-benefits",
+              "start_index": 25,
+              "end_index": 25,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Implementation Guidelines",
+          "node_id": "implementation-guidelines",
+          "start_index": 26,
+          "end_index": 34,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Phase 1: Install Retry Library",
+              "node_id": "phase-1-install-retry-library",
+              "start_index": 27,
+              "end_index": 27,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Phase 2: Configure Retry Policy",
+              "node_id": "phase-2-configure-retry-policy",
+              "start_index": 28,
+              "end_index": 28,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Phase 3: Implement Transient Fault Detection",
+              "node_id": "phase-3-implement-transient-fault-detection",
+              "start_index": 29,
+              "end_index": 29,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Phase 4: Ensure Idempotency",
+              "node_id": "phase-4-ensure-idempotency",
+              "start_index": 30,
+              "end_index": 30,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Phase 5: Add Monitoring and Observability",
+              "node_id": "phase-5-add-monitoring-and-observability",
+              "start_index": 31,
+              "end_index": 31,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Phase 6: Test Retry Behavior",
+              "node_id": "phase-6-test-retry-behavior",
+              "start_index": 32,
+              "end_index": 32,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Best Practices",
+              "node_id": "best-practices",
+              "start_index": 33,
+              "end_index": 33,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Common Pitfalls",
+              "node_id": "common-pitfalls",
+              "start_index": 34,
+              "end_index": 34,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Governance and Compliance",
+          "node_id": "governance-and-compliance",
+          "start_index": 35,
+          "end_index": 59,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Retry Policy Standards",
+              "node_id": "retry-policy-standards",
+              "start_index": 36,
+              "end_index": 41,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Standard 1: Maximum Retry Attempts",
+                  "node_id": "standard-1-maximum-retry-attempts",
+                  "start_index": 37,
+                  "end_index": 37,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Standard 2: Exponential Backoff Required",
+                  "node_id": "standard-2-exponential-backoff-required",
+                  "start_index": 38,
+                  "end_index": 38,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Standard 3: Jitter Mandatory",
+                  "node_id": "standard-3-jitter-mandatory",
+                  "start_index": 39,
+                  "end_index": 39,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Standard 4: Transient Fault Detection",
+                  "node_id": "standard-4-transient-fault-detection",
+                  "start_index": 40,
+                  "end_index": 40,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Standard 5: Idempotency for State-Changing Operations",
+                  "node_id": "standard-5-idempotency-for-state-changing-operations",
+                  "start_index": 41,
+                  "end_index": 41,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Monitoring Requirements",
+              "node_id": "monitoring-requirements",
+              "start_index": 42,
+              "end_index": 45,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Required Metrics",
+                  "node_id": "required-metrics",
+                  "start_index": 43,
+                  "end_index": 43,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Alerting Rules",
+                  "node_id": "alerting-rules",
+                  "start_index": 44,
+                  "end_index": 44,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Dashboard Requirements",
+                  "node_id": "dashboard-requirements",
+                  "start_index": 45,
+                  "end_index": 45,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "SLA Impact Assessment",
+              "node_id": "sla-impact-assessment",
+              "start_index": 46,
+              "end_index": 48,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Availability Improvement",
+                  "node_id": "availability-improvement",
+                  "start_index": 47,
+                  "end_index": 47,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Latency Impact",
+                  "node_id": "latency-impact",
+                  "start_index": 48,
+                  "end_index": 48,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Audit and Compliance",
+              "node_id": "audit-and-compliance",
+              "start_index": 49,
+              "end_index": 51,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "HIPAA Compliance",
+                  "node_id": "hipaa-compliance",
+                  "start_index": 50,
+                  "end_index": 50,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "State Contract Compliance",
+                  "node_id": "state-contract-compliance",
+                  "start_index": 51,
+                  "end_index": 51,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Policy Exemptions",
+              "node_id": "policy-exemptions",
+              "start_index": 52,
+              "end_index": 55,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Exemption Scenario 1: Non-Idempotent Financial Transactions",
+                  "node_id": "exemption-scenario-1-non-idempotent-financial-transactions",
+                  "start_index": 53,
+                  "end_index": 53,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Exemption Scenario 2: Real-Time Strict Latency Requirements",
+                  "node_id": "exemption-scenario-2-real-time-strict-latency-requirements",
+                  "start_index": 54,
+                  "end_index": 54,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Exemption Scenario 3: Third-Party API Without Idempotency Support",
+                  "node_id": "exemption-scenario-3-third-party-api-without-idempotency-support",
+                  "start_index": 55,
+                  "end_index": 55,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Governance Process",
+              "node_id": "governance-process",
+              "start_index": 56,
+              "end_index": 59,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "1. Design Review",
+                  "node_id": "1-design-review",
+                  "start_index": 57,
+                  "end_index": 57,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "2. Implementation Review",
+                  "node_id": "2-implementation-review",
+                  "start_index": 58,
+                  "end_index": 58,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "3. Production Validation",
+                  "node_id": "3-production-validation",
+                  "start_index": 59,
+                  "end_index": 59,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Examples and Use Cases",
+          "node_id": "examples-and-use-cases",
+          "start_index": 60,
+          "end_index": 72,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Example 1: Claims Eligibility Verification with Retry",
+              "node_id": "example-1-claims-eligibility-verification-with-retry",
+              "start_index": 61,
+              "end_index": 64,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Business Context",
+                  "node_id": "business-context",
+                  "start_index": 62,
+                  "end_index": 62,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Solution Implementation",
+                  "node_id": "solution-implementation",
+                  "start_index": 63,
+                  "end_index": 63,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Results and Metrics",
+                  "node_id": "results-and-metrics",
+                  "start_index": 64,
+                  "end_index": 64,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Example 2: Provider License Verification with Rate Limit Retry",
+              "node_id": "example-2-provider-license-verification-with-rate-limit-retry",
+              "start_index": 65,
+              "end_index": 68,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Business Context",
+                  "node_id": "business-context",
+                  "start_index": 66,
+                  "end_index": 66,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Solution Implementation",
+                  "node_id": "solution-implementation",
+                  "start_index": 67,
+                  "end_index": 67,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Results and Metrics",
+                  "node_id": "results-and-metrics",
+                  "start_index": 68,
+                  "end_index": 68,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Example 3: Pharmacy POS NCPDP Retry with Tight Timeout Window",
+              "node_id": "example-3-pharmacy-pos-ncpdp-retry-with-tight-timeout-window",
+              "start_index": 69,
+              "end_index": 72,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Business Context",
+                  "node_id": "business-context",
+                  "start_index": 70,
+                  "end_index": 70,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Solution Implementation",
+                  "node_id": "solution-implementation",
+                  "start_index": 71,
+                  "end_index": 71,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Results and Metrics",
+                  "node_id": "results-and-metrics",
+                  "start_index": 72,
+                  "end_index": 72,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Related Patterns and References",
+          "node_id": "related-patterns-and-references",
+          "start_index": 73,
+          "end_index": 75,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Related Patterns",
+              "node_id": "related-patterns",
+              "start_index": 74,
+              "end_index": 74,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "External References",
+              "node_id": "external-references",
+              "start_index": 75,
+              "end_index": 75,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Change History",
+          "node_id": "change-history",
+          "start_index": 76,
+          "end_index": 76,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Review Log",
+          "node_id": "review-log",
+          "start_index": 77,
+          "end_index": 77,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "TL;DR",
+          "node_id": "tldr",
+          "start_index": 78,
+          "end_index": 90,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Problem",
+              "node_id": "problem",
+              "start_index": 79,
+              "end_index": 79,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Solution",
+              "node_id": "solution",
+              "start_index": 80,
+              "end_index": 80,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "When to Use",
+              "node_id": "when-to-use",
+              "start_index": 81,
+              "end_index": 81,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Benefits",
+              "node_id": "benefits",
+              "start_index": 82,
+              "end_index": 82,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Quick Start",
+              "node_id": "quick-start",
+              "start_index": 83,
+              "end_index": 83,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Implementation Complexity",
+              "node_id": "implementation-complexity",
+              "start_index": 84,
+              "end_index": 84,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Prerequisites",
+              "node_id": "prerequisites",
+              "start_index": 85,
+              "end_index": 85,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Key Configuration Parameters",
+              "node_id": "key-configuration-parameters",
+              "start_index": 86,
+              "end_index": 86,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Common Pitfalls to Avoid",
+              "node_id": "common-pitfalls-to-avoid",
+              "start_index": 87,
+              "end_index": 87,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Real-World Results (Gainwell Production)",
+              "node_id": "real-world-results-gainwell-production",
+              "start_index": 88,
+              "end_index": 88,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Related Patterns",
+              "node_id": "related-patterns",
+              "start_index": 89,
+              "end_index": 89,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Additional Resources",
+              "node_id": "additional-resources",
+              "start_index": 90,
+              "end_index": 90,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#retry-pattern]\n\n# Retry Pattern\n\n**← Back to [EAP Home](../../../README.md) • [Patterns](../../README.md) • [Application](../README.md) • [API & Microservices](./README.md)**\n\n---\n\n**Pattern Metadata**\n\n```yaml\npattern_id: 'PTN-APP-API-017'\npattern_name: 'Retry Pattern'\npattern_type: 'microservices-architecture'\ndomain: 'application'\nversion: '1.0.0'\nstatus: 'draft'\ntags: ['application', 'microservices-architecture', 'retry', 'resilience', 'transient-faults', 'fault-tolerance', 'healthcare', 'proven']\n```\n\n---",
+    "2": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#table-of-contents]\n\n## Table of Contents\n\n- [Executive Summary](#executive-summary)\n- [Context and Problem](#context-and-problem)\n- [Solution](#solution)\n- [Implementation Guidelines](#implementation-guidelines)\n- [Governance and Compliance](#governance-and-compliance)\n- [Examples and Use Cases](#examples-and-use-cases)\n- [Related Patterns and References](#related-patterns-and-references)\n- [Change History](#change-history)\n- [Review Log](#review-log)\n- [TL;DR](#tldr)\n\n---",
+    "3": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#executive-summary]\n\n## Executive Summary",
+    "4": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#problem-statement]\n\n### Problem Statement\n\nIn distributed healthcare systems, network requests and service calls frequently fail due to **transient faults**—temporary conditions that self-correct after a short period. These transient failures are pervasive in microservices architectures:\n\n1. **Network Instability**: Brief network glitches, DNS resolution timeouts, or load balancer failures causing connection drops\n2. **Service Overload**: Downstream services temporarily rejecting requests due to high load, returning 503 Service Unavailable or 429 Too Many Requests\n3. **Database Connection Exhaustion**: Database connection pools temporarily exhausted, requiring brief wait before connection becomes available\n4. **External API Rate Limiting**: Third-party APIs (state systems, clearinghouses, pharmacy networks) throttling requests, requiring exponential backoff\n\nAt Gainwell Technologies, these transient failures manifest in critical healthcare workflows: claims adjudication calls to eligibility services fail during peak load, provider portal API calls to credentialing systems timeout during network congestion, pharmacy point-of-sale transactions fail due to temporary NCPDP network issues, and state agency reporting APIs return 503 errors during batch processing windows. Without retry logic, these temporary failures become permanent request failures, requiring manual intervention and degrading user experience.\n\nTraditional approaches either immediately fail the request (losing valid transactions) or implement naive retry logic without backoff (amplifying load on already-stressed downstream services, creating cascading failures). Healthcare systems require intelligent retry strategies that distinguish transient faults from permanent failures, implement exponential backoff to prevent overwhelming downstream services, respect rate limits, and provide visibility into retry attempts for audit and troubleshooting.",
+    "5": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#solution-overview]\n\n### Solution Overview\n\n**Retry Pattern**: Automatically retry failed requests with intelligent backoff strategies when transient faults are detected. The pattern intercepts failed requests, determines if the failure is transient (network timeout, 503/429 status codes, specific exceptions), waits progressively longer between retry attempts (exponential backoff with jitter), and eventually fails permanently if all retries are exhausted.\n\n**Core Components:**\n\n1. **Retry Policy Configuration**\n   - Maximum retry attempts (typically 3-5 retries)\n   - Backoff strategy: exponential (2^n seconds), linear, or constant\n   - Jitter: randomization to prevent thundering herd\n   - Transient fault detection: which errors trigger retry vs immediate failure\n\n2. **Exponential Backoff Algorithm**\n   - First retry: wait 1 second\n   - Second retry: wait 2 seconds (2^1)\n   - Third retry: wait 4 seconds (2^2)\n   - Fourth retry: wait 8 seconds (2^3)\n   - Add jitter: randomize wait time ±20% to prevent synchronized retries\n\n3. **Transient Fault Detection**\n   - HTTP status codes: 408 (Request Timeout), 429 (Too Many Requests), 500 (Internal Server Error), 502 (Bad Gateway), 503 (Service Unavailable), 504 (Gateway Timeout)\n   - Network exceptions: SocketException, TimeoutException, HttpRequestException\n   - Database exceptions: SqlException with specific transient error codes\n\n4. **Integration with Circuit Breaker**\n   - Retry attempts within circuit breaker context\n   - Circuit breaker prevents retries when downstream service is completely down\n   - Retry pattern handles transient faults; circuit breaker handles persistent failures\n\n**Example Flow:**\n\n```plaintext\nClaims Processor → Eligibility API Call\n                    ↓\n                  Failure (503 Service Unavailable)\n                    ↓\n              Retry Policy Activated\n                    ↓\n    Attempt 1: Wait 1 second → Retry → Failure (503)\n    Attempt 2: Wait 2 seconds → Retry → Failure (503)\n    Attempt 3: Wait 4 seconds → Retry → Success (200)\n                    ↓\n          Return result to Claims Processor\n```",
+    "6": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#when-to-use]\n\n### When to Use\n\n✅ **Use Retry Pattern When:**\n\n- **External API Calls**: Calling state agency systems, clearinghouses, pharmacy networks where transient network issues are common\n- **Microservices Communication**: Service-to-service calls within distributed architecture where downstream services may experience temporary overload\n- **Database Operations**: Database connections, especially in high-concurrency scenarios where connection pool exhaustion occurs\n- **Cloud Service Calls**: Azure/AWS service APIs that occasionally return 503 during scaling events or platform maintenance\n- **Batch Processing**: Long-running batch jobs that need resilience against temporary infrastructure issues\n- **Third-Party Integrations**: Payment processors, document management systems, notification services with known intermittent availability\n\n❌ **Do NOT Use Retry When:**\n\n- **Non-Idempotent Operations**: Operations that create side effects (e.g., financial transactions, claim submissions) unless idempotency is guaranteed\n- **Permanent Failures**: 400-level errors (Bad Request, Unauthorized, Forbidden, Not Found) that won't succeed on retry\n- **Real-Time Requirements**: Operations with strict latency requirements where retry delay is unacceptable\n- **User-Triggered Actions**: Interactive user requests where retry delay degrades experience (prefer immediate failure with user retry option)\n- **Downstream Service Completely Down**: When circuit breaker detects downstream service is persistently failing (circuit open state)\n\n**Gainwell Healthcare Context:**\n\n- **Claims Adjudication**: Retry eligibility checks, prior authorization lookups, pricing calculations when services return transient errors\n- **Provider Credentialing**: Retry license verification calls to state medical boards during temporary API unavailability\n- **Pharmacy POS**: Retry NCPDP transactions that fail due to network timeouts (within allowed transaction time window)\n- **State Reporting**: Retry file upload to state SFTP servers when connection drops during large file transfer\n- **Member Portal**: Retry backend service calls for member data retrieval when services experience temporary load spikes",
+    "7": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#benefits]\n\n### Benefits\n\n**Reliability and Resilience:**\n- **Transient Fault Tolerance**: Automatically recover from temporary failures without manual intervention (reduces support tickets by 40-60%)\n- **Improved Success Rate**: Convert transient failures to successful requests (typical improvement: 85% → 99% success rate)\n- **Reduced Manual Intervention**: Eliminate need for users to manually retry failed operations\n- **Graceful Degradation**: System continues operating during temporary infrastructure issues\n\n**Operational Efficiency:**\n- **Lower Support Costs**: Fewer support tickets for transient failures (estimated 500-1000 tickets/month reduction at Gainwell)\n- **Better Resource Utilization**: Retry during low-load periods rather than failing immediately\n- **Reduced Data Loss**: Preserve valid transactions that would otherwise be lost to transient failures\n- **Improved SLA Compliance**: Higher uptime and success rates contribute to meeting contractual SLAs\n\n**User Experience:**\n- **Transparent Recovery**: Users unaware of transient failures that are automatically retried\n- **Faster Recovery**: Seconds rather than minutes/hours for manual retry\n- **Consistent Behavior**: Predictable retry behavior across all services\n\n**Healthcare-Specific Benefits:**\n- **Claims Processing**: Reduce lost claims due to transient failures (prevent revenue loss, adjudication delays)\n- **Provider Experience**: Providers don't see \"system unavailable\" errors for temporary glitches\n- **Member Access**: Members experience fewer \"try again later\" messages when accessing health records\n- **State Reporting**: Successfully complete time-sensitive reporting deadlines despite transient infrastructure issues\n- **Compliance**: Maintain audit trail of retry attempts for regulatory investigations",
+    "8": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#context-and-problem]\n\n## Context and Problem",
+    "9": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#business-context]\n\n### Business Context\n\nGainwell Technologies operates mission-critical healthcare platforms serving 50+ state Medicaid programs with 72+ million enrollees. Our distributed architecture processes billions of healthcare transactions annually across multiple domains:\n\n**Claims Processing (500,000+ daily transactions)**\n- Adjudication engines calling eligibility services to verify member coverage\n- Pricing services querying provider contracts for reimbursement rates\n- Prior authorization lookups to state-specific authorization systems\n- Third-party liability coordination checking Medicare and commercial payer coverage\n- **Failure Impact**: Claim adjudication delays, provider payment holds, member complaints, state contract SLA violations\n\n**Provider Interactions (400,000+ providers)**\n- Portal API calls to credentialing systems for license verification\n- Real-time eligibility inquiries during patient visits\n- Claims status lookups and remittance advice retrieval\n- Provider directory searches across multiple data sources\n- **Failure Impact**: Provider portal outages, claim submission delays, credentialing workflow disruptions, provider satisfaction decline\n\n**Member Services (72+ million enrollees)**\n- Mobile app API calls to retrieve health records (FHIR APIs)\n- Member portal calls to benefits and eligibility systems\n- Appointment scheduling integrated with provider systems\n- Prescription history retrieval from pharmacy systems\n- **Failure Impact**: Poor member experience, CMS Interoperability Rule compliance risk, member complaints to state agencies\n\n**Pharmacy Point-of-Sale (1.2+ million daily transactions)**\n- NCPDP transactions to Gainwell Rx™ adjudication platform\n- Real-time benefit checks during prescription fill\n- Prior authorization status lookups\n- Drug utilization review (DUR) checks\n- **Failure Impact**: Pharmacy delays, member out-of-pocket payment issues, medication access delays",
+    "10": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#technical-context]\n\n### Technical Context\n\nGainwell's microservices architecture comprises 200+ services deployed across Azure cloud infrastructure with varying levels of reliability:\n\n**Current Reliability Challenges:**\n\n1. **Network Variability**\n   - Azure regional network experiencing occasional latency spikes (P99 latency: 50ms → 2000ms during incidents)\n   - Cross-region traffic for disaster recovery subject to WAN latency and occasional packet loss\n   - VPN connections to state agency systems prone to timeouts during peak hours\n\n2. **Service Load Patterns**\n   - Claims adjudication peak load: 8AM-10AM (3x normal load) causing eligibility service throttling\n   - Month-end reporting spikes overloading analytics services with 503 errors\n   - Provider portal usage spikes during open enrollment creating cascading failures\n\n3. **External Dependency Reliability**\n   - State agency SFTP servers: 95% uptime (scheduled maintenance, unplanned outages)\n   - Clearinghouse EDI APIs: 98% uptime with occasional rate limiting during peak submission periods\n   - Pharmacy network (NCPDP): 99.5% uptime but occasional regional outages\n   - State medical board license verification APIs: Variable uptime (80-99% depending on state)\n\n4. **Database Connection Pool Exhaustion**\n   - SQL Server connection pool exhaustion during batch processing causing transient \"Cannot open database\" errors\n   - Azure SQL throttling during high DTU consumption returning 40613 errors\n   - PostgreSQL connection limits reached during analytical query bursts",
+    "11": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#problem-details]\n\n### Problem Details",
+    "12": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#problem-1-transient-network-failures-cause-permanent-request-failures]\n\n#### Problem 1: Transient Network Failures Cause Permanent Request Failures\n\n**Scenario**: Claims adjudication depends on eligibility service to verify member coverage. Network timeout causes eligibility check to fail, resulting in claim denial.\n\n**Traditional Approach (No Retry)**:\n\n```csharp\npublic class ClaimAdjudicationService\n{\n    private readonly IEligibilityService _eligibilityService;\n\n    public async Task<AdjudicationResult> AdjudicateClaimAsync(Claim claim)\n    {\n        try\n        {\n            // Call eligibility service (no retry)\n            var eligibility = await _eligibilityService\n                .CheckEligibilityAsync(claim.MemberId, claim.ServiceDate);\n\n            if (!eligibility.IsEligible)\n            {\n                return AdjudicationResult.Denied(\"Member not eligible\");\n            }\n\n            // Continue adjudication...\n            return await PerformAdjudicationAsync(claim, eligibility);\n        }\n        catch (HttpRequestException ex) when (ex.Message.Contains(\"timeout\"))\n        {\n            // Network timeout - claim adjudication fails permanently\n            return AdjudicationResult.Error(\"Eligibility check failed - network timeout\");\n\n            // Problem: Transient network issue causes permanent claim failure\n            // Member's claim is denied even though they are eligible\n            // Requires manual reprocessing or member appeal\n        }\n    }\n}\n```\n\n**Impact at Gainwell:**\n- **5,000+ claims/day** fail due to transient network timeouts\n- **Manual reprocessing cost**: 2-3 hours/day for operations team\n- **Provider impact**: Delayed payments, increased provider complaints\n- **Member impact**: Coverage denials requiring appeals, delayed care access",
+    "13": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#problem-2-service-overload-creates-cascading-failures]\n\n#### Problem 2: Service Overload Creates Cascading Failures\n\n**Scenario**: During peak load (8AM-10AM), eligibility service returns 503 errors. Calling services immediately fail requests, amplifying the problem.\n\n**Traditional Approach (Immediate Failure)**:\n\n```csharp\npublic class EligibilityApiClient\n{\n    private readonly HttpClient _httpClient;\n\n    public async Task<Eligibility> CheckEligibilityAsync(Guid memberId, DateTime serviceDate)\n    {\n        var response = await _httpClient.GetAsync(\n            $\"https://eligibility-api.gainwell.com/members/{memberId}/eligibility?date={serviceDate:yyyy-MM-dd}\");\n\n        if (response.StatusCode == HttpStatusCode.ServiceUnavailable)\n        {\n            // 503 Service Unavailable - fail immediately\n            throw new ServiceUnavailableException(\"Eligibility service temporarily unavailable\");\n\n            // Problem: No retry logic means all requests during overload period fail\n            // Multiple calling services fail simultaneously\n            // User-facing systems show \"system unavailable\" errors\n            // Operations team receives thousands of alerts\n        }\n\n        response.EnsureSuccessStatusCode();\n        return await response.Content.ReadAsAsync<Eligibility>();\n    }\n}\n```\n\n**Observed Behavior (Gainwell Production Incident - 2024-09-15)**:\n- **Eligibility service overloaded**: CPU 95%, returning 503 errors\n- **Claims adjudication service**: 15,000 failed requests in 10 minutes (no retry logic)\n- **Provider portal**: \"System unavailable\" errors for all eligibility checks\n- **Recovery time**: 45 minutes (manual service restart, connection pool reset)\n- **Claims backlog**: 22,000 claims requiring manual reprocessing\n\n**Root Cause**: Temporary overload (caused by batch job running during peak hours) created cascading failures across dependent services. No retry logic meant temporary 503 errors became permanent request failures.",
+    "14": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#problem-3-database-connection-pool-exhaustion]\n\n#### Problem 3: Database Connection Pool Exhaustion\n\n**Scenario**: High concurrency exhausts SQL Server connection pool. Applications receive \"Cannot open database\" errors even though database is healthy.\n\n**Traditional Approach (No Retry on Transient Database Errors)**:\n\n```csharp\npublic class ClaimRepository\n{\n    private readonly SqlConnection _connection;\n\n    public async Task<Claim> GetClaimAsync(Guid claimId)\n    {\n        try\n        {\n            await _connection.OpenAsync();\n\n            using var command = new SqlCommand(\n                \"SELECT * FROM Claims WHERE ClaimId = @ClaimId\",\n                _connection);\n            command.Parameters.AddWithValue(\"@ClaimId\", claimId);\n\n            using var reader = await command.ExecuteReaderAsync();\n            return MapToClaim(reader);\n        }\n        catch (SqlException ex) when (ex.Number == 40613)  // Azure SQL throttling\n        {\n            // Database temporarily unavailable - fail immediately\n            throw new DatabaseUnavailableException(\"Database connection failed\", ex);\n\n            // Problem: Transient connection pool exhaustion causes permanent failure\n            // Connection pool may have available connection in 100ms\n            // No retry means application fails when it could succeed momentarily\n        }\n    }\n}\n```\n\n**Impact**:\n- **Connection pool exhaustion events**: 5-10 times/day during peak load\n- **Failed requests**: 500-2000 requests per incident\n- **User experience**: \"Database error\" messages requiring page refresh\n- **Operations burden**: Manual monitoring and connection pool tuning",
+    "15": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#problem-4-external-api-rate-limiting]\n\n#### Problem 4: External API Rate Limiting\n\n**Scenario**: State medical board API rate limits license verification requests. Without exponential backoff, verification calls continue hammering API, triggering longer rate limit penalties.\n\n**Traditional Approach (Naive Retry Without Backoff)**:\n\n```csharp\npublic class LicenseVerificationService\n{\n    private readonly HttpClient _httpClient;\n\n    public async Task<LicenseStatus> VerifyLicenseAsync(string licenseNumber)\n    {\n        const int maxRetries = 3;\n\n        for (int i = 0; i < maxRetries; i++)\n        {\n            var response = await _httpClient.GetAsync(\n                $\"https://statemedicalboard.gov/api/verify/{licenseNumber}\");\n\n            if (response.StatusCode == HttpStatusCode.TooManyRequests)  // 429\n            {\n                // Retry immediately without backoff\n                continue;\n\n                // Problem: Immediate retry hammers rate-limited API\n                // State API may increase rate limit penalty (1 min → 5 min)\n                // No jitter means all concurrent requests retry simultaneously\n                // Creates \"thundering herd\" amplifying the problem\n            }\n\n            response.EnsureSuccessStatusCode();\n            return await response.Content.ReadAsAsync<LicenseStatus>();\n        }\n\n        throw new RateLimitException(\"License verification rate limited after 3 retries\");\n    }\n}\n```\n\n**Observed Behavior**:\n- **Rate limit incidents**: 20-30 times/month across various state APIs\n- **Penalty amplification**: Immediate retries extend rate limit from 1 min to 10+ min\n- **Credentialing delays**: Provider credentialing workflow stalled for hours\n- **API relationship issues**: State agencies complaining about \"aggressive\" API usage",
+    "16": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#forces-and-constraints]\n\n### Forces and Constraints\n\n**Design Forces:**\n\n1. **Retry Speed vs Downstream Load**\n   - Fast retries improve user experience but risk overwhelming struggling downstream services\n   - Exponential backoff gives downstream services time to recover but increases request latency\n   - **Balance**: Start with short delay (1s), exponentially increase to give service recovery time\n\n2. **Retry Attempts vs Resource Cost**\n   - More retries increase success rate but consume more resources (threads, connections, memory)\n   - Fewer retries reduce costs but leave more transient failures unresolved\n   - **Balance**: 3-5 retries typically optimal (covers 99% of transient scenarios without excessive resource usage)\n\n3. **Idempotency Requirements vs Retry Safety**\n   - Retries are only safe for idempotent operations (same request multiple times = same result)\n   - Non-idempotent operations (create claim, schedule payment) risk duplicate processing\n   - **Balance**: Implement idempotency keys or restrict retry to read-only operations\n\n4. **Observability vs Performance**\n   - Detailed retry logging enables troubleshooting but adds I/O overhead\n   - Minimal logging reduces overhead but makes debugging difficult\n   - **Balance**: Log retry attempts at INFO level, log exhausted retries at ERROR level\n\n**Healthcare Constraints:**\n\n- **HIPAA Audit Requirements**: All retry attempts must be logged with timestamp, user context, and failure reason for audit trail\n- **SLA Obligations**: State contracts specify 99.9% uptime; retry logic essential for meeting SLAs during transient failures\n- **Transaction Timing**: Pharmacy POS transactions must complete within 3-5 seconds (limits total retry time budget)\n- **Data Consistency**: Claims must not be duplicated due to retry logic (requires idempotency guarantees)\n- **Regulatory Reporting**: Failed transactions requiring retry must be tracked for state reporting and root cause analysis",
+    "17": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#solution]\n\n## Solution",
+    "18": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#solution-overview]\n\n### Solution Overview\n\nThe **Retry Pattern** provides automatic fault recovery for transient failures through intelligent retry policies with exponential backoff. Instead of immediately failing requests or naively retrying, the pattern detects transient faults and retries with progressively longer delays, allowing downstream services time to recover.\n\n**Core Solution Components:**\n\n```mermaid\ngraph TB\n    A[Client Request] --> B{Retry Policy}\n    B --> C[Execute Request]\n    C --> D{Success?}\n    D -->|Yes| E[Return Response]\n    D -->|No| F{Transient Fault?}\n    F -->|Yes| G{Max Attempts<br/>Reached?}\n    F -->|No| H[Throw Exception]\n    G -->|No| I[Calculate Backoff]\n    I --> J[Wait Delay + Jitter]\n    J --> K[Increment Attempt Counter]\n    K --> C\n    G -->|Yes| H\n\n    style B fill:#4CAF50\n    style F fill:#2196F3\n    style I fill:#FF9800\n```",
+    "19": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#solution-architecture]\n\n### Solution Architecture",
+    "20": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#1-retry-policy-configuration]\n\n#### 1. Retry Policy Configuration\n\n**Polly Implementation (.NET)**:\n\n```csharp\nusing Polly;\nusing Polly.Retry;\nusing Microsoft.Extensions.Logging;\n\npublic class RetryPolicyFactory\n{\n    private readonly ILogger<RetryPolicyFactory> _logger;\n\n    public RetryPolicyFactory(ILogger<RetryPolicyFactory> logger)\n    {\n        _logger = logger;\n    }\n\n    /// <summary>\n    /// Creates retry policy with exponential backoff for transient HTTP errors\n    /// </summary>\n    public AsyncRetryPolicy<HttpResponseMessage> CreateHttpRetryPolicy()\n    {\n        return Policy\n            .HandleResult<HttpResponseMessage>(r =>\n                // Retry on transient HTTP status codes\n                r.StatusCode == HttpStatusCode.RequestTimeout ||           // 408\n                r.StatusCode == (HttpStatusCode)429 ||                     // 429 Too Many Requests\n                r.StatusCode == HttpStatusCode.InternalServerError ||      // 500\n                r.StatusCode == HttpStatusCode.BadGateway ||               // 502\n                r.StatusCode == HttpStatusCode.ServiceUnavailable ||       // 503\n                r.StatusCode == HttpStatusCode.GatewayTimeout)             // 504\n            .Or<HttpRequestException>()     // Network failures\n            .Or<TaskCanceledException>()    // Timeouts\n            .WaitAndRetryAsync(\n                retryCount: 5,\n                sleepDurationProvider: (retryAttempt, context) =>\n                    CalculateExponentialBackoffWithJitter(retryAttempt),\n                onRetry: (outcome, timespan, retryAttempt, context) =>\n                {\n                    var statusCode = outcome.Result?.StatusCode.ToString() ?? \"Exception\";\n                    _logger.LogWarning(\n                        \"Retry attempt {RetryAttempt} after {Delay}ms for {StatusCode}. CorrelationId: {CorrelationId}\",\n                        retryAttempt,\n                        timespan.TotalMilliseconds,\n                        statusCode,\n                        context[\"CorrelationId\"]);\n                });\n    }\n\n    /// <summary>\n    /// Exponential backoff: 1s, 2s, 4s, 8s, 16s with ±20% jitter\n    /// </summary>\n    private TimeSpan CalculateExponentialBackoffWithJitter(int retryAttempt)\n    {\n        var baseDelay = TimeSpan.FromSeconds(Math.Pow(2, retryAttempt - 1));\n        var jitter = TimeSpan.FromMilliseconds(\n            Random.Shared.Next(-200, 200));  // ±20% jitter\n\n        return baseDelay + jitter;\n    }\n}\n```\n\n**Resilience4j Implementation (Java)**:\n\n```java\nimport io.github.resilience4j.retry.Retry;\nimport io.github.resilience4j.retry.RetryConfig;\nimport io.github.resilience4j.retry.RetryRegistry;\nimport org.springframework.stereotype.Component;\nimport org.springframework.web.client.HttpServerErrorException;\nimport org.springframework.web.client.ResourceAccessException;\n\nimport java.time.Duration;\nimport java.util.function.Predicate;\n\n@Component\npublic class RetryPolicyFactory {\n\n    /**\n     * Creates retry policy with exponential backoff for transient HTTP errors\n     */\n    public Retry createHttpRetryPolicy() {\n        RetryConfig config = RetryConfig.custom()\n            .maxAttempts(5)\n            .waitDuration(Duration.ofSeconds(1))  // Base delay\n            .intervalFunction(IntervalFunction.ofExponentialRandomBackoff(\n                Duration.ofSeconds(1),   // Initial interval\n                2.0,                     // Multiplier\n                Duration.ofSeconds(30)   // Max interval\n            ))\n            .retryOnResult(this::isTransientHttpError)\n            .retryExceptions(\n                HttpServerErrorException.class,   // 5xx errors\n                ResourceAccessException.class)     // Network failures\n            .ignoreExceptions(\n                IllegalArgumentException.class)    // Don't retry validation errors\n            .build();\n\n        RetryRegistry registry = RetryRegistry.of(config);\n        Retry retry = registry.retry(\"httpClientRetry\");\n\n        // Event listeners for observability\n        retry.getEventPublisher()\n            .onRetry(event -> log.warn(\n                \"Retry attempt {} after {}ms for {}. CorrelationId: {}\",\n                event.getNumberOfRetryAttempts(),\n                event.getWaitInterval().toMillis(),\n                event.getLastThrowable().getMessage(),\n                MDC.get(\"correlationId\")));\n\n        return retry;\n    }\n\n    /**\n     * Determines if HTTP status code indicates transient error\n     */\n    private boolean isTransientHttpError(Object response) {\n        if (response instanceof ResponseEntity) {\n            HttpStatus status = ((ResponseEntity<?>) response).getStatusCode();\n            return status == HttpStatus.REQUEST_TIMEOUT ||           // 408\n                   status == HttpStatus.TOO_MANY_REQUESTS ||         // 429\n                   status == HttpStatus.INTERNAL_SERVER_ERROR ||     // 500\n                   status == HttpStatus.BAD_GATEWAY ||               // 502\n                   status == HttpStatus.SERVICE_UNAVAILABLE ||       // 503\n                   status == HttpStatus.GATEWAY_TIMEOUT;             // 504\n        }\n        return false;\n    }\n}\n```",
+    "21": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#2-integration-with-circuit-breaker]\n\n#### 2. Integration with Circuit Breaker\n\nRetry and Circuit Breaker patterns work together: retry handles transient faults, circuit breaker handles persistent failures.\n\n```csharp\nusing Polly;\nusing Polly.CircuitBreaker;\nusing Polly.Wrap;\n\npublic class ResilientHttpClient\n{\n    private readonly HttpClient _httpClient;\n    private readonly AsyncPolicyWrap<HttpResponseMessage> _resiliencePolicy;\n\n    public ResilientHttpClient(\n        HttpClient httpClient,\n        RetryPolicyFactory retryFactory,\n        CircuitBreakerPolicyFactory circuitBreakerFactory)\n    {\n        _httpClient = httpClient;\n\n        // Create individual policies\n        var retryPolicy = retryFactory.CreateHttpRetryPolicy();\n        var circuitBreakerPolicy = circuitBreakerFactory.CreateCircuitBreakerPolicy();\n\n        // Wrap policies: Circuit Breaker OUTSIDE Retry\n        // Order matters: Check circuit state before attempting retries\n        _resiliencePolicy = Policy.WrapAsync(circuitBreakerPolicy, retryPolicy);\n    }\n\n    public async Task<TResponse> GetAsync<TResponse>(string url, Context context)\n    {\n        // Execute request through combined resilience policies\n        var response = await _resiliencePolicy.ExecuteAsync(\n            async (ctx) => await _httpClient.GetAsync(url),\n            context);\n\n        response.EnsureSuccessStatusCode();\n        return await response.Content.ReadAsAsync<TResponse>();\n    }\n}\n```\n\n**Policy Execution Flow:**\n\n1. **Circuit Breaker Check**: Is circuit closed? If open/half-open, fail fast without retry\n2. **Initial Request**: Execute request to downstream service\n3. **Failure Evaluation**: Is this a transient fault? If yes, proceed to retry\n4. **Exponential Backoff**: Calculate delay with jitter (1s → 2s → 4s → 8s → 16s)\n5. **Retry Attempt**: Wait for backoff duration, retry request\n6. **Circuit Breaker Update**: If retries exhausted, circuit breaker records failure; may open circuit if threshold reached",
+    "22": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#3-transient-fault-detection]\n\n#### 3. Transient Fault Detection\n\n**Decision Logic:**\n\n```csharp\npublic class TransientFaultDetector\n{\n    /// <summary>\n    /// Determines if exception represents transient fault worth retrying\n    /// </summary>\n    public static bool IsTransientFault(Exception exception)\n    {\n        return exception switch\n        {\n            // Network-level transient failures\n            HttpRequestException httpEx when\n                httpEx.InnerException is SocketException => true,\n\n            // Timeout indicates potential transient overload\n            TaskCanceledException => true,\n            TimeoutException => true,\n\n            // Database transient errors (SQL Server)\n            SqlException sqlEx when IsTransientSqlError(sqlEx.Number) => true,\n\n            // Azure SQL throttling\n            SqlException sqlEx when sqlEx.Number == 40613 => true,\n\n            // Non-transient failures - don't retry\n            ArgumentException => false,\n            ArgumentNullException => false,\n            InvalidOperationException => false,\n            UnauthorizedAccessException => false,\n\n            _ => false\n        };\n    }\n\n    /// <summary>\n    /// SQL Server transient error codes\n    /// See: https://docs.microsoft.com/en-us/azure/sql-database/sql-database-develop-error-messages\n    /// </summary>\n    private static bool IsTransientSqlError(int errorNumber)\n    {\n        return errorNumber switch\n        {\n            -2 => true,      // Timeout\n            -1 => true,      // Connection broken\n            2 => true,       // Network error\n            53 => true,      // Connection initialization error\n            64 => true,      // Server error during login\n            233 => true,     // Connection initialization error\n            10053 => true,   // Transport-level error\n            10054 => true,   // Forcibly closed by remote host\n            10060 => true,   // Network timeout\n            40197 => true,   // Service error processing request\n            40501 => true,   // Service is busy\n            40613 => true,   // Database unavailable\n            49918 => true,   // Cannot process request (insufficient resources)\n            49919 => true,   // Cannot process create/update request\n            49920 => true,   // Cannot process request (too many operations)\n            _ => false\n        };\n    }\n\n    /// <summary>\n    /// Determines if HTTP status code is transient\n    /// </summary>\n    public static bool IsTransientHttpStatus(HttpStatusCode statusCode)\n    {\n        return statusCode switch\n        {\n            HttpStatusCode.RequestTimeout => true,              // 408\n            (HttpStatusCode)429 => true,                        // 429 Too Many Requests\n            HttpStatusCode.InternalServerError => true,         // 500\n            HttpStatusCode.BadGateway => true,                  // 502\n            HttpStatusCode.ServiceUnavailable => true,          // 503\n            HttpStatusCode.GatewayTimeout => true,              // 504\n\n            // Non-transient - don't retry\n            HttpStatusCode.BadRequest => false,                 // 400\n            HttpStatusCode.Unauthorized => false,               // 401\n            HttpStatusCode.Forbidden => false,                  // 403\n            HttpStatusCode.NotFound => false,                   // 404\n            HttpStatusCode.MethodNotAllowed => false,           // 405\n            HttpStatusCode.Conflict => false,                   // 409\n\n            _ => false\n        };\n    }\n}\n```",
+    "23": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#4-idempotency-implementation]\n\n#### 4. Idempotency Implementation\n\n**Idempotency Key Pattern for Safe Retries:**\n\n```csharp\npublic class IdempotentClaimSubmissionService\n{\n    private readonly IClaimRepository _claimRepository;\n    private readonly IDistributedCache _cache;  // Redis\n\n    /// <summary>\n    /// Submit claim with idempotency guarantee - safe to retry\n    /// </summary>\n    public async Task<ClaimSubmissionResult> SubmitClaimAsync(\n        Claim claim,\n        string idempotencyKey)\n    {\n        // Check if this request was already processed\n        var cachedResult = await _cache.GetStringAsync($\"claim:idempotency:{idempotencyKey}\");\n        if (cachedResult != null)\n        {\n            // Return cached result - request already processed\n            return JsonSerializer.Deserialize<ClaimSubmissionResult>(cachedResult);\n        }\n\n        // Process claim submission\n        var result = await ProcessClaimSubmissionAsync(claim);\n\n        // Cache result with 24-hour TTL (idempotency window)\n        await _cache.SetStringAsync(\n            $\"claim:idempotency:{idempotencyKey}\",\n            JsonSerializer.Serialize(result),\n            new DistributedCacheEntryOptions\n            {\n                AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(24)\n            });\n\n        return result;\n    }\n\n    /// <summary>\n    /// Generate idempotency key for claim submission\n    /// </summary>\n    public static string GenerateIdempotencyKey(Guid claimId, Guid userId)\n    {\n        return $\"{claimId}:{userId}:{DateTime.UtcNow:yyyyMMdd}\";\n    }\n}\n```",
+    "24": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#5-monitoring-and-observability]\n\n#### 5. Monitoring and Observability\n\n**Metrics Collection:**\n\n```csharp\nusing Prometheus;\n\npublic class RetryMetrics\n{\n    private static readonly Counter RetryAttemptsTotal = Metrics\n        .CreateCounter(\n            \"retry_attempts_total\",\n            \"Total number of retry attempts\",\n            new CounterConfiguration\n            {\n                LabelNames = new[] { \"service\", \"operation\", \"attempt\" }\n            });\n\n    private static readonly Counter RetrySuccessTotal = Metrics\n        .CreateCounter(\n            \"retry_success_total\",\n            \"Number of successful retries\",\n            new CounterConfiguration\n            {\n                LabelNames = new[] { \"service\", \"operation\", \"attempt\" }\n            });\n\n    private static readonly Counter RetryExhaustedTotal = Metrics\n        .CreateCounter(\n            \"retry_exhausted_total\",\n            \"Number of requests that exhausted all retries\",\n            new CounterConfiguration\n            {\n                LabelNames = new[] { \"service\", \"operation\" }\n            });\n\n    private static readonly Histogram RetryDuration = Metrics\n        .CreateHistogram(\n            \"retry_duration_seconds\",\n            \"Duration of retry attempts including backoff time\",\n            new HistogramConfiguration\n            {\n                LabelNames = new[] { \"service\", \"operation\" },\n                Buckets = Histogram.ExponentialBuckets(0.1, 2, 10)  // 0.1s to 51.2s\n            });\n\n    public static void RecordRetryAttempt(string service, string operation, int attemptNumber)\n    {\n        RetryAttemptsTotal.WithLabels(service, operation, attemptNumber.ToString()).Inc();\n    }\n\n    public static void RecordRetrySuccess(string service, string operation, int attemptNumber)\n    {\n        RetrySuccessTotal.WithLabels(service, operation, attemptNumber.ToString()).Inc();\n    }\n\n    public static void RecordRetryExhausted(string service, string operation)\n    {\n        RetryExhaustedTotal.WithLabels(service, operation).Inc();\n    }\n\n    public static IDisposable MeasureRetryDuration(string service, string operation)\n    {\n        return RetryDuration.WithLabels(service, operation).NewTimer();\n    }\n}\n```",
+    "25": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#solution-benefits]\n\n### Solution Benefits\n\n**Reliability Improvements:**\n- **Transient fault tolerance**: Automatically recover from temporary failures (network glitches, service overload, database pool exhaustion)\n- **Improved success rate**: Convert 85% success → 99% success by retrying transient failures\n- **Reduced support burden**: Eliminate 40-60% of transient failure tickets requiring manual intervention\n\n**Operational Efficiency:**\n- **Lower operational cost**: Reduce support tickets from 1,000/month to 400/month (estimated $60K/year savings at $100/hour)\n- **Faster recovery**: Automatic retry in seconds vs manual reprocessing in minutes/hours\n- **Better resource utilization**: Retry during low-load periods rather than failing immediately\n\n**User Experience:**\n- **Transparent recovery**: Users unaware of automatically handled transient failures\n- **Consistent behavior**: Predictable retry logic across all services\n- **Reduced frustration**: Fewer \"system unavailable\" or \"try again later\" messages\n\n**Healthcare-Specific:**\n- **Claims processing**: Prevent revenue loss from failed eligibility checks during transient outages\n- **Provider satisfaction**: Eliminate false \"unavailable\" errors during temporary glitches\n- **Member access**: Reduce friction accessing health records during load spikes\n- **Compliance**: Maintain audit trail of retry attempts for regulatory investigations",
+    "26": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#implementation-guidelines]\n\n## Implementation Guidelines",
+    "27": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#phase-1-install-retry-library]\n\n### Phase 1: Install Retry Library\n\n**For .NET Projects (Polly)**:\n\n```powershell\n# Install Polly via NuGet Package Manager\nInstall-Package Polly -Version 8.4.0\n\n# Or via .NET CLI\ndotnet add package Polly --version 8.4.0\n\n# For ASP.NET Core integration\nInstall-Package Polly.Extensions.Http -Version 3.0.0\n```\n\n**For Java Projects (Resilience4j)**:\n\n```xml\n<!-- Add to pom.xml -->\n<dependencies>\n    <dependency>\n        <groupId>io.github.resilience4j</groupId>\n        <artifactId>resilience4j-retry</artifactId>\n        <version>2.1.0</version>\n    </dependency>\n\n    <!-- For Spring Boot integration -->\n    <dependency>\n        <groupId>io.github.resilience4j</groupId>\n        <artifactId>resilience4j-spring-boot3</artifactId>\n        <version>2.1.0</version>\n    </dependency>\n</dependencies>\n```",
+    "28": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#phase-2-configure-retry-policy]\n\n### Phase 2: Configure Retry Policy\n\n**Step 1: Define Retry Configuration**\n\n```csharp\n// appsettings.json - Retry configuration\n{\n  \"RetryPolicy\": {\n    \"MaxAttempts\": 5,\n    \"BaseDelaySeconds\": 1,\n    \"MaxDelaySeconds\": 30,\n    \"JitterPercentage\": 20,\n    \"TransientStatusCodes\": [408, 429, 500, 502, 503, 504]\n  }\n}\n```\n\n**Step 2: Create Retry Policy Factory**\n\n```csharp\nusing Microsoft.Extensions.Options;\nusing Polly;\nusing Polly.Retry;\n\npublic class RetryPolicyOptions\n{\n    public int MaxAttempts { get; set; } = 5;\n    public double BaseDelaySeconds { get; set; } = 1.0;\n    public double MaxDelaySeconds { get; set; } = 30.0;\n    public int JitterPercentage { get; set; } = 20;\n    public int[] TransientStatusCodes { get; set; } = { 408, 429, 500, 502, 503, 504 };\n}\n\npublic class RetryPolicyFactory\n{\n    private readonly RetryPolicyOptions _options;\n    private readonly ILogger<RetryPolicyFactory> _logger;\n\n    public RetryPolicyFactory(\n        IOptions<RetryPolicyOptions> options,\n        ILogger<RetryPolicyFactory> logger)\n    {\n        _options = options.Value;\n        _logger = logger;\n    }\n\n    public AsyncRetryPolicy<HttpResponseMessage> CreatePolicy()\n    {\n        return Policy\n            .HandleResult<HttpResponseMessage>(r =>\n                _options.TransientStatusCodes.Contains((int)r.StatusCode))\n            .Or<HttpRequestException>()\n            .Or<TaskCanceledException>()\n            .WaitAndRetryAsync(\n                retryCount: _options.MaxAttempts,\n                sleepDurationProvider: (retryAttempt, context) =>\n                {\n                    var baseDelay = TimeSpan.FromSeconds(\n                        Math.Pow(2, retryAttempt - 1) * _options.BaseDelaySeconds);\n\n                    // Apply max delay cap\n                    if (baseDelay.TotalSeconds > _options.MaxDelaySeconds)\n                        baseDelay = TimeSpan.FromSeconds(_options.MaxDelaySeconds);\n\n                    // Add jitter (±20%)\n                    var jitterMs = Random.Shared.Next(\n                        -(int)(baseDelay.TotalMilliseconds * _options.JitterPercentage / 100),\n                        (int)(baseDelay.TotalMilliseconds * _options.JitterPercentage / 100));\n\n                    return baseDelay + TimeSpan.FromMilliseconds(jitterMs);\n                },\n                onRetry: (outcome, timespan, retryAttempt, context) =>\n                {\n                    _logger.LogWarning(\n                        \"Retry {RetryAttempt}/{MaxAttempts} after {DelayMs}ms for {ServiceName}.{OperationName}. \" +\n                        \"StatusCode: {StatusCode}, CorrelationId: {CorrelationId}\",\n                        retryAttempt,\n                        _options.MaxAttempts,\n                        timespan.TotalMilliseconds,\n                        context.GetValueOrDefault(\"ServiceName\"),\n                        context.GetValueOrDefault(\"OperationName\"),\n                        outcome.Result?.StatusCode.ToString() ?? outcome.Exception?.GetType().Name,\n                        context.GetValueOrDefault(\"CorrelationId\"));\n\n                    // Record metrics\n                    RetryMetrics.RecordRetryAttempt(\n                        context[\"ServiceName\"].ToString(),\n                        context[\"OperationName\"].ToString(),\n                        retryAttempt);\n                });\n    }\n}\n```\n\n**Step 3: Register in Dependency Injection**\n\n```csharp\n// Program.cs or Startup.cs\nservices.Configure<RetryPolicyOptions>(\n    configuration.GetSection(\"RetryPolicy\"));\n\nservices.AddSingleton<RetryPolicyFactory>();\n\n// Register typed HttpClient with retry policy\nservices.AddHttpClient<IEligibilityService, EligibilityService>()\n    .AddPolicyHandler((services, request) =>\n    {\n        var factory = services.GetRequiredService<RetryPolicyFactory>();\n        return factory.CreatePolicy();\n    });\n```",
+    "29": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#phase-3-implement-transient-fault-detection]\n\n### Phase 3: Implement Transient Fault Detection\n\n**Comprehensive Fault Detection Predicate:**\n\n```csharp\npublic class TransientFaultDetector\n{\n    /// <summary>\n    /// Evaluates if HTTP response represents transient fault\n    /// </summary>\n    public static bool IsTransientHttpError(HttpResponseMessage response)\n    {\n        // Transient HTTP status codes\n        if (response.StatusCode == HttpStatusCode.RequestTimeout ||           // 408\n            response.StatusCode == (HttpStatusCode)429 ||                     // 429\n            response.StatusCode == HttpStatusCode.InternalServerError ||      // 500\n            response.StatusCode == HttpStatusCode.BadGateway ||               // 502\n            response.StatusCode == HttpStatusCode.ServiceUnavailable ||       // 503\n            response.StatusCode == HttpStatusCode.GatewayTimeout)             // 504\n        {\n            return true;\n        }\n\n        // Check Retry-After header (indicates temporary condition)\n        if (response.Headers.RetryAfter != null)\n        {\n            return true;\n        }\n\n        return false;\n    }\n\n    /// <summary>\n    /// Evaluates if exception represents transient fault\n    /// </summary>\n    public static bool IsTransientException(Exception exception)\n    {\n        return exception switch\n        {\n            // HTTP-related transient failures\n            HttpRequestException httpEx when\n                httpEx.InnerException is SocketException ||\n                httpEx.InnerException is IOException => true,\n\n            // Timeout exceptions\n            TaskCanceledException => true,\n            TimeoutException => true,\n            OperationCanceledException cancelEx when\n                cancelEx.CancellationToken.IsCancellationRequested == false => true,\n\n            // SQL Server transient errors\n            SqlException sqlEx when IsTransientSqlError(sqlEx) => true,\n\n            // Azure Service Bus transient errors\n            ServiceBusException sbEx when\n                sbEx.IsTransient => true,\n\n            _ => false\n        };\n    }\n\n    private static bool IsTransientSqlError(SqlException exception)\n    {\n        // See: https://docs.microsoft.com/azure/azure-sql/database/troubleshoot-common-errors-issues\n        return exception.Errors\n            .Cast<SqlError>()\n            .Any(error => error.Number switch\n            {\n                -2 or -1 or 2 or 53 or 64 or 233 or 10053 or 10054 or 10060\n                    or 40197 or 40501 or 40613 or 49918 or 49919 or 49920 => true,\n                _ => false\n            });\n    }\n}\n```",
+    "30": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#phase-4-ensure-idempotency]\n\n### Phase 4: Ensure Idempotency\n\n**Step 1: Implement Idempotency Key Generation**\n\n```csharp\npublic class IdempotencyKeyGenerator\n{\n    /// <summary>\n    /// Generates idempotency key for claim submission\n    /// Format: {EntityId}:{UserId}:{Date}:{HashOfContent}\n    /// </summary>\n    public static string GenerateKey(Guid claimId, Guid userId, Claim claim)\n    {\n        var contentHash = ComputeContentHash(claim);\n        return $\"claim:{claimId}:{userId}:{DateTime.UtcNow:yyyyMMdd}:{contentHash}\";\n    }\n\n    private static string ComputeContentHash(Claim claim)\n    {\n        var json = JsonSerializer.Serialize(claim, new JsonSerializerOptions\n        {\n            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,\n            WriteIndented = false\n        });\n\n        using var sha256 = SHA256.Create();\n        var hashBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(json));\n        return Convert.ToBase64String(hashBytes).Substring(0, 16);\n    }\n}\n```\n\n**Step 2: Implement Idempotent Operation Handler**\n\n```csharp\npublic class IdempotentClaimService\n{\n    private readonly IDistributedCache _cache;  // Redis\n    private readonly IClaimRepository _claimRepository;\n    private readonly ILogger<IdempotentClaimService> _logger;\n\n    /// <summary>\n    /// Submit claim with idempotency guarantee\n    /// </summary>\n    public async Task<ClaimSubmissionResult> SubmitClaimAsync(\n        Claim claim,\n        Guid userId,\n        CancellationToken cancellationToken = default)\n    {\n        // Generate idempotency key\n        var idempotencyKey = IdempotencyKeyGenerator.GenerateKey(\n            claim.ClaimId, userId, claim);\n\n        // Check for duplicate request\n        var cachedResult = await GetCachedResultAsync(idempotencyKey, cancellationToken);\n        if (cachedResult != null)\n        {\n            _logger.LogInformation(\n                \"Idempotent request detected for claim {ClaimId}. Returning cached result. Key: {IdempotencyKey}\",\n                claim.ClaimId,\n                idempotencyKey);\n\n            return cachedResult;\n        }\n\n        // Process claim submission\n        var result = await ProcessClaimAsync(claim, cancellationToken);\n\n        // Cache result for 24 hours (idempotency window)\n        await CacheResultAsync(idempotencyKey, result, cancellationToken);\n\n        return result;\n    }\n\n    private async Task<ClaimSubmissionResult> GetCachedResultAsync(\n        string idempotencyKey,\n        CancellationToken cancellationToken)\n    {\n        var cachedJson = await _cache.GetStringAsync(idempotencyKey, cancellationToken);\n\n        return cachedJson != null\n            ? JsonSerializer.Deserialize<ClaimSubmissionResult>(cachedJson)\n            : null;\n    }\n\n    private async Task CacheResultAsync(\n        string idempotencyKey,\n        ClaimSubmissionResult result,\n        CancellationToken cancellationToken)\n    {\n        var json = JsonSerializer.Serialize(result);\n\n        await _cache.SetStringAsync(\n            idempotencyKey,\n            json,\n            new DistributedCacheEntryOptions\n            {\n                AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(24)\n            },\n            cancellationToken);\n    }\n}\n```",
+    "31": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#phase-5-add-monitoring-and-observability]\n\n### Phase 5: Add Monitoring and Observability\n\n**Step 1: Define Metrics**\n\n```csharp\nusing Prometheus;\n\npublic static class RetryMetrics\n{\n    // Counter: Total retry attempts\n    private static readonly Counter RetryAttemptsTotal = Metrics.CreateCounter(\n        \"retry_attempts_total\",\n        \"Total number of retry attempts\",\n        new CounterConfiguration\n        {\n            LabelNames = new[] { \"service\", \"operation\", \"attempt\", \"result\" }\n        });\n\n    // Counter: Requests that exhausted retries\n    private static readonly Counter RetryExhaustedTotal = Metrics.CreateCounter(\n        \"retry_exhausted_total\",\n        \"Number of requests that exhausted all retry attempts\",\n        new CounterConfiguration\n        {\n            LabelNames = new[] { \"service\", \"operation\", \"status_code\" }\n        });\n\n    // Histogram: Retry duration\n    private static readonly Histogram RetryDurationSeconds = Metrics.CreateHistogram(\n        \"retry_duration_seconds\",\n        \"Duration of retry cycle including backoff time\",\n        new HistogramConfiguration\n        {\n            LabelNames = new[] { \"service\", \"operation\" },\n            Buckets = Histogram.ExponentialBuckets(0.1, 2, 10)  // 0.1s to 102.4s\n        });\n\n    // Gauge: Current retry success rate\n    private static readonly Gauge RetrySuccessRate = Metrics.CreateGauge(\n        \"retry_success_rate\",\n        \"Success rate of retry attempts (sliding window)\",\n        new GaugeConfiguration\n        {\n            LabelNames = new[] { \"service\", \"operation\" }\n        });\n\n    public static void RecordRetryAttempt(string service, string operation, int attempt, bool success)\n    {\n        RetryAttemptsTotal\n            .WithLabels(service, operation, attempt.ToString(), success ? \"success\" : \"failure\")\n            .Inc();\n    }\n\n    public static void RecordRetryExhausted(string service, string operation, string statusCode)\n    {\n        RetryExhaustedTotal\n            .WithLabels(service, operation, statusCode)\n            .Inc();\n    }\n\n    public static IDisposable MeasureRetryDuration(string service, string operation)\n    {\n        return RetryDurationSeconds\n            .WithLabels(service, operation)\n            .NewTimer();\n    }\n\n    public static void UpdateSuccessRate(string service, string operation, double rate)\n    {\n        RetrySuccessRate\n            .WithLabels(service, operation)\n            .Set(rate);\n    }\n}\n```\n\n**Step 2: Integrate Metrics with Retry Policy**\n\n```csharp\npublic AsyncRetryPolicy<HttpResponseMessage> CreateInstrumentedPolicy(\n    string serviceName,\n    string operationName)\n{\n    return Policy\n        .HandleResult<HttpResponseMessage>(r => IsTransientHttpError(r))\n        .Or<HttpRequestException>()\n        .WaitAndRetryAsync(\n            retryCount: 5,\n            sleepDurationProvider: (attempt, ctx) => CalculateBackoff(attempt),\n            onRetry: (outcome, timespan, attempt, context) =>\n            {\n                // Log retry attempt\n                _logger.LogWarning(\n                    \"Retry {Attempt}/5 for {Service}.{Operation} after {Delay}ms. Status: {Status}\",\n                    attempt, serviceName, operationName,\n                    timespan.TotalMilliseconds,\n                    outcome.Result?.StatusCode.ToString() ?? outcome.Exception?.GetType().Name);\n\n                // Record metrics\n                bool success = outcome.Result?.IsSuccessStatusCode ?? false;\n                RetryMetrics.RecordRetryAttempt(serviceName, operationName, attempt, success);\n\n                // Record exhaustion on final attempt\n                if (attempt == 5 && !success)\n                {\n                    var statusCode = outcome.Result?.StatusCode.ToString() ?? \"Exception\";\n                    RetryMetrics.RecordRetryExhausted(serviceName, operationName, statusCode);\n                }\n            });\n}\n```\n\n**Step 3: Configure Prometheus Endpoint**\n\n```csharp\n// Program.cs\napp.UseMetricServer();  // Exposes /metrics endpoint\n\napp.UseHttpMetrics();   // Tracks HTTP request metrics\n```",
+    "32": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#phase-6-test-retry-behavior]\n\n### Phase 6: Test Retry Behavior\n\n**Unit Test with WireMock:**\n\n```csharp\nusing WireMock.Server;\nusing WireMock.RequestBuilders;\nusing WireMock.ResponseBuilders;\nusing Xunit;\n\npublic class RetryPolicyTests\n{\n    private readonly WireMockServer _mockServer;\n    private readonly HttpClient _httpClient;\n    private readonly AsyncRetryPolicy<HttpResponseMessage> _retryPolicy;\n\n    public RetryPolicyTests()\n    {\n        _mockServer = WireMockServer.Start();\n        _httpClient = new HttpClient { BaseAddress = new Uri(_mockServer.Url) };\n\n        var factory = new RetryPolicyFactory(\n            Options.Create(new RetryPolicyOptions()),\n            new NullLogger<RetryPolicyFactory>());\n        _retryPolicy = factory.CreatePolicy();\n    }\n\n    [Fact]\n    public async Task Retry_Should_Succeed_After_Transient_503_Errors()\n    {\n        // Arrange: First 2 requests return 503, third succeeds\n        _mockServer\n            .Given(Request.Create().WithPath(\"/eligibility\").UsingGet())\n            .InScenario(\"RetryScenario\")\n            .WillSetStateTo(\"Attempt1\")\n            .RespondWith(Response.Create()\n                .WithStatusCode(503)\n                .WithBody(\"Service Unavailable\"));\n\n        _mockServer\n            .Given(Request.Create().WithPath(\"/eligibility\").UsingGet())\n            .InScenario(\"RetryScenario\")\n            .WhenStateIs(\"Attempt1\")\n            .WillSetStateTo(\"Attempt2\")\n            .RespondWith(Response.Create()\n                .WithStatusCode(503)\n                .WithBody(\"Service Unavailable\"));\n\n        _mockServer\n            .Given(Request.Create().WithPath(\"/eligibility\").UsingGet())\n            .InScenario(\"RetryScenario\")\n            .WhenStateIs(\"Attempt2\")\n            .RespondWith(Response.Create()\n                .WithStatusCode(200)\n                .WithBody(\"{\\\"isEligible\\\": true}\"));\n\n        // Act\n        var stopwatch = Stopwatch.StartNew();\n        var response = await _retryPolicy.ExecuteAsync(async () =>\n            await _httpClient.GetAsync(\"/eligibility\"));\n        stopwatch.Stop();\n\n        // Assert\n        Assert.Equal(HttpStatusCode.OK, response.StatusCode);\n        Assert.Equal(3, _mockServer.LogEntries.Count());  // 3 attempts\n\n        // Verify exponential backoff timing (1s + 2s = ~3s total)\n        Assert.InRange(stopwatch.ElapsedMilliseconds, 2500, 3500);\n    }\n\n    [Fact]\n    public async Task Retry_Should_Exhaust_After_Max_Attempts()\n    {\n        // Arrange: All requests return 503\n        _mockServer\n            .Given(Request.Create().WithPath(\"/eligibility\").UsingGet())\n            .RespondWith(Response.Create()\n                .WithStatusCode(503)\n                .WithBody(\"Service Unavailable\"));\n\n        // Act & Assert\n        var response = await _retryPolicy.ExecuteAsync(async () =>\n            await _httpClient.GetAsync(\"/eligibility\"));\n\n        Assert.Equal(HttpStatusCode.ServiceUnavailable, response.StatusCode);\n        Assert.Equal(5, _mockServer.LogEntries.Count());  // 5 attempts (initial + 4 retries)\n    }\n\n    [Fact]\n    public async Task Retry_Should_Not_Retry_400_BadRequest()\n    {\n        // Arrange\n        _mockServer\n            .Given(Request.Create().WithPath(\"/eligibility\").UsingGet())\n            .RespondWith(Response.Create()\n                .WithStatusCode(400)\n                .WithBody(\"Bad Request\"));\n\n        // Act\n        var response = await _retryPolicy.ExecuteAsync(async () =>\n            await _httpClient.GetAsync(\"/eligibility\"));\n\n        // Assert: No retries for 400 (non-transient)\n        Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);\n        Assert.Single(_mockServer.LogEntries);  // Only 1 attempt\n    }\n}\n```",
+    "33": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#best-practices]\n\n### Best Practices\n\n| Practice | Recommendation | Rationale |\n|----------|----------------|-----------|\n| **Max Retry Attempts** | Limit to 3-5 attempts | Balances recovery capability vs resource exhaustion. 5 retries covers 99% of transient scenarios. |\n| **Exponential Backoff** | Use exponential (not linear/constant) | Exponential gives downstream services recovery time. Linear/constant may retry too quickly during overload. |\n| **Jitter** | Always add ±20% jitter | Prevents synchronized retry \"thundering herd\" when many clients retry simultaneously. |\n| **Idempotency** | Make operations idempotent or use keys | Required for safe retries. Non-idempotent retries risk duplicate processing (duplicate payments, duplicate claims). |\n| **Circuit Breaker Integration** | Wrap retry inside circuit breaker | Circuit breaker prevents infinite retries when service persistently down. Retry handles transient faults. |\n| **Timeout Configuration** | Set appropriate request timeout | Timeout should be less than total retry budget. Example: 5s timeout × 5 attempts = 25s max. |\n| **Logging** | Log each retry attempt with context | Essential for troubleshooting. Include: attempt number, delay, failure reason, correlation ID. |\n| **Metrics** | Track retry attempts, success rate, exhaustion | Monitor `retry_exhaustion_rate > 1%` indicates persistent downstream issues requiring investigation. |\n| **Transient Detection** | Only retry transient faults | Don't retry 400-level errors (Bad Request, Unauthorized, Not Found). Wastes resources, won't succeed. |\n| **Async Operations** | Use async retry policies | Synchronous retry blocks thread during backoff. Async frees thread, improves scalability. |",
+    "34": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#common-pitfalls]\n\n### Common Pitfalls\n\n| Pitfall | Problem | Solution |\n|---------|---------|----------|\n| **Infinite Retry Loops** | No max attempts limit causes infinite retries consuming resources | Always set `maxRetryAttempts` to finite value (3-5). |\n| **Missing Idempotency** | Retrying non-idempotent operations causes duplicates (duplicate payments, duplicate claims) | Implement idempotency keys with 24-hour cache, or restrict retry to read-only operations. |\n| **Synchronous Blocking Retry** | Using `WaitAndRetry` (synchronous) blocks thread during backoff delays | Use `WaitAndRetryAsync` to free thread during delays. Critical for high-concurrency scenarios. |\n| **Retrying Permanent Failures** | Retrying 400-level errors (Bad Request, Unauthorized) wastes resources | Predicate must check `statusCode >= 500` only. Don't retry client errors. |\n| **No Jitter** | All clients retry at same time creating \"thundering herd\" amplifying load spikes | Add random jitter (±20%) to backoff delays. |\n| **Missing Monitoring** | No visibility into retry behavior makes troubleshooting impossible | Instrument with Prometheus metrics: `retry_attempts_total`, `retry_exhausted_total`, `retry_duration_seconds`. |\n| **Retrying Inside Circuit Open** | Continuing retry when circuit breaker open wastes resources | Wrap retry policy inside circuit breaker policy. Circuit breaker prevents retries when service persistently down. |\n| **Short Timeout with Many Retries** | 1s timeout × 10 retries = 10s total latency unacceptable for interactive requests | Balance timeout × max attempts. For interactive requests, use 3 retries max with 2-3s timeout. |",
+    "35": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#governance-and-compliance]\n\n## Governance and Compliance",
+    "36": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#retry-policy-standards]\n\n### Retry Policy Standards\n\nGainwell mandates the following retry policy standards across all microservices to ensure consistent resilience behavior:",
+    "37": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#standard-1-maximum-retry-attempts]\n\n#### Standard 1: Maximum Retry Attempts\n\n**Requirement**: All retry policies MUST limit maximum attempts to prevent resource exhaustion.\n\n| Service Type | Max Attempts | Rationale |\n|--------------|-------------|-----------|\n| **External API Calls** | 5 attempts | External services (state agencies, clearinghouses) may have longer recovery times. 5 attempts with exponential backoff provides ~30s recovery window. |\n| **Internal Microservices** | 3 attempts | Internal services recover quickly. 3 attempts provides ~7s window, sufficient for transient network glitches or brief overload. |\n| **Database Operations** | 3 attempts | Database connection pool exhaustion typically resolves within seconds. 3 attempts adequate. |\n| **Real-Time Interactive** | 2 attempts | Member portal, provider portal interactive requests require <3s response. Limit to 2 attempts to meet latency SLA. |\n\n**Enforcement**: Azure API Management policy validates retry configuration in service registration. Services exceeding max attempts are rejected during deployment.",
+    "38": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#standard-2-exponential-backoff-required]\n\n#### Standard 2: Exponential Backoff Required\n\n**Requirement**: All retry policies MUST use exponential backoff, NOT linear or constant delays.\n\n**Approved Formula**:\n```text\ndelay = baseDelay × 2^(attemptNumber - 1) + jitter\nwhere:\n  baseDelay = 1 second\n  jitter = random(-200ms, +200ms)  [±20%]\n```\n\n**Example Delays**:\n- Attempt 1: 1s + jitter (0.8s - 1.2s)\n- Attempt 2: 2s + jitter (1.8s - 2.2s)\n- Attempt 3: 4s + jitter (3.8s - 4.2s)\n- Attempt 4: 8s + jitter (7.8s - 8.2s)\n- Attempt 5: 16s + jitter (15.8s - 16.2s)\n\n**Rationale**: Exponential backoff provides rapid retries for brief glitches (attempt 1-2) while protecting downstream services during sustained overload (attempt 3-5). Linear backoff retries too frequently during overload.",
+    "39": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#standard-3-jitter-mandatory]\n\n#### Standard 3: Jitter Mandatory\n\n**Requirement**: All retry policies MUST add randomized jitter to prevent synchronized retry \"thundering herd\".\n\n**Approved Jitter Range**: ±20% of calculated backoff delay\n\n**Implementation**:\n```csharp\nvar jitter = TimeSpan.FromMilliseconds(\n    Random.Shared.Next(\n        -(int)(baseDelay.TotalMilliseconds * 0.2),\n        (int)(baseDelay.TotalMilliseconds * 0.2)));\n\nvar actualDelay = baseDelay + jitter;\n```\n\n**Rationale**: Without jitter, many clients experiencing same failure retry at exact same time, creating synchronized load spikes that amplify the original problem. Jitter distributes retry attempts across time.",
+    "40": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#standard-4-transient-fault-detection]\n\n#### Standard 4: Transient Fault Detection\n\n**Requirement**: Retry policies MUST only retry transient faults. Non-transient errors (400-level) MUST NOT be retried.\n\n**Approved Transient Conditions**:\n\n| Condition Type | Specific Codes/Exceptions | Retry? |\n|----------------|---------------------------|--------|\n| **HTTP 5xx Errors** | 500, 502, 503, 504 | ✅ Yes |\n| **HTTP Timeout** | 408 Request Timeout | ✅ Yes |\n| **HTTP Rate Limit** | 429 Too Many Requests | ✅ Yes (with Retry-After header respect) |\n| **Network Exceptions** | `SocketException`, `IOException`, `HttpRequestException` | ✅ Yes |\n| **Timeout Exceptions** | `TimeoutException`, `TaskCanceledException` | ✅ Yes |\n| **SQL Transient Errors** | Error codes: -2, -1, 2, 53, 64, 233, 40197, 40501, 40613 | ✅ Yes |\n| **HTTP 4xx Errors** | 400, 401, 403, 404, 405, 409 | ❌ No (permanent failures) |\n| **Validation Errors** | `ArgumentException`, `ValidationException` | ❌ No (application logic errors) |\n\n**Enforcement**: Code review checklist requires transient fault predicate review. Automated tests verify 400-level errors not retried.",
+    "41": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#standard-5-idempotency-for-state-changing-operations]\n\n#### Standard 5: Idempotency for State-Changing Operations\n\n**Requirement**: All state-changing operations (POST, PUT, DELETE) MUST implement idempotency to safely retry.\n\n**Idempotency Key Format**:\n```text\n{resource-type}:{resource-id}:{user-id}:{date}:{content-hash}\n\nExamples:\nclaim:12345678-1234-1234-1234-123456789abc:user-5678:20241215:a7f3e9b2\npayment:87654321-4321-4321-4321-987654321abc:user-9012:20241215:c4d8f1a6\n```\n\n**Implementation Requirements**:\n- Idempotency keys stored in Redis with 24-hour TTL\n- Check cache before processing request; return cached result if duplicate detected\n- Store result in cache after successful processing\n- Log idempotent request detection at INFO level\n\n**Exemptions**: Read-only GET requests naturally idempotent, don't require idempotency keys.",
+    "42": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#monitoring-requirements]\n\n### Monitoring Requirements",
+    "43": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#required-metrics]\n\n#### Required Metrics\n\nAll services implementing retry logic MUST expose the following Prometheus metrics:\n\n| Metric Name | Type | Description | Labels | Target Value |\n|-------------|------|-------------|--------|--------------|\n| `retry_attempts_total` | Counter | Total retry attempts across all operations | `service`, `operation`, `attempt`, `result` | N/A (monotonic) |\n| `retry_success_total` | Counter | Retry attempts that eventually succeeded | `service`, `operation`, `attempt` | N/A (monotonic) |\n| `retry_exhausted_total` | Counter | Requests that exhausted all retry attempts | `service`, `operation`, `status_code` | <1% of total requests |\n| `retry_duration_seconds` | Histogram | Total duration including retry backoff time | `service`, `operation` | P95 < 30s |\n| `retry_success_rate` | Gauge | Percentage of retries eventually succeeding | `service`, `operation` | >80% |",
+    "44": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#alerting-rules]\n\n#### Alerting Rules\n\nConfigure the following Prometheus alerts:\n\n**Alert 1: High Retry Exhaustion Rate**\n```yaml\n- alert: HighRetryExhaustionRate\n  expr: |\n    (\n      sum(rate(retry_exhausted_total[5m])) by (service, operation)\n      /\n      sum(rate(retry_attempts_total[5m])) by (service, operation)\n    ) > 0.01\n  for: 5m\n  labels:\n    severity: warning\n  annotations:\n    summary: \"High retry exhaustion rate for {{ $labels.service }}.{{ $labels.operation }}\"\n    description: \"{{ $value | humanizePercentage }} of retry attempts are exhausting all retries, indicating persistent downstream issues.\"\n```\n\n**Alert 2: Retry Success Rate Below Threshold**\n```yaml\n- alert: LowRetrySuccessRate\n  expr: retry_success_rate < 0.80\n  for: 10m\n  labels:\n    severity: warning\n  annotations:\n    summary: \"Low retry success rate for {{ $labels.service }}.{{ $labels.operation }}\"\n    description: \"Retry success rate {{ $value | humanizePercentage }} below 80% threshold. Retries not effectively recovering transient failures.\"\n```\n\n**Alert 3: Excessive Retry Attempts**\n```yaml\n- alert: ExcessiveRetryAttempts\n  expr: |\n    (\n      sum(rate(retry_attempts_total[5m])) by (service, operation)\n      /\n      sum(rate(http_requests_total[5m])) by (service, operation)\n    ) > 0.20\n  for: 5m\n  labels:\n    severity: critical\n  annotations:\n    summary: \"Excessive retry attempts for {{ $labels.service }}.{{ $labels.operation }}\"\n    description: \"{{ $value | humanizePercentage }} of requests require retries, indicating systemic downstream issues.\"\n```",
+    "45": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#dashboard-requirements]\n\n#### Dashboard Requirements\n\nAll services MUST provide Grafana dashboard with the following panels:\n\n1. **Retry Attempts Over Time**: Line graph showing `rate(retry_attempts_total[5m])` by attempt number\n2. **Retry Success Rate**: Gauge showing `retry_success_rate` with 80% threshold line\n3. **Retry Exhaustion Rate**: Line graph showing exhaustion percentage over time\n4. **Retry Duration Distribution**: Heatmap showing P50, P95, P99 retry latency\n5. **Top Operations by Retry Rate**: Table showing operations with highest retry attempts",
+    "46": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#sla-impact-assessment]\n\n### SLA Impact Assessment",
+    "47": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#availability-improvement]\n\n#### Availability Improvement\n\nRetry pattern significantly improves service availability by recovering from transient failures:\n\n| Metric | Without Retry | With Retry (5 attempts, exponential backoff) | Improvement |\n|--------|---------------|------------------------------------------|-------------|\n| **Base Success Rate** | 85% (15% transient failures) | 99.2% | +14.2 percentage points |\n| **Effective Availability** | 85% (51 hours downtime/month) | 99.2% (6 hours downtime/month) | -45 hours downtime/month |\n| **SLA Compliance** | Misses 99% SLA target | Meets 99% SLA, approaches 99.9% | ✅ SLA achieved |\n\n**Calculation Example**:\n- Base success rate: 85% (one attempt)\n- Transient failure rate: 15%\n- Retry success rate: 80% (80% of transient failures resolve on retry)\n- Effective success rate: 85% + (15% × 80%) = 85% + 12% = **97%**\n- With 5 retry attempts: 85% + (15% × 0.8) + (15% × 0.2 × 0.8) + ... = **99.2%**",
+    "48": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#latency-impact]\n\n#### Latency Impact\n\nRetry adds latency due to backoff delays. Impact varies by retry attempt:\n\n| Scenario | P50 Latency | P95 Latency | P99 Latency |\n|----------|-------------|-------------|-------------|\n| **No Retry Needed** (85% of requests) | 200ms | 500ms | 1,000ms |\n| **Success After 1 Retry** (10% of requests) | +1.0s = 1.2s | +1.2s = 1.7s | +1.2s = 2.2s |\n| **Success After 2 Retries** (3% of requests) | +3.0s = 3.2s | +3.2s = 3.7s | +3.2s = 4.2s |\n| **Success After 3 Retries** (1.5% of requests) | +7.0s = 7.2s | +7.2s = 7.7s | +7.2s = 8.2s |\n| **Exhausted After 5 Retries** (0.5% of requests) | +31s = 31.2s | +31.2s = 31.7s | +31.2s = 32.2s |\n\n**Weighted Average P95 Latency**:\n```text\nP95 = (0.85 × 500ms) + (0.10 × 1700ms) + (0.03 × 3700ms) + (0.015 × 7700ms) + (0.005 × 31700ms)\n    = 425ms + 170ms + 111ms + 116ms + 159ms\n    = 981ms\n```\n\n**Conclusion**: P95 latency increases from 500ms to ~1,000ms with retry. Acceptable for background processing (claims adjudication, batch jobs). NOT acceptable for interactive requests requiring <1s response (member portal, provider portal).\n\n**Recommendation**: Use retry for asynchronous/background operations. For interactive requests, limit to 2 retries max or use circuit breaker fast-fail.",
+    "49": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#audit-and-compliance]\n\n### Audit and Compliance",
+    "50": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#hipaa-compliance]\n\n#### HIPAA Compliance\n\n**Requirement**: All retry attempts involving Protected Health Information (PHI) MUST be logged for audit trail.\n\n**Required Log Fields**:\n```json\n{\n  \"timestamp\": \"2024-12-15T14:32:18.123Z\",\n  \"eventType\": \"RetryAttempt\",\n  \"serviceName\": \"ClaimsAdjudicationService\",\n  \"operationName\": \"CheckEligibility\",\n  \"correlationId\": \"12345678-1234-1234-1234-123456789abc\",\n  \"userId\": \"user-5678\",\n  \"attemptNumber\": 2,\n  \"maxAttempts\": 5,\n  \"backoffDelayMs\": 2000,\n  \"failureReason\": \"HttpStatusCode.ServiceUnavailable (503)\",\n  \"downstreamService\": \"EligibilityService\",\n  \"containsPHI\": true,\n  \"patientId\": \"[REDACTED]\",  // Hash or redact in logs\n  \"retryResult\": \"Retrying\",\n  \"ipAddress\": \"10.50.2.15\",\n  \"userAgent\": \"ClaimsProcessor/2.5.0\"\n}\n```\n\n**Retention**: Retry logs containing PHI MUST be retained for 7 years per HIPAA requirements.\n\n**Access Control**: Retry logs classified as audit logs, restricted to security team and compliance officers.",
+    "51": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#state-contract-compliance]\n\n#### State Contract Compliance\n\nMany state Medicaid contracts mandate minimum uptime SLAs. Retry pattern essential for meeting these obligations.\n\n**Example Contract Requirements** (Typical State Medicaid Contract):\n- **Claims Processing Availability**: 99.5% uptime during business hours (6AM-8PM)\n- **Provider Portal Availability**: 99.0% uptime 24x7\n- **Pharmacy Adjudication**: 99.9% uptime for real-time POS transactions\n- **Penalty**: $10,000 per hour of unplanned downtime exceeding SLA\n\n**Retry Contribution**:\n- Without retry: 85% availability = **$1.5M annual penalties**\n- With retry: 99.2% availability = **$50K annual penalties** (97% reduction)",
+    "52": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#policy-exemptions]\n\n### Policy Exemptions\n\nTeams may request exemption from retry policy standards in the following scenarios:",
+    "53": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#exemption-scenario-1-non-idempotent-financial-transactions]\n\n#### Exemption Scenario 1: Non-Idempotent Financial Transactions\n\n**Example**: Payment processing service submitting ACH transactions to bank. Retry risks duplicate payments.\n\n**Exemption Process**:\n1. Submit exemption request to Enterprise Architecture Review Board\n2. Provide risk assessment documenting duplicate payment risk\n3. Document compensating controls (manual reconciliation, duplicate detection at bank level)\n4. Architect approval + risk acceptance from Finance team required\n\n**Alternative**: Implement idempotency keys with bank transaction IDs to enable safe retry.",
+    "54": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#exemption-scenario-2-real-time-strict-latency-requirements]\n\n#### Exemption Scenario 2: Real-Time Strict Latency Requirements\n\n**Example**: Member mobile app API requiring <500ms P95 response time. Retry adds unacceptable latency.\n\n**Exemption Process**:\n1. Demonstrate P95 latency > SLA with retry enabled (load testing results required)\n2. Document UX impact of retry latency\n3. Implement circuit breaker fast-fail as compensating control\n4. Product owner + architect approval required\n\n**Alternative**: Use 2 retries max with 200ms timeout to keep total latency <1s.",
+    "55": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#exemption-scenario-3-third-party-api-without-idempotency-support]\n\n#### Exemption Scenario 3: Third-Party API Without Idempotency Support\n\n**Example**: State medical board API lacking idempotency support. Retry risks duplicate license verification requests, triggering rate limiting or account suspension.\n\n**Exemption Process**:\n1. Document third-party API limitations (no idempotency, strict rate limits)\n2. Provide evidence of retry-related issues (rate limit errors, account warnings)\n3. Implement exponential backoff with extended delays (10s, 20s, 40s) as compensating control\n4. Enterprise architect approval + legal review required",
+    "56": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#governance-process]\n\n### Governance Process",
+    "57": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#1-design-review]\n\n#### 1. Design Review\n\nAll new services implementing retry logic MUST undergo architecture review:\n\n**Review Checklist**:\n- ✅ Retry policy configuration documented in service design doc\n- ✅ Max retry attempts justified and within standards (3-5)\n- ✅ Exponential backoff with jitter implemented\n- ✅ Transient fault detection predicate reviewed\n- ✅ Idempotency strategy defined for state-changing operations\n- ✅ Circuit breaker integration planned\n- ✅ Monitoring metrics and alerts configured\n- ✅ SLA impact assessed (latency, availability)\n- ✅ HIPAA compliance validated if PHI involved\n\n**Approval**: Requires sign-off from Enterprise Architect + Security Architect (if PHI).",
+    "58": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#2-implementation-review]\n\n#### 2. Implementation Review\n\nCode review MUST validate retry implementation:\n\n**Code Review Checklist**:\n- ✅ Polly/Resilience4j library used (no hand-rolled retry logic)\n- ✅ Max attempts enforced (`retryCount` parameter set)\n- ✅ Exponential backoff formula correct (2^n with jitter)\n- ✅ Transient fault predicate only retries 5xx, 408, 429, network exceptions\n- ✅ 400-level errors NOT retried (unit test validates)\n- ✅ Idempotency keys generated and cached (for POST/PUT/DELETE)\n- ✅ Retry attempts logged with correlation ID\n- ✅ Metrics instrumented (Prometheus counters/histograms)\n- ✅ Circuit breaker wraps retry policy (order correct)\n- ✅ Async retry policy used (`WaitAndRetryAsync`, not blocking `WaitAndRetry`)",
+    "59": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#3-production-validation]\n\n#### 3. Production Validation\n\nPost-deployment validation required:\n\n**Validation Steps**:\n1. Verify Prometheus metrics populating (`retry_attempts_total` incrementing)\n2. Confirm Grafana dashboard displaying retry metrics\n3. Validate alerts configured and firing correctly (test with chaos engineering)\n4. Review retry logs for proper correlation ID propagation\n5. Performance test: Inject transient faults, verify retry recovers without excessive latency\n6. Chaos test: Overload downstream service, verify circuit breaker opens preventing infinite retry\n\n**Sign-off**: Service owner + SRE team validates production metrics within 1 week of deployment.",
+    "60": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#examples-and-use-cases]\n\n## Examples and Use Cases",
+    "61": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#example-1-claims-eligibility-verification-with-retry]\n\n### Example 1: Claims Eligibility Verification with Retry",
+    "62": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#business-context]\n\n#### Business Context\n\nGainwell's **Claims Adjudication Service** processes 500,000+ claims daily. Each claim requires real-time eligibility verification to confirm member coverage before approving payment. The **Eligibility Service** occasionally experiences transient 503 errors during peak load (8-10AM, 3-5PM) due to:\n\n- Connection pool exhaustion during claim volume spikes\n- Upstream state system API throttling (429 responses)\n- Brief Azure regional network latency spikes\n\n**Traditional Problem** (No Retry):\n- **5,000 claims/day** fail due to transient eligibility check failures\n- Each failed claim requires **manual reprocessing** by operations team (15 minutes average)\n- **1,250 hours/day** of manual work = $125,000/day at $100/hour = **$3.1M/month operational cost**\n- **Provider payment delays** of 5-7 days causing provider complaints and contract penalties",
+    "63": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#solution-implementation]\n\n#### Solution Implementation\n\n**Retry Policy Configuration:**\n\n```csharp\nusing Polly;\nusing Polly.CircuitBreaker;\nusing Polly.Wrap;\nusing Microsoft.Extensions.Logging;\n\npublic class EligibilityServiceClient\n{\n    private readonly HttpClient _httpClient;\n    private readonly AsyncPolicyWrap<HttpResponseMessage> _resiliencePolicy;\n    private readonly ILogger<EligibilityServiceClient> _logger;\n\n    public EligibilityServiceClient(\n        HttpClient httpClient,\n        ILogger<EligibilityServiceClient> logger)\n    {\n        _httpClient = httpClient;\n        _logger = logger;\n\n        // Retry Policy: 5 attempts with exponential backoff\n        var retryPolicy = Policy\n            .HandleResult<HttpResponseMessage>(r =>\n                r.StatusCode == HttpStatusCode.ServiceUnavailable ||      // 503\n                r.StatusCode == (HttpStatusCode)429 ||                    // 429 Too Many Requests\n                r.StatusCode == HttpStatusCode.RequestTimeout ||          // 408\n                r.StatusCode == HttpStatusCode.GatewayTimeout)            // 504\n            .Or<HttpRequestException>()\n            .Or<TaskCanceledException>()\n            .WaitAndRetryAsync(\n                retryCount: 5,\n                sleepDurationProvider: (attempt, context) =>\n                {\n                    // Exponential backoff: 1s, 2s, 4s, 8s, 16s\n                    var baseDelay = TimeSpan.FromSeconds(Math.Pow(2, attempt - 1));\n\n                    // Add jitter (±20%)\n                    var jitter = TimeSpan.FromMilliseconds(\n                        Random.Shared.Next(-200, 200));\n\n                    return baseDelay + jitter;\n                },\n                onRetry: (outcome, timespan, attempt, context) =>\n                {\n                    var claimId = context.GetValueOrDefault(\"ClaimId\");\n                    var statusCode = outcome.Result?.StatusCode.ToString() ??\n                                   outcome.Exception?.GetType().Name;\n\n                    _logger.LogWarning(\n                        \"Eligibility check retry {Attempt}/5 for claim {ClaimId} after {DelayMs}ms. \" +\n                        \"Status: {StatusCode}, CorrelationId: {CorrelationId}\",\n                        attempt,\n                        claimId,\n                        timespan.TotalMilliseconds,\n                        statusCode,\n                        context[\"CorrelationId\"]);\n\n                    // Record metrics\n                    RetryMetrics.RecordRetryAttempt(\n                        \"ClaimsAdjudication\",\n                        \"CheckEligibility\",\n                        attempt,\n                        outcome.Result?.IsSuccessStatusCode ?? false);\n                });\n\n        // Circuit Breaker Policy: Open after 50% failures in 1 minute\n        var circuitBreakerPolicy = Policy\n            .HandleResult<HttpResponseMessage>(r => !r.IsSuccessStatusCode)\n            .Or<HttpRequestException>()\n            .CircuitBreakerAsync(\n                handledEventsAllowedBeforeBreaking: 10,\n                durationOfBreak: TimeSpan.FromSeconds(60),\n                onBreak: (outcome, duration) =>\n                {\n                    _logger.LogError(\n                        \"Circuit breaker OPENED for EligibilityService. \" +\n                        \"Breaking for {DurationSeconds}s due to {FailureCount} consecutive failures.\",\n                        duration.TotalSeconds,\n                        10);\n                },\n                onReset: () =>\n                {\n                    _logger.LogInformation(\n                        \"Circuit breaker CLOSED for EligibilityService. Resuming normal operations.\");\n                });\n\n        // Combine policies: Circuit Breaker wraps Retry\n        _resiliencePolicy = Policy.WrapAsync(circuitBreakerPolicy, retryPolicy);\n    }\n\n    /// <summary>\n    /// Check member eligibility with automatic retry on transient failures\n    /// </summary>\n    public async Task<EligibilityResponse> CheckEligibilityAsync(\n        Guid claimId,\n        string memberId,\n        DateTime serviceDate,\n        CancellationToken cancellationToken = default)\n    {\n        var context = new Context\n        {\n            [\"ClaimId\"] = claimId,\n            [\"CorrelationId\"] = Activity.Current?.Id ?? Guid.NewGuid().ToString()\n        };\n\n        var stopwatch = Stopwatch.StartNew();\n\n        try\n        {\n            var response = await _resiliencePolicy.ExecuteAsync(\n                async (ctx, ct) =>\n                {\n                    var request = new HttpRequestMessage(HttpMethod.Get,\n                        $\"https://eligibility-api.gainwell.com/v1/members/{memberId}/eligibility\" +\n                        $\"?serviceDate={serviceDate:yyyy-MM-dd}\");\n\n                    request.Headers.Add(\"X-Correlation-Id\", ctx[\"CorrelationId\"].ToString());\n\n                    return await _httpClient.SendAsync(request, ct);\n                },\n                context,\n                cancellationToken);\n\n            response.EnsureSuccessStatusCode();\n\n            var eligibility = await response.Content.ReadFromJsonAsync<EligibilityResponse>(\n                cancellationToken: cancellationToken);\n\n            _logger.LogInformation(\n                \"Eligibility check succeeded for claim {ClaimId} in {DurationMs}ms. IsEligible: {IsEligible}\",\n                claimId,\n                stopwatch.ElapsedMilliseconds,\n                eligibility.IsEligible);\n\n            return eligibility;\n        }\n        catch (BrokenCircuitException ex)\n        {\n            _logger.LogError(ex,\n                \"Eligibility check failed for claim {ClaimId} - Circuit breaker OPEN\",\n                claimId);\n\n            throw new ServiceUnavailableException(\n                \"Eligibility service temporarily unavailable. Circuit breaker open.\", ex);\n        }\n        catch (HttpRequestException ex)\n        {\n            _logger.LogError(ex,\n                \"Eligibility check exhausted retries for claim {ClaimId} after {DurationMs}ms\",\n                claimId,\n                stopwatch.ElapsedMilliseconds);\n\n            RetryMetrics.RecordRetryExhausted(\"ClaimsAdjudication\", \"CheckEligibility\");\n\n            throw new EligibilityCheckFailedException(\n                $\"Failed to check eligibility after {5} retry attempts\", ex);\n        }\n    }\n}\n```",
+    "64": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#results-and-metrics]\n\n#### Results and Metrics\n\n**Before Retry Implementation** (Baseline - January 2024):\n- **Total Claims Processed**: 500,000/day\n- **Transient Eligibility Failures**: 5,000/day (1% failure rate)\n- **Manual Reprocessing Required**: 5,000 claims/day × 15 min = 1,250 hours/day\n- **Operational Cost**: 1,250 hours × $100/hour = **$125,000/day** = **$3.1M/month**\n- **Provider Payment Delay**: Average 5-7 days for failed claims\n- **Support Tickets**: 800/month related to eligibility check failures\n\n**After Retry Implementation** (Production - March 2024):\n- **Total Claims Processed**: 500,000/day (unchanged)\n- **Transient Eligibility Failures**: 5,000/day attempt retry\n- **Retry Success Rate**: 92% (4,600 claims recovered automatically)\n- **Remaining Failures**: 400 claims/day (0.08% final failure rate)\n- **Manual Reprocessing Required**: 400 claims/day × 15 min = 100 hours/day\n- **Operational Cost**: 100 hours × $100/hour = **$10,000/day** = **$250K/month**\n- **Cost Savings**: $3.1M - $250K = **$2.85M/month** (92% reduction)\n- **Provider Payment Delay**: Eliminated for 92% of transient failures\n- **Support Tickets**: 150/month (81% reduction)\n\n**Retry Metrics** (30-day average):\n- `retry_attempts_total`: 8,500/day (some claims require multiple retries)\n- `retry_success_rate`: 92%\n- `retry_exhaustion_rate`: 0.08% (well below 1% target)\n- `retry_duration_seconds` P95: 3.2s (acceptable for async claims processing)\n- `retry_duration_seconds` P99: 7.8s\n\n**ROI Calculation**:\n- **Implementation Cost**: 2 weeks developer time = $20K\n- **Monthly Savings**: $2.85M\n- **ROI**: ($2.85M × 12) / $20K = **1,710%** annual ROI\n- **Payback Period**: <1 day\n\n---",
+    "65": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#example-2-provider-license-verification-with-rate-limit-retry]\n\n### Example 2: Provider License Verification with Rate Limit Retry",
+    "66": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#business-context]\n\n#### Business Context\n\nGainwell's **Provider Credentialing Service** verifies medical licenses for 400,000+ healthcare providers across 50 states. License verification calls state medical board APIs, which implement strict rate limiting:\n\n- **Rate Limit**: 100 requests/minute per state\n- **Penalty**: 429 Too Many Requests response with `Retry-After` header\n- **Consequence**: Immediate retry hammers API, extending rate limit penalty from 1 minute to 10+ minutes\n\n**Traditional Problem** (Naive Retry Without Backoff):\n- Bulk credentialing jobs process 500 providers simultaneously\n- All 500 requests hit rate limit simultaneously (>100 req/min)\n- Naive retry logic retries immediately, amplifying problem\n- State API extends rate limit penalty to 10 minutes\n- **Credentialing workflow stalled** for hours, delaying provider onboarding\n- **State agencies complaining** about \"aggressive\" API usage",
+    "67": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#solution-implementation]\n\n#### Solution Implementation\n\n**Intelligent Retry with Rate Limit Detection:**\n\n```csharp\nusing Polly;\nusing Polly.RateLimit;\n\npublic class LicenseVerificationClient\n{\n    private readonly HttpClient _httpClient;\n    private readonly AsyncRetryPolicy<HttpResponseMessage> _retryPolicy;\n    private readonly ILogger<LicenseVerificationClient> _logger;\n\n    public LicenseVerificationClient(\n        HttpClient httpClient,\n        ILogger<LicenseVerificationClient> logger)\n    {\n        _httpClient = httpClient;\n        _logger = logger;\n\n        _retryPolicy = Policy\n            .HandleResult<HttpResponseMessage>(r =>\n                r.StatusCode == (HttpStatusCode)429 ||                    // Rate limited\n                r.StatusCode == HttpStatusCode.ServiceUnavailable ||      // 503\n                r.StatusCode == HttpStatusCode.GatewayTimeout)            // 504\n            .WaitAndRetryAsync(\n                retryCount: 5,\n                sleepDurationProvider: (attempt, outcome, context) =>\n                {\n                    // Check for Retry-After header (RFC 7231)\n                    if (outcome.Result?.Headers?.RetryAfter != null)\n                    {\n                        if (outcome.Result.Headers.RetryAfter.Delta.HasValue)\n                        {\n                            var retryAfter = outcome.Result.Headers.RetryAfter.Delta.Value;\n\n                            _logger.LogWarning(\n                                \"Rate limited. Respecting Retry-After header: {RetryAfterSeconds}s\",\n                                retryAfter.TotalSeconds);\n\n                            // Add small jitter to Retry-After value\n                            var jitter = TimeSpan.FromMilliseconds(Random.Shared.Next(0, 1000));\n                            return retryAfter + jitter;\n                        }\n                    }\n\n                    // Fallback to exponential backoff if no Retry-After header\n                    var baseDelay = TimeSpan.FromSeconds(Math.Pow(2, attempt));\n                    var jitter = TimeSpan.FromMilliseconds(Random.Shared.Next(-500, 500));\n                    return baseDelay + jitter;\n                },\n                onRetry: (outcome, timespan, attempt, context) =>\n                {\n                    var providerId = context[\"ProviderId\"];\n                    var licenseNumber = context[\"LicenseNumber\"];\n\n                    _logger.LogWarning(\n                        \"License verification retry {Attempt}/5 for provider {ProviderId} \" +\n                        \"after {DelaySeconds}s. Status: {StatusCode}\",\n                        attempt,\n                        providerId,\n                        timespan.TotalSeconds,\n                        outcome.Result?.StatusCode);\n                });\n    }\n\n    /// <summary>\n    /// Verify provider license with intelligent rate limit handling\n    /// </summary>\n    public async Task<LicenseStatus> VerifyLicenseAsync(\n        Guid providerId,\n        string licenseNumber,\n        string state,\n        CancellationToken cancellationToken = default)\n    {\n        var context = new Context\n        {\n            [\"ProviderId\"] = providerId,\n            [\"LicenseNumber\"] = licenseNumber,\n            [\"State\"] = state\n        };\n\n        var response = await _retryPolicy.ExecuteAsync(\n            async (ctx, ct) =>\n            {\n                var request = new HttpRequestMessage(HttpMethod.Get,\n                    $\"https://{state.ToLower()}medicalboard.gov/api/v2/verify/{licenseNumber}\");\n\n                request.Headers.Add(\"X-API-Key\", GetApiKey(state));\n\n                return await _httpClient.SendAsync(request, ct);\n            },\n            context,\n            cancellationToken);\n\n        response.EnsureSuccessStatusCode();\n\n        return await response.Content.ReadFromJsonAsync<LicenseStatus>(\n            cancellationToken: cancellationToken);\n    }\n\n    private string GetApiKey(string state)\n    {\n        // Retrieve state-specific API key from configuration\n        return _configuration[$\"StateMedicalBoards:{state}:ApiKey\"];\n    }\n}\n```",
+    "68": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#results-and-metrics]\n\n#### Results and Metrics\n\n**Before Retry Implementation** (Baseline):\n- **Bulk Credentialing Jobs**: 500 providers processed simultaneously\n- **Rate Limit Incidents**: 25-30 times/month across various states\n- **Average Rate Limit Penalty Duration**: 8 minutes (extended due to immediate retry)\n- **Credentialing Workflow Delay**: 3-4 hours per incident\n- **Provider Onboarding Delay**: 2-3 days average\n- **State API Complaints**: 12 complaints/year about aggressive API usage\n\n**After Retry Implementation** (Production):\n- **Bulk Credentialing Jobs**: 500 providers (unchanged)\n- **Rate Limit Incidents**: 25-30 times/month (still occur, but handled gracefully)\n- **Average Rate Limit Penalty Duration**: 1.5 minutes (respecting Retry-After header)\n- **Retry Success Rate**: 98% (rate-limited requests succeed after respecting Retry-After)\n- **Credentialing Workflow Delay**: 2-5 minutes (85% improvement)\n- **Provider Onboarding Delay**: <1 day average (67% improvement)\n- **State API Complaints**: 0 complaints in past 6 months\n\n**Key Improvement**: Respecting `Retry-After` header prevents penalty escalation. State APIs reward compliance with shorter rate limit durations.\n\n---",
+    "69": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#example-3-pharmacy-pos-ncpdp-retry-with-tight-timeout-window]\n\n### Example 3: Pharmacy POS NCPDP Retry with Tight Timeout Window",
+    "70": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#business-context]\n\n#### Business Context\n\nGainwell's **Pharmacy Point-of-Sale (POS)** system adjudicates 1.2+ million NCPDP transactions daily for prescription fills at retail pharmacies. Transactions must complete within **10-second window** to meet pharmacy workflow requirements:\n\n- Pharmacist scans prescription barcode\n- POS system sends NCPDP transaction to Gainwell Rx™ adjudication platform\n- Adjudication checks member eligibility, drug coverage, prior authorization\n- POS returns copay amount to pharmacist\n- **Total time budget**: 10 seconds (industry standard)\n\n**Challenge**: NCPDP network occasionally experiences 2-3% timeout rate due to:\n- Regional network congestion\n- Load balancer connection pool exhaustion\n- Brief Azure service scaling events\n\n**Constraint**: Retry must complete within 10-second window. Standard 5-retry exponential backoff (1+2+4+8+16 = 31 seconds) exceeds window.",
+    "71": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#solution-implementation]\n\n#### Solution Implementation\n\n**Fast Retry with Constant Short Backoff:**\n\n```csharp\nusing Polly;\n\npublic class PharmacyPosClient\n{\n    private readonly HttpClient _httpClient;\n    private readonly AsyncRetryPolicy<HttpResponseMessage> _retryPolicy;\n    private readonly ILogger<PharmacyPosClient> _logger;\n\n    public PharmacyPosClient(\n        HttpClient httpClient,\n        ILogger<PharmacyPosClient> logger)\n    {\n        _httpClient = httpClient;\n        _logger = logger;\n\n        // Retry Policy: 3 attempts with 500ms constant backoff (stays within 10s window)\n        _retryPolicy = Policy\n            .HandleResult<HttpResponseMessage>(r =>\n                r.StatusCode == HttpStatusCode.RequestTimeout ||          // 408\n                r.StatusCode == HttpStatusCode.GatewayTimeout ||          // 504\n                r.StatusCode == HttpStatusCode.ServiceUnavailable)        // 503\n            .Or<TimeoutException>()\n            .Or<TaskCanceledException>()\n            .WaitAndRetryAsync(\n                retryCount: 3,  // Limited to 3 to stay within 10s window\n                sleepDurationProvider: (attempt) =>\n                {\n                    // Constant 500ms backoff (not exponential)\n                    // Total time: 3 attempts × 3s timeout + 3 retries × 0.5s = 10.5s\n                    return TimeSpan.FromMilliseconds(500);\n                },\n                onRetry: (outcome, timespan, attempt, context) =>\n                {\n                    var transactionId = context[\"TransactionId\"];\n\n                    _logger.LogWarning(\n                        \"NCPDP transaction retry {Attempt}/3 for {TransactionId} after {DelayMs}ms\",\n                        attempt,\n                        transactionId,\n                        timespan.TotalMilliseconds);\n                });\n    }\n\n    /// <summary>\n    /// Submit NCPDP transaction with idempotency guarantee\n    /// </summary>\n    public async Task<NcpdpResponse> SubmitTransactionAsync(\n        NcpdpTransaction transaction,\n        CancellationToken cancellationToken = default)\n    {\n        // Generate idempotency key to prevent duplicate dispense\n        var idempotencyKey = GenerateIdempotencyKey(transaction);\n\n        // Check cache for duplicate request\n        var cachedResponse = await GetCachedResponseAsync(idempotencyKey, cancellationToken);\n        if (cachedResponse != null)\n        {\n            _logger.LogInformation(\n                \"Returning cached NCPDP response for transaction {TransactionId}. \" +\n                \"Duplicate request detected via idempotency key.\",\n                transaction.TransactionId);\n\n            return cachedResponse;\n        }\n\n        var context = new Context\n        {\n            [\"TransactionId\"] = transaction.TransactionId,\n            [\"PrescriptionNumber\"] = transaction.PrescriptionNumber\n        };\n\n        // Apply 8-second timeout (leaves 2s buffer within 10s window for 3 retries)\n        using var cts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);\n        cts.CancelAfter(TimeSpan.FromSeconds(8));\n\n        var stopwatch = Stopwatch.StartNew();\n\n        try\n        {\n            var response = await _retryPolicy.ExecuteAsync(\n                async (ctx, ct) =>\n                {\n                    var request = new HttpRequestMessage(HttpMethod.Post,\n                        \"https://ncpdp-gateway.gainwell.com/v1/transactions\");\n\n                    request.Content = JsonContent.Create(transaction);\n                    request.Headers.Add(\"X-Idempotency-Key\", idempotencyKey);\n                    request.Headers.Add(\"X-Transaction-Id\", transaction.TransactionId.ToString());\n\n                    return await _httpClient.SendAsync(request, ct);\n                },\n                context,\n                cts.Token);\n\n            response.EnsureSuccessStatusCode();\n\n            var ncpdpResponse = await response.Content.ReadFromJsonAsync<NcpdpResponse>(\n                cancellationToken: cancellationToken);\n\n            // Cache response with 24-hour TTL for idempotency\n            await CacheResponseAsync(idempotencyKey, ncpdpResponse, cancellationToken);\n\n            _logger.LogInformation(\n                \"NCPDP transaction {TransactionId} completed in {DurationMs}ms. \" +\n                \"Copay: ${Copay}, AuthorizationCode: {AuthCode}\",\n                transaction.TransactionId,\n                stopwatch.ElapsedMilliseconds,\n                ncpdpResponse.PatientPayAmount,\n                ncpdpResponse.AuthorizationNumber);\n\n            return ncpdpResponse;\n        }\n        catch (OperationCanceledException) when (cts.IsCancellationRequested)\n        {\n            _logger.LogError(\n                \"NCPDP transaction {TransactionId} timed out after {DurationMs}ms (8s timeout)\",\n                transaction.TransactionId,\n                stopwatch.ElapsedMilliseconds);\n\n            throw new TransactionTimeoutException(\n                $\"Transaction exceeded 8-second timeout after {3} retry attempts\");\n        }\n    }\n\n    private string GenerateIdempotencyKey(NcpdpTransaction transaction)\n    {\n        // Format: ncpdp:{PrescriptionNumber}:{DispenseDate}:{PharmacyNPI}\n        return $\"ncpdp:{transaction.PrescriptionNumber}:{transaction.DateOfService:yyyyMMdd}:{transaction.PharmacyNpi}\";\n    }\n}\n```",
+    "72": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#results-and-metrics]\n\n#### Results and Metrics\n\n**Before Retry Implementation** (Baseline):\n- **Daily NCPDP Transactions**: 1,200,000\n- **Network Timeout Rate**: 2.5% (30,000 transactions/day)\n- **Pharmacist Manual Retry Required**: 30,000 transactions/day × 2 min = 1,000 hours/day\n- **Pharmacy Workflow Disruption**: \"Transaction failed, try again\" errors frustrate pharmacists\n- **Customer Experience**: Patients waiting extra 2-5 minutes at pharmacy counter\n- **Customer Satisfaction**: 3.2/5 stars (pharmacy POS reliability complaints)\n\n**After Retry Implementation** (Production):\n- **Daily NCPDP Transactions**: 1,200,000 (unchanged)\n- **Network Timeout Rate**: 2.5% (30,000 attempt retry)\n- **Retry Success Rate**: 94% (28,200 transactions recovered automatically)\n- **Remaining Failures**: 1,800 transactions/day (0.15% final failure rate)\n- **Pharmacist Manual Retry Required**: 1,800 × 2 min = 60 hours/day (94% reduction)\n- **Average Transaction Duration**: 2.1s (no retry), 3.4s (with 1 retry), 4.2s (with 2 retries) - all within 10s window\n- **Customer Experience**: Transparent recovery, patient unaware of retry\n- **Customer Satisfaction**: 4.6/5 stars (44% improvement)\n- **Zero Duplicate Dispenses**: Idempotency keys prevent duplicate prescription fills\n\n**Key Success Factor**: Constant 500ms backoff (vs exponential) keeps retry cycle within 10-second pharmacy workflow requirement while recovering 94% of transient failures.",
+    "73": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#related-patterns-and-references]\n\n## Related Patterns and References",
+    "74": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#related-patterns]\n\n### Related Patterns\n\n- [Circuit Breaker Pattern](./PTN-APP-API-006-circuit-breaker-pattern.md)",
+    "75": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#external-references]\n\n### External References\n\n- [Polly](https://github.com/App-vNext/Polly)\n- [Resilience4j](https://resilience4j.readme.io/)",
+    "76": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#change-history]\n\n## Change History\n\n| Date       | Version | Author              | Description              | Impact      |\n| ---------- | ------- | ------------------- | ------------------------ | ----------- |\n| 2026-01-02 | 1.0.0   | Enterprise Architect | Initial pattern creation | New pattern |",
+    "77": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#review-log]\n\n## Review Log\n\n| Review Date | Review Type | Reviewer(s) | Status | Comments | Actions |\n| ----------- | ----------- | ----------- | ------ | -------- | ------- |\n| TBD         | TBD         | TBD         | Draft  | TBD      | TBD     |\n\n---",
+    "78": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#tldr]\n\n## TL;DR",
+    "79": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#problem]\n\n### Problem\n\nDistributed systems experience **transient failures** (network timeouts, service overload, connection pool exhaustion, API rate limiting) that cause permanent request failures and operational burden:\n\n- **5,000+ claims/day** fail due to transient eligibility check timeouts\n- **$3.1M/month** operational cost for manual claim reprocessing\n- **Provider payment delays** of 5-7 days from failed transactions\n- **Poor user experience** with \"system unavailable\" errors during brief glitches",
+    "80": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#solution]\n\n### Solution\n\n**Retry Pattern**: Automatically retry failed requests with **exponential backoff** and **jitter** when transient faults detected:\n1. **Detect transient fault**: HTTP 408/429/5xx, network exceptions, database connection errors\n2. **Calculate backoff delay**: Exponential progression (1s → 2s → 4s → 8s → 16s) with ±20% jitter\n3. **Retry request**: Wait for backoff duration, retry operation\n4. **Circuit breaker integration**: Stop retrying if service persistently down\n5. **Idempotency guarantee**: Use idempotency keys to safely retry state-changing operations",
+    "81": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#when-to-use]\n\n### When to Use\n\n**✅ Use Retry Pattern When:**\n- **External API calls** to state agencies, clearinghouses, pharmacy networks with known transient issues\n- **Microservices communication** where downstream services may experience temporary overload\n- **Database operations** in high-concurrency scenarios with connection pool exhaustion\n- **Batch processing** requiring resilience against temporary infrastructure issues\n- **Cloud service APIs** (Azure, AWS) occasionally returning 503 during scaling events\n\n**❌ Do NOT Use When:**\n- **Non-idempotent operations** without idempotency keys (risk duplicate processing)\n- **Permanent failures** (400-level HTTP errors like Bad Request, Unauthorized, Not Found)\n- **Real-time strict latency** requirements where retry delay unacceptable (<500ms P95)\n- **User-triggered interactive actions** where retry degrades user experience\n- **Circuit breaker open** state (service persistently down, retry wastes resources)",
+    "82": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#benefits]\n\n### Benefits\n\n| Benefit Category | Impact | Metrics |\n|------------------|--------|---------|\n| **Reliability** | Transient fault tolerance | 85% → 99% success rate (+14pp) |\n| **Cost Savings** | Reduce manual intervention | $3.1M/month → $250K/month (92% reduction) |\n| **User Experience** | Transparent recovery | Customer satisfaction: 3.2/5 → 4.6/5 (+44%) |\n| **Support Burden** | Fewer tickets | 800/month → 150/month (81% reduction) |\n| **Provider Satisfaction** | Eliminate false errors | Zero payment delays from transient failures |\n| **SLA Compliance** | Higher uptime | Meets 99% SLA target (was 85%) |",
+    "83": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#quick-start]\n\n### Quick Start\n\n**1. Install Retry Library**\n```powershell\n# .NET - Polly\nInstall-Package Polly -Version 8.4.0\nInstall-Package Polly.Extensions.Http\n```\n\n**2. Create Retry Policy (5 attempts, exponential backoff)**\n```csharp\nvar retryPolicy = Policy\n    .HandleResult<HttpResponseMessage>(r =>\n        r.StatusCode >= HttpStatusCode.InternalServerError ||  // 5xx\n        r.StatusCode == HttpStatusCode.RequestTimeout ||       // 408\n        r.StatusCode == (HttpStatusCode)429)                   // 429\n    .Or<HttpRequestException>()\n    .Or<TaskCanceledException>()\n    .WaitAndRetryAsync(\n        retryCount: 5,\n        sleepDurationProvider: (attempt) =>\n        {\n            var delay = TimeSpan.FromSeconds(Math.Pow(2, attempt - 1));  // 1, 2, 4, 8, 16s\n            var jitter = TimeSpan.FromMilliseconds(Random.Shared.Next(-200, 200));\n            return delay + jitter;  // Add ±20% jitter\n        },\n        onRetry: (outcome, timespan, attempt, context) =>\n        {\n            Console.WriteLine($\"Retry {attempt}/5 after {timespan.TotalSeconds}s\");\n        });\n```\n\n**3. Execute Request Through Policy**\n```csharp\nvar response = await retryPolicy.ExecuteAsync(async () =>\n    await httpClient.GetAsync(\"https://api.example.com/eligibility\"));\n```\n\n**4. Add Circuit Breaker (Recommended)**\n```csharp\nvar circuitBreaker = Policy\n    .Handle<HttpRequestException>()\n    .CircuitBreakerAsync(10, TimeSpan.FromMinutes(1));\n\nvar combined = Policy.WrapAsync(circuitBreaker, retryPolicy);  // Circuit wraps retry\n```",
+    "84": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#implementation-complexity]\n\n### Implementation Complexity\n\n| Aspect | Complexity | Effort |\n|--------|-----------|--------|\n| **Library Setup** | Low | 1 day (install Polly/Resilience4j) |\n| **Policy Configuration** | Low-Medium | 2-3 days (configure retry logic, transient fault detection) |\n| **Idempotency Implementation** | Medium | 3-5 days (idempotency keys, caching layer) |\n| **Monitoring/Metrics** | Medium | 2-3 days (Prometheus metrics, Grafana dashboards) |\n| **Testing** | Medium | 3-5 days (unit tests with WireMock, chaos engineering) |\n| **Total Implementation** | **Low-Medium** | **2 weeks** |\n\n**Team Learning Curve**: 1-2 weeks for developers new to Polly/Resilience4j",
+    "85": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#prerequisites]\n\n### Prerequisites\n\n1. **Retry Library**: Polly (.NET) or Resilience4j (Java)\n2. **Circuit Breaker Pattern**: Combine with retry to handle persistent failures\n3. **Idempotency Pattern**: Required for safe retry of state-changing operations\n4. **Monitoring Infrastructure**: Prometheus + Grafana for retry metrics\n5. **Distributed Caching**: Redis for idempotency key storage (24-hour TTL)",
+    "86": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#key-configuration-parameters]\n\n### Key Configuration Parameters\n\n| Parameter | Recommended Value | Rationale |\n|-----------|------------------|-----------|\n| **Max Retry Attempts** | 3-5 | Balances recovery vs resource exhaustion. 5 retries = ~30s recovery window. |\n| **Backoff Strategy** | Exponential (2^n) | Protects downstream services. Linear retries too aggressive during overload. |\n| **Base Delay** | 1 second | Short enough for quick recovery, long enough to not hammer service. |\n| **Jitter** | ±20% | Prevents synchronized retry \"thundering herd\" across many clients. |\n| **Timeout** | 3-5 seconds | Should be < total retry budget. 5s timeout × 5 attempts = 25s max. |\n| **Transient Codes** | 408, 429, 500, 502, 503, 504 | Only retry transient errors. Don't retry 400-level client errors. |\n| **Circuit Breaker Threshold** | 50% failures over 1 min | Opens circuit if service persistently down, stops retry waste. |",
+    "87": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#common-pitfalls-to-avoid]\n\n### Common Pitfalls to Avoid\n\n1. **Infinite Retry Loops**: Always set `maxRetryAttempts` to finite value (3-5)\n2. **Missing Idempotency**: Implement idempotency keys for POST/PUT/DELETE to prevent duplicates\n3. **Synchronous Blocking**: Use `WaitAndRetryAsync` (not `WaitAndRetry`) to free threads during backoff\n4. **Retrying Permanent Failures**: Only retry 5xx/408/429, never retry 400-level errors\n5. **No Jitter**: Add ±20% jitter to prevent thundering herd problem\n6. **Missing Monitoring**: Instrument with metrics: `retry_attempts_total`, `retry_exhausted_total`\n7. **No Circuit Breaker**: Combine with circuit breaker to prevent infinite retry when service down",
+    "88": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#real-world-results-gainwell-production]\n\n### Real-World Results (Gainwell Production)\n\n**Claims Eligibility Verification:**\n- **Success Rate**: 85% → 99% (+14pp)\n- **Operational Cost**: $3.1M/month → $250K/month (92% reduction)\n- **Support Tickets**: 800/month → 150/month (81% reduction)\n- **ROI**: 1,710% annual return on 2-week implementation investment\n\n**Provider License Verification:**\n- **Rate Limit Handling**: 98% success rate after respecting Retry-After header\n- **Workflow Delay**: 3-4 hours → 2-5 minutes (85% improvement)\n- **State API Complaints**: 12/year → 0 complaints in 6 months\n\n**Pharmacy POS NCPDP:**\n- **Failure Recovery**: 94% of transient timeouts recovered automatically within 10s window\n- **Customer Satisfaction**: 3.2/5 → 4.6/5 stars (+44%)\n- **Pharmacist Manual Retry**: 1,000 hours/day → 60 hours/day (94% reduction)\n- **Zero Duplicate Dispenses**: Idempotency keys prevent duplicate prescription fills",
+    "89": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#related-patterns]\n\n### Related Patterns\n\n- **[Circuit Breaker Pattern](PTN-APP-API-006-circuit-breaker-pattern.md)**: Combine with retry. Circuit prevents retry when service persistently down; retry handles transient faults.\n- **[Bulkhead Pattern](PTN-APP-API-002-bulkhead-pattern.md)**: Isolate retry resources to prevent retry exhaustion affecting other operations.\n- **[Timeout Pattern](https://learn.microsoft.com/azure/architecture/patterns/retry)**: Set appropriate timeouts to prevent indefinite retry waiting.\n- **[Health Check Pattern](https://microservices.io/patterns/observability/health-check-api.html)**: Monitor downstream service health to inform retry strategy.",
+    "90": "[patterns/application/api-microservices/PTN-APP-API-017-retry-pattern.md#additional-resources]\n\n### Additional Resources\n\n- **Polly Documentation**: [https://www.pollydocs.org/](https://www.pollydocs.org/)\n- **Resilience4j Guide**: [https://resilience4j.readme.io/docs/retry](https://resilience4j.readme.io/docs/retry)\n- **Azure Architecture Retry Pattern**: [https://learn.microsoft.com/azure/architecture/patterns/retry](https://learn.microsoft.com/azure/architecture/patterns/retry)\n- **AWS Exponential Backoff**: [https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/](https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/)\n\n---"
+  },
+  "coverage": {
+    "total_pages": 90,
+    "covered_pages": 90,
+    "sampled_pages": 90,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 90
+  }
+}

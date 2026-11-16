@@ -1,0 +1,269 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "ADR-APP-014: AI Inference Platform — AWS Bedrock with Three-Tier Model Strategy",
+  "document_description": "Portal Studio uses **AWS Bedrock** as the AI inference platform, accessed through the AI Gateway (see ADR-SEC-007). Anthropic Claude models are the primary model family. A **three-tier model strategy** maps each AI use case to the appropriate model class — heavy reasoning (Tier 1 / Sonnet-class), conversational (Tier 2 / Haiku-class), and fast batch (Tier 3 / Haiku-class) — balancing quality, late",
+  "total_pages": 27,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 27,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "ADR-APP-014: AI Inference Platform — AWS Bedrock with Three-Tier Model Strategy",
+          "node_id": "adr-app-014-ai-inference-platform--aws-bedrock-with-three-tier-model-strategy",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Decision Summary",
+          "node_id": "decision-summary",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Context and Problem Statement",
+          "node_id": "context-and-problem-statement",
+          "start_index": 5,
+          "end_index": 6,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Decision Drivers",
+              "node_id": "decision-drivers",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Required Option",
+          "node_id": "required-option",
+          "start_index": 7,
+          "end_index": 12,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "AWS Bedrock with Anthropic Claude and Three-Tier Model Strategy",
+              "node_id": "aws-bedrock-with-anthropic-claude-and-three-tier-model-strategy",
+              "start_index": 8,
+              "end_index": 12,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "AI Inference Platform — AWS Bedrock",
+                  "node_id": "ai-inference-platform--aws-bedrock",
+                  "start_index": 9,
+                  "end_index": 9,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "AI Embedding — Two Surfaces",
+                  "node_id": "ai-embedding--two-surfaces",
+                  "start_index": 10,
+                  "end_index": 10,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Three-Tier Model Strategy",
+                  "node_id": "three-tier-model-strategy",
+                  "start_index": 11,
+                  "end_index": 11,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "AI Gateway Model Aliases",
+                  "node_id": "ai-gateway-model-aliases",
+                  "start_index": 12,
+                  "end_index": 12,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Considered Options",
+          "node_id": "considered-options",
+          "start_index": 13,
+          "end_index": 16,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Option 1: AWS Bedrock — Anthropic Claude (Selected)",
+              "node_id": "option-1-aws-bedrock--anthropic-claude-selected",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Option 2: Azure OpenAI — GPT-4o",
+              "node_id": "option-2-azure-openai--gpt-4o",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Option 3: Gainwell Self-Hosted Models",
+              "node_id": "option-3-gainwell-self-hosted-models",
+              "start_index": 16,
+              "end_index": 16,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Decision Outcome",
+          "node_id": "decision-outcome",
+          "start_index": 17,
+          "end_index": 17,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Consequences",
+          "node_id": "consequences",
+          "start_index": 18,
+          "end_index": 21,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "✅ Positive",
+              "node_id": "-positive",
+              "start_index": 19,
+              "end_index": 19,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "❌ Negative",
+              "node_id": "-negative",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "⚪ Neutral",
+              "node_id": "-neutral",
+              "start_index": 21,
+              "end_index": 21,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Risk Assessment & Mitigation",
+          "node_id": "risk-assessment--mitigation",
+          "start_index": 22,
+          "end_index": 24,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "⚠️ Risks",
+              "node_id": "-risks",
+              "start_index": 23,
+              "end_index": 23,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "🛡️ Mitigations",
+              "node_id": "-mitigations",
+              "start_index": 24,
+              "end_index": 24,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Compliance Notes",
+          "node_id": "compliance-notes",
+          "start_index": 25,
+          "end_index": 25,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Review and Approval",
+          "node_id": "review-and-approval",
+          "start_index": 26,
+          "end_index": 26,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "📋 Change Log",
+          "node_id": "-change-log",
+          "start_index": 27,
+          "end_index": 27,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "> **Promoted from:** `mmes-cms-studio/docs/decisions/ADR-APP-014-ai-inference-layer.md`  \n> **Ref-arch artifact ID:** `GUID-AI-MODEL-001-tiered-model-selection-strategy`  \n> This document has been promoted to the Enterprise Architecture Platform reference architecture. Product repos should reference this artifact rather than maintaining their own copy.\n\n---",
+    "2": "[strategy/guidance/artificial-intelligence/GUID-AI-MODEL-001-tiered-model-selection-strategy.md#adr-app-014-ai-inference-platform--aws-bedrock-with-three-tier-model-strategy]\n\n## ADR-APP-014: AI Inference Platform — AWS Bedrock with Three-Tier Model Strategy\n\n---\n\n|               |                                                                                                                                              |\n| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |\n| **Status**    | ✅ Accepted                                                                                                                                   |\n| **Date**      | 2026-07-29                                                                                                                                   |\n| **Issuer**    | [Enterprise Architecture Practice](mailto:EAP-Core@mygainwell.onmicrosoft.com?subject=ADR-APP-014%20AI-Inference-Platform)                 |\n| **Consulted** | Mike Goppert, James Macurak                                                                                                                  |\n| **Informed**  | MMES Platform Team, Gainwell EA, Gainwell UI Team                                                                                           |\n\n---",
+    "3": "[strategy/guidance/artificial-intelligence/GUID-AI-MODEL-001-tiered-model-selection-strategy.md#table-of-contents]\n\n## Table of Contents\n\n- [Decision Summary](#decision-summary)\n- [Context and Problem Statement](#context-and-problem-statement)\n- [Required Option](#required-option)\n- [Considered Options](#considered-options)\n- [Decision Outcome](#decision-outcome)\n- [Consequences](#consequences)\n- [Risk Assessment & Mitigation](#risk-assessment--mitigation)\n- [Compliance Notes](#compliance-notes)\n- [Review and Approval](#review-and-approval)\n\n---",
+    "4": "[strategy/guidance/artificial-intelligence/GUID-AI-MODEL-001-tiered-model-selection-strategy.md#decision-summary]\n\n## Decision Summary\n\nPortal Studio uses **AWS Bedrock** as the AI inference platform, accessed through the AI Gateway (see ADR-SEC-007). Anthropic Claude models are the primary model family. A **three-tier model strategy** maps each AI use case to the appropriate model class — heavy reasoning (Tier 1 / Sonnet-class), conversational (Tier 2 / Haiku-class), and fast batch (Tier 3 / Haiku-class) — balancing quality, latency, and cost. AI is embedded at two surfaces: the Studio build plane (authoring assistance, quality-sensitive) and the Portal serve plane (end-user help, latency-sensitive). Bulk translation runs as a Studio batch operation — the Portal runtime does not call AI at serve time.\n\n---",
+    "5": "[strategy/guidance/artificial-intelligence/GUID-AI-MODEL-001-tiered-model-selection-strategy.md#context-and-problem-statement]\n\n## Context and Problem Statement\n\n**Business Context:** Portal Studio requires AI inference for three capabilities: Studio authoring assistance (scaffolding, wiring, completeness checking), end-user contextual help on deployed portals, and bulk locale translation. Each has different latency, quality, and cost requirements. The platform must select an inference provider and define which model class handles which concern.\n\n**Technical Context:** The Assistive Guidance bounded context routes all inference requests through the AI Gateway (ADR-SEC-007). The AI Gateway provides model aliasing — the application calls a logical alias; the gateway resolves to the actual model and version. Model upgrades require only a gateway config change, not application code changes.\n\n**Problem Statement:** Which AI inference platform provides the right combination of model quality, managed hosting, HIPAA BAA coverage, and AWS-native integration? How are the three AI use cases mapped to model tiers?",
+    "6": "[strategy/guidance/artificial-intelligence/GUID-AI-MODEL-001-tiered-model-selection-strategy.md#decision-drivers]\n\n### Decision Drivers\n\n- 🔒 HIPAA — BAA required; AWS Bedrock is covered under the AWS BAA\n- ⚡ Model quality — Anthropic Claude provides best quality for code generation, conversational help, and translation among models available on Bedrock\n- 💰 Cost management — different use cases have different cost profiles; model tier selection controls inference cost\n- 🔧 Operational simplicity — no model weight management; fully managed hosting preferred given 3-week build window\n- 🔄 Model portability — model upgrades must not require application code changes\n\n---",
+    "7": "[strategy/guidance/artificial-intelligence/GUID-AI-MODEL-001-tiered-model-selection-strategy.md#required-option]\n\n## Required Option",
+    "8": "[strategy/guidance/artificial-intelligence/GUID-AI-MODEL-001-tiered-model-selection-strategy.md#aws-bedrock-with-anthropic-claude-and-three-tier-model-strategy]\n\n### AWS Bedrock with Anthropic Claude and Three-Tier Model Strategy",
+    "9": "[strategy/guidance/artificial-intelligence/GUID-AI-MODEL-001-tiered-model-selection-strategy.md#ai-inference-platform--aws-bedrock]\n\n#### AI Inference Platform — AWS Bedrock\n\n| Attribute | Value |\n|---|---|\n| Provider | AWS |\n| Primary model family | Anthropic Claude (latest available on Bedrock per tier) |\n| Connectivity | AWS PrivateLink (VPC endpoint) — inference traffic stays within AWS VPC; never traverses public internet |\n| BAA coverage | AWS BAA covers Amazon Bedrock |\n| Model management | Fully managed by AWS — no weight hosting, fine-tuning, or model ops |\n| Data residency | `us-east-1` primary; `us-west-2` secondary |\n| Model version pinning | Pinned to specific model IDs in the AI Gateway alias config — not latest/auto; upgrades are deliberate |",
+    "10": "[strategy/guidance/artificial-intelligence/GUID-AI-MODEL-001-tiered-model-selection-strategy.md#ai-embedding--two-surfaces]\n\n#### AI Embedding — Two Surfaces\n\n**Surface 1 — Studio build plane (authoring assistance):**\n- Invoked interactively by Studio Designers and Admins\n- AI has access to full component contracts, page structure, persona config, and authoring context\n- Quality matters more than speed — human waits for a substantive answer\n- Use cases: component scaffolding, wiring suggestions, completeness checking, IaC generation, authoring guidance\n\n**Surface 2 — Portal serve plane (end-user help):**\n- Invoked by portal end users during live portal sessions\n- AI has access to component help metadata, screen context, and active persona\n- Latency matters more than depth — user expects a near-instant response\n- Use cases: contextual help conversations (component-level and screen-level)\n- **Translation is Studio-time only** — the Portal runtime never calls AI at serve time; translated strings are baked into the Page Assembly artifact at publish time (ADR-APP-005)",
+    "11": "[strategy/guidance/artificial-intelligence/GUID-AI-MODEL-001-tiered-model-selection-strategy.md#three-tier-model-strategy]\n\n#### Three-Tier Model Strategy\n\n| Tier | Model class | Latency target | Cost profile | Assigned concerns |\n|---|---|---|---|---|\n| **Tier 1 — Heavy** | Claude Sonnet-class (or equivalent frontier) | < 10s acceptable | Higher cost; low call frequency | Studio authoring assistance: component scaffolding, wiring suggestion, IaC generation, complex reasoning, completeness analysis |\n| **Tier 2 — Standard** | Claude Haiku-class (or equivalent fast) | < 3s (conversational) | Medium cost; moderate call frequency | End-user contextual help conversations (component-level, screen-level); AI-assisted locale code suggestion |\n| **Tier 3 — Fast** | Claude Haiku-class or lightest available | < 1s preferred; batch for translation | Lowest cost; high call volume | Bulk locale translation (Studio batch); simple classification and routing decisions |",
+    "12": "[strategy/guidance/artificial-intelligence/GUID-AI-MODEL-001-tiered-model-selection-strategy.md#ai-gateway-model-aliases]\n\n#### AI Gateway Model Aliases\n\nThe AI Gateway (ADR-SEC-007) exposes logical aliases — the application never references a specific Bedrock model ID:\n\n| Logical alias | Tier | Example Bedrock model | Surface |\n|---|---|---|---|\n| `studio-assist` | Tier 1 | `us.anthropic.claude-sonnet-4-5` | Studio build plane |\n| `portal-help` | Tier 2 | `us.anthropic.claude-haiku-4-5` | Portal serve plane |\n| `translate` | Tier 3 | `us.anthropic.claude-haiku-4-5` | Studio batch |\n\nUpgrading to a newer model requires only updating the alias mapping in the AI Gateway — no application code change.\n\n**Pros:**\n- ✅ AWS Bedrock BAA coverage satisfies HIPAA for PHI-adjacent AI workloads\n- ✅ PrivateLink — inference traffic stays within AWS VPC boundaries\n- ✅ No model weight management — fully managed by AWS\n- ✅ Three-tier strategy optimizes cost — expensive Sonnet-class only for high-value authoring tasks\n- ✅ Model abstraction via gateway aliases — upgrades are config-only\n\n**Cons:**\n- ❌ AWS Bedrock model availability varies by region — `us-east-1` has broadest Claude model catalog\n- ❌ Bedrock inference cost at scale for translation needs monitoring\n\n---",
+    "13": "[strategy/guidance/artificial-intelligence/GUID-AI-MODEL-001-tiered-model-selection-strategy.md#considered-options]\n\n## Considered Options",
+    "14": "[strategy/guidance/artificial-intelligence/GUID-AI-MODEL-001-tiered-model-selection-strategy.md#option-1-aws-bedrock--anthropic-claude-selected]\n\n### Option 1: AWS Bedrock — Anthropic Claude (Selected)\n\n**Description:** Managed Claude models on Bedrock via PrivateLink.\n\n**Pros:** ✅ BAA; PrivateLink; best code/translation quality on Bedrock; no model ops\n\n**Cons:** ❌ Model availability region-dependent",
+    "15": "[strategy/guidance/artificial-intelligence/GUID-AI-MODEL-001-tiered-model-selection-strategy.md#option-2-azure-openai--gpt-4o]\n\n### Option 2: Azure OpenAI — GPT-4o\n\n**Description:** Azure OpenAI Service with GPT-4o.\n\n**Pros:** ✅ GPT-4o quality; Azure BAA available\n\n**Cons:** ❌ Cross-cloud (Gainwell is AWS-primary); additional egress cost; Claude on Bedrock matches quality for Portal Studio use cases with simpler BAA management in a single-cloud estate",
+    "16": "[strategy/guidance/artificial-intelligence/GUID-AI-MODEL-001-tiered-model-selection-strategy.md#option-3-gainwell-self-hosted-models]\n\n### Option 3: Gainwell Self-Hosted Models\n\n**Description:** Open-source models (Llama, Mistral) on EKS GPU nodes.\n\n**Pros:** ✅ Full data sovereignty; no external provider dependency\n\n**Cons:** ❌ Requires GPU infrastructure, model weight hosting, MLOps capability, and fine-tuning — not available within 3-week build window; out of scope for initial delivery\n\n---",
+    "17": "[strategy/guidance/artificial-intelligence/GUID-AI-MODEL-001-tiered-model-selection-strategy.md#decision-outcome]\n\n## Decision Outcome\n\n**Selected:** AWS Bedrock with Anthropic Claude, three-tier model strategy, accessed via the AI Gateway (ADR-SEC-007).\n\n---",
+    "18": "[strategy/guidance/artificial-intelligence/GUID-AI-MODEL-001-tiered-model-selection-strategy.md#consequences]\n\n## Consequences",
+    "19": "[strategy/guidance/artificial-intelligence/GUID-AI-MODEL-001-tiered-model-selection-strategy.md#-positive]\n\n### ✅ Positive\n\n- No model management overhead — team focuses on application logic, not model ops\n- Three-tier strategy controls cost — Tier 1 only for high-value authoring tasks\n- Model upgrades are config-only — no application code regression risk",
+    "20": "[strategy/guidance/artificial-intelligence/GUID-AI-MODEL-001-tiered-model-selection-strategy.md#-negative]\n\n### ❌ Negative\n\n- Translation cost at scale must be monitored — Tier 3 calls are frequent during locale setup",
+    "21": "[strategy/guidance/artificial-intelligence/GUID-AI-MODEL-001-tiered-model-selection-strategy.md#-neutral]\n\n### ⚪ Neutral\n\n- PHI must never appear in inference prompts regardless of platform — enforced in the AIAuthoring Service and by the AI Gateway DLP (ADR-SEC-007)\n\n---",
+    "22": "[strategy/guidance/artificial-intelligence/GUID-AI-MODEL-001-tiered-model-selection-strategy.md#risk-assessment--mitigation]\n\n## Risk Assessment & Mitigation",
+    "23": "[strategy/guidance/artificial-intelligence/GUID-AI-MODEL-001-tiered-model-selection-strategy.md#-risks]\n\n### ⚠️ Risks\n\n- Specific Claude model deprecated mid-project (e.g., model version sunset)\n- Bedrock inference throttling during peak authoring sessions",
+    "24": "[strategy/guidance/artificial-intelligence/GUID-AI-MODEL-001-tiered-model-selection-strategy.md#-mitigations]\n\n### 🛡️ Mitigations\n\n- Model IDs are pinned in the AI Gateway alias config; AWS provides adequate deprecation notice (typically 6 months); alias update is a config-only change\n- Token-aware rate limiting configured in the AI Gateway (ADR-SEC-007) per session; CloudWatch alarm on throttle events\n\n---",
+    "25": "[strategy/guidance/artificial-intelligence/GUID-AI-MODEL-001-tiered-model-selection-strategy.md#compliance-notes]\n\n## Compliance Notes\n\n- **HIPAA:** AWS Bedrock is covered under the AWS BAA. Portal Studio prompts contain component contracts, page metadata, and persona context — not PHI. BAA coverage provides defense-in-depth assurance.\n- **Standards:**\n  - `eap-ref-architecture/strategy/guidance/security/Artificial-Intelligence/GUID-SEC-AI-MODEL-2.9.02.md` — model security (Bedrock managed hosting)\n  - `eap-ref-architecture/strategy/guidance/security/Artificial-Intelligence/GUID-SEC-AI-APP-2.9.04.md` — application-layer AI security (prompt injection prevention in AIAuthoring Service)\n  - ADR-SEC-007 (this repo) — AI Gateway and API Gateway security enforcement (Kong)\n  - ADR-APP-005 (this repo) — i18n strategy (translation is baked at publish time; Portal does not call AI at serve time)\n\n---",
+    "26": "[strategy/guidance/artificial-intelligence/GUID-AI-MODEL-001-tiered-model-selection-strategy.md#review-and-approval]\n\n## Review and Approval\n\n| Role                         | Name          | Date       | Status     |\n| ---------------------------- | ------------- | ---------- | ---------- |\n| Enterprise Architecture Lead | Mike Goppert  | 2026-07-29 | 🔄 Pending |\n| Enterprise Application Architect Lead   | James Macurak | 2026-07-29 | 🔄 Pending |\n\n---",
+    "27": "[strategy/guidance/artificial-intelligence/GUID-AI-MODEL-001-tiered-model-selection-strategy.md#-change-log]\n\n## 📋 Change Log\n\n| Version | Date       | Author       | Description              |\n| ------- | ---------- | ------------ | ------------------------ |\n| 1.0     | 2026-07-29 | Mike Goppert | Initial — AWS Bedrock + three-tier model strategy |"
+  },
+  "coverage": {
+    "total_pages": 27,
+    "covered_pages": 27,
+    "sampled_pages": 27,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 27
+  }
+}

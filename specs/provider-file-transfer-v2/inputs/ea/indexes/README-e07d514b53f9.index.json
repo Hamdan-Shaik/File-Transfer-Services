@@ -1,0 +1,231 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Shared Infrastructure as Code",
+  "document_description": "This directory contains Terraform/Terragrunt configurations for deploying AWS infrastructure required by multiple services.",
+  "total_pages": 23,
+  "tree": [
+    {
+      "title": "Shared Infrastructure as Code",
+      "node_id": "shared-infrastructure-as-code",
+      "start_index": 1,
+      "end_index": 23,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Components Deployed",
+          "node_id": "components-deployed",
+          "start_index": 2,
+          "end_index": 3,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "S3 Buckets",
+              "node_id": "s3-buckets",
+              "start_index": 3,
+              "end_index": 3,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Directory Structure",
+          "node_id": "directory-structure",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Deployment",
+          "node_id": "deployment",
+          "start_index": 5,
+          "end_index": 8,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Prerequisites",
+              "node_id": "prerequisites",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Via GitHub Actions (Recommended)",
+              "node_id": "via-github-actions-recommended",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Manual Deployment",
+              "node_id": "manual-deployment",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Bucket Naming Convention",
+          "node_id": "bucket-naming-convention",
+          "start_index": 9,
+          "end_index": 9,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "PostgreSQL Integration",
+          "node_id": "postgresql-integration",
+          "start_index": 10,
+          "end_index": 10,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Outputs",
+          "node_id": "outputs",
+          "start_index": 11,
+          "end_index": 11,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Related Workflows",
+          "node_id": "related-workflows",
+          "start_index": 12,
+          "end_index": 12,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Multi-Region Strategy",
+          "node_id": "multi-region-strategy",
+          "start_index": 13,
+          "end_index": 13,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Cost Optimization",
+          "node_id": "cost-optimization",
+          "start_index": 14,
+          "end_index": 14,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Troubleshooting",
+          "node_id": "troubleshooting",
+          "start_index": 15,
+          "end_index": 18,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Terragrunt Init Fails",
+              "node_id": "terragrunt-init-fails",
+              "start_index": 16,
+              "end_index": 16,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Backend Lock Issue",
+              "node_id": "backend-lock-issue",
+              "start_index": 17,
+              "end_index": 17,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Permission Denied",
+              "node_id": "permission-denied",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Security",
+          "node_id": "security",
+          "start_index": 19,
+          "end_index": 19,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Maintenance",
+          "node_id": "maintenance",
+          "start_index": 20,
+          "end_index": 22,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Update Lifecycle Rules",
+              "node_id": "update-lifecycle-rules",
+              "start_index": 21,
+              "end_index": 21,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Add Bucket Tags",
+              "node_id": "add-bucket-tags",
+              "start_index": 22,
+              "end_index": 22,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "References",
+          "node_id": "references",
+          "start_index": 23,
+          "end_index": 23,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[.tooling/iac/terraform/formations/aws/deploy-shared/README.md#shared-infrastructure-as-code]\n\n# Shared Infrastructure as Code\n\nThis directory contains Terraform/Terragrunt configurations for deploying AWS infrastructure required by multiple services.",
+    "2": "[.tooling/iac/terraform/formations/aws/deploy-shared/README.md#components-deployed]\n\n## Components Deployed",
+    "3": "[.tooling/iac/terraform/formations/aws/deploy-shared/README.md#s3-buckets]\n\n### S3 Buckets\n\n- **PostgreSQL Backup Bucket**: Stores CloudNativePG backups and WAL archives\n    - Versioning: Enabled\n    - Lifecycle: Standard (30d) → IA (90d) → Glacier (365d)\n    - Encryption: Server-side encryption enabled\n    - Access: SSL/TLS only via bucket policy",
+    "4": "[.tooling/iac/terraform/formations/aws/deploy-shared/README.md#directory-structure]\n\n## Directory Structure\n\n```text\nformations/aws/deploy-shared/         # Terraform module\n├── main.tf                           # S3 bucket resources\n├── variables.tf                      # Input variables\n├── outputs.tf                        # Bucket ARNs and metadata\n└── providers.tf                      # AWS provider configuration\n\ndeployments/aws/\n├── development/deploy-shared/       # Dev environment configurations\n│   ├── primary/terragrunt.hcl       # us-east-1 deployment\n│   └── secondary/terragrunt.hcl     # us-west-2 deployment\n└── management/deploy-shared/        # Mgt/Prod environment configurations\n    ├── primary/terragrunt.hcl       # us-east-1 deployment\n    └── secondary/terragrunt.hcl     # us-west-2 deployment\n```",
+    "5": "[.tooling/iac/terraform/formations/aws/deploy-shared/README.md#deployment]\n\n## Deployment",
+    "6": "[.tooling/iac/terraform/formations/aws/deploy-shared/README.md#prerequisites]\n\n### Prerequisites\n\n1. **AWS Credentials**: Configured via OIDC or IAM role\n2. **Terragrunt**: Installed locally or via GitHub Actions\n3. **S3 Backend**: Terraform state bucket and DynamoDB lock table",
+    "7": "[.tooling/iac/terraform/formations/aws/deploy-shared/README.md#via-github-actions-recommended]\n\n### Via GitHub Actions (Recommended)\n\n1. Navigate to **Actions** → **Deploy Rating Infrastructure**\n2. Click **Run workflow**\n3. Select:\n   - **Environment**: `dev` or `prod`\n   - **Region**: `primary` (us-east-1) or `secondary` (us-west-2)\n   - **Terragrunt Action**:\n     - `plan` - Preview changes\n     - `apply` - Deploy infrastructure\n   - **Trigger Downstream**: Optionally trigger Rating service deployment",
+    "8": "[.tooling/iac/terraform/formations/aws/deploy-shared/README.md#manual-deployment]\n\n### Manual Deployment\n\n```bash\n# Navigate to deployment directory\ncd .tooling/iac/terraform/deployments/aws/development/deploy-rating/primary\n\n# Initialize Terragrunt\nterragrunt init\n\n# Plan changes\nterragrunt plan\n\n# Apply changes (requires approval)\nterragrunt apply\n```",
+    "9": "[.tooling/iac/terraform/formations/aws/deploy-shared/README.md#bucket-naming-convention]\n\n## Bucket Naming Convention\n\nBuckets follow the platform naming standard:\n\n```\n<resource_prefix>-<tenant>-s3-<product>-postgres-backups\n```\n\nExamples:\n\n- Dev Primary: `pfe-pg-dev-us1-cm-s3-eapref-postgres-backups`\n- Dev Secondary: `pfe-pg-dev-us2-cm-s3-eapref-postgres-backups`\n- Mgt Primary: `pfe-pg-mgt-us1-cm-s3-eapref-postgres-backups`\n- Mgt Secondary: `pfe-pg-mgt-us2-cm-s3-eapref-postgres-backups`",
+    "10": "[.tooling/iac/terraform/formations/aws/deploy-shared/README.md#postgresql-integration]\n\n## PostgreSQL Integration\n\nAfter S3 bucket deployment, configure CloudNativePG cluster:\n\n```yaml\n# .tooling/components/apis/rating-service/k8s/postgres-cluster.yaml\napiVersion: postgresql.cnpg.io/v1\nkind: Cluster\nspec:\n  backup:\n    barmanObjectStore:\n      destinationPath: s3://<bucket-name>/postgres-backups/\n      s3Credentials:\n        # ... credentials configuration\n```\n\nDeploy the PostgreSQL cluster manually:\n\n```bash\ncd .tooling/components/apis/rating-service/k8s\n\nexport NAMESPACE=eapref-app\nexport BUCKET_NAME=pfe-pg-dev-us1-cm-s3-eapref-postgres-backups\n\nenvsubst < postgres-cluster.yaml | kubectl apply -n $NAMESPACE -f -\n```",
+    "11": "[.tooling/iac/terraform/formations/aws/deploy-shared/README.md#outputs]\n\n## Outputs\n\nAfter deployment, Terraform outputs:\n\n- `postgres_backup_bucket.bucket_id`: Bucket name\n- `postgres_backup_bucket.bucket_arn`: Bucket ARN\n- `postgres_backup_bucket.bucket_region`: Deployment region\n- `deployment_info.backup_configuration.s3_path`: Full S3 path for backups",
+    "12": "[.tooling/iac/terraform/formations/aws/deploy-shared/README.md#related-workflows]\n\n## Related Workflows\n\n- **deploy-rating-infra.yml**: Deploys S3 buckets via Terragrunt\n- **deploy-rating-svc.yml**: Deploys Rating service to Kubernetes\n- PostgreSQL cluster: Manual `kubectl apply` (not automated)",
+    "13": "[.tooling/iac/terraform/formations/aws/deploy-shared/README.md#multi-region-strategy]\n\n## Multi-Region Strategy\n\n- **Primary Region (us-east-1)**: Creates global resources (provisions_globals=true)\n- **Secondary Region (us-west-2)**: References global resources (provisions_globals=false)\n- Each region has independent S3 bucket for backups\n- PostgreSQL clusters in each region back up to their regional bucket",
+    "14": "[.tooling/iac/terraform/formations/aws/deploy-shared/README.md#cost-optimization]\n\n## Cost Optimization\n\nLifecycle policies automatically transition objects to lower-cost storage:\n\n| Age | Storage Class | Cost |\n|-----|---------------|------|\n| 0-30 days | Standard | $$$ |\n| 30-90 days | Infrequent Access | $$ |\n| 90-365 days | Glacier | $ |\n| >365 days | Deleted | - |\n\nOld versions expire faster to minimize costs:\n\n- 30d Standard → 60d IA → 90d Glacier → Delete",
+    "15": "[.tooling/iac/terraform/formations/aws/deploy-shared/README.md#troubleshooting]\n\n## Troubleshooting",
+    "16": "[.tooling/iac/terraform/formations/aws/deploy-shared/README.md#terragrunt-init-fails]\n\n### Terragrunt Init Fails\n\n```bash\n# Clear Terragrunt cache\nrm -rf .terragrunt-cache\nterragrunt init\n```",
+    "17": "[.tooling/iac/terraform/formations/aws/deploy-shared/README.md#backend-lock-issue]\n\n### Backend Lock Issue\n\n```bash\n# Check DynamoDB lock table\naws dynamodb get-item \\\n  --table-name <lock-table> \\\n  --key '{\"LockID\": {\"S\": \"<lock-id>\"}}'\n\n# Force unlock (use with caution)\nterragrunt force-unlock <lock-id>\n```",
+    "18": "[.tooling/iac/terraform/formations/aws/deploy-shared/README.md#permission-denied]\n\n### Permission Denied\n\nVerify IAM role has S3 and DynamoDB permissions:\n\n```json\n{\n  \"Effect\": \"Allow\",\n  \"Action\": [\n    \"s3:CreateBucket\",\n    \"s3:PutBucketPolicy\",\n    \"s3:PutBucketVersioning\",\n    \"s3:PutLifecycleConfiguration\"\n  ],\n  \"Resource\": \"arn:aws:s3:::*-postgres-backups\"\n}\n```",
+    "19": "[.tooling/iac/terraform/formations/aws/deploy-shared/README.md#security]\n\n## Security\n\n- **Encryption**: Server-side encryption (SSE-S3) enabled by default\n- **Access**: SSL/TLS only via bucket policy\n- **Versioning**: Enabled for data protection\n- **Audit Logging**: Object access logged to platform audit bucket\n- **IAM**: CloudNativePG uses IAM roles (IRSA) for bucket access",
+    "20": "[.tooling/iac/terraform/formations/aws/deploy-shared/README.md#maintenance]\n\n## Maintenance",
+    "21": "[.tooling/iac/terraform/formations/aws/deploy-shared/README.md#update-lifecycle-rules]\n\n### Update Lifecycle Rules\n\nEdit `formations/aws/deploy-rating/main.tf`:\n\n```hcl\nlifecycle = {\n  standard_expiration_days   = 30   # Adjust retention\n  infrequent_expiration_days = 90\n  archive_expiration_days    = 365\n}\n```\n\nThen run `terragrunt apply`.",
+    "22": "[.tooling/iac/terraform/formations/aws/deploy-shared/README.md#add-bucket-tags]\n\n### Add Bucket Tags\n\nUpdate `common.tags` in deployment:\n\n```hcl\ntags = merge(\n  var.common.tags,\n  {\n    Component = \"rating-service\"\n    DataType  = \"database-backups\"\n  }\n)\n```",
+    "23": "[.tooling/iac/terraform/formations/aws/deploy-shared/README.md#references]\n\n## References\n\n- [CloudNativePG Documentation](https://cloudnative-pg.io/)\n- [Terraform AWS S3 Module](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket)\n- [Terragrunt Documentation](https://terragrunt.gruntwork.io/)\n- [Rating Service README](../../../components/apis/rating-service/README.md)"
+  },
+  "coverage": {
+    "total_pages": 23,
+    "covered_pages": 23,
+    "sampled_pages": 23,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 23
+  }
+}

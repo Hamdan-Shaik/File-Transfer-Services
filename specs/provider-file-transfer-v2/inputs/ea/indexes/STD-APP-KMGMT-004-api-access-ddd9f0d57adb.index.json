@@ -1,0 +1,666 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "STD-APP-KMGMT-004: API Access (Programmatic Integration)",
+  "document_description": "This standard defines requirements and guidelines for programmatic access to Lenses.io via REST API and SDKs (Python, Java), enabling automation, CI/CD integration, custom tooling, and monitoring solutions for Kafka infrastructure management.",
+  "total_pages": 70,
+  "tree": [
+    {
+      "title": "STD-APP-KMGMT-004: API Access (Programmatic Integration)",
+      "node_id": "std-app-kmgmt-004-api-access-programmatic-integration",
+      "start_index": 1,
+      "end_index": 70,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Executive Summary",
+          "node_id": "executive-summary",
+          "start_index": 2,
+          "end_index": 6,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Purpose Statement",
+              "node_id": "purpose-statement",
+              "start_index": 3,
+              "end_index": 3,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Key Requirements",
+              "node_id": "key-requirements",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Business Rationale",
+              "node_id": "business-rationale",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Compliance Level",
+              "node_id": "compliance-level",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 7,
+          "end_index": 7,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "1. Overview",
+          "node_id": "1-overview",
+          "start_index": 8,
+          "end_index": 11,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "1.1 Purpose",
+              "node_id": "11-purpose",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "1.2 Scope",
+              "node_id": "12-scope",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "1.3 Related Standards and ADRs",
+              "node_id": "13-related-standards-and-adrs",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "2. Requirements",
+          "node_id": "2-requirements",
+          "start_index": 12,
+          "end_index": 28,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "2.1 Recommended Requirements",
+              "node_id": "21-recommended-requirements",
+              "start_index": 13,
+              "end_index": 23,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "REQ-LENS-004-001: API Service Account Provisioning",
+                  "node_id": "req-lens-004-001-api-service-account-provisioning",
+                  "start_index": 14,
+                  "end_index": 14,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-LENS-004-002: API Authentication",
+                  "node_id": "req-lens-004-002-api-authentication",
+                  "start_index": 15,
+                  "end_index": 15,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-LENS-004-003: Authorized API Use Cases",
+                  "node_id": "req-lens-004-003-authorized-api-use-cases",
+                  "start_index": 16,
+                  "end_index": 16,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-LENS-004-004: Python SDK Usage Guidelines",
+                  "node_id": "req-lens-004-004-python-sdk-usage-guidelines",
+                  "start_index": 17,
+                  "end_index": 17,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-LENS-004-005: Java SDK Usage Guidelines",
+                  "node_id": "req-lens-004-005-java-sdk-usage-guidelines",
+                  "start_index": 18,
+                  "end_index": 18,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-LENS-004-006: API Rate Limiting",
+                  "node_id": "req-lens-004-006-api-rate-limiting",
+                  "start_index": 19,
+                  "end_index": 19,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-LENS-004-007: API Error Handling Best Practices",
+                  "node_id": "req-lens-004-007-api-error-handling-best-practices",
+                  "start_index": 20,
+                  "end_index": 20,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-LENS-004-008: API Documentation and Examples",
+                  "node_id": "req-lens-004-008-api-documentation-and-examples",
+                  "start_index": 21,
+                  "end_index": 21,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-LENS-004-009: API Monitoring and Logging",
+                  "node_id": "req-lens-004-009-api-monitoring-and-logging",
+                  "start_index": 22,
+                  "end_index": 22,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-LENS-004-010: API Security Best Practices",
+                  "node_id": "req-lens-004-010-api-security-best-practices",
+                  "start_index": 23,
+                  "end_index": 23,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "2.2 Prohibited Practices",
+              "node_id": "22-prohibited-practices",
+              "start_index": 24,
+              "end_index": 24,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "2.3 Exceptions Process",
+              "node_id": "23-exceptions-process",
+              "start_index": 25,
+              "end_index": 28,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "When to Request an Exception",
+                  "node_id": "when-to-request-an-exception",
+                  "start_index": 26,
+                  "end_index": 26,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Exception Request Procedure",
+                  "node_id": "exception-request-procedure",
+                  "start_index": 27,
+                  "end_index": 27,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Monitoring and Review",
+                  "node_id": "monitoring-and-review",
+                  "start_index": 28,
+                  "end_index": 28,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "3. Technical Specifications",
+          "node_id": "3-technical-specifications",
+          "start_index": 29,
+          "end_index": 41,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "3.1 Platform Requirements",
+              "node_id": "31-platform-requirements",
+              "start_index": 30,
+              "end_index": 30,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "3.2 Architecture Constraints",
+              "node_id": "32-architecture-constraints",
+              "start_index": 31,
+              "end_index": 33,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "API Performance Limits",
+                  "node_id": "api-performance-limits",
+                  "start_index": 32,
+                  "end_index": 32,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "API Request Constraints",
+                  "node_id": "api-request-constraints",
+                  "start_index": 33,
+                  "end_index": 33,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "3.3 Technology Standards",
+              "node_id": "33-technology-standards",
+              "start_index": 34,
+              "end_index": 37,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "REST API Specification",
+                  "node_id": "rest-api-specification",
+                  "start_index": 35,
+                  "end_index": 35,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Python SDK Configuration",
+                  "node_id": "python-sdk-configuration",
+                  "start_index": 36,
+                  "end_index": 36,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Java SDK Configuration",
+                  "node_id": "java-sdk-configuration",
+                  "start_index": 37,
+                  "end_index": 37,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "3.4 Configuration Specifications",
+              "node_id": "34-configuration-specifications",
+              "start_index": 38,
+              "end_index": 41,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Service Account RBAC Configuration",
+                  "node_id": "service-account-rbac-configuration",
+                  "start_index": 39,
+                  "end_index": 39,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "API Rate Limiting Configuration",
+                  "node_id": "api-rate-limiting-configuration",
+                  "start_index": 40,
+                  "end_index": 40,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Error Response Format",
+                  "node_id": "error-response-format",
+                  "start_index": 41,
+                  "end_index": 41,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "4. Implementation Guidance",
+          "node_id": "4-implementation-guidance",
+          "start_index": 42,
+          "end_index": 58,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "3.1 Getting Started with Lenses.io API",
+              "node_id": "31-getting-started-with-lensesio-api",
+              "start_index": 43,
+              "end_index": 47,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Step 1: Request Service Account",
+                  "node_id": "step-1-request-service-account",
+                  "start_index": 44,
+                  "end_index": 44,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 2: Install SDK (Python or Java)",
+                  "node_id": "step-2-install-sdk-python-or-java",
+                  "start_index": 45,
+                  "end_index": 45,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 3: First API Call",
+                  "node_id": "step-3-first-api-call",
+                  "start_index": 46,
+                  "end_index": 46,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 4: Explore API Examples",
+                  "node_id": "step-4-explore-api-examples",
+                  "start_index": 47,
+                  "end_index": 47,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "3.2 Troubleshooting API Issues",
+              "node_id": "32-troubleshooting-api-issues",
+              "start_index": 48,
+              "end_index": 51,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Issue 1: 401 Unauthorized",
+                  "node_id": "issue-1-401-unauthorized",
+                  "start_index": 49,
+                  "end_index": 49,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Issue 2: 429 Rate Limit Exceeded",
+                  "node_id": "issue-2-429-rate-limit-exceeded",
+                  "start_index": 50,
+                  "end_index": 50,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Issue 3: 500 Internal Server Error",
+                  "node_id": "issue-3-500-internal-server-error",
+                  "start_index": 51,
+                  "end_index": 51,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "4.3 Validation Criteria",
+              "node_id": "43-validation-criteria",
+              "start_index": 52,
+              "end_index": 52,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.4 Testing Requirements",
+              "node_id": "44-testing-requirements",
+              "start_index": 53,
+              "end_index": 57,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Functional Testing",
+                  "node_id": "functional-testing",
+                  "start_index": 54,
+                  "end_index": 54,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Security Testing",
+                  "node_id": "security-testing",
+                  "start_index": 55,
+                  "end_index": 55,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Performance Testing",
+                  "node_id": "performance-testing",
+                  "start_index": 56,
+                  "end_index": 56,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Integration Testing",
+                  "node_id": "integration-testing",
+                  "start_index": 57,
+                  "end_index": 57,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "4.5 Documentation Requirements",
+              "node_id": "45-documentation-requirements",
+              "start_index": 58,
+              "end_index": 58,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "5. Compliance and Governance",
+          "node_id": "5-compliance-and-governance",
+          "start_index": 59,
+          "end_index": 65,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "5.1 Validation Checklist",
+              "node_id": "51-validation-checklist",
+              "start_index": 60,
+              "end_index": 60,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "5.2 Architecture Review",
+              "node_id": "52-architecture-review",
+              "start_index": 61,
+              "end_index": 61,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "5.3 Governance Oversight",
+              "node_id": "53-governance-oversight",
+              "start_index": 62,
+              "end_index": 65,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Standards Ownership",
+                  "node_id": "standards-ownership",
+                  "start_index": 63,
+                  "end_index": 63,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Review Frequency",
+                  "node_id": "review-frequency",
+                  "start_index": 64,
+                  "end_index": 64,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Contact Information",
+                  "node_id": "contact-information",
+                  "start_index": 65,
+                  "end_index": 65,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "6. References",
+          "node_id": "6-references",
+          "start_index": 66,
+          "end_index": 68,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "6.1 Related Documentation",
+              "node_id": "61-related-documentation",
+              "start_index": 67,
+              "end_index": 67,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "6.2 External Resources",
+              "node_id": "62-external-resources",
+              "start_index": 68,
+              "end_index": 68,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "7. Change History",
+          "node_id": "7-change-history",
+          "start_index": 69,
+          "end_index": 69,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "8. Review Log",
+          "node_id": "8-review-log",
+          "start_index": 70,
+          "end_index": 70,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#std-app-kmgmt-004-api-access-programmatic-integration]\n\n# STD-APP-KMGMT-004: API Access (Programmatic Integration)\n\n**[Home](../../../README.md)** > **[Standards](../../README.md)** > **[Application](../README.md)** > **[Kafka Management](README.md)** > **STD-APP-KMGMT-004**\n\n---\n\n---",
+    "2": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#executive-summary]\n\n## Executive Summary",
+    "3": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#purpose-statement]\n\n### Purpose Statement\n\nThis standard defines requirements and guidelines for programmatic access to Lenses.io via REST API and SDKs (Python, Java), enabling automation, CI/CD integration, custom tooling, and monitoring solutions for Kafka infrastructure management.",
+    "4": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#key-requirements]\n\n### Key Requirements\n\n- **API Service Accounts**: Provision service accounts with scoped permissions for CI/CD, monitoring, and automation\n- **Token-Based Authentication**: Use Bearer tokens with 30-day expiration and secure storage in HashiCorp Vault\n- **Authorized Use Cases**: CI/CD integration, monitoring automation, custom dashboards, operational automation, compliance reporting\n- **SDK Usage**: Python and Java SDKs for common operations (topic management, consumer lag monitoring, connector deployment)\n- **Rate Limiting**: 100 requests/minute per service account with exponential backoff for retries\n- **Error Handling**: Implement robust error handling with retry logic and circuit breakers",
+    "5": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#business-rationale]\n\n### Business Rationale\n\n**Automation Efficiency**: Programmatic API access enables automation of repetitive Kafka management tasks, reducing manual effort and human error in topic creation, ACL management, and connector deployment.\n\n**CI/CD Integration**: API integration with Jenkins and GitLab pipelines enables Infrastructure-as-Code (IaC) practices for Kafka resources, ensuring consistent, version-controlled, and auditable deployments.\n\n**Custom Monitoring**: API access enables integration with enterprise monitoring tools (Datadog, Splunk, CloudWatch), allowing teams to build custom dashboards and alerting workflows tailored to their operational needs.\n\n**Operational Agility**: SDK-based automation enables rapid response to operational events (scaling consumer groups, deploying connectors, adjusting quotas) without manual UI intervention.\n\n**Compliance and Audit**: Programmatic access with service accounts provides audit trails for all Kafka management operations, supporting compliance requirements and security investigations.",
+    "6": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#compliance-level]\n\n### Compliance Level\n\n**Recommended (Phase 2)**: This standard is recommended but not mandatory. Implementation is planned for Phase 2 (Month 4-5) after core Lenses.io platform deployment (STD-INFRA-KMGMT-001) and interactive access (STD-APP-KMGMT-001) are established. Teams with immediate automation needs may implement early with Platform Engineering support.\n\n---",
+    "7": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#table-of-contents]\n\n## Table of Contents\n\n- [1. Overview](#1-overview)\n- [2. Requirements](#2-requirements)\n- [3. Technical Specifications](#3-technical-specifications)\n- [4. Implementation Guidance](#4-implementation-guidance)\n- [5. Compliance and Governance](#5-compliance-and-governance)\n- [6. References](#6-references)\n- [7. Change History](#7-change-history)\n- [8. Review Log](#8-review-log)\n\n---",
+    "8": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#1-overview]\n\n## 1. Overview",
+    "9": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#11-purpose]\n\n### 1.1 Purpose\n\nThis standard defines recommended requirements for programmatic access to Lenses.io via REST API and Python/Java SDKs per [ADR-IFR-008](../../../decisions/infrastructure/ADR-IFR-008-kafka-management-platform-selection.md).",
+    "10": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#12-scope]\n\n### 1.2 Scope\n\n**In Scope**:\n- Lenses.io REST API authentication (service accounts, API tokens)\n- API use cases (automation, CI/CD integration, custom tooling)\n- Python SDK usage guidelines\n- Java SDK usage guidelines\n- API rate limiting and quotas\n- API error handling best practices\n\n**Out of Scope**:\n- Kafka Admin API (separate from Lenses.io API)\n- Schema Registry API (separate from Lenses.io API)\n- Custom API development (not needed with Lenses.io)",
+    "11": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#13-related-standards-and-adrs]\n\n### 1.3 Related Standards and ADRs\n\nThis standard implements infrastructure patterns:\n- [PTN-INFRA-EVTMON-001: Infrastructure Event Monitoring Pattern](../../../patterns/infrastructure/event-driven/PTN-INFRA-EVT-003-infrastructure-event-monitoring-pattern.md)\n\nRelated standards:\n- [STD-APP-KMGMT-001: Topic Browser Access](STD-APP-KMGMT-001-topic-browser-access.md) - Interactive access\n- [STD-APP-KMGMT-002: LSQL Query Standards](STD-APP-KMGMT-002-lsql-query-standards.md) - Query API\n- [ADR-IFR-008: Kafka Management Platform Selection](../../../decisions/infrastructure/ADR-IFR-008-kafka-management-platform-selection.md)\n\n---",
+    "12": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#2-requirements]\n\n## 2. Requirements",
+    "13": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#21-recommended-requirements]\n\n### 2.1 Recommended Requirements",
+    "14": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#req-lens-004-001-api-service-account-provisioning]\n\n#### REQ-LENS-004-001: API Service Account Provisioning\n\n**Status**: Recommended (Phase 2)\n**Rationale**: Enable programmatic access with proper authentication\n\n**Service Account Types**:\n- **CI/CD Service Account**: For Jenkins/GitLab pipelines\n- **Monitoring Service Account**: For custom monitoring scripts\n- **Automation Service Account**: For operational automation\n- **Read-Only Service Account**: For reporting and analytics\n\n**Provisioning Process**:\n1. Submit ServiceNow request with use case justification\n2. Approval by Platform Engineering\n3. Service account created with scoped permissions\n4. API token generated (30-day expiration, renewable)\n5. Token delivered via secure channel (HashiCorp Vault)\n\n**Implementation**:\n```yaml\n# Placeholder: Service account configuration\nlenses.service.accounts:\n  - name: \"cicd-jenkins-sa\"\n    permissions: [\"topic:read\", \"connector:deploy\", \"processor:manage\"]\n    token.expiration.days: 30\n  - name: \"monitoring-datadog-sa\"\n    permissions: [\"topic:read\", \"consumer:read\", \"metrics:read\"]\n    token.expiration.days: 90\n  - name: \"automation-ansible-sa\"\n    permissions: [\"topic:create\", \"acl:manage\", \"connector:deploy\"]\n    token.expiration.days: 30\n# TODO: Add service account provisioning\n```",
+    "15": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#req-lens-004-002-api-authentication]\n\n#### REQ-LENS-004-002: API Authentication\n\n**Status**: Recommended (Phase 2)\n**Rationale**: Secure API access with token-based authentication\n\n**Authentication Methods**:\n- **Bearer Token** (recommended): `Authorization: Bearer <token>`\n- **Basic Auth** (legacy): `Authorization: Basic <base64(username:password)>`\n- **Service Account Token**: Long-lived tokens for automation\n\n**Token Management**:\n- Token storage: HashiCorp Vault or AWS Secrets Manager\n- Token rotation: Every 30 days (automated via script)\n- Token revocation: Immediate upon compromise detection\n- Token scoping: Limit permissions to minimum required\n\n**Implementation**:\n```python\n# Placeholder: API authentication example\nimport requests\nimport os\n\nLENSES_API_URL = \"https://lenses.prod.company.com/api\"\nAPI_TOKEN = os.getenv('LENSES_API_TOKEN')  # From Vault\n\nheaders = {\n    'Authorization': f'Bearer {API_TOKEN}',\n    'Content-Type': 'application/json'\n}\n\nresponse = requests.get(f'{LENSES_API_URL}/topics', headers=headers)\ntopics = response.json()\n# TODO: Add authentication examples\n```",
+    "16": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#req-lens-004-003-authorized-api-use-cases]\n\n#### REQ-LENS-004-003: Authorized API Use Cases\n\n**Status**: Recommended (Phase 2)\n**Rationale**: Define appropriate programmatic access scenarios\n\n**Authorized Use Cases**:\n1. **CI/CD Integration**: Deploy connectors, validate schemas, run tests\n2. **Monitoring Automation**: Query metrics, export to external systems\n3. **Operational Automation**: Topic creation, ACL management, data cleanup\n4. **Custom Dashboards**: Build application-specific monitoring UIs\n5. **Compliance Reporting**: Export audit logs, generate compliance reports\n\n**Unauthorized Use Cases**:\n- Message production/consumption (use Kafka clients instead)\n- Real-time data processing (use Kafka Streams/Flink)\n- High-frequency polling (>100 requests/minute)\n\n**Implementation**:\n```markdown\n# TODO: Document API use cases in Confluence\n```",
+    "17": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#req-lens-004-004-python-sdk-usage-guidelines]\n\n#### REQ-LENS-004-004: Python SDK Usage Guidelines\n\n**Status**: Recommended (Phase 2)\n**Rationale**: Standardize Python-based automation\n\n**Python SDK Installation**:\n```bash\npip install lensesio\n```\n\n**Common Operations**:\n```python\n# Placeholder: Python SDK examples\nfrom lensesio import LensesClient\n\n# Initialize client\nclient = LensesClient(\n    url='https://lenses.prod.company.com',\n    token=os.getenv('LENSES_API_TOKEN')\n)\n\n# List topics\ntopics = client.topics.list()\nfor topic in topics:\n    print(f\"Topic: {topic.name}, Partitions: {topic.partitions}\")\n\n# Query consumer lag\nlag = client.consumer_groups.get_lag('medicaid-claims-processor-prod')\nprint(f\"Consumer lag: {lag.total_lag_minutes} minutes\")\n\n# Execute SQL query\nresults = client.sql.execute(\n    \"SELECT * FROM medicaid.claims.submitted.v1 WHERE claimAmount > 1000 LIMIT 100\"\n)\nfor row in results:\n    print(row)\n\n# TODO: Add complete Python SDK examples\n```",
+    "18": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#req-lens-004-005-java-sdk-usage-guidelines]\n\n#### REQ-LENS-004-005: Java SDK Usage Guidelines\n\n**Status**: Recommended (Phase 2)\n**Rationale**: Standardize Java-based integration\n\n**Java SDK Dependency**:\n```xml\n<dependency>\n    <groupId>io.lenses</groupId>\n    <artifactId>lenses-java-client</artifactId>\n    <version>5.0.0</version>\n</dependency>\n```\n\n**Common Operations**:\n```java\n// Placeholder: Java SDK examples\nimport io.lenses.LensesClient;\nimport io.lenses.models.Topic;\nimport io.lenses.models.ConsumerGroup;\n\npublic class LensesExample {\n    public static void main(String[] args) {\n        // Initialize client\n        LensesClient client = LensesClient.builder()\n            .url(\"https://lenses.prod.company.com\")\n            .token(System.getenv(\"LENSES_API_TOKEN\"))\n            .build();\n\n        // List topics\n        List<Topic> topics = client.topics().list();\n        topics.forEach(topic ->\n            System.out.println(\"Topic: \" + topic.getName() +\n                             \", Partitions: \" + topic.getPartitions())\n        );\n\n        // Query consumer lag\n        ConsumerGroup consumerGroup = client.consumerGroups()\n            .get(\"medicaid-claims-processor-prod\");\n        System.out.println(\"Consumer lag: \" + consumerGroup.getTotalLagMinutes());\n\n        // Execute SQL query\n        List<Map<String, Object>> results = client.sql()\n            .execute(\"SELECT * FROM medicaid.claims.submitted.v1 LIMIT 100\");\n        results.forEach(System.out::println);\n    }\n}\n// TODO: Add complete Java SDK examples\n```",
+    "19": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#req-lens-004-006-api-rate-limiting]\n\n#### REQ-LENS-004-006: API Rate Limiting\n\n**Status**: Recommended (Phase 2)\n**Rationale**: Prevent API abuse and resource exhaustion\n\n**Rate Limits**:\n- **Per Service Account**: 100 requests/minute\n- **Per IP Address**: 200 requests/minute\n- **Global**: 10,000 requests/minute (across all users)\n- **Burst Allowance**: 2x rate limit for 10 seconds\n\n**Throttling Behavior**:\n- If limit exceeded → HTTP 429 Too Many Requests\n- Response header: `Retry-After: 60` (seconds)\n- Exponential backoff recommended\n\n**Implementation**:\n```yaml\n# Placeholder: API rate limiting\nlenses.api.rate.limiting:\n  enabled: true\n  per.service.account.rpm: 100\n  per.ip.rpm: 200\n  global.rpm: 10000\n  burst.multiplier: 2\n  burst.duration.seconds: 10\n# TODO: Configure rate limiting\n```",
+    "20": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#req-lens-004-007-api-error-handling-best-practices]\n\n#### REQ-LENS-004-007: API Error Handling Best Practices\n\n**Status**: Recommended (Phase 2)\n**Rationale**: Graceful failure handling\n\n**Common Error Codes**:\n- **400 Bad Request**: Invalid request parameters\n- **401 Unauthorized**: Invalid/expired API token\n- **403 Forbidden**: Insufficient permissions\n- **404 Not Found**: Resource doesn't exist\n- **429 Too Many Requests**: Rate limit exceeded\n- **500 Internal Server Error**: Lenses.io error\n- **503 Service Unavailable**: Lenses.io maintenance\n\n**Error Handling Pattern**:\n```python\n# Placeholder: Error handling example\nimport time\nfrom requests.exceptions import HTTPError\n\ndef api_request_with_retry(url, headers, max_retries=3):\n    \"\"\"Make API request with exponential backoff retry\"\"\"\n    for attempt in range(max_retries):\n        try:\n            response = requests.get(url, headers=headers)\n            response.raise_for_status()\n            return response.json()\n        except HTTPError as e:\n            if e.response.status_code == 429:\n                # Rate limited: Retry after delay\n                retry_after = int(e.response.headers.get('Retry-After', 60))\n                print(f\"Rate limited. Retrying after {retry_after} seconds...\")\n                time.sleep(retry_after)\n            elif e.response.status_code in [500, 503]:\n                # Server error: Exponential backoff\n                backoff = 2 ** attempt\n                print(f\"Server error. Retrying in {backoff} seconds...\")\n                time.sleep(backoff)\n            elif e.response.status_code in [401, 403]:\n                # Auth error: Don't retry\n                print(f\"Authentication error: {e.response.text}\")\n                raise\n            else:\n                raise\n    raise Exception(\"Max retries exceeded\")\n# TODO: Add error handling utilities\n```",
+    "21": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#req-lens-004-008-api-documentation-and-examples]\n\n#### REQ-LENS-004-008: API Documentation and Examples\n\n**Status**: Recommended (Phase 2)\n**Rationale**: Enable developer self-service\n\n**Documentation Artifacts**:\n- API reference: Swagger/OpenAPI spec (auto-generated by Lenses.io)\n- Python SDK guide: Confluence + code examples\n- Java SDK guide: Confluence + code examples\n- Common recipes: Topic management, consumer lag monitoring, schema validation\n\n**Code Examples Repository**:\n- GitHub repo: `eaas-lenses-api-examples`\n- Python examples: Topic creation, consumer lag query, SQL execution\n- Java examples: Connector deployment, metrics export\n- CI/CD integration examples: Jenkins, GitLab, GitHub Actions\n\n**Implementation**:\n```markdown\n# TODO: Create API examples repository\n# TODO: Document API recipes in Confluence\n```",
+    "22": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#req-lens-004-009-api-monitoring-and-logging]\n\n#### REQ-LENS-004-009: API Monitoring and Logging\n\n**Status**: Recommended (Phase 2)\n**Rationale**: Track API usage and troubleshoot issues\n\n**Monitored Metrics**:\n- API request rate (requests/minute)\n- API latency (p50, p95, p99)\n- API error rate (% failed requests)\n- API rate limit hits (429 responses)\n- Service account usage (requests per service account)\n\n**Logging**:\n- Log all API requests (user, endpoint, response code, latency)\n- Retention: 30 days in Lenses.io logs, 1 year in S3\n- Alert on sustained error rate >5%\n\n**Implementation**:\n```python\n# Placeholder: API monitoring\ndef track_api_metrics():\n    \"\"\"Track Lenses.io API usage metrics\"\"\"\n    cloudwatch = boto3.client('cloudwatch')\n\n    metrics = {\n        'api_request_rate': get_api_request_rate(),\n        'api_latency_p95': get_api_latency_percentile(95),\n        'api_error_rate': get_api_error_rate(),\n        'api_rate_limit_hits': get_rate_limit_hit_count()\n    }\n\n    for metric_name, value in metrics.items():\n        cloudwatch.put_metric_data(\n            Namespace='EaaS/Lenses',\n            MetricData=[{\n                'MetricName': metric_name,\n                'Value': value,\n                'Unit': 'Count' if 'rate' in metric_name else 'Milliseconds'\n            }]\n        )\n# TODO: Add API monitoring\n```",
+    "23": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#req-lens-004-010-api-security-best-practices]\n\n#### REQ-LENS-004-010: API Security Best Practices\n\n**Status**: Recommended (Phase 2)\n**Rationale**: Secure programmatic access\n\n**Security Guidelines**:\n1. **Never commit API tokens to Git**: Use environment variables or Vault\n2. **Rotate tokens regularly**: Every 30 days (automated)\n3. **Scope permissions minimally**: Grant only required permissions\n4. **Use HTTPS only**: Never send tokens over HTTP\n5. **Validate API responses**: Check for expected data structure\n6. **Log API usage**: Track who accessed what data\n7. **Revoke compromised tokens immediately**: Via Lenses.io UI or API\n\n**Token Storage**:\n- **Local Development**: `.env` file (excluded from Git)\n- **CI/CD**: Jenkins Credentials, GitLab CI/CD variables\n- **Production**: HashiCorp Vault or AWS Secrets Manager\n\n**Implementation**:\n```python\n# Placeholder: Secure token management\nimport hvac  # HashiCorp Vault client\n\ndef get_lenses_api_token():\n    \"\"\"Retrieve Lenses.io API token from Vault\"\"\"\n    vault_client = hvac.Client(url='https://vault.company.com')\n    vault_client.auth.approle.login(\n        role_id=os.getenv('VAULT_ROLE_ID'),\n        secret_id=os.getenv('VAULT_SECRET_ID')\n    )\n\n    secret = vault_client.secrets.kv.v2.read_secret_version(\n        path='eaas/lenses/api-token'\n    )\n\n    return secret['data']['data']['token']\n# TODO: Add Vault integration\n```",
+    "24": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#22-prohibited-practices]\n\n### 2.2 Prohibited Practices\n\nThe following practices are **explicitly prohibited** when using the Lenses.io API:\n\n1. **Committing API Tokens to Version Control**\n   - API tokens must never be committed to Git repositories (public or private)\n   - Hardcoded tokens in source code violate security policies and enable unauthorized access\n   - Use environment variables, CI/CD secrets, or HashiCorp Vault for token storage\n   - Scan repositories with tools like git-secrets or truffleHog to detect exposed tokens\n\n2. **Sharing API Tokens via Email/Slack**\n   - API tokens are credentials and must never be shared via insecure channels\n   - Each service/user requires dedicated service account with scoped permissions\n   - Sharing tokens violates audit requirements (cannot trace actions to specific actor)\n   - Request new service accounts through ServiceNow if multiple actors need access\n\n3. **Using Personal Accounts for Automation**\n   - Personal user accounts must not be used for CI/CD pipelines or automation scripts\n   - Personal account tokens expire with user access (risk of automation breakage)\n   - Service accounts provide dedicated audit trails for automated operations\n   - Use service accounts (REQ-LENS-004-001) for all programmatic access\n\n4. **Bypassing Rate Limits with Multiple Tokens**\n   - Creating multiple service accounts to circumvent rate limits is prohibited\n   - Rate limits protect platform stability and ensure fair resource allocation\n   - Request rate limit increase through Architecture Review Board if legitimate need\n   - Implement efficient API usage patterns (batching, caching) instead\n\n5. **Using API for Real-Time Alerting**\n   - Lenses.io API is not designed for sub-second alerting or real-time event detection\n   - Polling API for alert conditions causes excessive load and delayed response\n   - Use proper monitoring tools (CloudWatch Alarms, PagerDuty) for operational alerts\n   - API suitable for dashboards, reporting, and automation (not alerting)\n\n6. **Storing Sensitive Data in API Scripts**\n   - Scripts using Lenses.io API must not log or cache sensitive Kafka message content\n   - PHI/PII data must not be persisted in API automation logs or temporary files\n   - API operations should focus on metadata (topics, schemas, lag) not message payloads\n   - Implement data masking if message samples required for debugging",
+    "25": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#23-exceptions-process]\n\n### 2.3 Exceptions Process",
+    "26": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#when-to-request-an-exception]\n\n#### When to Request an Exception\n\nExceptions may be granted for:\n- **High-Throughput API Access**: Automation requiring >100 requests/minute\n- **Extended Token Duration**: Service accounts needing >30-day token expiration\n- **Cross-Environment API Access**: Single service account accessing multiple Kafka clusters\n- **Custom API Integrations**: Building enterprise applications on Lenses.io API",
+    "27": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#exception-request-procedure]\n\n#### Exception Request Procedure\n\n1. **Submit ServiceNow Request**:\n   - Category: \"Lenses.io API Exception Request\"\n   - Include: Business justification, expected request rate, automation purpose, impact if denied\n\n2. **Provide Technical Design**:\n   - Document API usage patterns (endpoints, request frequency, data volumes)\n   - Demonstrate efficiency optimizations (batching, caching, incremental queries)\n   - Specify error handling and retry strategy\n   - Provide capacity impact assessment (server load, network bandwidth)\n\n3. **Platform Engineering Review**:\n   - Platform team reviews API usage patterns and resource consumption\n   - Performance team assesses impact on Lenses.io platform and Kafka clusters\n   - Recommend optimizations (query simplification, polling interval adjustments)\n\n4. **Approval Authority**:\n   - **High-Throughput Access**: Platform Engineering Manager + Application Architect\n   - **Extended Token Duration**: Security Team + Platform Engineering Director\n   - **Cross-Environment Access**: Architecture Review Board + Data Privacy Officer\n   - **Custom Applications**: Architecture Review Board + CISO (if handling sensitive data)",
+    "28": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#monitoring-and-review]\n\n#### Monitoring and Review\n\n- All API exceptions tracked in governance dashboard\n- Monthly performance review for high-throughput integrations (>100 req/min)\n- Quarterly security review for extended-duration tokens\n- Exceptions automatically expire after 6 months unless renewed\n- Performance violations (excessive errors, rate limit abuse) trigger immediate review\n\n---",
+    "29": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#3-technical-specifications]\n\n## 3. Technical Specifications",
+    "30": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#31-platform-requirements]\n\n### 3.1 Platform Requirements\n\n| Component | Version | Purpose |\n|-----------|---------|---------|\n| Lenses.io | 5.0+ | API platform and SDKs |\n| Python | 3.8+ | Python SDK compatibility |\n| Java | 11+ | Java SDK compatibility |\n| Apache Kafka | 3.4+ (AWS MSK) | Target platform |\n| HashiCorp Vault | 1.12+ | Token storage |\n| REST Client | Any HTTP/1.1+ | API consumption |",
+    "31": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#32-architecture-constraints]\n\n### 3.2 Architecture Constraints",
+    "32": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#api-performance-limits]\n\n#### API Performance Limits\n\n| Constraint | Value | Rationale |\n|------------|-------|-----------|\n| Max Requests per Service Account | 100 req/min | Prevents platform overload |\n| API Response Timeout | 30 seconds | Prevents hung requests |\n| Max Concurrent Connections per SA | 10 | Connection pooling limits |\n| Token Expiration (Default) | 30 days | Security best practice |\n| Token Expiration (Extended) | 90 days | Exception cases only |\n| Max Service Accounts per Team | 5 | Resource governance |",
+    "33": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#api-request-constraints]\n\n#### API Request Constraints\n\n- All API requests must use HTTPS (TLS 1.2+)\n- Bearer token required in Authorization header for all authenticated endpoints\n- Request body size limited to 1MB (prevents excessive payloads)\n- Bulk operations limited to 100 items per request (topics, ACLs, connectors)\n- Long-running operations (connector deployment) return job ID for status polling",
+    "34": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#33-technology-standards]\n\n### 3.3 Technology Standards",
+    "35": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#rest-api-specification]\n\n#### REST API Specification\n\nLenses.io provides OpenAPI 3.0 specification:\n\n```yaml\nopenapi: 3.0.0\ninfo:\n  title: Lenses.io API\n  version: 5.0\nservers:\n  - url: https://lenses.prod.company.com/api\nsecurity:\n  - bearerAuth: []\npaths:\n  /v1/kafka/topics:\n    get:\n      summary: List all Kafka topics\n      parameters:\n        - name: pageSize\n          in: query\n          schema:\n            type: integer\n            default: 25\n      responses:\n        '200':\n          description: Topic list\n          content:\n            application/json:\n              schema:\n                type: array\n                items:\n                  $ref: '#/components/schemas/Topic'\n```",
+    "36": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#python-sdk-configuration]\n\n#### Python SDK Configuration\n\n```python\n# lenses_config.py\nfrom lensesio import LensesClient\n\n# Configuration object\nconfig = {\n    'url': 'https://lenses.prod.company.com',\n    'token': get_token_from_vault(),  # Never hardcode\n    'timeout': 30,\n    'verify_ssl': True,\n    'retry_strategy': {\n        'max_attempts': 3,\n        'backoff_factor': 2,  # 2s, 4s, 8s\n        'status_forcelist': [429, 500, 502, 503, 504]\n    }\n}\n\nclient = LensesClient(**config)\n```",
+    "37": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#java-sdk-configuration]\n\n#### Java SDK Configuration\n\n```xml\n<!-- pom.xml -->\n<dependency>\n    <groupId>io.lenses</groupId>\n    <artifactId>lenses-java-client</artifactId>\n    <version>5.0.1</version>\n</dependency>\n```\n\n```java\n// LensesClientConfig.java\nimport io.lenses.client.LensesClient;\nimport io.lenses.client.Configuration;\n\nConfiguration config = Configuration.builder()\n    .url(\"https://lenses.prod.company.com\")\n    .token(getTokenFromVault())  // Never hardcode\n    .timeout(Duration.ofSeconds(30))\n    .verifySsl(true)\n    .retryStrategy(RetryStrategy.builder()\n        .maxAttempts(3)\n        .backoffFactor(2)\n        .build())\n    .build();\n\nLensesClient client = new LensesClient(config);\n```",
+    "38": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#34-configuration-specifications]\n\n### 3.4 Configuration Specifications",
+    "39": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#service-account-rbac-configuration]\n\n#### Service Account RBAC Configuration\n\nService accounts mapped to Lenses.io permissions:\n\n```yaml\nservice_accounts:\n  \"cicd-jenkins-sa\":\n    permissions:\n      - \"DataPolicies:Read\"\n      - \"KafkaTopics:Read,Create\"\n      - \"KafkaConnectors:Read,Create,Update,Delete\"\n      - \"Processors:Read,Create,Update,Delete\"\n    groups:\n      - \"ci-cd-automation\"\n    token_duration: 30  # days\n\n  \"monitoring-datadog-sa\":\n    permissions:\n      - \"DataPolicies:Read\"\n      - \"KafkaTopics:Read\"\n      - \"KafkaConsumers:Read\"\n      - \"Metrics:Read\"\n    groups:\n      - \"monitoring-tools\"\n    token_duration: 90  # days (extended exception)\n\n  \"automation-ansible-sa\":\n    permissions:\n      - \"DataPolicies:Read,Create,Update\"\n      - \"KafkaTopics:Read,Create,Update\"\n      - \"KafkaACLs:Read,Create,Delete\"\n      - \"KafkaConnectors:Read,Create,Update,Delete\"\n    groups:\n      - \"infrastructure-automation\"\n    token_duration: 30  # days\n```",
+    "40": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#api-rate-limiting-configuration]\n\n#### API Rate Limiting Configuration\n\n```yaml\nrate_limiting:\n  default_limit: 100  # requests per minute\n  burst_limit: 150    # short-term burst allowance\n  enforcement: sliding_window\n\n  # Exception cases (approved via ARB)\n  exceptions:\n    \"monitoring-datadog-sa\": 300  # High-frequency metrics collection\n    \"cicd-jenkins-sa\": 200        # Bulk deployments\n\n  # Response headers\n  headers:\n    X-RateLimit-Limit: 100\n    X-RateLimit-Remaining: 87\n    X-RateLimit-Reset: 1642694400  # Unix timestamp\n```",
+    "41": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#error-response-format]\n\n#### Error Response Format\n\nStandardized error responses:\n\n```json\n{\n  \"error\": {\n    \"code\": \"RATE_LIMIT_EXCEEDED\",\n    \"message\": \"API rate limit exceeded for service account cicd-jenkins-sa\",\n    \"details\": {\n      \"limit\": 100,\n      \"window\": \"1 minute\",\n      \"retry_after\": 45\n    },\n    \"request_id\": \"req-abc123-xyz789\",\n    \"timestamp\": \"2026-01-20T10:30:00Z\"\n  }\n}\n```\n\n---",
+    "42": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#4-implementation-guidance]\n\n## 4. Implementation Guidance",
+    "43": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#31-getting-started-with-lensesio-api]\n\n### 3.1 Getting Started with Lenses.io API",
+    "44": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#step-1-request-service-account]\n\n#### Step 1: Request Service Account\n\n1. Submit ServiceNow request with use case\n2. Specify required permissions (read-only, write, admin)\n3. Approval by Platform Engineering (1 business day)\n4. Service account credentials delivered via Vault",
+    "45": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#step-2-install-sdk-python-or-java]\n\n#### Step 2: Install SDK (Python or Java)\n\n```bash\n# Python\npip install lensesio\n\n# Java (Maven)\n# Add dependency to pom.xml (see REQ-LENS-004-005)\n```",
+    "46": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#step-3-first-api-call]\n\n#### Step 3: First API Call\n\n```python\nfrom lensesio import LensesClient\nimport os\n\nclient = LensesClient(\n    url='https://lenses.prod.company.com',\n    token=os.getenv('LENSES_API_TOKEN')\n)\n\n# List topics\ntopics = client.topics.list()\nprint(f\"Found {len(topics)} topics\")\n```",
+    "47": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#step-4-explore-api-examples]\n\n#### Step 4: Explore API Examples\n\n1. Clone examples repo: `git clone https://github.com/company/eaas-lenses-api-examples`\n2. Review Python examples: `python/topic_management.py`\n3. Adapt to your use case",
+    "48": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#32-troubleshooting-api-issues]\n\n### 3.2 Troubleshooting API Issues",
+    "49": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#issue-1-401-unauthorized]\n\n#### Issue 1: 401 Unauthorized\n\n**Symptoms**: API returns \"Invalid token\"\n\n**Resolution**:\n1. Verify token not expired (check Vault expiration date)\n2. Verify token format: `Bearer <token>` (not just `<token>`)\n3. Regenerate token if expired\n4. Check Lenses.io service account still active",
+    "50": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#issue-2-429-rate-limit-exceeded]\n\n#### Issue 2: 429 Rate Limit Exceeded\n\n**Symptoms**: API returns \"Too many requests\"\n\n**Resolution**:\n1. Implement exponential backoff (see REQ-LENS-004-007)\n2. Reduce request frequency (batch operations)\n3. Request rate limit increase (if justified business need)\n4. Check for infinite retry loops",
+    "51": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#issue-3-500-internal-server-error]\n\n#### Issue 3: 500 Internal Server Error\n\n**Symptoms**: API returns server error\n\n**Resolution**:\n1. Check Lenses.io health status page\n2. Retry with exponential backoff\n3. If sustained: Contact Platform Engineering\n4. Check for recent Lenses.io deployments (may be temporary)",
+    "52": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#43-validation-criteria]\n\n### 4.3 Validation Criteria\n\nThe following validation checks must be performed before deploying API integrations:\n\n| Validation Area | Check | Expected Result | Priority |\n|----------------|-------|-----------------|----------|\n| **Service Account Provisioning** | Service accounts created via ServiceNow with scoped permissions | Each automation has dedicated service account | Critical |\n| **Token Authentication** | Bearer tokens stored securely in Vault, not hardcoded | No tokens in source code or logs | Critical |\n| **API Use Cases** | Automation purpose documented and approved | All API usage justified and tracked | High |\n| **SDK Implementation** | Python/Java SDKs used for common operations | No raw HTTP requests for standard operations | High |\n| **Rate Limiting** | Request rate within limits (100 req/min default) | No 429 errors under normal operation | High |\n| **Error Handling** | Exponential backoff and circuit breakers implemented | Graceful degradation during outages | High |\n| **Security Practices** | Token rotation every 30 days, HTTPS only | Automated token refresh, TLS 1.2+ | Critical |\n\n**Validation Frequency**:\n- Monthly: API usage review (request rates, error rates, token expirations)\n- Quarterly: Security audit (token storage, permissions review, access patterns)\n- Annually: Architecture review (API integration patterns, efficiency improvements)",
+    "53": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#44-testing-requirements]\n\n### 4.4 Testing Requirements",
+    "54": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#functional-testing]\n\n#### Functional Testing\n\n**API Authentication**:\n- Test Bearer token authentication with valid token\n- Test token expiration handling (expired token returns 401)\n- Test invalid token rejection (malformed token returns 401)\n- Test token refresh workflow (automated renewal before expiration)\n\n**API Operations**:\n- Test topic listing, creation, deletion via API\n- Test consumer group lag retrieval\n- Test connector deployment and status checking\n- Test ACL creation and deletion\n- Test LSQL query execution via API\n\n**SDK Functionality**:\n- Test Python SDK installation and configuration\n- Test Java SDK Maven dependency resolution\n- Test SDK common operations (list topics, get consumer lag, deploy connector)\n- Test SDK error handling (connection timeout, rate limit, invalid response)",
+    "55": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#security-testing]\n\n#### Security Testing\n\n**Token Security**:\n- Verify tokens stored in Vault, not environment variables or code\n- Test token revocation (revoked token immediately rejected)\n- Verify HTTPS enforcement (HTTP requests rejected)\n- Test minimal permission scoping (service accounts cannot exceed granted permissions)\n\n**Audit Logging**:\n- Verify all API requests logged with service account identifier\n- Test audit trail for sensitive operations (ACL changes, topic deletion)\n- Verify PHI/PII not logged in API request/response logs",
+    "56": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#performance-testing]\n\n#### Performance Testing\n\n**Rate Limiting**:\n- Test 100 req/min limit enforcement (101st request returns 429)\n- Test burst allowance (short-term 150 req/min accepted)\n- Test rate limit headers returned (X-RateLimit-Remaining accurate)\n- Measure response time under rate limit (target: <200ms median)\n\n**High-Throughput Testing**:\n- Test concurrent connections (10 simultaneous requests per service account)\n- Measure API response time under load (P95 <500ms, P99 <2s)\n- Test bulk operations (100 topics created in single request)\n\n**Retry Logic Testing**:\n- Test exponential backoff on 429 errors (2s, 4s, 8s delays)\n- Test circuit breaker activation after 5 consecutive failures\n- Test recovery after circuit breaker cool-down period",
+    "57": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#integration-testing]\n\n#### Integration Testing\n\n**CI/CD Pipeline Integration**:\n- Test Jenkins pipeline deployment using Lenses.io API (topic creation, connector deployment)\n- Test GitLab CI/CD integration with Lenses.io API\n- Verify Infrastructure-as-Code workflows (Terraform with Lenses.io provider)\n\n**Monitoring Integration**:\n- Test Datadog integration via API (consumer lag metrics push)\n- Test CloudWatch integration (API metrics to CloudWatch)\n- Test Splunk log forwarding (API audit logs to Splunk)",
+    "58": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#45-documentation-requirements]\n\n### 4.5 Documentation Requirements\n\nAll API integrations must provide the following documentation:\n\n1. **Service Account Inventory**:\n   - Per team/application service account registry in Confluence\n   - Service account name, purpose, permissions, token expiration date\n   - Example: `cicd-jenkins-sa | CI/CD automation | topic:create, connector:deploy | Expires: 2026-02-15 | Owner: DevOps Team`\n\n2. **API Integration Documentation**:\n   - Purpose of API integration (automation workflow, monitoring, custom dashboard)\n   - API endpoints used and request frequency\n   - Service account and permissions required\n   - Example: \"Jenkins pipeline uses `/v1/kafka/topics` (POST) to create topics during deployment, 5-10 requests per pipeline run\"\n\n3. **Token Management Documentation**:\n   - Token storage location (Vault path, Jenkins credential ID)\n   - Token rotation schedule and procedure\n   - Emergency revocation process\n   - Example: \"Token stored in Vault at `secret/lenses/cicd-token`, rotated every 30 days via automated job, revoke via Lenses.io UI Settings → Service Accounts\"\n\n4. **Error Handling Documentation**:\n   - Retry strategy (exponential backoff parameters, max attempts)\n   - Circuit breaker configuration (failure threshold, cool-down period)\n   - Fallback behavior (graceful degradation when API unavailable)\n   - Example: \"3 retry attempts with 2s backoff factor, circuit opens after 5 failures, falls back to manual deployment workflow\"\n\n5. **Performance Tuning Documentation**:\n   - Request batching strategy (bulk operations where possible)\n   - Caching approach (cache topic metadata for 5 minutes)\n   - Connection pooling configuration\n   - Example: \"Batch topic creations in groups of 50, cache consumer lag data for 60s, use connection pool of 5\"\n\n6. **Runbook Documentation**:\n   - Troubleshooting guide for common API errors (401, 429, 500)\n   - Escalation procedure (when to contact Platform Engineering)\n   - Emergency procedures (token compromise, API outage)\n   - On-call response guide (API integration failures)\n\n---",
+    "59": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#5-compliance-and-governance]\n\n## 5. Compliance and Governance",
+    "60": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#51-validation-checklist]\n\n### 5.1 Validation Checklist\n\n- [ ] API service account provisioning process defined (ServiceNow request, approval workflow)\n- [ ] API authentication implemented (Bearer token, token rotation every 30 days)\n- [ ] Authorized API use cases documented (CI/CD, monitoring, automation, dashboards, compliance)\n- [ ] Python SDK usage guidelines published (installation, common operations, examples)\n- [ ] Java SDK usage guidelines published (Maven dependency, common operations, examples)\n- [ ] API rate limiting configured (100 req/min per service account)\n- [ ] API error handling best practices documented (retry logic, exponential backoff)\n- [ ] API documentation published (Swagger spec, SDK guides, code examples repo)\n- [ ] API monitoring enabled (request rate, latency, error rate tracked)\n- [ ] API security best practices documented (token storage, rotation, scoping)",
+    "61": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#52-architecture-review]\n\n### 5.2 Architecture Review\n\nSubmit to Architecture Review if:\n- Creating high-throughput API integrations (>100 req/min)\n- Building custom applications on Lenses.io API\n- Implementing automated data pipelines via API",
+    "62": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#53-governance-oversight]\n\n### 5.3 Governance Oversight",
+    "63": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#standards-ownership]\n\n#### Standards Ownership\n\n- **Standards Owner**: Platform Engineering Team\n  - Maintains service account provisioning workflow and API documentation\n  - Reviews API usage patterns and performance metrics\n  - Approves high-throughput API exceptions\n\n- **Compliance Manager**: Application Architecture Team\n  - Audits service account permissions quarterly\n  - Validates token rotation compliance\n  - Tracks exception requests and renewals\n\n- **Governance Body**: Architecture Review Board\n  - Reviews complex API integrations (custom applications, high-throughput)\n  - Approves extended token durations and cross-environment access\n  - Resolves escalated exception requests\n\n- **Subject Matter Experts**:\n  - **Platform Engineering**: Lenses.io API capabilities, rate limiting, performance optimization\n  - **Security Team**: Token management, RBAC, audit logging\n  - **DevOps Team**: CI/CD integration patterns, automation best practices",
+    "64": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#review-frequency]\n\n#### Review Frequency\n\n- **Monthly**: API usage review (request rates, error rates, token expirations, exception monitoring)\n- **Quarterly**: Security audit (token storage, permissions review, access patterns)\n- **Annually**: Comprehensive standard review and API integration architecture assessment",
+    "65": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#contact-information]\n\n#### Contact Information\n\n- Standards Owner: platform-engineering@example.com\n- Compliance Manager: app-architecture@example.com\n- Exception Requests: ServiceNow → \"Lenses.io API Exception\"\n\n---",
+    "66": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#6-references]\n\n## 6. References",
+    "67": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#61-related-documentation]\n\n### 6.1 Related Documentation\n\n- [STD-APP-KMGMT-001: Topic Browser Access](STD-APP-KMGMT-001-topic-browser-access.md) - Interactive access\n- [STD-APP-KMGMT-002: LSQL Query Standards](STD-APP-KMGMT-002-lsql-query-standards.md) - Query API\n- [ADR-IFR-008: Kafka Management Platform Selection](../../../decisions/infrastructure/ADR-IFR-008-kafka-management-platform-selection.md)",
+    "68": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#62-external-resources]\n\n### 6.2 External Resources\n\n- [Lenses.io REST API Documentation](https://docs.lenses.io/5.0/api/)\n- [Lenses.io Python SDK](https://github.com/lensesio/lenses-python)\n- [Lenses.io Java SDK](https://github.com/lensesio/lenses-java-client)\n\n---",
+    "69": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#7-change-history]\n\n## 7. Change History\n\n| Date       | Version | Author | Description               | Impact              |\n| ---------- | ------- | ------ | ------------------------- | ------------------- |\n| 2026-01-19 | 1.0.0   | EAP    | Initial standard creation | New standard        |\n| 2026-01-20 | 1.1.0   | EAP    | Comprehensive compliance review | Added Executive Summary, Prohibited Practices, Exceptions Process, Technical Specifications, Validation Criteria, Testing Requirements, Documentation Requirements, Governance Oversight |\n\n---",
+    "70": "[standards/application/kafka-management/STD-APP-KMGMT-004-api-access.md#8-review-log]\n\n## 8. Review Log\n\n| Review Date | Review Type        | Reviewer(s) | Status | Comments | Actions |\n| ----------- | ------------------ | ----------- | ------ | -------- | ------- |\n| 2026-01-19  | Initial Draft      | EAP         | Draft  | Created  | Pending Platform Engineering review |\n| 2026-01-20  | Compliance Review  | EAP         | Completed | Comprehensive compliance review completed. All template sections added: Executive Summary, Prohibited Practices, Exceptions Process, Technical Specifications, Validation Criteria, Testing Requirements, Documentation Requirements, Governance Oversight | Forward to Platform Engineering for technical review |\n\n---\n\n**Document Status**: This is a placeholder standard requiring detailed service account provisioning workflow, Python/Java SDK examples, API rate limiting configuration, error handling utilities, API examples repository creation, and developer documentation. Implementation details will be added in Phase 2 (Month 4-5) per ADR-IFR-008."
+  },
+  "coverage": {
+    "total_pages": 70,
+    "covered_pages": 70,
+    "sampled_pages": 70,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 70
+  }
+}

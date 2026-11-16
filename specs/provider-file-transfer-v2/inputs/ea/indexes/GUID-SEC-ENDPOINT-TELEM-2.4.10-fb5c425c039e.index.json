@@ -1,0 +1,103 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Endpoint Telemetry and Analytics — Component Architecture Building Block",
+  "document_description": "guidance_id: 'GUID-SEC-ENDPOINT-TELEM-2.4.10'",
+  "total_pages": 9,
+  "tree": [
+    {
+      "title": "Endpoint Telemetry and Analytics — Component Architecture Building Block",
+      "node_id": "endpoint-telemetry-and-analytics--component-architecture-building-block",
+      "start_index": 1,
+      "end_index": 9,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Architecture Guidance Metadata",
+          "node_id": "architecture-guidance-metadata",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Architecture Vision Reference",
+          "node_id": "architecture-vision-reference",
+          "start_index": 3,
+          "end_index": 6,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "ABB Context",
+              "node_id": "abb-context",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "ABB Scope",
+              "node_id": "abb-scope",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Related Component ABBs",
+              "node_id": "related-component-abbs",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Detailed Guidance",
+          "node_id": "detailed-guidance",
+          "start_index": 7,
+          "end_index": 9,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Core Principles",
+              "node_id": "core-principles",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Architectural Requirements",
+              "node_id": "architectural-requirements",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[strategy/guidance/security/Endpoint/GUID-SEC-ENDPOINT-TELEM-2.4.10.md#endpoint-telemetry-and-analytics--component-architecture-building-block]\n\n# Endpoint Telemetry and Analytics — Component Architecture Building Block\n\n**← Back to [EAP Home](../../../../README.md) • [Strategy](../../../README.md) • [Guidance](../../README.md) • [Endpoint](README.md)**\n\n---",
+    "2": "[strategy/guidance/security/Endpoint/GUID-SEC-ENDPOINT-TELEM-2.4.10.md#architecture-guidance-metadata]\n\n## Architecture Guidance Metadata\n\n```yaml\nguidance_id: 'GUID-SEC-ENDPOINT-TELEM-2.4.10'\nguidance_name: 'Endpoint Telemetry and Analytics — Component Architecture Building Block'\nguidance_type: 'architecture-building-block'\nabb_type: 'component'\nadm_phase: 'Phase B-D'\nparent_abb: 'GUID-SEC-ENDPOINT-COMPOSITE-1.4.02'\nparent_vision: 'GUID-SEC-ENDPOINT-VISION-0.4.01'\nrealized_by_sbbs: []\npaired_rad: 'GUID-SEC-ENDPOINT-EDR-SOAR-RAD-3.4.02'\ncategory: 'security'\nversion: '1.0.0'\nstatus: 'draft'\napplicability: 'enterprise'\ntags: ['security', 'endpoint', 'telemetry', 'analytics', 'siem', 'logging', 'threat-hunting', 'zero-trust', 'architecture-building-block', 'component']\nauthor: 'Jesse Adams'\n```\n\n---",
+    "3": "[strategy/guidance/security/Endpoint/GUID-SEC-ENDPOINT-TELEM-2.4.10.md#architecture-vision-reference]\n\n## Architecture Vision Reference\n\nPer [GUID-SEC-ENDPOINT-COMPOSITE-1.4.02 §Normative Language Convention](GUID-SEC-ENDPOINT-COMPOSITE-1.4.02.md): **SHALL** = mandatory; **SHOULD** = strongly recommended; **MAY** = optional.",
+    "4": "[strategy/guidance/security/Endpoint/GUID-SEC-ENDPOINT-TELEM-2.4.10.md#abb-context]\n\n### ABB Context\n\n- **Parent Composite ABB**: [GUID-SEC-ENDPOINT-COMPOSITE-1.4.02 — Endpoint Security Composite ABB](GUID-SEC-ENDPOINT-COMPOSITE-1.4.02.md)\n- **Domain**: Domain 10 — Security Operations Integration\n- **Capability Statement**: Establishes the architectural requirements for centralized collection, normalization, enrichment, and forwarding of endpoint security events and behavioral signals from all managed device populations to the enterprise security operations platform, providing the telemetry foundation for threat detection, investigation, and response",
+    "5": "[strategy/guidance/security/Endpoint/GUID-SEC-ENDPOINT-TELEM-2.4.10.md#abb-scope]\n\n### ABB Scope\n\n**In Scope**:\n- Endpoint telemetry schema definition: the authoritative specification of what event types and attributes are collected from managed endpoints\n- Telemetry collection agent deployment and lifecycle management\n- Event normalization and enrichment: mapping raw endpoint events to a common schema, enriching with asset context\n- Telemetry forwarding pipeline to the enterprise SIEM/security data platform\n- Behavioral baseline establishment: per-device and per-user behavioral profiles for anomaly detection\n- Telemetry pipeline health monitoring: coverage gaps, forwarding latency, and data loss detection\n- Local endpoint log retention: minimum on-device retention to bridge collection latency gaps\n- Integration contracts with Security Operations: data format, delivery protocol, SLA for event freshness\n\n**Out of Scope**:\n- Security event correlation and alert generation (owned by Security Operations capability)\n- Threat hunting query authoring and execution (operational SecOps function, though this ABB provides the data platform it requires)\n- Incident case management and response workflows (see SecOps and ITSM-Operations domains)\n- Application-layer event logging from enterprise applications (see Application Security domain)\n- Specific SIEM platform configuration and rule management (Phase E–F)",
+    "6": "[strategy/guidance/security/Endpoint/GUID-SEC-ENDPOINT-TELEM-2.4.10.md#related-component-abbs]\n\n### Related Component ABBs\n\n| GUID | Document | Relationship |\n|---|---|---|\n| GUID-SEC-ENDPOINT-EDR-2.4.04 | [Endpoint Detection and Response ABB](GUID-SEC-ENDPOINT-EDR-2.4.04.md) | EDR is the primary high-fidelity behavioral telemetry source; EDR events are the most critical endpoint telemetry stream |\n| GUID-SEC-ENDPOINT-EPP-2.4.03 | [Endpoint Protection Platform ABB](GUID-SEC-ENDPOINT-EPP-2.4.03.md) | EPP prevention events are a secondary telemetry source |\n| GUID-SEC-ENDPOINT-EPM-2.4.08 | [Endpoint Privilege Management ABB](GUID-SEC-ENDPOINT-EPM-2.4.08.md) | Privilege elevation and escalation events are forwarded through the telemetry pipeline |\n| GUID-SEC-ENDPOINT-EDP-2.4.09 | [Endpoint Data Protection ABB](GUID-SEC-ENDPOINT-EDP-2.4.09.md) | DLP events and encryption compliance alerts are forwarded through the telemetry pipeline |\n| GUID-SEC-ENDPOINT-CONFIG-2.4.02 | [Endpoint Configuration Governance ABB](GUID-SEC-ENDPOINT-CONFIG-2.4.02.md) | Configuration compliance events and drift alerts are forwarded through the telemetry pipeline |\n\n---",
+    "7": "[strategy/guidance/security/Endpoint/GUID-SEC-ENDPOINT-TELEM-2.4.10.md#detailed-guidance]\n\n## Detailed Guidance",
+    "8": "[strategy/guidance/security/Endpoint/GUID-SEC-ENDPOINT-TELEM-2.4.10.md#core-principles]\n\n### Core Principles\n\n**1. Telemetry Coverage is a Security Metric**\n\nEndpoint telemetry coverage — the percentage of managed endpoints actively forwarding events — SHALL be measured continuously and treated as a security metric with defined thresholds and alerting. A gap in endpoint telemetry coverage means that devices in the gap are operating without security operations visibility; threat actors can exploit this gap for persistence and lateral movement without detection. Telemetry coverage gaps SHALL be treated as operational security incidents.\n\n**2. Schema Standardization Enables Correlation at Scale**\n\nRaw endpoint events in proprietary formats from multiple collection sources cannot be effectively correlated. The endpoint telemetry architecture SHALL define and maintain a normalized event schema that maps events from all sources to a common format. This schema SHALL be versioned and SHALL be the authoritative reference for SIEM ingestion and query development.\n\n**3. Enrichment at Collection, Not at Query Time**\n\nTelemetry events SHALL be enriched with asset context (device classification, owner, business unit, criticality tier) at collection time, not deferred to query time. Query-time enrichment that requires cross-system lookups during investigation creates latency, produces inconsistent results, and adds complexity to threat hunting workflows. Events arriving at the security operations platform SHALL already carry the context needed for effective analysis.\n\n**4. Pipeline Health is a Security Obligation**\n\nTelemetry pipeline failures — collection agent outages, forwarding failures, normalization errors — result in security visibility gaps that are operationally indistinguishable from device compromise or intentional log tampering. Pipeline health SHALL be monitored as a security control, and pipeline degradation SHALL generate operational alerts.",
+    "9": "[strategy/guidance/security/Endpoint/GUID-SEC-ENDPOINT-TELEM-2.4.10.md#architectural-requirements]\n\n### Architectural Requirements\n\n**AR-1**: A documented endpoint telemetry schema SHALL exist and SHALL be version-controlled. The schema SHALL specify: event type taxonomy, required and optional fields for each event type, normalization rules for source-specific field mapping, and enrichment field specifications. The schema SHALL be maintained as a living document updated with each material change to collection sources.\n\n**AR-2**: Endpoint telemetry SHALL be collected from all managed devices and SHALL include at minimum: process execution events (with command line and parent context), network connection events, file write events for executable and script file types, authentication and privilege elevation events, security agent health state changes, and configuration compliance state transitions.\n\n**AR-3**: Telemetry agents on managed endpoints SHALL be covered by the deployment and lifecycle management processes that govern other security agents. Agent health — active status, last-contact timestamp, version currency, error state — SHALL be continuously monitored and SHALL be reported as a security coverage metric.\n\n**AR-4**: Telemetry events SHALL be enriched with at minimum: device identifier, device classification tier, device owner, business unit, asset criticality, and timestamp normalization to UTC. Enrichment SHALL occur before or during forwarding to the enterprise security data platform.\n\n**AR-5**: The endpoint telemetry forwarding pipeline SHALL have defined SLAs for event freshness (the maximum acceptable delay between event occurrence on the endpoint and availability in the enterprise security data platform for investigation). Pipeline performance against the freshness SLA SHALL be monitored and reported.\n\n**AR-6**: Local endpoint log buffers SHALL be configured to retain events for a minimum period that bridges expected forwarding latency gaps. Events that cannot be forwarded due to transient connectivity issues SHALL be buffered and forwarded when connectivity is restored, not discarded.\n\n---"
+  },
+  "coverage": {
+    "total_pages": 9,
+    "covered_pages": 9,
+    "sampled_pages": 9,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 9
+  }
+}

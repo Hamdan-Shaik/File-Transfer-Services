@@ -1,0 +1,140 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Data Security Domain Reference Architecture",
+  "document_description": "guidance_name: 'Data Security Domain Reference Architecture'",
+  "total_pages": 13,
+  "tree": [
+    {
+      "title": "Data Security Domain Reference Architecture",
+      "node_id": "data-security-domain-reference-architecture",
+      "start_index": 1,
+      "end_index": 13,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Architecture Guidance Metadata",
+          "node_id": "architecture-guidance-metadata",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Purpose and Scope",
+          "node_id": "purpose-and-scope",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Platform Engineering Scope",
+          "node_id": "platform-engineering-scope",
+          "start_index": 4,
+          "end_index": 6,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Capability Domain Boundary",
+              "node_id": "capability-domain-boundary",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Control Responsibility Matrix",
+              "node_id": "control-responsibility-matrix",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Logical Architecture",
+          "node_id": "logical-architecture",
+          "start_index": 7,
+          "end_index": 9,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Domain Component Topology",
+              "node_id": "domain-component-topology",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Data Protection Flow",
+              "node_id": "data-protection-flow",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Integration Architecture",
+          "node_id": "integration-architecture",
+          "start_index": 10,
+          "end_index": 12,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "IAM Integration",
+              "node_id": "iam-integration",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Security Operations Integration",
+              "node_id": "security-operations-integration",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Zero Trust Alignment",
+          "node_id": "zero-trust-alignment",
+          "start_index": 13,
+          "end_index": 13,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-RAD-3.5.01.md#data-security-domain-reference-architecture]\n\n# Data Security Domain Reference Architecture\n\n**← Back to [EAP Home](../../../../../README.md) • [Strategy](../../../../README.md) • [Security Guidance](../../../README.md) • [Data](../README.md)**\n\n---",
+    "2": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-RAD-3.5.01.md#architecture-guidance-metadata]\n\n## Architecture Guidance Metadata\n\n```yaml\nguidance_id: 'GUID-SEC-DATA-RAD-3.5.01'\nguidance_name: 'Data Security Domain Reference Architecture'\nguidance_type: 'reference-architecture-document'\nrad_type: 'composite'\npaired_abb: 'GUID-SEC-DATA-REF-1.5.01'\nparent_abb: 'GUID-SEC-DATA-REF-1.5.01'\nparent_vision: 'GUID-SEC-DATA-VISION-0.5.01'\nadm_phase: 'Phase C-D'\ncategory: 'security'\nversion: '0.1.0'\nstatus: 'draft'\napplicability: 'enterprise'\ntags: ['security', 'data', 'reference-architecture', 'composite', 'zero-trust', 'phase-c', 'phase-d']\nauthor: 'Jesse Adams'\n```\n\n---\n\n> **Informative Content Notice**: Technology choices, tooling names, and vendor references in this document are **illustrative only** — they represent one class of solution, not a mandated selection. Organizations SHOULD evaluate tooling based on integration fit, licensing, and operational context.\n>\n> **The architectural control patterns in this document reflect normative requirements from the paired ABB** ([GUID-SEC-DATA-REF-1.5.01](../GUID-SEC-DATA-REF-1.5.01.md)) and represent required design outcomes. Implementation teams SHALL deliver the described control capabilities; the specific tooling used to realize them is a local implementation decision.\n\n---",
+    "3": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-RAD-3.5.01.md#purpose-and-scope]\n\n## Purpose and Scope\n\nThis Reference Architecture Document (RAD) illustrates how the Data Security Component ABBs compose into a coherent domain architecture. It shows how the three functional groups (Context and Governance, Protection Controls, Lifecycle and Integrity) connect and integrate with adjacent security and information domains.\n\n**Paired ABB**: [GUID-SEC-DATA-REF-1.5.01 — Data Security Composite ABB](../GUID-SEC-DATA-REF-1.5.01.md)\n\n**In Scope**:\n- Logical Data Security platform topology and component relationships\n- Data flow protection patterns across platform, application, and storage tiers\n- Integration with Zero Trust enforcement and Security Operations\n- Control responsibility across security, data engineering, and application teams\n\n**Out of Scope**:\n- Vendor product selection and configuration\n- ABB re-definition (ABBs are consumed, not redefined, here)\n- Security standards and compliance baselines\n\n---",
+    "4": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-RAD-3.5.01.md#platform-engineering-scope]\n\n## Platform Engineering Scope",
+    "5": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-RAD-3.5.01.md#capability-domain-boundary]\n\n### Capability Domain Boundary\n\nThe Data Security domain provides the classification, protection, and governance services that application and data platform teams consume. Its control boundary ends at the enforcement point — the storage system, API, pipeline, or egress channel where protection is applied. Adjacent domains that interact with Data Security include: IAM (which governs access to data governed by the Data Security domain), Security Operations (which consumes DLP incidents and key access audit events), and the Information domain (which governs data model, lineage, and quality).",
+    "6": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-RAD-3.5.01.md#control-responsibility-matrix]\n\n### Control Responsibility Matrix\n\n| Capability Area | Security Architecture | Data Platform Teams | Application Teams | Security Operations |\n|---|---|---|---|---|\n| Classification Schema Governance | **Governs** | Implements | Integrates | Reviews |\n| Encryption at Rest | **Governs** | **Owns** | Integrates | Monitors |\n| Encryption in Transit | **Governs** | Implements | **Co-owns** | Monitors |\n| Key and Secrets Management | **Governs** | **Owns** | Integrates | Monitors |\n| DLP Policy Governance | **Governs** | Supports | Integrates | **Co-owns** (incidents) |\n| Data Masking (Non-Prod) | **Governs** | **Owns** | Integrates | Reviews |\n| PQC Inventory and Migration | **Co-owns** | Implements | Integrates | Reviews |\n| Cryptographic Audit Events | **Governs** (policy) | Collects | Supports | **Owns** (detection) |\n\n---",
+    "7": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-RAD-3.5.01.md#logical-architecture]\n\n## Logical Architecture",
+    "8": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-RAD-3.5.01.md#domain-component-topology]\n\n### Domain Component Topology\n\n```mermaid\ngraph TD\n    subgraph ContextGovernance[\"Group 1 — Context and Governance (Foundational)\"]\n        CLASSIFY[GUID-SEC-DATA-CLASSIFY-2.5.02\\nData Classification and Cataloging]\n        AG[GUID-SEC-DATA-ACCESS-GOV-2.5.07\\nData Access Governance - planned]\n        PRIV[GUID-SEC-DATA-PRIVACY-2.5.08\\nData Privacy and Residency - planned]\n    end\n\n    subgraph Protection[\"Group 2 — Protection Controls (Protective)\"]\n        ENC[GUID-SEC-DATA-ENC-2.5.03\\nEncryption]\n        KMS[GUID-SEC-DATA-KMS-2.5.04\\nKey and Secrets Management]\n        DLP[GUID-SEC-DATA-DLP-2.5.05\\nData Loss Prevention]\n        MASK[GUID-SEC-DATA-MASK-2.5.06\\nMasking and Tokenization]\n        PQC[GUID-SEC-DATA-PQ-CRYPTO-2.5.01\\nPost-Quantum Cryptography]\n    end\n\n    subgraph Lifecycle[\"Group 3 — Lifecycle and Integrity (Sustaining)\"]\n        LC[GUID-SEC-DATA-LIFECYCLE-2.5.09\\nLifecycle Management - planned]\n        INT[GUID-SEC-DATA-INTEGRITY-2.5.10\\nIntegrity - planned]\n    end\n\n    subgraph External[\"Adjacent Domains\"]\n        IAM[IAM Domain\\nWorkload Identity and Access Policy]\n        SECOPS[Security Operations\\nSIEM and Incident Response]\n    end\n\n    CLASSIFY --> ENC\n    CLASSIFY --> DLP\n    CLASSIFY --> MASK\n    CLASSIFY --> AG\n    ENC --> KMS\n    PQC --> KMS\n    DLP --> SECOPS\n    KMS --> SECOPS\n    IAM --> AG\n    IAM --> KMS\n```",
+    "9": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-RAD-3.5.01.md#data-protection-flow]\n\n### Data Protection Flow\n\nThe illustrative flow for a sensitive data write operation follows this pattern:\n\n1. **Ingest**: Data arrives at the platform ingestion layer\n2. **Classify**: Classification ABB logic determines sensitivity tier from data content and source metadata\n3. **Label**: Classification label is applied and propagated with the data object\n4. **Encrypt**: Encryption ABB applies the appropriate encryption tier (determined by classification label), consuming key material from the KMS ABB\n5. **Store**: Encrypted data is persisted with classification label metadata\n6. **DLP Check**: On any egress operation, the DLP ABB evaluates the classification label against egress policy\n7. **Mask**: For lower-trust contexts (development, analytics), the Masking ABB replaces sensitive field values before delivery\n\n---",
+    "10": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-RAD-3.5.01.md#integration-architecture]\n\n## Integration Architecture",
+    "11": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-RAD-3.5.01.md#iam-integration]\n\n### IAM Integration\n\nThe Data Security domain consumes IAM workload identity capabilities for two key integration points:\n- **Key and Secrets Access**: The KMS ABB uses workload identity (not shared credentials) to authorize key retrieval and secret access\n- **Data Access Governance** (planned): The Access Governance ABB consumes IAM identity context to evaluate access policy against classified data assets",
+    "12": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-RAD-3.5.01.md#security-operations-integration]\n\n### Security Operations Integration\n\n- **DLP Incidents**: All DLP detections involving restricted or regulated data produce incidents forwarded to the Security Operations SIEM\n- **Key Access Audit**: All key retrieval and secret access operations produce audit events forwarded to Security Operations\n- **Cryptographic Anomaly Detection**: Unexpected key usage patterns (high volume, unusual hours, unusual consumers) should be monitored as indicators of credential compromise\n\n---",
+    "13": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-RAD-3.5.01.md#zero-trust-alignment]\n\n## Zero Trust Alignment\n\nThis composite architecture realizes the Zero Trust Data Pillar. The key properties achieved:\n- Data carries its own classification label — protection is intrinsic, not dependent on network or system trust\n- Encryption is default-on — data at rest and in transit is protected regardless of the environment\n- Access to cryptographic material is governed by workload identity — not shared or static credentials\n- DLP enforces authorized data flows — all egress is evaluated against policy, not trusted by default\n\n---"
+  },
+  "coverage": {
+    "total_pages": 13,
+    "covered_pages": 13,
+    "sampled_pages": 13,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 13
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Sub-Skills",
+  "document_description": "The diagrammer is a **router skill** that auto-detects intent and delegates to specialized sub-skills.",
+  "total_pages": 15,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 15,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Sub-Skills",
+          "node_id": "sub-skills",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Routing: Confirm, Don't Ask",
+          "node_id": "routing-confirm-dont-ask",
+          "start_index": 3,
+          "end_index": 8,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Auto-route to `/presenter` when content contains",
+              "node_id": "auto-route-to-presenter-when-content-contains",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Auto-route to `/modeler` when content contains",
+              "node_id": "auto-route-to-modeler-when-content-contains",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Auto-route to both when content has a mix",
+              "node_id": "auto-route-to-both-when-content-has-a-mix",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "How to confirm",
+              "node_id": "how-to-confirm",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Only ask when truly ambiguous",
+              "node_id": "only-ask-when-truly-ambiguous",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Cross-Agent Cascade: Markdown Change Detection",
+          "node_id": "cross-agent-cascade-markdown-change-detection",
+          "start_index": 9,
+          "end_index": 13,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Detection workflow",
+              "node_id": "detection-workflow",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "When to trigger",
+              "node_id": "when-to-trigger",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "How `/documenter` triggers this",
+              "node_id": "how-documenter-triggers-this",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Example cascade",
+              "node_id": "example-cascade",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Shared Resources",
+          "node_id": "shared-resources",
+          "start_index": 14,
+          "end_index": 14,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "When Both Are Needed",
+          "node_id": "when-both-are-needed",
+          "start_index": 15,
+          "end_index": 15,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "The diagrammer is a **router skill** that auto-detects intent and delegates to specialized sub-skills.",
+    "2": "[.claude/skills/diagrammer/SKILL.md#sub-skills]\n\n## Sub-Skills\n\n| Skill | Purpose | Tool | Key Constraint |\n| --- | --- | --- | --- |\n| **`/presenter`** | Deck-ready presentation diagrams for leadership | Draw.io only | 16:9 mandatory (1920×1080), full Gainwell style guide |\n| **`/modeler`** | Architecture diagrams, data models, ER diagrams, sequences for technical docs | Mermaid (default), Draw.io (complex) | No forced aspect ratio, inline in markdown |",
+    "3": "[.claude/skills/diagrammer/SKILL.md#routing-confirm-dont-ask]\n\n## Routing: Confirm, Don't Ask\n\nThe diagrammer **reads the document, decides the route, states its decision, and proceeds**. It does not present a menu unless the content is truly ambiguous.",
+    "4": "[.claude/skills/diagrammer/SKILL.md#auto-route-to-presenter-when-content-contains]\n\n### Auto-route to `/presenter` when content contains\n\n- Org charts, team structures, reporting hierarchies\n- Budget tables, cost breakdowns, ROI calculations\n- Phase timelines, roadmaps, milestone summaries\n- Approach comparisons, side-by-side evaluations\n- Content aimed at leadership/ELT communication\n- Existing `-deck.drawio` files in `assets/`\n- User says \"deck\", \"slide\", \"presentation\", \"ELT\", \"pitch\", \"comparison chart\"",
+    "5": "[.claude/skills/diagrammer/SKILL.md#auto-route-to-modeler-when-content-contains]\n\n### Auto-route to `/modeler` when content contains\n\n- Entity relationships, data schemas, database design\n- API flows, service interactions, integration sequences\n- Process logic, decision trees, validation flows\n- State machines, lifecycle transitions\n- Domain models, bounded contexts, aggregate roots\n- C4 architecture (context, container, component)\n- User says \"ER diagram\", \"data model\", \"sequence diagram\", \"flowchart\", \"state machine\", \"C4\"",
+    "6": "[.claude/skills/diagrammer/SKILL.md#auto-route-to-both-when-content-has-a-mix]\n\n### Auto-route to both when content has a mix\n\nSome documents have both technical architecture and leadership-facing content. In this case, invoke both skills — `/modeler` for the technical sections, `/presenter` for the leadership sections.",
+    "7": "[.claude/skills/diagrammer/SKILL.md#how-to-confirm]\n\n### How to confirm\n\nState the decision in one sentence, then proceed:\n\n```text\nThis document has API sequences and a data model — routing to `/modeler` for inline Mermaid.\n```\n\n```text\nThis document has org structure, budget, and phases — routing to `/presenter` for deck visuals.\n```\n\n```text\nThis has both technical architecture and leadership content — using `/modeler` for sequences and `/presenter` for the org chart and budget.\n```",
+    "8": "[.claude/skills/diagrammer/SKILL.md#only-ask-when-truly-ambiguous]\n\n### Only ask when truly ambiguous\n\nIf the document has no clear signals (rare — most documents lean one way), ask briefly:\n\n```text\nThis document could go either way. Do you want:\n1. **Modeling** — inline Mermaid for technical docs\n2. **Presenting** — Draw.io deck visuals for leadership\n```",
+    "9": "[.claude/skills/diagrammer/SKILL.md#cross-agent-cascade-markdown-change-detection]\n\n## Cross-Agent Cascade: Markdown Change Detection\n\nWhen `/documenter` modifies a markdown file, `/diagrammer` detects which diagrams are affected and cascades updates to the correct sub-skill.",
+    "10": "[.claude/skills/diagrammer/SKILL.md#detection-workflow]\n\n### Detection workflow\n\n1. **Receive the changed markdown path** from `/documenter` (e.g., `docs/design/transition-state/approaches/approach-comparison.md`)\n2. **Grep all `.drawio` files** for `sourceMarkdown` attributes matching the changed path:\n\n   ```bash\n   grep -rl 'sourceMarkdown=\"<changed-file-relative-path>\"' --include='*.drawio' docs/\n   ```\n\n3. **For each matched `.drawio` file**, read the `<diagram>` element and check:\n   - `diagramContext=\"deck\"` → route to **`/presenter`** (with `--content-only` if only text/numbers changed, full regenerate if structure changed)\n   - `diagramContext=\"document\"` or absent → route to **`/modeler`**\n4. **Pass context to the sub-skill**: the changed markdown path, a summary of what changed (new phases, updated numbers, renamed sections), and whether the change is content-only or structural\n5. **After sub-skill completes**, re-export SVGs for all updated `.drawio` files",
+    "11": "[.claude/skills/diagrammer/SKILL.md#when-to-trigger]\n\n### When to trigger\n\n- **Always** after `/documenter` modifies a markdown file that has associated diagrams\n- **Skip** for markdown files with no matching `sourceMarkdown` in any `.drawio` file (most docs)\n- **Skip** for trivial changes (typo fixes, formatting) that don't affect diagram content",
+    "12": "[.claude/skills/diagrammer/SKILL.md#how-documenter-triggers-this]\n\n### How `/documenter` triggers this\n\n`/documenter` does not call `/presenter` or `/modeler` directly for cascade updates. It invokes `/diagrammer` with the changed file path:\n\n```text\n/diagrammer --cascade docs/design/transition-state/approaches/approach-comparison.md\n```\n\n`/diagrammer` handles detection and routing from there.",
+    "13": "[.claude/skills/diagrammer/SKILL.md#example-cascade]\n\n### Example cascade\n\n```text\n1. /documenter updates approach-comparison.md (phases renamed)\n2. /diagrammer greps: finds strangler-fig-migration-deck.drawio\n   → sourceMarkdown matches, diagramContext=\"deck\"\n3. /diagrammer routes to /presenter with:\n   - File: strangler-fig-migration-deck.drawio\n   - Change: \"Phase labels renamed, timeline months shifted\"\n   - Mode: --content-only (structure unchanged) or full regenerate (layout changed)\n4. /presenter updates the .drawio XML and re-exports SVG\n```",
+    "14": "[.claude/skills/diagrammer/SKILL.md#shared-resources]\n\n## Shared Resources\n\nBoth sub-skills use:\n\n- `.claude/templates/diagram-style-guide.md` — color palette, font rules, contrast safety\n- `assets/` subfolder convention for Draw.io files\n- SVG naming convention (single tab = same name, multi-tab = name + tab name)\n- `--svg-theme light` for all SVG exports",
+    "15": "[.claude/skills/diagrammer/SKILL.md#when-both-are-needed]\n\n## When Both Are Needed\n\nSometimes a technical model needs to become a presentation visual (e.g., an ER diagram designed in `/modeler` needs to appear in a deck). In this case:\n\n1. `/modeler` creates the authoritative Mermaid diagram in the markdown\n2. `/presenter` creates a branded Draw.io version for the deck, referencing the same data\n3. Both artifacts are maintained — Mermaid is the source of truth, Draw.io is the presentation layer\n\n$ARGUMENTS"
+  },
+  "coverage": {
+    "total_pages": 15,
+    "covered_pages": 15,
+    "sampled_pages": 15,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 15
+  }
+}

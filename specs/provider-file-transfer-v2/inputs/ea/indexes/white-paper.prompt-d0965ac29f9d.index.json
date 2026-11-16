@@ -1,0 +1,28 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "white-paper.prompt",
+  "document_description": "Read `.claude/commands/white-paper.md` for the full workflow. Determines the domain; if the domain is Security, classifies the content first — redirecting to `/pattern` or `/standard` when the classification selects one of those types, and to `/guidance` when it selects Guidance or remains uncertain/boundary-spanning — instead of continuing here. Otherwise checks `strategy/white-papers/<domain>/` ",
+  "total_pages": 1,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 1,
+      "summary": "",
+      "nodes": []
+    }
+  ],
+  "page_texts": {
+    "1": "Read `.claude/commands/white-paper.md` for the full workflow. Determines the domain; if the domain is Security, classifies the content first — redirecting to `/pattern` or `/standard` when the classification selects one of those types, and to `/guidance` when it selects Guidance or remains uncertain/boundary-spanning — instead of continuing here. Otherwise checks `strategy/white-papers/<domain>/` for an existing white paper matching the title (white papers use a descriptive kebab-case file name, not a sequential ID). If none exists, derives a kebab-case title slug from the request (lowercase; spaces and punctuation converted to hyphens; any IDs or flags stripped), copies the template from `resources/work-templates/assets/artifacts/white-paper.md`, and creates `strategy/white-papers/<domain>/<title-slug>.md` with status \"Draft\", written for executive and architect audiences alike. If one exists, revises it in place and logs the change in its Change History. Updates `strategy/white-papers/README.md` either way. Ends with a convergence pass per `.claude/skills/ai-convergence/SKILL.md`. Must not include fabricated data, statistics, or citations."
+  },
+  "coverage": {
+    "total_pages": 1,
+    "covered_pages": 1,
+    "sampled_pages": 1,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 1
+  }
+}

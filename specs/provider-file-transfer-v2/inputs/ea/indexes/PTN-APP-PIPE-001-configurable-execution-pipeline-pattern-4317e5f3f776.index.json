@@ -1,0 +1,330 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Architecture Decision Record",
+  "document_description": "The core framework provides a generic, IoC-driven execution pipeline engine for synchronous multi-step processing. The pipeline executes start-to-finish in a single call with no persisted state, no human intervention, and no async waiting. It follows a sequential execution model with forward-only routing, typed context bag, module-level validation, and composite modules for internal parallelism.",
+  "total_pages": 34,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 1,
+      "summary": "",
+      "nodes": []
+    },
+    {
+      "title": "Architecture Decision Record",
+      "node_id": "architecture-decision-record",
+      "start_index": 2,
+      "end_index": 34,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "ADR-APP-004: Execution Pipeline Design",
+          "node_id": "adr-app-004-execution-pipeline-design",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Decision Summary",
+          "node_id": "decision-summary",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Context",
+          "node_id": "context",
+          "start_index": 5,
+          "end_index": 5,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Decision",
+          "node_id": "decision",
+          "start_index": 6,
+          "end_index": 13,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "1. Sequential Engine with Forward-Only Routing",
+              "node_id": "1-sequential-engine-with-forward-only-routing",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "2. Single Shared Context Bag (Pass-by-Reference)",
+              "node_id": "2-single-shared-context-bag-pass-by-reference",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "3. Composite Module for Parallel Execution",
+              "node_id": "3-composite-module-for-parallel-execution",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4. Module Voting via Result Directives",
+              "node_id": "4-module-voting-via-result-directives",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "5. Startup Configuration Validation",
+              "node_id": "5-startup-configuration-validation",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "6. Configuration as Serializable Data",
+              "node_id": "6-configuration-as-serializable-data",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "7. Core Owns Engine, Products Own Modules",
+              "node_id": "7-core-owns-engine-products-own-modules",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Alternatives Considered",
+          "node_id": "alternatives-considered",
+          "start_index": 14,
+          "end_index": 26,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Framework Comparison Matrix",
+              "node_id": "framework-comparison-matrix",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Detailed Rejection Rationale",
+              "node_id": "detailed-rejection-rationale",
+              "start_index": 16,
+              "end_index": 24,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "MediatR Pipeline Behaviors (.NET)",
+                  "node_id": "mediatr-pipeline-behaviors-net",
+                  "start_index": 17,
+                  "end_index": 17,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Elsa Workflows (.NET)",
+                  "node_id": "elsa-workflows-net",
+                  "start_index": 18,
+                  "end_index": 18,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Temporal",
+                  "node_id": "temporal",
+                  "start_index": 19,
+                  "end_index": 19,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Spring Batch (Java)",
+                  "node_id": "spring-batch-java",
+                  "start_index": 20,
+                  "end_index": 20,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Apache Camel (Java)",
+                  "node_id": "apache-camel-java",
+                  "start_index": 21,
+                  "end_index": 21,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Azure Durable Functions",
+                  "node_id": "azure-durable-functions",
+                  "start_index": 22,
+                  "end_index": 22,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "NServiceBus Sagas (.NET)",
+                  "node_id": "nservicebus-sagas-net",
+                  "start_index": 23,
+                  "end_index": 23,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Design Patterns (Chain of Responsibility, Pipes & Filters)",
+                  "node_id": "design-patterns-chain-of-responsibility-pipes--filters",
+                  "start_index": 24,
+                  "end_index": 24,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Positioning",
+              "node_id": "positioning",
+              "start_index": 25,
+              "end_index": 25,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Unique Differentiators",
+              "node_id": "unique-differentiators",
+              "start_index": 26,
+              "end_index": 26,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Consequences",
+          "node_id": "consequences",
+          "start_index": 27,
+          "end_index": 30,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Positive",
+              "node_id": "positive",
+              "start_index": 28,
+              "end_index": 28,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Negative",
+              "node_id": "negative",
+              "start_index": 29,
+              "end_index": 29,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Risks",
+              "node_id": "risks",
+              "start_index": 30,
+              "end_index": 30,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Compliance",
+          "node_id": "compliance",
+          "start_index": 31,
+          "end_index": 31,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "References",
+          "node_id": "references",
+          "start_index": 32,
+          "end_index": 32,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Related Decisions",
+          "node_id": "related-decisions",
+          "start_index": 33,
+          "end_index": 33,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Change History",
+          "node_id": "change-history",
+          "start_index": 34,
+          "end_index": 34,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "> **Promoted from:** `mmes-cmn-pipeline/docs/decisions/adr-app-004-execution-pipeline.md`  \n> **Ref-arch artifact ID:** `PTN-APP-PIPE-001-configurable-execution-pipeline-pattern`  \n> This document has been promoted to the Enterprise Architecture Platform reference architecture. Product repos should reference this artifact rather than maintaining their own copy.\n\n---",
+    "2": "[patterns/application/PTN-APP-PIPE-001-configurable-execution-pipeline-pattern.md#architecture-decision-record]\n\n# Architecture Decision Record",
+    "3": "[patterns/application/PTN-APP-PIPE-001-configurable-execution-pipeline-pattern.md#adr-app-004-execution-pipeline-design]\n\n## ADR-APP-004: Execution Pipeline Design\n\n---\n\n|               |                                                                 |\n| ------------- | --------------------------------------------------------------- |\n| **Status**    | Accepted                                                        |\n| **Date**      | 2026-06-27                                                      |\n| **Issuer**    | MMES Platform Team                                              |\n| **Consulted** | Enterprise Architecture Practice                                |\n| **Informed**  | All MMES development teams                                      |\n\n---",
+    "4": "[patterns/application/PTN-APP-PIPE-001-configurable-execution-pipeline-pattern.md#decision-summary]\n\n## Decision Summary\n\nThe core framework provides a generic, IoC-driven execution pipeline engine for synchronous multi-step processing. The pipeline executes start-to-finish in a single call with no persisted state, no human intervention, and no async waiting. It follows a sequential execution model with forward-only routing, typed context bag, module-level validation, and composite modules for internal parallelism.\n\n---",
+    "5": "[patterns/application/PTN-APP-PIPE-001-configurable-execution-pipeline-pattern.md#context]\n\n## Context\n\nMMES services process complex multi-step operations synchronously: claims adjudication (8+ steps), eligibility verification (4+ steps), benefit matching (5+ steps), and pricing calculations (6+ steps). These operations share common characteristics:\n\n- Multiple discrete processing steps in sequence\n- Steps may run business rules, call APIs, perform database operations, or apply validation\n- Steps must be reorderable and configurable per product/state\n- Some steps benefit from parallel execution (e.g., member + provider eligibility checks)\n- Steps need to share and mutate a collection of typed domain objects\n- Steps must be able to signal success, warnings, errors, or halt the entire pipeline\n- Steps must be able to route execution to downstream steps based on outcome\n- The entire flow must be observable, auditable, and configurable\n\nEnterprise patterns exist for saga orchestration (PTN-APP-EVT-007) and workflow customization (PTN-APP-EXT-011), but both are heavier than needed for in-process pipeline execution. We need an embeddable, lightweight orchestrator — not an external service or BPMN engine.\n\n---",
+    "6": "[patterns/application/PTN-APP-PIPE-001-configurable-execution-pipeline-pattern.md#decision]\n\n## Decision",
+    "7": "[patterns/application/PTN-APP-PIPE-001-configurable-execution-pipeline-pattern.md#1-sequential-engine-with-forward-only-routing]\n\n### 1. Sequential Engine with Forward-Only Routing\n\nThe pipeline engine executes steps sequentially in configured order. Modules can emit routing directives (`Continue`, `RouteTo`, `SkipTo`, `Halt`) but **only forward** — no backward jumps. This eliminates infinite-loop risk and makes execution predictable.\n\n**Rationale:** Forward-only is safe and analyzable at startup. Loops belong in the module's internal logic, not the pipeline topology.",
+    "8": "[patterns/application/PTN-APP-PIPE-001-configurable-execution-pipeline-pattern.md#2-single-shared-context-bag-pass-by-reference]\n\n### 2. Single Shared Context Bag (Pass-by-Reference)\n\nA single `PipelineContext` object flows through the entire pipeline. Modules receive it, mutate it in place, and return only a `PipelineResult` (status + directive + reason). There is no \"return the context\" step — it accumulates changes as it flows.\n\n**Rationale:** Simpler mental model, lower allocation overhead, avoids copy-on-every-step. Products deal with one bag that gets richer as it moves through steps.",
+    "9": "[patterns/application/PTN-APP-PIPE-001-configurable-execution-pipeline-pattern.md#3-composite-module-for-parallel-execution]\n\n### 3. Composite Module for Parallel Execution\n\nThe engine itself is always sequential. Parallelism is handled by a `CompositeModule` that IS-A regular module. The composite:\n\n- Receives the context\n- Snapshots it for parallel children\n- Runs children concurrently\n- Reconciles child mutations back into the parent context\n- Returns a single PipelineResult\n\n**Rationale:** Keeps the engine simple. Moves parallel complexity to where it belongs — the domain expert who understands what parallel means for their use case. Composites can nest.",
+    "10": "[patterns/application/PTN-APP-PIPE-001-configurable-execution-pipeline-pattern.md#4-module-voting-via-result-directives]\n\n### 4. Module Voting via Result Directives\n\nEach module returns a `PipelineResult` with a status and directive. The directive tells the engine what to do next. A composite module aggregates child results with its own resolution logic and returns a single directive.\n\n**Rationale:** Simple, explicit, no external voting infrastructure. The module decides its own fate — not a global arbiter.",
+    "11": "[patterns/application/PTN-APP-PIPE-001-configurable-execution-pipeline-pattern.md#5-startup-configuration-validation]\n\n### 5. Startup Configuration Validation\n\nThe engine validates the entire pipeline configuration at initialization time:\n\n- All modules resolvable from IoC\n- No duplicate step names\n- All route targets exist and are forward-only\n- No orphan steps (all reachable)\n- Type flow is satisfiable (each step's required_types met by initial_context + prior produced_types)\n\n**Rationale:** Catch misconfiguration at deploy time, not runtime. Type flow analysis prevents \"module 5 needs a type that no prior step produces.\"",
+    "12": "[patterns/application/PTN-APP-PIPE-001-configurable-execution-pipeline-pattern.md#6-configuration-as-serializable-data]\n\n### 6. Configuration as Serializable Data\n\nPipeline configurations are plain data structures (YAML, JSON, or database records). No code references, closures, or runtime-only constructs. Module names are resolved via IoC at execution time.\n\n**Rationale:** Enables future UI editing, drag-and-drop pipeline construction, validation preview, and dynamic configuration without redeployment.",
+    "13": "[patterns/application/PTN-APP-PIPE-001-configurable-execution-pipeline-pattern.md#7-core-owns-engine-products-own-modules]\n\n### 7. Core Owns Engine, Products Own Modules\n\nCore provides: engine, context, result types, validation logic, observability hooks.\nProducts provide: domain-specific modules, composite modules, pipeline configurations, domain types.\n\n**Rationale:** Follows ADR-APP-001 (IoC). The pipeline framework is generic infrastructure; the business logic lives in product-specific modules.\n\n---",
+    "14": "[patterns/application/PTN-APP-PIPE-001-configurable-execution-pipeline-pattern.md#alternatives-considered]\n\n## Alternatives Considered",
+    "15": "[patterns/application/PTN-APP-PIPE-001-configurable-execution-pipeline-pattern.md#framework-comparison-matrix]\n\n### Framework Comparison Matrix\n\n| Framework | Category | Routing | Typed Context | Composite Parallel | Config-Driven Topology | Embeddable (no infra) | Polyglot | Observability | Fit |\n|-----------|----------|---------|---------------|-------------------|----------------------|---------------------|----------|---------------|-----|\n| **Our Pipeline** | In-process orchestrator | Forward-only, status-based | Yes (typed bag + flow validation) | Yes (composite modules) | Yes (YAML/JSON) | Yes (zero deps) | Yes (4 languages) | 3-layer (telemetry, audit, logging) | Purpose-built |\n| **MediatR Behaviors** | Request middleware | Linear only | No (untyped object) | No | No (code-defined) | Yes | .NET only | None built-in | Too simple |\n| **Elsa Workflows** | Workflow engine | Full (loops, branches, BPMN) | Partial (dynamic variables) | Yes | Yes (visual designer) | No (needs persistence DB) | .NET only | Activity logging | Overkill |\n| **Temporal** | Distributed orchestration | Full (replay-based) | Typed per activity | Yes (child workflows) | No (code-defined) | No (requires Temporal server) | Yes (limited) | Built-in traces | Wrong category |\n| **Spring Batch** | Batch processing | Chunk flow only | Execution context (map) | Partitioned steps | XML/Java config | Yes | Java only | Job repository | Wrong category |\n| **Apache Camel** | Integration routing | Full EIP routing | Exchange (untyped) | Multicast/split | Yes (XML/YAML/Java DSL) | Yes | Java only | Metrics/tracing | Integration, not business logic |\n| **Azure Durable Functions** | Serverless orchestration | Full (replay-based) | Typed per activity | Fan-out/fan-in | No (code-defined) | No (requires Azure) | C#/JS/Python | Application Insights | Cloud-locked |\n| **NServiceBus Sagas** | Distributed saga | Message-driven | Saga data (typed) | No (message parallelism) | No (code-defined) | No (needs transport) | .NET only | Built-in diagnostics | Distributed, not in-process |\n| **Chain of Responsibility** | Design pattern | Pass/stop only | No standard | No | No | Yes | Any | None | Too simple |\n| **Pipes & Filters** | Design pattern | Linear only | Untyped stream | No | No | Yes | Any | None | Too simple |",
+    "16": "[patterns/application/PTN-APP-PIPE-001-configurable-execution-pipeline-pattern.md#detailed-rejection-rationale]\n\n### Detailed Rejection Rationale",
+    "17": "[patterns/application/PTN-APP-PIPE-001-configurable-execution-pipeline-pattern.md#mediatr-pipeline-behaviors-net]\n\n#### MediatR Pipeline Behaviors (.NET)\n\nMediatR provides a request/response pipeline with middleware-style behaviors. While lightweight and in-process, it lacks:\n\n- **No routing directives** — behaviors run linearly; no conditional forward branching\n- **No typed context bag** — context passes as untyped `object`; no flow validation\n- **No composite modules** — no built-in parallel execution within a step\n- **No config-driven topology** — pipeline shape is hardcoded in DI registration\n- **No startup validation** — missing registrations fail at runtime, not deploy time\n- **.NET only** — no polyglot support\n\nTo achieve our requirements with MediatR, you'd rebuild routing, validation, composite modules, type flow analysis, and observability on top — essentially writing our pipeline anyway.",
+    "18": "[patterns/application/PTN-APP-PIPE-001-configurable-execution-pipeline-pattern.md#elsa-workflows-net]\n\n#### Elsa Workflows (.NET)\n\nElsa is a full-featured workflow engine with a visual designer, persistence, long-running state, and human task support. Rejected because:\n\n- **Requires persistence infrastructure** — database for workflow state, not embeddable as a zero-dep library\n- **Designed for long-running processes** — human tasks, async waiting, resume-from-checkpoint semantics we don't need\n- **Overkill for synchronous execution** — our pipelines complete in < 2 seconds total; Elsa's overhead is unjustified\n- **Single-language** — .NET only; no polyglot parity\n- **Dependency weight** — introduces transitive dependencies (EF Core, serialization, hosting) into a framework package",
+    "19": "[patterns/application/PTN-APP-PIPE-001-configurable-execution-pipeline-pattern.md#temporal]\n\n#### Temporal\n\nTemporal provides durable execution for distributed systems with replay-based fault tolerance. Rejected because:\n\n- **External infrastructure required** — Temporal server (Go), Elasticsearch, Cassandra/PostgreSQL\n- **Not embeddable** — requires SDK + server; cannot ship as a library dependency\n- **Designed for distributed sagas** — network-partitioned, multi-service orchestration; our pipeline is in-process\n- **Replay overhead** — event-sourced execution history adds latency incompatible with sub-second step budgets",
+    "20": "[patterns/application/PTN-APP-PIPE-001-configurable-execution-pipeline-pattern.md#spring-batch-java]\n\n#### Spring Batch (Java)\n\nSpring Batch processes large volumes of records through configurable steps. Rejected because:\n\n- **Batch-oriented** — chunk processing (read N → process N → write N); not real-time request processing\n- **No routing directives** — step flow is linear or simple conditional (exit status → next step)\n- **No composite parallel modules** — partitioning is for data parallelism, not business logic parallelism\n- **Heavy infrastructure** — job repository (database), job launcher, execution context persistence\n- **Java only** — no polyglot support",
+    "21": "[patterns/application/PTN-APP-PIPE-001-configurable-execution-pipeline-pattern.md#apache-camel-java]\n\n#### Apache Camel (Java)\n\nCamel implements Enterprise Integration Patterns for system-to-system routing. Rejected because:\n\n- **Integration-focused** — designed for routing between external systems (file → queue → API), not orchestrating in-process business logic steps\n- **Untyped exchange** — message exchange is a generic map; no compile-time type flow validation\n- **Heavy runtime** — Camel context, component registry, route definitions add significant overhead for in-process use\n- **Java only** — no polyglot support",
+    "22": "[patterns/application/PTN-APP-PIPE-001-configurable-execution-pipeline-pattern.md#azure-durable-functions]\n\n#### Azure Durable Functions\n\nDurable Functions provides serverless orchestration with replay-based durability. Rejected because:\n\n- **Cloud-locked** — requires Azure Functions infrastructure; not portable\n- **Not embeddable** — cannot ship as a library; requires hosting framework\n- **Replay-based** — re-executes function history on resume; adds latency for synchronous use\n- **No config-driven topology** — orchestration is code-defined, not declaratively configurable",
+    "23": "[patterns/application/PTN-APP-PIPE-001-configurable-execution-pipeline-pattern.md#nservicebus-sagas-net]\n\n#### NServiceBus Sagas (.NET)\n\nNServiceBus sagas coordinate long-running distributed processes via messaging. Rejected because:\n\n- **Message-driven** — requires transport infrastructure (RabbitMQ, Azure Service Bus, etc.)\n- **Distributed** — designed for cross-service coordination; our pipeline is in-process with zero network hops\n- **Compensating transactions** — saga pattern adds rollback complexity not needed for synchronous execution\n- **.NET only** — no polyglot support",
+    "24": "[patterns/application/PTN-APP-PIPE-001-configurable-execution-pipeline-pattern.md#design-patterns-chain-of-responsibility-pipes--filters]\n\n#### Design Patterns (Chain of Responsibility, Pipes & Filters)\n\nThese are foundational patterns, not frameworks. They provide:\n\n- **No routing** — linear pass-through or pass/stop only\n- **No typed context** — no heterogeneous typed bag with flow validation\n- **No observability** — no built-in telemetry, audit, or logging concerns\n- **No validation** — no startup configuration verification\n- **No composite parallel** — no way to fan out and reconcile within a step\n\nOur pipeline is informed by these patterns but delivers substantially more: config-driven topology, forward-only routing with status-based branching, typed context flow validation at startup, composite modules for controlled parallelism, three-layer observability, per-step timeout enforcement, and polyglot parity.",
+    "25": "[patterns/application/PTN-APP-PIPE-001-configurable-execution-pipeline-pattern.md#positioning]\n\n### Positioning\n\n```text\nLightweight                                                    Heavyweight\n    │                                                              │\n    ├── Pipes & Filters (pattern — too simple)                     │\n    ├── Chain of Responsibility (pattern — too simple)             │\n    ├── MediatR Behaviors (linear, no routing, .NET only)          │\n    │                                                              │\n    ├── ★ MMES Execution Pipeline ★                               │\n    │     Config-driven, routable, typed, observable,              │\n    │     composite parallel, validated, embeddable, polyglot      │\n    │                                                              │\n    ├── Spring Batch (batch ETL, Java only)                        │\n    ├── Apache Camel (integration routing, Java only)              │\n    ├── Elsa (workflow engine, persistence, .NET only)             │\n    ├── Azure Durable Functions (serverless, cloud-locked)         │\n    ├── Temporal (distributed orchestration, requires server)      │\n    └── Camunda/Zeebe (BPMN engine — full enterprise workflow)     │\n```",
+    "26": "[patterns/application/PTN-APP-PIPE-001-configurable-execution-pipeline-pattern.md#unique-differentiators]\n\n### Unique Differentiators\n\nNo single existing framework provides all of these in one package:\n\n1. **Zero-infrastructure embeddable** — ships as a library package, no database, no server, no cloud dependency\n2. **Config-driven topology** — reorder, reroute, add/remove steps without code changes; future UI-editable\n3. **Typed context bag with startup flow validation** — type satisfaction verified at deploy time, not runtime\n4. **Composite modules** — controlled parallelism delegated to domain experts, not engine complexity\n5. **Forward-only routing by status** — conditional branching without loops or infinite-recursion risk\n6. **Three-layer observability** — telemetry (DevOps), audit (compliance), logging (developers) separated by purpose and retention\n7. **Polyglot parity** — identical design in Python, C#, Java, Rust with BDD-enforced behavioral equivalence\n8. **Singleton modules with IoC** — stateful caching (fee schedules, business rules) without lifecycle complexity\n9. **Sub-second step budgets** — designed for real-time request processing (150–500ms per step), not batch\n\n---",
+    "27": "[patterns/application/PTN-APP-PIPE-001-configurable-execution-pipeline-pattern.md#consequences]\n\n## Consequences",
+    "28": "[patterns/application/PTN-APP-PIPE-001-configurable-execution-pipeline-pattern.md#positive]\n\n### Positive\n\n- Products compose complex workflows from reusable, testable modules\n- Configuration is deployable and UI-editable without code changes\n- Type flow is verified at startup — no runtime \"missing type\" surprises\n- Observability is built in — every step emits tracing spans\n- Composites enable controlled parallelism without engine complexity\n- Forward-only routing is predictable and auditable",
+    "29": "[patterns/application/PTN-APP-PIPE-001-configurable-execution-pipeline-pattern.md#negative]\n\n### Negative\n\n- No looping — recursive processes must be modeled differently (internal module logic or pipeline re-invocation)\n- No compensating transactions — if step 5 fails, prior steps' mutations are already in the context (use saga pattern externally if rollback needed)\n- Composite parallel snapshot + merge adds allocation overhead for parallel groups",
+    "30": "[patterns/application/PTN-APP-PIPE-001-configurable-execution-pipeline-pattern.md#risks]\n\n### Risks\n\n- Configuration complexity for large pipelines (mitigated by UI tooling and validation)\n- Module coupling via context bag types (mitigated by declared type contracts)\n\n---",
+    "31": "[patterns/application/PTN-APP-PIPE-001-configurable-execution-pipeline-pattern.md#compliance]\n\n## Compliance\n\n- **MITA Alignment:** Supports configurable business process variation per state (MITA maturity level 3+)\n- **HIPAA Impact:** Pipeline context may carry PHI — module implementations must respect data classification. The engine itself is data-agnostic.\n- **CMS Certification:** Audit trail via observability events satisfies processing transparency requirements\n\n---",
+    "32": "[patterns/application/PTN-APP-PIPE-001-configurable-execution-pipeline-pattern.md#references]\n\n## References\n\n- `eap-ref-architecture/patterns/application/event-driven/PTN-APP-EVT-007-application-saga-orchestration-pattern.md` — saga pattern (heavier alternative for distributed rollback)\n- `eap-ref-architecture/patterns/application/extensions/PTN-APP-EXT-011-workflow-customization-pattern.md` — workflow customization (heavier alternative with visual designer)\n- `eap-ref-architecture/patterns/application/rules-engine/PTN-APP-RUL-001-rules-engine-qualification-pattern.md` — rules engine (modules may invoke rules engines internally)\n\n---",
+    "33": "[patterns/application/PTN-APP-PIPE-001-configurable-execution-pipeline-pattern.md#related-decisions]\n\n## Related Decisions\n\n- `docs/decisions/adr-app-001-inversion-of-control.md` — IoC composition model that pipeline modules follow\n- `docs/decisions/adr-app-002-logging-and-error-output.md` — observability standards that pipeline events follow\n\n---",
+    "34": "[patterns/application/PTN-APP-PIPE-001-configurable-execution-pipeline-pattern.md#change-history]\n\n## Change History\n\n| Date | Version | Author | Change |\n|------|---------|--------|--------|\n| 2026-06-27 | 1.0.0 | MMES Platform Team | Initial decision |"
+  },
+  "coverage": {
+    "total_pages": 34,
+    "covered_pages": 34,
+    "sampled_pages": 34,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 34
+  }
+}

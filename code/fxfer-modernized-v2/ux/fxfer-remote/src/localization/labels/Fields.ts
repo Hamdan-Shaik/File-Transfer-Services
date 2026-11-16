@@ -1,0 +1,69 @@
+export class Fields {
+  static readonly Active = 'FileTransfer.Label.Field.Active';
+  static readonly Address = 'FileTransfer.Label.Field.Address';
+  static readonly ConfigId = 'FileTransfer.Label.Field.ConfigId';
+  static readonly ConfigName = 'FileTransfer.Label.Field.ConfigName';
+  static readonly ConfigurationType =
+    'FileTransfer.Label.Field.ConfigurationType';
+  static readonly ContactName = 'FileTransfer.Label.Field.ContactName';
+  static readonly CreationDate = 'FileTransfer.Label.Field.FTPServerCreatedTS';
+  static readonly Description = 'FileTransfer.Label.Field.Description';
+  static readonly DestinationAddress = 'FileTransfer.Label.Field.DestinationAddress';
+  static readonly DestinationId = 'FileTransfer.Label.Field.DestinationId';
+  static readonly DestinationProtocol = 'FileTransfer.Label.Field.DestinationProtocol';
+  static readonly DestinationProtocal = 'FileTransfer.Label.Field.DestinationProtocal';
+  static readonly Direction = 'FileTransfer.Label.Field.Direction';
+  static readonly EndWindow = 'FileTransfer.Label.Field.EndWindow';
+  static readonly FileDirection = 'FileTransfer.Label.Field.FileDirection';
+  static readonly FileStatus = 'FileTransfer.Label.Field.FileStatus';
+  static readonly FtpDescription = 'FileTransfer.Label.Field.FTPServerDescription';
+  static readonly FtpPassword = 'FileTransfer.Label.FTPPassword';
+  static readonly FtpPasswordConfirmation =
+    'FileTransfer.Label.FTPPasswordConfirmation';
+  static readonly FtpPort = 'FileTransfer.Label.FTPPort';
+  static readonly FtpProxyAddress = 'FileTransfer.Label.FTPProxyAddress';
+  static readonly FtpProxyPort = 'FileTransfer.Label.FTPProxyPort';
+  static readonly FTPServer = 'FileTransfer.Label.Field.FTPServer';
+  static readonly FtpServerIp = 'FileTransfer.Label.Field.FTPServerIp';
+  static readonly FtpServerName = 'FileTransfer.Label.Field.FTPServerName';
+  static readonly FtpTransferMode = 'FileTransfer.Label.Field.FTPTransferMode';
+  static readonly FtpUser = 'FileTransfer.Label.Field.FTPServerUser';
+  static readonly Inactive = 'FileTransfer.Label.Field.Inactive';
+  static readonly IncludeInactives = 'FileTransfer.Label.Field.IncludeInactives';
+  static readonly IncludeInvalids = 'FileTransfer.Label.Field.IncludeInvalids';
+  static readonly IsValid = 'FileTransfer.Label.Field.IsValid';
+  static readonly LastModifiedDate = 'FileTransfer.Label.Field.FTPLastModifiedDate';
+  static readonly Mask = 'FileTransfer.Label.Field.Mask';
+  static readonly Message = 'FileTransfer.Label.Field.Message';
+  static readonly Modules = 'FileTransfer.Label.Field.ModuleList';
+  static readonly OperatorId = 'FileTransfer.Label.Field.FTPLastModifiedUserId';
+  static readonly OwnerName = 'FileTransfer.Label.Field.OwnerName';
+  static readonly OwnerModule = 'FileTransfer.Label.Field.OwnerModule';
+  static readonly OwnerEmail = 'FileTransfer.Label.Field.OwnerEmail';
+  static readonly OwnerPhoneNumber = 'FileTransfer.Label.Field.OwnerPhone';
+  static readonly Protocol = 'FileTransfer.Label.Field.Protocol';
+  static readonly RenameAtDestination =
+    'FileTransfer.Label.Field.RenameAtDestination';
+  static readonly RunOnMonday = 'FileTransfer.Label.Field.RunOnMonday';
+  static readonly RunOnTuesday = 'FileTransfer.Label.Field.RunOnTuesday';
+  static readonly RunOnWednesday = 'FileTransfer.Label.Field.RunOnWednesday';
+  static readonly RunOnThursday = 'FileTransfer.Label.Field.RunOnThursday';
+  static readonly RunOnFriday = 'FileTransfer.Label.Field.RunOnFriday';
+  static readonly RunOnSaturday = 'FileTransfer.Label.Field.RunOnSaturday';
+  static readonly RunOnSunday = 'FileTransfer.Label.Field.RunOnSunday';
+  static readonly RunSchedule = 'FileTransfer.Label.Field.RunSchedule';
+  static readonly RunOnLastDay = 'FileTransfer.Label.Field.RunOnLastDay';
+  static readonly RunOnFirstDay = 'FileTransfer.Label.Field.RunOnFirstDay';
+  static readonly RunOnThisDay = 'FileTransfer.Label.Field.RunOnThisDay';
+  static readonly SendNotification = 'FileTransfer.Label.Field.SendNotification';
+  static readonly Suspend = 'FileTransfer.Label.Field.Suspend';
+  static readonly SourceAddress = 'FileTransfer.Label.Field.SourceAddress';
+  static readonly SourceFileMask = 'FileTransfer.Label.Field.SourceFileMask';
+  static readonly StackTrace = 'FileTransfer.Label.Field.StackTrace';
+  static readonly StartWindow = 'FileTransfer.Label.Field.StartWindow';
+  static readonly Status = 'FileTransfer.Label.Field.Status';
+  static readonly Suspended = 'FileTransfer.Label.Field.Suspended';
+  static readonly TradingPartner = 'FileTransfer.Label.Field.TradingPartner';
+  static readonly TransportType = 'FileTransfer.Label.Field.TransportType';
+}
+

@@ -1,0 +1,149 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Container Image Scanning",
+  "document_description": "guidance_id: 'GUID-SEC-APP-ABB-IMGSC-2.7.13'",
+  "total_pages": 14,
+  "tree": [
+    {
+      "title": "Container Image Scanning",
+      "node_id": "container-image-scanning",
+      "start_index": 1,
+      "end_index": 14,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Architecture Guidance Metadata",
+          "node_id": "architecture-guidance-metadata",
+          "start_index": 2,
+          "end_index": 4,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "ABB Context",
+              "node_id": "abb-context",
+              "start_index": 3,
+              "end_index": 3,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "ABB Scope",
+              "node_id": "abb-scope",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Detailed Guidance",
+          "node_id": "detailed-guidance",
+          "start_index": 5,
+          "end_index": 14,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Core Principles",
+              "node_id": "core-principles",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Key Capabilities",
+              "node_id": "key-capabilities",
+              "start_index": 7,
+              "end_index": 10,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Build-Time Scanning",
+                  "node_id": "build-time-scanning",
+                  "start_index": 8,
+                  "end_index": 8,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Registry Admission Control",
+                  "node_id": "registry-admission-control",
+                  "start_index": 9,
+                  "end_index": 9,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Image Signing and Attestation",
+                  "node_id": "image-signing-and-attestation",
+                  "start_index": 10,
+                  "end_index": 10,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Integration Interfaces",
+              "node_id": "integration-interfaces",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Zero Trust Alignment (NIST SP 800-207)",
+              "node_id": "zero-trust-alignment-nist-sp-800-207",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "NIST SP 800-53 Intent Alignment",
+              "node_id": "nist-sp-800-53-intent-alignment",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Constraints and Dependencies",
+              "node_id": "constraints-and-dependencies",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-IMGSC-2.7.13.md#container-image-scanning]\n\n# Container Image Scanning\n\n**← Back to [EAP Home](../../../../../README.md) • [Strategy](../../../../README.md) • [Guidance](../../../README.md) • [Security](../../README.md) • [Application](../README.md)**\n\n---",
+    "2": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-IMGSC-2.7.13.md#architecture-guidance-metadata]\n\n## Architecture Guidance Metadata\n\n```yaml\nguidance_id: 'GUID-SEC-APP-ABB-IMGSC-2.7.13'\nguidance_name: 'Container Image Scanning'\nguidance_type: 'architecture-building-block'\nabb_type: 'component'\nadm_phase: 'Phase B-D'\nparent_abb: 'GUID-SEC-APP-ABB-CAT-2.7.06'\nparent_vision: 'GUID-SEC-APP-REF-1.7.01'\nrealized_by_sbbs: []\npaired_rad: 'GUID-SEC-APP-RA-APPSEC-TESTING-2.7.28'\ncategory: 'security'\nversion: '0.2.0'\nstatus: 'draft'\napplicability: 'enterprise'\ntags: ['security', 'application', 'architecture-building-block', 'container', 'image-scanning']\nsource_story: 'AB#802670'\n```\n\n---\n\n> **TOGAF ADM Note**: This is a **Component ABB** (Phase B–D) within the Application Security domain. Per [GUID-SEC-APP-REF-1.7.01](../GUID-SEC-APP-REF-1.7.01.md): **SHALL** = mandatory; **SHOULD** = strongly recommended; **MAY** = optional.",
+    "3": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-IMGSC-2.7.13.md#abb-context]\n\n### ABB Context\n\n- **Parent L2 Capability**: Container & Image Security — [GUID-SEC-APP-CAP-DESC-1.7.02](../GUID-SEC-APP-CAP-DESC-1.7.02.md)\n- **ABB Catalog**: [GUID-SEC-APP-ABB-CAT-2.7.06](../GUID-SEC-APP-ABB-CAT-2.7.06.md)\n- **Capability Statement**: The enterprise SHALL have an architectural capability to scan container images for known vulnerabilities and policy violations before those images are promoted to production registries or deployed to orchestration platforms.",
+    "4": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-IMGSC-2.7.13.md#abb-scope]\n\n### ABB Scope\n\n**In Scope**:\n\n- Vulnerability scanning of container image layers and included OS packages\n- Policy evaluation against defined image baseline requirements\n- Image signing and attestation to establish a verifiable provenance chain\n- Registry admission control to prevent unscanned or policy-failing images from being deployed\n\n**Out of Scope**:\n\n- Runtime behavioral monitoring of running containers (see GUID-SEC-APP-ABB-RTCON-2.7.14)\n- Orchestration-layer policy enforcement (see GUID-SEC-APP-ABB-K8SRBAC-2.7.15)\n- Application code scanning within container images (see GUID-SEC-APP-ABB-SAST-2.7.07)\n- Security controls, tool selection, or configuration baselines (`standards/security/`)\n\n---",
+    "5": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-IMGSC-2.7.13.md#detailed-guidance]\n\n## Detailed Guidance",
+    "6": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-IMGSC-2.7.13.md#core-principles]\n\n### Core Principles\n\n- All container images SHALL be scanned for known vulnerabilities before being promoted to any production-accessible registry.\n- Images with critical severity vulnerabilities SHALL be blocked from deployment unless a documented, approved exception exists.\n- Container images SHOULD be signed to establish a verifiable attestation of scan results and build provenance.\n- The capability SHALL support continuous re-scanning of images in registries as new vulnerability data is published. For images already deployed in production at the time a new vulnerability is disclosed, the response SHALL follow a **Notify → Grace → Block** sequence: the owning team is notified, provided a severity-tiered remediation window defined in an operational agreement, and the image is blocked from further deployment only if that jointly governed window expires without remediation action. Immediate blocking of in-production images on new CVE disclosure is NOT the required behavior.",
+    "7": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-IMGSC-2.7.13.md#key-capabilities]\n\n### Key Capabilities",
+    "8": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-IMGSC-2.7.13.md#build-time-scanning]\n\n#### Build-Time Scanning\n\n**Architectural intent**: Identify vulnerable components within a container image at the earliest opportunity — before the image enters the registry.\n\n**Design guidance**:\n\n- Scanning SHALL be integrated into the container image build pipeline as a required gate before image push.\n- Scanning SHALL cover both the base OS layer and all application layers within the image.\n- Findings SHALL be attributed to the specific image tag and build pipeline run.",
+    "9": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-IMGSC-2.7.13.md#registry-admission-control]\n\n#### Registry Admission Control\n\n**Architectural intent**: Prevent images that have not been scanned, or that fail policy, from being deployed to orchestration platforms.\n\n**Design guidance**:\n\n- The orchestration platform SHALL enforce an admission policy that rejects images without a valid scan attestation.\n- Admission policy SHALL be evaluated at deploy time, not only at build time, to catch images that have aged past their acceptable vulnerability posture.\n- For images that age into a vulnerable state after initial scan, the admission gate SHALL activate only after the Notify → Grace → Block sequence is complete. Severity-tiered remediation windows SHALL be defined and maintained in the enterprise vulnerability management process, jointly governed by Security Architecture, Platform Engineering, and Application Development leadership.\n- The platform SHALL notify the owning team at the start of each remediation window and SHALL provide tooling to identify which images are approaching or within an active window.",
+    "10": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-IMGSC-2.7.13.md#image-signing-and-attestation]\n\n#### Image Signing and Attestation\n\n**Architectural intent**: Establish a cryptographically verifiable record that an image has been scanned and has passed defined policies.\n\n**Design guidance**:\n\n- Images that pass scanning and policy checks SHOULD be signed with an attestation that includes scan result metadata.\n- The signing key management SHALL be handled through the Secrets Vault ABB (GUID-SEC-APP-ABB-VAULT-2.7.21).",
+    "11": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-IMGSC-2.7.13.md#integration-interfaces]\n\n### Integration Interfaces\n\n| Interface | Direction | Consuming ABB | Description |\n|---|---|---|---|\n| Image Build Event | Inbound | CI/CD Pipeline | Trigger to initiate scan upon image build completion |\n| Image Layer Data | Inbound | Container Registry | Image manifest and layers submitted for analysis |\n| Attestation | Outbound | GUID-SEC-APP-ABB-K8SRBAC-2.7.15 | Signed scan attestation consumed by admission control |\n| Findings Output | Outbound | GUID-SEC-APP-ABB-CAT-2.7.06 | Vulnerability findings for pipeline gate and tracking |",
+    "12": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-IMGSC-2.7.13.md#zero-trust-alignment-nist-sp-800-207]\n\n### Zero Trust Alignment (NIST SP 800-207)\n\nContainer Image Scanning advances the Applications and Workloads pillar by establishing that every workload deployed to the platform has a verified, attested security posture — operationalizing the principle that workload identity and integrity must be verified before trust is extended.",
+    "13": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-IMGSC-2.7.13.md#nist-sp-800-53-intent-alignment]\n\n### NIST SP 800-53 Intent Alignment\n\nThis ABB enables the architectural intent of the SA family (supply chain risk, component provenance) and the CM (Configuration Management) family, which addresses the management of software and component baselines in operational systems.",
+    "14": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-IMGSC-2.7.13.md#constraints-and-dependencies]\n\n### Constraints and Dependencies\n\n- Continuous re-scanning requires an image inventory; this has a dependency on registry organization and tagging practices.\n- Image signing key rotation and lifecycle must be addressed in the Secrets Management architecture (GUID-SEC-APP-ABB-VAULT-2.7.21).\n- Scanning latency must be factored into pipeline design; large images with many layers may require asynchronous scan patterns.\n\n---\n\n*[Enterprise Architecture Practice](../../../../../README.md) — Gainwell Technologies*"
+  },
+  "coverage": {
+    "total_pages": 14,
+    "covered_pages": 14,
+    "sampled_pages": 14,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 14
+  }
+}

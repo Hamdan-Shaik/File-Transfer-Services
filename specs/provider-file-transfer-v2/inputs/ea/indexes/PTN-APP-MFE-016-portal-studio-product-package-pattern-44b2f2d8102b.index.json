@@ -1,0 +1,194 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "PTN-APP-MFE-016: Portal Studio Product Package Pattern",
+  "document_description": "pattern_name: 'Portal Studio Product Package Pattern'",
+  "total_pages": 19,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 1,
+      "summary": "",
+      "nodes": []
+    },
+    {
+      "title": "PTN-APP-MFE-016: Portal Studio Product Package Pattern",
+      "node_id": "ptn-app-mfe-016-portal-studio-product-package-pattern",
+      "start_index": 2,
+      "end_index": 19,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Executive Summary",
+          "node_id": "executive-summary",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Context and Problem",
+          "node_id": "context-and-problem",
+          "start_index": 5,
+          "end_index": 5,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Solution",
+          "node_id": "solution",
+          "start_index": 6,
+          "end_index": 6,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Package Structure",
+          "node_id": "package-structure",
+          "start_index": 7,
+          "end_index": 10,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Namespace Convention",
+              "node_id": "namespace-convention",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Design Tokens",
+              "node_id": "design-tokens",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Demo App",
+              "node_id": "demo-app",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Webpack 5 MF Configuration",
+          "node_id": "webpack-5-mf-configuration",
+          "start_index": 11,
+          "end_index": 12,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Test Harness",
+              "node_id": "test-harness",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Opt-Out",
+          "node_id": "opt-out",
+          "start_index": 13,
+          "end_index": 13,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Consequences",
+          "node_id": "consequences",
+          "start_index": 14,
+          "end_index": 17,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Positive",
+              "node_id": "positive",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Negative",
+              "node_id": "negative",
+              "start_index": 16,
+              "end_index": 16,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Mitigations",
+              "node_id": "mitigations",
+              "start_index": 17,
+              "end_index": 17,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Related Standards and References",
+          "node_id": "related-standards-and-references",
+          "start_index": 18,
+          "end_index": 18,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Change History",
+          "node_id": "change-history",
+          "start_index": 19,
+          "end_index": 19,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "**[Home](../../../../README.md)** > **[Patterns](../../../README.md)** > **[Application](../../README.md)** > **[Micro-Frontend](README.md)** > **PTN-APP-MFE-016**\n\n---",
+    "2": "[patterns/application/micro-frontend/PTN-APP-MFE-016-portal-studio-product-package-pattern.md#ptn-app-mfe-016-portal-studio-product-package-pattern]\n\n# PTN-APP-MFE-016: Portal Studio Product Package Pattern\n\n**Pattern Metadata**\n\n```yaml\npattern_id: 'PTN-APP-MFE-016'\npattern_name: 'Portal Studio Product Package Pattern'\npattern_type: 'micro-frontend'\ndomain: 'application'\nversion: '2.0.0'\nstatus: 'active'\ntags: ['application', 'micro-frontend', 'portal-studio', 'module', 'module-bundle', 'module-federation', 'webpack', 'remoteEntry', 'product-package', 'studio-manifest']\n```\n\n---",
+    "3": "[patterns/application/micro-frontend/PTN-APP-MFE-016-portal-studio-product-package-pattern.md#table-of-contents]\n\n## Table of Contents\n\n- [Executive Summary](#executive-summary)\n- [Context and Problem](#context-and-problem)\n- [Solution](#solution)\n- [Package Structure](#package-structure)\n- [Webpack 5 MF Configuration](#webpack-5-mf-configuration)\n- [Opt-Out](#opt-out)\n- [Consequences](#consequences)\n- [Related Standards and References](#related-standards-and-references)\n- [Change History](#change-history)\n\n---",
+    "4": "[patterns/application/micro-frontend/PTN-APP-MFE-016-portal-studio-product-package-pattern.md#executive-summary]\n\n## Executive Summary\n\nPortal Studio embeds product domain UI **Modules** as **Webpack 5 Module Federation remotes**. The Portal Studio shell (Next.js) is the MF host; each Module is an MF exposed entry that publishes a `remoteEntry.js` to JFrog and declares its URL in `studio-manifest.json`. This pattern defines how a product domain repository organizes, builds, and publishes its Portal Studio Modules as one or more **Product Packages** (`@mmes/{domain}-{package-name}-studio-webpack`) each with a shared `studio-manifest.json`.\n\n---",
+    "5": "[patterns/application/micro-frontend/PTN-APP-MFE-016-portal-studio-product-package-pattern.md#context-and-problem]\n\n## Context and Problem\n\nPortal Studio's import UI discovers Modules by reading `studio-manifest.json` from published npm packages in the `@mmes` JFrog registry. Without a defined pattern, each product team independently decides:\n\n- Whether to publish one package per Module or one per repo\n- How to name MF remotes and Module namespaces\n- Where to store the manifest and `remoteEntry.js`\n- How to wire locale strings and design tokens\n- How to build a dev harness without a running Portal Studio instance\n\nThis leads to inconsistent registration, namespace collisions across domains, and broken MF composition.\n\n---",
+    "6": "[patterns/application/micro-frontend/PTN-APP-MFE-016-portal-studio-product-package-pattern.md#solution]\n\n## Solution\n\n**One package per concern group (default: one per repo).** A `@mmes/{product}-{package-name}-studio-webpack` npm package contains all Portal Studio Modules for a concern group. Each Module is a Webpack 5 MF exposed entry; the package produces a single Module Bundle (`remoteEntry.js`) that exposes all Modules. A `studio-manifest.json` at the package root lists all Modules in a `modules[]` array, each with its `remoteEntry` URL and `exposedModule` name.\n\nA domain may publish multiple packages if concern groups have independent release cadences — the granularity is a domain team decision. See [STD-APP-COMP-001 §1.2](../../../standards/application/component/STD-APP-COMP-001-product-component-package-standard.md#12-terminology) for the full hierarchy.\n\nThis pattern is enforced by [STD-APP-COMP-001](../../../standards/application/component/STD-APP-COMP-001-product-component-package-standard.md) and scaffolded by `/ui-component-create` in the `eap-bootstrap` developer harness.\n\n---",
+    "7": "[patterns/application/micro-frontend/PTN-APP-MFE-016-portal-studio-product-package-pattern.md#package-structure]\n\n## Package Structure\n\n```\ncomponents/react/packages/{package-name}/      ← package root\n├── src/modules/{ModuleName}/                  ← module source\n├── studio/\n│   ├── studio-manifest.json                   ← ONE manifest, modules[] array (schemaVersion: \"1.0\")\n│   ├── package.json                           ← @mmes/{product}-{package-name}-studio-webpack\n│   └── webpack.mf.config.js                   ← Webpack 5 MF build config (Module Bundle)\n├── dist/\n│   └── mf/\n│       ├── remoteEntry.js                     ← Module Bundle (built output, gitignored)\n│       └── *.js                               ← lazy-loaded Module chunks\n└── components/\n    ├── <module-name>/                         ← module source\n    │   ├── src/                               ← implementation (React component)\n    │   │   └── <ModuleName>.tsx\n    │   ├── dist/                              ← ESM build (library consumers, Vite)\n    │   ├── test/\n    │   │   └── harness.html                   ← standalone dev harness (loads remoteEntry.js)\n    │   ├── vite.config.ts                     ← ESM library build only (not Module Bundle)\n    │   └── webpack.mf.config.cjs              ← delegates to bundle-level config\n    └── module-demo/                           ← multi-tab demo app (never published)\n        └── src/\n            └── App.tsx                        ← one tab per module\n```",
+    "8": "[patterns/application/micro-frontend/PTN-APP-MFE-016-portal-studio-product-package-pattern.md#namespace-convention]\n\n### Namespace Convention\n\n`@{domain}/{module-slug}` — e.g. `@member/member-search`. The domain must be globally unique across all Gainwell product repos. The Webpack MF `name` uses underscores: `member_memberSearch`.",
+    "9": "[patterns/application/micro-frontend/PTN-APP-MFE-016-portal-studio-product-package-pattern.md#design-tokens]\n\n### Design Tokens\n\nAll Modules reference `--{product}-*` CSS custom properties as their primary theming API. `core-theme.css` (managed in `mmes-cmn-pipeline`, synced to all repos via `/eap-bootstrap-sync`) seeds `--studio-*` overlay tokens locally for dev/test.",
+    "10": "[patterns/application/micro-frontend/PTN-APP-MFE-016-portal-studio-product-package-pattern.md#demo-app]\n\n### Demo App\n\n`components/module-demo/` is a shared Vite React app — **never published**. Each Module has a tab with:\n- Left panel: locale selector (en-US / es-MX), interaction contract controls, mock data invocation\n- Right panel: the live Module rendered via MF remote `import()`\n\nThe mock backend service lives in the parent language folder (`components/<lang>/src/<concern>/demo/`) and is also never published.\n\n---",
+    "11": "[patterns/application/micro-frontend/PTN-APP-MFE-016-portal-studio-product-package-pattern.md#webpack-5-mf-configuration]\n\n## Webpack 5 MF Configuration\n\nWebpack configuration requirements are fully defined in [STD-APP-FE-001 §5.0](../../../standards/application/frontend/STD-APP-FE-001-react-application-standards.md#50-module-federation-standards). The bundle-level `webpack.mf.config.cjs` must follow those rules. Portal Studio-specific conventions for this pattern:\n\n- `filename` must be exactly `remoteEntry.js`; output goes to `dist/mf/`\n- `name` uses `{domain}_{product}` with underscores (e.g. `member_memberStudio`)\n- **One Module Bundle (`remoteEntry.js`) per Product Package** — all Modules in the package are exposed from a single remote; `exposes` has one entry per Module\n- `react`, `react-dom`, and `react-router-dom` must be declared as `shared` singletons — Portal Studio shell provides them; never bundle them into the remote\n\nEach Module's `studio-manifest.json` entry references this remote:\n\n```json\n{\n  \"namespace\": \"@member/member-search\",\n  \"remoteEntry\": \"https://gwproductengineering.jfrog.io/@mmes/member-eligibility-studio-webpack/-/remoteEntry.js\",\n  \"exposedModule\": \"./MemberSearch\",\n  \"packageName\": \"@mmes/member-eligibility-studio-webpack\"\n}\n```",
+    "12": "[patterns/application/micro-frontend/PTN-APP-MFE-016-portal-studio-product-package-pattern.md#test-harness]\n\n### Test Harness\n\n`test/harness.html` loads the Module Bundle via dynamic `import()` — no `<script>` tag injection:\n\n```html\n<!DOCTYPE html>\n<html lang=\"en\">\n<head><meta charset=\"UTF-8\"><title>Harness: member-search</title></head>\n<body>\n  <div id=\"root\"></div>\n  <script type=\"module\">\n    import React from 'react';\n    import ReactDOM from 'react-dom/client';\n    const { get, init } = await import('./dist/mf/remoteEntry.js');\n    await init({ react: { get: () => Promise.resolve(React) }, 'react-dom': { get: () => Promise.resolve(ReactDOM) } });\n    const factory = await get('./MemberSearch');\n    const { MemberSearch } = factory();\n    ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(MemberSearch));\n  </script>\n</body>\n</html>\n```\n\n---",
+    "13": "[patterns/application/micro-frontend/PTN-APP-MFE-016-portal-studio-product-package-pattern.md#opt-out]\n\n## Opt-Out\n\nRepositories with no Portal Studio Modules (polyglot libraries, infrastructure repos) opt out by setting `studio_packaging: false` in `.project.yml`. See [STD-APP-COMP-001 § 2.1](../../../standards/application/component/STD-APP-COMP-001-product-component-package-standard.md#21-opt-out-via-projectyml) for details.\n\n---",
+    "14": "[patterns/application/micro-frontend/PTN-APP-MFE-016-portal-studio-product-package-pattern.md#consequences]\n\n## Consequences",
+    "15": "[patterns/application/micro-frontend/PTN-APP-MFE-016-portal-studio-product-package-pattern.md#positive]\n\n### Positive\n\n- Single publish step for all Modules in the concern group\n- Single Module Bundle (`remoteEntry.js`) — Portal Studio loads one URL; Module chunks load lazily per Module placed on a page\n- Shared React singleton across all Modules in the bundle — no duplicate React instances\n- Namespace uniqueness enforced at the registry level per domain\n- `core-theme.css` gives all Modules consistent design tokens from one source\n- Independent deployment — packages publish to Artifactory independently of the shell's release cycle",
+    "16": "[patterns/application/micro-frontend/PTN-APP-MFE-016-portal-studio-product-package-pattern.md#negative]\n\n### Negative\n\n- All Modules in a package share a package version bump on publish\n- A failed build for one Module blocks the entire package publish",
+    "17": "[patterns/application/micro-frontend/PTN-APP-MFE-016-portal-studio-product-package-pattern.md#mitigations]\n\n### Mitigations\n\n- Run `task components:react:verify` before publishing — catches all Module issues before the publish step\n- Keep Module builds independent where possible; the Webpack MF config assembles them into one Module Bundle\n- Split into multiple packages per concern group when release cadences diverge\n\n---",
+    "18": "[patterns/application/micro-frontend/PTN-APP-MFE-016-portal-studio-product-package-pattern.md#related-standards-and-references]\n\n## Related Standards and References\n\n| Artifact | Relationship |\n|---|---|\n| [STD-APP-COMP-001](../../../standards/application/component/STD-APP-COMP-001-product-component-package-standard.md) | Mandatory standard this pattern operationalizes |\n| [STD-APP-FE-001](../../../standards/application/frontend/STD-APP-FE-001-react-application-standards.md) | Webpack 5 MF configuration requirements (build baseline) |\n| [ADR-APP-004](../../../decisions/application/ADR-APP-004-mfe-platform-layer-selection.md) | Portal Studio host/remote topology decision |\n| [ADR-APP-006](https://github.com/mygainwell/mmes-cmn-core/blob/main/docs/decisions/application/adr-app-006-studio-manifest-v3-module-federation.md) | Studio Manifest v3 — Webpack 5 MF remote delivery |\n| [GUID-APP-COMP-001](../../../strategy/guidance/application/component-authoring/GUID-APP-COMP-001-component-authoring-guidance.md) | Step-by-step authoring guidance |\n| [GUID-APP-I18N-001](../../../strategy/guidance/application/localization/GUID-APP-I18N-001-locale-formatting-guidance.md) | Locale formatting — content slots and locale bundles |\n| [GUID-APP-UI-001](../../../strategy/guidance/application/design-tokens/GUID-APP-UI-001-design-tokens-theming-guidance.md) | Design tokens and `--{product}-*` CSS custom properties |\n| [PTN-APP-MFE-009](PTN-APP-MFE-009-shell-provided-props-pattern.md) | Shell-provided props — how Portal Studio injects content slots |\n\n---",
+    "19": "[patterns/application/micro-frontend/PTN-APP-MFE-016-portal-studio-product-package-pattern.md#change-history]\n\n## Change History\n\n| Version | Date | Author | Description |\n|---|---|---|---|\n| 0.1.0 | 2026-08-01 | Mike Goppert | Initial draft stub |\n| 1.0.0 | 2026-08-11 | Mike Goppert | Align to Webpack 5 Module Federation; replace IIFE delivery model per ADR-APP-006; promote to active |\n| 2.0.0 | 2026-08-11 | Mike Goppert | Rename: Component → Module, Component Bundle → Module Bundle, components[] → modules[] to align with Webpack 5 MF industry terminology |"
+  },
+  "coverage": {
+    "total_pages": 19,
+    "covered_pages": 19,
+    "sampled_pages": 19,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 19
+  }
+}

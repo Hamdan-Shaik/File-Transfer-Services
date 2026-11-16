@@ -1,0 +1,361 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "AI Governance Review Service - Caching Strategy",
+  "document_description": "This document describes the Redis caching implementation designed to minimize AWS Bedrock costs by intelligently caching AI evaluation results.",
+  "total_pages": 37,
+  "tree": [
+    {
+      "title": "AI Governance Review Service - Caching Strategy",
+      "node_id": "ai-governance-review-service---caching-strategy",
+      "start_index": 1,
+      "end_index": 37,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Overview",
+          "node_id": "overview",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Architecture",
+          "node_id": "architecture",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Cache Types",
+          "node_id": "cache-types",
+          "start_index": 4,
+          "end_index": 8,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "1. Section Evaluation Cache (Most Critical)",
+              "node_id": "1-section-evaluation-cache-most-critical",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "2. Template Cache",
+              "node_id": "2-template-cache",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "3. Document Processing Cache",
+              "node_id": "3-document-processing-cache",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4. Review Cache",
+              "node_id": "4-review-cache",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Cache Configuration",
+          "node_id": "cache-configuration",
+          "start_index": 9,
+          "end_index": 11,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Environment Variables",
+              "node_id": "environment-variables",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Redis Configuration",
+              "node_id": "redis-configuration",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Cache Invalidation",
+          "node_id": "cache-invalidation",
+          "start_index": 12,
+          "end_index": 15,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Automatic Invalidation",
+              "node_id": "automatic-invalidation",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Manual Invalidation",
+              "node_id": "manual-invalidation",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Invalidation Triggers",
+              "node_id": "invalidation-triggers",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Monitoring & Metrics",
+          "node_id": "monitoring--metrics",
+          "start_index": 16,
+          "end_index": 19,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Cache Statistics Endpoint",
+              "node_id": "cache-statistics-endpoint",
+              "start_index": 17,
+              "end_index": 17,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Key Metrics to Monitor",
+              "node_id": "key-metrics-to-monitor",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "CloudWatch Metrics (Production)",
+              "node_id": "cloudwatch-metrics-production",
+              "start_index": 19,
+              "end_index": 19,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Cost Analysis",
+          "node_id": "cost-analysis",
+          "start_index": 20,
+          "end_index": 25,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Assumptions",
+              "node_id": "assumptions",
+              "start_index": 21,
+              "end_index": 21,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Scenarios",
+              "node_id": "scenarios",
+              "start_index": 22,
+              "end_index": 25,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Low Volume (100 reviews/day)",
+                  "node_id": "low-volume-100-reviewsday",
+                  "start_index": 23,
+                  "end_index": 23,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Medium Volume (500 reviews/day)",
+                  "node_id": "medium-volume-500-reviewsday",
+                  "start_index": 24,
+                  "end_index": 24,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "High Volume (1000 reviews/day)",
+                  "node_id": "high-volume-1000-reviewsday",
+                  "start_index": 25,
+                  "end_index": 25,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Best Practices",
+          "node_id": "best-practices",
+          "start_index": 26,
+          "end_index": 31,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "1. Cache Key Design",
+              "node_id": "1-cache-key-design",
+              "start_index": 27,
+              "end_index": 27,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "2. TTL Selection",
+              "node_id": "2-ttl-selection",
+              "start_index": 28,
+              "end_index": 28,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "3. Cache Warming",
+              "node_id": "3-cache-warming",
+              "start_index": 29,
+              "end_index": 29,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4. Graceful Degradation",
+              "node_id": "4-graceful-degradation",
+              "start_index": 30,
+              "end_index": 30,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "5. Cache Bypass for Admin",
+              "node_id": "5-cache-bypass-for-admin",
+              "start_index": 31,
+              "end_index": 31,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Troubleshooting",
+          "node_id": "troubleshooting",
+          "start_index": 32,
+          "end_index": 35,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Issue: Low Cache Hit Rate",
+              "node_id": "issue-low-cache-hit-rate",
+              "start_index": 33,
+              "end_index": 33,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Issue: High Memory Usage",
+              "node_id": "issue-high-memory-usage",
+              "start_index": 34,
+              "end_index": 34,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Issue: Stale Cache Results",
+              "node_id": "issue-stale-cache-results",
+              "start_index": 35,
+              "end_index": 35,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Future Enhancements",
+          "node_id": "future-enhancements",
+          "start_index": 36,
+          "end_index": 36,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "References",
+          "node_id": "references",
+          "start_index": 37,
+          "end_index": 37,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[.tooling/components/apis/ai-gov-review-service/docs/caching-strategy.md#ai-governance-review-service---caching-strategy]\n\n# AI Governance Review Service - Caching Strategy",
+    "2": "[.tooling/components/apis/ai-gov-review-service/docs/caching-strategy.md#overview]\n\n## Overview\n\nThis document describes the Redis caching implementation designed to minimize AWS Bedrock costs by intelligently caching AI evaluation results.",
+    "3": "[.tooling/components/apis/ai-gov-review-service/docs/caching-strategy.md#architecture]\n\n## Architecture\n\n```\nClient Request\n      ↓\n   API Layer\n      ↓\nEvaluationEngine\n      ↓\n   Check Redis Cache\n      ↓\n   ┌─────────────┐\n   │ Cache Hit?  │\n   └─────────────┘\n      ↓         ↓\n    YES        NO\n      ↓         ↓\n   Return   Call Bedrock\n   Cached   (expensive)\n   Result       ↓\n      ↓     Cache Result\n      ↓         ↓\n      └─────────┘\n           ↓\n      Return to Client\n```",
+    "4": "[.tooling/components/apis/ai-gov-review-service/docs/caching-strategy.md#cache-types]\n\n## Cache Types",
+    "5": "[.tooling/components/apis/ai-gov-review-service/docs/caching-strategy.md#1-section-evaluation-cache-most-critical]\n\n### 1. Section Evaluation Cache (Most Critical)\n\n**Purpose**: Prevent redundant expensive Bedrock API calls for section evaluations\n\n**Key Structure**: `ai-gov:section_eval:{section_id}:{content_hash}:{criteria_version}`\n\n- `section_id`: Section identifier (e.g., \"business-case\", \"risk-assessment\")\n- `content_hash`: SHA-256 hash of normalized section content\n- `criteria_version`: Hash of evaluation criteria for this section\n\n**Value Example**:\n\n```json\n{\n  \"section_id\": \"business-case\",\n  \"score\": 4,\n  \"status\": \"Pass\",\n  \"comments\": [\"Clear objectives\", \"Measurable success criteria\"],\n  \"findings\": [...],\n  \"evidence\": [...],\n  \"cached_at\": \"2026-01-05T10:30:00Z\"\n}\n```\n\n**TTL**: 604,800 seconds (7 days)\n\n**Cost Impact**:\n\n- Bedrock Claude Sonnet 4.5: ~$0.003 per 1K input tokens\n- Average section: ~400 tokens, ~6 sections per document\n- Cost per full review: ~$0.006-0.012\n- With 70% cache hit rate at 100 reviews/day: **$12.60/month savings**\n\n**Cache Hit Scenario**:\n\n- Same section content + same evaluation criteria = reuse cached result\n- Different sections from same document can have different cache status\n\n**Cache Miss Scenario**:\n\n- Section content changed\n- Evaluation criteria updated\n- First evaluation of new content\n\n**Implementation**:\n\n```python\n# Generate deterministic hash for section content\nsection_hash = hashlib.sha256(section_content.encode('utf-8')).hexdigest()\ncriteria_hash = hashlib.sha256(json.dumps(eval_criteria, sort_keys=True).encode()).hexdigest()\n\n# Check cache\ncache_key = f\"ai-gov:section_eval:{section_id}:{section_hash}:{criteria_hash}\"\ncached = await cache.get(cache_key)\nif cached:\n    return cached  # Avoid Bedrock call\n\n# Cache miss - call Bedrock for this section\nresult = await bedrock.invoke_model(...)\nawait cache.set(cache_key, result, ttl=604800)  # 7 days\n```",
+    "6": "[.tooling/components/apis/ai-gov-review-service/docs/caching-strategy.md#2-template-cache]\n\n### 2. Template Cache\n\n**Purpose**: Reduce PostgreSQL reads, faster template access\n\n**Key Structure**: `ai-gov:template:{review_type}:{version}`\n\n**Example Keys**:\n\n- `ai-gov:template:crb:v1.0`\n- `ai-gov:template:arb:v2.1`\n\n**Value**: Full template configuration including sections, criteria, and evaluation prompts\n\n**TTL**: 3,600 seconds (1 hour)\n\n**Implementation**:\n\n```python\n# Check template cache\ntemplate = await cache.get_template(template_id)\nif not template:\n    template = await db.get_template(template_id)\n    await cache.set_template(template_id, template)\n```",
+    "7": "[.tooling/components/apis/ai-gov-review-service/docs/caching-strategy.md#3-document-processing-cache]\n\n### 3. Document Processing Cache\n\n**Purpose**: Cache parsed document structure for re-evaluations\n\n**Key Structure**: `ai-gov:doc_proc:{document_hash}`\n\n**TTL**: 3,600 seconds (1 hour)\n\n**Use Case**: Same document evaluated against multiple templates",
+    "8": "[.tooling/components/apis/ai-gov-review-service/docs/caching-strategy.md#4-review-cache]\n\n### 4. Review Cache\n\n**Purpose**: Fast retrieval of complete review results\n\n**Key Structure**: `ai-gov:review:{review_id}`\n\n**TTL**: 86,400 seconds (24 hours)",
+    "9": "[.tooling/components/apis/ai-gov-review-service/docs/caching-strategy.md#cache-configuration]\n\n## Cache Configuration",
+    "10": "[.tooling/components/apis/ai-gov-review-service/docs/caching-strategy.md#environment-variables]\n\n### Environment Variables\n\n```bash\n# Redis Connection\nREDIS_URL=redis://localhost:6379/0\nREDIS_CONNECT_TIMEOUT=5\nREDIS_SOCKET_TIMEOUT=5\nREDIS_KEY_PREFIX=ai-gov\n\n# Enable/Disable\nCACHE_ENABLED=true\n\n# TTL Settings (seconds)\nCACHE_TTL_AI_EVALUATIONS=604800  # 7 days\nCACHE_TTL_TEMPLATES=3600         # 1 hour\nCACHE_TTL_REVIEWS=86400          # 24 hours\nCACHE_TTL_DOCUMENTS=3600         # 1 hour\n```",
+    "11": "[.tooling/components/apis/ai-gov-review-service/docs/caching-strategy.md#redis-configuration]\n\n### Redis Configuration\n\n**Local Development**:\n\n```bash\nredis-server --maxmemory 256mb --maxmemory-policy allkeys-lru\n```\n\n**Production (ElastiCache)**:\n\n- Instance Type: cache.t3.micro (0.5 GB memory) for < 500 reviews/day\n- Instance Type: cache.t3.small (1.37 GB memory) for > 500 reviews/day\n- Eviction Policy: `allkeys-lru` (Least Recently Used)\n- Encryption: In transit + at rest\n- Automatic failover: Multi-AZ deployment",
+    "12": "[.tooling/components/apis/ai-gov-review-service/docs/caching-strategy.md#cache-invalidation]\n\n## Cache Invalidation",
+    "13": "[.tooling/components/apis/ai-gov-review-service/docs/caching-strategy.md#automatic-invalidation]\n\n### Automatic Invalidation\n\n1. **TTL Expiration**: Redis automatically removes expired keys\n2. **Memory Pressure**: LRU eviction policy removes least-used keys when memory is full",
+    "14": "[.tooling/components/apis/ai-gov-review-service/docs/caching-strategy.md#manual-invalidation]\n\n### Manual Invalidation\n\n```python\n# Invalidate template (also clears associated AI evaluations)\nawait cache.invalidate_template(template_id)\n\n# Clear all keys matching pattern\nawait cache.clear_pattern(\"ai-gov:ai_eval:*\")\n\n# Delete specific review\nawait cache.delete(f\"ai-gov:review:{review_id}\")\n```",
+    "15": "[.tooling/components/apis/ai-gov-review-service/docs/caching-strategy.md#invalidation-triggers]\n\n### Invalidation Triggers\n\n| Event | Action |\n|-------|--------|\n| Template updated | Clear template + all AI evaluations using that template |\n| Document resubmitted with changes | New document hash = automatic cache miss |\n| User requests fresh evaluation | Use `bypass_cache=True` parameter |",
+    "16": "[.tooling/components/apis/ai-gov-review-service/docs/caching-strategy.md#monitoring--metrics]\n\n## Monitoring & Metrics",
+    "17": "[.tooling/components/apis/ai-gov-review-service/docs/caching-strategy.md#cache-statistics-endpoint]\n\n### Cache Statistics Endpoint\n\n```bash\nGET /cache/stats\n```\n\n**Response**:\n\n```json\n{\n  \"enabled\": true,\n  \"stats\": {\n    \"connected\": true,\n    \"total_keys\": 1247,\n    \"hits\": 8932,\n    \"misses\": 3401,\n    \"hit_rate\": 72.4\n  }\n}\n```",
+    "18": "[.tooling/components/apis/ai-gov-review-service/docs/caching-strategy.md#key-metrics-to-monitor]\n\n### Key Metrics to Monitor\n\n1. **Hit Rate**: Target > 60% for good cost optimization\n2. **Total Keys**: Monitor growth to estimate memory needs\n3. **Eviction Count**: High evictions = need more memory\n4. **Connection Status**: Ensure Redis availability",
+    "19": "[.tooling/components/apis/ai-gov-review-service/docs/caching-strategy.md#cloudwatch-metrics-production]\n\n### CloudWatch Metrics (Production)\n\n```python\n# Custom metrics to publish\n- ai.governance.cache.hit_rate\n- ai.governance.cache.size\n- ai.governance.bedrock.calls_saved\n- ai.governance.bedrock.cost_saved\n```",
+    "20": "[.tooling/components/apis/ai-gov-review-service/docs/caching-strategy.md#cost-analysis]\n\n## Cost Analysis",
+    "21": "[.tooling/components/apis/ai-gov-review-service/docs/caching-strategy.md#assumptions]\n\n### Assumptions\n\n- Bedrock Claude Sonnet 4.5: $0.003 per 1K input tokens\n- Average document: 2,000 tokens (5 pages)\n- Cost per evaluation: $0.006",
+    "22": "[.tooling/components/apis/ai-gov-review-service/docs/caching-strategy.md#scenarios]\n\n### Scenarios",
+    "23": "[.tooling/components/apis/ai-gov-review-service/docs/caching-strategy.md#low-volume-100-reviewsday]\n\n#### Low Volume (100 reviews/day)\n\n| Metric | Without Cache | With 70% Cache | Savings |\n|--------|---------------|----------------|---------|\n| Bedrock calls/day | 100 | 30 | 70 |\n| Daily cost | $0.60 | $0.18 | $0.42 |\n| Monthly cost | $18.00 | $5.40 | $12.60 |\n| ElastiCache cost | - | $12.00 | - |\n| **Net savings** | - | - | **$0.60/mo** |\n\n**Recommendation**: Use local Redis or small ElastiCache instance",
+    "24": "[.tooling/components/apis/ai-gov-review-service/docs/caching-strategy.md#medium-volume-500-reviewsday]\n\n#### Medium Volume (500 reviews/day)\n\n| Metric | Without Cache | With 70% Cache | Savings |\n|--------|---------------|----------------|---------|\n| Monthly Bedrock | $90.00 | $27.00 | $63.00 |\n| ElastiCache | - | $12.00 | - |\n| **Net savings** | - | - | **$51.00/mo** |",
+    "25": "[.tooling/components/apis/ai-gov-review-service/docs/caching-strategy.md#high-volume-1000-reviewsday]\n\n#### High Volume (1000 reviews/day)\n\n| Metric | Without Cache | With 70% Cache | Savings |\n|--------|---------------|----------------|---------|\n| Monthly Bedrock | $180.00 | $54.00 | $126.00 |\n| ElastiCache | - | $24.00 | - |\n| **Net savings** | - | - | **$102.00/mo** |\n\n**ROI**: Cache pays for itself at ~80 reviews/day with 70% hit rate",
+    "26": "[.tooling/components/apis/ai-gov-review-service/docs/caching-strategy.md#best-practices]\n\n## Best Practices",
+    "27": "[.tooling/components/apis/ai-gov-review-service/docs/caching-strategy.md#1-cache-key-design]\n\n### 1. Cache Key Design\n\n✅ **DO**: Use deterministic hashing\n\n```python\ndoc_hash = sha256(normalized_content)\n```\n\n❌ **DON'T**: Use timestamps or random IDs\n\n```python\ncache_key = f\"{timestamp}:{random_id}\"  # Non-cacheable\n```",
+    "28": "[.tooling/components/apis/ai-gov-review-service/docs/caching-strategy.md#2-ttl-selection]\n\n### 2. TTL Selection\n\n- **AI Evaluations**: Long TTL (7 days) - expensive to regenerate\n- **Templates**: Medium TTL (1 hour) - infrequently changed\n- **Reviews**: Medium TTL (24 hours) - user expects fresh data daily\n- **Document Processing**: Short TTL (1 hour) - cheap to regenerate",
+    "29": "[.tooling/components/apis/ai-gov-review-service/docs/caching-strategy.md#3-cache-warming]\n\n### 3. Cache Warming\n\nPreload frequently used templates on startup:\n\n```python\n@app.on_event(\"startup\")\nasync def warm_cache():\n    common_templates = [\"ARB\", \"CRB\"]\n    for template_type in common_templates:\n        template = await db.get_template_by_type(template_type)\n        await cache.set_template(template.id, template)\n```",
+    "30": "[.tooling/components/apis/ai-gov-review-service/docs/caching-strategy.md#4-graceful-degradation]\n\n### 4. Graceful Degradation\n\nAlways handle cache failures gracefully:\n\n```python\ntry:\n    cached = await cache.get(key)\nexcept RedisError:\n    logger.warning(\"Cache unavailable, proceeding without cache\")\n    cached = None\n\nif cached:\n    return cached\nelse:\n    # Proceed with normal operation\n    return await expensive_operation()\n```",
+    "31": "[.tooling/components/apis/ai-gov-review-service/docs/caching-strategy.md#5-cache-bypass-for-admin]\n\n### 5. Cache Bypass for Admin\n\nProvide option to bypass cache for testing:\n\n```python\n@router.post(\"/reviews\", query_params={\"bypass_cache\": bool})\nasync def create_review(bypass_cache: bool = False):\n    result = await evaluation_engine.evaluate_document(\n        document, template, bypass_cache=bypass_cache\n    )\n```",
+    "32": "[.tooling/components/apis/ai-gov-review-service/docs/caching-strategy.md#troubleshooting]\n\n## Troubleshooting",
+    "33": "[.tooling/components/apis/ai-gov-review-service/docs/caching-strategy.md#issue-low-cache-hit-rate]\n\n### Issue: Low Cache Hit Rate\n\n**Symptoms**: Hit rate < 40%\n\n**Possible Causes**:\n\n1. Documents are always unique (no duplicates)\n2. TTL too short (cache expiring before reuse)\n3. High document variation (minor edits change hash)\n\n**Solutions**:\n\n- Increase TTL for AI evaluations\n- Implement fuzzy matching for similar documents\n- Analyze document patterns to optimize caching",
+    "34": "[.tooling/components/apis/ai-gov-review-service/docs/caching-strategy.md#issue-high-memory-usage]\n\n### Issue: High Memory Usage\n\n**Symptoms**: Redis evicting keys frequently\n\n**Possible Causes**:\n\n1. Too many cached items\n2. Large document content in cache\n3. Insufficient Redis memory\n\n**Solutions**:\n\n- Reduce TTL to expire items faster\n- Increase Redis instance size\n- Store only evaluation results (not full documents)\n- Implement cache size limits per user/org",
+    "35": "[.tooling/components/apis/ai-gov-review-service/docs/caching-strategy.md#issue-stale-cache-results]\n\n### Issue: Stale Cache Results\n\n**Symptoms**: Users getting old evaluation results\n\n**Possible Causes**:\n\n1. Template updated but cache not invalidated\n2. TTL too long for frequently changing content\n\n**Solutions**:\n\n- Implement proper cache invalidation on template updates\n- Add version numbers to cache keys\n- Provide \"force refresh\" option in UI",
+    "36": "[.tooling/components/apis/ai-gov-review-service/docs/caching-strategy.md#future-enhancements]\n\n## Future Enhancements\n\n1. **Distributed Caching**: Redis Cluster for multi-region deployments\n2. **Cache Warming**: ML-based prediction of frequently evaluated documents\n3. **Smart TTL**: Adaptive TTL based on document change frequency\n4. **Multi-Level Cache**: L1 (memory) + L2 (Redis) for ultra-fast access\n5. **Cache Analytics**: Detailed cost savings dashboard\n6. **Partial Caching**: Cache individual sections for faster partial updates",
+    "37": "[.tooling/components/apis/ai-gov-review-service/docs/caching-strategy.md#references]\n\n## References\n\n- [Redis Best Practices](https://redis.io/topics/optimization)\n- [AWS ElastiCache Documentation](https://docs.aws.amazon.com/elasticache/)\n- [Bedrock Pricing](https://aws.amazon.com/bedrock/pricing/)"
+  },
+  "coverage": {
+    "total_pages": 37,
+    "covered_pages": 37,
+    "sampled_pages": 37,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 37
+  }
+}

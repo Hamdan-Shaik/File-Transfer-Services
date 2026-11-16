@@ -1,0 +1,157 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Scope",
+  "document_description": "Reason about which AI coding assistant construct(s) a repository's automation need requires, and apply the per-type cognitive judgment that determines whether that construct's content is soundly authored or maintained.",
+  "total_pages": 15,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 15,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Scope",
+          "node_id": "scope",
+          "start_index": 2,
+          "end_index": 3,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Skill Collaboration",
+              "node_id": "skill-collaboration",
+              "start_index": 3,
+              "end_index": 3,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Workflow",
+          "node_id": "workflow",
+          "start_index": 4,
+          "end_index": 14,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "1. Understand the Desired Outcome",
+              "node_id": "1-understand-the-desired-outcome",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "2. Engage Construct Category Lenses",
+              "node_id": "2-engage-construct-category-lenses",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "3. Evaluate Trade-offs",
+              "node_id": "3-evaluate-trade-offs",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4. Apply the Construct Taxonomy",
+              "node_id": "4-apply-the-construct-taxonomy",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "5. Determine Placement",
+              "node_id": "5-determine-placement",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "6. Survey Existing Coverage",
+              "node_id": "6-survey-existing-coverage",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "7. Recommend the Construct Set",
+              "node_id": "7-recommend-the-construct-set",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "8. Verify Against Authoring Constraints",
+              "node_id": "8-verify-against-authoring-constraints",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "9. Apply Type-Specific Authoring and Maintenance Judgment",
+              "node_id": "9-apply-type-specific-authoring-and-maintenance-judgment",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "10. Apply Revision Scope and Impact Discipline",
+              "node_id": "10-apply-revision-scope-and-impact-discipline",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Guidelines",
+          "node_id": "guidelines",
+          "start_index": 15,
+          "end_index": 15,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "Reason about which AI coding assistant construct(s) a repository's automation need requires, and apply the per-type cognitive judgment that determines whether that construct's content is soundly authored or maintained.",
+    "2": "[.claude/skills/ai-architect/SKILL.md#scope]\n\n## Scope\n\n- If `$ARGUMENTS` describes a problem, capability, or behavior a repository's AI coding assistants need, reason about which construct type(s) are needed to support it (see Workflow).\n- If `$ARGUMENTS` names an existing construct or topic, evaluate its current coverage and identify gaps before recommending new work.\n- If `$ARGUMENTS` is a repository or construct-family name alone, survey existing constructs of that family and summarize coverage.\n- If `$ARGUMENTS` is a question about existing coverage (\"do we have a Skill for X\", \"what Agents exist for Y\"), apply only steps 1, 2, 4, and 6 (understand the need, engage the relevant construct-category lenses, apply the taxonomy to know where to look, survey existing coverage) and answer directly from what the survey finds. If the survey finds nothing, state this as a coverage gap that needs to be remediated — not merely an absence of information — and, if the invoking context supports it, offer to proceed to steps 7–10 to recommend the missing construct. Steps 3, 5, and 7–10 otherwise do not apply when no new construct is actually being recommended — do not force a recommendation the question didn't ask for.\n- This Skill covers: construct type selection, taxonomy placement per [ADR-TEC-020](../../../decisions/technology/ADR-TEC-020-ai-coding-assistant-construct-taxonomy.md)'s unified six-category taxonomy, governing-standard determination (STD-TEC-AI-001 through 006), existing-coverage evaluation across `.claude/skills/`, `.github/skills/`, `.github/agents/`, `.claude/agents/`, `.claude/commands/`, `.github/prompts/`, root instruction files, `.claude/rules/`, and `.github/instructions/`, multi-construct outcome planning, answering questions about existing construct coverage, and the per-type cognitive judgment for whether a construct's content is soundly authored or maintained — for concerns about how a repository's AI coding assistants operate.\n- This Skill does not cover: Enterprise Architecture artifact authoring — that is [`enterprise-architect`](../enterprise-architect/SKILL.md)'s taxonomy (`foundation/CONTRIBUTING.md`), a wholly separate concern from this Skill's AI construct taxonomy; GitHub Agentic Workflows (`gh-aw`) automation files (`.github/workflows/*.md`) — those are owned by the `agentic-workflows` agent's own specialized authoring/debugging/upgrade prompts, not this Skill, even though the unified taxonomy's Copilot mapping lists \"Agentic Workflow\" alongside \"Prompt\" under the Workflow category; Tool and Environment constructs — both are platform-provided per ADR-TEC-020, not authored by application teams, so neither has a construct-authoring judgment for this Skill to apply; the mechanical steps of drafting, writing, or placing a file — finding the next path, copying the template, writing to disk (out of scope for this Skill's reasoning; that sequence of steps lives in the matching Command, which consumes this Skill's judgment while executing them); or PR-level compliance review of an already-drafted construct (out of scope — handled by the `ai-review` agent).",
+    "3": "[.claude/skills/ai-architect/SKILL.md#skill-collaboration]\n\n### Skill Collaboration\n\n- **ai-author** (agent) invokes this Skill first to decide *what* to create, then independently routes to the matching Command (`/skill`, `/agent`, `/command`, `/instruction`, `/rule`) based on this Skill's recommendation — or, for a pure coverage question, invokes only steps 1/2/4/6 and never routes to a Command at all, since nothing is being produced. This Skill never invokes those Commands itself — Commands consume Skills; Skills do not orchestrate Commands ([ADR-TEC-020](../../../decisions/technology/ADR-TEC-020-ai-coding-assistant-construct-taxonomy.md)).\n- **The `/skill`, `/agent`, `/command`, `/instruction`, and `/rule` Commands** consume this Skill's step 9 authoring/maintenance judgment and step 10 revision scope/impact discipline while executing their own mechanical steps (drafting new content or revising existing content) — the Command organizes the sequence of steps that produce the construct; this Skill supplies the judgment for whether the content within each step is sound and whether a revision stayed in scope. The Command invokes the Skill for that judgment; the Skill never invokes the Command.\n- **ai-review** (agent) MAY invoke this Skill to assess whether a submitted construct set is complete for its stated need, whether a specific construct's content meets the type-specific authoring judgment in step 9, or whether a revision correctly applied step 10's scope discipline across repeated convergence-loop passes.\n- **enterprise-architect** (skill) is the sibling reasoning Skill for the separate EA artifact taxonomy — if a request turns out to be about an ADR, Pattern, Standard, Guidance, or White Paper rather than an AI construct, hand off to `enterprise-architect` instead of forcing it through this Skill's taxonomy.",
+    "4": "[.claude/skills/ai-architect/SKILL.md#workflow]\n\n## Workflow",
+    "5": "[.claude/skills/ai-architect/SKILL.md#1-understand-the-desired-outcome]\n\n### 1. Understand the Desired Outcome\n\nIdentify the concrete automation or behavioral need — a repeatable cognitive judgment agents must apply, an orchestration or persona gap, a multi-step operational procedure that recurs, a repository-wide behavioral constraint, or a file-type-scoped rule. Confirm the need is genuinely about *how this repository's AI coding assistants operate* rather than a business or enterprise architecture decision (hand off to `enterprise-architect`) or a one-off application code change (out of scope for either Skill — this is ordinary engineering work).",
+    "6": "[.claude/skills/ai-architect/SKILL.md#2-engage-construct-category-lenses]\n\n### 2. Engage Construct Category Lenses\n\nIdentify every construct category the need actually touches — not just the category the construct will ultimately be authored as. Announce the engaged categories and what each would contribute, the same way an architect scopes a review before drafting anything:\n\n| Category | Typical Concerns | Author-Facing? |\n|---|---|---|\n| **Skill** | Reusable cognitive judgment — analysis, evaluation, decision criteria an agent applies repeatedly | Yes |\n| **Agent** | Orchestration, persona, tool permissions, scope boundaries, autonomous/chat-driven invocation | Yes |\n| **Workflow** | Repeatable multi-step operational procedure — tool invocations, orchestration order | Yes (Command + Prompt pair) |\n| **Instruction** | Repository-level identity, routing, non-negotiable constraints (the agent's system prompt) | Yes |\n| **Instruction *(file-pattern)*** | Conditionally-loaded, file-type-scoped behavioral context | Yes (Rule / file-pattern Instruction) |\n| **Tool** | Atomic, platform-provided execution primitive | No — platform/integration-provided |\n| **Environment** | Sandboxed execution context, resource boundaries | No — platform-provided |\n\nMost non-trivial needs engage more than one category (e.g., a new capability commonly needs both a Skill for judgment and a Workflow to orchestrate invoking it). Note every genuinely engaged category — these become inputs to which construct type(s) are needed in step 4.",
+    "7": "[.claude/skills/ai-architect/SKILL.md#3-evaluate-trade-offs]\n\n### 3. Evaluate Trade-offs\n\nBefore deciding what to write, decide whether authoring a new construct is the right move at all:\n\n- **Construct proliferation risk** — does an existing Skill, Agent, Workflow, or Instruction already cover this, even partially? A near-duplicate construct fragments the routing surface and creates maintenance drift.\n- **Category boundary correctness** — is this genuinely a Skill (how to think), a Workflow (what steps to run), an Agent (who orchestrates, within what persona/scope), or an Instruction (who am I, and what are my non-negotiable constraints)? Misplacing judgment in a Workflow, or operational steps in a Skill, is the most common construct-authoring defect (STD-TEC-AI-004 MR-2, STD-TEC-AI-001 MR-6.5).\n- **Cross-vendor parity cost** — Skills, Workflows, and file-pattern Instructions all require a Claude Code file and a GitHub Copilot counterpart (PTN-TEC-AI-003). Factor this into the authoring order and effort estimate.\n- **Least privilege for Agents** — a new Agent's tool grants must be justified by its scope, not requested broadly \"to be safe\" (STD-TEC-AI-002 MR-4.2).\n\nState a recommendation with rationale — not a menu of options without a conclusion.",
+    "8": "[.claude/skills/ai-architect/SKILL.md#4-apply-the-construct-taxonomy]\n\n### 4. Apply the Construct Taxonomy\n\nClassify the need against the functional purpose of each author-facing category — select the type whose question matches the need, never the type that happens to be most familiar:\n\n| Category | Question It Answers | Functional Purpose |\n|---|---|---|\n| **Skill** | How should the agent reason about this domain? | Reusable, bounded cognitive judgment an agent invokes |\n| **Agent** | Who orchestrates this, in what persona, and within what scope/tools? | The decision-making and orchestration entity (autonomous, chat-driven, or both) |\n| **Workflow** | What steps should run, in what order, with which tool calls? | A repeatable, named operational procedure (Command + Prompt) |\n| **Instruction** | What is this agent's identity, its routing model, and its non-negotiable constraints? | The repository-level system prompt (`CLAUDE.md` / `copilot-instructions.md` / `AGENTS.md`) |\n| **File-Pattern Instruction** | What conditional behavior applies only when touching a specific file type? | Additive, scoped behavioral context loaded only when relevant |\n\nA single need often requires more than one construct — for example, a new authoring capability typically needs a Skill (the judgment), a Command + Prompt pair (the orchestration), and an Instruction Registry/Routing Table update (discoverability). Identify every type genuinely needed. Do not force one construct to carry a purpose it doesn't fit.",
+    "9": "[.claude/skills/ai-architect/SKILL.md#5-determine-placement]\n\n### 5. Determine Placement\n\nEvery construct has an exact, standard-defined location — this is not a judgment call, it is a lookup:\n\n| Category | Claude Code Path | GitHub Copilot Path | Governing Standard |\n|---|---|---|---|\n| Skill | `.claude/skills/<name>/SKILL.md` | `.github/skills/<name>/SKILL.md` (pointer) | [STD-TEC-AI-001](../../../standards/technology/ai-development/STD-TEC-AI-001-skill-authoring.md) |\n| Agent | `.claude/agents/<name>.md` (dispatchable sub-agent, optional) | `.github/agents/<name>.agent.md` | [STD-TEC-AI-002](../../../standards/technology/ai-development/STD-TEC-AI-002-agent-definition.md), [STD-TEC-AI-006](../../../standards/technology/ai-development/STD-TEC-AI-006-chat-driven-agent-standard.md) (chat-driven) |\n| Workflow | `.claude/commands/<name>.md` | `.github/prompts/<name>.prompt.md` | [STD-TEC-AI-004](../../../standards/technology/ai-development/STD-TEC-AI-004-workflow-authoring.md) |\n| Instruction | `CLAUDE.md` / `.claude/CLAUDE.md` | `.github/copilot-instructions.md` (+ `AGENTS.md`, cross-vendor, repo root) | [STD-TEC-AI-003](../../../standards/technology/ai-development/STD-TEC-AI-003-instruction-file.md) |\n| File-Pattern Instruction | `.claude/rules/<name>.md` | `.github/instructions/<name>.instructions.md` | [STD-TEC-AI-005](../../../standards/technology/ai-development/STD-TEC-AI-005-file-pattern-instruction.md) |",
+    "10": "[.claude/skills/ai-architect/SKILL.md#6-survey-existing-coverage]\n\n### 6. Survey Existing Coverage\n\nBefore recommending anything new, search for existing constructs that already address the need, in full or in part:\n\n- `.claude/skills/*/SKILL.md` and `.github/skills/*/SKILL.md` for related Skills\n- `.github/agents/*.agent.md` and `.claude/agents/*.md` for related Agents\n- `.claude/commands/*.md` and `.github/prompts/*.prompt.md` for related Workflows\n- `CLAUDE.md`, `.github/copilot-instructions.md`, `AGENTS.md` (if present) for existing Instruction coverage\n- `.claude/rules/*.md` and `.github/instructions/*.instructions.md` for related file-pattern Instructions\n\nClassify each discovered construct's relationship to the need as one of: **fully covers** (no new construct needed — reference the existing one), **partially covers** (a revision to the existing construct is the right action instead of a new one), or **unrelated** (proceed to recommend new work). Cite every discovered construct that informed the recommendation, whether it changed the outcome or not.",
+    "11": "[.claude/skills/ai-architect/SKILL.md#7-recommend-the-construct-set]\n\n### 7. Recommend the Construct Set\n\nFor each construct type genuinely needed (step 4) that isn't already covered (step 6), state:\n\n- The construct type and a working name (kebab-case)\n- The target path(s) from the step 5 table (both vendor forms where applicable)\n- Whether this is new authorship or a revision of an existing construct\n- A justification tying it back to the need, citing the specific engaged category (step 2) and trade-off finding (step 3) that drove the choice — not just a restatement of the taxonomy question\n\nWhen multiple constructs are recommended, state the authoring order — a Skill should typically exist before the Agent or Workflow that composes it, and an Agent's routing table entries should resolve to Workflows that exist (or are drafted in the same plan) rather than pointing forward to nothing.",
+    "12": "[.claude/skills/ai-architect/SKILL.md#8-verify-against-authoring-constraints]\n\n### 8. Verify Against Authoring Constraints\n\nBefore finalizing the recommendation, check it against these constraints:\n\n- Skills use only `name` and `description` in frontmatter — no vendor-specific fields (STD-TEC-AI-001 MR-4.6)\n- Agent `tools:` declarations use real platform tool/tool-set/MCP-tool names, least privilege, never omitted (STD-TEC-AI-002 MR-4)\n- Workflows do not embed domain judgment inline — they reference the owning Skill by canonical path (STD-TEC-AI-004 MR-2, MR-7)\n- Instructions contain no secrets and no instructions that bypass governance (STD-TEC-AI-003 MR-6)\n- File-pattern Instructions use specific, non-catch-all glob patterns and stay additive to root instructions, never duplicating them (STD-TEC-AI-005 MR-4, MR-5.5)\n- Every routing table entry (in an Agent or Instruction file) resolves to a construct that exists or is being created in the same plan — an unresolvable entry is a Critical defect (STD-TEC-AI-006 MR-6.2)",
+    "13": "[.claude/skills/ai-architect/SKILL.md#9-apply-type-specific-authoring-and-maintenance-judgment]\n\n### 9. Apply Type-Specific Authoring and Maintenance Judgment\n\nThis is the cognitive check a Command's mechanical steps cannot perform on their own — it applies whenever content for a recommended construct is being drafted or revised, whether by this Skill's own reasoning or by a Command consuming this Skill.\n\n**Skill**\n- Is the scope expressible in one sentence completing \"This skill enables the agent to…\" (STD-TEC-AI-001 MR-2.3)? A Skill that needs \"and\" to describe its scope is two Skills.\n- Does the Workflow section describe cognitive steps (analyze, evaluate, rank) rather than tool invocations (`gh api`, `git push`)? Tool orchestration belongs in a Workflow, not here (MR-6.5).\n- Do the Guidelines include both an ownership declaration (what it creates/modifies vs. only reads) and a delegation directive (explicit \"Delegate to `/x`\" for out-of-scope work)?\n- Maintenance rule: a revision that adds tool-invocation steps has drifted into Workflow territory — flag this as a boundary violation, not \"adding detail.\"\n\n**Agent**\n- Does the persona declaration (\"You are a [role] agent…\") open the instructions — mandatory for chat-driven Agents (STD-TEC-AI-006 MR-4.1), recommended for all others?\n- Does its scope avoid full overlap with another Agent in the repository (STD-TEC-AI-002 MR-3.1)? If multiple Agents exist, is a separation-of-duties matrix declared?\n- Is the `tools:` list least-privilege and does it use real, platform-recognized names — never omitted for unrestricted access (MR-4.2, MR-4.5)?\n- For chat-driven Agents: are Intent Classification and a Routing Table present, with every entry resolving to an existing (or co-planned) file (STD-TEC-AI-006 MR-2.4, MR-6.2 — an unresolvable entry is Critical)?\n- For subagent composition: when `agents:` is populated, is the `agent` tool present in `tools:` (STD-TEC-AI-002 MR-10.2)?\n- Maintenance rule: expanding an Agent's tool grants or scope requires re-justifying least privilege explicitly — it is never a silent \"while we're at it\" addition.\n\n**Workflow**\n- Does it orchestrate — explicit tool invocations and ordered steps — rather than embed domain judgment inline (STD-TEC-AI-004 MR-2)?\n- When domain judgment is genuinely interwoven with the procedure, is the owning Skill referenced by canonical path at that point, rather than the judgment being restated inline (MR-2.6)?\n- Do the Claude Command and Copilot Prompt exist as a pair, with the Prompt delegating to the Command as source of truth (MR-1.5, MR-4.2)?\n- Maintenance rule: a revision that inlines a Skill's judgment instead of referencing it has drifted out of scope for a Workflow — redirect it back to a canonical-path reference.\n\n**Instruction**\n- Are all MR-2 required sections present, in MR-3's canonical order (Project Overview → Setup → Structure → Skill Registry → Intent Routing → Role Guidance → Conventions → Glossary → Constraints)?\n- Are the Skill Registry and Intent Routing Table both present and do they reflect the *actual* current catalog of Skills and Workflows (STD-TEC-AI-003 MR-8, MR-9) — not a stale snapshot?\n- Is cross-vendor parity intact between `CLAUDE.md` and `.github/copilot-instructions.md` (MR-4)?\n- Maintenance rule: adding a new Skill, Agent, or Workflow anywhere in the repository is only complete once the relevant registry/routing entries are current — but see the Guidelines note on this repository's own precedent below before assuming every new construct requires a root-instruction-file edit.\n\n**File-Pattern Instruction**\n- Is the glob pattern specific rather than catch-all (STD-TEC-AI-005 MR-4.2; `**/*` is prohibited outright)?\n- Does the body stay under the ~2,000-token budget and remain additive — it must not duplicate guidance already in the root instruction file (MR-5.3, MR-5.5)?\n- Does it avoid smuggling in multi-step cognitive judgment that belongs in a Skill, or operational procedures that belong in a Workflow (Prohibited Practices #1, #2)?\n- Maintenance rule: a Rule that grows into a decision framework has outgrown its category — recommend extracting it into a Skill instead of continuing to expand the Rule.",
+    "14": "[.claude/skills/ai-architect/SKILL.md#10-apply-revision-scope-and-impact-discipline]\n\n### 10. Apply Revision Scope and Impact Discipline\n\nApply this whenever a construct is being revised — including on repeated passes through a convergence loop (author drafts, reviewer finds issues, author revises, reviewer re-reviews):\n\n- **Scope discipline**: every change in a revision must trace to a specific requested change or a named review finding. Do not restructure, rewrite, or expand sections that were not implicated by the request.\n- **Convergence-loop discipline**: on each subsequent revision pass, act only on what is newly flagged in that pass. Do not re-open a decision, section, or finding that was already resolved and confirmed in a prior pass unless the current request explicitly reopens it.\n- **Impact assessment**: before revising a construct — especially before narrowing its scope, renaming it, or changing its tool grants — search the repository for other constructs that reference it (a Workflow's routing-table entry pointing to it, an Agent's `agents:`/Skill-reference list including it, an Instruction file's registry row naming it). State what you find. If a referencing construct would become inconsistent with the revision, flag it as a follow-up recommendation rather than silently leaving the inconsistency unaddressed, and rather than silently expanding this revision's scope to fix it too.",
+    "15": "[.claude/skills/ai-architect/SKILL.md#guidelines]\n\n## Guidelines\n\n- This Skill owns: AI construct-type determination, existing-coverage evaluation, and per-type authoring/maintenance judgment for Skills, Agents, Workflows, Instructions, and file-pattern Instructions.\n- This Skill reads but does not modify: any file in `.claude/skills/`, `.github/skills/`, `.github/agents/`, `.claude/agents/`, `.claude/commands/`, `.github/prompts/`, `.claude/rules/`, `.github/instructions/`, or root-level instruction files — it judges and recommends, it does not draft or write.\n- This Skill produces a recommendation and judgment findings only. It MUST NOT invoke Commands or Agents directly — the invoking agent or Command is responsible for acting on what this Skill returns.\n- Delegate to `enterprise-architect` when a request turns out to be about the EA artifact taxonomy (`foundation/CONTRIBUTING.md`) rather than an AI construct — this is the one legitimate handoff, since it targets another Skill's reasoning, not a Command or Agent.\n- **Precedent note on root-instruction-file registration**: this repository's existing `enterprise-architect` Skill and the `/adr`, `/pattern`, `/standard`, `/guidance`, `/white-paper` Commands are *not* registered in `CLAUDE.md`'s Skill Registry or Intent Routing Table — they are invoked directly via the `ea-author`/`ea-reviewer` Agents' own self-contained Intent Classification and Routing Table, not through the root Instruction file's routing. Apply step 9's Instruction maintenance rule for constructs actually intended to be discoverable through the *default* chat persona's routing; do not force a registration this repository's own established pattern does not use for Agent-scoped constructs.\n- Never recommend a construct type solely because it's the most familiar one — always test the need against the functional-purpose question in step 4 first.\n- Never approve content solely because it follows the template structure — structural completeness is necessary but not sufficient; the step 9 judgment questions must also be satisfied.\n- Never let a revision pass expand beyond what step 10 authorizes — repeated invocation in a convergence loop must converge toward completion, not accumulate new scope with every pass."
+  },
+  "coverage": {
+    "total_pages": 15,
+    "covered_pages": 15,
+    "sampled_pages": 15,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 15
+  }
+}

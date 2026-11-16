@@ -1,0 +1,36 @@
+door:
+  id: file-transfer-svc-query-service-get-integration-file-2
+  kind: wcf
+  name: GetIntegrationFile
+  class: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvcCore\FileTransferSvcQueryService.cs
+  line: 41
+  entry:
+  - HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService.GetIntegrationFile(HPP.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.GetIntegrationFileQuery)
+procedures: []
+tables: []
+shared_uses: []
+external_uses:
+- package: hpp.core.bas.cqrs
+  version: 30.0.0
+  method: HPP.Core.BAS.CQRS.Base.QueryServiceBase.TryRoute<TQuery>(TQuery)
+  calls:
+  - at: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvcCore\FileTransferSvcQueryService.cs:48
+    type_arguments:
+    - HPP.Core.BAS.CQRS.Base.Query
+    arguments:
+    - name: query
+      expression: query
+polymorphic_hooks: []
+stops: []
+calls:
+- from: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService.GetIntegrationFile(HPP.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.GetIntegrationFileQuery)
+  via: INVOKES
+  to: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService.TryRouteQuery(HPP.Core.BAS.CQRS.Base.Query)
+methods:
+- name: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService.GetIntegrationFile(HPP.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.GetIntegrationFileQuery)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvcCore\FileTransferSvcQueryService.cs
+  line: 41
+- name: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService.TryRouteQuery(HPP.Core.BAS.CQRS.Base.Query)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvcCore\FileTransferSvcQueryService.cs
+  line: 46

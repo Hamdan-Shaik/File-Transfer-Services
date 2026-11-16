@@ -1,0 +1,698 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Data Integration PySpark/Airflow Reference Architecture",
+  "document_description": "reference_architecture_id: 'REF-INF-INT-001'",
+  "total_pages": 73,
+  "tree": [
+    {
+      "title": "Data Integration PySpark/Airflow Reference Architecture",
+      "node_id": "data-integration-pysparkairflow-reference-architecture",
+      "start_index": 1,
+      "end_index": 73,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Executive Summary",
+          "node_id": "executive-summary",
+          "start_index": 3,
+          "end_index": 7,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Purpose Statement",
+              "node_id": "purpose-statement",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Business Value",
+              "node_id": "business-value",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Scope and Applicability",
+              "node_id": "scope-and-applicability",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Key Stakeholders",
+              "node_id": "key-stakeholders",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Architecture Vision and Objectives",
+          "node_id": "architecture-vision-and-objectives",
+          "start_index": 8,
+          "end_index": 12,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Vision Statement",
+              "node_id": "vision-statement",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Strategic Objectives",
+              "node_id": "strategic-objectives",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Business Alignment",
+              "node_id": "business-alignment",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Architectural Principles",
+              "node_id": "architectural-principles",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Architecture Context and Constraints",
+          "node_id": "architecture-context-and-constraints",
+          "start_index": 13,
+          "end_index": 23,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Business Context",
+              "node_id": "business-context",
+              "start_index": 14,
+              "end_index": 16,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Business Drivers",
+                  "node_id": "business-drivers",
+                  "start_index": 15,
+                  "end_index": 15,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Business Requirements",
+                  "node_id": "business-requirements",
+                  "start_index": 16,
+                  "end_index": 16,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Technical Context",
+              "node_id": "technical-context",
+              "start_index": 17,
+              "end_index": 19,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Current State Assessment",
+                  "node_id": "current-state-assessment",
+                  "start_index": 18,
+                  "end_index": 18,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Technical Requirements",
+                  "node_id": "technical-requirements",
+                  "start_index": 19,
+                  "end_index": 19,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Organizational Context",
+              "node_id": "organizational-context",
+              "start_index": 20,
+              "end_index": 23,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Organizational Capabilities",
+                  "node_id": "organizational-capabilities",
+                  "start_index": 21,
+                  "end_index": 21,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "External Context",
+                  "node_id": "external-context",
+                  "start_index": 22,
+                  "end_index": 23,
+                  "summary": "",
+                  "nodes": [
+                    {
+                      "title": "Regulatory and Compliance",
+                      "node_id": "regulatory-and-compliance",
+                      "start_index": 23,
+                      "end_index": 23,
+                      "summary": "",
+                      "nodes": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Architecture Views and Models",
+          "node_id": "architecture-views-and-models",
+          "start_index": 24,
+          "end_index": 39,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Business Architecture View",
+              "node_id": "business-architecture-view",
+              "start_index": 25,
+              "end_index": 27,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Business Capabilities",
+                  "node_id": "business-capabilities",
+                  "start_index": 26,
+                  "end_index": 26,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Business Processes",
+                  "node_id": "business-processes",
+                  "start_index": 27,
+                  "end_index": 27,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Application Architecture View",
+              "node_id": "application-architecture-view",
+              "start_index": 28,
+              "end_index": 30,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Application Components",
+                  "node_id": "application-components",
+                  "start_index": 29,
+                  "end_index": 29,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Service Architecture",
+                  "node_id": "service-architecture",
+                  "start_index": 30,
+                  "end_index": 30,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Data Architecture View",
+              "node_id": "data-architecture-view",
+              "start_index": 31,
+              "end_index": 33,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Data Entities",
+                  "node_id": "data-entities",
+                  "start_index": 32,
+                  "end_index": 32,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Data Flow Patterns",
+                  "node_id": "data-flow-patterns",
+                  "start_index": 33,
+                  "end_index": 33,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Technology Architecture View",
+              "node_id": "technology-architecture-view",
+              "start_index": 34,
+              "end_index": 36,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Technology Stack",
+                  "node_id": "technology-stack",
+                  "start_index": 35,
+                  "end_index": 35,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Deployment Models",
+                  "node_id": "deployment-models",
+                  "start_index": 36,
+                  "end_index": 36,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Security Architecture View",
+              "node_id": "security-architecture-view",
+              "start_index": 37,
+              "end_index": 39,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Security Domains",
+                  "node_id": "security-domains",
+                  "start_index": 38,
+                  "end_index": 38,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Security Architecture Diagram",
+                  "node_id": "security-architecture-diagram",
+                  "start_index": 39,
+                  "end_index": 39,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Component Specifications",
+          "node_id": "component-specifications",
+          "start_index": 40,
+          "end_index": 51,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Core Components",
+              "node_id": "core-components",
+              "start_index": 41,
+              "end_index": 46,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Component 1: Amazon MWAA (Airflow Orchestrator)",
+                  "node_id": "component-1-amazon-mwaa-airflow-orchestrator",
+                  "start_index": 42,
+                  "end_index": 42,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Component 2: Amazon EMR on EKS (Spark Processing — Batch)",
+                  "node_id": "component-2-amazon-emr-on-eks-spark-processing--batch",
+                  "start_index": 43,
+                  "end_index": 43,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Component 3: Amazon EMR Serverless (Spark Processing — Serverless)",
+                  "node_id": "component-3-amazon-emr-serverless-spark-processing--serverless",
+                  "start_index": 44,
+                  "end_index": 44,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Component 4: Pipeline-as-Code Repository (DAG Repo)",
+                  "node_id": "component-4-pipeline-as-code-repository-dag-repo",
+                  "start_index": 45,
+                  "end_index": 45,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Component 5: AWS Glue Data Catalog",
+                  "node_id": "component-5-aws-glue-data-catalog",
+                  "start_index": 46,
+                  "end_index": 46,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Component Interfaces",
+              "node_id": "component-interfaces",
+              "start_index": 47,
+              "end_index": 50,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Interface 1: Airflow → EMR on EKS (Job Submission)",
+                  "node_id": "interface-1-airflow--emr-on-eks-job-submission",
+                  "start_index": 48,
+                  "end_index": 48,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Interface 2: EMR → S3 (Data Read/Write)",
+                  "node_id": "interface-2-emr--s3-data-readwrite",
+                  "start_index": 49,
+                  "end_index": 49,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Interface 3: Airflow → Secrets Manager (Connection Resolution)",
+                  "node_id": "interface-3-airflow--secrets-manager-connection-resolution",
+                  "start_index": 50,
+                  "end_index": 50,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Component Dependencies",
+              "node_id": "component-dependencies",
+              "start_index": 51,
+              "end_index": 51,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Implementation Guidelines",
+          "node_id": "implementation-guidelines",
+          "start_index": 52,
+          "end_index": 57,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Implementation Approach",
+              "node_id": "implementation-approach",
+              "start_index": 53,
+              "end_index": 56,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Phase 1: Foundation Infrastructure",
+                  "node_id": "phase-1-foundation-infrastructure",
+                  "start_index": 54,
+                  "end_index": 54,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Phase 2: Core Pipeline Migration",
+                  "node_id": "phase-2-core-pipeline-migration",
+                  "start_index": 55,
+                  "end_index": 55,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Phase 3: Complete Migration and Decommission",
+                  "node_id": "phase-3-complete-migration-and-decommission",
+                  "start_index": 56,
+                  "end_index": 56,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Airflow DAG Authoring Standards",
+              "node_id": "airflow-dag-authoring-standards",
+              "start_index": 57,
+              "end_index": 57,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Deployment and Operations",
+          "node_id": "deployment-and-operations",
+          "start_index": 58,
+          "end_index": 62,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Deployment Topology",
+              "node_id": "deployment-topology",
+              "start_index": 59,
+              "end_index": 59,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "SLO Definitions",
+              "node_id": "slo-definitions",
+              "start_index": 60,
+              "end_index": 60,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Operational Runbooks",
+              "node_id": "operational-runbooks",
+              "start_index": 61,
+              "end_index": 61,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Monitoring and Observability",
+              "node_id": "monitoring-and-observability",
+              "start_index": 62,
+              "end_index": 62,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Governance and Compliance",
+          "node_id": "governance-and-compliance",
+          "start_index": 63,
+          "end_index": 66,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Architecture Governance",
+              "node_id": "architecture-governance",
+              "start_index": 64,
+              "end_index": 64,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "HIPAA Compliance Checklist",
+              "node_id": "hipaa-compliance-checklist",
+              "start_index": 65,
+              "end_index": 65,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "MITA 3.0 Alignment",
+              "node_id": "mita-30-alignment",
+              "start_index": 66,
+              "end_index": 66,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Examples and Use Cases",
+          "node_id": "examples-and-use-cases",
+          "start_index": 67,
+          "end_index": 70,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Use Case 1: Daily Claims Data Warehouse Load",
+              "node_id": "use-case-1-daily-claims-data-warehouse-load",
+              "start_index": 68,
+              "end_index": 68,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Use Case 2: Eligibility SFTP Feed Ingestion",
+              "node_id": "use-case-2-eligibility-sftp-feed-ingestion",
+              "start_index": 69,
+              "end_index": 69,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Use Case 3: Near-Real-Time Kafka Micro-Batch",
+              "node_id": "use-case-3-near-real-time-kafka-micro-batch",
+              "start_index": 70,
+              "end_index": 70,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Related Architectures and References",
+          "node_id": "related-architectures-and-references",
+          "start_index": 71,
+          "end_index": 71,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Change History",
+          "node_id": "change-history",
+          "start_index": 72,
+          "end_index": 72,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Review Log",
+          "node_id": "review-log",
+          "start_index": 73,
+          "end_index": 73,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#data-integration-pysparkairflow-reference-architecture]\n\n# Data Integration PySpark/Airflow Reference Architecture\n\n**← Back to [EAP Home](../../../README.md) • [Strategy](../../README.md) • [Reference Architectures](../README.md)**\n\n---\n\n**Reference Architecture Metadata**\n\n```yaml\nreference_architecture_id: 'REF-INF-INT-001'\nreference_architecture_name: 'PySpark/Airflow Data Integration Platform Reference Architecture'\nreference_architecture_type: 'data-integration'\ncategory: 'data'\nversion: '1.0.0'\nstatus: 'draft'\nmaturity_level: 'physical'\ntags: ['data-integration', 'etl', 'pyspark', 'airflow', 'hipaa', 'cloud-native', 'batch', 'streaming']\n```\n\n---",
+    "2": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#table-of-contents]\n\n## Table of Contents\n\n- [Executive Summary](#executive-summary)\n- [Architecture Vision and Objectives](#architecture-vision-and-objectives)\n- [Architecture Context and Constraints](#architecture-context-and-constraints)\n- [Architecture Views and Models](#architecture-views-and-models)\n- [Component Specifications](#component-specifications)\n- [Implementation Guidelines](#implementation-guidelines)\n- [Deployment and Operations](#deployment-and-operations)\n- [Governance and Compliance](#governance-and-compliance)\n- [Examples and Use Cases](#examples-and-use-cases)\n- [Related Architectures and References](#related-architectures-and-references)\n- [Change History](#change-history)\n- [Review Log](#review-log)\n\n---",
+    "3": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#executive-summary]\n\n## Executive Summary",
+    "4": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#purpose-statement]\n\n### Purpose Statement\n\nThis reference architecture defines the component model, deployment topology, data flow patterns, security controls, and operational model for the **PySpark/Airflow Data Integration Platform** — the enterprise-standard replacement for SQL Server Integration Services (SSIS) at Gainwell Technologies. It provides development teams, infrastructure engineers, and data engineers with a prescriptive blueprint for building, deploying, and operating cloud-native data pipelines on Amazon Web Services.",
+    "5": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#business-value]\n\n### Business Value\n\n- **Cloud-Native Data Integration**: All pipelines run as containerized, Linux-native workloads on Amazon EKS — no Windows Server dependencies remain in the data integration estate\n- **Scalable Processing**: Apache Spark provides horizontal scale-out for growing healthcare data volumes without replatforming\n- **Testable and Auditable Pipelines**: Python DAGs are version-controlled, peer-reviewed, unit-tested, and produce CloudTrail-auditable logs — strengthening HIPAA compliance posture\n- **Operational Efficiency**: Amazon MWAA (managed Airflow) and EMR Serverless eliminate scheduler and cluster management overhead\n- **Cost Optimization**: Serverless and spot-instance compute for batch workloads reduces data integration infrastructure cost relative to always-on Windows SSIS servers",
+    "6": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#scope-and-applicability]\n\n### Scope and Applicability\n\nThis reference architecture applies to all Gainwell data integration workloads, including:\n\n- **Batch ETL**: Scheduled data extraction, transformation, and load into data warehouses, operational stores, and analytical datasets\n- **Incremental/CDC Pipelines**: Change-data-capture and delta-load patterns for near-real-time data synchronization\n- **Regulated Reporting**: State reporting pipelines, CMS submission data preparation, and audit trail generation\n- **System-to-System Integration**: File-based and API-based data exchange patterns currently served by SSIS (SFTP feeds, REST API ingestion, EDI-adjacent flat-file transformations)\n- **Near-Real-Time Micro-Batch**: Airflow-orchestrated Kafka consumer pipelines for latency-sensitive but not sub-second use cases\n\nThis architecture does not replace the enterprise event streaming platform (see [enterprise-eventing-as-a-service.md](../../white-papers/engineering/enterprise-eventing-as-a-service.md)) for sub-second streaming use cases.",
+    "7": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#key-stakeholders]\n\n### Key Stakeholders\n\n| Stakeholder Group | Interest |\n| ----------------- | -------- |\n| Data Engineering Teams | Pipeline development patterns, DAG authoring standards, PySpark library |\n| Infrastructure / Platform Engineering | MWAA/EMR provisioning, IaC modules, networking and security configuration |\n| Security / HIPAA Compliance | PHI data controls, encryption, audit logging, access management |\n| Data Architecture | Data lineage, schema governance, catalog integration |\n| Operations / SRE | Observability, alerting, incident response, SLO management |\n| Technology Domain EA Lead | Architectural conformance and platform evolution decisions |\n\n---",
+    "8": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#architecture-vision-and-objectives]\n\n## Architecture Vision and Objectives",
+    "9": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#vision-statement]\n\n### Vision Statement\n\nThe PySpark/Airflow Data Integration Platform is a cloud-native, Python-centric capability that enables Gainwell's data engineers to build, test, deploy, and operate enterprise data pipelines as version-controlled code — eliminating Windows infrastructure dependencies, providing horizontal scale for healthcare data volumes, and maintaining the highest HIPAA data handling standards.",
+    "10": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#strategic-objectives]\n\n### Strategic Objectives\n\n- **Objective 1**: Provide a fully managed, cloud-native Airflow orchestration environment (MWAA) that replaces SQL Server Agent SSIS scheduling with no dedicated Windows scheduler infrastructure\n- **Objective 2**: Provide a scalable PySpark execution environment (EMR on EKS / EMR Serverless) that supports both fixed-schedule batch ETL and on-demand processing\n- **Objective 3**: Establish pipelines-as-code as the standard delivery model — all pipeline definitions are Python DAGs in source control, deployable via CI/CD\n- **Objective 4**: Ensure all pipelines processing PHI data meet HIPAA Technical Safeguard requirements through platform-level security controls\n- **Objective 5**: Provide a unified observability model — task metrics, SLA alerting, data quality gates, and operational runbooks — for all data integration workloads",
+    "11": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#business-alignment]\n\n### Business Alignment\n\nThis platform directly supports:\n\n- **Gainwell Connect™** data integration capabilities (system-to-system integration, data transformation, legacy modernization)\n- The organization's cloud-native modernization strategy ([ADR-IFR-002](../../../decisions/infrastructure/ADR-IFR-002-cloud-native-strategy.md))\n- The SSIS retirement program ([ADR-TEC-018](../../../decisions/technology/ADR-TEC-018-ssis-replacement-platform-selection.md))\n- HIPAA Technical Safeguard compliance for PHI data in transit and at rest\n- MITA 3.0 capability maturity Level 3+ for data integration",
+    "12": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#architectural-principles]\n\n### Architectural Principles\n\n- **Principle 1: Cloud-Native First** — All platform components use managed AWS services; self-managed infrastructure is only justified by specific compliance or performance requirements\n- **Principle 2: Pipelines as Code** — Every pipeline is a versioned Python artifact; no pipeline can enter production without a pull request review and CI validation\n- **Principle 3: Security by Default** — PHI pipelines are encrypted at rest (KMS) and in transit (TLS); IAM least-privilege roles are the only access mechanism; no static credentials\n- **Principle 4: Observable by Design** — Every pipeline publishes task-level metrics, logs, and data quality results; SLOs are defined at pipeline creation, not retrospectively\n- **Principle 5: Fail Safe** — All pipelines implement retry logic with exponential back-off; failures are alerted before business deadlines are missed (SLA alerts precede SLA breach)\n\n---",
+    "13": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#architecture-context-and-constraints]\n\n## Architecture Context and Constraints",
+    "14": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#business-context]\n\n### Business Context",
+    "15": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#business-drivers]\n\n#### Business Drivers\n\n- **Healthcare Data Volume Growth**: Claims, eligibility, and population health datasets are growing — SSIS's single-node execution model cannot sustain this growth\n- **Cloud-Native Program**: Enterprise roadmap requires zero Windows-only workloads by end of 2026; SSIS is the last major Windows-only category\n- **Regulatory Reporting Timelines**: State agencies and CMS have strict submission deadlines; pipeline SLA misses have contractual and regulatory consequences",
+    "16": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#business-requirements]\n\n#### Business Requirements\n\n- **Requirement 1**: All pipelines feeding CMS regulatory submissions must produce lineage records and transformation audit logs\n- **Requirement 2**: PHI data at rest in any intermediate store (S3 staging, EMR local disk) must be encrypted with AWS KMS CMKs\n- **Requirement 3**: Pipeline execution must be auditable to individual user action — no shared service accounts with write access to PHI data",
+    "17": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#technical-context]\n\n### Technical Context",
+    "18": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#current-state-assessment]\n\n#### Current State Assessment\n\n- Gainwell operates an SSIS estate of batch ETL, data warehouse feed, eligibility, claims, and reporting pipelines running on Windows-based SQL Server Agent hosts\n- All SSIS execution infrastructure is Windows-only, preventing containerization or Kubernetes deployment\n- The SQL Server Windows Authentication dependency ([RCA-TEC-001](../../../rcas/technology/RCA-TEC-001-sql-windows-auth-dependency.md)) affects source system connectivity for SSIS pipelines\n- There is no systematic unit testing, data quality monitoring, or SLO tracking for SSIS pipelines\n- Migration is tracked in the SSIS to PySpark/Airflow Migration Strategy ([ssis-to-pyspark-airflow-migration-strategy.md](../../white-papers/data/ssis-to-pyspark-airflow-migration-strategy.md))",
+    "19": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#technical-requirements]\n\n#### Technical Requirements\n\n- **Performance**: EMR Serverless jobs must complete within the job SLA window; MWAA scheduler must support ≥500 concurrent DAG runs without degradation\n- **Availability**: MWAA availability SLA ≥99.9% (per AWS managed service SLA); EMR Serverless jobs retry on transient failure up to 3 times\n- **Security**: All data in transit uses TLS 1.2+; all data at rest uses AES-256 (KMS); IAM roles enforce least privilege; no public internet exposure for data pipelines",
+    "20": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#organizational-context]\n\n### Organizational Context",
+    "21": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#organizational-capabilities]\n\n#### Organizational Capabilities\n\n- Data engineering teams require Python and PySpark upskilling (see Migration Strategy Phase 1)\n- Platform/Infrastructure teams own MWAA and EMR IaC modules; data engineering teams own DAG content\n- Security team co-approves PHI pipeline migrations and quarterly compliance reviews",
+    "22": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#external-context]\n\n#### External Context",
+    "23": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#regulatory-and-compliance]\n\n##### Regulatory and Compliance\n\n- **HIPAA 45 CFR §164.312**: Technical Safeguards for PHI require access controls, audit controls, transmission security, and integrity controls — all addressed in this architecture's security view\n- **MITA 3.0**: Medicaid modernization framework requires documented, measurable data integration capabilities at Level 3+ maturity\n- **CMS Certification**: State Medicaid programs require auditable data lineage for CMS reporting pipelines\n\n---",
+    "24": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#architecture-views-and-models]\n\n## Architecture Views and Models",
+    "25": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#business-architecture-view]\n\n### Business Architecture View",
+    "26": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#business-capabilities]\n\n#### Business Capabilities\n\n| Capability Area | Description | Architecture Support |\n| --------------- | ----------- | -------------------- |\n| Batch ETL | Scheduled extraction, transformation, and load of enterprise data | Airflow DAGs + EMR PySpark jobs |\n| Incremental/CDC Load | Delta-based data synchronization from operational systems | Airflow sensors + PySpark with watermark patterns |\n| Regulatory Reporting | Preparation and validation of CMS and state agency data submissions | PySpark transformation + Great Expectations quality gates |\n| File-Based Integration | SFTP/S3 ingest, flat-file parsing, EDI-adjacent transformation | Airflow FileSensor + PySpark file processing |\n| Near-Real-Time Micro-Batch | Kafka-sourced pipeline processing with sub-minute latency | Airflow KafkaSensor + EMR Serverless micro-batch |\n| Data Quality Management | Automated assertion testing on pipeline output | Great Expectations / AWS Deequ integrated in every DAG |\n| Data Lineage | End-to-end lineage tracking from source to target | AWS Glue Data Catalog + OpenLineage metadata |",
+    "27": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#business-processes]\n\n#### Business Processes\n\n- **Pipeline Delivery Process**: Developer writes DAG → PR review → CI validation → CD deploy to MWAA → monitored execution → SLA alerts\n- **PHI Pipeline Approval Process**: Standard pipeline delivery + Security team HIPAA controls review + data classification tagging\n- **Incident Response Process**: Airflow alert fires → on-call engineer follows runbook → root cause documented → postmortem if SLA missed",
+    "28": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#application-architecture-view]\n\n### Application Architecture View\n\n```mermaid\ngraph TD\n    subgraph Source Systems\n        SS1[SQL Server / RDS]\n        SS2[SFTP / S3 Feeds]\n        SS3[REST APIs]\n        SS4[Kafka Topics]\n    end\n\n    subgraph Orchestration Layer\n        MWAA[Amazon MWAA\\nAirflow Scheduler + Webserver]\n        DAGS[DAG Repository\\nGitHub + CI/CD]\n    end\n\n    subgraph Processing Layer\n        EMR_EKS[Amazon EMR on EKS\\nPySpark Jobs - Scheduled/Large Batch]\n        EMR_SLS[Amazon EMR Serverless\\nPySpark Jobs - Bursty/Variable]\n    end\n\n    subgraph Storage Layer\n        S3_RAW[S3 Raw Zone\\nEncrypted with KMS]\n        S3_STAGE[S3 Staging Zone\\nEncrypted with KMS]\n        S3_CURATED[S3 Curated Zone\\nEncrypted with KMS]\n        CATALOG[AWS Glue Data Catalog]\n    end\n\n    subgraph Target Systems\n        RDS_PG[Amazon RDS PostgreSQL\\nOperational Stores]\n        REDSHIFT[Amazon Redshift\\nData Warehouse]\n        DDB[Amazon DynamoDB\\nLow-Latency Lookups]\n    end\n\n    subgraph Observability\n        CW[Amazon CloudWatch\\nMetrics + Logs + Alarms]\n        AIRFLOW_UI[Airflow Web UI\\nDAG Monitor + SLA Alerts]\n        GE[Great Expectations\\nData Quality Reports]\n    end\n\n    DAGS --> MWAA\n    MWAA --> EMR_EKS\n    MWAA --> EMR_SLS\n    SS1 --> S3_RAW\n    SS2 --> S3_RAW\n    SS3 --> S3_RAW\n    SS4 --> EMR_SLS\n    EMR_EKS --> S3_STAGE\n    EMR_SLS --> S3_STAGE\n    S3_STAGE --> S3_CURATED\n    S3_RAW --> CATALOG\n    S3_STAGE --> CATALOG\n    S3_CURATED --> CATALOG\n    S3_CURATED --> RDS_PG\n    S3_CURATED --> REDSHIFT\n    S3_CURATED --> DDB\n    EMR_EKS --> CW\n    EMR_SLS --> CW\n    MWAA --> CW\n    MWAA --> AIRFLOW_UI\n    EMR_EKS --> GE\n```",
+    "29": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#application-components]\n\n#### Application Components\n\n| Component | Purpose | Interfaces | Dependencies |\n| --------- | ------- | ---------- | ------------ |\n| Amazon MWAA | Pipeline scheduling and orchestration | Airflow REST API, Web UI, DAG Git sync | GitHub DAG repo, AWS IAM, Secrets Manager |\n| EMR on EKS | Large-batch PySpark job execution | Spark Submit via Airflow EMRContainerOperator | EKS cluster, S3, IAM roles, CloudWatch |\n| EMR Serverless | Serverless PySpark for bursty workloads | Spark Submit via Airflow EmrServerlessStartJobRunOperator | S3, IAM roles, CloudWatch |\n| AWS Glue Data Catalog | Schema registry and data lineage metadata | Glue API, Hive metastore protocol | S3, Glue crawlers, OpenLineage |\n| AWS Secrets Manager | Secure storage of data source credentials | Airflow Secrets Backend (built-in MWAA integration) | IAM roles, KMS |\n| S3 Data Lake Zones | Tiered data storage (raw, staging, curated) | S3 API | KMS, S3 bucket policies, VPC endpoints |\n| Great Expectations | Automated data quality assertions | Airflow GreatExpectationsOperator | S3 (expectation store), Slack/PagerDuty alerting |",
+    "30": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#service-architecture]\n\n#### Service Architecture\n\n- **Orchestration Layer**: MWAA manages DAG scheduling, dependency resolution, retry logic, and SLA monitoring; this is the control plane\n- **Processing Layer**: EMR on EKS (large, predictable batch) and EMR Serverless (variable, bursty) provide the compute data plane; Airflow operators submit jobs and poll completion\n- **Storage Layer**: S3 data lake with raw/staging/curated zones and Glue Data Catalog provides the data plane; all zones are KMS-encrypted",
+    "31": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#data-architecture-view]\n\n### Data Architecture View",
+    "32": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#data-entities]\n\n#### Data Entities\n\n| Entity | Description | Data Sources | Data Consumers |\n| ------ | ----------- | ------------ | -------------- |\n| Raw Ingested Data | Unmodified source extracts in original format | SQL Server, SFTP, REST APIs, Kafka | PySpark transformation jobs |\n| Staged/Transformed Data | Cleaned, validated, and enriched data in Parquet/Delta format | Raw zone | Curated zone load jobs, data quality checks |\n| Curated Data | Business-ready datasets conforming to enterprise data model | Staged zone | Redshift, RDS, DynamoDB, analytical consumers |\n| Pipeline Metadata | DAG execution history, task logs, SLA records | MWAA, CloudWatch | Operations team, SLO reporting |\n| Data Quality Results | Great Expectations validation suite results | PySpark jobs | Data engineers, data stewards, compliance reports |\n| Lineage Metadata | Source-to-target field-level transformation records | OpenLineage + Glue Catalog | Data Catalog UI, compliance audits |",
+    "33": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#data-flow-patterns]\n\n#### Data Flow Patterns\n\n**Pattern 1: Standard Batch ETL (Extract → Stage → Curate → Load)**\n\n```text\nSource System → S3 Raw (KMS encrypted)\n              → PySpark Transform (EMR) → S3 Staging (KMS encrypted)\n              → PySpark Curate (EMR) + Great Expectations → S3 Curated\n              → RDS PostgreSQL / Redshift Load\n```\n\n**Pattern 2: Incremental / Change-Data-Capture**\n\n```text\nAirflow DateSensor/FileSensor triggers daily delta extract\n→ PySpark watermark-based merge (upsert) into Staging Delta table\n→ Quality gate checks delta vs. prior day baselines\n→ Atomic swap to Curated zone\n```\n\n**Pattern 3: Near-Real-Time Micro-Batch (Kafka → S3 → Target)**\n\n```text\nAirflow KafkaSensor detects new messages → triggers EMR Serverless micro-batch job\n→ PySpark reads Kafka partition batch → transforms → writes to S3 Staging\n→ Quality checks → load to DynamoDB / RDS (low-latency target)\n→ Repeat on configurable micro-batch interval (5–15 minutes)\n```\n\n**Pattern 4: File-Based Integration (SFTP/S3 Feed)**\n\n```text\nAirflow S3KeySensor detects file arrival in S3 inbox\n→ PySpark flat-file parser (CSV, fixed-width, EDI-adjacent)\n→ Schema validation and data quality checks\n→ Write to Staging zone → Curated zone → Target store\n```",
+    "34": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#technology-architecture-view]\n\n### Technology Architecture View",
+    "35": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#technology-stack]\n\n#### Technology Stack\n\n| Layer | Technologies | Rationale | Alternatives |\n| ----- | ------------ | --------- | ------------ |\n| Orchestration | Amazon MWAA (Airflow 2.x) | Managed service, eliminates scheduler ops | Self-hosted Airflow on EKS (fallback only) |\n| Batch Processing | Amazon EMR on EKS (PySpark 3.x) | Kubernetes-native Spark, reuses EKS cluster | EMR on EC2 (legacy, not preferred) |\n| Serverless Processing | Amazon EMR Serverless (PySpark 3.x) | No cluster management, cost-optimized for bursty loads | AWS Glue (proprietary abstractions, less preferred) |\n| Data Storage | Amazon S3 + Parquet/Delta Lake | Cloud-native, cost-effective, schema-on-read | Redshift Spectrum (for warehouse queries only) |\n| Schema Registry | AWS Glue Data Catalog | Managed Hive metastore, native S3/EMR integration | Apache Atlas (self-managed, higher ops burden) |\n| Secrets | AWS Secrets Manager | MWAA built-in backend, automatic rotation, IAM-controlled | HashiCorp Vault (self-managed option) |\n| Data Quality | Great Expectations | Open-source, Airflow-native operator, rich assertion library | AWS Deequ (JVM-based, less Python-friendly) |\n| Pipeline Code | Python 3.11+ (DAGs + PySpark) | Aligns with data engineering standard; Airflow native | N/A — Python is required by Airflow/PySpark |\n| IaC | Terraform + Terragrunt | Enterprise IaC standard per ADR-TEC-006 | CDK (application-layer preference; not IaC standard) |",
+    "36": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#deployment-models]\n\n#### Deployment Models\n\n- **Standard (Recommended)**: MWAA + EMR on EKS — full Kubernetes-native deployment with MWAA managed scheduler; EMR Spark jobs run on the shared EKS cluster using the EMR on EKS virtual cluster construct\n- **Serverless**: MWAA + EMR Serverless — optimal for workloads with highly variable volume; no cluster sizing required; cold-start acceptable (< 1-minute EMR Serverless startup)\n- **Hybrid**: MWAA + EMR on EKS (large daily batch) + EMR Serverless (incremental/micro-batch) — recommended for production environments with mixed workload profiles",
+    "37": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#security-architecture-view]\n\n### Security Architecture View",
+    "38": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#security-domains]\n\n#### Security Domains\n\n| Security Domain | Controls | Implementation | Validation |\n| --------------- | -------- | -------------- | ---------- |\n| Identity & Access | IAM roles per pipeline; no shared credentials; Secrets Manager for source connections | One IAM execution role per EMR job; MWAA connections via Secrets Manager backend | AWS Access Analyzer quarterly review; no wildcard IAM policies |\n| Data Encryption at Rest | KMS CMK encryption on all S3 zones; EMR local disk encryption | S3 bucket policy enforcement `\"s3:x-amz-server-side-encryption\": \"aws:kms\"`; EMR security configuration | Quarterly S3 encryption compliance scan via AWS Config rule |\n| Data Encryption in Transit | TLS 1.2+ for all data plane connections | MWAA → S3 via HTTPS; EMR → S3 via HTTPS; JDBC connections use SSL=require | SSL enforcement via RDS parameter group and Secrets Manager connection string |\n| Network Security | All compute in VPC private subnets; no public internet access; VPC endpoints for S3, Glue, Secrets Manager | MWAA WebServer in public subnet (HTTPS only); workers in private subnet; EMR in private subnet | VPC Flow Logs analyzed for unexpected traffic patterns |\n| PHI Data Controls | PHI tag on all S3 objects containing PHI; S3 Object Lock for compliance retention; CloudTrail data events on PHI buckets | IAM policy condition `\"s3:ExistingObjectTag/DataClassification\": \"PHI\"`; CloudTrail data events enabled | Security team quarterly PHI audit; automated tag compliance check via AWS Config |\n| Audit Logging | CloudTrail API-level audit for all data access; Airflow task logs in CloudWatch and S3; MWAA audit log | CloudTrail management and data events enabled; MWAA task log shipping to CloudWatch | Compliance report generated quarterly from CloudTrail; retained 7 years per HIPAA requirement |",
+    "39": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#security-architecture-diagram]\n\n#### Security Architecture Diagram\n\n```mermaid\ngraph TD\n    subgraph AWS VPC - Private Subnets\n        MWAA_W[MWAA Workers]\n        EMR_W[EMR on EKS Pods]\n        EMR_SLS_W[EMR Serverless Executors]\n    end\n\n    subgraph AWS VPC - Public Subnet\n        MWAA_WS[MWAA Webserver\\nHTTPS Only]\n    end\n\n    subgraph AWS Managed Services via VPC Endpoints\n        S3[S3 - KMS Encrypted\\nPHI Zones Tagged]\n        SM[Secrets Manager\\nData Source Credentials]\n        GLUE[Glue Data Catalog]\n        CT[CloudTrail\\nAudit Logs]\n        CW[CloudWatch\\nTask Logs + Metrics]\n    end\n\n    subgraph IAM\n        ROLE_ETL[IAM Role: etl-job-executor\\nLeast Privilege per Pipeline]\n        ROLE_MWAA[IAM Role: mwaa-execution-role]\n    end\n\n    MWAA_W --> S3\n    MWAA_W --> SM\n    EMR_W --> S3\n    EMR_W --> GLUE\n    EMR_SLS_W --> S3\n    ROLE_ETL --> S3\n    ROLE_MWAA --> SM\n    MWAA_W --> CT\n    EMR_W --> CW\n    MWAA_WS -- HTTPS --> Users\n```\n\n---",
+    "40": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#component-specifications]\n\n## Component Specifications",
+    "41": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#core-components]\n\n### Core Components",
+    "42": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#component-1-amazon-mwaa-airflow-orchestrator]\n\n#### Component 1: Amazon MWAA (Airflow Orchestrator)\n\n**Purpose:** Managed Apache Airflow service that serves as the enterprise pipeline orchestrator — replacing SQL Server Agent for all data integration scheduling\n\n**Responsibilities:**\n\n- Schedule and execute DAGs on defined intervals (cron, event-triggered, manual)\n- Manage task dependencies, retries, and timeout enforcement\n- Expose the Airflow Web UI for pipeline monitoring, manual trigger, and SLA alerting\n- Sync DAGs from the GitHub DAG repository via S3 bucket mount\n- Authenticate to source systems and AWS services via Secrets Manager connections backend\n\n**Technical Specifications:**\n\n- Airflow 2.8+ (latest MWAA supported version)\n- Worker class: `mw1.medium` or `mw1.large` depending on concurrency requirements\n- DAG serialization enabled (XCom backend: S3)\n- MWAA environment deployed in private VPC subnets with VPC endpoints for S3, CloudWatch, and Secrets Manager\n- RBAC enabled: data engineer (read-only), pipeline operator (trigger/clear), admin (configuration)\n- CloudWatch log groups for: scheduler, webserver, worker, dag-processor",
+    "43": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#component-2-amazon-emr-on-eks-spark-processing--batch]\n\n#### Component 2: Amazon EMR on EKS (Spark Processing — Batch)\n\n**Purpose:** PySpark execution environment for large, predictable batch ETL workloads using the shared Kubernetes (EKS) cluster per [ADR-IFR-005](../../../decisions/infrastructure/ADR-IFR-005-container-deployment-strategy.md)\n\n**Responsibilities:**\n\n- Execute PySpark jobs submitted by Airflow's `EmrContainerOperator`\n- Process raw data from S3 into staged and curated S3 zones\n- Apply data quality checks via Great Expectations or Deequ within PySpark jobs\n- Emit Spark application metrics and executor logs to CloudWatch\n\n**Technical Specifications:**\n\n- EMR virtual cluster registered against the shared EKS cluster in the data namespace\n- Spark 3.5+ (matched to EMR release label)\n- Custom Docker image (ECR): base `emr-7.x`, with project PySpark libraries installed\n- Spark Submit configuration: `--conf spark.kubernetes.node.selector.role=data-worker` (dedicated node pool)\n- S3A committer: `directory` committer for atomic partition writes\n- Instance types for driver/executor: graviton3 (`r7g.xlarge` for memory-intensive transforms)",
+    "44": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#component-3-amazon-emr-serverless-spark-processing--serverless]\n\n#### Component 3: Amazon EMR Serverless (Spark Processing — Serverless)\n\n**Purpose:** Serverless PySpark execution for variable, bursty, or micro-batch workloads where cluster pre-provisioning is wasteful\n\n**Responsibilities:**\n\n- Execute PySpark jobs for incremental/CDC and micro-batch (Kafka-sourced) pipelines\n- Auto-scale vCPU and memory resources up to configured limits\n- Release all compute resources within minutes of job completion\n\n**Technical Specifications:**\n\n- Application type: Spark (managed by EMR Serverless service)\n- Pre-initialized capacity configured for latency-sensitive pipelines (avoid cold-start)\n- Maximum concurrent workers: 20 (configurable per application)\n- VPC configuration: same private subnets as EMR on EKS; VPC endpoint for S3\n- Job execution role: least-privilege IAM role per pipeline (not shared across applications)",
+    "45": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#component-4-pipeline-as-code-repository-dag-repo]\n\n#### Component 4: Pipeline-as-Code Repository (DAG Repo)\n\n**Purpose:** GitHub repository containing all Airflow DAG definitions, PySpark job scripts, shared utility libraries, and CI/CD pipeline for deployment to MWAA\n\n**Responsibilities:**\n\n- Version control for all DAG and PySpark code\n- CI validation: DAG import validation, unit tests (pytest), coverage check (≥80%), linting (ruff), type checking (mypy)\n- CD deployment: on merge to main, sync DAG files to the MWAA S3 DAGs bucket via GitHub Actions\n- Environment promotion: separate MWAA environments for dev, staging, and production with branch-based promotion\n\n**Technical Specifications:**\n\n- Repository structure:\n  ```text\n  dags/                    # Airflow DAG Python files\n  jobs/                    # PySpark job scripts (called by DAGs)\n  lib/                     # Shared PySpark transformation utilities\n  tests/                   # pytest unit tests for DAGs and PySpark functions\n  expectations/            # Great Expectations expectation suites\n  .github/workflows/       # CI/CD pipeline definitions\n  ```\n- CI: GitHub Actions — lint (ruff), type check (mypy), unit test (pytest), DAG integrity check (`airflow dags list`)\n- CD: GitHub Actions — sync `dags/`, `jobs/`, `lib/` to MWAA S3 bucket on merge to `main`",
+    "46": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#component-5-aws-glue-data-catalog]\n\n#### Component 5: AWS Glue Data Catalog\n\n**Purpose:** Centralized schema registry and metadata store providing data lineage, schema discovery, and cross-pipeline table definitions\n\n**Responsibilities:**\n\n- Maintain table definitions (schema, partition spec, location) for all S3 data lake zones\n- Support Hive metastore protocol for EMR/PySpark table discovery (`spark.sql(\"SELECT * FROM catalog.staging.claims\")`)\n- Store OpenLineage metadata for cross-pipeline lineage graph construction\n- Power Glue crawlers for automatic schema discovery on raw ingest landing\n\n**Technical Specifications:**\n\n- Glue catalog shared across MWAA, EMR on EKS, and EMR Serverless\n- Database hierarchy: `raw`, `staging`, `curated`, per business domain (e.g., `claims`, `eligibility`, `reporting`)\n- Crawlers scheduled nightly on raw zone; schema changes trigger Slack alert to data steward\n- Resource-based policy restricts catalog access to ETL execution roles only",
+    "47": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#component-interfaces]\n\n### Component Interfaces",
+    "48": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#interface-1-airflow--emr-on-eks-job-submission]\n\n#### Interface 1: Airflow → EMR on EKS (Job Submission)\n\n**Protocol:** AWS SDK via `EmrContainerOperator` (Airflow Amazon Provider)\n**Data Format:** Spark Submit parameters (JSON job driver config)\n**Security:** IAM role assumption; MWAA execution role with `emr-containers:StartJobRun` permission\n**SLA:** Job submission latency <5 seconds; EMR on EKS job start <30 seconds from submission",
+    "49": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#interface-2-emr--s3-data-readwrite]\n\n#### Interface 2: EMR → S3 (Data Read/Write)\n\n**Protocol:** HTTPS via S3A file system (S3A committer for atomic writes)\n**Data Format:** Apache Parquet (default); Delta Lake for CDC tables; CSV for raw ingest landing\n**Security:** IAM role with `s3:GetObject`, `s3:PutObject` on specific bucket paths; KMS `kms:GenerateDataKey`, `kms:Decrypt` on CMK\n**SLA:** S3 write throughput ≥500 MB/s per EMR executor (S3 multipart upload)",
+    "50": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#interface-3-airflow--secrets-manager-connection-resolution]\n\n#### Interface 3: Airflow → Secrets Manager (Connection Resolution)\n\n**Protocol:** AWS SDK (HTTPS); MWAA built-in Secrets Manager backend\n**Data Format:** Airflow connection URI stored as Secrets Manager SecretString\n**Security:** MWAA execution IAM role with `secretsmanager:GetSecretValue` on `/airflow/connections/*` path only\n**SLA:** Secret retrieval adds <100ms to connection initialization (cached per worker lifetime)",
+    "51": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#component-dependencies]\n\n### Component Dependencies\n\n| Component | Dependencies | Rationale | Impact of Failure |\n| --------- | ------------ | --------- | ----------------- |\n| MWAA | GitHub (DAG sync S3), Secrets Manager, CloudWatch, EKS (for EMR on EKS) | Orchestration requires DAG code, credentials, and logging | All pipeline scheduling halts; manual intervention required |\n| EMR on EKS | EKS cluster, S3, Glue Catalog, IAM | Spark drivers/executors run as EKS pods | Batch jobs fail; MWAA retries up to configured attempts |\n| EMR Serverless | S3, IAM, VPC | Serverless Spark runtime | Micro-batch and CDC pipelines fail; Airflow alerts on-call |\n| Glue Data Catalog | S3 (schema inference), EMR (Hive metastore client) | Schema discovery and query planning | Spark SQL table queries fail; raw API (path-based) reads still work |\n| Secrets Manager | IAM, KMS | Credential storage and rotation | Airflow connections fail on secret retrieval; pipelines cannot authenticate to sources |\n\n---",
+    "52": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#implementation-guidelines]\n\n## Implementation Guidelines",
+    "53": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#implementation-approach]\n\n### Implementation Approach\n\nAll infrastructure is provisioned via Terraform/Terragrunt IaC modules per [ADR-TEC-006](../../../decisions/technology/ADR-TEC-006-infrastructure-as-code-strategy.md). No manual console provisioning is permitted for production environments. The platform is delivered in three phases matching the migration strategy.",
+    "54": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#phase-1-foundation-infrastructure]\n\n#### Phase 1: Foundation Infrastructure\n\n**Objectives:** Provision core platform components; validate security controls; onboard pilot pipelines\n\n**Activities:**\n\n1. Terraform module: MWAA environment (VPC, security groups, S3 DAGs bucket, IAM roles, CloudWatch log groups)\n2. Terraform module: EMR on EKS virtual cluster (EMR namespace on EKS, EMR execution role, graviton3 node group)\n3. Terraform module: EMR Serverless application (VPC config, pre-initialized capacity, execution role)\n4. GitHub DAG repository: scaffold repo structure, CI pipeline, CD deployment workflow\n5. Secrets Manager: create `/airflow/connections/<source>` secrets for all source system connections\n6. KMS CMKs: create per-zone CMKs (`data-raw`, `data-staging`, `data-curated`)\n7. Pilot DAG development: two to three non-PHI pipelines as proof-of-platform\n8. Security review: HIPAA controls checklist sign-off before PHI pipeline onboarding\n\n**Exit Criteria:**\n\n- MWAA UI accessible to data engineering team; pilot DAGs running on schedule\n- EMR on EKS job completion validated for pilot PySpark jobs\n- Security team has reviewed and approved the platform's HIPAA controls",
+    "55": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#phase-2-core-pipeline-migration]\n\n#### Phase 2: Core Pipeline Migration\n\n**Objectives:** Migrate production workloads; establish operational model\n\n**Activities:**\n\n1. Migrate data warehouse ETL pipelines by domain (claims, eligibility, provider, member)\n2. Implement Great Expectations expectation suites for all migrated pipelines\n3. Configure SLA alerts in MWAA for business-critical pipelines\n4. Implement CloudWatch dashboard per pipeline domain\n5. Author operational runbooks for top-10 failure modes\n6. Migrate PHI pipelines with Security co-approval gate",
+    "56": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#phase-3-complete-migration-and-decommission]\n\n#### Phase 3: Complete Migration and Decommission\n\n**Objectives:** Retire all SSIS infrastructure; finalize platform governance\n\n**Activities:**\n\n1. Migrate remaining long-tail SSIS packages\n2. Introduce micro-batch Kafka consumer patterns for near-real-time pipelines\n3. Publish Airflow DAG Authoring Standards as an EA artifact\n4. Decommission SSIS execution infrastructure; archive SQL Server Agent job definitions\n5. Final HIPAA compliance audit and documentation update",
+    "57": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#airflow-dag-authoring-standards]\n\n### Airflow DAG Authoring Standards\n\nAll DAGs committed to the pipeline repository must comply with these standards:\n\n```python\n# Required DAG arguments\ndefault_args = {\n    \"owner\": \"<team-name>\",\n    \"depends_on_past\": False,\n    \"email_on_failure\": True,\n    \"email\": [\"<team-dl>@gainwell.com\"],\n    \"retries\": 3,\n    \"retry_delay\": timedelta(minutes=5),\n    \"retry_exponential_backoff\": True,\n}\n\n# Required DAG-level SLA\nwith DAG(\n    dag_id=\"claims_daily_load\",\n    schedule_interval=\"0 2 * * *\",\n    sla_miss_callback=sla_miss_alert,   # Required: PagerDuty/Slack notification\n    tags=[\"claims\", \"batch\", \"phi\"],    # Required: domain, type, PHI if applicable\n    ...\n):\n    ...\n```\n\n- **Naming**: `{domain}_{frequency}_{description}` (e.g., `claims_daily_warehouse_load`)\n- **PHI tag**: All DAGs processing PHI data must include `\"phi\"` in tags\n- **Secrets**: All connections via `BaseHook.get_connection()` — no inline credentials\n- **Tests**: Every PySpark transformation function must have ≥80% unit test coverage\n- **Data Quality**: Every DAG that loads to a target system must include a `GreatExpectationsOperator` task as the penultimate step\n\n---",
+    "58": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#deployment-and-operations]\n\n## Deployment and Operations",
+    "59": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#deployment-topology]\n\n### Deployment Topology\n\n```mermaid\ngraph TD\n    subgraph AWS Region - us-east-1\n        subgraph VPC\n            subgraph Private Subnet AZ-1\n                MWAA_W1[MWAA Workers\\nAZ-1]\n                EMR_NODE1[EMR on EKS Nodes\\nAZ-1 Graviton3]\n            end\n            subgraph Private Subnet AZ-2\n                MWAA_W2[MWAA Workers\\nAZ-2]\n                EMR_NODE2[EMR on EKS Nodes\\nAZ-2 Graviton3]\n            end\n            subgraph Public Subnet\n                MWAA_WS[MWAA Webserver\\nALB - HTTPS]\n            end\n        end\n        subgraph S3\n            S3_RAW[s3://gainwell-data-raw\\nKMS CMK: data-raw]\n            S3_STAGE[s3://gainwell-data-staging\\nKMS CMK: data-staging]\n            S3_CURATED[s3://gainwell-data-curated\\nKMS CMK: data-curated]\n            S3_DAGS[s3://gainwell-mwaa-dags\\nAirflow DAG files]\n        end\n        CT[CloudTrail - All Regions]\n        CW[CloudWatch\\nLogs + Metrics + Alarms]\n        SM[Secrets Manager]\n        GLUE[Glue Data Catalog]\n        ECR[ECR\\nPySpark Docker Images]\n    end\n\n    GH[GitHub\\nDAG Repository]\n    GH -- CD deploy --> S3_DAGS\n    S3_DAGS --> MWAA_W1\n```",
+    "60": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#slo-definitions]\n\n### SLO Definitions\n\n| Pipeline Category | Schedule | SLO (Completion By) | Alert Lead Time |\n| ----------------- | -------- | ------------------- | --------------- |\n| CMS Regulatory Reporting | Monthly | Business day -2 of CMS deadline | 48 hours before SLO |\n| Claims Data Warehouse Load | Daily 02:00 UTC | 06:00 UTC | 30 minutes before SLO |\n| Eligibility Feed Processing | Daily 01:00 UTC | 04:00 UTC | 30 minutes before SLO |\n| State Reporting Exports | Weekly | 7 days before submission deadline | 24 hours before SLO |\n| Micro-Batch Kafka Pipelines | Every 15 minutes | 30-minute lag budget | 15-minute lag threshold |",
+    "61": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#operational-runbooks]\n\n### Operational Runbooks\n\nEach production pipeline requires a runbook document in the `runbooks/` directory of the DAG repository covering:\n\n1. **Pipeline Purpose**: What business function does this pipeline serve?\n2. **SLO**: Completion deadline and alert thresholds\n3. **Data Sources and Targets**: Systems read from/written to\n4. **Common Failure Modes**: Top-3 failure causes and resolution steps\n5. **Escalation Path**: On-call → data engineer → Data Domain EA Lead\n6. **Manual Recovery**: How to manually trigger, clear failed tasks, or skip a run",
+    "62": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#monitoring-and-observability]\n\n### Monitoring and Observability\n\n- **Airflow SLA Miss Alerts**: MWAA SLA miss callback sends PagerDuty alert + Slack notification to `#data-pipeline-alerts` channel\n- **CloudWatch Alarms**: EMR job failure rate, MWAA scheduler heartbeat, S3 write error rate\n- **CloudWatch Dashboard**: Per-domain pipeline dashboard showing last-run status, duration trend, and data quality pass/fail rate\n- **Great Expectations Data Docs**: Published to S3 static site; accessible to data engineers and data stewards for quality trend analysis\n- **Cost Monitoring**: EMR Serverless cost per pipeline per day tracked via Cost Explorer tags; alert if 2× 30-day average\n\n---",
+    "63": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#governance-and-compliance]\n\n## Governance and Compliance",
+    "64": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#architecture-governance]\n\n### Architecture Governance\n\n- All new pipelines must be reviewed by the Data Domain EA Lead before going to production if they process PHI or feed regulatory reports\n- Changes to MWAA environment configuration (worker class, environment variables) require an infrastructure PR reviewed by the Platform Engineering team\n- Quarterly architecture review: Platform Engineering and Data Domain EA Lead review MWAA/EMR performance metrics, cost, and security posture",
+    "65": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#hipaa-compliance-checklist]\n\n### HIPAA Compliance Checklist\n\nEvery PHI pipeline must demonstrate the following controls before production deployment:\n\n| Control | Requirement | Evidence |\n| ------- | ----------- | -------- |\n| Access Control (§164.312(a)(1)) | Unique IAM role per pipeline; no shared execution roles for PHI pipelines | Terraform IAM resource with resource-level policy |\n| Audit Controls (§164.312(b)) | CloudTrail data events enabled on PHI S3 buckets; Airflow task logs shipped to CloudWatch | CloudTrail config + MWAA log shipping enabled |\n| Integrity Controls (§164.312(c)(1)) | Great Expectations data quality checks assert business-rule integrity on output | Great Expectations suite with ≥5 assertions on PHI output datasets |\n| Transmission Security (§164.312(e)(1)) | All S3 API calls over HTTPS; JDBC connections with `ssl=true` | S3 bucket policy denying HTTP; Secrets Manager connection string with SSL parameter |\n| Encryption at Rest | KMS CMK encryption on all PHI S3 buckets and EMR local disk | S3 encryption config + EMR security configuration in Terraform |",
+    "66": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#mita-30-alignment]\n\n### MITA 3.0 Alignment\n\n| MITA Capability Area | Maturity Level Achieved | Evidence |\n| -------------------- | ---------------------- | -------- |\n| Data Integration | Level 3 — Defined and measurable | Documented SLOs, automated quality gates, published runbooks |\n| Data Quality | Level 3 — Automated validation | Great Expectations suites on all production pipelines |\n| Data Lineage | Level 2–3 — Catalog-supported | Glue Data Catalog + OpenLineage metadata |\n\n---",
+    "67": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#examples-and-use-cases]\n\n## Examples and Use Cases",
+    "68": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#use-case-1-daily-claims-data-warehouse-load]\n\n### Use Case 1: Daily Claims Data Warehouse Load\n\n**Scenario**: Nightly ETL loads claims data from the operational RDS PostgreSQL database into the Redshift analytics data warehouse.\n\n**DAG Pattern**:\n```text\nAirflow DAG: claims_daily_warehouse_load (schedule: 0 2 * * *)\n  Task 1: S3KeySensor — confirm previous-day extract landed in s3://gainwell-data-raw/claims/\n  Task 2: EmrContainerOperator — submit PySpark job: claims_transform.py (raw → staging)\n  Task 3: GreatExpectationsOperator — validate staging claims (row count, business rules)\n  Task 4: EmrContainerOperator — submit PySpark job: claims_curate.py (staging → curated)\n  Task 5: EmrContainerOperator — submit PySpark job: claims_redshift_load.py (curated → Redshift)\n  Task 6: PythonOperator — post completion metric to CloudWatch\n```",
+    "69": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#use-case-2-eligibility-sftp-feed-ingestion]\n\n### Use Case 2: Eligibility SFTP Feed Ingestion\n\n**Scenario**: State agency delivers eligibility files via SFTP nightly; files must be processed by 04:00 UTC.\n\n**DAG Pattern**:\n```text\nAirflow DAG: eligibility_sftp_ingest (schedule: 0 1 * * *)\n  Task 1: SFTPSensor — wait for file arrival in SFTP inbox (timeout: 2 hours)\n  Task 2: SFTPToS3Operator — transfer file to s3://gainwell-data-raw/eligibility/\n  Task 3: EmrServerlessStartJobRunOperator — PySpark flat-file parser + schema validation\n  Task 4: GreatExpectationsOperator — validate parsed eligibility records\n  Task 5: EmrServerlessStartJobRunOperator — eligibility delta merge to curated zone\n  Task 6: PythonOperator — notify downstream systems via SNS\n```",
+    "70": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#use-case-3-near-real-time-kafka-micro-batch]\n\n### Use Case 3: Near-Real-Time Kafka Micro-Batch\n\n**Scenario**: Member enrollment events arrive on a Kafka topic; downstream care management system needs ≤15-minute lag.\n\n**DAG Pattern**:\n```text\nAirflow DAG: enrollment_kafka_microbatch (schedule: */15 * * * *)\n  Task 1: EmrServerlessStartJobRunOperator — PySpark Kafka consumer (batch read last 15 min)\n  Task 2: GreatExpectationsOperator — validate enrollment event schema\n  Task 3: EmrServerlessStartJobRunOperator — upsert to DynamoDB care management table\n  Task 4: PythonOperator — record watermark offset to Secrets Manager for next run\n```\n\n---",
+    "71": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#related-architectures-and-references]\n\n## Related Architectures and References\n\n| Reference | Relationship |\n| --------- | ------------ |\n| [ADR-TEC-018](../../../decisions/technology/ADR-TEC-018-ssis-replacement-platform-selection.md) | Decision Record — formalizes the selection of Airflow/PySpark as the SSIS replacement |\n| [ssis-to-pyspark-airflow-migration-strategy.md](../../white-papers/data/ssis-to-pyspark-airflow-migration-strategy.md) | Migration Strategy White Paper — the phased transition plan from SSIS to this platform |\n| [RCA-TEC-001](../../../rcas/technology/RCA-TEC-001-sql-windows-auth-dependency.md) | Root Cause Analysis — context for the Windows Auth constraint this platform resolves |\n| [ADR-TEC-010](../../../decisions/technology/ADR-TEC-010-sql-server-authentication-strategy.md) | SQL Server auth migration — prerequisite for connecting Airflow to SQL Server sources |\n| [ADR-INF-004](../../../decisions/information/ADR-INF-004-rdbms-platform-strategy.md) | RDBMS strategy — PostgreSQL is the target store for migrated pipeline outputs |\n| [ADR-IFR-005](../../../decisions/infrastructure/ADR-IFR-005-container-deployment-strategy.md) | Container strategy — EKS is the Kubernetes platform for EMR on EKS |\n| [ADR-IFR-008](../../../decisions/infrastructure/ADR-IFR-008-kafka-management-platform-selection.md) | Kafka platform — source for near-real-time micro-batch pipelines |\n| [enterprise-eventing-as-a-service.md](../../white-papers/engineering/enterprise-eventing-as-a-service.md) | EaaS platform — complements Airflow for sub-second streaming use cases |\n| [systems-integration-solutions](../../../business-portfolio/systems-integration-solutions/README.md) | Gainwell Connect™ — current-state data integration capability context |\n\n---",
+    "72": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#change-history]\n\n## Change History\n\n| Version | Date       | Author                           | Description               |\n| ------- | ---------- | -------------------------------- | ------------------------- |\n| 1.0.0   | 2026-05-04 | Enterprise Architecture Practice | Initial reference architecture. |\n\n---",
+    "73": "[strategy/reference/data/REF-INF-INT-001-pyspark-airflow-data-integration-platform.md#review-log]\n\n## Review Log\n\n| Review Date | Reviewer                          | Review Type      | Status  |\n| ----------- | --------------------------------- | ---------------- | ------- |\n| 2026-05-04  | Enterprise Architecture Practice  | Initial Creation | Current |\n\n---"
+  },
+  "coverage": {
+    "total_pages": 73,
+    "covered_pages": 73,
+    "sampled_pages": 73,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 73
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Scope",
+  "document_description": "Create or update a repository-level Instruction file — `CLAUDE.md`, `.github/copilot-instructions.md`, or `AGENTS.md` — or synchronize their Skill Registry and Intent Routing Table against the current construct catalog. Idempotent: scaffolds a targeted file if it does not exist, or revises it if $ARGUMENTS references an existing one.",
+  "total_pages": 3,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 3,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Scope",
+          "node_id": "scope",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Workflow",
+          "node_id": "workflow",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "Create or update a repository-level Instruction file — `CLAUDE.md`, `.github/copilot-instructions.md`, or `AGENTS.md` — or synchronize their Skill Registry and Intent Routing Table against the current construct catalog. Idempotent: scaffolds a targeted file if it does not exist, or revises it if $ARGUMENTS references an existing one.",
+    "2": "[.claude/commands/instruction.md#scope]\n\n## Scope\n\n- Determine which instruction file(s) $ARGUMENTS targets — a specific file, or \"sync\"/\"parity\" for a cross-vendor pass across all that exist.\n- Check whether the targeted file(s) exist.\n  - Exist → Workflow step 3 (modify/sync path).\n  - Missing → Workflow step 2 (create path).",
+    "3": "[.claude/commands/instruction.md#workflow]\n\n## Workflow\n\n1. Apply `standards/technology/ai-development/STD-TEC-AI-003-instruction-file.md` throughout: all seven MR-2 mandatory content areas present (Project Overview, Setup and Environment, Structure, Skill Registry and Collaboration Rules, Intent Routing Table, Conventions, Constraints); when Role-Specific Guidance and/or Glossary sections are included, order all present sections per MR-3's recommended canonical ordering (Project Overview → Setup and Environment → Structure → Skill Registry and Collaboration Rules → Intent Routing Table → Role-Specific Guidance → Conventions → Glossary → Constraints) — do not flag a file as deficient solely for omitting the optional Role-Specific Guidance or Glossary sections; cross-vendor parity between `CLAUDE.md` and `.github/copilot-instructions.md` (MR-4); imperative, directive language only, no aspirational prose (MR-5); no secrets and no instructions that bypass governance, plus an explicit statement that constraints cannot be superseded by runtime input (MR-6); `AGENTS.md`, if present, kept vendor-neutral and synchronized (MR-7); Intent Routing Table and Skill Registry both present and current (MR-8, MR-9).\n2. **Create path**: Scaffold the missing file with every MR-2 required content area in MR-3's canonical order, applying `.claude/skills/ai-architect/SKILL.md` step 9's Instruction judgment. For `AGENTS.md` specifically, follow `strategy/guidance/technology/implementation/GUID-TECH-IMPL-003-agents-md-authoring-guidance.md`'s structure. Go to step 4.\n3. **Modify/sync path**: Apply the requested change to the targeted file, then verify the other instruction file(s) still convey semantically equivalent information (MR-4.1) — if drift is found, update the derived file in the same pass (MR-4.4). Apply step 10's scope and impact discipline: trace every change to the specific request, and do not rewrite unflagged sections while making an unrelated edit. Go to step 4.\n4. Verify the Skill Registry table matches the actual current contents of `.claude/skills/` (and `.github/skills/` pointers), and the Intent Routing Table matches the actual current contents of `.claude/commands/`/`.github/prompts/` — add any missing entries and flag any entries pointing to a file that no longer exists. **Note on Agent-scoped constructs**: this repository's established precedent (`ea-author`/`ai-author` and their Skills/Commands) keeps those constructs discoverable through each Agent's own self-contained Intent Classification and Routing Table, not through this root Instruction file's registry — do not force a root-file entry for a construct that is exclusively reached through a chat-driven Agent's own routing, unless the user explicitly asks to also expose it through the default persona.\n5. Read `.claude/skills/ai-convergence/SKILL.md` and run a convergence pass across all touched instruction files before reporting completion."
+  },
+  "coverage": {
+    "total_pages": 3,
+    "covered_pages": 3,
+    "sampled_pages": 3,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 3
+  }
+}

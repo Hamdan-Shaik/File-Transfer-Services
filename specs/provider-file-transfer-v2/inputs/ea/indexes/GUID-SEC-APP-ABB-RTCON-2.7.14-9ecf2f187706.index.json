@@ -1,0 +1,140 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Runtime Container Security",
+  "document_description": "guidance_id: 'GUID-SEC-APP-ABB-RTCON-2.7.14'",
+  "total_pages": 13,
+  "tree": [
+    {
+      "title": "Runtime Container Security",
+      "node_id": "runtime-container-security",
+      "start_index": 1,
+      "end_index": 13,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Architecture Guidance Metadata",
+          "node_id": "architecture-guidance-metadata",
+          "start_index": 2,
+          "end_index": 4,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "ABB Context",
+              "node_id": "abb-context",
+              "start_index": 3,
+              "end_index": 3,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "ABB Scope",
+              "node_id": "abb-scope",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Detailed Guidance",
+          "node_id": "detailed-guidance",
+          "start_index": 5,
+          "end_index": 13,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Core Principles",
+              "node_id": "core-principles",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Key Capabilities",
+              "node_id": "key-capabilities",
+              "start_index": 7,
+              "end_index": 9,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Capability and Profile Enforcement",
+                  "node_id": "capability-and-profile-enforcement",
+                  "start_index": 8,
+                  "end_index": 8,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Anomaly Detection",
+                  "node_id": "anomaly-detection",
+                  "start_index": 9,
+                  "end_index": 9,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Integration Interfaces",
+              "node_id": "integration-interfaces",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Zero Trust Alignment (NIST SP 800-207)",
+              "node_id": "zero-trust-alignment-nist-sp-800-207",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "NIST SP 800-53 Intent Alignment",
+              "node_id": "nist-sp-800-53-intent-alignment",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Constraints and Dependencies",
+              "node_id": "constraints-and-dependencies",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-RTCON-2.7.14.md#runtime-container-security]\n\n# Runtime Container Security\n\n**← Back to [EAP Home](../../../../../README.md) • [Strategy](../../../../README.md) • [Guidance](../../../README.md) • [Security](../../README.md) • [Application](../README.md)**\n\n---",
+    "2": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-RTCON-2.7.14.md#architecture-guidance-metadata]\n\n## Architecture Guidance Metadata\n\n```yaml\nguidance_id: 'GUID-SEC-APP-ABB-RTCON-2.7.14'\nguidance_name: 'Runtime Container Security'\nguidance_type: 'architecture-building-block'\nabb_type: 'component'\nadm_phase: 'Phase B-D'\nparent_abb: 'GUID-SEC-APP-ABB-CAT-2.7.06'\nparent_vision: 'GUID-SEC-APP-REF-1.7.01'\nrealized_by_sbbs: []\npaired_rad: 'GUID-SEC-APPS-CONTAINER-SECURITY-2.7.05'\ncategory: 'security'\nversion: '0.1.0'\nstatus: 'draft'\napplicability: 'enterprise'\ntags: ['security', 'application', 'architecture-building-block', 'container', 'runtime']\nsource_story: 'AB#802670'\n```\n\n---\n\n> **TOGAF ADM Note**: This is a **Component ABB** (Phase B–D) within the Application Security domain. Per [GUID-SEC-APP-REF-1.7.01](../GUID-SEC-APP-REF-1.7.01.md): **SHALL** = mandatory; **SHOULD** = strongly recommended; **MAY** = optional.",
+    "3": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-RTCON-2.7.14.md#abb-context]\n\n### ABB Context\n\n- **Parent L2 Capability**: Container & Image Security — [GUID-SEC-APP-CAP-DESC-1.7.02](../GUID-SEC-APP-CAP-DESC-1.7.02.md)\n- **ABB Catalog**: [GUID-SEC-APP-ABB-CAT-2.7.06](../GUID-SEC-APP-ABB-CAT-2.7.06.md)\n- **Capability Statement**: The enterprise SHALL have an architectural capability to enforce behavioral constraints on running container processes and detect anomalous container runtime activity that deviates from expected execution profiles.",
+    "4": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-RTCON-2.7.14.md#abb-scope]\n\n### ABB Scope\n\n**In Scope**:\n- Architectural capability to define and enforce allowed process behaviors for running containers (syscall profiles, file system access, network egress)\n- Detection of container runtime anomalies such as unexpected process spawning, privilege escalation attempts, or unexpected network connections\n- Immutability enforcement — preventing modification of container file systems at runtime\n\n**Out of Scope**:\n- Pre-deployment image vulnerability scanning (see GUID-SEC-APP-ABB-IMGSC-2.7.13)\n- Orchestration-layer RBAC and workload scheduling policy (see GUID-SEC-APP-ABB-K8SRBAC-2.7.15)\n- Host OS security (see Cloud & Infrastructure Security domain)\n- Security controls, tool selection, or configuration baselines (`standards/security/`)\n\n---",
+    "5": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-RTCON-2.7.14.md#detailed-guidance]\n\n## Detailed Guidance",
+    "6": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-RTCON-2.7.14.md#core-principles]\n\n### Core Principles\n\n- Containers SHALL be run with the minimum set of capabilities required for their declared function; all unused OS capabilities SHALL be dropped.\n- Container file systems SHOULD be run as read-only where the application design permits, to prevent in-place modification by an attacker.\n- Runtime behavioral profiles SHOULD be defined for production workloads; deviations SHALL be alerted to security operations.\n- Containers SHALL NOT run as root unless a documented architectural exception has been approved.",
+    "7": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-RTCON-2.7.14.md#key-capabilities]\n\n### Key Capabilities",
+    "8": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-RTCON-2.7.14.md#capability-and-profile-enforcement]\n\n#### Capability and Profile Enforcement\n\n**Architectural intent**: Constrain what a container process is permitted to do at the OS level, reducing the blast radius of a compromised container.\n\n**Design guidance**:\n- Containers SHALL define a syscall allowlist or seccomp profile appropriate to their workload type.\n- Privilege escalation SHALL be prevented at the container runtime configuration level.\n- Containers SHOULD declare their required Linux capabilities explicitly; undeclared capabilities SHALL NOT be granted by default.",
+    "9": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-RTCON-2.7.14.md#anomaly-detection]\n\n#### Anomaly Detection\n\n**Architectural intent**: Identify in-progress exploitation or post-compromise activity within running containers.\n\n**Design guidance**:\n- Runtime telemetry SHALL be collected and forwarded to the security monitoring capability (SecOps domain).\n- Alerting SHOULD be configured for behaviors that deviate from the established baseline for each workload type.",
+    "10": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-RTCON-2.7.14.md#integration-interfaces]\n\n### Integration Interfaces\n\n| Interface | Direction | Consuming ABB | Description |\n|---|---|---|---|\n| Workload Deployment | Inbound | GUID-SEC-APP-ABB-K8SRBAC-2.7.15 | Container workload specification including security context |\n| Runtime Events | Outbound | SecOps SIEM/Monitoring | Syscall and process events forwarded for detection |\n| Policy Enforcement | Bidirectional | Container Runtime | Syscall filter and capability enforcement at process level |",
+    "11": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-RTCON-2.7.14.md#zero-trust-alignment-nist-sp-800-207]\n\n### Zero Trust Alignment (NIST SP 800-207)\n\nRuntime Container Security advances the Applications and Workloads pillar by enforcing that even admitted, scanned workloads operate within strictly defined behavioral boundaries — operationalizing the assumption that a workload may be compromised and its blast radius must be limited.",
+    "12": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-RTCON-2.7.14.md#nist-sp-800-53-intent-alignment]\n\n### NIST SP 800-53 Intent Alignment\n\nThis ABB enables the architectural intent of the SC (System and Communications Protection) family — specifically process isolation and least-privilege execution — and the SI family, which addresses malicious code protection and system monitoring.",
+    "13": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-RTCON-2.7.14.md#constraints-and-dependencies]\n\n### Constraints and Dependencies\n\n- Behavioral profile definition requires characterization of expected workload behavior; this is an operational activity that must be part of workload onboarding.\n- Overly restrictive profiles can cause application failures; profile testing in pre-production is required before enforcement in production.\n- Anomaly detection output must be routed to the SecOps domain; this ABB does not include detection and response capability.\n\n---\n\n*[Enterprise Architecture Practice](../../../../../README.md) — Gainwell Technologies*"
+  },
+  "coverage": {
+    "total_pages": 13,
+    "covered_pages": 13,
+    "sampled_pages": 13,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 13
+  }
+}

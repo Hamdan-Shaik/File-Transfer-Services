@@ -1,0 +1,93 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Application Domain - Governance Patterns",
+  "document_description": "This directory contains application-level governance patterns for verifying architectural properties at runtime and ensuring AI agents generate catalog-conforming output from the start. These patterns implement Layers 2 and 4 of the four-layer verification architecture, and establish the AI agent context integration that reduces conformance failures at generation time.",
+  "total_pages": 8,
+  "tree": [
+    {
+      "title": "Application Domain - Governance Patterns",
+      "node_id": "application-domain---governance-patterns",
+      "start_index": 1,
+      "end_index": 8,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Overview",
+          "node_id": "overview",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Purpose",
+          "node_id": "purpose",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Implementation Phasing",
+          "node_id": "implementation-phasing",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Patterns in this Category",
+          "node_id": "patterns-in-this-category",
+          "start_index": 5,
+          "end_index": 6,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "AI Agent Specification Patterns",
+              "node_id": "ai-agent-specification-patterns",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Four-Layer Verification Architecture",
+          "node_id": "four-layer-verification-architecture",
+          "start_index": 7,
+          "end_index": 7,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Related Pattern Categories",
+          "node_id": "related-pattern-categories",
+          "start_index": 8,
+          "end_index": 8,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[patterns/application/governance/README.md#application-domain---governance-patterns]\n\n# Application Domain - Governance Patterns\n\n**← Back to [EAP Home](../../../README.md) • [Patterns](../../README.md) • [Application](../README.md)**\n\n---",
+    "2": "[patterns/application/governance/README.md#overview]\n\n## Overview\n\nThis directory contains application-level governance patterns for verifying architectural properties at runtime and ensuring AI agents generate catalog-conforming output from the start. These patterns implement Layers 2 and 4 of the four-layer verification architecture, and establish the AI agent context integration that reduces conformance failures at generation time.\n\nTogether, these patterns address the two dimensions of the post-build governance gap: what the running service actually does (behavioral verification) and what instructions guide AI agents before they generate anything (context integration).",
+    "3": "[patterns/application/governance/README.md#purpose]\n\n## Purpose\n\nEstablish application-level governance that:\n\n- Verifies architectural properties requiring code execution at pipeline time — PHI handling, observability wiring, resilience configuration (L2)\n- Embeds Golden Path catalog references and compliance constraints into repositories so AI agents default to catalog-conforming output\n- Continuously monitors production behavioral invariants and infrastructure drift, closing the post-deployment compliance gap (L4)",
+    "4": "[patterns/application/governance/README.md#implementation-phasing]\n\n## Implementation Phasing\n\nThese patterns align to the phases defined in the [Enterprise Golden Path Strategy](../../../strategy/white-papers/engineering/enterprise-golden-path-strategy.md):\n\n| Phase | Patterns Required | Timing |\n|---|---|---|\n| Phase 2 — Governance Automation | PTN-APP-GOV-001, PTN-APP-GOV-002 | Months 7–12 |\n| Phase 3 — Autonomous Development | PTN-APP-GOV-003 | Months 13–24 |",
+    "5": "[patterns/application/governance/README.md#patterns-in-this-category]\n\n## Patterns in this Category\n\n| Pattern ID | Name | Purpose | Verification Layer | Phase |\n|---|---|---|---|---|\n| [PTN-APP-GOV-001](./PTN-APP-GOV-001-architecture-fitness-function-pattern.md) | **Architecture Fitness Function** | Executable tests for architectural properties (PHI log scanning, DLQ presence, audit events, observability) that run as pipeline stage gates | Layer 2 — Pipeline Stage Gates | 2 |\n| [PTN-APP-GOV-002](./PTN-APP-GOV-002-ai-agent-context-integration-pattern.md) | **AI Agent Context Integration** | Standardized `.ai/` directory structure embedding Golden Path catalog references and compliance constraints for AI agents to load at invocation | Preventive — Context Loading | 2 |\n| [PTN-APP-GOV-003](./PTN-APP-GOV-003-runtime-behavioral-invariant-monitor-pattern.md) | **Runtime Behavioral Invariant Monitor** | Continuous post-deployment monitoring of behavioral invariants (Prometheus rules, application assertion events) and infrastructure configuration drift | Layer 4 — Post-Deployment | 3 |",
+    "6": "[patterns/application/governance/README.md#ai-agent-specification-patterns]\n\n### AI Agent Specification Patterns\n\n| Pattern ID | Name | Purpose |\n|---|---|---|\n| [PTN-APP-GOV-004](./PTN-APP-GOV-004-golden-path-scaffold-template-pattern.md) | **Golden Path Scaffold Template** | Scaffold templates for Golden Path-conforming project initialization |\n| [PTN-APP-GOV-005](./PTN-APP-GOV-005-machine-readable-agent-specification-pattern.md) | **Machine-Readable Agent Specification** | Structured template for work items intended for autonomous AI agent execution |\n| [PTN-APP-GOV-006](./PTN-APP-GOV-006-bdd-scenario-agent-acceptance-criteria-pattern.md) | **BDD Scenario as Agent Acceptance Criteria** | Replaces prose acceptance criteria with `@FR-` tagged Gherkin scenario ID references for deterministic agent verification |",
+    "7": "[patterns/application/governance/README.md#four-layer-verification-architecture]\n\n## Four-Layer Verification Architecture\n\nThese patterns implement 2 of the 4 verification layers, plus a preventive context control:\n\n```\nL1: Architecture Conformance Gate ◄── PTN-INFRA-GOV-001 (infrastructure/governance)\n        ↓\nL2: Architecture Fitness Functions ◄── PTN-APP-GOV-001 (this directory)\n        ↓\nL3: Policy-as-Code Enforcement ◄── PTN-INFRA-GOV-002 (infrastructure/governance)\n        ↓\nL4: Runtime Behavioral Monitors ◄── PTN-APP-GOV-003 (this directory)\n\nPreventive: AI Agent Context Integration ◄── PTN-APP-GOV-002 (this directory)\n            (reduces L1–L3 failure rate at generation time)\n```",
+    "8": "[patterns/application/governance/README.md#related-pattern-categories]\n\n## Related Pattern Categories\n\n- **[Governance AI Development](../../governance/ai-development/)** — foundational patterns that all three of these depend on\n- **[Infrastructure Governance](../../infrastructure/governance/)** — L1 and L3 verification layers\n- **[Technology AI Development](../../technology/ai-development/)** — the I2I pipeline that invokes PTN-APP-GOV-002 context files\n- **[Infrastructure Kubernetes](../../infrastructure/kubernetes/PTN-INFRA-K8S-008-infrastructure-unified-observability-pattern.md)** — observability stack that PTN-APP-GOV-003 extends"
+  },
+  "coverage": {
+    "total_pages": 8,
+    "covered_pages": 8,
+    "sampled_pages": 8,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 8
+  }
+}

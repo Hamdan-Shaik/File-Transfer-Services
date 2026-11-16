@@ -1,0 +1,63 @@
+door:
+  id: file-transfer-controller-get-source-locations
+  kind: api
+  name: GetSourceLocations
+  class: HP.HSP.UA3.FileTransfer.UX.Services.Controller.FileTransferController
+  file: ux\HP.HSP.UA3.FileTransfer.UX.Services\Controller\FileTransferController.SourceLocation.cs
+  line: 24
+  entry:
+  - HP.HSP.UA3.FileTransfer.UX.Services.Controller.FileTransferController.GetSourceLocations()
+procedures: []
+tables: []
+shared_uses: []
+external_uses:
+- package: ''
+  version: ''
+  method: string.ToString
+  calls:
+  - at: ux\HP.HSP.UA3.FileTransfer.UX.Services\Controller\FileTransferController.SourceLocation.cs:53
+    arguments: []
+  unresolved: true
+- package: hp.hsp.ua3.core.ux.interfaces
+  version: 30.0.0
+  method: HP.HSP.UA3.Core.UX.Interfaces.ITenantConfigurationManager.Resolve<T>(string)
+  calls:
+  - at: ux\HP.HSP.UA3.FileTransfer.UX.Services\Controller\FileTransferController.SourceLocation.cs:32
+    type_arguments:
+    - HP.HSP.UA3.FileTransfer.UX.Providers.FileTransfer.IFileTransferQueryServiceDataProvider
+    arguments:
+    - name: name
+      expression: FileTransferConstants.Ioc.ComponentNames.FileTransferQueryServiceDataProvider
+- package: hp.hsp.ua3.core.ux.interfaces
+  version: 30.0.0
+  method: HP.HSP.UA3.Core.UX.Interfaces.IUserConfigurationManager.GenerateRequestor()
+  calls:
+  - at: ux\HP.HSP.UA3.FileTransfer.UX.Services\Controller\FileTransferController.SourceLocation.cs:37
+    arguments: []
+- package: microsoft.aspnet.webapi.core
+  version: 5.3.0
+  method: System.Net.Http.HttpRequestMessageExtensions.CreateResponse<T>(System.Net.Http.HttpRequestMessage, System.Net.HttpStatusCode, T)
+  calls:
+  - at: ux\HP.HSP.UA3.FileTransfer.UX.Services\Controller\FileTransferController.SourceLocation.cs:63
+    type_arguments:
+    - System.Collections.Generic.List<HP.HSP.UA3.Core.UX.Data.Common.ListItemModel>
+    arguments:
+    - name: statusCode
+      value: '200'
+    - name: value
+      expression: listItems
+  - at: ux\HP.HSP.UA3.FileTransfer.UX.Services\Controller\FileTransferController.SourceLocation.cs:67
+    type_arguments:
+    - HP.HSP.UA3.Core.UX.Data.Messaging.ResultModel
+    arguments:
+    - name: statusCode
+      value: '400'
+    - name: value
+      expression: resultModel
+polymorphic_hooks: []
+stops: []
+calls: []
+methods:
+- name: HP.HSP.UA3.FileTransfer.UX.Services.Controller.FileTransferController.GetSourceLocations()
+  file: ux\HP.HSP.UA3.FileTransfer.UX.Services\Controller\FileTransferController.SourceLocation.cs
+  line: 24

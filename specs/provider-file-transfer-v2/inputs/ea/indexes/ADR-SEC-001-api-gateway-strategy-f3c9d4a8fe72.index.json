@@ -1,0 +1,333 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Architecture Decision Record",
+  "document_description": "API Gateways serve as the authoritative Policy Enforcement Point (PEP) for all API traffic — north–south (external) and east–west (internal) — until a service mesh is formally authorized to inherit Zero Trust enforcement responsibilities. Traffic direction influences control realization, not control necessity.",
+  "total_pages": 34,
+  "tree": [
+    {
+      "title": "Architecture Decision Record",
+      "node_id": "architecture-decision-record",
+      "start_index": 1,
+      "end_index": 34,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "ADR-SEC-001: API Gateway Strategy for North–South (External) vs East–West (Internal) Traffic in AWS",
+          "node_id": "adr-sec-001-api-gateway-strategy-for-northsouth-external-vs-eastwest-internal-traffic-in-aws",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Decision Summary",
+          "node_id": "decision-summary",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Context and Problem Statement",
+          "node_id": "context-and-problem-statement",
+          "start_index": 4,
+          "end_index": 8,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Business Context",
+              "node_id": "business-context",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Technical Context",
+              "node_id": "technical-context",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Problem Statement",
+              "node_id": "problem-statement",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Decision Drivers",
+              "node_id": "decision-drivers",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Required Option",
+          "node_id": "required-option",
+          "start_index": 9,
+          "end_index": 18,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "API Gateway as Authoritative Policy Enforcement Point",
+              "node_id": "api-gateway-as-authoritative-policy-enforcement-point",
+              "start_index": 10,
+              "end_index": 18,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Implementation Details",
+                  "node_id": "implementation-details",
+                  "start_index": 11,
+                  "end_index": 16,
+                  "summary": "",
+                  "nodes": [
+                    {
+                      "title": "North–South (External) Traffic",
+                      "node_id": "northsouth-external-traffic",
+                      "start_index": 12,
+                      "end_index": 12,
+                      "summary": "",
+                      "nodes": []
+                    },
+                    {
+                      "title": "East–West (Internal) Traffic",
+                      "node_id": "eastwest-internal-traffic",
+                      "start_index": 13,
+                      "end_index": 13,
+                      "summary": "",
+                      "nodes": []
+                    },
+                    {
+                      "title": "AWS WAF Usage for East–West (Internal) Traffic",
+                      "node_id": "aws-waf-usage-for-eastwest-internal-traffic",
+                      "start_index": 14,
+                      "end_index": 14,
+                      "summary": "",
+                      "nodes": []
+                    },
+                    {
+                      "title": "Service Mesh Transition",
+                      "node_id": "service-mesh-transition",
+                      "start_index": 15,
+                      "end_index": 15,
+                      "summary": "",
+                      "nodes": []
+                    },
+                    {
+                      "title": "Environment Promotion Requirement",
+                      "node_id": "environment-promotion-requirement",
+                      "start_index": 16,
+                      "end_index": 16,
+                      "summary": "",
+                      "nodes": []
+                    }
+                  ]
+                },
+                {
+                  "title": "Benefits",
+                  "node_id": "benefits",
+                  "start_index": 17,
+                  "end_index": 17,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Risks and Mitigations",
+                  "node_id": "risks-and-mitigations",
+                  "start_index": 18,
+                  "end_index": 18,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Considered Options",
+          "node_id": "considered-options",
+          "start_index": 19,
+          "end_index": 22,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Option A: Trust Internal Traffic by Default",
+              "node_id": "option-a-trust-internal-traffic-by-default",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Option B: Defer East–West Enforcement Until Service Mesh Deployment",
+              "node_id": "option-b-defer-eastwest-enforcement-until-service-mesh-deployment",
+              "start_index": 21,
+              "end_index": 21,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Option C: Rely Solely on Network-Layer Controls",
+              "node_id": "option-c-rely-solely-on-network-layer-controls",
+              "start_index": 22,
+              "end_index": 22,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Decision Outcome",
+          "node_id": "decision-outcome",
+          "start_index": 23,
+          "end_index": 25,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Justification",
+              "node_id": "justification",
+              "start_index": 24,
+              "end_index": 24,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Consequences",
+              "node_id": "consequences",
+              "start_index": 25,
+              "end_index": 25,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Review and Approval",
+          "node_id": "review-and-approval",
+          "start_index": 26,
+          "end_index": 26,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Change Log",
+          "node_id": "change-log",
+          "start_index": 27,
+          "end_index": 27,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Last Reviewed",
+          "node_id": "last-reviewed",
+          "start_index": 28,
+          "end_index": 28,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Relevant Sources",
+          "node_id": "relevant-sources",
+          "start_index": 29,
+          "end_index": 29,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Appendix A: Standards Traceability",
+          "node_id": "appendix-a-standards-traceability",
+          "start_index": 30,
+          "end_index": 34,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "A.1 HIPAA Security Rule",
+              "node_id": "a1-hipaa-security-rule",
+              "start_index": 31,
+              "end_index": 31,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "A.2 NIST SP 800-53 Rev. 5",
+              "node_id": "a2-nist-sp-800-53-rev-5",
+              "start_index": 32,
+              "end_index": 32,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "A.3 NIST SP 800-228 (API Protection)",
+              "node_id": "a3-nist-sp-800-228-api-protection",
+              "start_index": 33,
+              "end_index": 33,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "A.4 IETF RFC 9700 (OAuth 2.0 Security BCP)",
+              "node_id": "a4-ietf-rfc-9700-oauth-20-security-bcp",
+              "start_index": 34,
+              "end_index": 34,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[decisions/security/ADR-SEC-001-api-gateway-strategy.md#architecture-decision-record]\n\n# Architecture Decision Record\n\n<!-- BREADCRUMB PLACEHOLDER -->",
+    "2": "[decisions/security/ADR-SEC-001-api-gateway-strategy.md#adr-sec-001-api-gateway-strategy-for-northsouth-external-vs-eastwest-internal-traffic-in-aws]\n\n## ADR-SEC-001: API Gateway Strategy for North–South (External) vs East–West (Internal) Traffic in AWS\n\n---\n\n|               |                                                                                                                                        |\n| ------------- | -------------------------------------------------------------------------------------------------------------------------------------- |\n| **Status**    | ✅ Accepted                                                                                                                            |\n| **Date**      | 2026-03-05                                                                                                                             |\n| **Issuer**    | [Enterprise Architecture Practice](mailto:EAP-Core@mygainwell.onmicrosoft.com?subject=ADR-SEC-001%20API%20Gateway%20Strategy)         |\n| **Consulted** | Enterprise Security Architecture, Platform Engineering, Application Development Teams, Compliance & Privacy                            |\n| **Informed**  | All Engineering Teams, Product Management, Security Operations, Executive Leadership                                                   |\n\n---",
+    "3": "[decisions/security/ADR-SEC-001-api-gateway-strategy.md#decision-summary]\n\n## Decision Summary\n\nAPI Gateways serve as the authoritative Policy Enforcement Point (PEP) for all API traffic — north–south (external) and east–west (internal) — until a service mesh is formally authorized to inherit Zero Trust enforcement responsibilities. Traffic direction influences control realization, not control necessity.\n\n---",
+    "4": "[decisions/security/ADR-SEC-001-api-gateway-strategy.md#context-and-problem-statement]\n\n## Context and Problem Statement",
+    "5": "[decisions/security/ADR-SEC-001-api-gateway-strategy.md#business-context]\n\n### Business Context\n\nPlatform workloads deployed in AWS expose and consume APIs that handle **Personally Identifiable Information (PII)** and **Protected Health Information (PHI)** and are subject to **HIPAA** and **ARC-AMPE** requirements. The environment operates within a **multi-account AWS Organization** and follows **Zero Trust Architecture** principles.\n\nHistorically, security controls have been differentiated based on perceived network trust (e.g., \"internal vs. external\"). This approach is incompatible with Zero Trust principles and insufficient for regulated cloud environments. A consistent, enforceable strategy is required to define how API gateways are used and controlled differently — but coherently — across traffic directions.",
+    "6": "[decisions/security/ADR-SEC-001-api-gateway-strategy.md#technical-context]\n\n### Technical Context\n\nKey environmental characteristics:\n\n- A **service mesh is planned** but **not yet deployed**\n- **East–west (internal)** API traffic occurs **cross-account within the same AWS Organization**\n- **Workload identity is standardized**\n- **Latency is a consideration but not a primary driver**\n- **Traditional DMZ architectures are not used**",
+    "7": "[decisions/security/ADR-SEC-001-api-gateway-strategy.md#problem-statement]\n\n### Problem Statement\n\nHow should API gateway controls be consistently applied across both external (north–south) and internal (east–west) API traffic to ensure Zero Trust enforcement, regulatory compliance, and auditability — without over-relying on network location as a trust signal?",
+    "8": "[decisions/security/ADR-SEC-001-api-gateway-strategy.md#decision-drivers]\n\n### Decision Drivers\n\n- 🔒 **Zero Trust Enforcement**: Eliminate implicit trust based on network locality across all API flows\n- 🏥 **HIPAA & ARC-AMPE Compliance**: Ensure all API traffic handling PHI/PII meets transmission security, access control, and audit requirements\n- 🛡️ **Threat Surface Reduction**: Minimize blast radius for compromised workloads through consistent boundary enforcement\n- 📋 **Auditability**: Provide comprehensive, sanitized audit logs for all API activity\n- 🔄 **Future-Proofing**: Establish a clear, governed migration path to a future service mesh\n- ⚡ **Operational Consistency**: Reduce cognitive overhead by applying uniform security semantics regardless of traffic direction\n\n---",
+    "9": "[decisions/security/ADR-SEC-001-api-gateway-strategy.md#required-option]\n\n## Required Option",
+    "10": "[decisions/security/ADR-SEC-001-api-gateway-strategy.md#api-gateway-as-authoritative-policy-enforcement-point]\n\n### API Gateway as Authoritative Policy Enforcement Point\n\n**API Gateways SHALL serve as the authoritative Policy Enforcement Point (PEP) for all API traffic — north–south (external) and east–west (internal) — until a service mesh is formally authorized to inherit Zero Trust enforcement responsibilities.**\n\nTraffic direction influences **control realization**, not **control necessity**.",
+    "11": "[decisions/security/ADR-SEC-001-api-gateway-strategy.md#implementation-details]\n\n#### Implementation Details",
+    "12": "[decisions/security/ADR-SEC-001-api-gateway-strategy.md#northsouth-external-traffic]\n\n##### North–South (External) Traffic\n\n**Definition**\nAPI traffic entering the AWS platform from outside the organizational trust boundary, including internet clients, external partners, agencies, and external SaaS systems.\n\n**Decision**\nNorth–south (external) APIs SHALL be protected by **public Regional API Gateways** acting as the **cloud-native replacement for a traditional DMZ**.\n\n**Mandatory Characteristics**\n\n| Control | Requirement |\n|---------|-------------|\n| Ingress | API Gateway is the **sole ingress point** for API traffic |\n| Consumer Identity | OAuth 2.0 / JWT; mTLS for high-risk partners |\n| Token Binding | Sender-constrained access tokens where supported (e.g., mTLS-bound tokens) |\n| Encryption | End-to-end TLS, including gateway-to-backend re-encryption |\n| WAF | **AWS WAF is mandatory** for application-layer threat filtering |\n| DDoS Protection | AWS Shield (Shield Advanced where contractually or operationally required) |\n| Backend Connectivity | VPC Link only |\n| Logging | Comprehensive access and management-plane logging with **minimum seven-year retention** |\n| Log Sanitization | Logs **SHALL NOT contain PHI, PII, credentials, or sensitive payload data** |\n\n**Rationale**\nExternal traffic is untrusted by default and represents the highest likelihood of hostile activity and regulatory exposure.\n\n---",
+    "13": "[decisions/security/ADR-SEC-001-api-gateway-strategy.md#eastwest-internal-traffic]\n\n##### East–West (Internal) Traffic\n\n**Definition**\nAPI traffic between workloads inside the AWS Organization, including **cross-account communication**, regardless of VPC or subnet placement.\n\n**Scope Exclusion**\nIntra-container and intra-process communication — including loopback calls between containers sharing a network namespace (e.g., an ECS task or Kubernetes pod), sidecar-to-application calls over localhost, and any communication that does not cross a workload boundary — is out of scope for this ADR. These patterns do not constitute externally-addressable API traffic and cannot be mediated by an API gateway.\n\n**Decision**\nEast–west (internal) APIs SHALL be mediated by **Private API Gateways** and treated as **formal Zero Trust boundary crossings**, even though traffic remains private.\n\n**Mandatory Characteristics**\n\n| Control | Requirement |\n|---------|-------------|\n| Endpoint Type | Private API Gateway endpoints only |\n| Cross-Account Connectivity | AWS PrivateLink |\n| Workload Identity | mTLS and/or IAM/JWT |\n| Token Lifetime | OAuth 2.0 access tokens SHALL be short-lived and sender-constrained where supported |\n| Authorization | Explicit service-to-service authorization using least-privilege ABAC |\n| Encryption | End-to-end TLS for all hops — private network location SHALL NOT be considered a compensating control for transmission confidentiality |\n| Request Validation | API request models (schema) **SHALL be defined and enforced** at the gateway for all API-consumer-controlled inputs; requests that do not conform to the declared schema SHALL be rejected before reaching the backend |\n| Rate Limiting | Enabled with thresholds appropriate for internal traffic |\n| Logging | Audit-grade logging equivalent to north–south traffic |\n| Log Sanitization | Logs **SHALL NOT contain PHI, PII, credentials, or sensitive payload data** |\n\n**Rationale**\nCross-account traffic constitutes a trust boundary under Zero Trust, HIPAA, and ARC-AMPE. Network locality alone is not a valid trust signal.\n\n> **Note:** Adoption of a service mesh may affect how certain east–west controls (e.g., mTLS, workload identity, rate limiting) are technically realized. The control requirements defined here remain in effect regardless of implementation mechanism. How a service mesh would satisfy or supplement these controls will be addressed in a future ADR.\n\n---",
+    "14": "[decisions/security/ADR-SEC-001-api-gateway-strategy.md#aws-waf-usage-for-eastwest-internal-traffic]\n\n##### AWS WAF Usage for East–West (Internal) Traffic\n\n**Decision**\nThe trigger for AWS WAF on east–west (internal) APIs is **payload origin**, not API complexity or consumer breadth.\n\n**AWS WAF SHALL be enabled when:**\n\n- The API ingests **externally-sourced data routed internally** — including partner feeds, agency submissions, third-party data pipelines, or any payload whose origin is outside the organizational trust boundary, even if the network hop is internal\n\n> **Externally-sourced data** means content whose values were authored or controlled by a party outside the AWS Organization trust boundary at any point in its lineage, regardless of how many internal hops have occurred since ingestion. A normalized or transformed representation of external data remains externally-sourced. An internally-generated payload produced entirely by workloads under enforced workload identity is not externally-sourced.\n\n**AWS WAF is not applicable when:**\n\n- All payload sources are internal workloads operating under enforced workload identity (mTLS/IAM)\n- The mandatory Request Validation control (see table above) is implemented and covers all API-consumer-controlled inputs\n- Access is constrained via PrivateLink and least-privilege ABAC\n\n**Rationale**\nSchema validation enforced at the gateway — already mandatory for all east–west APIs — addresses application-layer contract conformance for well-typed internal payloads. WAF's OWASP-style pattern matching provides meaningful additional value only when payload origin is functionally external, where inputs are uncontrolled and may carry adversarial content. Deploying WAF on east–west flows where all payload sources are internal and schema validation is in force provides marginal incremental protection against the residual threat (a sophisticated internal attacker crafting schema-valid malicious payloads) while creating a retirement dependency that service meshes cannot natively satisfy.\n\n---",
+    "15": "[decisions/security/ADR-SEC-001-api-gateway-strategy.md#service-mesh-transition]\n\n##### Service Mesh Transition\n\nAPI Gateways remain mandatory until a service mesh is formally authorized to inherit PEP responsibilities and demonstrably enforces all of the following:\n\n1. Strong workload identity\n2. Authorization decisions\n3. Rate limiting and abuse prevention\n4. End-to-end encryption\n5. Audit-grade logging\n\nOnly after formal authorization may select east–west (internal) flows transition away from API Gateway mediation. This authorization requires a separate ADR.\n\nFor east–west flows where AWS WAF was required under this ADR due to externally-sourced payload origin, the transition ADR must additionally address how WAF-equivalent application-layer threat filtering will be provided or formally risk-accepted. For all other east–west flows, schema-contract enforcement equivalence satisfies this requirement — the transition ADR must demonstrate that the service mesh enforces defined API request models with equivalent reject-on-violation behavior.\n\n---",
+    "16": "[decisions/security/ADR-SEC-001-api-gateway-strategy.md#environment-promotion-requirement]\n\n##### Environment Promotion Requirement\n\nAll configurations must be tested in an equivalent lower environment that is not subject to customer service-level agreements prior to implementation in an environment subject to customer service-level agreements.\n\n---",
+    "17": "[decisions/security/ADR-SEC-001-api-gateway-strategy.md#benefits]\n\n#### Benefits\n\n- Uniform Zero Trust semantics across all APIs regardless of traffic direction\n- Clear compliance and audit posture for HIPAA and ARC-AMPE\n- Reduced blast radius for compromised workloads through consistent boundary enforcement\n- Clean, governed migration path to a future service mesh via explicit authorization criteria",
+    "18": "[decisions/security/ADR-SEC-001-api-gateway-strategy.md#risks-and-mitigations]\n\n#### Risks and Mitigations\n\n| Risk | Mitigation |\n|------|------------|\n| Additional latency vs. direct service calls | Acceptable given regulatory and security requirements |\n| Operational overhead for certificates and policy management | Managed via enterprise PKI and IaC automation |\n| Dependency on API Gateway availability | Mitigated via multi-AZ deployment and service quotas management |\n\n---",
+    "19": "[decisions/security/ADR-SEC-001-api-gateway-strategy.md#considered-options]\n\n## Considered Options",
+    "20": "[decisions/security/ADR-SEC-001-api-gateway-strategy.md#option-a-trust-internal-traffic-by-default]\n\n### Option A: Trust Internal Traffic by Default\n\n**Description**: Treat east–west (internal) traffic as inherently trusted based on network location, applying lighter or no API gateway controls for intra-organizational traffic.\n\n**Pros**:\n\n- ✅ Lower implementation complexity for internal service teams\n- ✅ Reduced API gateway infrastructure footprint and latency for internal hops\n\n**Cons**:\n\n- ❌ Violates Zero Trust principles; network location is not a valid trust signal\n- ❌ Fails regulated boundary protection requirements under HIPAA and ARC-AMPE\n- ❌ No defense-in-depth against compromised internal workloads or supply chain threats\n\n**Verdict**: ❌ Rejected — Incompatible with Zero Trust architecture and regulatory obligations\n\n---",
+    "21": "[decisions/security/ADR-SEC-001-api-gateway-strategy.md#option-b-defer-eastwest-enforcement-until-service-mesh-deployment]\n\n### Option B: Defer East–West Enforcement Until Service Mesh Deployment\n\n**Description**: Apply API gateway controls to north–south traffic now, but delay east–west enforcement until the planned service mesh is deployed and authorized.\n\n**Pros**:\n\n- ✅ Reduces immediate implementation scope and team lift\n- ✅ Avoids a dual enforcement period (gateway + mesh) once the service mesh is live\n\n**Cons**:\n\n- ❌ Creates an extended window of uncontrolled east–west traffic\n- ❌ Defers HIPAA-required access controls and audit logging for internal APIs\n- ❌ Service mesh timelines are uncertain; compliance cannot depend on an indeterminate future milestone\n\n**Verdict**: ❌ Rejected — Defers required controls without an acceptable risk-based justification\n\n---",
+    "22": "[decisions/security/ADR-SEC-001-api-gateway-strategy.md#option-c-rely-solely-on-network-layer-controls]\n\n### Option C: Rely Solely on Network-Layer Controls\n\n**Description**: Enforce boundary protection exclusively through network-layer controls (security groups, NACLs, PrivateLink) without application-layer API gateway mediation.\n\n**Pros**:\n\n- ✅ Simpler architecture; no additional application-layer gateway infrastructure required\n- ✅ Lower latency for network-constrained internal flows\n\n**Cons**:\n\n- ❌ No per-request application-layer identity, authorization, or auditability\n- ❌ Cannot satisfy HIPAA §164.312(b) audit control requirements\n- ❌ Insufficient for Zero Trust; network trust signals do not replace workload identity\n\n**Verdict**: ❌ Rejected — Network-layer controls alone cannot satisfy Zero Trust, HIPAA, or ARC-AMPE requirements\n\n---",
+    "23": "[decisions/security/ADR-SEC-001-api-gateway-strategy.md#decision-outcome]\n\n## Decision Outcome\n\n**Selected Option**: API Gateway as Authoritative Policy Enforcement Point",
+    "24": "[decisions/security/ADR-SEC-001-api-gateway-strategy.md#justification]\n\n### Justification\n\n> *Traffic direction changes threat models, not trust requirements.*\n> *API Gateways enforce Zero Trust consistently; control intensity varies by exposure, not by \"internal vs. external\" labeling.*\n\nAll considered alternatives were rejected because they rely on network location as a trust signal, defer mandatory controls, or lack the application-layer identity and audit capabilities required for HIPAA and ARC-AMPE compliance. API Gateway as the authoritative PEP is the only approach that satisfies Zero Trust enforcement, regulatory compliance, and auditability consistently across all traffic directions.",
+    "25": "[decisions/security/ADR-SEC-001-api-gateway-strategy.md#consequences]\n\n### Consequences\n\n**Positive** ✅\n\n- Uniform Zero Trust semantics across all APIs regardless of traffic direction\n- Clear compliance and audit posture for HIPAA and ARC-AMPE\n- Reduced blast radius for compromised workloads through consistent boundary enforcement\n- Clean, governed migration path to a future service mesh via explicit authorization criteria\n\n**Negative** ⚠️\n\n- Additional latency introduced by API Gateway mediation on east–west hops\n- Increased operational overhead for certificate lifecycle and policy management across accounts\n\n**Neutral** ℹ️\n\n- Service mesh deployment remains a future capability; transition requires a separate ADR\n- Existing north–south gateway configurations are already aligned; incremental effort is concentrated on east–west\n\n---",
+    "26": "[decisions/security/ADR-SEC-001-api-gateway-strategy.md#review-and-approval]\n\n## Review and Approval\n\n| Role | Name | Date | Status |\n|------|------|------|--------|\n| EA Lead | | 2026-03-05 | ✅ Approved |\n| EA Co-Lead | | 2026-03-05 | ✅ Approved |\n| Domain Lead EA — Security | | 2026-03-05 | ✅ Approved |\n\n---",
+    "27": "[decisions/security/ADR-SEC-001-api-gateway-strategy.md#change-log]\n\n## Change Log\n\n| Version | Date | Author | Description |\n|---------|------|--------|-------------|\n| 1.0 | 2026-03-05 | Enterprise Architecture Practice | Initial draft and acceptance |\n\n---",
+    "28": "[decisions/security/ADR-SEC-001-api-gateway-strategy.md#last-reviewed]\n\n## Last Reviewed\n\n| Review Date | Reviewer | Review Type | Status |\n|-------------|----------|-------------|--------|\n| 2026-03-05 | Enterprise Architecture Practice | Initial Review | ✅ Current |\n\n---",
+    "29": "[decisions/security/ADR-SEC-001-api-gateway-strategy.md#relevant-sources]\n\n## Relevant Sources\n\n- [HIPAA Security Rule — 45 CFR Part 164](https://www.hhs.gov/hipaa/for-professionals/security/index.html)\n- [NIST SP 800-53 Rev. 5 — Security and Privacy Controls](https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final)\n- [NIST SP 800-228 — Guidelines on Protecting the Security of Application Programming Interfaces](https://csrc.nist.gov/publications/detail/sp/800-228/final)\n- [IETF RFC 9700 — OAuth 2.0 Security Best Current Practice](https://www.rfc-editor.org/rfc/rfc9700)\n- [ADR-GOV-002 — Architecture Decision Documentation Standard](../governance/ADR-GOV-002-architecture-decision-documentation.md)\n\n---",
+    "30": "[decisions/security/ADR-SEC-001-api-gateway-strategy.md#appendix-a-standards-traceability]\n\n## Appendix A: Standards Traceability",
+    "31": "[decisions/security/ADR-SEC-001-api-gateway-strategy.md#a1-hipaa-security-rule]\n\n### A.1 HIPAA Security Rule\n\n| HIPAA Citation | ADR Alignment |\n|----------------|---------------|\n| §164.312(e) Transmission Security | TLS everywhere; no cleartext internal hops |\n| §164.312(a) Access Control | Strong, unique workload and consumer identities |\n| §164.312(b) Audit Controls | Full audit logging for external and internal APIs |\n| §164.306(b) Risk-Based Safeguards | Conditional WAF with documented compensating controls |",
+    "32": "[decisions/security/ADR-SEC-001-api-gateway-strategy.md#a2-nist-sp-800-53-rev-5]\n\n### A.2 NIST SP 800-53 Rev. 5\n\n| Control | ADR Mapping |\n|---------|-------------|\n| SC-7 Boundary Protection | API Gateway as sole ingress/egress PEP |\n| SC-8 Transmission Confidentiality | End-to-end TLS; no private-network trust |\n| AC-4 Information Flow Enforcement | PDP-driven authorization at gateway |\n| IA-2 / IA-7 Identification & Authentication | OAuth 2.0, mTLS, workload identity |\n| AU-2 / AU-3 Audit Events & Content | Comprehensive, sanitized logging |",
+    "33": "[decisions/security/ADR-SEC-001-api-gateway-strategy.md#a3-nist-sp-800-228-api-protection]\n\n### A.3 NIST SP 800-228 (API Protection)\n\n| Guideline | ADR Implementation |\n|-----------|--------------------|\n| Identity-first API access | Mandatory authentication for all APIs |\n| No implicit trust | East–west treated as formal boundaries |\n| Abuse prevention | Rate limiting and (conditional) WAF |\n| Encryption in transit | TLS everywhere |\n| Observability | Centralized, audit-grade logging |",
+    "34": "[decisions/security/ADR-SEC-001-api-gateway-strategy.md#a4-ietf-rfc-9700-oauth-20-security-bcp]\n\n### A.4 IETF RFC 9700 (OAuth 2.0 Security BCP)\n\n| Recommendation | ADR Alignment |\n|----------------|---------------|\n| Sender-constrained tokens | mTLS-bound / workload-bound tokens |\n| Short-lived access tokens | Explicit requirement |\n| Replay resistance | TLS + sender binding |\n| Least-privilege scopes | ABAC enforcement |\n\n---"
+  },
+  "coverage": {
+    "total_pages": 34,
+    "covered_pages": 34,
+    "sampled_pages": 34,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 34
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Web Application Protection: Reference Architecture",
+  "document_description": "guidance_id: 'GUID-SEC-APP-RA-WEBAPP-PROTECT-2.7.30'",
+  "total_pages": 16,
+  "tree": [
+    {
+      "title": "Web Application Protection: Reference Architecture",
+      "node_id": "web-application-protection-reference-architecture",
+      "start_index": 1,
+      "end_index": 16,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Architecture Guidance Metadata",
+          "node_id": "architecture-guidance-metadata",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Purpose and Scope",
+          "node_id": "purpose-and-scope",
+          "start_index": 3,
+          "end_index": 4,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "RAD Scope",
+              "node_id": "rad-scope",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Platform Engineering Scope",
+          "node_id": "platform-engineering-scope",
+          "start_index": 5,
+          "end_index": 7,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Capability Domain Boundary",
+              "node_id": "capability-domain-boundary",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Control Responsibility Matrix",
+              "node_id": "control-responsibility-matrix",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Logical Architecture",
+          "node_id": "logical-architecture",
+          "start_index": 8,
+          "end_index": 10,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Architecture Diagram",
+              "node_id": "architecture-diagram",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Logical Components",
+              "node_id": "logical-components",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Architecture Patterns",
+          "node_id": "architecture-patterns",
+          "start_index": 11,
+          "end_index": 14,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Pattern 1: Inline WAF with Centralized TLS Termination",
+              "node_id": "pattern-1-inline-waf-with-centralized-tls-termination",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Pattern 2: Distributed WAF with Re-encryption",
+              "node_id": "pattern-2-distributed-waf-with-re-encryption",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Pattern 3: RASP as Defense-in-Depth Layer",
+              "node_id": "pattern-3-rasp-as-defense-in-depth-layer",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Deployment Context Considerations",
+          "node_id": "deployment-context-considerations",
+          "start_index": 15,
+          "end_index": 15,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Constraints and Exceptions",
+          "node_id": "constraints-and-exceptions",
+          "start_index": 16,
+          "end_index": 16,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[strategy/guidance/security/Application/ref-arch/GUID-SEC-APP-RA-WEBAPP-PROTECT-2.7.30.md#web-application-protection-reference-architecture]\n\n# Web Application Protection: Reference Architecture\n\n**← Back to [EAP Home](../../../../../README.md) • [Strategy](../../../../README.md) • [Guidance](../../../README.md) • [Security](../../README.md) • [Application](../README.md)**\n\n---",
+    "2": "[strategy/guidance/security/Application/ref-arch/GUID-SEC-APP-RA-WEBAPP-PROTECT-2.7.30.md#architecture-guidance-metadata]\n\n## Architecture Guidance Metadata\n\n```yaml\nguidance_id: 'GUID-SEC-APP-RA-WEBAPP-PROTECT-2.7.30'\nguidance_name: 'Web Application Protection: Reference Architecture'\nguidance_type: 'reference-architecture-document'\nrad_type: 'composite'\npaired_abb:\n  - 'GUID-SEC-APP-ABB-WAF-2.7.19'\n  - 'GUID-SEC-APP-ABB-RASP-2.7.20'\nparent_abb: 'GUID-SEC-APP-ABB-CAT-2.7.06'\nparent_vision: 'GUID-SEC-APP-REF-1.7.01'\nadm_phase: 'Phase C-D'\ncategory: 'security'\nversion: '0.1.0'\nstatus: 'draft'\napplicability: 'enterprise'\ntags: ['security', 'application', 'reference-architecture', 'web-application-protection', 'phase-c', 'phase-d']\nsource_story: 'AB#802670'\n```\n\n---\n\n> **Informative Content Notice**: Technology categories referenced here are **illustrative only**. The architectural patterns represent required design outcomes; tooling selection is a local implementation decision.\n\n---",
+    "3": "[strategy/guidance/security/Application/ref-arch/GUID-SEC-APP-RA-WEBAPP-PROTECT-2.7.30.md#purpose-and-scope]\n\n## Purpose and Scope\n\nThis RAD provides illustrative patterns for realizing the Web Application Protection capability at runtime. It is the primary consumption point for:\n\n- [GUID-SEC-APP-ABB-WAF-2.7.19 — Web Application Firewall](../abbs/GUID-SEC-APP-ABB-WAF-2.7.19.md)\n- [GUID-SEC-APP-ABB-RASP-2.7.20 — Runtime Application Self-Protection](../abbs/GUID-SEC-APP-ABB-RASP-2.7.20.md)",
+    "4": "[strategy/guidance/security/Application/ref-arch/GUID-SEC-APP-RA-WEBAPP-PROTECT-2.7.30.md#rad-scope]\n\n### RAD Scope\n\n- WAF placement in the request path for externally accessible web application endpoints\n- TLS termination topology relative to WAF positioning\n- RASP instrumentation patterns for high-value application components\n- Alert routing from WAF and RASP to security operations\n\n---",
+    "5": "[strategy/guidance/security/Application/ref-arch/GUID-SEC-APP-RA-WEBAPP-PROTECT-2.7.30.md#platform-engineering-scope]\n\n## Platform Engineering Scope",
+    "6": "[strategy/guidance/security/Application/ref-arch/GUID-SEC-APP-RA-WEBAPP-PROTECT-2.7.30.md#capability-domain-boundary]\n\n### Capability Domain Boundary\n\nWeb Application Protection operates at the runtime boundary of deployed applications. Its upstream boundary is the network entry point where external traffic arrives. Its downstream boundary is the application process. It does not cover pre-deployment vulnerability identification (Application Security Testing) or network-layer DDoS mitigation (Network Security domain).",
+    "7": "[strategy/guidance/security/Application/ref-arch/GUID-SEC-APP-RA-WEBAPP-PROTECT-2.7.30.md#control-responsibility-matrix]\n\n### Control Responsibility Matrix\n\n| Activity | Platform Engineering | Security Architecture | Application Operations |\n|---|---|---|---|\n| WAF infrastructure and availability | **Owns** | Advises | — |\n| WAF rule set maintenance | Supports | **Owns** | Informs |\n| Exception / whitelist management | Supports | Approves | **Requests** |\n| RASP instrumentation deployment | Supports | Advises | **Owns** |\n\n---",
+    "8": "[strategy/guidance/security/Application/ref-arch/GUID-SEC-APP-RA-WEBAPP-PROTECT-2.7.30.md#logical-architecture]\n\n## Logical Architecture",
+    "9": "[strategy/guidance/security/Application/ref-arch/GUID-SEC-APP-RA-WEBAPP-PROTECT-2.7.30.md#architecture-diagram]\n\n### Architecture Diagram\n\n```mermaid\ngraph LR\n    A[External Traffic] --> B[TLS Termination]\n    B --> C[Web Application Firewall]\n    C -->|Blocked| D[Error Response to Client]\n    C -->|Allowed| E[Application Backend]\n    E --> F[RASP Agent - Optional]\n    F -->|Attack Detected| G[Block / Alert]\n    F -->|Normal| H[Application Logic]\n    C --> I[WAF Event Log]\n    F --> I2[RASP Event Log]\n    I --> J[SecOps SIEM]\n    I2 --> J\n```",
+    "10": "[strategy/guidance/security/Application/ref-arch/GUID-SEC-APP-RA-WEBAPP-PROTECT-2.7.30.md#logical-components]\n\n### Logical Components\n\n| Component | Type | Architectural Role |\n|---|---|---|\n| TLS Termination Point | Infrastructure | Decrypts traffic for WAF inspection |\n| Web Application Firewall | ABB Realization — GUID-SEC-APP-ABB-WAF-2.7.19 | Inline HTTP/S traffic inspection and filtering |\n| RASP Agent | ABB Realization — GUID-SEC-APP-ABB-RASP-2.7.20 | In-process runtime attack detection (optional) |\n| WAF/RASP Event Forwarder | Integration | Routes security events to SecOps SIEM |\n\n---",
+    "11": "[strategy/guidance/security/Application/ref-arch/GUID-SEC-APP-RA-WEBAPP-PROTECT-2.7.30.md#architecture-patterns]\n\n## Architecture Patterns",
+    "12": "[strategy/guidance/security/Application/ref-arch/GUID-SEC-APP-RA-WEBAPP-PROTECT-2.7.30.md#pattern-1-inline-waf-with-centralized-tls-termination]\n\n### Pattern 1: Inline WAF with Centralized TLS Termination\n\n**When to use**: All externally accessible web application endpoints.\n\n**Logical flow**:\n1. External request arrives at the enterprise traffic entry point\n2. TLS is terminated at the entry point, enabling plaintext inspection\n3. WAF evaluates the decrypted request against rule sets\n4. Blocked requests receive an error response; allowed requests are forwarded to the application\n5. WAF events are logged and forwarded to SecOps SIEM\n\n**Illustrative technology class**: Cloud-native WAF service integrated with load balancer; edge WAF in front of CDN",
+    "13": "[strategy/guidance/security/Application/ref-arch/GUID-SEC-APP-RA-WEBAPP-PROTECT-2.7.30.md#pattern-2-distributed-waf-with-re-encryption]\n\n### Pattern 2: Distributed WAF with Re-encryption\n\n**When to use**: Applications with strict data in-transit requirements where end-to-end TLS must be maintained to the application.\n\n**Logical flow**:\n1. External request arrives and is inspected at the WAF in passthrough mode for header and metadata analysis\n2. Re-encrypted traffic is forwarded to the application\n3. Application-side WAF component (sidecar) performs deeper inspection after TLS is re-terminated at the application\n\n**Illustrative technology class**: Service mesh with WAF policy enforcement at the sidecar proxy\n\n<!-- AI-GENERATED-START | user:jvadams3 | date:2026-10-02 | model:gpt-5.4 -->\n**Anticipated use**: This is the pattern teams should plan to adopt when the approved decision framework permits internal service-to-service traffic to use a distributed API mesh as the primary control for a platform or API type not subject to the active AWS Private API Gateway baseline (see [STD-APP-API-006](../../../../../standards/application/api/STD-APP-API-006-api-mesh-vs-gateway-guidance.md)). For AWS REST APIs, the active SBB requires a Private API Gateway and the mesh is complementary. Mesh mTLS and `AuthorizationPolicy` verify caller identity but do not perform payload-level threat inspection; this pattern supplies that inspection where the approved topology does not transit a gateway-fronted WAF. See [GUID-SEC-NETWORK-WAF-2.2.02 §Approach 5](../../Network/GUID-SEC-NETWORK-WAF-2.2.02.md#approach-5-mesh-native-distributed-threat-inspection-anticipated-future-state) for rollout considerations.\n<!-- AI-GENERATED-END | user:jvadams3 | date:2026-10-02 -->",
+    "14": "[strategy/guidance/security/Application/ref-arch/GUID-SEC-APP-RA-WEBAPP-PROTECT-2.7.30.md#pattern-3-rasp-as-defense-in-depth-layer]\n\n### Pattern 3: RASP as Defense-in-Depth Layer\n\n**When to use**: High-value applications where the cost of compromise justifies in-process instrumentation overhead.\n\n**Logical flow**:\n1. Application process is instrumented with RASP agent at deployment\n2. RASP monitors internal function calls during request processing\n3. Attack pattern detected in internal execution context generates an alert (detection mode) or aborts the execution path (blocking mode)\n4. RASP events are forwarded to SecOps SIEM and correlated with WAF events for the same request\n\n---",
+    "15": "[strategy/guidance/security/Application/ref-arch/GUID-SEC-APP-RA-WEBAPP-PROTECT-2.7.30.md#deployment-context-considerations]\n\n## Deployment Context Considerations\n\n| Context | Architectural Consideration |\n|---|---|\n| Cloud-hosted | Cloud provider WAF services integrated with load balancers are the preferred pattern; TLS offload at the load balancer enables full inspection |\n| Kubernetes-hosted | Service mesh sidecar proxy can serve as the WAF enforcement point; WAF policy is managed through mesh configuration |\n| On-premises | Dedicated WAF appliance or software in the DMZ; TLS termination architecture must be designed explicitly |\n\n---",
+    "16": "[strategy/guidance/security/Application/ref-arch/GUID-SEC-APP-RA-WEBAPP-PROTECT-2.7.30.md#constraints-and-exceptions]\n\n## Constraints and Exceptions\n\n- WAF is in the critical path for all protected application traffic; availability and latency requirements must be addressed in capacity planning.\n- RASP in blocking mode carries availability risk from false positives; phased enablement (detection → blocking) with defined false positive thresholds is the recommended approach.\n- WAF rules must be kept current; a governance process for rule set updates must be defined.\n\n---\n\n*[Enterprise Architecture Practice](../../../../../README.md) — Gainwell Technologies*"
+  },
+  "coverage": {
+    "total_pages": 16,
+    "covered_pages": 16,
+    "sampled_pages": 16,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 16
+  }
+}

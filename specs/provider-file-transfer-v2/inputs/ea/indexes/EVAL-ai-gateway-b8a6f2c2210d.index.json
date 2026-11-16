@@ -1,0 +1,129 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Technology Evaluation: AI Gateway",
+  "document_description": "Gainwell requires a centralized AI Gateway to serve as a dedicated security enforcement plane between consuming applications and AI model endpoints. Per GUID-SEC-AI-GW-2.9.07, the AI Gateway must provide capabilities architecturally distinct from the enterprise API gateway: prompt/response routing policy, guardrail and content safety enforcement, token-aware rate limiting, DLP inspection, external",
+  "total_pages": 12,
+  "tree": [
+    {
+      "title": "Technology Evaluation: AI Gateway",
+      "node_id": "technology-evaluation-ai-gateway",
+      "start_index": 1,
+      "end_index": 12,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Context",
+          "node_id": "context",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Decision Tree Position",
+          "node_id": "decision-tree-position",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Candidates",
+          "node_id": "candidates",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Category Weights",
+          "node_id": "category-weights",
+          "start_index": 5,
+          "end_index": 5,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Requirements",
+          "node_id": "requirements",
+          "start_index": 6,
+          "end_index": 11,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Business Criteria (15%)",
+              "node_id": "business-criteria-15",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Financial Criteria (20%)",
+              "node_id": "financial-criteria-20",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Operations Criteria (10%)",
+              "node_id": "operations-criteria-10",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Security & Compliance Criteria (25%)",
+              "node_id": "security--compliance-criteria-25",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Technical Criteria (30%)",
+              "node_id": "technical-criteria-30",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Risks & Mitigations",
+          "node_id": "risks--mitigations",
+          "start_index": 12,
+          "end_index": 12,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[strategy/tech-evals/ai-gateway/EVAL-ai-gateway.md#technology-evaluation-ai-gateway]\n\n# Technology Evaluation: AI Gateway\n\n**Status:** In Progress\n**Date:** 2026-05-31\n**Author:** Mike Goppert\n**Scorecard:** [EVAL-ai-gateway.xlsx](EVAL-ai-gateway.xlsx)\n**Security Guidance:** [GUID-SEC-AI-GW-2.9.07](../../guidance/security/Artificial-Intelligence/GUID-SEC-AI-GW-2.9.07.md)\n\n---",
+    "2": "[strategy/tech-evals/ai-gateway/EVAL-ai-gateway.md#context]\n\n## Context\n\nGainwell requires a centralized AI Gateway to serve as a dedicated security enforcement plane between consuming applications and AI model endpoints. Per GUID-SEC-AI-GW-2.9.07, the AI Gateway must provide capabilities architecturally distinct from the enterprise API gateway: prompt/response routing policy, guardrail and content safety enforcement, token-aware rate limiting, DLP inspection, external AI provider governance, and AI-specific audit evidence generation.\n\nThe AI Gateway is a mandatory component for all production AI service topologies and must support HIPAA compliance requirements including BAA-governed routing, PHI protection, and 6-year audit retention.\n\nAdditional requirements:\n\n- **MCP server hosting** — the gateway must proxy and govern MCP (Model Context Protocol) server connections, applying the same enforcement pipeline (auth, DLP, audit) to tool invocations\n- **Per-user resource tracking** — track model/resource usage at the individual Gainwell user level for chargeback and governance\n- **Model downgrade policies** — ability to substitute a requested model with a lower-cost/lower-tier model based on policy (e.g., route GPT-4 requests to GPT-3.5 when appropriate)\n- **Backup/fallback models** — automatic failover to backup models when primary models are unavailable or degraded",
+    "3": "[strategy/tech-evals/ai-gateway/EVAL-ai-gateway.md#decision-tree-position]\n\n## Decision Tree Position\n\n**Level 2** — Identify the best ROI 3rd party or open source platform/tool for the capability. No existing internal solution fulfills the full AI gateway requirement. Existing vendor relationships with Databricks and Kong are relevant factors.",
+    "4": "[strategy/tech-evals/ai-gateway/EVAL-ai-gateway.md#candidates]\n\n## Candidates\n\n| Vendor | Product | Category | Existing Relationship |\n| --- | --- | --- | --- |\n| Databricks | [Unity AI Gateway](https://docs.databricks.com/en/ai-gateway/overview-beta.html) | SaaS/Platform | Yes |\n| Kong | [Kong AI Gateway](https://docs.konghq.com/gateway/latest/ai-gateway/) | COTS (self-hosted + SaaS) | Yes |\n| Netskope | [Netskope One for AI](https://www.netskope.com/products/ai-security) | SaaS/SASE | Yes |",
+    "5": "[strategy/tech-evals/ai-gateway/EVAL-ai-gateway.md#category-weights]\n\n## Category Weights\n\n| Category | Weight |\n| --- | --- |\n| Business | 15% |\n| Financial | 20% |\n| Operations | 10% |\n| Security & Compliance | 25% |\n| Technical | 30% |\n\n---",
+    "6": "[strategy/tech-evals/ai-gateway/EVAL-ai-gateway.md#requirements]\n\n## Requirements",
+    "7": "[strategy/tech-evals/ai-gateway/EVAL-ai-gateway.md#business-criteria-15]\n\n### Business Criteria (15%)\n\n| # | Criterion | Weight | Description |\n| --- | --- | --- | --- |\n| 1 | Customer & community support | 5 | Active community, documentation quality, forums, knowledge base, and responsiveness to issues and feature requests |\n| 2 | Customer references | 5 | Proven enterprise deployments, preferably in healthcare/government with HIPAA requirements similar to Gainwell |\n| 3 | Enterprise SLA & incident escalation | 10 | Contractual uptime SLA, 24/7 support, documented MTTR commitments, and named escalation paths for critical incidents |\n| 4 | Existing vendor relationship with Gainwell | 10 | Active contract, established procurement path, known account team — reduces onboarding friction |\n| 5 | Roadmap transparency & financial viability | 5 | Public roadmap, sustainable business model, funding/revenue confidence for multi-year commitment |",
+    "8": "[strategy/tech-evals/ai-gateway/EVAL-ai-gateway.md#financial-criteria-20]\n\n### Financial Criteria (20%)\n\n| # | Criterion | Weight | Description |\n| --- | --- | --- | --- |\n| 1 | Budget controls & thresholds | 10 | Hard spending caps and alert thresholds per team/workspace/user; automatic enforcement when budgets are exceeded |\n| 2 | Chargeback / cost allocation | 10 | Attribute AI costs to individual Gainwell users, teams, or projects for internal billing and accountability |\n| 3 | Cost monitoring dashboard | 10 | Real-time visibility into AI spend by model, team, user, and use case; trend analysis and anomaly detection |\n| 4 | Response caching | 5 | Cache repeated or semantically similar queries to reduce redundant model calls and associated costs |\n| 5 | Spend forecasting | 2 | Project future AI costs based on usage trends; alert when projected spend will exceed budget before period end |\n| 6 | Token optimization | 5 | Reduce token consumption via prompt compression, context truncation, or intelligent prompt management |",
+    "9": "[strategy/tech-evals/ai-gateway/EVAL-ai-gateway.md#operations-criteria-10]\n\n### Operations Criteria (10%)\n\n| # | Criterion | Weight | Description |\n| --- | --- | --- | --- |\n| 1 | CI/CD & IaC support | 10 | Terraform provider, declarative config (GitOps), API-driven provisioning for pipeline automation |\n| 2 | Deployment models (SaaS/self-hosted/hybrid) | 10 | Flexibility to deploy as managed SaaS, self-hosted in Gainwell infrastructure, or hybrid (data plane in VPC, control plane managed) |\n| 3 | Horizontal auto-scaling with multi-region HA | 10 | Stateless architecture enabling horizontal scaling; multi-region active-active or failover for disaster recovery |\n| 4 | Kubernetes/cloud-native deployment | 10 | Deploy on K8s via Helm/operator; support for EKS, AKS, GKE; stateless pods with horizontal pod autoscaler |\n| 5 | Operational complexity | 5 | Team size required to operate; managed SaaS preferred over self-hosted requiring dedicated platform team |\n| 6 | Self-healing & health probes | 5 | K8s liveness/readiness probes; automatic restart on failure; self-recovery without operator intervention |\n| 7 | Zero-downtime upgrades & rollback | 10 | Rolling deployments, blue-green, or canary for gateway updates; instant configuration rollback on bad policy push |",
+    "10": "[strategy/tech-evals/ai-gateway/EVAL-ai-gateway.md#security--compliance-criteria-25]\n\n### Security & Compliance Criteria (25%)\n\n| AI Security Domain | Evaluation Criterion | Weight | Description |\n| --- | --- | --- | --- |\n| Data Protection | PII & Sensitive Data Controls | 10 | Classify, redact, tokenize, or block regulated data (PII/PHI) in prompts, files, and responses before AI processing |\n| Data Protection | Vector Database Security | 10 | Secure vector stores with encryption, access controls, tenant isolation, and query rate limiting |\n| Data Protection | Embedding Confidentiality | 8 | Prevent re-identification and semantic leakage from embeddings derived from sensitive content |\n| Data Protection | Data Retention & Deletion | 8 | Enforce lifecycle policies, legal holds, and cryptographic erasure for AI-related data |\n| Data Protection | Data Integrity & Provenance | 5 | Validate dataset integrity and maintain verifiable lineage for training and retrieval data |\n| Data Protection | Data Residency Controls | 8 | Enforce data sovereignty requirements by routing AI workloads to compliant geographic regions |\n| Prompt Security | Prompt Injection Defense | 10 | Detect and neutralize prompt injection attacks across inputs, retrieval content, and tool responses |\n| Prompt Security | Jailbreak & Policy Bypass Detection | 10 | Identify attempts to bypass safety policies, override roles, or escalate capabilities |\n| Prompt Security | System Prompt Protection | 8 | Protect hidden instructions and routing policies from disclosure or unauthorized modification |\n| Prompt Security | Content Safety Filtering | 8 | Filter unsafe, prohibited, or policy-violating content in both inputs and outputs |\n| Access Control / IAM | Identity & Access Management | 10 | Enforce authentication, authorization, RBAC/ABAC, and least-privilege access to AI resources |\n| Access Control / IAM | Secret & Credential Protection | 10 | Prevent secrets, tokens, and credentials from entering or leaking through AI systems |\n| Access Control / IAM | Network Segmentation & Isolation | 8 | Segment AI workloads with private endpoints, VPCs, and zero-trust network controls |\n| Agent / Tool Security | Tool Allow-listing & Authorization | 10 | Restrict agent tool access to approved, vetted tools with explicit authorization controls |\n| Agent / Tool Security | Execution Sandboxing | 10 | Run tool executions in isolated, constrained environments with resource limits |\n| Agent / Tool Security | Human-in-the-Loop for High-Risk Actions | 10 | Require human approval before agents execute destructive, sensitive, or irreversible actions |\n| Agent / Tool Security | Outbound Access Controls | 8 | Restrict and monitor agent outbound network, API, and data egress |\n| Model Security | Model Registry & Versioning | 8 | Maintain controlled registry with versioned, signed model artifacts and deployment eligibility |\n| Model Security | Model Drift & Behavior Monitoring | 8 | Monitor model outputs for drift, degradation, and anomalous behavior patterns |\n| Model Security | Model Supply Chain Security | 5 | Validate signed artifacts, SBOMs, and attestations for model dependencies |\n| Monitoring & Observability | Prompt & Output Logging | 10 | Log all prompts, responses, tool calls, and moderation actions for audit and investigation |\n| Monitoring & Observability | SIEM Integration & Alerting | 8 | Stream AI security events to SIEM with real-time alerting on anomalies and threats |\n| Monitoring & Observability | Execution Audit Trail | 8 | Maintain immutable audit logs of agent actions, tool invocations, and decision paths |\n| Monitoring & Observability | Per-User Resource Tracking | 8 | Track and attribute AI resource consumption, costs, and usage patterns per user or service |\n| Governance / Compliance | AI Security Policy Framework | 10 | Document and enforce AI-specific security policies, standards, and acceptable use |\n| Governance / Compliance | Risk Classification & Assessment | 8 | Classify AI use cases by risk tier and conduct appropriate impact assessments |\n| Governance / Compliance | Vendor Security Due Diligence | 8 | Evaluate third-party AI vendors for security, privacy, and compliance requirements |\n| Governance / Compliance | Incident Response for AI Systems | 8 | Define and test incident response procedures specific to AI-related security events |\n| Governance / Compliance | BAA-Governed Routing | 10 | Route PHI and sensitive healthcare data only through BAA-covered AI services and endpoints |",
+    "11": "[strategy/tech-evals/ai-gateway/EVAL-ai-gateway.md#technical-criteria-30]\n\n### Technical Criteria (30%)\n\n| # | Criterion | Weight | Description |\n| --- | --- | --- | --- |\n| 1 | A/B testing & canary release | 2 | Traffic splitting for model experiments; gradual rollout of new models with automatic rollback on error threshold |\n| 2 | API gateway integration | 2 | Ability to sit behind or integrate with existing enterprise API gateways (Kong, Azure APIM, Apigee) |\n| 3 | Automatic retries & exponential backoff | 5 | Retry failed requests with configurable backoff strategy; handle transient provider errors without application-level retry logic |\n| 4 | Concurrency management | 5 | Control concurrent request limits per consumer/identity to prevent resource exhaustion |\n| 5 | Context propagation & metadata enrichment | 5 | Pass identity, data sensitivity tier, and routing context through the enforcement pipeline via headers, metadata, or structured context |\n| 6 | Cost-aware routing with model downgrade | 5 | Substitute a requested model with a lower-cost alternative based on policy (e.g., route simple queries to cheaper models) |\n| 7 | Domain federation | 10 | Delegated governance — each business unit/team manages their own budgets, allowed models, and guardrails under a central enterprise policy |\n| 8 | Fail-closed on unavailability | 10 | When the gateway itself is down, all AI traffic is blocked — never bypassed directly to model endpoints. Per GUID-SEC-AI-GW-2.9.07 |\n| 9 | Failover / fallback routing | 10 | Automatic failover to backup models when primary is unavailable or degraded; circuit-breaker pattern with health checks |\n| 10 | Latency-aware routing | 5 | Dynamically route to the lowest-latency provider/endpoint based on real-time performance metrics |\n| 11 | Load testing evidence | 2 | Published benchmarks or customer-verifiable load testing demonstrating performance at enterprise scale |\n| 12 | MCP DLP inspection | 5 | Apply DLP/PII inspection to MCP tool inputs and outputs before they cross security boundaries |\n| 13 | MCP protocol support | 10 | Native Model Context Protocol support: HTTP+SSE transport, tool routing, server registry, protocol-aware enforcement |\n| 14 | MCP server hosting | 10 | Host and proxy MCP servers through the gateway with the same enforcement pipeline (auth, audit, DLP) applied to tool invocations |\n| 15 | MCP tool invocation audit | 5 | Audit logging of all MCP tool calls with identity, tool name, parameters, and outcome for compliance |\n| 16 | MCP tool-call governance | 10 | Authorization and access control at the individual MCP tool level; policy-based tool allowlisting per consumer |\n| 17 | Model version control & pinning | 5 | Pin specific model versions in production; track model lineage; prevent unexpected model changes |\n| 18 | Multi-agent support | 2 | Govern multi-agent orchestration where multiple AI agents collaborate; track context across agent-to-agent calls |\n| 19 | Multi-modal support | 5 | Route and govern text, vision, audio, and embedding requests — not just chat completions |\n| 20 | Multi-model support | 10 | Route to all major LLM providers (OpenAI, Anthropic, Google, Azure, AWS Bedrock, open-source) through a single gateway |\n| 21 | On-prem / hybrid LLM support | 10 | Ability to route to self-hosted models (vLLM, Ollama, custom endpoints) alongside cloud providers |\n| 22 | OpenTelemetry export | 5 | Export metrics, traces, and logs via OTLP standard to plug into existing enterprise observability (Datadog, Grafana, Splunk) |\n| 23 | Plugin/extension framework | 5 | Extensibility via custom plugins, middleware hooks, or webhook integrations for organization-specific logic |\n| 24 | Policy-based routing | 10 | Route requests based on data sensitivity tier, cost targets, latency requirements, or risk classification — not just static load balancing |\n| 25 | RAG integration | 2 | Native support for retrieval-augmented generation workflows (vector search, context injection) |\n| 26 | REST/gRPC APIs | 5 | Management and proxy APIs available via REST and/or gRPC for programmatic integration |\n| 27 | SDKs & developer tooling | 2 | Language SDKs, CLI tools, and developer experience for integrating applications with the gateway |\n| 28 | SLA & availability monitoring | 5 | Built-in health checks and availability metrics for all upstream model endpoints; alerting on degradation |\n| 29 | Streaming response proxy | 10 | Proxy SSE/WebSocket streaming responses with enforcement (guardrails, DLP) applied during or after stream — not bypassed |\n| 30 | Throughput & enforcement latency | 10 | Handle enterprise-scale TPS; enforcement pipeline overhead must stay under 200ms for interactive applications per GUID-SEC-AI-GW-2.9.07 |\n| 31 | Timeout configuration | 5 | Fine-grained timeout controls (connect, read, write) per route/provider to prevent hung requests |\n| 32 | Token-aware rate limiting | 10 | Rate limits based on token consumption (not just request count); per-user/per-app token budgets with configurable thresholds |\n| 33 | Unified abstraction API | 10 | Single API interface that abstracts provider differences; applications don't change code when switching models |\n\n---",
+    "12": "[strategy/tech-evals/ai-gateway/EVAL-ai-gateway.md#risks--mitigations]\n\n## Risks & Mitigations\n\n| Risk | Impact | Mitigation |\n| --- | --- | --- |\n| Selected vendor lacks native BAA routing enforcement | HIPAA non-compliance; PHI routed to uncovered endpoints | Require custom policy layer or compensating controls at network tier |\n| Vendor lock-in to a platform-specific gateway | Limits multi-cloud flexibility | Prefer vendors with self-hosted option and standard APIs |\n| Netskope product maturity for AI Gateway use case | SASE-first product may lack deep AI routing/orchestration features | Evaluate feature depth against purpose-built AI gateway competitors |\n| Gateway becomes single point of failure | All AI capabilities unavailable if gateway fails | Require HA deployment with fail-closed behavior per GUID-SEC-AI-GW-2.9.07 |"
+  },
+  "coverage": {
+    "total_pages": 12,
+    "covered_pages": 12,
+    "sampled_pages": 12,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 12
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "What Gets Synced",
+  "document_description": "Audit and synchronise the GitHub Copilot and Claude Code AI constructs so both assistants have equivalent coverage. Run this after authoring or modifying a skill, command, or configuration in either system.",
+  "total_pages": 16,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 16,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "What Gets Synced",
+          "node_id": "what-gets-synced",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Step 1 — Inventory",
+          "node_id": "step-1--inventory",
+          "start_index": 3,
+          "end_index": 8,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "1a. Skills",
+              "node_id": "1a-skills",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "1b. Workflow commands",
+              "node_id": "1b-workflow-commands",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "1c. Orphaned Copilot prompts",
+              "node_id": "1c-orphaned-copilot-prompts",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "1d. Instruction sections",
+              "node_id": "1d-instruction-sections",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "1e. MCP servers",
+              "node_id": "1e-mcp-servers",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Step 2 — Report",
+          "node_id": "step-2--report",
+          "start_index": 9,
+          "end_index": 9,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Step 3 — Fix",
+          "node_id": "step-3--fix",
+          "start_index": 10,
+          "end_index": 15,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Fix: Missing skill prompt wrapper",
+              "node_id": "fix-missing-skill-prompt-wrapper",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Fix: Missing workflow prompt wrapper",
+              "node_id": "fix-missing-workflow-prompt-wrapper",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Fix: Orphaned Copilot prompt",
+              "node_id": "fix-orphaned-copilot-prompt",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Fix: Instruction section gap",
+              "node_id": "fix-instruction-section-gap",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Fix: MCP server missing or drifted",
+              "node_id": "fix-mcp-server-missing-or-drifted",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Step 4 — Summary",
+          "node_id": "step-4--summary",
+          "start_index": 16,
+          "end_index": 16,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "Audit and synchronise the GitHub Copilot and Claude Code AI constructs so both assistants have equivalent coverage. Run this after authoring or modifying a skill, command, or configuration in either system.",
+    "2": "[.claude/commands/eap-ai-sync.md#what-gets-synced]\n\n## What Gets Synced\n\n| Construct | Claude Code (source of truth) | Copilot mirror |\n|---|---|---|\n| Skills | `.claude/skills/<name>/SKILL.md` | `.github/prompts/<name>.prompt.md` |\n| Workflow commands | `.claude/commands/<name>.md` | `.github/prompts/<name>.prompt.md` |\n| Instruction file | `.claude/CLAUDE.md` | `.github/copilot-instructions.md` |\n| MCP servers | `.mcp.json` | `.vscode/mcp.json` |\n\n**Direction:** Claude Code is the authoring surface. Skills and commands are always written in `.claude/`. Copilot gets thin wrappers. The instruction files are bidirectional — compare sections and flag missing content in either direction.\n\n**Exclusions:** `chat-save.md` and `chat-resume.md` are Claude Code-specific session management commands with no Copilot equivalent. Do not create wrappers for them.\n\n---",
+    "3": "[.claude/commands/eap-ai-sync.md#step-1--inventory]\n\n## Step 1 — Inventory",
+    "4": "[.claude/commands/eap-ai-sync.md#1a-skills]\n\n### 1a. Skills\n\nList every directory in `.claude/skills/` that contains a `SKILL.md`:\n\n```\n.claude/skills/<name>/SKILL.md  →  .github/prompts/<name>.prompt.md\n```\n\nFor each skill, check whether a corresponding `.github/prompts/<name>.prompt.md` exists.",
+    "5": "[.claude/commands/eap-ai-sync.md#1b-workflow-commands]\n\n### 1b. Workflow commands\n\nList every `.md` file in `.claude/commands/` (excluding `chat-save.md` and `chat-resume.md`). For each, check whether a corresponding `.github/prompts/<name>.prompt.md` exists (strip the `.md` extension; add `.prompt.md`).",
+    "6": "[.claude/commands/eap-ai-sync.md#1c-orphaned-copilot-prompts]\n\n### 1c. Orphaned Copilot prompts\n\nList every `.github/prompts/*.prompt.md` that does NOT have a corresponding `.claude/skills/<name>/SKILL.md` or `.claude/commands/<name>.md`. These are candidates for deletion or manual review.",
+    "7": "[.claude/commands/eap-ai-sync.md#1d-instruction-sections]\n\n### 1d. Instruction sections\n\nOpen both instruction files and extract their top-level `## Section` headings. Report which sections exist in `CLAUDE.md` but not in `copilot-instructions.md`, and vice versa.",
+    "8": "[.claude/commands/eap-ai-sync.md#1e-mcp-servers]\n\n### 1e. MCP servers\n\nOpen `.mcp.json` and `.vscode/mcp.json`. List the server names defined in each. Report servers present in one but missing from the other. Report servers present in both but with differing configuration.\n\n---",
+    "9": "[.claude/commands/eap-ai-sync.md#step-2--report]\n\n## Step 2 — Report\n\nPresent a consolidated drift table before making any changes:\n\n```\nType         | Status      | Item\n-------------|-------------|--------------------------------------------\nSkill        | MISSING     | .github/prompts/new-skill.prompt.md\nCommand      | MISSING     | .github/prompts/new-command.prompt.md\nPrompt       | ORPHANED    | .github/prompts/old-skill.prompt.md\nInstruction  | SECTION GAP | \"## Adding a New Component\" missing from copilot-instructions.md\nMCP          | MISSING     | server \"ado\" missing from .vscode/mcp.json\nMCP          | DRIFT       | server \"github\" config differs between files\n```\n\nIf the table is empty, report \"No drift detected — Claude and Copilot are in sync.\" and stop.\n\n---",
+    "10": "[.claude/commands/eap-ai-sync.md#step-3--fix]\n\n## Step 3 — Fix\n\nAsk the user: **\"Fix all issues automatically, or walk through each one?\"**\n\n- **Auto:** Apply all fixes without confirmation.\n- **Interactive:** Show each item one at a time and ask to fix or skip.",
+    "11": "[.claude/commands/eap-ai-sync.md#fix-missing-skill-prompt-wrapper]\n\n### Fix: Missing skill prompt wrapper\n\nCreate `.github/prompts/<name>.prompt.md` using the skill wrapper format (no YAML frontmatter). Read the `SKILL.md` to extract the role description and primary responsibilities, then write:\n\n```markdown\nYou are a <role-description>. Read `.claude/skills/<name>/SKILL.md` for the full workflow. <1–2 sentence summary of primary responsibilities from the skill file>.\n```",
+    "12": "[.claude/commands/eap-ai-sync.md#fix-missing-workflow-prompt-wrapper]\n\n### Fix: Missing workflow prompt wrapper\n\nCreate `.github/prompts/<name>.prompt.md` using the workflow wrapper format (with YAML frontmatter). Read the command file to extract its purpose, then write:\n\n```markdown\n---\nmode: agent\ndescription: <one-sentence description from the command file>\n---\n\nRead `.claude/commands/<name>.md` for the full workflow. <1–2 sentence summary of what the command does, including key flags if any>.\n```",
+    "13": "[.claude/commands/eap-ai-sync.md#fix-orphaned-copilot-prompt]\n\n### Fix: Orphaned Copilot prompt\n\nDo NOT delete automatically. Flag it and ask the user whether to delete it or keep it as a standalone Copilot prompt that has no Claude Code equivalent.",
+    "14": "[.claude/commands/eap-ai-sync.md#fix-instruction-section-gap]\n\n### Fix: Instruction section gap\n\nDo NOT auto-merge instruction files — they have AI-specific formatting conventions. Instead, show the missing sections side by side and ask the user to confirm before copying content across. When copying from `CLAUDE.md` to `copilot-instructions.md`, preserve the Copilot file's existing voice and skip any Claude Code-specific content (e.g. `~/.claude/settings.json` references).",
+    "15": "[.claude/commands/eap-ai-sync.md#fix-mcp-server-missing-or-drifted]\n\n### Fix: MCP server missing or drifted\n\nShow a diff of the server definition. Ask the user which file is the source of truth for this change, then apply the diff to the other file. Never overwrite MCP auth tokens or secrets — only sync the `command`, `args`, `env` keys, and `type`.\n\n---",
+    "16": "[.claude/commands/eap-ai-sync.md#step-4--summary]\n\n## Step 4 — Summary\n\nAfter applying fixes, report:\n\n- How many items were fixed\n- How many were skipped\n- Any remaining manual actions the user must take (e.g. instruction section merges that require human judgment)\n\nSuggest running `task health` to verify the environment after any MCP config changes."
+  },
+  "coverage": {
+    "total_pages": 16,
+    "covered_pages": 16,
+    "sampled_pages": 16,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 16
+  }
+}

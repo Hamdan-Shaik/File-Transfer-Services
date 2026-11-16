@@ -1,0 +1,176 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Scope",
+  "document_description": "Review uncommitted or staged changes to AI coding assistant constructs for authoring standard compliance, internal consistency, and cross-document coherence.",
+  "total_pages": 17,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 17,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Scope",
+          "node_id": "scope",
+          "start_index": 2,
+          "end_index": 3,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Skill Collaboration",
+              "node_id": "skill-collaboration",
+              "start_index": 3,
+              "end_index": 3,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Workflow",
+          "node_id": "workflow",
+          "start_index": 4,
+          "end_index": 16,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Step 1 — Gather and Categorize the Diff",
+              "node_id": "step-1--gather-and-categorize-the-diff",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Step 2 — Review AI Constructs",
+              "node_id": "step-2--review-ai-constructs",
+              "start_index": 6,
+              "end_index": 13,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Determine Construct Type and Governing Standard",
+                  "node_id": "determine-construct-type-and-governing-standard",
+                  "start_index": 7,
+                  "end_index": 7,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Authoring Standard Compliance",
+                  "node_id": "authoring-standard-compliance",
+                  "start_index": 8,
+                  "end_index": 8,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Content Quality",
+                  "node_id": "content-quality",
+                  "start_index": 9,
+                  "end_index": 9,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Internal Consistency",
+                  "node_id": "internal-consistency",
+                  "start_index": 10,
+                  "end_index": 10,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Cross-Document Consistency",
+                  "node_id": "cross-document-consistency",
+                  "start_index": 11,
+                  "end_index": 11,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Lifecycle and Change Impact",
+                  "node_id": "lifecycle-and-change-impact",
+                  "start_index": 12,
+                  "end_index": 12,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Structural and Governance Checks",
+                  "node_id": "structural-and-governance-checks",
+                  "start_index": 13,
+                  "end_index": 13,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Step 3 — Review Tool-Binding Configuration (Conditional)",
+              "node_id": "step-3--review-tool-binding-configuration-conditional",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Step 4 — Discover and Apply Applicable Standards",
+              "node_id": "step-4--discover-and-apply-applicable-standards",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Step 5 — Rank and Report Findings",
+              "node_id": "step-5--rank-and-report-findings",
+              "start_index": 16,
+              "end_index": 16,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Guidelines",
+          "node_id": "guidelines",
+          "start_index": 17,
+          "end_index": 17,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "Review uncommitted or staged changes to AI coding assistant constructs for authoring standard compliance, internal consistency, and cross-document coherence.",
+    "2": "[.claude/skills/ai-reviewer/SKILL.md#scope]\n\n## Scope\n\n- If `$ARGUMENTS` is a PR number, review that PR's diff\n- If `$ARGUMENTS` is a branch name, review changes on that branch against main\n- If `$ARGUMENTS` is one or more file paths that are not yet committed, staged, or part of any PR, review those files directly — this supports quality-checking a draft before it is written, committed, or opened as a PR (e.g., when invoked as a subagent during an authoring agent's self-audit)\n- Otherwise review the current working tree changes\n\nThis Skill covers all AI coding assistant construct types defined in [ADR-TEC-020](../../../decisions/technology/ADR-TEC-020-ai-coding-assistant-construct-taxonomy.md)'s unified taxonomy that are authored by application teams:\n\n| Construct Type | Target Path(s) | Governing Standard |\n| --- | --- | --- |\n| Skill | `.claude/skills/<name>/SKILL.md` + `.github/skills/<name>/SKILL.md` (pointer) | [STD-TEC-AI-001](../../../standards/technology/ai-development/STD-TEC-AI-001-skill-authoring.md) |\n| Agent | `.github/agents/<name>.agent.md` + optional `.claude/agents/<name>.md` (sub-agent) | [STD-TEC-AI-002](../../../standards/technology/ai-development/STD-TEC-AI-002-agent-definition.md), plus [STD-TEC-AI-006](../../../standards/technology/ai-development/STD-TEC-AI-006-chat-driven-agent-standard.md) for chat-driven/dual-mode Agents |\n| Workflow | `.claude/commands/<name>.md` + `.github/prompts/<name>.prompt.md` | [STD-TEC-AI-004](../../../standards/technology/ai-development/STD-TEC-AI-004-workflow-authoring.md) |\n| Instruction | `CLAUDE.md` / `.github/copilot-instructions.md` / `AGENTS.md` | [STD-TEC-AI-003](../../../standards/technology/ai-development/STD-TEC-AI-003-instruction-file.md) |\n| File-Pattern Instruction | `.claude/rules/<name>.md` + `.github/instructions/<name>.instructions.md` | [STD-TEC-AI-005](../../../standards/technology/ai-development/STD-TEC-AI-005-file-pattern-instruction.md) |\n\nThis Skill does NOT cover: making fixes or authoring new content — direct the user to invoke the `ai-author` agent, which owns AI-construct authoring and revision (per `AGENTS.md`'s Agent Separation of Duties table); the Enterprise Architecture artifact taxonomy — governed by `foundation/CONTRIBUTING.md`, checked by the `ea-reviewer` Skill, not this one; GitHub Agentic Workflows (`gh-aw`) automation files (`.github/workflows/*.md`) — owned by the `agentic-workflows` agent's own review process. If asked to review one of these, say so directly rather than forcing it through this Skill's checks.",
+    "3": "[.claude/skills/ai-reviewer/SKILL.md#skill-collaboration]\n\n### Skill Collaboration\n\nThe reviewer **gates merges** — it reviews what changed, not the full repository.\n\n| Collaborator | Relationship |\n| --- | --- |\n| **ai-architect** | Reviewer checks authoring compliance in changed content. For deeper questions — including whether a construct set is complete for its stated need — direct the user to invoke the `ai-architect` skill. |\n| **documenter** | If documentation is missing, incomplete, or requires new content, direct the user to invoke `/documenter`. |\n| **ai-convergence** | Author-side pre-commit gate that prevents the consistency gaps this Skill surfaces. When findings include parallel statement gaps, prose-to-structure mismatches, or cross-file enumeration inconsistencies (e.g., a routing table entry that doesn't match the Skill Registry), note that the author can resolve all of them in a single `/ai-convergence` pass before the next push. |\n| **ea-reviewer** | Sibling Skill for the separate EA artifact taxonomy — if the diff turns out to contain ADRs, Patterns, Standards, Guidance, or White Papers rather than AI constructs, direct the user to `ea-reviewer` instead. |\n\n**Glossary**: Read-only consumer.\n\n**Scope distinction from ai-convergence**: This Skill is scoped to **what changed** (PR/diff) and renders an Approve/Request Changes verdict. ai-convergence is an author-side pre-commit gate that closes consistency gaps before the reviewer sees the diff.",
+    "4": "[.claude/skills/ai-reviewer/SKILL.md#workflow]\n\n## Workflow",
+    "5": "[.claude/skills/ai-reviewer/SKILL.md#step-1--gather-and-categorize-the-diff]\n\n### Step 1 — Gather and Categorize the Diff\n\n1. Gather the diff based on the scope argument routing above.\n2. Categorize each changed file using the construct type table above.\n3. Note any files under `.vscode/mcp.json` or `.mcp.json` — these are reviewed separately in Step 3, since they carry the tool-binding configuration STD-TEC-AI-002 MR-4.4 requires Agent `tools:` declarations to stay consistent with.",
+    "6": "[.claude/skills/ai-reviewer/SKILL.md#step-2--review-ai-constructs]\n\n### Step 2 — Review AI Constructs\n\nFor each changed construct, perform all checks below.",
+    "7": "[.claude/skills/ai-reviewer/SKILL.md#determine-construct-type-and-governing-standard]\n\n#### Determine Construct Type and Governing Standard\n\n1. Identify the construct type by matching the file's directory path to the target path column in the scope table.\n2. Locate the applicable governing standard (STD-TEC-AI-001 through 006) and its companion implementation guidance (GUID-TECH-IMPL-006 through 012) — read whichever apply to that construct type before reviewing it.\n3. For Agents: determine invocation mode (autonomous, chat-driven, or dual-mode) before assessing compliance — this determines whether STD-TEC-AI-002 alone applies, or STD-TEC-AI-006 supplements it (see Lifecycle and Change Impact below for dual-mode-specific checks).",
+    "8": "[.claude/skills/ai-reviewer/SKILL.md#authoring-standard-compliance]\n\n#### Authoring Standard Compliance\n\nVerify the construct's structure, frontmatter fields, and required sections conform to its governing standard's Mandatory Requirements:\n\n- **Skill**: `.claude/skills/<name>/SKILL.md` frontmatter contains only `name` and `description` (≤ 300 chars); required structure present in order (Frontmatter, Operating Instruction, Scope, Workflow, Guidelines); Workflow steps are cognitive, not tool invocations; Guidelines include ownership and delegation directives; `.github/skills/<name>/SKILL.md` pointer exists and correctly references the canonical file.\n- **Agent**: `.github/agents/<name>.agent.md` contains Description, Instructions, and Tools Declaration; `tools:` uses real platform names, least privilege, never omitted; scope boundary does not fully overlap another Agent; `target:` is set intentionally or its omission is documented; for chat-driven — persona declaration opens the instructions, Intent Classification and Routing Table are present, every routing entry resolves to an existing file (Critical if not); for subagent composition — `agents:` pairs with the `agent` tool in `tools:`.\n- **Workflow**: Claude Command (`.claude/commands/<name>.md`) has opening statement, `$ARGUMENTS` Scope routing, and a Workflow section with concrete tool invocations; paired Copilot Prompt (`.github/prompts/<name>.prompt.md`) has `mode`/`description` frontmatter and delegates to the Command; no domain judgment is embedded inline without a canonical-path Skill reference.\n- **Instruction**: required content sections present in canonical order (Project Overview → Setup → Structure → Skill Registry → Intent Routing → Role Guidance → Conventions → Glossary → Constraints); Skill Registry and Intent Routing Table both present; cross-vendor parity between `CLAUDE.md` and `.github/copilot-instructions.md`; no secrets or governance-bypass instructions; `AGENTS.md`, if present, is vendor-neutral.\n- **File-Pattern Instruction**: frontmatter contains the correct vendor activation field (`paths:` for Claude, `applyTo:` for Copilot) plus `description` (≤ 200 chars); glob pattern is specific, not catch-all; body stays under ~2,000 tokens; Claude Rule and Copilot Instruction are semantically equivalent.",
+    "9": "[.claude/skills/ai-reviewer/SKILL.md#content-quality]\n\n#### Content Quality\n\nStructural compliance tells you the construct has the right shape. Content quality tells you whether it's actually doing its job. Apply the criteria below based on construct type — these are judgment questions, not mechanical checks.\n\n**Skill**: Is the scope expressible in one sentence, or does it need \"and\" (a sign of two Skills merged into one)? Do the Workflow steps genuinely describe reasoning/judgment rather than imperative tool commands? Are the ownership and delegation statements specific enough to prevent skill bleed?\n\n**Agent**: Does the persona declaration establish a real behavioral stance, or is it a placeholder? Is the tools list justified by the Agent's actual scope, not requested broadly? For chat-driven Agents, does every Intent Classification entry include a worked example of expected user phrasing (STD-TEC-AI-006 MR-2.5)?\n\n**Workflow**: Do the steps orchestrate concrete, executable actions, or do they restate judgment that belongs in a Skill? Is the Skill reference specific about what criteria/knowledge to apply, not a vague \"see the Skill for details\"?\n\n**Instruction**: Does the Skill Registry reflect the actual current Skill catalog, or has it drifted stale? Does the Intent Routing Table's trigger-phrase column contain phrases a user would plausibly type, not just the exact command name?\n\n**File-Pattern Instruction**: Is the rule's concern genuinely single-purpose (\"Rules for working with ___\" fits in one phrase)? Does the glob pattern match only the intended files when tested against the actual repository tree?\n\nContent quality gaps below Medium severity — vague language that doesn't impede understanding, minor incompleteness in non-critical sections — should be noted as suggestions, not blocking findings.",
+    "10": "[.claude/skills/ai-reviewer/SKILL.md#internal-consistency]\n\n#### Internal Consistency\n\nCheck each changed file for consistency gaps within the file itself:\n\n- **Parallel statement gaps** — identify every concept described in more than one section of the file (e.g., a Skill's Scope and its Guidelines both describing the same boundary); verify all occurrences are mutually consistent\n- **Prose-to-structure gaps** — verify prose descriptions match their structured counterparts (routing tables, ownership matrices, step lists); a condition added to prose must appear in every table row and step that covers the same concept\n- **Counter-to-enumeration mismatches** — when a heading, intro, or summary states a count (\"six categories\", \"three required sections\"), count the actual items in the enumeration and verify they match\n- **Claim-vs-instruction gaps** — when a construct states it enforces a boundary (e.g., \"delegates to X\"), verify the routing/execution steps that follow actually route there",
+    "11": "[.claude/skills/ai-reviewer/SKILL.md#cross-document-consistency]\n\n#### Cross-Document Consistency\n\nCheck the changed files against each other and against existing constructs in the repo:\n\n- **Cross-file enumeration propagation** — when multiple changed files enumerate the same concept (e.g., an Agent's Routing Table and the Skill Registry it should be consistent with), verify every enumeration is consistent\n- **Routing resolvability** — every Command/Skill/Instruction referenced by path or slash-form in a changed Agent or Workflow file MUST resolve to a real file (STD-TEC-AI-006 MR-6.2; a routed intent with no resolvable target is a Critical finding)\n- **Contradiction detection** — verify new content does not contradict an existing Instruction file's directives (STD-TEC-AI-005 MR-8.2/8.3) or an existing Agent's declared scope boundary (STD-TEC-AI-002 MR-3.1)\n- **Claims verification** — when a construct claims \"standard X requires Y\", verify the referenced standard actually exists and makes that claim",
+    "12": "[.claude/skills/ai-reviewer/SKILL.md#lifecycle-and-change-impact]\n\n#### Lifecycle and Change Impact\n\n- **Breaking change detection** — flag any change that weakens normative language (MUST → SHOULD → MAY), removes a required section, or silently broadens an Agent's tool grants beyond its stated scope\n- **Dual-mode coexistence (Agents only)** — when an Agent file is imported into a `gh-aw` autonomous workflow via `imports:` (STD-TEC-AI-006 MR-5), verify the importing workflow's own body explicitly overrides any chat-only step (e.g., the human-confirmation step) rather than relying on the imported file's default behavior — an unresolved mode-specific instruction here is a **High** severity compliance defect (MR-5.4)\n- **Cross-vendor parity drift** — for Skills, Workflows, and file-pattern Instructions, verify both vendor files were updated together; a change to only one half of a pair is a compliance failure (STD-TEC-AI-001 MR-1, STD-TEC-AI-004 MR-1.5, STD-TEC-AI-005 MR-7)\n- **Orphan risk on removals and renames** — when a construct is removed or renamed, search for other constructs that reference it by path or slash-form; unresolved references become silently broken routing\n- **Revision scope discipline** — for a revision (not new authorship), verify every change traces to a specific requested change or named finding; flag any restructuring, rewriting, or expansion of a section the request did not flag as an unauthorized scope expansion",
+    "13": "[.claude/skills/ai-reviewer/SKILL.md#structural-and-governance-checks]\n\n#### Structural and Governance Checks\n\n- **Cross-reference integrity** — verify all internal links resolve to actual files in the repo; do not assume paths are correct without checking\n- **Placeholder and stub detection** — flag any `[bracketed placeholder]`, `TODO`, `TBD`, or unfilled template boilerplate\n- **Directory taxonomy** — confirm new constructs are placed in the correct directory per the target path table; misplaced constructs are a High severity finding\n- **Naming conventions** — verify kebab-case naming and, for Agents, the filename character constraint (STD-TEC-AI-002 MR-1.2)\n- **Least-privilege verification (Agents)** — verify the `tools:` list is not broader than the Agent's declared scope requires, and is never omitted",
+    "14": "[.claude/skills/ai-reviewer/SKILL.md#step-3--review-tool-binding-configuration-conditional]\n\n### Step 3 — Review Tool-Binding Configuration (Conditional)\n\nPerform this step only when the diff contains `.vscode/mcp.json` or `.mcp.json`.\n\nVerify every MCP server referenced there is consistent with the tool names declared in any Agent's `tools:` field that depends on it (STD-TEC-AI-002 MR-4.4) — a mismatch between configured servers and declared tool names is a High severity finding.",
+    "15": "[.claude/skills/ai-reviewer/SKILL.md#step-4--discover-and-apply-applicable-standards]\n\n### Step 4 — Discover and Apply Applicable Standards\n\n1. **Detect the construct types** in the changed files, then read the corresponding standard(s): STD-TEC-AI-001 (Skill), STD-TEC-AI-002/006 (Agent), STD-TEC-AI-004 (Workflow), STD-TEC-AI-003 (Instruction), STD-TEC-AI-005 (file-pattern Instruction).\n2. **Also check** the matching implementation guidance for worked examples and anti-patterns: GUID-TECH-IMPL-009 (Skill), GUID-TECH-IMPL-010 (Agent), GUID-TECH-IMPL-006/007 (Workflow), GUID-TECH-IMPL-003/008 (Instruction/file-pattern), GUID-TECH-IMPL-011 (quick start), GUID-TECH-IMPL-012 (review convergence practice).\n3. **Also check** [PTN-TEC-AI-003](../../../patterns/technology/ai-development/PTN-TEC-AI-003-cross-tool-construct-synchronization-pattern.md) (cross-tool parity) and [PTN-TEC-AI-004](../../../patterns/technology/ai-development/PTN-TEC-AI-004-skill-composition-and-orchestration-pattern.md) (Skill composition) for pattern conformance.",
+    "16": "[.claude/skills/ai-reviewer/SKILL.md#step-5--rank-and-report-findings]\n\n### Step 5 — Rank and Report Findings\n\n1. Rank each finding:\n   - **Critical** — must fix before merge; unresolvable routing target, secret exposure, or a governance-bypass instruction\n   - **High** — strongly recommended fix; significant consistency gap, authoring standard violation, misplaced construct, or unresolved dual-mode coexistence gap\n   - **Medium** — should fix; improves correctness, coherence, or maintainability\n   - **Low** — optional; minor improvement or suggestion\n\n2. Present findings as a table:\n\n   ```text\n   | # | Severity | File | Line(s) | Issue | Recommendation |\n   ```\n\n3. Provide an overall assessment: **Approve** or **Request Changes**.\n\n4. When findings include internal consistency gaps (parallel statement gaps, prose-to-structure mismatches, cross-file enumeration inconsistencies), note that the author can resolve all of them in a single `/ai-convergence` pass rather than addressing findings one at a time across multiple review rounds.\n\n5. This Skill does not apply fixes — if the user asks for the findings to be fixed, direct the user to invoke the `ai-author` agent, which owns AI-construct authoring and revision (per `AGENTS.md`'s Agent Separation of Duties table). This keeps a single ownership model: the reviewer reads and reports, it does not modify.",
+    "17": "[.claude/skills/ai-reviewer/SKILL.md#guidelines]\n\n## Guidelines\n\n- Review what changed — do not critique surrounding untouched content.\n- **Avoid nit-picking**: do not file findings for stylistic word choices between valid synonyms, subjective clarity judgments without identifying what is specifically ambiguous and to whom, or reordering suggestions when the current order is logically sound.\n- **Distinguish nit-picks from real findings that look minor**: broken routing references are always a real finding regardless of how small they seem; counter-to-enumeration mismatches are objective and always real; missing required sections are structural violations; ambiguous normative language (MUST vs. should) is a real finding because it affects compliance. Never suppress these as \"too minor.\"\n- Internal consistency gaps (parallel statements, prose-to-structure, counter-to-enumeration, claim-vs-instruction) are **High severity** findings by default in this repo.\n- Directory taxonomy violations are **High severity** — a misplaced construct silently fails to load for the intended AI coding assistant.\n- Be specific: cite the exact file location and what is wrong, not vague concerns.\n- Acknowledge good changes — note improvements, not just problems.\n- Verify links and routing entries resolve — do not trust that paths are correct without checking.\n- This Skill owns: review findings and the Approve/Request Changes verdict for AI construct changes.\n- This Skill reads but does not modify: any file under review.\n- Direct the user to invoke `/documenter` for writing missing or updated documentation.\n- Direct the user to invoke `ai-architect` for construct-design decisions revealed during review.\n- Direct the user to invoke `ea-reviewer` if the diff turns out to contain EA artifacts rather than AI constructs."
+  },
+  "coverage": {
+    "total_pages": 17,
+    "covered_pages": 17,
+    "sampled_pages": 17,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 17
+  }
+}

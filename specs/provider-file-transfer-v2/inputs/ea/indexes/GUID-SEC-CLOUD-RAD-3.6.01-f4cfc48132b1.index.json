@@ -1,0 +1,159 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Cloud Security Foundations Reference Architecture",
+  "document_description": "guidance_name: 'Cloud Security Foundations Reference Architecture'",
+  "total_pages": 15,
+  "tree": [
+    {
+      "title": "Cloud Security Foundations Reference Architecture",
+      "node_id": "cloud-security-foundations-reference-architecture",
+      "start_index": 1,
+      "end_index": 15,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Architecture Guidance Metadata",
+          "node_id": "architecture-guidance-metadata",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Purpose and Scope",
+          "node_id": "purpose-and-scope",
+          "start_index": 3,
+          "end_index": 4,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "RAD Scope",
+              "node_id": "rad-scope",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Multi-Account Security Architecture",
+          "node_id": "multi-account-security-architecture",
+          "start_index": 5,
+          "end_index": 7,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "AWS Organizations Structure",
+              "node_id": "aws-organizations-structure",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Security Hub Organization Deployment",
+              "node_id": "security-hub-organization-deployment",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Logical Architecture Diagram",
+          "node_id": "logical-architecture-diagram",
+          "start_index": 8,
+          "end_index": 8,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "KMS CMK Key Hierarchy",
+          "node_id": "kms-cmk-key-hierarchy",
+          "start_index": 9,
+          "end_index": 11,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Key Design Principles",
+              "node_id": "key-design-principles",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Key Policy Pattern",
+              "node_id": "key-policy-pattern",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Secrets Manager Deployment Patterns",
+          "node_id": "secrets-manager-deployment-patterns",
+          "start_index": 12,
+          "end_index": 14,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Database Credential Pattern (RDS/Aurora)",
+              "node_id": "database-credential-pattern-rdsaurora",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Cross-Account Secret Access Pattern",
+              "node_id": "cross-account-secret-access-pattern",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "IaC Terraform Reference",
+          "node_id": "iac-terraform-reference",
+          "start_index": 15,
+          "end_index": 15,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[strategy/guidance/security/Cloud-and-Infrastructure/ref-arch/GUID-SEC-CLOUD-RAD-3.6.01.md#cloud-security-foundations-reference-architecture]\n\n# Cloud Security Foundations Reference Architecture\n\n**← Back to [EAP Home](../../../../../README.md) • [Strategy](../../../../README.md) • [Guidance](../../../README.md) • [Cloud-and-Infrastructure](../README.md)**\n\n---",
+    "2": "[strategy/guidance/security/Cloud-and-Infrastructure/ref-arch/GUID-SEC-CLOUD-RAD-3.6.01.md#architecture-guidance-metadata]\n\n## Architecture Guidance Metadata\n\n```yaml\nguidance_id: 'GUID-SEC-CLOUD-RAD-3.6.01'\nguidance_name: 'Cloud Security Foundations Reference Architecture'\nguidance_type: 'reference-architecture-document'\nrad_type: 'composite'\npaired_abb: 'GUID-SEC-CLOUD-REF-1.6.02'\nparent_vision: 'GUID-SEC-CLOUD-VISION-0.6.01'\nadm_phase: 'Phase C-D'\ncategory: 'security'\nversion: '0.1.0'\nstatus: 'draft'\napplicability: 'enterprise'\ntags: ['security', 'cloud', 'reference-architecture', 'phase-c', 'phase-d', 'aws', 'security-hub', 'aws-config', 'kms', 'secrets-manager', 'foundations']\nauthor: 'Jesse Adams'\n```\n\n---\n\n> **Informative Content Notice**: Technology choices and vendor references in this document are **illustrative only**. The architectural control patterns reflect normative requirements from the governing ABBs and represent required design outcomes, not product prescriptions.\n\n---",
+    "3": "[strategy/guidance/security/Cloud-and-Infrastructure/ref-arch/GUID-SEC-CLOUD-RAD-3.6.01.md#purpose-and-scope]\n\n## Purpose and Scope\n\nThis RAD provides illustrative patterns and logical design guidance for realizing the foundational Cloud and Infrastructure Security controls across the enterprise AWS environment. It covers the cross-cutting security services that span all workload types:\n\n**Governing ABBs**:\n- [GUID-SEC-CLOUD-CSPM-2.6.03 — Cloud Security Posture Management](../GUID-SEC-CLOUD-CSPM-2.6.03.md)\n- [GUID-SEC-CLOUD-SECRETS-MGMT-2.6.05 — Secrets Management](../GUID-SEC-CLOUD-SECRETS-MGMT-2.6.05.md)\n- [GUID-SEC-CLOUD-DATA-PROT-2.6.07 — Cloud Data Protection](../GUID-SEC-CLOUD-DATA-PROT-2.6.07.md)\n- [GUID-SEC-CLOUD-NETWORK-SEC-2.6.08 — Cloud Network Security Governance](../GUID-SEC-CLOUD-NETWORK-SEC-2.6.08.md)",
+    "4": "[strategy/guidance/security/Cloud-and-Infrastructure/ref-arch/GUID-SEC-CLOUD-RAD-3.6.01.md#rad-scope]\n\n### RAD Scope\n\n- Multi-account Security Hub organization deployment\n- AWS Config conformance pack and remediation architecture\n- SCP organizational structure\n- KMS CMK key hierarchy and usage patterns\n- Secrets Manager deployment patterns for common workload secret types\n- VPC flow log and network compliance monitoring pipeline\n\n---",
+    "5": "[strategy/guidance/security/Cloud-and-Infrastructure/ref-arch/GUID-SEC-CLOUD-RAD-3.6.01.md#multi-account-security-architecture]\n\n## Multi-Account Security Architecture",
+    "6": "[strategy/guidance/security/Cloud-and-Infrastructure/ref-arch/GUID-SEC-CLOUD-RAD-3.6.01.md#aws-organizations-structure]\n\n### AWS Organizations Structure\n\nThe Cloud Security Foundations architecture assumes a multi-account AWS Organizations structure with dedicated accounts for security tooling. The following account structure is the reference model:\n\n```\nAWS Organizations Root\n├── Security OU\n│   ├── Security Tooling Account     ← Security Hub delegated admin, GuardDuty admin, Inspector admin\n│   └── Log Archive Account          ← CloudTrail logs, VPC flow logs, Config history (immutable)\n├── Infrastructure OU\n│   ├── Network Account              ← Transit Gateway, centralized egress, shared VPC\n│   └── Shared Services Account      ← SSM, Secrets Manager cross-account, AMI pipeline\n├── Workload OU\n│   ├── PHI Production OU            ← SCP: PHI-restricted controls applied\n│   │   ├── PHI Prod Account 1\n│   │   └── PHI Prod Account N\n│   ├── Production OU\n│   │   └── Non-PHI Prod Accounts\n│   └── Non-Production OU\n│       └── Dev/Staging/Test Accounts\n└── Management Account               ← AWS Organizations management only; no workloads\n```",
+    "7": "[strategy/guidance/security/Cloud-and-Infrastructure/ref-arch/GUID-SEC-CLOUD-RAD-3.6.01.md#security-hub-organization-deployment]\n\n### Security Hub Organization Deployment\n\n```\nSecurity Tooling Account (Delegated Administrator)\n├── Security Hub — Organization Admin\n│   ├── AFSBP Standard (AWS Foundational Security Best Practices) — enabled all accounts\n│   ├── CIS AWS Foundations Benchmark v1.4 — enabled all accounts\n│   └── NIST SP 800-53 Rev 5 — enabled PHI OU accounts\n├── GuardDuty — Organization Admin\n│   ├── Auto-enable: ALL (new + existing accounts)\n│   └── Protection Plans: S3, EKS Audit, Lambda Network, Malware Protection, RDS\n├── AWS Inspector — Organization Admin\n│   ├── EC2 scanning (SSM agent required)\n│   ├── ECR enhanced scanning (on-push)\n│   └── Lambda function scanning\n└── IAM Access Analyzer — Organization Admin\n    └── Unused access analysis enabled\n```\n\n---",
+    "8": "[strategy/guidance/security/Cloud-and-Infrastructure/ref-arch/GUID-SEC-CLOUD-RAD-3.6.01.md#logical-architecture-diagram]\n\n## Logical Architecture Diagram\n\n```mermaid\ngraph TB\n    subgraph Org_Root[\"AWS Organizations\"]\n        subgraph Security_OU[\"Security OU\"]\n            SecTooling[\"Security Tooling Account\\nSecurity Hub Admin\\nGuardDuty Admin\\nInspector Admin\"]\n            LogArchive[\"Log Archive Account\\nCloudTrail Logs\\nVPC Flow Logs\\nConfig History\"]\n        end\n        subgraph WorkloadOU[\"Workload OU (all accounts)\"]\n            PHIAcct[\"PHI Account\\n(SCP-restricted)\"]\n            ProdAcct[\"Non-PHI Production\\nAccount\"]\n        end\n        subgraph MgmtAcct[\"Management Account\"]\n            OrgRoot[\"AWS Organizations\\nSCP Management\\nAccount Vending\"]\n        end\n    end\n\n    subgraph Security_Services[\"Security Services — Security Tooling Account\"]\n        SecurityHub[\"AWS Security Hub\\nOrg-wide aggregation\\nFindings routing\"]\n        GuardDutyAdmin[\"GuardDuty\\nOrg-wide threat detection\"]\n        InspectorAdmin[\"Inspector\\nCVE scanning\\nECR scanning\"]\n        AccessAnalyzer[\"IAM Access Analyzer\\nUnused access findings\"]\n    end\n\n    subgraph Config_Services[\"Config & Compliance\"]\n        ConfigAgg[\"AWS Config\\nOrg Aggregator\\nConformance Packs\"]\n        SCPs[\"Service Control Policies\\nPreventive guardrails\\nPHI OU restrictions\"]\n    end\n\n    subgraph Secrets[\"Secrets Architecture\"]\n        SecretsManager[\"AWS Secrets Manager\\nRotating credentials\\nDB passwords / API keys\"]\n        KMS[\"AWS KMS\\nCMKs per workload class\\nAuto-rotation enabled\"]\n    end\n\n    PHIAcct -->|findings| SecurityHub\n    ProdAcct -->|findings| SecurityHub\n    PHIAcct -->|config evaluations| ConfigAgg\n    OrgRoot -->|applies| SCPs\n    SCPs -->|restricts| PHIAcct\n    SecretsManager -->|uses| KMS\n    GuardDutyAdmin -->|findings| SecurityHub\n    InspectorAdmin -->|findings| SecurityHub\n    AccessAnalyzer -->|findings| SecurityHub\n```\n\n---",
+    "9": "[strategy/guidance/security/Cloud-and-Infrastructure/ref-arch/GUID-SEC-CLOUD-RAD-3.6.01.md#kms-cmk-key-hierarchy]\n\n## KMS CMK Key Hierarchy",
+    "10": "[strategy/guidance/security/Cloud-and-Infrastructure/ref-arch/GUID-SEC-CLOUD-RAD-3.6.01.md#key-design-principles]\n\n### Key Design Principles\n\nCMKs are scoped per environment and per data classification tier to limit the blast radius of key compromise and to maintain clear audit trails:\n\n| Key Purpose | Key Alias | Usage | Rotation |\n|---|---|---|---|\n| PHI data — production | `alias/phi-prod-{service}` | RDS encryption, S3 SSE-KMS for PHI buckets | Annual (auto) |\n| Non-PHI production | `alias/prod-{service}` | Production non-PHI storage | Annual (auto) |\n| Secrets encryption | `alias/secrets-manager` | Secrets Manager secret encryption | Annual (auto) |\n| Log archive | `alias/log-archive` | CloudTrail and flow log S3 bucket encryption | Annual (auto) |\n| Non-production | `alias/nonprod` | Dev/staging environments | Annual (auto) |",
+    "11": "[strategy/guidance/security/Cloud-and-Infrastructure/ref-arch/GUID-SEC-CLOUD-RAD-3.6.01.md#key-policy-pattern]\n\n### Key Policy Pattern\n\nEvery CMK key policy follows the principle of separated administration and usage:\n\n```json\n{\n  \"Statement\": [\n    {\n      \"Sid\": \"KeyAdministration\",\n      \"Effect\": \"Allow\",\n      \"Principal\": {\"AWS\": \"arn:aws:iam::{account}:role/key-administrators\"},\n      \"Action\": [\"kms:Create*\", \"kms:Describe*\", \"kms:Enable*\", \"kms:List*\",\n                 \"kms:Put*\", \"kms:Update*\", \"kms:Revoke*\", \"kms:Disable*\",\n                 \"kms:Get*\", \"kms:Delete*\", \"kms:ScheduleKeyDeletion\", \"kms:CancelKeyDeletion\"],\n      \"Resource\": \"*\"\n    },\n    {\n      \"Sid\": \"KeyUsage\",\n      \"Effect\": \"Allow\",\n      \"Principal\": {\"AWS\": \"arn:aws:iam::{account}:role/{workload-role}\"},\n      \"Action\": [\"kms:Decrypt\", \"kms:GenerateDataKey\", \"kms:DescribeKey\"],\n      \"Resource\": \"*\"\n    }\n  ]\n}\n```\n\n---",
+    "12": "[strategy/guidance/security/Cloud-and-Infrastructure/ref-arch/GUID-SEC-CLOUD-RAD-3.6.01.md#secrets-manager-deployment-patterns]\n\n## Secrets Manager Deployment Patterns",
+    "13": "[strategy/guidance/security/Cloud-and-Infrastructure/ref-arch/GUID-SEC-CLOUD-RAD-3.6.01.md#database-credential-pattern-rdsaurora]\n\n### Database Credential Pattern (RDS/Aurora)\n\n```\nWorkload (ECS Task / Lambda)\n  └─→ Secrets Manager (via VPC endpoint)\n        ├── Secret: /prod/claims-db/db-credentials\n        │   ├── Rotation: AWS-managed (SecretsManagerRDSPostgreSQLRotationSingleUser)\n        │   ├── Rotation interval: 30 days (PHI) / 90 days (non-PHI)\n        │   └── Key: alias/phi-prod-claims-db CMK\n        └── KMS endpoint: via VPC interface endpoint\n```",
+    "14": "[strategy/guidance/security/Cloud-and-Infrastructure/ref-arch/GUID-SEC-CLOUD-RAD-3.6.01.md#cross-account-secret-access-pattern]\n\n### Cross-Account Secret Access Pattern\n\nFor shared services (e.g., shared Secrets Manager in the Shared Services account):\n\n- Resource-based policy on the secret grants `secretsmanager:GetSecretValue` to the specific workload role ARN in the consuming account\n- The consuming workload assumes its task role; the task role has an identity policy permitting `sts:AssumeRole` to the cross-account access role\n- No wildcard principals in cross-account secret policies\n\n---",
+    "15": "[strategy/guidance/security/Cloud-and-Infrastructure/ref-arch/GUID-SEC-CLOUD-RAD-3.6.01.md#iac-terraform-reference]\n\n## IaC Terraform Reference\n\nThis RAD governs the foundational security infrastructure in `iac/`. Key Terraform formations relevant to this RAD:\n\n- `iac/formations/security/security-hub/` — Security Hub organization deployment and standards\n- `iac/formations/security/aws-config/` — Config rules, conformance packs, remediation actions\n- `iac/formations/security/kms/` — CMK creation patterns and key policy templates\n- `iac/formations/security/secrets-manager/` — Secrets Manager resource patterns and rotation configuration\n\n---"
+  },
+  "coverage": {
+    "total_pages": 15,
+    "covered_pages": 15,
+    "sampled_pages": 15,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 15
+  }
+}

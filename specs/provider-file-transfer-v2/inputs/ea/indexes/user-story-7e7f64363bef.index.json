@@ -1,0 +1,203 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "ADO User Story Template",
+  "document_description": "Use this template when creating or updating User Stories in Azure DevOps",
+  "total_pages": 20,
+  "tree": [
+    {
+      "title": "ADO User Story Template",
+      "node_id": "ado-user-story-template",
+      "start_index": 1,
+      "end_index": 20,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Fields",
+          "node_id": "fields",
+          "start_index": 2,
+          "end_index": 16,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Title",
+              "node_id": "title",
+              "start_index": 3,
+              "end_index": 3,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Description",
+              "node_id": "description",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Acceptance Criteria — Gherkin Format",
+              "node_id": "acceptance-criteria--gherkin-format",
+              "start_index": 5,
+              "end_index": 9,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Gherkin Keywords",
+                  "node_id": "gherkin-keywords",
+                  "start_index": 6,
+                  "end_index": 6,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Rules for Writing Gherkin",
+                  "node_id": "rules-for-writing-gherkin",
+                  "start_index": 7,
+                  "end_index": 7,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Good Example",
+                  "node_id": "good-example",
+                  "start_index": 8,
+                  "end_index": 8,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Bad Example",
+                  "node_id": "bad-example",
+                  "start_index": 9,
+                  "end_index": 9,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "INVEST Checklist",
+              "node_id": "invest-checklist",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Story Points",
+              "node_id": "story-points",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Priority",
+              "node_id": "priority",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Area Path",
+              "node_id": "area-path",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Iteration Path",
+              "node_id": "iteration-path",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Tags",
+              "node_id": "tags",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Links",
+              "node_id": "links",
+              "start_index": 16,
+              "end_index": 16,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Story Types",
+          "node_id": "story-types",
+          "start_index": 17,
+          "end_index": 18,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Spike Stories",
+              "node_id": "spike-stories",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Creating a User Story (Interactive Flow)",
+          "node_id": "creating-a-user-story-interactive-flow",
+          "start_index": 19,
+          "end_index": 19,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Guidelines",
+          "node_id": "guidelines",
+          "start_index": 20,
+          "end_index": 20,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[.claude/templates/ado/user-story.md#ado-user-story-template]\n\n# ADO User Story Template\n\nUse this template when creating or updating User Stories in Azure DevOps\nvia MCP. User Stories are the smallest deliverable unit of work — each\nshould be implementable within a single sprint and independently testable.",
+    "2": "[.claude/templates/ado/user-story.md#fields]\n\n## Fields",
+    "3": "[.claude/templates/ado/user-story.md#title]\n\n### Title\n\nUse the standard user story format. Do not prefix with \"Story:\" or\n\"US:\" — ADO already knows the work item type.\n\n**Format:** `As a <role>, I want <capability> so that <business value>`\n\n**Examples:**\n\n- As a claims examiner, I want to see DUR edit results inline\n  so that I can adjudicate pharmacy claims without switching screens\n- As an eligibility worker, I want real-time 270/271 verification\n  so that I can confirm member coverage during intake\n- As a provider enrollment specialist, I want automated NPI validation\n  so that I can catch invalid provider records before contracting\n- As a state Medicaid director, I want capitation rate modeling reports\n  so that I can evaluate actuarial soundness",
+    "4": "[.claude/templates/ado/user-story.md#description]\n\n### Description\n\nStructure the description using this format:\n\n```markdown\n## Context\n\nWhy this story matters — what user problem it solves, what business\nprocess it supports. Link to the parent Feature for broader context.\n\n## Acceptance Criteria\n\nAcceptance criteria use Gherkin syntax. Each Scenario is independently\ntestable. Gherkin format enables direct scenario-to-test traceability\nfor downstream automation.\n\nFeature: <short feature name matching the story title>\n\n  Scenario: <happy path or primary behavior>\n    Given <precondition>\n      And <additional precondition if needed>\n    When <action the user takes>\n    Then <observable outcome>\n      And <additional outcome>\n\n  Scenario: <alternative or edge case>\n    Given <precondition>\n    When <action>\n    Then <expected result>\n\n  Scenario: <error or negative case>\n    Given <precondition that leads to failure>\n    When <action>\n    Then <system rejects or handles gracefully>\n      And <user sees meaningful error>\n\n## Business Rules\n\nSpecific domain logic that applies to this story.\nReference `docs/requirements/business-rules/` if formally documented.\n\n- <Rule 1>\n- <Rule 2>\n\n## Technical Notes\n\nOptional — only include when there are implementation constraints\nthe implementer needs to know upfront (e.g., \"must use the existing CaaS\nrules engine\", \"requires FHIR R4 endpoint\"). Do not design the\nsolution here.\n\n## Out of Scope\n\nWhat this story explicitly does NOT cover (prevents scope creep\nduring sprint).\n```",
+    "5": "[.claude/templates/ado/user-story.md#acceptance-criteria--gherkin-format]\n\n### Acceptance Criteria — Gherkin Format\n\nAll acceptance criteria **must** use Gherkin syntax. This is non-negotiable\nbecause:\n\n- Gherkin is parseable by automated test generators for downstream traceability\n- The **BA** skill uses Gherkin to validate testability\n- Gherkin enforces structured thinking: precondition, action, outcome",
+    "6": "[.claude/templates/ado/user-story.md#gherkin-keywords]\n\n#### Gherkin Keywords\n\n| Keyword | Purpose |\n| --- | --- |\n| `Feature:` | Maps to the story title — one per story |\n| `Scenario:` | One testable behavior — multiple per story |\n| `Given` | Precondition or initial state |\n| `When` | Action the user or system performs |\n| `Then` | Observable, verifiable outcome |\n| `And` | Additional Given, When, or Then on the same step |\n| `But` | Negative qualifier on a Then (e.g., \"But the audit log is not modified\") |",
+    "7": "[.claude/templates/ado/user-story.md#rules-for-writing-gherkin]\n\n#### Rules for Writing Gherkin\n\n- **One behavior per Scenario** — if a Scenario has multiple Whens, split it\n- **Given sets state, When triggers action, Then asserts outcome** — never\n  mix these roles\n- **Write from the user's perspective** — use domain language from\n  `docs/glossary.md`, not technical jargon\n- **Include at least 3 Scenarios**: happy path, alternative path, error path\n- **Be specific** — \"within 2 seconds\" not \"quickly\"; \"returns HTTP 404\"\n  not \"returns an error\"\n- **No implementation details** — say \"the system validates the NPI\" not\n  \"the API calls the NPPES endpoint\"",
+    "8": "[.claude/templates/ado/user-story.md#good-example]\n\n#### Good Example\n\n```gherkin\nFeature: Real-time eligibility verification\n\n  Scenario: Active member verified successfully\n    Given a member with active Medicaid coverage\n      And the member's enrollment span includes today's date\n    When a provider submits a 270 eligibility inquiry\n    Then the system returns a 271 response within 2 seconds\n      And the response confirms active coverage\n      And the response includes benefit category details\n\n  Scenario: Inactive member returns coverage end date\n    Given a member whose Medicaid coverage ended on 2026-01-15\n    When a provider submits a 270 eligibility inquiry\n    Then the system returns a 271 response indicating inactive coverage\n      And the response includes the coverage end date\n\n  Scenario: Unknown member returns not-found\n    Given a member ID that does not exist in the system\n    When a provider submits a 270 eligibility inquiry\n    Then the system returns a 271 response with AAA error code 75\n      And the response indicates \"subscriber not found\"\n```",
+    "9": "[.claude/templates/ado/user-story.md#bad-example]\n\n#### Bad Example\n\n```text\n- The system should verify eligibility quickly and return the right\n  information.\n- It should handle errors gracefully.\n- Members with active coverage should be confirmed.\n```\n\n**Why it's bad:** not testable, no specific outcomes, no Gherkin structure,\nvague language (\"quickly\", \"gracefully\", \"right information\").",
+    "10": "[.claude/templates/ado/user-story.md#invest-checklist]\n\n### INVEST Checklist\n\nPer `eap-ref-architecture/foundation/user-story-guidelines.md`:\n\n| Criterion | Question |\n| --- | --- |\n| **I**ndependent | Can this story be delivered without other stories in the same sprint? |\n| **N**egotiable | Is there room to discuss implementation approach? |\n| **V**aluable | Does this deliver value to a user or stakeholder? |\n| **E**stimable | Can the team estimate this with reasonable confidence? |\n| **S**mall | Can this be completed in one sprint? |\n| **T**estable | Can every Scenario in the acceptance criteria be automated? |",
+    "11": "[.claude/templates/ado/user-story.md#story-points]\n\n### Story Points\n\nEstimate using the team's agreed scale (typically Fibonacci:\n1, 2, 3, 5, 8, 13). Stories exceeding 8 points should be split.",
+    "12": "[.claude/templates/ado/user-story.md#priority]\n\n### Priority\n\nMap to ADO priority values:\n\n| ADO Priority | Meaning | Maps to BA Priority |\n| --- | --- | --- |\n| 1 - Critical | Regulatory or contractual obligation | P0 |\n| 2 - High | Core functionality or major business need | P1 |\n| 3 - Medium | Important but not blocking | P2 |\n| 4 - Low | Nice to have | P3 |",
+    "13": "[.claude/templates/ado/user-story.md#area-path]\n\n### Area Path\n\nSet to the team or domain area. Must match or be a child of the\nparent Feature's area.",
+    "14": "[.claude/templates/ado/user-story.md#iteration-path]\n\n### Iteration Path\n\nSet to the target sprint. Stories must fit within a single sprint.",
+    "15": "[.claude/templates/ado/user-story.md#tags]\n\n### Tags\n\nInherit parent Feature tags and add Story-specific tags:\n\n- Skill involved (e.g., `backend`, `frontend`, `infrastructure`, `data`)\n- `spike` for research/investigation stories\n- `tech-debt` for non-functional improvements\n- `bug` if this story addresses a defect (consider using Bug work item\n  type instead)",
+    "16": "[.claude/templates/ado/user-story.md#links]\n\n### Links\n\n- **Parent Feature** — ADO parent link (required)\n- **Related Requirement** — link to specific\n  `docs/requirements/functional/REQ-FN-<NNN>` file\n- **Test Cases** — ADO tested-by links to test cases when they exist\n- **Related Stories** — ADO related link for cross-story dependencies\n  within the sprint",
+    "17": "[.claude/templates/ado/user-story.md#story-types]\n\n## Story Types\n\nNot all stories follow the classic user story format. Use the\nappropriate variant:\n\n| Type | Title Format | When to Use |\n| --- | --- | --- |\n| **User Story** | As a `<role>`, I want `<capability>` so that `<value>` | Standard deliverable with user-facing value |\n| **Enabler Story** | Enable `<technical capability>` for `<purpose>` | Infrastructure, tooling, or platform work |\n| **Spike** | Spike: Investigate `<question>` | Time-boxed research to reduce uncertainty |",
+    "18": "[.claude/templates/ado/user-story.md#spike-stories]\n\n### Spike Stories\n\nSpikes produce **knowledge, not code**. Their acceptance criteria use\na simplified Gherkin:\n\n```gherkin\nFeature: Spike — <investigation question>\n\n  Scenario: Findings documented\n    Given the investigation is complete\n    When the time-box of <N> hours expires or findings are sufficient\n    Then findings are documented in docs/decisions/ or .tmp/\n      And a recommended approach with trade-offs is included\n      And follow-up stories are identified\n\n  Scenario: Time-box exceeded without conclusion\n    Given the investigation has consumed <N> hours\n      But no clear recommendation has emerged\n    When the time-box expires\n    Then a summary of what was learned is documented\n      And the remaining uncertainty is captured as a risk\n      And a follow-up spike or decision point is created\n```",
+    "19": "[.claude/templates/ado/user-story.md#creating-a-user-story-interactive-flow]\n\n## Creating a User Story (Interactive Flow)\n\nWhen the `/branch` or `/project-manager` command triggers story creation,\nwalk the user through these steps:\n\n1. **Who is the user?** — identify the role (claims examiner, eligibility\n   worker, provider specialist, state director, system administrator)\n2. **What do they want?** — the capability, in the user's language\n3. **Why?** — the business value or problem being solved\n4. **Compose the title** — `As a <role>, I want <capability> so that <value>`\n5. **Write the context** — what business process does this support?\n6. **Write Gherkin scenarios** — walk through:\n   - Happy path: what happens when everything works?\n   - Alternative path: what variations exist?\n   - Error path: what happens when something goes wrong?\n   - Edge cases: boundary conditions, empty states, concurrent access\n7. **Identify business rules** — domain constraints that apply\n8. **Set priority** — based on regulatory obligation, business impact\n9. **Link to parent Feature** — every story needs a parent\n10. **Check INVEST** — validate each criterion before finalizing",
+    "20": "[.claude/templates/ado/user-story.md#guidelines]\n\n## Guidelines\n\n- One story per deliverable behavior — if it has multiple independent\n  Gherkin Features, split it into multiple stories\n- Every story must have a parent Feature — orphan stories indicate a\n  planning gap\n- Acceptance criteria **must** use Gherkin — required for automated test\n  generation and scenario-to-test traceability\n- Write from the user's perspective using domain language from\n  `docs/glossary.md`\n- Do not include technical design in the story — that's the architect's job\n- Do not include test cases in the story — that's a separate implementation concern\n- Story points reflect complexity, not hours — align with team norms\n- When creating a story, check `docs/requirements/` for an existing\n  requirement — if one exists, link it; if not, ask the user to invoke\n  `/business-analyst` first\n- Update `docs/requirements/traceability.md` when linking stories to\n  requirements\n- When a story is marked Done in ADO, also update `docs/project-plan.md`\n  status"
+  },
+  "coverage": {
+    "total_pages": 20,
+    "covered_pages": 20,
+    "sampled_pages": 20,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 20
+  }
+}

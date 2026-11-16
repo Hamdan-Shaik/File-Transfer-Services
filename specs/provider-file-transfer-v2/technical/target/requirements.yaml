@@ -1,0 +1,45 @@
+requirements:
+  - id: T-001
+    text: Derive tenant scope from verified identity context (JWT claim tenant_id) and never from request bodies or caller-supplied headers.
+    section: 10.1 Entry Point and Trust Boundaries
+    deployable: fxfer-bff
+    component: ui-file-transfer-api-controllers
+  - id: T-002
+    text: Implement the BFF as stateless bearer-JWT APIs (no server-side sessions/cookies) and enforce strict CORS plus Origin/Referer checks for state-changing requests.
+    section: 0.5 Decision Status (UI authentication + CSRF posture)
+    deployable: fxfer-bff
+    component: ui-file-transfer-api-controllers
+  - id: T-003
+    text: Enforce tenant-scoped authorization and invariants at the domain boundary for all command endpoints (not only in the BFF).
+    section: 6.4 API Design Standards
+    deployable: fxfer-domain-api
+    component: backend-business-command-handlers
+  - id: T-004
+    text: Support idempotent command submission for operator retries (for example via an Idempotency-Key) so resubmission does not create duplicates.
+    section: 6.4 API Design Standards
+    deployable: fxfer-domain-api
+    component: shared-contracts-commands
+  - id: T-005
+    text: Emit OpenTelemetry traces/metrics/logs from services and workers tagged with tenant_id, correlation_id, and trace_id, and propagate these values end-to-end.
+    section: 12.5 Observability
+    deployable: fxfer-domain-api
+    component: backend-bas-file-transfer-api
+  - id: T-006
+    text: Publish tenant-aware, schema-versioned domain events using the canonical event envelope (tenant_id, correlation_id, trace_id, producer, etc.).
+    section: 7.2 Event Types
+    deployable: fxfer-domain-api
+    component: shared-contracts-events
+  - id: T-007
+    text: Provide privileged rerun execution via a CLI mode targeting a specific tenant and tracked file identifier (without introducing a required UI rerun button).
+    section: 0.5 Decision Status (Trigger / scheduling + rerun)
+    deployable: fxfer-transfer-worker
+    component: backend-run-file-transfer-batch-api
+  - id: T-008
+    text: Prohibit direct database access from the BFF; all persistence must occur via domain services.
+    section: 5 BFF (DB access forbidden)
+    deployable: fxfer-bff
+    component: backend-providers-file-transfer
+  - id: T-009
+    text: Apply an expand/contract discipline for schema migrations; each migration must be repeatable and idempotent per tenant and observable per-tenant.
+    section: 9.9 Schema Migrations
+    deployable: fxfer-db-schema

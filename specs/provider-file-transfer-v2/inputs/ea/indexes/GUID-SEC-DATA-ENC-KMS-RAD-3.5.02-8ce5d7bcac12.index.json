@@ -1,0 +1,121 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Encryption and Key Management Reference Architecture",
+  "document_description": "guidance_id: 'GUID-SEC-DATA-ENC-KMS-RAD-3.5.02'",
+  "total_pages": 11,
+  "tree": [
+    {
+      "title": "Encryption and Key Management Reference Architecture",
+      "node_id": "encryption-and-key-management-reference-architecture",
+      "start_index": 1,
+      "end_index": 11,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Architecture Guidance Metadata",
+          "node_id": "architecture-guidance-metadata",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Purpose and Scope",
+          "node_id": "purpose-and-scope",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Logical Architecture",
+          "node_id": "logical-architecture",
+          "start_index": 4,
+          "end_index": 7,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Key Management Hierarchy",
+              "node_id": "key-management-hierarchy",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Encryption Tier Model by Classification",
+              "node_id": "encryption-tier-model-by-classification",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Secrets Injection Pattern",
+              "node_id": "secrets-injection-pattern",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Integration Patterns",
+          "node_id": "integration-patterns",
+          "start_index": 8,
+          "end_index": 10,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Certificate Lifecycle Integration",
+              "node_id": "certificate-lifecycle-integration",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Encryption at Rest Across Platform Tiers",
+              "node_id": "encryption-at-rest-across-platform-tiers",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Algorithm Agility Considerations",
+          "node_id": "algorithm-agility-considerations",
+          "start_index": 11,
+          "end_index": 11,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-ENC-KMS-RAD-3.5.02.md#encryption-and-key-management-reference-architecture]\n\n# Encryption and Key Management Reference Architecture\n\n**← Back to [EAP Home](../../../../../README.md) • [Strategy](../../../../README.md) • [Security Guidance](../../../README.md) • [Data](../README.md)**\n\n---",
+    "2": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-ENC-KMS-RAD-3.5.02.md#architecture-guidance-metadata]\n\n## Architecture Guidance Metadata\n\n```yaml\nguidance_id: 'GUID-SEC-DATA-ENC-KMS-RAD-3.5.02'\nguidance_name: 'Encryption and Key Management Reference Architecture'\nguidance_type: 'reference-architecture-document'\nrad_type: 'component-pattern'\npaired_abbs:\n  - 'GUID-SEC-DATA-ENC-2.5.03'\n  - 'GUID-SEC-DATA-KMS-2.5.04'\nparent_abb: 'GUID-SEC-DATA-REF-1.5.01'\nparent_vision: 'GUID-SEC-DATA-VISION-0.5.01'\nadm_phase: 'Phase C-D'\ncategory: 'security'\nversion: '0.1.0'\nstatus: 'draft'\napplicability: 'enterprise'\ntags: ['security', 'data', 'reference-architecture', 'encryption', 'key-management', 'phase-c', 'phase-d']\nauthor: 'Jesse Adams'\n```\n\n---\n\n> **Informative Content Notice**: Technology choices, tooling names, and vendor references in this document are **illustrative only** — they represent one class of solution, not a mandated selection. Organizations SHOULD evaluate tooling based on integration fit, licensing, and operational context.\n>\n> **The architectural control patterns in this document reflect normative requirements from the paired ABBs** ([GUID-SEC-DATA-ENC-2.5.03](../GUID-SEC-DATA-ENC-2.5.03.md) and [GUID-SEC-DATA-KMS-2.5.04](../GUID-SEC-DATA-KMS-2.5.04.md)) and represent required design outcomes. Implementation teams SHALL deliver the described control capabilities; the specific tooling used to realize them is a local implementation decision.\n\n---",
+    "3": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-ENC-KMS-RAD-3.5.02.md#purpose-and-scope]\n\n## Purpose and Scope\n\nThis Reference Architecture Document illustrates how the Encryption ABB and Key and Secrets Management ABB compose into a coherent, governed cryptographic protection architecture. It covers the key management hierarchy, encryption tiers by classification, certificate lifecycle integration, and secrets injection patterns.\n\n**Paired ABBs**:\n- [GUID-SEC-DATA-ENC-2.5.03 — Encryption ABB](../GUID-SEC-DATA-ENC-2.5.03.md)\n- [GUID-SEC-DATA-KMS-2.5.04 — Key and Secrets Management ABB](../GUID-SEC-DATA-KMS-2.5.04.md)\n\n---",
+    "4": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-ENC-KMS-RAD-3.5.02.md#logical-architecture]\n\n## Logical Architecture",
+    "5": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-ENC-KMS-RAD-3.5.02.md#key-management-hierarchy]\n\n### Key Management Hierarchy\n\n```mermaid\ngraph TD\n    subgraph HSM[\"Hardware Security Module (where available)\"]\n        RMK[Root Master Key\\nHardware-backed root of trust]\n    end\n\n    subgraph KMS[\"Key Management Service Layer\"]\n        CMK[Customer Master Key / Key Encryption Key\\nPer-domain or per-classification tier]\n        CEK[Content Encryption Key\\nPer-dataset or per-workload]\n        CERT[Certificate Authority\\nTLS and mutual auth certificates]\n        SECRET[Secrets Management\\nApp secrets, API keys, DB passwords]\n    end\n\n    subgraph Consumers[\"Encryption Consumers\"]\n        STOR[Storage Encryption\\nDatabases, object storage, backups]\n        TRANS[Transit Encryption\\nAPIs, service mesh, pipelines]\n        APP[Application-Layer Encryption\\nField-level encryption for PHI/PII]\n    end\n\n    RMK --> CMK\n    CMK --> CEK\n    CEK --> STOR\n    CEK --> APP\n    CERT --> TRANS\n    SECRET --> APP\n```",
+    "6": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-ENC-KMS-RAD-3.5.02.md#encryption-tier-model-by-classification]\n\n### Encryption Tier Model by Classification\n\n| Classification Tier | At Rest | In Transit | In Use | Key Hierarchy |\n|---|---|---|---|---|\n| Public | Optional | Recommended | Not required | Shared keys acceptable |\n| Internal | SHALL | SHALL | Not required | CMK per domain |\n| Restricted | SHALL | SHALL | SHOULD (high-risk workloads) | Dedicated CMK per data domain |\n| Regulated (PHI/PII) | SHALL (field-level + storage) | SHALL (mutual TLS) | SHOULD | Dedicated CMK, HSM-backed preferred |",
+    "7": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-ENC-KMS-RAD-3.5.02.md#secrets-injection-pattern]\n\n### Secrets Injection Pattern\n\nThe illustrative pattern for workload secrets access follows this flow:\n\n1. **Workload authenticates**: Using platform workload identity (not a shared credential)\n2. **Policy evaluation**: KMS evaluates the workload identity against the secret's access policy\n3. **Dynamic issuance**: Where supported, the KMS issues a short-lived dynamic credential rather than returning a long-lived static secret\n4. **Injection**: The credential is injected into the workload at runtime via a sidecar, init container, or SDK — it is not persisted in application configuration or source code\n5. **Audit**: The retrieval event is logged and forwarded to Security Operations\n\n---",
+    "8": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-ENC-KMS-RAD-3.5.02.md#integration-patterns]\n\n## Integration Patterns",
+    "9": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-ENC-KMS-RAD-3.5.02.md#certificate-lifecycle-integration]\n\n### Certificate Lifecycle Integration\n\n- Platform certificate authorities SHOULD be integrated with automated issuance and renewal mechanisms\n- Certificate inventory SHOULD be discoverable — all issued certificates should be cataloged with their expiry, purpose, and consuming workload\n- Revocation distribution SHOULD be automated — revoked certificates should propagate to consuming systems within the platform's defined revocation SLA",
+    "10": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-ENC-KMS-RAD-3.5.02.md#encryption-at-rest-across-platform-tiers]\n\n### Encryption at Rest Across Platform Tiers\n\n| Platform Tier | Encryption Layer | Key Owner |\n|---|---|---|\n| Cloud Object Storage | Platform-native encryption | CMK in centralized KMS |\n| Managed Database Service | Platform-native encryption | CMK in centralized KMS |\n| Application-managed database | Application-layer field encryption | Dedicated CMK per application |\n| Backup and archive | Storage-layer encryption | Same CMK as source |\n| Development / non-production | Platform-native encryption (masked data) | Shared CMK (non-sensitive tier) |\n\n---",
+    "11": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-ENC-KMS-RAD-3.5.02.md#algorithm-agility-considerations]\n\n## Algorithm Agility Considerations\n\nThis RAD illustrates architectures that are algorithm-agile by design — consistent with the Post-Quantum Cryptography ABB (GUID-SEC-DATA-PQ-CRYPTO-2.5.01). Implementation patterns should:\n- Abstract algorithm selection from business logic code\n- Use platform-provided KMS cryptographic services rather than direct library calls where possible\n- Version key material alongside algorithm identifiers to enable mixed-algorithm operation during migration\n\nFor the full PQC migration architecture, see [GUID-SEC-DATA-PQ-RAD-3.5.03](GUID-SEC-DATA-PQ-RAD-3.5.03.md).\n\n---"
+  },
+  "coverage": {
+    "total_pages": 11,
+    "covered_pages": 11,
+    "sampled_pages": 11,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 11
+  }
+}

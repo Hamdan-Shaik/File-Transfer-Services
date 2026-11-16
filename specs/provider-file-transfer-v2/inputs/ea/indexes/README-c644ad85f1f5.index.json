@@ -1,0 +1,184 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Kubernetes Manifests for AI Gov Review Service",
+  "document_description": "This directory contains Kubernetes manifests for deploying the AI Gov Review Service to EKS with CloudNativePG PostgreSQL.",
+  "total_pages": 18,
+  "tree": [
+    {
+      "title": "Kubernetes Manifests for AI Gov Review Service",
+      "node_id": "kubernetes-manifests-for-ai-gov-review-service",
+      "start_index": 1,
+      "end_index": 18,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Files",
+          "node_id": "files",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Prerequisites",
+          "node_id": "prerequisites",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Deployment Steps",
+          "node_id": "deployment-steps",
+          "start_index": 4,
+          "end_index": 12,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "1. Install CloudNativePG Operator",
+              "node_id": "1-install-cloudnativepg-operator",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "2. Create Namespace",
+              "node_id": "2-create-namespace",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "3. Create Secrets",
+              "node_id": "3-create-secrets",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4. Deploy PostgreSQL Cluster",
+              "node_id": "4-deploy-postgresql-cluster",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "5. Run Database Migrations",
+              "node_id": "5-run-database-migrations",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "6. Seed Initial Templates (One-time setup)",
+              "node_id": "6-seed-initial-templates-one-time-setup",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "7. Deploy Application",
+              "node_id": "7-deploy-application",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "8. Create Ingress (optional)",
+              "node_id": "8-create-ingress-optional",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Accessing PostgreSQL",
+          "node_id": "accessing-postgresql",
+          "start_index": 13,
+          "end_index": 15,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "From within cluster",
+              "node_id": "from-within-cluster",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "From local machine (port-forward)",
+              "node_id": "from-local-machine-port-forward",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Backup and Recovery",
+          "node_id": "backup-and-recovery",
+          "start_index": 16,
+          "end_index": 16,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Monitoring",
+          "node_id": "monitoring",
+          "start_index": 17,
+          "end_index": 17,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Scaling",
+          "node_id": "scaling",
+          "start_index": 18,
+          "end_index": 18,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[.tooling/components/apis/ai-gov-review-service/k8s/README.md#kubernetes-manifests-for-ai-gov-review-service]\n\n# Kubernetes Manifests for AI Gov Review Service\n\nThis directory contains Kubernetes manifests for deploying the AI Gov Review Service to EKS with CloudNativePG PostgreSQL.",
+    "2": "[.tooling/components/apis/ai-gov-review-service/k8s/README.md#files]\n\n## Files\n\n- `namespace.yaml` - Namespace for the service\n- `postgres-cluster.yaml` - CloudNativePG cluster (3 replicas with HA)\n- `postgres-pooler.yaml` - PgBouncer connection pooler\n- `configmap.yaml` - Application configuration\n- `secret.yaml` - Sensitive configuration (template - populate before deploying)\n- `job-migrate.yaml` - **Database migration job (run before deployment)**\n- `job-seed-data.yaml` - **Initial template seeding job (one-time setup)**\n- `deployment.yaml` - Application deployment with Redis sidecar and migration init container\n- `service.yaml` - Kubernetes service\n- `ingress.yaml` - Updates shared cluster ingress to add AI Gov Review API paths\n- `hpa.yaml` - Horizontal Pod Autoscaler\n\n**Note:** The ingress is shared across services (MkDocs, RAG, AI Gov Review). Each service adds its paths to the same ingress resource. The certificate is managed at the cluster level.",
+    "3": "[.tooling/components/apis/ai-gov-review-service/k8s/README.md#prerequisites]\n\n## Prerequisites\n\n1. **EKS Cluster** - Running with appropriate node groups\n2. **CloudNativePG Operator** - Installed in cluster:\n\n   ```bash\n   kubectl apply -f https://raw.githubusercontent.com/cloudnative-pg/cloudnative-pg/release-1.22/releases/cnpg-1.22.0.yaml\n   ```\n\n3. **AWS Load Balancer Controller** - For ingress\n4. **EBS CSI Driver** - For PostgreSQL storage",
+    "4": "[.tooling/components/apis/ai-gov-review-service/k8s/README.md#deployment-steps]\n\n## Deployment Steps",
+    "5": "[.tooling/components/apis/ai-gov-review-service/k8s/README.md#1-install-cloudnativepg-operator]\n\n### 1. Install CloudNativePG Operator\n\n```bash\nkubectl apply -f https://raw.githubusercontent.com/cloudnative-pg/cloudnative-pg/release-1.22/releases/cnpg-1.22.0.yaml\n```",
+    "6": "[.tooling/components/apis/ai-gov-review-service/k8s/README.md#2-create-namespace]\n\n### 2. Create Namespace\n\n```bash\nkubectl apply -f namespace.yaml\n```",
+    "7": "[.tooling/components/apis/ai-gov-review-service/k8s/README.md#3-create-secrets]\n\n### 3. Create Secrets\n\nEdit `secret.yaml` to add your actual secrets, then apply:\n\n```bash\nkubectl apply -f secret.yaml\n```",
+    "8": "[.tooling/components/apis/ai-gov-review-service/k8s/README.md#4-deploy-postgresql-cluster]\n\n### 4. Deploy PostgreSQL Cluster\n\n```bash\nkubectl apply -f postgres-cluster.yaml\nkubectl apply -f postgres-pooler.yaml\n```\n\nWait for cluster to be ready:\n\n```bash\nkubectl wait --for=condition=ready cluster/ai-gov-db -n ai-gov-review --timeout=300s\n```",
+    "9": "[.tooling/components/apis/ai-gov-review-service/k8s/README.md#5-run-database-migrations]\n\n### 5. Run Database Migrations\n\n**Option A: Standalone Migration Job (Recommended for initial setup)**\n\n```bash\nkubectl apply -f job-migrate.yaml\n\n# Monitor migration progress\nkubectl logs -n ai-gov-review job/ai-gov-review-migrate -f\n\n# Wait for completion\nkubectl wait --for=condition=complete job/ai-gov-review-migrate -n ai-gov-review --timeout=120s\n\n# Cleanup job after success\nkubectl delete job ai-gov-review-migrate -n ai-gov-review\n```\n\n**Option B: Init Container (Automatic on deployment)**\n\nThe `deployment.yaml` includes an init container that runs migrations automatically before each pod starts. This is useful for rolling updates with schema changes.",
+    "10": "[.tooling/components/apis/ai-gov-review-service/k8s/README.md#6-seed-initial-templates-one-time-setup]\n\n### 6. Seed Initial Templates (One-time setup)\n\n```bash\nkubectl apply -f job-seed-data.yaml\n\n# Monitor seeding progress\nkubectl logs -n ai-gov-review job/ai-gov-review-seed-templates -f\n\n# Wait for completion\nkubectl wait --for=condition=complete job/ai-gov-review-seed-templates -n ai-gov-review --timeout=60s\n\n# Verify templates were created\nkubectl exec -it deployment/ai-gov-review-service -n ai-gov-review -c ai-gov-review -- \\\n  poetry run python -c \"\n    import asyncio\n    from src.db.template_repository import get_template_repository\n    async def check():\n        repo = get_template_repository()\n        templates = await repo.list_active()\n        print(f'✅ Found {len(templates)} templates:')\n        for t in templates:\n            print(f'  - {t.name} (v{t.version})')\n    asyncio.run(check())\n  \"\n\n# Cleanup job after success\nkubectl delete job ai-gov-review-seed-templates -n ai-gov-review\n```",
+    "11": "[.tooling/components/apis/ai-gov-review-service/k8s/README.md#7-deploy-application]\n\n### 7. Deploy Application\n\n```bash\nkubectl apply -f configmap.yaml\nkubectl apply -f deployment.yaml\nkubectl apply -f service.yaml\nkubectl apply -f hpa.yaml\n```\n\n**Note:** The deployment includes an init container that automatically runs migrations before starting the app. For initial deployments, running the standalone migration job (step 5) is recommended to catch any issues early.",
+    "12": "[.tooling/components/apis/ai-gov-review-service/k8s/README.md#8-create-ingress-optional]\n\n### 8. Create Ingress (optional)\n\n```bash\nkubectl apply -f ingress.yaml\n```",
+    "13": "[.tooling/components/apis/ai-gov-review-service/k8s/README.md#accessing-postgresql]\n\n## Accessing PostgreSQL",
+    "14": "[.tooling/components/apis/ai-gov-review-service/k8s/README.md#from-within-cluster]\n\n### From within cluster\n\n```bash\nDATABASE_URL=postgresql://app:yourpassword@ai-gov-db-rw:5432/aigovreview\n```",
+    "15": "[.tooling/components/apis/ai-gov-review-service/k8s/README.md#from-local-machine-port-forward]\n\n### From local machine (port-forward)\n\n```bash\nkubectl port-forward -n ai-gov-review svc/ai-gov-db-rw 5432:5432\npsql postgresql://app:yourpassword@localhost:5432/aigovreview\n```",
+    "16": "[.tooling/components/apis/ai-gov-review-service/k8s/README.md#backup-and-recovery]\n\n## Backup and Recovery\n\nCloudNativePG automatically backs up to S3. To restore from backup:\n\n```yaml\napiVersion: postgresql.cnpg.io/v1\nkind: Cluster\nmetadata:\n  name: ai-gov-db-restored\nspec:\n  bootstrap:\n    recovery:\n      source: ai-gov-db\n      recoveryTarget:\n        targetTime: \"2024-01-01 12:00:00\"\n```",
+    "17": "[.tooling/components/apis/ai-gov-review-service/k8s/README.md#monitoring]\n\n## Monitoring\n\nView cluster status:\n\n```bash\nkubectl get cluster -n ai-gov-review\nkubectl get pods -n ai-gov-review\nkubectl logs -n ai-gov-review ai-gov-db-1\n```",
+    "18": "[.tooling/components/apis/ai-gov-review-service/k8s/README.md#scaling]\n\n## Scaling\n\nScale application pods:\n\n```bash\nkubectl scale deployment ai-gov-review-service -n ai-gov-review --replicas=5\n```\n\nPostgreSQL replicas are controlled in `postgres-cluster.yaml` (`instances: 3`)."
+  },
+  "coverage": {
+    "total_pages": 18,
+    "covered_pages": 18,
+    "sampled_pages": 18,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 18
+  }
+}

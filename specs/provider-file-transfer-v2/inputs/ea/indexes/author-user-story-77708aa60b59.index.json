@@ -1,0 +1,175 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Scope",
+  "document_description": "Author a high-quality Azure DevOps User Story from the provided topic, inferring all story fields and creating the work item using the azure-devops MCP tools.",
+  "total_pages": 17,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 17,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Scope",
+          "node_id": "scope",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "User Story Guidelines Reference",
+          "node_id": "user-story-guidelines-reference",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Azure DevOps MCP Tools",
+          "node_id": "azure-devops-mcp-tools",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Instructions",
+          "node_id": "instructions",
+          "start_index": 5,
+          "end_index": 6,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Steps",
+              "node_id": "steps",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Authoring Guidelines",
+          "node_id": "authoring-guidelines",
+          "start_index": 7,
+          "end_index": 16,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "ADO Field Mapping",
+              "node_id": "ado-field-mapping",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "AI Authoring Constraints (§2.5)",
+              "node_id": "ai-authoring-constraints-25",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Story Type Selection",
+              "node_id": "story-type-selection",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "EA Artifact Taxonomy",
+              "node_id": "ea-artifact-taxonomy",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Title",
+              "node_id": "title",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Required Description Sections",
+              "node_id": "required-description-sections",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Acceptance Criteria",
+              "node_id": "acceptance-criteria",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Tags",
+              "node_id": "tags",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Story Points",
+              "node_id": "story-points",
+              "start_index": 16,
+              "end_index": 16,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Output Format (for user confirmation)",
+          "node_id": "output-format-for-user-confirmation",
+          "start_index": 17,
+          "end_index": 17,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "Author a high-quality Azure DevOps User Story from the provided topic, inferring all story fields and creating the work item using the azure-devops MCP tools.",
+    "2": "[.claude/commands/author-user-story.md#scope]\n\n## Scope\n\n- `$ARGUMENTS` is the topic, intent, or description for the story (required)\n- If `$ARGUMENTS` contains `area_path=<value>`, use that area path rather than the project default\n- If `$ARGUMENTS` contains `assigned_to=<value>`, assign the story to that person\n- If `$ARGUMENTS` contains `overrides=<pairs>`, apply the pipe-separated key=value pairs to hard-set specific fields and bypass inference (e.g. `overrides=title=My Title|tags=research,security|iteration_path=Sprint 5`)\n- Otherwise infer all fields from the topic alone",
+    "3": "[.claude/commands/author-user-story.md#user-story-guidelines-reference]\n\n## User Story Guidelines Reference\n\nThe authoritative user story authoring standards are defined in the EAP Reference Architecture:\n**https://github.com/mygainwell/eap-ref-architecture/blob/main/foundation/user-story-guidelines.md**\n\nBefore drafting any story, fetch this file using `mcp_io_github_git_get_file_contents` with owner `mygainwell`, repo `eap-ref-architecture`, and path `foundation/user-story-guidelines.md`. Internalize all standards, templates, field requirements, and quality criteria it defines. Every story authored by this skill **must conform to those guidelines**. Where the guidelines conflict with the defaults in the \"Authoring Guidelines\" section below, the fetched guidelines take precedence.",
+    "4": "[.claude/commands/author-user-story.md#azure-devops-mcp-tools]\n\n## Azure DevOps MCP Tools\n\nThis skill uses the **azure-devops-mcp** server. All Azure DevOps operations must use the `mcp_microsoft_azu_*` tool family. Key tools used by this skill:\n\n| Tool | Purpose |\n|---|---|\n| `mcp_io_github_git_get_file_contents` | Fetch the user story guidelines and FY27 goals from `mygainwell/eap-ref-architecture` |\n| `mcp_microsoft_azu_core_get_identity_ids` | Resolve the current authenticated user's identity for default assignment |\n| `mcp_microsoft_azu_core_list_projects` | List available projects to help resolve project context if not known |\n| `mcp_microsoft_azu_work_list_iterations` | List available iterations/sprints to validate or suggest an `iteration_path` |\n| `mcp_microsoft_azu_wit_get_work_item_type` | Inspect the `User Story` work item type schema to ensure field names are correct |\n| `mcp_microsoft_azu_wit_create_work_item` | Create the User Story work item |\n| `mcp_microsoft_azu_wit_update_work_item` | Add the parent link after creation to associate the story to its Feature or Epic |\n| `mcp_microsoft_azu_wit_get_work_item` | Fetch the created item after creation to confirm and return its URL |",
+    "5": "[.claude/commands/author-user-story.md#instructions]\n\n## Instructions\n\nRead `.claude/skills/business-analyst/SKILL.md` for story authoring standards, acceptance criteria format, and EA-specific quality criteria. Apply the Skill's guidelines throughout this workflow.\n\nYou are an expert Agile practitioner. Your task is to author a high-quality Azure DevOps User Story from the provided inputs and create it using the azure-devops-mcp tools.",
+    "6": "[.claude/commands/author-user-story.md#steps]\n\n### Steps\n\n1. **Fetch the user story guidelines**: Call `mcp_io_github_git_get_file_contents` with owner `mygainwell`, repo `eap-ref-architecture`, path `foundation/user-story-guidelines.md`. Parse and internalize all standards, required fields, formatting rules, and quality criteria defined there. Use these as the primary authoring standard for all subsequent steps.\n\n2. **Fetch the FY27 goals and determine parent Epic / Feature**: Call `mcp_io_github_git_get_file_contents` with owner `mygainwell`, repo `eap-ref-architecture`, path `strategy/goals/fy27/goals.md`. This file contains the full roadmap of 9 Epics and ~40 Features, each with an ADO work item ID embedded in the `ADO` column of every table.\n\n   Once the file is loaded, compare the story topic against the epics and features using the following logic:\n\n   **a. Find the best-matching Feature first** — scan the Feature rows across all 9 epic tables. A Feature matches if the story topic directly delivers against that feature's stated scope (title + acceptance criteria). If a clear match exists, record the Feature's ADO ID as `parent_id` and its Epic's ADO ID as `grandparent_id`.\n\n   **b. If no Feature matches, find the best-matching Epic** — determine which Epic's CTO Goal alignment and key results best encompass the story topic. Record the Epic's ADO ID as `parent_id` and set `grandparent_id` to none.\n\n   **c. If no Epic matches** — set `parent_id` to none and note this in the confirmation preview. Do not invent a parent.\n\n   **Confidence threshold**: If the best match is ambiguous (two features are equally plausible, or the match feels tenuous), include both candidates in the confirmation preview and ask the user to choose before proceeding. Do not silently pick one.\n\n   **Features with `—` in the ADO column** are not yet created in ADO; if the topic maps to one of these, note the gap in the confirmation preview and set `parent_id` to the containing Epic's ID instead.\n\n3. **Resolve project context**: Before proceeding, confirm the azure-devops MCP server is active by calling `mcp_microsoft_azu_core_list_projects`. If the call fails, stop and tell the user: \"The Azure DevOps MCP server is not connected. Follow the setup guidance at `strategy/guidance/technology/implementation/GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md`.\" If the call succeeds, proceed. If more than one project exists and `area_path` is not provided, ask the user which project to use. Once the project is identified, use that project's default area path — do **not** prompt the user to enter one. If `area_path` is explicitly supplied, use it as-is.\n\n   **Iteration path**: Always assign new stories to the **backlog** (the project root iteration), not a specific sprint. The correct value is simply the project name with no sprint segment appended — e.g. `Enterprise Architecture`. Do **not** call `mcp_microsoft_azu_work_list_iterations` unless the user explicitly requests a specific iteration or `overrides` contains an `iteration_path`. If `overrides` contains an `iteration_path`, use that value after applying normalization: strip any leading backslash and remove the `\\Iteration\\` node (e.g. `\\Enterprise Architecture\\Iteration\\FY27.R2\\27.2.1` → `Enterprise Architecture\\FY27.R2\\27.2.1`). Passing the raw API value causes an \"Invalid tree name\" error.\n\n   If `assigned_to` is not provided, call `mcp_microsoft_azu_core_get_identity_ids` to resolve the currently authenticated user and use that identity as the assignee. Azure DevOps does not support an `@me` shorthand — always pass a resolved display name or email address.\n\n4. **Infer all story fields from the `topic`** using the guidelines fetched in step 1:\n\n   - **Story type**: Identify which of the six EA story types best fits the topic (see Story Type Selection in Authoring Guidelines). If genuinely ambiguous, ask the user before continuing.\n   - **Title**: Derive a title following the `[Action] [Object] [Context]` format, max 80 characters. Use `overrides.title` if supplied.\n   - **Description sections**: Draft all required `System.Description` sections — User Story statement, Context, Architecture Considerations, Related Documentation, Authoring References, and Authoring Constraints — from the topic. Apply any type-specific additional sections per the §5.0 template for the selected story type.\n   - **Acceptance criteria**: Draft 2–4 named Gherkin scenarios for `Microsoft.VSTS.Common.AcceptanceCriteria` that are specific, measurable, and directly testable from the topic's intent.\n   - **Tags**: Infer the required Work Type tag and Architecture Domain tag from the topic content. Add relevant optional tags. Merge with any tags from `overrides`.\n   - **Story points**: Estimate using the EA-specific Fibonacci sizing table based on the apparent scope of the topic. Always create a single story regardless of the estimated size — do **not** suggest splitting unless the user explicitly requests it. If the estimate exceeds 8 points, note the size in the confirmation preview but proceed with a single story.\n\n5. **Confirm with the user** by displaying the full drafted story and ask:\n\n   > **Does this look correct? Reply \"yes\" to create it in Azure DevOps, \"edit\" followed by your changes, or \"no\" to cancel.**\n\n6. **If confirmed**, call `mcp_microsoft_azu_wit_create_work_item` **exactly once** to create the work item. This skill must never call `mcp_microsoft_azu_wit_create_work_item` more than one time per invocation. Always produce a single user story regardless of topic complexity or size. Do not split, do not create child stories, do not suggest additional invocations — unless the user explicitly asks for a split. Fields to set:\n   - **type**: `User Story`\n   - **title**: the inferred (or override) title — when passing this field to `mcp_microsoft_azu_wit_create_work_item`, use the **display name** `\"Title\"` (not the reference name `System.Title`) and include `\"format\": \"Html\"`. Using `System.Title` causes an \"Operation of changing value type is not supported\" error.\n   - **`System.Description`**: the full HTML-formatted description (User Story, Context, Architecture Considerations, Related Documentation, Authoring References, Authoring Constraints, and any type-specific sections)\n   - **`Microsoft.VSTS.Common.AcceptanceCriteria`**: the acceptance criteria HTML — **never** place this in `System.Description`\n   - **tags**: inferred Work Type tag + Architecture Domain tag + any additional inferred or override tags; always include `EAP-FY27` if a parent Epic or Feature was matched in step 2\n   - **areaPath**: from `area_path` input if supplied, otherwise the project's default area path resolved in step 3\n   - **iterationPath**: confirmed in step 3\n   - **assignedTo**: from `assigned_to` input if provided, otherwise the currently authenticated user resolved in step 3\n\n7. **Link to parent**: If `parent_id` was determined in step 2, call `mcp_microsoft_azu_wit_update_work_item` on the newly created story to add a **Parent** link to `parent_id`. Pass the relation type `System.LinkTypes.Hierarchy-Reverse` with the target work item ID. Do this immediately after creation — before reporting to the user. If the link call fails, report the failure to the user with the parent ID so they can link it manually.\n\n8. **Confirm success**: Call `mcp_microsoft_azu_wit_get_work_item` with the returned ID to fetch the created item, then report the story's ID, title, URL, and the parent Epic/Feature it was linked to (or \"no parent linked\" if step 2 found no match).\n\n---",
+    "7": "[.claude/commands/author-user-story.md#authoring-guidelines]\n\n## Authoring Guidelines\n\nThese guidelines are derived directly from `foundation/user-story-guidelines.md` and are embedded here for reliability. The runtime-fetched copy takes precedence if any conflict exists.",
+    "8": "[.claude/commands/author-user-story.md#ado-field-mapping]\n\n### ADO Field Mapping\n\n> **Critical**: Always map content to the correct ADO fields.\n\n| Content | ADO Field |\n|---|---|\n| User Story, Context, Architecture Considerations, Related Documentation, Authoring References, and all other narrative sections | `System.Description` |\n| Acceptance Criteria **only** | `Microsoft.VSTS.Common.AcceptanceCriteria` |\n\nNever place acceptance criteria inside `System.Description`.",
+    "9": "[.claude/commands/author-user-story.md#ai-authoring-constraints-25]\n\n### AI Authoring Constraints (§2.5)\n\nEvery story created by this skill **must** comply with:\n\n1. **No fabricated data** — Do not include metrics, percentages, or statistics that are not directly traceable to an existing document in the repository or an explicitly cited external source. If a value cannot be sourced, omit it.\n2. **No new normative requirements** — Do not introduce new architectural standards, policies, or mandates. Reference existing requirements only.\n3. **Technical practitioner audience** — Write for enterprise architects, solution architects, and engineers. Do not use executive-summary or marketing language.\n4. **Authoring References section required** — Every story description must end with:\n\n```markdown\n### Authoring References\n- **Template**: [Template name from user-story-guidelines.md §5.0]\n- **Authoring Guide**: foundation/user-story-guidelines.md\n- **Depends On / Supersedes**: [Links to related artifacts, or \"None\"]\n```",
+    "10": "[.claude/commands/author-user-story.md#story-type-selection]\n\n### Story Type Selection\n\nBefore drafting, identify which of the six EA story types applies and use the corresponding template from §5.0 of the guidelines:\n\n| Type | Use When |\n|---|---|\n| **Business Architecture** | Defining capabilities, value streams, business processes, or org structures |\n| **Enterprise Standards** | Establishing principles, policies, standards, or strategic direction |\n| **Governance Framework** | Creating review processes, compliance mechanisms, or decision frameworks |\n| **Strategic Research** | Evaluating technologies, vendors, or conducting feasibility/trend analysis |\n| **Reference Architecture Documentation** | Creating or updating patterns, guidelines, or architecture knowledge base |\n| **Assessment and Analysis** | Maturity assessments, portfolio analysis, gap analysis, or compliance reviews |\n\nIf the type is ambiguous, ask the user before drafting.",
+    "11": "[.claude/commands/author-user-story.md#ea-artifact-taxonomy]\n\n### EA Artifact Taxonomy\n\nWhen a story references, creates, or updates an EA artifact, use the correct artifact type from the table below. This determines the artifact ID prefix, target directory, and creation guidelines to cite in `### Related Documentation`.\n\n| Artifact Type | Functional Purpose | Question It Answers | ID Prefix | Target Directory |\n|---|---|---|---|---|\n| **Pattern** | Reusable, proven solution to a recurring architectural problem | *How* do we solve this class of problem? | `PTN-` | `patterns/{domain}/` |\n| **Standard** | Mandatory, enforceable requirement defining what must be true enterprise-wide | *What* must be true? | `STD-` | `standards/{domain}/` |\n| **Guidance** | Practical implementation guidance and reference architectures; informative not prescriptive | *Why* is this the right approach, and *how* do we implement it? | `GUID-` | `strategy/guidance/{domain}/` |\n| **ADR** | Architecture Decision Record capturing a significant decision, context, options, and rationale | *What* was decided, *why*, and *what* were the alternatives? | (none) | `decisions/` |\n| **White Paper** | Comprehensive strategic document for executive/strategic audiences | *What* is the strategic context and what should we do about it? | (none) | `strategy/white-papers/{domain}/` |\n| **Reference Architecture** | Comprehensive architectural blueprints and guidelines | *What* is the approved blueprint for this domain? | `REF-` | `strategy/reference/{domain}/` |\n| **Best Practice** | Proven practices and methodologies | *What* has been validated as a proven approach? | `BP-` | `strategy/best-practices/{domain}/` |\n\n**Security domain exception**: All new security architecture content (reference architectures, strategies, domain-specific guidance) routes to `strategy/guidance/security/` by default — not `standards/security/` or `patterns/security/`. Only unambiguous technical implementation patterns go to `patterns/security/` and compliance-baseline standards go to `standards/security/`. When content spans the boundary, route to `strategy/guidance/security/`.\n\n**New artifact contribution pathway**: Stories that involve creating *new* EA artifacts (not updating existing ones) must note in `### Architecture Considerations` that implementation requires coordination with the appropriate Domain EA Lead. New content does not proceed via direct PR — the EA Practice team triages and implements approved contributions on a 4–12 week cycle.\n\nWhen populating `### Related Documentation`, reference artifacts by their ID (e.g. `PTN-APP-INT-001`) and link to the relevant creation guidelines document where applicable.",
+    "12": "[.claude/commands/author-user-story.md#title]\n\n### Title\n\n- Format: `[Action] [Object] [Context]` — e.g. \"Define business capability model for Customer Management domain\"\n- Maximum 80 characters\n- Use clear, action-oriented language; be specific but concise\n- Do not use vague phrases like \"Do research\", \"Architecture\", or \"Update document\"",
+    "13": "[.claude/commands/author-user-story.md#required-description-sections]\n\n### Required Description Sections\n\nThe `System.Description` field must contain all of the following sections (omit sections that genuinely do not apply, but include a note explaining why):\n\n```markdown\n### User Story\nAs a [role/persona],\nI want [capability/feature],\nSo that [business value/benefit].\n\n### Context\n[Why is this needed? Business driver? Strategic initiative?]\n\n### Architecture Considerations\n[Strategic considerations, constraints, dependencies, stakeholder impacts, frameworks]\n\n### Related Documentation\n- [Link to ADR, standard, capability model, or Epic/Feature if applicable]\n\n### Authoring References\n- **Template**: [Template name]\n- **Authoring Guide**: foundation/user-story-guidelines.md\n- **Depends On / Supersedes**: [Links or \"None\"]\n\n### Authoring Constraints\nThis work item was authored by AI tooling in accordance with §2.5 of `foundation/user-story-guidelines.md`. The following constraints were applied:\n- **No fabricated data**: All data points and metrics are traceable to cited sources; unsourced values were omitted.\n- **No new normative requirements**: This story references existing requirements only and does not introduce new architectural standards or mandates.\n- **Technical practitioner audience**: Content is written for enterprise architects, solution architects, and engineers.\n```\n\nStory types may add additional sections (e.g. Research Questions, Deliverables, Governance Scope) per the templates in §5.0.",
+    "14": "[.claude/commands/author-user-story.md#acceptance-criteria]\n\n### Acceptance Criteria\n\nMust use Gherkin-style **named scenario** format. Do not use a plain numbered list.\n\n```markdown\n**Scenario 1: [Scenario Name]**\n- Given [initial context]\n- When [action or activity is completed]\n- Then [specific, measurable outcome]\n\n**Scenario 2: [Scenario Name]**\n- Given [precondition]\n- When [action]\n- Then [outcome]\n```\n\nAim for 2–4 scenarios. Each criterion must be specific, measurable, and verifiable. Avoid vague outcomes like \"good decision is made\" or \"teams can use it\".",
+    "15": "[.claude/commands/author-user-story.md#tags]\n\n### Tags\n\nTags must include at least one from each required category:\n\n- **Work Type** (required): `business-architecture`, `standards`, `governance`, `research`, `documentation`, `assessment`\n- **Architecture Domain** (required): `business`, `application`, `data`, `technology`, `security`, `infrastructure`\n- **Optional**: `executive`, `business-unit`, `product-team`, `strategic`, `critical`, `architecture-review`, `governance-review`\n\nAdd any tags from the `tags` input. Include a team identifier tag if multi-team work is involved.",
+    "16": "[.claude/commands/author-user-story.md#story-points]\n\n### Story Points\n\nUse the Modified Fibonacci scale (1, 2, 3, 5, 8, 13) with these EA-specific guidelines:\n\n| Points | Complexity | Duration | EA Example |\n|---|---|---|---|\n| 1 | Trivial | ≤1 day | Update a single enterprise principle; document an architecture decision rationale |\n| 2 | Simple | 1–2 days | Define a single enterprise standard; create an architecture presentation |\n| 3 | Small | 2–3 days | Document a business capability sub-domain; define a governance process for one scenario |\n| 5 | Medium | ~1 week | Complete capability model for a small domain; research and compare 2–3 vendor options |\n| 8 | Large | ~2 weeks | Comprehensive vendor evaluation (3+ vendors); assess application portfolio for a business unit |\n| 13 | Very Large | 3+ weeks | **Must be split into smaller stories before creation** |\n\n**Flag for splitting if >8 points**: Suggest a split along one of these patterns — by architecture domain, by scope (current/future/transition), by stakeholder group, by deliverable (model → assessment → roadmap), or by framework phase (research → analysis → recommendation → socialization).\n\n---",
+    "17": "[.claude/commands/author-user-story.md#output-format-for-user-confirmation]\n\n## Output Format (for user confirmation)\n\nPresent the drafted story to the user in this format before creating it:\n\n---\n**Draft User Story**\n\n**Type**: `<EA story type>`\n**Title**: `<title>`\n\n**`System.Description`**:\n```markdown\n### User Story\nAs a <user type>, I want <goal>, so that <value>.\n\n### Context\n<background>\n\n### Architecture Considerations\n<considerations>\n\n### Related Documentation\n- <links or \"None\">\n\n### Authoring References\n- **Template**: <template name>\n- **Authoring Guide**: foundation/user-story-guidelines.md\n- **Depends On / Supersedes**: <links or \"None\">\n\n### Authoring Constraints\nThis work item was authored by AI tooling in accordance with §2.5 of `foundation/user-story-guidelines.md`. The following constraints were applied:\n- **No fabricated data**: All data points and metrics are traceable to cited sources; unsourced values were omitted.\n- **No new normative requirements**: This story references existing requirements only and does not introduce new architectural standards or mandates.\n- **Technical practitioner audience**: Content is written for enterprise architects, solution architects, and engineers.\n```\n\n**`Microsoft.VSTS.Common.AcceptanceCriteria`**:\n```markdown\n**Scenario 1: <name>**\n- Given <context>\n- When <action>\n- Then <outcome>\n\n**Scenario 2: <name>**\n- Given <context>\n- When <action>\n- Then <outcome>\n```\n\n**Story Points**: `<estimate>` — `<one-sentence justification>`\n**Tags**: `<work-type-tag>`, `<domain-tag>`, ...\n**Area Path**: `<value or \"not set\">`\n**Iteration**: `<value or \"not set\">`\n**Assigned To**: `<value or \"not set\">`\n**Parent Feature**: `<Feature title (ADO #ID)>` or `None matched`\n**Parent Epic**: `<Epic title (ADO #ID)>` or `None matched`\n\n---\n\n> Does this look correct? Reply **\"yes\"** to create it in Azure DevOps, **\"edit\"** followed by your changes, or **\"no\"** to cancel."
+  },
+  "coverage": {
+    "total_pages": 17,
+    "covered_pages": 17,
+    "sampled_pages": 17,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 17
+  }
+}

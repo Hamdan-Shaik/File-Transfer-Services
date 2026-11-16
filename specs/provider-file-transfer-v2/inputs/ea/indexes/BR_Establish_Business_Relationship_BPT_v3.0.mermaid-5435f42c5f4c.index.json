@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Establish Business Relationship (BR) - Process Flow Diagram",
+  "document_description": "T1[\"Request for business relationship<br/>(EDI, email, mail, fax, phone)\"]",
+  "total_pages": 5,
+  "tree": [
+    {
+      "title": "Establish Business Relationship (BR) - Process Flow Diagram",
+      "node_id": "establish-business-relationship-br---process-flow-diagram",
+      "start_index": 1,
+      "end_index": 5,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Process Overview",
+          "node_id": "process-overview",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Results",
+          "node_id": "results",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Performance Measures",
+          "node_id": "performance-measures",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Constraints & Failures",
+          "node_id": "constraints--failures",
+          "start_index": 5,
+          "end_index": 5,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[standards/business/MITA-3.0/bpt-workflows/business_relationship_management/BR_Establish_Business_Relationship_BPT_v3.0.mermaid.md#establish-business-relationship-br---process-flow-diagram]\n\n# Establish Business Relationship (BR) - Process Flow Diagram\n\n> Business Area: Business Relationship Management | Process Code: BR | MITA Version 3.0",
+    "2": "[standards/business/MITA-3.0/bpt-workflows/business_relationship_management/BR_Establish_Business_Relationship_BPT_v3.0.mermaid.md#process-overview]\n\n## Process Overview\n\n```mermaid\nflowchart TB\n    subgraph TRIGGERS[\"⚡ Trigger Events\"]\n        T1[\"Request for business relationship<br/>(EDI, email, mail, fax, phone)\"]\n        T2[\"Need identified<br/>(new policy, new program)\"]\n    end\n\n    subgraph PREDECESSORS[\"📥 Predecessor Processes\"]\n        P1[Receive Inbound Transaction]\n        P2[Award Contract]\n        P3[Enroll Provider]\n        P4[Maintain Program Policy]\n        P5[Maintain State Plan]\n    end\n\n    subgraph MAIN[\"🔄 Establish Business Relationship Process\"]\n        START([1. START: Receive request<br/>for business relationship])\n        STEP2[2. Collect agreement<br/>information with other party]\n        STEP3[3. Validate information<br/>completeness & syntax]\n        STEP4[4. Validate information<br/>authenticity]\n        DECISION{5. Agreement<br/>determination?}\n        STEP6[6. Establish terms<br/>TPA, SLA, MOU]\n        STEP7[7. Establish KPI]\n        STEP8[8. Establish payment<br/>agreements]\n        STEP9[9. Establish data<br/>exchange requirements]\n        STEP10[10. Establish<br/>authentication protocol]\n        STEP11[11. Establish<br/>security protocol]\n        STEP12[12. Establish<br/>privacy requirements]\n        STEP13[13. Agreement on<br/>business relationship]\n        ENDS([14. END: Send alert<br/>to notify partner])\n    end\n\n    subgraph SUCCESSORS[\"📤 Successor Processes\"]\n        S1[Send Outbound Transaction]\n        S2[Manage Business Relationship Information]\n        S3[Manage Business Relationship Communication]\n    end\n\n    subgraph DATA[\"💾 Shared Data\"]\n        D1[(Business Partner<br/>Data Store)]\n        D2[(Contractor<br/>Data Store)]\n    end\n\n    %% Trigger connections\n    T1 --> START\n    T2 --> START\n\n    %% Predecessor connections\n    P1 -.-> START\n    P2 -.-> START\n    P3 -.-> START\n    P4 -.-> START\n    P5 -.-> START\n\n    %% Main flow\n    START --> STEP2\n    STEP2 --> STEP3\n    STEP3 --> STEP4\n    STEP4 --> DECISION\n    DECISION -->|Agreement| STEP6\n    DECISION -->|No Agreement| STEP9\n    STEP6 --> STEP7\n    STEP7 --> STEP8\n    STEP8 --> STEP9\n    STEP9 --> STEP10\n    STEP10 --> STEP11\n    STEP11 --> STEP12\n    STEP12 --> STEP13\n    STEP13 --> ENDS\n\n    %% Successor connections\n    ENDS -.-> S1\n    ENDS -.-> S2\n    ENDS -.-> S3\n\n    %% Data connections\n    STEP2 <-->|Read/Write| D1\n    STEP2 <-->|Read/Write| D2\n    STEP6 <-->|Read/Write| D1\n\n    %% Styling\n    classDef trigger fill:#e1f5fe,stroke:#0288d1,stroke-width:2px\n    classDef predecessor fill:#fff3e0,stroke:#ff9800,stroke-width:2px\n    classDef successor fill:#e8f5e9,stroke:#4caf50,stroke-width:2px\n    classDef decision fill:#fce4ec,stroke:#e91e63,stroke-width:2px\n    classDef process fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px\n    classDef startend fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    classDef datastore fill:#fff8e1,stroke:#ffc107,stroke-width:2px\n\n    class T1,T2 trigger\n    class P1,P2,P3,P4,P5 predecessor\n    class S1,S2,S3 successor\n    class DECISION decision\n    class STEP2,STEP3,STEP4,STEP6,STEP7,STEP8,STEP9,STEP10,STEP11,STEP12,STEP13 process\n    class START,ENDS startend\n    class D1,D2 datastore\n```",
+    "3": "[standards/business/MITA-3.0/bpt-workflows/business_relationship_management/BR_Establish_Business_Relationship_BPT_v3.0.mermaid.md#results]\n\n## Results\n\nUpon completion, the process produces:\n\n| Outcome | Description |\n|---------|-------------|\n| ✅ Business Relationship Agreement | SMA agrees upon relationship with business partner |\n| 📡 Communication Protocols | Defined protocols for data exchange |\n| 🔔 Partner Notification | Alert sent to notify business partner of agreement |\n| 📋 Established Agreement | TPA, SLA, or MOU between business partners |\n| 📊 Tracking Information | Data for measuring performance and BAM |",
+    "4": "[standards/business/MITA-3.0/bpt-workflows/business_relationship_management/BR_Establish_Business_Relationship_BPT_v3.0.mermaid.md#performance-measures]\n\n## Performance Measures\n\n| Metric | Target |\n|--------|--------|\n| Time to complete | Within __ days |\n| Edit accuracy | ___% |\n| Decision consistency | ___% |\n| Error rate | __% or less |",
+    "5": "[standards/business/MITA-3.0/bpt-workflows/business_relationship_management/BR_Establish_Business_Relationship_BPT_v3.0.mermaid.md#constraints--failures]\n\n## Constraints & Failures\n\n- **Constraints**: Federal and state policies and regulations constrain these agreements\n- **Potential Failure**: Parties unable to agree on terms of relationship\n\n---\n\n*Generated from: BR_Establish_Business_Relationship_BPT_v3.0.json*"
+  },
+  "coverage": {
+    "total_pages": 5,
+    "covered_pages": 5,
+    "sampled_pages": 5,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 5
+  }
+}

@@ -1,0 +1,351 @@
+openapi: 3.0.3
+info:
+  title: FXFER UI BFF contract (manage FTP servers and credentials plus supporting lookups)
+  version: 1.0.0
+  description: |
+    Browser-facing contract consumed by the fxfer-mfe screens in component ui-manage-ftp-servers-and-credentials-screens.
+
+    Errors are returned as RFC 7807 Problem Details (application/problem+json).
+
+x-no-auth-doc: true
+x-legacy-endpoints:
+  - file-transfer-controller-add-file-transfer-base-configuration
+  - file-transfer-controller-add-ftpserver-credentials
+  - file-transfer-controller-create-ftpserver-credentials
+  - file-transfer-controller-get-data-list-data
+  - file-transfer-controller-get-data-list-data-2
+  - file-transfer-controller-get-ftemetadatas
+  - file-transfer-controller-get-ftpserver-credentials
+  - file-transfer-controller-get-ftp-server-details
+  - file-transfer-controller-get-source-locations
+  - file-transfer-controller-search-file-transfer
+  - file-transfer-controller-search-file-transfer-tracking-2
+  - file-transfer-controller-update-ftpserver-credentials
+
+servers:
+  - url: /api/file-transfer/v1
+
+paths:
+  /transfer-configurations/base:
+    put:
+      operationId: upsertFileTransferBaseConfiguration
+      summary: Add or update file transfer base configuration
+      tags: [TransferConfigurations]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FileTransferConfiguration'
+      responses:
+        '200':
+          description: Echoes the submitted model on success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileTransferConfiguration'
+        default:
+          $ref: '#/components/responses/Problem'
+
+  /source-locations/options:
+    get:
+      operationId: getSourceLocationOptions
+      summary: Get source location options
+      tags: [SourceLocations]
+      responses:
+        '200':
+          description: List of options
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ListItem'
+        default:
+          $ref: '#/components/responses/Problem'
+
+  /ftp-servers/options:
+    get:
+      operationId: getFtpServerOptions
+      summary: Get FTP server options
+      tags: [FtpServers]
+      responses:
+        '200':
+          description: List of options
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ListItem'
+        default:
+          $ref: '#/components/responses/Problem'
+
+  /ftp-server-credentials/search:
+    post:
+      operationId: searchFtpServerCredentials
+      summary: Search FTP server credentials with paging and sorting
+      tags: [FtpServerCredentials]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FtpServerCredentialsSearchRequest'
+      responses:
+        '200':
+          description: Search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FtpServerCredentialsSearchResponse'
+        '404':
+          description: No data (legacy null response or null data list behavior)
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FtpServerCredential'
+        default:
+          $ref: '#/components/responses/Problem'
+
+  /ftp-server-credentials:
+    post:
+      operationId: saveFtpServerCredentials
+      summary: Create, update, or invalidate FTP server credentials
+      description: |
+        Preserves the legacy controller behavior.
+
+        - When ftpServerId is empty: create.
+        - Otherwise: update when isValid is true, invalidate when isValid is false.
+      tags: [FtpServerCredentials]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FtpServerCredential'
+      responses:
+        '200':
+          description: Saved model including localized success message in editor.savedMessage.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FtpServerCredential'
+        default:
+          $ref: '#/components/responses/Problem'
+
+  /file-transfers/search:
+    post:
+      operationId: searchFileTransfers
+      summary: Search file transfer configurations
+      tags: [FileTransfers]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GridSearchRequest'
+      responses:
+        '200':
+          description: Search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GridSearchResponse'
+        default:
+          $ref: '#/components/responses/Problem'
+
+  /file-transfer-tracking/search:
+    post:
+      operationId: searchFileTransferTracking
+      summary: Search file transfer tracking results
+      tags: [Tracking]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GridSearchRequest'
+      responses:
+        '200':
+          description: Search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GridSearchResponse'
+        default:
+          $ref: '#/components/responses/Problem'
+
+  /data-lists:
+    get:
+      operationId: getDataListData
+      summary: Get data list items (MODULE only)
+      tags: [DataLists]
+      parameters:
+        - in: query
+          name: contentId
+          required: false
+          schema: { type: string }
+        - in: query
+          name: dataListType
+          required: false
+          schema: { type: string }
+        - in: query
+          name: localeId
+          required: false
+          schema: { type: string }
+      responses:
+        '200':
+          description: List items (empty when type is not MODULE)
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ListItem'
+        default:
+          $ref: '#/components/responses/Problem'
+
+  /fte-metadatas:
+    get:
+      operationId: getFteMetadatas
+      summary: Get FTE metadata ids for a contract
+      tags: [FteMetadata]
+      parameters:
+        - in: query
+          name: contractName
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Metadata list (may be empty)
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InboundTargetMetadata'
+        '404':
+          description: Null provider response or null data list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InboundTargetMetadata'
+        default:
+          $ref: '#/components/responses/Problem'
+
+components:
+  responses:
+    Problem:
+      description: RFC 7807 Problem Details
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetails'
+
+  schemas:
+    ProblemDetails:
+      type: object
+      additionalProperties: true
+
+    ListItem:
+      type: object
+      properties:
+        id: { type: string }
+        name: { type: string, nullable: true }
+        displayFormat: { type: string, nullable: true }
+
+    EditorState:
+      type: object
+      properties:
+        savedMessage: { type: string, nullable: true }
+        saveActionText: { type: string, nullable: true }
+
+    FileTransferConfiguration:
+      type: object
+      additionalProperties: true
+
+    FtpServerCredentialsSearchRequest:
+      type: object
+      properties:
+        filters:
+          type: object
+          properties:
+            ftpServerName: { type: string, nullable: true }
+            ftpDescription: { type: string, nullable: true }
+            ftpUser: { type: string, nullable: true }
+            isValid:
+              description: Any non-empty value forces active-only filtering in legacy.
+              type: string
+              nullable: true
+        paging:
+          type: object
+          properties:
+            pageNumber: { type: integer, format: int32, nullable: true }
+            pageSize: { type: integer, format: int32, nullable: true }
+        sorts:
+          description: When multiple sorts are provided, only the last is applied.
+          type: array
+          items:
+            $ref: '#/components/schemas/Sort'
+
+    Sort:
+      type: object
+      properties:
+        field: { type: string }
+        direction: { type: string, enum: [asc, desc] }
+
+    FtpServerCredentialsSearchResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/FtpServerCredential'
+        total:
+          type: integer
+          format: int32
+
+    FtpServerCredential:
+      type: object
+      properties:
+        ftpServerId: { type: string, nullable: true }
+        ftpServerName: { type: string, nullable: true }
+        ftpDescription: { type: string, nullable: true }
+        ftpUser: { type: string, nullable: true }
+        ftpPassword: { type: string, nullable: true }
+        ftpPasswordConfirmation: { type: string, nullable: true }
+        ftpServerIp: { type: string, nullable: true }
+        ftpPort: { type: string, nullable: true }
+        ftpProxyAddress: { type: string, nullable: true }
+        ftpProxyPort: { type: string, nullable: true }
+        ftpTransferMode: { type: string, nullable: true }
+        isValid: { type: boolean, nullable: true }
+        editor:
+          $ref: '#/components/schemas/EditorState'
+      additionalProperties: true
+
+    GridSearchRequest:
+      type: object
+      description: Minimal placeholder for grid-backed searches; exact filter shapes are component-specific.
+      additionalProperties: true
+
+    GridSearchResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items: { type: object, additionalProperties: true }
+        total:
+          type: integer
+          format: int32
+      additionalProperties: true
+
+    InboundTargetMetadata:
+      type: object
+      additionalProperties: true
+

@@ -1,0 +1,195 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Database Setup Summary",
+  "document_description": "1. `docker compose up -d postgres` - Starts PostgreSQL container",
+  "total_pages": 19,
+  "tree": [
+    {
+      "title": "Database Setup Summary",
+      "node_id": "database-setup-summary",
+      "start_index": 1,
+      "end_index": 19,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "How Database Works Across Environments",
+          "node_id": "how-database-works-across-environments",
+          "start_index": 2,
+          "end_index": 5,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "🏠 Local Development",
+              "node_id": "-local-development",
+              "start_index": 3,
+              "end_index": 3,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "🔬 Dev Environment (EKS)",
+              "node_id": "-dev-environment-eks",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "🚀 Prod Environment (EKS)",
+              "node_id": "-prod-environment-eks",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Migration Flow",
+          "node_id": "migration-flow",
+          "start_index": 6,
+          "end_index": 6,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Connection Strings by Environment",
+          "node_id": "connection-strings-by-environment",
+          "start_index": 7,
+          "end_index": 7,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Key Files",
+          "node_id": "key-files",
+          "start_index": 8,
+          "end_index": 8,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Commands Cheatsheet",
+          "node_id": "commands-cheatsheet",
+          "start_index": 9,
+          "end_index": 11,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Local Development",
+              "node_id": "local-development",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Dev/Prod (EKS)",
+              "node_id": "devprod-eks",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Troubleshooting",
+          "node_id": "troubleshooting",
+          "start_index": 12,
+          "end_index": 15,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Local: \"Database does not exist\"",
+              "node_id": "local-database-does-not-exist",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Dev/Prod: \"No such cluster\"",
+              "node_id": "devprod-no-such-cluster",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Migration Conflicts",
+              "node_id": "migration-conflicts",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Security Notes",
+          "node_id": "security-notes",
+          "start_index": 16,
+          "end_index": 16,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Technical Notes",
+          "node_id": "technical-notes",
+          "start_index": 17,
+          "end_index": 19,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Dual-Driver Architecture",
+              "node_id": "dual-driver-architecture",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Seed Data Implementation",
+              "node_id": "seed-data-implementation",
+              "start_index": 19,
+              "end_index": 19,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[.tooling/components/apis/ai-gov-review-service/docs/DATABASE-SETUP.md#database-setup-summary]\n\n# Database Setup Summary",
+    "2": "[.tooling/components/apis/ai-gov-review-service/docs/DATABASE-SETUP.md#how-database-works-across-environments]\n\n## How Database Works Across Environments",
+    "3": "[.tooling/components/apis/ai-gov-review-service/docs/DATABASE-SETUP.md#-local-development]\n\n### 🏠 Local Development\n\n**Infrastructure:**\n\n- PostgreSQL 16 in Docker container (via `docker-compose.yml`)\n- Redis 7 in Docker container\n- App runs via Poetry/uvicorn (outside Docker) or in Docker\n\n**Database Creation:**\n\n1. `docker compose up -d postgres` - Starts PostgreSQL container\n2. Database `aigovreview` created automatically (POSTGRES_DB env var)\n3. Init script creates `app` user to match production\n\n**Schema/Tables:**\n\n1. `poetry run alembic upgrade head` - Runs migrations\n2. Tables created from SQLAlchemy models in `src/db/models.py`\n\n**Credentials:**\n\n- User: `postgres`\n- Password: `postgres`\n- Connection: `postgresql+asyncpg://postgres:postgres@localhost:5432/aigovreview`\n- Configured in `.env.local` → `.env`\n\n**Seed Data:**\n\n- `poetry run python scripts/seed-data.py` - Creates initial templates\n\n---",
+    "4": "[.tooling/components/apis/ai-gov-review-service/docs/DATABASE-SETUP.md#-dev-environment-eks]\n\n### 🔬 Dev Environment (EKS)\n\n**Infrastructure:**\n\n- CloudNativePG operator manages PostgreSQL cluster\n- 3 replicas for high availability\n- PgBouncer pooler for connection management\n- Redis sidecar in each pod\n\n**Database Creation:**\n\n1. `kubectl apply -f k8s/postgres-cluster.yaml` - Creates cluster\n2. CloudNativePG operator provisions 3 PostgreSQL pods\n3. Database `aigovreview` created via `bootstrap.initdb` spec\n4. User `app` created from Kubernetes secret\n\n**Schema/Tables:**\n\n1. Application pod starts\n2. `init_db()` in `src/db/session.py` runs on startup\n3. Alembic migrations auto-applied: `alembic upgrade head`\n\n**Credentials:**\n\n- User: `app`\n- Password: Stored in Kubernetes Secret `ai-gov-db-app-secret`\n- Connection: `postgresql+asyncpg://app:password@ai-gov-db-pooler-rw:5432/aigovreview`\n- Secret referenced in deployment via `envFrom`\n\n**Seed Data:**\n\n- Manual: `kubectl exec -it <pod> -- poetry run python scripts/seed-data.py`\n- Or via init Job (not yet implemented)\n\n---",
+    "5": "[.tooling/components/apis/ai-gov-review-service/docs/DATABASE-SETUP.md#-prod-environment-eks]\n\n### 🚀 Prod Environment (EKS)\n\n**Same as Dev, with differences:**\n\n**Infrastructure:**\n\n- Production-grade storage class (gp3 with higher IOPS)\n- Automated backups to S3 via CloudNativePG\n- 30-day retention policy\n- Point-in-time recovery enabled\n\n**Credentials:**\n\n- Different password (rotated via AWS Secrets Manager)\n- Connection pooler: `ai-gov-db-pooler-rw:5432`\n\n**Backups:**\n\n- Automated continuous archiving to S3\n- Managed by CloudNativePG `backup.barmanObjectStore`\n- Restore with `kubectl apply -f restore-cluster.yaml`\n\n---",
+    "6": "[.tooling/components/apis/ai-gov-review-service/docs/DATABASE-SETUP.md#migration-flow]\n\n## Migration Flow\n\n```mermaid\ngraph LR\n    A[Model Changes<br/>src/db/models.py] --> B[Create Migration<br/>alembic revision]\n    B --> C[Review & Edit<br/>alembic/versions/]\n    C --> D[Test Locally<br/>alembic upgrade head]\n    D --> E[Commit to Git]\n    E --> F[Deploy to Dev<br/>Auto-applied on startup]\n    F --> G[Deploy to Prod<br/>Auto-applied on startup]\n```",
+    "7": "[.tooling/components/apis/ai-gov-review-service/docs/DATABASE-SETUP.md#connection-strings-by-environment]\n\n## Connection Strings by Environment\n\n| Environment | Connection String |\n|-------------|-------------------|\n| **Local (Docker)** | `postgresql+asyncpg://postgres:postgres@localhost:5432/aigovreview` |\n| **Local (Native)** | `postgresql+asyncpg://postgres@localhost:5432/aigovreview` |\n| **Dev (EKS)** | `postgresql+asyncpg://app:<secret>@ai-gov-db-pooler-rw:5432/aigovreview` |\n| **Prod (EKS)** | `postgresql+asyncpg://app:<secret>@ai-gov-db-pooler-rw:5432/aigovreview` |\n\n**Note:** `asyncpg` driver required for async SQLAlchemy support",
+    "8": "[.tooling/components/apis/ai-gov-review-service/docs/DATABASE-SETUP.md#key-files]\n\n## Key Files\n\n| File | Purpose |\n|------|---------|\n| `docker-compose.yml` | Local PostgreSQL + Redis containers |\n| `scripts/init-db.sh` | PostgreSQL initialization (Docker) |\n| `scripts/seed-data.py` | Create initial template data |\n| `src/db/models.py` | SQLAlchemy ORM models (source of truth) |\n| `alembic/versions/*.py` | Database migration scripts |\n| `alembic.ini` | Alembic configuration |\n| `src/db/session.py` | Database session management + init_db() |\n| `k8s/postgres-cluster.yaml` | CloudNativePG cluster definition |\n| `k8s/secret.yaml` | Kubernetes secrets for credentials |",
+    "9": "[.tooling/components/apis/ai-gov-review-service/docs/DATABASE-SETUP.md#commands-cheatsheet]\n\n## Commands Cheatsheet",
+    "10": "[.tooling/components/apis/ai-gov-review-service/docs/DATABASE-SETUP.md#local-development]\n\n### Local Development\n\n```bash\n# Start database\ndocker compose up -d postgres redis\n\n# Run migrations\npoetry run alembic upgrade head\n\n# Seed data\npoetry run python scripts/seed-data.py\n\n# Connect to database\ndocker exec -it ai-gov-review-postgres psql -U postgres -d aigovreview\n\n# Reset database\ndocker compose down -v\ndocker compose up -d postgres redis\npoetry run alembic upgrade head\n```",
+    "11": "[.tooling/components/apis/ai-gov-review-service/docs/DATABASE-SETUP.md#devprod-eks]\n\n### Dev/Prod (EKS)\n\n```bash\n# Deploy database cluster\nkubectl apply -f k8s/postgres-cluster.yaml\n\n# Check cluster status\nkubectl get cluster -n ai-gov-review\nkubectl get pods -n ai-gov-review -l postgresql=ai-gov-db\n\n# Connect to database (port-forward)\nkubectl port-forward -n ai-gov-review svc/ai-gov-db-rw 5432:5432\n\n# Run migrations manually (if needed)\nkubectl exec -it <app-pod> -n ai-gov-review -- poetry run alembic upgrade head\n\n# View logs\nkubectl logs -n ai-gov-review ai-gov-db-1\n```",
+    "12": "[.tooling/components/apis/ai-gov-review-service/docs/DATABASE-SETUP.md#troubleshooting]\n\n## Troubleshooting",
+    "13": "[.tooling/components/apis/ai-gov-review-service/docs/DATABASE-SETUP.md#local-database-does-not-exist]\n\n### Local: \"Database does not exist\"\n\n```bash\ndocker compose down -v\ndocker compose up -d postgres\n# Wait 5 seconds for initialization\npoetry run alembic upgrade head\n```",
+    "14": "[.tooling/components/apis/ai-gov-review-service/docs/DATABASE-SETUP.md#devprod-no-such-cluster]\n\n### Dev/Prod: \"No such cluster\"\n\n```bash\n# Check if CloudNativePG operator is installed\nkubectl get pods -n cnpg-system\n\n# Install if missing\nkubectl apply -f https://raw.githubusercontent.com/cloudnative-pg/cloudnative-pg/release-1.22/releases/cnpg-1.22.0.yaml\n```",
+    "15": "[.tooling/components/apis/ai-gov-review-service/docs/DATABASE-SETUP.md#migration-conflicts]\n\n### Migration Conflicts\n\n```bash\n# View current state\npoetry run alembic current\n\n# View history\npoetry run alembic history\n\n# Merge conflicting heads\npoetry run alembic merge heads -m \"merge migrations\"\n```",
+    "16": "[.tooling/components/apis/ai-gov-review-service/docs/DATABASE-SETUP.md#security-notes]\n\n## Security Notes\n\n1. **Local**: Uses weak passwords (`postgres`/`postgres`) - acceptable for dev\n2. **Dev/Prod**: Uses Kubernetes Secrets - rotate regularly\n3. **Never commit** `.env` files with real credentials\n4. **Prefer IRSA** (IAM Roles for Service Accounts) for AWS access\n5. **Backups encrypted** at rest in S3 (AES256)",
+    "17": "[.tooling/components/apis/ai-gov-review-service/docs/DATABASE-SETUP.md#technical-notes]\n\n## Technical Notes",
+    "18": "[.tooling/components/apis/ai-gov-review-service/docs/DATABASE-SETUP.md#dual-driver-architecture]\n\n### Dual-Driver Architecture\n\nThe service uses **two PostgreSQL drivers** for different purposes:\n\n| Component | Driver | URL Format | Purpose |\n|-----------|--------|------------|---------|\n| **Application** | `asyncpg` (async) | `postgresql+asyncpg://...` | Fast async database operations in FastAPI |\n| **Alembic Migrations** | `psycopg2-binary` (sync) | `postgresql://...` | Synchronous schema migrations |\n\n**Why two drivers?**\n\n- **asyncpg**: Modern async-only driver for maximum performance in async FastAPI handlers\n- **psycopg2**: Traditional sync driver required by Alembic's synchronous migration engine\n\n**Implementation:**\n\n- Application uses `asyncpg` connection string from `.env`: `DATABASE_URL=postgresql+asyncpg://...`\n- Alembic automatically converts URL in `alembic/env.py`: strips `+asyncpg` to use default `psycopg2`\n- Both drivers installed via Poetry: `asyncpg = \"^0.29.0\"` and `psycopg2-binary = \"^2.9.11\"`\n\n**No action required** - this is handled automatically by the configuration.",
+    "19": "[.tooling/components/apis/ai-gov-review-service/docs/DATABASE-SETUP.md#seed-data-implementation]\n\n### Seed Data Implementation\n\nThe `scripts/seed-data.py` script uses **raw SQL** instead of ORM models:\n\n**Why raw SQL?**\n\n- Avoids SQLAlchemy metadata conflicts when models are imported multiple times\n- Prevents \"Table already defined\" errors during seeding\n- Simpler and more reliable for initial data population\n\n**Features:**\n\n- Duplicate detection: Checks if templates exist before inserting\n- Idempotent: Can be run multiple times safely\n- Creates 2 templates: ARB (Architecture Review Board), CRB (Conceptual Review Board)\n\n**Usage:**\n\n```bash\npoetry run python scripts/seed-data.py  # Safe to run multiple times\n```"
+  },
+  "coverage": {
+    "total_pages": 19,
+    "covered_pages": 19,
+    "sampled_pages": 19,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 19
+  }
+}

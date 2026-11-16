@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Infrastructure-as-Code - Terraform - Deployments - AWS - Policies",
+  "document_description": "Back to [Project](../../../../../README.md) | [IAC](../../../../README.md) | [Terraform](../../../README.md) | [Deployments](../../README.md) | [AWS](../README.md)",
+  "total_pages": 5,
+  "tree": [
+    {
+      "title": "Infrastructure-as-Code - Terraform - Deployments - AWS - Policies",
+      "node_id": "infrastructure-as-code---terraform---deployments---aws---policies",
+      "start_index": 1,
+      "end_index": 5,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Policy Architecture",
+          "node_id": "policy-architecture",
+          "start_index": 2,
+          "end_index": 3,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Replacement Patterns",
+              "node_id": "replacement-patterns",
+              "start_index": 3,
+              "end_index": 3,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "RAG Architecture Policies",
+          "node_id": "rag-architecture-policies",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Archived Policies",
+          "node_id": "archived-policies",
+          "start_index": 5,
+          "end_index": 5,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[.tooling/iac/terraform/deployments/aws/_policies/README.md#infrastructure-as-code---terraform---deployments---aws---policies]\n\n# Infrastructure-as-Code - Terraform - Deployments - AWS - Policies\n\nBack to [Project](../../../../../README.md) | [IAC](../../../../README.md) | [Terraform](../../../README.md) | [Deployments](../../README.md) | [AWS](../README.md)\n\n---\n\nUse this section of the repository to create common reusable IAM policies for your resources.",
+    "2": "[.tooling/iac/terraform/deployments/aws/_policies/README.md#policy-architecture]\n\n## Policy Architecture\n\nThese JSON policy templates support dynamic value replacement through terragrunt and terraform processing:\n\n- **Static Replacements** (handled in Terragrunt): Account IDs, environment-specific values\n- **Dynamic Replacements** (handled in Terraform): Resource ARNs, cross-resource references",
+    "3": "[.tooling/iac/terraform/deployments/aws/_policies/README.md#replacement-patterns]\n\n### Replacement Patterns\n\n| Placeholder                            | Replacement Layer | Description                                   |\n| -------------------------------------- | ----------------- | --------------------------------------------- |\n| `[[account_number]]`                   | Terragrunt        | AWS Account ID using `get_aws_account_id()`   |\n| `[[namespace]]`                        | Terragrunt        | Kubernetes namespace for IRSA                 |\n| `[[service_account]]`                  | Terragrunt        | Kubernetes service account for IRSA           |\n| `[[opensearch_domain_arn]]`            | Terraform         | OpenSearch domain ARN from resource reference |\n| `[[assume_role_policy_resource_name]]` | Terraform         | OIDC provider URL from resource reference     |",
+    "4": "[.tooling/iac/terraform/deployments/aws/_policies/README.md#rag-architecture-policies]\n\n## RAG Architecture Policies\n\n| Policy                                                    | Description                                                                             | Replacement Pattern                                                           |\n| --------------------------------------------------------- | --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |\n| [Bedrock Access Policy](bedrock-access-policy.json)       | Grants access to Amazon Bedrock foundation models for RAG LLM and embedding operations. | Static JSON (no replacements)                                                 |\n| [IRSA Assume Role Policy](irsa-assume-role-policy.json)   | Trust policy for EKS IRSA (IAM Roles for Service Accounts) authentication.              | `[[account_number]]`, `[[namespace]]`, `[[service_account]]` → Dynamic values |\n| [OpenSearch Access Policy](opensearch-access-policy.json) | Grants comprehensive access to OpenSearch domain for RAG search operations.             | `[[opensearch_domain_arn]]` → Domain ARN                                      |\n\n> **Note**: CloudWatch logs policy is now provided by the platform via dependency reference (`dependency.platform.outputs.remote_tfstates.account.outputs.cloudwatch_iam_policy_arn`) instead of a separate JSON file.",
+    "5": "[.tooling/iac/terraform/deployments/aws/_policies/README.md#archived-policies]\n\n## Archived Policies\n\nHistorical policies have been moved to `_archive/` directory:\n\n| Policy                                  | Description                                  | Status   |\n| --------------------------------------- | -------------------------------------------- | -------- |\n| IAM Data MoveIt Permission Policy - WI  | Wisconsin specific MoveIt role policy        | Archived |\n| IAM Data MoveIt Trust Policy            | Generic MoveIt trust policy                  | Archived |\n| S3 Data Landing Permission Policy       | Generic tenant data landing S3 bucket policy | Archived |\n| S3 Permission Policy                    | Generic tenant S3 bucket policy              | Archived |\n| IAM Fusion Automation Permission Policy | Fusion automation permissions                | Archived |\n| Parameter Store Policy/Trust Policy     | Parameter store access policies              | Archived |\n| Secrets Access Policy                   | AWS Secrets Manager access policy            | Archived |"
+  },
+  "coverage": {
+    "total_pages": 5,
+    "covered_pages": 5,
+    "sampled_pages": 5,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 5
+  }
+}

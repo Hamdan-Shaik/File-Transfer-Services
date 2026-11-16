@@ -1,0 +1,74 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Scope",
+  "document_description": "Review the current branch or PR, then post findings as review comments directly on the remote PR. This is the opposite of `/pr-appr-resolve` — it creates comments instead of resolving them.",
+  "total_pages": 6,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 6,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Scope",
+          "node_id": "scope",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Workflow",
+          "node_id": "workflow",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Comment Format",
+          "node_id": "comment-format",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "What NOT to Review",
+          "node_id": "what-not-to-review",
+          "start_index": 5,
+          "end_index": 5,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Examples",
+          "node_id": "examples",
+          "start_index": 6,
+          "end_index": 6,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "Review the current branch or PR, then post findings as review comments directly on the remote PR. This is the opposite of `/pr-appr-resolve` — it creates comments instead of resolving them.",
+    "2": "[.claude/commands/pr-appr-review.md#scope]\n\n## Scope\n\n- If `$ARGUMENTS` is a **PR URL** (e.g., `https://github.com/org/repo/pull/42`), review that PR — clone the repo if needed (ask first)\n- If `$ARGUMENTS` specifies a PR number, review that PR in the current repo\n- If `$ARGUMENTS` specifies a repo (e.g., `bootstrap`), review that repo's open PR for its current branch\n- Otherwise, find the open PR for the current branch in the current repo\n- **A `pr-manager` Agent, where one exists for the repo** (`.github/agents/pr-manager.agent.md`), reads and applies steps 5–7 of this Workflow directly as a post-fix verification pass against the final diff, the same way it reads and applies `/pr-appr-resolve` — not Agent-to-Agent subagent composition, and not this Workflow invoking an Agent, just an Agent reading a Workflow's documented procedure.",
+    "3": "[.claude/commands/pr-appr-review.md#workflow]\n\n## Workflow\n\n1. **Parse the input and determine the repo**\n\n   - **PR URL** (e.g., `https://github.com/org/repo/pull/42`):\n     - Extract `owner`, `repo`, and `number` from the URL\n     - Check if the repo exists locally (in `../repo` or current directory)\n     - If **not local**, ask the user before cloning:\n\n       ```text\n       This PR is in org/repo which isn't cloned locally. Clone to ../{repo} and review? (yes/no)\n       ```\n\n     - If user approves, clone to `../{repo}`, cd into it, and checkout the PR branch:\n\n       ```bash\n       gh repo clone {owner}/{repo} ../{repo}\n       cd ../{repo}\n       gh pr checkout {number}\n       ```\n\n     - If user declines, review the diff remotely via `gh pr diff` without cloning (limited — no local file reads)\n   - **PR number** — use current repo\n   - **Repo name** (e.g., `bootstrap`) — find the open PR for that repo's current branch\n   - **Nothing** — find the open PR for the current branch\n\n2. **Pull latest** — run `git pull` to ensure you're reviewing the latest code\n\n3. **Identify the PR** (if not already resolved from URL)\n   - If no PR specified, find the open PR for the current branch:\n\n     ```bash\n     gh pr list --head \"$(git branch --show-current)\" --json number,url --jq '.[0]'\n     ```\n\n   - If no open PR exists, fall back to reviewing the branch diff against main (local only — no remote comments)\n\n4. **Read the full diff**\n\n   ```bash\n   gh pr diff {number}\n   ```\n\n   Also read the PR description and commit history to understand intent:\n\n   ```bash\n   gh pr view {number} --json title,body,commits\n   ```\n\n5. **Analyze every changed EA artifact and AI construct.** A Command cannot invoke an Agent — no `agents:` field mechanism exists for Commands, per `pr-manager.agent.md`'s Scope Boundaries — so this Command applies both governing Skills directly, in its own workflow:\n   - For changed EA artifact files, read `.claude/skills/ea-reviewer/SKILL.md` and apply its actual criteria — Authoring Standard Compliance, Content Quality (type-specific judgment questions), Internal Consistency, Cross-Document Consistency, Lifecycle and Change Impact, and Structural/Governance Checks.\n   - For changed AI construct files — Skills, Agents, Workflows/Commands/Prompts, Instructions, and file-pattern Instructions, the same taxonomy `pr-manager.agent.md` step 5 defines from `ADR-TEC-020` — read `.claude/skills/ai-reviewer/SKILL.md` and apply its equivalent criteria the same way.\n   - Changed files matching neither taxonomy are left to GitHub Copilot's native PR review, per the same scope boundary `ea-reviewer.agent.md` and `ai-review.agent.md` declare.\n\n6. **Check enterprise standards** — discover applicable standards for the changed files:\n   - Detect languages in the diff, scan `eap-ref-architecture/standards/technology/` for matching `STD-*` files\n   - Check `eap-ref-architecture/patterns/` for patterns the changes should follow\n   - Check project conventions in CLAUDE.md\n\n7. **Rank each finding:**\n\n   | Severity | Meaning |\n   | --- | --- |\n   | **Critical** | Must fix before merge — will cause failures or security issues |\n   | **High** | Strongly recommended — significant risk or quality concern |\n   | **Medium** | Should fix — improves correctness or maintainability |\n   | **Low** | Optional — minor improvement or suggestion |\n\n8. **Present findings to the user for approval before posting**\n\n   Display the full review locally as a table:\n\n   ```text\n   ## Review Summary — PR #{number}\n\n   **Verdict:** REQUEST_CHANGES / COMMENT / APPROVE\n\n   | # | Severity | File:Line | Comment |\n   | --- | --- | --- | --- |\n   | 1 | Critical | src/auth.py:42 | Missing input validation on user_id |\n   | 2 | Medium | config.yml:8 | Hardcoded timeout should use env var |\n   ```\n\n   Then ask once:\n\n   ```text\n   Post {N} comments as {VERDICT}?\n   ```\n\n   - **User approves** — post all comments and submit the review\n   - **User declines or edits** — adjust per their feedback, then post (no second approval round)\n\n   **Do not post to the remote until the user confirms.**\n\n9. **Post findings as PR review comments on the remote** (after approval)\n\n   Submit a full review with inline comments on specific lines:\n\n   ```bash\n   gh api repos/{owner}/{repo}/pulls/{number}/reviews -f event=\"COMMENT\" \\\n     -f body=\"<overall summary>\" \\\n     -f 'comments[][path]=<file>' \\\n     -f 'comments[][position]=<diff position>' \\\n     -f 'comments[][body]=<finding>'\n   ```\n\n   For each finding, post an inline comment on the specific file and line with:\n   - Severity tag: `**[Critical]**`, `**[High]**`, `**[Medium]**`, or `**[Low]**`\n   - What's wrong and why it matters\n   - Suggested fix (code suggestion block if applicable)\n\n   If no findings above Low severity, post a single review comment approving.\n\n10. **Submit verdict and report results**\n\n    Submit the review verdict:\n\n    | Condition | Verdict |\n    | --- | --- |\n    | Any Critical or High findings | `REQUEST_CHANGES` |\n    | Only Medium or Low findings | `COMMENT` |\n    | No findings or only praise | `APPROVE` |\n\n    Then report locally: total findings by severity, files reviewed, verdict submitted, and link to the PR.",
+    "4": "[.claude/commands/pr-appr-review.md#comment-format]\n\n## Comment Format\n\nEach inline comment follows this format:\n\n````text\n**[Severity]** Brief description\n\n<explanation of what's wrong and the impact>\n\nSuggested fix:\n```suggestion\n<corrected code>\n```\n````\n\nFor non-code findings (docs, config), skip the suggestion block and describe the fix in text.",
+    "5": "[.claude/commands/pr-appr-review.md#what-not-to-review]\n\n## What NOT to Review\n\n- Untouched code surrounding the changes — review what changed, not the whole file\n- Style preferences that don't violate project standards\n- Generated files (SVGs, lock files) — unless the generation looks wrong\n- Pre-existing issues in unchanged code — note them separately if critical, but don't block the PR",
+    "6": "[.claude/commands/pr-appr-review.md#examples]\n\n## Examples\n\n```text\n/pr-appr-review\n```\n\nFinds the PR for the current branch, reviews the diff, posts inline comments, submits verdict.\n\n```text\n/pr-appr-review 3\n```\n\nReviews PR #3 in the current repo.\n\n```text\n/pr-appr-review bootstrap\n```\n\nReviews the open PR in eap-bootstrap.\n\n$ARGUMENTS"
+  },
+  "coverage": {
+    "total_pages": 6,
+    "covered_pages": 6,
+    "sampled_pages": 6,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 6
+  }
+}

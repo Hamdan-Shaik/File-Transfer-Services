@@ -1,0 +1,231 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Kubernetes Manifests for RAG Service",
+  "document_description": "This directory contains Kubernetes manifests for deploying the RAG (Retrieval-Augmented Generation) service to AWS EKS.",
+  "total_pages": 23,
+  "tree": [
+    {
+      "title": "Kubernetes Manifests for RAG Service",
+      "node_id": "kubernetes-manifests-for-rag-service",
+      "start_index": 1,
+      "end_index": 23,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Overview",
+          "node_id": "overview",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Files",
+          "node_id": "files",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Prerequisites",
+          "node_id": "prerequisites",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Deployment",
+          "node_id": "deployment",
+          "start_index": 5,
+          "end_index": 7,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Automated (Recommended)",
+              "node_id": "automated-recommended",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Manual Deployment",
+              "node_id": "manual-deployment",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Architecture",
+          "node_id": "architecture",
+          "start_index": 8,
+          "end_index": 8,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Configuration",
+          "node_id": "configuration",
+          "start_index": 9,
+          "end_index": 13,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "HTTPS & Certificate Configuration",
+              "node_id": "https--certificate-configuration",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Environment Variables (from deployment.yaml)",
+              "node_id": "environment-variables-from-deploymentyaml",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Resource Limits",
+              "node_id": "resource-limits",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "IRSA (IAM Roles for Service Accounts)",
+              "node_id": "irsa-iam-roles-for-service-accounts",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Monitoring",
+          "node_id": "monitoring",
+          "start_index": 14,
+          "end_index": 17,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Health Checks",
+              "node_id": "health-checks",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Service Endpoints",
+              "node_id": "service-endpoints",
+              "start_index": 16,
+              "end_index": 16,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Common Issues",
+              "node_id": "common-issues",
+              "start_index": 17,
+              "end_index": 17,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Rollback",
+          "node_id": "rollback",
+          "start_index": 18,
+          "end_index": 18,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Scaling",
+          "node_id": "scaling",
+          "start_index": 19,
+          "end_index": 21,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Manual Scaling",
+              "node_id": "manual-scaling",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Horizontal Pod Autoscaler (Future)",
+              "node_id": "horizontal-pod-autoscaler-future",
+              "start_index": 21,
+              "end_index": 21,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Differences from AI Gov Review Service",
+          "node_id": "differences-from-ai-gov-review-service",
+          "start_index": 22,
+          "end_index": 22,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "References",
+          "node_id": "references",
+          "start_index": 23,
+          "end_index": 23,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[.tooling/components/apis/rag-service/k8s/README.md#kubernetes-manifests-for-rag-service]\n\n# Kubernetes Manifests for RAG Service\n\nThis directory contains Kubernetes manifests for deploying the RAG (Retrieval-Augmented Generation) service to AWS EKS.",
+    "2": "[.tooling/components/apis/rag-service/k8s/README.md#overview]\n\n## Overview\n\nThe RAG service is a **stateless microservice** that integrates with AWS-managed services:\n\n- **AWS Bedrock** - AI models (Claude for LLM, Titan for embeddings)\n- **AWS OpenSearch** - Vector storage and semantic search\n- **AWS ECR** - Container registry\n\nUnlike the AI Gov Review service (which has PostgreSQL), RAG service has **no local database** and uses IRSA (IAM Roles for Service Accounts) for authentication.",
+    "3": "[.tooling/components/apis/rag-service/k8s/README.md#files]\n\n## Files\n\n- `deployment.yaml` - RAG service pods with IRSA, health checks, and resource limits\n- `service.yaml` - ClusterIP service exposing HTTP/HTTPS ports\n- `ingress.yaml` - Updates shared cluster ingress to add RAG API paths\n- `README.md` - This file\n\n**Note:** The ingress is shared across services (MkDocs, RAG, AI Gov Review). Each service adds its paths to the same ingress resource.",
+    "4": "[.tooling/components/apis/rag-service/k8s/README.md#prerequisites]\n\n## Prerequisites\n\n1. **EKS Cluster** - Running with AWS Load Balancer Controller\n2. **IAM Role** - Created via Terraform: `${RESOURCE_PREFIX}-eap-rag-service`\n3. **Service Account** - Created with IRSA annotation (done by workflow)\n4. **OpenSearch Cluster** - Deployed and accessible from EKS VPC\n5. **Shared Ingress** - Already exists on cluster with certificate configured (managed centrally)",
+    "5": "[.tooling/components/apis/rag-service/k8s/README.md#deployment]\n\n## Deployment",
+    "6": "[.tooling/components/apis/rag-service/k8s/README.md#automated-recommended]\n\n### Automated (Recommended)\n\n**Use GitHub Actions workflow:**\n\n```bash\n# Navigate to: GitHub Actions → \"Deploy RAG Service\" → \"Run workflow\"\n# Select environment (dev/prd) and trigger deployment\n```\n\nThe workflow automatically:\n\n1. Builds and pushes Docker image to ECR\n2. Creates/updates Kubernetes service account with IRSA\n3. Applies manifests with variable substitution (`envsubst`)\n4. Waits for rollout completion\n5. Updates shared ingress for traffic routing",
+    "7": "[.tooling/components/apis/rag-service/k8s/README.md#manual-deployment]\n\n### Manual Deployment\n\n**Only if workflow is unavailable:**\n\n```bash\n# Set environment variables\nexport NAMESPACE=\"eapref-app\"\nexport RAG_APP_NAME=\"rag-service\"\nexport RAG_SERVICE_ACCOUNT=\"rag-service-account\"\nexport RAG_IMAGE=\"<account-id>.dkr.ecr.us-east-1.amazonaws.com/eap-mkdocs-platform:eap-rag-service_<tag>\"\nexport AWS_REGION=\"us-east-1\"\nexport OPENSEARCH_ENDPOINT=\"<opensearch-endpoint>\"\nexport EKS_INGRESS_HOST=\"ea-reference.shared.dev.pgwcloud.net\"\n# No CERTIFICATE_ARN needed - managed by shared ingress\nexport RESOURCE_PREFIX=\"pfe-pg-dev-gbl-cm-imr\"\n\n# Create service account (if not exists)\nkubectl create serviceaccount $RAG_SERVICE_ACCOUNT -n $NAMESPACE || true\n\n# Annotate service account with IAM role\nkubectl annotate serviceaccount $RAG_SERVICE_ACCOUNT -n $NAMESPACE \\\n  eks.amazonaws.com/role-arn=arn:aws:iam::<account-id>:role/${RESOURCE_PREFIX}-eap-rag-service --overwrite\n\n# Apply manifests with variable substitution\nenvsubst < deployment.yaml | kubectl apply -n $NAMESPACE -f -\nenvsubst < service.yaml | kubectl apply -n $NAMESPACE -f -\nenvsubst < ingress.yaml | kubectl apply -n $NAMESPACE -f -\n\n# Check rollout status\nkubectl rollout status deployment/$RAG_APP_NAME -n $NAMESPACE --timeout=300s\n```",
+    "8": "[.tooling/components/apis/rag-service/k8s/README.md#architecture]\n\n## Architecture\n\n```\n┌─────────────────────────────────────────────────────────┐\n│                    Internet/Users                        │\n└──────────────────────┬──────────────────────────────────┘\n                       │\n                       ▼\n┌─────────────────────────────────────────────────────────┐\n│              AWS Application Load Balancer              │\n│           (HTTPS:443, ACM Certificate)                  │\n└──────────────────────┬──────────────────────────────────┘\n                       │\n                       ▼\n┌─────────────────────────────────────────────────────────┐\n│                  Shared Ingress Resource                │\n│    /api/rag/v1 → rag-service:8443                      │\n│    /*          → mkdocs-platform:8000                   │\n└──────────────────────┬──────────────────────────────────┘\n                       │\n       ┌───────────────┴───────────────┐\n       ▼                               ▼\n┌──────────────┐              ┌──────────────┐\n│ RAG Service  │              │   MkDocs     │\n│  (2 pods)    │              │  Platform    │\n│              │              │              │\n│ IRSA → IAM   │              │              │\n│ Role         │              │              │\n└──────┬───────┘              └──────────────┘\n       │\n       ├─────► AWS Bedrock (Claude, Titan)\n       │\n       └─────► AWS OpenSearch (Vector DB)\n```",
+    "9": "[.tooling/components/apis/rag-service/k8s/README.md#configuration]\n\n## Configuration",
+    "10": "[.tooling/components/apis/rag-service/k8s/README.md#https--certificate-configuration]\n\n### HTTPS & Certificate Configuration\n\n**Current Configuration:** HTTP only (port 80)\n\nThe ingress is configured for **HTTP** by default. The certificate ARN lines are **commented out** in `ingress.yaml`.\n\n**When do you need a certificate?**\n\nYou **DON'T** need a certificate if:\n\n- ✅ Using HTTP only (current setup)\n- ✅ Internal-only access within VPC\n- ✅ Sharing an existing ingress that already has HTTPS configured\n\nYou **DO** need a certificate if:\n\n- 🔒 Public internet access with HTTPS\n- 🔒 Compliance requires end-to-end encryption\n- 🔒 Want SSL termination at ALB level\n\n**To enable HTTPS:** Uncomment these lines in `ingress.yaml` and set `CERTIFICATE_ARN`:\n\n```yaml\n# Uncomment these 3 lines:\nalb.ingress.kubernetes.io/certificate-arn: ${CERTIFICATE_ARN}\nalb.ingress.kubernetes.io/listen-ports: '[{\"HTTPS\":443}]'\nalb.ingress.kubernetes.io/ssl-redirect: '443'\n```\n\n**To create an ACM certificate:**\n\n```bash\n# Request a certificate in AWS Certificate Manager\naws acm request-certificate \\\n  --domain-name \"ea-reference.shared.dev.pgwcloud.net\" \\\n  --validation-method DNS \\\n  --region us-east-1\n\n# Get the ARN from the output, then validate via DNS\n# Add the validation CNAME record to your DNS provider\n# Once validated, add ARN to GitHub: Settings → Variables → CERTIFICATE_ARN\n```",
+    "11": "[.tooling/components/apis/rag-service/k8s/README.md#environment-variables-from-deploymentyaml]\n\n### Environment Variables (from deployment.yaml)\n\n| Variable | Value | Source |\n|----------|-------|--------|\n| `AWS_REGION` | `us-east-1` | Workflow |\n| `OPENSEARCH_ENDPOINT` | OpenSearch VPC endpoint | GitHub vars |\n| `BEDROCK_MODEL_ID` | `anthropic.claude-sonnet-4-6` | Configurable (envsubst) |\n| `EMBEDDING_MODEL_ID` | `amazon.titan-embed-text-v2:0` | Hardcoded |\n| `ENVIRONMENT` | `production` | Hardcoded |\n| `LOG_LEVEL` | `INFO` | Hardcoded |",
+    "12": "[.tooling/components/apis/rag-service/k8s/README.md#resource-limits]\n\n### Resource Limits\n\n| Resource | Request | Limit |\n|----------|---------|-------|\n| CPU | 250m | 1000m (1 core) |\n| Memory | 512Mi | 2Gi |",
+    "13": "[.tooling/components/apis/rag-service/k8s/README.md#irsa-iam-roles-for-service-accounts]\n\n### IRSA (IAM Roles for Service Accounts)\n\nThe service account is annotated with an IAM role ARN that grants:\n\n- **OpenSearch** - Read/write access to vector index\n- **Bedrock** - Invoke model permissions for Claude and Titan\n\n**IAM Policy example:**\n\n```json\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"es:ESHttpPost\",\n        \"es:ESHttpPut\",\n        \"es:ESHttpGet\"\n      ],\n      \"Resource\": \"arn:aws:es:us-east-1:*:domain/*\"\n    },\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"bedrock:InvokeModel\"\n      ],\n      \"Resource\": [\n        \"arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-sonnet-4-6\",\n        \"arn:aws:bedrock:us-east-1::foundation-model/amazon.titan-embed-text-v2:0\"\n      ]\n    }\n  ]\n}\n```",
+    "14": "[.tooling/components/apis/rag-service/k8s/README.md#monitoring]\n\n## Monitoring",
+    "15": "[.tooling/components/apis/rag-service/k8s/README.md#health-checks]\n\n### Health Checks\n\n```bash\n# Check pod status\nkubectl get pods -n eapref-app -l app=rag-service\n\n# View logs\nkubectl logs -n eapref-app deployment/rag-service -f\n\n# Check service endpoints\nkubectl get svc -n eapref-app rag-service\n\n# Check ingress\nkubectl get ingress -n eapref-app shared-ingress\n```",
+    "16": "[.tooling/components/apis/rag-service/k8s/README.md#service-endpoints]\n\n### Service Endpoints\n\n- **Health**: `GET https://<ingress-host>/api/rag/v1/health`\n- **Stats**: `GET https://<ingress-host>/api/rag/v1/stats`\n- **Search**: `POST https://<ingress-host>/api/rag/v1/search`",
+    "17": "[.tooling/components/apis/rag-service/k8s/README.md#common-issues]\n\n### Common Issues\n\n**Pod not starting:**\n\n```bash\nkubectl describe pod -n eapref-app -l app=rag-service\nkubectl logs -n eapref-app deployment/rag-service\n```\n\n**IRSA auth failures:**\n\n```bash\n# Check service account annotation\nkubectl get serviceaccount rag-service-account -n eapref-app -o yaml\n\n# Verify IAM role exists\naws iam get-role --role-name <resource-prefix>-eap-rag-service\n```\n\n**OpenSearch connectivity:**\n\n```bash\n# Check from pod\nkubectl exec -n eapref-app deployment/rag-service -- \\\n  curl -s https://<opensearch-endpoint>/_cluster/health\n```",
+    "18": "[.tooling/components/apis/rag-service/k8s/README.md#rollback]\n\n## Rollback\n\n```bash\n# Rollback to previous version\nkubectl rollout undo deployment/rag-service -n eapref-app\n\n# Check rollback status\nkubectl rollout status deployment/rag-service -n eapref-app\n\n# Verify pods are healthy\nkubectl get pods -n eapref-app -l app=rag-service\n```",
+    "19": "[.tooling/components/apis/rag-service/k8s/README.md#scaling]\n\n## Scaling",
+    "20": "[.tooling/components/apis/rag-service/k8s/README.md#manual-scaling]\n\n### Manual Scaling\n\n```bash\n# Scale to 3 replicas\nkubectl scale deployment/rag-service -n eapref-app --replicas=3\n\n# Check scaling status\nkubectl get deployment rag-service -n eapref-app\n```",
+    "21": "[.tooling/components/apis/rag-service/k8s/README.md#horizontal-pod-autoscaler-future]\n\n### Horizontal Pod Autoscaler (Future)\n\n```yaml\napiVersion: autoscaling/v2\nkind: HorizontalPodAutoscaler\nmetadata:\n  name: rag-service-hpa\n  namespace: eapref-app\nspec:\n  scaleTargetRef:\n    apiVersion: apps/v1\n    kind: Deployment\n    name: rag-service\n  minReplicas: 2\n  maxReplicas: 10\n  metrics:\n  - type: Resource\n    resource:\n      name: cpu\n      target:\n        type: Utilization\n        averageUtilization: 70\n```",
+    "22": "[.tooling/components/apis/rag-service/k8s/README.md#differences-from-ai-gov-review-service]\n\n## Differences from AI Gov Review Service\n\n| Feature | RAG Service | AI Gov Review |\n|---------|-------------|---------------|\n| **Database** | None (stateless) | PostgreSQL (CloudNativePG) |\n| **Storage** | No persistent volumes | PVC for PostgreSQL |\n| **Init Containers** | None | Database migrations |\n| **Jobs** | None | Migration + seed data jobs |\n| **Authentication** | IRSA (IAM) | Database credentials (secrets) |\n| **Sidecars** | None | Redis cache |\n| **Complexity** | Simple (3 files) | Complex (12 files) |",
+    "23": "[.tooling/components/apis/rag-service/k8s/README.md#references]\n\n## References\n\n- [RAG Service Deployment Guide](../docs/05-deployment.md)\n- [GitHub Actions Workflow](../../../../.github/workflows/deploy-rag-svc.yml)\n- [Terraform RAG Formation](../../../iac/terraform/formations/aws/deploy-rag/)"
+  },
+  "coverage": {
+    "total_pages": 23,
+    "covered_pages": 23,
+    "sampled_pages": 23,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 23
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Authorize Treatment Plan (CM) - Process Flow Diagram",
+  "document_description": "subgraph TRIGGERS_ENV[\"⚡ Environment-Based Triggers\"]",
+  "total_pages": 5,
+  "tree": [
+    {
+      "title": "Authorize Treatment Plan (CM) - Process Flow Diagram",
+      "node_id": "authorize-treatment-plan-cm---process-flow-diagram",
+      "start_index": 1,
+      "end_index": 5,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Process Overview",
+          "node_id": "process-overview",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Treatment Plan vs Service Request",
+          "node_id": "treatment-plan-vs-service-request",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Service Types",
+          "node_id": "service-types",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Performance Measures",
+          "node_id": "performance-measures",
+          "start_index": 5,
+          "end_index": 5,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[standards/business/MITA-3.0/bpt-workflows/care_management/CM_Authorize_Treatment_Plan_BPT_v3.0.mermaid.md#authorize-treatment-plan-cm---process-flow-diagram]\n\n# Authorize Treatment Plan (CM) - Process Flow Diagram\n\n> Business Area: Care Management | Sub-Category: Authorization Determination | Process Code: CM | MITA Version 3.0",
+    "2": "[standards/business/MITA-3.0/bpt-workflows/care_management/CM_Authorize_Treatment_Plan_BPT_v3.0.mermaid.md#process-overview]\n\n## Process Overview\n\n```mermaid\nflowchart TB\n    subgraph TRIGGERS_ENV[\"⚡ Environment-Based Triggers\"]\n        T1[\"Care manager submits<br/>treatment plan request\"]\n        T2[\"Provider submits treatment<br/>plan per state policy\"]\n        T3[\"Provider submits additional<br/>info for existing request\"]\n    end\n\n    subgraph TRIGGERS_INT[\"🔗 Interaction-Based Triggers\"]\n        T4[\"Receive treatment plan<br/>from HIE via ASC X12 278\"]\n        T5[\"Receive treatment plan<br/>from requestor via ASC X12 278\"]\n    end\n\n    subgraph PREDECESSORS[\"📥 Predecessor Processes\"]\n        P1[Receive Inbound Transaction]\n        P2[Establish Case]\n        P3[Manage Case Information]\n        P4[Manage Treatment Plan and Outcomes]\n    end\n\n    subgraph MAIN[\"🔄 Authorize Treatment Plan Process\"]\n        START([1. START: Receive treatment<br/>plan authorization request])\n        STEP2[2. Assign tracking identifier]\n        STEP3[3. Validate info completeness<br/>& syntax compliance]\n        STEP4[4. Validate information<br/>authenticity]\n        STEP5[5. Prioritize treatment<br/>plan request]\n\n        subgraph VALIDATE[\"Validation Steps (6-11)\"]\n            V1[6. Validate member eligibility]\n            V2[7. Requesting/servicing providers]\n            V3[8. Service coverage & requirements]\n            V4[9. Diagnosis code]\n            V5[10. Procedure code/groupings]\n        end\n\n        STEP12[11. Check medical, social,<br/>behavioral appropriateness]\n        STEP13[12. Check for duplicate<br/>treatment plans/requests]\n        STEP14[13. Coordinate services<br/>across programs/systems]\n        STEP15[14. Validate supporting<br/>documentation]\n\n        DECISION{Decision}\n\n        DENY[15. DENY: Insufficient info<br/>or not necessary]\n        SUSPEND[16. SUSPEND: Request<br/>additional information]\n        APPROVE[17. APPROVE: With or<br/>without modifications]\n\n        STEP18[18. Send alert via<br/>ASC X12 278 response]\n        ENDS([19. END: Notify member,<br/>care manager, and provider])\n    end\n\n    subgraph SUCCESSORS[\"📤 Successor Processes\"]\n        S1[Send Outbound Transaction]\n        S2[Manage Case Information]\n        S3[Manage Applicant and Member Communication]\n        S4[Manage Provider Communication]\n        S5[Manage Contractor Communication]\n        S6[Submit Electronic Attachment]\n        S7[Manage Treatment Plan and Outcomes]\n    end\n\n    subgraph DATA[\"💾 Shared Data\"]\n        D1[(Member Data Store)]\n        D2[(Provider Data Store)]\n        D3[(HIE Data Store)]\n        D4[(Plan Data Store)]\n        D5[(Claims Data Store)]\n    end\n\n    %% Trigger connections\n    T1 --> START\n    T2 --> START\n    T3 --> START\n    T4 --> START\n    T5 --> START\n\n    %% Predecessor connections\n    P1 -.-> START\n    P2 -.-> START\n    P3 -.-> START\n    P4 -.-> START\n\n    %% Main flow\n    START --> STEP2\n    STEP2 --> STEP3\n    STEP3 --> STEP4\n    STEP4 --> STEP5\n    STEP5 --> V1\n    V1 --> V2\n    V2 --> V3\n    V3 --> V4\n    V4 --> V5\n    V5 --> STEP12\n    STEP12 --> STEP13\n    STEP13 --> STEP14\n    STEP14 --> STEP15\n    STEP15 --> DECISION\n\n    DECISION -->|Invalid| DENY\n    DECISION -->|Need Info| SUSPEND\n    DECISION -->|Valid| APPROVE\n\n    DENY --> STEP18\n    SUSPEND --> STEP18\n    APPROVE --> STEP18\n    STEP18 --> ENDS\n\n    %% Successor connections\n    ENDS -.-> S1\n    ENDS -.-> S2\n    ENDS -.-> S3\n    ENDS -.-> S4\n    ENDS -.-> S5\n    ENDS -.-> S6\n    ENDS -.-> S7\n\n    %% Styling\n    classDef trigger fill:#e1f5fe,stroke:#0288d1,stroke-width:2px\n    classDef triggerInt fill:#e8eaf6,stroke:#3f51b5,stroke-width:2px\n    classDef predecessor fill:#fff3e0,stroke:#ff9800,stroke-width:2px\n    classDef successor fill:#e8f5e9,stroke:#4caf50,stroke-width:2px\n    classDef process fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px\n    classDef startend fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    classDef datastore fill:#fff8e1,stroke:#ffc107,stroke-width:2px\n    classDef decision fill:#fce4ec,stroke:#e91e63,stroke-width:2px\n    classDef approve fill:#c8e6c9,stroke:#4caf50,stroke-width:2px\n    classDef deny fill:#ffcdd2,stroke:#f44336,stroke-width:2px\n    classDef suspend fill:#fff9c4,stroke:#fbc02d,stroke-width:2px\n    classDef validate fill:#e0f2f1,stroke:#00897b,stroke-width:1px\n\n    class T1,T2,T3 trigger\n    class T4,T5 triggerInt\n    class P1,P2,P3,P4 predecessor\n    class S1,S2,S3,S4,S5,S6,S7 successor\n    class STEP2,STEP3,STEP4,STEP5,STEP12,STEP13,STEP14,STEP15,STEP18 process\n    class START,ENDS startend\n    class D1,D2,D3,D4,D5 datastore\n    class DECISION decision\n    class APPROVE approve\n    class DENY deny\n    class SUSPEND suspend\n    class V1,V2,V3,V4,V5 validate\n```",
+    "3": "[standards/business/MITA-3.0/bpt-workflows/care_management/CM_Authorize_Treatment_Plan_BPT_v3.0.mermaid.md#treatment-plan-vs-service-request]\n\n## Treatment Plan vs Service Request\n\n| Treatment Plan | Service Request |\n|----------------|-----------------|\n| Schedule of procedures spanning time | Single visit/service/product |\n| Pre-authorizes named providers | Specific provider authorization |\n| Care coordination setting | Fee-for-service setting |\n| Medical, therapeutic, psychological | Single specialist visit, test, DME |",
+    "4": "[standards/business/MITA-3.0/bpt-workflows/care_management/CM_Authorize_Treatment_Plan_BPT_v3.0.mermaid.md#service-types]\n\n## Service Types\n\n| Category | Examples |\n|----------|----------|\n| Speech | Speech therapy |\n| Physical Therapy | PT services |\n| Home Health | Home-based care |\n| Behavioral | Mental health services |\n| Social | Social services |",
+    "5": "[standards/business/MITA-3.0/bpt-workflows/care_management/CM_Authorize_Treatment_Plan_BPT_v3.0.mermaid.md#performance-measures]\n\n## Performance Measures\n\n| Metric | Target |\n|--------|--------|\n| Real-time response | Within __ seconds |\n| Batch response | Within __ hours |\n| Treatment plan approval accuracy | __% |\n| Decision consistency | __% |\n| Error rate | __% or less |\n\n---\n\n*Generated from: CM_Authorize_Treatment_Plan_BPT_v3.0.json*"
+  },
+  "coverage": {
+    "total_pages": 5,
+    "covered_pages": 5,
+    "sampled_pages": 5,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 5
+  }
+}

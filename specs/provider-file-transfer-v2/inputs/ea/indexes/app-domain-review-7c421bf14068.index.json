@@ -1,0 +1,120 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Application Domain Review: Initial PR Review",
+  "document_description": "You are a senior Enterprise Architect reviewing a pull request to determine its impacts on the **application domain**.",
+  "total_pages": 11,
+  "tree": [
+    {
+      "title": "Application Domain Review: Initial PR Review",
+      "node_id": "application-domain-review-initial-pr-review",
+      "start_index": 1,
+      "end_index": 11,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Step 0 — Load Application Domain Context",
+          "node_id": "step-0--load-application-domain-context",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Step 1 — Fetch the Pull Request and Changed Files",
+          "node_id": "step-1--fetch-the-pull-request-and-changed-files",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Step 2 — Assess Application Domain Impact",
+          "node_id": "step-2--assess-application-domain-impact",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Step 3 — Classify Findings",
+          "node_id": "step-3--classify-findings",
+          "start_index": 5,
+          "end_index": 5,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Step 4 — Determine Review Outcome",
+          "node_id": "step-4--determine-review-outcome",
+          "start_index": 6,
+          "end_index": 6,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Step 4.5 — Idempotency Check",
+          "node_id": "step-45--idempotency-check",
+          "start_index": 7,
+          "end_index": 7,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Step 5 — Submit the Review",
+          "node_id": "step-5--submit-the-review",
+          "start_index": 8,
+          "end_index": 11,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "No application domain impact → submit with event `APPROVE`:",
+              "node_id": "no-application-domain-impact--submit-with-event-approve",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Advisory findings only — no blocking issues → submit with event `APPROVE`:",
+              "node_id": "advisory-findings-only--no-blocking-issues--submit-with-event-approve",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Blocking findings — changes required → submit with event `REQUEST_CHANGES`:",
+              "node_id": "blocking-findings--changes-required--submit-with-event-requestchanges",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[.github/workflows/app-domain-review.md#application-domain-review-initial-pr-review]\n\n# Application Domain Review: Initial PR Review\n\nYou are a senior Enterprise Architect reviewing a pull request to determine its impacts on the **application domain**.\n\n**Pull Request**: #${{ github.event.issue.number }}",
+    "2": "[.github/workflows/app-domain-review.md#step-0--load-application-domain-context]\n\n## Step 0 — Load Application Domain Context\n\nRead the following files from `mygainwell/eap-ref-architecture` (main branch) to establish the full Application domain context before any impact analysis:\n\n1. **`foundation/practice-overview.md`** — the authoritative definition of the Application domain: its boundaries, focus areas, capabilities, and principles.\n2. **`patterns/application/`** — all existing Application domain patterns. List the files in this directory and read any whose title or path suggests relevance to the changed files identified in Step 1.\n3. **`standards/application/`** — all existing Application domain standards. List the files and read relevant ones.\n4. **`decisions/application/`** — all Application domain ADRs. Read all of them; there are few and they establish binding architectural decisions that must not be contradicted.\n\nAll impact analysis in Step 2 must be evaluated against this full body of work, not just the domain definition. A PR that conflicts with an existing pattern, violates an established standard, or contradicts a recorded ADR must be flagged regardless of whether it explicitly references those artifacts.",
+    "3": "[.github/workflows/app-domain-review.md#step-1--fetch-the-pull-request-and-changed-files]\n\n## Step 1 — Fetch the Pull Request and Changed Files\n\nUse GitHub tools to:\n\n1. Fetch the PR details for `mygainwell/eap-ref-architecture` PR #${{ github.event.issue.number }} — extract the title, body, head branch, and base branch.\n2. List all changed files in the PR. For each changed file, note:\n   - The file path and extension\n   - Whether it was added, modified, or deleted\n   - The patch/diff content showing what lines changed\n3. For each changed file, retrieve its full current content where the diff alone is insufficient to understand context (e.g., new files, key config files, interface definitions).",
+    "4": "[.github/workflows/app-domain-review.md#step-2--assess-application-domain-impact]\n\n## Step 2 — Assess Application Domain Impact\n\nUsing the changed files, their contents, and the application domain definition from Step 0, determine the impact to the application domain by evaluating each of the following categories. These categories map directly to the Application domain's focus areas: **application portfolio**, **service design**, **integration patterns**, and **API standards**.\n\nFor each category, decide whether the PR has **No Impact**, **Low Impact**, **Medium Impact**, or **High Impact**, and provide a concrete explanation referencing specific files or lines.\n\n| Category | Focus Area | What to look for |\n|---|---|---|\n| **Application Portfolio** | Application portfolio | New applications added, existing applications retired or restructured, changes to application ownership or lifecycle |\n| **Service Design** | Service design | New or changed service boundaries, responsibilities, or domain model; changes to service contracts or internal behavior that affects how the service fulfills its role |\n| **Integration Patterns** | Integration patterns | Changes to how services communicate (sync/async, event-driven, messaging); new or modified integration flows; changes to middleware or broker configuration |\n| **API Standards** | API standards | New or changed endpoints, request/response shapes, versioning strategy, naming conventions, HTTP method usage, error response format, or pagination |\n| **Breaking Changes** | All focus areas | Anything that could break existing consumers, integrations, or dependent applications — contract changes, removed endpoints, renamed fields, changed behavior |\n| **Responsibility Boundaries** | Domain ownership | Does the artifact (pattern, standard, ABB, SBB, guidance) use mandatory language (\"MUST\", \"SHALL\", \"REQUIRED\") to assign implementation obligations to application or product engineering teams for concerns that are properly owned by another domain (e.g., security infrastructure, platform observability, data governance)? Does the artifact create a hidden implementation tax on application teams for cross-cutting concerns that should be handled at a shared services or platform level? |\n\nOnly evaluate files within the Application domain scope. If a changed file is solely about data governance, infrastructure provisioning, security controls, or observability platform configuration and does not assign any obligations to application teams — skip it without comment.\n\nBased on the per-category ratings, assign an **overall domain impact level**: None / Low / Medium / High.",
+    "5": "[.github/workflows/app-domain-review.md#step-3--classify-findings]\n\n## Step 3 — Classify Findings\n\nOnly assess categories within the Application domain scope defined in `foundation/practice-overview.md`. Do not attempt to evaluate or comment on changes that belong to other domains (data model, security, infrastructure, observability, etc.) — if a PR touches those areas, they are simply out of scope for this review.\n\nFor each category rated **Low**, **Medium**, or **High** impact, classify the finding as one of:\n\n- **Blocking** — The PR introduces a violation of or conflict with an established Application domain standard, pattern, or principle (e.g., a new API that does not conform to API standards, a service boundary that violates a defined integration pattern). The author must address this before the review can pass.\n- **Advisory** — The PR touches Application domain concerns but does not violate any established standard. Note the impact and provide guidance or recommendations, but do not block the PR.",
+    "6": "[.github/workflows/app-domain-review.md#step-4--determine-review-outcome]\n\n## Step 4 — Determine Review Outcome\n\n- **No impacted categories**: All categories are None → approve.\n- **Only Advisory findings**: No blocking issues → approve with notes.\n- **Any Blocking finding**: Post a request-changes comment requiring the author to address findings before re-review.\n\nAlso assess: do any findings indicate that the **Application domain definition itself needs to change** — for example, the PR introduces a capability, pattern, or boundary not currently reflected in the reference architecture, or exposes a gap in the domain model? If so, flag this explicitly in the review comment so it can be tracked as a follow-up EA work item.",
+    "7": "[.github/workflows/app-domain-review.md#step-45--idempotency-check]\n\n## Step 4.5 — Idempotency Check\n\nBefore posting, check whether a parallel run of this workflow has already submitted a review on this PR.\n\nFrom the PR reviews fetched in Step 1, inspect the list of submitted reviews for any review whose body begins with the text \"**EA Review —\" and whose submitted_at timestamp is within the last 10 minutes of the current UTC time.\n\n- If such a review is found: call `noop` with the message \"An application domain review was already submitted for this PR within the last 10 minutes — skipping duplicate.\" Do not proceed further.\n- If no such review is found: continue to Step 5.",
+    "8": "[.github/workflows/app-domain-review.md#step-5--submit-the-review]\n\n## Step 5 — Submit the Review\n\nUse `submit-review` on PR #${{ github.event.issue.number }}. Be direct and concise — the audience is other enterprise architects. Only include findings that matter; do not list categories with no impact.",
+    "9": "[.github/workflows/app-domain-review.md#no-application-domain-impact--submit-with-event-approve]\n\n### No application domain impact → submit with event `APPROVE`:\n\n```\n**EA Review — Application Domain** ✅ Approved\n\n**Summary**: {one sentence describing what the PR does}\n\nNo application domain impacts identified across all focus areas. Evaluated against the [Application domain definition](https://github.com/mygainwell/eap-ref-architecture/blob/main/foundation/practice-overview.md), established patterns, standards, and ADRs.\n```",
+    "10": "[.github/workflows/app-domain-review.md#advisory-findings-only--no-blocking-issues--submit-with-event-approve]\n\n### Advisory findings only — no blocking issues → submit with event `APPROVE`:\n\n```\n**EA Review — Application Domain** ✅ Approved with Notes\n\n**Summary**: {one sentence describing what the PR does}\n\n**Advisory**:\n- **{Category}** — {specific finding referencing the affected artifact, file, or section}. {Concrete guidance that improves alignment without requiring scope changes.}\n\n{Repeat for each advisory finding.}\n\n{If a domain definition gap was identified:}\n> ⚠️ **Domain Gap** — {what this PR exposes that is not reflected in the domain definition}. Recommend tracking as a follow-up EA work item.\n```",
+    "11": "[.github/workflows/app-domain-review.md#blocking-findings--changes-required--submit-with-event-requestchanges]\n\n### Blocking findings — changes required → submit with event `REQUEST_CHANGES`:\n\n```\n**EA Review — Application Domain** ❌ Changes Required\n\n**Summary**: {one sentence describing what the PR does}\n\n**Blocking**:\n- **{Category}** — {specific violation: name the conflicting pattern, standard, or ADR by ID and describe exactly what conflicts}. **Remediation**: {what to change to resolve the conflict without altering the PR's scope or intent}.\n\n{Repeat for each blocking finding.}\n\n{If advisory findings are also present:}\n**Advisory**:\n- **{Category}** — {finding and guidance}.\n\n{If a domain definition gap was identified:}\n> ⚠️ **Domain Gap** — {description}. Recommend tracking as a follow-up EA work item.\n```"
+  },
+  "coverage": {
+    "total_pages": 11,
+    "covered_pages": 11,
+    "sampled_pages": 11,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 11
+  }
+}

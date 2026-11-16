@@ -1,0 +1,684 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Application State Management: Zustand over Redux",
+  "document_description": "guidance_name: 'State Management: Prefer Zustand over Redux'",
+  "total_pages": 71,
+  "tree": [
+    {
+      "title": "Application State Management: Zustand over Redux",
+      "node_id": "application-state-management-zustand-over-redux",
+      "start_index": 1,
+      "end_index": 71,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Executive Summary",
+          "node_id": "executive-summary",
+          "start_index": 3,
+          "end_index": 9,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Purpose Statement",
+              "node_id": "purpose-statement",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Business Value",
+              "node_id": "business-value",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Target Audience",
+              "node_id": "target-audience",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Scope and Applicability",
+              "node_id": "scope-and-applicability",
+              "start_index": 7,
+              "end_index": 9,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Applicable Scenarios",
+                  "node_id": "applicable-scenarios",
+                  "start_index": 8,
+                  "end_index": 8,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Scope Boundaries",
+                  "node_id": "scope-boundaries",
+                  "start_index": 9,
+                  "end_index": 9,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Guidance Context and Background",
+          "node_id": "guidance-context-and-background",
+          "start_index": 10,
+          "end_index": 20,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Business Context",
+              "node_id": "business-context",
+              "start_index": 11,
+              "end_index": 13,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Business Drivers",
+                  "node_id": "business-drivers",
+                  "start_index": 12,
+                  "end_index": 12,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Strategic Alignment",
+                  "node_id": "strategic-alignment",
+                  "start_index": 13,
+                  "end_index": 13,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Technical Context",
+              "node_id": "technical-context",
+              "start_index": 14,
+              "end_index": 16,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Current State Assessment",
+                  "node_id": "current-state-assessment",
+                  "start_index": 15,
+                  "end_index": 15,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Future State Vision",
+                  "node_id": "future-state-vision",
+                  "start_index": 16,
+                  "end_index": 16,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Problem Statement",
+              "node_id": "problem-statement",
+              "start_index": 17,
+              "end_index": 19,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Problem Description",
+                  "node_id": "problem-description",
+                  "start_index": 18,
+                  "end_index": 18,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Impact Assessment",
+                  "node_id": "impact-assessment",
+                  "start_index": 19,
+                  "end_index": 19,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Success Criteria",
+              "node_id": "success-criteria",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Detailed Guidance",
+          "node_id": "detailed-guidance",
+          "start_index": 21,
+          "end_index": 36,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Core Principles",
+              "node_id": "core-principles",
+              "start_index": 22,
+              "end_index": 25,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Principle 1: State Ownership Hierarchy First",
+                  "node_id": "principle-1-state-ownership-hierarchy-first",
+                  "start_index": 23,
+                  "end_index": 23,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Principle 2: Module Scope = Store Scope",
+                  "node_id": "principle-2-module-scope--store-scope",
+                  "start_index": 24,
+                  "end_index": 24,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Principle 3: PHI Never Enters the Store",
+                  "node_id": "principle-3-phi-never-enters-the-store",
+                  "start_index": 25,
+                  "end_index": 25,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Key Approaches",
+              "node_id": "key-approaches",
+              "start_index": 26,
+              "end_index": 28,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Approach 1: Zustand for Module-Scoped Global State (Default)",
+                  "node_id": "approach-1-zustand-for-module-scoped-global-state-default",
+                  "start_index": 27,
+                  "end_index": 27,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Approach 2: When Redux is Acceptable",
+                  "node_id": "approach-2-when-redux-is-acceptable",
+                  "start_index": 28,
+                  "end_index": 28,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Best Practices",
+              "node_id": "best-practices",
+              "start_index": 29,
+              "end_index": 32,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Best Practice 1: Separate UI State from Server State",
+                  "node_id": "best-practice-1-separate-ui-state-from-server-state",
+                  "start_index": 30,
+                  "end_index": 30,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Best Practice 2: One Store Per Domain Concern",
+                  "node_id": "best-practice-2-one-store-per-domain-concern",
+                  "start_index": 31,
+                  "end_index": 31,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Best Practice 3: Explicit Cleanup on Module Unmount",
+                  "node_id": "best-practice-3-explicit-cleanup-on-module-unmount",
+                  "start_index": 32,
+                  "end_index": 32,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Common Pitfalls",
+              "node_id": "common-pitfalls",
+              "start_index": 33,
+              "end_index": 36,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Pitfall 1: Enabling `zustand/middleware` `persist` Without PHI Audit",
+                  "node_id": "pitfall-1-enabling-zustandmiddleware-persist-without-phi-audit",
+                  "start_index": 34,
+                  "end_index": 34,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Pitfall 2: Sharing a Zustand Store Across Module Federation Boundary",
+                  "node_id": "pitfall-2-sharing-a-zustand-store-across-module-federation-boundary",
+                  "start_index": 35,
+                  "end_index": 35,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Pitfall 3: Using Redux for Extension-Local UI State",
+                  "node_id": "pitfall-3-using-redux-for-extension-local-ui-state",
+                  "start_index": 36,
+                  "end_index": 36,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Implementation Framework",
+          "node_id": "implementation-framework",
+          "start_index": 37,
+          "end_index": 42,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Implementation Methodology",
+              "node_id": "implementation-methodology",
+              "start_index": 38,
+              "end_index": 39,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Implementation Lifecycle",
+                  "node_id": "implementation-lifecycle",
+                  "start_index": 39,
+                  "end_index": 39,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Prerequisites",
+              "node_id": "prerequisites",
+              "start_index": 40,
+              "end_index": 42,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Technical Prerequisites",
+                  "node_id": "technical-prerequisites",
+                  "start_index": 41,
+                  "end_index": 41,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Installation",
+                  "node_id": "installation",
+                  "start_index": 42,
+                  "end_index": 42,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Practical Application",
+          "node_id": "practical-application",
+          "start_index": 43,
+          "end_index": 48,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Decision Framework",
+              "node_id": "decision-framework",
+              "start_index": 44,
+              "end_index": 45,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Decision Point: Which State Solution Do I Need?",
+                  "node_id": "decision-point-which-state-solution-do-i-need",
+                  "start_index": 45,
+                  "end_index": 45,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Tools and Techniques",
+              "node_id": "tools-and-techniques",
+              "start_index": 46,
+              "end_index": 48,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Recommended Tools",
+                  "node_id": "recommended-tools",
+                  "start_index": 47,
+                  "end_index": 47,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Zustand vs Redux — Direct Comparison",
+                  "node_id": "zustand-vs-redux--direct-comparison",
+                  "start_index": 48,
+                  "end_index": 48,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Examples and Use Cases",
+          "node_id": "examples-and-use-cases",
+          "start_index": 49,
+          "end_index": 52,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Use Case 1: Claims Module Filter State (Zustand — Correct)",
+              "node_id": "use-case-1-claims-module-filter-state-zustand--correct",
+              "start_index": 50,
+              "end_index": 50,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Use Case 2: Shell Application Auth State (Zustand — Correct)",
+              "node_id": "use-case-2-shell-application-auth-state-zustand--correct",
+              "start_index": 51,
+              "end_index": 51,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Use Case 3: Existing Host Application — Redux Retained (Exception)",
+              "node_id": "use-case-3-existing-host-application--redux-retained-exception",
+              "start_index": 52,
+              "end_index": 52,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Governance and Compliance",
+          "node_id": "governance-and-compliance",
+          "start_index": 53,
+          "end_index": 58,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Compliance Requirements",
+              "node_id": "compliance-requirements",
+              "start_index": 54,
+              "end_index": 56,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Regulatory Compliance",
+                  "node_id": "regulatory-compliance",
+                  "start_index": 55,
+                  "end_index": 55,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Organizational Compliance",
+                  "node_id": "organizational-compliance",
+                  "start_index": 56,
+                  "end_index": 56,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Risk Management",
+              "node_id": "risk-management",
+              "start_index": 57,
+              "end_index": 58,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Risk Assessment",
+                  "node_id": "risk-assessment",
+                  "start_index": 58,
+                  "end_index": 58,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Integration with Enterprise Architecture",
+          "node_id": "integration-with-enterprise-architecture",
+          "start_index": 59,
+          "end_index": 62,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Standards Alignment",
+              "node_id": "standards-alignment",
+              "start_index": 60,
+              "end_index": 60,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Pattern Relationships",
+              "node_id": "pattern-relationships",
+              "start_index": 61,
+              "end_index": 61,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Decision Dependencies",
+              "node_id": "decision-dependencies",
+              "start_index": 62,
+              "end_index": 62,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Measurement and Assessment",
+          "node_id": "measurement-and-assessment",
+          "start_index": 63,
+          "end_index": 66,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Success Metrics",
+              "node_id": "success-metrics",
+              "start_index": 64,
+              "end_index": 65,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Technical Metrics",
+                  "node_id": "technical-metrics",
+                  "start_index": 65,
+                  "end_index": 65,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Maturity Model",
+              "node_id": "maturity-model",
+              "start_index": 66,
+              "end_index": 66,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Related Guidance and References",
+          "node_id": "related-guidance-and-references",
+          "start_index": 67,
+          "end_index": 69,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Related Guidance",
+              "node_id": "related-guidance",
+              "start_index": 68,
+              "end_index": 68,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Industry References",
+              "node_id": "industry-references",
+              "start_index": 69,
+              "end_index": 69,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Change History",
+          "node_id": "change-history",
+          "start_index": 70,
+          "end_index": 70,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Review Log",
+          "node_id": "review-log",
+          "start_index": 71,
+          "end_index": 71,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#application-state-management-zustand-over-redux]\n\n# Application State Management: Zustand over Redux\n\n**← Back to [EAP Home](../../../../README.md) • [Strategy](../../../README.md) • [Guidance](../../README.md) • [Application](../README.md)**\n\n---\n\n**Architecture Guidance Metadata**\n\n```yaml\nguidance_id: 'GUID-APP-TEC-002'\nguidance_name: 'State Management: Prefer Zustand over Redux'\nguidance_type: 'technology-selection'\ncategory: 'technology'\nversion: '1.0.0'\nstatus: 'draft'\napplicability: 'enterprise'\ntags: ['application', 'frontend', 'state-management', 'zustand', 'redux', 'micro-frontend', 'hipaa', 'phi', 'technology-selection']\n```\n\n---",
+    "2": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#table-of-contents]\n\n## Table of Contents\n\n- [Executive Summary](#executive-summary)\n- [Guidance Context and Background](#guidance-context-and-background)\n- [Detailed Guidance](#detailed-guidance)\n- [Implementation Framework](#implementation-framework)\n- [Practical Application](#practical-application)\n- [Examples and Use Cases](#examples-and-use-cases)\n- [Governance and Compliance](#governance-and-compliance)\n- [Integration with Enterprise Architecture](#integration-with-enterprise-architecture)\n- [Measurement and Assessment](#measurement-and-assessment)\n- [Related Guidance and References](#related-guidance-and-references)\n- [Change History](#change-history)\n- [Review Log](#review-log)\n\n---",
+    "3": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#executive-summary]\n\n## Executive Summary",
+    "4": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#purpose-statement]\n\n### Purpose Statement\n\nThis guidance document defines when and why to use **Zustand** instead of **Redux** for client-side global state management in React-based applications at Gainwell Technologies. Both are technically permitted within the enterprise architecture, but Zustand is the **preferred default** for all new application development. Redux use requires documented justification via an Architecture Decision Record (ADR) and Architecture Review Board awareness.",
+    "5": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#business-value]\n\n### Business Value\n\nFollowing this guidance:\n\n- Reduces state-related HIPAA compliance risk — Zustand has no built-in DevTools serialization that exposes PHI in the browser\n- Eliminates unnecessary boilerplate, reducing state feature development time by an estimated 40–60% compared to Redux's action/reducer/selector pattern\n- Aligns module state scope naturally with micro-frontend domain boundaries, supporting independent deployment goals\n- Reduces onboarding friction — Zustand's API surface is a fraction of Redux Toolkit's, lowering time-to-productivity for new team members\n- Prevents the \"global Redux store anti-pattern\" in micro-frontend architectures where extensions couple directly to host store internals",
+    "6": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#target-audience]\n\n### Target Audience\n\n- **Primary Audience**: Frontend developers and application architects building new React applications or migrating from ASP.NET\n- **Secondary Audience**: Tech leads and team leads evaluating state management choices for product backlogs\n- **Stakeholders**: Platform Engineering, Application Architecture practice, HIPAA compliance team, product teams across all Gainwell product lines",
+    "7": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#scope-and-applicability]\n\n### Scope and Applicability",
+    "8": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#applicable-scenarios]\n\n#### Applicable Scenarios\n\n- Greenfield React applications requiring client-side global state\n- ASP.NET → React migrations selecting a target state management library (per PTN-APP-MFE-013)\n- Micro-frontend remote modules requiring module-scoped state management\n- Next.js shell applications requiring application-wide UI state\n- Any context where Redux is being considered as a new dependency",
+    "9": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#scope-boundaries]\n\n#### Scope Boundaries\n\n- **In Scope**: Zustand vs Redux selection criteria; state ownership hierarchy; PHI compliance considerations; micro-frontend module scoping; migration guidance\n- **Out of Scope**: Server state management (use TanStack Query — see [Tools and Techniques](#tools-and-techniques)); form state (use React Hook Form); Angular NgRx decisions; backend state management\n- **Related Guidance**: [GUID-APP-TEC-001 Frontend Framework Selection](../frontend-framework-selection/GUID-APP-TEC-001-nextjs-vs-react-selection-guidance.md)\n\n---",
+    "10": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#guidance-context-and-background]\n\n## Guidance Context and Background",
+    "11": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#business-context]\n\n### Business Context",
+    "12": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#business-drivers]\n\n#### Business Drivers\n\n- **HIPAA Compliance**: Gainwell applications handle Protected Health Information (PHI) for 50+ state Medicaid agencies. The Redux DevTools browser extension serializes and displays the entire store state in plaintext — an inadvertent PHI exposure vector explicitly called out in [PTN-APP-MFE-003](../../../../patterns/application/micro-frontend/PTN-APP-MFE-003-module-composition-pattern.md). Zustand has no DevTools integration by default.\n- **Micro-Frontend Architecture**: The enterprise micro-frontend strategy (per [Enterprise MFE Architecture Strategy](../../../white-papers/engineering/enterprise-micro-frontend-architecture.md)) requires module-scoped state that clears on unmount. Redux encourages a single global store shared across the application — the opposite of the isolation model micro-frontends require.\n- **Developer Velocity**: Redux requires actions, reducers, selectors, and store configuration for every state feature. Zustand requires a single `create()` call. Observed in [PTN-APP-EXT-018](../../../../patterns/application/extensions/PTN-APP-EXT-018-extension-state-management-integration-pattern.md), state integration time averages 12–16 hours with Redux patterns; streamlined alternatives reduce this significantly.",
+    "13": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#strategic-alignment]\n\n#### Strategic Alignment\n\nThe [Enterprise Micro-Frontend Architecture Strategy](../../../white-papers/engineering/enterprise-micro-frontend-architecture.md) Section 5.4.1 explicitly prescribes:\n\n> *\"State Management: Context API for local state, **Zustand or Jotai** for global state (**avoiding Redux complexity**)\"*\n\nThe [STD-TEC-NXT-003 Next.js Frontend Design Standards](../../../../standards/technology/nextjs/STD-TEC-NXT-003-frontend-design.md) mandates Zustand as the approved global state library for Next.js applications.\n\nRedux is not banned but is treated as an exception requiring justification, not the default.",
+    "14": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#technical-context]\n\n### Technical Context",
+    "15": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#current-state-assessment]\n\n#### Current State Assessment\n\n- **Care Management (React 18/Angular 14)**: Modern state management in use; some Redux Toolkit 2.0 usage in host shell applications\n- **[PTN-APP-EXT-018](../../../../patterns/application/extensions/PTN-APP-EXT-018-extension-state-management-integration-pattern.md)** documents Redux Toolkit 2.0 as the host application store in one product line — extensions integrating with this host must use published selectors and actions, not direct store access\n- **ASP.NET portfolio (534 apps)**: No client-side state management; ViewState and Session State; migration target stack is React + Zustand\n- **Existing Redux usage**: Where Redux Toolkit already exists in a host shell, it may be retained; new modules and new applications start with Zustand",
+    "16": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#future-state-vision]\n\n#### Future State Vision\n\n- All new greenfield React applications and all ASP.NET migration targets use Zustand for module-scoped global state\n- TanStack Query handles all server state (API data, caching, synchronization) — no Redux for API data\n- Redux usage isolated to existing host applications where migration cost is not justified; extensions never directly couple to host Redux internals\n- PHI never enters any global state store (Zustand or Redux) — fetched at runtime per module into component state only",
+    "17": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#problem-statement]\n\n### Problem Statement",
+    "18": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#problem-description]\n\n#### Problem Description\n\nWithout explicit guidance, developers default to Redux because it has high brand recognition and was historically the dominant React state management solution. This creates several compounding problems in Gainwell's micro-frontend healthcare context:\n\n1. **PHI in Redux DevTools**: Redux DevTools is enabled by default in development and many staging environments. If a developer inadvertently stores PHI in a Redux slice (e.g., caching a member record in `state.member.current`), that PHI is fully visible — and exportable — in the browser's Redux DevTools panel. This is a HIPAA §164.312(a)(1) violation.\n\n2. **Global Store Anti-Pattern in MFE**: In a micro-frontend architecture, extensions and remote modules that directly import and access the host's Redux store create tight coupling to internal store structure. As documented in [PTN-APP-EXT-018](../../../../patterns/application/extensions/PTN-APP-EXT-018-extension-state-management-integration-pattern.md), this causes 22% of extensions to break when the host refactors its store schema, requiring $60K emergency fixes.\n\n3. **Unnecessary Boilerplate Overhead**: Redux requires defining action types, action creators, reducers, selectors, and store configuration for every feature slice. For module-scoped state in a micro-frontend (which should be lightweight and isolated), this is significant overhead for state that only lives for the lifetime of one module's route.\n\n4. **Cross-Module State Leakage**: Redux encourages a single global store. In a Module Federation architecture where modules are independently deployed and loaded, sharing a Redux store across the Module Federation boundary creates version coupling and prevents modules from being truly independent.",
+    "19": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#impact-assessment]\n\n#### Impact Assessment\n\n- HIPAA compliance risk: **Critical** — PHI in DevTools is a reportable breach vector\n- Developer productivity: **Medium** — Redux boilerplate adds 4–8 hours per state feature in a micro-frontend module context\n- Module independence: **High** — Shared Redux stores break the micro-frontend independence model\n- Maintenance cost: **High** — Extensions tightly coupled to host Redux internals break on every store refactor",
+    "20": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#success-criteria]\n\n### Success Criteria\n\n| Success Area | Metrics | Measurement Approach | Target |\n|---|---|---|---|\n| PHI compliance | PHI detected in state serialization events | Automated PHI pattern scanning in CI/CD; Redux DevTools audit | 0 PHI exposures |\n| Redux adoption rate | % of new applications using Redux without approved ADR | Architecture review gate tracking | 0% unapproved Redux adoptions in new apps |\n| State boilerplate reduction | Lines of state management code per feature slice | Code review metrics; PR size tracking | ≥40% reduction vs Redux equivalent |\n| MFE module isolation | Extensions/modules directly coupling to host Redux store internals | Static analysis (import scanning for `react-redux` in remote modules touching host store) | 0 direct host store access in remote modules |\n\n---",
+    "21": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#detailed-guidance]\n\n## Detailed Guidance",
+    "22": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#core-principles]\n\n### Core Principles",
+    "23": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#principle-1-state-ownership-hierarchy-first]\n\n#### Principle 1: State Ownership Hierarchy First\n\n**Description:** Every piece of state has a correct owner. Apply the hierarchy below in order — only reach for Zustand (or Redux) when the tiers above are insufficient.\n\n| Tier | State Type | Solution |\n|---|---|---|\n| 1 | Component-local ephemeral state (form inputs, toggles, loading flags) | `useState` / `useReducer` |\n| 2 | Shared state within a component tree | React Context API |\n| 3 | Server/API state (fetched data, caches, synchronization) | **TanStack Query (React Query)** |\n| 4 | Module-scoped global UI state persisted across routes within a module | **Zustand** |\n| 5 | Truly global state shared across shell and modules (auth, tenant config) | Shell props + Context (via PTN-APP-MFE-009) — NOT a shared store |\n\n**Rationale:** Most state in healthcare applications is server state (claim data, member records, eligibility). TanStack Query handles server state correctly — with caching, invalidation, and background refetch — without global store overhead. Only UI state that genuinely needs to persist across route changes within a module requires Zustand.\n\n**Application:** Before choosing Zustand or Redux, identify which tier the state belongs to. If it's tier 3, use TanStack Query. If it's tier 4, use Zustand. Redux is not in the hierarchy for new applications — it is an exception case covered under [When Redux is Acceptable](#approach-2-when-redux-is-acceptable).\n\n---",
+    "24": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#principle-2-module-scope--store-scope]\n\n#### Principle 2: Module Scope = Store Scope\n\n**Description:** In a micro-frontend architecture, each module's Zustand store must be scoped to that module and cleaned up when the module unmounts. A Zustand store must never be shared across a Module Federation boundary.\n\n**Rationale:** Sharing a store across a Module Federation boundary creates the same coupling problem as sharing a Redux store — it breaks module independence and creates version entanglement. Each module is a vertical slice that owns its own state lifecycle.\n\n**Application:**\n\n```typescript\n// ✅ CORRECT: Module-scoped store, cleaned up on unmount\n// claims-mfe/src/store/claimsStore.ts\nimport { create } from 'zustand';\n\ninterface ClaimsUIState {\n  selectedClaimId: string | null;\n  filterStatus: 'all' | 'pending' | 'approved' | 'denied';\n  isDetailPanelOpen: boolean;\n}\n\nexport const useClaimsStore = create<ClaimsUIState>(() => ({\n  selectedClaimId: null,\n  filterStatus: 'all',\n  isDetailPanelOpen: false,\n}));\n\n// claims-mfe/src/App.tsx - Cleanup on unmount\nexport default function ClaimsApp() {\n  useEffect(() => {\n    return () => {\n      // Clear module state on unmount\n      useClaimsStore.setState({\n        selectedClaimId: null,\n        filterStatus: 'all',\n        isDetailPanelOpen: false,\n      });\n    };\n  }, []);\n\n  return <ClaimsRoutes />;\n}\n```\n\n---",
+    "25": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#principle-3-phi-never-enters-the-store]\n\n#### Principle 3: PHI Never Enters the Store\n\n**Description:** Neither Zustand nor Redux stores should ever contain PHI. PHI lives exclusively in component state, fetched at runtime from authenticated backend APIs using opaque identifiers.\n\n**Rationale:** HIPAA Security Rule §164.312(a)(1) prohibits PHI in serialized or persistent state. Both Zustand (with `devtools` or `persist` middleware) and Redux DevTools can serialize store state to the browser or to storage. Keeping PHI out of the store entirely is the safest defense.\n\n**Application:**\n\n```typescript\n// ✅ CORRECT: Zustand store holds only opaque identifiers and UI state\ninterface ClaimsUIState {\n  selectedClaimId: string | null;  // ✅ Opaque ID — not PHI\n  filterStatus: 'all' | 'pending' | 'approved' | 'denied'; // ✅ UI state\n}\n\n// ❌ WRONG: PHI in Zustand store\ninterface ClaimsUIState {\n  currentMember: {\n    name: string;        // ❌ PHI\n    ssn: string;         // ❌ PHI — HIPAA violation\n    diagnosis: string;   // ❌ PHI\n  };\n}\n\n// ✅ CORRECT: Fetch PHI in component state using the ID from the store\nfunction ClaimDetail() {\n  const selectedClaimId = useClaimsStore(s => s.selectedClaimId);\n  const { data: claimData } = useQuery({  // PHI fetched here, in component state\n    queryKey: ['claim', selectedClaimId],\n    queryFn: () => fetchClaimById(selectedClaimId!),\n    enabled: !!selectedClaimId,\n  });\n  // claimData (PHI) stays in React Query's component-scoped cache\n}\n```\n\n---",
+    "26": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#key-approaches]\n\n### Key Approaches",
+    "27": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#approach-1-zustand-for-module-scoped-global-state-default]\n\n#### Approach 1: Zustand for Module-Scoped Global State (Default)\n\n**Overview:** Create one or a small number of Zustand stores scoped to a micro-frontend module. The store holds UI state that needs to survive route changes within the module (selected item IDs, filter settings, panel open/close states, wizard step). PHI is never in the store.\n\n**When to Use:** Any situation where state needs to be shared across multiple components within a module but is not server data (handled by TanStack Query) and not component-local (handled by `useState`).\n\n**Implementation:**\n\n```typescript\n// Install\n// npm install zustand\n\nimport { create } from 'zustand';\n\ninterface ProviderSearchState {\n  searchQuery: string;\n  selectedSpecialty: string | null;\n  selectedProviderId: string | null;   // Opaque ID only — not provider PHI\n  currentPage: number;\n  setSearchQuery: (q: string) => void;\n  setSelectedProvider: (id: string | null) => void;\n  resetFilters: () => void;\n}\n\nconst initialState = {\n  searchQuery: '',\n  selectedSpecialty: null,\n  selectedProviderId: null,\n  currentPage: 1,\n};\n\nexport const useProviderSearchStore = create<ProviderSearchState>((set) => ({\n  ...initialState,\n  setSearchQuery: (searchQuery) => set({ searchQuery, currentPage: 1 }),\n  setSelectedProvider: (selectedProviderId) => set({ selectedProviderId }),\n  resetFilters: () => set(initialState),\n}));\n```\n\n**Benefits:**\n\n- Zero boilerplate compared to Redux — no actions, no reducers, no selectors file\n- No DevTools integration by default — PHI-safe out of the box\n- Direct state mutation via `set()` — no action dispatch ceremony\n- Selector subscriptions are automatic — components re-render only when subscribed slice changes\n- Store can be reset on module unmount with a single `setState(initialState)` call\n- ~1KB bundle size (vs ~40KB for Redux Toolkit + react-redux)\n\n**Considerations:**\n\n- Do NOT enable Zustand `devtools` middleware in production builds\n- Do NOT enable Zustand `persist` middleware for any store that could hold PHI identifiers without explicit HIPAA review\n- Do NOT share a Zustand store instance across a Module Federation boundary (import it from within the module, not from a shared remote)\n\n---",
+    "28": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#approach-2-when-redux-is-acceptable]\n\n#### Approach 2: When Redux is Acceptable\n\n**Overview:** Redux Toolkit is permitted in two specific scenarios: (a) the application is an existing shell that already uses Redux and migration cost is not justified, and (b) the team needs Redux's time-travel debugging for highly complex non-PHI state machines.\n\n**When to Use:**\n\n1. **Existing host application already uses Redux Toolkit** — retain and maintain it; do not mix Zustand and Redux in the same application layer\n2. **Extension integrating with a Redux host** — access via published selectors only (never direct store access); dispatch via published actions only (per PTN-APP-EXT-018 guidance)\n3. **Approved exception via ADR** — documented justification that Zustand's API is insufficient for the specific use case, with Architecture Review Board awareness\n\n**When NOT to Use Redux:**\n\n- New greenfield applications\n- ASP.NET → React migrations (unless migrating an existing Redux codebase)\n- Micro-frontend remote modules (use Zustand; keep module state isolated)\n- Any application where PHI could enter state without additional mitigation\n\n**Required Mitigations if Redux is Used:**\n\n```javascript\n// 1. Disable Redux DevTools in production\nconst store = configureStore({\n  reducer: rootReducer,\n  devTools: process.env.NODE_ENV !== 'production', // ✅ DevTools only in dev\n});\n\n// 2. Add actionSanitizer and stateSanitizer if PHI risk exists\nconst store = configureStore({\n  reducer: rootReducer,\n  devTools: process.env.NODE_ENV !== 'production' && {\n    actionSanitizer: (action) => ({\n      ...action,\n      payload: '[REDACTED]', // ✅ Sanitize all payloads in DevTools\n    }),\n    stateSanitizer: (state) => ({\n      ...state,\n      member: '[REDACTED]', // ✅ Sanitize PHI-adjacent slices\n    }),\n  },\n});\n\n// 3. Extensions NEVER access host store internals directly\n// ❌ WRONG: Direct internal store access\nconst claim = useSelector((state: RootState) =>\n  state.claims.internal.normalized.byId[id]\n);\n\n// ✅ CORRECT: Published selector from shared package\nimport { selectCurrentClaim } from '@gainwell/shared-store/selectors';\nconst claim = useSelector(selectCurrentClaim);\n```\n\n---",
+    "29": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#best-practices]\n\n### Best Practices",
+    "30": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#best-practice-1-separate-ui-state-from-server-state]\n\n#### Best Practice 1: Separate UI State from Server State\n\n**Description:** Use TanStack Query for all data that comes from an API. Use Zustand only for UI state that is genuinely not server-derived (filter values, selected item IDs, panel open states, wizard steps).\n\n**Rationale:** A common Redux mistake is caching API responses in Redux slices. This duplicates what TanStack Query does better — automatic background refetch, stale time, invalidation, optimistic updates. Keeping server state out of Zustand (and Redux) keeps stores small, focused, and PHI-safe.\n\n**Implementation:**\n\n```typescript\n// ✅ CORRECT: TanStack Query for server state, Zustand for UI state\nfunction ClaimsList() {\n  // UI state — in Zustand\n  const { filterStatus, setFilterStatus } = useClaimsStore();\n\n  // Server state — in TanStack Query (cached, refetched automatically)\n  const { data: claims } = useQuery({\n    queryKey: ['claims', { status: filterStatus }],\n    queryFn: () => fetchClaims({ status: filterStatus }),\n  });\n\n  return <table>{claims?.map(claim => <ClaimRow key={claim.id} claimId={claim.id} />)}</table>;\n}\n\n// ❌ WRONG: Fetching into Zustand\nconst useClaimsStore = create((set) => ({\n  claims: [],  // ❌ This is server state — use TanStack Query instead\n  fetchClaims: async () => {\n    const data = await fetchClaims();\n    set({ claims: data }); // ❌ No caching, no invalidation, PHI risk\n  },\n}));\n```\n\n**Success Indicators:** No `fetch`/`axios` calls inside Zustand store actions; no API response data in store state; TanStack Query handles all loading/error/stale/refetch states.\n\n---",
+    "31": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#best-practice-2-one-store-per-domain-concern]\n\n#### Best Practice 2: One Store Per Domain Concern\n\n**Description:** Create small, focused Zustand stores per domain concern within a module rather than a single monolithic store.\n\n**Rationale:** Multiple small stores prevent unnecessary re-renders — components subscribe only to the slice they need. It mirrors the micro-frontend domain decomposition principle (one module per business capability) at the state level.\n\n**Implementation:**\n\n```typescript\n// ✅ CORRECT: Separate stores per concern\nexport const useSearchStore = create<SearchState>(...);       // Search filters, pagination\nexport const useSelectionStore = create<SelectionState>(...); // Selected items, detail panel\nexport const useWorkflowStore = create<WorkflowState>(...);   // Wizard step, validation state\n\n// Components subscribe only to what they need\nfunction SearchBar() {\n  const { query, setQuery } = useSearchStore(); // Only re-renders on search changes\n}\n\nfunction DetailPanel() {\n  const { selectedId } = useSelectionStore(); // Only re-renders on selection changes\n}\n\n// ❌ WRONG: Monolithic store (mirrors Redux anti-pattern)\nexport const useClaimsStore = create<{\n  searchQuery: string;\n  selectedId: string | null;\n  wizardStep: number;\n  // ...20 more fields\n}>(...);\n```\n\n**Success Indicators:** No component subscribes to more state fields than it visually renders; re-render profiling shows components updating only when their specific subscribed state changes.\n\n---",
+    "32": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#best-practice-3-explicit-cleanup-on-module-unmount]\n\n#### Best Practice 3: Explicit Cleanup on Module Unmount\n\n**Description:** Every Zustand store in a micro-frontend module must be reset to its initial state when the module unmounts.\n\n**Rationale:** Module Federation loads and unloads modules as users navigate. Without explicit cleanup, stale state (including opaque identifiers that might indirectly point to PHI) persists in memory across navigation events, potentially leaking context across tenant boundaries in multi-tenant environments.\n\n> **Security note:** Client-side store cleanup is a UX hygiene measure — it prevents stale context appearing in the UI after navigation. It is not a security boundary. Tenant data isolation is enforced server-side via the authorization model defined in [STD-SEC-AUTHZ-001 §3.4 Multi-Tenant Authorization](../../../../standards/security/authorization/STD-SEC-AUTHZ-001-authorization-implementation.md). Both controls are required.\n\n**Implementation:**\n\n```typescript\n// claims-mfe/src/store/index.ts\nexport const INITIAL_CLAIMS_UI_STATE: ClaimsUIState = {\n  selectedClaimId: null,\n  filterStatus: 'all',\n  isDetailPanelOpen: false,\n};\n\nexport const useClaimsUIStore = create<ClaimsUIState>(() => INITIAL_CLAIMS_UI_STATE);\n\n// Export a cleanup function for use in mount/unmount lifecycle\nexport const resetClaimsUIState = () =>\n  useClaimsUIStore.setState(INITIAL_CLAIMS_UI_STATE);\n\n// claims-mfe/src/App.tsx\nexport function ClaimsMfeMount({ context }: MfeProps) {\n  useEffect(() => {\n    return () => {\n      resetClaimsUIState();         // ✅ Clear Zustand state\n      queryClient.clear();          // ✅ Clear TanStack Query cache (PHI)\n    };\n  }, []);\n\n  return <ClaimsRoutes />;\n}\n```\n\n**Success Indicators:** Browser memory profiler shows stable heap after repeated module mount/unmount cycles; no stale `selectedClaimId` values persisting across module navigations.\n\n---",
+    "33": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#common-pitfalls]\n\n### Common Pitfalls",
+    "34": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#pitfall-1-enabling-zustandmiddleware-persist-without-phi-audit]\n\n#### Pitfall 1: Enabling `zustand/middleware` `persist` Without PHI Audit\n\n**Description:** Developers add Zustand's `persist` middleware to survive page refreshes, not realizing the store state is written to `localStorage` or `sessionStorage`.\n\n**Impact:** If any opaque identifier in the store maps to PHI (e.g., `selectedMemberId` could be used to correlate with PHI by an attacker), persisting it to browser storage may violate HIPAA §164.312(a)(1). `localStorage` is permanent and accessible to any JavaScript on the page — an XSS attack can exfiltrate it.\n\n**Prevention:** Never use `persist` middleware without a documented HIPAA review confirming zero PHI or PHI-correlating data in the persisted state. Prefer `sessionStorage` over `localStorage` if persistence is required (cleared on tab close).\n\n**Mitigation:**\n\n```typescript\n// ⚠️ If persist is required after HIPAA review, use sessionStorage and exclude sensitive fields\nimport { persist, createJSONStorage } from 'zustand/middleware';\n\nexport const useFilterStore = create<FilterState>()(\n  persist(\n    (set) => ({ filterStatus: 'all', setFilterStatus: (s) => set({ filterStatus: s }) }),\n    {\n      name: 'claims-filter-state',\n      storage: createJSONStorage(() => sessionStorage), // sessionStorage, not localStorage\n      partialize: (state) => ({ filterStatus: state.filterStatus }), // Only persist non-sensitive UI fields\n    }\n  )\n);\n```\n\n---",
+    "35": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#pitfall-2-sharing-a-zustand-store-across-module-federation-boundary]\n\n#### Pitfall 2: Sharing a Zustand Store Across Module Federation Boundary\n\n**Description:** A team creates a shared Zustand store in a shared Module Federation dependency and imports it in both the shell and a remote module to share state between them.\n\n**Impact:** This creates the same tight coupling that makes Redux problematic in MFE architectures. The two modules can no longer deploy independently — they are now coupled through shared store state and the store's TypeScript interface. Version mismatches between shell and remote can cause runtime state corruption.\n\n**Prevention:** Zustand stores must be defined and imported within a single module's codebase. Cross-module state sharing uses shell-provided props (PTN-APP-MFE-009) for read-only context and the event bus (PTN-APP-MFE-010) for cross-module communication — never a shared store.\n\n**Mitigation:** If shared state is genuinely needed, audit whether it belongs in shell props (user, tenant, config) and expose it via `MfeContextProvider`. For domain events (claim submitted, member selected), use the typed event bus with opaque identifiers only.\n\n---",
+    "36": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#pitfall-3-using-redux-for-extension-local-ui-state]\n\n#### Pitfall 3: Using Redux for Extension-Local UI State\n\n**Description:** In applications where Redux Toolkit is already present as the host store, developers default to Redux for extension-local UI state (wizard steps, expanded/collapsed panels) because it's already installed.\n\n**Impact:** As documented in [PTN-APP-EXT-018](../../../../patterns/application/extensions/PTN-APP-EXT-018-extension-state-management-integration-pattern.md): *\"Redux DevTools shows hundreds of actions like `VALIDATION_FORM_EXPAND_SECTION`, `VALIDATION_FORM_NEXT_STEP` cluttering action log, Redux store contains extension-specific slices, host application couples to extension state structure.\"* Extension-local UI state in Redux creates noise, coupling, and debugging overhead with zero benefit over `useState`/Context.\n\n**Prevention:** Use `useState` or React Context API for all extension-internal UI state. Reserve Redux (or Zustand) for state that genuinely needs to be shared beyond the component tree.\n\n**Mitigation:** Audit existing Redux slices — identify any slices that only contain UI state for a single component or sub-tree. Migrate those to `useState` or Context. Keep Redux slices only for state accessed by multiple unrelated components across the application.\n\n---",
+    "37": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#implementation-framework]\n\n## Implementation Framework",
+    "38": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#implementation-methodology]\n\n### Implementation Methodology",
+    "39": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#implementation-lifecycle]\n\n#### Implementation Lifecycle\n\n| Phase | Objectives | Key Activities | Deliverables |\n|---|---|---|---|\n| Phase 1: State Audit | Classify all state requirements before writing code | Map each piece of state to the ownership hierarchy tier; identify PHI risk for any state near the API layer | State ownership diagram; ADR if Redux exception is needed |\n| Phase 2: Setup | Install and configure Zustand | `npm install zustand`; create initial store files; implement cleanup functions | Working Zustand stores with TypeScript types |\n| Phase 3: Integration | Connect stores to components | Subscribe components via selector hooks; implement TanStack Query for server state; wire cleanup to module unmount | Functioning state management with no unnecessary re-renders |\n| Phase 4: Compliance Validation | Verify PHI safety | Run PHI pattern scan on store type definitions; verify no `persist` middleware without review; verify DevTools disabled in production | CI/CD PHI scan passing; production build DevTools off |",
+    "40": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#prerequisites]\n\n### Prerequisites",
+    "41": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#technical-prerequisites]\n\n#### Technical Prerequisites\n\n- React 18+ (hooks required)\n- TypeScript 5+ (store type safety)\n- Node.js 18+ / npm 9+\n- TanStack Query 5+ installed alongside Zustand (handles server state — reduces Zustand scope)",
+    "42": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#installation]\n\n#### Installation\n\n```bash\nnpm install zustand          # Global state (~1KB)\nnpm install @tanstack/react-query  # Server state (if not already installed)\n```\n\n---",
+    "43": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#practical-application]\n\n## Practical Application",
+    "44": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#decision-framework]\n\n### Decision Framework",
+    "45": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#decision-point-which-state-solution-do-i-need]\n\n#### Decision Point: Which State Solution Do I Need?\n\n```\nIs this data fetched from an API?\n  ├── YES → Use TanStack Query (useQuery / useMutation)\n  └── NO ↓\n\nIs this state only used in one component (or its direct children)?\n  ├── YES → Use useState / useReducer\n  └── NO ↓\n\nIs this state shared within a single component subtree (not globally)?\n  ├── YES → Use React Context\n  └── NO ↓\n\nIs this module-scoped UI state (filter settings, selected IDs, panel states)?\n  ├── YES → Use Zustand (module-scoped store)\n  └── NO ↓\n\nIs this cross-module context (user, tenant, permissions, config)?\n  ├── YES → Use Shell-Provided Props (PTN-APP-MFE-009) — NOT a store\n  └── NO ↓\n\nIs this an existing application already using Redux Toolkit?\n  ├── YES → Continue Redux; document if adding new slices via ADR\n  └── NO → Use Zustand; document Redux exception requirement via ADR if Redux needed\n```\n\n---",
+    "46": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#tools-and-techniques]\n\n### Tools and Techniques",
+    "47": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#recommended-tools]\n\n#### Recommended Tools\n\n| Tool Category | Tool Name | Purpose | Usage Guidelines |\n|---|---|---|---|\n| Module-scoped global state | **Zustand** | UI state shared across components within a module | One store per domain concern; no PHI; cleanup on unmount |\n| Server state | **TanStack Query (React Query)** | API data fetching, caching, synchronization | All API calls; replaces any Redux slice storing API responses |\n| Component-local state | React `useState` / `useReducer` | Ephemeral UI state within a single component | Default for form inputs, toggles, loading indicators |\n| Subtree-shared state | React Context API | State shared within a bounded component tree | Form wizard internal state; extension-local shared context |\n| PHI scanning | Webpack PHIDetectionPlugin | Detect PHI patterns in compiled bundles | Run in CI/CD on every build; blocks on PHI pattern match |\n| Performance profiling | React DevTools Profiler | Identify unnecessary re-renders from state subscriptions | Run after adding new store subscriptions |\n| State debugging (dev only) | Zustand `devtools` middleware | Inspect Zustand state in Redux DevTools (opt-in) | **Dev environment only** — never in production; never on stores near PHI |",
+    "48": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#zustand-vs-redux--direct-comparison]\n\n#### Zustand vs Redux — Direct Comparison\n\n| Concern | Zustand | Redux Toolkit |\n|---|---|---|\n| **Setup** | `create()` — 5 lines | `configureStore` + `createSlice` + `Provider` — 40+ lines |\n| **Reading state** | `useStore(s => s.field)` | `useSelector(s => s.slice.field)` |\n| **Writing state** | `set({ field: value })` | `dispatch(actionCreator(value))` |\n| **Bundle size** | ~1KB | ~40KB (Redux Toolkit + react-redux) |\n| **DevTools** | Opt-in (off by default) ✅ PHI-safer | On by default ⚠️ PHI exposure risk |\n| **Persistence** | Opt-in middleware | Opt-in (redux-persist) |\n| **Module scope** | Natural — create per module | Anti-pattern — designed for global singleton |\n| **Boilerplate** | Minimal | Significant |\n| **Learning curve** | Low (~1 hour) | Medium–High (~1–2 days for Toolkit) |\n| **Ecosystem / npm downloads** | ~9–10M/week | ~8–9M/week (Toolkit) |\n| **Maintainer** | Pmndrs (Daishi Kato) | Redux team / Redux Toolkit |\n| **MFE cleanup on unmount** | `setState(initial)` — 1 line | `dispatch(resetAllState())` — requires action |\n| **TypeScript** | Inferred from `create<Type>()` | Requires `RootState` type export and `AppDispatch` |\n\n---",
+    "49": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#examples-and-use-cases]\n\n## Examples and Use Cases",
+    "50": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#use-case-1-claims-module-filter-state-zustand--correct]\n\n### Use Case 1: Claims Module Filter State (Zustand — Correct)\n\n**Scenario Description:** The Claims micro-frontend module needs to persist filter settings (status, date range, payer) as the user navigates between the claims list and claim detail pages within the module.\n\n**Context:** Micro-frontend remote module; independent CDN deployment; React + Webpack 5.\n\n**Guidance Application:**\n\n```typescript\n// claims-mfe/src/store/claimsFilterStore.ts\nimport { create } from 'zustand';\n\ninterface ClaimsFilterState {\n  statusFilter: 'all' | 'pending' | 'approved' | 'denied';\n  dateRange: { start: string; end: string } | null;\n  payerId: string | null;  // Opaque ID — not PHI\n  setStatusFilter: (s: ClaimsFilterState['statusFilter']) => void;\n  setPayerId: (id: string | null) => void;\n  reset: () => void;\n}\n\nconst INITIAL: Omit<ClaimsFilterState, 'setStatusFilter' | 'setPayerId' | 'reset'> = {\n  statusFilter: 'all',\n  dateRange: null,\n  payerId: null,\n};\n\nexport const useClaimsFilterStore = create<ClaimsFilterState>((set) => ({\n  ...INITIAL,\n  setStatusFilter: (statusFilter) => set({ statusFilter }),\n  setPayerId: (payerId) => set({ payerId }),\n  reset: () => set(INITIAL),\n}));\n```\n\n**Success Factors:** No PHI in store; TanStack Query fetches claim list using filter values from store; reset called in module unmount effect.\n\n---",
+    "51": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#use-case-2-shell-application-auth-state-zustand--correct]\n\n### Use Case 2: Shell Application Auth State (Zustand — Correct)\n\n**Scenario Description:** The Next.js shell application needs to hold non-PHI user session state (userId, roles, tenantId, sessionExpiry) accessible across shell layout components.\n\n**Context:** Next.js shell; auth context hydrated server-side from NextAuth.js session; passed to Zustand store on client hydration.\n\n**Guidance Application:**\n\n```typescript\n// shell/src/store/authStore.ts\nimport { create } from 'zustand';\n\ninterface AuthState {\n  userId: string | null;\n  tenantId: string | null;\n  roles: string[];\n  sessionExpiresAt: number | null;\n  setAuth: (auth: Omit<AuthState, 'setAuth' | 'clearAuth'>) => void;\n  clearAuth: () => void;\n}\n\nexport const useAuthStore = create<AuthState>((set) => ({\n  userId: null,\n  tenantId: null,\n  roles: [],\n  sessionExpiresAt: null,\n  setAuth: (auth) => set(auth),\n  clearAuth: () => set({ userId: null, tenantId: null, roles: [], sessionExpiresAt: null }),\n}));\n// No PHI — userId and tenantId are opaque identifiers\n// DevTools NOT enabled — auth state should not be inspectable\n```\n\n**Success Factors:** No PHI in store (member names, SSNs are never in auth state); `clearAuth()` called on logout and session timeout; DevTools middleware not added.\n\n---",
+    "52": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#use-case-3-existing-host-application--redux-retained-exception]\n\n### Use Case 3: Existing Host Application — Redux Retained (Exception)\n\n**Scenario Description:** A product line shell already has Redux Toolkit 2.0 managing claims, user, tenant, and UI state slices (per PTN-APP-EXT-018 context). A new extension module integrates with this host.\n\n**Context:** Host retains Redux; extension is a new Module Federation remote; extension must not introduce Zustand to the host layer.\n\n**Guidance Application:**\n\n- The host retains Redux Toolkit — migration cost not justified\n- The new extension uses **published selectors** from `@gainwell/shared-store/selectors` — no direct `RootState` access\n- The extension uses **React Context** for its own internal UI state — not Redux, not Zustand\n- Redux DevTools is **disabled in production** in the host's `configureStore` configuration\n- New slices added to the host Redux store require ADR documenting why Zustand is insufficient for that use case\n\n**Success Factors:** New remote module has zero `import` of `react-redux` beyond the published SDK selectors; extension-local state uses `useState`/Context; no new PHI introduced into Redux slices without HIPAA review.\n\n---",
+    "53": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#governance-and-compliance]\n\n## Governance and Compliance",
+    "54": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#compliance-requirements]\n\n### Compliance Requirements",
+    "55": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#regulatory-compliance]\n\n#### Regulatory Compliance\n\n| Regulation | Requirements | Zustand Impact | Redux Impact | Validation |\n|---|---|---|---|---|\n| HIPAA §164.312(a)(1) — PHI Access Controls | PHI must not be stored in serialized/persisted state accessible outside authenticated session | **Lower risk**: No DevTools by default; `persist` opt-in. PHI pattern scan in CI/CD. | **Higher risk**: DevTools on by default; `actionSanitizer` / `stateSanitizer` required if any PHI risk. | Automated PHI regex scan on store type definitions and bundle output |\n| HIPAA §164.312(a)(2) — Automatic Logoff | PHI cleared from browser memory on session timeout | `store.setState(initial)` in session timeout handler | `dispatch(resetAllState())` in session timeout handler | Memory profiler shows no PHI-adjacent state post-logout |\n| HIPAA §164.312(b) — Audit Controls | PHI access logged server-side | State stores hold only opaque IDs; audit logging on backend API | Same requirement | Backend audit log coverage; verified by compliance team |\n| FedRAMP | Authorized infrastructure; no unauthorized data persistence | `persist` middleware requires HIPAA + FedRAMP review before use | `redux-persist` requires same review | Architecture review gate for any storage middleware |",
+    "56": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#organizational-compliance]\n\n#### Organizational Compliance\n\n- **New Applications**: Zustand is the default. No ADR required to use Zustand. An ADR IS required to use Redux in a new application.\n- **Existing Redux Applications**: Redux may be retained without an ADR. New Redux slices in an existing Redux application should be documented in a tech debt backlog item noting migration path to Zustand.\n- **DevTools in Production**: Redux DevTools and Zustand DevTools middleware are both **prohibited in production builds**. CI/CD must verify `NODE_ENV === 'production'` guards are present.\n- **Persist Middleware**: Any use of `zustand/middleware` `persist` or `redux-persist` requires a documented HIPAA review confirming the persisted state contains no PHI or PHI-correlating data.",
+    "57": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#risk-management]\n\n### Risk Management",
+    "58": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#risk-assessment]\n\n#### Risk Assessment\n\n| Risk Category | Risk Description | Probability | Impact | Mitigation Strategy |\n|---|---|---|---|---|\n| HIPAA / Security | PHI inadvertently stored in Redux slice visible in DevTools | Medium | Critical | Default to Zustand (no DevTools); PHI pattern scan in CI/CD; `actionSanitizer` required if PHI risk exists in Redux apps |\n| HIPAA / Security | Zustand `persist` middleware writes state to `localStorage` | Low–Medium | High | Prohibit `persist` without HIPAA review; use `sessionStorage` if persistence justified; `partialize` to exclude PHI-adjacent fields |\n| Architecture | Remote module imports Zustand store from shared Module Federation scope | Low | High | Lint rule prohibiting cross-package Zustand store imports; code review gate |\n| Architecture | Extension directly accesses host Redux `RootState` internals | Medium | High | Lint rule prohibiting `state: RootState` import in remote modules; published selector SDK enforced |\n| Maintainability | Mixed Zustand + Redux in same application layer | Medium | Medium | ADR requirement for Redux adoption; architecture review gate |\n\n---",
+    "59": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#integration-with-enterprise-architecture]\n\n## Integration with Enterprise Architecture",
+    "60": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#standards-alignment]\n\n### Standards Alignment\n\n- [STD-SEC-APP-001 Application Security Standards](../../../../standards/security/application/STD-SEC-APP-001-application-security.md) — Mandatory OWASP Top 10 / HIPAA / NIST security baseline applicable to all state management implementations (data protection, secrets management, secure development practices)\n- [STD-SEC-AUTHN-001 Authentication Implementation](../../../../standards/security/authentication/STD-SEC-AUTHN-001-authentication-implementation.md) — Authentication standards for applications using Zustand alongside NextAuth.js / PingOne OIDC; defines session management requirements\n- [STD-SEC-AUTHZ-001 Authorization Implementation](../../../../standards/security/authorization/STD-SEC-AUTHZ-001-authorization-implementation.md) — Server-side RBAC and multi-tenant authorization enforcement; client-side store cleanup (this guidance) is a UX hygiene measure, not a security control — tenant data isolation is enforced server-side per this standard\n- [STD-TEC-NXT-003 Next.js Frontend Design Standards](../../../../standards/technology/nextjs/STD-TEC-NXT-003-frontend-design.md) — Mandates Zustand as the approved global state library for Next.js applications\n- [STD-TEC-NXT-001 Next.js Coding Standards](../../../../standards/technology/nextjs/) — Coding patterns for state management integration",
+    "61": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#pattern-relationships]\n\n### Pattern Relationships\n\n- [PTN-APP-MFE-003 Module Composition Pattern](../../../../patterns/application/micro-frontend/PTN-APP-MFE-003-module-composition-pattern.md) — PHI protection requirements for state management in micro-frontends; explicit call-out of Redux DevTools as a PHI exposure vector\n- [PTN-APP-MFE-009 Shell-Provided Props Pattern](../../../../patterns/application/micro-frontend/PTN-APP-MFE-009-shell-provided-props-pattern.md) — Correct pattern for cross-module context sharing (replaces cross-module store sharing)\n- [PTN-APP-MFE-010 Event Bus Communication Pattern](../../../../patterns/application/micro-frontend/PTN-APP-MFE-010-event-bus-communication-pattern.md) — Cross-module communication without shared state; uses opaque identifiers\n- [PTN-APP-MFE-013 ASP.NET to React Migration Pattern](../../../../patterns/application/micro-frontend/PTN-APP-MFE-013-aspnet-to-react-migration-pattern.md) — Lists React Context, Redux Toolkit, or Zustand as migration target options; this guidance narrows to Zustand as default\n- [PTN-APP-EXT-018 Extension State Management Integration Pattern](../../../../patterns/application/extensions/PTN-APP-EXT-018-extension-state-management-integration-pattern.md) — Documents the Redux coupling anti-patterns this guidance prevents; defines published selector approach for Redux host integration",
+    "62": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#decision-dependencies]\n\n### Decision Dependencies\n\n- [ADR-APP-001 Design Patterns and Languages](../../../../decisions/application/ADR-APP-001-design-patterns-languages.md) — Frontend stack standard: TypeScript + React + Tailwind CSS; state management aligned with this guidance\n- [GUID-APP-TEC-001 Next.js vs React Selection Guidance](../frontend-framework-selection/GUID-APP-TEC-001-nextjs-vs-react-selection-guidance.md) — Companion guidance covering framework selection; state management selection is downstream of framework selection\n\n---",
+    "63": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#measurement-and-assessment]\n\n## Measurement and Assessment",
+    "64": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#success-metrics]\n\n### Success Metrics",
+    "65": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#technical-metrics]\n\n#### Technical Metrics\n\n| Metric | Description | Measurement Method | Target | Frequency |\n|---|---|---|---|---|\n| PHI in store type definitions | PHI field names detected in Zustand/Redux store TypeScript interfaces | Automated regex scan in CI/CD | 0 findings | Per build |\n| DevTools in production builds | `devtools` middleware present in production bundle | Bundle analysis; grep for `zustand/middleware/devtools` in prod bundle | 0 occurrences | Per release |\n| Redux adoption in new apps | New applications using Redux without approved ADR | Architecture review gate tracking | 0 unapproved | Per project initiation |\n| Cross-module store imports | Remote modules importing store from outside their own package | ESLint `import/no-restricted-paths` rule | 0 violations | Per build |\n| Persist middleware usage | `persist` middleware used without HIPAA review record | Architecture review tracking | 0 unreviewed usages | Quarterly audit |",
+    "66": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#maturity-model]\n\n### Maturity Model\n\n| Maturity Level | Description | Characteristics | Next Steps |\n|---|---|---|---|\n| Level 1: Ad Hoc | Teams choose Redux by default | New apps use Redux; no state ownership hierarchy applied; DevTools on in staging | Apply state ownership hierarchy; document existing Redux usage |\n| Level 2: Defined | Guidance adopted for new projects | New greenfield apps use Zustand; existing Redux retained; state hierarchy applied | Add CI/CD PHI scan; enforce DevTools production guard |\n| Level 3: Managed | Compliance gates enforced | PHI scan in CI/CD; DevTools guard verified; cross-module store imports blocked by lint | Audit existing Redux slices for PHI proximity; add persist review process |\n| Level 4: Optimizing | Active migration of Redux legacy | Existing Redux applications migrating to Zustand incrementally; ADR documented for remaining Redux usage | Track Redux deprecation progress; measure boilerplate reduction |\n\n---",
+    "67": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#related-guidance-and-references]\n\n## Related Guidance and References",
+    "68": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#related-guidance]\n\n### Related Guidance\n\n- [GUID-APP-TEC-001 Frontend Framework Selection: Next.js vs React](../frontend-framework-selection/GUID-APP-TEC-001-nextjs-vs-react-selection-guidance.md) — Companion framework selection guidance; state management selection is downstream\n- [GUID-APP-TEC-003 UI Component System](../ui-component-system/GUID-APP-TEC-003-ui-component-system-guidance.md) — Companion component system guidance; TanStack Table (data grid) and Shadcn/UI components consume Zustand UI state and TanStack Query server state defined in this guidance\n- [Technology Selection Strategy](../../technology/strategy/GUID-TEC-STRAT-001-technology-selection-strategy.md) — Enterprise technology evaluation criteria and strategic principles",
+    "69": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#industry-references]\n\n### Industry References\n\n- **Zustand Documentation** (<https://zustand-demo.pmnd.rs/>) — Official Zustand documentation by Pmndrs\n- **Zustand GitHub** (<https://github.com/pmndrs/zustand>) — Source, examples, middleware documentation (~50K GitHub stars, ~9–10M weekly npm downloads)\n- **Redux Toolkit Documentation** (<https://redux-toolkit.js.org/>) — Official Redux Toolkit documentation; reference for existing Redux applications\n- **TanStack Query Documentation** (<https://tanstack.com/query/latest>) — Server state management (replaces Redux for API data in all new applications)\n\n---",
+    "70": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#change-history]\n\n## Change History\n\n| Date | Version | Author | Description | Impact |\n|---|---|---|---|---|\n| 2026-03-11 | 1.0.0 | Platform Engineering - App Arch | Initial guidance creation; establishes Zustand as default over Redux for new applications; documents PHI compliance rationale, state ownership hierarchy, micro-frontend scoping requirements, and Redux exception criteria | New guidance |\n\n---",
+    "71": "[strategy/guidance/application/state-management/GUID-APP-TEC-002-zustand-over-redux-guidance.md#review-log]\n\n## Review Log\n\n| Review Date | Review Type | Reviewer(s) | Status | Comments | Actions |\n|---|---|---|---|---|---|\n| 2026-03-11 | Initial Draft | Platform Engineering - App Arch | Draft | Initial creation — pending expert and stakeholder review | Submit for Architecture Review Board review; validate PHI scan tooling recommendations with HIPAA compliance team |"
+  },
+  "coverage": {
+    "total_pages": 71,
+    "covered_pages": 71,
+    "sampled_pages": 71,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 71
+  }
+}

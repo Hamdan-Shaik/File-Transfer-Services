@@ -1,0 +1,260 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "ADR-APP-015: Data Archival and Retention Strategy — S3 Tiered Lifecycle with CMS Medicaid Compliance",
+  "document_description": "Portal Studio uses a **tiered S3 lifecycle archival strategy** to move data from hot storage (PostgreSQL/Redis) to warm (S3 Standard-IA) to cold (S3 Glacier Flexible Retrieval) based on access frequency and regulatory retention requirements. **Audit log data must be retained for a minimum of 10 years** to comply with CMS Medicaid contractual obligations — stored in S3 with Object Lock `COMPLIANCE`",
+  "total_pages": 26,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 26,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "ADR-APP-015: Data Archival and Retention Strategy — S3 Tiered Lifecycle with CMS Medicaid Compliance",
+          "node_id": "adr-app-015-data-archival-and-retention-strategy--s3-tiered-lifecycle-with-cms-medicaid-compliance",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Decision Summary",
+          "node_id": "decision-summary",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Context and Problem Statement",
+          "node_id": "context-and-problem-statement",
+          "start_index": 5,
+          "end_index": 6,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Decision Drivers",
+              "node_id": "decision-drivers",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Required Option",
+          "node_id": "required-option",
+          "start_index": 7,
+          "end_index": 11,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "S3 Tiered Lifecycle Archival with CMS-Compliant Retention",
+              "node_id": "s3-tiered-lifecycle-archival-with-cms-compliant-retention",
+              "start_index": 8,
+              "end_index": 11,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Data Classification and Retention Schedule",
+                  "node_id": "data-classification-and-retention-schedule",
+                  "start_index": 9,
+                  "end_index": 9,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "S3 Lifecycle Policy Structure",
+                  "node_id": "s3-lifecycle-policy-structure",
+                  "start_index": 10,
+                  "end_index": 10,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Archival Pipeline",
+                  "node_id": "archival-pipeline",
+                  "start_index": 11,
+                  "end_index": 11,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Considered Options",
+          "node_id": "considered-options",
+          "start_index": 12,
+          "end_index": 15,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Option 1: S3 Tiered Lifecycle with Object Lock (Selected)",
+              "node_id": "option-1-s3-tiered-lifecycle-with-object-lock-selected",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Option 2: CloudWatch Logs Indefinite Retention",
+              "node_id": "option-2-cloudwatch-logs-indefinite-retention",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Option 3: PostgreSQL Long-Term Retention (No Archival)",
+              "node_id": "option-3-postgresql-long-term-retention-no-archival",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Decision Outcome",
+          "node_id": "decision-outcome",
+          "start_index": 16,
+          "end_index": 16,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Consequences",
+          "node_id": "consequences",
+          "start_index": 17,
+          "end_index": 20,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "✅ Positive",
+              "node_id": "-positive",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "❌ Negative",
+              "node_id": "-negative",
+              "start_index": 19,
+              "end_index": 19,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "⚪ Neutral",
+              "node_id": "-neutral",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Risk Assessment & Mitigation",
+          "node_id": "risk-assessment--mitigation",
+          "start_index": 21,
+          "end_index": 23,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "⚠️ Risks",
+              "node_id": "-risks",
+              "start_index": 22,
+              "end_index": 22,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "🛡️ Mitigations",
+              "node_id": "-mitigations",
+              "start_index": 23,
+              "end_index": 23,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Compliance Notes",
+          "node_id": "compliance-notes",
+          "start_index": 24,
+          "end_index": 24,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Review and Approval",
+          "node_id": "review-and-approval",
+          "start_index": 25,
+          "end_index": 25,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "📋 Change Log",
+          "node_id": "-change-log",
+          "start_index": 26,
+          "end_index": 26,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "> **Promoted from:** `mmes-cms-studio/docs/decisions/ADR-APP-015-data-archival-retention.md`  \n> **Ref-arch artifact ID:** `GUID-COMP-RET-001-cms-medicaid-data-retention`  \n> This document has been promoted to the Enterprise Architecture Platform reference architecture. Product repos should reference this artifact rather than maintaining their own copy.\n\n---",
+    "2": "[strategy/guidance/compliance/GUID-COMP-RET-001-cms-medicaid-data-retention.md#adr-app-015-data-archival-and-retention-strategy--s3-tiered-lifecycle-with-cms-medicaid-compliance]\n\n## ADR-APP-015: Data Archival and Retention Strategy — S3 Tiered Lifecycle with CMS Medicaid Compliance\n\n---\n\n|               |                                                                                                                                              |\n| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |\n| **Status**    | ✅ Accepted                                                                                                                                   |\n| **Date**      | 2026-07-29                                                                                                                                   |\n| **Issuer**    | [Enterprise Architecture Practice](mailto:EAP-Core@mygainwell.onmicrosoft.com?subject=ADR-APP-015%20Data-Archival-Retention)               |\n| **Consulted** | Mike Goppert, James Macurak, Jesse Adams                                                                                                    |\n| **Informed**  | MMES Platform Team, Gainwell EA                                                                                                             |\n\n---",
+    "3": "[strategy/guidance/compliance/GUID-COMP-RET-001-cms-medicaid-data-retention.md#table-of-contents]\n\n## Table of Contents\n\n- [Decision Summary](#decision-summary)\n- [Context and Problem Statement](#context-and-problem-statement)\n- [Required Option](#required-option)\n- [Considered Options](#considered-options)\n- [Decision Outcome](#decision-outcome)\n- [Consequences](#consequences)\n- [Risk Assessment & Mitigation](#risk-assessment--mitigation)\n- [Compliance Notes](#compliance-notes)\n- [Review and Approval](#review-and-approval)\n\n---",
+    "4": "[strategy/guidance/compliance/GUID-COMP-RET-001-cms-medicaid-data-retention.md#decision-summary]\n\n## Decision Summary\n\nPortal Studio uses a **tiered S3 lifecycle archival strategy** to move data from hot storage (PostgreSQL/Redis) to warm (S3 Standard-IA) to cold (S3 Glacier Flexible Retrieval) based on access frequency and regulatory retention requirements. **Audit log data must be retained for a minimum of 10 years** to comply with CMS Medicaid contractual obligations — stored in S3 with Object Lock `COMPLIANCE` mode preventing deletion by any actor. HIPAA requires 7 years minimum for other PHI-adjacent records. Operational data (portal configs, Component Bundles, page assemblies) is retained for the duration of active tenancy plus a defined post-offboarding window.\n\n**Pending NFR:** `REQ-NFR-RET-001` — All audit records for portal access, deployment events, and configuration changes must be retained for a minimum of 10 years in a tamper-evident, immutable store, per CMS Medicaid contractual requirements. To be authored in `/eap-spec-nfr-create`.\n\n---",
+    "5": "[strategy/guidance/compliance/GUID-COMP-RET-001-cms-medicaid-data-retention.md#context-and-problem-statement]\n\n## Context and Problem Statement\n\n**Business Context:** Portal Studio serves state Medicaid programs. CMS contractual requirements mandate that audit records demonstrating system access, configuration changes, and deployment activity be retained for up to 10 years. HIPAA additionally requires 6–7 years retention for records related to PHI-adjacent systems. Keeping all data in hot PostgreSQL storage indefinitely is cost-prohibitive and operationally complex.\n\n**Technical Context:** Portal Studio generates several categories of data with different access patterns and retention requirements: audit logs (security-critical, immutable, rarely accessed after 90 days), deployment history (occasionally accessed for rollback analysis), portal configuration snapshots (needed for forensics and audit), and operational artifacts (Redis page assemblies, Component Bundles — high churn, short useful life).\n\n**Problem Statement:** How are different data categories archived, what are the retention periods by data class, and how is the 10-year CMS Medicaid audit requirement met cost-effectively?",
+    "6": "[strategy/guidance/compliance/GUID-COMP-RET-001-cms-medicaid-data-retention.md#decision-drivers]\n\n### Decision Drivers\n\n- 📋 CMS Medicaid contracts — 10-year audit record retention\n- 📋 HIPAA — 7-year minimum for PHI-adjacent system records\n- 💰 Cost — PostgreSQL storage for 10 years of audit data is expensive; S3 Glacier is appropriate\n- 🔒 Immutability — audit records must be tamper-evident; S3 Object Lock COMPLIANCE mode\n\n---",
+    "7": "[strategy/guidance/compliance/GUID-COMP-RET-001-cms-medicaid-data-retention.md#required-option]\n\n## Required Option",
+    "8": "[strategy/guidance/compliance/GUID-COMP-RET-001-cms-medicaid-data-retention.md#s3-tiered-lifecycle-archival-with-cms-compliant-retention]\n\n### S3 Tiered Lifecycle Archival with CMS-Compliant Retention",
+    "9": "[strategy/guidance/compliance/GUID-COMP-RET-001-cms-medicaid-data-retention.md#data-classification-and-retention-schedule]\n\n#### Data Classification and Retention Schedule\n\n| Data class | Description | Primary store | Retention in primary | Archive target | Total retention |\n|---|---|---|---|---|---|\n| **Security audit log** | Authentication events, deployment actions, config changes, PHI-adjacent BFF access | CloudWatch Logs | 90 days (hot) | S3 Standard-IA → Glacier Flexible Retrieval | **7 years baseline; 10 years on hold** (State Medicaid 5–7 year band; CMS managed care 10-year hold on incident/audit/appeal/court case) |\n| **Deployment audit log** | Deploy/promote/rollback events with config snapshots (`deployment_audit_log` PostgreSQL table) | PostgreSQL | Active tenancy | S3 Standard-IA → Glacier | **7 years baseline; 10 years on hold** (same two-tier rule — deployment records are audit evidence) |\n| **Portal configuration snapshots** | Full portal config at each major version milestone | PostgreSQL | Active tenancy | S3 Standard-IA | **7 years** (HIPAA minimum for PHI-adjacent system records) |\n| **Component registry history** | Registered component versions and contracts | PostgreSQL | Indefinite (active) | S3 Standard-IA on deprecation | **7 years** from last active use |\n| **Tenant configuration (offboarded)** | Full tenant config export at offboarding | S3 Standard | Post-offboarding 30 days (accessible) | S3 Glacier | **7 years** from offboarding date |\n| **Page assembly artifacts** | Compiled page assembly JSON in Redis | Redis | 5-minute TTL (hot cache) | PostgreSQL fallback → archived on page deletion | **30 days** post-page-deletion in PostgreSQL; not retained long-term |\n| **Component Bundles** | Component Bundle (`remoteEntry.js`) URLs + certification artifacts in PostgreSQL | PostgreSQL (registry) + JFrog CDN | Active component lifetime | Deleted on component retirement | **Until component retired + 30 days** |\n| **Application/runtime logs** | Operational logs (non-audit) | CloudWatch Logs | 90 days | S3 Standard-IA | **1 year** (operational only; no regulatory requirement) |",
+    "10": "[strategy/guidance/compliance/GUID-COMP-RET-001-cms-medicaid-data-retention.md#s3-lifecycle-policy-structure]\n\n#### S3 Lifecycle Policy Structure\n\n**Audit log bucket — two-tier retention:**\n\nThe audit bucket enforces a two-tier retention model. Both tiers are written with S3 Object Lock COMPLIANCE mode (one-way — extension permitted, shortening forbidden by the S3 API).\n\n| Tier | Days | CloudWatch enum | Trigger |\n|---|---|---|---|\n| **Baseline** | 2,555 days (7 years) | 2,557 days | Written at object creation for every audit record |\n| **Hold** | 3,650 days (10 years) | 3,653 days | Extended by the incident-response IAM role citing a matter identifier + one of four trigger types: security/privacy incident, active audit, appeal, or court case |\n\nThe 7-year baseline is sourced from the State Medicaid 5–7 year band (top of band). The 10-year hold is sourced from CMS managed care / Medicare Advantage requirements and the State Medicaid \"until any active audits, appeals, or court cases are fully resolved\" clause.\n\n**Runbook — hold re-extension:** A held record approaching its extended `retain-until-date` while its originating matter remains unresolved MUST be extended again before the date elapses. The incident-response runbook includes a step: 90-day-to-expiry CloudWatch alarm → verify matter status → if unresolved, extend via `aws s3api put-object-retention` with a new date. Re-extension is logged in the audit trail with matter identifier, trigger type, actor, and new date.\n\n```\nS3 Bucket: portal-studio-audit-{env}\n├── Object Lock: COMPLIANCE mode\n├── Default retention: 2,555 days (7-year baseline) written at object creation\n├── Hold extension: incident-response role only; extends to 3,650 days; one-way\n├── Lifecycle:\n│   ├── Day 0:    Written to S3 Standard (hot)\n│   ├── Day 90:   Transition to S3 Standard-IA\n│   └── Day 365:  Transition to S3 Glacier Flexible Retrieval\n└── Versioning: Enabled (prevents overwrite)\n```\n\n**Configuration archive bucket (7-year HIPAA retention):**\n```\nS3 Bucket: portal-studio-config-archive-{env}\n├── Object Lock: GOVERNANCE mode (allows admin deletion with elevated permissions)\n├── Retention: 7 years (2,555 days)\n├── Lifecycle:\n│   ├── Day 0:    Written to S3 Standard-IA (infrequent access expected)\n│   └── Day 365:  Transition to S3 Glacier Flexible Retrieval\n└── Versioning: Enabled\n```\n\n**Key distinction — COMPLIANCE vs. GOVERNANCE Object Lock:**\n- **COMPLIANCE:** No actor — including AWS root — can delete records before the retention period expires. Used for CMS 10-year audit records.\n- **GOVERNANCE:** An authorized administrator can override the retention lock with elevated IAM permissions. Used for configuration archives where administrative correction may be needed.",
+    "11": "[strategy/guidance/compliance/GUID-COMP-RET-001-cms-medicaid-data-retention.md#archival-pipeline]\n\n#### Archival Pipeline\n\n**Audit log archival (automated, daily):**\n- CloudWatch Logs subscription filter exports to S3 audit bucket daily via CloudWatch Logs → Kinesis Firehose → S3\n- Firehose buffers and batches records; each S3 object represents one day of audit events per service\n- S3 Object Lock is applied at object creation — no post-creation locking step required\n\n**Deployment audit log archival (automated, monthly):**\n- Drizzle migration adds a `archived_at` column to `deployment_audit_log`\n- Monthly batch job (Kubernetes CronJob) selects rows older than 90 days, writes to S3 config-archive bucket, marks rows `archived_at = now()`\n- Rows with `archived_at` set are eligible for PostgreSQL deletion after 30-day confirmation window\n\n**Tenant configuration snapshot on offboarding:**\n- `offboard-tenant` capability triggers a full Site Bundle export written to S3\n- Export is tagged with `tenant_id`, `offboarded_at`, `retained_until`\n\n**Pros:**\n- ✅ CMS 10-year mandate met with COMPLIANCE Object Lock — no one can delete audit records\n- ✅ S3 Glacier reduces long-term audit storage cost by ~80% vs. CloudWatch Logs retention\n- ✅ Automated lifecycle policies — no manual archival operations\n- ✅ Tiered retention — operational data (page assemblies) not retained unnecessarily\n\n**Cons:**\n- ❌ Glacier retrieval takes 3–5 hours (Flexible Retrieval) — acceptable for audit forensics, not for operational queries\n- ❌ COMPLIANCE Object Lock is irrevocable — accidental write to the wrong bucket cannot be corrected within the retention window\n\n---",
+    "12": "[strategy/guidance/compliance/GUID-COMP-RET-001-cms-medicaid-data-retention.md#considered-options]\n\n## Considered Options",
+    "13": "[strategy/guidance/compliance/GUID-COMP-RET-001-cms-medicaid-data-retention.md#option-1-s3-tiered-lifecycle-with-object-lock-selected]\n\n### Option 1: S3 Tiered Lifecycle with Object Lock (Selected)\n\n**Description:** CloudWatch → S3 pipeline with lifecycle transitions; COMPLIANCE mode for CMS audit records.\n\n**Pros:** ✅ Meets 10-year mandate; cost-optimized; automated; tamper-evident\n\n**Cons:** ❌ Glacier retrieval latency; COMPLIANCE Object Lock irrevocable",
+    "14": "[strategy/guidance/compliance/GUID-COMP-RET-001-cms-medicaid-data-retention.md#option-2-cloudwatch-logs-indefinite-retention]\n\n### Option 2: CloudWatch Logs Indefinite Retention\n\n**Description:** Retain all logs in CloudWatch Logs for the full 10-year period.\n\n**Pros:** ✅ Instant query access via Logs Insights\n\n**Cons:** ❌ CloudWatch storage cost ~10× more expensive than Glacier over 10 years; CloudWatch does not support COMPLIANCE-mode immutability at the record level",
+    "15": "[strategy/guidance/compliance/GUID-COMP-RET-001-cms-medicaid-data-retention.md#option-3-postgresql-long-term-retention-no-archival]\n\n### Option 3: PostgreSQL Long-Term Retention (No Archival)\n\n**Description:** Keep all audit and config data in PostgreSQL indefinitely.\n\n**Pros:** ✅ Full SQL query access; no archival pipeline to maintain\n\n**Cons:** ❌ PostgreSQL storage cost prohibitive at 10-year scale; does not provide COMPLIANCE-mode immutability; database size growth impacts performance\n\n---",
+    "16": "[strategy/guidance/compliance/GUID-COMP-RET-001-cms-medicaid-data-retention.md#decision-outcome]\n\n## Decision Outcome\n\n**Selected:** Option 1 — S3 tiered lifecycle archival with CMS-compliant 10-year COMPLIANCE Object Lock for audit records.\n\n---",
+    "17": "[strategy/guidance/compliance/GUID-COMP-RET-001-cms-medicaid-data-retention.md#consequences]\n\n## Consequences",
+    "18": "[strategy/guidance/compliance/GUID-COMP-RET-001-cms-medicaid-data-retention.md#-positive]\n\n### ✅ Positive\n\n- 10-year CMS Medicaid audit retention met with tamper-evident COMPLIANCE Object Lock\n- 7-year HIPAA minimum for PHI-adjacent records met\n- S3 Glacier reduces long-term audit storage cost significantly",
+    "19": "[strategy/guidance/compliance/GUID-COMP-RET-001-cms-medicaid-data-retention.md#-negative]\n\n### ❌ Negative\n\n- Audit records in Glacier require 3–5 hour retrieval for forensic analysis — acceptable for compliance purposes, not for real-time investigation\n- Archival pipeline (Kinesis Firehose, CronJob) is operational infrastructure to maintain",
+    "20": "[strategy/guidance/compliance/GUID-COMP-RET-001-cms-medicaid-data-retention.md#-neutral]\n\n### ⚪ Neutral\n\n- Operational data (Redis artifacts, page assemblies) has short retention — no long-term storage cost for operational cache data\n\n---",
+    "21": "[strategy/guidance/compliance/GUID-COMP-RET-001-cms-medicaid-data-retention.md#risk-assessment--mitigation]\n\n## Risk Assessment & Mitigation",
+    "22": "[strategy/guidance/compliance/GUID-COMP-RET-001-cms-medicaid-data-retention.md#-risks]\n\n### ⚠️ Risks\n\n- Data written to wrong S3 bucket with COMPLIANCE Object Lock — cannot be corrected within retention period\n- Kinesis Firehose delivery failure — audit records not archived\n- Glacier retrieval required for active security investigation (slow)",
+    "23": "[strategy/guidance/compliance/GUID-COMP-RET-001-cms-medicaid-data-retention.md#-mitigations]\n\n### 🛡️ Mitigations\n\n- S3 bucket policy and IAM deny rules prevent cross-bucket writes; audit bucket is write-once from the Firehose delivery role only\n- CloudWatch alarm on Firehose delivery failures; dead-letter queue for failed records; CloudWatch Logs retains 90 days as fallback\n- S3 Glacier Instant Retrieval tier available for records accessed within the first year (millisecond access); Flexible Retrieval for older records where 3–5h is acceptable\n\n---",
+    "24": "[strategy/guidance/compliance/GUID-COMP-RET-001-cms-medicaid-data-retention.md#compliance-notes]\n\n## Compliance Notes\n\n- **CMS Medicaid:** CMS contract standard data retention requirements mandate retention of system audit records for up to 10 years. COMPLIANCE Object Lock satisfies the tamper-evidence requirement.\n- **HIPAA:** 45 CFR §164.530(j) — documentation retention 6 years from creation or last effective date. This ADR applies 7 years as the working minimum across all PHI-adjacent records.\n- **NIST 800-53:** AU-11 (audit record retention); AU-9 (protection of audit information — COMPLIANCE Object Lock satisfies this).\n- **Standards:** ADR-SEC-004 (this repo) — KMS CMK encryption for S3 buckets; ADR-OPS-002 (this repo) — CloudWatch audit log pipeline feeding the archival bucket.\n\n**Pending NFR:** `REQ-NFR-RET-001` — to be created in `/eap-spec-nfr-create` when BDD NFR specification phase begins.\n\n---",
+    "25": "[strategy/guidance/compliance/GUID-COMP-RET-001-cms-medicaid-data-retention.md#review-and-approval]\n\n## Review and Approval\n\n| Role                         | Name          | Date       | Status     |\n| ---------------------------- | ------------- | ---------- | ---------- |\n| Enterprise Architecture Lead | Mike Goppert  | 2026-07-29 | 🔄 Pending |\n| Enterprise Application Architect Lead   | James Macurak | 2026-07-29 | 🔄 Pending |\n\n---",
+    "26": "[strategy/guidance/compliance/GUID-COMP-RET-001-cms-medicaid-data-retention.md#-change-log]\n\n## 📋 Change Log\n\n| Version | Date       | Author       | Description              |\n| ------- | ---------- | ------------ | ------------------------ |\n| 1.0     | 2026-07-29 | Mike Goppert | Initial decision document |\n| 1.1     | 2026-07-30 | Mike Goppert | Two-tier retention model — 7-year baseline (State Medicaid band) / 10-year hold (CMS managed care); four hold triggers (incident, audit, appeal, court case); runbook re-extension step; corrected data classification table |"
+  },
+  "coverage": {
+    "total_pages": 26,
+    "covered_pages": 26,
+    "sampled_pages": 26,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 26
+  }
+}

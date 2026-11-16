@@ -1,0 +1,54 @@
+component: backend-file-transfer-mgmt-ctrl
+tier: backend
+depends_on:
+- backend-configure-source-locations-and-destinations-api
+classes:
+- name: HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Ctrl.FileTransferSvcQueryServiceProvider
+  kind: Class
+  tier: backend
+  file: batch\FileTransferManagement\HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Ctrl\FileTransferSvcQueryServiceProvider.cs
+  line: 18
+  line_end: 40
+  project: HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Ctrl
+  methods:
+  - name: HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Ctrl.FileTransferSvcQueryServiceProvider.GetIntegrationFile(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.GetIntegrationFileQuery)
+    line: 33
+    line_end: 38
+  uses:
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService (backend-configure-source-locations-and-destinations-api)
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Ctrl.IFileTransferSvcQueryServiceProvider
+  tables:
+    orm:FTS_INTEGRATION_FILE:
+    - reads
+- name: HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Ctrl.FileTransferSvcServiceProvider
+  kind: Class
+  tier: backend
+  file: batch\FileTransferManagement\HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Ctrl\FileTransferSvcServiceProvider.cs
+  line: 18
+  line_end: 38
+  project: HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Ctrl
+  methods:
+  - name: HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Ctrl.FileTransferSvcServiceProvider.UpdateIntegrationFile(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.UpdateIntegrationFileCommand)
+    line: 33
+    line_end: 36
+  uses:
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService (backend-configure-source-locations-and-destinations-api)
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Ctrl.IFileTransferSvcServiceProvider
+- name: HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Ctrl.IFileTransferSvcQueryServiceProvider
+  kind: Interface
+  tier: backend
+  file: batch\FileTransferManagement\HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Ctrl\IFileTransferSvcQueryServiceProvider.cs
+  line: 16
+  line_end: 19
+  project: HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Ctrl
+  methods: []
+  uses: []
+- name: HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Ctrl.IFileTransferSvcServiceProvider
+  kind: Interface
+  tier: backend
+  file: batch\FileTransferManagement\HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Ctrl\IFileTransferSvcServiceProvider.cs
+  line: 16
+  line_end: 19
+  project: HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Ctrl
+  methods: []
+  uses: []

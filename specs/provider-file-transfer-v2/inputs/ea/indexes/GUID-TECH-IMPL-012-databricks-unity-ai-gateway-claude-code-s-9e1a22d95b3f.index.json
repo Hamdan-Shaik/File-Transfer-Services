@@ -1,0 +1,617 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Technology Implementation — Databricks Unity AI Gateway Claude Code Setup Guidance",
+  "document_description": "guidance_name: 'Databricks Unity AI Gateway Claude Code Setup Guidance'",
+  "total_pages": 64,
+  "tree": [
+    {
+      "title": "Technology Implementation — Databricks Unity AI Gateway Claude Code Setup Guidance",
+      "node_id": "technology-implementation--databricks-unity-ai-gateway-claude-code-setup-guidance",
+      "start_index": 1,
+      "end_index": 64,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Executive Summary",
+          "node_id": "executive-summary",
+          "start_index": 3,
+          "end_index": 9,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Purpose Statement",
+              "node_id": "purpose-statement",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Business Value",
+              "node_id": "business-value",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Target Audience",
+              "node_id": "target-audience",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Scope and Applicability",
+              "node_id": "scope-and-applicability",
+              "start_index": 7,
+              "end_index": 9,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Applicable Scenarios",
+                  "node_id": "applicable-scenarios",
+                  "start_index": 8,
+                  "end_index": 8,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Scope Boundaries",
+                  "node_id": "scope-boundaries",
+                  "start_index": 9,
+                  "end_index": 9,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Guidance Context and Background",
+          "node_id": "guidance-context-and-background",
+          "start_index": 10,
+          "end_index": 19,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Business Context",
+              "node_id": "business-context",
+              "start_index": 11,
+              "end_index": 13,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Business Drivers",
+                  "node_id": "business-drivers",
+                  "start_index": 12,
+                  "end_index": 12,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Strategic Alignment",
+                  "node_id": "strategic-alignment",
+                  "start_index": 13,
+                  "end_index": 13,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Technical Context",
+              "node_id": "technical-context",
+              "start_index": 14,
+              "end_index": 16,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Current State Assessment",
+                  "node_id": "current-state-assessment",
+                  "start_index": 15,
+                  "end_index": 15,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Future State Vision",
+                  "node_id": "future-state-vision",
+                  "start_index": 16,
+                  "end_index": 16,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Problem Statement",
+              "node_id": "problem-statement",
+              "start_index": 17,
+              "end_index": 19,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Problem Description",
+                  "node_id": "problem-description",
+                  "start_index": 18,
+                  "end_index": 18,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Impact Assessment",
+                  "node_id": "impact-assessment",
+                  "start_index": 19,
+                  "end_index": 19,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Detailed Guidance",
+          "node_id": "detailed-guidance",
+          "start_index": 20,
+          "end_index": 31,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Core Principles",
+              "node_id": "core-principles",
+              "start_index": 21,
+              "end_index": 24,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Principle 1: Keep the Auth Token Out of Version-Controlled Files",
+                  "node_id": "principle-1-keep-the-auth-token-out-of-version-controlled-files",
+                  "start_index": 22,
+                  "end_index": 22,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Principle 2: Use Gateway Model Aliases, Not Bedrock or Native Anthropic Model IDs",
+                  "node_id": "principle-2-use-gateway-model-aliases-not-bedrock-or-native-anthropic-model-ids",
+                  "start_index": 23,
+                  "end_index": 23,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Principle 3: Environment Variables Are Read at Process Startup",
+                  "node_id": "principle-3-environment-variables-are-read-at-process-startup",
+                  "start_index": 24,
+                  "end_index": 24,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Common Pitfalls",
+              "node_id": "common-pitfalls",
+              "start_index": 25,
+              "end_index": 31,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Pitfall 1: Storing the Token in a Version-Controlled File",
+                  "node_id": "pitfall-1-storing-the-token-in-a-version-controlled-file",
+                  "start_index": 26,
+                  "end_index": 26,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Pitfall 2: PowerShell `$env:` Variables Only Last for the Current Session",
+                  "node_id": "pitfall-2-powershell-env-variables-only-last-for-the-current-session",
+                  "start_index": 27,
+                  "end_index": 27,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Pitfall 3: Forgetting to Restart VS Code After Editing Settings",
+                  "node_id": "pitfall-3-forgetting-to-restart-vs-code-after-editing-settings",
+                  "start_index": 28,
+                  "end_index": 28,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Pitfall 4: Inconsistent Model Aliases Across Surfaces",
+                  "node_id": "pitfall-4-inconsistent-model-aliases-across-surfaces",
+                  "start_index": 29,
+                  "end_index": 29,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Pitfall 5: Treating the Pilot Endpoint as a Production Standard",
+                  "node_id": "pitfall-5-treating-the-pilot-endpoint-as-a-production-standard",
+                  "start_index": 30,
+                  "end_index": 30,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Pitfall 6: Token Silently Auto-Revoked or Auto-Scoped",
+                  "node_id": "pitfall-6-token-silently-auto-revoked-or-auto-scoped",
+                  "start_index": 31,
+                  "end_index": 31,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Implementation Framework",
+          "node_id": "implementation-framework",
+          "start_index": 32,
+          "end_index": 40,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Prerequisites",
+              "node_id": "prerequisites",
+              "start_index": 33,
+              "end_index": 36,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Technical Prerequisites",
+                  "node_id": "technical-prerequisites",
+                  "start_index": 34,
+                  "end_index": 34,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Transition Prerequisite (Workstations Onboarded via the Standard VS Code Setup Script)",
+                  "node_id": "transition-prerequisite-workstations-onboarded-via-the-standard-vs-code-setup-script",
+                  "start_index": 35,
+                  "end_index": 35,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Organizational Prerequisites",
+                  "node_id": "organizational-prerequisites",
+                  "start_index": 36,
+                  "end_index": 36,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Configuration Surfaces",
+              "node_id": "configuration-surfaces",
+              "start_index": 37,
+              "end_index": 40,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Option A: Claude Code VS Code Extension",
+                  "node_id": "option-a-claude-code-vs-code-extension",
+                  "start_index": 38,
+                  "end_index": 38,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Option B: Claude Code CLI",
+                  "node_id": "option-b-claude-code-cli",
+                  "start_index": 39,
+                  "end_index": 39,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Option C: `.claude/settings.json` Model Defaults (Optional — CLI add-on)",
+                  "node_id": "option-c-claudesettingsjson-model-defaults-optional--cli-add-on",
+                  "start_index": 40,
+                  "end_index": 40,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Practical Application",
+          "node_id": "practical-application",
+          "start_index": 41,
+          "end_index": 50,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Request Databricks Workspace Access",
+              "node_id": "request-databricks-workspace-access",
+              "start_index": 42,
+              "end_index": 43,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Form Field Reference",
+                  "node_id": "form-field-reference",
+                  "start_index": 43,
+                  "end_index": 43,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Obtain a Databricks Personal Access Token",
+              "node_id": "obtain-a-databricks-personal-access-token",
+              "start_index": 44,
+              "end_index": 44,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "VS Code Extension Configuration",
+              "node_id": "vs-code-extension-configuration",
+              "start_index": 45,
+              "end_index": 45,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "CLI Configuration (PowerShell)",
+              "node_id": "cli-configuration-powershell",
+              "start_index": 46,
+              "end_index": 46,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Project Settings Configuration (Optional)",
+              "node_id": "project-settings-configuration-optional",
+              "start_index": 47,
+              "end_index": 48,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Troubleshooting",
+                  "node_id": "troubleshooting",
+                  "start_index": 48,
+                  "end_index": 48,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Tools and Techniques",
+              "node_id": "tools-and-techniques",
+              "start_index": 49,
+              "end_index": 50,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Recommended Tools",
+                  "node_id": "recommended-tools",
+                  "start_index": 50,
+                  "end_index": 50,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Governance and Compliance",
+          "node_id": "governance-and-compliance",
+          "start_index": 51,
+          "end_index": 55,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Compliance Requirements",
+              "node_id": "compliance-requirements",
+              "start_index": 52,
+              "end_index": 53,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Organizational Compliance",
+                  "node_id": "organizational-compliance",
+                  "start_index": 53,
+                  "end_index": 53,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Risk Management",
+              "node_id": "risk-management",
+              "start_index": 54,
+              "end_index": 55,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Risk Assessment",
+                  "node_id": "risk-assessment",
+                  "start_index": 55,
+                  "end_index": 55,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Integration with Enterprise Architecture",
+          "node_id": "integration-with-enterprise-architecture",
+          "start_index": 56,
+          "end_index": 59,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Standards Alignment",
+              "node_id": "standards-alignment",
+              "start_index": 57,
+              "end_index": 57,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Guidance Connections",
+              "node_id": "guidance-connections",
+              "start_index": 58,
+              "end_index": 58,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Decision Dependencies",
+              "node_id": "decision-dependencies",
+              "start_index": 59,
+              "end_index": 59,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Related Guidance and References",
+          "node_id": "related-guidance-and-references",
+          "start_index": 60,
+          "end_index": 62,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Related Guidance",
+              "node_id": "related-guidance",
+              "start_index": 61,
+              "end_index": 61,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Industry References",
+              "node_id": "industry-references",
+              "start_index": 62,
+              "end_index": 62,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Change History",
+          "node_id": "change-history",
+          "start_index": 63,
+          "end_index": 63,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Review Log",
+          "node_id": "review-log",
+          "start_index": 64,
+          "end_index": 64,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#technology-implementation--databricks-unity-ai-gateway-claude-code-setup-guidance]\n\n# Technology Implementation — Databricks Unity AI Gateway Claude Code Setup Guidance\n\n<!-- BREADCRUMB: strategy/guidance/technology/implementation -->\n\n---\n\n**Architecture Guidance Metadata**\n\n```yaml\nguidance_id: 'GUID-TECH-IMPL-012'\nguidance_name: 'Databricks Unity AI Gateway Claude Code Setup Guidance'\nguidance_type: 'local-environment-setup'\ncategory: 'technology'\nversion: '1.5.0'\nstatus: 'draft'\napplicability: 'enterprise'\ntags: ['databricks', 'unity-ai-gateway', 'claude-code', 'vscode', 'anthropic', 'local-setup', 'ai-gateway']\n```\n\n---",
+    "2": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#table-of-contents]\n\n## Table of Contents\n\n- [Executive Summary](#executive-summary)\n- [Guidance Context and Background](#guidance-context-and-background)\n- [Detailed Guidance](#detailed-guidance)\n- [Implementation Framework](#implementation-framework)\n- [Practical Application](#practical-application)\n- [Governance and Compliance](#governance-and-compliance)\n- [Integration with Enterprise Architecture](#integration-with-enterprise-architecture)\n- [Related Guidance and References](#related-guidance-and-references)\n- [Change History](#change-history)\n- [Review Log](#review-log)\n\n---",
+    "3": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#executive-summary]\n\n## Executive Summary",
+    "4": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#purpose-statement]\n\n### Purpose Statement\n\nThis guidance shows developers how to configure Claude Code — the VS Code extension, the CLI, or project-level settings — to route Anthropic model requests through the **Databricks Unity AI Gateway** pilot environment (`acuity-aigov-stage-ue1`). This is a different integration path than the **AWS Bedrock native provider** that Claude Code uses on a standard Gainwell developer workstation (`CLAUDE_CODE_USE_BEDROCK=1` + `AWS_PROFILE=dev-bedrock`, set by the VS Code onboarding script). Unity AI Gateway uses a different endpoint URL, a different token type (Databricks personal access tokens, prefixed `dapi`), and gateway-defined model aliases rather than Bedrock model IDs.",
+    "5": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#business-value]\n\n### Business Value\n\n- **Governed model access** — requests flow through a Databricks-hosted gateway rather than an unmanaged credential\n- **Consistent model aliasing** — gateway-defined aliases let the platform control which underlying model version is actually served, without each developer hardcoding a specific model ID\n- **Configuration options for every surface** — this guidance covers the VS Code extension, the CLI, and project-level `.claude/settings.json`, so each developer or team can choose whichever surface fits their workflow",
+    "6": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#target-audience]\n\n### Target Audience\n\n- **Primary Audience**: Developers and engineers using Claude Code (VS Code extension or CLI) who need to route through the Databricks Unity AI Gateway pilot\n- **Secondary Audience**: Enterprise Architects supporting the Unity AI Gateway technology evaluation\n- **Stakeholders**: EA Practice, Platform Engineering, Security",
+    "7": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#scope-and-applicability]\n\n### Scope and Applicability",
+    "8": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#applicable-scenarios]\n\n#### Applicable Scenarios\n\n- Initial setup of a developer workstation to use Claude Code against the Databricks Unity AI Gateway pilot\n- Switching a workstation from the AWS Bedrock native provider path (`CLAUDE_CODE_USE_BEDROCK=1`) to the Databricks Unity AI Gateway pilot\n- Troubleshooting model discovery, authentication, or model-alias mismatches on a chosen configuration surface",
+    "9": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#scope-boundaries]\n\n#### Scope Boundaries\n\n- **In Scope**: Submitting the ServiceNow request for `acuity-aigov-stage-ue1` workspace access, generating a Databricks personal access token for an existing workspace user, VS Code `settings.json` configuration, PowerShell CLI session environment variables, and project/user-level `.claude/settings.json` model defaults\n- **Out of Scope**: Approval and backend provisioning of the workspace-access request (handled by the platform/security team after ticket submission), Unity AI Gateway platform-side configuration (external model endpoint setup performed by the platform team), the go/no-go decision on Unity AI Gateway as the enterprise-standard AI Gateway (tracked separately), and macOS/Linux shell syntax equivalents\n- **Related Guidance**: [GUID-SEC-AI-GW-2.9.07 — AI Gateway Security](../../security/Artificial-Intelligence/GUID-SEC-AI-GW-2.9.07.md), [GUID-TECH-IMPL-006 — Azure DevOps MCP Server Local Setup Guidance](./GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md)\n\n---",
+    "10": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#guidance-context-and-background]\n\n## Guidance Context and Background",
+    "11": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#business-context]\n\n### Business Context",
+    "12": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#business-drivers]\n\n#### Business Drivers\n\n- **Enterprise AI adoption strategy** identifies a governed AI Gateway as part of the AI engineering foundation supporting production AI use cases\n- **Active technology evaluation**: Databricks Unity AI Gateway is one of three candidates (alongside Kong AI Gateway and Netskope One for AI) under evaluation as the enterprise AI Gateway security enforcement plane — see [EVAL-ai-gateway.md](../../../tech-evals/ai-gateway/EVAL-ai-gateway.md) (status: In Progress)\n- This guidance supports early, hands-on developer access to the Databricks candidate specifically for Claude Code, as an alternative to the existing AWS Bedrock native provider path (`CLAUDE_CODE_USE_BEDROCK=1`)",
+    "13": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#strategic-alignment]\n\n#### Strategic Alignment\n\nThis guidance supports the AI Gateway Security architecture vision ([GUID-SEC-AI-VISION-0.9.01](../../security/GUID-SEC-AI-VISION-0.9.01.md) / [GUID-SEC-AI-GW-2.9.07](../../security/Artificial-Intelligence/GUID-SEC-AI-GW-2.9.07.md)), which establishes an AI Gateway as a governed enforcement plane between consuming applications (including developer tools like Claude Code) and AI model endpoints.",
+    "14": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#technical-context]\n\n### Technical Context",
+    "15": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#current-state-assessment]\n\n#### Current State Assessment\n\n- Claude Code is commonly configured to use the native AWS Bedrock provider on Gainwell developer workstations (`CLAUDE_CODE_USE_BEDROCK=1` + `AWS_PROFILE=dev-bedrock`), connecting directly to Bedrock without an AI Gateway in the path\n- There is no repository-wide standard configuration yet for pointing Claude Code at the Databricks Unity AI Gateway\n- The pilot endpoint (`acuity-aigov-stage-ue1.cloud.databricks.com`) is a **staging** environment, consistent with the \"In Progress\" status of the Unity AI Gateway technology evaluation — it is not yet a GA, enterprise-standard endpoint",
+    "16": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#future-state-vision]\n\n#### Future State Vision\n\n- If Unity AI Gateway is selected as the enterprise AI Gateway following the technology evaluation, a single company-standard endpoint and org-wide configuration may replace the per-developer setup described in this document\n- Model aliases and endpoint URLs described here should be treated as pilot-specific and re-verified against the platform team before broader rollout",
+    "17": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#problem-statement]\n\n### Problem Statement",
+    "18": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#problem-description]\n\n#### Problem Description\n\nDevelopers need a documented, repeatable procedure to point Claude Code — via the VS Code extension, the CLI, or project-level settings — at the Databricks Unity AI Gateway's Anthropic-compatible endpoint, using gateway-defined model aliases instead of AWS Bedrock model IDs, without accidentally committing the Databricks personal access token (`dapi...`) to source control.",
+    "19": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#impact-assessment]\n\n#### Impact Assessment\n\n- Without this guidance, developers cannot reliably test the Unity AI Gateway candidate, may misconfigure model aliases and receive unexpected model behavior, or may paste a live token into a file that is not excluded from version control\n- Configuring more than one surface with mismatched model aliases produces inconsistent model behavior depending on which surface is active for a given session\n\n---",
+    "20": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#detailed-guidance]\n\n## Detailed Guidance",
+    "21": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#core-principles]\n\n### Core Principles",
+    "22": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#principle-1-keep-the-auth-token-out-of-version-controlled-files]\n\n#### Principle 1: Keep the Auth Token Out of Version-Controlled Files\n\n**Description:** The Databricks personal access token (`ANTHROPIC_AUTH_TOKEN`, prefixed `dapi`) must never be placed in a file that is tracked by git.\n**Rationale:** This token grants access to the Unity AI Gateway under the developer's identity; exposure in source control extends the same risk profile as any other API credential leak.\n**Application:** VS Code's **User Settings (JSON)** file lives in the user's editor profile (outside the repository) and is an acceptable place for the raw token value. The project-level `.claude/settings.json` in this repository is version-controlled — do **not** place the token there (see [Pitfall 1](#pitfall-1-storing-the-token-in-a-version-controlled-file)).",
+    "23": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#principle-2-use-gateway-model-aliases-not-bedrock-or-native-anthropic-model-ids]\n\n#### Principle 2: Use Gateway Model Aliases, Not Bedrock or Native Anthropic Model IDs\n\n**Description:** The Unity AI Gateway configuration resolves logical, gateway-defined model aliases to actual served models. These aliases are distinct from both native Anthropic model IDs and the AWS Bedrock model IDs used on the native Bedrock provider path (`CLAUDE_CODE_USE_BEDROCK=1`).\n**Rationale:** Claude Code's default model environment variables (`ANTHROPIC_MODEL`, `ANTHROPIC_DEFAULT_SONNET_MODEL`, `ANTHROPIC_DEFAULT_OPUS_MODEL`, `ANTHROPIC_DEFAULT_HAIKU_MODEL`) must be set to the current gateway alias, or the gateway will not resolve the request correctly.\n**Application:** Obtain the current alias values from the platform team and use them exactly as provided in whichever surface you configure (VS Code, CLI, or `.claude/settings.json`) — do not substitute a Bedrock model ID or a native Anthropic model name. Because gateway aliases can change over time, treat any alias value as configuration to be verified, not a fixed constant.",
+    "24": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#principle-3-environment-variables-are-read-at-process-startup]\n\n#### Principle 3: Environment Variables Are Read at Process Startup\n\n**Description:** Both the VS Code extension and the CLI read their configured environment variables when the process (VS Code or the `claude` CLI) starts.\n**Rationale:** Changes made to `settings.json` or a PowerShell session's environment after the process has already launched are invisible to it.\n**Application:** Always fully restart VS Code (not just \"Reload Window\") after editing `claudeCode.environmentVariables`, and set CLI environment variables before launching `claude`.",
+    "25": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#common-pitfalls]\n\n### Common Pitfalls",
+    "26": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#pitfall-1-storing-the-token-in-a-version-controlled-file]\n\n#### Pitfall 1: Storing the Token in a Version-Controlled File\n\n**Description:** Adding `ANTHROPIC_AUTH_TOKEN` to the repository's tracked `.claude/settings.json` instead of VS Code User Settings or a session-scoped/User-scoped environment variable.\n**Impact:** The token becomes visible to anyone with read access to the repository and to its full git history, even after later removal.\n**Prevention:** Keep the token exclusively in VS Code User Settings ([VS Code Extension Configuration](#vs-code-extension-configuration)) or a CLI environment variable ([CLI Configuration](#cli-configuration-powershell)). Use `.claude/settings.json` only for non-secret defaults such as model aliases ([Project Settings Configuration](#project-settings-configuration-optional)). Per Anthropic's official guidance, never put a gateway credential in a project's tracked `.claude/settings.json` — that file is committed and shared with everyone who clones the repository. `.claude/settings.local.json` is only safe for a manually-created file if you add it to `.gitignore` yourself first; Claude Code only adds it to your global git excludes automatically when Claude Code itself writes a setting there.\n**Mitigation:** If a token was committed, treat it as compromised: revoke/rotate it in Databricks immediately and remove it from git history per standard secret-exposure remediation.",
+    "27": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#pitfall-2-powershell-env-variables-only-last-for-the-current-session]\n\n#### Pitfall 2: PowerShell `$env:` Variables Only Last for the Current Session\n\n**Description:** Setting `$env:ANTHROPIC_BASE_URL`, `$env:ANTHROPIC_AUTH_TOKEN`, etc. in a PowerShell window only applies to that window.\n**Impact:** Closing the terminal or opening a new one means `claude` falls back to its previous configuration.\n**Prevention:** For routine use, either re-run the `$env:` commands in each new session, add them to your PowerShell profile (`$PROFILE`), or persist them as User-scoped environment variables using `[System.Environment]::SetEnvironmentVariable(..., \"User\")` (see [GUID-TECH-IMPL-006](./GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md#step-2-set-user-scoped-environment-variables-in-powershell) for the pattern).\n**Mitigation:** Re-run the environment variable commands before invoking `claude`.",
+    "28": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#pitfall-3-forgetting-to-restart-vs-code-after-editing-settings]\n\n#### Pitfall 3: Forgetting to Restart VS Code After Editing Settings\n\n**Description:** Editing `claudeCode.environmentVariables` and expecting the change to take effect via \"Reload Window\" alone.\n**Impact:** Claude Code continues to use the previously loaded environment; requests may still go to the old endpoint or model.\n**Prevention:** Fully close and reopen VS Code (File → Exit, then relaunch) after saving `settings.json`.\n**Mitigation:** Restart VS Code; no other action needed.",
+    "29": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#pitfall-4-inconsistent-model-aliases-across-surfaces]\n\n#### Pitfall 4: Inconsistent Model Aliases Across Surfaces\n\n**Description:** A developer configures more than one surface (VS Code, CLI, `.claude/settings.json`) with model alias values obtained at different times or from different sources, and the values no longer match each other.\n**Impact:** The same developer gets different model behavior depending on which surface is active for a given session.\n**Prevention:** Confirm the exact, current alias strings with the platform/gateway team before configuring any surface, and re-verify periodically — gateway aliases are platform-managed configuration and can change over time.\n**Mitigation:** Update the affected surface(s) to the current confirmed alias.",
+    "30": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#pitfall-5-treating-the-pilot-endpoint-as-a-production-standard]\n\n#### Pitfall 5: Treating the Pilot Endpoint as a Production Standard\n\n**Description:** Assuming `acuity-aigov-stage-ue1.cloud.databricks.com` is the permanent, enterprise-approved endpoint for all Claude Code usage.\n**Impact:** Workflows built against a staging endpoint may break or require reconfiguration once the AI Gateway technology evaluation concludes and a production endpoint is designated.\n**Prevention:** Treat this configuration as a pilot for the Unity AI Gateway evaluation ([EVAL-ai-gateway.md](../../../tech-evals/ai-gateway/EVAL-ai-gateway.md)), and watch for a future enterprise-standard endpoint announcement.\n**Mitigation:** Update `ANTHROPIC_BASE_URL` on whichever surface(s) you have configured when a production endpoint is announced.",
+    "31": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#pitfall-6-token-silently-auto-revoked-or-auto-scoped]\n\n#### Pitfall 6: Token Silently Auto-Revoked or Auto-Scoped\n\n**Description:** Databricks automatically revokes a personal access token that has not been used for 90 days, and applies **auto-scoping** to new long-lived tokens (30 days or longer): it observes API usage for 30 days and then narrows the token to only the scopes actually used.\n**Impact:** A token that worked during initial testing can later fail with an authorization error if the gateway calls Claude Code makes fall outside the auto-inferred scope, or if the token sat unused for 90+ days.\n**Prevention:** Set a calendar reminder near the token's lifetime/90-day mark. If you manually scoped the token (see [Obtain a Databricks Personal Access Token](#obtain-a-databricks-personal-access-token)), auto-scoping does not apply and this is less of a concern.\n**Mitigation:** Generate a new token following the same steps, and update whichever surface(s) you configured with the new value.\n\n---",
+    "32": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#implementation-framework]\n\n## Implementation Framework",
+    "33": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#prerequisites]\n\n### Prerequisites",
+    "34": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#technical-prerequisites]\n\n#### Technical Prerequisites\n\n- Claude Code VS Code extension and/or the Claude Code CLI installed\n- Windows workstation with PowerShell 5.1+ or PowerShell 7+\n- A Databricks user account with access to the `acuity-aigov-stage-ue1` workspace, requested via ServiceNow and approved by the platform/security team (see [Organizational Prerequisites](#organizational-prerequisites) below and [Request Databricks Workspace Access](#request-databricks-workspace-access)) — you generate your own personal access token from this account; see [Obtain a Databricks Personal Access Token](#obtain-a-databricks-personal-access-token)\n- Network access to `*.cloud.databricks.com`",
+    "35": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#transition-prerequisite-workstations-onboarded-via-the-standard-vs-code-setup-script]\n\n#### Transition Prerequisite (Workstations Onboarded via the Standard VS Code Setup Script)\n\nIf your workstation was set up using the Gainwell VS Code onboarding script, `CLAUDE_CODE_USE_BEDROCK=1` will conflict with Unity AI Gateway configuration on **all three surfaces** and must be removed before you proceed. `AWS_PROFILE` and `AWS_REGION` do not affect gateway routing and should be left in place — removing them from your profile would break unrelated AWS CLI/tooling sessions.\n\n1. **Remove `CLAUDE_CODE_USE_BEDROCK` from your PowerShell profile.**  \n   Open `$PROFILE.CurrentUserAllHosts` in an editor and delete (or comment out) the `$env:CLAUDE_CODE_USE_BEDROCK` line. Restart PowerShell afterward.\n\n2. **Remove `CLAUDE_CODE_USE_BEDROCK` from `~/.claude/settings.json`.**  \n   Open `%USERPROFILE%\\.claude\\settings.json` and remove only the `CLAUDE_CODE_USE_BEDROCK` entry from the `env` block. Leave all other settings (permissions, `AWS_PROFILE`, `AWS_REGION`, etc.) intact.\n\n   ```jsonc\n   // Remove only this entry from the \"env\" block:\n   \"CLAUDE_CODE_USE_BEDROCK\": \"1\"\n   ```\n\n> **Why both locations?** The onboarding script writes `CLAUDE_CODE_USE_BEDROCK=1` to the PowerShell profile (for new terminal sessions) and to `~/.claude/settings.json` (read at Claude Code process startup). When either is set, Claude Code routes to Bedrock regardless of `ANTHROPIC_BASE_URL`. Both must be cleared for the gateway configuration to take effect.\n\n> **Reversibility:** To return to the Bedrock native path, restore `\"CLAUDE_CODE_USE_BEDROCK\": \"1\"` to the `env` block in `~/.claude/settings.json` and re-add `$env:CLAUDE_CODE_USE_BEDROCK='1'` to your PowerShell profile (or re-run the onboarding script).",
+    "36": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#organizational-prerequisites]\n\n#### Organizational Prerequisites\n\n- Approved participant in the Databricks Unity AI Gateway pilot (per [EVAL-ai-gateway.md](../../../tech-evals/ai-gateway/EVAL-ai-gateway.md))\n- Databricks workspace access at `acuity-aigov-stage-ue1`, requested through the [Genius Databricks Access ServiceNow form](https://gainwellnow.service-now.com/esc?id=sc_cat_item&sys_id=21b2336bc3da0a1044eaa6bc7a013181&table=sc_cat_item&searchTerm=GIA%20databricks%20access) — see [Request Databricks Workspace Access](#request-databricks-workspace-access)",
+    "37": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#configuration-surfaces]\n\n### Configuration Surfaces\n\nClaude Code has two authentication surfaces — **Option A** (VS Code extension) and **Option B** (CLI) — that are mutually exclusive alternatives: choose the one that matches how you primarily run Claude Code. **Option C** (`.claude/settings.json` model defaults) is an optional overlay for CLI users who want gateway defaults declared once rather than passed on every invocation; it is additive to Option B, not a standalone alternative (it carries no auth token). Configure more than one surface only if you actually use Claude Code through multiple surfaces (e.g., both the VS Code extension and a standalone terminal) and want each to route through the gateway; in that case, keep the model alias values consistent across every surface you configure (see [Pitfall 4](#pitfall-4-inconsistent-model-aliases-across-surfaces)).",
+    "38": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#option-a-claude-code-vs-code-extension]\n\n#### Option A: Claude Code VS Code Extension\n\n**When to use:** You primarily use Claude Code through the VS Code extension.\n**Objectives:** Point the VS Code extension at the Unity AI Gateway endpoint and current gateway model aliases.\n**Prerequisites:** Databricks token available.\n**Key Activities:** See [VS Code Extension Configuration](#vs-code-extension-configuration) in Practical Application.\n**Deliverables:** Updated VS Code User Settings (JSON) with `claudeCode.*` keys.\n**Success Criteria:** After restarting VS Code, Claude Code sessions in the editor respond using the configured gateway model alias.",
+    "39": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#option-b-claude-code-cli]\n\n#### Option B: Claude Code CLI\n\n**When to use:** You primarily invoke `claude` directly from a terminal, independent of VS Code.\n**Objectives:** Point a PowerShell session's `claude` invocation at the same gateway endpoint.\n**Prerequisites:** Databricks token available.\n**Key Activities:** See [CLI Configuration](#cli-configuration-powershell) in Practical Application.\n**Deliverables:** Session (or persisted) environment variables and a working `claude --model ...` invocation.\n**Success Criteria:** `claude` starts and responds using the specified gateway model alias without an authentication error.",
+    "40": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#option-c-claudesettingsjson-model-defaults-optional--cli-add-on]\n\n#### Option C: `.claude/settings.json` Model Defaults (Optional — CLI add-on)\n\n**When to use:** You have already configured Option B and want gateway model defaults declared once in the project rather than re-typed or re-exported every session. **Do not use Option C alone** — it contains no `ANTHROPIC_AUTH_TOKEN` and will fail authentication without the credentials from Option B.\n**Objectives:** Declare non-secret model and endpoint defaults in `.claude/settings.json` so the CLI picks them up automatically.\n**Prerequisites:** Option B configured; a confirmed, current model alias from the platform team.\n**Key Activities:** See [Project Settings Configuration](#project-settings-configuration-optional) in Practical Application.\n**Deliverables:** A `model` and `env` block in `.claude/settings.json` containing no secrets.\n**Success Criteria:** `claude` picks up the default model without a `--model` flag, and no token is present in any tracked file.\n\n---",
+    "41": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#practical-application]\n\n## Practical Application\n\nFirst request workspace access (if you don't already have it) and generate a Databricks personal access token (both below), then read [Configuration Surfaces](#configuration-surfaces) to choose between Option A (VS Code) and Option B (CLI) — they are mutually exclusive authentication paths. Option C (`.claude/settings.json` defaults) is an optional add-on to Option B, not a standalone alternative. All examples use placeholder values in angle brackets (e.g., `<gateway-sonnet-alias>`) — replace these with the current values provided by the platform/gateway team, not with a literal string copied from this document. Each placeholder names a **model tier** (Sonnet, Opus, Haiku); the actual alias value the platform team gives you may or may not contain that tier name as text — use whatever value they provide for that tier, verbatim.",
+    "42": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#request-databricks-workspace-access]\n\n### Request Databricks Workspace Access\n\nSkip this step if you already have access to the `acuity-aigov-stage-ue1` Databricks workspace.\n\n1. Open the [Genius Databricks Access request form](https://gainwellnow.service-now.com/esc?id=sc_cat_item&sys_id=21b2336bc3da0a1044eaa6bc7a013181&table=sc_cat_item&searchTerm=GIA%20databricks%20access) in the ServiceNow Employee Center\n2. Complete the form using the field guidance below\n3. Submit the request\n4. Wait for the request to be approved and provisioned by the platform/security team — approval turnaround is not covered by this guidance; follow up through the ServiceNow ticket if it stalls",
+    "43": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#form-field-reference]\n\n#### Form Field Reference\n\nSeveral fields are auto-populated or have a fixed value for this request. The table below covers every visible field:\n\n| Field | Value | Notes |\n|---|---|---|\n| **Requested By** | *(auto-populated)* | Your name — do not change |\n| **Requested For** | *(auto-populated)* | Your name — do not change |\n| **Requested For Email** | *(auto-populated)* | Your Gainwell email — do not change |\n| **Watch List** | *(leave blank)* | |\n| **Business Phone** | Your Gainwell business phone number | Required |\n| **When is Request Needed By?** | 3+ business days from today | Default is acceptable |\n| **Company** | Gainwell Technologies LLC | Pre-filled — do not change |\n| **WBS Code** | *(leave blank)* | |\n| **Request Type** | Grant | Pre-filled — do not change |\n| **Environment** | **Stage** | Check **Stage** only — this is the pilot workspace |\n| **Resource Type** | On-shore **or** Off-shore | Select based on your employment type |\n| **Team** | Your team | Select the checkbox that matches your team (e.g., Infrastructure, Analytics Portal) |\n| **User Group** | **Analyst** | Check **Analyst** — do not check Engineer or Lead unless instructed by your manager |\n| **Databricks Workspace or Catalog Name Field** | `aigov-stage-ue1` | Enter exactly as shown |\n| **Describe your request** | See suggested text below | |\n| **Business Justification** | See suggested text below | |\n\n**Suggested text — Describe your request:**\n\n> I am requesting access to the `aigov-stage-ue1` Databricks workspace to configure Claude Code to route through the Databricks Unity AI Gateway pilot for AI-assisted SDLC tasks.\n\n**Suggested text — Business Justification:**\n\n> I have been approved to participate in the Databricks Unity AI Gateway pilot as part of the enterprise AI Gateway technology evaluation. Access to the `aigov-stage-ue1` workspace is required to generate a personal access token for Claude Code configuration per GUID-TECH-IMPL-012.\n\n**Expected result:** You can sign in to the `acuity-aigov-stage-ue1` Databricks workspace with your Gainwell credentials.",
+    "44": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#obtain-a-databricks-personal-access-token]\n\n### Obtain a Databricks Personal Access Token\n\nDatabricks personal access tokens (PATs) are workspace-scoped, self-service credentials — any user with workspace access can generate their own. Do this once, in the `acuity-aigov-stage-ue1` workspace:\n\n1. In the `acuity-aigov-stage-ue1` Databricks workspace, click your username in the top bar and select **Settings**\n2. Click **Developer**\n3. Next to **Access tokens**, click **Manage**\n4. Click **Generate new token**\n5. Enter a name that helps you identify this token later, e.g. `Claude Code — <your name>`\n6. Set the token's lifetime in days — a shorter lifetime (e.g. 90 days) is preferable to a long-lived or non-expiring token\n7. Select a scope: choose **Other APIs** and select only the scopes the platform team confirms are required for Unity AI Gateway access, rather than granting all-APIs access. If you are unsure which scope to select, ask the platform team before generating the token — do not default to unscoped/all-APIs access\n8. Leave **Auto-scope tokens** off if you scoped the token manually in the previous step; auto-scoping is intended for tokens created without a manually selected scope\n9. Click **Generate**\n10. **Copy the displayed token immediately** — Databricks shows it only once. It is prefixed `dapi`. Click **Done**\n\n> **Note:** Each Databricks PAT is valid for only the workspace it was created in (`acuity-aigov-stage-ue1` here), so a token from a different Databricks workspace will not work against this gateway. Databricks also recommends OAuth over PATs where available; this guidance uses a PAT because that is what the Unity AI Gateway pilot's `ANTHROPIC_AUTH_TOKEN` / bearer-token flow expects today.",
+    "45": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#vs-code-extension-configuration]\n\n### VS Code Extension Configuration\n\nUse this surface if you primarily use Claude Code through the VS Code extension.\n\n1. Press **`Ctrl+Shift+P`** to open the Command Palette\n2. Search for and select **\"Preferences: Open User Settings (JSON)\"**\n3. Add the following block (merging with any existing settings — do not replace the whole file):\n\n   ```jsonc\n   {\n     \"claudeCode.disableLoginPrompt\": true,\n     \"claudeCode.environmentVariables\": [\n       { \"name\": \"ANTHROPIC_BASE_URL\", \"value\": \"https://acuity-aigov-stage-ue1.cloud.databricks.com/ai-gateway/anthropic\" },\n       { \"name\": \"ANTHROPIC_AUTH_TOKEN\", \"value\": \"<your-databricks-token>\" },\n       { \"name\": \"CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY\", \"value\": \"1\" },\n       { \"name\": \"CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS\", \"value\": \"1\" },\n       { \"name\": \"ANTHROPIC_MODEL\", \"value\": \"<gateway-sonnet-alias>\" },\n       { \"name\": \"ANTHROPIC_DEFAULT_SONNET_MODEL\", \"value\": \"<gateway-sonnet-alias>\" },\n       { \"name\": \"ANTHROPIC_DEFAULT_OPUS_MODEL\", \"value\": \"<gateway-opus-alias>\" },\n       { \"name\": \"ANTHROPIC_DEFAULT_HAIKU_MODEL\", \"value\": \"<gateway-haiku-alias>\" }\n     ]\n   }\n   ```\n\n   `claudeCode.disableLoginPrompt` is the VS Code extension's documented setting for third-party/gateway setups (Settings UI: **Disable Login Prompt**) — it skips the extension's claude.ai sign-in flow so it uses the gateway credential instead. `claudeCode.environmentVariables` is the extension's own credential source: the extension checks it before launching, so the gateway endpoint and token must be set here (not only in `~/.claude/settings.json`) for the login-skip to take effect. Replace `<your-databricks-token>` with your actual `dapi...` token, and each `<gateway-*-alias>` with the current alias provided by the platform team. This file lives in your VS Code user profile (not this repository), so it is not committed to source control — see [Principle 1](#principle-1-keep-the-auth-token-out-of-version-controlled-files).\n\n4. Close the `settings.json` editor tab\n5. **Fully restart VS Code** (File → Exit, then relaunch — not just \"Reload Window\", per [Pitfall 3](#pitfall-3-forgetting-to-restart-vs-code-after-editing-settings))\n\n**Expected result:** After restart, Claude Code sessions in VS Code route through the Unity AI Gateway and respond using the configured gateway model alias by default.\n\n---",
+    "46": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#cli-configuration-powershell]\n\n### CLI Configuration (PowerShell)\n\nUse this surface if you primarily invoke `claude` directly from a terminal, independent of VS Code.\n\nOpen PowerShell and set the following session-scoped environment variables, then launch `claude` with an explicit model:\n\n```powershell\n$env:ANTHROPIC_BASE_URL = \"https://acuity-aigov-stage-ue1.cloud.databricks.com/ai-gateway/anthropic\"\n$env:ANTHROPIC_AUTH_TOKEN = \"<your-databricks-token>\"\n$env:CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS = \"1\"\n$env:CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY = \"1\"\n\nclaude --model <gateway-sonnet-alias>\n```\n\n> **Choosing a tier:** `--model` accepts whichever gateway alias you pass it — substitute `<gateway-opus-alias>` or `<gateway-haiku-alias>` instead of `<gateway-sonnet-alias>` to start the CLI against a different model tier for that invocation.\n\n> **Note:** Confirm the exact model alias with the platform team before relying on it — do not assume it matches an alias you may have configured on another surface without verifying. See [Pitfall 4](#pitfall-4-inconsistent-model-aliases-across-surfaces).\n\n> **Session scope:** These `$env:` values only apply to the current PowerShell window (see [Pitfall 2](#pitfall-2-powershell-env-variables-only-last-for-the-current-session)). To persist them across sessions, either add the same lines to your PowerShell profile (`$PROFILE`) or set them as User-scoped environment variables:\n>\n> ```powershell\n> [System.Environment]::SetEnvironmentVariable(\"ANTHROPIC_BASE_URL\", \"https://acuity-aigov-stage-ue1.cloud.databricks.com/ai-gateway/anthropic\", \"User\")\n> [System.Environment]::SetEnvironmentVariable(\"ANTHROPIC_AUTH_TOKEN\", \"<your-databricks-token>\", \"User\")\n> [System.Environment]::SetEnvironmentVariable(\"CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS\", \"1\", \"User\")\n> [System.Environment]::SetEnvironmentVariable(\"CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY\", \"1\", \"User\")\n> ```\n\n**Expected result:** `claude` starts, authenticates against the Unity AI Gateway, and responds using the specified model alias.\n\n---",
+    "47": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#project-settings-configuration-optional]\n\n### Project Settings Configuration (Optional)\n\nUse this surface if you use the CLI regularly on a given project and want gateway defaults declared once rather than re-typed or re-exported every session. This is additive to, not a replacement for, Option B — it removes the need to pass `--model` on every invocation.\n\nDeclare non-secret defaults in a `.claude/settings.json` (project- or user-level). Unity AI Gateway model entries are referenced by their full Unity Catalog three-level name (`<catalog>.<schema>.<model-alias>`, e.g. `aigov_stg.claude-test.<gateway-haiku-alias>` in the pilot environment) — use the qualified name in `availableModels`, and the bare model alias in the top-level `model` key and the `ANTHROPIC_DEFAULT_*_MODEL` variables:\n\n```jsonc\n{\n  \"model\": \"<gateway-sonnet-alias>\",\n  \"availableModels\": [\n    \"aigov_stg.claude-test.<gateway-haiku-alias>\",\n    \"aigov_stg.claude-test.<gateway-sonnet-alias>\",\n    \"aigov_stg.claude-test.<gateway-opus-alias>\"\n  ],\n  \"env\": {\n    \"ANTHROPIC_BASE_URL\": \"https://acuity-aigov-stage-ue1.cloud.databricks.com/ai-gateway/anthropic\",\n    \"CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY\": \"1\",\n    \"CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS\": \"1\",\n    \"ANTHROPIC_DEFAULT_SONNET_MODEL\": \"<gateway-sonnet-alias>\",\n    \"ANTHROPIC_DEFAULT_OPUS_MODEL\": \"<gateway-opus-alias>\",\n    \"ANTHROPIC_DEFAULT_HAIKU_MODEL\": \"<gateway-haiku-alias>\"\n  }\n}\n```\n\nThe top-level `model` key sets Claude Code's default model and takes precedence over any `ANTHROPIC_MODEL` environment variable, so `ANTHROPIC_MODEL` is omitted here to avoid redundancy. `ANTHROPIC_DEFAULT_*_MODEL` in the `env` block controls per-tier defaults when Claude Code selects a model class automatically. `availableModels` advertises the full set of gateway-qualified model names Claude Code can offer in its model picker; it works alongside `CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY` rather than replacing it — confirm with the platform team whether your Claude Code version needs this list declared explicitly or discovers it automatically from the gateway.\n\n> **Do not add `ANTHROPIC_AUTH_TOKEN` to this file.** If this is the repository's tracked `.claude/settings.json`, the file is committed to git and any token placed in it becomes part of the repository's history. Keep the token exclusively in VS Code User Settings ([VS Code Extension Configuration](#vs-code-extension-configuration)) or a session/User-scoped environment variable ([CLI Configuration](#cli-configuration-powershell)); use this file only for the non-secret `model`, `availableModels`, and `env` defaults shown above.\n\n---",
+    "48": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#troubleshooting]\n\n#### Troubleshooting\n\n**Authentication error against the gateway:** Confirm the token has not expired, was not auto-revoked after 90 days of inactivity, and was copied without extra whitespace. Also confirm you are using the **token value itself** (the `dapi...` string displayed at creation time) and not the **Token ID** shown in the Databricks Access Tokens dashboard — the Token ID is a numeric or UUID identifier, not a credential, and will fail authentication. Databricks personal access tokens are shown only once at creation — generate a new one following [Obtain a Databricks Personal Access Token](#obtain-a-databricks-personal-access-token) if lost.\n\n**Can't find \"Generate new token\" or \"Manage\" in Databricks Settings → Developer:** You likely don't have workspace access yet — submit the [Genius Databricks Access request](#request-databricks-workspace-access) and wait for it to be approved before generating a token.\n\n**Model responses don't match the expected alias:** Check for a mismatch between the alias set on whichever surface(s) you have configured (VS Code, CLI, and/or `.claude/settings.json`) — see [Pitfall 4](#pitfall-4-inconsistent-model-aliases-across-surfaces). Also confirm `CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY` is set to `\"1\"` so Claude Code queries the gateway for available models rather than relying on a cached list.\n\n**VS Code Claude Code extension still uses the old configuration:** Fully restart VS Code rather than reloading the window (see [Pitfall 3](#pitfall-3-forgetting-to-restart-vs-code-after-editing-settings)).",
+    "49": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#tools-and-techniques]\n\n### Tools and Techniques",
+    "50": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#recommended-tools]\n\n#### Recommended Tools\n\n| Tool Category | Tool Name | Purpose | Usage Guidelines |\n| --- | --- | --- | --- |\n| Editor | VS Code + Claude Code extension | Host the extension-based Claude Code session | Requires a full restart (not window reload) after environment variable changes |\n| Terminal | PowerShell 5.1+ | Set environment variables and launch the Claude Code CLI | Session-scoped by default; persist with `$PROFILE` or User-scoped variables if used routinely |\n| Config file | `.claude/settings.json` | Declare non-secret model/env defaults for the CLI | Never place the auth token in this file |\n\n---",
+    "51": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#governance-and-compliance]\n\n## Governance and Compliance",
+    "52": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#compliance-requirements]\n\n### Compliance Requirements",
+    "53": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#organizational-compliance]\n\n#### Organizational Compliance\n\n- Databricks personal access tokens must follow the same credential lifecycle discipline as any other API credential — rotate on or before expiry, revoke immediately if suspected compromise\n- Tokens must never be committed to any repository, pasted into chat interfaces, or shared via email or messaging platforms\n- Per Anthropic's official Claude Code guidance, a gateway credential must never be placed in a project's tracked `.claude/settings.json`. If your team wants a local, gitignored override file (`.claude/settings.local.json`) for this repository, add it to `.gitignore` before writing a credential there by hand — Claude Code only adds that exclusion automatically when it saves the setting itself",
+    "54": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#risk-management]\n\n### Risk Management",
+    "55": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#risk-assessment]\n\n#### Risk Assessment\n\n| Risk Category | Risk Description | Probability | Impact | Mitigation Strategy |\n| --- | --- | --- | --- | --- |\n| Credential exposure | Auth token placed in a version-controlled `.claude/settings.json` | Low | High | Keep tokens exclusively in VS Code User Settings or session/User-scoped environment variables; never in tracked project files |\n| Over-scoped token | Token generated with all-APIs access instead of the minimum scopes the gateway needs | Low-Medium | Medium | Select **Other APIs** and choose only the scopes confirmed by the platform team when generating the token (see [Obtain a Databricks Personal Access Token](#obtain-a-databricks-personal-access-token)) |\n| Pilot/production drift | Staging endpoint (`acuity-aigov-stage-ue1`) treated as a permanent production standard | Medium | Low-Medium | Track the outcome of [EVAL-ai-gateway.md](../../../tech-evals/ai-gateway/EVAL-ai-gateway.md) and update the endpoint when a production standard is designated |\n| Model alias mismatch | Different aliases configured across whichever surfaces (VS Code, CLI, `.claude/settings.json`) a developer has set up | Medium | Low | Confirm the exact alias with the platform team and apply it consistently across every surface configured |\n\n---",
+    "56": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#integration-with-enterprise-architecture]\n\n## Integration with Enterprise Architecture",
+    "57": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#standards-alignment]\n\n### Standards Alignment\n\n- Auth tokens must be stored as environment variables or user-scoped editor settings, never in source-controlled configuration files (per enterprise credential management policy)",
+    "58": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#guidance-connections]\n\n### Guidance Connections\n\n- [GUID-SEC-AI-GW-2.9.07 — AI Gateway Security](../../security/Artificial-Intelligence/GUID-SEC-AI-GW-2.9.07.md) — defines the AI Gateway as a governed security enforcement plane that this pilot setup connects to\n- [GUID-AI-MODEL-001 — Tiered Model Selection Strategy](../../artificial-intelligence/GUID-AI-MODEL-001-tiered-model-selection-strategy.md) — describes an existing AI serving path (AWS Bedrock via the AI Gateway) that this Databricks Unity AI Gateway pilot is distinct from\n- [GUID-TECH-IMPL-006 — Azure DevOps MCP Server Local Setup Guidance](./GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md) — companion local-environment setup guidance for Claude Code, followed as a style and security-posture precedent for this document",
+    "59": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#decision-dependencies]\n\n### Decision Dependencies\n\n- [EVAL-ai-gateway.md](../../../tech-evals/ai-gateway/EVAL-ai-gateway.md) — technology evaluation (status: In Progress) that will determine whether Databricks Unity AI Gateway becomes the enterprise-standard AI Gateway; this guidance covers the pilot configuration only\n\n---",
+    "60": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#related-guidance-and-references]\n\n## Related Guidance and References",
+    "61": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#related-guidance]\n\n### Related Guidance\n\n- [GUID-TECH-IMPL-006 — Azure DevOps MCP Server Local Setup Guidance](./GUID-TECH-IMPL-006-azure-devops-mcp-server-local-setup-guidance.md) — companion Claude Code local-setup guidance\n- [GUID-SEC-AI-GW-2.9.07 — AI Gateway Security](../../security/Artificial-Intelligence/GUID-SEC-AI-GW-2.9.07.md) — governing security architecture for AI Gateways",
+    "62": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#industry-references]\n\n### Industry References\n\n- [Databricks Unity AI Gateway overview (beta)](https://docs.databricks.com/en/ai-gateway/overview-beta.html) — official Databricks documentation\n- [Authenticate with Databricks personal access tokens](https://docs.databricks.com/en/dev-tools/auth/pat.html) — official Databricks documentation for the token-creation, scoping, and auto-revocation behavior in [Obtain a Databricks Personal Access Token](#obtain-a-databricks-personal-access-token)\n- [Claude Code settings](https://code.claude.com/docs/en/settings) — official reference for `settings.json` keys, including `availableModels` and the `env` block\n- [Claude Code model configuration](https://code.claude.com/docs/en/model-config) — official reference for `ANTHROPIC_MODEL` and the `ANTHROPIC_DEFAULT_*_MODEL` family\n- [Connect Claude Code to an LLM gateway](https://code.claude.com/docs/en/llm-gateway-connect) — official guide this document's VS Code, CLI, and settings-file steps were validated against, including the credential-in-tracked-settings warning and the `claudeCode.environmentVariables` / `claudeCode.disableLoginPrompt` VS Code keys\n- [Claude Code environment variables](https://code.claude.com/docs/en/env-vars) — official reference confirming `ANTHROPIC_AUTH_TOKEN`, `ANTHROPIC_BASE_URL`, `CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY`, and `CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS`\n\n---",
+    "63": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#change-history]\n\n## Change History\n\n| Date | Version | Author | Description | Impact |\n| --- | --- | --- | --- | --- |\n| 2026-08-18 | 1.0.0 | James Macurak | Initial guidance — VS Code extension setup, CLI setup, and `.claude/settings.json` model defaults for the Databricks Unity AI Gateway pilot | New guidance; no migration required |\n| 2026-08-18 | 1.1.0 | James Macurak | Validated against official Claude Code documentation (`code.claude.com/docs`) — replaced fabricated VS Code settings (`claudeCode.disableAuth`, `claudeCode.selectedModel`) with the documented `claudeCode.disableLoginPrompt`; corrected the `.claude/settings.local.json` gitignore mechanism; added authoritative citations | Corrects inaccurate VS Code configuration keys; no other behavioral change |\n| 2026-08-19 | 1.2.0 | James Macurak | Added \"Obtain a Databricks Personal Access Token\" section with official token-creation steps (scoping, lifetime, auto-scoping); moved token provisioning from Out of Scope to In Scope; added the over-scoped-token risk and the token auto-revocation/auto-scoping pitfall | Developers can now complete setup from this document alone, without a separate request to the platform team for token creation |\n| 2026-08-19 | 1.3.0 | James Macurak | Added \"Request Databricks Workspace Access\" section with the Genius Databricks Access ServiceNow form for the `aigov-stage-ue1` workspace; updated Scope Boundaries and Prerequisites accordingly | Developers without existing workspace access now have a documented request path before token creation |\n| 2026-08-19 | 1.4.0 | James Macurak | Expanded \"Request Databricks Workspace Access\" with a field-by-field form completion table and suggested text for the Describe your request and Business Justification fields | Removes ambiguity about which form values to enter when submitting the ServiceNow ticket |\n| 2026-08-31 | 1.5.0 | James Macurak | PR review corrections: corrected Bedrock path characterization (direct native provider, not AI Gateway-mediated; GUID-AI-MODEL-001 is Portal Studio-scoped); reframed Option C as an optional CLI overlay rather than a standalone authentication surface; added Transition Prerequisite section scoped to `CLAUDE_CODE_USE_BEDROCK` only (`AWS_PROFILE`/`AWS_REGION` left in place to avoid breaking general AWS tooling); fixed broken `#configuration-surfaces-choose-one` anchor and stale framing in Practical Application intro; added `CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY` to Option B CLI session and User-scoped persistence block; added `CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS` to User-scoped persistence block; removed redundant `ANTHROPIC_MODEL` from Option C env block (superseded by top-level `model` key); corrected `$env:CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS` to use a string literal; added Token ID vs token value clarification to troubleshooting | Corrects factual inaccuracies and closes configuration gaps that would cause silent failures on onboarded workstations |\n\n---",
+    "64": "[strategy/guidance/technology/implementation/GUID-TECH-IMPL-012-databricks-unity-ai-gateway-claude-code-setup-guidance.md#review-log]\n\n## Review Log\n\n| Review Date | Review Type | Reviewer(s) | Status | Comments | Actions |\n| --- | --- | --- | --- | --- | --- |\n| 2026-08-18 | Author Review | James Macurak | Draft | Pending platform-team confirmation of current gateway model alias values before promoting to `approved` | Verify alias values with platform team; confirm production endpoint timeline against EVAL-ai-gateway.md |\n| 2026-08-18 | Source Validation | James Macurak | Draft | Cross-checked all VS Code settings, environment variables, and `.claude/settings.json` keys against official Claude Code documentation; corrected two fabricated VS Code settings keys | Still pending platform-team confirmation of gateway model alias values before promoting to `approved` |\n| 2026-08-19 | Author Review | James Macurak | Draft | Added token-creation steps sourced from official Databricks PAT documentation; confirmed the exact minimum API scope required for Unity AI Gateway access still needs platform-team input | Ask platform team which scope(s) to select in Step 7 of token creation; verify alias values with platform team before promoting to `approved` |"
+  },
+  "coverage": {
+    "total_pages": 64,
+    "covered_pages": 64,
+    "sampled_pages": 64,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 64
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Container Control Plane Security",
+  "document_description": "guidance_id: 'GUID-SEC-APP-ABB-K8SCP-2.7.16'",
+  "total_pages": 14,
+  "tree": [
+    {
+      "title": "Container Control Plane Security",
+      "node_id": "container-control-plane-security",
+      "start_index": 1,
+      "end_index": 14,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Architecture Guidance Metadata",
+          "node_id": "architecture-guidance-metadata",
+          "start_index": 2,
+          "end_index": 4,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "ABB Context",
+              "node_id": "abb-context",
+              "start_index": 3,
+              "end_index": 3,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "ABB Scope",
+              "node_id": "abb-scope",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Detailed Guidance",
+          "node_id": "detailed-guidance",
+          "start_index": 5,
+          "end_index": 14,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Core Principles",
+              "node_id": "core-principles",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Key Capabilities",
+              "node_id": "key-capabilities",
+              "start_index": 7,
+              "end_index": 10,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "API Server Access Control",
+                  "node_id": "api-server-access-control",
+                  "start_index": 8,
+                  "end_index": 8,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "State Integrity",
+                  "node_id": "state-integrity",
+                  "start_index": 9,
+                  "end_index": 9,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Control Plane Audit",
+                  "node_id": "control-plane-audit",
+                  "start_index": 10,
+                  "end_index": 10,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Integration Interfaces",
+              "node_id": "integration-interfaces",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Zero Trust Alignment (NIST SP 800-207)",
+              "node_id": "zero-trust-alignment-nist-sp-800-207",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "NIST SP 800-53 Intent Alignment",
+              "node_id": "nist-sp-800-53-intent-alignment",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Constraints and Dependencies",
+              "node_id": "constraints-and-dependencies",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-K8SCP-2.7.16.md#container-control-plane-security]\n\n# Container Control Plane Security\n\n**← Back to [EAP Home](../../../../../README.md) • [Strategy](../../../../README.md) • [Guidance](../../../README.md) • [Security](../../README.md) • [Application](../README.md)**\n\n---",
+    "2": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-K8SCP-2.7.16.md#architecture-guidance-metadata]\n\n## Architecture Guidance Metadata\n\n```yaml\nguidance_id: 'GUID-SEC-APP-ABB-K8SCP-2.7.16'\nguidance_name: 'Container Control Plane Security'\nguidance_type: 'architecture-building-block'\nabb_type: 'component'\nadm_phase: 'Phase B-D'\nparent_abb: 'GUID-SEC-APP-ABB-CAT-2.7.06'\nparent_vision: 'GUID-SEC-APP-REF-1.7.01'\nrealized_by_sbbs: []\npaired_rad: 'GUID-SEC-APPS-KUBERNETES-PLATFORM-2.7.04'\ncategory: 'security'\nversion: '0.1.0'\nstatus: 'draft'\napplicability: 'enterprise'\ntags: ['security', 'application', 'architecture-building-block', 'kubernetes', 'control-plane']\nsource_story: 'AB#802670'\n```\n\n---\n\n> **TOGAF ADM Note**: This is a **Component ABB** (Phase B–D) within the Application Security domain. Per [GUID-SEC-APP-REF-1.7.01](../GUID-SEC-APP-REF-1.7.01.md): **SHALL** = mandatory; **SHOULD** = strongly recommended; **MAY** = optional.",
+    "3": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-K8SCP-2.7.16.md#abb-context]\n\n### ABB Context\n\n- **Parent L2 Capability**: Container Orchestration Security — [GUID-SEC-APP-CAP-DESC-1.7.02](../GUID-SEC-APP-CAP-DESC-1.7.02.md)\n- **ABB Catalog**: [GUID-SEC-APP-ABB-CAT-2.7.06](../GUID-SEC-APP-ABB-CAT-2.7.06.md)\n- **Capability Statement**: The enterprise SHALL have an architectural capability to protect the integrity of the container orchestration control plane — the components that make scheduling, routing, and configuration decisions for the entire workload fleet.",
+    "4": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-K8SCP-2.7.16.md#abb-scope]\n\n### ABB Scope\n\n**In Scope**:\n- Architectural capability to protect orchestration control plane components from unauthorized access and configuration manipulation\n- Secure communication between control plane components\n- Audit logging of all control plane operations\n- Encryption of sensitive state stored by the control plane\n\n**Out of Scope**:\n- RBAC and admission control for workload deployments (see GUID-SEC-APP-ABB-K8SRBAC-2.7.15)\n- Host/node OS security (see Cloud & Infrastructure Security domain)\n- Network policy for pod-to-pod communication (see Network Security domain)\n- Security controls, tool selection, or configuration baselines (`standards/security/`)\n\n---",
+    "5": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-K8SCP-2.7.16.md#detailed-guidance]\n\n## Detailed Guidance",
+    "6": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-K8SCP-2.7.16.md#core-principles]\n\n### Core Principles\n\n- The control plane API endpoint SHALL be accessible only through authenticated, authorized channels — unauthenticated access SHALL NOT be permitted.\n- All communication between control plane components SHALL be mutually authenticated and encrypted in transit.\n- Control plane state SHALL be encrypted at rest.\n- All control plane operations SHALL produce an immutable audit log that is forwarded to the security monitoring capability.",
+    "7": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-K8SCP-2.7.16.md#key-capabilities]\n\n### Key Capabilities",
+    "8": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-K8SCP-2.7.16.md#api-server-access-control]\n\n#### API Server Access Control\n\n**Architectural intent**: Ensure the orchestration platform's primary management interface is protected from unauthorized access.\n\n**Design guidance**:\n- The API server SHALL enforce mutual TLS for all inter-component communication.\n- Anonymous access to the API server SHALL be disabled.\n- The API server SHALL be network-isolated from workload networks; management access SHALL require explicit routing through a defined administrative path.",
+    "9": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-K8SCP-2.7.16.md#state-integrity]\n\n#### State Integrity\n\n**Architectural intent**: Protect the configuration and state data that the control plane uses to make scheduling and routing decisions.\n\n**Design guidance**:\n- State storage (e.g., the distributed key-value store) SHALL be encrypted at rest using keys managed through the Secrets Vault ABB (GUID-SEC-APP-ABB-VAULT-2.7.21).\n- Access to state storage SHALL be restricted to control plane components only; direct external access SHALL NOT be permitted.",
+    "10": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-K8SCP-2.7.16.md#control-plane-audit]\n\n#### Control Plane Audit\n\n**Architectural intent**: Maintain a complete, tamper-evident record of all control plane operations for detection and forensics.\n\n**Design guidance**:\n- Audit logging SHALL capture all API server requests including the requesting identity, resource, verb, and response code.\n- Audit logs SHALL be forwarded to the SecOps monitoring capability and SHALL NOT be stored only on the cluster.",
+    "11": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-K8SCP-2.7.16.md#integration-interfaces]\n\n### Integration Interfaces\n\n| Interface | Direction | Consuming ABB | Description |\n|---|---|---|---|\n| Administrative Access | Inbound | Platform Engineering | Authenticated management access to control plane API |\n| State Storage | Bidirectional | Distributed State Store | Encrypted control plane state read/write |\n| Audit Events | Outbound | SecOps SIEM/Monitoring | Control plane audit log stream |\n| Secrets Access | Outbound | GUID-SEC-APP-ABB-VAULT-2.7.21 | Retrieval of encryption keys for state-at-rest |",
+    "12": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-K8SCP-2.7.16.md#zero-trust-alignment-nist-sp-800-207]\n\n### Zero Trust Alignment (NIST SP 800-207)\n\nControl Plane Security advances the Applications and Workloads pillar at its highest-impact layer — the control plane determines what runs and where, making it the highest-value target in the container platform. Protecting it directly supports the Zero Trust principle that infrastructure components must not be implicitly trusted.",
+    "13": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-K8SCP-2.7.16.md#nist-sp-800-53-intent-alignment]\n\n### NIST SP 800-53 Intent Alignment\n\nThis ABB enables the architectural intent of the SC (System and Communications Protection) family — specifically protection of system management interfaces and inter-component communication — and the AU (Audit and Accountability) family, which requires tamper-evident audit records of privileged operations.",
+    "14": "[strategy/guidance/security/Application/abbs/GUID-SEC-APP-ABB-K8SCP-2.7.16.md#constraints-and-dependencies]\n\n### Constraints and Dependencies\n\n- Control plane security architecture varies between managed Kubernetes services (where the cloud provider owns the control plane) and self-managed deployments; architecture decisions must account for the shared responsibility model.\n- Key management for state encryption (GUID-SEC-APP-ABB-VAULT-2.7.21) must be available and resilient before control plane encryption is enabled.\n- Audit log volume from the control plane can be substantial; forwarding architecture must be sized appropriately.\n\n---\n\n*[Enterprise Architecture Practice](../../../../../README.md) — Gainwell Technologies*"
+  },
+  "coverage": {
+    "total_pages": 14,
+    "covered_pages": 14,
+    "sampled_pages": 14,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 14
+  }
+}

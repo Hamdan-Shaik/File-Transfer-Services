@@ -1,0 +1,425 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Architecture Decision Record",
+  "document_description": "Platform Gainwell establishes a **Zero Trust–aligned, cloud-native network architecture** that governs all traffic through four explicitly defined traffic domains — External-In, Internal-Out, East-West, and Intra-VPC — with application-layer controls authoritative for ingress decisions, and no implicit trust permitted at any boundary. This architecture replaces the traditional DMZ model and consti",
+  "total_pages": 44,
+  "tree": [
+    {
+      "title": "Architecture Decision Record",
+      "node_id": "architecture-decision-record",
+      "start_index": 1,
+      "end_index": 44,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "ADR-SEC-PG-001: Secure Cloud Network Architecture for Platform Gainwell",
+          "node_id": "adr-sec-pg-001-secure-cloud-network-architecture-for-platform-gainwell",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Decision Summary",
+          "node_id": "decision-summary",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Scope and Boundaries",
+          "node_id": "scope-and-boundaries",
+          "start_index": 5,
+          "end_index": 5,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "What This Document Does Not Do",
+          "node_id": "what-this-document-does-not-do",
+          "start_index": 6,
+          "end_index": 6,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Parent Architecture Alignment",
+          "node_id": "parent-architecture-alignment",
+          "start_index": 7,
+          "end_index": 7,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Context and Problem Statement",
+          "node_id": "context-and-problem-statement",
+          "start_index": 8,
+          "end_index": 12,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Business Context",
+              "node_id": "business-context",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Technical Context",
+              "node_id": "technical-context",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Problem Statement",
+              "node_id": "problem-statement",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Decision Drivers",
+              "node_id": "decision-drivers",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Required Option",
+          "node_id": "required-option",
+          "start_index": 13,
+          "end_index": 22,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Zero Trust Cloud-Native Network Architecture with Explicit Traffic Domain Governance",
+              "node_id": "zero-trust-cloud-native-network-architecture-with-explicit-traffic-domain-governance",
+              "start_index": 14,
+              "end_index": 22,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Architectural Foundation: No Traditional DMZ",
+                  "node_id": "architectural-foundation-no-traditional-dmz",
+                  "start_index": 15,
+                  "end_index": 15,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "The Four Traffic Domains",
+                  "node_id": "the-four-traffic-domains",
+                  "start_index": 16,
+                  "end_index": 20,
+                  "summary": "",
+                  "nodes": [
+                    {
+                      "title": "Domain 1: External-In (Ingress)",
+                      "node_id": "domain-1-external-in-ingress",
+                      "start_index": 17,
+                      "end_index": 17,
+                      "summary": "",
+                      "nodes": []
+                    },
+                    {
+                      "title": "Domain 2: Internal-Out (Egress)",
+                      "node_id": "domain-2-internal-out-egress",
+                      "start_index": 18,
+                      "end_index": 18,
+                      "summary": "",
+                      "nodes": []
+                    },
+                    {
+                      "title": "Domain 3: East-West (Inter-VPC / Inter-Account)",
+                      "node_id": "domain-3-east-west-inter-vpc--inter-account",
+                      "start_index": 19,
+                      "end_index": 19,
+                      "summary": "",
+                      "nodes": []
+                    },
+                    {
+                      "title": "Domain 4: Intra-VPC (Workload-to-Workload)",
+                      "node_id": "domain-4-intra-vpc-workload-to-workload",
+                      "start_index": 20,
+                      "end_index": 20,
+                      "summary": "",
+                      "nodes": []
+                    }
+                  ]
+                },
+                {
+                  "title": "Cross-Domain Principles",
+                  "node_id": "cross-domain-principles",
+                  "start_index": 21,
+                  "end_index": 21,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Architectural Invariants",
+                  "node_id": "architectural-invariants",
+                  "start_index": 22,
+                  "end_index": 22,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Considered Options",
+          "node_id": "considered-options",
+          "start_index": 23,
+          "end_index": 26,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Option 1: Traditional DMZ Architecture",
+              "node_id": "option-1-traditional-dmz-architecture",
+              "start_index": 24,
+              "end_index": 24,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Option 2: Network Perimeter Segmentation Only (No Formal Traffic Domain Governance)",
+              "node_id": "option-2-network-perimeter-segmentation-only-no-formal-traffic-domain-governance",
+              "start_index": 25,
+              "end_index": 25,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Option 3: Zero Trust with Undifferentiated Traffic Model (No Domain Taxonomy)",
+              "node_id": "option-3-zero-trust-with-undifferentiated-traffic-model-no-domain-taxonomy",
+              "start_index": 26,
+              "end_index": 26,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Decision Outcome",
+          "node_id": "decision-outcome",
+          "start_index": 27,
+          "end_index": 28,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Success Criteria",
+              "node_id": "success-criteria",
+              "start_index": 28,
+              "end_index": 28,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Downstream Architecture Artifacts",
+          "node_id": "downstream-architecture-artifacts",
+          "start_index": 29,
+          "end_index": 32,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Child ADRs (Network Domain Realizations)",
+              "node_id": "child-adrs-network-domain-realizations",
+              "start_index": 30,
+              "end_index": 30,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Platform Gainwell Network Architecture Artifacts (Direct Children of This ADR)",
+              "node_id": "platform-gainwell-network-architecture-artifacts-direct-children-of-this-adr",
+              "start_index": 31,
+              "end_index": 31,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Related Guidance (Architecture Building Blocks)",
+              "node_id": "related-guidance-architecture-building-blocks",
+              "start_index": 32,
+              "end_index": 32,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Consequences",
+          "node_id": "consequences",
+          "start_index": 33,
+          "end_index": 36,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "✅ Positive",
+              "node_id": "-positive",
+              "start_index": 34,
+              "end_index": 34,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "❌ Negative",
+              "node_id": "-negative",
+              "start_index": 35,
+              "end_index": 35,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "⚪ Neutral",
+              "node_id": "-neutral",
+              "start_index": 36,
+              "end_index": 36,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Risk Assessment and Mitigation",
+          "node_id": "risk-assessment-and-mitigation",
+          "start_index": 37,
+          "end_index": 39,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "⚠️ Risks",
+              "node_id": "-risks",
+              "start_index": 38,
+              "end_index": 38,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "🛡️ Mitigations",
+              "node_id": "-mitigations",
+              "start_index": 39,
+              "end_index": 39,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Compliance Notes",
+          "node_id": "compliance-notes",
+          "start_index": 40,
+          "end_index": 40,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Review and Approval",
+          "node_id": "review-and-approval",
+          "start_index": 41,
+          "end_index": 41,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Relevant Sources",
+          "node_id": "relevant-sources",
+          "start_index": 42,
+          "end_index": 42,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Change Log",
+          "node_id": "change-log",
+          "start_index": 43,
+          "end_index": 43,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Last Reviewed",
+          "node_id": "last-reviewed",
+          "start_index": 44,
+          "end_index": 44,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#architecture-decision-record]\n\n# Architecture Decision Record\n\n<!-- BREADCRUMB PLACEHOLDER -->",
+    "2": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#adr-sec-pg-001-secure-cloud-network-architecture-for-platform-gainwell]\n\n## ADR-SEC-PG-001: Secure Cloud Network Architecture for Platform Gainwell\n\n**← Back to [EAP Home](../../README.md) • [Architecture Decisions](../README.md) • [Security](./README.md)**\n\n---\n\n|               |                                                                                                                                                             |\n| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| **Status**    | 🟡 Proposed                                                                                                                                                 |\n| **Date**      | 2026-03-24                                                                                                                                                  |\n| **Issuer**    | [Enterprise Architecture Practice](mailto:EAP-Core@mygainwell.onmicrosoft.com?subject=ADR-SEC-PG-001%20Secure%20Cloud%20Network%20Architecture)             |\n| **Consulted** | Enterprise Security Architecture, Platform Engineering, Cloud Infrastructure, Compliance & Privacy                                                          |\n| **Informed**  | All Engineering Teams, Product Management, Security Operations, Executive Leadership                                                                        |\n\n---",
+    "3": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#table-of-contents]\n\n## Table of Contents\n\n- [Decision Summary](#decision-summary)\n- [Scope and Boundaries](#scope-and-boundaries)\n- [What This Document Does Not Do](#what-this-document-does-not-do)\n- [Parent Architecture Alignment](#parent-architecture-alignment)\n- [Context and Problem Statement](#context-and-problem-statement)\n- [Required Option](#required-option)\n- [Considered Options](#considered-options)\n- [Decision Outcome](#decision-outcome)\n- [Downstream Architecture Artifacts](#downstream-architecture-artifacts)\n- [Consequences](#consequences)\n- [Risk Assessment and Mitigation](#risk-assessment-and-mitigation)\n- [Compliance Notes](#compliance-notes)\n- [Review and Approval](#review-and-approval)\n- [Relevant Sources](#relevant-sources)\n- [Change Log](#change-log)\n- [Last Reviewed](#last-reviewed)\n\n---",
+    "4": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#decision-summary]\n\n## Decision Summary\n\nPlatform Gainwell establishes a **Zero Trust–aligned, cloud-native network architecture** that governs all traffic through four explicitly defined traffic domains — External-In, Internal-Out, East-West, and Intra-VPC — with application-layer controls authoritative for ingress decisions, and no implicit trust permitted at any boundary. This architecture replaces the traditional DMZ model and constitutes the governing network security decision from which all Platform Gainwell network-scoped architecture artifacts descend.\n\n---",
+    "5": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#scope-and-boundaries]\n\n## Scope and Boundaries\n\n**In Scope:**\n\n- The cloud network architecture governing all workloads hosted on Platform Gainwell\n- Definition and governance model for the four canonical traffic domains\n- The architectural rationale for rejecting traditional DMZ and perimeter-based trust models\n- Relationship to parent security strategy and downstream architecture artifacts\n\n**Out of Scope:**\n\n- Workloads not hosted on Platform Gainwell (enterprise-wide claims are not made here)\n- On-premises or hybrid network architectures not integrated with Platform Gainwell\n- Non-AWS cloud environments\n\n---",
+    "6": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#what-this-document-does-not-do]\n\n## What This Document Does Not Do\n\nThis ADR **establishes architectural intent** — it does not:\n\n- **Define security standards.** Control-level requirements, enforcement thresholds, and acceptance criteria are the responsibility of standards artifacts descended from this ADR.\n- **Prescribe specific AWS services, configurations, or product selections.** Technology choices are realized in Solution Building Blocks (SBBs) and implementation guides.\n- **Constitute an implementation plan.** Phasing, sequencing, and operational procedures belong to the Platform Gainwell Security Implementation Roadmap.\n- **Make enterprise-wide claims.** This decision governs Platform Gainwell. Other platforms and environments are governed by their own architecture artifacts.\n- **Replace or modify ADR-SEC-001.** The API Gateway Strategy ADR is a child decision that realizes External-In and East-West enforcement within the framework this ADR establishes. It remains independently authoritative for its scope.\n\n---",
+    "7": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#parent-architecture-alignment]\n\n## Parent Architecture Alignment\n\nThis ADR implements the network architecture principles established in the following parent artifacts:\n\n| Artifact | Role |\n|---|---|\n| [Security Strategy: Platform Gainwell](../../strategy/white-papers/security/platform-gainwell-security-strategy.md) (STRAT-SEC-PLATFORM-001) | **Direct parent.** Establishes Zero Trust architecture mandate, No-DMZ architectural principle, defense-in-depth layering model, and the four-domain traffic governance requirement |\n| [GUID-SEC-ZERO TRUST ARCH-REF-0.0.02](../../strategy/guidance/security/GUID-SEC-ZERO%20TRUST%20ARCH-REF-0.0.02.md) | **Enterprise Zero Trust reference.** Defines the Zero Trust Architecture (ZTA) principles aligned to NIST SP 800-207 that underpin this decision |\n| [GUID-SEC-NETWORK-REF-1.2.01](../../strategy/guidance/security/Network/GUID-SEC-NETWORK-REF-1.2.01.md) | **Enterprise network guidance.** Provides defense-in-depth, segmentation, and boundary protection principles this decision operationalizes for Platform Gainwell |\n| [GUID-SEC-CYBERSEC ARC-REF-0.0.01](../../strategy/guidance/security/GUID-SEC-CYBERSEC%20ARC-REF-0.0.01.md) | **Enterprise cybersecurity reference.** NIST CSF 2.0–aligned control families and governance framework |\n\n**TOGAF Artifact Classification:**\n\nThis ADR is an **Architecture Decision Record** — it establishes the governing intent from which the Platform Gainwell network Architecture Building Blocks (ABBs) and Reference Architecture Document (RAD) descend. It is not itself an ABB. The ABBs that realize this decision are listed under [Downstream Architecture Artifacts](#downstream-architecture-artifacts).\n\n---",
+    "8": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#context-and-problem-statement]\n\n## Context and Problem Statement",
+    "9": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#business-context]\n\n### Business Context\n\nPlatform Gainwell hosts mission-critical health and human services workloads on behalf of state and federal agencies. These workloads process Protected Health Information (PHI) and Personally Identifiable Information (PII), imposing regulatory obligations under HIPAA, Medicaid regulations, and state-specific requirements. The security architecture must protect these workloads while enabling the collaborative, multi-tenant access patterns that Platform Gainwell's customers depend on.\n\nThe security architecture must also be auditable. Every access decision — whether by a human user, a system workload, or an automated process — must be attributable, logged, and reviewable. Network topology alone cannot satisfy this requirement.",
+    "10": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#technical-context]\n\n### Technical Context\n\nPlatform Gainwell operates as a multi-account AWS environment organized under a single AWS Organization. Its key architectural characteristics include:\n\n- **Multi-tenant workload hosting:** Customer workloads and platform services coexist within a shared account structure governed by a common security baseline\n- **No traditional perimeter:** There is no on-premises edge, hub-and-spoke firewall cluster, or classic DMZ separating internal from external zones\n- **Workload mobility:** Workloads are deployed and retired dynamically; network address is not a stable identity signal\n- **Cross-account communication:** East-west traffic (inter-service, inter-domain) traverses AWS account, VPC, and region boundaries within the same organizational trust boundary\n- **Identity-standardized workloads:** Both human and machine identities are managed through a common identity framework rather than network position\n\nThese characteristics make traditional perimeter-based network security architectures architecturally inappropriate and operationally insufficient.",
+    "11": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#problem-statement]\n\n### Problem Statement\n\nHow should the network architecture for Platform Gainwell be structured to:\n\n1. Eliminate implicit trust at all network boundaries without introducing prohibitive operational friction\n2. Provide clear, governed control placement for each class of traffic the platform handles\n3. Support regulatory compliance evidence requirements that demand auditability of all access decisions\n4. Remain coherent as the platform scales in workloads, accounts, and traffic volume\n5. Establish a durable architectural foundation from which specific network-domain decisions (API gateway strategy, firewall placement, egress control, microsegmentation) can be consistently derived?",
+    "12": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#decision-drivers]\n\n### Decision Drivers\n\n- 🔒 **Zero Trust Mandate:** The parent security strategy (STRAT-SEC-PLATFORM-001) explicitly prohibits implicit trust. This ADR provides the network architecture that realizes this mandate\n- 🏥 **Regulatory Compliance:** HIPAA, ARC-AMPE, and Medicaid requirements demand access control, audit logging, and transmission security for all PHI/PII traffic regardless of its network origin\n- 🛡️ **Threat Surface Governance:** Unclassified traffic domains create unmonitored paths. Explicit domain definition closes this architectural gap\n- 📋 **Auditability:** Consistent control placement across all traffic domains enables complete, coherent audit trails — a prerequisite for compliance evidence\n- 🔄 **Architectural Coherence:** Child ADRs (API gateway placement, firewall strategy, egress control, microsegmentation) require a common parent architecture to remain consistent with each other\n- ⚙️ **Operational Clarity:** Platform engineering and security operations teams require clear, unambiguous boundaries between traffic domains and their associated controls\n\n---",
+    "13": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#required-option]\n\n## Required Option",
+    "14": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#zero-trust-cloud-native-network-architecture-with-explicit-traffic-domain-governance]\n\n### Zero Trust Cloud-Native Network Architecture with Explicit Traffic Domain Governance\n\n**Platform Gainwell adopts a Zero Trust–aligned, cloud-native network architecture in which all traffic is classified into one of four explicitly governed domains, application-layer controls are authoritative for ingress access decisions, and no implicit trust is extended at any boundary based on network location alone.**\n\n---",
+    "15": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#architectural-foundation-no-traditional-dmz]\n\n#### Architectural Foundation: No Traditional DMZ\n\nPlatform Gainwell **does not implement** a traditional demilitarized zone (DMZ) architecture. The DMZ model was designed for perimeter-based trust assumptions that are architecturally incompatible with:\n\n- Cloud-native, API-mediated service communication\n- Dynamic workload placement across multiple accounts and availability zones\n- Zero Trust's foundational requirement that network location is not a trust signal\n\nIn place of a DMZ, Platform Gainwell's architecture distributes boundary enforcement across two layers:\n\n| Layer | Role |\n|---|---|\n| **Application layer** | **Authoritative** for ingress access decisions — authentication, authorization, request inspection, and policy enforcement are applied at this layer before traffic reaches workload logic |\n| **Network layer** | **Supportive** — provides segmentation, traffic isolation, and defense-in-depth, but does not serve as the primary trust boundary |\n\nThis inversion of authority — application over network — is the architectural commitment this ADR establishes.\n\n---",
+    "16": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#the-four-traffic-domains]\n\n#### The Four Traffic Domains\n\nAll traffic on Platform Gainwell is classified into one of the following four domains. Each domain is a distinct governance object with independent policy requirements. A boundary condition that does not fall cleanly into one domain must be explicitly resolved through a child ADR.\n\n---",
+    "17": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#domain-1-external-in-ingress]\n\n##### Domain 1: External-In (Ingress)\n\n**Definition:** Traffic originating outside the Platform Gainwell organizational trust boundary that is destined for a workload or service hosted on the platform.\n\n**Includes:**\n- Internet-originating client requests (end users, agencies, beneficiaries)\n- External partner and integration system traffic\n- Third-party SaaS or cloud service-initiated calls into the platform\n\n**Governing Architectural Principle:** All External-In traffic **must pass through an application-layer Policy Enforcement Point (PEP)** before reaching any workload. The PEP is responsible for authentication, authorization assertion, request inspection, and audit event generation. No external traffic reaches workload logic without traversing this boundary.\n\n**What the PEP is** is not prescribed by this ADR — that is the responsibility of child ADRs (e.g., ADR-SEC-001).\n\n**Implicit trust prohibition:** Network-layer allowances (e.g., security group rules permitting traffic from a given CIDR) do not constitute authorization for workload access. Access is governed at the application layer.\n\n---",
+    "18": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#domain-2-internal-out-egress]\n\n##### Domain 2: Internal-Out (Egress)\n\n**Definition:** Traffic originating from a Platform Gainwell workload or service that is destined for an endpoint outside the organizational trust boundary.\n\n**Includes:**\n- Workload-initiated calls to external APIs, third-party services, or internet endpoints\n- Outbound notifications, data transmissions, or integration callbacks\n- Platform management traffic reaching external endpoints (e.g., software update services)\n\n**Governing Architectural Principle:** Egress from Platform Gainwell is **governed, not assumed.** Egress paths are explicitly authorized and logged; the specific default posture and routing mechanism are defined in downstream egress standards and the corresponding child ADR.\n\n**Implicit trust prohibition:** A workload's location within the trusted network boundary does not authorize it to initiate arbitrary outbound connections. Egress policy is enforced independently of inbound access decisions.\n\n---",
+    "19": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#domain-3-east-west-inter-vpc--inter-account]\n\n##### Domain 3: East-West (Inter-VPC / Inter-Account)\n\n**Definition:** Traffic between workloads, services, or accounts that is wholly contained within the Platform Gainwell organizational trust boundary but crosses a VPC or AWS account boundary.\n\n**Includes:**\n- Service-to-service API calls across different AWS accounts within the same AWS Organization\n- Cross-VPC data access or integration traffic\n- Platform services communicating with tenant workloads across account boundaries\n\n**Governing Architectural Principle:** VPC and account boundaries are **security boundaries, not trusted internal networks.** Traffic crossing these boundaries is subject to explicit policy enforcement. Network connectivity (e.g., Transit Gateway routing, VPC peering) is a necessary condition for communication, but is not sufficient — endpoint-level authorization is required.\n\n**Implicit trust prohibition:** Membership within the same AWS Organization or VPC peering relationship does not constitute authorization. Each cross-boundary service call must be authenticated and authorized through service identity, not network position.\n\n---",
+    "20": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#domain-4-intra-vpc-workload-to-workload]\n\n##### Domain 4: Intra-VPC (Workload-to-Workload)\n\n**Definition:** Traffic between workloads co-located within the same VPC that have already passed through applicable domain entry controls for their respective boundary.\n\n**Includes:**\n- Sidecar-mediated service communication within a shared VPC\n- Database access from application workloads within the same compute boundary\n- Inter-process or inter-container communication within the same workload deployment unit\n\n**Governing Architectural Principle:** Intra-VPC traffic represents the **narrowest trust scope** in the architecture — workloads that have been admitted through applicable domain controls and are operating within an approved compute boundary. The governing control at this domain is **network segmentation and least-privilege connectivity** rather than full re-authentication on every call. Where workloads process PHI or PII, identity-based authorization at the workload level is the expectation; for lower-sensitivity communication paths, network-layer segmentation controls may satisfy the least-privilege requirement as defined in downstream standards. The appropriate control depth is proportional to data sensitivity — this proportionality is specified in the Traffic Control Domains ABB ([GUID-SEC-PG-CLOUD-NETWORK-TRAFFIC-CONTROL-ABB](../../strategy/guidance/security/Network/GUID-SEC-PG-CLOUD-NETWORK-TRAFFIC-CONTROL-ABB-v1.md)).\n\nHowever, **implicit blanket trust is still prohibited.** Network segmentation controls (security groups, network ACLs, service mesh enforce policy where deployed) must still enforce workload-to-workload access on a least-privilege basis.\n\n**Implicit trust prohibition:** Shared VPC membership does not confer unrestricted lateral access. Workload-to-workload communication must be explicitly scoped.\n\n---",
+    "21": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#cross-domain-principles]\n\n#### Cross-Domain Principles\n\nThe following principles apply across all four domains:\n\n| Principle | Statement |\n|---|---|\n| **Explicit Policy Required** | Every domain boundary requires an explicit policy decision for traffic to traverse it. Absence of an explicit deny is not equivalent to permission. |\n| **Authentication Before Access** | No workload or service receives data or executes logic on behalf of an unauthenticated request. |\n| **Audit at Every Boundary** | Each domain boundary generates an audit-quality event. The aggregate of these events constitutes the platform's traffic audit trail. |\n| **Least Privilege Connectivity** | Network paths are provisioned for the minimum scope of communication required. Broad connectivity ranges are not acceptable as an optimization. |\n| **No Network Location as Trust Signal** | IP address, VPC membership, availability zone, or AWS account membership are not sufficient authorization signals on their own. Network location signals may inform risk context but do not constitute access authorization. |\n\n---",
+    "22": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#architectural-invariants]\n\n#### Architectural Invariants\n\nThe following conditions are **architectural invariants** — conditions that must hold across all Platform Gainwell deployments and that no child ADR, standard, or implementation decision may contradict:\n\n1. The platform **does not implement a traditional DMZ architecture.**\n2. Application-layer controls are **authoritative for ingress access decisions.** Network-layer controls are defense-in-depth, not authorization.\n3. All traffic is classified into one of the four domains. Unclassified traffic paths are **non-conforming** and must be addressed through an approved exception or remediation path.\n4. Implicit trust at any domain boundary is **prohibited.**\n5. Cross-domain traffic always requires an **explicit policy artifact** — a security group rule alone is not an architecture-level policy artifact.\n\n---\n\n**Pros:**\n\n- ✅ **Zero Trust fidelity:** Directly implements NIST SP 800-207 logical architecture principles — explicit verification at every boundary, no network-location–based trust\n- ✅ **Regulatory completeness:** All traffic domains are governed, creating audit coverage across the full platform traffic surface\n- ✅ **Architectural coherence:** Establishes a consistent parent framework from which all child network security ADRs derive their authority\n- ✅ **Cloud-native alignment:** Eliminates DMZ complexity that does not map to AWS multi-account architectures\n- ✅ **Scalability:** Domain-based governance scales with platform growth — new accounts, workloads, and services inherit the framework without requiring new architectural decisions for each\n\n**Cons:**\n\n- ❌ **Implementation complexity:** Four-domain governance requires consistent enforcement across a distributed environment; realization requires mature tooling and operational discipline\n- ❌ **Upfront classification burden:** Every traffic path must be classified; initially, this requires inventory and analysis of existing patterns\n- ❌ **No legacy accommodation:** Teams accustomed to implicit internal trust will encounter friction during adoption\n\n---",
+    "23": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#considered-options]\n\n## Considered Options",
+    "24": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#option-1-traditional-dmz-architecture]\n\n### Option 1: Traditional DMZ Architecture\n\n**Description:** Deploy a classic DMZ pattern using firewall clusters, screened subnets, and a tiered trust model (untrusted → DMZ → trusted) ported into the AWS environment using cloud-hosted appliances.\n\n**Pros:**\n- ✅ Familiar operational model with established runbooks\n- ✅ Strong compliance precedent in on-premises regulated environments\n\n**Cons:**\n- ❌ **Architecturally incompatible with cloud-native:** DMZ models assume static network topologies with stable perimeter points — neither of which holds in a dynamic multi-account AWS environment\n- ❌ **Violates Zero Trust principles:** DMZ grants implicit trust to traffic inside the inner zone — precisely the trust model NIST SP 800-207 directs organizations to eliminate\n- ❌ **No audit at application layer:** DMZ-based enforcement operates below the application layer; it cannot authenticate callers, assess authorization context, or generate structured application-layer audit events\n- ❌ **Fragile at scale:** A DMZ-based architecture becomes a bottleneck and single point of failure as workload count and cross-domain communication patterns grow\n\n**Verdict:** ❌ **Rejected** — Architecturally incompatible with Platform Gainwell's cloud-native, multi-account design and with the Zero Trust mandate established in STRAT-SEC-PLATFORM-001.\n\n---",
+    "25": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#option-2-network-perimeter-segmentation-only-no-formal-traffic-domain-governance]\n\n### Option 2: Network Perimeter Segmentation Only (No Formal Traffic Domain Governance)\n\n**Description:** Implement AWS-native network controls (security groups, network ACLs, transit gateway routing policies) as the primary security boundary, without formally defining or governing traffic domains at the architecture level.\n\n**Pros:**\n- ✅ Lower initial architectural overhead\n- ✅ AWS-native controls require no additional tooling\n\n**Cons:**\n- ❌ **Network location remains implicit trust signal:** Without a formal domain governance model, security group rules become de facto authorization artifacts — conflating connectivity with access authorization\n- ❌ **No architectural coherence for child decisions:** API gateway placement, egress control, and microsegmentation strategies cannot be derived from a common parent principle — each becomes an independent and potentially inconsistent decision\n- ❌ **Insufficient audit coverage:** Network-layer logging does not produce application-layer audit events; PHI/PII access cannot be attributed to authenticated identities from network logs alone\n- ❌ **Compliance gap:** HIPAA and ARC-AMPE access control requirements operate at the identity and application layers; network-only enforcement does not satisfy them\n\n**Verdict:** ❌ **Rejected** — Insufficient to satisfy Zero Trust, compliance, and auditability requirements; creates architectural fragmentation without a governing framework.\n\n---",
+    "26": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#option-3-zero-trust-with-undifferentiated-traffic-model-no-domain-taxonomy]\n\n### Option 3: Zero Trust with Undifferentiated Traffic Model (No Domain Taxonomy)\n\n**Description:** Adopt Zero Trust principles but treat all traffic as a single class, applying uniform controls without distinguishing between External-In, Internal-Out, East-West, and Intra-VPC patterns.\n\n**Pros:**\n- ✅ Simpler control model to communicate\n- ✅ No domain classification burden\n\n**Cons:**\n- ❌ **Over-engineering at inner boundaries:** Applying External-In–equivalent controls to Intra-VPC post-PEP traffic is architecturally excessive and operationally expensive\n- ❌ **Under-engineering at outer boundaries:** Without distinguishing External-In, there is no clear architectural statement that application-layer controls are authoritative for ingress\n- ❌ **Cannot support distinct child ADRs:** API gateway strategy, egress control, and microsegmentation each require a parent domain boundary to reference — a taxonomy-free model provides no anchor\n- ❌ **Compliance evidence gap:** Regulators and auditors expect layered, differentiated controls; a single undifferentiated control model produces weaker evidence\n\n**Verdict:** ❌ **Rejected** — Practical Zero Trust implementation requires differentiated control placement calibrated to the nature of each boundary crossing.\n\n---",
+    "27": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#decision-outcome]\n\n## Decision Outcome\n\n**Chosen Option: Zero Trust Cloud-Native Network Architecture with Explicit Traffic Domain Governance**\n\n**Rationale:** The four-domain traffic governance model is the only option that simultaneously satisfies Zero Trust fidelity, regulatory compliance, architectural coherence for downstream decisions, and auditability across the full Platform Gainwell traffic surface. Options 1–3 each contain fundamental incompatibilities with one or more of these requirements. The chosen architecture establishes a durable, extensible governance framework from which specific network-domain decisions can be consistently derived.",
+    "28": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#success-criteria]\n\n### Success Criteria\n\nAt full adoption, the following conditions define conformance with this architecture:\n\n- All Platform Gainwell traffic is classifiable into one of the four defined domains\n- All new workloads onboarded after this ADR is accepted receive inbound traffic only through an application-layer PEP; existing workloads are brought into conformance through a tracked remediation path\n- Cross-domain traffic audit coverage is complete — no traffic domain boundary is unlogged\n- All child network security ADRs explicitly reference this ADR as their governing parent\n\n---",
+    "29": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#downstream-architecture-artifacts]\n\n## Downstream Architecture Artifacts\n\nThe following artifacts are governed by this ADR. Consistency with the architectural invariants and traffic domain definitions above is required.",
+    "30": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#child-adrs-network-domain-realizations]\n\n### Child ADRs (Network Domain Realizations)\n\n| ADR | Domain | Status |\n|---|---|---|\n| [ADR-SEC-001: API Gateway Strategy for North–South vs East–West Traffic](./ADR-SEC-001-api-gateway-strategy.md) | External-In (Ingress) / East-West | ✅ Accepted |\n\n> **Note (Non-Normative):** The following domain areas are not yet covered by a child ADR. Their absence does not invalidate this ADR. Each represents a recommended future artifact that would complete the governance coverage for its domain:\n> - Internal-Out (Egress) — egress governance ADR\n> - East-West / Intra-VPC — microsegmentation ADR\n> - External-In (human remote access) — ZTNA remote access ADR",
+    "31": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#platform-gainwell-network-architecture-artifacts-direct-children-of-this-adr]\n\n### Platform Gainwell Network Architecture Artifacts (Direct Children of This ADR)\n\nThe following artifacts descend directly from this ADR and collectively constitute the Platform Gainwell Secure Cloud Network architecture:\n\n| Artifact | Type | Relationship |\n|---|---|---|\n| [Secure Cloud Network ABB](../../strategy/guidance/security/Network/GUID-SEC-PG-CLOUD-NETWORK-ABB-v1.md) (GUID-SEC-PG-CLOUD-NETWORK-ABB) | Architecture Building Block | **Structural child:** defines account model, VPC topology, domain taxonomy, and structural network requirements |\n| [Traffic Control Domains ABB](../../strategy/guidance/security/Network/GUID-SEC-PG-CLOUD-NETWORK-TRAFFIC-CONTROL-ABB-v1.md) (GUID-SEC-PG-CLOUD-NETWORK-TRAFFIC-CONTROL-ABB) | Architecture Building Block | **Behavioral child:** defines the Control Boundary Pattern, per-domain specifications, domain handoff model, and observability requirements |\n| [Secure Cloud Network Overview RAD](../../strategy/guidance/security/Network/GUID-SEC-PG-CLOUD-NETWORK-OVERARCHING-RAD.V1.md) (GUID-SEC-PG-CLOUD-NETWORK-OVERARCHING-RAD) | Reference Architecture Document | **Synthesis:** integrates both ABBs into the canonical reference model; houses the traffic domain diagram; provides the architecture views for downstream standards, SBBs, and GRC artifacts |",
+    "32": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#related-guidance-architecture-building-blocks]\n\n### Related Guidance (Architecture Building Blocks)\n\n| Guidance | Relationship |\n|---|---|\n| [GUID-SEC-NETWORK-ZTNA-STRATEGY-3.2.01](../../strategy/guidance/security/Network/GUID-SEC-NETWORK-ZTNA-STRATEGY-3.2.01.md) | External-In domain realization guidance |\n| [GUID-SEC-NETWORK-MICROSEG-2.2.03](../../strategy/guidance/security/Network/GUID-SEC-NETWORK-MICROSEG-2.2.03.md) | East-West / Intra-VPC domain realization guidance |\n| [GUID-SEC-NETWORK-WAF-2.2.02](../../strategy/guidance/security/Network/GUID-SEC-NETWORK-WAF-2.2.02.md) | Application-layer ingress control guidance |\n| [GUID-SEC-NETWORK-FIREWALL-2.2.01](../../strategy/guidance/security/Network/GUID-SEC-NETWORK-FIREWALL-2.2.01.md) | Network-layer supportive control guidance |\n| [GUID-SEC-SECOPS GEN ARCH-REF-1.1.01](../../strategy/guidance/security/SecOps/GUID-SEC-SECOPS%20GEN%20ARCH-REF-1.1.01.md) | Audit and monitoring architecture guidance applicable to all four domains |\n\n---",
+    "33": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#consequences]\n\n## Consequences",
+    "34": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#-positive]\n\n### ✅ Positive\n\n- A clear, durable parent architecture is established for all network-domain security decisions on Platform Gainwell\n- Implicit trust is architecturally prohibited and documented — reducing the likelihood of accidental compliance gaps from future configuration decisions\n- The four-domain model provides a shared language for security architects, platform engineers, and compliance teams to discuss traffic governance\n- Child ADRs (API gateway, egress, microsegmentation) can be independently authored and evolved without contradicting each other, because they share a common parent framework\n- Audit coverage across the full traffic surface is an architectural requirement, not a bolt-on — compliance evidence collection is designed in, not retrofitted",
+    "35": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#-negative]\n\n### ❌ Negative\n\n- **Classification burden at adoption:** Existing traffic patterns must be inventoried and classified into domains before full governance can be asserted — this is a one-time but non-trivial effort\n- **Operational discipline required:** The architecture's invariants must be actively enforced; platform teams that provision ad-hoc network paths outside the domain model create architectural debt\n- **Friction for inherited workloads:** Workloads migrated from environments with implicit internal trust assumptions will require re-architecture at domain boundaries",
+    "36": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#-neutral]\n\n### ⚪ Neutral\n\n- This ADR does not change the technology fabric of Platform Gainwell — it establishes the architectural intent that governs how that fabric is configured and operated\n- Network-layer controls (security groups, routing policies) remain necessary and valid as defense-in-depth; they are not replaced by this decision, they are re-scoped within it\n- The four-domain model is additive to existing AWS account and VPC boundaries — it does not require restructuring the existing account topology\n\n---",
+    "37": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#risk-assessment-and-mitigation]\n\n## Risk Assessment and Mitigation",
+    "38": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#-risks]\n\n### ⚠️ Risks\n\n| Risk | Domain | Likelihood | Impact |\n|---|---|---|---|\n| Intra-VPC traffic treated as fully trusted because it has passed a PEP, allowing unrestricted lateral movement | Intra-VPC | Medium | High |\n| Egress domain under-governed relative to ingress, creating an exfiltration path not covered by application-layer audit | Internal-Out | Medium | High |\n| East-West domain governance fragmented across individual account-level decisions without reference to this ADR, creating inconsistency | East-West | Medium | Medium |\n| New workloads provisioned without domain classification, creating traffic paths that exist outside the governance model | All | Low–Medium | Medium |",
+    "39": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#-mitigations]\n\n### 🛡️ Mitigations\n\n| Mitigation | Target Risk |\n|---|---|\n| Intra-VPC must still enforce segment-level least privilege, and a service mesh (when authorized) extends PEP-equivalent control inward | Intra-VPC lateral movement |\n| An explicit Egress Governance ADR (planned) must be produced within the same architecture cycle as this document | Egress under-governance |\n| All Platform Gainwell network security ADRs must cite this ADR in their Parent Architecture Alignment section | East-West fragmentation |\n| Platform onboarding processes must include domain classification as a mandatory architecture gate | Unclassified traffic paths |\n\n---",
+    "40": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#compliance-notes]\n\n## Compliance Notes\n\n| Framework | Alignment |\n|---|---|\n| **HIPAA Security Rule §164.312(e)(1)** | Transmission security: all four traffic domains require encryption in transit; application-layer controls satisfy the \"authentication entity\" requirement for PHI transmission |\n| **HIPAA Security Rule §164.312(b)** | Audit controls: the Audit-at-Every-Boundary cross-domain principle directly satisfies the audit control requirement; domain boundary audit events constitute the attributable access record that §164.312(b) requires |\n| **HIPAA Security Rule §164.308(a)(4)** | Information access management: application-layer authorization at domain boundaries satisfies the access authorization control requirement |\n| **ARC-AMPE v1.02** | CMS transmission security and access control for PHI (successor to MARS-E 2.0): the four-domain model, application-layer primacy for ingress, and audit-at-every-boundary principle address ARC-AMPE access control and audit obligations for ACA, Medicaid, and Partner Entity data processed on Platform Gainwell |\n| **NIST SP 800-53 Rev. 5 — SC-7 (Boundary Protection)** | The four-domain model formally defines all logical boundaries and requires explicit policy at each; no implicit permit |\n| **NIST SP 800-53 Rev. 5 — SC-8 (Transmission Confidentiality and Integrity)** | Applicable to all domains; encryption requirements are inherited by child ADRs and standards |\n| **NIST SP 800-53 Rev. 5 — AU-2 / AU-12 (Audit Events / Audit Record Generation)** | Audit-at-every-boundary principle directly satisfies the requirement for audit event generation at information system boundaries |\n| **NIST SP 800-53 Rev. 5 — AC-4 (Information Flow Enforcement)** | Explicit domain classification and policy enforcement directly realizes information flow control |\n| **NIST SP 800-207 (Zero Trust Architecture)** | This ADR constitutes the network architectural realization of the ZTA logical architecture — PEP at every domain boundary, no implicit trust from network location |\n\n---",
+    "41": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#review-and-approval]\n\n## Review and Approval\n\n| Role                                | Name   | Date         | Status       |\n| ----------------------------------- | ------ | ------------ | ------------ |\n| SVP Enterprise Architecture         | [Name] | [YYYY-MM-DD] | 🔄 Pending   |\n| VP Information Security / CISO      | [Name] | [YYYY-MM-DD] | 🔄 Pending   |\n| Enterprise Security Architect       | [Name] | [YYYY-MM-DD] | 🔄 Pending   |\n| Platform Engineering Lead           | [Name] | [YYYY-MM-DD] | 🔄 Pending   |\n| Compliance & Privacy                | [Name] | [YYYY-MM-DD] | 🔄 Pending   |\n\n---",
+    "42": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#relevant-sources]\n\n## Relevant Sources\n\n- **NIST SP 800-207** — Zero Trust Architecture. National Institute of Standards and Technology, 2020.\n- **NIST SP 800-53 Rev. 5** — Security and Privacy Controls for Information Systems and Organizations. NIST, 2020. Control families: AC, AU, SC.\n- **NIST CSF 2.0** — Cybersecurity Framework Version 2.0. NIST, 2024.\n- **HIPAA Security Rule** — 45 CFR Part 164: Security Standards for the Protection of Electronic Protected Health Information.\n- [Security Strategy: Platform Gainwell](../../strategy/white-papers/security/platform-gainwell-security-strategy.md) — STRAT-SEC-PLATFORM-001, Gainwell Technologies Enterprise Architecture Practice.\n- [GUID-SEC-ZERO TRUST ARCH-REF-0.0.02](../../strategy/guidance/security/GUID-SEC-ZERO%20TRUST%20ARCH-REF-0.0.02.md) — Enterprise Zero Trust Architecture Reference, Gainwell Technologies.\n- [GUID-SEC-NETWORK-REF-1.2.01](../../strategy/guidance/security/Network/GUID-SEC-NETWORK-REF-1.2.01.md) — Security Network Architecture Guidance, Gainwell Technologies.\n- [ADR-SEC-001: API Gateway Strategy](./ADR-SEC-001-api-gateway-strategy.md) — Child decision realizing External-In and East-West PEP placement, Gainwell Technologies.\n- [ADR-IFR-002: Cloud Native Strategy](../infrastructure/ADR-IFR-002-cloud-native-strategy.md) — Cloud-native platform adoption decision, Gainwell Technologies.\n- [ADR-IFR-003: Enterprise Cloud Strategy](../infrastructure/ADR-IFR-003-enterprise-cloud-strategy.md) — AWS multi-account architecture decision, Gainwell Technologies.\n\n---",
+    "43": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#change-log]\n\n## Change Log\n\n| Version | Date       | Author                          | Description             |\n| ------- | ---------- | ------------------------------- | ----------------------- |\n| 1.0     | 2026-03-24 | Jesse Adams, Enterprise Security Architect | Initial draft for review |\n| 1.1     | 2026-03-24 | Jesse Adams, Enterprise Security Architect | Reduced prescriptiveness: softened architectural-defects language to non-conforming/exception path; qualified network-location trust signal statement per NIST SP 800-207; moved egress default posture to downstream standards; added at-full-adoption qualifier to success criteria; converted planned child ADRs from normative table entries to non-normative note |\n| 1.2     | 2026-03-24 | Jesse Adams, Enterprise Security Architect | Consistency review: (1) correct TOGAF note — ADR is not an ABB; add reference to ABB family; (2) number Domain 4 heading as \"Domain 4: Intra-VPC\"; remove \"Post-PEP\" from heading; align definition language with downstream ABBs; (3) add proportionality bridge sentence for Domain 4 principle, referencing Traffic Control Domains ABB; (4) add Platform Gainwell Network Architecture Artifacts table to Downstream section with all three direct child artifacts; (5) add HIPAA §164.312(b) and ARC-AMPE v1.02 to compliance table |\n\n---",
+    "44": "[decisions/security/ADR-SEC-PG-SECURE-CLOUD-NETWORK-ARCHITECTURE-v1.md#last-reviewed]\n\n## Last Reviewed\n\n| Review Date | Reviewer | Review Type   | Status          |\n| ----------- | -------- | ------------- | --------------- |\n| 2026-03-24  | Jesse Adams | Initial Draft | Pending Approval |\n\n---"
+  },
+  "coverage": {
+    "total_pages": 44,
+    "covered_pages": 44,
+    "sampled_pages": 44,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 44
+  }
+}

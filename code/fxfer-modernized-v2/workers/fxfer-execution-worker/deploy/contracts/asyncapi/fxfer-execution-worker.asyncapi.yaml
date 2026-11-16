@@ -1,0 +1,52 @@
+asyncapi: 3.0.0
+info:
+  title: fxfer-execution-worker work item contract
+  version: 0.1.0
+  description: |
+    Placeholder AsyncAPI contract for work items consumed by fxfer-execution-worker.
+
+servers:
+  event-backbone:
+    host: event-backbone
+    protocol: sns
+
+channels:
+  fxfer.transfer-run-requested:
+    address: fxfer.transfer-run-requested
+    messages:
+      TransferRunRequested:
+        headers:
+          $ref: #/components/schemas/CanonicalEnvelope
+        payload:
+          $ref: #/components/schemas/TransferRunRequestedPayload
+
+components:
+  schemas:
+    CanonicalEnvelope:
+      type: object
+      additionalProperties: false
+      required:
+        - tenant_id
+        - event_name
+        - event_version
+        - event_id
+        - occurred_at
+        - correlation_id
+        - trace_id
+        - producer
+      properties:
+        tenant_id: { type: string }
+        event_name: { type: string }
+        event_version: { type: string }
+        event_id: { type: string, format: uuid }
+        occurred_at: { type: string, format: date-time }
+        correlation_id: { type: string }
+        trace_id: { type: string }
+        producer: { type: string }
+    TransferRunRequestedPayload:
+      type: object
+      additionalProperties: false
+      required: [ run_id ]
+      properties:
+        run_id: { type: string, format: uuid }
+

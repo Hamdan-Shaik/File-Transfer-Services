@@ -1,0 +1,264 @@
+component: backend-configure-source-locations-and-destinations-api
+tier: backend
+depends_on:
+- backend-bas-file-transfer-api
+- backend-bas-file-transfer-svc
+- backend-bas-file-transfer-svc-2
+- backend-business-command-handlers
+- backend-business-command-handlers-2
+classes:
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService
+  kind: Class
+  tier: backend
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc\FileTransferSvcQueryService.svc.cs
+  line: 23
+  line_end: 64
+  project: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc
+  methods:
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService.GetConfigurator()
+    line: 60
+    line_end: 63
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService.GetFtpServers(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+    line: 35
+    line_end: 38
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService.GetIntegrationFile(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.GetIntegrationFileQuery)
+    line: 50
+    line_end: 53
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService.GetSourceLocations(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.GetSourceLocationQuery)
+    line: 40
+    line_end: 43
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService.SearchFileTransferMovement(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FileTransferTrackingQuery)
+    line: 30
+    line_end: 33
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService.SearchInboundTarget(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.InboundTargetQuery)
+    line: 45
+    line_end: 48
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService.SearchSourceLocations(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.SourceLocationQuery)
+    line: 25
+    line_end: 28
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService.TryRouteQuery(Query)
+    line: 55
+    line_end: 58
+  uses:
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.IFileTransferSvcQueryService (backend-bas-file-transfer-svc)
+  tables:
+    orm:FTP_SERVER:
+    - reads
+- name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService
+  kind: Class
+  tier: backend
+  file: bas\FileTransferSvc\HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc\FileTransferSvcService.svc.cs
+  line: 14
+  line_end: 79
+  project: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc
+  methods:
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.AddFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+    line: 43
+    line_end: 46
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.FileTransferAdd(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand)
+    line: 25
+    line_end: 28
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.GetConfigurator()
+    line: 74
+    line_end: 77
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.InvalidateFileTransferSourceLocation(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationInvalidateCommand)
+    line: 37
+    line_end: 40
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.InvalidateFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.InvalidateFtpServerCommand)
+    line: 61
+    line_end: 64
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.TryRouteCommand(Command)
+    line: 69
+    line_end: 72
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.UpdateFileTransferSourceLocation(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationUpdateCommand)
+    line: 31
+    line_end: 34
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.UpdateFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.UpdateFtpServerCommand)
+    line: 49
+    line_end: 52
+  - name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.UpdateIntegrationFile(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.UpdateIntegrationFileCommand)
+    line: 55
+    line_end: 58
+  uses:
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler (backend-business-command-handlers)
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsIntegrationFileCommandHandler (backend-business-command-handlers)
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationAddCommandHandler (backend-business-command-handlers)
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.IFileTransferSvcService (backend-bas-file-transfer-svc)
+  - HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler (backend-business-command-handlers-2)
+  - HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsIntegrationFileCommandHandler (backend-business-command-handlers-2)
+  - HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationAddCommandHandler (backend-business-command-handlers-2)
+  tables:
+    orm:FTP_SERVER:
+    - reads
+    orm:FTS_SUSPENSION:
+    - reads
+- name: HPP.FileTransfer.BAS.FileTransferApi.Commands.FileTransferSvcService
+  kind: Class
+  tier: backend
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferApi\Commands\FileTransferSvcService.cs
+  line: 15
+  line_end: 74
+  project: HPP.FileTransfer.BAS.FileTransferApi
+  methods:
+  - name: HPP.FileTransfer.BAS.FileTransferApi.Commands.FileTransferSvcService.AddFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+    line: 44
+    line_end: 47
+  - name: HPP.FileTransfer.BAS.FileTransferApi.Commands.FileTransferSvcService.FileTransferAdd(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand)
+    line: 26
+    line_end: 29
+  - name: HPP.FileTransfer.BAS.FileTransferApi.Commands.FileTransferSvcService.GetConfigurator()
+    line: 69
+    line_end: 72
+  - name: HPP.FileTransfer.BAS.FileTransferApi.Commands.FileTransferSvcService.InvalidateFileTransferSourceLocation(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationInvalidateCommand)
+    line: 38
+    line_end: 41
+  - name: HPP.FileTransfer.BAS.FileTransferApi.Commands.FileTransferSvcService.InvalidateFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.InvalidateFtpServerCommand)
+    line: 56
+    line_end: 59
+  - name: HPP.FileTransfer.BAS.FileTransferApi.Commands.FileTransferSvcService.TryRouteCommand(HPP.Core.BAS.CQRS.Base.Command)
+    line: 64
+    line_end: 67
+  - name: HPP.FileTransfer.BAS.FileTransferApi.Commands.FileTransferSvcService.UpdateFileTransferSourceLocation(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationUpdateCommand)
+    line: 32
+    line_end: 35
+  - name: HPP.FileTransfer.BAS.FileTransferApi.Commands.FileTransferSvcService.UpdateFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.UpdateFtpServerCommand)
+    line: 50
+    line_end: 53
+  uses:
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler (backend-business-command-handlers)
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationAddCommandHandler (backend-business-command-handlers)
+  - HPP.FileTransfer.BAS.FileTransferApi.Interfaces.IFileTransferSvcService (backend-bas-file-transfer-api)
+  - HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler (backend-business-command-handlers-2)
+  - HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationAddCommandHandler (backend-business-command-handlers-2)
+  tables:
+    orm:FTP_SERVER:
+    - reads
+    orm:FTS_SUSPENSION:
+    - reads
+  packages:
+  - hpp.core.bas.cqrs
+- name: HPP.FileTransfer.BAS.FileTransferApi.Queries.FileTransferSvcQueryService
+  kind: Class
+  tier: backend
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferApi\Queries\FileTransferSvcQueryService.cs
+  line: 14
+  line_end: 50
+  project: HPP.FileTransfer.BAS.FileTransferApi
+  methods:
+  - name: HPP.FileTransfer.BAS.FileTransferApi.Queries.FileTransferSvcQueryService.GetConfigurator()
+    line: 46
+    line_end: 49
+  - name: HPP.FileTransfer.BAS.FileTransferApi.Queries.FileTransferSvcQueryService.GetFtpServers(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+    line: 26
+    line_end: 29
+  - name: HPP.FileTransfer.BAS.FileTransferApi.Queries.FileTransferSvcQueryService.GetSourceLocations(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.GetSourceLocationQuery)
+    line: 31
+    line_end: 34
+  - name: HPP.FileTransfer.BAS.FileTransferApi.Queries.FileTransferSvcQueryService.SearchFileTransferMovement(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FileTransferTrackingQuery)
+    line: 21
+    line_end: 24
+  - name: HPP.FileTransfer.BAS.FileTransferApi.Queries.FileTransferSvcQueryService.SearchInboundTarget(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.InboundTargetQuery)
+    line: 36
+    line_end: 39
+  - name: HPP.FileTransfer.BAS.FileTransferApi.Queries.FileTransferSvcQueryService.SearchSourceLocations(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.SourceLocationQuery)
+    line: 16
+    line_end: 19
+  - name: HPP.FileTransfer.BAS.FileTransferApi.Queries.FileTransferSvcQueryService.TryRouteQuery(HPP.Core.BAS.CQRS.Base.Query)
+    line: 41
+    line_end: 44
+  uses:
+  - HPP.FileTransfer.BAS.FileTransferApi.Interfaces.IFileTransferSvcQueryService (backend-bas-file-transfer-api)
+  tables:
+    orm:FTP_SERVER:
+    - reads
+  packages:
+  - hpp.core.bas.cqrs
+- name: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService
+  kind: Class
+  tier: backend
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvcCore\FileTransferSvcQueryService.cs
+  line: 14
+  line_end: 55
+  project: HPP.FileTransfer.BAS.FileTransferSvc
+  methods:
+  - name: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService.GetConfigurator()
+    line: 51
+    line_end: 54
+  - name: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService.GetFtpServers(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+    line: 26
+    line_end: 29
+  - name: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService.GetIntegrationFile(HPP.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.GetIntegrationFileQuery)
+    line: 41
+    line_end: 44
+  - name: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService.GetSourceLocations(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.GetSourceLocationQuery)
+    line: 31
+    line_end: 34
+  - name: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService.SearchFileTransferMovement(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FileTransferTrackingQuery)
+    line: 21
+    line_end: 24
+  - name: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService.SearchInboundTarget(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.InboundTargetQuery)
+    line: 36
+    line_end: 39
+  - name: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService.SearchSourceLocations(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.SourceLocationQuery)
+    line: 16
+    line_end: 19
+  - name: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService.TryRouteQuery(HPP.Core.BAS.CQRS.Base.Query)
+    line: 46
+    line_end: 49
+  uses:
+  - HPP.FileTransfer.BAS.FileTransferSvc.IFileTransferSvcQueryService (backend-bas-file-transfer-svc-2)
+  tables:
+    orm:FTP_SERVER:
+    - reads
+  packages:
+  - hpp.core.bas.cqrs
+- name: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService
+  kind: Class
+  tier: backend
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvcCore\FileTransferSvcService.cs
+  line: 14
+  line_end: 79
+  project: HPP.FileTransfer.BAS.FileTransferSvc
+  methods:
+  - name: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.AddFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand)
+    line: 43
+    line_end: 46
+  - name: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.FileTransferAdd(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand)
+    line: 25
+    line_end: 28
+  - name: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.GetConfigurator()
+    line: 74
+    line_end: 77
+  - name: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.InvalidateFileTransferSourceLocation(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationInvalidateCommand)
+    line: 37
+    line_end: 40
+  - name: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.InvalidateFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.InvalidateFtpServerCommand)
+    line: 61
+    line_end: 64
+  - name: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.TryRouteCommand(HPP.Core.BAS.CQRS.Base.Command)
+    line: 69
+    line_end: 72
+  - name: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.UpdateFileTransferSourceLocation(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationUpdateCommand)
+    line: 31
+    line_end: 34
+  - name: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.UpdateFtpServer(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.UpdateFtpServerCommand)
+    line: 49
+    line_end: 52
+  - name: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService.UpdateIntegrationFile(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.UpdateIntegrationFileCommand)
+    line: 55
+    line_end: 58
+  uses:
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler (backend-business-command-handlers)
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsIntegrationFileCommandHandler (backend-business-command-handlers)
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationAddCommandHandler (backend-business-command-handlers)
+  - HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler (backend-business-command-handlers-2)
+  - HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsIntegrationFileCommandHandler (backend-business-command-handlers-2)
+  - HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationAddCommandHandler (backend-business-command-handlers-2)
+  - HPP.FileTransfer.BAS.FileTransferSvc.IFileTransferSvcService (backend-bas-file-transfer-svc-2)
+  tables:
+    orm:FTP_SERVER:
+    - reads
+    orm:FTS_SUSPENSION:
+    - reads
+  packages:
+  - hpp.core.bas.cqrs

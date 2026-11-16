@@ -1,0 +1,130 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Scope",
+  "document_description": "Manage the project plan in `docs/project-plan.md`. This file is the single source of truth for features, tasks, milestones, risks, and project decisions.",
+  "total_pages": 12,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 12,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Scope",
+          "node_id": "scope",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Workflow",
+          "node_id": "workflow",
+          "start_index": 3,
+          "end_index": 8,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Adding Features or Tasks",
+              "node_id": "adding-features-or-tasks",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Status Updates",
+              "node_id": "status-updates",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Prioritization",
+              "node_id": "prioritization",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Completing Work",
+              "node_id": "completing-work",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Logging Decisions",
+              "node_id": "logging-decisions",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Azure DevOps (ADO) Integration",
+          "node_id": "azure-devops-ado-integration",
+          "start_index": 9,
+          "end_index": 10,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "ADO Work Item Templates",
+              "node_id": "ado-work-item-templates",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Skill Collaboration",
+          "node_id": "skill-collaboration",
+          "start_index": 11,
+          "end_index": 11,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Guidelines",
+          "node_id": "guidelines",
+          "start_index": 12,
+          "end_index": 12,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "Manage the project plan in `docs/project-plan.md`. This file is the single source of truth for features, tasks, milestones, risks, and project decisions.",
+    "2": "[.claude/skills/project-manager/SKILL.md#scope]\n\n## Scope\n\n- If `$ARGUMENTS` describes features or tasks, add them to the project plan\n- If `$ARGUMENTS` is \"status\", summarize current state of the plan\n- If `$ARGUMENTS` is \"prioritize\", review and re-rank items with the user\n- Otherwise, read the current plan and help the user update it",
+    "3": "[.claude/skills/project-manager/SKILL.md#workflow]\n\n## Workflow",
+    "4": "[.claude/skills/project-manager/SKILL.md#adding-features-or-tasks]\n\n### Adding Features or Tasks\n\n1. Read `docs/project-plan.md` to understand current state\n2. Determine whether the user is describing a **feature** (a deliverable) or a **task** (a unit of work within a feature)\n3. Assign the next sequential number\n4. Ask the user for priority (P0-P3) if not specified; default to P2\n5. Set status to **Planned** unless the user says otherwise\n6. Link tasks to their parent feature\n7. Update the plan file\n8. Confirm what was added",
+    "5": "[.claude/skills/project-manager/SKILL.md#status-updates]\n\n### Status Updates\n\n1. Read `docs/project-plan.md`\n2. Summarize by milestone:\n   - Features done vs. remaining\n   - Tasks in progress\n   - Blockers and risks\n3. Highlight anything overdue or at risk\n4. Keep the summary concise",
+    "6": "[.claude/skills/project-manager/SKILL.md#prioritization]\n\n### Prioritization\n\n1. Read `docs/project-plan.md`\n2. Present all features and tasks grouped by current priority\n3. Walk through with the user and adjust priorities\n4. Update the plan file",
+    "7": "[.claude/skills/project-manager/SKILL.md#completing-work]\n\n### Completing Work\n\nWhen the user says a feature or task is done:\n\n1. Update its status to **Done** in the plan\n2. If all tasks for a feature are done, mark the feature as **Done**\n3. Note the completion",
+    "8": "[.claude/skills/project-manager/SKILL.md#logging-decisions]\n\n### Logging Decisions\n\nWhen the user makes a project decision (scope change, timeline shift, approach change):\n\n1. Add it to the Decisions Log table with date, rationale, and impact\n2. If it's an architecture decision, suggest creating an ADR in `docs/decisions/` instead",
+    "9": "[.claude/skills/project-manager/SKILL.md#azure-devops-ado-integration]\n\n## Azure DevOps (ADO) Integration\n\nThe ADO board is the external system of record for work tracking. Keep `docs/project-plan.md` and ADO in sync:\n\n- **ADO Work Item IDs** — when a feature or task has an ADO work item, include the ID in the plan (e.g., `AB#1234`)\n- **Status sync** — when updating status in the project plan, note the corresponding ADO state (New, Active, Resolved, Closed)\n- **Linking** — reference ADO work items in commit messages and PR descriptions using `AB#<id>` syntax so Azure DevOps auto-links them\n- **Sprint alignment** — when the user mentions sprints or iterations, map features/tasks to the ADO sprint in the plan\n- **Queries** — if the user asks about ADO board state, suggest using `az boards` CLI or the ADO web UI and offer to update the local plan to match",
+    "10": "[.claude/skills/project-manager/SKILL.md#ado-work-item-templates]\n\n### ADO Work Item Templates\n\nWhen creating or updating Epics, Features, or User Stories in ADO (via MCP or manually), follow the templates in `.claude/templates/ado/`:\n\n| Work Item Type | Template | When to Use |\n| --- | --- | --- |\n| **Epic** | `.claude/templates/ado/epic.md` | Large bodies of work spanning multiple Features — typically a bounded context or major capability |\n| **Feature** | `.claude/templates/ado/feature.md` | Deliverable capabilities under an Epic — completable within a single PI |\n| **User Story** | `.claude/templates/ado/user-story.md` | Smallest deliverable unit — implementable within a single sprint |\n\n- Read the relevant template before creating a work item to ensure all required fields and structure are followed\n- The business-analyst skill provides the content (requirements, acceptance criteria, domain terms); this skill manages the ADO work items\n- The architect skill provides architecture context for Epic/Feature scoping and ADR links",
+    "11": "[.claude/skills/project-manager/SKILL.md#skill-collaboration]\n\n## Skill Collaboration\n\nThe project-manager **tracks and coordinates** — it manages the plan, not the execution.\n\n| Collaborator | Relationship |\n| --- | --- |\n| **business-analyst** | PM tracks features and tasks that BA elicits as requirements. BA provides scope; PM tracks progress. |\n| **architect** | PM logs architecture decisions in the project plan. For the decision itself, defer to `/architect` and `docs/decisions/`. |\n| **documenter** | PM tracks documentation milestones. |\n| **ea-reviewer** | PM tracks PR review status for EA-artifact PRs when relevant to milestones. |\n| **ai-reviewer** | PM tracks PR review status for AI-construct PRs when relevant to milestones. |\n\n**Glossary**: Read-only consumer.",
+    "12": "[.claude/skills/project-manager/SKILL.md#guidelines]\n\n## Guidelines\n\n- `docs/project-plan.md` is the only file this skill modifies\n- Keep tables clean and consistently formatted\n- Don't renumber existing items — append new ones\n- Preserve the user's wording for feature and task descriptions\n- Include ADO work item IDs (`AB#<id>`) in feature and task rows when available\n- When in doubt about priority or scope, ask the user\n- For architecture decisions, defer to the architect skill and `docs/decisions/`"
+  },
+  "coverage": {
+    "total_pages": 12,
+    "covered_pages": 12,
+    "sampled_pages": 12,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 12
+  }
+}

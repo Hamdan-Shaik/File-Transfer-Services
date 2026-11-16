@@ -1,0 +1,112 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Post-Quantum Migration Reference Architecture",
+  "document_description": "guidance_id: 'GUID-SEC-DATA-PQ-RAD-3.5.03'",
+  "total_pages": 10,
+  "tree": [
+    {
+      "title": "Post-Quantum Migration Reference Architecture",
+      "node_id": "post-quantum-migration-reference-architecture",
+      "start_index": 1,
+      "end_index": 10,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Architecture Guidance Metadata",
+          "node_id": "architecture-guidance-metadata",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Purpose and Scope",
+          "node_id": "purpose-and-scope",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Migration Architecture",
+          "node_id": "migration-architecture",
+          "start_index": 4,
+          "end_index": 5,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Migration Phases",
+              "node_id": "migration-phases",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Cryptographic Inventory Architecture",
+          "node_id": "cryptographic-inventory-architecture",
+          "start_index": 6,
+          "end_index": 8,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Inventory Discovery Approach",
+              "node_id": "inventory-discovery-approach",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Inventory Risk Tier Model",
+              "node_id": "inventory-risk-tier-model",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Hybrid Cryptography Pattern",
+          "node_id": "hybrid-cryptography-pattern",
+          "start_index": 9,
+          "end_index": 9,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "External Dependency Management",
+          "node_id": "external-dependency-management",
+          "start_index": 10,
+          "end_index": 10,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-PQ-RAD-3.5.03.md#post-quantum-migration-reference-architecture]\n\n# Post-Quantum Migration Reference Architecture\n\n**← Back to [EAP Home](../../../../../README.md) • [Strategy](../../../../README.md) • [Security Guidance](../../../README.md) • [Data](../README.md)**\n\n---",
+    "2": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-PQ-RAD-3.5.03.md#architecture-guidance-metadata]\n\n## Architecture Guidance Metadata\n\n```yaml\nguidance_id: 'GUID-SEC-DATA-PQ-RAD-3.5.03'\nguidance_name: 'Post-Quantum Migration Reference Architecture'\nguidance_type: 'reference-architecture-document'\nrad_type: 'component-pattern'\npaired_abb: 'GUID-SEC-DATA-PQ-CRYPTO-2.5.01'\nparent_abb: 'GUID-SEC-DATA-REF-1.5.01'\nparent_vision: 'GUID-SEC-DATA-VISION-0.5.01'\nadm_phase: 'Phase C-D'\ncategory: 'security'\nversion: '0.1.0'\nstatus: 'draft'\napplicability: 'enterprise'\ntags: ['security', 'data', 'reference-architecture', 'post-quantum', 'cryptography', 'migration', 'phase-c', 'phase-d']\nauthor: 'Jesse Adams'\n```\n\n---\n\n> **Informative Content Notice**: Technology choices, tooling names, and vendor references in this document are **illustrative only** — they represent one class of solution, not a mandated selection. Organizations SHOULD evaluate tooling based on integration fit, licensing, and operational context.\n>\n> **The architectural control patterns in this document reflect normative requirements from the paired ABB** ([GUID-SEC-DATA-PQ-CRYPTO-2.5.01](../GUID-SEC-DATA-PQ-CRYPTO-2.5.01.md)) and represent required design outcomes. Implementation teams SHALL deliver the described control capabilities; the specific tooling used to realize them is a local implementation decision.\n\n---",
+    "3": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-PQ-RAD-3.5.03.md#purpose-and-scope]\n\n## Purpose and Scope\n\nThis Reference Architecture Document illustrates the cryptographic inventory discovery process, migration prioritization framework, and hybrid cryptography transition patterns for enterprise post-quantum migration. It provides the architectural scaffolding for a phased migration from classical to quantum-resistant algorithms.\n\n**Paired ABB**: [GUID-SEC-DATA-PQ-CRYPTO-2.5.01 — Post-Quantum Cryptography ABB](../GUID-SEC-DATA-PQ-CRYPTO-2.5.01.md)\n\n---",
+    "4": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-PQ-RAD-3.5.03.md#migration-architecture]\n\n## Migration Architecture",
+    "5": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-PQ-RAD-3.5.03.md#migration-phases]\n\n### Migration Phases\n\n```mermaid\ngraph LR\n    P1[Phase 1\\nInventory and\\nRisk Assessment]\n    P2[Phase 2\\nAlgorithm Agility\\nRemediation]\n    P3[Phase 3\\nHybrid Cryptography\\nDeployment]\n    P4[Phase 4\\nQuantum-Resistant\\nCutover]\n\n    P1 --> P2\n    P2 --> P3\n    P3 --> P4\n```\n\n**Phase 1 — Inventory and Risk Assessment**\n\nDiscover and catalog all cryptographic algorithm uses. Assess each use by:\n- Data sensitivity (classification tier)\n- Data longevity (how long confidentiality must be maintained)\n- Exposure risk (is the ciphertext accessible externally, susceptible to harvest-now-decrypt-later)\n- Dependency source (custom code, platform service, third-party library, external protocol)\n\n**Phase 2 — Algorithm Agility Remediation**\n\nFor each implementation that lacks algorithm agility:\n- Refactor cryptographic operations to use abstracted, configurable algorithm identifiers\n- Replace direct library calls with platform cryptographic service calls where available\n- Establish key material versioning to support concurrent operation of multiple algorithm generations\n\n**Phase 3 — Hybrid Cryptography Deployment**\n\nDeploy hybrid schemes for highest-priority data:\n- Hybrid key exchange: combine classical and quantum-resistant key derivation — security degrades to classical if quantum-resistant component fails\n- Hybrid signatures: validate with both classical and quantum-resistant signature schemes during the transition period\n- Maintain backward compatibility with peers that have not yet completed migration\n\n**Phase 4 — Quantum-Resistant Cutover**\n\nAfter hybrid deployment is stable and external dependencies have migrated:\n- Retire classical-only key material for highest-priority data\n- Update certificate chains to quantum-resistant PKI\n- Decommission hybrid schemes where no longer required\n\n---",
+    "6": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-PQ-RAD-3.5.03.md#cryptographic-inventory-architecture]\n\n## Cryptographic Inventory Architecture",
+    "7": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-PQ-RAD-3.5.03.md#inventory-discovery-approach]\n\n### Inventory Discovery Approach\n\nThe cryptographic inventory should be assembled from multiple discovery sources:\n\n| Discovery Source | What It Finds |\n|---|---|\n| Software Composition Analysis (SCA) tooling | Library-level cryptographic dependencies in application code |\n| Infrastructure scanning | TLS certificate catalog, cipher suite negotiation capabilities |\n| Key Management Service metadata | All keys registered with the enterprise KMS, their algorithms, and creation dates |\n| Protocol-level scanning | Network services offering TLS, SSH, or other cryptographic protocols |\n| Application-level discovery | APIs and integrations that use asymmetric cryptography for data exchange |",
+    "8": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-PQ-RAD-3.5.03.md#inventory-risk-tier-model]\n\n### Inventory Risk Tier Model\n\n| Risk Tier | Data Longevity | Exposure | Priority |\n|---|---|---|---|\n| Critical | >10 years | Externally accessible ciphertext | Migrate in Phase 3 immediately |\n| High | 5–10 years | External or internal accessible ciphertext | Migrate in Phase 3 early cycles |\n| Medium | 1–5 years | Internal only | Migrate in Phase 4 |\n| Low | <1 year | Internal only | Migrate in Phase 4 or retire naturally |\n\n---",
+    "9": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-PQ-RAD-3.5.03.md#hybrid-cryptography-pattern]\n\n## Hybrid Cryptography Pattern\n\nThe illustrative hybrid key exchange pattern:\n\n1. **Negotiation**: Peer capability negotiation determines whether both sides support quantum-resistant key exchange\n2. **Classical path**: Classical key exchange proceeds (e.g., ECDH) producing a classical shared secret\n3. **Quantum-resistant path**: Quantum-resistant key encapsulation proceeds in parallel producing a quantum-resistant shared secret\n4. **Key derivation**: Both secrets are combined through a key derivation function — the session key is derived from the concatenation of both secrets\n5. **Security property**: Breaking the session key requires breaking BOTH the classical AND quantum-resistant schemes — security cannot be reduced below the stronger of the two\n\n---",
+    "10": "[strategy/guidance/security/Data/ref-arch/GUID-SEC-DATA-PQ-RAD-3.5.03.md#external-dependency-management]\n\n## External Dependency Management\n\nQuantum-resistant migration is not solely an internal enterprise concern. The following external dependency categories require active tracking:\n\n| Dependency Type | Migration Mechanism |\n|---|---|\n| Integration partner APIs | Contractual migration requirements; TLS protocol negotiation capabilities |\n| Cloud platform services | Platform provider's PQC migration roadmap; evaluate before long-term commitments |\n| PKI / Certificate Authorities | CA support for quantum-resistant certificate types; plan for PKI chain migration |\n| Software libraries | SCA-tracked library versions; update cadence must include PQC algorithm support |\n\n---"
+  },
+  "coverage": {
+    "total_pages": 10,
+    "covered_pages": 10,
+    "sampled_pages": 10,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 10
+  }
+}

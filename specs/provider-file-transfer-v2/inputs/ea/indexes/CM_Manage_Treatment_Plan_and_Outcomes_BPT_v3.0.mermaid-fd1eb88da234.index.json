@@ -1,0 +1,74 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Manage Treatment Plan and Outcomes (CM) - Process Flow Diagram",
+  "document_description": "subgraph TRIGGERS_ENV[\"⚡ Environment-Based Triggers\"]",
+  "total_pages": 6,
+  "tree": [
+    {
+      "title": "Manage Treatment Plan and Outcomes (CM) - Process Flow Diagram",
+      "node_id": "manage-treatment-plan-and-outcomes-cm---process-flow-diagram",
+      "start_index": 1,
+      "end_index": 6,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Process Overview",
+          "node_id": "process-overview",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Special Populations Monitored",
+          "node_id": "special-populations-monitored",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Results",
+          "node_id": "results",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Performance Measures",
+          "node_id": "performance-measures",
+          "start_index": 5,
+          "end_index": 5,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Constraints & Failures",
+          "node_id": "constraints--failures",
+          "start_index": 6,
+          "end_index": 6,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[standards/business/MITA-3.0/bpt-workflows/care_management/CM_Manage_Treatment_Plan_and_Outcomes_BPT_v3.0.mermaid.md#manage-treatment-plan-and-outcomes-cm---process-flow-diagram]\n\n# Manage Treatment Plan and Outcomes (CM) - Process Flow Diagram\n\n> Business Area: Care Management | Sub-Category: Case Management | Process Code: CM | MITA Version 3.0",
+    "2": "[standards/business/MITA-3.0/bpt-workflows/care_management/CM_Manage_Treatment_Plan_and_Outcomes_BPT_v3.0.mermaid.md#process-overview]\n\n## Process Overview\n\n```mermaid\nflowchart TB\n    subgraph TRIGGERS_ENV[\"⚡ Environment-Based Triggers\"]\n        T1[\"Periodic review of member's<br/>treatment plan is due\"]\n        T2[\"Receive request to review<br/>member's treatment plan\"]\n    end\n\n    subgraph TRIGGERS_INT[\"🔗 Interaction-Based Triggers\"]\n        T3[\"Receipt from HIE of<br/>modification in health outcome\"]\n        T4[\"Receive treatment plan<br/>from Establish Case\"]\n    end\n\n    subgraph PREDECESSORS[\"📥 Predecessor Processes\"]\n        P1[Receive Inbound Transaction]\n        P2[Establish Case]\n        P3[Authorize Treatment Plan]\n    end\n\n    subgraph MAIN_PATH1[\"🔄 Primary Path: From Establish Case\"]\n        START1([1. START: Receive treatment<br/>plan from Establish Case])\n        STEP2A[2. Review effectiveness of<br/>services, plan, providers]\n        STEP3A[3. Determine if modifications<br/>necessary for outcomes]\n        STEP4A[4. Record required modifications<br/>to treatment plan]\n        ENDS1([5. END: Notify member,<br/>provider, care coordinators])\n    end\n\n    subgraph MAIN_PATH2[\"🔄 Alternate Path: From HIE\"]\n        START2([1. START: Receive treatment<br/>plan from HIE])\n        STEP2B[2. Review effectiveness of<br/>services, plan, providers]\n        STEP3B[3. Determine if modifications<br/>necessary for outcomes]\n        STEP4B[4. Record required modifications<br/>to treatment plan]\n        STEP5B[5. Notify member, provider,<br/>care coordinators]\n        ENDS2([6. END: Send modification<br/>to HIE])\n    end\n\n    subgraph REVIEW_AREAS[\"📊 Review Areas\"]\n        R1[Services effectiveness]\n        R2[Treatment plan]\n        R3[Providers/contractors]\n        R4[Service coordination]\n        R5[Episodes of care]\n        R6[Support services]\n    end\n\n    subgraph SUCCESSORS[\"📤 Successor Processes\"]\n        S1[Send Outbound Transaction]\n        S2[Authorize Treatment Plan]\n        S3[Manage Case Information]\n        S4[Manage Applicant and Member Communication]\n        S5[Manage Provider Communication]\n        S6[Manage Contractor Communication]\n    end\n\n    subgraph DATA[\"💾 Shared Data\"]\n        D1[(Member Data Store)]\n        D2[(HIE Data Store)]\n        D3[(Case History Store)]\n    end\n\n    %% Trigger connections\n    T1 --> START1\n    T2 --> START1\n    T3 --> START2\n    T4 --> START1\n\n    %% Predecessor connections\n    P1 -.-> START1\n    P2 -.-> START1\n    P3 -.-> START1\n\n    %% Primary path flow\n    START1 --> STEP2A\n    STEP2A --> STEP3A\n    STEP3A --> STEP4A\n    STEP4A --> ENDS1\n\n    %% Alternate path flow\n    START2 --> STEP2B\n    STEP2B --> STEP3B\n    STEP3B --> STEP4B\n    STEP4B --> STEP5B\n    STEP5B --> ENDS2\n\n    %% Review area connections\n    STEP2A -.-> R1\n    STEP2A -.-> R2\n    STEP2A -.-> R3\n    STEP2A -.-> R4\n    STEP2A -.-> R5\n    STEP2A -.-> R6\n\n    %% Successor connections\n    ENDS1 -.-> S1\n    ENDS1 -.-> S2\n    ENDS1 -.-> S3\n    ENDS1 -.-> S4\n    ENDS1 -.-> S5\n    ENDS1 -.-> S6\n\n    ENDS2 -.-> S1\n    ENDS2 -.-> S2\n\n    %% Data connections\n    STEP2A <-->|Read| D2\n    STEP4A <-->|Write| D3\n    ENDS2 -->|Update| D2\n\n    %% Styling\n    classDef trigger fill:#e1f5fe,stroke:#0288d1,stroke-width:2px\n    classDef triggerInt fill:#e8eaf6,stroke:#3f51b5,stroke-width:2px\n    classDef predecessor fill:#fff3e0,stroke:#ff9800,stroke-width:2px\n    classDef successor fill:#e8f5e9,stroke:#4caf50,stroke-width:2px\n    classDef process fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px\n    classDef startend fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n    classDef datastore fill:#fff8e1,stroke:#ffc107,stroke-width:2px\n    classDef review fill:#e0f2f1,stroke:#00897b,stroke-width:1px\n\n    class T1,T2 trigger\n    class T3,T4 triggerInt\n    class P1,P2,P3 predecessor\n    class S1,S2,S3,S4,S5,S6 successor\n    class STEP2A,STEP3A,STEP4A,STEP2B,STEP3B,STEP4B,STEP5B process\n    class START1,ENDS1,START2,ENDS2 startend\n    class D1,D2,D3 datastore\n    class R1,R2,R3,R4,R5,R6 review\n```",
+    "3": "[standards/business/MITA-3.0/bpt-workflows/care_management/CM_Manage_Treatment_Plan_and_Outcomes_BPT_v3.0.mermaid.md#special-populations-monitored]\n\n## Special Populations Monitored\n\n| Population | Focus |\n|------------|-------|\n| Pregnant Women | Prenatal care |\n| Children | Pediatric care |\n| HIV/IV Drug Users | Specialized treatment |",
+    "4": "[standards/business/MITA-3.0/bpt-workflows/care_management/CM_Manage_Treatment_Plan_and_Outcomes_BPT_v3.0.mermaid.md#results]\n\n## Results\n\n| Outcome | Description |\n|---------|-------------|\n| ✅ Appropriate Plan | Treatment plan appropriate for member needs |\n| 🔄 HIE Update | Modification sent to Health Information Exchange |\n| 🔔 Notifications | Member, provider, care coordinators notified |\n| 📈 Tracking | Performance and BAM data |",
+    "5": "[standards/business/MITA-3.0/bpt-workflows/care_management/CM_Manage_Treatment_Plan_and_Outcomes_BPT_v3.0.mermaid.md#performance-measures]\n\n## Performance Measures\n\n| Metric | Target |\n|--------|--------|\n| Timeliness | Within __ days |\n| Change accuracy | ___% |\n| Decision consistency | ___% |\n| Error rate | __% or less |",
+    "6": "[standards/business/MITA-3.0/bpt-workflows/care_management/CM_Manage_Treatment_Plan_and_Outcomes_BPT_v3.0.mermaid.md#constraints--failures]\n\n## Constraints & Failures\n\n- **Constraints**: Agencies may not coordinate to share information. Potential inter-agency conflicts over health care information use.\n- **Potential Failure**: Care Manager unable to acquire treatment plan information\n\n---\n\n*Generated from: CM_Manage_Treatment_Plan_and_Outcomes_BPT_v3.0.json*"
+  },
+  "coverage": {
+    "total_pages": 6,
+    "covered_pages": 6,
+    "sampled_pages": 6,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 6
+  }
+}

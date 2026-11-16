@@ -1,0 +1,817 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "STD-APP-KMGMT-009: Topic Data Inspection and Analysis",
+  "document_description": "This standard defines comprehensive procedures and best practices for inspecting and analyzing topic data using Lenses.io, enabling data quality validation, troubleshooting, compliance verification, and operational insights. It establishes structured approaches to message browsing, searching, validation, and analysis while maintaining data privacy and security requirements.",
+  "total_pages": 87,
+  "tree": [
+    {
+      "title": "STD-APP-KMGMT-009: Topic Data Inspection and Analysis",
+      "node_id": "std-app-kmgmt-009-topic-data-inspection-and-analysis",
+      "start_index": 1,
+      "end_index": 87,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Executive Summary",
+          "node_id": "executive-summary",
+          "start_index": 2,
+          "end_index": 6,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Purpose and Scope",
+              "node_id": "purpose-and-scope",
+              "start_index": 3,
+              "end_index": 3,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "1.2 Key Requirements",
+              "node_id": "12-key-requirements",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "1.3 Business Rationale",
+              "node_id": "13-business-rationale",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "1.4 Compliance Level",
+              "node_id": "14-compliance-level",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 7,
+          "end_index": 7,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "2. Overview",
+          "node_id": "2-overview",
+          "start_index": 8,
+          "end_index": 12,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "2.1 Purpose",
+              "node_id": "21-purpose",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "2.2 Scope",
+              "node_id": "22-scope",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "2.3 Related Standards",
+              "node_id": "23-related-standards",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "2.4 Related Decisions",
+              "node_id": "24-related-decisions",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "3. Prohibited Practices",
+          "node_id": "3-prohibited-practices",
+          "start_index": 13,
+          "end_index": 19,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "3.1 Viewing Unmasked PII Without Authorization",
+              "node_id": "31-viewing-unmasked-pii-without-authorization",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "3.2 Exporting Production Data to Insecure Locations",
+              "node_id": "32-exporting-production-data-to-insecure-locations",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "3.3 Sharing Inspection Results Without Sanitization",
+              "node_id": "33-sharing-inspection-results-without-sanitization",
+              "start_index": 16,
+              "end_index": 16,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "3.4 Bypassing Data Masking Controls",
+              "node_id": "34-bypassing-data-masking-controls",
+              "start_index": 17,
+              "end_index": 17,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "3.5 Inspecting Without Audit Trail",
+              "node_id": "35-inspecting-without-audit-trail",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "3.6 Running Unbounded Queries on Production Topics",
+              "node_id": "36-running-unbounded-queries-on-production-topics",
+              "start_index": 19,
+              "end_index": 19,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "4. Requirements",
+          "node_id": "4-requirements",
+          "start_index": 20,
+          "end_index": 30,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "4.1 REQ-LENS-009-001: Message Browsing Capabilities",
+              "node_id": "41-req-lens-009-001-message-browsing-capabilities",
+              "start_index": 21,
+              "end_index": 21,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.2 REQ-LENS-009-002: Advanced Search and Filtering",
+              "node_id": "42-req-lens-009-002-advanced-search-and-filtering",
+              "start_index": 22,
+              "end_index": 22,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.3 REQ-LENS-009-003: Data Quality Validation",
+              "node_id": "43-req-lens-009-003-data-quality-validation",
+              "start_index": 23,
+              "end_index": 23,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.4 REQ-LENS-009-004: Schema Compliance Verification",
+              "node_id": "44-req-lens-009-004-schema-compliance-verification",
+              "start_index": 24,
+              "end_index": 24,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.5 REQ-LENS-009-005: Message Sampling Strategies",
+              "node_id": "45-req-lens-009-005-message-sampling-strategies",
+              "start_index": 25,
+              "end_index": 25,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.6 REQ-LENS-009-006: Data Masking for Inspection",
+              "node_id": "46-req-lens-009-006-data-masking-for-inspection",
+              "start_index": 26,
+              "end_index": 26,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.7 REQ-LENS-009-007: Message Metadata Analysis",
+              "node_id": "47-req-lens-009-007-message-metadata-analysis",
+              "start_index": 27,
+              "end_index": 27,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.8 REQ-LENS-009-008: Export and Reporting",
+              "node_id": "48-req-lens-009-008-export-and-reporting",
+              "start_index": 28,
+              "end_index": 28,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.9 REQ-LENS-009-009: Comparison and Diff Analysis",
+              "node_id": "49-req-lens-009-009-comparison-and-diff-analysis",
+              "start_index": 29,
+              "end_index": 29,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.10 REQ-LENS-009-010: Performance Optimization for Large Topics",
+              "node_id": "410-req-lens-009-010-performance-optimization-for-large-topics",
+              "start_index": 30,
+              "end_index": 30,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "5. Exceptions Process",
+          "node_id": "5-exceptions-process",
+          "start_index": 31,
+          "end_index": 35,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "5.1 When to Request an Exception",
+              "node_id": "51-when-to-request-an-exception",
+              "start_index": 32,
+              "end_index": 32,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "5.2 Exception Request Procedure",
+              "node_id": "52-exception-request-procedure",
+              "start_index": 33,
+              "end_index": 33,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "5.3 Approval Authority",
+              "node_id": "53-approval-authority",
+              "start_index": 34,
+              "end_index": 34,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "5.4 Exception Monitoring",
+              "node_id": "54-exception-monitoring",
+              "start_index": 35,
+              "end_index": 35,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "6. Technical Specifications",
+          "node_id": "6-technical-specifications",
+          "start_index": 36,
+          "end_index": 41,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "6.1 Platform Requirements",
+              "node_id": "61-platform-requirements",
+              "start_index": 37,
+              "end_index": 37,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "6.2 Architecture Constraints",
+              "node_id": "62-architecture-constraints",
+              "start_index": 38,
+              "end_index": 38,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "6.3 Configuration Specifications",
+              "node_id": "63-configuration-specifications",
+              "start_index": 39,
+              "end_index": 39,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "6.4 Security Specifications",
+              "node_id": "64-security-specifications",
+              "start_index": 40,
+              "end_index": 40,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "6.5 Performance Specifications",
+              "node_id": "65-performance-specifications",
+              "start_index": 41,
+              "end_index": 41,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "7. Technology Stack",
+          "node_id": "7-technology-stack",
+          "start_index": 42,
+          "end_index": 44,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "7.1 Core Technologies",
+              "node_id": "71-core-technologies",
+              "start_index": 43,
+              "end_index": 43,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "7.2 Supporting Tools",
+              "node_id": "72-supporting-tools",
+              "start_index": 44,
+              "end_index": 44,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "8. Implementation Guidance",
+          "node_id": "8-implementation-guidance",
+          "start_index": 45,
+          "end_index": 54,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "8.1 Prerequisites",
+              "node_id": "81-prerequisites",
+              "start_index": 46,
+              "end_index": 46,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "8.2 Implementation Steps",
+              "node_id": "82-implementation-steps",
+              "start_index": 47,
+              "end_index": 53,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Step 1: Configure Topic Browser Access",
+                  "node_id": "step-1-configure-topic-browser-access",
+                  "start_index": 48,
+                  "end_index": 48,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 2: Establish Data Quality Rules",
+                  "node_id": "step-2-establish-data-quality-rules",
+                  "start_index": 49,
+                  "end_index": 49,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 3: Implement Data Masking",
+                  "node_id": "step-3-implement-data-masking",
+                  "start_index": 50,
+                  "end_index": 50,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 4: Create Inspection Templates",
+                  "node_id": "step-4-create-inspection-templates",
+                  "start_index": 51,
+                  "end_index": 51,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 5: Configure Export and Reporting",
+                  "node_id": "step-5-configure-export-and-reporting",
+                  "start_index": 52,
+                  "end_index": 52,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 6: Training and Documentation",
+                  "node_id": "step-6-training-and-documentation",
+                  "start_index": 53,
+                  "end_index": 53,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "8.3 Post-Implementation Tasks",
+              "node_id": "83-post-implementation-tasks",
+              "start_index": 54,
+              "end_index": 54,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "9. Validation Criteria",
+          "node_id": "9-validation-criteria",
+          "start_index": 55,
+          "end_index": 55,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "10. Testing Requirements",
+          "node_id": "10-testing-requirements",
+          "start_index": 56,
+          "end_index": 60,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "10.1 Functional Testing",
+              "node_id": "101-functional-testing",
+              "start_index": 57,
+              "end_index": 57,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "10.2 Security Testing",
+              "node_id": "102-security-testing",
+              "start_index": 58,
+              "end_index": 58,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "10.3 Performance Testing",
+              "node_id": "103-performance-testing",
+              "start_index": 59,
+              "end_index": 59,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "10.4 Integration Testing",
+              "node_id": "104-integration-testing",
+              "start_index": 60,
+              "end_index": 60,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "11. Documentation Requirements",
+          "node_id": "11-documentation-requirements",
+          "start_index": 61,
+          "end_index": 67,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "11.1 Architecture Documentation",
+              "node_id": "111-architecture-documentation",
+              "start_index": 62,
+              "end_index": 62,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "11.2 Operational Procedures",
+              "node_id": "112-operational-procedures",
+              "start_index": 63,
+              "end_index": 63,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "11.3 Developer Guides",
+              "node_id": "113-developer-guides",
+              "start_index": 64,
+              "end_index": 64,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "11.4 Security Documentation",
+              "node_id": "114-security-documentation",
+              "start_index": 65,
+              "end_index": 65,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "11.5 Compliance Documentation",
+              "node_id": "115-compliance-documentation",
+              "start_index": 66,
+              "end_index": 66,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "11.6 Training Materials",
+              "node_id": "116-training-materials",
+              "start_index": 67,
+              "end_index": 67,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "12. Troubleshooting",
+          "node_id": "12-troubleshooting",
+          "start_index": 68,
+          "end_index": 73,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "12.1 Issue 1: Slow Message Search Performance",
+              "node_id": "121-issue-1-slow-message-search-performance",
+              "start_index": 69,
+              "end_index": 69,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "12.2 Issue 2: Data Quality Checks Failing",
+              "node_id": "122-issue-2-data-quality-checks-failing",
+              "start_index": 70,
+              "end_index": 70,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "12.3 Issue 3: Unable to View Sensitive Data",
+              "node_id": "123-issue-3-unable-to-view-sensitive-data",
+              "start_index": 71,
+              "end_index": 71,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "12.4 Issue 4: Export Timing Out for Large Datasets",
+              "node_id": "124-issue-4-export-timing-out-for-large-datasets",
+              "start_index": 72,
+              "end_index": 72,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "12.5 Issue 5: Message Format Not Displaying Correctly",
+              "node_id": "125-issue-5-message-format-not-displaying-correctly",
+              "start_index": 73,
+              "end_index": 73,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "13. Compliance Checklist",
+          "node_id": "13-compliance-checklist",
+          "start_index": 74,
+          "end_index": 74,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "14. Governance Oversight",
+          "node_id": "14-governance-oversight",
+          "start_index": 75,
+          "end_index": 80,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "14.1 Ownership and Accountability",
+              "node_id": "141-ownership-and-accountability",
+              "start_index": 76,
+              "end_index": 76,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "14.2 Review and Update Frequency",
+              "node_id": "142-review-and-update-frequency",
+              "start_index": 77,
+              "end_index": 77,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "14.3 Metrics and KPIs",
+              "node_id": "143-metrics-and-kpis",
+              "start_index": 78,
+              "end_index": 78,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "14.4 Key Contacts",
+              "node_id": "144-key-contacts",
+              "start_index": 79,
+              "end_index": 79,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "14.5 Related Governance",
+              "node_id": "145-related-governance",
+              "start_index": 80,
+              "end_index": 80,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "15. References",
+          "node_id": "15-references",
+          "start_index": 81,
+          "end_index": 84,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "15.1 Related Documentation",
+              "node_id": "151-related-documentation",
+              "start_index": 82,
+              "end_index": 82,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "15.2 External Resources",
+              "node_id": "152-external-resources",
+              "start_index": 83,
+              "end_index": 83,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "15.3 Industry Standards",
+              "node_id": "153-industry-standards",
+              "start_index": 84,
+              "end_index": 84,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "16. Change History",
+          "node_id": "16-change-history",
+          "start_index": 85,
+          "end_index": 85,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "17. Review Log",
+          "node_id": "17-review-log",
+          "start_index": 86,
+          "end_index": 86,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "18. Document Status",
+          "node_id": "18-document-status",
+          "start_index": 87,
+          "end_index": 87,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#std-app-kmgmt-009-topic-data-inspection-and-analysis]\n\n# STD-APP-KMGMT-009: Topic Data Inspection and Analysis\n\n**[Home](../../../README.md)** > **[Standards](../../README.md)** > **[Application](../README.md)** > **[Kafka Management](README.md)** > **STD-APP-KMGMT-009**\n\n---\n\n---",
+    "2": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#executive-summary]\n\n## Executive Summary",
+    "3": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#purpose-and-scope]\n\n### Purpose and Scope\n\nThis standard defines comprehensive procedures and best practices for inspecting and analyzing topic data using Lenses.io, enabling data quality validation, troubleshooting, compliance verification, and operational insights. It establishes structured approaches to message browsing, searching, validation, and analysis while maintaining data privacy and security requirements.",
+    "4": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#12-key-requirements]\n\n### 1.2 Key Requirements\n\n- **Message Browsing**: Efficient navigation and viewing of topic messages with pagination and time-based access\n- **Advanced Search**: Full-text search, header filtering, key-based search, and LSQL query capabilities\n- **Data Quality Validation**: Automated validation of field presence, data types, formats, and business rules\n- **Schema Compliance**: Verification of message schema compliance with required fields and types\n- **Message Sampling**: Statistical sampling strategies for analyzing large topics efficiently\n- **Data Masking**: Privacy-preserving inspection with role-based unmasking for authorized personnel\n- **Metadata Analysis**: Analysis of message headers, timestamps, producers, and partition distribution\n- **Export and Reporting**: Flexible export capabilities for sharing findings and integration with analysis tools\n- **Performance Optimization**: Efficient handling of large topics with query limits, caching, and pagination",
+    "5": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#13-business-rationale]\n\n### 1.3 Business Rationale\n\nEffective topic data inspection provides organizations with:\n- **Data Quality Assurance**: Early detection of data quality issues before they impact downstream consumers\n- **Troubleshooting Efficiency**: Rapid identification of problematic messages reducing mean time to resolution\n- **Compliance Verification**: Ability to validate data handling practices meet regulatory requirements (GDPR, HIPAA, etc.)\n- **Operational Insights**: Understanding of producer behavior, message patterns, and data flow characteristics\n- **Cost Reduction**: Prevention of downstream processing failures through proactive data validation\n- **Customer Trust**: Demonstrated data quality and privacy protection capabilities\n- **Development Velocity**: Faster debugging and validation during application development and testing",
+    "6": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#14-compliance-level]\n\n### 1.4 Compliance Level\n\n**Recommended** - This standard is strongly recommended for all organizations operating Kafka-based data platforms. While not mandatory, implementing structured topic inspection capabilities is essential for maintaining data quality, supporting troubleshooting activities, and demonstrating compliance with data privacy regulations. Organizations handling sensitive or regulated data should treat this as a critical capability.\n\n---",
+    "7": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#table-of-contents]\n\n## Table of Contents\n\n- [1. Overview](#1-overview)\n- [2. Requirements](#2-requirements)\n- [3. Technical Specifications](#3-technical-specifications)\n- [4. Implementation Guidance](#4-implementation-guidance)\n- [5. Compliance and Governance](#5-compliance-and-governance)\n- [6. References](#6-references)\n- [7. Change History](#7-change-history)\n- [8. Review Log](#8-review-log)\n\n---",
+    "8": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#2-overview]\n\n## 2. Overview",
+    "9": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#21-purpose]\n\n### 2.1 Purpose\n\nThis standard defines procedures and best practices for inspecting and analyzing topic data using Lenses.io, enabling data quality validation, troubleshooting, and compliance verification.",
+    "10": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#22-scope]\n\n### 2.2 Scope\n\n- **In Scope**: Topic browsing, message inspection, data quality validation, schema verification, search capabilities, metadata analysis, export functionality, sampling strategies, data masking during inspection\n- **Out of Scope**: Message modification or deletion (separate governance process), data transformation (producer/consumer responsibility), consumer application implementation, producer application debugging",
+    "11": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#23-related-standards]\n\n### 2.3 Related Standards\n\n- [STD-APP-KMGMT-001](STD-APP-KMGMT-001-topic-browser-access.md) - Topic Browser Access\n- [STD-INFRA-KMGMT-010](../../infrastructure/kafka-management/STD-INFRA-KMGMT-010-data-masking.md) - Data Masking\n- [STD-INFRA-KMGMT-011](../../infrastructure/kafka-management/STD-INFRA-KMGMT-011-schema-validation.md) - Schema Validation\n- [STD-APP-KMGMT-002](STD-APP-KMGMT-002-lsql-query-standards.md) - LSQL Query Standards",
+    "12": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#24-related-decisions]\n\n### 2.4 Related Decisions\n\n- [ADR-IFR-008](../../../decisions/infrastructure/ADR-IFR-008-kafka-management-platform-selection.md) - Kafka Management Platform Selection",
+    "13": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#3-prohibited-practices]\n\n## 3. Prohibited Practices\n\nThe following practices are explicitly prohibited when inspecting topic data:",
+    "14": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#31-viewing-unmasked-pii-without-authorization]\n\n### 3.1 Viewing Unmasked PII Without Authorization\n\n**Prohibition**: Accessing or viewing personally identifiable information (PII) without appropriate authorization and business justification\n**Rationale**: Violates data privacy regulations (GDPR, HIPAA), exposes organization to legal liability, breaches customer trust\n**Impact**: Regulatory fines, legal action, reputational damage, customer data breaches",
+    "15": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#32-exporting-production-data-to-insecure-locations]\n\n### 3.2 Exporting Production Data to Insecure Locations\n\n**Prohibition**: Exporting production message data to personal devices, unencrypted storage, or non-approved locations\n**Rationale**: Creates data security vulnerabilities and compliance violations through unauthorized data copies\n**Impact**: Data leaks, compliance violations, security incidents, regulatory penalties",
+    "16": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#33-sharing-inspection-results-without-sanitization]\n\n### 3.3 Sharing Inspection Results Without Sanitization\n\n**Prohibition**: Sharing message content, screenshots, or inspection results containing sensitive data without sanitizing PII/PHI\n**Rationale**: Expands the scope of sensitive data exposure beyond authorized inspection context\n**Impact**: Privacy violations, compliance breaches, unauthorized data disclosure",
+    "17": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#34-bypassing-data-masking-controls]\n\n### 3.4 Bypassing Data Masking Controls\n\n**Prohibition**: Attempting to circumvent data masking through technical means (e.g., raw API access, direct broker access)\n**Rationale**: Undermines privacy controls and audit trails, violates intended access restrictions\n**Impact**: Unauthorized data access, audit trail gaps, compliance violations",
+    "18": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#35-inspecting-without-audit-trail]\n\n### 3.5 Inspecting Without Audit Trail\n\n**Prohibition**: Using tools or methods that do not log inspection activities for audit purposes\n**Rationale**: Prevents compliance verification and investigation of potential data misuse\n**Impact**: Inability to prove compliance, cannot investigate data access incidents",
+    "19": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#36-running-unbounded-queries-on-production-topics]\n\n### 3.6 Running Unbounded Queries on Production Topics\n\n**Prohibition**: Executing queries without time range or result limits on large production topics\n**Rationale**: Can cause performance degradation impacting production workloads\n**Impact**: Production performance issues, resource exhaustion, service degradation",
+    "20": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#4-requirements]\n\n## 4. Requirements",
+    "21": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#41-req-lens-009-001-message-browsing-capabilities]\n\n### 4.1 REQ-LENS-009-001: Message Browsing Capabilities\n\n**Status**: To Be Implemented\n**Priority**: High\n\n**Rationale**: Efficient message browsing enables rapid data inspection and troubleshooting without consuming from topics\n\n**Configuration**:\n- Topic browser UI access configured per RBAC policies\n- Message pagination settings optimized (default 100 messages per page)\n- Time-based navigation (jump to specific timestamp)\n- Offset-based navigation (jump to specific offset)\n- Header and payload display with collapsible sections\n\n**Implementation Details**:\n```yaml\n# Browser configuration\nbrowser:\n  pagination:\n    default_page_size: 100\n    max_page_size: 1000\n  navigation:\n    modes:\n      - time_based  # Jump to timestamp\n      - offset_based  # Jump to offset\n      - key_based  # Jump to specific key\n  display:\n    show_headers: true\n    show_timestamp: true\n    show_partition: true\n    show_offset: true\n    payload_format: auto_detect  # auto-detect JSON/Avro/Protobuf\n```\n\n**Validation**:\n- Browser loads within 3 seconds for topics <1M messages\n- Pagination works correctly across all partitions\n- Navigation controls responsive and accurate\n\n---",
+    "22": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#42-req-lens-009-002-advanced-search-and-filtering]\n\n### 4.2 REQ-LENS-009-002: Advanced Search and Filtering\n\n**Status**: To Be Implemented\n**Priority**: High\n\n**Rationale**: Advanced search capabilities enable quick location of specific messages for investigation\n\n**Configuration**:\n- Full-text search across message payloads (indexed)\n- Header-based filtering (e.g., correlationId, eventType)\n- Time range filtering (from timestamp to timestamp)\n- Key-based search (exact match or pattern)\n- LSQL-based complex queries for advanced scenarios\n\n**Implementation Details**:\n```sql\n-- Example LSQL search queries\n\n-- Find messages by time range\nSELECT * FROM `customer-events`\nWHERE _timestamp BETWEEN '2026-01-19T00:00:00Z' AND '2026-01-19T23:59:59Z'\nLIMIT 1000;\n\n-- Find messages by key pattern\nSELECT * FROM `customer-events`\nWHERE _key LIKE 'customer-123-%'\nLIMIT 100;\n\n-- Find messages by header value\nSELECT * FROM `customer-events`\nWHERE headers.correlationId = 'abc-123-xyz'\nLIMIT 50;\n\n-- Complex query with payload filtering\nSELECT * FROM `customer-events`\nWHERE _timestamp > '2026-01-19T00:00:00Z'\n  AND payload.eventType = 'ORDER_PLACED'\n  AND payload.amount > 1000\nLIMIT 200;\n```\n\n**Validation**:\n- Search returns results within 5 seconds for indexed fields\n- Full-text search accuracy >95%\n- LSQL queries execute successfully\n\n---",
+    "23": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#43-req-lens-009-003-data-quality-validation]\n\n### 4.3 REQ-LENS-009-003: Data Quality Validation\n\n**Status**: To Be Implemented\n**Priority**: High\n\n**Rationale**: Automated data quality checks ensure message content meets expected standards\n\n**Configuration**:\n- Field presence validation (required fields exist)\n- Data type checking (fields match expected types)\n- Format validation (dates, emails, phone numbers, etc.)\n- Business rule validation (value ranges, relationships)\n- Quality metric dashboard with trending\n\n**Implementation Details**:\n```yaml\n# Data quality validation rules\nvalidation_rules:\n  customer-events:\n    required_fields:\n      - customerId\n      - eventType\n      - timestamp\n      - eventId\n\n    field_types:\n      customerId: string\n      eventType: enum[ORDER_PLACED, ORDER_CANCELLED, ORDER_SHIPPED]\n      timestamp: iso8601_datetime\n      amount: decimal\n\n    format_validation:\n      email: regex: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$'\n      phone: regex: '^\\+?[1-9]\\d{1,14}$'\n\n    business_rules:\n      - rule: \"amount > 0\"\n        field: amount\n        condition: \"payload.amount > 0\"\n\n      - rule: \"future_dates_invalid\"\n        field: timestamp\n        condition: \"payload.timestamp <= NOW()\"\n\n# Quality metrics to track\nquality_metrics:\n  - missing_required_fields_rate\n  - invalid_data_type_rate\n  - format_validation_failure_rate\n  - business_rule_violation_rate\n  - overall_quality_score\n```\n\n**Validation**:\n- Validation rules execute within 10 seconds for 1000 message sample\n- Quality dashboard updates every 5 minutes\n- Alerts fire when quality score drops below threshold\n\n---",
+    "24": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#44-req-lens-009-004-schema-compliance-verification]\n\n### 4.4 REQ-LENS-009-004: Schema Compliance Verification\n\n**Status**: To Be Implemented\n**Priority**: High\n\n**Rationale**: Verifying schema compliance prevents data quality issues and consumer failures\n\n**Configuration**:\n- Schema compatibility checking (backward, forward, full)\n- Required field validation per schema\n- Field type verification against schema definition\n- Schema version tracking and alerting on changes\n- Non-compliant message reporting with details\n\n**Implementation Details**:\n```json\n// Example schema compliance check\n{\n  \"topic\": \"customer-events\",\n  \"schema_registry\": \"AWS Glue\",\n  \"checks\": [\n    {\n      \"check_type\": \"schema_exists\",\n      \"description\": \"Verify message has valid schema reference\"\n    },\n    {\n      \"check_type\": \"required_fields\",\n      \"description\": \"All required fields present\",\n      \"fields\": [\"customerId\", \"eventType\", \"timestamp\"]\n    },\n    {\n      \"check_type\": \"field_types\",\n      \"description\": \"Fields match schema types\",\n      \"validations\": {\n        \"customerId\": \"string\",\n        \"timestamp\": \"long (epoch millis)\",\n        \"amount\": \"double\"\n      }\n    },\n    {\n      \"check_type\": \"schema_version\",\n      \"description\": \"Alert on schema version changes\",\n      \"alert_on_new_version\": true\n    }\n  ],\n  \"reporting\": {\n    \"non_compliant_sample_size\": 100,\n    \"compliance_rate_threshold\": 0.99\n  }\n}\n```\n\n**Validation**:\n- Schema validation completes within 5 seconds per 1000 messages\n- Non-compliant messages identified with specific errors\n- Compliance rate accurately calculated\n\n---",
+    "25": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#45-req-lens-009-005-message-sampling-strategies]\n\n### 4.5 REQ-LENS-009-005: Message Sampling Strategies\n\n**Status**: To Be Implemented\n**Priority**: Medium\n\n**Rationale**: Efficient sampling enables analysis of large topics without reviewing every message\n\n**Configuration**:\n- Random sampling algorithms (simple random, stratified)\n- Time-based sampling (every Nth minute/hour)\n- Percentage-based sampling (e.g., 1% of messages)\n- Statistical validity assurance (confidence intervals)\n- Sample size recommendations based on topic size\n\n**Implementation Details**:\n```python\n# Sampling strategy implementations\n\ndef random_sample(topic, sample_size, confidence_level=0.95):\n    \"\"\"\n    Simple random sampling for large topics\n\n    Args:\n        topic: Topic name\n        sample_size: Number of messages to sample\n        confidence_level: Statistical confidence (default 95%)\n\n    Returns:\n        Sample of messages with metadata\n    \"\"\"\n    total_messages = get_topic_message_count(topic)\n\n    # Calculate required sample size for confidence level\n    z_score = 1.96 if confidence_level == 0.95 else 2.58  # 95% or 99%\n    margin_of_error = 0.05  # 5%\n\n    required_sample = int((z_score**2 * 0.5 * 0.5) / (margin_of_error**2))\n    actual_sample = min(sample_size, required_sample)\n\n    # Generate random offsets\n    random_offsets = generate_random_offsets(total_messages, actual_sample)\n\n    # Fetch messages at those offsets\n    sample_messages = fetch_messages_at_offsets(topic, random_offsets)\n\n    return {\n        'sample': sample_messages,\n        'sample_size': actual_sample,\n        'confidence_level': confidence_level,\n        'margin_of_error': margin_of_error\n    }\n\ndef stratified_sample(topic, strata_field, sample_per_stratum):\n    \"\"\"\n    Stratified sampling to ensure representation across categories\n\n    Example: Sample 100 messages per eventType\n    \"\"\"\n    # Identify strata (unique values of strata_field)\n    strata = identify_strata(topic, strata_field)\n\n    samples = {}\n    for stratum in strata:\n        samples[stratum] = random_sample_with_filter(\n            topic,\n            filter=f\"{strata_field} = '{stratum}'\",\n            sample_size=sample_per_stratum\n        )\n\n    return samples\n```\n\n**Validation**:\n- Sampling completes within 30 seconds for topics <10M messages\n- Statistical confidence levels accurate\n- Stratified sampling covers all strata\n\n---",
+    "26": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#46-req-lens-009-006-data-masking-for-inspection]\n\n### 4.6 REQ-LENS-009-006: Data Masking for Inspection\n\n**Status**: To Be Implemented\n**Priority**: Critical\n\n**Rationale**: Data masking during inspection ensures compliance with privacy regulations while enabling troubleshooting\n\n**Configuration**:\n- PII field automatic masking per STD-INFRA-KMGMT-010\n- Role-based unmasking permissions (security team, compliance team)\n- Masking pattern configuration (e.g., show first 4 chars of email)\n- Audit logging of all unmasked views\n- Compliance reporting of inspection activities\n\n**Implementation Details**:\n```yaml\n# Data masking configuration\nmasking_rules:\n  customer-events:\n    pii_fields:\n      - field: email\n        masking_pattern: \"show_domain_only\"  # user@example.com → ***@example.com\n\n      - field: phone\n        masking_pattern: \"show_last_4\"  # +1234567890 → ******7890\n\n      - field: ssn\n        masking_pattern: \"full_mask\"  # 123-45-6789 → ***-**-****\n\n      - field: creditCard\n        masking_pattern: \"show_last_4\"  # 4111111111111111 → ************1111\n\n      - field: address\n        masking_pattern: \"show_city_state\"  # 123 Main St, Boston, MA → ***, Boston, MA\n\n# Unmasking permissions\nunmasking_permissions:\n  roles:\n    - role: security_team\n      can_unmask: [email, phone]\n      require_justification: true\n      max_unmask_per_day: 100\n\n    - role: compliance_team\n      can_unmask: [email, phone, address]\n      require_justification: true\n      max_unmask_per_day: 50\n\n    - role: developer\n      can_unmask: []  # No unmasking for developers\n\n# Audit logging\naudit:\n  log_all_inspections: true\n  log_unmasked_views: true\n  retention_days: 365\n  fields_logged:\n    - user\n    - role\n    - timestamp\n    - topic\n    - messages_viewed\n    - fields_unmasked\n    - justification\n```\n\n**Validation**:\n- All PII fields masked by default for standard users\n- Unmasking requires approval workflow\n- All unmasking activities logged in audit trail\n- Audit logs retained for 365 days minimum\n\n---",
+    "27": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#47-req-lens-009-007-message-metadata-analysis]\n\n### 4.7 REQ-LENS-009-007: Message Metadata Analysis\n\n**Status**: To Be Implemented\n**Priority**: Medium\n\n**Rationale**: Analyzing message metadata provides insights into producer behavior and message flow\n\n**Configuration**:\n- Header analysis and visualization (common headers, custom headers)\n- Timestamp analysis and trending (message rate over time)\n- Producer identification and tracking (producerId distribution)\n- Partition distribution analysis (messages per partition heatmap)\n- Key distribution analysis (key cardinality, hot keys)\n\n**Implementation Details**:\n```sql\n-- Metadata analysis queries\n\n-- Analyze message rate over time\nSELECT\n  window_start,\n  COUNT(*) as message_count,\n  COUNT(DISTINCT _key) as unique_keys,\n  AVG(message_size) as avg_message_size\nFROM `customer-events`\nGROUP BY HOP(timestamp, INTERVAL 1 HOUR, INTERVAL 24 HOURS)\nORDER BY window_start DESC;\n\n-- Identify producer distribution\nSELECT\n  headers.producerId as producer,\n  COUNT(*) as message_count,\n  MIN(_timestamp) as first_message,\n  MAX(_timestamp) as last_message\nFROM `customer-events`\nWHERE _timestamp > NOW() - INTERVAL 7 DAYS\nGROUP BY headers.producerId\nORDER BY message_count DESC;\n\n-- Analyze partition distribution\nSELECT\n  _partition,\n  COUNT(*) as message_count,\n  COUNT(DISTINCT _key) as unique_keys,\n  (COUNT(*) * 100.0 / SUM(COUNT(*)) OVER ()) as percentage\nFROM `customer-events`\nGROUP BY _partition\nORDER BY _partition;\n\n-- Identify hot keys (keys with high message counts)\nSELECT\n  _key,\n  COUNT(*) as message_count,\n  MIN(_timestamp) as first_seen,\n  MAX(_timestamp) as last_seen\nFROM `customer-events`\nWHERE _timestamp > NOW() - INTERVAL 1 DAY\nGROUP BY _key\nHAVING COUNT(*) > 100\nORDER BY message_count DESC\nLIMIT 50;\n```\n\n**Validation**:\n- Metadata queries complete within 10 seconds\n- Visualizations accurately represent distributions\n- Hot key detection identifies keys with >threshold messages\n\n---",
+    "28": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#48-req-lens-009-008-export-and-reporting]\n\n### 4.8 REQ-LENS-009-008: Export and Reporting\n\n**Status**: To Be Implemented\n**Priority**: Medium\n\n**Rationale**: Exporting inspection results enables sharing findings and integration with analysis tools\n\n**Configuration**:\n- Export formats: CSV, JSON, Parquet\n- Sample message export (with masking preserved)\n- Quality report generation (automated summaries)\n- Scheduled report automation (daily/weekly quality reports)\n- Integration with BI tools (Tableau, Power BI)\n\n**Implementation Details**:\n```yaml\n# Export configuration\nexport:\n  formats:\n    - csv:\n        max_rows: 10000\n        include_headers: true\n        delimiter: \",\"\n\n    - json:\n        max_records: 10000\n        pretty_print: false\n\n    - parquet:\n        max_records: 100000\n        compression: snappy\n\n  security:\n    preserve_masking: true  # Masked fields remain masked in export\n    require_approval: true  # Approval required for exports >1000 records\n    allowed_destinations:\n      - secure_s3_bucket\n      - approved_sftp_server\n\n  reporting:\n    quality_report:\n      schedule: \"0 9 * * *\"  # Daily at 9 AM\n      format: PDF\n      include:\n        - quality_score_trend\n        - validation_failure_summary\n        - schema_compliance_rate\n        - top_issues\n\n    metadata_report:\n      schedule: \"0 9 * * 1\"  # Weekly on Monday\n      format: HTML\n      include:\n        - producer_distribution\n        - partition_balance\n        - message_rate_trends\n```\n\n**Validation**:\n- Exports complete within 60 seconds for 10K records\n- Exported data preserves masking rules\n- Scheduled reports delivered on time\n- BI tool integration working correctly\n\n---",
+    "29": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#49-req-lens-009-009-comparison-and-diff-analysis]\n\n### 4.9 REQ-LENS-009-009: Comparison and Diff Analysis\n\n**Status**: To Be Implemented\n**Priority**: Low\n\n**Rationale**: Comparing messages across time or environments helps identify data inconsistencies\n\n**Configuration**:\n- Message-to-message comparison (side-by-side view)\n- Cross-environment comparison (dev vs prod)\n- Schema version comparison (old vs new schema)\n- Diff visualization (highlighted differences)\n- Change tracking (field-level changes over time)\n\n**Implementation Details**:\n```javascript\n// Comparison capabilities\n\n// Message-to-message comparison\nfunction compareMessages(message1, message2) {\n  return {\n    differences: identifyDifferences(message1, message2),\n    common_fields: identifyCommonFields(message1, message2),\n    unique_to_message1: identifyUniqueFields(message1, message2),\n    unique_to_message2: identifyUniqueFields(message2, message1),\n    similarity_score: calculateSimilarity(message1, message2)\n  };\n}\n\n// Cross-environment comparison\nfunction compareEnvironments(topic, env1, env2, sample_size=100) {\n  const sample1 = sampleMessages(env1, topic, sample_size);\n  const sample2 = sampleMessages(env2, topic, sample_size);\n\n  return {\n    schema_differences: compareSchemas(sample1, sample2),\n    data_quality_comparison: compareQuality(sample1, sample2),\n    value_distribution_diff: compareDistributions(sample1, sample2),\n    recommendations: generateRecommendations(sample1, sample2)\n  };\n}\n\n// Schema version comparison\nfunction compareSchemaVersions(topic, version1, version2) {\n  const schema1 = getSchemaVersion(topic, version1);\n  const schema2 = getSchemaVersion(topic, version2);\n\n  return {\n    added_fields: identifyAddedFields(schema1, schema2),\n    removed_fields: identifyRemovedFields(schema1, schema2),\n    modified_fields: identifyModifiedFields(schema1, schema2),\n    compatibility: assessCompatibility(schema1, schema2),\n    migration_needed: determineMigrationRequirements(schema1, schema2)\n  };\n}\n```\n\n**Validation**:\n- Comparison completes within 10 seconds for 2 messages\n- Differences accurately identified and highlighted\n- Cross-environment comparison handles schema variations\n\n---",
+    "30": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#410-req-lens-009-010-performance-optimization-for-large-topics]\n\n### 4.10 REQ-LENS-009-010: Performance Optimization for Large Topics\n\n**Status**: To Be Implemented\n**Priority**: High\n\n**Rationale**: Efficient inspection of large topics prevents performance degradation and timeout issues\n\n**Configuration**:\n- Query timeout limits (30 seconds default, 120 seconds max)\n- Result set size limits (1000 records default, 10000 max)\n- Pagination optimization (lazy loading, virtual scrolling)\n- Caching strategies (frequently accessed partitions, recent queries)\n- Background processing for large queries (async execution)\n\n**Implementation Details**:\n```yaml\n# Performance optimization configuration\nperformance:\n  query_limits:\n    default_timeout_seconds: 30\n    max_timeout_seconds: 120\n    default_result_limit: 1000\n    max_result_limit: 10000\n\n  pagination:\n    strategy: \"lazy_loading\"  # Load only visible page\n    prefetch_pages: 2  # Pre-load next 2 pages\n    virtual_scrolling: true  # For large result sets\n\n  caching:\n    enable: true\n    cache_recent_queries: true\n    cache_duration_minutes: 15\n    cache_size_mb: 500\n    cache_frequently_accessed_partitions: true\n\n  background_processing:\n    enable_for_queries_exceeding_seconds: 30\n    max_concurrent_background_queries: 5\n    notification_on_completion: true\n\n  indexing:\n    index_message_keys: true\n    index_headers: [\"correlationId\", \"eventType\", \"producerId\"]\n    index_timestamp: true\n    rebuild_index_schedule: \"0 2 * * *\"  # Daily at 2 AM\n```\n\n**Validation**:\n- Queries complete within timeout limits\n- Browser remains responsive with large result sets\n- Caching reduces query time by >50% for repeated queries\n- Background queries complete successfully",
+    "31": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#5-exceptions-process]\n\n## 5. Exceptions Process",
+    "32": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#51-when-to-request-an-exception]\n\n### 5.1 When to Request an Exception\n\nExceptions to this standard may be considered in the following scenarios:\n- **Emergency Troubleshooting**: Critical production issues requiring immediate unmasked data access\n- **Regulatory Investigations**: Legal or compliance investigations requiring complete data access\n- **Data Migration Validation**: One-time data migration requiring full message comparison across environments\n- **Security Incident Response**: Security team investigation of data breach or unauthorized access",
+    "33": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#52-exception-request-procedure]\n\n### 5.2 Exception Request Procedure\n\n1. **Document Emergency Justification**: Clearly articulate the critical need and business impact if access denied\n2. **Propose Compensating Controls**: Define enhanced audit logging, time-limited access, witnessed access, or other controls\n3. **Define Scope and Duration**: Specify exactly what data access is needed and for how long (maximum 72 hours)\n4. **Submit Exception Request**: Use expedited exception request process for emergencies\n5. **Obtain Approval**: Requires approval from Security Lead and Data Privacy Officer\n6. **Implement Enhanced Logging**: Activate detailed audit logging before granting access\n7. **Post-Access Review**: Conduct review of all access within 24 hours of exception expiration",
+    "34": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#53-approval-authority]\n\n### 5.3 Approval Authority\n\n- **Emergency Access** (<4 hours): Security Lead + Data Privacy Officer (verbal approval, documented within 24 hours)\n- **Urgent Access** (<24 hours): Security Lead + Data Privacy Officer + Enterprise Architect\n- **Planned Access** (>24 hours): Full exception review board including Legal counsel",
+    "35": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#54-exception-monitoring]\n\n### 5.4 Exception Monitoring\n\n- All exceptions logged in central exceptions register with detailed justification\n- Real-time monitoring of exception-based access with alerts on unusual patterns\n- Automatic expiration at defined duration with no auto-renewal\n- Mandatory post-exception review within 24 hours of expiration\n- Quarterly audit of all exceptions with pattern analysis",
+    "36": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#6-technical-specifications]\n\n## 6. Technical Specifications",
+    "37": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#61-platform-requirements]\n\n### 6.1 Platform Requirements\n\n- **Lenses.io**: Enterprise 5.0+ with topic browser and LSQL query capabilities\n- **Schema Registry**: AWS Glue Schema Registry, Confluent Schema Registry, or equivalent\n- **Data Masking Engine**: Integrated with Lenses or separate masking service\n- **Audit Logging**: Centralized audit log system (Splunk, ELK, CloudWatch Logs)\n- **Authentication**: SAML 2.0 or OIDC integration with corporate identity provider",
+    "38": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#62-architecture-constraints]\n\n### 6.2 Architecture Constraints\n\n- All inspection activities must route through Lenses.io (no direct broker access for inspection)\n- Data masking must be enforced at the presentation layer (UI and API)\n- Audit logs must be immutable and stored in tamper-proof storage\n- Query performance must not impact production Kafka cluster (resource limits enforced)\n- All exports must be tracked with user attribution and justification",
+    "39": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#63-configuration-specifications]\n\n### 6.3 Configuration Specifications\n\n- **Browser Timeout**: 30 seconds default, 120 seconds maximum\n- **Page Size**: 100 records default, 1000 records maximum\n- **Export Limits**: 10,000 records without approval, 100,000 with approval\n- **Cache Duration**: 15 minutes for query results\n- **Audit Retention**: 365 days minimum, 7 years for regulated data",
+    "40": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#64-security-specifications]\n\n### 6.4 Security Specifications\n\n- Multi-factor authentication required for unmasking permissions\n- Session timeout: 30 minutes of inactivity\n- IP allow-list for inspection tool access from corporate network only\n- Encryption in transit (TLS 1.2+) for all browser traffic\n- Encryption at rest for all exported data\n- No clipboard access for masked fields to prevent copy-paste circumvention",
+    "41": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#65-performance-specifications]\n\n### 6.5 Performance Specifications\n\n- Browser load time: <3 seconds for topics <1M messages\n- Search response time: <5 seconds for indexed field searches\n- Full-text search: <10 seconds for topics <10M messages\n- Export generation: <60 seconds for 10K records\n- Quality validation: <10 seconds for 1000 message sample",
+    "42": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#7-technology-stack]\n\n## 7. Technology Stack",
+    "43": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#71-core-technologies]\n\n### 7.1 Core Technologies\n\n- **Lenses.io Version**: Enterprise 5.0+\n- **Query Language**: LSQL (Lenses SQL)\n- **Schema Registry**: AWS Glue Schema Registry, Confluent Schema Registry\n- **Data Formats**: JSON, Avro, Protobuf, XML, CSV",
+    "44": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#72-supporting-tools]\n\n### 7.2 Supporting Tools\n\n- **Export Formats**: CSV, JSON, Parquet, Avro\n- **BI Integration**: Tableau, Power BI, Looker, Grafana\n- **Reporting**: Jasper Reports, custom PDF generation\n- **Data Masking**: Lenses built-in masking, separate masking service\n- **Audit Logging**: Splunk, ELK Stack, AWS CloudWatch, Azure Monitor",
+    "45": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#8-implementation-guidance]\n\n## 8. Implementation Guidance",
+    "46": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#81-prerequisites]\n\n### 8.1 Prerequisites\n\n1. Topic browser access configured per STD-APP-KMGMT-001\n2. Data masking rules established per STD-INFRA-KMGMT-010\n3. Schema registry integrated per STD-INFRA-KMGMT-011\n4. RBAC permissions configured in Lenses.io with AD/LDAP integration\n5. Audit logging system configured and tested\n6. Training materials prepared for LSQL query language\n7. Data quality validation rules documented per topic",
+    "47": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#82-implementation-steps]\n\n### 8.2 Implementation Steps",
+    "48": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#step-1-configure-topic-browser-access]\n\n#### Step 1: Configure Topic Browser Access\n\n1. Grant topic browser permissions to relevant roles in Lenses RBAC\n2. Configure default display settings (pagination, column visibility)\n3. Set result limits and timeout values per user role\n4. Enable search indexing for large topics (>1M messages)\n5. Test browser performance with production data volumes\n6. Document browser features and navigation for end users",
+    "49": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#step-2-establish-data-quality-rules]\n\n#### Step 2: Establish Data Quality Rules\n\n1. Define validation rules per topic based on schema and business requirements\n2. Implement validation rules in Lenses.io or separate validation service\n3. Configure automated quality checks to run on sampling schedule\n4. Set up quality metric dashboards in Grafana or Lenses UI\n5. Define alerting thresholds for quality degradation\n6. Document validation rule rationale and expected quality levels",
+    "50": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#step-3-implement-data-masking]\n\n#### Step 3: Implement Data Masking\n\n1. Identify all PII/PHI fields across all topics using data classification inventory\n2. Configure masking patterns per field type (email, phone, SSN, etc.)\n3. Set up role-based unmasking permissions with approval workflow\n4. Enable comprehensive audit logging for all unmasked views\n5. Test masking effectiveness across all access paths (UI, API, exports)\n6. Conduct security review of masking implementation",
+    "51": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#step-4-create-inspection-templates]\n\n#### Step 4: Create Inspection Templates\n\n1. Develop library of common LSQL query templates for frequent scenarios\n   - Recent messages by time range\n   - Messages by key pattern\n   - Messages by header value\n   - Data quality validation queries\n   - Metadata analysis queries\n2. Create step-by-step investigation workflow guides\n3. Build standard quality validation scripts\n4. Document sampling strategies with statistical validity\n5. Publish templates to shared team repository\n6. Conduct training sessions on template usage",
+    "52": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#step-5-configure-export-and-reporting]\n\n#### Step 5: Configure Export and Reporting\n\n1. Define export format standards (CSV for spreadsheets, Parquet for analytics)\n2. Create report templates for common scenarios (daily quality report, weekly metadata report)\n3. Set up scheduled automated reports with distribution lists\n4. Test export functionality with various data volumes\n5. Integrate with BI tools if required (Tableau, Power BI)\n6. Document export security requirements and approval processes",
+    "53": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#step-6-training-and-documentation]\n\n#### Step 6: Training and Documentation\n\n1. Develop comprehensive training curriculum on topic inspection capabilities\n2. Conduct hands-on training sessions for all users\n3. Create LSQL query cookbook with examples and best practices\n4. Establish best practices guide for efficient inspection\n5. Provide lab environment for practice without production data access\n6. Conduct competency assessments to ensure proficiency",
+    "54": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#83-post-implementation-tasks]\n\n### 8.3 Post-Implementation Tasks\n\n1. Monitor usage patterns and identify optimization opportunities\n2. Collect user feedback on browser usability and feature requests\n3. Refine validation rules based on data quality findings\n4. Update query templates with new patterns discovered during usage\n5. Conduct regular audits of data masking effectiveness\n6. Review audit logs monthly for unusual access patterns\n7. Optimize indexing strategy based on actual query patterns\n8. Conduct quarterly training refreshers and updates",
+    "55": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#9-validation-criteria]\n\n## 9. Validation Criteria\n\n| Validation Area | Criteria | Priority | Validation Method |\n|----------------|----------|----------|-------------------|\n| **Browser Performance** | Browser loads within 3 seconds for topics <1M messages | High | Performance testing with production data volumes |\n| **Search Accuracy** | Search returns correct results with >95% accuracy | High | Validation against known message samples |\n| **Data Masking** | 100% of PII fields masked for unauthorized users | Critical | Security audit, penetration testing |\n| **Audit Logging** | 100% of inspection activities logged with user attribution | Critical | Audit log completeness review |\n| **Quality Validation** | Validation rules execute within 10 seconds for 1000 messages | Medium | Performance testing of validation queries |\n| **Schema Compliance** | Schema validation correctly identifies non-compliant messages | High | Test with known non-compliant samples |\n| **Export Security** | Exported data preserves masking, requires approval >threshold | Critical | Export security testing, access control validation |\n| **Query Performance** | Queries complete within timeout limits 95% of the time | High | Query performance monitoring |\n| **Unmasking Audit** | All unmasking activities logged with justification | Critical | Audit log review, compliance verification |\n| **Statistical Sampling** | Sampling achieves stated confidence levels | Medium | Statistical validation of sample results |\n| **Role-Based Access** | RBAC correctly restricts access based on user role | Critical | Access control testing across all roles |\n| **Training Completion** | 100% of users trained with competency validation | High | Training completion records, assessments |",
+    "56": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#10-testing-requirements]\n\n## 10. Testing Requirements",
+    "57": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#101-functional-testing]\n\n### 10.1 Functional Testing\n\n- **Browser Functionality**: Verify message display, pagination, navigation (time-based, offset-based, key-based)\n- **Search Capabilities**: Test full-text search, header filtering, key search, LSQL queries with various conditions\n- **Data Quality Validation**: Execute validation rules against known good and bad message samples\n- **Schema Compliance**: Test schema validation with compliant and non-compliant messages\n- **Message Sampling**: Verify sampling algorithms produce statistically valid samples\n- **Export Functionality**: Test export in all supported formats (CSV, JSON, Parquet) with size limits",
+    "58": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#102-security-testing]\n\n### 10.2 Security Testing\n\n- **Data Masking**: Verify all PII fields masked for unauthorized users across all access paths\n- **Unmasking Controls**: Test unmasking approval workflow and permission enforcement\n- **Audit Logging**: Validate all inspection and unmasking activities logged correctly\n- **Access Control**: Test RBAC enforcement across all user roles and features\n- **Export Security**: Verify exports preserve masking and require appropriate approvals\n- **Session Management**: Test session timeout and re-authentication requirements",
+    "59": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#103-performance-testing]\n\n### 10.3 Performance Testing\n\n- **Browser Load Time**: Measure load time for topics of varying sizes (1K, 100K, 1M, 10M messages)\n- **Search Performance**: Test search response time for indexed and non-indexed fields\n- **Query Timeout**: Verify timeout enforcement and graceful handling\n- **Concurrent Users**: Test system performance with multiple simultaneous inspections\n- **Large Exports**: Test export performance for maximum allowed record counts",
+    "60": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#104-integration-testing]\n\n### 10.4 Integration Testing\n\n- **Schema Registry**: Verify schema retrieval and validation integration\n- **Audit System**: Test audit log delivery to centralized logging system\n- **BI Tools**: Validate export integration with Tableau, Power BI\n- **Masking Engine**: Test data masking integration and performance\n- **Authentication**: Verify SAML/OIDC integration with identity provider",
+    "61": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#11-documentation-requirements]\n\n## 11. Documentation Requirements",
+    "62": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#111-architecture-documentation]\n\n### 11.1 Architecture Documentation\n\n- Topic inspection architecture diagram showing Lenses.io, schema registry, masking engine, audit logging\n- Data flow diagram from Kafka topics through masking to user display\n- Security architecture showing authentication, authorization, and audit flows\n- Integration architecture for BI tools and export destinations",
+    "63": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#112-operational-procedures]\n\n### 11.2 Operational Procedures\n\n- Topic browser user guide with navigation and search instructions\n- LSQL query language reference with examples\n- Data quality validation procedures with rule definitions\n- Export procedures including approval workflows\n- Unmasking request and approval procedures\n- Incident response procedures for data access violations",
+    "64": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#113-developer-guides]\n\n### 11.3 Developer Guides\n\n- LSQL query development guide with best practices\n- Custom validation rule development guide\n- Integration guide for programmatic access to inspection APIs\n- Report template development guide",
+    "65": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#114-security-documentation]\n\n### 11.4 Security Documentation\n\n- Data masking configuration guide with field-level rules\n- RBAC configuration guide for inspection permissions\n- Audit logging configuration and review procedures\n- Security considerations for inspection activities\n- Compliance procedures for regulated data inspection",
+    "66": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#115-compliance-documentation]\n\n### 11.5 Compliance Documentation\n\n- Exception request forms and approval workflows\n- Audit report templates and review procedures\n- Data privacy impact assessment for inspection capabilities\n- Regulatory compliance validation procedures (GDPR, HIPAA, etc.)",
+    "67": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#116-training-materials]\n\n### 11.6 Training Materials\n\n- Topic inspection training presentations (slides and video)\n- LSQL query hands-on lab exercises\n- Data quality validation training materials\n- Security and compliance training for inspection users\n- Troubleshooting guide for common inspection issues\n- FAQ covering frequent user questions",
+    "68": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#12-troubleshooting]\n\n## 12. Troubleshooting",
+    "69": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#121-issue-1-slow-message-search-performance]\n\n### 12.1 Issue 1: Slow Message Search Performance\n\n**Symptoms**:\n- Search queries timeout before returning results\n- Browser response is slow and UI becomes unresponsive\n- Pagination controls take excessive time to load next page\n\n**Root Causes**:\n- Topic contains millions of messages without search indexing\n- No time-based filtering narrowing search scope\n- Query not optimized (missing WHERE clauses, full table scan)\n- Insufficient resources allocated to Lenses.io instance\n- Too many concurrent users executing searches\n\n**Resolution**:\n1. Enable search indexing for large topics (>1M messages)\n   ```bash\n   # Enable indexing via Lenses configuration\n   lenses.sql.indexing.enabled=true\n   lenses.sql.indexing.topics=customer-events,order-events\n   ```\n2. Use time-based filtering to narrow search scope\n   ```sql\n   -- Instead of searching entire topic\n   SELECT * FROM `large-topic` WHERE payload.customerId = '12345'\n\n   -- Narrow with time range\n   SELECT * FROM `large-topic`\n   WHERE _timestamp > '2026-01-19T00:00:00Z'\n     AND payload.customerId = '12345'\n   ```\n3. Optimize LSQL queries with proper WHERE clauses and LIMIT\n4. Increase Lenses.io memory allocation in deployment configuration\n5. Use pagination with smaller page sizes (100 vs 1000)\n6. Consider archiving old messages to reduce topic size\n7. Implement query queuing to limit concurrent searches\n\n---",
+    "70": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#122-issue-2-data-quality-checks-failing]\n\n### 12.2 Issue 2: Data Quality Checks Failing\n\n**Symptoms**:\n- High percentage of messages failing validation (>10% failure rate)\n- Quality dashboard showing consistent degradation over time\n- Consumer errors downstream due to data quality issues\n\n**Root Causes**:\n- Validation rules too strict or not aligned with actual data patterns\n- Producer applications sending malformed data\n- Schema evolution causing validation failures on old rules\n- Missing required fields due to producer bugs\n- Data type mismatches between producer and schema\n\n**Resolution**:\n1. Review validation rule appropriateness and alignment with current schema\n2. Analyze failing message patterns to identify common issues\n   ```sql\n   -- Find most common validation failures\n   SELECT\n     validation_error,\n     COUNT(*) as occurrence_count\n   FROM validation_results\n   WHERE status = 'FAILED'\n   GROUP BY validation_error\n   ORDER BY occurrence_count DESC\n   LIMIT 20;\n   ```\n3. Engage with producer teams to fix data quality at source\n4. Update schema and validation rules if data patterns have legitimately changed\n5. Implement producer-side validation to catch issues before publishing\n6. Monitor improvement over time with trending dashboard\n7. Consider temporary rule relaxation during migration periods with documented exceptions\n\n---",
+    "71": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#123-issue-3-unable-to-view-sensitive-data]\n\n### 12.3 Issue 3: Unable to View Sensitive Data\n\n**Symptoms**:\n- PII fields showing masked values when troubleshooting requires actual data\n- Cannot identify specific customer due to masking\n- Troubleshooting blocked by inability to see sensitive fields\n\n**Root Causes**:\n- Data masking rules correctly applied to user's role\n- User lacks unmasking permissions in RBAC configuration\n- Masking rules too broad, masking non-sensitive data\n- Compliance requirements preventing access to certain data\n\n**Resolution**:\n1. Submit unmasking request through approval workflow\n   - Document business justification (incident number, troubleshooting requirement)\n   - Specify exact fields and time period needed\n   - Obtain manager approval\n2. Security team reviews and grants temporary unmasking permission (time-limited)\n3. Access data with enhanced audit logging active\n4. Alternative: Use masked data with correlated identifiers\n   ```sql\n   -- Use masked customer ID but correlate with order ID\n   SELECT\n     masked_customer_id,\n     order_id,\n     timestamp,\n     amount\n   FROM `customer-orders`\n   WHERE order_id = 'ORD-12345'\n   ```\n5. Review masking rules for accuracy - ensure only truly sensitive fields masked\n6. Ensure all access logged in audit trail for compliance\n7. Revoke unmasking permission after issue resolution\n\n---",
+    "72": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#124-issue-4-export-timing-out-for-large-datasets]\n\n### 12.4 Issue 4: Export Timing Out for Large Datasets\n\n**Symptoms**:\n- Export operations timeout before completion\n- Partial data in export files (incomplete exports)\n- Browser crashes or becomes unresponsive during export\n\n**Root Causes**:\n- Attempting to export too many messages (exceeding limits)\n- Export format inefficient for data volume (CSV vs Parquet)\n- Insufficient system resources during export processing\n- Network timeout limits too aggressive\n- No background processing for large exports\n\n**Resolution**:\n1. Use time-based filtering to reduce dataset size\n   ```sql\n   -- Instead of exporting full topic\n   SELECT * FROM `large-topic`\n\n   -- Export specific time range\n   SELECT * FROM `large-topic`\n   WHERE _timestamp BETWEEN '2026-01-19T00:00:00Z' AND '2026-01-19T23:59:59Z'\n   LIMIT 10000\n   ```\n2. Export in batches rather than all at once\n   - Day 1: Export Jan 1-7\n   - Day 2: Export Jan 8-14\n   - Etc.\n3. Use more efficient format (Parquet vs CSV for large datasets)\n4. Request timeout limit increase for approved large exports\n5. Use background export jobs for datasets >10K records\n6. Consider using LSQL aggregation to summarize instead of full export\n   ```sql\n   -- Instead of exporting all messages, export summary\n   SELECT\n     DATE(_timestamp) as date,\n     COUNT(*) as message_count,\n     AVG(payload.amount) as avg_amount\n   FROM `customer-orders`\n   GROUP BY DATE(_timestamp)\n   ORDER BY date DESC\n   ```\n\n---",
+    "73": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#125-issue-5-message-format-not-displaying-correctly]\n\n### 12.5 Issue 5: Message Format Not Displaying Correctly\n\n**Symptoms**:\n- Garbled or unreadable message content in browser\n- Binary data showing instead of structured text\n- Character encoding issues (special characters displaying as symbols)\n\n**Root Causes**:\n- Message format not detected correctly by auto-detection\n- Wrong deserializer selected (e.g., treating Avro as JSON)\n- Binary format not supported in browser view\n- Character encoding mismatch (UTF-8 vs ISO-8859-1)\n\n**Resolution**:\n1. Manually select correct message format in browser\n   - Click format dropdown\n   - Select JSON, Avro, Protobuf, or other appropriate format\n2. Verify schema registry configuration and connectivity\n   ```bash\n   # Test schema registry connectivity\n   curl -X GET http://schema-registry:8081/subjects\n   ```\n3. Check topic configuration for format metadata\n   ```bash\n   # Check topic configuration\n   kafka-topics --describe --topic customer-events --bootstrap-server localhost:9092\n   ```\n4. Use hex viewer for binary formats not supported in text view\n5. Validate message encoding at producer\n   - Ensure producer using UTF-8 encoding\n   - Check for special character handling\n6. Update Lenses.io to latest version with broader format support\n7. Contact Lenses support for unsupported proprietary formats",
+    "74": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#13-compliance-checklist]\n\n## 13. Compliance Checklist\n\n- [ ] Topic browser access granted per RBAC policies with audit trail\n- [ ] Data masking configured for all PII/PHI fields per data classification\n- [ ] Audit logging enabled for all topic inspection activities\n- [ ] Unmasking permissions configured with approval workflow\n- [ ] Data quality validation rules defined and documented for all critical topics\n- [ ] Schema validation configured and integrated with schema registry\n- [ ] Export capabilities limited to authorized users with approval thresholds\n- [ ] Security training completed for all users with inspection access\n- [ ] Inspection workflows documented with step-by-step procedures\n- [ ] LSQL query templates created and published to team repository\n- [ ] Performance limits configured (timeouts, result limits, concurrency)\n- [ ] Regular audits of inspection activities scheduled and executed\n- [ ] Compliance reporting automated (monthly access reports)\n- [ ] Investigation procedures documented for common data quality issues\n- [ ] Escalation paths defined for data access violations\n- [ ] Exception process documented with approval workflows\n- [ ] Multi-factor authentication enforced for unmasking capabilities\n- [ ] Audit logs retained for minimum 365 days (7 years for regulated data)\n- [ ] Data privacy impact assessment completed and approved\n- [ ] Regulatory compliance validated (GDPR, HIPAA, etc.)\n- [ ] Query indexing enabled for topics >1M messages\n- [ ] Background processing configured for large queries",
+    "75": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#14-governance-oversight]\n\n## 14. Governance Oversight",
+    "76": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#141-ownership-and-accountability]\n\n### 14.1 Ownership and Accountability\n\n- **Primary Owner**: Platform Engineering Team\n- **Technical SME**: Kafka Platform Lead / Data Engineer\n- **Approver**: Enterprise Architect\n- **Stakeholders**: Data Privacy Officer, Security Team, Application Development Teams, Compliance Team",
+    "77": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#142-review-and-update-frequency]\n\n### 14.2 Review and Update Frequency\n\n- **Standard Review**: Quarterly\n- **Masking Rules Review**: Monthly (when new PII fields identified)\n- **Quality Rules Review**: Monthly (based on data quality trends)\n- **Audit Review**: Monthly (access patterns, violations)\n- **Training Review**: Annually with updates as needed",
+    "78": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#143-metrics-and-kpis]\n\n### 14.3 Metrics and KPIs\n\n- **Data Quality Score**: Percentage of messages passing all validation rules\n- **Inspection Usage**: Number of inspections per week/month\n- **Unmasking Requests**: Count and approval rate of unmasking requests\n- **Audit Compliance**: Percentage of inspection activities properly logged\n- **Export Volume**: Number and size of data exports\n- **Query Performance**: Average query response time and timeout rate\n- **Security Violations**: Count of data access policy violations\n- **Training Completion**: Percentage of users trained and certified",
+    "79": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#144-key-contacts]\n\n### 14.4 Key Contacts\n\n- **Platform Engineering Lead**: [Name/Contact]\n- **Kafka Platform Lead**: [Name/Contact]\n- **Data Privacy Officer**: [Name/Contact]\n- **Security Lead**: [Name/Contact]\n- **Enterprise Architect**: [Name/Contact]",
+    "80": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#145-related-governance]\n\n### 14.5 Related Governance\n\n- Data Governance Committee for data quality and masking rules\n- Privacy Review Board for unmasking approvals and compliance\n- Security Review Board for access control and audit procedures\n- Architecture Review Board for technical architecture decisions\n- Compliance Committee for regulatory requirement validation",
+    "81": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#15-references]\n\n## 15. References",
+    "82": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#151-related-documentation]\n\n### 15.1 Related Documentation\n\n- [Lenses.io Topic Browser](https://docs.lenses.io/5.0/user-guide/browse/)\n- [LSQL Query Language Reference](https://docs.lenses.io/5.0/lsql/)\n- [Data Masking Configuration Guide](https://docs.lenses.io/5.0/security/data-masking/)\n- [Schema Registry Integration](https://docs.lenses.io/5.0/schema-registry/)\n- [Lenses.io Security](https://docs.lenses.io/5.0/security/)",
+    "83": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#152-external-resources]\n\n### 15.2 External Resources\n\n- [Kafka Message Formats](https://kafka.apache.org/documentation/#messages)\n- [Avro Specification](https://avro.apache.org/docs/current/spec.html)\n- [Protobuf Documentation](https://developers.google.com/protocol-buffers)\n- [Data Quality Best Practices for Event Streaming](https://www.confluent.io/blog/data-quality-streaming/)\n- [GDPR Compliance for Data Inspection](https://gdpr.eu/)\n- [Statistical Sampling Methods](https://en.wikipedia.org/wiki/Sampling_(statistics))",
+    "84": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#153-industry-standards]\n\n### 15.3 Industry Standards\n\n- [NIST SP 800-53 Audit and Accountability](https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final)\n- [GDPR Article 32 - Security of Processing](https://gdpr.eu/article-32-security-of-processing/)\n- [HIPAA Privacy Rule](https://www.hhs.gov/hipaa/for-professionals/privacy/index.html)\n- [ISO 27001 Access Control](https://www.iso.org/isoiec-27001-information-security.html)",
+    "85": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#16-change-history]\n\n## 16. Change History\n\n| Version | Date | Author | Description |\n|---------|------|--------|-------------|\n| 1.0.0 | January 19, 2026 | Platform Engineering | Initial draft with full compliance enhancements |",
+    "86": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#17-review-log]\n\n## 17. Review Log\n\n| Review Date | Reviewer | Status | Comments |\n|-------------|----------|--------|----------|\n| January 19, 2026 | AI Review | Completed | Full compliance review completed - added YAML metadata, Executive Summary, Prohibited Practices, Exceptions Process, Technical Specifications, Validation Criteria, Testing Requirements, Documentation Requirements, and Governance Oversight sections |\n| [TBD] | Platform Engineering Lead | Pending | Technical review pending |\n| [TBD] | Data Privacy Officer | Pending | Privacy and masking review pending |\n| [TBD] | Enterprise Architect | Pending | Architecture review pending |",
+    "87": "[standards/application/kafka-management/STD-APP-KMGMT-009-topic-data-inspection.md#18-document-status]\n\n## 18. Document Status\n\n**Current Phase**: Draft - Compliance enhanced, awaiting stakeholder review and approval\n\n**Next Review Date**: April 19, 2026 (90 days from enhancement)\n\n**Approved By**: [Pending Approval]"
+  },
+  "coverage": {
+    "total_pages": 87,
+    "covered_pages": 87,
+    "sampled_pages": 87,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 87
+  }
+}

@@ -1,0 +1,845 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "STD-APP-KMGMT-010: Error Message Analysis and Troubleshooting",
+  "document_description": "This standard defines comprehensive procedures for analyzing error messages and patterns using Lenses.io to enable rapid incident response, root cause identification, and systematic resolution of Kafka-related issues. It establishes frameworks for error detection, correlation, troubleshooting workflows, and knowledge capture to continuously improve operational excellence.",
+  "total_pages": 90,
+  "tree": [
+    {
+      "title": "STD-APP-KMGMT-010: Error Message Analysis and Troubleshooting",
+      "node_id": "std-app-kmgmt-010-error-message-analysis-and-troubleshooting",
+      "start_index": 1,
+      "end_index": 90,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Executive Summary",
+          "node_id": "executive-summary",
+          "start_index": 2,
+          "end_index": 6,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Purpose and Scope",
+              "node_id": "purpose-and-scope",
+              "start_index": 3,
+              "end_index": 3,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "1.2 Key Requirements",
+              "node_id": "12-key-requirements",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "1.3 Business Rationale",
+              "node_id": "13-business-rationale",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "1.4 Compliance Level",
+              "node_id": "14-compliance-level",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 7,
+          "end_index": 7,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "2. Overview",
+          "node_id": "2-overview",
+          "start_index": 8,
+          "end_index": 12,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "2.1 Purpose",
+              "node_id": "21-purpose",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "2.2 Scope",
+              "node_id": "22-scope",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "2.3 Related Standards",
+              "node_id": "23-related-standards",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "2.4 Related Decisions",
+              "node_id": "24-related-decisions",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "3. Prohibited Practices",
+          "node_id": "3-prohibited-practices",
+          "start_index": 13,
+          "end_index": 19,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "3.1 Skipping Root Cause Analysis",
+              "node_id": "31-skipping-root-cause-analysis",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "3.2 Making Untested Production Changes During Incidents",
+              "node_id": "32-making-untested-production-changes-during-incidents",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "3.3 Failing to Document Incidents",
+              "node_id": "33-failing-to-document-incidents",
+              "start_index": 16,
+              "end_index": 16,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "3.4 Solo Troubleshooting Beyond Timeboxes",
+              "node_id": "34-solo-troubleshooting-beyond-timeboxes",
+              "start_index": 17,
+              "end_index": 17,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "3.5 Ignoring Error Patterns and Trends",
+              "node_id": "35-ignoring-error-patterns-and-trends",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "3.6 Bypassing Post-Incident Reviews",
+              "node_id": "36-bypassing-post-incident-reviews",
+              "start_index": 19,
+              "end_index": 19,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "4. Requirements",
+          "node_id": "4-requirements",
+          "start_index": 20,
+          "end_index": 33,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "4.1 REQ-LENS-010-001: Error Pattern Detection",
+              "node_id": "41-req-lens-010-001-error-pattern-detection",
+              "start_index": 21,
+              "end_index": 21,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.2 REQ-LENS-010-002: Incident Response Workflow",
+              "node_id": "42-req-lens-010-002-incident-response-workflow",
+              "start_index": 22,
+              "end_index": 22,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.3 REQ-LENS-010-003: Error Message Correlation",
+              "node_id": "43-req-lens-010-003-error-message-correlation",
+              "start_index": 23,
+              "end_index": 23,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.4 REQ-LENS-010-004: Automated Troubleshooting Guides",
+              "node_id": "44-req-lens-010-004-automated-troubleshooting-guides",
+              "start_index": 24,
+              "end_index": 26,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Step 2: Check Consumer Processing Time",
+                  "node_id": "step-2-check-consumer-processing-time",
+                  "start_index": 25,
+                  "end_index": 25,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 3: Check Network Connectivity",
+                  "node_id": "step-3-check-network-connectivity",
+                  "start_index": 26,
+                  "end_index": 26,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Success Criteria",
+              "node_id": "success-criteria",
+              "start_index": 27,
+              "end_index": 27,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "If Guide Doesn't Resolve Issue",
+              "node_id": "if-guide-doesnt-resolve-issue",
+              "start_index": 28,
+              "end_index": 28,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.6 REQ-LENS-010-006: Error Message Enrichment",
+              "node_id": "46-req-lens-010-006-error-message-enrichment",
+              "start_index": 29,
+              "end_index": 29,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.7 REQ-LENS-010-007: Remediation Playbook Library",
+              "node_id": "47-req-lens-010-007-remediation-playbook-library",
+              "start_index": 30,
+              "end_index": 30,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.8 REQ-LENS-010-008: Error Impact Assessment",
+              "node_id": "48-req-lens-010-008-error-impact-assessment",
+              "start_index": 31,
+              "end_index": 31,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.9 REQ-LENS-010-009: Knowledge Base Integration",
+              "node_id": "49-req-lens-010-009-knowledge-base-integration",
+              "start_index": 32,
+              "end_index": 32,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.10 REQ-LENS-010-010: Proactive Error Prevention",
+              "node_id": "410-req-lens-010-010-proactive-error-prevention",
+              "start_index": 33,
+              "end_index": 33,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "5. Exceptions Process",
+          "node_id": "5-exceptions-process",
+          "start_index": 34,
+          "end_index": 38,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "5.1 When to Request an Exception",
+              "node_id": "51-when-to-request-an-exception",
+              "start_index": 35,
+              "end_index": 35,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "5.2 Exception Request Procedure",
+              "node_id": "52-exception-request-procedure",
+              "start_index": 36,
+              "end_index": 36,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "5.3 Approval Authority",
+              "node_id": "53-approval-authority",
+              "start_index": 37,
+              "end_index": 37,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "5.4 Exception Monitoring",
+              "node_id": "54-exception-monitoring",
+              "start_index": 38,
+              "end_index": 38,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "6. Technical Specifications",
+          "node_id": "6-technical-specifications",
+          "start_index": 39,
+          "end_index": 44,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "6.1 Platform Requirements",
+              "node_id": "61-platform-requirements",
+              "start_index": 40,
+              "end_index": 40,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "6.2 Architecture Constraints",
+              "node_id": "62-architecture-constraints",
+              "start_index": 41,
+              "end_index": 41,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "6.3 Configuration Specifications",
+              "node_id": "63-configuration-specifications",
+              "start_index": 42,
+              "end_index": 42,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "6.4 Security Specifications",
+              "node_id": "64-security-specifications",
+              "start_index": 43,
+              "end_index": 43,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "6.5 Performance Specifications",
+              "node_id": "65-performance-specifications",
+              "start_index": 44,
+              "end_index": 44,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "7. Technology Stack",
+          "node_id": "7-technology-stack",
+          "start_index": 45,
+          "end_index": 47,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "7.1 Core Technologies",
+              "node_id": "71-core-technologies",
+              "start_index": 46,
+              "end_index": 46,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "7.2 Supporting Tools",
+              "node_id": "72-supporting-tools",
+              "start_index": 47,
+              "end_index": 47,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "8. Implementation Guidance",
+          "node_id": "8-implementation-guidance",
+          "start_index": 48,
+          "end_index": 57,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "8.1 Prerequisites",
+              "node_id": "81-prerequisites",
+              "start_index": 49,
+              "end_index": 49,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "8.2 Implementation Steps",
+              "node_id": "82-implementation-steps",
+              "start_index": 50,
+              "end_index": 56,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Step 1: Configure Error Detection",
+                  "node_id": "step-1-configure-error-detection",
+                  "start_index": 51,
+                  "end_index": 51,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 2: Establish Incident Response Workflow",
+                  "node_id": "step-2-establish-incident-response-workflow",
+                  "start_index": 52,
+                  "end_index": 52,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 3: Build Troubleshooting Guide Library",
+                  "node_id": "step-3-build-troubleshooting-guide-library",
+                  "start_index": 53,
+                  "end_index": 53,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 4: Implement Error Correlation",
+                  "node_id": "step-4-implement-error-correlation",
+                  "start_index": 54,
+                  "end_index": 54,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 5: Develop Remediation Playbooks",
+                  "node_id": "step-5-develop-remediation-playbooks",
+                  "start_index": 55,
+                  "end_index": 55,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 6: Integrate Knowledge Base",
+                  "node_id": "step-6-integrate-knowledge-base",
+                  "start_index": 56,
+                  "end_index": 56,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "8.3 Post-Implementation Tasks",
+              "node_id": "83-post-implementation-tasks",
+              "start_index": 57,
+              "end_index": 57,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "9. Validation Criteria",
+          "node_id": "9-validation-criteria",
+          "start_index": 58,
+          "end_index": 58,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "10. Testing Requirements",
+          "node_id": "10-testing-requirements",
+          "start_index": 59,
+          "end_index": 63,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "10.1 Functional Testing",
+              "node_id": "101-functional-testing",
+              "start_index": 60,
+              "end_index": 60,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "10.2 Security Testing",
+              "node_id": "102-security-testing",
+              "start_index": 61,
+              "end_index": 61,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "10.3 Performance Testing",
+              "node_id": "103-performance-testing",
+              "start_index": 62,
+              "end_index": 62,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "10.4 Integration Testing",
+              "node_id": "104-integration-testing",
+              "start_index": 63,
+              "end_index": 63,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "11. Documentation Requirements",
+          "node_id": "11-documentation-requirements",
+          "start_index": 64,
+          "end_index": 70,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "11.1 Architecture Documentation",
+              "node_id": "111-architecture-documentation",
+              "start_index": 65,
+              "end_index": 65,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "11.2 Operational Procedures",
+              "node_id": "112-operational-procedures",
+              "start_index": 66,
+              "end_index": 66,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "11.3 Developer Guides",
+              "node_id": "113-developer-guides",
+              "start_index": 67,
+              "end_index": 67,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "11.4 Security Documentation",
+              "node_id": "114-security-documentation",
+              "start_index": 68,
+              "end_index": 68,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "11.5 Compliance Documentation",
+              "node_id": "115-compliance-documentation",
+              "start_index": 69,
+              "end_index": 69,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "11.6 Training Materials",
+              "node_id": "116-training-materials",
+              "start_index": 70,
+              "end_index": 70,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "12. Troubleshooting",
+          "node_id": "12-troubleshooting",
+          "start_index": 71,
+          "end_index": 76,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "12.1 Issue 1: High False Positive Rate",
+              "node_id": "121-issue-1-high-false-positive-rate",
+              "start_index": 72,
+              "end_index": 72,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "12.2 Issue 2: Unable to Correlate Related Errors",
+              "node_id": "122-issue-2-unable-to-correlate-related-errors",
+              "start_index": 73,
+              "end_index": 73,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "12.3 Issue 3: Troubleshooting Guides Not Resolving Issues",
+              "node_id": "123-issue-3-troubleshooting-guides-not-resolving-issues",
+              "start_index": 74,
+              "end_index": 74,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "12.4 Issue 4: Slow Incident Response Time",
+              "node_id": "124-issue-4-slow-incident-response-time",
+              "start_index": 75,
+              "end_index": 75,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "12.5 Issue 5: Knowledge Base Not Being Used",
+              "node_id": "125-issue-5-knowledge-base-not-being-used",
+              "start_index": 76,
+              "end_index": 76,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "13. Compliance Checklist",
+          "node_id": "13-compliance-checklist",
+          "start_index": 77,
+          "end_index": 77,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "14. Governance Oversight",
+          "node_id": "14-governance-oversight",
+          "start_index": 78,
+          "end_index": 83,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "14.1 Ownership and Accountability",
+              "node_id": "141-ownership-and-accountability",
+              "start_index": 79,
+              "end_index": 79,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "14.2 Review and Update Frequency",
+              "node_id": "142-review-and-update-frequency",
+              "start_index": 80,
+              "end_index": 80,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "14.3 Metrics and KPIs",
+              "node_id": "143-metrics-and-kpis",
+              "start_index": 81,
+              "end_index": 81,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "14.4 Key Contacts",
+              "node_id": "144-key-contacts",
+              "start_index": 82,
+              "end_index": 82,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "14.5 Related Governance",
+              "node_id": "145-related-governance",
+              "start_index": 83,
+              "end_index": 83,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "15. References",
+          "node_id": "15-references",
+          "start_index": 84,
+          "end_index": 87,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "15.1 Related Documentation",
+              "node_id": "151-related-documentation",
+              "start_index": 85,
+              "end_index": 85,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "15.2 External Resources",
+              "node_id": "152-external-resources",
+              "start_index": 86,
+              "end_index": 86,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "15.3 Industry Standards",
+              "node_id": "153-industry-standards",
+              "start_index": 87,
+              "end_index": 87,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "16. Change History",
+          "node_id": "16-change-history",
+          "start_index": 88,
+          "end_index": 88,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "17. Review Log",
+          "node_id": "17-review-log",
+          "start_index": 89,
+          "end_index": 89,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "18. Document Status",
+          "node_id": "18-document-status",
+          "start_index": 90,
+          "end_index": 90,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#std-app-kmgmt-010-error-message-analysis-and-troubleshooting]\n\n# STD-APP-KMGMT-010: Error Message Analysis and Troubleshooting\n\n**[Home](../../../README.md)** > **[Standards](../../README.md)** > **[Application](../README.md)** > **[Kafka Management](README.md)** > **STD-APP-KMGMT-010**\n\n---\n\n---",
+    "2": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#executive-summary]\n\n## Executive Summary",
+    "3": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#purpose-and-scope]\n\n### Purpose and Scope\n\nThis standard defines comprehensive procedures for analyzing error messages and patterns using Lenses.io to enable rapid incident response, root cause identification, and systematic resolution of Kafka-related issues. It establishes frameworks for error detection, correlation, troubleshooting workflows, and knowledge capture to continuously improve operational excellence.",
+    "4": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#12-key-requirements]\n\n### 1.2 Key Requirements\n\n- **Error Pattern Detection**: Automated detection of error patterns using machine learning and threshold-based rules\n- **Incident Response Workflow**: Structured incident classification, severity assessment, and escalation procedures\n- **Error Message Correlation**: Cross-system correlation to identify common root causes and impact scope\n- **Automated Troubleshooting Guides**: Context-aware guides that provide relevant resolution steps based on error type\n- **Root Cause Analysis Tools**: Specialized tools for timeline reconstruction, configuration comparison, and hypothesis testing\n- **Error Message Enrichment**: Automatic context injection with related logs, metrics, and historical incidents\n- **Remediation Playbook Library**: Standardized playbooks for common errors with success tracking\n- **Error Impact Assessment**: Business impact calculation and stakeholder notification\n- **Knowledge Base Integration**: Systematic capture and searchable repository of incident resolutions\n- **Proactive Error Prevention**: Trend analysis and predictive alerting to prevent future incidents",
+    "5": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#13-business-rationale]\n\n### 1.3 Business Rationale\n\nEffective error analysis and troubleshooting provides organizations with:\n- **Reduced Downtime**: Faster incident resolution minimizes service disruption and revenue loss\n- **Operational Efficiency**: Standardized troubleshooting reduces mean time to resolution (MTTR) by 40-60%\n- **Knowledge Retention**: Systematic documentation prevents knowledge loss during team transitions\n- **Customer Satisfaction**: Rapid error resolution improves user experience and brand reputation\n- **Cost Optimization**: Proactive error prevention reduces firefighting costs and operational overhead\n- **Regulatory Compliance**: Demonstrated incident response capabilities support compliance requirements\n- **Continuous Improvement**: Learning from past incidents prevents recurrence and builds resilience",
+    "6": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#14-compliance-level]\n\n### 1.4 Compliance Level\n\n**Guidance** - This standard is recommended for organizations operating production Kafka platforms supporting business-critical applications. While not mandatory, implementing structured error analysis and troubleshooting capabilities significantly improves operational maturity, reduces incident impact, and accelerates resolution times. Organizations with strict uptime SLAs should consider this essential.\n\n---",
+    "7": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#table-of-contents]\n\n## Table of Contents\n\n- [1. Overview](#1-overview)\n- [2. Requirements](#2-requirements)\n- [3. Technical Specifications](#3-technical-specifications)\n- [4. Implementation Guidance](#4-implementation-guidance)\n- [5. Compliance and Governance](#5-compliance-and-governance)\n- [6. References](#6-references)\n- [7. Change History](#7-change-history)\n- [8. Review Log](#8-review-log)\n\n---",
+    "8": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#2-overview]\n\n## 2. Overview",
+    "9": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#21-purpose]\n\n### 2.1 Purpose\n\nThis standard defines procedures for analyzing error messages and patterns using Lenses.io to enable rapid incident response, root cause identification, and systematic resolution of Kafka-related issues.",
+    "10": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#22-scope]\n\n### 2.2 Scope\n\n- **In Scope**: Error pattern detection, incident response workflows, troubleshooting guides, automated analysis, remediation playbooks, root cause analysis, knowledge management, proactive prevention\n- **Out of Scope**: Application code debugging (developer responsibility), infrastructure hardware issues (infrastructure team), network troubleshooting (network operations), producer/consumer application development",
+    "11": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#23-related-standards]\n\n### 2.3 Related Standards\n\n- [STD-INFRA-KMGMT-006](../../infrastructure/kafka-management/STD-INFRA-KMGMT-006-event-monitoring.md) - Event Monitoring\n- [STD-APP-KMGMT-008](STD-APP-KMGMT-008-consumer-lag-investigation.md) - Consumer Lag Investigation\n- [STD-APP-KMGMT-009](STD-APP-KMGMT-009-topic-data-inspection.md) - Topic Data Inspection\n- [STD-INFRA-KMGMT-009](../../infrastructure/kafka-management/STD-INFRA-KMGMT-009-alerting-integration.md) - Alerting Integration",
+    "12": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#24-related-decisions]\n\n### 2.4 Related Decisions\n\n- [ADR-IFR-008](../../../decisions/infrastructure/ADR-IFR-008-kafka-management-platform-selection.md) - Kafka Management Platform Selection",
+    "13": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#3-prohibited-practices]\n\n## 3. Prohibited Practices\n\nThe following practices are explicitly prohibited when analyzing errors and responding to incidents:",
+    "14": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#31-skipping-root-cause-analysis]\n\n### 3.1 Skipping Root Cause Analysis\n\n**Prohibition**: Applying temporary fixes or workarounds without conducting thorough root cause analysis\n**Rationale**: Symptom treatment without root cause resolution leads to recurring incidents and technical debt accumulation\n**Impact**: Repeated incidents, customer frustration, operational inefficiency, cascading failures",
+    "15": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#32-making-untested-production-changes-during-incidents]\n\n### 3.2 Making Untested Production Changes During Incidents\n\n**Prohibition**: Implementing remediation changes in production without validation in non-production environments\n**Rationale**: Untested changes risk exacerbating the incident or introducing new failures\n**Impact**: Extended outages, data loss, cascade failures, customer impact amplification",
+    "16": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#33-failing-to-document-incidents]\n\n### 3.3 Failing to Document Incidents\n\n**Prohibition**: Resolving incidents without documenting the error, investigation steps, root cause, and resolution\n**Rationale**: Undocumented incidents waste organizational knowledge and force teams to re-learn lessons\n**Impact**: Knowledge loss, repeated investigations, increased MTTR, team inefficiency",
+    "17": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#34-solo-troubleshooting-beyond-timeboxes]\n\n### 3.4 Solo Troubleshooting Beyond Timeboxes\n\n**Prohibition**: Continuing individual troubleshooting efforts beyond defined timeboxes without escalation\n**Rationale**: Prolonged solo investigations waste time when expertise or additional resources are available\n**Impact**: Extended incident duration, SLA breaches, customer impact, burnout",
+    "18": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#35-ignoring-error-patterns-and-trends]\n\n### 3.5 Ignoring Error Patterns and Trends\n\n**Prohibition**: Treating each error occurrence as an isolated incident without analyzing patterns across time\n**Rationale**: Pattern analysis reveals systemic issues that require architectural or process changes\n**Impact**: Missed opportunities for proactive prevention, recurring incidents, resource wastage",
+    "19": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#36-bypassing-post-incident-reviews]\n\n### 3.6 Bypassing Post-Incident Reviews\n\n**Prohibition**: Skipping post-incident reviews after major incidents\n**Rationale**: Post-incident reviews identify improvement opportunities and prevent recurrence\n**Impact**: Lost learning opportunities, no process improvements, repeated failures",
+    "20": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#4-requirements]\n\n## 4. Requirements",
+    "21": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#41-req-lens-010-001-error-pattern-detection]\n\n### 4.1 REQ-LENS-010-001: Error Pattern Detection\n\n**Status**: To Be Implemented\n**Priority**: High\n\n**Rationale**: Automated detection of error patterns enables proactive identification of systemic issues before they impact business\n\n**Configuration**:\n- Error log aggregation from all sources (Kafka brokers, Lenses.io, applications)\n- Pattern recognition algorithms configured (rule-based and ML-based)\n- Threshold-based alerting for error rates (e.g., >10 errors/minute)\n- Trending analysis for error growth (e.g., 50% increase over baseline)\n\n**Implementation Details**:\n```yaml\n# Error pattern detection configuration\nerror_detection:\n  sources:\n    - kafka_broker_logs\n    - lenses_application_logs\n    - consumer_application_logs\n    - producer_application_logs\n    - connect_worker_logs\n\n  patterns:\n    - pattern_id: \"connection_timeout\"\n      signature: \".*TimeoutException.*|.*Connection timed out.*\"\n      threshold: 10  # errors per minute\n      severity: high\n\n    - pattern_id: \"authentication_failure\"\n      signature: \".*Authentication failed.*|.*SASL authentication failed.*\"\n      threshold: 5\n      severity: critical\n\n    - pattern_id: \"serialization_error\"\n      signature: \".*SerializationException.*|.*Failed to deserialize.*\"\n      threshold: 20\n      severity: medium\n\n  trending:\n    baseline_window: 7_days\n    alert_on_increase: 50_percent\n    alert_on_new_pattern: true\n\n  ml_detection:\n    enable: true\n    model: \"anomaly_detection\"\n    training_data_days: 30\n    confidence_threshold: 0.85\n```\n\n**Validation**:\n- Pattern detection accuracy >90% (minimal false positives/negatives)\n- Detection latency <2 minutes from error occurrence\n- Alerts triggered correctly based on thresholds\n\n---",
+    "22": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#42-req-lens-010-002-incident-response-workflow]\n\n### 4.2 REQ-LENS-010-002: Incident Response Workflow\n\n**Status**: To Be Implemented\n**Priority**: Critical\n\n**Rationale**: Structured incident response ensures consistent handling and rapid resolution of errors\n\n**Configuration**:\n- Incident classification criteria (production vs non-production, customer-facing vs internal)\n- Severity level definitions (P1-Critical, P2-High, P3-Medium, P4-Low)\n- Initial response procedures per severity with timeboxes\n- Escalation triggers and paths (when to escalate, to whom)\n- Post-incident review process for major incidents\n\n**Implementation Details**:\n```yaml\n# Incident response workflow\nincident_response:\n  classification:\n    production_customer_facing: P1_or_P2\n    production_internal: P2_or_P3\n    non_production: P3_or_P4\n\n  severity_definitions:\n    P1_critical:\n      description: \"Complete service outage or data loss affecting customers\"\n      response_time: 5_minutes\n      resolution_target: 1_hour\n      escalation_immediate: true\n\n    P2_high:\n      description: \"Partial service degradation affecting customers\"\n      response_time: 15_minutes\n      resolution_target: 4_hours\n      escalation_after: 30_minutes_no_progress\n\n    P3_medium:\n      description: \"Service degradation affecting internal users only\"\n      response_time: 30_minutes\n      resolution_target: 8_hours\n      escalation_after: 1_hour_no_progress\n\n    P4_low:\n      description: \"Minor issues with no immediate impact\"\n      response_time: 2_hours\n      resolution_target: 24_hours\n      escalation_after: manual\n\n  initial_response:\n    - acknowledge_alert\n    - classify_severity\n    - gather_initial_context\n    - check_known_issues\n    - start_investigation_timer\n    - notify_stakeholders_if_customer_facing\n\n  escalation_triggers:\n    - no_progress_after_timebox\n    - expertise_required\n    - cross_team_coordination_needed\n    - customer_escalation\n    - sla_breach_imminent\n\n  post_incident_review:\n    required_for: [P1, P2]\n    schedule_within: 48_hours\n    attendees: [incident_responder, team_lead, relevant_stakeholders]\n    template: \"post_incident_review_template.md\"\n```\n\n**Validation**:\n- Incidents correctly classified within 5 minutes\n- Response time SLAs met >95% of the time\n- Escalation procedures followed correctly\n- Post-incident reviews completed for all P1/P2 incidents\n\n---",
+    "23": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#43-req-lens-010-003-error-message-correlation]\n\n### 4.3 REQ-LENS-010-003: Error Message Correlation\n\n**Status**: To Be Implemented\n**Priority**: High\n\n**Rationale**: Correlating errors across systems reveals root causes and prevents duplicate investigations\n\n**Configuration**:\n- Cross-system error correlation (Kafka, Lenses, applications, databases, infrastructure)\n- Timestamp-based relationship detection (±5 minute window)\n- Common cause identification using dependency maps\n- Impact analysis visualization (blast radius)\n\n**Implementation Details**:\n```python\n# Error correlation engine pseudocode\ndef correlate_errors(primary_error, time_window=5):\n    \"\"\"\n    Correlate related errors across systems\n\n    Args:\n        primary_error: The initial error being investigated\n        time_window: Time window in minutes for correlation\n\n    Returns:\n        Dictionary of correlated errors and relationships\n    \"\"\"\n    error_time = primary_error.timestamp\n    correlation_window = (error_time - time_window_minutes, error_time + time_window_minutes)\n\n    # Fetch errors from all systems in time window\n    kafka_errors = get_kafka_errors(correlation_window)\n    lenses_errors = get_lenses_errors(correlation_window)\n    app_errors = get_application_errors(correlation_window)\n    infra_errors = get_infrastructure_errors(correlation_window)\n\n    # Identify relationships\n    relationships = []\n\n    # Dependency-based correlation\n    for system_error in [kafka_errors, lenses_errors, app_errors, infra_errors]:\n        if is_downstream_of(primary_error, system_error):\n            relationships.append({\n                'type': 'cascade',\n                'error': system_error,\n                'confidence': 0.9\n            })\n\n    # Pattern-based correlation\n    for system_error in all_errors:\n        if similar_error_signature(primary_error, system_error):\n            relationships.append({\n                'type': 'same_root_cause',\n                'error': system_error,\n                'confidence': 0.75\n            })\n\n    # Temporal correlation\n    for system_error in all_errors:\n        if occurred_near_time(primary_error, system_error, window=30_seconds):\n            relationships.append({\n                'type': 'temporal',\n                'error': system_error,\n                'confidence': 0.6\n            })\n\n    # Calculate blast radius\n    blast_radius = calculate_impact_scope(primary_error, relationships)\n\n    return {\n        'primary_error': primary_error,\n        'correlated_errors': relationships,\n        'blast_radius': blast_radius,\n        'suggested_root_cause': identify_most_likely_root(primary_error, relationships)\n    }\n```\n\n**Validation**:\n- Correlation identifies related errors with >80% accuracy\n- Correlation completes within 10 seconds\n- Dependency maps accurately reflect system relationships\n\n---",
+    "24": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#44-req-lens-010-004-automated-troubleshooting-guides]\n\n### 4.4 REQ-LENS-010-004: Automated Troubleshooting Guides\n\n**Status**: To Be Implemented\n**Priority**: High\n\n**Rationale**: Context-aware troubleshooting guides accelerate resolution by providing relevant steps based on error type\n\n**Configuration**:\n- Error-to-guide mapping (error signature → troubleshooting guide)\n- Step-by-step resolution procedures with validation checkpoints\n- Success criteria definitions for each step\n- Automated guide presentation in incident response UI\n\n**Implementation Details**:\n```markdown\n# Example Troubleshooting Guide Template\n\n## Error: Consumer Group Rebalancing Loop\n\n### Symptoms\n- Consumer group constantly rebalancing\n- `group.id` showing REBALANCING state continuously\n- Messages not being consumed\n- High lag accumulation\n\n### Error Signatures\n- \"Rebalance failed since group member's session expired\"\n- \"Marking the coordinator dead\"\n- \"Attempt to heartbeat failed\"\n\n### Initial Validation\n1. Verify consumer group is actually rebalancing\n   ```sql\n   SELECT consumer_group, state, members\n   FROM consumer_groups\n   WHERE consumer_group = 'my-consumer-group'\n   ```\n   Expected: state = 'REBALANCING'\n\n2. Check rebalance frequency\n   ```sql\n   SELECT COUNT(*) as rebalance_count\n   FROM consumer_group_events\n   WHERE consumer_group = 'my-consumer-group'\n     AND event_type = 'REBALANCE'\n     AND timestamp > NOW() - INTERVAL 1 HOUR\n   ```\n   If count > 10, rebalancing is excessive\n\n### Troubleshooting Steps\n\n#### Step 1: Check Session Timeout Configuration\n**Action**: Verify session.timeout.ms and max.poll.interval.ms settings\n```bash\nkafka-consumer-groups --describe --group my-consumer-group --bootstrap-server localhost:9092\n```\n\n**Diagnosis**:\n- If `session.timeout.ms` < 10000 (10 seconds): Too low, increase to 30000\n- If `max.poll.interval.ms` < processing time: Consumers timing out during processing\n\n**Resolution**:\n- Increase `session.timeout.ms` to 30000 (30 seconds)\n- Increase `max.poll.interval.ms` to 600000 (10 minutes)\n- Restart consumers with new configuration\n\n**Validation**: Monitor consumer group state for 5 minutes, should stabilize",
+    "25": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#step-2-check-consumer-processing-time]\n\n#### Step 2: Check Consumer Processing Time\n\n**Action**: Analyze message processing duration\n```sql\nSELECT AVG(processing_time_ms) as avg_processing,\n       P95(processing_time_ms) as p95_processing\nFROM consumer_metrics\nWHERE consumer_group = 'my-consumer-group'\n  AND timestamp > NOW() - INTERVAL 1 HOUR\n```\n\n**Diagnosis**:\n- If p95 > max.poll.interval.ms: Processing too slow, causing timeouts\n\n**Resolution**:\n- Optimize consumer code for faster processing\n- Increase `max.poll.interval.ms` to accommodate processing time\n- Scale out consumers for parallel processing\n\n**Validation**: Processing time should be <50% of max.poll.interval.ms",
+    "26": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#step-3-check-network-connectivity]\n\n#### Step 3: Check Network Connectivity\n\n**Action**: Test network latency to Kafka brokers\n```bash\nping broker1.example.com\ntelnet broker1.example.com 9092\n```\n\n**Diagnosis**:\n- High latency (>100ms) or packet loss: Network issues causing heartbeat failures\n\n**Resolution**:\n- Engage network team to investigate connectivity\n- Consider moving consumers closer to brokers\n- Increase heartbeat.interval.ms if network latency unavoidable\n\n**Validation**: Network latency should be <50ms consistently",
+    "27": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#success-criteria]\n\n### Success Criteria\n\n- Consumer group state = 'STABLE' for 10+ minutes\n- No rebalance events in last 10 minutes\n- Consumer lag decreasing\n- No session timeout errors in logs",
+    "28": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#if-guide-doesnt-resolve-issue]\n\n### If Guide Doesn't Resolve Issue\n\nEscalate to Platform Engineering Lead with:\n- Consumer group name\n- All validation results from above steps\n- Consumer application logs (last 30 minutes)\n- Network test results\n```\n\n**Validation**:\n- Guides available for top 20 most common errors\n- Guide resolution success rate >70%\n- Guides accessible within incident response workflow\n\n---\n\n### 4.5 REQ-LENS-010-005: Root Cause Analysis Tools\n**Status**: To Be Implemented\n**Priority**: Medium\n\n**Rationale**: Specialized tools for root cause analysis reduce mean time to resolution\n\n**Configuration**:\n- Log analysis and search capabilities (full-text search, regex)\n- Timeline reconstruction tools (visualize events chronologically)\n- Configuration diff comparison (compare config before/after incident)\n- Change history correlation (deployments, config changes, infra changes)\n- Hypothesis testing framework (structured testing of root cause theories)\n\n**Implementation Details**:\n```yaml\n# Root cause analysis tools\nrca_tools:\n  log_analysis:\n    full_text_search: true\n    regex_search: true\n    context_lines: 10  # Show 10 lines before/after match\n    time_range_filter: true\n    severity_filter: true\n    source_filter: true\n\n  timeline_reconstruction:\n    include_sources:\n      - kafka_broker_logs\n      - lenses_logs\n      - application_logs\n      - deployment_events\n      - configuration_changes\n      - infrastructure_events\n    visualization: gantt_chart\n    time_precision: seconds\n\n  configuration_diff:\n    compare_modes:\n      - before_after_incident\n      - current_vs_baseline\n      - environment_comparison\n    highlight_changes: true\n    show_only_differences: true\n\n  change_history:\n    sources:\n      - ci_cd_deployments\n      - configuration_management\n      - infrastructure_changes\n      - schema_registry_changes\n    correlation_window: 24_hours\n\n  hypothesis_testing:\n    template:\n      - state_hypothesis\n      - identify_evidence_needed\n      - collect_evidence\n      - evaluate_hypothesis\n      - document_conclusion\n```\n\n**Validation**:\n- Log search returns results within 5 seconds\n- Timeline reconstruction accurate to second precision\n- Configuration diff correctly identifies all changes\n- Hypothesis testing template guides thorough analysis\n\n---",
+    "29": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#46-req-lens-010-006-error-message-enrichment]\n\n### 4.6 REQ-LENS-010-006: Error Message Enrichment\n\n**Status**: To Be Implemented\n**Priority**: Medium\n\n**Rationale**: Enriching error messages with context enables faster understanding and resolution\n\n**Configuration**:\n- Automatic context injection (related logs, metrics, configurations)\n- Related log aggregation (gather logs from related components)\n- Metric correlation (CPU, memory, network at time of error)\n- Historical similar incident linking (reference past incidents)\n- Knowledge base integration (link to relevant documentation)\n\n**Implementation Details**:\n```javascript\n// Error enrichment example\nfunction enrichError(errorMessage) {\n  const enrichedError = {\n    original_error: errorMessage,\n    timestamp: errorMessage.timestamp,\n    severity: classifyErrorSeverity(errorMessage),\n\n    // Context injection\n    context: {\n      affected_components: identifyAffectedComponents(errorMessage),\n      current_state: getCurrentSystemState(errorMessage.components),\n      recent_changes: getRecentChanges(errorMessage.timestamp, window='1 hour')\n    },\n\n    // Related logs\n    related_logs: {\n      before: getLogsAround(errorMessage.timestamp, window='-5 minutes'),\n      after: getLogsAround(errorMessage.timestamp, window='+5 minutes'),\n      same_component: getComponentLogs(errorMessage.component, window='10 minutes')\n    },\n\n    // Metric correlation\n    metrics_at_error_time: {\n      cpu_usage: getCPUMetrics(errorMessage.host, errorMessage.timestamp),\n      memory_usage: getMemoryMetrics(errorMessage.host, errorMessage.timestamp),\n      network_io: getNetworkMetrics(errorMessage.host, errorMessage.timestamp),\n      kafka_metrics: getKafkaMetrics(errorMessage.timestamp)\n    },\n\n    // Historical incidents\n    similar_incidents: findSimilarIncidents(errorMessage, limit=5),\n\n    // Knowledge base\n    relevant_docs: searchKnowledgeBase(errorMessage.signature),\n    troubleshooting_guide: getTroubleshootingGuide(errorMessage.type),\n\n    // Suggested actions\n    recommended_actions: generateRecommendations(errorMessage, context, similar_incidents)\n  };\n\n  return enrichedError;\n}\n```\n\n**Validation**:\n- Enrichment completes within 5 seconds\n- Related logs accurately gathered (>90% relevance)\n- Similar incident suggestions helpful (>60% match quality)\n\n---",
+    "30": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#47-req-lens-010-007-remediation-playbook-library]\n\n### 4.7 REQ-LENS-010-007: Remediation Playbook Library\n\n**Status**: To Be Implemented\n**Priority**: High\n\n**Rationale**: Playbook library standardizes resolution approaches and captures organizational knowledge\n\n**Configuration**:\n- Playbook per common error type (minimum 20 playbooks)\n- Approval requirements for risky actions (production restarts, configuration changes)\n- Automated remediation where safe (log rotation, cache clearing)\n- Success rate tracking per playbook\n- Continuous improvement process (quarterly playbook review)\n\n**Implementation Details**:\n```yaml\n# Remediation playbook example\nplaybook_id: \"kafka_broker_disk_full\"\nerror_signatures:\n  - \"No space left on device\"\n  - \"IOException: Disk full\"\n  - \"Failed to allocate log segment\"\n\nseverity: critical\nautomated: false  # Requires manual approval due to risk\napproval_required: platform_engineering_lead\n\nsteps:\n  - step: 1\n    name: \"Verify disk usage\"\n    command: \"df -h /var/lib/kafka\"\n    expected_output: \"Usage >90%\"\n    risk_level: low\n\n  - step: 2\n    name: \"Identify largest log segments\"\n    command: \"du -sh /var/lib/kafka/data/* | sort -rh | head -10\"\n    expected_output: \"List of largest topics\"\n    risk_level: low\n\n  - step: 3\n    name: \"Check retention settings\"\n    description: \"Verify topic retention configuration is appropriate\"\n    requires_approval: false\n    risk_level: low\n\n  - step: 4\n    name: \"Clean up old log segments\"\n    description: \"Trigger log segment cleanup for topics with low retention requirements\"\n    command: \"kafka-topics --alter --topic <topic> --config retention.ms=86400000\"\n    requires_approval: true\n    approval_reason: \"Modifying retention could cause data loss\"\n    risk_level: high\n    rollback_procedure: \"Restore previous retention.ms value\"\n\n  - step: 5\n    name: \"Expand disk capacity (if needed)\"\n    description: \"Work with infrastructure team to expand EBS volume\"\n    requires_approval: true\n    risk_level: medium\n    estimated_time: \"30 minutes\"\n\n  - step: 6\n    name: \"Verify broker recovery\"\n    command: \"kafka-broker-api-versions --bootstrap-server localhost:9092\"\n    expected_output: \"Broker responding normally\"\n    risk_level: low\n\nsuccess_criteria:\n  - \"Disk usage <80%\"\n  - \"Broker accepting produce/consume requests\"\n  - \"No disk full errors in logs for 10 minutes\"\n\ntracking:\n  success_rate: 0.95  # 95% success rate\n  avg_resolution_time: 25_minutes\n  last_used: \"2026-01-15\"\n  times_used: 47\n```\n\n**Validation**:\n- Playbooks exist for top 20 most common errors\n- Playbook success rate >75%\n- Approval workflows enforced for high-risk actions\n\n---",
+    "31": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#48-req-lens-010-008-error-impact-assessment]\n\n### 4.8 REQ-LENS-010-008: Error Impact Assessment\n\n**Status**: To Be Implemented\n**Priority**: High\n\n**Rationale**: Understanding error impact enables appropriate prioritization and resource allocation\n\n**Configuration**:\n- Business impact calculation (revenue loss, customer count affected)\n- Affected user/system identification (which consumers, applications)\n- Data loss risk assessment (is data being dropped)\n- SLA impact tracking (time until SLA breach)\n- Stakeholder notification rules (when to notify executives)\n\n**Implementation Details**:\n```python\n# Impact assessment engine\ndef assess_error_impact(error):\n    impact_assessment = {\n        'error_id': error.id,\n        'detected_at': error.timestamp,\n\n        # Business impact\n        'business_impact': {\n            'affected_customers': count_affected_customers(error),\n            'revenue_at_risk': calculate_revenue_impact(error),\n            'critical_business_processes': identify_critical_processes(error),\n            'estimated_financial_impact': estimate_financial_impact(error)\n        },\n\n        # Technical impact\n        'technical_impact': {\n            'affected_systems': identify_affected_systems(error),\n            'affected_topics': identify_affected_topics(error),\n            'affected_consumer_groups': identify_affected_consumers(error),\n            'data_loss_risk': assess_data_loss_risk(error),\n            'cascade_risk': assess_cascade_failure_risk(error)\n        },\n\n        # SLA impact\n        'sla_impact': {\n            'current_uptime': calculate_current_uptime(),\n            'sla_target': get_sla_target(),\n            'time_until_breach': calculate_time_to_breach(error),\n            'recovery_time_needed': estimate_recovery_time(error)\n        },\n\n        # Stakeholder notifications\n        'notifications_required': determine_notifications(\n            error,\n            business_impact,\n            technical_impact,\n            sla_impact\n        )\n    }\n\n    # Automatic severity escalation if impact high\n    if impact_assessment['business_impact']['affected_customers'] > 1000:\n        escalate_to_executive_team(error, impact_assessment)\n\n    return impact_assessment\n\ndef determine_notifications(error, business, technical, sla):\n    notifications = []\n\n    # Always notify on-call engineer\n    notifications.append({\n        'recipient': 'on_call_engineer',\n        'method': 'pagerduty',\n        'urgency': 'high'\n    })\n\n    # Notify management if customer-facing\n    if business['affected_customers'] > 0:\n        notifications.append({\n            'recipient': 'engineering_manager',\n            'method': 'slack',\n            'urgency': 'high'\n        })\n\n    # Notify executive team if major impact\n    if business['affected_customers'] > 1000 or business['revenue_at_risk'] > 100000:\n        notifications.append({\n            'recipient': 'executive_team',\n            'method': 'email_and_sms',\n            'urgency': 'critical'\n        })\n\n    # Notify customer success if SLA breach imminent\n    if sla['time_until_breach'] < 30_minutes:\n        notifications.append({\n            'recipient': 'customer_success_team',\n            'method': 'slack',\n            'urgency': 'high'\n        })\n\n    return notifications\n```\n\n**Validation**:\n- Impact assessment completes within 10 seconds\n- Customer count accuracy >95%\n- SLA breach predictions accurate within 10 minutes\n\n---",
+    "32": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#49-req-lens-010-009-knowledge-base-integration]\n\n### 4.9 REQ-LENS-010-009: Knowledge Base Integration\n\n**Status**: To Be Implemented\n**Priority**: High\n\n**Rationale**: Integration with knowledge base enables learning from past incidents and continuous improvement\n\n**Configuration**:\n- Automated incident documentation (capture key details automatically)\n- Resolution step capture (record actions taken during resolution)\n- Searchable knowledge repository (full-text search, tagging)\n- Similar incident suggestions (ML-based similarity matching)\n- Feedback and rating system (rate usefulness of KB articles)\n\n**Implementation Details**:\n```markdown\n# Automated Incident Documentation Template\n\n## Incident Summary\n- **Incident ID**: [Auto-generated]\n- **Detected At**: [Timestamp]\n- **Resolved At**: [Timestamp]\n- **Duration**: [Auto-calculated]\n- **Severity**: [P1/P2/P3/P4]\n- **Affected Systems**: [Auto-populated from impact assessment]\n\n## Error Details\n- **Error Signature**: [Pattern matched]\n- **Error Message**: [Original error]\n- **First Occurrence**: [Timestamp]\n- **Occurrence Count**: [Count during incident]\n- **Affected Components**: [Kafka/Lenses/Application]\n\n## Impact Assessment\n- **Customers Affected**: [Auto-populated]\n- **Revenue Impact**: [Auto-calculated]\n- **SLA Status**: [Met/Breached]\n- **Data Loss**: [Yes/No with details]\n\n## Investigation Timeline\n[Auto-generated from audit logs of investigation actions]\n- 14:32 - Alert triggered\n- 14:35 - On-call engineer acknowledged\n- 14:37 - Initial logs reviewed\n- 14:42 - Error correlation identified common cause\n- 14:50 - Troubleshooting guide consulted\n- 14:55 - Remediation applied\n- 15:05 - Verification complete, incident resolved\n\n## Root Cause\n[Filled by incident responder]\n\n## Resolution\n[Auto-captured from remediation playbook executed]\n\n## Preventive Measures\n[Filled by incident responder]\n\n## Similar Past Incidents\n[Auto-suggested based on error signature]\n- INC-2024-0234 - Consumer rebalancing loop (resolved with same playbook)\n- INC-2024-0156 - Session timeout issues (different root cause)\n\n## Lessons Learned\n[Filled during post-incident review]\n\n## Action Items\n[Created during post-incident review]\n- [ ] Update monitoring threshold for early detection\n- [ ] Add automated remediation for this error type\n- [ ] Improve troubleshooting guide with new findings\n\n## KB Article Metadata\n- **Tags**: [consumer-lag, rebalancing, session-timeout]\n- **Usefulness Rating**: [5-star rating from team]\n- **Times Referenced**: [Auto-tracked]\n- **Last Updated**: [Timestamp]\n```\n\n**Validation**:\n- 100% of P1/P2 incidents documented in KB\n- KB search returns relevant articles >80% of the time\n- Similar incident suggestions helpful >70% of the time\n\n---",
+    "33": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#410-req-lens-010-010-proactive-error-prevention]\n\n### 4.10 REQ-LENS-010-010: Proactive Error Prevention\n\n**Status**: To Be Implemented\n**Priority**: Medium\n\n**Rationale**: Analyzing error trends enables proactive prevention of future incidents\n\n**Configuration**:\n- Error trend analysis (error rates over time, trending up/down)\n- Predictive alerting (alert before error reaches critical threshold)\n- Preventive maintenance recommendations (based on error patterns)\n- Configuration validation (prevent misconfigurations before deployment)\n- Best practice enforcement (automated checks for common mistakes)\n\n**Implementation Details**:\n```python\n# Proactive error prevention engine\ndef analyze_error_trends(days=30):\n    trends = {}\n\n    # Get error data for trend analysis\n    error_history = get_error_history(days=days)\n\n    # Identify growing error patterns\n    for error_type in error_history.groupby('error_type'):\n        trend = calculate_trend(error_type.occurrences_per_day)\n\n        if trend.direction == 'increasing' and trend.rate > 0.2:  # 20% growth\n            trends[error_type.name] = {\n                'direction': 'increasing',\n                'growth_rate': trend.rate,\n                'projected_critical_date': project_when_critical(trend),\n                'recommendation': generate_prevention_recommendation(error_type),\n                'priority': calculate_prevention_priority(error_type, trend)\n            }\n\n    return trends\n\ndef generate_prevention_recommendation(error_type):\n    # Map error types to preventive actions\n    prevention_map = {\n        'disk_space_errors': {\n            'action': 'Expand disk capacity or reduce retention',\n            'estimated_effort': '2 hours',\n            'estimated_savings': 'Prevent 3-5 incidents per month'\n        },\n        'connection_timeouts': {\n            'action': 'Review and optimize network configuration',\n            'estimated_effort': '4 hours',\n            'estimated_savings': 'Prevent 2-3 incidents per week'\n        },\n        'schema_validation_errors': {\n            'action': 'Implement schema validation in producer CI/CD',\n            'estimated_effort': '8 hours',\n            'estimated_savings': 'Prevent 10-15 incidents per month'\n        }\n    }\n\n    return prevention_map.get(error_type.category,\n                             'Manual investigation required')\n\ndef predictive_alerting():\n    \"\"\"\n    Alert before error reaches critical threshold\n    \"\"\"\n    for metric in monitored_metrics:\n        current_value = metric.current_value\n        trend = metric.trend\n        critical_threshold = metric.critical_threshold\n\n        # Predict when threshold will be reached\n        time_to_critical = predict_time_to_threshold(\n            current_value,\n            trend,\n            critical_threshold\n        )\n\n        # Alert if threshold will be reached soon\n        if time_to_critical < 24_hours:\n            send_predictive_alert({\n                'metric': metric.name,\n                'current_value': current_value,\n                'critical_threshold': critical_threshold,\n                'time_to_critical': time_to_critical,\n                'recommended_action': metric.prevention_action\n            })\n```\n\n**Validation**:\n- Trend analysis identifies growing issues >80% accuracy\n- Predictive alerts reduce unplanned incidents by 30%\n- Prevention recommendations actionable and specific",
+    "34": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#5-exceptions-process]\n\n## 5. Exceptions Process",
+    "35": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#51-when-to-request-an-exception]\n\n### 5.1 When to Request an Exception\n\nExceptions to this standard may be considered in the following scenarios:\n- **Development/Test Environments**: Non-production environments where incident response rigor can be relaxed\n- **Sunset Applications**: Applications with planned end-of-life within 3 months\n- **Minimal Impact Systems**: Systems with no customer-facing impact and no SLAs\n- **Resource Constraints**: Temporarily during critical resource shortages (must have remediation plan)",
+    "36": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#52-exception-request-procedure]\n\n### 5.2 Exception Request Procedure\n\n1. **Document Business Justification**: Clearly articulate why standard error analysis cannot be applied\n2. **Propose Compensating Controls**: Define alternative incident response mechanisms\n3. **Define Scope and Duration**: Specify which systems are excluded and for how long (maximum 6 months)\n4. **Submit Exception Request**: Use standard exception request process through governance committee\n5. **Obtain Approval**: Requires approval from Platform Engineering Lead and Enterprise Architect\n6. **Implement Compensating Controls**: Put basic incident response in place before granting exception\n7. **Regular Review**: Exceptions reviewed quarterly with remediation progress",
+    "37": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#53-approval-authority]\n\n### 5.3 Approval Authority\n\n- **Development/Test Exceptions**: Platform Engineering Lead\n- **Limited Scope Exceptions** (<5 systems): Platform Engineering Lead + Application Owner\n- **Broad Scope Exceptions** (>5 systems or >6 months): Enterprise Architect + Platform Engineering Lead + Risk Committee",
+    "38": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#54-exception-monitoring]\n\n### 5.4 Exception Monitoring\n\n- All exceptions logged in central exceptions register with detailed justification\n- Monthly review of active exceptions with impact assessment\n- Automatic expiration after 6 months requiring re-approval or remediation\n- Escalation to executive team if exceptions exceed 10% of total systems",
+    "39": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#6-technical-specifications]\n\n## 6. Technical Specifications",
+    "40": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#61-platform-requirements]\n\n### 6.1 Platform Requirements\n\n- **Lenses.io**: Enterprise 5.0+ with monitoring and alerting capabilities\n- **Log Aggregation**: ELK Stack (Elasticsearch, Logstash, Kibana), Splunk, or CloudWatch Logs\n- **Monitoring**: Prometheus, Grafana, Datadog, or New Relic\n- **Incident Management**: PagerDuty, Opsgenie, Jira Service Management, or ServiceNow\n- **Knowledge Base**: Confluence, SharePoint, or internal wiki with search capabilities",
+    "41": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#62-architecture-constraints]\n\n### 6.2 Architecture Constraints\n\n- All error logs must be centrally aggregated within 2 minutes of occurrence\n- Error correlation must complete within 10 seconds to support real-time incident response\n- Pattern detection latency must be <2 minutes from error occurrence to alert\n- Knowledge base must support full-text search with <3 second response time\n- Incident response workflows must integrate with existing on-call systems",
+    "42": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#63-configuration-specifications]\n\n### 6.3 Configuration Specifications\n\n- **Error Retention**: 90 days minimum in log aggregation system, 7 years for critical incidents\n- **Pattern Detection Interval**: Every 1 minute for critical errors, every 5 minutes for non-critical\n- **Correlation Window**: ±5 minutes for temporal correlation, ±1 hour for change correlation\n- **Alert Evaluation**: Every 1 minute with 3-evaluation average to reduce false positives\n- **KB Article Retention**: Indefinite for all documented incidents with archival after 2 years",
+    "43": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#64-security-specifications]\n\n### 6.4 Security Specifications\n\n- Access to error logs controlled by RBAC with audit logging\n- Sensitive data in error messages automatically redacted (PII, credentials, API keys)\n- Incident documentation sanitized before knowledge base publication\n- Audit trail of all troubleshooting actions maintained for 1 year minimum\n- Multi-factor authentication required for production remediation actions",
+    "44": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#65-performance-specifications]\n\n### 6.5 Performance Specifications\n\n- Pattern detection processing: <1 second per 1000 log entries\n- Error correlation: <10 seconds for complex multi-system correlations\n- Knowledge base search: <3 seconds for full-text search across all articles\n- Incident response UI: <2 seconds page load time\n- Automated remediation execution: <30 seconds from approval to completion",
+    "45": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#7-technology-stack]\n\n## 7. Technology Stack",
+    "46": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#71-core-technologies]\n\n### 7.1 Core Technologies\n\n- **Lenses.io Version**: Enterprise 5.0+\n- **Log Aggregation**: ELK Stack (Elasticsearch 8.x, Logstash 8.x, Kibana 8.x), Splunk 9.x, AWS CloudWatch Logs\n- **Monitoring**: Prometheus 2.x, Grafana 9.x, Datadog, New Relic\n- **Incident Management**: PagerDuty, Opsgenie, Jira Service Management, ServiceNow",
+    "47": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#72-supporting-tools]\n\n### 7.2 Supporting Tools\n\n- **Distributed Tracing**: Jaeger, Zipkin, AWS X-Ray, Azure Application Insights\n- **APM**: Datadog APM, New Relic APM, AppDynamics, Dynatrace\n- **Knowledge Base**: Confluence, SharePoint, GitBook, internal wiki\n- **Automation**: Ansible, Terraform, custom Python/Bash scripts\n- **Workflow Engine**: Apache Airflow, Temporal, AWS Step Functions (for automated remediation)",
+    "48": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#8-implementation-guidance]\n\n## 8. Implementation Guidance",
+    "49": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#81-prerequisites]\n\n### 8.1 Prerequisites\n\n1. Lenses.io monitoring configured per STD-INFRA-KMGMT-006\n2. Alerting integration complete per STD-INFRA-KMGMT-009\n3. Log aggregation system deployed and collecting logs from all sources\n4. Incident management system configured with on-call rotations\n5. Knowledge base platform available with search functionality\n6. Dependency maps documented for all critical systems\n7. Team trained on incident response procedures",
+    "50": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#82-implementation-steps]\n\n### 8.2 Implementation Steps",
+    "51": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#step-1-configure-error-detection]\n\n#### Step 1: Configure Error Detection\n\n1. Integrate Lenses.io logs with central log aggregation system\n   ```yaml\n   # Logstash configuration for Lenses logs\n   input {\n     file {\n       path => \"/var/log/lenses/*.log\"\n       type => \"lenses\"\n       codec => json\n     }\n   }\n   filter {\n     if [type] == \"lenses\" {\n       grok {\n         match => { \"message\" => \"%{LOGLEVEL:severity} %{GREEDYDATA:error_message}\" }\n       }\n     }\n   }\n   output {\n     elasticsearch {\n       hosts => [\"elasticsearch:9200\"]\n       index => \"lenses-logs-%{+YYYY.MM.dd}\"\n     }\n   }\n   ```\n2. Define error patterns and signatures for top 20 most common errors\n3. Configure pattern detection rules in log aggregation system\n4. Set up threshold-based alerting for error rates\n5. Test detection with historical data and adjust thresholds\n6. Enable ML-based anomaly detection for new error patterns",
+    "52": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#step-2-establish-incident-response-workflow]\n\n#### Step 2: Establish Incident Response Workflow\n\n1. Document incident classification criteria with clear examples\n2. Create severity level definitions (P1-P4) aligned with business impact\n3. Define initial response procedures per severity with timeboxes\n   - P1: Acknowledge within 5 minutes, resolve within 1 hour\n   - P2: Acknowledge within 15 minutes, resolve within 4 hours\n   - P3: Acknowledge within 30 minutes, resolve within 8 hours\n4. Configure escalation paths in PagerDuty/Opsgenie\n5. Create incident response runbook with decision trees\n6. Conduct table-top exercises to validate workflow\n7. Train all on-call engineers on incident response procedures",
+    "53": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#step-3-build-troubleshooting-guide-library]\n\n#### Step 3: Build Troubleshooting Guide Library\n\n1. Identify top 20 most common errors from historical incident data\n2. Create detailed troubleshooting guides using standardized template\n3. Include validation steps after each troubleshooting action\n4. Define clear success criteria for each guide\n5. Map error signatures to appropriate troubleshooting guides\n6. Publish guides to knowledge base with searchable tags\n7. Test guides with actual incidents and gather feedback\n8. Establish quarterly review process to update guides",
+    "54": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#step-4-implement-error-correlation]\n\n#### Step 4: Implement Error Correlation\n\n1. Configure cross-system log correlation in log aggregation platform\n2. Document system dependency maps (what depends on what)\n3. Implement timeline reconstruction visualization in Kibana/Grafana\n4. Create correlation rules based on dependency maps\n5. Test correlation with historical multi-system failures\n6. Add correlation results to incident response dashboard\n7. Train responders on interpreting correlation data",
+    "55": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#step-5-develop-remediation-playbooks]\n\n#### Step 5: Develop Remediation Playbooks\n\n1. Document common remediation procedures for top 20 errors\n2. Identify safe automation candidates (low-risk, high-frequency actions)\n3. Implement automated remediation for approved actions\n   ```python\n   # Example automated remediation\n   def auto_remediate_log_rotation(broker_id):\n       if disk_usage(broker_id) > 90:\n           trigger_log_cleanup(broker_id)\n           verify_disk_space_recovered(broker_id)\n           log_remediation_action(broker_id, \"log_rotation\")\n   ```\n4. Add approval gates for high-risk actions (production restarts, config changes)\n5. Track playbook execution success rates\n6. Conduct monthly playbook review and refinement\n7. Publish playbooks to knowledge base for reference",
+    "56": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#step-6-integrate-knowledge-base]\n\n#### Step 6: Integrate Knowledge Base\n\n1. Create incident documentation template (auto-populated fields)\n2. Configure automated capture of incident timeline from audit logs\n3. Implement search functionality with tags and full-text search\n4. Add similar incident suggestion engine using ML-based similarity\n5. Establish post-incident review process (within 48 hours for P1/P2)\n6. Create feedback mechanism for KB article usefulness ratings\n7. Conduct quarterly KB content review and archival of outdated articles",
+    "57": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#83-post-implementation-tasks]\n\n### 8.3 Post-Implementation Tasks\n\n1. Monitor mean time to resolution (MTTR) improvements weekly\n2. Track pattern detection false positive/negative rates and tune thresholds\n3. Collect feedback on troubleshooting guide effectiveness\n4. Refine error patterns based on new error types discovered\n5. Update remediation playbooks with learnings from new incidents\n6. Conduct monthly post-incident review summaries to identify systemic issues\n7. Measure knowledge base utilization and article ratings\n8. Conduct quarterly training refreshers for on-call teams\n9. Review and optimize automated remediation success rates\n10. Audit compliance with incident documentation requirements monthly",
+    "58": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#9-validation-criteria]\n\n## 9. Validation Criteria\n\n| Validation Area | Criteria | Priority | Validation Method |\n|----------------|----------|----------|-------------------|\n| **Error Detection** | Pattern detection accuracy >90% (low false positive/negative rate) | Critical | Regular review of alerts vs actual incidents |\n| **Response Time** | Response time SLAs met >95% of the time | Critical | Incident management system reports |\n| **MTTR Improvement** | Mean time to resolution reduced by >30% within 6 months | High | Comparison of pre/post-implementation MTTR |\n| **Correlation Accuracy** | Error correlation identifies related errors with >80% accuracy | High | Manual validation of correlation suggestions |\n| **Guide Effectiveness** | Troubleshooting guide resolution success rate >70% | High | Post-incident review analysis |\n| **Playbook Success** | Remediation playbook success rate >75% | High | Playbook execution tracking |\n| **KB Utilization** | Knowledge base referenced in >60% of incidents | Medium | KB analytics, incident report review |\n| **Documentation Compliance** | 100% of P1/P2 incidents documented in KB within 48 hours | Critical | Compliance audit reports |\n| **Incident Recurrence** | Recurring incidents (same root cause) reduced by >50% | High | Incident categorization and trend analysis |\n| **Escalation Appropriateness** | <10% inappropriate escalations (false escalations or missed escalations) | Medium | Escalation review in post-incident meetings |\n| **Post-Incident Reviews** | 100% of P1/P2 incidents have completed PIR within 48 hours | Critical | PIR completion tracking |\n| **Team Training** | 100% of on-call engineers trained and certified on incident response | Critical | Training records and competency assessments |",
+    "59": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#10-testing-requirements]\n\n## 10. Testing Requirements",
+    "60": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#101-functional-testing]\n\n### 10.1 Functional Testing\n\n- **Error Detection**: Inject known error patterns and verify detection within 2 minutes\n- **Incident Classification**: Test classification logic with various error scenarios\n- **Correlation Engine**: Test with multi-system failures and validate relationship detection\n- **Troubleshooting Guides**: Walk through guides with simulated incidents and validate resolution\n- **Remediation Playbooks**: Execute playbooks in test environment and verify outcomes\n- **Knowledge Base Search**: Test search functionality with various queries and validate relevance",
+    "61": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#102-security-testing]\n\n### 10.2 Security Testing\n\n- **Access Control**: Verify RBAC correctly restricts access to error logs based on user roles\n- **Data Sanitization**: Confirm PII/credentials automatically redacted from error logs\n- **Audit Logging**: Validate all troubleshooting actions logged with user attribution\n- **Approval Workflows**: Test approval gates for high-risk remediation actions\n- **KB Access**: Verify knowledge base access controls and sanitization before publication",
+    "62": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#103-performance-testing]\n\n### 10.3 Performance Testing\n\n- **Pattern Detection Speed**: Measure detection latency under various log volumes\n- **Correlation Performance**: Test correlation engine with high error volumes\n- **Search Performance**: Measure KB search response time with large article database\n- **Concurrent Incidents**: Test system performance with multiple simultaneous incidents\n- **Automated Remediation**: Validate remediation completes within SLA timeframes",
+    "63": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#104-integration-testing]\n\n### 10.4 Integration Testing\n\n- **Log Aggregation**: Verify logs flowing from all sources to central system\n- **Alerting Integration**: Test alerts trigger correctly in PagerDuty/Opsgenie\n- **Knowledge Base Integration**: Validate automated incident documentation creation\n- **Monitoring Integration**: Test metric correlation with error events\n- **Workflow Automation**: Verify remediation automation integrates with change management",
+    "64": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#11-documentation-requirements]\n\n## 11. Documentation Requirements",
+    "65": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#111-architecture-documentation]\n\n### 11.1 Architecture Documentation\n\n- Error analysis architecture diagram showing all integrated systems\n- Data flow diagram from error occurrence to alert and resolution\n- Dependency maps for all critical systems\n- Correlation engine architecture and algorithms",
+    "66": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#112-operational-procedures]\n\n### 11.2 Operational Procedures\n\n- Incident response runbook with decision trees and timeboxes\n- Escalation procedures with criteria and contact information\n- Troubleshooting guide library (20+ guides for common errors)\n- Remediation playbook library (20+ playbooks)\n- Post-incident review template and procedures\n- Knowledge base contribution guidelines",
+    "67": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#113-developer-guides]\n\n### 11.3 Developer Guides\n\n- Error logging standards for applications (structured logging format)\n- How to create new troubleshooting guides (template and guidelines)\n- How to develop remediation playbooks (template and safety guidelines)\n- Integration guide for custom error detection rules",
+    "68": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#114-security-documentation]\n\n### 11.4 Security Documentation\n\n- Data sanitization procedures for error logs\n- RBAC configuration for error log access\n- Audit logging requirements and review procedures\n- Approval workflow configuration for remediation actions",
+    "69": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#115-compliance-documentation]\n\n### 11.5 Compliance Documentation\n\n- Exception request forms and approval workflows\n- Incident documentation compliance requirements\n- Post-incident review compliance audit procedures\n- Knowledge base retention and archival policies",
+    "70": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#116-training-materials]\n\n### 11.6 Training Materials\n\n- Incident response training presentations (slides and video)\n- Hands-on incident simulation exercises\n- Troubleshooting guide usage training\n- Knowledge base contribution training\n- Root cause analysis techniques training\n- Post-incident review facilitation training",
+    "71": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#12-troubleshooting]\n\n## 12. Troubleshooting",
+    "72": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#121-issue-1-high-false-positive-rate]\n\n### 12.1 Issue 1: High False Positive Rate\n\n**Symptoms**:\n- Alerts triggered frequently for non-issues\n- Alert fatigue among on-call responders\n- Actual critical incidents potentially missed in the noise\n- Team ignoring or dismissing alerts\n\n**Root Causes**:\n- Error detection thresholds too sensitive for normal operational variance\n- Pattern definitions too broad, matching non-error log entries\n- Normal operational events (deployments, scheduled jobs) flagged as errors\n- Insufficient contextual filtering (time of day, environment-specific)\n- Lack of baseline understanding of normal error rates\n\n**Resolution**:\n1. Review and adjust error detection thresholds based on historical baseline\n   ```python\n   # Example threshold tuning\n   baseline_error_rate = calculate_baseline(days=30)\n   new_threshold = baseline_error_rate + (3 * standard_deviation)\n   ```\n2. Refine pattern definitions with more specific matching criteria\n   - Use exact error codes instead of broad regex patterns\n   - Add context requirements (severity level, source component)\n3. Add contextual filters to suppress expected errors\n   - Deployment windows: suppress certain errors during deployments\n   - Batch job windows: suppress temporary errors during scheduled jobs\n4. Implement alert suppression rules for known transient issues\n5. Use machine learning models to identify true anomalies vs noise\n6. Conduct monthly alert tuning sessions based on responder feedback\n7. Track and minimize false positive rate (<10% target)\n\n---",
+    "73": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#122-issue-2-unable-to-correlate-related-errors]\n\n### 12.2 Issue 2: Unable to Correlate Related Errors\n\n**Symptoms**:\n- Multiple separate incidents created for same underlying root cause\n- Difficulty identifying relationships between errors across systems\n- Incomplete impact assessment due to missing dependencies\n- Duplicated investigation efforts\n\n**Root Causes**:\n- Insufficient log correlation - not all systems sending logs centrally\n- Timestamp synchronization issues (NTP drift causing time mismatches)\n- Missing or outdated dependency mappings\n- Logs not aggregated in central system\n- Correlation time window too narrow\n\n**Resolution**:\n1. Ensure all systems send logs to central aggregation\n   ```yaml\n   # Verify log sources\n   missing_sources=$(compare_expected_vs_actual_log_sources)\n   configure_log_forwarding($missing_sources)\n   ```\n2. Verify timestamp synchronization across all systems\n   ```bash\n   # Check NTP sync on all hosts\n   ansible all -m shell -a \"timedatectl status | grep 'NTP synchronized'\"\n   ```\n3. Update system dependency maps with current architecture\n   - Document all dependencies in configuration management\n   - Visualize dependencies in monitoring dashboards\n4. Improve correlation algorithms with broader time windows\n   - Increase correlation window from ±5 minutes to ±15 minutes\n   - Add fuzzy timestamp matching for systems with clock drift\n5. Add manual correlation capabilities in incident response UI\n6. Visualize dependencies clearly in incident dashboard\n7. Conduct quarterly dependency mapping reviews\n\n---",
+    "74": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#123-issue-3-troubleshooting-guides-not-resolving-issues]\n\n### 12.3 Issue 3: Troubleshooting Guides Not Resolving Issues\n\n**Symptoms**:\n- Following troubleshooting guide step-by-step doesn't fix the problem\n- Resolution steps incomplete or outdated\n- Success criteria not met even after completing all steps\n- Responders abandoning guides in favor of ad-hoc troubleshooting\n\n**Root Causes**:\n- Guides based on incorrect assumptions about error causes\n- Environmental differences not accounted for (dev vs prod configs)\n- Guides not updated after system architecture changes\n- Missing prerequisite validation steps\n- Success criteria not specific or measurable enough\n\n**Resolution**:\n1. Review guide against actual incident details from recent uses\n2. Update guide with environmental considerations\n   ```markdown\n   # Add environment-specific sections\n   ## Production Environment\n   - Check X, Y, Z specific to prod setup\n\n   ## Development Environment\n   - Check A, B, C specific to dev setup\n   ```\n3. Add prerequisite validation steps at beginning of guide\n   - Verify system state before proceeding\n   - Check configuration assumptions\n4. Include rollback procedures if resolution steps don't work\n5. Conduct peer review of all guides with experienced engineers\n6. Establish quarterly guide review cycle\n   - Review guide effectiveness metrics\n   - Update guides based on recent incident learnings\n7. Add \"If guide doesn't resolve issue\" section with escalation path\n\n---",
+    "75": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#124-issue-4-slow-incident-response-time]\n\n### 12.4 Issue 4: Slow Incident Response Time\n\n**Symptoms**:\n- Mean time to resolution (MTTR) consistently exceeds targets\n- Delays in initial acknowledgment of incidents\n- Escalations taking too long to reach appropriate expertise\n- Responders spending excessive time gathering context\n\n**Root Causes**:\n- Unclear incident ownership (who should respond)\n- Responders lack sufficient context when alert fires\n- Manual correlation taking too long (should be automated)\n- Escalation criteria unclear or too complex\n- Knowledge base not easily accessible during incidents\n\n**Resolution**:\n1. Clarify on-call responsibilities with explicit RACI matrix\n   - Document who responds to which error types\n   - Configure alert routing rules in PagerDuty/Opsgenie\n2. Enrich alerts with more context automatically\n   ```json\n   {\n     \"alert\": \"High error rate detected\",\n     \"context\": {\n       \"affected_systems\": [\"consumer-group-A\", \"topic-X\"],\n       \"error_rate\": \"150 errors/min (baseline: 10)\",\n       \"similar_past_incidents\": [\"INC-2024-0123\", \"INC-2024-0089\"],\n       \"likely_root_cause\": \"Recent deployment of service-Y\",\n       \"suggested_guide\": \"troubleshooting-guide-consumer-lag\"\n     }\n   }\n   ```\n3. Automate initial correlation before human involvement\n4. Simplify escalation criteria\n   - Clear timebox thresholds (escalate after 30 min with no progress)\n   - Automatic escalation triggers in workflow\n5. Pre-position troubleshooting resources in alert\n   - Direct link to relevant troubleshooting guide\n   - Link to recent similar incidents\n   - Link to system runbooks\n6. Provide better training on troubleshooting tools and techniques\n7. Implement time-based auto-escalation if no progress\n\n---",
+    "76": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#125-issue-5-knowledge-base-not-being-used]\n\n### 12.5 Issue 5: Knowledge Base Not Being Used\n\n**Symptoms**:\n- Repeat investigations of known issues\n- Solutions not being captured systematically\n- Knowledge base searches returning no results or irrelevant results\n- Teams bypassing KB and using ad-hoc channels (Slack, email)\n\n**Root Causes**:\n- Poor search functionality (low relevance, slow performance)\n- Documentation not captured systematically (manual process ignored)\n- Knowledge base difficult to access (too many clicks, not integrated)\n- Lack of incentives or requirements to document\n- Articles outdated or incomplete\n\n**Resolution**:\n1. Improve search indexing and relevance algorithms\n   ```python\n   # Implement better search ranking\n   def search_knowledge_base(query):\n       results = full_text_search(query)\n\n       # Boost relevance based on:\n       # - Recent usage (articles referenced in last 30 days)\n       # - Usefulness ratings (4+ star articles)\n       # - Keyword match quality (exact vs fuzzy match)\n\n       ranked_results = rank_by_relevance(results, query)\n       return ranked_results[:10]  # Top 10 results\n   ```\n2. Mandate incident documentation for all P1/P2 incidents\n   - Include KB article creation in incident closure checklist\n   - Block incident closure until documentation complete\n3. Integrate knowledge base directly into incident response workflow\n   - Embed KB search in incident response dashboard\n   - Show relevant articles automatically based on error type\n4. Simplify documentation process with auto-populated templates\n5. Recognize and reward contributors to knowledge base\n   - Monthly \"most helpful article\" recognition\n   - Contribution metrics in performance reviews\n6. Make knowledge base easily accessible\n   - Single sign-on integration\n   - Mobile-friendly interface\n   - Slack/Teams integration for quick search\n7. Conduct quarterly KB content review\n   - Archive outdated articles\n   - Update frequently accessed articles\n   - Consolidate duplicate articles",
+    "77": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#13-compliance-checklist]\n\n## 13. Compliance Checklist\n\n- [ ] Error detection patterns configured for top 20 most common errors\n- [ ] Incident response workflow documented with severity definitions\n- [ ] Severity level definitions established and communicated to team\n- [ ] Escalation procedures defined, tested, and integrated into on-call system\n- [ ] Troubleshooting guide library created with 20+ guides\n- [ ] Remediation playbook library documented with 20+ playbooks\n- [ ] Knowledge base integrated with automated incident documentation\n- [ ] Error correlation configured across all critical systems\n- [ ] Impact assessment methodology defined and implemented\n- [ ] Automated remediation implemented for approved low-risk actions\n- [ ] Approval workflows configured for high-risk remediation actions\n- [ ] Post-incident review process established for P1/P2 incidents\n- [ ] MTTR metrics tracked and reported monthly\n- [ ] Training completed for all on-call engineers with certification\n- [ ] Regular playbook review scheduled quarterly\n- [ ] Pattern detection tuned with acceptable false positive rate (<10%)\n- [ ] Knowledge base search functionality validated\n- [ ] Dependency maps documented and kept current\n- [ ] Audit logging enabled for all troubleshooting actions\n- [ ] Compliance reporting automated for incident documentation\n- [ ] Exception process documented with approval workflows\n- [ ] Proactive error prevention analysis running monthly",
+    "78": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#14-governance-oversight]\n\n## 14. Governance Oversight",
+    "79": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#141-ownership-and-accountability]\n\n### 14.1 Ownership and Accountability\n\n- **Primary Owner**: Platform Engineering Team\n- **Technical SME**: Site Reliability Engineering Lead / Kafka Platform Lead\n- **Approver**: Enterprise Architect\n- **Stakeholders**: Application Development Teams, Operations Team, Business Stakeholders, Customer Success Team",
+    "80": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#142-review-and-update-frequency]\n\n### 14.2 Review and Update Frequency\n\n- **Standard Review**: Quarterly\n- **Troubleshooting Guide Review**: Monthly (update based on new incidents)\n- **Playbook Review**: Monthly (add new playbooks, update success rates)\n- **Pattern Detection Tuning**: Monthly (reduce false positives)\n- **Knowledge Base Audit**: Quarterly (archive outdated, update frequently used)",
+    "81": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#143-metrics-and-kpis]\n\n### 14.3 Metrics and KPIs\n\n- **Mean Time to Resolution (MTTR)**: Average time from detection to resolution\n- **Mean Time to Detection (MTTD)**: Average time from error occurrence to alert\n- **Incident Recurrence Rate**: Percentage of incidents with same root cause recurring\n- **Pattern Detection Accuracy**: False positive and false negative rates\n- **Troubleshooting Guide Success Rate**: Percentage of incidents resolved using guides\n- **Playbook Success Rate**: Percentage of playbook executions resulting in resolution\n- **Knowledge Base Utilization**: Percentage of incidents referencing KB articles\n- **Post-Incident Review Completion**: Percentage of P1/P2 incidents with completed PIR\n- **Escalation Appropriateness**: Ratio of appropriate escalations to total escalations",
+    "82": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#144-key-contacts]\n\n### 14.4 Key Contacts\n\n- **Platform Engineering Lead**: [Name/Contact]\n- **SRE Lead**: [Name/Contact]\n- **Kafka Platform Lead**: [Name/Contact]\n- **Enterprise Architect**: [Name/Contact]\n- **On-Call Escalation**: [PagerDuty/Opsgenie contact]",
+    "83": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#145-related-governance]\n\n### 14.5 Related Governance\n\n- Incident Management Committee for major incident reviews\n- Operational Excellence Committee for MTTR improvement initiatives\n- Architecture Review Board for system dependency review\n- Knowledge Management Committee for KB content governance\n- Change Advisory Board for remediation automation approvals",
+    "84": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#15-references]\n\n## 15. References",
+    "85": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#151-related-documentation]\n\n### 15.1 Related Documentation\n\n- [Lenses.io Monitoring & Alerting](https://docs.lenses.io/5.0/monitoring/)\n- [Kafka Troubleshooting Guide](https://docs.lenses.io/5.0/troubleshooting/)\n- [Lenses.io Operations Guide](https://docs.lenses.io/5.0/operations/)",
+    "86": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#152-external-resources]\n\n### 15.2 External Resources\n\n- [Site Reliability Engineering - Google SRE Book](https://sre.google/sre-book/table-of-contents/)\n- [Incident Response Best Practices - NIST](https://www.nist.gov/publications/computer-security-incident-handling-guide)\n- [Apache Kafka Common Error Patterns](https://kafka.apache.org/documentation/#troubleshooting)\n- [Root Cause Analysis Techniques - 5 Whys, Fishbone](https://asq.org/quality-resources/root-cause-analysis)\n- [Post-Incident Review Templates - Atlassian](https://www.atlassian.com/incident-management/postmortem)",
+    "87": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#153-industry-standards]\n\n### 15.3 Industry Standards\n\n- [ITIL Incident Management](https://www.axelos.com/best-practice-solutions/itil)\n- [NIST SP 800-61 Computer Security Incident Handling Guide](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)\n- [ISO/IEC 20000 Service Management](https://www.iso.org/standard/70636.html)",
+    "88": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#16-change-history]\n\n## 16. Change History\n\n| Version | Date | Author | Description |\n|---------|------|--------|-------------|\n| 1.0.0 | January 19, 2026 | Platform Engineering | Initial draft with full compliance enhancements |",
+    "89": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#17-review-log]\n\n## 17. Review Log\n\n| Review Date | Reviewer | Status | Comments |\n|-------------|----------|--------|----------|\n| January 19, 2026 | AI Review | Completed | Full compliance review completed - added YAML metadata, Executive Summary, Prohibited Practices, Exceptions Process, Technical Specifications, Validation Criteria, Testing Requirements, Documentation Requirements, and Governance Oversight sections |\n| [TBD] | Platform Engineering Lead | Pending | Technical review pending |\n| [TBD] | SRE Lead | Pending | Operational review pending |\n| [TBD] | Enterprise Architect | Pending | Architecture review pending |",
+    "90": "[standards/application/kafka-management/STD-APP-KMGMT-010-error-message-analysis.md#18-document-status]\n\n## 18. Document Status\n\n**Current Phase**: Draft - Compliance enhanced, awaiting stakeholder review and approval\n\n**Next Review Date**: April 19, 2026 (90 days from enhancement)\n\n**Approved By**: [Pending Approval]"
+  },
+  "coverage": {
+    "total_pages": 90,
+    "covered_pages": 90,
+    "sampled_pages": 90,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 90
+  }
+}

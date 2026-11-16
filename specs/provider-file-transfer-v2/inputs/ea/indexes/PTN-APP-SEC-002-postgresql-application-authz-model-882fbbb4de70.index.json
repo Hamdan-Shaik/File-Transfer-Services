@@ -1,0 +1,241 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "ADR-SEC-010: PostgreSQL Authorization Model",
+  "document_description": "Authorization (what an authenticated user is permitted to do) is stored in a `user_authorization` table in the `studio-config` Aurora PostgreSQL database. Authentication is handled by the Azure AD App Registration + PingOne OAuth flow (ADR-SEC-009) — any Gainwell employee can authenticate. This ADR governs the authorization layer: who has been provisioned with access, what roles they hold, which t",
+  "total_pages": 24,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 24,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "ADR-SEC-010: PostgreSQL Authorization Model",
+          "node_id": "adr-sec-010-postgresql-authorization-model",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Decision Summary",
+          "node_id": "decision-summary",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Context and Problem Statement",
+          "node_id": "context-and-problem-statement",
+          "start_index": 5,
+          "end_index": 7,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Relationship to ADR-SEC-009",
+              "node_id": "relationship-to-adr-sec-009",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Decision Drivers",
+              "node_id": "decision-drivers",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Required Option",
+          "node_id": "required-option",
+          "start_index": 8,
+          "end_index": 9,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Authorization Stored in PostgreSQL `user_authorization` Table",
+              "node_id": "authorization-stored-in-postgresql-userauthorization-table",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Considered Options",
+          "node_id": "considered-options",
+          "start_index": 10,
+          "end_index": 13,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Option 1: PostgreSQL `user_authorization` Table (Selected)",
+              "node_id": "option-1-postgresql-userauthorization-table-selected",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Option 2: One AD Group per Role per App Instance",
+              "node_id": "option-2-one-ad-group-per-role-per-app-instance",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Option 3: JWT Claims Embedded by Identity Provider at Login",
+              "node_id": "option-3-jwt-claims-embedded-by-identity-provider-at-login",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Decision Outcome",
+          "node_id": "decision-outcome",
+          "start_index": 14,
+          "end_index": 14,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Consequences",
+          "node_id": "consequences",
+          "start_index": 15,
+          "end_index": 18,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "✅ Positive",
+              "node_id": "-positive",
+              "start_index": 16,
+              "end_index": 16,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "❌ Negative",
+              "node_id": "-negative",
+              "start_index": 17,
+              "end_index": 17,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "⚪ Neutral",
+              "node_id": "-neutral",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Risk Assessment & Mitigation",
+          "node_id": "risk-assessment--mitigation",
+          "start_index": 19,
+          "end_index": 21,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "⚠️ Risks",
+              "node_id": "-risks",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "🛡️ Mitigations",
+              "node_id": "-mitigations",
+              "start_index": 21,
+              "end_index": 21,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Compliance Notes",
+          "node_id": "compliance-notes",
+          "start_index": 22,
+          "end_index": 22,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Review and Approval",
+          "node_id": "review-and-approval",
+          "start_index": 23,
+          "end_index": 23,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "📋 Change Log",
+          "node_id": "-change-log",
+          "start_index": 24,
+          "end_index": 24,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "> **Promoted from:** `mmes-cms-studio/docs/decisions/ADR-SEC-010-postgresql-authz-model.md`  \n> **Ref-arch artifact ID:** `PTN-APP-SEC-002-postgresql-application-authz-model`  \n> This document has been promoted to the Enterprise Architecture Platform reference architecture. Product repos should reference this artifact rather than maintaining their own copy.\n\n---",
+    "2": "[patterns/application/PTN-APP-SEC-002-postgresql-application-authz-model.md#adr-sec-010-postgresql-authorization-model]\n\n## ADR-SEC-010: PostgreSQL Authorization Model\n\n---\n\n|               |                                                                                                                                              |\n| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |\n| **Status**    | ✅ Accepted                                                                                                                                   |\n| **Date**      | 2026-08-05                                                                                                                                   |\n| **Issuer**    | [Enterprise Architecture Practice](mailto:EAP-Core@mygainwell.onmicrosoft.com?subject=ADR-SEC-010%20PostgreSQL-AuthZ-Model)                |\n| **Consulted** | Mike Goppert, James Macurak                                                                                                                 |\n| **Informed**  | MMES Platform Team, Gainwell EA                                                                                                             |\n\n---",
+    "3": "[patterns/application/PTN-APP-SEC-002-postgresql-application-authz-model.md#table-of-contents]\n\n## Table of Contents\n\n- [Decision Summary](#decision-summary)\n- [Context and Problem Statement](#context-and-problem-statement)\n- [Required Option](#required-option)\n- [Considered Options](#considered-options)\n- [Decision Outcome](#decision-outcome)\n- [Consequences](#consequences)\n- [Risk Assessment & Mitigation](#risk-assessment--mitigation)\n- [Compliance Notes](#compliance-notes)\n- [Review and Approval](#review-and-approval)\n\n---",
+    "4": "[patterns/application/PTN-APP-SEC-002-postgresql-application-authz-model.md#decision-summary]\n\n## Decision Summary\n\nAuthorization (what an authenticated user is permitted to do) is stored in a `user_authorization` table in the `studio-config` Aurora PostgreSQL database. Authentication is handled by the Azure AD App Registration + PingOne OAuth flow (ADR-SEC-009) — any Gainwell employee can authenticate. This ADR governs the authorization layer: who has been provisioned with access, what roles they hold, which tenants and environments those roles apply to, and how that is evaluated at runtime.\n\n---",
+    "5": "[patterns/application/PTN-APP-SEC-002-postgresql-application-authz-model.md#context-and-problem-statement]\n\n## Context and Problem Statement\n\n**Business Context:** Portal Studio is deployed across 7 environments (dev, test, prf, sit, uat, prd, and local) and serves multiple tenants (e.g., Ohio Medicaid, Texas Medicaid). Roles must be assignable per user, per tenant, and per environment independently. A deployment engineer for Ohio must not be able to deploy to Texas. An auditor for test must not be able to act in production.\n\n**Technical Context:** Any Gainwell employee who authenticates successfully via PingOne/Azure AD (ADR-SEC-009) lands in the app. Whether they have any permissions is determined entirely by rows in `user_authorization`. Roles must be assignable per user, per tenant, and per environment independently.\n\n**Problem Statement:** How should role assignments be stored and evaluated so that they are tenant-scoped, environment-scoped, self-serviceable by StudioAdmin, and auditable — with `environment` and `tenantId` values driven by deployment configuration, not hardcoded?",
+    "6": "[patterns/application/PTN-APP-SEC-002-postgresql-application-authz-model.md#relationship-to-adr-sec-009]\n\n### Relationship to ADR-SEC-009\n\nADR-SEC-009 governs authentication (PingOne/Azure AD App Registration, JWT claims, session cookie). This ADR governs what the authenticated user is authorized to do. A user who authenticates successfully but has no active `user_authorization` row sees an \"Access not provisioned\" screen — they are not denied authentication, they simply have no role.",
+    "7": "[patterns/application/PTN-APP-SEC-002-postgresql-application-authz-model.md#decision-drivers]\n\n### Decision Drivers\n\n- 🔒 Tenant isolation — a role granted for one tenant must never apply to another\n- 🌐 Environment scoping — prod roles must never implicitly apply to dev or vice versa\n- 🛠️ Self-service — studio admins must be able to grant/revoke roles without IT involvement\n- 📋 Auditability — every grant and revocation must be attributable and recoverable (soft delete)\n- 📐 Simplicity — authorization enforcement must be a single query, not a graph traversal\n\n---",
+    "8": "[patterns/application/PTN-APP-SEC-002-postgresql-application-authz-model.md#required-option]\n\n## Required Option",
+    "9": "[patterns/application/PTN-APP-SEC-002-postgresql-application-authz-model.md#authorization-stored-in-postgresql-userauthorization-table]\n\n### Authorization Stored in PostgreSQL `user_authorization` Table\n\nAuthorization is modeled as rows in a relational table with explicit tenant, environment, and role dimensions. Every active role assignment is a row; revocation sets `revoked_at` — no row is ever hard-deleted. The `environment` and `tenantId` columns are free-form text keys driven by the deployment configuration (`.project.yml` environment slugs and the `tenant.tenantCode` FK) — they are never constrained to a fixed enum in the schema.\n\n**Schema (Drizzle ORM):**\n\n```typescript\nexport const userAuthorization = pgTable('user_authorization', {\n  id:            uuid('id').primaryKey().defaultRandom(),\n  aadObjectId:   text('aad_object_id').notNull(),        // AAD oid claim — immutable identity anchor\n  displayName:   text('display_name'),                   // cached from JWT, display only\n  email:         text('email'),                          // cached from JWT, display only\n  tenantId:      text('tenant_id').notNull(),            // specific tenantId FK or '*' = all tenants\n  environment:   text('environment').notNull(),          // deployment environment slug from .project.yml, e.g. 'dev', 'prf', 'prd' — or '*' (all envs)\n  role:          text('role').notNull(),                 // studio-admin | studio-deployer | studio-designer | studio-auditor | studio-db-admin\n  grantedBy:     text('granted_by').notNull(),           // aad_object_id of granting admin, or 'system:bootstrap'\n  grantedAt:     timestamp('granted_at').defaultNow(),\n  revokedAt:     timestamp('revoked_at'),                // null = active; soft delete, never hard delete\n}, (t) => ({\n  uniq: unique().on(t.aadObjectId, t.tenantId, t.environment, t.role),\n  idx:  index().on(t.aadObjectId, t.environment),\n}));\n```\n\n**Wildcard semantics:**\n\n| Field | Wildcard Value | Meaning |\n|-------|---------------|---------|\n| `tenantId` | `'*'` | Role applies across all tenants. Only `studio-admin` should ever carry this value. |\n| `environment` | `'*'` | Role applies across all environments. Reserved for super-admin bootstrap grants. |\n\nA user with `{ tenantId: 'ohio-medicaid', environment: 'prf', role: 'studio-deployer' }` may only deploy to Ohio's prf environment. The same user has no authority over Texas Medicaid or any other environment.\n\n**AuthorizationService evaluation logic:**\n\n1. JWT is validated by `IdentityBrokerClient` (ADR-SEC-001). No AD group check — any authenticated Gainwell user reaches this step.\n2. Query: `SELECT role FROM user_authorization WHERE aad_object_id = $oid AND environment IN ($env, '*') AND (tenant_id = $tenantId OR tenant_id = '*') AND revoked_at IS NULL`\n3. Evaluate the resulting role set against the requested route using a Rego policy.\n4. Default deny — no matching row returns HTTP 403; there is no implicit role.\n\n**`studio-admin` scope:**\n\nA user with `role = 'studio-admin'` and `tenantId = '*'` is the environment superadmin — unrestricted visibility across all tenants in that environment, and the ability to grant or revoke any role for any tenant. A `studio-admin` scoped to a specific `tenantId` has full admin rights for that tenant only. There is no separate super-admin role; `studio-admin` IS the highest privilege.\n\n**Pros:**\n- ✅ Three-dimensional scoping (user × tenant × environment) expressed as ordinary rows\n- ✅ Studio admins can grant/revoke roles via the Studio UI — no IT/AD admin involvement\n- ✅ Soft-delete audit trail: every grant and revocation is recoverable\n- ✅ Authorization query is a single indexed lookup — no graph traversal or token claim parsing\n- ✅ Adding a new tenant or environment requires no AD group creation\n- ✅ Wildcard semantics support superadmin bootstrap without special-casing\n\n**Cons:**\n- ❌ Role data lives outside the identity provider — a separate data store must be backed up and kept consistent with the user directory\n- ❌ Revoked or disabled AAD accounts are not automatically reflected; a separate reconciliation job must clean up rows for departed users\n- ❌ The authorization query adds a database round-trip to every authenticated request (mitigated by short-lived JWT-embedded role claims cached in the session token)\n\n---",
+    "10": "[patterns/application/PTN-APP-SEC-002-postgresql-application-authz-model.md#considered-options]\n\n## Considered Options",
+    "11": "[patterns/application/PTN-APP-SEC-002-postgresql-application-authz-model.md#option-1-postgresql-userauthorization-table-selected]\n\n### Option 1: PostgreSQL `user_authorization` Table (Selected)\n\n**Description:** Authorization rows stored in Aurora PostgreSQL with explicit tenant, environment, and role columns. Studio admins manage grants via the Studio UI. AD groups serve only as the authentication gate.\n\n**Pros:** ✅ Self-serviceable; three-dimensional scoping; auditable; no AD group proliferation\n\n**Cons:** ❌ Out-of-band with identity provider; requires reconciliation for departed users",
+    "12": "[patterns/application/PTN-APP-SEC-002-postgresql-application-authz-model.md#option-2-one-ad-group-per-role-per-app-instance]\n\n### Option 2: One AD Group per Role per App Instance\n\n**Description:** Each combination of environment and role creates a dedicated AD group (e.g., `AAD-Application-GitHub-GWT-portal-studio-dev-studio-admin`). Role is inferred from group membership at runtime.\n\n**Pros:** ✅ Role data stays inside the identity provider; no separate database needed\n\n**Cons:**\n- ❌ 7 environments × 5 roles = 35 minimum groups; with multi-tenant scoping the count grows into the hundreds\n- ❌ Tenant-scoped roles (user is deployer for Ohio but not Texas) cannot be expressed in flat AD groups\n- ❌ Every role change requires IT/Azure AD admin intervention — self-service is impossible\n- ❌ Groups are global across all environments and tenants — no scoping boundary",
+    "13": "[patterns/application/PTN-APP-SEC-002-postgresql-application-authz-model.md#option-3-jwt-claims-embedded-by-identity-provider-at-login]\n\n### Option 3: JWT Claims Embedded by Identity Provider at Login\n\n**Description:** PingOne or Azure AD embeds role claims directly in the issued JWT at authentication time, based on group membership or custom attributes.\n\n**Pros:** ✅ No database round-trip per request; roles travel with the token\n\n**Cons:**\n- ❌ Claims are static for the token lifetime (typically 1 hour) — role revocation is not immediate\n- ❌ Tenant-scoped and environment-scoped roles require complex claim schemas that most IdPs cannot express natively\n- ❌ Role management still requires identity provider admin access; self-service remains blocked\n\n---",
+    "14": "[patterns/application/PTN-APP-SEC-002-postgresql-application-authz-model.md#decision-outcome]\n\n## Decision Outcome\n\n**Selected:** Option 1 — PostgreSQL `user_authorization` table with wildcard semantics and soft-delete audit trail.\n\n**Scope boundary:** This ADR governs authorization only. Authentication is governed by ADR-SEC-009. RBAC enforcement tiers (page visibility, component visibility, action permissions, field redaction) are governed by ADR-SEC-002.\n\n**Local development:** The Mock OAuth Broker (ADR-SEC-001) is extended with a **role picker page** — on login it presents a dropdown of all roles, the developer selects one, and the mock broker issues a JWT with that role pre-loaded. No `user_authorization` lookup is performed in local mode. This mirrors the existing POC pattern and keeps local dev fast without requiring a seeded database.\n\n**Bootstrap requirement:** Every environment must be provisioned with at least one `{ tenantId: '*', environment: $env, role: 'studio-admin', grantedBy: 'system:bootstrap' }` row before the Studio UI is accessible, to ensure an admin can grant subsequent roles.\n\n---",
+    "15": "[patterns/application/PTN-APP-SEC-002-postgresql-application-authz-model.md#consequences]\n\n## Consequences",
+    "16": "[patterns/application/PTN-APP-SEC-002-postgresql-application-authz-model.md#-positive]\n\n### ✅ Positive\n\n- Studio admins manage all role assignments without IT involvement\n- Any user-tenant-environment-role combination is expressible as a single row\n- The audit trail (who granted what, when, and who revoked it) is permanently recoverable via soft delete\n- Adding new tenants or environments never requires AD group creation",
+    "17": "[patterns/application/PTN-APP-SEC-002-postgresql-application-authz-model.md#-negative]\n\n### ❌ Negative\n\n- Authorization data must be included in database backup and disaster recovery procedures\n- A background reconciliation job is needed to revoke rows for users whose AAD accounts are disabled or deleted\n- The authorization check is a live database read on every request; session-layer caching of the role set is required to avoid latency impact",
+    "18": "[patterns/application/PTN-APP-SEC-002-postgresql-application-authz-model.md#-neutral]\n\n### ⚪ Neutral\n\n- The `displayName` and `email` columns are cached from the JWT for display convenience only and carry no security weight — the `aad_object_id` is the immutable identity anchor\n- Wildcard grants (`tenantId='*'` or `environment='*'`) are valid SQL values; no special handling beyond the application-layer convention that restricts their use to `studio-admin`\n\n---",
+    "19": "[patterns/application/PTN-APP-SEC-002-postgresql-application-authz-model.md#risk-assessment--mitigation]\n\n## Risk Assessment & Mitigation",
+    "20": "[patterns/application/PTN-APP-SEC-002-postgresql-application-authz-model.md#-risks]\n\n### ⚠️ Risks\n\n- Stale authorization rows for a departed employee remain active if the reconciliation job is delayed\n- A bootstrap admin grant is lost (e.g., database wipe) and no admin can access the environment to restore roles\n- A compromised studio-admin account with `tenantId='*'` can grant itself or others arbitrary permissions across all tenants",
+    "21": "[patterns/application/PTN-APP-SEC-002-postgresql-application-authz-model.md#-mitigations]\n\n### 🛡️ Mitigations\n\n- AAD authentication gate (ADR-SEC-009) is the first line of defense: a departed employee whose AAD account is disabled cannot pass the group membership check even if their rows remain active\n- Environment bootstrap grants are scripted in the IaC layer (Terraform) and reapplied on every environment provisioning run; loss of the database does not prevent recovery\n- `studio-admin` actions (grant/revoke) are logged to an append-only audit log table and surfaced in the Studio admin UI; anomalous grants trigger an alert\n\n---",
+    "22": "[patterns/application/PTN-APP-SEC-002-postgresql-application-authz-model.md#compliance-notes]\n\n## Compliance Notes\n\n- **HIPAA:** Role assignment is a prerequisite for the field-level and component-level access controls described in ADR-SEC-002. Correct authorization prevents unauthorized personas from receiving PHI fields.\n- **Auditability:** Soft-delete semantics ensure no authorization record is ever destroyed; the full grant/revoke history is available for compliance audits.\n- **Least Privilege:** Default deny (no matching row = 403) enforces the principle of least privilege without requiring explicit deny rules.\n- **Standards:** References `eap-ref-architecture/strategy/guidance/security/` RBAC and data protection guidance.\n\n---",
+    "23": "[patterns/application/PTN-APP-SEC-002-postgresql-application-authz-model.md#review-and-approval]\n\n## Review and Approval\n\n| Role                                    | Name          | Date       | Status     |\n| --------------------------------------- | ------------- | ---------- | ---------- |\n| EA Security Domain Lead                 | Jesse Adams   | 2026-08-05 | 🔄 Pending |\n| Enterprise Architecture Lead            | Mike Goppert  | 2026-08-05 | 🔄 Pending |\n| Enterprise Application Architect Lead   | James Macurak | 2026-08-05 | 🔄 Pending |",
+    "24": "[patterns/application/PTN-APP-SEC-002-postgresql-application-authz-model.md#-change-log]\n\n## 📋 Change Log\n\n| Version | Date       | Author       | Description               |\n| ------- | ---------- | ------------ | ------------------------- |\n| 1.0     | 2026-08-05 | Mike Goppert | Initial decision document |"
+  },
+  "coverage": {
+    "total_pages": 24,
+    "covered_pages": 24,
+    "sampled_pages": 24,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 24
+  }
+}

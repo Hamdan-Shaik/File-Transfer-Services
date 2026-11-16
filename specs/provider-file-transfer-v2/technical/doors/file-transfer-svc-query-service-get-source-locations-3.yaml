@@ -1,0 +1,36 @@
+door:
+  id: file-transfer-svc-query-service-get-source-locations-3
+  kind: wcf
+  name: GetSourceLocations
+  class: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvcCore\FileTransferSvcQueryService.cs
+  line: 31
+  entry:
+  - HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService.GetSourceLocations(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.GetSourceLocationQuery)
+procedures: []
+tables: []
+shared_uses: []
+external_uses:
+- package: hpp.core.bas.cqrs
+  version: 30.0.0
+  method: HPP.Core.BAS.CQRS.Base.QueryServiceBase.TryRoute<TQuery>(TQuery)
+  calls:
+  - at: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvcCore\FileTransferSvcQueryService.cs:48
+    type_arguments:
+    - HPP.Core.BAS.CQRS.Base.Query
+    arguments:
+    - name: query
+      expression: query
+polymorphic_hooks: []
+stops: []
+calls:
+- from: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService.GetSourceLocations(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.GetSourceLocationQuery)
+  via: INVOKES
+  to: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService.TryRouteQuery(HPP.Core.BAS.CQRS.Base.Query)
+methods:
+- name: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService.GetSourceLocations(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.GetSourceLocationQuery)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvcCore\FileTransferSvcQueryService.cs
+  line: 31
+- name: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService.TryRouteQuery(HPP.Core.BAS.CQRS.Base.Query)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvcCore\FileTransferSvcQueryService.cs
+  line: 46

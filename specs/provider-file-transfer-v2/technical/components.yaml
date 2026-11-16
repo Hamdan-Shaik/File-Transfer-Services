@@ -1,0 +1,1477 @@
+components:
+- id: backend-bas-file-transfer-api
+  tier: backend
+  name: HPP.FileTransfer.BAS.FileTransferApi
+  classes:
+  - HPP.FileTransfer.BAS.FileTransferApi.Commands.FileTransferSvcEventService
+  - HPP.FileTransfer.BAS.FileTransferApi.FileTransferModuleConfigurator
+  - HPP.FileTransfer.BAS.FileTransferApi.Interfaces.IFileTransferSvcQueryService
+  - HPP.FileTransfer.BAS.FileTransferApi.Interfaces.IFileTransferSvcService
+  - HPP.FileTransfer.BAS.FileTransferApi.Program
+  - HPP.FileTransfer.BAS.FileTransferApi.Startup
+  methods: 10
+  depends_on: []
+  flows: []
+  doors:
+  - file-transfer-api-program
+  reached: true
+  tables:
+    orm:FTP_SERVER:
+    - reads
+    orm:FTS_INBOUND_TARGET:
+    - reads
+    orm:FTS_INTEGRATION_FILE:
+    - reads
+    orm:FTS_SUSPENSION:
+    - reads
+  packages:
+  - autofac
+  - hpp.core.bas.cqrs
+  - swashbuckle.aspnetcore.swagger
+  - swashbuckle.aspnetcore.swaggergen
+  - swashbuckle.aspnetcore.swaggerui
+  wave: 0
+- id: backend-bas-file-transfer-svc
+  tier: backend
+  name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc
+  classes:
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.FileTransferModuleConfigurator
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.FileTransferSvcEventService
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Global
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.IFileTransferSvcQueryService
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.IFileTransferSvcService
+  methods: 10
+  depends_on: []
+  flows: []
+  doors: []
+  reached: false
+  tables:
+    orm:FTP_SERVER:
+    - reads
+    orm:FTS_INBOUND_TARGET:
+    - reads
+    orm:FTS_INTEGRATION_FILE:
+    - reads
+    orm:FTS_SUSPENSION:
+    - reads
+  wave: 0
+- id: backend-bas-file-transfer-svc-2
+  tier: backend
+  name: HPP.FileTransfer.BAS.FileTransferSvc
+  classes:
+  - HPP.FileTransfer.BAS.FileTransferSvc.FileTransferModuleConfigurator
+  - HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcEventService
+  - HPP.FileTransfer.BAS.FileTransferSvc.IFileTransferSvcQueryService
+  - HPP.FileTransfer.BAS.FileTransferSvc.IFileTransferSvcService
+  - HPP.FileTransfer.BAS.FileTransferSvc.Program
+  - HPP.FileTransfer.BAS.FileTransferSvc.Startup
+  methods: 10
+  depends_on: []
+  flows: []
+  doors:
+  - file-transfer-svc-program
+  reached: true
+  tables:
+    orm:FTP_SERVER:
+    - reads
+    orm:FTS_INBOUND_TARGET:
+    - reads
+    orm:FTS_INTEGRATION_FILE:
+    - reads
+    orm:FTS_SUSPENSION:
+    - reads
+  packages:
+  - autofac
+  - corewcf.primitives
+  - hpp.core.bas.cqrs
+  wave: 0
+- id: backend-business-aggregates
+  tier: backend
+  name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.Aggregates
+  classes:
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.Aggregates.FtsSourceLocationState
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandDispatcher
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.Profiles.InboundTargetProfile
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.Profiles.IntegrationFileProfile
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.QueryDispatcher
+  methods: 8
+  depends_on: []
+  flows: []
+  doors: []
+  reached: false
+  tables:
+    orm:FTS_INBOUND_TARGET:
+    - reads
+  wave: 0
+- id: backend-business-aggregates-2
+  tier: backend
+  name: HPP.FileTransfer.BAS.FileTransferSvc.Business.Aggregates
+  classes:
+  - HPP.FileTransfer.BAS.FileTransferSvc.Business.Aggregates.FtsSourceLocationState
+  - HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandDispatcher
+  - HPP.FileTransfer.BAS.FileTransferSvc.Business.QueryDispatcher
+  methods: 0
+  depends_on: []
+  flows: []
+  doors: []
+  reached: false
+  wave: 0
+- id: backend-business-helpers
+  tier: backend
+  name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Batch.Business.Helpers
+  classes:
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Batch.Business.Helpers.DuplicateFileNameException
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Batch.Business.Helpers.EncryptionHelper
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Batch.Business.Helpers.IOHelper
+  methods: 9
+  depends_on: []
+  flows: []
+  doors: []
+  reached: false
+  packages:
+  - BouncyCastle.Crypto
+  wave: 0
+- id: backend-business-helpers-2
+  tier: backend
+  name: HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Business.Helpers
+  classes:
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Business.Helpers.DuplicateFileNameException
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Business.Helpers.EncryptionHelper
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Business.Helpers.EventHelper
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Business.Helpers.IOHelper
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Business.Helpers.NotificationServiceHelper
+  methods: 28
+  depends_on: []
+  flows: []
+  doors: []
+  reached: false
+  packages:
+  - BouncyCastle.Crypto
+  wave: 0
+- id: backend-business-profiles
+  tier: backend
+  name: HPP.FileTransfer.BAS.FileTransferSvc.Business.Profiles
+  classes:
+  - HPP.FileTransfer.BAS.FileTransferSvc.Business.Profiles.FtpServerCommandHandlerProfile
+  - HPP.FileTransfer.BAS.FileTransferSvc.Business.Profiles.FtpServerProjectionWriterProfile
+  - HPP.FileTransfer.BAS.FileTransferSvc.Business.Profiles.FtsInboundTargetProjectionWriterProfile
+  - HPP.FileTransfer.BAS.FileTransferSvc.Business.Profiles.FtsIntegrationFileProjectionWriterProfile
+  - HPP.FileTransfer.BAS.FileTransferSvc.Business.Profiles.InboundTargetProfile
+  - HPP.FileTransfer.BAS.FileTransferSvc.Business.Profiles.IntegrationFileProfile
+  methods: 6
+  depends_on: []
+  flows: []
+  doors: []
+  reached: false
+  tables:
+    orm:FTS_INBOUND_TARGET:
+    - reads
+  packages:
+  - automapper
+  wave: 0
+- id: backend-data-access-batch-data-access
+  tier: backend
+  name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.BatchDataAccess
+  classes:
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.BatchDataAccess.CreateErrorLogDataAccess
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.BatchDataAccess.CreateFileManagementDataAccess
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.BatchDataAccess.CreateFtsFileDeliveryDataAccess
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.BatchDataAccess.DataAccessBase<TdacOutput>
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.BatchDataAccess.DataAccessFactory
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.BatchDataAccess.FtsSuspensionDataAccess
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.BatchDataAccess.GetConfigMetaDataDataAccess
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.BatchDataAccess.GetPendingFileListDataAccess
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.BatchDataAccess.GetSourceLocationsDataAccess
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.BatchDataAccess.IDataAccess<TdacOutput>
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.BatchDataAccess.IDataAccessFactory
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.BatchDataAccess.QueryFtsNotificationDataAccess
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.BatchDataAccess.UpdateFileManagementStatusDataAccess
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.BatchDataAccess.UpdateSourceSuspendStatusDataAccess
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.DataAccessConstants.FileStatusConstant
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.ProtocolCodeConstant
+  methods: 47
+  depends_on: []
+  flows: []
+  doors: []
+  reached: false
+  tables:
+    orm:FTP_SERVER:
+    - reads
+    - writes
+    orm:FTS_DESTINATION:
+    - reads
+    - writes
+    orm:FTS_FILE_DELIVERY:
+    - reads
+    - writes
+    orm:FTS_FILE_EVENT:
+    - reads
+    - writes
+    orm:FTS_FILE_EXCEPTION:
+    - reads
+    - writes
+    orm:FTS_FILE_MANAGEMENT:
+    - reads
+    - writes
+    orm:FTS_NOTIFICATION:
+    - reads
+    orm:FTS_SUSPENSION:
+    - reads
+    - writes
+  wave: 0
+- id: backend-data-access-batch-data-access-2
+  tier: backend
+  name: HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.BatchDataAccess
+  classes:
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.BatchDataAccess.CreateErrorLogDataAccess
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.BatchDataAccess.CreateFileManagementDataAccess
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.BatchDataAccess.CreateFtsFileDeliveryDataAccess
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.BatchDataAccess.DataAccessBase<TdacOutput>
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.BatchDataAccess.DataAccessFactory
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.BatchDataAccess.FtsSuspensionDataAccess
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.BatchDataAccess.GetConfigMetaDataDataAccess
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.BatchDataAccess.GetPendingFileListDataAccess
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.BatchDataAccess.GetSourceLocationsDataAccess
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.BatchDataAccess.IDataAccess<TdacOutput>
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.BatchDataAccess.IDataAccessFactory
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.BatchDataAccess.QueryFtsNotificationDataAccess
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.BatchDataAccess.UpdateFileManagementStatusDataAccess
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.BatchDataAccess.UpdateSourceSuspendStatusDataAccess
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.DataAccessConstants.FileStatusConstant
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.ProtocolCodeConstant
+  methods: 47
+  depends_on: []
+  flows: []
+  doors: []
+  reached: false
+  tables:
+    orm:FTP_SERVER:
+    - reads
+    - writes
+    orm:FTS_DESTINATION:
+    - reads
+    - writes
+    orm:FTS_FILE_DELIVERY:
+    - reads
+    - writes
+    orm:FTS_FILE_EVENT:
+    - reads
+    - writes
+    orm:FTS_FILE_EXCEPTION:
+    - reads
+    - writes
+    orm:FTS_FILE_MANAGEMENT:
+    - reads
+    - writes
+    orm:FTS_NOTIFICATION:
+    - reads
+    orm:FTS_SUSPENSION:
+    - reads
+    - writes
+  packages:
+  - hpp.core.bas.cqrs
+  - microsoft.entityframeworkcore
+  wave: 0
+- id: backend-data-access-event-handlers-2
+  tier: backend
+  name: HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers
+  classes:
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtpServerProjectionWriter
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtsInboundTargetProjectionWriter
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtsIntegrationFileProjectionWriter
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtsSourceLocationProjectionWriter
+  methods: 18
+  depends_on: []
+  flows:
+  - configure-source-locations-and-destinations
+  - manage-ftp-servers-and-credentials
+  doors: []
+  reached: true
+  tables:
+    orm:FTP_SERVER:
+    - reads
+    - writes
+    orm:FTS_DESTINATION:
+    - reads
+    - writes
+    orm:FTS_INBOUND_TARGET:
+    - reads
+    - writes
+    orm:FTS_INTEGRATION_FILE:
+    - reads
+    - writes
+    orm:FTS_SUSPENSION:
+    - reads
+    - writes
+  packages:
+  - automapper
+  - hpp.core.bas.cqrs
+  - microsoft.entityframeworkcore
+  wave: 0
+- id: backend-data-file-transfer
+  tier: backend
+  name: HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer
+  classes:
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.AddFileTransferConfigurationModel
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.DestinationConfigurationModel
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.FileTransferConfigurationModel
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.FileTransferConfigurationSearchCriteriaModel
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.FtpServerModel
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.FtpServerSearchCriteriaModel
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.InboundTargetModel
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.SourceLocationModel
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransferEnumerations
+  - HP.HSP.UA3.FileTransfer.UX.Data.Utilities.MaintainabilityDetails
+  - HP.HSP.UA3.FileTransfer.UX.Services.Helpers.SearchHelper
+  methods: 1
+  depends_on: []
+  flows:
+  - manage-ftp-servers-and-credentials
+  doors: []
+  reached: true
+  packages:
+  - hp.hsp.ua3.core.ux.common
+  wave: 0
+- id: backend-data-file-transfer-constants
+  tier: backend
+  name: HP.HSP.UA3.FileTransfer.UX.Data.FileTransferConstants
+  classes:
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransferConstants.BusinessValidationExceptions
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransferConstants.Help
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransferConstants.Help.UserGuide
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransferConstants.Ioc
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransferConstants.Ioc.ComponentNames
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransferConstants.Localization
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransferConstants.MVC
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransferConstants.MVC.Actions
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransferConstants.MVC.Controllers
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransferConstants.Miscellaneous
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransferConstants.SearchFields
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransferConstants.WebApi
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransferConstants.WebApi.Actions
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransferConstants.WebApi.Controllers
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransferConstants.Xml
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransferConstants.Xml.URI
+  methods: 0
+  depends_on: []
+  flows: []
+  doors: []
+  reached: false
+  wave: 0
+- id: backend-data-file-transfer-tracking
+  tier: backend
+  name: HP.HSP.UA3.FileTransfer.UX.Data.FileTransferTracking
+  classes:
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransferTracking.TrackingDetailModel
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransferTracking.TrackingEventModel
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransferTracking.TrackingExceptionModel
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransferTracking.TrackingInformationModel
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransferTracking.TrackingSearchCriteriaModel
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransferTracking.TrackingSearchResultModel
+  methods: 0
+  depends_on: []
+  flows: []
+  doors: []
+  reached: false
+  wave: 0
+- id: backend-file-transfer-constants-localization
+  tier: backend
+  name: HP.HSP.UA3.FileTransfer.UX.Data.FileTransferConstants.Localization
+  classes:
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransferConstants.Localization.DataLists
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransferConstants.Localization.DataListsItems
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransferConstants.Localization.Entities
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransferConstants.Localization.HtmlBlocks
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransferConstants.Localization.Images
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransferConstants.Localization.Labels
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransferConstants.Localization.Messages
+  methods: 0
+  depends_on: []
+  flows: []
+  doors: []
+  reached: false
+  wave: 0
+- id: backend-file-transfer-mgmt-data-access
+  tier: backend
+  name: HPE.HSP.UA3.FT.Batch.FileTransferMgmt.DataAccess
+  classes:
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.DataAccess.CreateErrorLogDataAccess
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.DataAccess.CreateFileManagementDataAccess
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.DataAccess.CreateFtsFileDeliveryDataAccess
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.DataAccess.CreateFtsFileExceptionEventDataAccess
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.DataAccess.DataAccessBase<TdacOutput>
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.DataAccess.DataAccessFactory
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.DataAccess.FileStatusConstant
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.DataAccess.FtsSuspensionDataAccess
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.DataAccess.GetConfigMetaDataDataAccess
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.DataAccess.GetPendingFileListDataAccess
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.DataAccess.GetSourceLocationsDataAccess
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.DataAccess.GetSuspendedLocation
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.DataAccess.IDataAccess<TdacOutput>
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.DataAccess.IDataAccessFactory
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.DataAccess.ProtocolCodeConstant
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.DataAccess.QueryFtsNotificationDataAccess
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.DataAccess.UpdateFileManagementStatusDataAccess
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.DataAccess.UpdateSourceSuspendStatusDataAccess
+  methods: 54
+  depends_on: []
+  flows: []
+  doors: []
+  reached: false
+  tables:
+    orm:FTP_SERVER:
+    - reads
+    - writes
+    orm:FTS_DESTINATION:
+    - reads
+    - writes
+    orm:FTS_FILE_DELIVERY:
+    - reads
+    - writes
+    orm:FTS_FILE_EVENT:
+    - reads
+    - writes
+    orm:FTS_FILE_EXCEPTION:
+    - reads
+    - writes
+    orm:FTS_FILE_MANAGEMENT:
+    - reads
+    - writes
+    orm:FTS_NOTIFICATION:
+    - reads
+    orm:FTS_SUSPENSION:
+    - reads
+    - writes
+  wave: 0
+- id: backend-file-transfer-svc-main
+  tier: backend
+  name: HPP.FileTransfer.BAS.FileTransferSvc.Main
+  classes:
+  - HPP.FileTransfer.BAS.FileTransferSvc.Main.Main
+  - HPP.FileTransfer.BAS.FileTransferSvc.Main.Program
+  - HPP.FileTransfer.BAS.FileTransferSvc.Main.ServiceEventSource
+  - HPP.FileTransfer.BAS.FileTransferSvc.Main.ServiceEventSource.Keywords
+  - HPP.FileTransfer.BAS.FileTransferSvc.Main.Startup
+  methods: 14
+  depends_on: []
+  flows: []
+  doors:
+  - main-program
+  reached: true
+  wave: 0
+- id: backend-localization-labels
+  tier: backend
+  name: HP.HSP.UA3.FileTransfer.UX.Data.FileTransferConstants.Localization.Labels
+  classes:
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransferConstants.Localization.Labels.Buttons
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransferConstants.Localization.Labels.Editor
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransferConstants.Localization.Labels.Fields
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransferConstants.Localization.Labels.Titles
+  methods: 0
+  depends_on: []
+  flows: []
+  doors: []
+  reached: false
+  wave: 0
+- id: backend-providers-file-transfer
+  tier: backend
+  name: HP.HSP.UA3.FileTransfer.UX.Providers.FileTransfer
+  classes:
+  - HP.HSP.UA3.FileTransfer.UX.Providers.FileTransfer.FileTransferQueryServiceDataProvider
+  - HP.HSP.UA3.FileTransfer.UX.Providers.FileTransfer.FileTransferServiceDataProvider
+  - HP.HSP.UA3.FileTransfer.UX.Providers.FileTransfer.IFileTransferQueryServiceDataProvider
+  - HP.HSP.UA3.FileTransfer.UX.Providers.FileTransfer.IFileTransferServiceDataProvider
+  methods: 73
+  depends_on: []
+  flows: []
+  doors: []
+  reached: false
+  tables:
+    orm:FTP_SERVER:
+    - reads
+    - writes
+    orm:FTS_INBOUND_TARGET:
+    - reads
+    - writes
+    orm:FTS_SUSPENSION:
+    - reads
+  packages:
+  - automapper
+  - hp.hsp.ua3.core.ux.common
+  - hp.hsp.ua3.core.ux.data
+  - hp.hsp.ua3.core.ux.interfaces
+  - hp.hsp.ua3.core.ux.providers
+  wave: 0
+- id: backend-run-file-transfer-batch-api
+  tier: backend
+  name: API of the flow run-file-transfer-batch
+  classes:
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Batch.Main.BatchProcess
+  - HPE.HSP.UA3.FileTransfer.Batch.FileTransferMgmt.Main.BatchProcess
+  methods: 7
+  depends_on: []
+  flows:
+  - run-file-transfer-batch
+  doors:
+  - main-batch-process
+  - main-batch-process-2
+  reached: true
+  wave: 0
+- id: data-data-access-entities
+  tier: data
+  name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.Entities
+  classes:
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.Entities.FileTransferEntityDbContext
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.Entities.FtpServer
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.Entities.FtsDestinationLocations
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.Entities.FtsFileDelivery
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.Entities.FtsFileEvent
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.Entities.FtsFileException
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.Entities.FtsFileManagement
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.Entities.FtsInboundTarget
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.Entities.FtsIntegrationFile
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.Entities.FtsNotification
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.Entities.FtsSourceLocation
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.Entities.FtsSuspension
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.Repository.FileTransferReadOnlyRepository
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.Repository.IFileTransferReadOnlyRepository
+  methods: 8
+  depends_on: []
+  flows:
+  - manage-ftp-servers-and-credentials
+  doors: []
+  reached: true
+  tables:
+    orm:FTP_SERVER:
+    - reads
+    orm:FTS_DESTINATION:
+    - reads
+    orm:FTS_FILE_DELIVERY:
+    - reads
+    orm:FTS_FILE_EVENT:
+    - reads
+    orm:FTS_FILE_EXCEPTION:
+    - reads
+    orm:FTS_FILE_MANAGEMENT:
+    - reads
+    orm:FTS_INBOUND_TARGET:
+    - reads
+    orm:FTS_INTEGRATION_FILE:
+    - reads
+    orm:FTS_NOTIFICATION:
+    - reads
+    orm:FTS_SUSPENSION:
+    - reads
+  wave: 0
+- id: data-data-access-entities-2
+  tier: data
+  name: HPE.HSP.UA3.FT.Batch.FileTransferMgmt.DataAccess.Entities
+  classes:
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.DataAccess.Entities.FileTransferEntityDbContext
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.DataAccess.Entities.FtpServer
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.DataAccess.Entities.FtsDestinationLocations
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.DataAccess.Entities.FtsFileDelivery
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.DataAccess.Entities.FtsFileEvent
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.DataAccess.Entities.FtsFileException
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.DataAccess.Entities.FtsFileManagement
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.DataAccess.Entities.FtsNotification
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.DataAccess.Entities.FtsSourceLocation
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.DataAccess.Entities.FtsSuspension
+  methods: 2
+  depends_on: []
+  flows: []
+  doors: []
+  reached: false
+  tables:
+    orm:FTP_SERVER:
+    - reads
+    orm:FTS_DESTINATION:
+    - reads
+    orm:FTS_FILE_DELIVERY:
+    - reads
+    orm:FTS_FILE_EVENT:
+    - reads
+    orm:FTS_FILE_EXCEPTION:
+    - reads
+    orm:FTS_FILE_MANAGEMENT:
+    - reads
+    orm:FTS_NOTIFICATION:
+    - reads
+    orm:FTS_SUSPENSION:
+    - reads
+  wave: 0
+- id: data-data-access-entities-3
+  tier: data
+  name: HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.Entities
+  classes:
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.Entities.FileTransferEntityDbContext
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.Entities.FtpServer
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.Entities.FtsDestinationLocations
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.Entities.FtsFileDelivery
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.Entities.FtsFileEvent
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.Entities.FtsFileException
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.Entities.FtsFileManagement
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.Entities.FtsInboundTarget
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.Entities.FtsIntegrationFile
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.Entities.FtsNotification
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.Entities.FtsSourceLocation
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.Entities.FtsSuspension
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.Repository.FileTransferReadOnlyRepository
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.Repository.IFileTransferReadOnlyRepository
+  methods: 8
+  depends_on: []
+  flows:
+  - manage-ftp-servers-and-credentials
+  doors: []
+  reached: true
+  tables:
+    orm:FTP_SERVER:
+    - reads
+    orm:FTS_DESTINATION:
+    - reads
+    orm:FTS_FILE_DELIVERY:
+    - reads
+    orm:FTS_FILE_EVENT:
+    - reads
+    orm:FTS_FILE_EXCEPTION:
+    - reads
+    orm:FTS_FILE_MANAGEMENT:
+    - reads
+    orm:FTS_INBOUND_TARGET:
+    - reads
+    orm:FTS_INTEGRATION_FILE:
+    - reads
+    orm:FTS_NOTIFICATION:
+    - reads
+    orm:FTS_SUSPENSION:
+    - reads
+  packages:
+  - hpp.core.api.logger
+  - hpp.core.bas.cqrs
+  - microsoft.entityframeworkcore
+  - microsoft.entityframeworkcore.relational
+  wave: 0
+- id: shared-common-common-constants
+  tier: shared
+  name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Common.CommonConstants
+  classes:
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Common.CommonConstants
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Common.CommonConstants.RegexPatterns
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Common.CommonConstants.SortFields
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Common.CommonConstants.SortFields.FtpServer
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Common.CommonConstants.Validation
+  methods: 0
+  depends_on: []
+  flows: []
+  doors: []
+  reached: false
+  wave: 0
+- id: shared-common-constants-validation
+  tier: shared
+  name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Common.CommonConstants.Validation
+  classes:
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Common.CommonConstants.Validation.ErrorType
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Common.CommonConstants.Validation.Messages
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Common.CommonConstants.Validation.Properties
+  methods: 0
+  depends_on: []
+  flows: []
+  doors: []
+  reached: false
+  wave: 0
+- id: shared-common-file-transfer-management-constants
+  tier: shared
+  name: HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Contracts.Common.FileTransferManagementConstants
+  classes:
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Contracts.Common.FileTransferManagementConstants
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Contracts.Common.FileTransferManagementConstants.EventDistribution
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Contracts.Common.FileTransferManagementConstants.ExceptionMessages
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Contracts.Common.FileTransferManagementConstants.Information
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Contracts.Common.FileTransferManagementConstants.Paths
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Contracts.Utilities.MaintainabilityDetails
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.DataAccess.ErrorLogConstants
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.DataAccess.FileDeliveryEventConstants
+  methods: 0
+  depends_on: []
+  flows: []
+  doors: []
+  reached: false
+  wave: 0
+- id: shared-contracts-batch
+  tier: shared
+  name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Batch
+  classes:
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Batch.DestinationModel
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Batch.ErrorLogDetailModel
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Batch.FileManagementRequestModel
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Batch.FileManagementResponseModel
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Batch.FileToDeliverModel
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Batch.FtpServerModel
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Batch.FtsDeliveryModel
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Batch.FtsNotificationModel
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Batch.FtsNotificationQueryModel
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Batch.FtsSuspensionModel
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Batch.FtsSuspensionSearchCriteria
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Batch.GetNotificationSearchCriteria
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Batch.PendingFileModel
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Batch.SourceLocationModel
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Batch.SourceScheduleModel
+  methods: 1
+  depends_on: []
+  flows: []
+  doors: []
+  reached: false
+  wave: 0
+- id: shared-contracts-domain
+  tier: shared
+  name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Domain
+  classes:
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Domain.FileEventModel
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Domain.FileExceptionModel
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Domain.FileTransferTrackingModel
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Domain.FtpServerModel
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Domain.FtsInboundTargetModel
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Domain.FtsIntegrationFileModel
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Domain.GroupInfo
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Domain.SourceLocationModel
+  methods: 0
+  depends_on: []
+  flows: []
+  doors: []
+  reached: false
+  wave: 0
+- id: shared-contracts-domain-2
+  tier: shared
+  name: HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Contracts.Domain
+  classes:
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Contracts.Domain.DestinationModel
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Contracts.Domain.ErrorLogDetailModel
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Contracts.Domain.FileManagementRequestModel
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Contracts.Domain.FileManagementResponseModel
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Contracts.Domain.FileToDeliverModel
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Contracts.Domain.FtpServerModel
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Contracts.Domain.FtsDeliveryModel
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Contracts.Domain.FtsNotificationModel
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Contracts.Domain.FtsNotificationQueryModel
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Contracts.Domain.FtsSuspensionModel
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Contracts.Domain.FtsSuspensionSearchCriteria
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Contracts.Domain.GetNotificationSearchCriteria
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Contracts.Domain.PendingFileModel
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Contracts.Domain.SourceLocationModel
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Contracts.Domain.SourceScheduleModel
+  methods: 1
+  depends_on: []
+  flows: []
+  doors: []
+  reached: false
+  wave: 0
+- id: shared-contracts-events
+  tier: shared
+  name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events
+  classes:
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FileTransferAdd
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FileTransferEvents
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FileTransferred
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtpServerAdded
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtpServerInvalidated
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtpServerUpdated
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtsDestinationLocationAdded
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtsInboundTargetAdded
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtsInboundTargetInvalidated
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtsSourceLocationAdded
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtsSourceLocationEvents
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtsSourceLocationInvalidated
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.FtsSourceLocationUpdated
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.IntegrationFileAdded
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Events.IntegrationFileUpdated
+  methods: 0
+  depends_on: []
+  flows: []
+  doors: []
+  reached: false
+  wave: 0
+- id: shared-contracts-exceptions
+  tier: shared
+  name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Exceptions
+  classes:
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Exceptions.ExcludedFileExtensions
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Exceptions.FileTransferExceptionConstants
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Exceptions.FileTransferValidationException
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Exceptions.FileTransfertBASValidationException
+  methods: 1
+  depends_on: []
+  flows: []
+  doors: []
+  reached: false
+  wave: 0
+- id: shared-contracts-queries
+  tier: shared
+  name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries
+  classes:
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FileEventQuery
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FileExceptionQuery
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FileTransferTrackingQuery
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.GetIntegrationFileQuery
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.GetSourceLocationQuery
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.InboundTargetQuery
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.SourceLocationQuery
+  methods: 5
+  depends_on: []
+  flows: []
+  doors: []
+  reached: false
+  wave: 0
+- id: shared-contracts-utilities
+  tier: shared
+  name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Utilities
+  classes:
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Utilities.BusinessErrorUtility
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Utilities.MaintainabilityDetails
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Utilities.SearchModeHelper
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Utilities.SearchModeOption
+  methods: 6
+  depends_on: []
+  flows:
+  - manage-ftp-servers-and-credentials
+  doors: []
+  reached: true
+  packages:
+  - hpp.core.bas.cqrs
+  wave: 0
+- id: shared-data-file-transfer-constants
+  tier: shared
+  name: HP.HSP.UA3.FileTransfer.UX.Data.FileTransferConstants
+  classes:
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransferConstants
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransferConstants.ApplicationSettings
+  - HP.HSP.UA3.FileTransfer.UX.Data.FileTransferConstants.Constants
+  methods: 0
+  depends_on: []
+  flows: []
+  doors: []
+  reached: false
+  wave: 0
+- id: shared-exceptions-file-transfer-exception-constants
+  tier: shared
+  name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Exceptions.FileTransferExceptionConstants
+  classes:
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Exceptions.FileTransferExceptionConstants.FaultExceptions
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Exceptions.FileTransferExceptionConstants.Fields
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Exceptions.FileTransferExceptionConstants.Validation
+  methods: 0
+  depends_on: []
+  flows: []
+  doors: []
+  reached: false
+  wave: 0
+- id: shared-file-transfer-svc-data-access
+  tier: shared
+  name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess
+  classes:
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.DataAccessConstants
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.ErrorLogConstants
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.FileDeliveryEventConstants
+  methods: 0
+  depends_on: []
+  flows: []
+  doors: []
+  reached: false
+  wave: 0
+- id: shared-file-transfer-svc-data-access-2
+  tier: shared
+  name: HPP.FileTransfer.BAS.FileTransferSvc.DataAccess
+  classes:
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.DataAccessConstants
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.ErrorLogConstants
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.FileDeliveryEventConstants
+  methods: 0
+  depends_on: []
+  flows: []
+  doors: []
+  reached: false
+  wave: 0
+- id: shared-queries-parameters
+  tier: shared
+  name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.Parameters
+  classes:
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.Parameters.FileEventQueryParms
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.Parameters.FileExceptionQueryParms
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.Parameters.FileTransferTrackingQueryParms
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.Parameters.FtpServerQueryParms
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.Parameters.GetSourceLocationQueryParms
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.Parameters.InboundTargetQueryParms
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.Parameters.IntegrationFileQueryParms
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.Parameters.SourceLocationQueryParms
+  methods: 0
+  depends_on: []
+  flows: []
+  doors: []
+  reached: false
+  wave: 0
+- id: shared-queries-parameters-2
+  tier: shared
+  name: HPP.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.Parameters
+  classes:
+  - HPP.FileTransfer.BAS.FileTransferSvc.Contracts.Domain.GroupInfo
+  - HPP.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.GetIntegrationFileQuery
+  - HPP.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.Parameters.IntegrationFileQueryParms
+  methods: 2
+  depends_on: []
+  flows: []
+  doors: []
+  reached: false
+  wave: 0
+- id: ui-configure-source-locations-and-destinations-screens
+  tier: ui
+  name: Screens of the flow configure-source-locations-and-destinations
+  classes:
+  - HP.HSP.UA3.FileTransfer.UX.Presentation.Controllers.FileTransferController
+  - HPP.FileTransfer.BAS.FileTransferApi.Controllers.FileTransferSvcQueryServiceController
+  - HPP.FileTransfer.BAS.FileTransferApi.Controllers.FileTransferSvcServiceController
+  methods: 23
+  depends_on: []
+  flows:
+  - configure-source-locations-and-destinations
+  - manage-ftp-servers-and-credentials
+  - search-and-track-file-transfers
+  doors:
+  - file-transfer-controller-add-file-base-configuration
+  - file-transfer-controller-destination-configuration-edit
+  - file-transfer-controller-destination-configuration-edit-panel
+  - file-transfer-controller-file-transfer-configuration-edit
+  - file-transfer-controller-file-transfer-configuration-view
+  - file-transfer-controller-search-file-transfer-tracking
+  - file-transfer-svc-query-service-controller-get-ftp-servers
+  - file-transfer-svc-query-service-controller-get-source-locations
+  - file-transfer-svc-query-service-controller-search-file-transfer-movement
+  - file-transfer-svc-query-service-controller-search-inbound-target
+  - file-transfer-svc-query-service-controller-search-source-locations
+  - file-transfer-svc-service-controller-add-ftp-server
+  - file-transfer-svc-service-controller-file-transfer-add
+  - file-transfer-svc-service-controller-invalidate-file-transfer-source-location
+  - file-transfer-svc-service-controller-invalidate-ftp-server
+  - file-transfer-svc-service-controller-update-file-transfer-source-location
+  - file-transfer-svc-service-controller-update-ftp-server
+  reached: true
+  endpoints:
+  - GET /FileTransfer
+  - POST /FileTransfer
+  - POST /FileTransferSvcQueryService
+  - POST /FileTransferSvcService
+  tables:
+    orm:FTP_SERVER:
+    - reads
+    orm:FTS_SUSPENSION:
+    - reads
+  packages:
+  - hp.hsp.ua3.core.ux.common
+  - hp.hsp.ua3.core.ux.interfaces
+  - hp.hsp.ua3.core.ux.presentation
+  - microsoft.aspnet.mvc
+  wave: 0
+- id: ui-file-transfer-api-controllers
+  tier: ui
+  name: HPP.FileTransfer.BAS.FileTransferApi.Controllers
+  classes:
+  - HPP.FileTransfer.BAS.FileTransferApi.Controllers.FileTransferSvcEventServiceController
+  methods: 0
+  depends_on: []
+  flows: []
+  doors: []
+  reached: false
+  wave: 0
+- id: backend-batch-business
+  tier: backend
+  name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Batch.Business
+  classes:
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Batch.Business.AppSettingsConstants
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Batch.Business.BatchJobConstants
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Batch.Business.ConsumerFactory
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Batch.Business.ExceptionConstants
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Batch.Business.FTSConsumer
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Batch.Business.FTSConsumer.LogMessage
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Batch.Business.FTSProducer
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Batch.Business.FileTransferBatchExecutor
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Batch.Business.FileTransferOperations
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Batch.Business.FileTransferProtocols
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Batch.Business.IBatchExecutor<Toutput>
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Batch.Business.IConsumerFactory
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Batch.Business.IFTSConsumer
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Batch.Business.IFTSProducer
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Batch.Business.IFileTransferOperations
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Batch.Business.IFileTransferProtocols
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Batch.Business.IPatternMatcher
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Batch.Business.IocConstants
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Batch.Business.PatternMatcher
+  methods: 78
+  depends_on:
+  - backend-business-helpers
+  flows: []
+  doors: []
+  reached: false
+  tables:
+    components.Production.Location:
+    - reads
+    orm:FTP_SERVER:
+    - reads
+    - writes
+    orm:FTS_FILE_DELIVERY:
+    - writes
+    orm:FTS_NOTIFICATION:
+    - reads
+    - writes
+    orm:FTS_SUSPENSION:
+    - writes
+  packages:
+  - ICSharpCode.SharpZipLib
+  - edtFTPnetPRO
+  wave: 1
+- id: backend-data-access-event-handlers
+  tier: backend
+  name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers
+  classes:
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtpServerProjectionWriter
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtsInboundTargetProjectionWriter
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtsIntegrationFileProjectionWriter
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.EventHandlers.FtsSourceLocationProjectionWriter
+  methods: 18
+  depends_on:
+  - backend-data-access-event-handlers-2
+  flows:
+  - configure-source-locations-and-destinations
+  - manage-ftp-servers-and-credentials
+  doors: []
+  reached: true
+  tables:
+    orm:FTP_SERVER:
+    - reads
+    - writes
+    orm:FTS_DESTINATION:
+    - reads
+    - writes
+    orm:FTS_INBOUND_TARGET:
+    - reads
+    - writes
+    orm:FTS_INTEGRATION_FILE:
+    - reads
+    - writes
+    orm:FTS_SUSPENSION:
+    - reads
+    - writes
+  wave: 1
+- id: backend-data-access-query-handlers
+  tier: backend
+  name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.QueryHandlers
+  classes:
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.QueryHandlers.FileEventQueryExecutor
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.QueryHandlers.FileExceptionQueryExecutor
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.QueryHandlers.FileTransferTrackingQueryExecutor
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.QueryHandlers.GetFtpServerQueryExecutor
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.QueryHandlers.GetSourceLocationQueryExecutor
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.QueryHandlers.InboundTargetQueryExecutor
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.QueryHandlers.IntegrationFileQueryExecutor
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.DataAccess.QueryHandlers.SearchSourceLocationQueryExecutor
+  methods: 43
+  depends_on:
+  - shared-contracts-queries
+  flows: []
+  doors: []
+  reached: false
+  tables:
+    orm:FTP_SERVER:
+    - reads
+    - writes
+    orm:FTS_DESTINATION:
+    - reads
+    - writes
+    orm:FTS_FILE_EVENT:
+    - reads
+    orm:FTS_FILE_EXCEPTION:
+    - reads
+    orm:FTS_FILE_MANAGEMENT:
+    - reads
+    orm:FTS_INBOUND_TARGET:
+    - reads
+    - writes
+    orm:FTS_INTEGRATION_FILE:
+    - reads
+    orm:FTS_SUSPENSION:
+    - reads
+    - writes
+  wave: 1
+- id: backend-data-access-query-handlers-2
+  tier: backend
+  name: HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.QueryHandlers
+  classes:
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.QueryHandlers.FileEventQueryExecutor
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.QueryHandlers.FileExceptionQueryExecutor
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.QueryHandlers.FileTransferTrackingQueryExecutor
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.QueryHandlers.GetFtpServerQueryExecutor
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.QueryHandlers.GetSourceLocationQueryExecutor
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.QueryHandlers.InboundTargetQueryExecutor
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.QueryHandlers.IntegrationFileQueryExecutor
+  - HPP.FileTransfer.BAS.FileTransferSvc.DataAccess.QueryHandlers.SearchSourceLocationQueryExecutor
+  methods: 38
+  depends_on:
+  - shared-contracts-queries
+  - shared-queries-parameters-2
+  flows: []
+  doors: []
+  reached: false
+  tables:
+    orm:FTP_SERVER:
+    - reads
+    - writes
+    orm:FTS_DESTINATION:
+    - reads
+    - writes
+    orm:FTS_FILE_EVENT:
+    - reads
+    orm:FTS_FILE_EXCEPTION:
+    - reads
+    orm:FTS_FILE_MANAGEMENT:
+    - reads
+    orm:FTS_INBOUND_TARGET:
+    - reads
+    - writes
+    orm:FTS_INTEGRATION_FILE:
+    - reads
+    orm:FTS_SUSPENSION:
+    - reads
+    - writes
+  packages:
+  - hpp.core.bas.cqrs
+  wave: 1
+- id: backend-file-transfer-mgmt-business
+  tier: backend
+  name: HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Business
+  classes:
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Business.AppSettingsConstants
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Business.AppSettingsConstants.AppSettingsKey
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Business.BatchJobConstants
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Business.BatchJobConstants.EventFilters
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Business.BatchJobConstants.EventFilters.EventMessageNodes
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Business.ConsumerFactory
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Business.ExceptionConstants
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Business.FTSConsumer
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Business.FTSConsumer.LogMessage
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Business.FTSProducer
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Business.FileBasicInfo
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Business.FileTransferBatchExecutor
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Business.FileTransferOperations
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Business.FileTransferProtocols
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Business.IBatchExecutor<Toutput>
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Business.IConsumerFactory
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Business.IFTSConsumer
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Business.IFTSProducer
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Business.IFileTransferOperations
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Business.IFileTransferProtocols
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Business.IPatternMatcher
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Business.IocConstants
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Business.PatternMatcher
+  methods: 121
+  depends_on:
+  - backend-business-helpers-2
+  flows: []
+  doors: []
+  reached: false
+  tables:
+    components.Production.Location:
+    - reads
+    orm:FTP_SERVER:
+    - reads
+    - writes
+    orm:FTS_FILE_DELIVERY:
+    - writes
+    orm:FTS_FILE_EXCEPTION:
+    - writes
+    orm:FTS_INTEGRATION_FILE:
+    - reads
+    orm:FTS_SUSPENSION:
+    - writes
+  packages:
+  - ICSharpCode.SharpZipLib
+  - Renci.SshNet
+  - edtFTPnetPRO
+  wave: 1
+- id: shared-contracts-commands
+  tier: shared
+  name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands
+  classes:
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtpServerCommand
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddFtsInboundTargetCommand
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.AddIntegrationFileCommand
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FileTransferCommand
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsCommand
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationAddCommand
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationInvalidateCommand
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.FtsSourceLocationUpdateCommand
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.InvalidateFtpServerCommand
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.InvalidateFtsInboundTargetCommand
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.UpdateFtpServerCommand
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Commands.UpdateIntegrationFileCommand
+  methods: 36
+  depends_on:
+  - shared-contracts-utilities
+  flows:
+  - configure-source-locations-and-destinations
+  - manage-ftp-servers-and-credentials
+  - manage-integration-files
+  doors: []
+  reached: true
+  tables:
+    orm:FTP_SERVER:
+    - reads
+    orm:FTS_SUSPENSION:
+    - reads
+  wave: 1
+- id: ui-manage-ftp-servers-and-credentials-screens
+  tier: ui
+  name: Screens of the flow manage-ftp-servers-and-credentials
+  classes:
+  - HP.HSP.UA3.FileTransfer.UX.Services.Controller.FileTransferController
+  methods: 25
+  depends_on:
+  - backend-data-file-transfer
+  flows:
+  - configure-source-locations-and-destinations
+  - manage-ftp-servers-and-credentials
+  - search-and-track-file-transfers
+  doors:
+  - file-transfer-controller-add-file-transfer-base-configuration
+  - file-transfer-controller-add-ftpserver-credentials
+  - file-transfer-controller-create-ftpserver-credentials
+  - file-transfer-controller-get-data-list-data
+  - file-transfer-controller-get-data-list-data-2
+  - file-transfer-controller-get-ftemetadatas
+  - file-transfer-controller-get-ftp-server-details
+  - file-transfer-controller-get-ftpserver-credentials
+  - file-transfer-controller-get-source-locations
+  - file-transfer-controller-search-file-transfer
+  - file-transfer-controller-search-file-transfer-tracking-2
+  - file-transfer-controller-update-ftpserver-credentials
+  reached: true
+  tables:
+    orm:FTP_SERVER:
+    - reads
+    - writes
+    orm:FTS_SUSPENSION:
+    - reads
+  packages:
+  - hp.hsp.ua3.core.ux.common
+  - hp.hsp.ua3.core.ux.interfaces
+  - hp.hsp.ua3.core.ux.services
+  - microsoft.aspnet.webapi.core
+  wave: 1
+- id: backend-business-command-handlers
+  tier: backend
+  name: HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers
+  classes:
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsInboundTargetCommandHandler
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsIntegrationFileCommandHandler
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationAddCommandHandler
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationRepositoryHandler
+  methods: 25
+  depends_on:
+  - backend-business-command-handlers-2
+  - backend-data-access-event-handlers
+  - backend-data-access-event-handlers-2
+  - shared-contracts-commands
+  flows:
+  - configure-source-locations-and-destinations
+  - manage-ftp-servers-and-credentials
+  - manage-integration-files
+  doors: []
+  reached: true
+  tables:
+    orm:FTP_SERVER:
+    - reads
+    orm:FTS_INBOUND_TARGET:
+    - reads
+    orm:FTS_INTEGRATION_FILE:
+    - reads
+    orm:FTS_SUSPENSION:
+    - reads
+  wave: 2
+- id: backend-business-command-handlers-2
+  tier: backend
+  name: HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers
+  classes:
+  - HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtpServerCommandHandler
+  - HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsInboundTargetCommandHandler
+  - HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsIntegrationFileCommandHandler
+  - HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationAddCommandHandler
+  - HPP.FileTransfer.BAS.FileTransferSvc.Business.CommandHandlers.FtsSourceLocationRepositoryHandler
+  methods: 25
+  depends_on:
+  - backend-business-command-handlers
+  - backend-data-access-event-handlers
+  - backend-data-access-event-handlers-2
+  - shared-contracts-commands
+  flows:
+  - configure-source-locations-and-destinations
+  - manage-ftp-servers-and-credentials
+  - manage-integration-files
+  doors: []
+  reached: true
+  tables:
+    orm:FTP_SERVER:
+    - reads
+    orm:FTS_INBOUND_TARGET:
+    - reads
+    orm:FTS_INTEGRATION_FILE:
+    - reads
+    orm:FTS_SUSPENSION:
+    - reads
+  packages:
+  - automapper
+  - hpp.core.bas.cqrs
+  wave: 2
+- id: backend-configure-source-locations-and-destinations-api
+  tier: backend
+  name: API of the flow configure-source-locations-and-destinations
+  classes:
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService
+  - HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService
+  - HPP.FileTransfer.BAS.FileTransferApi.Commands.FileTransferSvcService
+  - HPP.FileTransfer.BAS.FileTransferApi.Queries.FileTransferSvcQueryService
+  - HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService
+  - HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcService
+  methods: 49
+  depends_on:
+  - backend-bas-file-transfer-api
+  - backend-bas-file-transfer-svc
+  - backend-bas-file-transfer-svc-2
+  - backend-business-command-handlers
+  - backend-business-command-handlers-2
+  flows:
+  - configure-source-locations-and-destinations
+  - manage-ftp-servers-and-credentials
+  - manage-integration-files
+  - search-and-track-file-transfers
+  doors:
+  - file-transfer-svc-query-service-get-ftp-servers
+  - file-transfer-svc-query-service-get-ftp-servers-2
+  - file-transfer-svc-query-service-get-ftp-servers-3
+  - file-transfer-svc-query-service-get-integration-file
+  - file-transfer-svc-query-service-get-integration-file-2
+  - file-transfer-svc-query-service-get-source-locations
+  - file-transfer-svc-query-service-get-source-locations-2
+  - file-transfer-svc-query-service-get-source-locations-3
+  - file-transfer-svc-query-service-search-file-transfer-movement
+  - file-transfer-svc-query-service-search-file-transfer-movement-2
+  - file-transfer-svc-query-service-search-file-transfer-movement-3
+  - file-transfer-svc-query-service-search-inbound-target
+  - file-transfer-svc-query-service-search-inbound-target-2
+  - file-transfer-svc-query-service-search-inbound-target-3
+  - file-transfer-svc-query-service-search-source-locations
+  - file-transfer-svc-query-service-search-source-locations-2
+  - file-transfer-svc-query-service-search-source-locations-3
+  - file-transfer-svc-query-service-try-route-query
+  - file-transfer-svc-query-service-try-route-query-2
+  - file-transfer-svc-query-service-try-route-query-3
+  - file-transfer-svc-service-add-ftp-server
+  - file-transfer-svc-service-add-ftp-server-2
+  - file-transfer-svc-service-add-ftp-server-3
+  - file-transfer-svc-service-file-transfer-add
+  - file-transfer-svc-service-file-transfer-add-2
+  - file-transfer-svc-service-file-transfer-add-3
+  - file-transfer-svc-service-invalidate-file-transfer-source-location
+  - file-transfer-svc-service-invalidate-file-transfer-source-location-2
+  - file-transfer-svc-service-invalidate-file-transfer-source-location-3
+  - file-transfer-svc-service-invalidate-ftp-server
+  - file-transfer-svc-service-invalidate-ftp-server-2
+  - file-transfer-svc-service-invalidate-ftp-server-3
+  - file-transfer-svc-service-try-route-command
+  - file-transfer-svc-service-try-route-command-2
+  - file-transfer-svc-service-try-route-command-3
+  - file-transfer-svc-service-update-file-transfer-source-location
+  - file-transfer-svc-service-update-file-transfer-source-location-2
+  - file-transfer-svc-service-update-file-transfer-source-location-3
+  - file-transfer-svc-service-update-ftp-server
+  - file-transfer-svc-service-update-ftp-server-2
+  - file-transfer-svc-service-update-ftp-server-3
+  - file-transfer-svc-service-update-integration-file
+  - file-transfer-svc-service-update-integration-file-2
+  reached: true
+  tables:
+    orm:FTP_SERVER:
+    - reads
+    orm:FTS_SUSPENSION:
+    - reads
+  packages:
+  - hpp.core.bas.cqrs
+  wave: 3
+- id: backend-file-transfer-mgmt-ctrl
+  tier: backend
+  name: HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Ctrl
+  classes:
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Ctrl.FileTransferSvcQueryServiceProvider
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Ctrl.FileTransferSvcServiceProvider
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Ctrl.IFileTransferSvcQueryServiceProvider
+  - HPE.HSP.UA3.FT.Batch.FileTransferMgmt.Ctrl.IFileTransferSvcServiceProvider
+  methods: 2
+  depends_on:
+  - backend-configure-source-locations-and-destinations-api
+  flows: []
+  doors: []
+  reached: false
+  tables:
+    orm:FTS_INTEGRATION_FILE:
+    - reads
+  wave: 4
+waves:
+- - backend-bas-file-transfer-api
+  - backend-bas-file-transfer-svc
+  - backend-bas-file-transfer-svc-2
+  - backend-business-aggregates
+  - backend-business-aggregates-2
+  - backend-business-helpers
+  - backend-business-helpers-2
+  - backend-business-profiles
+  - backend-data-access-batch-data-access
+  - backend-data-access-batch-data-access-2
+  - backend-data-access-event-handlers-2
+  - backend-data-file-transfer
+  - backend-data-file-transfer-constants
+  - backend-data-file-transfer-tracking
+  - backend-file-transfer-constants-localization
+  - backend-file-transfer-mgmt-data-access
+  - backend-file-transfer-svc-main
+  - backend-localization-labels
+  - backend-providers-file-transfer
+  - backend-run-file-transfer-batch-api
+  - data-data-access-entities
+  - data-data-access-entities-2
+  - data-data-access-entities-3
+  - shared-common-common-constants
+  - shared-common-constants-validation
+  - shared-common-file-transfer-management-constants
+  - shared-contracts-batch
+  - shared-contracts-domain
+  - shared-contracts-domain-2
+  - shared-contracts-events
+  - shared-contracts-exceptions
+  - shared-contracts-queries
+  - shared-contracts-utilities
+  - shared-data-file-transfer-constants
+  - shared-exceptions-file-transfer-exception-constants
+  - shared-file-transfer-svc-data-access
+  - shared-file-transfer-svc-data-access-2
+  - shared-queries-parameters
+  - shared-queries-parameters-2
+  - ui-configure-source-locations-and-destinations-screens
+  - ui-file-transfer-api-controllers
+- - backend-batch-business
+  - backend-data-access-event-handlers
+  - backend-data-access-query-handlers
+  - backend-data-access-query-handlers-2
+  - backend-file-transfer-mgmt-business
+  - shared-contracts-commands
+  - ui-manage-ftp-servers-and-credentials-screens
+- - backend-business-command-handlers
+  - backend-business-command-handlers-2
+- - backend-configure-source-locations-and-destinations-api
+- - backend-file-transfer-mgmt-ctrl

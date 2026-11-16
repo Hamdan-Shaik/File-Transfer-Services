@@ -1,0 +1,134 @@
+﻿asyncapi: 3.0.0
+info:
+  title: fxfer-service event contract
+  version: 0.1.0
+  description: |
+    Placeholder AsyncAPI contract for fxfer-service published events.
+
+jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema
+
+servers:
+  event-backbone:
+    host: event-backbone
+    protocol: sns
+
+channels:
+  fxfer.configuration-changed:
+    address: fxfer.configuration-changed
+    messages:
+      FxferConfigurationChanged:
+        headers:
+          $ref: "#/components/schemas/CanonicalEnvelope"
+        payload:
+          $ref: "#/components/schemas/FxferConfigurationChangedPayload"
+  fxfer.run-state-changed:
+    address: fxfer.run-state-changed
+    messages:
+      FxferRunStateChanged:
+        headers:
+          $ref: "#/components/schemas/CanonicalEnvelope"
+        payload:
+          $ref: "#/components/schemas/FxferRunStateChangedPayload"
+  fxfer.delivery-outcome-recorded:
+    address: fxfer.delivery-outcome-recorded
+    messages:
+      FxferDeliveryOutcomeRecorded:
+        headers:
+          $ref: "#/components/schemas/CanonicalEnvelope"
+        payload:
+          $ref: "#/components/schemas/FxferDeliveryOutcomeRecordedPayload"
+  fxfer.suspension-state-changed:
+    address: fxfer.suspension-state-changed
+    messages:
+      FxferSuspensionStateChanged:
+        headers:
+          $ref: "#/components/schemas/CanonicalEnvelope"
+        payload:
+          $ref: "#/components/schemas/FxferSuspensionStateChangedPayload"
+
+operations:
+  sendFxferConfigurationChanged:
+    action: send
+    channel:
+      $ref: "#/channels/fxfer.configuration-changed"
+    x-producer: fxfer-service
+    x-consumers: [fxfer-projections]
+  sendFxferRunStateChanged:
+    action: send
+    channel:
+      $ref: "#/channels/fxfer.run-state-changed"
+    x-producer: fxfer-service
+    x-consumers: [fxfer-projections]
+  sendFxferDeliveryOutcomeRecorded:
+    action: send
+    channel:
+      $ref: "#/channels/fxfer.delivery-outcome-recorded"
+    x-producer: fxfer-service
+    x-consumers: [fxfer-projections]
+  sendFxferSuspensionStateChanged:
+    action: send
+    channel:
+      $ref: "#/channels/fxfer.suspension-state-changed"
+    x-producer: fxfer-service
+    x-consumers: [fxfer-projections]
+
+components:
+  schemas:
+    CanonicalEnvelope:
+      type: object
+      additionalProperties: false
+      required:
+        - tenant_id
+        - event_name
+        - event_version
+        - event_id
+        - occurred_at
+        - correlation_id
+        - trace_id
+        - producer
+      properties:
+        tenant_id: { type: string }
+        event_name: { type: string }
+        event_version: { type: string }
+        event_id: { type: string, format: uuid }
+        occurred_at: { type: string, format: date-time }
+        correlation_id: { type: string }
+        trace_id: { type: string }
+        producer: { type: string }
+    FxferConfigurationChangedPayload:
+      type: object
+      additionalProperties: false
+      required: [ aggregateType, aggregateId, changeType, effectiveAt ]
+      properties:
+        aggregateType: { type: string }
+        aggregateId: { type: string }
+        changeType: { type: string }
+        effectiveAt: { type: string, format: date-time }
+    FxferRunStateChangedPayload:
+      type: object
+      additionalProperties: false
+      required: [ runId, transferConfigurationId, state, stateChangedAt ]
+      properties:
+        runId: { type: string, format: uuid }
+        transferConfigurationId: { type: string, format: uuid }
+        state: { type: string }
+        stateChangedAt: { type: string, format: date-time }
+    FxferDeliveryOutcomeRecordedPayload:
+      type: object
+      additionalProperties: false
+      required: [ runId, fileId, destinationId, outcomeCode, occurredAt ]
+      properties:
+        runId: { type: string, format: uuid }
+        fileId: { type: string, format: uuid }
+        destinationId: { type: string, format: uuid }
+        outcomeCode: { type: string }
+        occurredAt: { type: string, format: date-time }
+    FxferSuspensionStateChangedPayload:
+      type: object
+      additionalProperties: false
+      required: [ transferConfigurationId, isSuspended, reasonCode, changedAt ]
+      properties:
+        transferConfigurationId: { type: string, format: uuid }
+        isSuspended: { type: boolean }
+        reasonCode: { type: string }
+        changedAt: { type: string, format: date-time }

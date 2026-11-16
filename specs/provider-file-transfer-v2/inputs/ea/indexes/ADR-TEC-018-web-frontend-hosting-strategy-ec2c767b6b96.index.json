@@ -1,0 +1,278 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Architecture Decision Record",
+  "document_description": "Adopt **AWS CloudFront + S3 with Origin Access Control (OAC)** as the enterprise standard for external-facing web UI hosting, and **AWS ALB + nginx reverse proxy on EKS serving from S3** as the standard for internal-facing web UI hosting. This establishes authoritative, framework-agnostic topologies for all modern web UIs (SPAs, static sites, SSG, and SSR workloads) hosted in AWS.",
+  "total_pages": 28,
+  "tree": [
+    {
+      "title": "Architecture Decision Record",
+      "node_id": "architecture-decision-record",
+      "start_index": 1,
+      "end_index": 28,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "ADR-TEC-018: Web Frontend Hosting Strategy for AWS",
+          "node_id": "adr-tec-018-web-frontend-hosting-strategy-for-aws",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Decision Summary",
+          "node_id": "decision-summary",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Context and Problem Statement",
+          "node_id": "context-and-problem-statement",
+          "start_index": 5,
+          "end_index": 9,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Business Context",
+              "node_id": "business-context",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Technical Context",
+              "node_id": "technical-context",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Problem Statement",
+              "node_id": "problem-statement",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Decision Drivers",
+              "node_id": "decision-drivers",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Required Option",
+          "node_id": "required-option",
+          "start_index": 10,
+          "end_index": 11,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "External-Facing: AWS CloudFront + S3 with Origin Access Control (OAC)",
+              "node_id": "external-facing-aws-cloudfront--s3-with-origin-access-control-oac",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Considered Options",
+          "node_id": "considered-options",
+          "start_index": 12,
+          "end_index": 15,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Option A: Internal — Private CloudFront Distribution via VPN",
+              "node_id": "option-a-internal--private-cloudfront-distribution-via-vpn",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Option B: Internal — ALB + nginx Reverse Proxy on EKS Serving from S3 (Selected)",
+              "node_id": "option-b-internal--alb--nginx-reverse-proxy-on-eks-serving-from-s3-selected",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Option C: Internal — ALB + Lambda Serving from S3",
+              "node_id": "option-c-internal--alb--lambda-serving-from-s3",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Decision Outcome",
+          "node_id": "decision-outcome",
+          "start_index": 16,
+          "end_index": 17,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Implementation",
+              "node_id": "implementation",
+              "start_index": 17,
+              "end_index": 17,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Consequences",
+          "node_id": "consequences",
+          "start_index": 18,
+          "end_index": 21,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "✅ Positive",
+              "node_id": "-positive",
+              "start_index": 19,
+              "end_index": 19,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "❌ Negative",
+              "node_id": "-negative",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "⚪ Neutral",
+              "node_id": "-neutral",
+              "start_index": 21,
+              "end_index": 21,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Risk Assessment & Mitigation",
+          "node_id": "risk-assessment--mitigation",
+          "start_index": 22,
+          "end_index": 24,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "⚠️ Risks",
+              "node_id": "-risks",
+              "start_index": 23,
+              "end_index": 23,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "🛡️ Mitigations",
+              "node_id": "-mitigations",
+              "start_index": 24,
+              "end_index": 24,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Compliance Notes",
+          "node_id": "compliance-notes",
+          "start_index": 25,
+          "end_index": 25,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Review and Approval",
+          "node_id": "review-and-approval",
+          "start_index": 26,
+          "end_index": 26,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "📋 Change Log",
+          "node_id": "-change-log",
+          "start_index": 27,
+          "end_index": 27,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "🔍 Last Reviewed",
+          "node_id": "-last-reviewed",
+          "start_index": 28,
+          "end_index": 28,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[decisions/technology/ADR-TEC-018-web-frontend-hosting-strategy.md#architecture-decision-record]\n\n# Architecture Decision Record",
+    "2": "[decisions/technology/ADR-TEC-018-web-frontend-hosting-strategy.md#adr-tec-018-web-frontend-hosting-strategy-for-aws]\n\n## ADR-TEC-018: Web Frontend Hosting Strategy for AWS\n\n**← Back to [EAP Home](../../README.md) • [Architecture Decisions](../README.md) • [Technology](./README.md)**\n\n---\n\n|               |                                                                                                                                                                  |\n| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| **Status**    | 🟡 Proposed                                                                                                                                                      |\n| **Date**      | 2026-04-29                                                                                                                                                       |\n| **Issuer**    | [Enterprise Architecture Practice](mailto:EAP-Core@mygainwell.onmicrosoft.com?subject=ADR-TEC-018%20Web%20Frontend%20Hosting%20Strategy)                        |\n| **Consulted** | Cloud/Infrastructure Engineering, Security Team, Application Architects                                                                                          |\n| **Informed**  | Development Teams, DevOps Team, Operations Team                                                                                                                  |\n\n---",
+    "3": "[decisions/technology/ADR-TEC-018-web-frontend-hosting-strategy.md#table-of-contents]\n\n## Table of Contents\n\n- [Decision Summary](#decision-summary)\n- [Context and Problem Statement](#context-and-problem-statement)\n- [Required Option](#required-option)\n- [Considered Options](#considered-options)\n- [Decision Outcome](#decision-outcome)\n- [Consequences](#consequences)\n- [Risk Assessment & Mitigation](#risk-assessment--mitigation)\n- [Compliance Notes](#compliance-notes)\n- [Review and Approval](#review-and-approval)\n\n---",
+    "4": "[decisions/technology/ADR-TEC-018-web-frontend-hosting-strategy.md#decision-summary]\n\n## Decision Summary\n\nAdopt **AWS CloudFront + S3 with Origin Access Control (OAC)** as the enterprise standard for external-facing web UI hosting, and **AWS ALB + nginx reverse proxy on EKS serving from S3** as the standard for internal-facing web UI hosting. This establishes authoritative, framework-agnostic topologies for all modern web UIs (SPAs, static sites, SSG, and SSR workloads) hosted in AWS.\n\n---",
+    "5": "[decisions/technology/ADR-TEC-018-web-frontend-hosting-strategy.md#context-and-problem-statement]\n\n## Context and Problem Statement",
+    "6": "[decisions/technology/ADR-TEC-018-web-frontend-hosting-strategy.md#business-context]\n\n### Business Context\n\nNo enterprise-wide, framework-agnostic standard governs how modern web UIs are hosted in AWS. Existing deployment guidance is scoped to Next.js only (`STD-TEC-NXT-003` Section 8.0) and is not authoritative across the application portfolio. Development teams building React, Angular, Vue, and other framework-based frontends lack a canonical infrastructure reference, leading to inconsistent topologies, varied security postures, and duplicated infrastructure provisioning work.",
+    "7": "[decisions/technology/ADR-TEC-018-web-frontend-hosting-strategy.md#technical-context]\n\n### Technical Context\n\nModern web frontend applications include several rendering and deployment models:\n\n- **Single-Page Applications (SPA)**: Client-side rendered, deployed as static bundles (HTML, JS, CSS, assets).\n- **Static Site Generation (SSG)**: Pre-rendered at build time into static files.\n- **Server-Side Rendering (SSR)**: Requires server-side execution at request time; cannot be served as pure static files.\n- **Micro-frontends**: Independently deployed static bundles composed at runtime, as described in `PTN-APP-MFE-003` and `PTN-APP-MFE-007`.\n\nTwo distinct hosting topologies are required based on application audience:\n\n1. **External-facing applications** (internet-accessible): AWS CloudFront + S3 is the approved approach.\n2. **Internal-facing applications** (staff/intranet): The correct topology requires an explicit decision because AWS ALB **cannot natively target S3 as a backend origin** — a mediation layer is required.",
+    "8": "[decisions/technology/ADR-TEC-018-web-frontend-hosting-strategy.md#problem-statement]\n\n### Problem Statement\n\nWhat infrastructure topologies shall govern AWS-hosted web frontends for (A) external-facing audiences and (B) internal-facing audiences, and how shall SSR workloads be accommodated within these topologies?",
+    "9": "[decisions/technology/ADR-TEC-018-web-frontend-hosting-strategy.md#decision-drivers]\n\n### Decision Drivers\n\n- 📋 **Regulatory compliance**: HIPAA requires no PHI in static assets, CDN access logs, or URL query parameters; topology must enforce these controls.\n- 🔒 **Security posture**: Direct S3 public access must be prohibited; OAC must replace deprecated OAI for CloudFront origins.\n- ⚡ **Infrastructure as Code alignment**: Topology must be expressible as Terraform per `ADR-TEC-006`.\n- 🏗️ **Platform leverage**: Internal topology should leverage existing EKS investment per established infrastructure patterns.\n- 🔁 **Framework agnosticism**: The topology must serve any framework-produced static build output without framework-specific infrastructure.\n\n---",
+    "10": "[decisions/technology/ADR-TEC-018-web-frontend-hosting-strategy.md#required-option]\n\n## Required Option",
+    "11": "[decisions/technology/ADR-TEC-018-web-frontend-hosting-strategy.md#external-facing-aws-cloudfront--s3-with-origin-access-control-oac]\n\n### External-Facing: AWS CloudFront + S3 with Origin Access Control (OAC)\n\n**Description**: Static assets are stored in a private S3 bucket with all public access blocked. CloudFront serves as the sole public-facing origin using an OAC-based bucket policy to authenticate access. AWS WAF is associated with the distribution for edge protection. HTTPS is enforced and TLS 1.2 is the minimum negotiated protocol. Geographic restrictions limit serving to the US. Security response headers (HSTS, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Content-Security-Policy) are applied via CloudFront response headers policy.\n\n**Pros**:\n\n- ✅ **Security**: S3 never exposed to public internet; OAC provides AWS-native, IAM-governed origin authentication without rotating credentials.\n- ✅ **Global performance**: CloudFront's edge network delivers assets close to users; immutable asset caching is straightforward.\n- ✅ **WAF integration**: AWS WAF native attachment enforces edge protection (rate limiting, managed rule groups).\n- ✅ **Cost model**: No persistent compute required for static workloads; S3 + CloudFront costs scale with traffic.\n- ✅ **Terraform support**: All resources (distribution, OAC, bucket policy, WAF association, response headers policy) are first-class Terraform resources.\n- ✅ **SSR support**: Lambda@Edge at `origin-request` event handles SSR execution without separate compute infrastructure; `_next/static` cache behavior provides Next.js-specific cache tuning.\n\n**Cons**:\n\n- ❌ **SSR cold start**: Lambda@Edge functions exhibit cold-start latency; not appropriate for latency-sensitive interactive internal tools.\n- ❌ **OAI legacy migration**: Existing deployments using the deprecated CloudFront Origin Access Identity (OAI) require migration to OAC.\n- ❌ **Not appropriate for internal-only apps**: Placing internal staff-only applications on a public CloudFront distribution increases attack surface unnecessarily.\n\n---",
+    "12": "[decisions/technology/ADR-TEC-018-web-frontend-hosting-strategy.md#considered-options]\n\n## Considered Options",
+    "13": "[decisions/technology/ADR-TEC-018-web-frontend-hosting-strategy.md#option-a-internal--private-cloudfront-distribution-via-vpn]\n\n### Option A: Internal — Private CloudFront Distribution via VPN\n\n**Description**: Deploy a CloudFront distribution restricted to VPN-connected clients only by using AWS WAF or signing to restrict viewer access. All internal users must be connected to the enterprise VPN to reach the distribution.\n\n**Pros**:\n\n- ✅ **Familiar operational model**: Same CloudFront tooling used for both external and internal.\n- ✅ **Edge caching available**: CloudFront PoP caching applies even for restricted distributions.\n\n**Cons**:\n\n- ❌ **Complexity without benefit**: Restricting CloudFront to VPN-only requires signed URLs or WAF IP matching, adding operational overhead for an inherently-private use case.\n- ❌ **VPN dependency**: Requires VPN availability for all internal users; VPN outages block access to internal tools.\n- ❌ **Not truly private**: Traffic still traverses CloudFront PoPs rather than staying within the VPC boundary.\n- ❌ **Cost**: CloudFront pricing applied to internal traffic that could be served entirely within the VPC at no CDN cost.\n\n**Outcome**: Rejected. Adds complexity and cost relative to the benefit; the VPC-internal topology options provide better isolation for truly internal workloads.",
+    "14": "[decisions/technology/ADR-TEC-018-web-frontend-hosting-strategy.md#option-b-internal--alb--nginx-reverse-proxy-on-eks-serving-from-s3-selected]\n\n### Option B: Internal — ALB + nginx Reverse Proxy on EKS Serving from S3 (Selected)\n\n**Description**: An Application Load Balancer (ALB) fronts a small nginx deployment on the existing EKS cluster. The nginx container fetches static assets from S3 using an IAM role (IRSA) and serves them to clients behind the ALB within the VPC. ALB listener rules enforce HTTPS and route to the nginx target group.\n\n**Pros**:\n\n- ✅ **True VPC isolation**: Traffic remains within the VPC; no public internet exposure.\n- ✅ **EKS platform leverage**: Reuses the existing EKS investment and operational tooling (per established infrastructure patterns).\n- ✅ **ALB integration**: ALB provides TLS termination, WAF association, access logging, and health checks.\n- ✅ **IRSA for S3 access**: nginx authenticates to S3 via IAM role bound to Kubernetes service account; no static credentials.\n- ✅ **Low latency**: No CDN cold-start or edge routing for internal users on the corporate network.\n- ✅ **Scalable**: EKS Horizontal Pod Autoscaler manages nginx replica count based on request volume.\n\n**Cons**:\n\n- ❌ **Compute cost**: Nginx pods consume EKS node capacity even for low-traffic internal tools.\n- ❌ **nginx configuration**: Teams must maintain nginx config for SPA routing (`try_files` rewrite).\n- ❌ **Cache management**: No built-in edge cache layer; caching is limited to nginx in-process or separate cache headers.\n\n**Outcome**: **Selected** as the internal hosting topology. The EKS platform is already operational, IRSA eliminates static credential risk, and the VPC-internal topology provides the appropriate security boundary for staff-facing tools.",
+    "15": "[decisions/technology/ADR-TEC-018-web-frontend-hosting-strategy.md#option-c-internal--alb--lambda-serving-from-s3]\n\n### Option C: Internal — ALB + Lambda Serving from S3\n\n**Description**: An AWS Lambda function (deployed as an ALB target) handles each HTTP request by fetching the appropriate static asset from S3 and returning it to the ALB.\n\n**Pros**:\n\n- ✅ **Serverless**: No persistent compute; cost scales to zero for unused internal tools.\n- ✅ **VPC-internal**: Lambda can be deployed within the VPC with a VPC endpoint for S3 access.\n\n**Cons**:\n\n- ❌ **Cold-start latency**: Lambda cold starts (up to several hundred milliseconds) are disruptive for interactive web UI loading.\n- ❌ **Throughput limits**: Lambda concurrent execution limits and ALB target group integration limits are less predictable than nginx on EKS for high-concurrency scenarios.\n- ❌ **Per-request cost**: Every asset fetch (HTML, JS, CSS, image) incurs a Lambda invocation; this is cost-inefficient compared to nginx caching for static asset delivery.\n- ❌ **Operational complexity**: Lambda function lifecycle (packaging, versioning, deployment) for a static proxy adds overhead without proportional benefit.\n\n**Outcome**: Rejected. Cold-start latency is unacceptable for web UI serving, and per-invocation cost model is inefficient for static asset delivery compared to the nginx reverse proxy.\n\n---",
+    "16": "[decisions/technology/ADR-TEC-018-web-frontend-hosting-strategy.md#decision-outcome]\n\n## Decision Outcome\n\n**Chosen Options**:\n\n- **External-facing applications**: **CloudFront + S3 with OAC** (Required Option)\n- **Internal-facing applications**: **ALB + nginx reverse proxy on EKS serving from S3** (Option B above)\n- **SSR applications (external)**: **CloudFront + S3 with Lambda@Edge at origin-request** (extension of the external topology)\n- **SSR applications (internal)**: **ALB + containerized SSR runtime on EKS** (extension of the internal topology; the nginx proxy is replaced by the SSR application container)\n\n**Rationale**: The external topology maximizes edge performance and leverages AWS-native security controls without requiring compute. The internal topology maximizes VPC isolation, leverages the existing EKS platform, and eliminates the static S3 public access that ALB cannot provide natively. Both topologies are expressible as Terraform and align with `ADR-TEC-006`.",
+    "17": "[decisions/technology/ADR-TEC-018-web-frontend-hosting-strategy.md#implementation]\n\n### Implementation\n\n- 🎯 **Key Steps**:\n    1. Author `STD-INFRA-HST-001` to codify mandatory requirements for both topologies.\n    2. Author `PTN-INFRA-HST-001` to describe the topologies as reusable patterns with decision guidance.\n    3. Publish Terraform reference modules for the external and internal topologies per `ADR-TEC-006`.\n    4. Update `STD-TEC-NXT-003` Section 8.0 to reference `STD-INFRA-HST-001` as the deployment architecture baseline.\n    5. Migrate all existing CloudFront distributions using deprecated OAI to OAC.\n\n- 📊 **Success Criteria**:\n    - All new web frontend deployments use one of the two approved topologies.\n    - No S3 bucket serving web assets has public access enabled.\n    - All CloudFront distributions serving web assets use OAC (OAI eliminated).\n    - Terraform modules for both topologies are published and referenced in team onboarding.\n\n---",
+    "18": "[decisions/technology/ADR-TEC-018-web-frontend-hosting-strategy.md#consequences]\n\n## Consequences",
+    "19": "[decisions/technology/ADR-TEC-018-web-frontend-hosting-strategy.md#-positive]\n\n### ✅ Positive\n\n- Authoritative, framework-agnostic hosting standard eliminates ad hoc topology decisions across teams.\n- OAC requirement removes the deprecated OAI mechanism and its associated credential rotation risk.\n- S3 public access prohibition eliminates a class of data exposure risk across all web frontend buckets.\n- EKS-based internal topology reuses existing platform investment and operational toolchain.\n- Both topologies are Terraform-expressible, satisfying the IaC mandate from `ADR-TEC-006`.",
+    "20": "[decisions/technology/ADR-TEC-018-web-frontend-hosting-strategy.md#-negative]\n\n### ❌ Negative\n\n- Teams using deprecated OAI must migrate existing distributions to OAC (no new OAI allowed; existing OAI distributions require a migration timeline).\n- Internal topology requires maintaining nginx configurations for SPA routing on EKS; Platform Engineering must provide a reference Helm chart or Terraform module.\n- SSR workloads require Lambda@Edge (external) or a dedicated container (internal), which are more operationally complex than pure static hosting.",
+    "21": "[decisions/technology/ADR-TEC-018-web-frontend-hosting-strategy.md#-neutral]\n\n### ⚪ Neutral\n\n- Existing `STD-TEC-NXT-003` Section 8.0 Terraform blocks are superseded by `STD-INFRA-HST-001`; the Next.js standard retains only Lambda@Edge SSR configuration and `_next/static` cache behavior tuning.\n- Micro-frontend patterns `PTN-APP-MFE-003` and `PTN-APP-MFE-007` continue to reference CloudFront + S3 for module federation hosting; they should cross-reference `PTN-INFRA-HST-001` for the infrastructure topology details.\n\n---",
+    "22": "[decisions/technology/ADR-TEC-018-web-frontend-hosting-strategy.md#risk-assessment--mitigation]\n\n## Risk Assessment & Mitigation",
+    "23": "[decisions/technology/ADR-TEC-018-web-frontend-hosting-strategy.md#-risks]\n\n### ⚠️ Risks\n\n- **OAI migration scope**: Existing distributions using deprecated OAI are not immediately compliant; teams may defer migration.\n- **EKS nginx operational burden**: Teams unfamiliar with EKS may struggle to maintain nginx deployments for internal apps without a reference implementation.\n- **Lambda@Edge regional constraints**: Lambda@Edge functions must be deployed in `us-east-1` and replicate globally; this constraint must be documented in the SSR guidance.\n- **S3 bucket misconfiguration**: Teams may inadvertently enable S3 public access or direct S3 website endpoints if the standard is not enforced via policy-as-code.",
+    "24": "[decisions/technology/ADR-TEC-018-web-frontend-hosting-strategy.md#-mitigations]\n\n### 🛡️ Mitigations\n\n- **OAI migration**: Define a migration deadline in `STD-INFRA-HST-001` and provide a Terraform module that implements OAC from the start; block new OAI creation via AWS Service Control Policy (SCP).\n- **EKS nginx reference**: Publish a reference Helm chart and Terraform module for the ALB + nginx + IRSA pattern as part of the implementation guidance (`GUID-INFRA-HST-001`).\n- **Lambda@Edge constraint**: Document the `us-east-1` deployment requirement explicitly in `STD-TEC-NXT-003` SSR configuration guidance.\n- **S3 policy enforcement**: Enforce S3 Block Public Access via AWS Organizations SCP; include Checkov/tfsec checks in CI/CD pipelines per `ADR-TEC-006`.\n\n---",
+    "25": "[decisions/technology/ADR-TEC-018-web-frontend-hosting-strategy.md#compliance-notes]\n\n## Compliance Notes\n\n- **Security**: OAC eliminates IAM credential rotation risk; WAF association at the distribution edge enforces rate limiting and managed rule groups. S3 SSE-KMS or SSE-S3 encryption is required for all hosting buckets.\n- **Regulatory (HIPAA)**: PHI must not appear in static assets, CloudFront access logs, or URL query parameters. This constraint is codified as a mandatory requirement in `STD-INFRA-HST-001`. The internal topology provides VPC isolation that prevents PHI-bearing traffic from traversing the public internet.\n- **Standards**: This decision aligns with `ADR-TEC-006` (Terraform IaC strategy). All infrastructure defined under this decision must be authored as Terraform using the Terraform + Terragrunt stack.\n\n---",
+    "26": "[decisions/technology/ADR-TEC-018-web-frontend-hosting-strategy.md#review-and-approval]\n\n## Review and Approval\n\n| Role                         | Name   | Date         | Status     |\n| ---------------------------- | ------ | ------------ | ---------- |\n| Chief Technology Officer     | [Name] | [YYYY-MM-DD] | 🔄 Pending |\n| Chief Architect              | [Name] | [YYYY-MM-DD] | 🔄 Pending |\n| Enterprise Architecture Lead | [Name] | [YYYY-MM-DD] | 🔄 Pending |\n| Domain Enterprise Architect  | [Name] | [YYYY-MM-DD] | 🔄 Pending |\n\n---",
+    "27": "[decisions/technology/ADR-TEC-018-web-frontend-hosting-strategy.md#-change-log]\n\n## 📋 Change Log\n\n| Version | Date       | Author                        | Description                                       |\n| ------- | ---------- | ----------------------------- | ------------------------------------------------- |\n| 1.0     | 2026-04-29 | Enterprise Architecture Practice | Initial decision document for web frontend hosting strategy. |\n\n---",
+    "28": "[decisions/technology/ADR-TEC-018-web-frontend-hosting-strategy.md#-last-reviewed]\n\n## 🔍 Last Reviewed\n\n| Review Date | Reviewer                       | Review Type      | Status  |\n| ----------- | ------------------------------ | ---------------- | ------- |\n| 2026-04-29  | Enterprise Architecture Practice | Initial Creation | Current |\n\n---"
+  },
+  "coverage": {
+    "total_pages": 28,
+    "covered_pages": 28,
+    "sampled_pages": 28,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 28
+  }
+}

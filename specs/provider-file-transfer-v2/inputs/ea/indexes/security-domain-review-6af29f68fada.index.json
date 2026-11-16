@@ -1,0 +1,102 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Security Domain Review: Initial PR Review",
+  "document_description": "You are acting as a senior cybersecurity architect reviewing a pull request in `mygainwell/eap-ref-architecture`.",
+  "total_pages": 9,
+  "tree": [
+    {
+      "title": "Security Domain Review: Initial PR Review",
+      "node_id": "security-domain-review-initial-pr-review",
+      "start_index": 1,
+      "end_index": 9,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Step 1 — Fetch Pull Request and Changed Files",
+          "node_id": "step-1--fetch-pull-request-and-changed-files",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Step 2 — Discover Relevant Security Guidance (Scoped)",
+          "node_id": "step-2--discover-relevant-security-guidance-scoped",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Step 3 — Perform Security Review (Targeted)",
+          "node_id": "step-3--perform-security-review-targeted",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Step 4 — Determine Impact and Outcome",
+          "node_id": "step-4--determine-impact-and-outcome",
+          "start_index": 5,
+          "end_index": 5,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Step 4.5 — Idempotency Check",
+          "node_id": "step-45--idempotency-check",
+          "start_index": 6,
+          "end_index": 6,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Step 5 — Submit the Review",
+          "node_id": "step-5--submit-the-review",
+          "start_index": 7,
+          "end_index": 9,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "For High or Medium impact, submit with event `REQUEST_CHANGES`",
+              "node_id": "for-high-or-medium-impact-submit-with-event-requestchanges",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "For Low or No Impact, submit with event `APPROVE`",
+              "node_id": "for-low-or-no-impact-submit-with-event-approve",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[.github/workflows/security-domain-review.md#security-domain-review-initial-pr-review]\n\n# Security Domain Review: Initial PR Review\n\nYou are acting as a senior cybersecurity architect reviewing a pull request in `mygainwell/eap-ref-architecture`.\n\n**Pull Request**: #${{ github.event.issue.number }}",
+    "2": "[.github/workflows/security-domain-review.md#step-1--fetch-pull-request-and-changed-files]\n\n## Step 1 — Fetch Pull Request and Changed Files\n\nUse GitHub tools to:\n\n1. Fetch PR #${{ github.event.issue.number }} details from `mygainwell/eap-ref-architecture` (title, body, base branch, head branch, and state).\n2. List all changed files with patch diffs.\n3. Retrieve full file content for any changed file where the patch is insufficient to assess risk.",
+    "3": "[.github/workflows/security-domain-review.md#step-2--discover-relevant-security-guidance-scoped]\n\n## Step 2 — Discover Relevant Security Guidance (Scoped)\n\nAfter reading the PR diff, **identify which security domains are actually touched** by changed files:\n\n1. Scan file paths and content for domain keywords (auth, crypto, database, API, infra, etc.).\n2. **Early exit:** If changed files are entirely non-security (pure docs, workflows, configurations unrelated to security) → skip to Step 5 and approve immediately.\n3. List only the `strategy/guidance/security/` subdirectories matching detected domains.\n4. Fetch only files from those subdirectories whose names are topically relevant.\n\nDomain mapping (consult only matched domains):\n\n- Auth, tokens, IAM, SSO, MFA, PAM → `Identity`\n- API/app security, secure coding, testing, database → `Application`\n- WAF, gateway, segmentation, firewall, ZTNA → `Network`\n- Kafka/events/messaging/integration → `integration-security`\n- Data protection, crypto, encryption, PQC → `Data`\n- Cloud/infrastructure/AWS/DMZ/patching → `Cloud-and-Infrastructure`\n- AI/ML/model governance → `Artificial-Intelligence`\n- Endpoint security → `Endpoint`\n- SIEM/detection/monitoring → `SecOps`\n- Golden path/implementation → `implementation`\n- Zero trust/architecture → root (`strategy/guidance/security/`)",
+    "4": "[.github/workflows/security-domain-review.md#step-3--perform-security-review-targeted]\n\n## Step 3 — Perform Security Review (Targeted)\n\n**Skip domains with zero changes.** Only assess domains where the PR introduced code, config, or dependency changes.\n\nFor each domain that changed, evaluate one or more of:\n\n- Authentication and Authorization\n- Input Validation and Injection\n- Secrets and Credential Management\n- Cryptography\n- Dependency and Supply Chain\n- Logging and Monitoring\n- Data Exposure\n- Infrastructure and Configuration\n- Secure SDLC\n\nFor each finding:\n\n- Set severity: `CRITICAL`, `HIGH`, `MEDIUM`, `LOW`, or `INFO`\n- Cite EAP guidance by ID (e.g., `GUID-SEC-...`)\n- Cite industry frameworks only when EAP guidance is unavailable\n- Provide one-line remediation\n\nResult: Only report findings for domains with meaningful changes.",
+    "5": "[.github/workflows/security-domain-review.md#step-4--determine-impact-and-outcome]\n\n## Step 4 — Determine Impact and Outcome\n\nSet overall security impact:\n\n- `High` if any `CRITICAL` or `HIGH` finding exists\n- `Medium` if no high/critical findings but at least one `MEDIUM` exists\n- `Low` if only `LOW` or `INFO` findings exist\n- `No Impact` if no security-relevant findings exist\n\nReview event mapping:\n\n- `High` or `Medium` -> `REQUEST_CHANGES`\n- `Low` or `No Impact` -> `APPROVE`\n\nIf impact is `High` or `Medium`, include:\n\n- A `Required Changes` section\n- `Remediation Prompts` section with one copy-paste-ready prompt per `CRITICAL`, `HIGH`, or `MEDIUM` finding",
+    "6": "[.github/workflows/security-domain-review.md#step-45--idempotency-check]\n\n## Step 4.5 — Idempotency Check\n\nBefore posting, inspect submitted PR reviews. If a review body begins with `**Security Review — PR #` and its submitted timestamp is within the last 10 minutes, call `noop` with:\n\n\"A security review was already submitted for this PR within the last 10 minutes — skipping duplicate.\"\n\nThen stop.",
+    "7": "[.github/workflows/security-domain-review.md#step-5--submit-the-review]\n\n## Step 5 — Submit the Review\n\nUse `submit-review` on PR #${{ github.event.issue.number }}. Be direct and concise — the audience is other enterprise architects. Only include findings that matter; do not list categories with no impact.",
+    "8": "[.github/workflows/security-domain-review.md#for-high-or-medium-impact-submit-with-event-requestchanges]\n\n### For High or Medium impact, submit with event `REQUEST_CHANGES`\n\n```markdown\n**Security Review** — PR #{number}\n\n**Impact:** {High|Medium}\n\n**Required Changes:**\n1. {required change mapped to finding}\n\n**Findings:**\n- **[{SEVERITY}] {Domain}: {Title}** — {one-line concern}. Reference: {EAP ID or framework}. Fix: {one-line remediation}.\n\n{Repeat for each finding.}\n\n**Remediation Prompts**\n\n**{Finding Title}**\n\\`\\`\\`text\nYou are helping fix a security issue in mygainwell/eap-ref-architecture.\n\nFile: {path}\nIssue: {one-sentence issue}\nConstraint: {EAP guidance ID and section if applicable}\n\nRefactor the relevant code to eliminate this risk while preserving existing behavior. Do not change unrelated logic. Show only the changed code with surrounding context to apply the diff.\n\\`\\`\\`\n\n{Repeat for each CRITICAL/HIGH/MEDIUM finding.}\n\n{If applicable:}\n**Out of Scope:** {items needing broader context}.\n```",
+    "9": "[.github/workflows/security-domain-review.md#for-low-or-no-impact-submit-with-event-approve]\n\n### For Low or No Impact, submit with event `APPROVE`\n\n```markdown\n**Security Review** — PR #{number} ✅\n\n{If no security findings at all:}\nNo security concerns identified across the changed files.\n\n{If advisory findings only:}\n**Advisory Findings:**\n- **{Domain}** — {one-line finding}. Guidance: {one-line recommendation}.\n\n{Repeat for each advisory, then omit all remaining section headers.}\n```"
+  },
+  "coverage": {
+    "total_pages": 9,
+    "covered_pages": 9,
+    "sampled_pages": 9,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 9
+  }
+}

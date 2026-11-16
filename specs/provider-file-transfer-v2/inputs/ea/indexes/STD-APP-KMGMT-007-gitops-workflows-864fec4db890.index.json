@@ -1,0 +1,817 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "STD-APP-KMGMT-007: GitOps Workflow Integration",
+  "document_description": "This standard establishes requirements for implementing GitOps workflows to manage Lenses.io and Kafka infrastructure as code, enabling declarative configuration management, automated reconciliation, and version-controlled infrastructure changes. It defines the frameworks, processes, and governance needed to maintain Git as the single source of truth for all Kafka infrastructure configurations.",
+  "total_pages": 87,
+  "tree": [
+    {
+      "title": "STD-APP-KMGMT-007: GitOps Workflow Integration",
+      "node_id": "std-app-kmgmt-007-gitops-workflow-integration",
+      "start_index": 1,
+      "end_index": 87,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Executive Summary",
+          "node_id": "executive-summary",
+          "start_index": 2,
+          "end_index": 6,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Purpose and Scope",
+              "node_id": "purpose-and-scope",
+              "start_index": 3,
+              "end_index": 3,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "1.2 Key Requirements",
+              "node_id": "12-key-requirements",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "1.3 Business Rationale",
+              "node_id": "13-business-rationale",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "1.4 Compliance Level",
+              "node_id": "14-compliance-level",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 7,
+          "end_index": 7,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "2. Overview",
+          "node_id": "2-overview",
+          "start_index": 8,
+          "end_index": 12,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "2.1 Purpose",
+              "node_id": "21-purpose",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "2.2 Scope",
+              "node_id": "22-scope",
+              "start_index": 10,
+              "end_index": 10,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "2.3 Related Standards",
+              "node_id": "23-related-standards",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "2.4 Related Decisions",
+              "node_id": "24-related-decisions",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "3. Prohibited Practices",
+          "node_id": "3-prohibited-practices",
+          "start_index": 13,
+          "end_index": 19,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "3.1 Direct Production Changes",
+              "node_id": "31-direct-production-changes",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "3.2 Storing Secrets in Git",
+              "node_id": "32-storing-secrets-in-git",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "3.3 Manual Configuration Drift",
+              "node_id": "33-manual-configuration-drift",
+              "start_index": 16,
+              "end_index": 16,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "3.4 Unvalidated Configurations",
+              "node_id": "34-unvalidated-configurations",
+              "start_index": 17,
+              "end_index": 17,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "3.5 Shared Environment Branches",
+              "node_id": "35-shared-environment-branches",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "3.6 Unprotected Production Branches",
+              "node_id": "36-unprotected-production-branches",
+              "start_index": 19,
+              "end_index": 19,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "4. Requirements",
+          "node_id": "4-requirements",
+          "start_index": 20,
+          "end_index": 30,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "4.1 REQ-LENS-007-001: Git as Single Source of Truth",
+              "node_id": "41-req-lens-007-001-git-as-single-source-of-truth",
+              "start_index": 21,
+              "end_index": 21,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.2 REQ-LENS-007-002: Declarative Configuration Management",
+              "node_id": "42-req-lens-007-002-declarative-configuration-management",
+              "start_index": 22,
+              "end_index": 22,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.3 REQ-LENS-007-003: Automated Reconciliation",
+              "node_id": "43-req-lens-007-003-automated-reconciliation",
+              "start_index": 23,
+              "end_index": 23,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.4 REQ-LENS-007-004: Pull Request Workflow",
+              "node_id": "44-req-lens-007-004-pull-request-workflow",
+              "start_index": 24,
+              "end_index": 24,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.5 REQ-LENS-007-005: Infrastructure as Code Tools",
+              "node_id": "45-req-lens-007-005-infrastructure-as-code-tools",
+              "start_index": 25,
+              "end_index": 25,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.6 REQ-LENS-007-006: Environment Promotion Strategy",
+              "node_id": "46-req-lens-007-006-environment-promotion-strategy",
+              "start_index": 26,
+              "end_index": 26,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.7 REQ-LENS-007-007: Rollback Capabilities",
+              "node_id": "47-req-lens-007-007-rollback-capabilities",
+              "start_index": 27,
+              "end_index": 27,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.8 REQ-LENS-007-008: Configuration Validation",
+              "node_id": "48-req-lens-007-008-configuration-validation",
+              "start_index": 28,
+              "end_index": 28,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.9 REQ-LENS-007-009: Secret Management",
+              "node_id": "49-req-lens-007-009-secret-management",
+              "start_index": 29,
+              "end_index": 29,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "4.10 REQ-LENS-007-010: Observability and Monitoring",
+              "node_id": "410-req-lens-007-010-observability-and-monitoring",
+              "start_index": 30,
+              "end_index": 30,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "5. Exceptions Process",
+          "node_id": "5-exceptions-process",
+          "start_index": 31,
+          "end_index": 35,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "5.1 When to Request an Exception",
+              "node_id": "51-when-to-request-an-exception",
+              "start_index": 32,
+              "end_index": 32,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "5.2 Exception Request Procedure",
+              "node_id": "52-exception-request-procedure",
+              "start_index": 33,
+              "end_index": 33,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "5.3 Approval Authority",
+              "node_id": "53-approval-authority",
+              "start_index": 34,
+              "end_index": 34,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "5.4 Exception Monitoring",
+              "node_id": "54-exception-monitoring",
+              "start_index": 35,
+              "end_index": 35,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "6. Technical Specifications",
+          "node_id": "6-technical-specifications",
+          "start_index": 36,
+          "end_index": 41,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "6.1 Platform Requirements",
+              "node_id": "61-platform-requirements",
+              "start_index": 37,
+              "end_index": 37,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "6.2 Architecture Constraints",
+              "node_id": "62-architecture-constraints",
+              "start_index": 38,
+              "end_index": 38,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "6.3 Configuration Specifications",
+              "node_id": "63-configuration-specifications",
+              "start_index": 39,
+              "end_index": 39,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "6.4 Security Specifications",
+              "node_id": "64-security-specifications",
+              "start_index": 40,
+              "end_index": 40,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "6.5 Performance Specifications",
+              "node_id": "65-performance-specifications",
+              "start_index": 41,
+              "end_index": 41,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "7. Technology Stack",
+          "node_id": "7-technology-stack",
+          "start_index": 42,
+          "end_index": 44,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "7.1 Core Technologies",
+              "node_id": "71-core-technologies",
+              "start_index": 43,
+              "end_index": 43,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "7.2 Supporting Tools",
+              "node_id": "72-supporting-tools",
+              "start_index": 44,
+              "end_index": 44,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "8. Implementation Guidance",
+          "node_id": "8-implementation-guidance",
+          "start_index": 45,
+          "end_index": 54,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "8.1 Prerequisites",
+              "node_id": "81-prerequisites",
+              "start_index": 46,
+              "end_index": 46,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "8.2 Implementation Steps",
+              "node_id": "82-implementation-steps",
+              "start_index": 47,
+              "end_index": 53,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Step 1: Repository Structure Setup",
+                  "node_id": "step-1-repository-structure-setup",
+                  "start_index": 48,
+                  "end_index": 48,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 2: GitOps Tool Selection and Installation",
+                  "node_id": "step-2-gitops-tool-selection-and-installation",
+                  "start_index": 49,
+                  "end_index": 49,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 3: Infrastructure as Code Implementation",
+                  "node_id": "step-3-infrastructure-as-code-implementation",
+                  "start_index": 50,
+                  "end_index": 50,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 4: CI/CD Pipeline Configuration",
+                  "node_id": "step-4-cicd-pipeline-configuration",
+                  "start_index": 51,
+                  "end_index": 51,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 5: Secrets Management Integration",
+                  "node_id": "step-5-secrets-management-integration",
+                  "start_index": 52,
+                  "end_index": 52,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Step 6: Monitoring and Alerting Setup",
+                  "node_id": "step-6-monitoring-and-alerting-setup",
+                  "start_index": 53,
+                  "end_index": 53,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "8.3 Post-Implementation Tasks",
+              "node_id": "83-post-implementation-tasks",
+              "start_index": 54,
+              "end_index": 54,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "9. Validation Criteria",
+          "node_id": "9-validation-criteria",
+          "start_index": 55,
+          "end_index": 55,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "10. Testing Requirements",
+          "node_id": "10-testing-requirements",
+          "start_index": 56,
+          "end_index": 60,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "10.1 Functional Testing",
+              "node_id": "101-functional-testing",
+              "start_index": 57,
+              "end_index": 57,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "10.2 Security Testing",
+              "node_id": "102-security-testing",
+              "start_index": 58,
+              "end_index": 58,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "10.3 Performance Testing",
+              "node_id": "103-performance-testing",
+              "start_index": 59,
+              "end_index": 59,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "10.4 Integration Testing",
+              "node_id": "104-integration-testing",
+              "start_index": 60,
+              "end_index": 60,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "11. Documentation Requirements",
+          "node_id": "11-documentation-requirements",
+          "start_index": 61,
+          "end_index": 67,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "11.1 Architecture Documentation",
+              "node_id": "111-architecture-documentation",
+              "start_index": 62,
+              "end_index": 62,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "11.2 Operational Procedures",
+              "node_id": "112-operational-procedures",
+              "start_index": 63,
+              "end_index": 63,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "11.3 Developer Guides",
+              "node_id": "113-developer-guides",
+              "start_index": 64,
+              "end_index": 64,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "11.4 Security Documentation",
+              "node_id": "114-security-documentation",
+              "start_index": 65,
+              "end_index": 65,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "11.5 Compliance Documentation",
+              "node_id": "115-compliance-documentation",
+              "start_index": 66,
+              "end_index": 66,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "11.6 Training Materials",
+              "node_id": "116-training-materials",
+              "start_index": 67,
+              "end_index": 67,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "12. Troubleshooting",
+          "node_id": "12-troubleshooting",
+          "start_index": 68,
+          "end_index": 73,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "12.1 Issue 1: Reconciliation Failures",
+              "node_id": "121-issue-1-reconciliation-failures",
+              "start_index": 69,
+              "end_index": 69,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "12.2 Issue 2: Configuration Drift Detection",
+              "node_id": "122-issue-2-configuration-drift-detection",
+              "start_index": 70,
+              "end_index": 70,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "12.3 Issue 3: Secret Injection Failures",
+              "node_id": "123-issue-3-secret-injection-failures",
+              "start_index": 71,
+              "end_index": 71,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "12.4 Issue 4: Environment Promotion Failures",
+              "node_id": "124-issue-4-environment-promotion-failures",
+              "start_index": 72,
+              "end_index": 72,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "12.5 Issue 5: Rollback Not Functioning",
+              "node_id": "125-issue-5-rollback-not-functioning",
+              "start_index": 73,
+              "end_index": 73,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "13. Compliance Checklist",
+          "node_id": "13-compliance-checklist",
+          "start_index": 74,
+          "end_index": 74,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "14. Governance Oversight",
+          "node_id": "14-governance-oversight",
+          "start_index": 75,
+          "end_index": 80,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "14.1 Ownership and Accountability",
+              "node_id": "141-ownership-and-accountability",
+              "start_index": 76,
+              "end_index": 76,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "14.2 Review and Update Frequency",
+              "node_id": "142-review-and-update-frequency",
+              "start_index": 77,
+              "end_index": 77,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "14.3 Metrics and KPIs",
+              "node_id": "143-metrics-and-kpis",
+              "start_index": 78,
+              "end_index": 78,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "14.4 Key Contacts",
+              "node_id": "144-key-contacts",
+              "start_index": 79,
+              "end_index": 79,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "14.5 Related Governance",
+              "node_id": "145-related-governance",
+              "start_index": 80,
+              "end_index": 80,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "15. References",
+          "node_id": "15-references",
+          "start_index": 81,
+          "end_index": 84,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "15.1 Related Documentation",
+              "node_id": "151-related-documentation",
+              "start_index": 82,
+              "end_index": 82,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "15.2 External Resources",
+              "node_id": "152-external-resources",
+              "start_index": 83,
+              "end_index": 83,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "15.3 Industry Standards",
+              "node_id": "153-industry-standards",
+              "start_index": 84,
+              "end_index": 84,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "16. Change History",
+          "node_id": "16-change-history",
+          "start_index": 85,
+          "end_index": 85,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "17. Review Log",
+          "node_id": "17-review-log",
+          "start_index": 86,
+          "end_index": 86,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "18. Document Status",
+          "node_id": "18-document-status",
+          "start_index": 87,
+          "end_index": 87,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#std-app-kmgmt-007-gitops-workflow-integration]\n\n# STD-APP-KMGMT-007: GitOps Workflow Integration\n\n**[Home](../../../README.md)** > **[Standards](../../README.md)** > **[Application](../README.md)** > **[Kafka Management](README.md)** > **STD-APP-KMGMT-007**\n\n---\n\n---",
+    "2": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#executive-summary]\n\n## Executive Summary",
+    "3": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#purpose-and-scope]\n\n### Purpose and Scope\n\nThis standard establishes requirements for implementing GitOps workflows to manage Lenses.io and Kafka infrastructure as code, enabling declarative configuration management, automated reconciliation, and version-controlled infrastructure changes. It defines the frameworks, processes, and governance needed to maintain Git as the single source of truth for all Kafka infrastructure configurations.",
+    "4": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#12-key-requirements]\n\n### 1.2 Key Requirements\n\n- **Git as Source of Truth**: All Lenses.io and Kafka configurations stored in version-controlled Git repositories\n- **Declarative Configuration**: Infrastructure defined declaratively using YAML/JSON with schema validation\n- **Automated Reconciliation**: Continuous reconciliation loops to detect and correct configuration drift\n- **Pull Request Workflows**: Peer-reviewed changes with automated validation before deployment\n- **Environment Promotion**: Structured promotion path from development through production environments\n- **Rollback Capabilities**: Git-based rollback mechanisms for rapid recovery to known-good states\n- **Secret Management**: Secure handling of credentials and sensitive data outside Git repositories\n- **Observability**: Comprehensive monitoring of GitOps processes, drift detection, and deployment status",
+    "5": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#13-business-rationale]\n\n### 1.3 Business Rationale\n\nGitOps workflows provide organizations with:\n- **Auditability**: Complete audit trail of who changed what and when through Git history\n- **Reproducibility**: Ability to recreate any environment state from Git repository\n- **Disaster Recovery**: Rapid recovery to previous configurations through Git rollback\n- **Collaboration**: Team-based infrastructure management through pull request workflows\n- **Compliance**: Enforcement of change management policies through automated validation\n- **Reduced Errors**: Prevention of manual configuration errors through automation\n- **Operational Efficiency**: Reduced time spent on manual infrastructure changes",
+    "6": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#14-compliance-level]\n\n### 1.4 Compliance Level\n\n**Guidance** - Recommended implementation pattern for organizations seeking to adopt modern infrastructure management practices. While not mandatory, GitOps provides significant operational and governance benefits that support other mandatory standards.",
+    "7": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#table-of-contents]\n\n## Table of Contents\n\n- [1. Overview](#1-overview)\n- [2. Requirements](#2-requirements)\n- [3. Technical Specifications](#3-technical-specifications)\n- [4. Implementation Guidance](#4-implementation-guidance)\n- [5. Compliance and Governance](#5-compliance-and-governance)\n- [6. References](#6-references)\n- [7. Change History](#7-change-history)\n- [8. Review Log](#8-review-log)\n\n---",
+    "8": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#2-overview]\n\n## 2. Overview",
+    "9": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#21-purpose]\n\n### 2.1 Purpose\n\nThis standard defines requirements for implementing GitOps workflows to manage Lenses.io and Kafka infrastructure as code, enabling declarative configuration management and automated reconciliation.",
+    "10": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#22-scope]\n\n### 2.2 Scope\n\n- **In Scope**: Infrastructure as Code, Git-based workflows, automated reconciliation, declarative configuration, version control, environment promotion, rollback procedures\n- **Out of Scope**: Manual configuration changes, imperative scripting, ad-hoc deployments, non-Kafka infrastructure management",
+    "11": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#23-related-standards]\n\n### 2.3 Related Standards\n\n- [STD-INFRA-KMGMT-001](../../infrastructure/kafka-management/STD-INFRA-KMGMT-001-platform-installation.md) - Platform Installation\n- [STD-APP-KMGMT-006](STD-APP-KMGMT-006-cicd-integration.md) - CI/CD Pipeline Integration\n- [STD-APP-KMGMT-004](STD-APP-KMGMT-004-api-access.md) - API Access",
+    "12": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#24-related-decisions]\n\n### 2.4 Related Decisions\n\n- [ADR-IFR-008](../../../decisions/infrastructure/ADR-IFR-008-kafka-management-platform-selection.md) - Kafka Management Platform Selection",
+    "13": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#3-prohibited-practices]\n\n## 3. Prohibited Practices\n\nThe following practices are explicitly prohibited when implementing GitOps workflows:",
+    "14": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#31-direct-production-changes]\n\n### 3.1 Direct Production Changes\n\n**Prohibition**: Making configuration changes directly to production environments without going through Git\n**Rationale**: Bypasses version control, audit trails, and peer review processes, creating undocumented configuration drift and compliance violations\n**Impact**: Loss of auditability, inability to rollback, configuration inconsistency",
+    "15": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#32-storing-secrets-in-git]\n\n### 3.2 Storing Secrets in Git\n\n**Prohibition**: Committing plaintext credentials, API keys, or sensitive data to Git repositories\n**Rationale**: Exposes sensitive information in Git history permanently, creates security vulnerabilities even if later removed\n**Impact**: Security breaches, compliance violations, credential compromise",
+    "16": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#33-manual-configuration-drift]\n\n### 3.3 Manual Configuration Drift\n\n**Prohibition**: Allowing manual changes to persist without reconciling back to Git state\n**Rationale**: Creates divergence between declared state and actual state, undermines GitOps principles\n**Impact**: Unpredictable behavior, failed deployments, configuration inconsistency",
+    "17": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#34-unvalidated-configurations]\n\n### 3.4 Unvalidated Configurations\n\n**Prohibition**: Deploying configurations without automated schema validation and policy checks\n**Rationale**: Invalid configurations can cause service outages and data loss\n**Impact**: Production incidents, extended downtime, rollback complications",
+    "18": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#35-shared-environment-branches]\n\n### 3.5 Shared Environment Branches\n\n**Prohibition**: Using single branch for multiple environments without proper isolation\n**Rationale**: Risk of unintended deployments to wrong environments, cross-environment contamination\n**Impact**: Production incidents from dev/test configurations, data corruption",
+    "19": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#36-unprotected-production-branches]\n\n### 3.6 Unprotected Production Branches\n\n**Prohibition**: Allowing direct commits to production branches without pull request reviews\n**Rationale**: Circumvents peer review and approval processes, increases risk of errors reaching production\n**Impact**: Unreviewed changes in production, increased incident rate, compliance violations",
+    "20": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#4-requirements]\n\n## 4. Requirements",
+    "21": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#41-req-lens-007-001-git-as-single-source-of-truth]\n\n### 4.1 REQ-LENS-007-001: Git as Single Source of Truth\n\n**Status**: To Be Implemented\n**Priority**: High\n\n**Rationale**: Git repository serves as the authoritative source for all Kafka infrastructure configuration, enabling version control, audit trails, and rollback capabilities\n\n**Configuration**:\n- All Lenses.io configurations stored in Git\n- Branching strategy defined (main, develop, feature branches)\n- Tag-based versioning for releases\n- Protected branches for production configurations\n\n**Implementation Details**:\n```yaml\n# Repository structure\nkafka-infrastructure/\n├── environments/\n│   ├── dev/\n│   ├── qa/\n│   └── prod/\n├── base/\n│   ├── topics/\n│   ├── connectors/\n│   ├── acls/\n│   └── schemas/\n├── modules/\n│   └── terraform/\n└── .github/\n    └── workflows/\n```\n\n**Validation**:\n- All configurations retrievable from Git\n- No manual configurations in production\n- Git history provides complete audit trail\n\n---",
+    "22": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#42-req-lens-007-002-declarative-configuration-management]\n\n### 4.2 REQ-LENS-007-002: Declarative Configuration Management\n\n**Status**: To Be Implemented\n**Priority**: High\n\n**Rationale**: Declarative configuration ensures desired state is clearly defined and reconciliation processes can automatically correct drift\n\n**Configuration**:\n- YAML/JSON format for all configurations\n- Schema validation for configuration files\n- Template-based configuration generation\n- Environment-specific overlays\n\n**Implementation Details**:\n```yaml\n# Example Kafka topic configuration\napiVersion: kafka.lenses.io/v1\nkind: Topic\nmetadata:\n  name: customer-events\nspec:\n  partitions: 12\n  replicationFactor: 3\n  config:\n    retention.ms: \"604800000\"\n    cleanup.policy: \"delete\"\n    compression.type: \"lz4\"\n```\n\n**Validation**:\n- All configs pass schema validation\n- No imperative scripts for configuration\n- Declarative state matches actual state\n\n---",
+    "23": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#43-req-lens-007-003-automated-reconciliation]\n\n### 4.3 REQ-LENS-007-003: Automated Reconciliation\n\n**Status**: To Be Implemented\n**Priority**: High\n\n**Rationale**: Automated reconciliation ensures actual state matches desired state defined in Git, reducing configuration drift\n\n**Configuration**:\n- Continuous reconciliation loop implemented\n- Drift detection and automatic correction\n- Reconciliation frequency configured (every 3 minutes recommended)\n- Manual override capabilities with audit trail\n\n**Implementation Details**:\n```yaml\n# ArgoCD Application example\napiVersion: argoproj.io/v1alpha1\nkind: Application\nmetadata:\n  name: kafka-infrastructure\nspec:\n  project: default\n  source:\n    repoURL: https://github.com/org/kafka-configs\n    targetRevision: main\n    path: environments/prod\n  destination:\n    server: https://kubernetes.default.svc\n    namespace: kafka\n  syncPolicy:\n    automated:\n      prune: true\n      selfHeal: true\n    syncOptions:\n    - CreateNamespace=true\n```\n\n**Validation**:\n- Reconciliation running continuously\n- Drift detected and corrected within 5 minutes\n- Override logs captured in audit trail\n\n---",
+    "24": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#44-req-lens-007-004-pull-request-workflow]\n\n### 4.4 REQ-LENS-007-004: Pull Request Workflow\n\n**Status**: To Be Implemented\n**Priority**: High\n\n**Rationale**: PR-based workflows enable peer review, automated validation, and controlled deployment of configuration changes\n\n**Configuration**:\n- Required reviewers for production changes (minimum 2)\n- Automated validation in PR pipeline\n- Preview of changes before merge (dry-run)\n- Status checks enforced (all must pass)\n\n**Implementation Details**:\n```yaml\n# GitHub branch protection rules\nbranches:\n  main:\n    protection:\n      required_pull_request_reviews:\n        required_approving_review_count: 2\n        dismiss_stale_reviews: true\n        require_code_owner_reviews: true\n      required_status_checks:\n        strict: true\n        contexts:\n          - validation/schema\n          - validation/security\n          - validation/policy\n      enforce_admins: true\n```\n\n**Validation**:\n- No direct commits to protected branches\n- All PRs have required approvals\n- All status checks passing before merge\n\n---",
+    "25": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#45-req-lens-007-005-infrastructure-as-code-tools]\n\n### 4.5 REQ-LENS-007-005: Infrastructure as Code Tools\n\n**Status**: To Be Implemented\n**Priority**: High\n\n**Rationale**: IaC tools enable programmatic management of Kafka infrastructure with version control and automation\n\n**Configuration**:\n- Terraform/Helm for infrastructure provisioning\n- State management configured (remote state in S3/Azure Blob)\n- Module reusability implemented\n- Provider version pinning\n\n**Implementation Details**:\n```hcl\n# Terraform Kafka topic example\nresource \"kafka_topic\" \"customer_events\" {\n  name               = \"customer-events\"\n  partitions         = 12\n  replication_factor = 3\n\n  config = {\n    \"retention.ms\"      = \"604800000\"\n    \"cleanup.policy\"    = \"delete\"\n    \"compression.type\"  = \"lz4\"\n  }\n}\n\nterraform {\n  required_providers {\n    kafka = {\n      source  = \"Mongey/kafka\"\n      version = \"~> 0.5.0\"\n    }\n  }\n  backend \"s3\" {\n    bucket = \"terraform-state\"\n    key    = \"kafka/prod/terraform.tfstate\"\n    region = \"us-east-1\"\n  }\n}\n```\n\n**Validation**:\n- All infrastructure provisioned via IaC\n- State files stored remotely and versioned\n- Modules reused across environments\n\n---",
+    "26": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#46-req-lens-007-006-environment-promotion-strategy]\n\n### 4.6 REQ-LENS-007-006: Environment Promotion Strategy\n\n**Status**: To Be Implemented\n**Priority**: Medium\n\n**Rationale**: Structured promotion path ensures changes are validated in lower environments before production deployment\n\n**Configuration**:\n- Environment hierarchy defined (DEV → QA → PROD)\n- Automated promotion pipelines\n- Environment-specific configuration overlays\n- Promotion approval gates\n\n**Implementation Details**:\n```yaml\n# Promotion workflow\nstages:\n  - name: Deploy to Dev\n    auto: true\n    branch: develop\n\n  - name: Deploy to QA\n    auto: false\n    requires: [Deploy to Dev]\n    approvers: [qa-team]\n    branch: qa\n\n  - name: Deploy to Prod\n    auto: false\n    requires: [Deploy to QA]\n    approvers: [ops-lead, security-lead]\n    branch: main\n```\n\n**Validation**:\n- Changes tested in dev before qa\n- Approvals required for prod promotion\n- Environment overlays working correctly\n\n---",
+    "27": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#47-req-lens-007-007-rollback-capabilities]\n\n### 4.7 REQ-LENS-007-007: Rollback Capabilities\n\n**Status**: To Be Implemented\n**Priority**: High\n\n**Rationale**: Git-based rollback enables rapid recovery to previous known-good configurations\n\n**Configuration**:\n- Git tag-based rollback mechanism\n- Automated rollback procedures\n- Rollback validation and testing\n- Rollback notification workflow\n\n**Implementation Details**:\n```bash\n# Rollback procedure\n# 1. Identify last known good version\ngit tag -l \"prod-release-*\" --sort=-version:refname | head -1\n\n# 2. Revert to that version\ngit checkout prod-release-2024-01-15-v1.2.3\n\n# 3. Apply rollback\nkubectl apply -k environments/prod\n\n# 4. Verify rollback success\nkubectl get topics -n kafka\n```\n\n**Validation**:\n- Rollback completes within 10 minutes\n- All resources restored to previous state\n- Notifications sent to stakeholders\n\n---",
+    "28": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#48-req-lens-007-008-configuration-validation]\n\n### 4.8 REQ-LENS-007-008: Configuration Validation\n\n**Status**: To Be Implemented\n**Priority**: High\n\n**Rationale**: Pre-deployment validation prevents invalid configurations from being applied to live environments\n\n**Configuration**:\n- Schema validation for configuration files\n- Linting rules enforcement\n- Security policy validation (OPA/Kyverno)\n- Compatibility checking\n\n**Implementation Details**:\n```yaml\n# Validation pipeline\nvalidation:\n  - name: YAML Lint\n    tool: yamllint\n    config: .yamllint.yml\n\n  - name: Schema Validation\n    tool: kubeval\n    schemas: schemas/\n\n  - name: Security Policies\n    tool: opa\n    policies: policies/\n\n  - name: Terraform Validate\n    tool: terraform\n    command: validate\n```\n\n**Validation**:\n- All configs pass validation before deployment\n- Invalid configs rejected at PR stage\n- Policy violations prevent merge\n\n---",
+    "29": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#49-req-lens-007-009-secret-management]\n\n### 4.9 REQ-LENS-007-009: Secret Management\n\n**Status**: To Be Implemented\n**Priority**: High\n\n**Rationale**: Secure management of secrets ensures credentials are not stored in Git while maintaining GitOps principles\n\n**Configuration**:\n- External secrets manager integration (Vault/AWS Secrets Manager)\n- Encrypted secrets in Git (sealed secrets) for non-critical data\n- Secret rotation automation\n- Access control for secret retrieval\n\n**Implementation Details**:\n```yaml\n# External Secrets Operator example\napiVersion: external-secrets.io/v1beta1\nkind: ExternalSecret\nmetadata:\n  name: kafka-credentials\nspec:\n  refreshInterval: 1h\n  secretStoreRef:\n    name: vault-backend\n    kind: SecretStore\n  target:\n    name: kafka-creds\n    creationPolicy: Owner\n  data:\n  - secretKey: username\n    remoteRef:\n      key: kafka/prod/credentials\n      property: username\n  - secretKey: password\n    remoteRef:\n      key: kafka/prod/credentials\n      property: password\n```\n\n**Validation**:\n- No plaintext secrets in Git history\n- Secrets successfully injected at runtime\n- Secret rotation working without downtime\n\n---",
+    "30": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#410-req-lens-007-010-observability-and-monitoring]\n\n### 4.10 REQ-LENS-007-010: Observability and Monitoring\n\n**Status**: To Be Implemented\n**Priority**: Medium\n\n**Rationale**: Monitoring of GitOps processes ensures visibility into reconciliation status, failures, and drift\n\n**Configuration**:\n- Reconciliation metrics published to Prometheus\n- Drift detection alerts configured\n- Deployment status dashboards (Grafana)\n- Audit log integration\n\n**Implementation Details**:\n```yaml\n# Prometheus metrics to track\nmetrics:\n  - app_reconciliation_duration_seconds\n  - app_reconciliation_status\n  - app_sync_total\n  - app_health_status\n  - git_fetch_failures_total\n  - config_drift_detected_total\n\n# Alert rules\nalerts:\n  - name: GitOpsReconciliationFailed\n    expr: app_reconciliation_status{status=\"failed\"} > 0\n    for: 10m\n    severity: critical\n\n  - name: ConfigurationDriftDetected\n    expr: config_drift_detected_total > 0\n    for: 5m\n    severity: warning\n```\n\n**Validation**:\n- Metrics flowing to monitoring system\n- Alerts firing on reconciliation failures\n- Dashboards showing real-time GitOps health",
+    "31": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#5-exceptions-process]\n\n## 5. Exceptions Process",
+    "32": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#51-when-to-request-an-exception]\n\n### 5.1 When to Request an Exception\n\nExceptions to this standard may be considered in the following scenarios:\n- **Legacy System Integration**: Existing systems that cannot be managed declaratively\n- **Emergency Hotfixes**: Critical production issues requiring immediate manual intervention\n- **Third-Party Constraints**: External vendor systems not compatible with GitOps workflows\n- **Proof of Concept**: Short-term experimental projects with explicit sunset dates",
+    "33": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#52-exception-request-procedure]\n\n### 5.2 Exception Request Procedure\n\n1. **Document Business Justification**: Clearly articulate why GitOps cannot be applied\n2. **Propose Compensating Controls**: Define alternative governance and audit mechanisms\n3. **Define Scope and Duration**: Specify exactly what is excluded and for how long\n4. **Submit Exception Request**: Use standard exception request process through governance committee\n5. **Obtain Approval**: Requires approval from Platform Engineering Lead and Enterprise Architect\n6. **Implement Compensating Controls**: Put alternative controls in place before granting exception\n7. **Regular Review**: Exceptions reviewed quarterly with plan to remediate",
+    "34": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#53-approval-authority]\n\n### 5.3 Approval Authority\n\n- **Temporary Exceptions** (< 90 days): Platform Engineering Lead\n- **Extended Exceptions** (90-365 days): Enterprise Architect + Security Lead\n- **Permanent Exceptions** (> 365 days): Architecture Review Board",
+    "35": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#54-exception-monitoring]\n\n### 5.4 Exception Monitoring\n\n- All exceptions logged in central exceptions register\n- Monthly review of active exceptions with remediation progress\n- Automatic expiration and re-approval required for extensions",
+    "36": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#6-technical-specifications]\n\n## 6. Technical Specifications",
+    "37": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#61-platform-requirements]\n\n### 6.1 Platform Requirements\n\n- **Kubernetes**: v1.24+ for running GitOps operators\n- **Git Server**: GitHub Enterprise, GitLab, or Bitbucket with API access\n- **GitOps Operator**: ArgoCD v2.5+, Flux v2.0+, or approved alternative\n- **Lenses.io**: Enterprise 5.0+ with API access enabled\n- **Secrets Manager**: HashiCorp Vault, AWS Secrets Manager, or Azure Key Vault",
+    "38": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#62-architecture-constraints]\n\n### 6.2 Architecture Constraints\n\n- All production infrastructure must be reconcilable from Git within 5 minutes\n- Maximum reconciliation interval: 3 minutes for production, 10 minutes for non-production\n- Git repository must support webhooks for immediate sync triggers\n- Rollback to previous version must complete within 10 minutes\n- All configuration changes must be traceable to specific Git commits",
+    "39": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#63-configuration-specifications]\n\n### 6.3 Configuration Specifications\n\n- **File Formats**: YAML or JSON only, with JSON Schema validation\n- **Naming Conventions**: kebab-case for files, namespaced resources\n- **Directory Structure**: Standardized hierarchy (base/, environments/, modules/)\n- **Branching Model**: GitFlow or trunk-based development with environment branches\n- **Commit Messages**: Conventional Commits specification required",
+    "40": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#64-security-specifications]\n\n### 6.4 Security Specifications\n\n- Branch protection rules enforced on all environment branches\n- Signed commits required for production changes\n- RBAC configured to prevent manual cluster modifications\n- Secrets never stored in Git repository history\n- All API access from GitOps operator uses dedicated service accounts with minimal privileges",
+    "41": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#65-performance-specifications]\n\n### 6.5 Performance Specifications\n\n- Git repository size must not exceed 5GB (use Git LFS for large assets)\n- Reconciliation loop must complete within 30 seconds under normal load\n- Pull request validation must complete within 5 minutes\n- Deployment pipeline end-to-end must complete within 15 minutes for non-production",
+    "42": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#7-technology-stack]\n\n## 7. Technology Stack",
+    "43": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#71-core-technologies]\n\n### 7.1 Core Technologies\n\n- **GitOps Tools**: ArgoCD (recommended), Flux, Jenkins X\n- **IaC Tools**: Terraform v1.3+, Helm v3.10+, Kustomize v4.5+\n- **Version Control**: Git (GitHub Enterprise, GitLab, Bitbucket)\n- **Lenses.io Version**: Enterprise 5.0+",
+    "44": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#72-supporting-tools]\n\n### 7.2 Supporting Tools\n\n- **Secrets Management**: HashiCorp Vault, AWS Secrets Manager, Azure Key Vault, Sealed Secrets\n- **Validation**: yamllint, kubeval, TFLint, Checkov, OPA, Kyverno\n- **Monitoring**: Prometheus, Grafana, Datadog, Splunk\n- **CI/CD Integration**: GitHub Actions, GitLab CI, Jenkins, Azure DevOps",
+    "45": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#8-implementation-guidance]\n\n## 8. Implementation Guidance",
+    "46": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#81-prerequisites]\n\n### 8.1 Prerequisites\n\n1. Git repository infrastructure available with webhook support\n2. Lenses.io platform installed per STD-INFRA-KMGMT-001\n3. CI/CD pipeline configured per STD-APP-KMGMT-006\n4. Secrets management solution deployed and operational\n5. Development, QA, and Production Kubernetes clusters available\n6. RBAC policies defined for GitOps service accounts\n7. Monitoring infrastructure in place (Prometheus/Grafana)",
+    "47": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#82-implementation-steps]\n\n### 8.2 Implementation Steps",
+    "48": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#step-1-repository-structure-setup]\n\n#### Step 1: Repository Structure Setup\n\n1. Create dedicated Git repository for Kafka infrastructure configurations\n2. Define directory structure following standard hierarchy\n   ```\n   kafka-infrastructure/\n   ├── base/                    # Base configurations\n   ├── environments/\n   │   ├── dev/\n   │   ├── qa/\n   │   └── prod/\n   ├── modules/                 # Reusable modules\n   │   ├── terraform/\n   │   └── helm/\n   ├── policies/                # OPA policies\n   ├── schemas/                 # Validation schemas\n   └── .github/workflows/       # CI/CD pipelines\n   ```\n3. Initialize branching strategy (GitFlow recommended)\n4. Configure branch protection rules on main/production branches\n5. Set up CODEOWNERS file defining required reviewers per directory",
+    "49": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#step-2-gitops-tool-selection-and-installation]\n\n#### Step 2: GitOps Tool Selection and Installation\n\n1. Evaluate ArgoCD vs Flux based on organizational requirements\n2. Install chosen GitOps operator in Kubernetes cluster\n3. Configure operator access to Git repository (SSH keys or personal access tokens)\n4. Set up RBAC for GitOps service account with minimal required privileges\n5. Configure sync policies (recommend automated sync with self-healing enabled)\n6. Enable Prometheus metrics export from GitOps operator",
+    "50": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#step-3-infrastructure-as-code-implementation]\n\n#### Step 3: Infrastructure as Code Implementation\n\n1. Create Terraform modules for Lenses.io resources (topics, ACLs, connectors)\n2. Define configuration templates with parameterization\n3. Implement Kustomize overlays for environment-specific configurations\n4. Configure Terraform remote state backend (S3, Azure Blob, GCS)\n5. Test module functionality in development environment\n6. Document module usage and parameters",
+    "51": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#step-4-cicd-pipeline-configuration]\n\n#### Step 4: CI/CD Pipeline Configuration\n\n1. Set up validation pipeline for pull requests\n   - YAML linting\n   - Schema validation\n   - Security policy checks (OPA)\n   - Terraform plan/validate\n2. Configure automated testing (dry-run deployments to dev)\n3. Implement security scanning (secret detection, vulnerability scanning)\n4. Add deployment pipeline triggered post-merge\n5. Configure deployment notifications (Slack, email, PagerDuty)",
+    "52": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#step-5-secrets-management-integration]\n\n#### Step 5: Secrets Management Integration\n\n1. Select and deploy secrets manager (Vault, AWS Secrets Manager, etc.)\n2. Install External Secrets Operator or equivalent in Kubernetes\n3. Configure secret retrieval mechanism in GitOps workflow\n4. Set up secret rotation automation with application pod restart triggers\n5. Test secret injection into deployed applications\n6. Document secret naming conventions and access procedures",
+    "53": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#step-6-monitoring-and-alerting-setup]\n\n#### Step 6: Monitoring and Alerting Setup\n\n1. Configure GitOps operator to export metrics to Prometheus\n2. Create Grafana dashboards for:\n   - Reconciliation status and frequency\n   - Deployment success/failure rates\n   - Configuration drift detection\n   - Git sync errors\n3. Set up alerting rules for:\n   - Reconciliation failures\n   - Configuration drift\n   - Deployment failures\n   - Secret retrieval errors\n4. Configure notification channels (PagerDuty, Slack, email)\n5. Integrate with central monitoring and incident management systems",
+    "54": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#83-post-implementation-tasks]\n\n### 8.3 Post-Implementation Tasks\n\n1. Conduct training sessions for development and operations teams on GitOps workflow\n2. Document pull request approval process and escalation procedures\n3. Establish on-call procedures for GitOps failures and incident response\n4. Review and optimize reconciliation intervals based on actual usage\n5. Conduct regular audits of configuration drift and manual changes\n6. Schedule monthly review of exception requests and remediation plans\n7. Perform disaster recovery drills using Git-based rollback procedures",
+    "55": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#9-validation-criteria]\n\n## 9. Validation Criteria\n\n| Validation Area | Criteria | Priority | Validation Method |\n|----------------|----------|----------|-------------------|\n| **Source Control** | 100% of configurations in Git with no manual production changes | Critical | Audit logs, drift detection reports |\n| **Automated Sync** | Reconciliation loop running continuously with <3 min interval | Critical | Metrics dashboard, sync logs |\n| **Pull Request Workflow** | All production changes go through PR with 2+ approvals | Critical | Git history audit, branch protection verification |\n| **Configuration Validation** | 100% of PRs pass schema and policy validation before merge | High | CI/CD pipeline logs, validation reports |\n| **Secret Management** | Zero plaintext secrets in Git history, all secrets from external manager | Critical | Git history scan, secret detection tools |\n| **Drift Detection** | Configuration drift detected and alerted within 5 minutes | High | Monitoring alerts, drift reports |\n| **Rollback Capability** | Successful rollback to previous version within 10 minutes | High | Rollback drill results, incident reports |\n| **Environment Promotion** | Changes promoted DEV→QA→PROD with validation at each stage | Medium | Promotion pipeline logs, deployment history |\n| **Observability** | GitOps metrics collected and dashboards showing real-time status | Medium | Metrics availability, dashboard functionality |\n| **Audit Trail** | Complete audit trail of changes with Git commit attribution | High | Git history completeness, compliance reports |\n| **Documentation** | All GitOps procedures documented and accessible to team | Medium | Documentation review, team survey |\n| **Training** | Team members trained on GitOps workflow and troubleshooting | Medium | Training completion records, competency assessments |",
+    "56": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#10-testing-requirements]\n\n## 10. Testing Requirements",
+    "57": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#101-functional-testing]\n\n### 10.1 Functional Testing\n\n- **Git Sync Testing**: Verify configurations sync from Git to cluster within reconciliation interval\n- **Drift Correction**: Manually modify cluster resources and verify automatic correction back to Git state\n- **Pull Request Validation**: Submit PRs with invalid configs and verify rejection by validation pipeline\n- **Environment Promotion**: Promote changes through DEV→QA→PROD and verify correct overlays applied\n- **Rollback Testing**: Execute rollback to previous Git tag and verify full state restoration",
+    "58": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#102-security-testing]\n\n### 10.2 Security Testing\n\n- **Secret Scanning**: Run secret detection tools against Git history to confirm no credentials stored\n- **RBAC Testing**: Attempt manual cluster modifications with non-authorized accounts and verify denial\n- **Branch Protection**: Attempt direct commits to protected branches and verify enforcement\n- **Policy Enforcement**: Submit configurations violating security policies and verify OPA/Kyverno rejection\n- **Access Control**: Verify GitOps service account has only minimal required permissions",
+    "59": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#103-performance-testing]\n\n### 10.3 Performance Testing\n\n- **Reconciliation Speed**: Measure time from Git commit to cluster reconciliation under various loads\n- **Validation Speed**: Measure PR validation pipeline execution time with different config sizes\n- **Rollback Speed**: Measure time to complete rollback operation under production load\n- **Git Repository Size**: Monitor repository growth and ensure Git LFS used for large assets\n- **API Rate Limits**: Test GitOps operator behavior under Git API rate limit conditions",
+    "60": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#104-integration-testing]\n\n### 10.4 Integration Testing\n\n- **CI/CD Integration**: Verify GitOps workflows integrate correctly with existing CI/CD pipelines\n- **Secrets Manager Integration**: Test secret retrieval across all supported secrets managers\n- **Monitoring Integration**: Verify metrics flow to Prometheus and alerts trigger correctly\n- **Lenses.io Integration**: Test configuration of Lenses resources via GitOps (topics, ACLs, connectors)\n- **Disaster Recovery**: Execute full environment rebuild from Git repository",
+    "61": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#11-documentation-requirements]\n\n## 11. Documentation Requirements",
+    "62": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#111-architecture-documentation]\n\n### 11.1 Architecture Documentation\n\n- GitOps architecture diagram showing Git, operators, clusters, and secrets managers\n- Repository structure documentation with directory hierarchy and naming conventions\n- Branching strategy documentation with workflow diagrams\n- Environment promotion flow diagrams\n- Disaster recovery architecture including rollback procedures",
+    "63": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#112-operational-procedures]\n\n### 11.2 Operational Procedures\n\n- Pull request creation and approval workflow guide\n- Configuration validation and troubleshooting guide\n- Rollback execution procedures with step-by-step runbooks\n- Secret rotation procedures and troubleshooting\n- Drift detection investigation and remediation procedures\n- Incident response procedures for GitOps failures",
+    "64": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#113-developer-guides]\n\n### 11.3 Developer Guides\n\n- Developer quickstart guide for making configuration changes\n- Configuration template usage guide with examples\n- Environment overlay creation guide\n- Local testing and validation procedures\n- Troubleshooting common GitOps errors",
+    "65": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#114-security-documentation]\n\n### 11.4 Security Documentation\n\n- RBAC configuration and service account permissions\n- Secrets management architecture and integration guide\n- Branch protection rules and enforcement policies\n- Security policy definitions (OPA/Kyverno policies)\n- Audit logging and compliance reporting procedures",
+    "66": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#115-compliance-documentation]\n\n### 11.5 Compliance Documentation\n\n- Exception request forms and approval workflows\n- Compliance audit procedures and checklists\n- Change management documentation\n- Disaster recovery test results and schedules",
+    "67": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#116-training-materials]\n\n### 11.6 Training Materials\n\n- GitOps workflow training presentations\n- Hands-on lab exercises for common scenarios\n- Video tutorials for key procedures\n- FAQ and troubleshooting knowledge base",
+    "68": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#12-troubleshooting]\n\n## 12. Troubleshooting",
+    "69": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#121-issue-1-reconciliation-failures]\n\n### 12.1 Issue 1: Reconciliation Failures\n\n**Symptoms**:\n- GitOps tool reports sync errors in dashboard\n- Configuration drift persists despite automated reconciliation\n- Resources not updated despite Git changes committed\n- Sync status showing \"OutOfSync\" or \"Failed\"\n\n**Root Causes**:\n- Invalid configuration syntax (YAML/JSON errors)\n- Kubernetes API permissions insufficient for GitOps service account\n- Resource conflicts or unmet dependencies\n- Network connectivity issues to Git repository or Kubernetes API\n- Resource quotas exceeded in target namespace\n\n**Resolution**:\n1. Review GitOps operator logs for specific error messages\n   ```bash\n   kubectl logs -n argocd deployment/argocd-application-controller\n   ```\n2. Validate YAML/JSON syntax locally\n   ```bash\n   yamllint environments/prod/*.yaml\n   kubeval environments/prod/*.yaml\n   ```\n3. Check RBAC permissions for GitOps service account\n   ```bash\n   kubectl auth can-i --list --as=system:serviceaccount:argocd:argocd-application-controller\n   ```\n4. Verify resource dependencies are met (CRDs, namespaces, etc.)\n5. Test configuration in development environment before production\n6. Review and adjust reconciliation timeout settings if needed\n7. Check network policies and firewall rules for Git/API access\n\n---",
+    "70": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#122-issue-2-configuration-drift-detection]\n\n### 12.2 Issue 2: Configuration Drift Detection\n\n**Symptoms**:\n- Manual changes made outside GitOps process detected\n- State divergence between Git repository and cluster\n- Unexpected resource configurations in environment\n- Drift alerts firing continuously\n\n**Root Causes**:\n- Manual kubectl/helm commands executed by operators\n- External automation tools modifying resources\n- GitOps tool not monitoring all required resources\n- Reconciliation disabled or paused temporarily\n- Resources managed by multiple controllers (conflict)\n\n**Resolution**:\n1. Identify source of manual changes from audit logs\n   ```bash\n   kubectl get events -n kafka --sort-by='.lastTimestamp'\n   ```\n2. Re-enable automatic reconciliation if paused\n3. Enforce RBAC to prevent manual changes by non-GitOps service accounts\n4. Add drift detection alerts to notify team immediately\n5. Document approved manual change procedures for emergencies\n6. Restore Git as source of truth by resyncing from repository\n7. Review and update resource labels/annotations for GitOps tracking\n\n---",
+    "71": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#123-issue-3-secret-injection-failures]\n\n### 12.3 Issue 3: Secret Injection Failures\n\n**Symptoms**:\n- Applications fail to start due to missing secrets\n- Secret rotation breaks running applications\n- Secrets not updated in deployed resources after rotation\n- External Secrets Operator showing errors\n\n**Root Causes**:\n- Secrets manager connectivity issues (network, authentication)\n- Incorrect secret references in manifests (wrong path/key)\n- Secret rotation not propagated to pods\n- Permissions issues accessing secrets manager\n- External Secrets Operator not running or misconfigured\n\n**Resolution**:\n1. Verify secrets manager connectivity and authentication\n   ```bash\n   kubectl logs -n external-secrets deployment/external-secrets\n   ```\n2. Validate secret reference syntax in manifests\n3. Check service account permissions for secret access in secrets manager\n4. Test secret retrieval manually\n   ```bash\n   kubectl get externalsecret -n kafka\n   kubectl describe externalsecret kafka-credentials -n kafka\n   ```\n5. Implement secret change detection with automatic pod restarts\n6. Configure webhook-based secret refresh for immediate updates\n7. Review secrets manager audit logs for access denials\n\n---",
+    "72": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#124-issue-4-environment-promotion-failures]\n\n### 12.4 Issue 4: Environment Promotion Failures\n\n**Symptoms**:\n- Changes don't promote to next environment automatically\n- Unexpected differences between environments after promotion\n- Promotion pipeline failures with unclear errors\n- Configuration works in dev but fails in QA/prod\n\n**Root Causes**:\n- Environment-specific overlays incorrect or missing\n- Approval gates blocking promotion without notification\n- Configuration conflicts in target environment\n- Insufficient testing in source environment before promotion\n- Resource dependencies not met in target environment\n\n**Resolution**:\n1. Review environment overlay configurations for correctness\n   ```bash\n   kustomize build environments/qa\n   diff <(kustomize build environments/dev) <(kustomize build environments/qa)\n   ```\n2. Check approval gate status and requirements in CI/CD system\n3. Validate target environment compatibility and dependencies\n4. Enhance testing in lower environments with production-like data\n5. Document environment-specific differences and requirements\n6. Implement dry-run validation before actual promotion\n7. Add promotion pipeline logging for better troubleshooting\n\n---",
+    "73": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#125-issue-5-rollback-not-functioning]\n\n### 12.5 Issue 5: Rollback Not Functioning\n\n**Symptoms**:\n- Rollback doesn't restore previous state completely\n- Rollback causes additional failures or errors\n- Unable to identify correct rollback point in Git history\n- Partial rollback with some resources not reverted\n\n**Root Causes**:\n- Git tags not properly maintained or missing\n- Terraform/IaC state files not synchronized with Git\n- Dependencies changed since last version (CRDs, APIs)\n- Rollback procedure not tested regularly\n- StatefulSet/PVC data not included in rollback scope\n\n**Resolution**:\n1. Establish proper Git tagging strategy with semantic versioning\n   ```bash\n   git tag -a prod-release-2024-01-19-v1.3.0 -m \"Production release\"\n   git push origin --tags\n   ```\n2. Verify Terraform state file consistency before rollback\n3. Document dependency requirements per version in release notes\n4. Regularly test rollback procedures in non-production environments\n5. Maintain rollback runbooks with step-by-step instructions\n6. Implement canary deployments to reduce rollback necessity\n7. Consider blue-green deployment for zero-downtime rollbacks\n8. Review and update rollback automation scripts quarterly",
+    "74": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#13-compliance-checklist]\n\n## 13. Compliance Checklist\n\n- [ ] All Lenses.io and Kafka configurations stored in Git repository\n- [ ] Branch protection enabled for production configuration branches\n- [ ] Pull request approval workflow configured with minimum 2 reviewers\n- [ ] Automated validation pipeline running on all PRs (schema, lint, security)\n- [ ] GitOps operator (ArgoCD/Flux) installed and configured\n- [ ] Secrets never committed to Git repository\n- [ ] Secrets manager integration implemented and tested\n- [ ] External Secrets Operator or equivalent deployed\n- [ ] RBAC configured to prevent manual cluster changes outside GitOps\n- [ ] Drift detection and alerting enabled with <5 minute detection time\n- [ ] Rollback procedures documented, tested, and validated\n- [ ] Audit logging enabled for all configuration changes (Git commits)\n- [ ] Environment promotion workflow defined (DEV→QA→PROD)\n- [ ] Monitoring dashboards created for GitOps health and status\n- [ ] Disaster recovery procedures documented and tested\n- [ ] Team training completed on GitOps workflow and troubleshooting\n- [ ] Reconciliation loop running with <3 minute interval for production\n- [ ] OPA/Kyverno policies defined and enforced\n- [ ] Commit signing required for production changes\n- [ ] CODEOWNERS file defined with required reviewers\n- [ ] Exception process documented and exceptions tracked\n- [ ] Regular drift audits scheduled and executed\n- [ ] Rollback drills conducted quarterly",
+    "75": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#14-governance-oversight]\n\n## 14. Governance Oversight",
+    "76": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#141-ownership-and-accountability]\n\n### 14.1 Ownership and Accountability\n\n- **Primary Owner**: Platform Engineering Team\n- **Technical SME**: DevOps Lead / Site Reliability Engineer\n- **Approver**: Enterprise Architect\n- **Stakeholders**: Application Development Teams, Security Team, Operations Team",
+    "77": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#142-review-and-update-frequency]\n\n### 14.2 Review and Update Frequency\n\n- **Standard Review**: Quarterly\n- **Technology Review**: Annually or when major GitOps tool versions released\n- **Compliance Audit**: Bi-annually\n- **Exception Review**: Monthly",
+    "78": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#143-metrics-and-kpis]\n\n### 14.3 Metrics and KPIs\n\n- **Deployment Frequency**: Number of deployments per day via GitOps\n- **Lead Time for Changes**: Time from commit to production deployment\n- **Mean Time to Recovery (MTTR)**: Time to rollback to previous version\n- **Change Failure Rate**: Percentage of deployments causing incidents\n- **Configuration Drift Occurrences**: Number of drift detections per month\n- **Manual Change Violations**: Count of manual changes made outside GitOps",
+    "79": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#144-key-contacts]\n\n### 14.4 Key Contacts\n\n- **Platform Engineering Lead**: [Name/Contact]\n- **DevOps Lead**: [Name/Contact]\n- **Enterprise Architect**: [Name/Contact]\n- **Security Lead**: [Name/Contact]\n- **Escalation Contact**: [Name/Contact]",
+    "80": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#145-related-governance]\n\n### 14.5 Related Governance\n\n- Change Advisory Board (CAB) for production change approvals\n- Architecture Review Board (ARB) for GitOps architecture decisions\n- Security Review Board for secrets management approach\n- Compliance Committee for audit and exception oversight",
+    "81": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#15-references]\n\n## 15. References",
+    "82": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#151-related-documentation]\n\n### 15.1 Related Documentation\n\n- [Lenses.io API Documentation](https://docs.lenses.io/5.0/api/)\n- [Lenses.io Configuration Management](https://docs.lenses.io/5.0/configuration/)\n- [Lenses.io Infrastructure as Code Guide](https://docs.lenses.io/5.0/iac/)",
+    "83": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#152-external-resources]\n\n### 15.2 External Resources\n\n- [ArgoCD Documentation](https://argo-cd.readthedocs.io/)\n- [Flux Documentation](https://fluxcd.io/docs/)\n- [GitOps Principles](https://opengitops.dev/)\n- [Terraform Kafka Provider](https://registry.terraform.io/providers/Mongey/kafka/latest)\n- [Sealed Secrets](https://github.com/bitnami-labs/sealed-secrets)\n- [External Secrets Operator](https://external-secrets.io/)\n- [Open Policy Agent](https://www.openpolicyagent.org/)\n- [Kyverno](https://kyverno.io/)",
+    "84": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#153-industry-standards]\n\n### 15.3 Industry Standards\n\n- [NIST SP 800-53 Configuration Management Controls](https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final)\n- [CIS Kubernetes Benchmark](https://www.cisecurity.org/benchmark/kubernetes)\n- [CNCF GitOps Working Group](https://github.com/gitops-working-group/gitops-working-group)",
+    "85": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#16-change-history]\n\n## 16. Change History\n\n| Version | Date | Author | Description |\n|---------|------|--------|-------------|\n| 1.0.0 | January 19, 2026 | Platform Engineering | Initial draft with full compliance enhancements |",
+    "86": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#17-review-log]\n\n## 17. Review Log\n\n| Review Date | Reviewer | Status | Comments |\n|-------------|----------|--------|----------|\n| January 19, 2026 | AI Review | Completed | Full compliance review completed - added YAML metadata, Executive Summary, Prohibited Practices, Exceptions Process, Technical Specifications, Validation Criteria, Testing Requirements, Documentation Requirements, and Governance Oversight sections |\n| [TBD] | Platform Engineering Lead | Pending | Technical review pending |\n| [TBD] | Enterprise Architect | Pending | Architecture review pending |\n| [TBD] | Security Lead | Pending | Security review pending |",
+    "87": "[standards/application/kafka-management/STD-APP-KMGMT-007-gitops-workflows.md#18-document-status]\n\n## 18. Document Status\n\n**Current Phase**: Draft - Compliance enhanced, awaiting stakeholder review and approval\n\n**Next Review Date**: April 19, 2026 (90 days from enhancement)\n\n**Approved By**: [Pending Approval]"
+  },
+  "coverage": {
+    "total_pages": 87,
+    "covered_pages": 87,
+    "sampled_pages": 87,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 87
+  }
+}

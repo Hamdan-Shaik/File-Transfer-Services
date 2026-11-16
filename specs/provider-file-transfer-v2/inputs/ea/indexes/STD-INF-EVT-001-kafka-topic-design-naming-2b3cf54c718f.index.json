@@ -1,0 +1,796 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Kafka Topic Design and Naming Conventions",
+  "document_description": "standard_name: 'Kafka Topic Design and Naming Conventions'",
+  "total_pages": 84,
+  "tree": [
+    {
+      "title": "Kafka Topic Design and Naming Conventions",
+      "node_id": "kafka-topic-design-and-naming-conventions",
+      "start_index": 1,
+      "end_index": 84,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Executive Summary",
+          "node_id": "executive-summary",
+          "start_index": 3,
+          "end_index": 8,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Purpose Statement",
+              "node_id": "purpose-statement",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Scope",
+              "node_id": "scope",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Compliance Level",
+              "node_id": "compliance-level",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Business Rationale",
+              "node_id": "business-rationale",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Related Standards and Patterns",
+              "node_id": "related-standards-and-patterns",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Standard Requirements",
+          "node_id": "standard-requirements",
+          "start_index": 9,
+          "end_index": 24,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Mandatory Requirements",
+              "node_id": "mandatory-requirements",
+              "start_index": 10,
+              "end_index": 17,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "REQ-1: Topic Naming Convention",
+                  "node_id": "req-1-topic-naming-convention",
+                  "start_index": 11,
+                  "end_index": 11,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-2: Partition Count Sizing",
+                  "node_id": "req-2-partition-count-sizing",
+                  "start_index": 12,
+                  "end_index": 12,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-3: Replication Factor Configuration",
+                  "node_id": "req-3-replication-factor-configuration",
+                  "start_index": 13,
+                  "end_index": 13,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-4: Retention Policy Requirements",
+                  "node_id": "req-4-retention-policy-requirements",
+                  "start_index": 14,
+                  "end_index": 14,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-5: Topic Configuration Standards",
+                  "node_id": "req-5-topic-configuration-standards",
+                  "start_index": 15,
+                  "end_index": 15,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-6: Topic Documentation Metadata",
+                  "node_id": "req-6-topic-documentation-metadata",
+                  "start_index": 16,
+                  "end_index": 16,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-7: Topic Creation Approval Workflow",
+                  "node_id": "req-7-topic-creation-approval-workflow",
+                  "start_index": 17,
+                  "end_index": 17,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Recommended Practices",
+              "node_id": "recommended-practices",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Prohibited Practices",
+              "node_id": "prohibited-practices",
+              "start_index": 19,
+              "end_index": 19,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Exceptions Process",
+              "node_id": "exceptions-process",
+              "start_index": 20,
+              "end_index": 24,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "1. Exception Request Procedure",
+                  "node_id": "1-exception-request-procedure",
+                  "start_index": 21,
+                  "end_index": 21,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "2. Approval Authority",
+                  "node_id": "2-approval-authority",
+                  "start_index": 22,
+                  "end_index": 22,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "3. Documentation Requirements",
+                  "node_id": "3-documentation-requirements",
+                  "start_index": 23,
+                  "end_index": 23,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "4. Review and Renewal Process",
+                  "node_id": "4-review-and-renewal-process",
+                  "start_index": 24,
+                  "end_index": 24,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Technical Specifications",
+          "node_id": "technical-specifications",
+          "start_index": 25,
+          "end_index": 43,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Technical Requirements",
+              "node_id": "technical-requirements",
+              "start_index": 26,
+              "end_index": 29,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Topic Naming Technical Constraints",
+                  "node_id": "topic-naming-technical-constraints",
+                  "start_index": 27,
+                  "end_index": 27,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Partition Sizing Technical Details",
+                  "node_id": "partition-sizing-technical-details",
+                  "start_index": 28,
+                  "end_index": 28,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Replication Technical Requirements",
+                  "node_id": "replication-technical-requirements",
+                  "start_index": 29,
+                  "end_index": 29,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Architecture Constraints",
+              "node_id": "architecture-constraints",
+              "start_index": 30,
+              "end_index": 33,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Constraint 1: Multi-AZ Distribution Requirements",
+                  "node_id": "constraint-1-multi-az-distribution-requirements",
+                  "start_index": 31,
+                  "end_index": 31,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Constraint 2: Topic Mutability Limitations",
+                  "node_id": "constraint-2-topic-mutability-limitations",
+                  "start_index": 32,
+                  "end_index": 32,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Constraint 3: Schema Registry Integration",
+                  "node_id": "constraint-3-schema-registry-integration",
+                  "start_index": 33,
+                  "end_index": 33,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Technology Standards",
+              "node_id": "technology-standards",
+              "start_index": 34,
+              "end_index": 36,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Approved Technologies and Versions",
+                  "node_id": "approved-technologies-and-versions",
+                  "start_index": 35,
+                  "end_index": 35,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Serialization Standards",
+                  "node_id": "serialization-standards",
+                  "start_index": 36,
+                  "end_index": 36,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Configuration Specifications",
+              "node_id": "configuration-specifications",
+              "start_index": 37,
+              "end_index": 43,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Standard Topic Configuration Template",
+                  "node_id": "standard-topic-configuration-template",
+                  "start_index": 38,
+                  "end_index": 38,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Transactional Topic Configuration",
+                  "node_id": "transactional-topic-configuration",
+                  "start_index": 39,
+                  "end_index": 39,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Audit/Compliance Topic Configuration",
+                  "node_id": "auditcompliance-topic-configuration",
+                  "start_index": 40,
+                  "end_index": 40,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "State/CDC Topic Configuration (Compacted)",
+                  "node_id": "statecdc-topic-configuration-compacted",
+                  "start_index": 41,
+                  "end_index": 41,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Dead Letter Queue (DLQ) Configuration",
+                  "node_id": "dead-letter-queue-dlq-configuration",
+                  "start_index": 42,
+                  "end_index": 42,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "High-Throughput Topic Configuration",
+                  "node_id": "high-throughput-topic-configuration",
+                  "start_index": 43,
+                  "end_index": 43,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Implementation Guidelines",
+          "node_id": "implementation-guidelines",
+          "start_index": 44,
+          "end_index": 59,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Implementation Requirements",
+              "node_id": "implementation-requirements",
+              "start_index": 45,
+              "end_index": 49,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Phase 1: Topic Design and Planning (Before Development)",
+                  "node_id": "phase-1-topic-design-and-planning-before-development",
+                  "start_index": 46,
+                  "end_index": 46,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Phase 2: Infrastructure Provisioning (Terraform)",
+                  "node_id": "phase-2-infrastructure-provisioning-terraform",
+                  "start_index": 47,
+                  "end_index": 47,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Phase 3: Schema Registration (AWS Glue Schema Registry)",
+                  "node_id": "phase-3-schema-registration-aws-glue-schema-registry",
+                  "start_index": 48,
+                  "end_index": 48,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Phase 4: Access Control Configuration (Lenses.io RBAC)",
+                  "node_id": "phase-4-access-control-configuration-lensesio-rbac",
+                  "start_index": 49,
+                  "end_index": 49,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Validation Criteria",
+              "node_id": "validation-criteria",
+              "start_index": 50,
+              "end_index": 50,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Testing Requirements",
+              "node_id": "testing-requirements",
+              "start_index": 51,
+              "end_index": 54,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Unit Testing (Topic Configuration)",
+                  "node_id": "unit-testing-topic-configuration",
+                  "start_index": 52,
+                  "end_index": 52,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Integration Testing (Producer/Consumer)",
+                  "node_id": "integration-testing-producerconsumer",
+                  "start_index": 53,
+                  "end_index": 53,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Compliance Testing (Automated Validation)",
+                  "node_id": "compliance-testing-automated-validation",
+                  "start_index": 54,
+                  "end_index": 54,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Documentation Requirements",
+              "node_id": "documentation-requirements",
+              "start_index": 55,
+              "end_index": 59,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "1. Topic Design Document",
+                  "node_id": "1-topic-design-document",
+                  "start_index": 56,
+                  "end_index": 56,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "2. Schema Evolution Log",
+                  "node_id": "2-schema-evolution-log",
+                  "start_index": 57,
+                  "end_index": 57,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "3. Topic Metadata (Lenses.io)",
+                  "node_id": "3-topic-metadata-lensesio",
+                  "start_index": 58,
+                  "end_index": 58,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "4. Runbook (Operational Documentation)",
+                  "node_id": "4-runbook-operational-documentation",
+                  "start_index": 59,
+                  "end_index": 59,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Compliance and Governance",
+          "node_id": "compliance-and-governance",
+          "start_index": 60,
+          "end_index": 74,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Compliance Assessment",
+              "node_id": "compliance-assessment",
+              "start_index": 61,
+              "end_index": 63,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Assessment Criteria",
+                  "node_id": "assessment-criteria",
+                  "start_index": 62,
+                  "end_index": 62,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Assessment Process",
+                  "node_id": "assessment-process",
+                  "start_index": 63,
+                  "end_index": 63,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Monitoring Requirements",
+              "node_id": "monitoring-requirements",
+              "start_index": 64,
+              "end_index": 66,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Continuous Monitoring",
+                  "node_id": "continuous-monitoring",
+                  "start_index": 65,
+                  "end_index": 65,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Periodic Reviews",
+                  "node_id": "periodic-reviews",
+                  "start_index": 66,
+                  "end_index": 66,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Exception Handling",
+              "node_id": "exception-handling",
+              "start_index": 67,
+              "end_index": 69,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Exception Categories",
+                  "node_id": "exception-categories",
+                  "start_index": 68,
+                  "end_index": 68,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Exception Management Process",
+                  "node_id": "exception-management-process",
+                  "start_index": 69,
+                  "end_index": 69,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Governance Oversight",
+              "node_id": "governance-oversight",
+              "start_index": 70,
+              "end_index": 74,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Standards Owner",
+                  "node_id": "standards-owner",
+                  "start_index": 71,
+                  "end_index": 71,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Compliance Manager",
+                  "node_id": "compliance-manager",
+                  "start_index": 72,
+                  "end_index": 72,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Governance Body",
+                  "node_id": "governance-body",
+                  "start_index": 73,
+                  "end_index": 73,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Subject Matter Experts",
+                  "node_id": "subject-matter-experts",
+                  "start_index": 74,
+                  "end_index": 74,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Examples and References",
+          "node_id": "examples-and-references",
+          "start_index": 75,
+          "end_index": 82,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Implementation Examples",
+              "node_id": "implementation-examples",
+              "start_index": 76,
+              "end_index": 79,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Example 1: Claims Adjudication Topic Implementation",
+                  "node_id": "example-1-claims-adjudication-topic-implementation",
+                  "start_index": 77,
+                  "end_index": 77,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Example 2: Member Eligibility CDC Topic (Compacted)",
+                  "node_id": "example-2-member-eligibility-cdc-topic-compacted",
+                  "start_index": 78,
+                  "end_index": 78,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Example 3: Audit Trail Topic with Extended Retention",
+                  "node_id": "example-3-audit-trail-topic-with-extended-retention",
+                  "start_index": 79,
+                  "end_index": 79,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Reference Architectures",
+              "node_id": "reference-architectures",
+              "start_index": 80,
+              "end_index": 80,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Related Standards",
+              "node_id": "related-standards",
+              "start_index": 81,
+              "end_index": 81,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "External References",
+              "node_id": "external-references",
+              "start_index": 82,
+              "end_index": 82,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Change History",
+          "node_id": "change-history",
+          "start_index": 83,
+          "end_index": 83,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Review Log",
+          "node_id": "review-log",
+          "start_index": 84,
+          "end_index": 84,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#kafka-topic-design-and-naming-conventions]\n\n# Kafka Topic Design and Naming Conventions\n\n**[Home](../../../README.md)** > **[Standards](../../README.md)** > **[Information](../README.md)** > **[Event Driven](README.md)** > **STD-INF-EVT-001**\n\n---\n\n---\n\n**Standards Metadata**\n\n```yaml\nstandard_id: 'STD-INF-EVT-001'\nstandard_name: 'Kafka Topic Design and Naming Conventions'\nstandard_type: 'data-governance'\ncategory: 'data'\nversion: '1.0.0'\nstatus: 'draft'\ncompliance_level: 'mandatory'\ntags: ['data', 'kafka', 'topic-design', 'naming-conventions', 'mandatory', 'governance', 'architects', 'developers', 'eaas']\n```\n\n---",
+    "2": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#table-of-contents]\n\n## Table of Contents\n\n- [Executive Summary](#executive-summary)\n- [Standard Requirements](#standard-requirements)\n- [Technical Specifications](#technical-specifications)\n- [Implementation Guidelines](#implementation-guidelines)\n- [Compliance and Governance](#compliance-and-governance)\n- [Examples and References](#examples-and-references)\n- [Change History](#change-history)\n- [Review Log](#review-log)\n\n---",
+    "3": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#executive-summary]\n\n## Executive Summary",
+    "4": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#purpose-statement]\n\n### Purpose Statement\n\nThis standard defines mandatory requirements for designing, naming, and configuring Kafka topics across the Enterprise Eventing as a Service (EaaS) platform to ensure consistency, governance, and operational excellence.",
+    "5": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#scope]\n\n### Scope\n\n**In Scope**:\n- Topic naming conventions and format specification\n- Partition count sizing guidelines based on throughput\n- Replication factor and durability requirements\n- Retention policies by topic classification\n- Cleanup policies (delete vs compact)\n- Topic creation approval workflows\n- Dead letter queue (DLQ) and retry topic naming\n- Internal topic conventions (audit, metrics, monitoring)\n\n**Out of Scope**:\n- Application-level consumer/producer implementation (see STD-APP-EVT-001, STD-APP-EVT-002)\n- MSK cluster infrastructure (see STD-INFRA-INT-001)\n- Schema design and versioning (see PTN-DATA-SCHEMA-001, PTN-DATA-SCHEMA-002)",
+    "6": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#compliance-level]\n\n### Compliance Level\n\nThis standard is **MANDATORY** for all Kafka topics created within the Gainwell Enterprise Eventing as a Service (EaaS) platform. All new topics must comply with naming conventions, configuration standards, and approval workflows defined herein. Existing topics created before this standard's approval must be migrated to compliance within 6 months of approval.\n\n**Enforcement:**\n- Automated validation in CI/CD pipelines rejects non-compliant topic creation requests\n- Lenses.io platform enforces naming patterns and configuration policies\n- Topic creation workflows require Architecture Review Board (ARB) approval for exceptions\n- Quarterly compliance audits identify and remediate non-compliant topics",
+    "7": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#business-rationale]\n\n### Business Rationale\n\n**Why This Standard Is Necessary:**\n\nWithout standardized topic design and naming conventions, Gainwell's Kafka platform faces significant operational, governance, and cost challenges:\n\n1. **Operational Chaos**: Inconsistent topic naming creates discovery problems across 50+ state Medicaid implementations with 2,500+ topics, increasing incident resolution time by 3-4 hours per event\n\n2. **Resource Waste**: Poorly sized partitions and replication factors result in 40% cluster over-provisioning ($180K annual waste) or under-provisioning causing production incidents\n\n3. **Data Governance Gaps**: Without topic classification and retention policies, PHI/PII data retention violates HIPAA §164.316 requirements for data lifecycle management\n\n4. **Team Productivity Loss**: Developers spend 15-20 hours per sprint searching for correct topics and debugging misconfigured consumers due to lack of conventions\n\n5. **Compliance Risk**: Uncontrolled topic proliferation creates audit trail gaps and regulatory exposure for CMS oversight and state audits\n\n**Business Benefits of Compliance:**\n- **75% faster topic discovery** through systematic naming (20 min → 5 min average search time)\n- **$180K annual cost savings** through rightsized partition/replication strategies\n- **60% reduction in configuration-related incidents** (30/month → 12/month)\n- **HIPAA compliance** through enforced retention policies and data classification\n- **Improved auditability** with standardized topic metadata and ownership tracking",
+    "8": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#related-standards-and-patterns]\n\n### Related Standards and Patterns\n\nRelated standards:\n- [STD-INFRA-INT-001: Event Broker Integration](../../infrastructure/integration/STD-INFRA-INT-001-event-broker-integration.md) - MSK cluster configuration\n- [STD-APP-EVT-001: .NET Kafka Consumer](../../application/event-driven/STD-APP-EVT-001-dotnet-kafka-consumer.md) - Consumer implementation\n- [STD-APP-EVT-002: .NET Kafka Producer](../../application/event-driven/STD-APP-EVT-002-dotnet-kafka-producer.md) - Producer implementation\n- [STD-INFRA-KMGMT-003: RBAC Access Control](../../infrastructure/kafka-management/STD-INFRA-KMGMT-003-rbac-access-control.md) - Topic access policies\n\nRelated patterns:\n- [PTN-INF-EVT-001: Data Schema Registry Pattern](../../../patterns/information/event-driven/PTN-INF-EVT-001-data-schema-registry-pattern.md)\n- [PTN-INFRA-EVT-005: Infrastructure Event Throughput Pattern](../../../patterns/infrastructure/event-driven/PTN-INFRA-EVT-005-infrastructure-event-throughput-pattern.md)\n\n---",
+    "9": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#standard-requirements]\n\n## Standard Requirements",
+    "10": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#mandatory-requirements]\n\n### Mandatory Requirements\n\nAll Kafka topics created within the EaaS platform **MUST** comply with the following requirements:",
+    "11": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#req-1-topic-naming-convention]\n\n#### REQ-1: Topic Naming Convention\n\n**Format**: `{domain}.{bounded-context}.{entity}.{event-type}.{version}`\n\n- **domain**: Business domain (e.g., `claims`, `member`, `provider`, `pharmacy`)\n- **bounded-context**: DDD bounded context within domain (e.g., `adjudication`, `eligibility`, `credentialing`)\n- **entity**: Primary data entity (e.g., `claim`, `member`, `provider`)\n- **event-type**: Event classification (e.g., `created`, `updated`, `deleted`, `submitted`)\n- **version**: Schema version starting at `v1` (e.g., `v1`, `v2`, `v3`)\n\n**Examples:**\n- `claims.adjudication.claim.submitted.v1`\n- `member.eligibility.eligibility-determination.updated.v2`\n- `provider.credentialing.provider.status-changed.v1`\n- `pharmacy.prior-authorization.pa-request.approved.v1`\n\n**Special Topic Types:**\n- **Dead Letter Queue (DLQ)**: `{original-topic}.dlq`\n- **Retry Topics**: `{original-topic}.retry.{attempt}` (e.g., `.retry.1`, `.retry.2`)\n- **Internal Audit Topics**: `audit.{domain}.{event-type}.v1`\n- **Metrics Topics**: `metrics.{subsystem}.{metric-type}.v1`\n- **System Topics**: `_system.{function}.{purpose}.v1` (underscore prefix reserved)",
+    "12": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#req-2-partition-count-sizing]\n\n#### REQ-2: Partition Count Sizing\n\nPartition count **MUST** be determined based on target throughput and consumer parallelism:\n\n| Target Throughput | Partition Count | Rationale |\n|-------------------|-----------------|-----------|\n| < 100 msgs/sec | 3 | Low volume, minimal parallelism |\n| 100-1,000 msgs/sec | 6 | Medium volume, moderate parallelism |\n| 1,000-10,000 msgs/sec | 12 | High volume, high parallelism |\n| > 10,000 msgs/sec | 24+ | Very high volume, maximum parallelism |\n\n**Sizing Formula**: `partitions = max(target_throughput_msgs_per_sec / 1000, consumer_group_size)`\n\n**Constraints:**\n- Minimum partition count: 3\n- Maximum partition count: 100 (requires ARB approval)\n- Partition count must be a multiple of 3 for even AZ distribution",
+    "13": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#req-3-replication-factor-configuration]\n\n#### REQ-3: Replication Factor Configuration\n\nReplication factor **MUST** be configured based on environment and criticality:\n\n| Environment | Standard Topics | Critical Topics |\n|-------------|-----------------|-----------------|\n| **Production** | `replication.factor=3` | `replication.factor=3` with `min.insync.replicas=2` |\n| **Non-Production** | `replication.factor=2` | `replication.factor=2` with `min.insync.replicas=1` |\n\n**Critical Topic Criteria** (requires `min.insync.replicas=2` in production):\n- Financial transaction events (claims payments, member billing)\n- Eligibility determination events\n- PHI/PII data streams\n- Audit/compliance events",
+    "14": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#req-4-retention-policy-requirements]\n\n#### REQ-4: Retention Policy Requirements\n\nRetention policies **MUST** be set based on topic classification:\n\n| Topic Classification | Retention Period | Cleanup Policy | Justification |\n|---------------------|------------------|----------------|---------------|\n| **Transactional** | 7 days | Delete | Short-term event processing |\n| **Audit/Compliance** | 30 days | Delete | HIPAA §164.316 requirements |\n| **Analytics/Reporting** | 90 days | Delete | Historical analysis window |\n| **State Topics (CDC)** | Infinite | Compact | Latest state preservation |\n| **Dead Letter Queue** | 30 days | Delete | Error analysis and replay |\n\n**Configuration Parameters:**\n- `retention.ms`: Milliseconds for time-based retention\n- `retention.bytes`: Bytes for size-based retention (set to `-1` for unlimited)\n- `cleanup.policy`: `delete` or `compact`",
+    "15": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#req-5-topic-configuration-standards]\n\n#### REQ-5: Topic Configuration Standards\n\nAll topics **MUST** include these baseline configurations:\n\n```yaml\ncompression.type: snappy              # Mandatory compression\nmax.message.bytes: 1048576            # 1MB max message size\nsegment.ms: 604800000                 # 7-day segment rollover\nsegment.bytes: 1073741824             # 1GB segment size\nmin.insync.replicas: [varies by ENV]  # Per REQ-3\nunclean.leader.election.enable: false # Prevent data loss\n```",
+    "16": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#req-6-topic-documentation-metadata]\n\n#### REQ-6: Topic Documentation Metadata\n\nAll topics **MUST** include Confluent Cloud/Lenses.io metadata tags:\n\n- `owner`: Team or service owning the topic (email/Slack channel)\n- `data-classification`: `public`, `internal`, `confidential`, `phi-pii`\n- `schema-registry-subject`: AWS Glue Schema Registry subject name\n- `business-purpose`: 1-2 sentence description\n- `sla-tier`: `tier-1` (critical), `tier-2` (important), `tier-3` (informational)",
+    "17": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#req-7-topic-creation-approval-workflow]\n\n#### REQ-7: Topic Creation Approval Workflow\n\nTopic creation **MUST** follow this approval workflow:\n\n1. **Self-Service (Auto-Approved)**: Standard topic names, partition count ≤ 12, standard configurations\n2. **Architecture Review Board (ARB)**: Non-standard names, partition count > 12, custom configurations\n3. **Security Review**: PHI/PII topics, external integrations, cross-environment topics\n\n**Approval SLA:**\n- Self-service: Instant (automated validation)\n- ARB review: 3 business days\n- Security review: 5 business days",
+    "18": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#recommended-practices]\n\n### Recommended Practices\n\nTeams **SHOULD** follow these best practices when implementing topics:\n\n1. **Use Domain-Driven Design (DDD)**: Align topic structure with bounded contexts to reduce coupling\n2. **Semantic Versioning**: Increment version (`v1` → `v2`) for breaking schema changes only\n3. **Partition Key Design**: Use consistent partition keys (e.g., `member_id`, `claim_id`) to maintain ordering\n4. **Topic Consolidation**: Prefer fewer multi-purpose topics over many single-purpose topics when event types are related\n5. **Monitor Consumer Lag**: Set up Lenses.io alerts for consumer lag > 1,000 messages or 5 minutes\n6. **Test Retention Policies**: Validate retention periods with replay requirements before production deployment\n7. **Document Schema Evolution**: Maintain schema changelog in AWS Glue Schema Registry descriptions\n8. **Use Idempotent Producers**: Enable `enable.idempotence=true` to prevent duplicate events",
+    "19": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#prohibited-practices]\n\n### Prohibited Practices\n\nThe following practices are **EXPLICITLY FORBIDDEN**:\n\n1. **❌ Ad-Hoc Topic Naming**: Creating topics without following `{domain}.{context}.{entity}.{type}.{version}` format\n2. **❌ Underscore Prefixes**: Using `_` prefix for non-system topics (reserved for Kafka internals)\n3. **❌ Environment in Name**: Including environment identifiers (`dev`, `prod`) in topic names (use separate clusters)\n4. **❌ Single Partition Topics**: Creating topics with partition count < 3 (except internal system topics)\n5. **❌ Uncompressed Topics**: Disabling compression (`compression.type=none`) without ARB approval\n6. **❌ Infinite Retention on Event Topics**: Setting `retention.ms=-1` on non-compacted transactional topics\n7. **❌ Manual Topic Creation**: Creating topics via Kafka CLI without CI/CD workflow (except emergencies)\n8. **❌ Shared Topics Across Domains**: Using single topic for multiple business domains (violates bounded context)\n9. **❌ PHI in Topic Names**: Including member IDs, claim numbers, or other PHI in topic names\n10. **❌ CamelCase or snake_case**: Using inconsistent casing (enforce lowercase with dots)",
+    "20": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#exceptions-process]\n\n### Exceptions Process\n\nTo request an exception to this standard:",
+    "21": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#1-exception-request-procedure]\n\n#### 1. Exception Request Procedure\n\nSubmit exception request via ServiceNow workflow:\n- **Catalog Item**: \"Kafka Topic Standard Exception Request\"\n- **Required Information**:\n  - Topic name and configuration details\n  - Standard requirement being violated\n  - Business justification with impact analysis\n  - Alternative approach and risk mitigation\n  - Estimated duration (temporary vs permanent exception)",
+    "22": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#2-approval-authority]\n\n#### 2. Approval Authority\n\n| Exception Type | Approver | SLA |\n|----------------|----------|-----|\n| **Temporary (< 90 days)** | Domain Architect | 2 business days |\n| **Permanent** | Architecture Review Board (ARB) | 5 business days |\n| **Security-Related** | Security Architect + ARB | 7 business days |",
+    "23": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#3-documentation-requirements]\n\n#### 3. Documentation Requirements\n\nApproved exceptions **MUST** include:\n- Written justification documenting business need\n- Risk assessment with mitigation plan\n- Monitoring and compliance review schedule\n- Remediation timeline (for temporary exceptions)",
+    "24": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#4-review-and-renewal-process]\n\n#### 4. Review and Renewal Process\n\n- **Temporary Exceptions**: Reviewed at expiration, must be renewed or remediated\n- **Permanent Exceptions**: Reviewed annually during standards maintenance cycle\n- **Emergency Exceptions**: Retroactive approval required within 5 business days\n\n---",
+    "25": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#technical-specifications]\n\n## Technical Specifications",
+    "26": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#technical-requirements]\n\n### Technical Requirements",
+    "27": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#topic-naming-technical-constraints]\n\n#### Topic Naming Technical Constraints\n\n**Format Validation Rules:**\n- **Character Set**: Lowercase alphanumeric characters, dots (`.`), and hyphens (`-`) only\n- **Maximum Length**: 249 characters (Kafka limit: 255, reserve 6 for suffixes like `.retry.3`)\n- **Segment Limits**: Each segment (domain, context, entity, etc.) must be 3-50 characters\n- **Reserved Prefixes**: `_` prefix reserved for system topics only\n- **Version Format**: `v[0-9]+` (e.g., `v1`, `v12`, `v100`)\n\n**Regex Validation Pattern:**\n```regex\n^[a-z0-9-]+\\.[a-z0-9-]+\\.[a-z0-9-]+\\.(created|updated|deleted|submitted|approved|rejected|cancelled|status-changed|[a-z0-9-]+)\\.v[0-9]+$\n```\n\n**Special Topic Patterns:**\n```regex\n# DLQ topics\n^[a-z0-9.-]+\\.dlq$\n\n# Retry topics\n^[a-z0-9.-]+\\.retry\\.[1-9]+$\n\n# Audit topics\n^audit\\.[a-z0-9-]+\\.(created|updated|deleted|accessed)\\.v[0-9]+$\n\n# Metrics topics\n^metrics\\.[a-z0-9-]+\\.[a-z0-9-]+\\.v[0-9]+$\n\n# System topics (underscore prefix)\n^_system\\.[a-z0-9-]+\\.[a-z0-9-]+\\.v[0-9]+$\n```",
+    "28": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#partition-sizing-technical-details]\n\n#### Partition Sizing Technical Details\n\n**Kafka Partition Constraints:**\n- **Maximum Partitions per Cluster**: 4,000 (AWS MSK r5.4xlarge cluster limit)\n- **Maximum Partitions per Broker**: 1,000\n- **Partition Rebalance Time**: ~5 seconds per 1,000 partitions\n\n**Throughput Calculations:**\n\n| Metric | Single Partition Capacity | Calculation Basis |\n|--------|---------------------------|-------------------|\n| **Write Throughput** | ~10 MB/sec | MSK r5.4xlarge broker specs |\n| **Read Throughput** | ~20 MB/sec per consumer | Network bandwidth limit |\n| **Message Rate** | ~1,000 msgs/sec | Assuming 10 KB average message size |\n\n**Formula for Partition Count:**\n```python\ndef calculate_partitions(target_throughput_msgs_sec, avg_message_size_kb, consumer_count):\n    # Throughput-based calculation\n    write_capacity_mb_sec = 10\n    partition_throughput = (write_capacity_mb_sec * 1024) / avg_message_size_kb\n    partitions_throughput = ceil(target_throughput_msgs_sec / partition_throughput)\n\n    # Consumer parallelism\n    partitions_parallelism = consumer_count\n\n    # Final count (round up to multiple of 3 for AZ distribution)\n    partitions = max(partitions_throughput, partitions_parallelism)\n    return ceil(partitions / 3) * 3\n```",
+    "29": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#replication-technical-requirements]\n\n#### Replication Technical Requirements\n\n**Replication Configuration Matrix:**\n\n| Configuration | Production | Non-Production | Notes |\n|---------------|------------|----------------|-------|\n| `replication.factor` | 3 | 2 | Multi-AZ distribution |\n| `min.insync.replicas` | 2 (critical)<br>1 (standard) | 1 | Durability guarantee |\n| `acks` (producer) | `all` | `1` | Write acknowledgment |\n| `unclean.leader.election.enable` | `false` | `false` | Data loss prevention |\n\n**Availability Calculation:**\n- **Replication Factor 3, min.insync.replicas=2**: Can tolerate 1 broker failure without downtime\n- **Replication Factor 2, min.insync.replicas=1**: Can tolerate 1 broker failure without downtime\n- **Recovery Point Objective (RPO)**: 0 seconds (synchronous replication)\n- **Recovery Time Objective (RTO)**: < 30 seconds (automatic leader election)",
+    "30": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#architecture-constraints]\n\n### Architecture Constraints",
+    "31": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#constraint-1-multi-az-distribution-requirements]\n\n#### Constraint 1: Multi-AZ Distribution Requirements\n\n**Rationale**: AWS MSK cluster spans 3 Availability Zones (AZs) in each region.\n\n**Constraint:**\n- Partition count **MUST** be a multiple of 3 to ensure even distribution across AZs\n- Invalid partition counts: 4, 5, 7, 8, 10, 11, 13, 14, etc.\n- Valid partition counts: 3, 6, 9, 12, 15, 18, 21, 24, etc.\n\n**Impact**: Uneven partition distribution causes resource imbalance and potential hotspot issues",
+    "32": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#constraint-2-topic-mutability-limitations]\n\n#### Constraint 2: Topic Mutability Limitations\n\n**Rationale**: Kafka topic configurations have mutability restrictions.\n\n**Immutable Configurations** (cannot be changed after topic creation):\n- Partition count (can only increase, never decrease)\n- Topic name\n- Compaction strategy (changing from `delete` to `compact` requires recreation)\n\n**Mutable Configurations** (can be changed at runtime):\n- Retention period (`retention.ms`, `retention.bytes`)\n- Replication factor (via partition reassignment)\n- `min.insync.replicas`\n- `max.message.bytes`\n\n**Design Implication**: Conservative initial partition sizing recommended; increasing later causes rebalancing overhead",
+    "33": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#constraint-3-schema-registry-integration]\n\n#### Constraint 3: Schema Registry Integration\n\n**Rationale**: AWS Glue Schema Registry enforces schema evolution compatibility.\n\n**Constraint:**\n- Topic names **MUST** have corresponding schema registry subject: `{topic-name}-value`\n- Schema compatibility mode: `BACKWARD` (default) or `BACKWARD_TRANSITIVE`\n- Version increments (`v1` → `v2`) **MUST** align with breaking schema changes\n\n**Impact**: Topic versioning strategy coupled to schema evolution strategy",
+    "34": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#technology-standards]\n\n### Technology Standards",
+    "35": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#approved-technologies-and-versions]\n\n#### Approved Technologies and Versions\n\n| Technology | Approved Versions | Configuration Requirements | Notes |\n|------------|-------------------|---------------------------|-------|\n| **AWS MSK** | 2.8.1, 3.2.0, 3.4.0 | EBS storage, encryption at rest/in-transit | Managed Kafka service |\n| **Apache Kafka** | 2.8.x, 3.2.x, 3.4.x | Aligned with MSK versions | Open-source Kafka |\n| **AWS Glue Schema Registry** | Latest | AVRO serialization | Schema management |\n| **Lenses.io** | 5.x | RBAC enabled, audit logging | Kafka management platform |\n| **Terraform** | 1.5+ | AWS provider 5.x+ | Infrastructure as Code |\n| **Kafka CLI** | Matches MSK version | Emergency use only | Direct broker access |",
+    "36": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#serialization-standards]\n\n#### Serialization Standards\n\n| Format | Use Case | Required Library | Schema Registry |\n|--------|----------|------------------|-----------------|\n| **AVRO** | **Primary** - All production topics | Confluent AVRO Serializer | Required |\n| **JSON** | Non-production, internal topics | Jackson JSON | Optional |\n| **Protobuf** | gRPC integrations | Google Protobuf | Required |\n| **String** | Testing, metrics topics | Built-in | Not applicable |\n\n**Mandatory Configuration:**\n```yaml\n# Producer configuration\nkey.serializer: org.apache.kafka.common.serialization.StringSerializer\nvalue.serializer: io.confluent.kafka.serializers.KafkaAvroSerializer\nschema.registry.url: ${AWS_GLUE_SCHEMA_REGISTRY_ENDPOINT}\n\n# Consumer configuration\nkey.deserializer: org.apache.kafka.common.serialization.StringDeserializer\nvalue.deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer\nspecific.avro.reader: true\n```",
+    "37": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#configuration-specifications]\n\n### Configuration Specifications",
+    "38": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#standard-topic-configuration-template]\n\n#### Standard Topic Configuration Template\n\n**Base Configuration (All Topics):**\n\n```yaml\n# Durability and reliability\nreplication.factor: 3                      # Production: 3, Non-prod: 2\nmin.insync.replicas: 1                     # Critical topics: 2\nunclean.leader.election.enable: false      # Prevent data loss\n\n# Performance and efficiency\ncompression.type: snappy                   # Mandatory compression\nmax.message.bytes: 1048576                 # 1 MB max message size\nmessage.timestamp.type: CreateTime         # Producer timestamp\nlog.message.timestamp.type: CreateTime     # Use producer timestamp\n\n# Retention and cleanup\nretention.ms: 604800000                    # 7 days default (adjustable per classification)\nretention.bytes: -1                        # Unlimited size (time-based only)\ncleanup.policy: delete                     # Or 'compact' for state topics\n\n# Segment management\nsegment.ms: 604800000                      # 7-day segment rollover\nsegment.bytes: 1073741824                  # 1 GB segment size\nsegment.index.bytes: 10485760              # 10 MB index size\n\n# Leader election and availability\nleader.replication.throttled.replicas: []  # Throttling disabled\nfollower.replication.throttled.replicas: [] # Throttling disabled\n```",
+    "39": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#transactional-topic-configuration]\n\n#### Transactional Topic Configuration\n\n**Use Case**: Short-lived events (API requests, user actions, system events)\n\n```yaml\nretention.ms: 604800000                    # 7 days\nretention.bytes: -1                        # Unlimited\ncleanup.policy: delete\nmin.insync.replicas: 1                     # Standard durability\ncompression.type: snappy\n```",
+    "40": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#auditcompliance-topic-configuration]\n\n#### Audit/Compliance Topic Configuration\n\n**Use Case**: HIPAA audit trails, access logs, compliance events\n\n```yaml\nretention.ms: 2592000000                   # 30 days (HIPAA requirement)\nretention.bytes: -1                        # Unlimited\ncleanup.policy: delete\nmin.insync.replicas: 2                     # High durability\ncompression.type: snappy\n```",
+    "41": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#statecdc-topic-configuration-compacted]\n\n#### State/CDC Topic Configuration (Compacted)\n\n**Use Case**: Database change data capture, state snapshots\n\n```yaml\nretention.ms: -1                           # Infinite retention\nretention.bytes: -1                        # Unlimited\ncleanup.policy: compact                    # Keep latest per key\nmin.compaction.lag.ms: 0                   # Immediate compaction eligibility\ndelete.retention.ms: 86400000              # 24 hours tombstone retention\nsegment.ms: 604800000                      # 7-day segment\nmin.insync.replicas: 2                     # High durability\ncompression.type: snappy\n```",
+    "42": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#dead-letter-queue-dlq-configuration]\n\n#### Dead Letter Queue (DLQ) Configuration\n\n**Use Case**: Failed message capture and analysis\n\n```yaml\nretention.ms: 2592000000                   # 30 days (longer for debugging)\nretention.bytes: 10737418240               # 10 GB size limit\ncleanup.policy: delete\nmin.insync.replicas: 1                     # Standard durability\npartitions: 3                              # Fixed partition count\ncompression.type: snappy\n```",
+    "43": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#high-throughput-topic-configuration]\n\n#### High-Throughput Topic Configuration\n\n**Use Case**: > 10,000 messages/sec\n\n```yaml\npartitions: 24                             # High parallelism\nreplication.factor: 3\nmin.insync.replicas: 2                     # Critical topics only\ncompression.type: lz4                      # Faster compression\nbatch.size: 32768                          # 32 KB producer batch\nlinger.ms: 10                              # 10ms batching window\nbuffer.memory: 67108864                    # 64 MB producer buffer\n```\n\n---",
+    "44": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#implementation-guidelines]\n\n## Implementation Guidelines",
+    "45": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#implementation-requirements]\n\n### Implementation Requirements\n\nTeams must follow this phased approach to achieve compliance with this standard.",
+    "46": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#phase-1-topic-design-and-planning-before-development]\n\n#### Phase 1: Topic Design and Planning (Before Development)\n\n**Step 1: Domain and Context Identification**\n- Identify business domain from approved list: `claims`, `member`, `provider`, `pharmacy`, `reporting`, `audit`\n- Map to bounded context using Domain-Driven Design principles\n- Document entity/aggregate root that will be event source\n\n**Step 2: Naming Convention Application**\n- Apply naming template: `{domain}.{bounded-context}.{entity}.{event-type}.{version}`\n- Validate against regex pattern (use validation tool in CI/CD)\n- Check for naming conflicts in Lenses.io topic catalog\n- Reserve topic name in ServiceNow CMDB\n\n**Step 3: Partition and Replication Sizing**\n- Calculate target throughput (messages/sec, average message size)\n- Apply sizing formula to determine partition count (round up to multiple of 3)\n- Select replication factor based on environment and criticality\n- Configure `min.insync.replicas` for critical topics\n\n**Step 4: Retention and Cleanup Policy Selection**\n- Classify topic: Transactional, Audit/Compliance, Analytics, State/CDC, or DLQ\n- Apply retention policy from classification table\n- Select cleanup policy: `delete` (event streams) or `compact` (state topics)\n- Document retention rationale in topic metadata",
+    "47": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#phase-2-infrastructure-provisioning-terraform]\n\n#### Phase 2: Infrastructure Provisioning (Terraform)\n\n**Step 5: Terraform Configuration**\n\nCreate topic module in GitOps repository:\n\n```hcl\n# terraform/modules/kafka-topic/main.tf\nmodule \"claims_submitted_topic\" {\n  source = \"../../modules/aws-msk-topic\"\n\n  # Topic naming\n  topic_name    = \"claims.adjudication.claim.submitted.v1\"\n  environment   = var.environment\n\n  # Partitioning and replication\n  partition_count       = 12\n  replication_factor    = 3\n  min_insync_replicas   = 2  # Critical topic\n\n  # Retention and cleanup\n  retention_ms          = 604800000  # 7 days\n  cleanup_policy        = \"delete\"\n\n  # Performance\n  compression_type      = \"snappy\"\n  max_message_bytes     = 1048576\n  segment_ms            = 604800000\n  segment_bytes         = 1073741824\n\n  # Metadata\n  owner                 = \"claims-team@gainwell.com\"\n  data_classification   = \"phi-pii\"\n  business_purpose      = \"Claims adjudication submitted events for downstream processing\"\n  sla_tier              = \"tier-1\"\n  schema_registry_subject = \"claims.adjudication.claim.submitted.v1-value\"\n\n  # Tags\n  tags = {\n    Domain         = \"claims\"\n    BoundedContext = \"adjudication\"\n    Compliance     = \"HIPAA\"\n    Team           = \"ClaimsProcessing\"\n  }\n}\n```\n\n**Step 6: CI/CD Pipeline Execution**\n\n```yaml\n# .github/workflows/kafka-topic-deployment.yml\nname: Kafka Topic Deployment\n\non:\n  push:\n    paths:\n      - 'terraform/topics/**'\n\njobs:\n  validate:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Checkout code\n        uses: actions/checkout@v3\n\n      - name: Validate topic naming\n        run: |\n          python scripts/validate_topic_naming.py \\\n            --config terraform/topics/claims/*.tf\n\n      - name: Terraform plan\n        run: |\n          cd terraform/topics\n          terraform init\n          terraform plan -out=tfplan\n\n      - name: Compliance check\n        run: |\n          python scripts/check_topic_compliance.py \\\n            --plan terraform/topics/tfplan\n\n  deploy:\n    needs: validate\n    runs-on: ubuntu-latest\n    if: github.ref == 'refs/heads/main'\n    steps:\n      - name: Terraform apply\n        run: |\n          cd terraform/topics\n          terraform apply -auto-approve tfplan\n\n      - name: Register in Lenses.io\n        run: |\n          lenses-cli topic register \\\n            --name $TOPIC_NAME \\\n            --metadata metadata.json\n```",
+    "48": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#phase-3-schema-registration-aws-glue-schema-registry]\n\n#### Phase 3: Schema Registration (AWS Glue Schema Registry)\n\n**Step 7: Schema Definition**\n\nCreate AVRO schema for topic:\n\n```json\n{\n  \"type\": \"record\",\n  \"name\": \"ClaimSubmitted\",\n  \"namespace\": \"com.gainwell.claims.adjudication.v1\",\n  \"doc\": \"Event emitted when claim is submitted for adjudication\",\n  \"fields\": [\n    {\n      \"name\": \"claimId\",\n      \"type\": \"string\",\n      \"doc\": \"Unique claim identifier\"\n    },\n    {\n      \"name\": \"memberId\",\n      \"type\": \"string\",\n      \"doc\": \"Member identifier\"\n    },\n    {\n      \"name\": \"submittedAt\",\n      \"type\": \"long\",\n      \"logicalType\": \"timestamp-millis\",\n      \"doc\": \"Submission timestamp\"\n    },\n    {\n      \"name\": \"claimAmount\",\n      \"type\": {\n        \"type\": \"bytes\",\n        \"logicalType\": \"decimal\",\n        \"precision\": 10,\n        \"scale\": 2\n      },\n      \"doc\": \"Claim amount in USD\"\n    },\n    {\n      \"name\": \"metadata\",\n      \"type\": {\n        \"type\": \"record\",\n        \"name\": \"EventMetadata\",\n        \"fields\": [\n          {\"name\": \"eventId\", \"type\": \"string\"},\n          {\"name\": \"eventTime\", \"type\": \"long\"},\n          {\"name\": \"source\", \"type\": \"string\"}\n        ]\n      }\n    }\n  ]\n}\n```\n\n**Step 8: Schema Registration**\n\n```bash\n# Register schema in AWS Glue Schema Registry\naws glue create-schema \\\n  --schema-name \"claims.adjudication.claim.submitted.v1-value\" \\\n  --data-format AVRO \\\n  --compatibility BACKWARD \\\n  --schema-definition file://schemas/claim-submitted-v1.avsc \\\n  --tags Domain=claims,Compliance=HIPAA\n```",
+    "49": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#phase-4-access-control-configuration-lensesio-rbac]\n\n#### Phase 4: Access Control Configuration (Lenses.io RBAC)\n\n**Step 9: Configure Topic Access Policies**\n\n```yaml\n# lenses-config/topic-policies/claims-adjudication-claim-submitted.yml\ntopic: \"claims.adjudication.claim.submitted.v1\"\n\nproducers:\n  - service: \"claims-submission-api\"\n    acl_principal: \"User:claims-submission-api\"\n    operations: [WRITE, DESCRIBE]\n\nconsumers:\n  - service: \"claims-processing-engine\"\n    acl_principal: \"User:claims-processing-engine\"\n    operations: [READ, DESCRIBE]\n    consumer_group: \"claims-processing-engine-cg\"\n\n  - service: \"claims-analytics\"\n    acl_principal: \"User:claims-analytics\"\n    operations: [READ, DESCRIBE]\n    consumer_group: \"claims-analytics-cg\"\n\nadmins:\n  - team: \"claims-team\"\n    acl_principal: \"Group:claims-team\"\n    operations: [ALL]\n\naudit_log: true\ndata_masking:\n  enabled: true\n  fields: [\"memberId\", \"claimId\"]\n```",
+    "50": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#validation-criteria]\n\n### Validation Criteria\n\nTeams must verify compliance using these criteria:\n\n| Validation Area | Criteria | Verification Method | Evidence Required |\n|-----------------|----------|---------------------|-------------------|\n| **Naming Convention** | Topic name matches regex pattern | Automated CI/CD validation | Pipeline logs, topic catalog |\n| **Partition Sizing** | Partition count = multiple of 3, within sizing guidelines | Terraform plan review | Terraform state file |\n| **Replication Factor** | Matches environment requirements (prod=3, non-prod=2) | MSK cluster configuration | Topic describe output |\n| **Retention Policy** | Retention period matches classification | Topic configuration check | `kafka-configs.sh` output |\n| **Schema Registration** | Schema exists in Glue Schema Registry with BACKWARD compatibility | Schema validation script | Registry listing |\n| **Access Control** | RBAC policies configured in Lenses.io | Manual policy review | Lenses.io ACL export |\n| **Documentation** | Topic metadata complete with owner, classification, SLA tier | Metadata validation | Lenses.io topic details |\n| **Compression** | `compression.type=snappy` or ARB-approved alternative | Topic configuration | Topic describe output |\n\n**Compliance Verification Script:**\n\n```bash\n#!/bin/bash\n# scripts/verify-topic-compliance.sh\n\nTOPIC_NAME=$1\n\necho \"Verifying compliance for topic: $TOPIC_NAME\"\n\n# Check naming convention\nif ! echo \"$TOPIC_NAME\" | grep -qE '^[a-z0-9-]+\\.[a-z0-9-]+\\.[a-z0-9-]+\\.[a-z0-9-]+\\.v[0-9]+$'; then\n  echo \"❌ FAIL: Topic name does not match naming convention\"\n  exit 1\nfi\n\n# Check partition count (multiple of 3)\nPARTITIONS=$(kafka-topics.sh --describe --topic \"$TOPIC_NAME\" --bootstrap-server $KAFKA_BROKER | grep PartitionCount | awk '{print $4}')\nif [ $((PARTITIONS % 3)) -ne 0 ]; then\n  echo \"❌ FAIL: Partition count ($PARTITIONS) not a multiple of 3\"\n  exit 1\nfi\n\n# Check replication factor\nREPLICATION=$(kafka-topics.sh --describe --topic \"$TOPIC_NAME\" --bootstrap-server $KAFKA_BROKER | grep ReplicationFactor | awk '{print $6}')\nif [ \"$ENVIRONMENT\" = \"production\" ] && [ \"$REPLICATION\" -ne 3 ]; then\n  echo \"❌ FAIL: Production replication factor must be 3, found $REPLICATION\"\n  exit 1\nfi\n\n# Check compression\nCOMPRESSION=$(kafka-configs.sh --describe --topic \"$TOPIC_NAME\" --bootstrap-server $KAFKA_BROKER | grep compression.type | awk '{print $2}')\nif [ \"$COMPRESSION\" != \"snappy\" ]; then\n  echo \"⚠️  WARN: Compression type is $COMPRESSION, expected snappy\"\nfi\n\n# Check schema registry\nSCHEMA_SUBJECT=\"${TOPIC_NAME}-value\"\nif ! aws glue get-schema --schema-id SchemaName=$SCHEMA_SUBJECT &>/dev/null; then\n  echo \"❌ FAIL: Schema not found in Glue Schema Registry: $SCHEMA_SUBJECT\"\n  exit 1\nfi\n\necho \"✅ PASS: Topic $TOPIC_NAME is compliant\"\n```",
+    "51": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#testing-requirements]\n\n### Testing Requirements",
+    "52": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#unit-testing-topic-configuration]\n\n#### Unit Testing (Topic Configuration)\n\nTest topic configuration in isolation:\n\n```python\n# tests/test_topic_configuration.py\nimport pytest\nfrom kafka_admin import TopicConfig\n\ndef test_claims_submitted_topic_configuration():\n    \"\"\"Verify claims.adjudication.claim.submitted.v1 configuration\"\"\"\n    config = TopicConfig.load(\"terraform/topics/claims-submitted.tf\")\n\n    # Naming convention\n    assert config.name == \"claims.adjudication.claim.submitted.v1\"\n    assert config.name.count('.') == 4\n    assert config.name.endswith('.v1')\n\n    # Partitioning\n    assert config.partitions == 12\n    assert config.partitions % 3 == 0\n\n    # Replication\n    assert config.replication_factor == 3\n    assert config.min_insync_replicas == 2\n\n    # Retention\n    assert config.retention_ms == 604800000  # 7 days\n    assert config.cleanup_policy == \"delete\"\n\n    # Compression\n    assert config.compression_type == \"snappy\"\n```",
+    "53": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#integration-testing-producerconsumer]\n\n#### Integration Testing (Producer/Consumer)\n\nTest end-to-end event flow:\n\n```csharp\n// ClaimsSubmittedTopicIntegrationTests.cs\n[TestClass]\npublic class ClaimsSubmittedTopicIntegrationTests\n{\n    [TestMethod]\n    public async Task ProduceAndConsume_ClaimSubmittedEvent_Success()\n    {\n        // Arrange\n        var topicName = \"claims.adjudication.claim.submitted.v1\";\n        var claimEvent = new ClaimSubmittedEvent\n        {\n            ClaimId = \"CLM-12345\",\n            MemberId = \"MEM-67890\",\n            SubmittedAt = DateTimeOffset.UtcNow,\n            ClaimAmount = 150.00m\n        };\n\n        // Act - Produce\n        await _producer.ProduceAsync(topicName, claimEvent);\n\n        // Act - Consume\n        var consumed = await _consumer.ConsumeAsync(topicName, TimeSpan.FromSeconds(10));\n\n        // Assert\n        Assert.IsNotNull(consumed);\n        Assert.AreEqual(claimEvent.ClaimId, consumed.ClaimId);\n        Assert.AreEqual(claimEvent.MemberId, consumed.MemberId);\n    }\n\n    [TestMethod]\n    public void Producer_CompressionEnabled_SnappyCompression()\n    {\n        // Arrange\n        var config = _producer.Config;\n\n        // Assert\n        Assert.AreEqual(\"snappy\", config[ProducerConfig.CompressionType]);\n    }\n}\n```",
+    "54": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#compliance-testing-automated-validation]\n\n#### Compliance Testing (Automated Validation)\n\nTest standard compliance in CI/CD:\n\n```yaml\n# tests/compliance/test_topic_compliance.py\nimport pytest\nimport re\nfrom kafka_admin import KafkaAdminClient\n\n@pytest.fixture\ndef admin_client():\n    return KafkaAdminClient(bootstrap_servers=os.getenv('KAFKA_BROKER'))\n\ndef test_all_topics_follow_naming_convention(admin_client):\n    \"\"\"Verify all user topics follow naming convention\"\"\"\n    topics = admin_client.list_topics()\n    naming_pattern = r'^[a-z0-9-]+\\.[a-z0-9-]+\\.[a-z0-9-]+\\.[a-z0-9-]+\\.v[0-9]+$'\n\n    non_compliant = []\n    for topic in topics:\n        if topic.startswith('_'):  # Skip system topics\n            continue\n        if not re.match(naming_pattern, topic):\n            non_compliant.append(topic)\n\n    assert len(non_compliant) == 0, f\"Non-compliant topics: {non_compliant}\"\n\ndef test_production_topics_have_replication_factor_3(admin_client):\n    \"\"\"Verify production topics have replication factor 3\"\"\"\n    if os.getenv('ENVIRONMENT') != 'production':\n        pytest.skip(\"Only applicable to production\")\n\n    topics = admin_client.describe_topics()\n    non_compliant = [\n        t.name for t in topics\n        if not t.name.startswith('_') and t.replication_factor != 3\n    ]\n\n    assert len(non_compliant) == 0, f\"Topics with RF != 3: {non_compliant}\"\n```",
+    "55": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#documentation-requirements]\n\n### Documentation Requirements\n\nTeams must maintain the following documentation for compliance:",
+    "56": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#1-topic-design-document]\n\n#### 1. Topic Design Document\n\n**Location**: Confluence/SharePoint\n**Template**: `Topic Design Document - {Topic Name}`\n\n**Required Content:**\n- Business domain and bounded context description\n- Event schema and data dictionary\n- Producer and consumer services\n- Throughput requirements and growth projections\n- Retention and compliance requirements\n- Access control and data classification\n- Disaster recovery and backup strategy",
+    "57": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#2-schema-evolution-log]\n\n#### 2. Schema Evolution Log\n\n**Location**: AWS Glue Schema Registry description field\n**Format**: Markdown changelog\n\n**Example:**\n```markdown\n## Schema Evolution History\n\n### v1.0.0 (2026-01-15)\n- Initial schema release\n- Fields: claimId, memberId, submittedAt, claimAmount, metadata\n\n### v1.1.0 (2026-02-10)\n- Added optional field: `diagnosisCodes` (array of strings)\n- Backward compatible addition\n- Migration: No consumer changes required\n```",
+    "58": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#3-topic-metadata-lensesio]\n\n#### 3. Topic Metadata (Lenses.io)\n\n**Required Fields:**\n- `owner`: Team email or Slack channel\n- `data-classification`: public/internal/confidential/phi-pii\n- `schema-registry-subject`: AWS Glue Schema Registry subject name\n- `business-purpose`: 1-2 sentence description\n- `sla-tier`: tier-1 (critical), tier-2 (important), tier-3 (informational)\n- `compliance-tags`: HIPAA, SOC2, PCI-DSS (if applicable)\n- `retention-rationale`: Justification for retention period",
+    "59": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#4-runbook-operational-documentation]\n\n#### 4. Runbook (Operational Documentation)\n\n**Location**: Confluence operational runbooks\n**Template**: `Kafka Topic Runbook - {Topic Name}`\n\n**Required Sections:**\n- **Overview**: Topic purpose and business context\n- **Monitoring**: Key metrics, alerting thresholds, dashboards\n- **Troubleshooting**: Common issues and resolution steps\n- **Consumer Lag**: Expected lag patterns and escalation criteria\n- **Data Quality**: Data validation rules and quality checks\n- **Incident Response**: Escalation paths and contact information\n- **Disaster Recovery**: Backup/restore procedures, RTO/RPO\n\n---",
+    "60": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#compliance-and-governance]\n\n## Compliance and Governance",
+    "61": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#compliance-assessment]\n\n### Compliance Assessment\n\nThis standard's compliance is assessed through automated and manual mechanisms:",
+    "62": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#assessment-criteria]\n\n#### Assessment Criteria\n\n1. **Naming Convention Compliance** (95% target)\n   - **Measurement**: Automated regex validation in CI/CD pipelines\n   - **Frequency**: Every topic creation/modification\n   - **Tool**: Python validation script in `scripts/validate_topic_naming.py`\n   - **Threshold**: < 5% exception rate acceptable\n\n2. **Configuration Compliance** (98% target)\n   - **Measurement**: Topic configuration audits via Kafka Admin API\n   - **Frequency**: Weekly automated scans\n   - **Tool**: Lenses.io compliance dashboards\n   - **Threshold**: < 2% deviation acceptable (temporary exceptions excluded)\n\n3. **Documentation Compliance** (90% target)\n   - **Measurement**: Lenses.io metadata completeness checks\n   - **Frequency**: Monthly audits\n   - **Tool**: Custom metadata validator script\n   - **Threshold**: All critical topics (tier-1/tier-2) must have complete metadata",
+    "63": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#assessment-process]\n\n#### Assessment Process\n\n**Automated Assessment (Continuous):**\n1. CI/CD pipeline validates naming on every topic creation PR\n2. Weekly cron job scans all topics for configuration drift\n3. Lenses.io alerts on non-compliant configuration changes\n4. Monthly report generated showing compliance trends\n\n**Manual Assessment (Quarterly):**\n1. Architecture team reviews exception requests and approval patterns\n2. Quarterly compliance report presented to Architecture Review Board\n3. Remediation plans created for systemic non-compliance\n4. Success stories documented and shared with teams",
+    "64": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#monitoring-requirements]\n\n### Monitoring Requirements\n\nTeams must implement these monitoring approaches for topic compliance:",
+    "65": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#continuous-monitoring]\n\n#### Continuous Monitoring\n\n**CI/CD Pipeline Checks:**\n```yaml\n# Required pipeline stages for topic creation\nstages:\n  - validate:\n      - naming_convention_check\n      - partition_count_validation\n      - replication_factor_check\n      - configuration_compliance\n      - schema_registry_validation\n\n  - security_scan:\n      - data_classification_check\n      - rbac_policy_validation\n      - phi_pii_detection\n```\n\n**Runtime Monitoring (Lenses.io):**\n- Alert on manual topic creation (outside Terraform)\n- Alert on configuration drift from approved baseline\n- Dashboard showing compliance percentage by domain\n- Topic age tracking (topics > 180 days require review)",
+    "66": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#periodic-reviews]\n\n#### Periodic Reviews\n\n| Review Type | Frequency | Scope | Owner |\n|-------------|-----------|-------|-------|\n| **Compliance Scan** | Weekly | All topics configuration | Platform Team |\n| **Metadata Audit** | Monthly | Documentation completeness | Domain Architects |\n| **Exception Review** | Quarterly | Active exceptions renewal | ARB |\n| **Standards Review** | Annual | Standard relevance and updates | EAP Team |\n\n**Compliance Metrics Dashboard:**\n- Overall compliance rate (target: 95%)\n- Compliance by domain (claims, member, provider, etc.)\n- Exception count and trends\n- Time to remediation for non-compliant topics\n- Top 10 non-compliance reasons",
+    "67": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#exception-handling]\n\n### Exception Handling\n\nExceptions to this standard follow a structured approval and tracking process:",
+    "68": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#exception-categories]\n\n#### Exception Categories\n\n**1. Temporary Exceptions (< 90 days)**\n- **Use Case**: PoC projects, migration periods, vendor integration testing\n- **Approver**: Domain Architect\n- **Process**: ServiceNow request with business justification\n- **Monitoring**: Automatic expiration alerts at 30, 60, 80 days\n\n**2. Permanent Exceptions**\n- **Use Case**: Legacy integrations, vendor-dictated topic names, technical constraints\n- **Approver**: Architecture Review Board (ARB)\n- **Process**: Formal ARB presentation with cost-benefit analysis\n- **Monitoring**: Annual review required, must re-justify continuation\n\n**3. Emergency Exceptions**\n- **Use Case**: Production incidents, critical business needs\n- **Approver**: Retrospective approval within 5 business days\n- **Process**: Create topic with `emergency-exception` tag, retroactive ServiceNow ticket\n- **Monitoring**: Weekly report of emergency exceptions to Architecture Team",
+    "69": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#exception-management-process]\n\n#### Exception Management Process\n\n**Step 1: Exception Request Submission**\n```yaml\n# ServiceNow Exception Request Ticket\ncatalog_item: \"Kafka Topic Standard Exception\"\n\nrequired_fields:\n  topic_name: \"claims.legacy-system.claim.v1\"  # Proposed non-compliant name\n  standard_violated: \"REQ-1: Naming Convention\"\n  justification: |\n    Legacy vendor system (ClaimPro v3.2) requires specific topic format.\n    Vendor API cannot be modified without $500K customization cost.\n    Only 3 topics affected. Migration to standard naming in Q4 2026.\n\n  business_impact: \"Blocks $2M claims processing contract renewal\"\n  alternative_considered: |\n    Topic renaming bridge service evaluated but introduces 200ms latency,\n    violating tier-1 SLA requirements (< 500ms end-to-end).\n\n  risk_mitigation: |\n    - Document exception in architecture decision record (ADR)\n    - Create mapping documentation in Confluence\n    - Add monitoring alerts for these non-standard topics\n    - Schedule review for Q4 2026 migration\n\n  duration: \"180 days\"  # Temporary exception\n  remediation_plan: \"Migrate to standard naming during vendor upgrade (Q4 2026)\"\n```\n\n**Step 2: Review and Approval**\n- **Domain Architect Review** (2 business days): Technical feasibility assessment\n- **Security Review** (if PHI/PII involved) (3 business days): Compliance impact\n- **ARB Review** (permanent exceptions only) (5 business days): Strategic alignment\n\n**Step 3: Exception Tracking**\n- Exception recorded in ServiceNow with unique ID\n- Topic tagged in Lenses.io: `exception-id: EXC-2026-0042`\n- Monthly exception dashboard updated\n- Remediation timeline tracked to completion\n\n**Step 4: Exception Renewal/Closure**\n- **Temporary**: Must renew or remediate at expiration\n- **Permanent**: Annual review required; auto-flagged for reassessment\n- **Emergency**: Converted to temporary or permanent within 30 days",
+    "70": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#governance-oversight]\n\n### Governance Oversight\n\nThis standard is governed through a multi-tiered oversight structure:",
+    "71": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#standards-owner]\n\n#### Standards Owner\n\n**Role**: Enterprise Architecture Program (EAP) Team\n**Responsibilities**:\n- Maintain and update this standard based on feedback and technology evolution\n- Respond to interpretation questions within 2 business days\n- Quarterly review of compliance metrics and exception trends\n- Annual standard review and update process\n\n**Contact**: `eap-team@gainwell.com`, Slack: `#eap-architecture`",
+    "72": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#compliance-manager]\n\n#### Compliance Manager\n\n**Role**: Platform Engineering Team - Kafka Practice Lead\n**Responsibilities**:\n- Monitor organizational compliance via automated tooling\n- Generate monthly compliance reports for leadership\n- Triage exception requests and route to appropriate approvers\n- Manage remediation efforts for non-compliant topics\n- Coordinate quarterly compliance audits\n\n**Contact**: `kafka-platform-team@gainwell.com`, Slack: `#kafka-platform`",
+    "73": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#governance-body]\n\n#### Governance Body\n\n**Role**: Architecture Review Board (ARB)\n**Responsibilities**:\n- Review and approve permanent exceptions\n- Provide policy direction on standard interpretation\n- Quarterly review of compliance trends and systemic issues\n- Approve major standard updates (breaking changes)\n- Escalation point for complex exception scenarios\n\n**Meeting Schedule**: Bi-weekly Thursdays 2-3 PM ET\n**Exception Review SLA**: 5 business days",
+    "74": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#subject-matter-experts]\n\n#### Subject Matter Experts\n\n**Role**: Domain Architects (Claims, Member, Provider, Pharmacy)\n**Responsibilities**:\n- Provide domain-specific guidance on topic design\n- Review domain-specific exception requests\n- Support teams with standard implementation\n- Identify domain-specific gaps in standard\n\n**Contact**: Domain-specific Slack channels (`#claims-architecture`, `#member-architecture`, etc.)\n\n---",
+    "75": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#examples-and-references]\n\n## Examples and References",
+    "76": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#implementation-examples]\n\n### Implementation Examples\n\nReal-world examples from Gainwell's EaaS platform demonstrating proper standard application:",
+    "77": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#example-1-claims-adjudication-topic-implementation]\n\n#### Example 1: Claims Adjudication Topic Implementation\n\n**Context**: Texas Medicaid claims processing system processing 2.5M claims/month\n\n**Topic Configuration:**\n```yaml\ntopic_name: claims.adjudication.claim.submitted.v1\npartition_count: 12\nreplication_factor: 3\nmin_insync_replicas: 2\nretention_ms: 604800000  # 7 days\ncleanup_policy: delete\ncompression_type: snappy\n\nmetadata:\n  owner: texas-claims-team@gainwell.com\n  data_classification: phi-pii\n  business_purpose: \"Claims submitted for adjudication processing\"\n  sla_tier: tier-1\n  compliance_tags: [HIPAA, SOC2]\n```\n\n**Compliance Evidence:**\n- Naming convention validated via CI/CD pipeline (regex pass)\n- Partition count = 12 (multiple of 3, sized for 1,200 msgs/sec peak throughput)\n- Replication factor 3 with min.insync.replicas=2 (critical topic tier-1)\n- AVRO schema registered: `claims.adjudication.claim.submitted.v1-value`\n- Lenses.io RBAC configured with producer/consumer ACLs\n\n**Lessons Learned:**\n- Initial partition count (6) insufficient for peak load; increased to 12 after 2 weeks\n- Retention period reduced from 30 days to 7 days after replay requirements clarified\n- Schema evolution to v2 handled seamlessly via BACKWARD compatibility",
+    "78": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#example-2-member-eligibility-cdc-topic-compacted]\n\n#### Example 2: Member Eligibility CDC Topic (Compacted)\n\n**Context**: Real-time member eligibility state synchronization across 3 applications\n\n**Topic Configuration:**\n```yaml\ntopic_name: member.eligibility.eligibility-determination.updated.v1\npartition_count: 6\nreplication_factor: 3\nmin_insync_replicas: 2\nretention_ms: -1  # Infinite (compacted topic)\nretention_bytes: -1\ncleanup_policy: compact\nmin_compaction_lag_ms: 0\ndelete_retention_ms: 86400000  # 24 hours\ncompression_type: snappy\n\nmetadata:\n  owner: member-platform-team@gainwell.com\n  data_classification: phi-pii\n  business_purpose: \"Latest member eligibility determination state (compacted)\"\n  sla_tier: tier-1\n  compliance_tags: [HIPAA, SOC2, STATE_AUDIT]\n```\n\n**Compliance Evidence:**\n- Naming convention compliant (entity: eligibility-determination, event-type: updated)\n- Compacted topic for state preservation (latest eligibility per member_id)\n- Partition key: `member_id` ensures all member events in same partition\n- Schema includes tombstone handling for member deletions\n\n**Lessons Learned:**\n- Compaction initially delayed (min_compaction_lag_ms=3600000); changed to 0 for faster state convergence\n- Tombstone retention critical for GDPR right-to-be-forgotten compliance\n- Monitoring consumer lag more complex with compacted topics (use Lenses.io lag advisor)",
+    "79": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#example-3-audit-trail-topic-with-extended-retention]\n\n#### Example 3: Audit Trail Topic with Extended Retention\n\n**Context**: HIPAA audit logging for member data access (30-day retention requirement)\n\n**Topic Configuration:**\n```yaml\ntopic_name: audit.member.data-access.v1\npartition_count: 3\nreplication_factor: 3\nmin_insync_replicas: 2\nretention_ms: 2592000000  # 30 days (HIPAA requirement)\nretention_bytes: -1\ncleanup_policy: delete\ncompression_type: snappy\nunclean_leader_election_enable: false  # Critical audit data\n\nmetadata:\n  owner: security-team@gainwell.com\n  data_classification: internal\n  business_purpose: \"Audit trail for member PHI/PII data access\"\n  sla_tier: tier-1\n  compliance_tags: [HIPAA_164_312, SOC2_CC6_1, STATE_AUDIT]\n```\n\n**Compliance Evidence:**\n- Topic naming follows `audit.*` pattern for audit classification\n- Retention period = 30 days aligns with HIPAA §164.312(b) requirements\n- High durability (min.insync.replicas=2, unclean leader election disabled)\n- Immutable append-only (delete cleanup policy, no compaction)\n\n**Lessons Learned:**\n- Initial partition count (1) caused consumer lag during audit report generation; increased to 3\n- Compression (snappy) reduced storage costs by 60% with minimal processing overhead\n- Automated archival to S3 after 30 days for long-term compliance (7 years)",
+    "80": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#reference-architectures]\n\n### Reference Architectures\n\nThis standard supports and is supported by these reference architectures:\n\n- **[Event-Driven Architecture (EDA) Reference](../../rcas/application/event-driven-architecture.md)** - Overall event-driven design principles\n- **[Data Mesh Architecture](../../rcas/information/data-mesh-architecture.md)** - Domain-oriented data ownership and topic management\n- **[Multi-Tenant SaaS Architecture](../../rcas/application/multi-tenant-saas-architecture.md)** - Tenant isolation via topic naming and RBAC",
+    "81": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#related-standards]\n\n### Related Standards\n\nThis standard should be used in conjunction with:\n\n**Dependencies (Required):**\n- **[STD-INFRA-INT-001: Event Broker Integration](../../infrastructure/integration/STD-INFRA-INT-001-event-broker-integration.md)** - MSK cluster setup and configuration\n- **[STD-INFRA-KMGMT-003: RBAC Access Control](../../infrastructure/kafka-management/STD-INFRA-KMGMT-003-rbac-access-control.md)** - Topic access policies\n- **[STD-INFRA-KMGMT-011: Schema Validation](../../infrastructure/kafka-management/STD-INFRA-KMGMT-011-schema-validation.md)** - Schema Registry integration\n\n**Related Standards:**\n- **[STD-APP-EVT-001: .NET Kafka Consumer](../../application/event-driven/STD-APP-EVT-001-dotnet-kafka-consumer.md)** - Consumer implementation consuming from compliant topics\n- **[STD-APP-EVT-002: .NET Kafka Producer](../../application/event-driven/STD-APP-EVT-002-dotnet-kafka-producer.md)** - Producer implementation writing to compliant topics\n- **[STD-INFRA-KMGMT-001: Lenses.io Platform Installation](../../infrastructure/kafka-management/STD-INFRA-KMGMT-001-platform-installation.md)** - Management platform for compliance monitoring",
+    "82": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#external-references]\n\n### External References\n\n**Official Documentation:**\n- [Apache Kafka Topic Configuration Reference](https://kafka.apache.org/documentation/#topicconfigs) - Comprehensive configuration parameter documentation\n- [Confluent Topic Naming Best Practices](https://www.confluent.io/blog/kafka-topic-naming-conventions/) - Industry best practices and patterns\n- [AWS MSK Best Practices](https://docs.aws.amazon.com/msk/latest/developerguide/best-practices.html) - AWS-specific guidance for MSK topics\n\n**Industry Standards:**\n- [Domain-Driven Design (DDD) by Eric Evans](https://www.domainlanguage.com/ddd/) - Bounded context and domain modeling\n- [HIPAA Security Rule §164.312](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html) - PHI/PII data retention requirements\n- [CloudEvents Specification v1.0](https://cloudevents.io/) - Event metadata standards\n\n**Tools and Utilities:**\n- [Kafka Topic Naming Validator](https://github.com/confluentinc/kafka-connect-storage-cloud/tree/master) - Open-source naming validation tool\n- [Lenses.io Documentation](https://docs.lenses.io/) - Kafka management platform documentation\n- [AWS Glue Schema Registry](https://docs.aws.amazon.com/glue/latest/dg/schema-registry.html) - Schema management integration\n\n**Books:**\n- \"Kafka: The Definitive Guide\" (2nd Edition) by Neha Narkhede et al. - Chapter 4: Kafka Topics\n- \"Designing Event-Driven Systems\" by Ben Stopford - Topic design patterns\n- \"Building Event-Driven Microservices\" by Adam Bellemare - Naming and data modeling\n\n---",
+    "83": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#change-history]\n\n## Change History\n\n| Date | Version | Author | Description | Impact |\n|------|---------|--------|-------------|--------|\n| 2026-02-10 | 1.0.0 | EAP Architecture Team | Initial standard creation with comprehensive topic design and naming requirements | New mandatory standard for all Kafka topics |\n\n**Change Entry Guidelines:**\n- **Date**: Use YYYY-MM-DD format\n- **Version**: Follow semantic versioning (major.minor.patch)\n- **Author**: Full name or team identifier of change author\n- **Description**: Detailed explanation of what changed and why\n- **Impact**: Compliance implications, migration requirements, backward compatibility notes\n\n---",
+    "84": "[standards/information/event-driven/STD-INF-EVT-001-kafka-topic-design-naming.md#review-log]\n\n## Review Log\n\n| Review Date | Review Type | Reviewer(s) | Status | Comments | Actions |\n|-------------|-------------|-------------|--------|----------|---------|\n| 2026-02-10 | Initial Draft | EAP Architecture Team | Draft | Standard created following template guidelines, pending stakeholder review | Schedule stakeholder review sessions |\n\n**Review Entry Guidelines:**\n- **Review Date**: Use YYYY-MM-DD format\n- **Review Type**: Specify type (Peer Review, Stakeholder Review, Governance Review, Annual Review, etc.)\n- **Reviewer(s)**: Names or identifiers of all reviewers involved in the review\n- **Status**: Review outcome (Draft, In Review, Approved, Requires Changes, Rejected, Conditional)\n- **Comments**: Key feedback, recommendations, concerns raised during review\n- **Actions**: Follow-up actions required, changes needed, or next steps\n\n**Next Review Scheduled**: Stakeholder review with Domain Architects and Platform Engineering team\n\n---\n\n**← Back to [Data Standards](README.md)**"
+  },
+  "coverage": {
+    "total_pages": 84,
+    "covered_pages": 84,
+    "sampled_pages": 84,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 84
+  }
+}

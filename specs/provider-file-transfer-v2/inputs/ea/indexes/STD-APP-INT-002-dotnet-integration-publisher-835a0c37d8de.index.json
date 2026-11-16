@@ -1,0 +1,683 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "STD-APP-INT-002: .NET 8 Integration Event Publisher",
+  "document_description": "standard_name: '.NET 8 Integration Event Publisher'",
+  "total_pages": 72,
+  "tree": [
+    {
+      "title": "STD-APP-INT-002: .NET 8 Integration Event Publisher",
+      "node_id": "std-app-int-002-net-8-integration-event-publisher",
+      "start_index": 1,
+      "end_index": 72,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Table of Contents",
+          "node_id": "table-of-contents",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Executive Summary",
+          "node_id": "executive-summary",
+          "start_index": 3,
+          "end_index": 7,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Purpose Statement",
+              "node_id": "purpose-statement",
+              "start_index": 4,
+              "end_index": 4,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Scope",
+              "node_id": "scope",
+              "start_index": 5,
+              "end_index": 5,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Compliance Level",
+              "node_id": "compliance-level",
+              "start_index": 6,
+              "end_index": 6,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Business Rationale",
+              "node_id": "business-rationale",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Standard Requirements",
+          "node_id": "standard-requirements",
+          "start_index": 8,
+          "end_index": 31,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Mandatory Requirements",
+              "node_id": "mandatory-requirements",
+              "start_index": 9,
+              "end_index": 18,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "REQ-INT-002-001: MassTransit Integration Framework",
+                  "node_id": "req-int-002-001-masstransit-integration-framework",
+                  "start_index": 10,
+                  "end_index": 10,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-INT-002-002: Schema Registration and Evolution",
+                  "node_id": "req-int-002-002-schema-registration-and-evolution",
+                  "start_index": 11,
+                  "end_index": 11,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-INT-002-003: Transactional Outbox Pattern",
+                  "node_id": "req-int-002-003-transactional-outbox-pattern",
+                  "start_index": 12,
+                  "end_index": 12,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-INT-002-004: Delivery Guarantees and Acknowledgment",
+                  "node_id": "req-int-002-004-delivery-guarantees-and-acknowledgment",
+                  "start_index": 13,
+                  "end_index": 13,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-INT-002-005: External Consumer Compatibility",
+                  "node_id": "req-int-002-005-external-consumer-compatibility",
+                  "start_index": 14,
+                  "end_index": 14,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-INT-002-006: Observability for Integration Publishing",
+                  "node_id": "req-int-002-006-observability-for-integration-publishing",
+                  "start_index": 15,
+                  "end_index": 15,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-INT-002-007: Rate Limiting and Backpressure",
+                  "node_id": "req-int-002-007-rate-limiting-and-backpressure",
+                  "start_index": 16,
+                  "end_index": 16,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-INT-002-008: Domain-to-Integration Event Mapping",
+                  "node_id": "req-int-002-008-domain-to-integration-event-mapping",
+                  "start_index": 17,
+                  "end_index": 17,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "REQ-INT-002-009: Idempotent Publishing",
+                  "node_id": "req-int-002-009-idempotent-publishing",
+                  "start_index": 18,
+                  "end_index": 18,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Prohibited Practices",
+              "node_id": "prohibited-practices",
+              "start_index": 19,
+              "end_index": 24,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "PROH-INT-002-001: Direct Protocol Client Usage",
+                  "node_id": "proh-int-002-001-direct-protocol-client-usage",
+                  "start_index": 20,
+                  "end_index": 20,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "PROH-INT-002-002: Synchronous Publishing in Database Transactions",
+                  "node_id": "proh-int-002-002-synchronous-publishing-in-database-transactions",
+                  "start_index": 21,
+                  "end_index": 21,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "PROH-INT-002-003: In-Memory Outbox",
+                  "node_id": "proh-int-002-003-in-memory-outbox",
+                  "start_index": 22,
+                  "end_index": 22,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "PROH-INT-002-004: Hardcoded External System Endpoints",
+                  "node_id": "proh-int-002-004-hardcoded-external-system-endpoints",
+                  "start_index": 23,
+                  "end_index": 23,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "PROH-INT-002-005: Silent Delivery Failures",
+                  "node_id": "proh-int-002-005-silent-delivery-failures",
+                  "start_index": 24,
+                  "end_index": 24,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Best Practices",
+              "node_id": "best-practices",
+              "start_index": 25,
+              "end_index": 31,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Publisher Configuration",
+                  "node_id": "publisher-configuration",
+                  "start_index": 26,
+                  "end_index": 26,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Schema Management",
+                  "node_id": "schema-management",
+                  "start_index": 27,
+                  "end_index": 27,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Outbox Management",
+                  "node_id": "outbox-management",
+                  "start_index": 28,
+                  "end_index": 28,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Performance Optimization",
+                  "node_id": "performance-optimization",
+                  "start_index": 29,
+                  "end_index": 29,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Security",
+                  "node_id": "security",
+                  "start_index": 30,
+                  "end_index": 30,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Testing",
+                  "node_id": "testing",
+                  "start_index": 31,
+                  "end_index": 31,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Technical Specifications",
+          "node_id": "technical-specifications",
+          "start_index": 32,
+          "end_index": 38,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Required NuGet Packages",
+              "node_id": "required-nuget-packages",
+              "start_index": 33,
+              "end_index": 33,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Configuration Template",
+              "node_id": "configuration-template",
+              "start_index": 34,
+              "end_index": 34,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "MassTransit Configuration with Outbox",
+              "node_id": "masstransit-configuration-with-outbox",
+              "start_index": 35,
+              "end_index": 35,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Schema Registration Service",
+              "node_id": "schema-registration-service",
+              "start_index": 36,
+              "end_index": 36,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Rate Limiter Service",
+              "node_id": "rate-limiter-service",
+              "start_index": 37,
+              "end_index": 37,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Outbox DbContext Configuration",
+              "node_id": "outbox-dbcontext-configuration",
+              "start_index": 38,
+              "end_index": 38,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Implementation Guidelines",
+          "node_id": "implementation-guidelines",
+          "start_index": 39,
+          "end_index": 45,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Phase 1: Project Setup and Dependencies",
+              "node_id": "phase-1-project-setup-and-dependencies",
+              "start_index": 40,
+              "end_index": 40,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Phase 2: Define Domain Models and Integration Event Contracts",
+              "node_id": "phase-2-define-domain-models-and-integration-event-contracts",
+              "start_index": 41,
+              "end_index": 41,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Phase 3: Implement Event Mapping with AutoMapper",
+              "node_id": "phase-3-implement-event-mapping-with-automapper",
+              "start_index": 42,
+              "end_index": 42,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Phase 4: Complete Integration Publisher Implementation",
+              "node_id": "phase-4-complete-integration-publisher-implementation",
+              "start_index": 43,
+              "end_index": 43,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Phase 5: Configure OpenTelemetry and Observability",
+              "node_id": "phase-5-configure-opentelemetry-and-observability",
+              "start_index": 44,
+              "end_index": 44,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Phase 6: Testing Strategy",
+              "node_id": "phase-6-testing-strategy",
+              "start_index": 45,
+              "end_index": 45,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Examples and References",
+          "node_id": "examples-and-references",
+          "start_index": 46,
+          "end_index": 59,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Complete Working Example",
+              "node_id": "complete-working-example",
+              "start_index": 47,
+              "end_index": 48,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Scenario: Healthcare Claims Integration Publishing",
+                  "node_id": "scenario-healthcare-claims-integration-publishing",
+                  "start_index": 48,
+                  "end_index": 48,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Related Standards and Patterns",
+              "node_id": "related-standards-and-patterns",
+              "start_index": 49,
+              "end_index": 53,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Integration Standards",
+                  "node_id": "integration-standards",
+                  "start_index": 50,
+                  "end_index": 50,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Event-Driven Standards",
+                  "node_id": "event-driven-standards",
+                  "start_index": 51,
+                  "end_index": 51,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Infrastructure Standards",
+                  "node_id": "infrastructure-standards",
+                  "start_index": 52,
+                  "end_index": 52,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Monitoring and Observability",
+                  "node_id": "monitoring-and-observability",
+                  "start_index": 53,
+                  "end_index": 53,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "External Resources",
+              "node_id": "external-resources",
+              "start_index": 54,
+              "end_index": 59,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "MassTransit Documentation",
+                  "node_id": "masstransit-documentation",
+                  "start_index": 55,
+                  "end_index": 55,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "AWS Glue Schema Registry",
+                  "node_id": "aws-glue-schema-registry",
+                  "start_index": 56,
+                  "end_index": 56,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Polly Resilience",
+                  "node_id": "polly-resilience",
+                  "start_index": 57,
+                  "end_index": 57,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "OpenTelemetry",
+                  "node_id": "opentelemetry",
+                  "start_index": 58,
+                  "end_index": 58,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Transactional Outbox Pattern",
+                  "node_id": "transactional-outbox-pattern",
+                  "start_index": 59,
+                  "end_index": 59,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Compliance and Governance",
+          "node_id": "compliance-and-governance",
+          "start_index": 60,
+          "end_index": 70,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Compliance Assessment",
+              "node_id": "compliance-assessment",
+              "start_index": 61,
+              "end_index": 62,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Compliance Checklist",
+                  "node_id": "compliance-checklist",
+                  "start_index": 62,
+                  "end_index": 62,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Architecture Review Requirements",
+              "node_id": "architecture-review-requirements",
+              "start_index": 63,
+              "end_index": 63,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "title": "Monitoring and Alerting Requirements",
+              "node_id": "monitoring-and-alerting-requirements",
+              "start_index": 64,
+              "end_index": 66,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Required Metrics",
+                  "node_id": "required-metrics",
+                  "start_index": 65,
+                  "end_index": 65,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Required Alerts",
+                  "node_id": "required-alerts",
+                  "start_index": 66,
+                  "end_index": 66,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Exception Process",
+              "node_id": "exception-process",
+              "start_index": 67,
+              "end_index": 69,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "Requesting an Exception",
+                  "node_id": "requesting-an-exception",
+                  "start_index": 68,
+                  "end_index": 68,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "title": "Exception Categories",
+                  "node_id": "exception-categories",
+                  "start_index": 69,
+                  "end_index": 69,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "title": "Standard Review and Updates",
+              "node_id": "standard-review-and-updates",
+              "start_index": 70,
+              "end_index": 70,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "title": "Change History",
+          "node_id": "change-history",
+          "start_index": 71,
+          "end_index": 71,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Review Log",
+          "node_id": "review-log",
+          "start_index": 72,
+          "end_index": 72,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#std-app-int-002-net-8-integration-event-publisher]\n\n# STD-APP-INT-002: .NET 8 Integration Event Publisher\n\n**[Home](../../../../README.md)** > **[Standards](../../../README.md)** > **[Application](../../README.md)** > **[Integration](../README.md)** > **[.NET](README.md)** > **STD-APP-INT-002**\n\n---\n\n---\n\n**Standards Metadata**\n\n```yaml\nstandard_id: 'STD-APP-INT-002'\nstandard_name: '.NET 8 Integration Event Publisher'\nstandard_type: 'integration-event-publisher'\ncategory: 'application'\nversion: '1.0.0'\nstatus: 'review'\ncompliance_level: 'mandatory'\ntags: ['application', 'int', 'mandatory', 'dotnet8', 'integration', 'masstransit', 'publisher', 'event-driven', 'outbox']\n```\n\n---",
+    "2": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#table-of-contents]\n\n## Table of Contents\n\n- [Executive Summary](#executive-summary)\n- [Standard Requirements](#standard-requirements)\n- [Technical Specifications](#technical-specifications)\n- [Implementation Guidelines](#implementation-guidelines)\n- [Compliance and Governance](#compliance-and-governance)\n- [Examples and References](#examples-and-references)\n- [Change History](#change-history)\n- [Review Log](#review-log)\n\n---",
+    "3": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#executive-summary]\n\n## Executive Summary",
+    "4": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#purpose-statement]\n\n### Purpose Statement\n\nThis standard defines **mandatory requirements** for publishing integration events to external systems from .NET 8 applications. It extends [STD-APP-EVT-002](../../event-driven/STD-APP-EVT-002-dotnet-kafka-producer.md) (Internal Event Publishing) with additional requirements for cross-system integration including transactional outbox, schema registration, protocol adaptation, and external consumer compatibility.",
+    "5": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#scope]\n\n### Scope\n\n**In Scope:**\n- Integration event publishing to external systems (partners, vendors, government agencies)\n- Transactional outbox pattern for reliable delivery guarantees\n- Schema registration and versioning with AWS Glue Schema Registry\n- Protocol adaptation for Kafka, RabbitMQ, and Redis Streams via MassTransit\n- Multi-format serialization (Avro, JSON, Protobuf) for external consumers\n- Rate limiting and backpressure handling for external system protection\n- Cross-system observability with W3C trace context propagation\n- Idempotent publishing to prevent duplicate event delivery\n\n**Out of Scope:**\n- Internal application events within Gainwell systems (see [STD-APP-EVT-002](../../event-driven/STD-APP-EVT-002-dotnet-kafka-producer.md))\n- Platform-level broker configuration (see [STD-INFRA-INT-001](../../../infrastructure/integration/STD-INFRA-INT-001-event-broker-integration.md))\n- Direct REST API calls to external systems (see [STD-APP-API-001](../../api/STD-APP-API-001-api-design.md))\n- File-based integration (see STD-APP-INT-005)\n- Batch data exchange (see STD-APP-INT-006)",
+    "6": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#compliance-level]\n\n### Compliance Level\n\n**MANDATORY** - All .NET 8 applications publishing integration events to external systems must comply with all requirements (REQ-INT-002-001 through REQ-INT-002-009).",
+    "7": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#business-rationale]\n\n### Business Rationale\n\n**Why This Standard Exists:**\n\n1. **Reliable Cross-System Communication**: External systems require guaranteed delivery semantics that internal event publishing doesn't provide. Transactional outbox ensures exactly-once semantics.\n\n2. **External Consumer Stability**: External partners, vendors, and government agencies need stable, versioned event contracts with backward compatibility guarantees to prevent integration breakage.\n\n3. **Protocol Diversity**: External systems use diverse messaging protocols (Kafka, RabbitMQ, AMQP, Redis). MassTransit provides transport abstraction to support multiple protocols without code changes.\n\n4. **Schema Management**: External consumers require centralized schema registry for event discovery, versioning, and compatibility enforcement. AWS Glue Schema Registry provides this capability.\n\n5. **Observability Across Boundaries**: Integration events cross organizational boundaries, requiring W3C trace context propagation for end-to-end observability and troubleshooting.\n\n6. **External System Protection**: Rate limiting and backpressure prevent event floods that could overwhelm external partner systems.\n\n**Related Standards:**\n- [STD-APP-EVT-002: .NET 8 Event Publishing](../../event-driven/STD-APP-EVT-002-dotnet-kafka-producer.md) - Internal event publishing patterns (foundational)\n- [STD-APP-INT-001: .NET 8 Integration Event Consumer](STD-APP-INT-001-dotnet-integration-consumer.md) - Consuming integration events from external systems\n- [STD-APP-EVT-003: .NET 8 Event Sourcing](../../event-driven/STD-APP-EVT-003-dotnet-event-sourcing.md) - Event sourcing patterns\n- [STD-INFRA-INT-001: Event Broker Integration](../../../infrastructure/integration/STD-INFRA-INT-001-event-broker-integration.md) - Infrastructure-level broker configuration\n\n---",
+    "8": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#standard-requirements]\n\n## Standard Requirements",
+    "9": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#mandatory-requirements]\n\n### Mandatory Requirements",
+    "10": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#req-int-002-001-masstransit-integration-framework]\n\n#### REQ-INT-002-001: MassTransit Integration Framework\n\n**Status**: MANDATORY\n**Rationale**: MassTransit provides transport abstraction, message routing, and reliability patterns for publishing to multiple external system protocols without code changes.\n\n**Requirements:**\n- Use MassTransit >= 8.1.0 for all integration event publishing\n- Configure `IPublishEndpoint` or `ISendEndpoint` for message delivery\n- Support Kafka, RabbitMQ, and Redis Streams transports via MassTransit riders\n- Implement correlation ID propagation to external systems using `ConversationId` or `CorrelationId`\n- Configure retry policies with exponential backoff for transient failures\n- Use message headers for routing and metadata (version, source system, timestamp)\n\n**Validation:**\n- MassTransit >= 8.1.0 NuGet package installed\n- Transport-specific rider configured (Kafka/RabbitMQ/Redis)\n- `IPublishEndpoint` or `ISendEndpoint` injected and used for publishing\n- Correlation ID set on all published messages\n- Retry policy configured with exponential backoff\n\n---",
+    "11": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#req-int-002-002-schema-registration-and-evolution]\n\n#### REQ-INT-002-002: Schema Registration and Evolution\n\n**Status**: MANDATORY\n**Rationale**: External consumers require stable, versioned schemas with backward compatibility to prevent integration breakage during schema evolution.\n\n**Requirements:**\n- Register all integration event schemas with AWS Glue Schema Registry\n- Version schemas using semantic versioning (MAJOR.MINOR.PATCH)\n- Enforce BACKWARD compatibility mode for schema updates (external consumers can read new schema with old code)\n- Document breaking changes and provide migration guides for external consumers\n- Include schema metadata: description, owner, external contact information\n- Cache schemas locally with configurable TTL (default: 24 hours)\n\n**Validation:**\n- AWS Glue Schema Registry configured and accessible\n- All integration event types registered in schema registry\n- Compatibility mode set to BACKWARD or FULL\n- Schema version incremented appropriately (MAJOR for breaking, MINOR for additive)\n- Schema documentation includes external consumer impact\n\n---",
+    "12": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#req-int-002-003-transactional-outbox-pattern]\n\n#### REQ-INT-002-003: Transactional Outbox Pattern\n\n**Status**: MANDATORY\n**Rationale**: Ensures exactly-once semantics for integration events by committing events to outbox in same database transaction as domain changes, then publishing asynchronously.\n\n**Requirements:**\n- Implement outbox table with columns: `Id`, `MessageId`, `MessageType`, `Payload`, `Headers`, `CreatedAt`, `PublishedAt`, `Status`\n- Commit integration events to outbox in same transaction as domain entity changes (Unit of Work pattern)\n- Use MassTransit EntityFrameworkCore outbox or implement custom outbox relay\n- Configure outbox polling interval (default: 5 seconds) and batch size (default: 100)\n- Implement outbox cleanup for published messages (retention: 7 days)\n- Handle outbox relay failures with alerting for stuck messages\n\n**Validation:**\n- Outbox table exists in application database\n- Integration events written to outbox in same transaction as domain changes\n- Outbox relay configured and running\n- Cleanup job configured for published messages\n- Monitoring alerts configured for relay failures\n\n---",
+    "13": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#req-int-002-004-delivery-guarantees-and-acknowledgment]\n\n#### REQ-INT-002-004: Delivery Guarantees and Acknowledgment\n\n**Status**: MANDATORY\n**Rationale**: External systems require guaranteed delivery with acknowledgment tracking to ensure events are successfully received.\n\n**Requirements:**\n- Configure at-least-once delivery semantics (minimum requirement)\n- Implement acknowledgment tracking: wait for broker confirmation before marking outbox message as published\n- Handle delivery failures with retry logic (exponential backoff, max 3 retries)\n- Route undeliverable messages to Dead Letter Queue (DLQ) after max retries\n- Log delivery failures with correlation ID, destination, and error details\n- Export delivery metrics: success rate, failure rate, retry count, DLQ depth\n\n**Validation:**\n- Delivery semantics configured (at-least-once or exactly-once)\n- Acknowledgment receipt logged before outbox message marked published\n- Retry policy configured with exponential backoff\n- DLQ configured for undeliverable messages\n- Delivery metrics exported to CloudWatch/X-Ray\n\n---",
+    "14": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#req-int-002-005-external-consumer-compatibility]\n\n#### REQ-INT-002-005: External Consumer Compatibility\n\n**Status**: MANDATORY\n**Rationale**: External systems may require different serialization formats (Avro, JSON, Protobuf) and metadata for event processing.\n\n**Requirements:**\n- Support multiple serialization formats per external consumer requirements:\n  - Avro (default for Kafka with schema registry)\n  - JSON (for REST/webhook consumers)\n  - Protobuf (for high-performance consumers)\n- Configure format per destination topic/exchange\n- Enrich events with metadata headers:\n  - `event-type`: Fully qualified event type name\n  - `event-version`: Schema version (semantic versioning)\n  - `source-system`: Publishing application identifier\n  - `timestamp`: Event creation timestamp (ISO 8601 UTC)\n  - `correlation-id`: End-to-end correlation identifier\n  - `trace-context`: W3C Trace Context for observability\n- Document event format, schema, and metadata in external consumer contract\n- Provide schema registry URL and versioning policy to external consumers\n\n**Validation:**\n- Serialization format configurable per destination\n- All required metadata headers present on published events\n- External consumer documentation includes schema URL, format, and versioning policy\n- Schema registry accessible to external consumers\n\n---",
+    "15": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#req-int-002-006-observability-for-integration-publishing]\n\n#### REQ-INT-002-006: Observability for Integration Publishing\n\n**Status**: MANDATORY\n**Rationale**: Track message delivery across system boundaries for troubleshooting, performance monitoring, and SLA compliance.\n\n**Requirements:**\n- Instrument publishers with OpenTelemetry >= 1.7.0\n- Create span for each publish operation with attributes:\n  - `messaging.destination`: Topic/exchange/queue name\n  - `messaging.message_id`: Unique message identifier\n  - `messaging.correlation_id`: Correlation identifier\n  - `messaging.system`: Transport protocol (kafka, rabbitmq, redis)\n  - `messaging.payload_size_bytes`: Message size in bytes\n- Propagate W3C Trace Context (`traceparent`, `tracestate`) to external systems\n- Log integration event metadata using structured logging:\n  - Destination, correlation ID, message size, serialization format\n  - Success/failure status, retry count, delivery time\n- Export metrics to CloudWatch:\n  - `integration.publisher.messages.sent` (Counter)\n  - `integration.publisher.messages.failed` (Counter)\n  - `integration.publisher.delivery.duration` (Histogram)\n  - `integration.publisher.payload.size` (Histogram)\n  - `integration.outbox.depth` (Gauge)\n\n**Validation:**\n- OpenTelemetry >= 1.7.0 instrumentation configured\n- Spans created for each publish operation with required attributes\n- W3C Trace Context propagated in message headers\n- Structured logs include all required metadata\n- Metrics exported to CloudWatch with proper dimensions\n\n---",
+    "16": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#req-int-002-007-rate-limiting-and-backpressure]\n\n#### REQ-INT-002-007: Rate Limiting and Backpressure\n\n**Status**: MANDATORY\n**Rationale**: Protect external systems from event floods that could overwhelm their processing capacity and violate SLAs.\n\n**Requirements:**\n- Implement rate limiting using Polly >= 8.0.0 or equivalent\n- Configure rate limits per external system/destination:\n  - Example: 1000 messages/minute for Partner A, 500 messages/minute for Partner B\n- Apply backpressure when rate limit exceeded:\n  - Block further publishing until rate window resets\n  - Return backpressure signal to domain layer (optional)\n- Monitor rate limit violations:\n  - Log violations with destination and exceeded threshold\n  - Export metric: `integration.publisher.rate_limit.violations` (Counter)\n- Document rate limits in external consumer contracts and SLAs\n- Configure rate limit overrides per environment (lower limits in dev/test)\n\n**Validation:**\n- Rate limiter configured per external system\n- Backpressure applied when limit exceeded\n- Rate limit violations logged and monitored\n- Rate limits documented in consumer contracts\n- Environment-specific overrides configured\n\n---",
+    "17": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#req-int-002-008-domain-to-integration-event-mapping]\n\n#### REQ-INT-002-008: Domain-to-Integration Event Mapping\n\n**Status**: MANDATORY\n**Rationale**: Separate internal domain models from external integration contracts to enable independent evolution and prevent external consumers from depending on internal implementation.\n\n**Requirements:**\n- Use AutoMapper >= 12.0.0 for domain-to-integration event mapping\n- Define explicit mapping profiles for each external system/consumer\n- Create dedicated integration event DTOs (Data Transfer Objects) separate from domain entities\n- Validate mapped events against external schemas before publishing\n- Version integration event DTOs independently from domain models\n- Handle missing/null fields:\n  - Provide default values where appropriate\n  - Fail validation if required external fields missing\n- Document mapping rules in external consumer contracts\n\n**Validation:**\n- AutoMapper >= 12.0.0 configured with explicit mapping profiles\n- Integration event DTOs defined separately from domain models\n- Mapped events validated against schemas before publishing\n- Missing/null field handling implemented\n- Mapping documentation provided to external consumers\n\n---",
+    "18": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#req-int-002-009-idempotent-publishing]\n\n#### REQ-INT-002-009: Idempotent Publishing\n\n**Status**: MANDATORY\n**Rationale**: Prevent duplicate event publishing during retries or outbox relay failures, ensuring external consumers receive each event exactly once.\n\n**Requirements:**\n- Configure idempotent producer for Kafka (enable.idempotence=true, max.in.flight.requests=5)\n- Use message deduplication IDs for RabbitMQ and Redis:\n  - Set `MessageId` header to stable identifier (event ID, entity ID + version)\n  - RabbitMQ: Use message deduplication plugin\n  - Redis: Use Stream IDs with deterministic generation\n- Implement deduplication window configuration (minimum: 24 hours)\n- Monitor duplicate detection rates:\n  - Log detected duplicates (outbox relay level)\n  - Export metric: `integration.publisher.duplicates.detected` (Counter)\n- Document idempotency guarantees in external consumer contracts\n\n**Validation:**\n- Kafka idempotent producer configured\n- Message deduplication IDs set for RabbitMQ/Redis\n- Deduplication window configured appropriately\n- Duplicate detection logged and monitored\n- Idempotency guarantees documented for consumers\n\n---",
+    "19": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#prohibited-practices]\n\n### Prohibited Practices",
+    "20": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#proh-int-002-001-direct-protocol-client-usage]\n\n#### PROH-INT-002-001: Direct Protocol Client Usage\n\n**Status**: PROHIBITED\n**Rationale**: Direct usage of Confluent.Kafka, RabbitMQ.Client, or StackExchange.Redis bypasses MassTransit abstraction, outbox pattern, and observability.\n\n**Prohibition**: Do not use protocol clients directly for integration event publishing. Use MassTransit `IPublishEndpoint` or `ISendEndpoint`.\n\n---",
+    "21": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#proh-int-002-002-synchronous-publishing-in-database-transactions]\n\n#### PROH-INT-002-002: Synchronous Publishing in Database Transactions\n\n**Status**: PROHIBITED\n**Rationale**: Publishing to external systems synchronously within database transactions creates distributed transaction risks, blocks transactions, and violates exactly-once semantics.\n\n**Prohibition**: Do not publish integration events synchronously in database transactions. Use transactional outbox pattern.\n\n---",
+    "22": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#proh-int-002-003-in-memory-outbox]\n\n#### PROH-INT-002-003: In-Memory Outbox\n\n**Status**: PROHIBITED\n**Rationale**: In-memory outbox loses events on application crashes, violating delivery guarantees.\n\n**Prohibition**: Do not use in-memory queues or collections as outbox. Use database-backed outbox table.\n\n---",
+    "23": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#proh-int-002-004-hardcoded-external-system-endpoints]\n\n#### PROH-INT-002-004: Hardcoded External System Endpoints\n\n**Status**: PROHIBITED\n**Rationale**: Hardcoded broker URLs, topic names, or exchange names prevent environment-specific configuration and deployment flexibility.\n\n**Prohibition**: Do not hardcode external system endpoints. Use configuration files or environment variables.\n\n---",
+    "24": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#proh-int-002-005-silent-delivery-failures]\n\n#### PROH-INT-002-005: Silent Delivery Failures\n\n**Status**: PROHIBITED\n**Rationale**: Silently swallowing delivery failures prevents detection of integration issues and violates delivery guarantees.\n\n**Prohibition**: Do not catch and ignore delivery exceptions. Log failures, route to DLQ, and alert on repeated failures.\n\n---",
+    "25": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#best-practices]\n\n### Best Practices",
+    "26": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#publisher-configuration]\n\n#### Publisher Configuration\n\n- Configure separate publishers per external system for isolation and rate limiting\n- Use topic naming convention: `{environment}.{source-system}.{domain}.{entity}.{event-type}.v{version}`\n- Set message TTL (time-to-live) based on external consumer SLAs (e.g., 24 hours)\n- Enable publisher confirmations for RabbitMQ (mandatory for integration events)",
+    "27": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#schema-management]\n\n#### Schema Management\n\n- Design schemas for backward compatibility from the start (use optional fields, defaults)\n- Version schemas independently per external consumer (different consumers may use different versions)\n- Deprecate old schema versions gracefully (announce deprecation 6 months before removal)\n- Provide schema migration tools/documentation for external consumers",
+    "28": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#outbox-management]\n\n#### Outbox Management\n\n- Partition outbox table by date for efficient cleanup and query performance\n- Monitor outbox depth and alert on growth (indicates relay failure)\n- Use database indexes on `Status`, `CreatedAt` for efficient relay queries\n- Consider separate outbox tables per external system for high-volume scenarios",
+    "29": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#performance-optimization]\n\n#### Performance Optimization\n\n- Batch outbox relay: process multiple messages per polling cycle (default: 100)\n- Use asynchronous publishing APIs (MassTransit handles async by default)\n- Configure connection pooling for broker connections\n- Monitor payload sizes and compress large messages (> 1MB)",
+    "30": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#security]\n\n#### Security\n\n- Use TLS/SSL for all external system connections (mandatory for production)\n- Authenticate publishers using certificates or API keys (per external system requirements)\n- Encrypt sensitive data in outbox table (e.g., PII, PHI) using database encryption\n- Redact sensitive fields in logs and observability spans",
+    "31": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#testing]\n\n#### Testing\n\n- Unit test mapping profiles with AutoMapper test configuration\n- Integration test outbox pattern with TestContainers (database + message broker)\n- Contract test external event schemas with consumer stub services\n- Load test rate limiting with simulated traffic bursts\n- Chaos test outbox relay failures (kill relay process during high load)\n\n---",
+    "32": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#technical-specifications]\n\n## Technical Specifications",
+    "33": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#required-nuget-packages]\n\n### Required NuGet Packages\n\n```xml\n<!-- MassTransit Core and Transport Riders -->\n<PackageReference Include=\"MassTransit\" Version=\"8.1.0\" />\n<PackageReference Include=\"MassTransit.Kafka\" Version=\"8.1.0\" />\n<PackageReference Include=\"MassTransit.RabbitMQ\" Version=\"8.1.0\" />\n<PackageReference Include=\"MassTransit.Redis\" Version=\"8.1.0\" />\n\n<!-- Transactional Outbox -->\n<PackageReference Include=\"MassTransit.EntityFrameworkCore\" Version=\"8.1.0\" />\n<PackageReference Include=\"Microsoft.EntityFrameworkCore.SqlServer\" Version=\"8.0.0\" />\n\n<!-- Kafka Client (via MassTransit) -->\n<PackageReference Include=\"Confluent.Kafka\" Version=\"2.3.0\" />\n\n<!-- RabbitMQ Client (via MassTransit) -->\n<PackageReference Include=\"RabbitMQ.Client\" Version=\"6.6.0\" />\n\n<!-- Redis Client (via MassTransit) -->\n<PackageReference Include=\"StackExchange.Redis\" Version=\"2.7.10\" />\n\n<!-- Schema Registry -->\n<PackageReference Include=\"AWSSDK.GlueSchemaRegistry\" Version=\"3.7.300\" />\n<PackageReference Include=\"AWSSDK.Glue\" Version=\"3.7.300\" />\n\n<!-- Serialization Formats -->\n<PackageReference Include=\"Avro.NET\" Version=\"1.11.0\" />\n<PackageReference Include=\"Google.Protobuf\" Version=\"3.25.0\" />\n<PackageReference Include=\"System.Text.Json\" Version=\"8.0.0\" />\n\n<!-- Resilience and Rate Limiting -->\n<PackageReference Include=\"Polly\" Version=\"8.2.0\" />\n\n<!-- Observability -->\n<PackageReference Include=\"OpenTelemetry\" Version=\"1.7.0\" />\n<PackageReference Include=\"OpenTelemetry.Exporter.OpenTelemetryProtocol\" Version=\"1.7.0\" />\n<PackageReference Include=\"OpenTelemetry.Instrumentation.AspNetCore\" Version=\"1.7.0\" />\n<PackageReference Include=\"OpenTelemetry.Extensions.Hosting\" Version=\"1.7.0\" />\n\n<!-- Mapping and Validation -->\n<PackageReference Include=\"AutoMapper\" Version=\"12.0.0\" />\n<PackageReference Include=\"AutoMapper.Extensions.Microsoft.DependencyInjection\" Version=\"12.0.0\" />\n<PackageReference Include=\"FluentValidation\" Version=\"11.9.0\" />\n<PackageReference Include=\"FluentValidation.DependencyInjectionExtensions\" Version=\"11.9.0\" />\n```\n\n---",
+    "34": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#configuration-template]\n\n### Configuration Template\n\n**appsettings.json:**\n\n```json\n{\n  \"MassTransit\": {\n    \"Transport\": \"Kafka\",  // Options: Kafka, RabbitMQ, Redis\n    \"Kafka\": {\n      \"BootstrapServers\": \"kafka.prod.gainwell.com:9092\",\n      \"SecurityProtocol\": \"SaslSsl\",\n      \"SaslMechanism\": \"ScramSha512\",\n      \"SaslUsername\": \"${KAFKA_USERNAME}\",\n      \"SaslPassword\": \"${KAFKA_PASSWORD}\",\n      \"EnableIdempotence\": true,\n      \"MaxInFlightRequests\": 5,\n      \"Acks\": \"All\",\n      \"MessageTimeoutMs\": 30000,\n      \"RequestTimeoutMs\": 30000\n    },\n    \"RabbitMQ\": {\n      \"Host\": \"rabbitmq.prod.gainwell.com\",\n      \"VirtualHost\": \"/integration\",\n      \"Username\": \"${RABBITMQ_USERNAME}\",\n      \"Password\": \"${RABBITMQ_PASSWORD}\",\n      \"UseSsl\": true,\n      \"PublisherConfirms\": true,\n      \"PrefetchCount\": 100\n    },\n    \"Redis\": {\n      \"Configuration\": \"redis.prod.gainwell.com:6379,ssl=true,password=${REDIS_PASSWORD}\",\n      \"MaxStreamLength\": 10000,\n      \"StreamTimeout\": 30000\n    }\n  },\n  \"SchemaRegistry\": {\n    \"ServiceUrl\": \"https://glue.us-east-1.amazonaws.com\",\n    \"RegistryName\": \"gainwell-integration-schemas\",\n    \"CompatibilityMode\": \"BACKWARD\",\n    \"CacheTtlMinutes\": 1440,\n    \"Region\": \"us-east-1\"\n  },\n  \"TransactionalOutbox\": {\n    \"PollingIntervalSeconds\": 5,\n    \"BatchSize\": 100,\n    \"RetentionDays\": 7,\n    \"MaxRetries\": 3,\n    \"RetryIntervalSeconds\": 60\n  },\n  \"RateLimiting\": {\n    \"DefaultMessagesPerMinute\": 1000,\n    \"ExternalSystems\": {\n      \"PartnerHealthNet\": {\n        \"MessagesPerMinute\": 500,\n        \"BurstAllowance\": 50\n      },\n      \"VendorPharmacyBenefits\": {\n        \"MessagesPerMinute\": 2000,\n        \"BurstAllowance\": 200\n      }\n    }\n  },\n  \"DeadLetterQueue\": {\n    \"RetentionDays\": 7,\n    \"MaxRetryAttempts\": 3,\n    \"AlertThreshold\": 100\n  },\n  \"OpenTelemetry\": {\n    \"ServiceName\": \"integration-publisher-service\",\n    \"ServiceVersion\": \"1.0.0\",\n    \"OtlpEndpoint\": \"http://otel-collector.prod.gainwell.com:4317\",\n    \"TracingSampleRate\": 1.0\n  }\n}\n```\n\n---",
+    "35": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#masstransit-configuration-with-outbox]\n\n### MassTransit Configuration with Outbox\n\n**Program.cs:**\n\n```csharp\nusing MassTransit;\nusing Microsoft.EntityFrameworkCore;\nusing OpenTelemetry.Resources;\nusing OpenTelemetry.Trace;\nusing Polly;\nusing Polly.RateLimit;\n\nvar builder = WebApplication.CreateBuilder(args);\n\n// Add DbContext with Outbox\nbuilder.Services.AddDbContext<ApplicationDbContext>(options =>\n{\n    options.UseSqlServer(builder.Configuration.GetConnectionString(\"DefaultConnection\"));\n});\n\n// Configure Schema Registry Service\nbuilder.Services.AddSingleton<ISchemaRegistryService, SchemaRegistryService>();\nbuilder.Services.Configure<SchemaRegistryOptions>(\n    builder.Configuration.GetSection(\"SchemaRegistry\"));\n\n// Configure Rate Limiter\nbuilder.Services.AddSingleton<IRateLimiterService, RateLimiterService>();\nbuilder.Services.Configure<RateLimitingOptions>(\n    builder.Configuration.GetSection(\"RateLimiting\"));\n\n// Configure AutoMapper\nbuilder.Services.AddAutoMapper(typeof(IntegrationEventMappingProfile));\n\n// Configure FluentValidation\nbuilder.Services.AddValidatorsFromAssemblyContaining<Program>();\n\n// Configure MassTransit with Outbox\nbuilder.Services.AddMassTransit(x =>\n{\n    // Add Outbox\n    x.AddEntityFrameworkOutbox<ApplicationDbContext>(o =>\n    {\n        o.UseSqlServer();\n        o.UseBusOutbox();\n\n        o.QueryDelay = TimeSpan.FromSeconds(\n            builder.Configuration.GetValue<int>(\"TransactionalOutbox:PollingIntervalSeconds\"));\n        o.MessageDeliveryLimit = builder.Configuration.GetValue<int>(\"TransactionalOutbox:MaxRetries\");\n        o.DuplicateDetectionWindow = TimeSpan.FromDays(1);\n    });\n\n    // Configure Transport\n    var transport = builder.Configuration.GetValue<string>(\"MassTransit:Transport\");\n\n    switch (transport?.ToLowerInvariant())\n    {\n        case \"kafka\":\n            x.UsingKafka((context, cfg) =>\n            {\n                var kafkaConfig = builder.Configuration.GetSection(\"MassTransit:Kafka\");\n\n                cfg.Host(kafkaConfig.GetValue<string>(\"BootstrapServers\"), h =>\n                {\n                    h.UseSasl(s =>\n                    {\n                        s.SecurityProtocol = SecurityProtocol.SaslSsl;\n                        s.Mechanism = kafkaConfig.GetValue<string>(\"SaslMechanism\");\n                        s.Username = kafkaConfig.GetValue<string>(\"SaslUsername\");\n                        s.Password = kafkaConfig.GetValue<string>(\"SaslPassword\");\n                    });\n                });\n\n                // Producer Configuration\n                cfg.ProducerConfig = new Dictionary<string, object>\n                {\n                    { \"enable.idempotence\", true },\n                    { \"max.in.flight.requests.per.connection\", 5 },\n                    { \"acks\", \"all\" },\n                    { \"message.timeout.ms\", 30000 },\n                    { \"request.timeout.ms\", 30000 }\n                };\n\n                cfg.ConfigurePublishTopology = true;\n            });\n            break;\n\n        case \"rabbitmq\":\n            x.UsingRabbitMq((context, cfg) =>\n            {\n                var rabbitConfig = builder.Configuration.GetSection(\"MassTransit:RabbitMQ\");\n\n                cfg.Host(rabbitConfig.GetValue<string>(\"Host\"),\n                         rabbitConfig.GetValue<string>(\"VirtualHost\"), h =>\n                {\n                    h.Username(rabbitConfig.GetValue<string>(\"Username\"));\n                    h.Password(rabbitConfig.GetValue<string>(\"Password\"));\n\n                    if (rabbitConfig.GetValue<bool>(\"UseSsl\"))\n                    {\n                        h.UseSsl(s =>\n                        {\n                            s.Protocol = SslProtocols.Tls12;\n                        });\n                    }\n                });\n\n                // Publisher Configuration\n                cfg.PublisherConfirmation = rabbitConfig.GetValue<bool>(\"PublisherConfirms\");\n                cfg.ConfigurePublishTopology = true;\n            });\n            break;\n\n        case \"redis\":\n            x.UsingRedis((context, cfg) =>\n            {\n                var redisConfig = builder.Configuration.GetSection(\"MassTransit:Redis\");\n\n                cfg.Host(redisConfig.GetValue<string>(\"Configuration\"));\n\n                cfg.StreamConfiguration = new RedisStreamConfiguration\n                {\n                    MaxLength = redisConfig.GetValue<int>(\"MaxStreamLength\"),\n                    ReadTimeout = TimeSpan.FromMilliseconds(\n                        redisConfig.GetValue<int>(\"StreamTimeout\"))\n                };\n            });\n            break;\n\n        default:\n            throw new InvalidOperationException($\"Unsupported transport: {transport}\");\n    }\n});\n\n// Configure OpenTelemetry\nbuilder.Services.AddOpenTelemetry()\n    .WithTracing(tracing =>\n    {\n        tracing\n            .SetResourceBuilder(ResourceBuilder.CreateDefault()\n                .AddService(builder.Configuration.GetValue<string>(\"OpenTelemetry:ServiceName\"))\n                .AddAttributes(new Dictionary<string, object>\n                {\n                    [\"service.version\"] = builder.Configuration.GetValue<string>(\"OpenTelemetry:ServiceVersion\"),\n                    [\"deployment.environment\"] = builder.Environment.EnvironmentName\n                }))\n            .AddAspNetCoreInstrumentation()\n            .AddEntityFrameworkCoreInstrumentation()\n            .AddSource(\"MassTransit\")\n            .AddOtlpExporter(options =>\n            {\n                options.Endpoint = new Uri(\n                    builder.Configuration.GetValue<string>(\"OpenTelemetry:OtlpEndpoint\"));\n            });\n    });\n\nvar app = builder.Build();\n\n// Ensure database and outbox table created\nusing (var scope = app.Services.CreateScope())\n{\n    var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();\n    await dbContext.Database.MigrateAsync();\n}\n\napp.Run();\n```\n\n---",
+    "36": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#schema-registration-service]\n\n### Schema Registration Service\n\n**SchemaRegistryService.cs:**\n\n```csharp\nusing Amazon;\nusing Amazon.Glue;\nusing Amazon.Glue.Model;\nusing Microsoft.Extensions.Caching.Memory;\nusing Microsoft.Extensions.Options;\nusing System.Text.Json;\n\npublic interface ISchemaRegistryService\n{\n    Task<string> RegisterSchemaAsync<T>(string schemaName, CancellationToken cancellationToken = default);\n    Task<SchemaVersionMetadata> GetSchemaAsync(string schemaName, CancellationToken cancellationToken = default);\n    Task ValidateCompatibilityAsync<T>(string schemaName, CancellationToken cancellationToken = default);\n}\n\npublic class SchemaRegistryService : ISchemaRegistryService\n{\n    private readonly IAmazonGlue _glueClient;\n    private readonly IMemoryCache _cache;\n    private readonly SchemaRegistryOptions _options;\n    private readonly ILogger<SchemaRegistryService> _logger;\n\n    public SchemaRegistryService(\n        IOptions<SchemaRegistryOptions> options,\n        IMemoryCache cache,\n        ILogger<SchemaRegistryService> logger)\n    {\n        _options = options.Value;\n        _cache = cache;\n        _logger = logger;\n\n        _glueClient = new AmazonGlueClient(\n            RegionEndpoint.GetBySystemName(_options.Region));\n    }\n\n    public async Task<string> RegisterSchemaAsync<T>(\n        string schemaName,\n        CancellationToken cancellationToken = default)\n    {\n        try\n        {\n            // Generate JSON schema from type\n            var schemaDefinition = GenerateJsonSchema<T>();\n\n            var request = new RegisterSchemaVersionRequest\n            {\n                SchemaId = new SchemaId\n                {\n                    RegistryName = _options.RegistryName,\n                    SchemaName = schemaName\n                },\n                SchemaDefinition = schemaDefinition\n            };\n\n            var response = await _glueClient.RegisterSchemaVersionAsync(request, cancellationToken);\n\n            _logger.LogInformation(\n                \"Registered schema {SchemaName} version {VersionNumber}\",\n                schemaName,\n                response.VersionNumber);\n\n            return response.SchemaVersionId;\n        }\n        catch (AlreadyExistsException)\n        {\n            _logger.LogDebug(\"Schema {SchemaName} already exists\", schemaName);\n            return await GetSchemaVersionIdAsync(schemaName, cancellationToken);\n        }\n    }\n\n    public async Task<SchemaVersionMetadata> GetSchemaAsync(\n        string schemaName,\n        CancellationToken cancellationToken = default)\n    {\n        var cacheKey = $\"schema:{schemaName}\";\n\n        if (_cache.TryGetValue<SchemaVersionMetadata>(cacheKey, out var cachedSchema))\n        {\n            return cachedSchema;\n        }\n\n        var request = new GetSchemaVersionRequest\n        {\n            SchemaId = new SchemaId\n            {\n                RegistryName = _options.RegistryName,\n                SchemaName = schemaName\n            },\n            SchemaVersionNumber = new SchemaVersionNumber { LatestVersion = true }\n        };\n\n        var response = await _glueClient.GetSchemaVersionAsync(request, cancellationToken);\n\n        var metadata = new SchemaVersionMetadata\n        {\n            SchemaVersionId = response.SchemaVersionId,\n            SchemaArn = response.SchemaArn,\n            VersionNumber = response.VersionNumber,\n            SchemaDefinition = response.SchemaDefinition\n        };\n\n        _cache.Set(cacheKey, metadata, TimeSpan.FromMinutes(_options.CacheTtlMinutes));\n\n        return metadata;\n    }\n\n    public async Task ValidateCompatibilityAsync<T>(\n        string schemaName,\n        CancellationToken cancellationToken = default)\n    {\n        var newSchemaDefinition = GenerateJsonSchema<T>();\n\n        var request = new CheckSchemaVersionValidityRequest\n        {\n            SchemaDefinition = newSchemaDefinition,\n            DataFormat = DataFormat.JSON\n        };\n\n        var response = await _glueClient.CheckSchemaVersionValidityAsync(request, cancellationToken);\n\n        if (!response.Valid)\n        {\n            throw new SchemaValidationException(\n                $\"Schema {schemaName} validation failed: {response.Error}\");\n        }\n\n        _logger.LogInformation(\"Schema {SchemaName} compatibility validated\", schemaName);\n    }\n\n    private string GenerateJsonSchema<T>()\n    {\n        // Simple JSON schema generation (use NJsonSchema for production)\n        var type = typeof(T);\n        var schema = new\n        {\n            title = type.Name,\n            type = \"object\",\n            properties = type.GetProperties().ToDictionary(\n                p => p.Name,\n                p => new { type = GetJsonType(p.PropertyType) }\n            )\n        };\n\n        return JsonSerializer.Serialize(schema);\n    }\n\n    private string GetJsonType(Type type)\n    {\n        if (type == typeof(string)) return \"string\";\n        if (type == typeof(int) || type == typeof(long)) return \"integer\";\n        if (type == typeof(bool)) return \"boolean\";\n        if (type == typeof(decimal) || type == typeof(double)) return \"number\";\n        if (type == typeof(DateTime)) return \"string\"; // ISO 8601\n        return \"object\";\n    }\n\n    private async Task<string> GetSchemaVersionIdAsync(\n        string schemaName,\n        CancellationToken cancellationToken)\n    {\n        var schema = await GetSchemaAsync(schemaName, cancellationToken);\n        return schema.SchemaVersionId;\n    }\n}\n\npublic class SchemaRegistryOptions\n{\n    public string ServiceUrl { get; set; }\n    public string RegistryName { get; set; }\n    public string CompatibilityMode { get; set; }\n    public int CacheTtlMinutes { get; set; }\n    public string Region { get; set; }\n}\n\npublic class SchemaVersionMetadata\n{\n    public string SchemaVersionId { get; set; }\n    public string SchemaArn { get; set; }\n    public long VersionNumber { get; set; }\n    public string SchemaDefinition { get; set; }\n}\n\npublic class SchemaValidationException : Exception\n{\n    public SchemaValidationException(string message) : base(message) { }\n}\n```\n\n---",
+    "37": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#rate-limiter-service]\n\n### Rate Limiter Service\n\n**RateLimiterService.cs:**\n\n```csharp\nusing Polly;\nusing Polly.RateLimiting;\nusing Microsoft.Extensions.Options;\n\npublic interface IRateLimiterService\n{\n    Task<bool> TryAcquireAsync(string destination, CancellationToken cancellationToken = default);\n}\n\npublic class RateLimiterService : IRateLimiterService\n{\n    private readonly Dictionary<string, RateLimiter> _limiters = new();\n    private readonly RateLimitingOptions _options;\n    private readonly ILogger<RateLimiterService> _logger;\n\n    public RateLimiterService(\n        IOptions<RateLimitingOptions> options,\n        ILogger<RateLimiterService> logger)\n    {\n        _options = options.Value;\n        _logger = logger;\n\n        // Initialize rate limiters per external system\n        foreach (var system in _options.ExternalSystems)\n        {\n            _limiters[system.Key] = new SlidingWindowRateLimiter(new SlidingWindowRateLimiterOptions\n            {\n                PermitLimit = system.Value.MessagesPerMinute,\n                Window = TimeSpan.FromMinutes(1),\n                SegmentsPerWindow = 6,  // 10-second segments\n                QueueLimit = system.Value.BurstAllowance\n            });\n        }\n\n        // Default rate limiter\n        _limiters[\"default\"] = new SlidingWindowRateLimiter(new SlidingWindowRateLimiterOptions\n        {\n            PermitLimit = _options.DefaultMessagesPerMinute,\n            Window = TimeSpan.FromMinutes(1),\n            SegmentsPerWindow = 6\n        });\n    }\n\n    public async Task<bool> TryAcquireAsync(string destination, CancellationToken cancellationToken = default)\n    {\n        var limiter = _limiters.ContainsKey(destination)\n            ? _limiters[destination]\n            : _limiters[\"default\"];\n\n        var lease = await limiter.AcquireAsync(permitCount: 1, cancellationToken);\n\n        if (!lease.IsAcquired)\n        {\n            _logger.LogWarning(\n                \"Rate limit exceeded for destination {Destination}\",\n                destination);\n            return false;\n        }\n\n        return true;\n    }\n}\n\npublic class RateLimitingOptions\n{\n    public int DefaultMessagesPerMinute { get; set; }\n    public Dictionary<string, ExternalSystemRateLimit> ExternalSystems { get; set; }\n}\n\npublic class ExternalSystemRateLimit\n{\n    public int MessagesPerMinute { get; set; }\n    public int BurstAllowance { get; set; }\n}\n```\n\n---",
+    "38": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#outbox-dbcontext-configuration]\n\n### Outbox DbContext Configuration\n\n**ApplicationDbContext.cs:**\n\n```csharp\nusing MassTransit;\nusing Microsoft.EntityFrameworkCore;\n\npublic class ApplicationDbContext : DbContext\n{\n    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)\n        : base(options)\n    {\n    }\n\n    public DbSet<Claim> Claims { get; set; }\n\n    // Domain entities...\n\n    protected override void OnModelCreating(ModelBuilder modelBuilder)\n    {\n        base.OnModelCreating(modelBuilder);\n\n        // Add MassTransit outbox tables\n        modelBuilder.AddInboxStateEntity();\n        modelBuilder.AddOutboxMessageEntity();\n        modelBuilder.AddOutboxStateEntity();\n\n        // Domain entity configurations...\n        modelBuilder.Entity<Claim>(entity =>\n        {\n            entity.HasKey(e => e.Id);\n            entity.Property(e => e.ClaimNumber).IsRequired().HasMaxLength(50);\n            // Additional configuration...\n        });\n    }\n}\n```\n\n---",
+    "39": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#implementation-guidelines]\n\n## Implementation Guidelines",
+    "40": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#phase-1-project-setup-and-dependencies]\n\n### Phase 1: Project Setup and Dependencies\n\n**Step 1.1: Create ASP.NET Core Web API Project**\n\n```bash\ndotnet new webapi -n IntegrationPublisherService\ncd IntegrationPublisherService\n```\n\n**Step 1.2: Install Required NuGet Packages**\n\n```bash\n# MassTransit and transports\ndotnet add package MassTransit --version 8.1.0\ndotnet add package MassTransit.Kafka --version 8.1.0\ndotnet add package MassTransit.RabbitMQ --version 8.1.0\ndotnet add package MassTransit.EntityFrameworkCore --version 8.1.0\n\n# Database\ndotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 8.0.0\ndotnet add package Microsoft.EntityFrameworkCore.Design --version 8.0.0\n\n# Schema Registry\ndotnet add package AWSSDK.Glue --version 3.7.300\ndotnet add package AWSSDK.GlueSchemaRegistry --version 3.7.300\n\n# Resilience and Rate Limiting\ndotnet add package Polly --version 8.2.0\n\n# Mapping and Validation\ndotnet add package AutoMapper --version 12.0.0\ndotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection --version 12.0.0\ndotnet add package FluentValidation --version 11.9.0\ndotnet add package FluentValidation.DependencyInjectionExtensions --version 11.9.0\n\n# Observability\ndotnet add package OpenTelemetry --version 1.7.0\ndotnet add package OpenTelemetry.Exporter.OpenTelemetryProtocol --version 1.7.0\ndotnet add package OpenTelemetry.Instrumentation.AspNetCore --version 1.7.0\ndotnet add package OpenTelemetry.Extensions.Hosting --version 1.7.0\n```\n\n**Step 1.3: Configure appsettings.json**\n\nSee Technical Specifications section for complete configuration template.\n\n---",
+    "41": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#phase-2-define-domain-models-and-integration-event-contracts]\n\n### Phase 2: Define Domain Models and Integration Event Contracts\n\n**Step 2.1: Domain Entity**\n\n```csharp\npublic class Claim\n{\n    public Guid Id { get; set; }\n    public string ClaimNumber { get; set; }\n    public string MemberId { get; set; }\n    public string ProviderId { get; set; }\n    public decimal ClaimAmount { get; set; }\n    public DateTime ServiceDate { get; set; }\n    public ClaimStatus Status { get; set; }\n    public DateTime CreatedAt { get; set; }\n    public DateTime? UpdatedAt { get; set; }\n}\n\npublic enum ClaimStatus\n{\n    Submitted,\n    UnderReview,\n    Approved,\n    Denied,\n    Paid\n}\n```\n\n**Step 2.2: Integration Event Contract (External)**\n\n```csharp\n// Integration event DTO for external systems\npublic class ClaimApprovedIntegrationEvent\n{\n    public string ClaimId { get; set; }\n    public string ClaimNumber { get; set; }\n    public string MemberId { get; set; }\n    public string ProviderId { get; set; }\n    public decimal ApprovedAmount { get; set; }\n    public DateTime ApprovalDate { get; set; }\n    public string ApprovedBy { get; set; }\n\n    // External system metadata\n    public string EventType { get; set; } = \"ClaimApproved\";\n    public string EventVersion { get; set; } = \"1.0.0\";\n    public string SourceSystem { get; set; } = \"Gainwell-Claims\";\n    public DateTime Timestamp { get; set; }\n    public string CorrelationId { get; set; }\n}\n```\n\n---",
+    "42": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#phase-3-implement-event-mapping-with-automapper]\n\n### Phase 3: Implement Event Mapping with AutoMapper\n\n**Step 3.1: Create Mapping Profile**\n\n```csharp\nusing AutoMapper;\n\npublic class IntegrationEventMappingProfile : Profile\n{\n    public IntegrationEventMappingProfile()\n    {\n        CreateMap<Claim, ClaimApprovedIntegrationEvent>()\n            .ForMember(dest => dest.ClaimId, opt => opt.MapFrom(src => src.Id.ToString()))\n            .ForMember(dest => dest.ApprovedAmount, opt => opt.MapFrom(src => src.ClaimAmount))\n            .ForMember(dest => dest.ApprovalDate, opt => opt.MapFrom(src => src.UpdatedAt ?? src.CreatedAt))\n            .ForMember(dest => dest.ApprovedBy, opt => opt.MapFrom(src => \"ClaimsSystem\"))\n            .ForMember(dest => dest.Timestamp, opt => opt.MapFrom(src => DateTime.UtcNow))\n            .ForMember(dest => dest.CorrelationId, opt => opt.MapFrom(src => Guid.NewGuid().ToString()));\n    }\n}\n```\n\n**Step 3.2: Create Event Validator**\n\n```csharp\nusing FluentValidation;\n\npublic class ClaimApprovedEventValidator : AbstractValidator<ClaimApprovedIntegrationEvent>\n{\n    public ClaimApprovedEventValidator()\n    {\n        RuleFor(x => x.ClaimId).NotEmpty();\n        RuleFor(x => x.ClaimNumber).NotEmpty().MaximumLength(50);\n        RuleFor(x => x.MemberId).NotEmpty().MaximumLength(50);\n        RuleFor(x => x.ProviderId).NotEmpty().MaximumLength(50);\n        RuleFor(x => x.ApprovedAmount).GreaterThan(0);\n        RuleFor(x => x.ApprovalDate).LessThanOrEqualTo(DateTime.UtcNow);\n        RuleFor(x => x.EventVersion).NotEmpty().Matches(@\"^\\d+\\.\\d+\\.\\d+$\");\n        RuleFor(x => x.CorrelationId).NotEmpty();\n    }\n}\n```\n\n---",
+    "43": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#phase-4-complete-integration-publisher-implementation]\n\n### Phase 4: Complete Integration Publisher Implementation\n\n**Step 4.1: Integration Event Publisher Service**\n\n```csharp\nusing MassTransit;\nusing AutoMapper;\nusing FluentValidation;\nusing System.Diagnostics;\n\npublic interface IIntegrationEventPublisher\n{\n    Task PublishClaimApprovedAsync(Claim claim, CancellationToken cancellationToken = default);\n}\n\npublic class IntegrationEventPublisher : IIntegrationEventPublisher\n{\n    private readonly IPublishEndpoint _publishEndpoint;\n    private readonly IMapper _mapper;\n    private readonly IValidator<ClaimApprovedIntegrationEvent> _validator;\n    private readonly ISchemaRegistryService _schemaRegistry;\n    private readonly IRateLimiterService _rateLimiter;\n    private readonly ILogger<IntegrationEventPublisher> _logger;\n    private static readonly ActivitySource ActivitySource = new(\"IntegrationPublisher\");\n\n    public IntegrationEventPublisher(\n        IPublishEndpoint publishEndpoint,\n        IMapper mapper,\n        IValidator<ClaimApprovedIntegrationEvent> validator,\n        ISchemaRegistryService schemaRegistry,\n        IRateLimiterService rateLimiter,\n        ILogger<IntegrationEventPublisher> logger)\n    {\n        _publishEndpoint = publishEndpoint;\n        _mapper = mapper;\n        _validator = validator;\n        _schemaRegistry = schemaRegistry;\n        _rateLimiter = rateLimiter;\n        _logger = logger;\n    }\n\n    public async Task PublishClaimApprovedAsync(Claim claim, CancellationToken cancellationToken = default)\n    {\n        using var activity = ActivitySource.StartActivity(\"PublishClaimApproved\");\n        activity?.SetTag(\"claim.id\", claim.Id);\n        activity?.SetTag(\"claim.number\", claim.ClaimNumber);\n\n        try\n        {\n            // Step 1: Map domain model to integration event\n            var integrationEvent = _mapper.Map<ClaimApprovedIntegrationEvent>(claim);\n            integrationEvent.CorrelationId = Guid.NewGuid().ToString();\n\n            _logger.LogInformation(\n                \"Mapped claim {ClaimId} to integration event with correlation {CorrelationId}\",\n                claim.Id, integrationEvent.CorrelationId);\n\n            // Step 2: Validate integration event\n            var validationResult = await _validator.ValidateAsync(integrationEvent, cancellationToken);\n            if (!validationResult.IsValid)\n            {\n                var errors = string.Join(\", \", validationResult.Errors.Select(e => e.ErrorMessage));\n                throw new IntegrationEventValidationException(\n                    $\"Integration event validation failed: {errors}\");\n            }\n\n            // Step 3: Validate schema compatibility\n            await _schemaRegistry.ValidateCompatibilityAsync<ClaimApprovedIntegrationEvent>(\n                \"ClaimApproved\", cancellationToken);\n\n            // Step 4: Check rate limits\n            const string destination = \"PartnerHealthNet\";\n            var canPublish = await _rateLimiter.TryAcquireAsync(destination, cancellationToken);\n\n            if (!canPublish)\n            {\n                _logger.LogWarning(\n                    \"Rate limit exceeded for destination {Destination}, event will be queued in outbox\",\n                    destination);\n\n                // Event will remain in outbox until rate limit allows\n                throw new RateLimitExceededException(\n                    $\"Rate limit exceeded for destination {destination}\");\n            }\n\n            // Step 5: Publish to outbox (MassTransit handles outbox commit)\n            await _publishEndpoint.Publish(integrationEvent, context =>\n            {\n                // Set message headers\n                context.MessageId = Guid.NewGuid();\n                context.CorrelationId = Guid.Parse(integrationEvent.CorrelationId);\n                context.Headers.Set(\"event-type\", integrationEvent.EventType);\n                context.Headers.Set(\"event-version\", integrationEvent.EventVersion);\n                context.Headers.Set(\"source-system\", integrationEvent.SourceSystem);\n                context.Headers.Set(\"timestamp\", integrationEvent.Timestamp.ToString(\"O\"));\n\n                // Propagate W3C trace context\n                if (Activity.Current != null)\n                {\n                    context.Headers.Set(\"traceparent\", Activity.Current.Id);\n                    if (Activity.Current.TraceStateString != null)\n                    {\n                        context.Headers.Set(\"tracestate\", Activity.Current.TraceStateString);\n                    }\n                }\n\n                // Set destination routing (transport-specific)\n                context.SetRoutingKey($\"claims.approved.{claim.MemberId}\");\n            }, cancellationToken);\n\n            _logger.LogInformation(\n                \"Published ClaimApproved event for claim {ClaimId} with correlation {CorrelationId}\",\n                claim.Id, integrationEvent.CorrelationId);\n\n            activity?.SetTag(\"publish.status\", \"success\");\n        }\n        catch (IntegrationEventValidationException ex)\n        {\n            _logger.LogError(ex,\n                \"Validation failed for claim {ClaimId}: {Error}\",\n                claim.Id, ex.Message);\n\n            activity?.SetTag(\"publish.status\", \"validation_failed\");\n            activity?.SetTag(\"error.message\", ex.Message);\n            throw;\n        }\n        catch (RateLimitExceededException ex)\n        {\n            _logger.LogWarning(ex,\n                \"Rate limit exceeded for claim {ClaimId}\",\n                claim.Id);\n\n            activity?.SetTag(\"publish.status\", \"rate_limited\");\n            throw;\n        }\n        catch (Exception ex)\n        {\n            _logger.LogError(ex,\n                \"Failed to publish ClaimApproved event for claim {ClaimId}\",\n                claim.Id);\n\n            activity?.SetTag(\"publish.status\", \"failed\");\n            activity?.SetTag(\"error.message\", ex.Message);\n            throw;\n        }\n    }\n}\n\npublic class IntegrationEventValidationException : Exception\n{\n    public IntegrationEventValidationException(string message) : base(message) { }\n}\n\npublic class RateLimitExceededException : Exception\n{\n    public RateLimitExceededException(string message) : base(message) { }\n}\n```\n\n**Step 4.2: Domain Service with Transactional Outbox**\n\n```csharp\nusing Microsoft.EntityFrameworkCore;\n\npublic class ClaimService\n{\n    private readonly ApplicationDbContext _dbContext;\n    private readonly IIntegrationEventPublisher _eventPublisher;\n    private readonly ILogger<ClaimService> _logger;\n\n    public ClaimService(\n        ApplicationDbContext dbContext,\n        IIntegrationEventPublisher eventPublisher,\n        ILogger<ClaimService> logger)\n    {\n        _dbContext = dbContext;\n        _eventPublisher = eventPublisher;\n        _logger = logger;\n    }\n\n    public async Task ApproveClaimAsync(Guid claimId, CancellationToken cancellationToken = default)\n    {\n        using var transaction = await _dbContext.Database.BeginTransactionAsync(cancellationToken);\n\n        try\n        {\n            // Step 1: Load claim\n            var claim = await _dbContext.Claims\n                .FirstOrDefaultAsync(c => c.Id == claimId, cancellationToken);\n\n            if (claim == null)\n            {\n                throw new ClaimNotFoundException($\"Claim {claimId} not found\");\n            }\n\n            // Step 2: Update claim status (domain logic)\n            claim.Status = ClaimStatus.Approved;\n            claim.UpdatedAt = DateTime.UtcNow;\n\n            _dbContext.Claims.Update(claim);\n\n            // Step 3: Publish integration event to outbox (SAME TRANSACTION)\n            // MassTransit will write event to OutboxMessage table\n            await _eventPublisher.PublishClaimApprovedAsync(claim, cancellationToken);\n\n            // Step 4: Commit both claim update and outbox insert atomically\n            await _dbContext.SaveChangesAsync(cancellationToken);\n            await transaction.CommitAsync(cancellationToken);\n\n            _logger.LogInformation(\n                \"Claim {ClaimId} approved and integration event added to outbox\",\n                claimId);\n        }\n        catch (Exception ex)\n        {\n            await transaction.RollbackAsync(cancellationToken);\n            _logger.LogError(ex, \"Failed to approve claim {ClaimId}\", claimId);\n            throw;\n        }\n    }\n}\n\npublic class ClaimNotFoundException : Exception\n{\n    public ClaimNotFoundException(string message) : base(message) { }\n}\n```\n\n---",
+    "44": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#phase-5-configure-opentelemetry-and-observability]\n\n### Phase 5: Configure OpenTelemetry and Observability\n\nSee Technical Specifications section for complete OpenTelemetry configuration in Program.cs.\n\n**Additional Structured Logging:**\n\n```csharp\n// Add to appsettings.json\n{\n  \"Serilog\": {\n    \"Using\": [\"Serilog.Sinks.Console\", \"Serilog.Sinks.File\"],\n    \"MinimumLevel\": {\n      \"Default\": \"Information\",\n      \"Override\": {\n        \"Microsoft\": \"Warning\",\n        \"MassTransit\": \"Information\"\n      }\n    },\n    \"WriteTo\": [\n      {\n        \"Name\": \"Console\",\n        \"Args\": {\n          \"outputTemplate\": \"[{Timestamp:HH:mm:ss} {Level:u3}] {Message:lj} {Properties:j}{NewLine}{Exception}\"\n        }\n      },\n      {\n        \"Name\": \"File\",\n        \"Args\": {\n          \"path\": \"logs/integration-publisher-.log\",\n          \"rollingInterval\": \"Day\",\n          \"outputTemplate\": \"{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj} {Properties:j}{NewLine}{Exception}\"\n        }\n      }\n    ],\n    \"Enrich\": [\"FromLogContext\", \"WithMachineName\", \"WithThreadId\"]\n  }\n}\n```\n\n---",
+    "45": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#phase-6-testing-strategy]\n\n### Phase 6: Testing Strategy\n\n**Step 6.1: Unit Tests with MassTransit Test Harness**\n\n```csharp\nusing MassTransit.Testing;\nusing Xunit;\n\npublic class IntegrationEventPublisherTests\n{\n    [Fact]\n    public async Task PublishClaimApprovedAsync_ValidClaim_PublishesEvent()\n    {\n        // Arrange\n        await using var provider = new ServiceCollection()\n            .AddMassTransitTestHarness(cfg =>\n            {\n                // Configure test harness\n            })\n            .AddSingleton<IIntegrationEventPublisher, IntegrationEventPublisher>()\n            .AddAutoMapper(typeof(IntegrationEventMappingProfile))\n            .BuildServiceProvider(true);\n\n        var harness = provider.GetRequiredService<ITestHarness>();\n        await harness.Start();\n\n        var publisher = provider.GetRequiredService<IIntegrationEventPublisher>();\n\n        var claim = new Claim\n        {\n            Id = Guid.NewGuid(),\n            ClaimNumber = \"CLM-12345\",\n            MemberId = \"MBR-67890\",\n            ProviderId = \"PROV-11111\",\n            ClaimAmount = 250.00m,\n            Status = ClaimStatus.Approved,\n            ServiceDate = DateTime.UtcNow.AddDays(-7),\n            CreatedAt = DateTime.UtcNow.AddDays(-7),\n            UpdatedAt = DateTime.UtcNow\n        };\n\n        // Act\n        await publisher.PublishClaimApprovedAsync(claim);\n\n        // Assert\n        Assert.True(await harness.Published.Any<ClaimApprovedIntegrationEvent>());\n\n        var published = harness.Published.Select<ClaimApprovedIntegrationEvent>().First();\n        Assert.Equal(claim.ClaimNumber, published.Context.Message.ClaimNumber);\n        Assert.Equal(claim.MemberId, published.Context.Message.MemberId);\n    }\n}\n```\n\n**Step 6.2: Integration Tests with Testcontainers**\n\n```csharp\nusing Testcontainers.Kafka;\nusing Testcontainers.PostgreSql;\nusing Xunit;\n\npublic class OutboxIntegrationTests : IAsyncLifetime\n{\n    private readonly KafkaContainer _kafkaContainer;\n    private readonly PostgreSqlContainer _dbContainer;\n\n    public OutboxIntegrationTests()\n    {\n        _kafkaContainer = new KafkaBuilder().Build();\n        _dbContainer = new PostgreSqlBuilder().Build();\n    }\n\n    public async Task InitializeAsync()\n    {\n        await _kafkaContainer.StartAsync();\n        await _dbContainer.StartAsync();\n    }\n\n    public async Task DisposeAsync()\n    {\n        await _kafkaContainer.DisposeAsync();\n        await _dbContainer.DisposeAsync();\n    }\n\n    [Fact]\n    public async Task ApproveClaimAsync_WithOutbox_PublishesEventToKafka()\n    {\n        // Arrange: Configure services with real Kafka and database\n        var services = new ServiceCollection();\n\n        services.AddDbContext<ApplicationDbContext>(options =>\n            options.UseNpgsql(_dbContainer.GetConnectionString()));\n\n        services.AddMassTransit(x =>\n        {\n            x.AddEntityFrameworkOutbox<ApplicationDbContext>(o =>\n            {\n                o.UsePostgres();\n                o.UseBusOutbox();\n            });\n\n            x.UsingKafka((context, cfg) =>\n            {\n                cfg.Host(_kafkaContainer.GetBootstrapAddress());\n            });\n        });\n\n        // Additional service registrations...\n        var provider = services.BuildServiceProvider();\n\n        // Run migrations\n        var dbContext = provider.GetRequiredService<ApplicationDbContext>();\n        await dbContext.Database.MigrateAsync();\n\n        var claimService = provider.GetRequiredService<ClaimService>();\n        var claimId = Guid.NewGuid();\n\n        // Create test claim\n        var claim = new Claim\n        {\n            Id = claimId,\n            ClaimNumber = \"CLM-TEST-001\",\n            MemberId = \"MBR-TEST\",\n            ProviderId = \"PROV-TEST\",\n            ClaimAmount = 100.00m,\n            Status = ClaimStatus.Submitted,\n            ServiceDate = DateTime.UtcNow,\n            CreatedAt = DateTime.UtcNow\n        };\n\n        dbContext.Claims.Add(claim);\n        await dbContext.SaveChangesAsync();\n\n        // Act\n        await claimService.ApproveClaimAsync(claimId);\n\n        // Assert: Check outbox table has message\n        var outboxMessages = await dbContext.Set<OutboxMessage>()\n            .Where(m => m.SentTime == null)\n            .ToListAsync();\n\n        Assert.Single(outboxMessages);\n\n        // Wait for outbox relay to publish\n        await Task.Delay(TimeSpan.FromSeconds(10));\n\n        // Verify message published to Kafka (use Kafka consumer to verify)\n        // ... consumer verification logic ...\n    }\n}\n```\n\n**Step 6.3: Contract Tests with External Consumers**\n\n```csharp\nusing Xunit;\nusing System.Text.Json;\n\npublic class ClaimApprovedEventContractTests\n{\n    [Fact]\n    public void ClaimApprovedEvent_SerializesToExpectedSchema()\n    {\n        // Arrange\n        var integrationEvent = new ClaimApprovedIntegrationEvent\n        {\n            ClaimId = \"123e4567-e89b-12d3-a456-426614174000\",\n            ClaimNumber = \"CLM-12345\",\n            MemberId = \"MBR-67890\",\n            ProviderId = \"PROV-11111\",\n            ApprovedAmount = 250.00m,\n            ApprovalDate = new DateTime(2026, 1, 20, 10, 30, 0, DateTimeKind.Utc),\n            ApprovedBy = \"ClaimsSystem\",\n            EventType = \"ClaimApproved\",\n            EventVersion = \"1.0.0\",\n            SourceSystem = \"Gainwell-Claims\",\n            Timestamp = new DateTime(2026, 1, 20, 10, 30, 0, DateTimeKind.Utc),\n            CorrelationId = \"corr-abc-123\"\n        };\n\n        // Act\n        var json = JsonSerializer.Serialize(integrationEvent, new JsonSerializerOptions\n        {\n            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,\n            WriteIndented = true\n        });\n\n        // Assert: Verify structure matches external consumer expectations\n        var expectedFields = new[]\n        {\n            \"claimId\", \"claimNumber\", \"memberId\", \"providerId\",\n            \"approvedAmount\", \"approvalDate\", \"approvedBy\",\n            \"eventType\", \"eventVersion\", \"sourceSystem\",\n            \"timestamp\", \"correlationId\"\n        };\n\n        foreach (var field in expectedFields)\n        {\n            Assert.Contains(field, json);\n        }\n\n        // Verify no unexpected fields (prevents breaking changes)\n        var doc = JsonDocument.Parse(json);\n        Assert.Equal(expectedFields.Length, doc.RootElement.EnumerateObject().Count());\n    }\n}\n```\n\n---",
+    "46": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#examples-and-references]\n\n## Examples and References",
+    "47": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#complete-working-example]\n\n### Complete Working Example",
+    "48": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#scenario-healthcare-claims-integration-publishing]\n\n#### Scenario: Healthcare Claims Integration Publishing\n\n**Context**: Publishing claim approval events to external partner systems (health plans, pharmacy benefits managers) via Kafka\n\n**Domain Service with Outbox:** See Phase 4, Step 4.2 above\n\n**Integration Event Publisher:** See Phase 4, Step 4.1 above\n\n**External Consumer Contract:**\n\n```json\n{\n  \"claimId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"claimNumber\": \"CLM-12345\",\n  \"memberId\": \"MBR-67890\",\n  \"providerId\": \"PROV-11111\",\n  \"approvedAmount\": 250.75,\n  \"approvalDate\": \"2026-01-20T10:30:00Z\",\n  \"approvedBy\": \"ClaimsSystem\",\n  \"eventType\": \"ClaimApproved\",\n  \"eventVersion\": \"1.0.0\",\n  \"sourceSystem\": \"Gainwell-Claims\",\n  \"timestamp\": \"2026-01-20T10:30:00Z\",\n  \"correlationId\": \"corr-abc-123\"\n}\n```\n\n**Message Headers (W3C Trace Context):**\n\n```\ntraceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01\ntracestate: congo=t61rcWkgMzE\nevent-type: ClaimApproved\nevent-version: 1.0.0\nsource-system: Gainwell-Claims\ntimestamp: 2026-01-20T10:30:00.000Z\n```\n\n**Testing Approach:**\n- Unit tests with MassTransit test harness for publisher logic\n- Integration tests with Testcontainers (Kafka + PostgreSQL) for outbox pattern\n- Contract tests to verify event schema stability for external consumers\n- Load tests for rate limiting under traffic bursts (10,000 events/minute)\n- Chaos tests: outbox relay failures, Kafka broker outages, schema registry unavailability\n\n**Lessons Learned:**\n- Transactional outbox eliminated duplicate events from retry logic (0% duplicates vs. 5% before)\n- Schema registry caught 3 breaking changes before external consumer impact\n- Rate limiting prevented partner system outages during claim batch processing (2,500 events/second burst)\n- W3C trace propagation reduced cross-system troubleshooting time from 2 hours to 15 minutes\n- Outbox relay monitoring detected stuck messages within 5 minutes (previously undetected)\n\n---",
+    "49": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#related-standards-and-patterns]\n\n### Related Standards and Patterns",
+    "50": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#integration-standards]\n\n#### Integration Standards\n\n- **[STD-APP-INT-001 - .NET 8 Integration Event Consumer](STD-APP-INT-001-dotnet-integration-consumer.md)**\n  - Consuming integration events from external systems\n  - Circuit breaker patterns for external dependencies\n  - Idempotency for integration consumers\n\n- **[STD-APP-INT-003 - .NET 8 Protocol Adapters](STD-APP-INT-003-dotnet-protocol-adapters.md)**\n  - Custom protocol adapters for legacy systems\n  - Protocol translation patterns\n  - Adapter testing strategies",
+    "51": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#event-driven-standards]\n\n#### Event-Driven Standards\n\n- **[STD-APP-EVT-002 - .NET 8 Event Publishing](../../event-driven/STD-APP-EVT-002-dotnet-kafka-producer.md)**\n  - Internal event publishing patterns (foundational standard)\n  - Kafka producer best practices\n  - Producer configuration\n\n- **[STD-APP-EVT-001 - .NET 8 Event Consumption](../../event-driven/STD-APP-EVT-001-dotnet-kafka-consumer.md)**\n  - Internal event consumption patterns\n  - Consumer group management\n  - Offset management\n\n- **[STD-APP-EVT-003 - .NET 8 Event Sourcing](../../event-driven/STD-APP-EVT-003-dotnet-event-sourcing.md)**\n  - Event sourcing patterns\n  - Event store implementation\n  - Aggregate reconstruction",
+    "52": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#infrastructure-standards]\n\n#### Infrastructure Standards\n\n- **[STD-INFRA-INT-001 - Event Broker Integration](../../../infrastructure/integration/STD-INFRA-INT-001-event-broker-integration.md)**\n  - Infrastructure-level broker configuration\n  - Multi-tenancy and isolation\n  - Network and security configuration",
+    "53": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#monitoring-and-observability]\n\n#### Monitoring and Observability\n\n- **[STD-APP-MON-001 - Application Observability](../../monitoring/STD-APP-MON-001-monitoring-observability.md)**\n  - OpenTelemetry instrumentation standards\n  - Metrics and tracing patterns\n  - Alerting and dashboards\n\n---",
+    "54": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#external-resources]\n\n### External Resources",
+    "55": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#masstransit-documentation]\n\n#### MassTransit Documentation\n\n- **[MassTransit Official Documentation](https://masstransit.io/documentation/concepts)**\n  - Core concepts and patterns\n  - Transport-specific configuration\n  - Publisher patterns and sagas\n\n- **[MassTransit Transactional Outbox](https://masstransit.io/documentation/patterns/transactional-outbox)**\n  - Outbox pattern implementation\n  - Entity Framework Core integration\n  - Outbox configuration and troubleshooting\n\n- **[MassTransit Kafka Integration](https://masstransit.io/documentation/transports/kafka)**\n  - Kafka rider configuration\n  - Topic endpoints and producers\n  - Idempotent producer settings\n\n- **[MassTransit RabbitMQ Integration](https://masstransit.io/documentation/transports/rabbitmq)**\n  - RabbitMQ configuration and topology\n  - Publisher confirms\n  - Message routing patterns",
+    "56": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#aws-glue-schema-registry]\n\n#### AWS Glue Schema Registry\n\n- **[AWS Glue Schema Registry Documentation](https://docs.aws.amazon.com/glue/latest/dg/schema-registry.html)**\n  - Schema registration and versioning\n  - Compatibility modes\n  - .NET SDK integration\n\n- **[Schema Evolution Best Practices](https://docs.aws.amazon.com/glue/latest/dg/schema-registry-best-practices.html)**\n  - Backward/forward compatibility\n  - Breaking change management\n  - Schema migration strategies",
+    "57": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#polly-resilience]\n\n#### Polly Resilience\n\n- **[Polly Documentation](https://github.com/App-vNext/Polly)**\n  - Rate limiting patterns\n  - Retry policies\n  - Timeout and fallback strategies\n\n- **[Polly Rate Limiting](https://github.com/App-vNext/Polly/wiki/Rate-Limit)**\n  - Rate limiter configuration\n  - Sliding window vs fixed window\n  - Metrics and monitoring",
+    "58": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#opentelemetry]\n\n#### OpenTelemetry\n\n- **[OpenTelemetry .NET Documentation](https://opentelemetry.io/docs/instrumentation/net/)**\n  - Tracing and metrics instrumentation\n  - Context propagation (W3C Trace Context)\n  - Exporters and collectors\n\n- **[OpenTelemetry Semantic Conventions](https://opentelemetry.io/docs/reference/specification/trace/semantic_conventions/messaging/)**\n  - Messaging semantic conventions\n  - Span attributes for publishers\n  - Trace correlation across systems",
+    "59": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#transactional-outbox-pattern]\n\n#### Transactional Outbox Pattern\n\n- **[Outbox Pattern (Martin Fowler)](https://microservices.io/patterns/data/transactional-outbox.html)**\n  - Pattern overview and motivation\n  - Implementation strategies\n  - Alternatives and trade-offs\n\n---",
+    "60": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#compliance-and-governance]\n\n## Compliance and Governance",
+    "61": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#compliance-assessment]\n\n### Compliance Assessment\n\nThis standard has a **MANDATORY** compliance level. All .NET 8 applications publishing integration events to external systems must comply with all requirements (REQ-INT-002-001 through REQ-INT-002-009).",
+    "62": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#compliance-checklist]\n\n#### Compliance Checklist\n\nApplications must verify the following before production deployment:\n\n**MassTransit Framework (REQ-INT-002-001):**\n- [ ] MassTransit >= 8.1.0 installed and configured\n- [ ] Transport-specific rider configured (Kafka, RabbitMQ, or Redis)\n- [ ] `IPublishEndpoint` or `ISendEndpoint` registered via dependency injection\n- [ ] Correlation ID set on all published messages\n- [ ] Retry policies implemented with exponential backoff\n\n**Schema Registration (REQ-INT-002-002):**\n- [ ] AWS Glue Schema Registry integration configured\n- [ ] All integration event types registered in schema registry\n- [ ] Compatibility mode set to BACKWARD or FULL\n- [ ] Schema version incremented appropriately (MAJOR/MINOR/PATCH)\n- [ ] Schema documentation provided to external consumers\n\n**Transactional Outbox (REQ-INT-002-003):**\n- [ ] Outbox table exists in application database\n- [ ] Integration events written to outbox in same transaction as domain changes\n- [ ] Outbox relay configured and running\n- [ ] Cleanup job configured for published messages (7-day retention)\n- [ ] Monitoring alerts configured for relay failures\n\n**Delivery Guarantees (REQ-INT-002-004):**\n- [ ] At-least-once delivery semantics configured (minimum)\n- [ ] Acknowledgment receipt logged before outbox marked published\n- [ ] Retry policy configured with exponential backoff (max 3 retries)\n- [ ] DLQ configured for undeliverable messages\n- [ ] Delivery metrics exported: success rate, failure rate, retry count, DLQ depth\n\n**External Consumer Compatibility (REQ-INT-002-005):**\n- [ ] Serialization format configurable per destination (Avro, JSON, Protobuf)\n- [ ] All required metadata headers present: event-type, event-version, source-system, timestamp, correlation-id, trace-context\n- [ ] External consumer documentation includes schema URL, format, and versioning policy\n- [ ] Schema registry accessible to external consumers\n\n**Observability (REQ-INT-002-006):**\n- [ ] OpenTelemetry >= 1.7.0 installed and configured\n- [ ] Spans created for each publish operation with required attributes\n- [ ] W3C Trace Context propagated in message headers\n- [ ] Structured logging includes all required metadata\n- [ ] Metrics exported: messages.sent, messages.failed, delivery.duration, payload.size, outbox.depth\n\n**Rate Limiting (REQ-INT-002-007):**\n- [ ] Rate limiter configured per external system/destination\n- [ ] Backpressure applied when limit exceeded\n- [ ] Rate limit violations logged and monitored\n- [ ] Rate limits documented in external consumer contracts\n- [ ] Environment-specific overrides configured\n\n**Event Mapping (REQ-INT-002-008):**\n- [ ] AutoMapper >= 12.0.0 installed and configured\n- [ ] Explicit mapping profiles defined for each external system\n- [ ] Integration event DTOs defined separately from domain models\n- [ ] Mapped events validated against schemas before publishing\n- [ ] Missing/null field handling implemented\n\n**Idempotent Publishing (REQ-INT-002-009):**\n- [ ] Kafka idempotent producer configured (enable.idempotence=true)\n- [ ] Message deduplication IDs set for RabbitMQ/Redis\n- [ ] Deduplication window configured (minimum 24 hours)\n- [ ] Duplicate detection logged and monitored\n- [ ] Idempotency guarantees documented for consumers\n\n**Testing:**\n- [ ] Unit tests cover all publisher logic\n- [ ] Integration tests validate outbox pattern with real database and broker\n- [ ] Contract tests verify event schema stability\n- [ ] Rate limiting tests verify backpressure handling\n- [ ] Chaos tests verify outbox relay failures and broker outages\n\n---",
+    "63": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#architecture-review-requirements]\n\n### Architecture Review Requirements\n\nSubmit to Architecture Review Board (ARB) if:\n\n**New External System Integration:**\n- Publishing events to a new external system not previously integrated\n- Requires ARB approval for connectivity, SLAs, and data sharing agreements\n- Must provide external system documentation and integration contract\n\n**Schema Breaking Changes:**\n- Introducing breaking changes to existing integration event schemas\n- Requires ARB review to assess external consumer impact\n- Must provide migration plan and timeline for external consumers\n\n**High-Volume Publishing:**\n- Publishing > 10,000 messages/second to external systems\n- Requires ARB review of architecture and outbox scaling strategy\n- Must provide load testing results and capacity planning\n\n**Custom Serialization Formats:**\n- Implementing custom serialization beyond Avro, JSON, Protobuf\n- Requires ARB review of format design and external consumer compatibility\n- Must demonstrate testing strategy\n\n**Outbox Modifications:**\n- Modifying outbox pattern or relay implementation\n- Requires ARB review to ensure delivery guarantees maintained\n- Must provide migration plan for existing outbox data\n\n---",
+    "64": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#monitoring-and-alerting-requirements]\n\n### Monitoring and Alerting Requirements",
+    "65": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#required-metrics]\n\n#### Required Metrics\n\nApplications must export and monitor the following metrics:\n\n**Publisher Metrics:**\n- `integration.publisher.messages.sent` (Counter) - Total messages published to outbox\n- `integration.publisher.messages.failed` (Counter) - Failed publish attempts\n- `integration.publisher.delivery.duration` (Histogram) - Time from publish to broker acknowledgment\n- `integration.publisher.payload.size` (Histogram) - Message payload size in bytes\n\n**Outbox Metrics:**\n- `integration.outbox.depth` (Gauge) - Current number of unpublished messages in outbox\n- `integration.outbox.relay.messages.published` (Counter) - Messages published by relay\n- `integration.outbox.relay.messages.failed` (Counter) - Relay publish failures\n- `integration.outbox.age.oldest` (Gauge) - Age of oldest unpublished message in seconds\n\n**Schema Validation Metrics:**\n- `integration.schema.registration.success` (Counter) - Successful schema registrations\n- `integration.schema.registration.failure` (Counter) - Failed schema registrations\n- `integration.schema.cache.hits` (Counter) - Schema cache hits\n- `integration.schema.cache.misses` (Counter) - Schema cache misses\n\n**Rate Limiting Metrics:**\n- `integration.rate_limit.violations` (Counter) - Rate limit violations by destination\n- `integration.rate_limit.permits.available` (Gauge) - Available rate limit permits\n\n**DLQ Metrics:**\n- `integration.dlq.messages` (Gauge) - Current DLQ depth\n- `integration.dlq.messages.added` (Counter) - Messages added to DLQ",
+    "66": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#required-alerts]\n\n#### Required Alerts\n\n**Critical Alerts (P1):**\n- Outbox depth > 1,000 messages for > 5 minutes (indicates relay failure)\n- DLQ depth > 100 messages (Alert Threshold)\n- Outbox oldest message age > 10 minutes\n- Delivery failure rate > 5%\n- Schema registration failure rate > 10%\n\n**Warning Alerts (P2):**\n- Outbox depth > 500 messages\n- DLQ depth > 50 messages\n- Delivery duration p99 > 30 seconds\n- Rate limit violations > 100/minute\n- Schema cache miss rate > 20%\n\n---",
+    "67": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#exception-process]\n\n### Exception Process",
+    "68": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#requesting-an-exception]\n\n#### Requesting an Exception\n\nTeams may request temporary exceptions for specific requirements if:\n- External system does not support required protocols or serialization formats\n- Legacy integration cannot be immediately refactored to use outbox pattern\n- Performance requirements conflict with mandatory patterns\n\n**Exception Request Process:**\n1. Submit exception request via Architecture Review Board portal\n2. Provide technical justification and risk assessment\n3. Propose mitigation strategies and remediation timeline\n4. ARB reviews and approves/denies within 5 business days\n5. If approved, document exception in application ADR\n\n**Exception Requirements:**\n- Maximum duration: 6 months\n- Must include remediation plan with milestones\n- Requires monthly progress reports to ARB\n- Automatic expiration without renewal",
+    "69": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#exception-categories]\n\n#### Exception Categories\n\n**Temporary Exception:**\n- Short-term deviation with committed remediation plan\n- Example: Outbox relay implementation in progress, using synchronous publishing temporarily\n- Requires monthly progress updates\n\n**Permanent Exception:**\n- Long-term approved deviation for specific circumstances\n- Example: External system only supports proprietary serialization format\n- Requires documented compensating controls\n- Annual review by ARB\n\n---",
+    "70": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#standard-review-and-updates]\n\n### Standard Review and Updates\n\nThis standard will be reviewed and updated regularly:\n\n**Review Cadence:**\n- **Quarterly**: Minor updates for MassTransit/library version updates\n- **Annually**: Major review for new patterns and lessons learned\n- **Ad-hoc**: Critical updates for security or compliance changes\n\n**Review Participants:**\n- Integration Architecture team\n- Application development teams (publishers of integration events)\n- Platform Engineering team (EaaS platform)\n- Architecture Review Board\n\n**Update Process:**\n1. Gather feedback from Teams channel and GitHub issues\n2. Identify gaps, improvements, and new patterns from production implementations\n3. Draft standard updates with examples\n4. Review with stakeholders and ARB\n5. Publish updated standard with detailed changelog\n\n**Feedback Channels:**\n- Integration Standards Teams channel for questions and suggestions\n- GitHub issues for bugs and improvement requests\n- Quarterly office hours for real-time feedback\n- Annual survey of teams using this standard\n\n---",
+    "71": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#change-history]\n\n## Change History\n\n| Date       | Version | Author                  | Description               | Impact       |\n|------------|---------|-------------------------|---------------------------|--------------|\n| 2026-01-20 | 1.0.0   | Enterprise Architecture | Initial standard creation | New standard |\n\n---",
+    "72": "[standards/application/integration/dotnet/STD-APP-INT-002-dotnet-integration-publisher.md#review-log]\n\n## Review Log\n\n| Review Date | Reviewer                      | Role                  | Status    | Comments                                    |\n|-------------|-------------------------------|-----------------------|-----------|---------------------------------------------|\n| 2026-01-20  | Enterprise Architecture Team  | Standard Author       | Submitted | Initial submission for stakeholder review   |\n|             |                               |                       |           |                                             |\n|             |                               |                       |           |                                             |\n\n**Next Review Date**: 2026-04-20 (Quarterly)\n\n---"
+  },
+  "coverage": {
+    "total_pages": 72,
+    "covered_pages": 72,
+    "sampled_pages": 72,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 72
+  }
+}

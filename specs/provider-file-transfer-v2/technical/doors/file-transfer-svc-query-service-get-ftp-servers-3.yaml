@@ -1,0 +1,42 @@
+door:
+  id: file-transfer-svc-query-service-get-ftp-servers-3
+  kind: wcf
+  name: GetFtpServers
+  class: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvcCore\FileTransferSvcQueryService.cs
+  line: 26
+  entry:
+  - HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService.GetFtpServers(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+procedures: []
+tables:
+- name: orm:FTP_SERVER
+  access:
+  - reads
+shared_uses: []
+external_uses:
+- package: hpp.core.bas.cqrs
+  version: 30.0.0
+  method: HPP.Core.BAS.CQRS.Base.QueryServiceBase.TryRoute<TQuery>(TQuery)
+  calls:
+  - at: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvcCore\FileTransferSvcQueryService.cs:48
+    type_arguments:
+    - HPP.Core.BAS.CQRS.Base.Query
+    arguments:
+    - name: query
+      expression: query
+polymorphic_hooks: []
+stops: []
+calls:
+- from: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService.GetFtpServers(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+  via: INVOKES
+  to: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService.TryRouteQuery(HPP.Core.BAS.CQRS.Base.Query)
+- from: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService.GetFtpServers(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+  via: READS_FROM
+  to: orm:FTP_SERVER
+methods:
+- name: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService.GetFtpServers(HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.Contracts.Queries.FtpServerQuery)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvcCore\FileTransferSvcQueryService.cs
+  line: 26
+- name: HPP.FileTransfer.BAS.FileTransferSvc.FileTransferSvcQueryService.TryRouteQuery(HPP.Core.BAS.CQRS.Base.Query)
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferSvcCore\FileTransferSvcQueryService.cs
+  line: 46

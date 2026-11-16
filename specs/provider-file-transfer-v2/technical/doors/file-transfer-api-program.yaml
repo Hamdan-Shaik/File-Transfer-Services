@@ -1,0 +1,37 @@
+door:
+  id: file-transfer-api-program
+  kind: batch
+  name: Program
+  class: HPP.FileTransfer.BAS.FileTransferApi.Program
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferApi\Program.cs
+  line: 14
+  entry:
+  - HPP.FileTransfer.BAS.FileTransferApi.Program.Main(string[])
+procedures: []
+tables: []
+shared_uses: []
+external_uses:
+- package: hpp.core.bas.cqrs
+  version: 30.0.0
+  method: HPP.Core.BAS.CQRS.Helpers.TenantBasHelper.Initialize(HPP.Core.BAS.CQRS.Interfaces.IModuleConfigurator)
+  calls:
+  - at: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferApi\Program.cs:18
+    arguments:
+    - name: configurator
+      expression: new FileTransferModuleConfigurator()
+polymorphic_hooks: []
+stops:
+- name: HPP.FileTransfer.BAS.FileTransferApi.Program.CreateHostBuilder(string[])
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferApi\Program.cs
+  line: 22
+calls:
+- from: HPP.FileTransfer.BAS.FileTransferApi.Program.Main(string[])
+  via: INVOKES
+  to: HPP.FileTransfer.BAS.FileTransferApi.Program.CreateHostBuilder(string[])
+methods:
+- name: HPP.FileTransfer.BAS.FileTransferApi.Program.CreateHostBuilder(string[])
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferApi\Program.cs
+  line: 22
+- name: HPP.FileTransfer.BAS.FileTransferApi.Program.Main(string[])
+  file: bas\FileTransferSvc\HPP.FileTransfer.BAS.FileTransferApi\Program.cs
+  line: 16

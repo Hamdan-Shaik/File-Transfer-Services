@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "extractor_version": 1,
+  "document_title": "Scope",
+  "document_description": "Review PR comments, decide whether to fix or not, reply to every comment, and resolve every thread. Every comment gets a reply and a resolution — code changes are optional based on judgment.",
+  "total_pages": 5,
+  "tree": [
+    {
+      "title": "(preamble)",
+      "node_id": "",
+      "start_index": 1,
+      "end_index": 5,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Scope",
+          "node_id": "scope",
+          "start_index": 2,
+          "end_index": 2,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Workflow",
+          "node_id": "workflow",
+          "start_index": 3,
+          "end_index": 3,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Reply Templates",
+          "node_id": "reply-templates",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "title": "Examples",
+          "node_id": "examples",
+          "start_index": 5,
+          "end_index": 5,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    }
+  ],
+  "page_texts": {
+    "1": "Review PR comments, decide whether to fix or not, reply to every comment, and resolve every thread. Every comment gets a reply and a resolution — code changes are optional based on judgment.",
+    "2": "[.claude/commands/pr-appr-resolve.md#scope]\n\n## Scope\n\n- If `$ARGUMENTS` specifies a PR number, use that\n- If `$ARGUMENTS` specifies a repo (e.g., `bootstrap`), resolve comments on that repo's PR\n- Otherwise, detect the current repo and find the open PR for the current branch\n- **This Command is the single source of truth for the triage → present-plan → reply → resolve mechanics** — the Resolve Plan table format, reply templates, and thread-resolution GraphQL calls below. A `pr-manager` Agent, where one exists for the repo (`.github/agents/pr-manager.agent.md`), reads and applies steps 3-8 and 10 of this Workflow directly rather than duplicating them (skipping step 9 - commit and push remain /eap-git's and /eap-push's job, never the Agent's), the same way a Workflow references a Skill by canonical path (STD-TEC-AI-004 MR-7) or delegates to another Workflow as the single source of truth for shared logic (STD-TEC-AI-004 MR-9.5, Recommended Practice #1). This is not Agent-to-Agent subagent composition (STD-TEC-AI-002 MR-10) and not a Workflow invoking an Agent (no such mechanism exists) — it is simply an Agent reading a Workflow's documented procedure and executing it, identical in kind to how it would read a Skill. See the note after step 2 for how `pr-manager` feeds its taxonomy-classified findings into step 3 onward.",
+    "3": "[.claude/commands/pr-appr-resolve.md#workflow]\n\n## Workflow\n\n1. **Pull latest** — run `git pull` to ensure you're working on the latest code before making any changes\n\n2. **Identify the PR**\n   - Parse `$ARGUMENTS` for a PR number or repo name\n   - If no PR specified, find the open PR for the current branch: `gh pr list --head $(git branch --show-current) --json number --jq '.[0].number'`\n   - If multiple repos specified (e.g., \"both\", \"bootstrap and this\"), process each\n\n   > **Note for `pr-manager`:** When this Workflow is applied by `pr-manager`, the PR is already identified and its review threads already fetched (paginated) by that Agent's own steps — skip straight to step 3 using that data rather than re-fetching here.\n\n3. **Fetch all review comments — paginated, never a single page**\n\n   The REST comments endpoint defaults to 30 results per page and truncates silently past that with no error; a PR with more than 30 review comments will otherwise lose the remainder. Always use `--paginate`:\n\n   ```bash\n   gh api repos/{owner}/{repo}/pulls/{number}/comments --paginate \\\n     --jq '.[] | {id, path, line: (.line // .original_line), body}'\n   ```\n\n4. **Triage each comment** — decide whether to fix or not:\n\n   | Decision | When | Action |\n   | --- | --- | --- |\n   | **Fix in code** | Comment is valid and the fix improves the PR | Apply the fix, reply with what changed |\n   | **Won't fix — intentional** | The code is correct by design (e.g., permissions policy, architecture choice) | Reply explaining the reasoning |\n   | **Won't fix — already addressed** | The code already matches the suggestion, or the file was deleted/moved | Reply explaining what the diff shows |\n   | **Won't fix — pre-existing** | Issue exists in code not changed by this PR | Reply noting it's pre-existing and out of scope |\n   | **Won't fix — disagree** | The suggestion would make things worse or doesn't apply | Reply explaining why |\n\n   **Every comment gets a reply. Every thread gets resolved — except a `pr-manager`-escalated finding the user explicitly chooses to leave open (see the note below).** Code changes are optional.\n\n   Before deciding **Fix in code**, read `.claude/skills/ai-convergence/SKILL.md` and apply its occurrence-inventory and cross-file-propagation methodology — a flagged line is a symptom of a concept, not the full extent of the fix. Before posting any replies or resolving any threads, run that Skill's Phase 4 checklist across the full PR diff — per that Skill's Phase 2 scope note, \"changed files\" means every file in the PR diff across all commits, not only the files this pass edits or the files with open comments.\n\n   > **Note for `pr-manager`:** All of its findings arrive here **pre-decided** — the EA-artifact, AI-construct, and PR-metadata buckets as \"Fix in code — done,\" with the fix already applied and a reply drafted from what the sub-agent (or `pr-manager` itself, for PR metadata) reported; its out-of-taxonomy bucket as either \"Won't-fix\" (trivial/cosmetic findings) or \"Escalate — needs human review\" (findings that appear to be genuine, potentially significant defects `pr-manager` cannot author a fix for). Do not re-triage any of them — carry them straight into step 5's plan. This step's own Fix/Won't-fix judgment applies only when a human invokes this Command directly, without `pr-manager`.\n\n5. **Present the plan to the user for approval before posting**\n\n   Display the triage locally as a table:\n\n   ```text\n   ## Resolve Plan — PR #{number}\n\n   | # | File:Line | Decision | Reply |\n   | --- | --- | --- | --- |\n   | 1 | src/auth.py:42 | Fix in code | Fixed — added input validation |\n   | 2 | config.yml:8 | Won't fix — intentional | Intentional — matches team policy |\n   | 3 | setup.sh:518 | Won't fix — pre-existing | Pre-existing, not changed in this PR |\n   ```\n\n   Then ask once:\n\n   ```text\n   Reply to {N} comments, fix {M} in code, and resolve all threads?\n   ```\n\n   - **User approves** — execute the plan (apply fixes, post replies, resolve threads — except a row marked \"Escalate — needs human review\" that the user chooses to leave open)\n   - **User edits** — adjust per their feedback, then execute (no second approval round)\n\n   **Do not post replies or resolve threads until the user confirms.**\n\n6. **For comments you fix:**\n   - Read the referenced file and line\n   - Apply the fix using Edit tool\n   - Reply to the comment thread:\n\n     ```bash\n     gh api repos/{owner}/{repo}/pulls/{number}/comments \\\n       -f body=\"Fixed — <description of what changed>\" \\\n       -F in_reply_to={comment_id}\n     ```\n\n7. **For comments you won't fix:**\n   - Reply with a clear, specific reason (not just \"won't fix\")\n   - Be professional — acknowledge valid points even when declining\n\n8. **Resolve all threads via GraphQL — paginated, never a single page**\n\n   The `reviewThreads` connection silently truncates at whatever `first:` page size you request, exactly like the REST comments endpoint in step 3 and the same connection `pr-manager.agent.md` step 2 paginates — a `first: 100` query on a PR with more than 100 threads returns exactly 100 with no error, and the remaining threads are never surfaced as unresolved. Always loop to `hasNextPage: false` before resolving. Exclude from the resolve list any thread the user explicitly chose to leave open under an \"Escalate — needs human review\" disposition (see step 4's note for `pr-manager`):\n\n   ```bash\n   # Page 1 — no cursor\n   gh api graphql -f query='{\n     repository(owner: \"{owner}\", name: \"{repo}\") {\n       pullRequest(number: {number}) {\n         reviewThreads(first: 100) {\n           pageInfo { hasNextPage endCursor }\n           nodes {\n             id\n             isResolved\n           }\n         }\n       }\n     }\n   }' --jq '{ids: [.data.repository.pullRequest.reviewThreads.nodes[] | select(.isResolved == false) | .id], hasNextPage: .data.repository.pullRequest.reviewThreads.pageInfo.hasNextPage, endCursor: .data.repository.pullRequest.reviewThreads.pageInfo.endCursor}'\n\n   # Repeat with after: \"{endCursor}\" from the previous page, accumulating unresolved ids,\n   # until hasNextPage is false:\n   gh api graphql -f query='{\n     repository(owner: \"{owner}\", name: \"{repo}\") {\n       pullRequest(number: {number}) {\n         reviewThreads(first: 100, after: \"{endCursor}\") {\n           pageInfo { hasNextPage endCursor }\n           nodes {\n             id\n             isResolved\n           }\n         }\n       }\n     }\n   }' --jq '{ids: [.data.repository.pullRequest.reviewThreads.nodes[] | select(.isResolved == false) | .id], hasNextPage: .data.repository.pullRequest.reviewThreads.pageInfo.hasNextPage, endCursor: .data.repository.pullRequest.reviewThreads.pageInfo.endCursor}'\n\n   # Once every page has been fetched and all unresolved ids accumulated, resolve each:\n   gh api graphql -f query='mutation {\n     resolveReviewThread(input: {threadId: \"{id}\"}) {\n       thread { isResolved }\n     }\n   }'\n   ```\n\n9. **Commit and push** if any code changes were made — `pr-manager` skips this step itself (it does not perform git operations, per its own Scope Boundaries) and instead reminds the user to run `/eap-git` and `/eap-push` separately.\n\n10. **Report results:**\n\n    - How many comments were reviewed\n    - How many were fixed in code\n    - How many were resolved as already-addressed or out-of-scope\n    - Any that couldn't be resolved (explain why)",
+    "4": "[.claude/commands/pr-appr-resolve.md#reply-templates]\n\n## Reply Templates\n\n**Fixed in code:**\n\n```text\nFixed — <specific description of the change made>.\n```\n\n**Already addressed:**\n\n```text\nAlready fixed in this PR — <explain what the diff shows>.\n```\n\n**Pre-existing, out of scope:**\n\n```text\nPre-existing code, not changed in this PR. Noted for future work.\n```\n\n**Intentional design choice:**\n\n```text\nIntentional — <explain the reasoning>.\n```",
+    "5": "[.claude/commands/pr-appr-resolve.md#examples]\n\n## Examples\n\n```text\n/pr-appr-resolve\n```\n\nFinds the PR for the current branch, reviews all comments, fixes what's actionable, replies, and resolves.\n\n```text\n/pr-appr-resolve 3\n```\n\nReviews comments on PR #3 in the current repo.\n\n```text\n/pr-appr-resolve bootstrap\n```\n\nReviews comments on the open PR in eap-bootstrap.\n\n```text\n/pr-appr-resolve both\n```\n\nReviews comments on PRs in both the current repo and eap-bootstrap.\n\n$ARGUMENTS"
+  },
+  "coverage": {
+    "total_pages": 5,
+    "covered_pages": 5,
+    "sampled_pages": 5,
+    "gaps": [],
+    "out_of_range": [],
+    "leaf_count": 5
+  }
+}
