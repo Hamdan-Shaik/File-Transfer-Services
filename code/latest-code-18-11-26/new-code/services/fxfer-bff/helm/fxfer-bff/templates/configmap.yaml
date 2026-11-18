@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-fxfer-bff
+data:
+  OpenTelemetry__OtlpEndpoint: {{ .Values.config.otlpEndpoint | quote }}
+  Downstream__FxferDomainApiBaseUrl: {{ .Values.config.fxferDomainApiBaseUrl | quote }}
+  Cors__AllowedOriginsCsv: {{ .Values.config.corsAllowedOrigins | quote }}
+  Authentication__Authority: {{ .Values.config.authentication.authority | quote }}
+  Authentication__Audience: {{ .Values.config.authentication.audience | quote }}
+  Authentication__RequireHttpsMetadata: {{ .Values.config.authentication.requireHttpsMetadata | quote }}
+

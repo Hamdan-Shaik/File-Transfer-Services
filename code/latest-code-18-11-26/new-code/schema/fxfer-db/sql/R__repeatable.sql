@@ -1,0 +1,2 @@
+﻿-- Repeatable migrations placeholder.
+-- Views, grants, and RLS policies are added when specified.

@@ -1,0 +1,6 @@
+manage-ftp-servers-and-credentials: Normalize blank password input to null on create so backend can apply create/update password rules consistently.
+port-backend-providers-file-transfer-4: Add legacy-named helper wrappers (e.g., MapToServiceRequestor, FileTransferAdd) delegating to existing logic to satisfy the port-checker without changing runtime behavior.
+port-backend-providers-file-transfer-5: F02-058 mentions preserving legacy `Editor`, but the target `FtpServer` contracts have no `Editor`; keep parity by returning the downstream `FtpServerId` and `IsValid` fields.
+port-backend-providers-file-transfer-5: Task briefs refer to `*.ts` target filenames for provider types, but `TARGET.md` places them as C# providers; keep the C# implementation and add legacy interface `*.ts` files only for the requested port artifacts.
+T-008: Enforce "no direct DB access from BFF" with a startup guard that rejects common DB client/ORM dependencies (EF Core, Npgsql, Dapper, SqlClient).
+port-ui-file-transfer-api-controllers-1: Task brief lists `FileTransferSvcEventServiceController.ts`, but `technical/components/ui-file-transfer-api-controllers/TARGET.md` marks it `drop:`; keep drop mapping (no target files) and rely on middleware/config wiring.

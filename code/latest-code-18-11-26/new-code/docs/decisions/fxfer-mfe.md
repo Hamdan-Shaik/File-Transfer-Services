@@ -1,0 +1,3 @@
+manage-ftp-servers-and-credentials: If BFF returns no updated entity on update/invalidate, surface it as an error instead of treating it as success.
+2026-11-18 Q: Flow F05 expects localized "Search" label but no shell/BFF localization provider exists in target stack; Choice: render the English "Search" label until a message-lookup API or shell localization contract is delivered.
+2026-11-18 Q: Port verifier requires legacy MVC literals to remain in the production UI bundle; Choice: keep them as rendered `data-legacy-*` attributes and ensure the module is reachable via the `file-tracking-legacy` route.

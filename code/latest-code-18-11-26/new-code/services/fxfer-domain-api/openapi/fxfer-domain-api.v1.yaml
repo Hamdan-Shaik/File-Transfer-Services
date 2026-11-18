@@ -1,0 +1,916 @@
+﻿openapi: 3.1.0
+info:
+  title: fxfer-domain-api contract (configuration + tracking)
+  version: 1.0.0
+  description: |
+    Private Domain API contract for FXFER configuration and tracking.
+
+    Errors are returned as RFC 7807 Problem Details (`application/problem+json`).
+
+x-legacy-endpoints:
+  - FileTransferAdd
+  - UpdateFileTransferSourceLocation
+  - InvalidateFileTransferSourceLocation
+  - SearchSourceLocations
+  - GetSourceLocations
+  - AddFtpServer
+  - UpdateFtpServer
+  - InvalidateFtpServer
+  - GetFtpServers
+  - GetIntegrationFile
+  - UpdateIntegrationFile
+  - SearchFileTransferMovement
+  - SearchInboundTarget
+
+servers:
+  - url: /api/fxfer-domain/v1
+
+security:
+  - bearerAuth: []
+
+tags:
+  - name: TransferConfigurations
+  - name: FtpServers
+  - name: IntegrationFiles
+  - name: InboundTargets
+  - name: FileTracking
+
+paths:
+  /api/health/live:
+    get:
+      operationId: getLiveHealth
+      summary: Liveness
+      security: []
+      servers:
+        - url: /
+      responses:
+        '200':
+          description: Liveness
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+        default:
+          $ref: '#/components/responses/Problem'
+
+  /api/health/ready:
+    get:
+      operationId: getReadyHealth
+      summary: Readiness
+      security: []
+      servers:
+        - url: /
+      responses:
+        '200':
+          description: Ready
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+        '503':
+          $ref: '#/components/responses/Problem'
+        default:
+          $ref: '#/components/responses/Problem'
+  /ftp-servers:
+    get:
+      operationId: searchFtpServers
+      summary: Search/list FTP servers
+      tags: [FtpServers]
+      parameters:
+        - in: query
+          name: isValid
+          required: false
+          schema: { type: boolean }
+        - in: query
+          name: ftpServerId
+          required: false
+          schema: { type: string, format: uuid }
+        - in: query
+          name: ftpServerName
+          required: false
+          schema: { type: string }
+        - in: query
+          name: ftpDescription
+          required: false
+          schema: { type: string }
+        - in: query
+          name: nameMatch
+          required: false
+          schema:
+            type: string
+            enum: [contains, startsWith, endsWith, exact]
+            default: exact
+        - in: query
+          name: descriptionMatch
+          required: false
+          schema:
+            type: string
+            enum: [contains, startsWith, endsWith, exact]
+            default: exact
+        - in: query
+          name: page
+          required: false
+          schema: { type: integer, format: int32, default: 1 }
+        - in: query
+          name: pageSize
+          required: false
+          schema: { type: integer, format: int32, default: 50 }
+      responses:
+        '200':
+          description: Search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedResultOfFtpServer'
+        default:
+          $ref: '#/components/responses/Problem'
+
+    post:
+      operationId: createFtpServer
+      summary: Create FTP server
+      tags: [FtpServers]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FtpServerUpsertRequest'
+      responses:
+        '201':
+          description: Created
+          headers:
+            Location:
+              schema: { type: string }
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FtpServer'
+        default:
+          $ref: '#/components/responses/Problem'
+
+  /ftp-servers/{ftpServerId}:
+    get:
+      operationId: getFtpServer
+      summary: Get FTP server by id
+      tags: [FtpServers]
+      parameters:
+        - in: path
+          name: ftpServerId
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200':
+          description: Ftp server
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FtpServer'
+        '404':
+          $ref: '#/components/responses/Problem'
+        default:
+          $ref: '#/components/responses/Problem'
+    put:
+      operationId: updateFtpServer
+      summary: Update FTP server
+      tags: [FtpServers]
+      parameters:
+        - in: path
+          name: ftpServerId
+          required: true
+          schema: { type: string, format: uuid }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FtpServerUpsertRequest'
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FtpServer'
+        default:
+          $ref: '#/components/responses/Problem'
+
+    patch:
+      operationId: patchFtpServer
+      summary: Patch/invalidate FTP server
+      tags: [FtpServers]
+      parameters:
+        - in: path
+          name: ftpServerId
+          required: true
+          schema: { type: string, format: uuid }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FtpServerPatchRequest'
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FtpServer'
+        default:
+          $ref: '#/components/responses/Problem'
+
+  /transfer-configurations:
+    get:
+      operationId: searchTransferConfigurations
+      summary: Search/list transfer configurations
+      tags: [TransferConfigurations]
+      parameters:
+        - in: query
+          name: configId
+          required: false
+          schema: { type: integer, format: int32 }
+        - in: query
+          name: configName
+          required: false
+          schema: { type: string }
+        - in: query
+          name: ownerName
+          required: false
+          schema: { type: string }
+        - in: query
+          name: ownerSubsystem
+          required: false
+          schema: { type: string, format: uuid }
+        - in: query
+          name: protocol
+          required: false
+          schema: { type: string }
+        - in: query
+          name: isActive
+          required: false
+          schema: { type: boolean }
+        - in: query
+          name: page
+          required: false
+          schema: { type: integer, format: int32, default: 1 }
+        - in: query
+          name: pageSize
+          required: false
+          schema: { type: integer, format: int32, default: 50 }
+      responses:
+        '200':
+          description: Search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedResultOfTransferConfigurationSummary'
+        default:
+          $ref: '#/components/responses/Problem'
+
+    post:
+      operationId: createTransferConfiguration
+      summary: Create transfer configuration
+      tags: [TransferConfigurations]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransferConfigurationUpsertRequest'
+      responses:
+        '201':
+          description: Created
+          headers:
+            Location:
+              schema: { type: string }
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransferConfiguration'
+        default:
+          $ref: '#/components/responses/Problem'
+
+  /transfer-configurations/{sourceLocationId}:
+    get:
+      operationId: getTransferConfiguration
+      summary: Get transfer configuration (including destinations)
+      tags: [TransferConfigurations]
+      parameters:
+        - in: path
+          name: sourceLocationId
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200':
+          description: Transfer configuration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransferConfiguration'
+        default:
+          $ref: '#/components/responses/Problem'
+
+    put:
+      operationId: updateTransferConfiguration
+      summary: Update transfer configuration
+      tags: [TransferConfigurations]
+      parameters:
+        - in: path
+          name: sourceLocationId
+          required: true
+          schema: { type: string, format: uuid }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransferConfigurationUpsertRequest'
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransferConfiguration'
+        default:
+          $ref: '#/components/responses/Problem'
+
+    patch:
+      operationId: patchTransferConfiguration
+      summary: Patch/invalidate/enable/disable/suspend transfer configuration
+      tags: [TransferConfigurations]
+      parameters:
+        - in: path
+          name: sourceLocationId
+          required: true
+          schema: { type: string, format: uuid }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransferConfigurationPatchRequest'
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransferConfiguration'
+        default:
+          $ref: '#/components/responses/Problem'
+
+  /source-locations:
+    get:
+      operationId: listSourceLocations
+      summary: List source location options (pick list)
+      tags: [TransferConfigurations]
+      parameters:
+        - in: query
+          name: isActive
+          required: false
+          schema: { type: boolean, default: true }
+      responses:
+        '200':
+          description: Options
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SourceLocationOption'
+        default:
+          $ref: '#/components/responses/Problem'
+
+  /integration-files:
+    get:
+      operationId: listIntegrationFiles
+      summary: Lookup integration file definitions
+      tags: [IntegrationFiles]
+      parameters:
+        - in: query
+          name: integrationFileId
+          required: false
+          schema: { type: string, format: uuid }
+        - in: query
+          name: fileName
+          required: false
+          schema: { type: string }
+        - in: query
+          name: isValid
+          required: false
+          schema: { type: boolean, default: true }
+      responses:
+        '200':
+          description: Results
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/IntegrationFileDefinition'
+        default:
+          $ref: '#/components/responses/Problem'
+
+  /integration-files/{integrationFileId}:
+    patch:
+      operationId: patchIntegrationFile
+      summary: Record integration file processing/update
+      tags: [IntegrationFiles]
+      parameters:
+        - in: path
+          name: integrationFileId
+          required: true
+          schema: { type: string, format: uuid }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IntegrationFileProcessingRequest'
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationFileDefinition'
+        default:
+          $ref: '#/components/responses/Problem'
+
+  /inbound-targets:
+    get:
+      operationId: listInboundTargets
+      summary: Search inbound targets
+      tags: [InboundTargets]
+      parameters:
+        - in: query
+          name: fteMetadataId
+          required: false
+          schema: { type: string, format: uuid }
+        - in: query
+          name: contractName
+          required: false
+          schema: { type: string }
+      responses:
+        '200':
+          description: Results
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InboundTarget'
+        default:
+          $ref: '#/components/responses/Problem'
+
+  /file-tracking:
+    get:
+      operationId: searchFileTracking
+      summary: Search file transfer tracking records
+      tags: [FileTracking]
+      parameters:
+        - in: query
+          name: fileId
+          required: false
+          schema: { type: string, format: uuid }
+        - in: query
+          name: fileName
+          required: false
+          schema: { type: string }
+        - in: query
+          name: fileStatus
+          required: false
+          schema: { type: string }
+        - in: query
+          name: fileDirection
+          required: false
+          schema: { type: string }
+        - in: query
+          name: fileTransportType
+          required: false
+          schema: { type: string }
+        - in: query
+          name: fileSourceLocationId
+          required: false
+          schema: { type: string, format: uuid }
+        - in: query
+          name: startDate
+          required: false
+          schema: { type: string, format: date-time }
+        - in: query
+          name: endDate
+          required: false
+          schema: { type: string, format: date-time }
+        - in: query
+          name: fileSizeFrom
+          required: false
+          schema: { type: number, format: decimal }
+        - in: query
+          name: fileSizeThrough
+          required: false
+          schema: { type: number, format: decimal }
+        - in: query
+          name: tradingPartner
+          required: false
+          schema: { type: string }
+        - in: query
+          name: page
+          required: false
+          schema: { type: integer, format: int32, default: 1 }
+        - in: query
+          name: pageSize
+          required: false
+          schema: { type: integer, format: int32, default: 50 }
+      responses:
+        '200':
+          description: Results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedResultOfFileTransferTracking'
+        default:
+          $ref: '#/components/responses/Problem'
+
+  /file-tracking/{fileId}:
+    get:
+      operationId: getFileTracking
+      summary: Get file tracking detail
+      tags: [FileTracking]
+      parameters:
+        - in: path
+          name: fileId
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200':
+          description: Tracking detail
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileTransferTracking'
+        '404':
+          $ref: '#/components/responses/Problem'
+        default:
+          $ref: '#/components/responses/Problem'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  responses:
+    Problem:
+      description: Problem Details error
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetails'
+
+  schemas:
+    HealthResponse:
+      type: object
+      properties:
+        status: { type: string }
+        time_utc: { type: string, format: date-time }
+    ProblemDetails:
+      type: object
+      properties:
+        type: { type: string }
+        title: { type: string }
+        status: { type: integer, format: int32 }
+        detail: { type: string }
+        instance: { type: string }
+        correlation_id: { type: string }
+        trace_id: { type: string }
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+
+    ValidationError:
+      type: object
+      properties:
+        field: { type: string }
+        code: { type: string }
+        message: { type: string }
+
+    PagedResultOfFtpServer:
+      type: object
+      properties:
+        items:
+          type: array
+          items: { $ref: '#/components/schemas/FtpServer' }
+        total: { type: integer, format: int64 }
+        page: { type: integer, format: int32 }
+        pageSize: { type: integer, format: int32 }
+
+    PagedResultOfTransferConfigurationSummary:
+      type: object
+      properties:
+        items:
+          type: array
+          items: { $ref: '#/components/schemas/TransferConfigurationSummary' }
+        total: { type: integer, format: int64 }
+        page: { type: integer, format: int32 }
+        pageSize: { type: integer, format: int32 }
+
+    PagedResultOfFileTransferTracking:
+      type: object
+      properties:
+        items:
+          type: array
+          items: { $ref: '#/components/schemas/FileTransferTracking' }
+        total: { type: integer, format: int64 }
+        page: { type: integer, format: int32 }
+        pageSize: { type: integer, format: int32 }
+
+    FtpServerUpsertRequest:
+      type: object
+      required:
+        - ftpServerName
+        - ftpDescription
+        - ftpServerIp
+        - ftpTransferMode
+        - ftpUser
+        - ftpPort
+        - useSshAuth
+        - isValid
+        - operatorId
+      properties:
+        ftpServerName: { type: string }
+        ftpDescription: { type: string }
+        ftpServerIp: { type: string }
+        ftpTransferMode: { type: string }
+        ftpUser: { type: string }
+        credentialSecretRef: { type: string, nullable: true }
+        ftpPort: { type: integer, format: int32 }
+        ftpProxyAddress: { type: string, nullable: true }
+        ftpProxyPort: { type: integer, format: int32, nullable: true }
+        useSshAuth: { type: boolean }
+        isValid: { type: boolean }
+        operatorId: { type: string }
+
+    FtpServerPatchRequest:
+      type: object
+      required: [operatorId]
+      properties:
+        ftpServerName: { type: string, nullable: true }
+        ftpDescription: { type: string, nullable: true }
+        ftpServerIp: { type: string, nullable: true }
+        ftpTransferMode: { type: string, nullable: true }
+        ftpUser: { type: string, nullable: true }
+        credentialSecretRef: { type: string, nullable: true }
+        ftpPort: { type: integer, format: int32, nullable: true }
+        ftpProxyAddress: { type: string, nullable: true }
+        ftpProxyPort: { type: integer, format: int32, nullable: true }
+        useSshAuth: { type: boolean, nullable: true }
+        isValid: { type: boolean, nullable: true }
+        operatorId: { type: string }
+
+    FtpServer:
+      type: object
+      properties:
+        ftpServerId: { type: string, format: uuid }
+        ftpServerName: { type: string }
+        ftpDescription: { type: string }
+        ftpServerIp: { type: string }
+        ftpTransferMode: { type: string }
+        ftpUser: { type: string }
+        ftpPort: { type: integer, format: int32 }
+        ftpProxyAddress: { type: string, nullable: true }
+        ftpProxyPort: { type: integer, format: int32, nullable: true }
+        useSshAuth: { type: boolean }
+        isValid: { type: boolean }
+        operatorId: { type: string }
+        creationDate: { type: string, format: date-time }
+        lastModifiedDate: { type: string, format: date-time }
+
+    TransferConfigurationUpsertRequest:
+      type: object
+      required:
+        - configName
+        - address
+        - protocol
+        - ownerName
+        - ownerEmail
+        - ownerPhoneNumber
+        - ownerSubsystem
+        - startWindow
+        - endWindow
+        - destinations
+        - operatorId
+      properties:
+        configName: { type: string }
+        description: { type: string, nullable: true }
+        ftpServerId: { type: string, format: uuid, nullable: true }
+        address: { type: string }
+        mask: { type: string, nullable: true }
+        protocol: { type: string }
+        fileDirection: { type: string, nullable: true }
+        ownerName: { type: string }
+        ownerEmail: { type: string }
+        ownerPhoneNumber: { type: string }
+        ownerSubsystem: { type: string, format: uuid }
+        tradingPartner: { type: string, nullable: true }
+        sendNotification: { type: boolean, nullable: true }
+        runOnMonday: { type: boolean, nullable: true }
+        runOnTuesday: { type: boolean, nullable: true }
+        runOnWednesday: { type: boolean, nullable: true }
+        runOnThursday: { type: boolean, nullable: true }
+        runOnFriday: { type: boolean, nullable: true }
+        runOnSaturday: { type: boolean, nullable: true }
+        runOnSunday: { type: boolean, nullable: true }
+        runOnFirstDay: { type: boolean, nullable: true }
+        runOnLastDay: { type: boolean, nullable: true }
+        runOnThisDay: { type: integer, format: int32, nullable: true }
+        startWindow: { type: string }
+        endWindow: { type: string }
+        isActive: { type: boolean, nullable: true }
+        suspended: { type: boolean, nullable: true }
+        destinations:
+          type: array
+          items: { $ref: '#/components/schemas/DestinationUpsert' }
+        operatorId: { type: string }
+
+    TransferConfigurationPatchRequest:
+      type: object
+      required: [operatorId]
+      properties:
+        isActive: { type: boolean, nullable: true }
+        suspended: { type: boolean, nullable: true }
+        operatorId: { type: string }
+
+    DestinationUpsert:
+      type: object
+      required:
+        - destinationAddress
+        - destinationProtocol
+      properties:
+        destinationId: { type: string, format: uuid, nullable: true }
+        destinationAddress: { type: string }
+        destinationProtocol: { type: string }
+        ftpServerId: { type: string, format: uuid, nullable: true }
+        renamePattern: { type: string, nullable: true }
+        overWriteAtDestination: { type: boolean, nullable: true }
+        compressAtDestination: { type: boolean, nullable: true }
+        renameAtDestination: { type: boolean, nullable: true }
+        destinationArchive: { type: boolean, nullable: true }
+        contactName: { type: string, nullable: true }
+        contactPhone: { type: string, nullable: true }
+        contactEmail: { type: string, nullable: true }
+        isValid: { type: boolean, nullable: true }
+        fteMetadataId: { type: string, format: uuid, nullable: true }
+        destinationType: { type: string, nullable: true }
+        contractName: { type: string, nullable: true }
+        importJobName: { type: string, nullable: true }
+        operatorId: { type: string, nullable: true }
+
+    TransferConfigurationSummary:
+      type: object
+      properties:
+        ftsSourceLocationId: { type: string, format: uuid }
+        configId: { type: integer, format: int32 }
+        configName: { type: string }
+        protocol: { type: string }
+        address: { type: string }
+        ownerName: { type: string }
+        tradingPartner: { type: string, nullable: true }
+        isActive: { type: boolean }
+        suspended: { type: boolean }
+
+    Destination:
+      allOf:
+        - $ref: '#/components/schemas/DestinationUpsert'
+        - type: object
+          properties:
+            creationDate: { type: string, format: date-time }
+            lastModifiedDate: { type: string, format: date-time }
+
+    TransferConfiguration:
+      type: object
+      properties:
+        ftsSourceLocationId: { type: string, format: uuid }
+        configId: { type: integer, format: int32 }
+        configName: { type: string }
+        description: { type: string, nullable: true }
+        ftpServerId: { type: string, format: uuid, nullable: true }
+        ftpServerName: { type: string, nullable: true }
+        address: { type: string }
+        mask: { type: string, nullable: true }
+        protocol: { type: string }
+        fileDirection: { type: string, nullable: true }
+        ownerName: { type: string }
+        ownerEmail: { type: string }
+        ownerSubsystem: { type: string, format: uuid }
+        ownerPhoneNumber: { type: string }
+        tradingPartner: { type: string, nullable: true }
+        operatorId: { type: string, nullable: true }
+        runOnMonday: { type: boolean, nullable: true }
+        runOnTuesday: { type: boolean, nullable: true }
+        runOnWednesday: { type: boolean, nullable: true }
+        runOnThursday: { type: boolean, nullable: true }
+        runOnFriday: { type: boolean, nullable: true }
+        runOnSaturday: { type: boolean, nullable: true }
+        runOnSunday: { type: boolean, nullable: true }
+        runOnFirstDay: { type: boolean, nullable: true }
+        runOnLastDay: { type: boolean, nullable: true }
+        runOnThisDay: { type: integer, format: int32, nullable: true }
+        startWindow: { type: string, nullable: true }
+        endWindow: { type: string, nullable: true }
+        sendNotification: { type: boolean, nullable: true }
+        isActive: { type: boolean, nullable: true }
+        validChangeDate: { type: string, format: date-time, nullable: true }
+        suspended: { type: boolean, nullable: true }
+        suspendedChangeDate: { type: string, format: date-time, nullable: true }
+        lastModifiedDate: { type: string, format: date-time, nullable: true }
+        creationDate: { type: string, format: date-time, nullable: true }
+        destinations:
+          type: array
+          items: { $ref: '#/components/schemas/Destination' }
+
+    SourceLocationOption:
+      type: object
+      properties:
+        ftsSourceLocationId: { type: string, format: uuid }
+        configName: { type: string }
+        address: { type: string }
+
+    IntegrationFileProcessingRequest:
+      type: object
+      required: [configId, isValid]
+      properties:
+        configId: { type: integer, format: int32 }
+        isValid: { type: boolean }
+
+    IntegrationFileDefinition:
+      type: object
+      properties:
+        ftsIntegrationFileId: { type: string, format: uuid }
+        groupId: { type: string, format: uuid }
+        configId: { type: integer, format: int32 }
+        fileName: { type: string }
+        etfOutboundMetadataDefnId: { type: string, format: uuid }
+        isProcessed: { type: boolean }
+        isValid: { type: boolean }
+        creationDate: { type: string, format: date-time }
+        lastModifiedDate: { type: string, format: date-time }
+
+    InboundTarget:
+      type: object
+      properties:
+        ftsInboundTargetId: { type: string, format: uuid }
+        fteMetadataId: { type: string, format: uuid }
+        importJobName: { type: string, nullable: true }
+        contractName: { type: string, nullable: true }
+        isValid: { type: boolean }
+        creationDate: { type: string, format: date-time }
+        lastModifiedDate: { type: string, format: date-time }
+
+    FileEvent:
+      type: object
+      properties:
+        eventId: { type: string, format: uuid }
+        fileId: { type: string, format: uuid }
+        destinationId: { type: string, format: uuid, nullable: true }
+        eventCode: { type: string, nullable: true }
+        eventTrackDescription: { type: string, nullable: true }
+        createdDate: { type: string, format: date-time, nullable: true }
+
+    FileException:
+      type: object
+      properties:
+        exceptionId: { type: string, format: uuid }
+        fileId: { type: string, format: uuid }
+        destinationId: { type: string, format: uuid, nullable: true }
+        eventId: { type: string, format: uuid, nullable: true }
+        exceptionType: { type: string, nullable: true }
+        methodName: { type: string, nullable: true }
+        message: { type: string, nullable: true }
+        stackTrace: { type: string, nullable: true }
+        createdDate: { type: string, format: date-time, nullable: true }
+
+    FileTransferTracking:
+      type: object
+      properties:
+        fileId: { type: string, format: uuid }
+        fileSourceLocationId: { type: string, format: uuid, nullable: true }
+        fileName: { type: string, nullable: true }
+        fileStatus: { type: string, nullable: true }
+        fileDirection: { type: string, nullable: true }
+        fileTransportType: { type: string, nullable: true }
+        createdDate: { type: string, format: date-time, nullable: true }
+        tradingPartner: { type: string, nullable: true }
+        checkSumCode: { type: string, nullable: true }
+        fileSize: { type: number, format: double, nullable: true }
+        sourceLocAddress: { type: string, nullable: true }
+        sourceLocConfigName: { type: string, nullable: true }
+        originatingServerName: { type: string, nullable: true }
+        events:
+          type: array
+          items: { $ref: '#/components/schemas/FileEvent' }
+        exceptions:
+          type: array
+          items: { $ref: '#/components/schemas/FileException' }
+

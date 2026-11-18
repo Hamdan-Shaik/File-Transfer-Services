@@ -1,0 +1,1 @@
+(self.webpackChunkfxfer=self.webpackChunkfxfer||[]).push([[527],{9303:()=>{}},e=>{"function"==typeof e.x?e.x():console.warn("[Module Federation] __webpack_require__.x is not a function, skipping startup extension"),_N_E=Promise.all([e.f.consumes||function(e,n){},e.f.remotes||function(e,n){}].reduce((e,n)=>(n("527",e),e),[])).then(()=>e.X(0,[427],()=>e(e.s=3427)))}]);

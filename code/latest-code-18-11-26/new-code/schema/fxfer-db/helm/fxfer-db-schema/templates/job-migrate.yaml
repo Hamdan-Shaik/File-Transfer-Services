@@ -1,0 +1,32 @@
+﻿apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ .Release.Name }}-fxfer-db-migrate
+spec:
+  backoffLimit: {{ .Values.jobs.backoffLimit }}
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: flyway-migrate
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          args:
+            - "-configFiles={{ .Values.flyway.configFile }}"
+            - migrate
+          env:
+            - name: FLYWAY_URL
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.flyway.secretName }}
+                  key: {{ .Values.flyway.secretKeys.url }}
+            - name: FLYWAY_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.flyway.secretName }}
+                  key: {{ .Values.flyway.secretKeys.user }}
+            - name: FLYWAY_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.flyway.secretName }}
+                  key: {{ .Values.flyway.secretKeys.password }}

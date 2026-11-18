@@ -1,0 +1,24 @@
+image:
+  repository: fxfer-transfer-worker
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8080
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 80
+
+config:
+  otlpEndpoint: http://otel-collector:4317
+  domainApiBaseUrl: http://fxfer-domain-api
+  eventAdapterBaseUrl: http://event-adapter
+  subscriptionName: fxfer-transfer-work-items
+  consumerEnabled: "false"
+  stagingRootPath: /tmp/fxfer-staging
+

@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-fxfer-bff
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fxfer-bff
+  template:
+    metadata:
+      labels:
+        app: fxfer-bff
+    spec:
+      containers:
+        - name: fxfer-bff
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.service.targetPort }}
+          env:
+            - name: ASPNETCORE_URLS
+              value: "http://+:{{ .Values.service.targetPort }}"
+          envFrom:
+            - configMapRef:
+                name: {{ .Release.Name }}-fxfer-bff
+          livenessProbe:
+            httpGet:
+              path: /api/health/live
+              port: {{ .Values.service.targetPort }}
+          readinessProbe:
+            httpGet:
+              path: /api/health/ready
+              port: {{ .Values.service.targetPort }}
+

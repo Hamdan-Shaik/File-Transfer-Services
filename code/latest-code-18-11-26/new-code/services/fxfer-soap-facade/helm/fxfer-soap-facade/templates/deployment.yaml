@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-fxfer-soap-facade
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fxfer-soap-facade
+  template:
+    metadata:
+      labels:
+        app: fxfer-soap-facade
+    spec:
+      containers:
+        - name: fxfer-soap-facade
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.service.targetPort }}
+          env:
+            - name: ASPNETCORE_URLS
+              value: "http://+:{{ .Values.service.targetPort }}"
+          envFrom:
+            - configMapRef:
+                name: {{ .Release.Name }}-fxfer-soap-facade
+          livenessProbe:
+            httpGet:
+              path: /api/health/live
+              port: {{ .Values.service.targetPort }}
+          readinessProbe:
+            httpGet:
+              path: /api/health/ready
+              port: {{ .Values.service.targetPort }}

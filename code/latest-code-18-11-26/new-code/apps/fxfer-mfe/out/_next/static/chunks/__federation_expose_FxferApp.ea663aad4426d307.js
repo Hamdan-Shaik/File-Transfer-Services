@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkfxfer=self.webpackChunkfxfer||[]).push([[598],{4578:(e,f,r)=>{r.r(f),r.d(f,{FxferApp:()=>n});var s=r(1995),u=r(7918);function n(){return(0,s.jsx)(u.FxferRoutes,{})}}}]);

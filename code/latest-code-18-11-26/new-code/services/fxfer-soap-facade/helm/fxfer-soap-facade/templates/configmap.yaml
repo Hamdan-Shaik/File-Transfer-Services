@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-fxfer-soap-facade
+data:
+  OpenTelemetry__OtlpEndpoint: {{ .Values.config.otlpEndpoint | quote }}
+  DomainApi__BaseUrl: {{ .Values.config.domainApiBaseUrl | quote }}
+  Authentication__Authority: {{ .Values.config.authentication.authority | quote }}
+  Authentication__Audience: {{ .Values.config.authentication.audience | quote }}
+  Authentication__RequireHttpsMetadata: {{ .Values.config.authentication.requireHttpsMetadata | quote }}

@@ -1,0 +1,10 @@
+﻿apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-fxfer-domain-api
+data:
+  OpenTelemetry__OtlpEndpoint: {{ .Values.config.otlpEndpoint | quote }}
+  EventAdapter__BaseUrl: {{ .Values.config.eventAdapterBaseUrl | quote }}
+  Authentication__Authority: {{ .Values.config.authentication.authority | quote }}
+  Authentication__Audience: {{ .Values.config.authentication.audience | quote }}
+  Authentication__RequireHttpsMetadata: {{ .Values.config.authentication.requireHttpsMetadata | quote }}

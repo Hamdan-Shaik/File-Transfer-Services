@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-fxfer-projection-worker
+data:
+  OpenTelemetry__OtlpEndpoint: {{ .Values.config.otlpEndpoint | quote }}
+  DomainApi__BaseUrl: {{ .Values.config.domainApiBaseUrl | quote }}
+  EventBackboneConsumer__EventAdapterBaseUrl: {{ .Values.config.eventAdapterBaseUrl | quote }}
+  EventBackboneConsumer__SubscriptionName: {{ .Values.config.subscriptionName | quote }}
+  EventBackboneConsumer__Enabled: {{ .Values.config.consumerEnabled | quote }}
+  TenantDatabase__DefaultConnectionString: {{ .Values.config.tenantDatabaseDefaultConnectionString | quote }}
+

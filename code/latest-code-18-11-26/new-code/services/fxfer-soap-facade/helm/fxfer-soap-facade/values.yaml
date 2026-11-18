@@ -1,0 +1,28 @@
+image:
+  repository: fxfer-soap-facade
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8080
+
+ingress:
+  enabled: false
+  className: ""
+  hosts: []
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 80
+
+config:
+  otlpEndpoint: http://otel-collector:4317
+  domainApiBaseUrl: http://fxfer-domain-api
+  authentication:
+    authority: ""
+    audience: ""
+    requireHttpsMetadata: "true"

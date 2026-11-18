@@ -1,0 +1,2 @@
+- `fxfer-transfer-worker` exposes `run-file-transfer-batch-basic` and `run-file-transfer-batch-managed` CLI subcommands via `workers/fxfer-transfer-worker/src/Worker/CliEntrypoint.cs` for the two legacy doors.
+- `business/run-file-transfer-batch.feature` is copied into `workers/fxfer-transfer-worker/test/Fxfer.TransferWorker.Tests/Specs/` unchanged and verified by `workers/fxfer-transfer-worker/test/Fxfer.TransferWorker.Tests/Specs/RunFileTransferBatchFlowTests.cs`.
